@@ -1,0 +1,113 @@
+ 1. Introduction
+The development of data mining techniques has focused on efficiently discovering hidden information from support and confidence values are not less than the minimum support ( minSup ) and minimum confidence itemsets. Numerous efficient methods have been proposed to discover frequent itemsets, such as level-wise algorithms [2,3,7,8,12,30] and pattern-growth methods [1,15,16,21,26] .
+ tities or prices of items purchased in each transaction. Table 1 shows a sample transaction database that port value, item B has a support count of four. However, the total sale amount of item B is nine (1+4+1+3).
+
+In reality, multiple quantities of a product may be bought in one transaction. An item should be weighted since been proposed to efficiently discover share-frequent (SH-frequent) itemsets with infrequent subsets or time spent [27,28,34,35] .
+ itemsets, the need for efficient algorithms remains urgent.
+
+This study focuses on conventional utility mining. In the conventional utility mining model, an item has the external utility values found in Table 2 . The utility value of { A , B }is(1  X  3+1  X  2) + (3  X  3 and B together will yield a total profit of $16.
+ and T 03, the profits of the itemset { A , C , E }is  X  4 3  X  3 1  X  1 5  X  X  X  4 3  X  3 1  X  3 5  X  X  50. Therefore, utility mining is more beneficial than traditional association rules in such scenarios. ever, such a method is too time-consuming for a large dataset environment. Several heuristic methods have FSM, SuFSM, ShFSM, and DCG methods, to identify all SH-frequent itemsets [22 X 24] . In the meanwhile, Liu et al. also presented a Two-Phase (TP) method to discover all high utility itemsets [27,28] .
+The performances of existing level-wise utility mining methods primarily depend on the number of candi-dates generated in each pass. The challenge of utility mining is how to effectively reduce the number of
+The rest of this paper is organized as follows: Section 2 presents the background and an overview of the conclude in Section 6 with a summary of our work. 2. Background and related work 2.1. Support-confidence model
+Given a transaction database, the application of association rule mining attempts to discover significant relationships among items. The formal definition is as follows.
+
+Let I  X f i 1 ; i 2 ; ... ; i n g be the set of items. Let DB  X f T a transaction in DB and is a subset of I . That is, " T q containing X in DB in which c % of them also contain Y .
+ 2.2. Formal description of utility mining
+Share mining has been proposed to overcome the shortcomings of traditional data mining, which overlooks nitions of utility mining, with some modifications for consistency, are described as follows: Definition 2.1. A k -itemset X has an associated set of transactions in DB , denoted as DB DB
+X  X f T q 2 DB j X T q I g . For example, in Table 1 , DB f C ; D g
+Definition 2.2. The internal utility value of item i p in transaction T
+T . For example, in Table 1 , iu  X  C ; T 02  X  X  3.
+
+Definition 2.3. The external utility of item i p in a transaction database, denoted as eu ( i the utility table of the database. For example, in Table 2 , eu  X  C  X  X  1 and eu  X  D  X  X  3.
+Definition 2.4. The utility value of item i p in transaction T eu ( i p ). That is, util  X  i p ; T q  X  X  iu  X  i p ; T q  X  eu  X  i dollars in the transaction T 04. The utility value of itemset X in transaction T the utility value of each item of X in T q , where util  X  X ; T
+In particular, util  X  T q ; T q  X  is called the transaction utility value of T of the sample database in Table 1 .
+ values of X in DB X . That is, Lutil  X  X  X  X  DB . That is, Tutil  X  DB  X  X  to the total utility value in DB . That is, UTIL  X  X  X  X  Lutil  X  X  X 
+Henceforth, in this study, the utility value of an itemset X refers to UTIL ( X ), except where indicates otherwise.
+ as minLutil . Clearly, minLutil  X  minUtil Tutil  X  DB  X  .
+ Lutil  X  X  X  X  util  X  X ; T 02  X  X  util  X  X ; T 03  X  X  20  X  30  X  50. Therefore, UTIL  X  X  X  X  30 % . The itemset X is a high utility itemset. Table 6 lists all high utility itemsets. applying the downward closure property to the utility mining model will reveal no high utility itemsets. 2.3. Existing algorithms [27,28] . Li et al. also suggested efficient algorithms such as ShFSM and DCG [23,24] .
+TP and ShFSM methods employ similar properties to speed up the mining process. The greatest difference tional second phase.
+ employs the remaining candidates to generate the candidate ( k + 1)-itemsets for the next pass.
+However, ShFSM does require the join and prune steps of candidate generation in each pass. Therefore, Li et al. proposed the Direct Candidates Generation (DCG) algorithm to improve the performance of the mining the next pass without join and prune steps. 3. Utility mining using share mining methods
+Given a transaction database with a utility table, if the value of i iu  X  i for discovering share-frequent itemsets also works well in utility mining.
+
+Definition 3.1. Let X be a k -itemset. A superset of X with length k + i contained in a transaction T as X k  X  i , where X X k  X  i T q 2 DB and i &gt; 0. For example, in Table 1 , let X  X f C ; E g . X transaction in DB .
+ ical function of X if Lutil  X  X k  X  i  X  6 CF  X  X  X  for all X k X  X  X   X  k  X  i  X  -supersets.
+ critical function CF  X  X  X  P Lutil  X  X k  X  i  X  for all X k  X  i The Proof of Theorem 3.1 is provided in Appendix A .
+ obtained, and the inequality also holds.
+ ing methods to further reduce the number of candidates and to improve performance. This study applies the two best share mining methods, ShFSM and DCG, to the utility mining model. ShFSM is an efficient and typical method for share mining. The ShFSM method, modified [23] for utility mining is provided as follows:
+Definition 3.3. Let X be a k -itemset. The set which contains all X
+X k  X  i 2 S  X  X k  X  i  X  . For example, in Table 1 , Let X  X f C ; E g ; S  X  X Definition 3.4. Given a transaction database and a k -itemset X , db
+Theorem 3.2. Given a transaction database DB, let X k  X  i Their proofs are detailed in Appendix A .
+ determine high utility itemsets and compute the critical function value of each candidate. After scanning the database, the remaining set of candidate k -itemsets is called RC each candidate is above minLutil. Applying the Apriori join and prune steps to RC didate ( k + 1)-itemsets for the next pass.
+ set up the minimum threshold. DCG can be easily utilized for mining high utility itemsets. 4. Proposed strategy and algorithms of the critical function. 4.1. Isolated items discarding strategy (IIDS) For level-wise utility mining methods, some definitions for IIDS are as follows:
+After the k th pass, the process generates RC k . RC k is a subset of C inequality CF  X  X  X  P minLutil .
+
+Definition 4.2. For a level-wise utility mining method, after the k th pass, RC item i p 2 I is isolated if i p 6 2 X for all X 2 RC k . Let ISet k th pass. That is, ISet k  X  1  X  I f8 i p j i p 2 ity table in Table 2 using ShFSM to discover high utility itemsets. Let minUtil  X  30 % ; minLutil  X  122  X  105 ; CF  X  D  X  X  68 ; CF  X  E  X  X  54 ; CF  X  F  X  X  43 ; CF  X  G  X  X  21, and CF  X  H  X  X  21. Therefore, RC D ; E ; F g . According to the definition, ISet 2  X f G ; H g .
+ itemset whose critical function value is above the minimum threshold.
+
+Definition 4.3. In the k th pass, where k &gt; 0, given a transaction T all items of T q , exclusive of all items in ISet k . That is, NT consists of NT k q for all T q in DB . NDB k X is the set which consists of NT is set to ; . Since for each NT k q T q ; NDB k DB .
+Definition 4.4. Given minUtil , let HUI ( DB ) denote the set of all high utility itemsets and let HI utility itemset. Therefore, HI r 2 HUI  X  DB  X  , where 1 6 r 6
+HUI ( DB ), where the length of each high utility itemset in HUI is a subset of HUI ( DB ), in which the length of each high utility itemset in HUI to k .
+
+Lemma 4.1. Given minUtil and a utility table, for all HI r
+Corollary 4.1. Given minUtil and a utility table, for all HI util  X  HI r ; T q  X  X  util  X  HI r ; NT k q  X  , where k &gt; 0.
+ Theorem 4.1. Given minUtil and a utility table, the two high utility sets, HUI utility mining on DB and NDB k , respectively, are identical, where k &gt; 0.
+Theorem 4.2. Given minUtil and a utility table, the two high utility sets, HUI utility mining on DB and NDB k , respectively, are identical, where k &gt; 0. Their proofs are detailed in Appendix B .
+
+Since HUI k  X  DB  X  X  HUI k  X  NDB k  X  in each pass, deleting each isolated item of ISet the result of utility mining. To avoid generating extra NDB when scanning DB , the proposed IIDS skips isolated items of ISet to any efficient and level-wise utility mining method to improve performance by replacing DB with NDB
+Fig. 1 shows the utility mining process with IIDS. If the utility mining method is a two-phase algorithm, to determine HUI ( DB ). This study proposes that IIDS be applied to the two best share mining methods,
+ShFSM and DCG, and renames them Fast Utility Mining (FUM) and DCG+, respectively. 4.2. FUM and DCG+ methods FUM replaces the critical function Tutil  X  db S  X  X k  X  1  X  then the set of isolated items is empty and Tutil  X  db S  X  X the value of Tutil  X  Ndb S  X  X k  X  1  X   X  . For each itemset X , Tutil  X  Ndb lower critical function value of each k -itemset X than ShFSM does for k &gt; 1. If each itemset in RC in alphabetical order, the join step can efficiently skip joining useless itemsets. Thus, instead of RC
+RC 1 in the join step, FUM uses the sorted itemsets in RC k to join with each other. The following example shows the difference in C k and RC k sizes between ShFSM and FUM.
+ in Fig. 3 , where RC 1  X f A ; B ; C ; D ; E ; F g and ISet
+DB , skipping isolated items. The database NDB 2 and the transaction utility of each T of the transactions in NDB 2 include an isolated item. Therefore, CF  X f A ; B g X  X  Tutil  X  Ndb high utility value.
+ didate itemsets in the dotted line boxes do not appear in RC tains 6 candidates in RC 1 , 9 candidates in RC 2 , and one candidate in RC are at least 36.6.
+
+The difference between ShFSM and FUM arises in the second and third passes. In the second pass, FUM produces 15 candidates, finds a high utility itemset f A ; E g , and then keeps seven itemsets in RC passes, FUM has smaller C k and RC k sets than ShFSM.
+ The pseudo-code of the FUM algorithm is as follows: Algorithm. FUM threshold Output : All high utility itemsets
+Procedure: // minLutil  X  minUtil Tutil  X  DB  X  1. k :  X  1 ; HUI 1  X  DB  X  :  X  / ; ISet 1 :  X  / ; C 1 :  X  I ; 2. foreach T 2 DB //scan DB 3. accumulate 8 Lutil  X  i p  X  , and accumulate 8 CF  X  i p 4. foreach i p 2 C k // check all candidates 5. if Lutil  X  i p  X  P minLutil // high utility 6. HUI k  X  DB  X  :  X  HUI k  X  DB  X  + i p ; 7. if CF  X  i p  X  &lt; minLutil 8. C k :  X  C k i p ;// delete useless item 9. ISet k  X  1 :  X  ISet k  X  1  X  i p // add isolated item 10. RC k :  X  C k ; 11. while j RC k j &gt; 0// next pass 12. k ++; HUI k  X  DB  X  :  X  / ; ISet k  X  1 :  X  / ; 13. foreach X p ; X q 2 RC k 1 // use RC k 1 to generate C 14. C k :  X  Apriori-gen ( X p , X q ); // candidate generation 15. foreach T 2 DB // scan DB 16. accumulate Lutil  X  X  X  , and accumulate CF  X  X  X  by skipping 8 i 17. foreach X 2 C k // check all candidates 18. if Lutil  X  X  X  P minLutil // high utility 19. HUI k  X  DB  X  :  X  HUI k  X  DB  X  X  X ; 20. if CF  X  X  X  &lt; minLutil 21. C k :  X  C k X ;// delete useless itemset 22. RC k :  X  C k ; 23. determinate ISet k  X  1 in which no item appears in RC 24. return HUI  X  DB  X  X 
+Lines 9 and 23 generate a set of isolated items, ISet k  X  1 function value of each candidate can be reduced.
+
+Similarly, DCG+ is a fast utility mining DCG algorithm to be used with the proposed IIDS. The following briefly describes how DCG is extended to become DCG+ by implementing IIDS.
+
+Definition 4.5. Let the candidate k -itemset X be f i 1 ; i
+If i k &lt; i q then the ( k + 1)-superset of X f i 1 ; i In the k th pass, DCG scans the database once to determine which candidates are high utility. Meanwhile, and prune steps.
+ culates the critical function value of each monotone ( k + 1)-superset of X ; X to Definition 4.3 , NDB k function values, so that DCG+ can delete more useless candidates than DCG. Without the redundancy, this study omits the detailed algorithm of DCG+.
+ quent itemsets. Therefore, IIDS also works well to discover traditional frequent itemsets. 5. Experimental results
+The performance of two methods FUM and DCG+, in which IIDS was implemented, was compared with that of TP, ShFSM, and DCG. The experiments were done on an AMD Barton ES 2900+ (2000 MHz) PC with 3 GB of main memory, running the Windows XP Professional operating system. All algorithms were sets and a real dataset were adopted from NU-MineBench 2.0, a powerful benchmark suite consisting of mul-tiple data mining applications and databases [31] . 5.1. Synthetic datasets
+An IBM synthetic data generator [19] was used for this study. The parameters of the generator are intro-mean transaction size of 10 and mean size of the maximal potentially frequent itemsets of six; and (2) each item was heuristically chosen between 0.01 and 10 and randomly generated with a log-normal distribu-low external utility value.
+ Figs. 5 X 7 show the performance curves associated with these algorithms performed on
+T10.I6.D1000k.N1000, T10.I6.D100k.N2000, and T20.I6.D1000k.N1000, respectively. FUM and DCG+ had better performance than ShFSM and DCG, respectively. The experimental results demonstrate that employing IIDS can improve the performance of ShFSM and DCG. The running time of ShFSM was less than that of TP for scanning the database once. In a low minUtil value, FUM performed the best, followed by DCG+ and DCG (see Figs. 5 a, 6 a and 7 a). In a high minUtil value, DCG+ and DCG performed the best (see Figs. 5 b, 6 b and 7 b).
+ As shown in Fig. 5 , DCG+ was the most efficient method in a minUtil range of 0.07% to 0.2%, followed by
+FUM, DCG, ShFSM, and TP, respectively. In a minUtil range of 0.08% to 0.28%, FUM outperformed DCG ( Fig. 7 ). With a minUtil of 0.20%, the execution times of DCG+, FUM, DCG, and ShFSM were 41.9%, 61.2%, 80.2%, and 93% of the TP, respectively ( Fig. 7 a).
+ Table 8 lists the candidate numbers of C k and RC k among the five algorithms in each pass using
+T10.I6.D1000k.N1000 with minUtil of 0.12%. Except for the first and the second passes, FUM and DCG+ generated a smaller candidate set than ShFSM and DCG, respectively. The running time of Phase I of TP
+The total running time of TP was 177.1 s, while the time for ShFSM was 159.2 s. Although no high utility column of Table 8 ). FUM and DCG+ scanned the database 7 times; ShFSM and DCG 11 times; and TP 12 passes to scan the database.
+
+Table 9 lists the candidate numbers generated from the four algorithms with a length greater than two. In algorithms with and without implementing IIDS. The percentages in the column  X  X  X educing rate 1 X  X  indicate that FUM saves percentage of generated candidates of the ShFSM did. The percentage numbers in the column algorithm with IIDS always generates fewer candidates than the corresponding algorithm without IIDS. For
+T10.I6.D1000k.N1000 and T20.I6.D1000k.N1000, utility mining with a high minUtil value can obtain a sig-nificant improvement. For the dataset T10.I6.D1000k.N2000, the improvement is significant in two minUtil ranges (0.06 X 0.14% and 0.20 X 0.24%).
+ Fig. 8 shows the scalability of these algorithms by increasing the number of transactions on
+T10.I6.Dxk.N1000 and T20.I6.Dxk.N1000, respectively, with minUtil of 0.12%. The number of transactions growth of DB .In Fig. 8 a, the running time of FUM and DCG+ is less than that of FSM and DCG, achieving 31% and 35%, respectively. For a longer mean transaction size ( Fig. 8 b), FUM and DCG+ have better per-formance than ShFSM and DCG with running times of 20% and 30%, respectively. Thus, the utility mining methods with IIDS significantly reduced the running time while offering linear scalability. 5.2. Real dataset
+This study also evaluated these algorithms using a real dataset. The Chain-store dataset was taken from a major grocery store chain in California and contained 1112949 transactions and 46086 distinct items. The utility table stored the profit for each item. The total profit of the dataset is $26388499.80. Fig. 9 presents the performance with several minUtil values from 0.05% to 0.36%. Because DCG and
+DCG+ maintained an extra array for each candidate, the main memory could not keep all candidates in each pass; for this reason, DCG and DCG+ are not illustrated in Fig. 9 . Fig. 9 shows that FUM outperformed
+ShFSM and TP; the running time of FUM was only 64.6% and 76.7% of the times for ShFSM and TP, respec-tively, with minUitl = 0.12%.
+ dataset with minUtil of 0.06%. The total running time of TP was 122.5 s, which was 13.9 s slower than
+ShFSM X  X  108.6 s. FUM scanned the database four times; ShFSM, five times; and TP, six times. Table 10 dem-generated 78238 candidates, while FUM only generated 45795 candidates.
+
+To analyze the difference between the high utility itemsets and the support-based frequent itemsets, this experiment employed the FP-growth algorithm [16] to generate all frequent itemsets. For the Chain-store dataset with minSup = 0.0073%, FP-growth generated 14352, 33371, 6569, 441, and 14 frequent itemsets with length from one to five, respectively.
+
+The three high utility itemsets with length three, which were discovered from Chain-store using FUM with 3-itemsets, omitting the first two highest utility itemsets, {39182,39206,39695} and {39681,39690,39692} when the minimum support threshold was 0.1%. To obtain the two highest utility 3-itemsets, the minSup threshold must be set less than 0.0074%. Nevertheless, the low threshold value, 0.0073%, resulted in 6569 3-itemsets being generated. FP-growth generated too many useless frequent 3-itemsets which interfered in unknown.
+ resents their support values. The itemset ranked 31st had the maximum support value 5.734%. The support value (3.149%) of the itemset ranked 169th was over 400 times the support value (0.007%) of the itemset currently used in practice. 6. Conclusions are as follows: 1. Propose IIDS to reduce the critical function values of itemsets. 2. The experimental results using synthetic and real datasets reveal that the performances of FUM and
+DCG+ were better than that of ShFSM and DCG, respectively. IIDS can further decrease the number of candidates and efficiently increase the performance of these utility mining methods. 3. Theoretical proofs and experimental results indicate that the IIDS is a promising strategy for utility mining.
+ between utility mining and associative classification should be further investigated. Acknowledgements
+The authors would like to acknowledge the helpful comments made by the anonymous reviews of this pa-per. The second author was supported by the National Science Council, Taiwan and Providence University, Taiwan. X  X  with  X  X  X ational Science Council, Taiwan, grant NSC 94-2213-E-126-013 and Providence University, Taiwan, grant 95-11100-C21.
+ Appendix A. Proofs for the theorems and lemma given in Section 3 Proof of Theorem 3.1. For each X k  X  i , since Lutil  X  X k  X  i
+Proof of Lemma 3.1.
+Proof of Theorem 3.2. For an arbitrary  X  k  X  i  X  -superset X Appendix B. Proofs for the lemma, corollary, and theorems given in Section 4
+Proof of Lemma 4.1. Since for all HI r 2 HUI P k  X  DB  X  , the length of HI
+Definition 4.2 , let T q  X  NT k q [ t q , where NT k q \ t with length at least k in HUI P k  X  DB  X  . So that for all i
+HI r T q t q . Therefore, HI r NT k q . h
+Proof of Corollary 4.1. According to Lemma 4.1 ,if HI r T iu  X  i p ; NT k q  X  since NT k q is a subset of T q . Moreover, util  X  i eu  X  i p  X  X  util  X  i p ; NT k q  X  . Therefore, util  X  HI r util  X  i p ; NT k q  X  X  util  X  HI r ; NT k q  X  . h
+Proof of Theorem 4.1. (1) HUI P k  X  NDB k  X  HUI P k  X  DB  X  : According to Definition 4.3 , NDB (2) HUI P k  X  DB  X  HUI P k  X  NDB k  X  : Assume there exists HI According to the above two cases, we have HUI P k  X  DB  X  X  HUI
+Proof of Theorem 4.2. By Definition 4.4 , clearly, HUI P k
+HUI P k  X  1  X  DB  X  , and HUI P k  X  NDB k  X  is the disjoint union of HUI orem 4.1 , we have HUI P k  X  DB  X  X  HUI P k  X  NDB k  X  , for all k &gt; 0. That is, HUI
+References

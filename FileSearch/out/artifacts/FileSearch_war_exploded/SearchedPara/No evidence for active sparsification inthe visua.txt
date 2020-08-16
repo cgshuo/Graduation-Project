@@ -1,0 +1,1 @@
+ Does neural activity over development and under different levels of anesthesia reflect a process of active sparsification of the neural code? Neural data shows a a trend opposite to the one expected in a sparse coding system, suggesting that the visual system is not actively

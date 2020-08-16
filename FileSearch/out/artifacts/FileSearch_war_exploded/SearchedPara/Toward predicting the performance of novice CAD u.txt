@@ -1,0 +1,24 @@
+ 1. Introduction and background performance ( McKenzie and Schweitzer, 2001 ). have been previously established): measures will be briefly given in Section 2 for clarity. summarized in Section 3 for clarity. (performance).
+ develop CAD competency has not been reported in the open suit trainees X  individual profiles.
+ Initial Performance Time (min) Initial No. of Features Used 2. Explanation of training and CAD performance measures competence is presented below for clarity. 2.1. Training own time. 2.2. Performance measures
+CAD performance by human operators may be accounted for computer interfaces, HCI, where movement is anticipated. 0 10 20 30 40 50 60 70 Time (min) 0 0.2 0.4 0.6 0.8 1 1.2 1.4 1.6 0 2 4 6 8 10 12 Features 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 2 Important and measurable human factors include speed of objective).
+ Wright X  X  learning curve ( Wright, 1936 ) T  X  t  X  X  T  X  1  X  t b t  X  1  X  the end of training. Time (min) 0.2 0.4 0.6 0.8 1.2 b Features 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 b Initial Performance Time (min) Initial No. of Features Used in a decreasing fashion over time according to
+F  X  t  X  X  F  X  1  X  t b f  X  2  X  part ( Hamade et al., 2009 ). 3. Explanation of profiling data: Questionnaire
+Previous work by Hamade and coworkers has amounted to summarize this framework for added clarity.
+ attributes according to the following seven categories: 1. Basic math, BM (10 questions) 2. Advanced math, AM (3 questions) 3. CAD mathematical foundation, CM (4 questions) 5. Methodologies related to CAD, MR (9 questions) 6. Graphics foundation, GF (3 questions) 7. Mechanical design skills, MD (6 questions) measured initial performance, their progress, or both. 4. Application: prediction techniques and results thestartofthetraining.Beingabletopredictperformancewith 4.1. Linear regression 0 10 20 30 40 50 60 70 Initial Performance Time (min) 0 2 4 6 8 10 12 14 16 Initial No. of Features Used 4.1.1. Linear regression method 1, LR1 category) according to Eqs. (3) through (6) below: b b arranged in the form
+Ax  X  b  X  7  X  normally found by inverting A and multiplying by b . Time (min) 0.2 0.4 0.6 0.8 1.2 1.4 1.6 b Features 0.2 0.4 0.6 0.8 1.2 b Initial Perfromance Time (min) Initial No. of Features Used
+The data points of the 94 students were divided into two for performance time and bottom figure for the number of features used.
+ respectively.
+ b , F , b f ).
+ Error prediction and X is the mean value of the category under consideration.
+
+T , b 4.1.2. Linear regression method 2, LR2 4.2. Simulated Annealing 0 10 20 30 40 50 60 Time (min) 0 0.2 0.4 0.6 0.8 1 1.2 1.4 2 0 1 2 3 4 5 6 7 8 9 10 Features 0 0.2 0.4 0.6 0.8 1 1.2 6 methods, and the probabilistic methods such as Simulated zation, Random Walk Algorithm, and many more.
+ Table 2 .
+
+A MATLAB code was custom-written to perform the above b 4.3. Artificial neural networks algorithms Trainees Trainees 4.3.1. Feed-forward back propagation network, FFBN
+Fig. 9 (b) X (d), respectively. 4.3.2. Elman back propagation network, EBN respectively. 4.3.3. Generalized regression neural network, GRNN 0 10 20 30 40 50 60 70 Time (min) 0 0.2 0.4 0.6 0.8 1 1.2 8 0 2 4 6 8 10 12 14 Features 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 8
+Fig. 13 (b) X (d), respectively. 5. Summary and conclusions
+Recent and sophisticated frameworks employ AI techniques to the two other ANN methods utilized (Feed-Forward Back Artail (2008).
+ Trainees 0 5 10 15 20 25 30 35 40 45 Time (min) 0 0.2 0.4 0.6 0.8 1 1.2 4 0 2 4 6 8 10 12 Features 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 8 0% 10% 20% 30% 40% 50% 60% Percent Error 0% 10% 20% 30% 40% 50% 60% 70% 0% 10% 20% 30% 40% 50% 60% 70% 80% Percent Error 0% 20% 40% 60% 80% 100% training/educational organization.
+ Acknowledgments Fellowship in Manufacturing.
+ References %bt_test Error %bf Error %bf_test Error

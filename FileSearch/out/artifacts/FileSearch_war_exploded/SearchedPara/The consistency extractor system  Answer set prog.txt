@@ -1,0 +1,208 @@
+ 1. Introduction of characterizing and obtaining consistent answers to queries is called Consistent Query Answering (CQA) [12]. for example, when autonomous and independent data sources are virtually integrated. of a process of CQA.
+ legal instances for the integration system.
+
+More precisely, given a relational database instance D and a set IC of ICs, a (minimal) repair [4] is an instance D this semantic definition.
+ can be the result of the integration of two data sources, violate the FD:
+Student id name 1 smith 1 peter 2 jones are two database repairs: id name id name 1 smith 1 peter 2 jones 2 jones Student  X  x ; jones  X  . The answer to this query is h 2 i in both repairs, therefore the consistent answer is h 2 i . an inconsistency, we would have lost this kind of information.
+
+Already in [4] some computational mechanisms were presented that do not use or compute the repairs, but pose a new, query. Cf. [12] for a survey containing more recent results of this kind. base without being in logical conflict with it.
+ The logic programs that specify the repairs are called repair programs .
+RICs (cf. Section 2).
+The data complexity of CQA [27] matches the data complexity of query evaluation from disjunctive logic programs with stable model semantics, which in the general case is P P 2 queries, for which CQA has (provably) lower data complexity. Among them we find those classes that allow for FO query cases have been identified [9,27,28,39] . 1.1. Problem statement Consistent answers to a query can be computed by evaluating a (properly modified) query against the repair program. ner is not very efficient (cf. Section 6). Therefore, it becomes relevant to optimize their evaluation. centrate on explicit computation of repairs, but on consistent query answering. 1.2. Contributions and outline
+In this work we show that only a subset of the program and of the database facts are needed to compute answers to a specific query. This subset can be captured by using Magic Sets (MS) methodologies which transform the combination of set of the database will be used for query evaluation.
+
+Classically, MS optimizes the bottom-up processing of queries in deductive (Datalog) databases by simulating a top-models semantics [35,29,42,44] .
+
+MS methodology for CQA from repair programs with program constraints. This MS methodology is the one implemented in tion time.
+ The notion of consistency used in [16] is relative to this semantics, and the same applies to the repair semantics.
+The queries supported by Cons Ex are Datalog queries with negation, which goes beyond first-order queries. Consistent
+Cons Ex is the most general implementation of CQA, and the optimizations introduced both on the repair programs and against repairs programs (cf. Section 6).
+ logical foundations for the MS methodology described in [22], and extends the experimental results presented therein. 7 presents conclusions and future work. 2. Preliminaries query answering.
+ 2.1. Databases and integrity constraints true iff c is null .
+
+A database instance for schema R is a finite set D of ground atoms of the form R  X  c nite in every database instance.
+ based on the predicates in R , e.g. queries in Datalog or in some of its extensions. tence w 2 L  X  R  X  of the form [16]: where P i ; Q j 2 R ; x  X  S m i  X  1 x i , z  X  S n j  X  1 z junctions of built-in atoms from B , whose variables appear in the antecedent of the implication. constraint of the form (1). Particular cases of this general form are the universal and the referential ICs.
+A referential integrity constraint (RIC) is a sentence of the form: with P ; Q 2 R ; y # x , and z non-empty. 3 case by using the null value null , with its SQL semantics, to restore consistency, as proposed in [16]. example, 8 xy  X  P  X  x ; y  X ! y &gt; 0  X  is a unary constraint.
+
+Moreover, we consider NOT NULL -constraints (NNC), which are common in commercial DBMSs. They prevent certain attributes from taking a null value. A NOT NULL -constraint is of the form [16]: it contains the special predicate IsNull .
+ (a) The functional dependency (FD) Student : id ! name , expressed in L  X  R  X  by the UIC 8 idname of constraints will be particularly relevant. We need some auxiliary notions before introducing them.
+Each database predicate P in R is a node. There is a directed edge  X  P such that P i appears in the antecedent of w and P j appears in its consequent. In addition, there is an edge  X  P to P i if P i appears in the antecedent of a constraint w that has only built-in predicates in its consequent or the edges.
+ For a graph G ; C  X  G  X  :  X f c j c isaconnectedcomponentin G g ; and V  X  G  X  is the set of vertices of G . Definition 2 [16]. Given a set IC of UICs, RICs, and NNCs, IC dependency graph of IC ; G C  X  IC  X  , is obtained from G  X  IC  X  by replacing, for every c 2 C  X  G  X  IC vertex and deleting all the edges obtained from elements of IC In other words, the contracted dependency allows us to determine if a set of ICs is RIC-acyclic.
+Example 3. Fig. 1 a shows the dependency graph G  X  IC  X  for the set IC of UICs containing u are sink nodes.
+ vertex labeled with f Q ; R ; S g , and deleting edges 1 ; 2, and 4. Since there are no loops in G shows G  X  IC  X  and G C  X  IC  X  , respectively. Since there is a self-loop in G
+A set of UICs is always RIC -acyclic, as expected. 2.2. Constraint satisfaction and null values briefly recall it.
+
+Definition 3 [16]. will not produce any logical problem.
+ check w .
+ uated as unknown (the unique names assumption does not apply to null values [54]).
+Definition 4 [16]. (a) A constraint w of the form (1) is satisfied in the database instance D , denoted D usual, treating nulls as any other constant.
+ Example 5. Example 4 cont.To check if D N w with w : 8 xyz  X  P  X  x ; y ; z  X ! R  X  x ; y  X  X  , we need to verify if D xy  X  P A  X  w  X   X  x ; y  X ! X  IsNull  X  x  X _ IsNull  X  y  X _ R A  X  w  X 
+This is because, for x  X  b and y  X  b , D A  X  w  X  P A  X  w  X   X  w  X  R A  X  w  X   X  b ; b  X  , which in this case is false. 2.3. Database repairs ever possible (e.g. an NNC could prevent us from making this choice).
+ satisfying a RIC.
+
+Definition 5 [4]. Let D ; D 0 be database instances over the same schema and domain. The distance , D  X  D ; D is the symmetric difference D  X  D ; D 0  X  X  X  D n D 0  X [ X  D We use this distance to define a partial order between database instances.
+Definition 6 [16]. Let D ; D 0 ; D 00 be database instances over the same schema and domain U . It holds D 1. For every atom P  X  a  X 2 D  X  D ; D 0  X  , with a 2 X  U nf null g X  2. For every atom Q  X  a ; null  X 2 D  X  D ; D 0  X  , 8 with a 2 X  U nf null g X  Q  X  a ; b  X  R D  X  D ; D 0  X  .
+ This partial order is used to define the repairs of an inconsistent database. with respect to IC is a database instance D 0 , such that: (a) It has the same schema as D , (b) D Rep  X  D ; IC  X  .
+
+In particular, this definition requires from a repair D 0
+D &lt;
+D D 0 , where D 00 &lt; D D 0 means D 00 6 D D 0 but not D one in [4].
+ under the adopted semantics.
+ nitely many repairs. This would lead to the undecidability results mentioned above. there is no NNC on an attribute of a relation that is existentially quantified in an IC of the form (1). notion of consistent answer to queries.
+ repair D 0 of D ; and no , otherwise.
+ ^ IsNull  X  x  X ! false  X g . The instance D is inconsistent with respect to IC , because:
+W  X  null ; b ; c  X g , in terms of whole tuples, with respect to the original database instance D . D
+T  X  a ; null  X g , with D  X  D ; D 2  X  X f S  X  a ; c  X  ; W  X  null ; b ; c  X g . The database instance D is not a repair since it does not satisfy minimality. In fact, D  X  D ; D
+D &lt; D D 3 .
+ repair D 1  X f P  X  a  X  ; Q  X  a ; null ; null  X g , with D  X  D ; D
+D  X f P  X  a  X  ; Q  X  a ; d ; d  X g , for any d 2 U different from null , is not a repair: Since D  X  D ; D the form f P  X  a  X  ; Q  X  a ; b ; b  X  ; R  X  b  X g where b is a value from the database domain. 3. Repair programs
+We can use disjunctive logic programs (DLPs) with a stable models semantics [40] to specify database repairs. The of D [9,16] .
+ database) receives an annotation constant from those shown in Table 1 .
+ predicate P . The former has an extra argument to accommodate the annotation constant.
+Annotations are introduced and used as follows: First, for each IC we introduce a disjunctive program rule whose body (but not both by the minimality of stable models of the program). The atoms in the disjunctive head use the t database. That is, the atom P  X  a ; t a  X  suggest the insertion of P  X  a  X  ; and P  X  a ; f
+For example, for the inclusion dependency in Example 6 the head of the rule, or by inserting R  X  x ; y  X  , which receives the t stant t H .
+
+For example, if due to an IC other than (6), S  X  c ; a ; t changed to 9 below).
+
+S  X  c ; a ; t a  X  has been generated, but R  X  c ; a  X  has been made false (i.e. R  X  c ; a ; f violation of (6):
+A stable model of the program is coherent if it does not contain a pair of atoms of the form P  X  a ; t database atom is never both inserted and deleted.
+ and optimized in a series of papers [9,15,16,21] , captures all these ideas. 1. P  X  a  X  , for each atom P  X  a  X 2 D . 2. For every UIC w of the form (2), the set of rules: for every pair of sets Q 0 and Q 00 of atoms appearing in formula (2) such that Q A  X  w  X  is the set of relevant attributes for w ; x  X  of u . 3. For every RIC w of the form (3), the rules:
+P  X  x ; f a  X _ Q  X  y ; null ; t a  X  P  X  x ; t H  X  ; notaux  X  null . 4. For every NNC of the form (4), the rule: P  X  x ; f a  X  P  X  x ; t H  X  ; x 5. For each predicate P 2 R , the annotation rules:
+P  X  x ; t H  X  P  X  x  X  . P  X  x ; t H  X  P  X  x ; t a  X  . 6. For every predicate P 2 R , the interpretation rule: P  X  x ; t HH  X  P  X  x ; t H  X  ; notP  X  x ; f 7. For every predicate P 2 R that is not a sink or a source node in G  X  IC  X  , the program constraint: P  X  x ; t may contain positive or negative literals with weak negation for negative literals. ^ IsNull  X  x  X ! false  X g presented in Example 6 . The repair program P  X  D ; IC  X  contains the following rules: 1. S  X  a ; c  X  : S  X  b ; c  X  : R  X  b ; c  X  : T  X  a ; null  X  : W  X  null ; b ; c  X  . 2. S  X  x ; y ; f a  X _ R  X  x ; y ; t a  X  S  X  x ; y ; t H  X  ; R  X  x ; y ; f 3. T  X  x ; y ; f a  X _ W  X  x ; y ; null ; t a  X  T  X  x ; y ; t H  X  ; notaux  X  x ; y  X  ; x  X  null ; y  X  null . 4. W  X  x ; y ; z ; f a  X  W  X  x ; y ; z ; t H  X  ; x  X  null . 5 : S  X  x ; y ; t H  X  S  X  x ; y  X  6 : S  X  x ; y ; t HH  X  S  X  x ; y ; t H  X  ; notS  X  x ; y ; f 7. W  X  x ; y ; z ; t a  X  ; W  X  x ; y ; z ; f a  X  .
+ rules are constructed by choosing all the possible sets Q 2 considers Q 0  X f R  X  x ; y  X g and Q 00  X ; . The second corresponds to Q either a sink or a source node.
+ The program has two stable models: 10 R  X  a ; c  X  ; T  X  a ; null  X g and f S  X  b ; c  X  ; R  X  b ; c  X  ; T  X  a ; null  X g , as expected. sets of UICs of the form (2), RICs of the form (3), and NNCs of the form (4) [9,16] . negation [49]. Alternatively, the query can be expressed directly in Datalog. P  X  s  X  in the program by P  X  s ; t HH  X  .
+ semantics [40].
+ atom Ans  X  c  X  in common. Thus, the only consistent answer to Q is h c i . 3.1. Stratification and repair programs with negation but no program constraints.
+
+Definition 10 [34]. A disjunctive program P without program denials is stratified if it is possible to decompose the predicates in P into pairwise disjoint sets S 0 ; S 1 ; ... ; S predicate P 0 occurs in the same rule, then: (a) P 0 2 S i ,if P 0 occurs in the head of r . (b) P 0 2 S j with j 6 i ,if P 0 occurs positively in the body of r . (c) P 0 2 S j with j &lt; i ,if P 0 occurs negatively in the body of r .
+Any such decomposition is a stratification of P , and it induces a decomposition of the rules of P into subsets s where s i contains all the rules that define a predicate P 2 S and negation.
+ is due to the use of a same expanded database predicate for accommodating different annotation constants. If we used programs, without considering their program constraints, can be translated into stratified DLPs that have essentially the same semantics.
+ We can also characterize stratification of a disjunctive program by focalizing on its predicate dependency graph .
+Definition 11 (b) An odd cycle in G  X  P  X  is a cycle comprising an odd number of marked arcs. characterization of stratified programs will be useful for the formulation of Lemmas 2, and 3 in Section 4. cycle with a marked arc.
+ the index of the stratum where predicate P is defined. The following holds: (a) If the edge  X  P ; P icate dependency graph G  X  P  X  , then s  X  P  X  6 s  X  P 0  X  . (b) If  X  P ; P cycles in the dependency graph trough a marked edge.
+
+In the other direction, decompose the predicate dependency graph into strongly connected components of maximum
+We claim that s 0 ; ... ; s n is a stratification of P . Moreover, P  X  s
+In fact, if a predicate P 1 2 s i is in the head of a rule r and a predicate P both predicates have their definitions in s i .If P 2 is in the body of r , then P words, the definition of P 2 is in some s j with j 6 i .If P assumption there is no cycle trough a marked edge. Therefore, its definition is contained in some subset s
+Definition 12. Let P be a program with program constraints PC : (a) P c :  X  X  P n PC  X  . (b) P a is the program obtained from P by replacing each atom of the form P  X  x ; d  X  , with d 2f f Example 9 Example 7 cont. P c a  X  D ; IC  X  has, among others, the rules: contain nodes for predicates T ; W ; and aux .
+
+The following is a possible stratification for program P c s : f aux g , s 4 : f T f a ; W t a g ; s 5 : f S t HH ; R t HH
+Proposition 2. For a repair program P  X  D ; IC  X  , the modified program P haves as a stratified program. However, if we keep the program denials, P to verify the notion of stratification, a denial of the form P  X  x ; t which destroys stratification.
+
+Corollary 1. For every repair program P  X  D ; IC  X  that does not have program constraints, the program P
+For example, and according to this result, if IC consists only of denial constraints, e.g. functional dependencies, will be useful.
+
+Corollary 2. For every repair program P  X  D ; IC  X  ; G  X  P repair program for a non-RIC -acyclic set of ICs, for which P
+P  X  D ; IC  X  has the rules:
+Program P c a  X  D ; IC  X  does not have recursion via negation, and its predicate dependency graph , G  X  P cycles with a marked arc.
+ complete [31,30,41] . 4. Magic sets for CQA restrict the tuples involved in the computation.
+ [29,35] .
+
+The magic program contains auxiliary rules, the magic rules, that capture the dependency of the query predicates upon used as input to MS.
+ existential closure of C  X  x  X  .
+ The MS techniques currently implemented in DLV cannot be applied to disjunctive programs with program constraints. is not straightforward.
+ plied to optimize a combination of repair and query programs.
+
+However, in this paper we present a sound and complete MS methodology that can be applied to repair programs (with are put back into the magic program obtained in the previous step, enforcing the magic program to have only coherent models. 4.1. Magic sets: an example of Example 8 . As announced in the previous section, the MS technique is applied to the program P
+P  X  D ; IC ; Q  X n PC , where PC contains the program constraint: W  X  x ; y ; z ; t The adornment step produces a new, adorned program, in which each intensional (defined) predicate P takes the form P adornments are created and propagated as follows. First P  X  Q  X  : Ans  X  x  X  S  X  b ; x ; t HH  X  becomes: Ans constants, are always bound.
+ 2., 5., and 6. (in Example 7 ). As an illustration, the rules in 5. become S an illustration, suppose we are adorning a program, we generate the adorned atom P to be adorned: P  X  x ; y ; z  X  R  X  z  X  ; M  X  x ; z ; y  X  ; where the only extensional atom is R  X  z  X  . From atom P
+P fbf  X  x ; y ; z  X  R  X  z  X  ; M fbb  X  x ; z ; y  X  .
+
+Moreover, returning to our example, the adorned atom S bfb literal R  X  x ; y ; t a  X  . Therefore, this rule becomes 14 output of this step is an adorned program that contains only adorned rules. After all the adornments are properly propagated, the adorned program below is generated: Program 1 a program, we have the adorned atom P fbf  X  x ; y ; z  X  , and the rule: where S  X  y ; z  X  is the only extensional atom. From atom P egy, the adorned rule becomes: disjunctive and non-disjunctive adorned rules. For each adorned literal  X  not  X  P rule r ,a magic rule is generated as follows: (a) The head of the magic rule is the new atom magic P A  X  t 0  X  , called the magic version of P
+For instance, for the adorned atom S bfb  X  x ; y ; t a  X  in the body of the adorned rule S magic S bfb  X  x ; t a  X  magic S bfb  X  x ; t H  X  .
+
+As another example, consider the adorned rule (10). The corresponding magic rule for T this atom the magic rule would be unsafe. The magic rule for the literal notR
+Finally, the magic rule for atom M bf  X  z ; w  X  is magic M
+For disjunctive adorned rules, first, intermediate non-disjunctive rules are generated by moving, one at a time, head the rule we obtain two non-disjunctive rules: (i) S bfb  X  x ; y ; f
+S  X  x ; y ; t H  X  ; R bfb  X  x ; y ; f a  X  . Three magic rules are generated for rule (i): magic R magic S bfb  X  x ; t H  X  magic S bfb  X  x ; f a  X  ; and magic R rule. For example, for the rule: Ans f  X  x  X  S bfb  X  x ; y ; t HH  X  ; the magic seed atom is magic Ans atom. The magic rules for the adorned Program 1 are:
+Program 2 magic versions of the head atoms in (11) are magic S bfb  X  x ; f the adorned rule, generating the modified rule: Therefore, Program 1 is eventually transformed into: Program 3 magic seed atom. 4.2. Properties of magic methods for CQA
+In this section we will assume that the query Q is given directly as a Datalog tion the associated program P  X  Q  X  . This program has a query predicate Ans (b) For a program P possibly containing a set PC of program constraints, its magic version is MS  X  P  X  X  MS  X  P
+We will apply this definition to programs of the form P  X  D ; IC ; Q  X  . out any adornments.
+ modified rules in Program 3 , the magic seed atom magic Ans rule 7. in Example 7 ).
+ that h c i is the consistent answer to the original query, as expected.
+
+We can see that the magic program has only those models that are relevant to compute the query answers. Furthermore, the magic atoms, model M is contained in every stable model of the original repair program in Example 7 . The MS programs of Definition 13 are both sound and complete when applied to (obtained from) programs of the form MS  X  P  X  D ; IC ; Q  X  X  . Now we make this correspondence precise.
+
+Definition 14. Let P 1 and P 2 be any two programs without facts that share a predicate P . P denoted P 1 P P 2 iff, for any set F of facts, T M 2 SM  X  P
+It holds: MS  X  P  X  D ; IC ; Q  X n D  X  Ans Q  X  P  X  D ; IC ; Q  X n D  X  .
+The theorem says that for any database contents, the repair plus query programs return the same cautions answers (and then consistent answers) to the query as the magic version.
+Now we give a general idea of the proof of Theorem 1 . It has two parts: soundness and completeness of MS. The former first associate to MS  X  P  X  D ; IC ; Q  X  X  a new program rel  X  Q ; P
+P  X  D ; IC ; Q  X  that are used to compute query Q (cf. Definition 15 below). In other words, program rel  X  Q ; P program of ground  X  P c  X  D ; IC ; Q  X  X  (the ground version of P program that we will compare with the magic program.
+ plus program constraints, and P  X  D ; IC ; Q  X  are query equivalent. We prove this in Proposition 3 . gram MS  X  P  X  D ; IC ; Q  X  X  (and in its stable models). This is done in Proposition 4 .
+To prove soundness, we prove that for each stable model M of program rel  X  Q ; P
+Given two Datalog programs P 1 and P 2 , it is possible to generate a program rel  X  P ground  X  P 2  X  , the ground version of P 2 , that are useful to compute P literals in the bodies of the rules of P 1 are defined in P
+Definition 15. Let P 1 be a Datalog program without disjunctive heads, possibly with negation, but without program constraints; and P 2 , a disjunctive Datalog program possibly with negation and program constraints. (a) For S # ground  X  P 2  X  ; R  X  S  X  :  X f r 2 ground  X  P 2 (b) rel  X  P 1 ; P 2  X  is the least fixed point of the following sequence rel 9 zW  X  x ; y ; z  X  X  ; 8 xyz  X  W  X  x ; y ; z  X ^ IsNull  X  x  X ! false  X g , and program P
+T  X  a ; a ; t HH  X  ; Ans  X  b  X  T  X  a ; b ; t HH  X g . Consider P binations of constants a ; b :
+The disjunctive program P 2 has negation and program constraints. P body literal that is defined in P 2 .
+
+Program rel 0  X  P 1 ; P 2  X  is: rel 1  X  P 1 ; P 2  X  is rel 0  X  P 1 ; P 2  X  plus: rel 2  X  P 1 ; P 2  X  is rel 1  X  P 1 ; P 2  X  plus: rel 3  X  P 1 ; P 2  X  is rel 2  X  P 1 ; P 2  X  plus: rel 4  X  P 1 ; P 2  X  X  rel 3  X  P 1 ; P 2  X  . Thus, program rel  X  P
+For our repair programs, the existence of a finite fix point for the sequence rel it on top of P 2 .
+
+P  X  D ; IC  X  that are relevant to Q (cf. Lemma 1 ). (b) rel (a) P stands for program P  X  D ; IC ; Q  X  , (b) P c for program P MS  X  P  X  for MS  X  P c  X [ PC . The following concepts are used in Lemma 1 . Definition 16. For the set PC of program constraints of P : (a) PC the program consisting of the rules of the form incoh P  X  x  X  P  X  x ; t P  X  x ; t a  X  ; P  X  x ; f a  X  belongs to PC Q .
+ PC Q contains the program constraints on the predicates that are relevant to query Q . Program PC H constraints in PC Q rewritten as rules with an auxiliary head predicate, incoh gram rel  X  PC H Q ; P c  X  that contains rules from ground  X  P relevant denials. Second, we show that the rules in rel  X  PC example.
+
+Example 13. Example 12 cont. (a) For query Ans  X  x  X  W  X  x ; y ; z ; t HH  X  ; PC Q contains only the program constraint: W  X  x ; y ; z ; t Lemma 1. For program P and query Q , the programs rel  X  PC H facts).
+ Proof. We can see that rel  X  PC H Q [ Q ; P c  X  X  rel  X  PC rel  X  PC H Q ; P c  X  # rel  X  Q ; P c  X  .
+ First, if there are no relevant program constraints to answer the query, then program PC empty, and we have that rel  X  PC H Q [ Q ; P c  X  has the same rules as program rel  X  Q ; P there are program constraints which are relevant to answer the query.
+ PC Q is not empty and program PC H Q has at least one rule of the form incoh rel  X  PC H Q ; P c  X  is composed by the rules of program P c whose heads contain atoms of the form P  X  c ; t graph G  X  IC  X  .
+
+First, P is a query predicate. Therefore, rel 0  X  Q ; P
+P  X  c ; t HH  X  P  X  c ; t H  X  ; notP  X  c ; f a  X  . Then, rel
+P  X  c ; t H  X  or P  X  c ; f a  X  . Then, rel 2  X  Q ; P c  X  is rel facts of the form P  X  c  X  . Thus, we have that rel 0  X  PC holds.
+
+Second, P is directly or indirectly connected to a query predicate. Therefore, there exists an i such that rel rules with head atoms of the form P  X  c ; t a  X  or P  X  c ; f rel  X  PC H Q ; P c  X  # rel i  X  Q ; P c  X  , and therefore rel  X  PC
+Proposition 3 related to the repair program [48]. In one case, rel  X  Q ; P extensions for the predicates defined in Q , in particular Ans predicates.
+
+First notice that, by Lemma 1 , after imposing the program denials PC to both rel  X  Q ; P incoherent model will be kept, which, otherwise, could influence the answers to Q .
+In consequence, it suffices to prove that rel  X  Q ; P c  X  and P are relevant to Q for every database instance D . Program P be used as the basis for an inductive proof. This is because the stable models can be computed bottom-up from the extensional database D , as the perfect models of the programs [52,53,31] . At level 0 of the stratification the two programs coincide since they use the same arbitrary instance D , as required by the notion of query equivalence. Now, assume that predicate P is relevant to Q , belongs to stratum k , and is defined in terms of predicates R in their predicated-annotation version (cf. Definition 12 ), the programs are non-recursive. So, we may assume that
+R ; ... R m belong all to a lower stratum, say the  X  k 1  X  th, at which the two programs coincide for these predicates.
+Since rel  X  Q ; P c  X  contains all the rules to compute P from R coincide. h
+Now, in Propositions 4 and 5 below we establish the relationship between the programs MS  X  P  X  and rel  X  Q ; P prove these propositions we use Lemmas 2 and 3 below, and some auxiliary concepts that we now will define.
+Definition 17 [29]. For an interpretation M for a program P without program constraints, interpretations I : (a) M  X  P denotes the set of atoms in M whose predicate symbol is P . (b) P  X  P is the set of rules of P whose head contains predicate P . (c) M  X  P is the set of atoms in M whose predicate symbol appears in the head of some rule in program P . (d) I  X  P  X f M  X  P j M 2 I g , and I  X  P  X f M  X  P j M 2 I g .
+ possibly with unstratified negation but without program constraints
+Lemma 2. Let P be a disjunctive, possibly unstratified, Datalog model M 0 of MS  X  P ; Q  X  ; there exists a stable model M of rel  X  Q ; P  X  , such that M  X  M
+Lemma 3. Let P be a disjunctive, possibly unstratified, Datalog rel  X  Q ; P  X  ; there exists a stable model M 0 of MS  X  P ; Q  X  , such that M  X  M
+As mentioned earlier, the equalities between models in these lemmas refer to non-magic atoms only. We will use Lemmas program constraints) does not occur in odd cycles (cf. Corollary 2 ).
+
+Now, we need to prove that the correspondence between models still holds after reintroducing the program constraints, between the stable models of MS  X  P c  X  and the stable models of rel  X  Q ; P needed to check the relevant program constraints in PC Q .
+
+Proposition 4. For every stable model M 0 of MS  X  P  X  ; there exists a stable model M of rel  X  Q ; P constraints in PC Q , and M  X  M 0  X  rel  X  Q ; P c  X  .
+
+Proof. By contradiction, assume that there exists a stable model M rel  X  Q ; P c  X  that simultaneously satisfies the program constraints in PC
+Since M 0 2 SM  X  MS  X  P  X  X  , and MS  X  MS  X  P c  X [ PC , it holds M
+M 00 of rel  X  Q ; P c  X  such that M 00  X  M 0  X  rel  X  Q ; P c constraints in PC Q ; M 00 does not satisfy PC Q either. We have two cases: (a) M 00 does not satisfy a program constraint pc in PC n PC (b) M 00 does not satisfy a program constraint pc in PC Q Proposition 5. For every stable model M of rel  X  Q ; P c  X  that satisfies the program constraints in PC of MS  X  P  X  , such that M  X  M 0  X  rel  X  Q ; P c  X  .
+
+Proof. By Lemma 3 , there exists a stable model M 00 of MS  X  P constraints in PC Q ; M 00 also satisfies PC Q . Thus, since M MS  X  P c  X [ PC Q . Now, since MS  X  P c  X  does not have rules for predicates in PC n PC MS  X  P  X  X  MS  X  P c  X [ PC . h ness follows from Proposition 4 . h
+The MS methodology, based on first leaving the program constraints aside and adding them after the magic rewriting, always works in the case of repair programs. Basically, because the program constraints are of the form
+P  X  x ; t a  X  ; P  X  x ; f a  X  , and only when there are rules in P  X  D ; IC  X  defining both P  X  x ; t constraints by its models. Thus, the stable models of the MS program satisfy the program constraints.
+The MS method does not necessarily work for more general disjunctive logic programs. Sometimes, even if the MS tech-
+MS methodology we introduced above might not work for general logic programs (as opposed to repair programs) that do have stable models.
+ Example 14. For the database instance f R  X  a  X g and the program P : has two stable models (shown here without magic atoms): M 5. System architecture and in Fig. 5 b, the main menu, obtained after connecting to the database. are included into the repair program, as facilitated and understood by DLV .
+The repair program may contain, for each extensional predicate P , the import sentence # import  X  dbName ; directly into the reasoning system. This is how DLV interacts with DBMS.
+Of course, since we have not entered a query yet, this repair program will not be optimized with magic sets. The data performing a consistency check or generating the repair program without a concrete query at hand. However, the system allows us to do so if desired.
+
+The Query Processing module receives the query and ICs; and coordinates the tasks needed to compute consistent an-built-ins. 20 into equivalent Datalog programs, and then by adding the annotation Dependency Graph Construction module. We will use Example 7 to describe this feature and other system X  X  components. to check is 8 xy  X  S  X  x ; y  X ! R  X  x ; y  X  X  , which contains the relevant predicates. example, for the relevant IC 8 xy  X  S  X  x ; y  X ! R  X  x ; y  X  X  identified before, Cons Ex generates the SQL query: (NOT EXISTS (SELECT * FROM R WHERE R.ID=S.ID AND R.NAME=S.NAME) AND ID IS NOT NULL AND NAME IS NOT NULL) This query is asking for violating tuples.
+ computing repairs. For example, if the query is Q : Ans  X  x  X  S  X  b ; x  X  , the SQL query  X  X  any other query to be consistently answered from the inconsistent instance.
+The MS Rewriting module generates the magic version of a repair program. It includes at the end appropriate database 4, the following rules contain extensional database atoms: (a) S  X  x ; y ; t H  X  magic S bfb  X  x ; t H  X  ; S  X  x ; y  X  . (b) R  X  x ; y ; t H  X  magic R bfb  X  x ; t H  X  ; R  X  x ; y  X  .
+
+In (a), the variable x in the extensional atom S  X  x ; y  X  will be bound during the evaluation due to the magic atom magic S bfb  X  x ; t HH  X  ; where atom magic S bfb  X  x ; t HH  X  is defined in its turn by the rule magic S b . As a consequence, the SQL query in the import sentence for predicate S will be:  X  X  tences will retrieve into DLV only the corresponding subsets of the relations in the database. if a user wants to check if a specific constraint is satisfied by the database instance. 6. Experimental evaluation to quantify the gain in execution time by using magic sets instead of the direct evaluation of the repair programs. 6.1. Experimental setup The experiments were run on an Intel Pentium 4 PC, processor of 3.00 GHz, 512 MB of RAM, and with Linux distribution the programs were run in the version of DLV for Linux released on January 12, 2006. three RICs. In order to analyze scalability of CQA trough logic programs, we considered two databases instances D varied between 1% and 10% of the data. 21 and RICs: 1. 8 xyzsw  X  Passenger  X  x ; y ; z  X ^ Passenger  X  x ; s ; w  X ! y  X  s  X  . 2. 8 xyzsw  X  Passenger  X  x ; y ; z  X ^ Passenger  X  x ; s ; w  X ! z  X  w  X  . 3. 8 xyzwsmu  X  Plane Type  X  x ; y ; z ; w  X ^ Plane Type  X  x ; s ; m ; u  X ! y  X  s  X  . 4. 8 xyzwsmu  X  Plane Type  X  x ; y ; z ; w  X ^ Plane Type  X  x ; s ; m ; u  X ! z  X  m  X  . 5. 8 xyzwsmu  X  Plane Type  X  x ; y ; z ; w  X ^ Plane Type  X  x ; s ; m ; u  X ! w  X  u  X  . 6. 8 xyz  X  Plane  X  x ; y  X ^ Plane  X  x ; z  X ! y  X  z  X  . 7. 8 x 0 x 16  X  Flight  X  x 0 ; x 1 ; x 2 ; x 3 ; x 4 ; x 5 10. 8 x 0 x 8  X  Flight  X  x 0 ; x 1 ; x 2 ; x 3 ; x 4 ; x 5
+The three conjunctive queries are: 1. Ans  X  x ; y ; z  X  Plane  X  x ; y  X  ; Plane Type  X  y ; w ; z ; s  X  . 2. Ans  X  x ; w  X  Passenger  X  z ; w ; 1  X  ; Flying  X  z ; y ; x  X  . 3. Ans Passenger  X  18 ; smith ; 18  X  .
+ rithm for CQA presented in [39]. 6.2. Experimental results
+In the charts, RQ indicates the straightforward evaluation of the repair program combined with the query program, rules and relations that are relevant to the query, which reduces the ground instantiation of the program by DLV .
+Fig. 9 shows the execution time for the second, partially-ground query in both database instances. Again, MS computes into DLV , and the ground instantiation of the magic program is reduced (with respect to the original program). performance, but again, MS computes answers much faster than the straightforward evaluation. This good performance a stable model that does not contain Ans .
+
+D and D 2 in less than thirty seconds, even with a database D 7. Conclusions
+We have seen that the Cons Ex system computes database repairs and consistent answers to first-order queries (and be-logic programming environment and the database management systems (DBMS), as enabled by DLV . In this way, it is pos-system.
+
+The excellent performance exhibited by the magic sets techniques makes us think that CQA is viable and can be used in intrinsic limits on what a system like Cons Ex (and others for CQA) can achieve in terms of performance.
+The methodology for CQA based on repair logic programs as implemented in Cons Ex is more general than those that have mentations of other systems for CQA have been reported before. The Queca system [25] implements the query rewriting junctive queries with projections. Comparisons in terms of performance between Cons Ex and these more specialized and than Cons Ex for their classes.
+ queries by means of logic programs as done in [23].
+ can be used to specify repairs.
+ ICs by adding arbitrary elements of the domain.
+ databases.
+ been investigated, e.g. in [33,18] .
+ investigation.
+ to compute approximate answers to queries.
+ Acknowledgements of L. Bertossi to the Universities of Concepcion and B X o-B X o (UBB). He has also supported by an NSERC Discovery Grant very much appreciated.
+
+References

@@ -1,0 +1,137 @@
+ 1. Introduction
+Given a data set P and a query point f q , q ,a reverse nearest neighbor (RNN) query f as their nearest neighbor. When the data set P and the query point f points in P that has been in fl uenced by a query point f may not always produce useful results. A decision to shop at the new store may also be in feature type. As the above example shows, there is a need to also consider the in the given query point.
+
+Fig. 1 illustrates how two feature types affect the results of an RNN query. In the point f q ,1 is another point from the same feature type F between points f q ,1 and f q , q in Fig. 1 a divides the space into two half-spaces: Plane ( l containing point f q , q . Any point falling inside half plane Plane ( l contains all points that are closer to f q , q than f q ,1
+In Fig. 1 a, if the in fl uence of point f 1,1 is not considered, p neighbor of p 1 . However, when the in fl uence of point f ( p , f q ,1 , f 1,1 ) is shorter than the distance of the route R ( p f 1,1 is not considered, p 1 is not an RNN of the given query point f in fl uence of point f 1,1 is considered, p 1 is an RNN of f types accounted for. Implicit in the multi-type RNN search that we describe is a query to
+Fig. 2 illustrates another business query problem. Assume that a business rule states be a nearest neighbor of more than 30 residences  X  . In the
+Every grocery store is represented by a circle. Point f 1, i represented by a triangle. The solid points represent residences. The lines l the grocery store only and fi nds that all residences located inside the region formed by lines l their nearest neighbor. Thus the new grocery store f q , q applying the same distance calculation method, i.e., the MTNN query de from some of the residences (the blue or gray points in the speci fi cally, when two feature types F q grocery store and F be RNNs of f q , q , which does not meet the threshold required for building a new store.
+As this example demonstrates, an RNN query that considers the in multi-type query returned a different number of RNNs. In other cases, the speci shoppers at a new grocery store. A query that considers the in average household income=$27,000), while a query that considers the in and electronics store) may generate another (e.g. average household income=$42,000, re type RNN queries have considerable potential to impact decision-making in business applications. 1.1. Our contributions
+We formalize the Multi-Type Reverse Nearest Neighbor (MTRNN) query problem to consider the in fi to remove the false hit points. 1.2. Overview algorithm as a baseline algorithm. In Section 3 we propose two future work. 2. Preliminaries the rest of this paper. 2.1. Problem formulation
+Let p i represent any point in the queried data set P ,{ p feature type F i .
+De fi nition 1. Partial route
+A Partial Route R ( p i , f 1,1  X  , f 2,2  X  , ... , f l , l  X  d ( R ( p i , f 1,1  X  , f 2,2  X  , ... , f l , l  X  )) is the distance of the partial route.
+De fi nition 2. Multi-Type Nearest Neighbor (MTNN)
+An MTNN of a given point p i is de fi ned to be the ordered point sequence minimum among all possible routes from p i through one instance of feature types F
+R ( p i , f 1,1  X  , f 2,2  X  , ... , f k , k  X  ) is called the MTNN route for the given point p
+MTRNN query is an ordered sequence, the order of feature types is not speci
+De fi nition 3. Multi-Type Reverse Nearest Neighbor (MTRNN)
+An MTRNN of the given point f q , q is de fi ned to be a point p the query point f q , q .
+
+For a point p i in set P and feature types F 1 , ... , F q the MTNN route, the point p i is an MTRNN of the query point f
+An MTRNN query is a query fi nding all MTRNNs for the given query point f the MTNN problem, the order of the given k feature types is not speci the feature types for an MTRNN query.
+ use Euclidean distance as the distance metric. The query point f different feature types has its own separate R-tree index that will be used to adapted MTNN algorithm Fig. 14 of the re fi nement step. The query
+The following is the formal de fi nition of the MTRNN query problem. 2.1.1. Problem: The MTRNN query
+Given:  X 
+A data set P to be queried against  X 
+Distance metric: Euclidean distance  X  k sets of points, each set coming from one of k different feature types  X 
+A query point f q , q , coming from feature F q of the k feature types  X  Seperate R-tree index for each data set including queried data set and feature data set
+Find:  X  point f q , q such that f q , q is on the MTNN of each MTRNN point
+Objective:  X 
+Minimize the length of the route starting from an MTRNN covering the query point f feature type excluding feature type F q
+In our problem formulation, the objective function follows the de these studies is very general and does not consider the possible in useful in some applications. The objective function de fi represented as d ( R ( p i , f 1,1  X  , f 2,2  X  , ... , f k , k  X  given k feature types. If the shortest route found from point p query point f q , q . 2.2. One step baseline algorithm for the MTRNN query
+MTNN and MTRNN queries. For the given query point f q , q set P . More speci fi cally, for every point p i in P ,it types as did in [2] . If the query point f q , q is on the MTNN of a data point p MTRNN algorithm.
+
+The scalability of the MTRNN algorithm depends on the ef fi section, we present an MTRNN algorithm with an ef fi cient 3. Multi-type reverse nearest neighbor algorithms
+Our MTRNN algorithm is an on-line algorithm consisting of the three major steps, preparatory, output of the MTRNN query that take into account the in fl preparatory step in Section 3.1 fi nds feature routes for the respectively. The re fi nement step in Section 3.3 removes all the false hit points by three re fi an MTRNN of the given query point. We prove that the re fi the algorithm.
+
+Fig. 3 presents the overall fl ow of the MTRNN algorithm and its preparatory, the following we fi rst discuss the algorithms to fi nd feature routes in the preparatory step. 3.1. Preparatory step: fi nding feature routes
+A feature route plays an important role in the MTRNN algorithm. We describe our approach of fi nding the feature routes .
+
+De fi nition 4. Multi-type route (MTR)
+Assume there are four feature types F 1 , F 2 , F 3 and F
+De fi nition 5. Feature route all other points in the MTR route is shortest.
+ from point f 1,1 through the three other points we get one route. This route, assuming R ( f shortest distance yields four feature routes .
+
+De fi nition 6. I-distance Given a feature route , the (shortest) distance of this route is called an I-distance .
+De fi nition 7. Feature route point set Given a feature route ,a feature route point set consists of all points in the feature route .
+A feature route can be identi fi ed by a given feature route point set and a of the given feature route point set .
+
+The position of a feature route on the search space will affect its straight lines intersected at the query point with the same angles between two neighbor lines and these subspaces respectively.
+ greedy algorithm uses a heuristic method by assuming a fi
+MTNN algorithm is very time-consuming. A greedy approach is also suf purposes. We fi nd the greedy MTR by greedily fi nding a route for a speci point f q , q . A greedy MTR route in terms of k feature types for the given query point f feature type F q the nearest neighbor f q ,1  X  of f q , q feature route point set . When using a greedy approach to time. This is done by making sure that the nearest neighbor of the starting point f pruning regions. For an MTRNN query to generate pruning regions larger enough to experiments, we show how many feature routes are enough for our
+There are two approaches to generate the feature routes . The
+NNs of the query point f q , q in feature type F q and from each of these m NNs greedily would likely enlarge the pruning regions, and thus increase the generated. Both approaches have similar effect to increase the second approach to generate more subspaces and thus feature routes . has length I-distance is a Hamilton Path . We use the existing Hamilton Path-acceptable to use the existing algorithm to fi nd exact shortest path for the Hamilton Path-I-distance , the better it is for fi ltering ef fi ciency.
+
+In the feature route fi nding algorithm described in Fig. 5 , only the subspace and all feature routes are used to generate pruning regions in an R-tree node greedy MTR route, one feature route point set and k different feature routes are created.
+To summarize the concepts of space partitioning and feature routes, Fig. 6 illustrates a speci subspaces and some feature routes. Three lines l 1 , l 2 and l
+Please note that the space can be divided into any number of subspaces. Although this speci one of the feature routes are inside the same subspace, because the feature route points will be inside the same subspace. 3.2. The fi ltering step: R-tree node level pruning 3.2.1. Closed region pruning
+De fi nition 8. Closed pruning region
+A closed pruning region is a circle centered at the starting point f
+R-tree node. Fig. 7 illustrates three pruning scenarios. In the point set from three different feature types F q , F 1 and F
+Fig. 7 a the length of feature route R ( f 2,1 , f 1,1 , f
+R has been calculated. Next the I-distance r 1 of the feature route R ( f preparatory step. The MINDIST from f q , q to R 1 is r 1 + r drawn, centered at the starting point f 2,1 of the feature route R ( f tree node R 1 . Therefore, the length of the route from a point p from the same point through route R ( f 2,1 , f 1,1 , f q ,1 from a point inside R 1 it is possible to fi nd an MTNN that contains the query point f to fi nd whether their MTNNs contain the query point f q , q
+In Fig. 7 b, r 2 is the I-distance of route R ( f q ,2 , f
+Similarly a circle C 2 centered as f q ,2 is drawn. At this time it covers the R-tree node R from a point p 2 inside R 2 through R ( f q ,2 , f 1,2 , f i.e., d ( R ( p 2 , f q ,2 , f 1,2 , f 2,2 )) b d ( R ( p point f q , q . Thus, the entire node R 2 can be pruned.
+
+In Fig. 7 c, r 3 is the I-distance of route R ( f 2,3 , f
+Another circle C 3 centered at f 2,3 is drawn and intersects the R-tree node R the intersection of R 3 and circle C 3 through route R ( f query point f q , q , i.e., d ( R ( p 3 , f 2,3 , f 1,3 , f route R ( f 2,3 , f 1,3 , f q ,3 ) could be longer than d ( R ( p point. Thus, the part of page R 3 inside the circle C 3 could be pruned. cannot be an MTRNN, and thus can be pruned without causing any false miss.
+Proof. Assume p i is contained in an R-tree node and inside a closed pruning region. Because p the closed region circle equals the MINDIST from the query point to the R-tree node is shorter than MINDIST from the query point to the R-tree node. Therefore, the distance from p routes starting from p i through one instance of each of k feature types, any route from p
+MTNN route, which means the MTNN route from p i does not contain the query point. So p with feature route R ( f 2,3 , f 1,3 , f q ,3 ). The intersected part of R pruning process. Similar to scenario three in Fig. 7 c, the length of the circle C
+MINDIST from the query point f q , q to R 3 and the I-distance of feature route R ( f radius r 3 and r 4 among which r 3 is the I-distance of feature route R ( f f ). The shaded part of R 3 in Fig. 8 b contains potential MTRNNs. The other part of R pruned without causing any false miss. feature route equals the MINDIST from the query point to an R-tree node the higher the probability that the circle covers more of the R-tree, and thus the better the part of the R-tree node and other R-tree nodes later. 3.2.2. Open region pruning query point from feature F q , f q ,1 ( x 2 , y 2 ) is any point from feature F
+The space has been divided by curve l into two planes. Plane( l , f f route R ( f q ,1 , f 1,1 , f 2,1 ) is shorter than the distance from point p to the query point f f is on the MTNN of the point p , which means that p is not MTRNN of the query point f ( l , f q ,1 ), the whole Plane( l , f q ,1 ) can be pruned without incurring any false miss. l and straight line f q ,1 f q , q intersect at point s h ( R ( s h , f q ,1 , f 1,1 , f 2,1 ))= d ( R ( s h , f q , q )). In other words, point s ( s f )in Fig. 9 a.
+ ( l , f q ,1 ) should satisfy the equation f , f 2,1 ))= h . Thus, a point s 1 ( x , y ) on curve l should satisfy the equation can actually be transformed into a quartic (4-th degree) equation. Because positions of point f distance h are known, the curve l is known and divides the space into two planes. pruning approach based on a simpler region description. In Fig. 9 b, the feature route is R ( f distance h . The point s h divides the line segment f q , q of points f q , q and f q ,1 and I-distance h are known, the position of s
+We construct the simple pruning region as follows. In Fig. 9 b we draw a straight line s perpendicular to line f q , q f q ,1 . We then draw line f line f q , q s 1 and x is the length of line f q ,1 s 1 . Since ( l are known, x and y are known. Therefore, the positions s 1
+In formulas x = 2 l 1 l 2 l route R ( f q ,1 , f 1,1 , f 2,1 ) is equal to or longer than len( f classic RNN problem for this feature route . Then the perpendicular bisector one that contains f q ,1 (Plane(  X  ( f q ,1 , f q , q ), f can be an RNN or an MTRNN of f q , q and thus all R-tree nodes and points in Plane(
+Next we prove that all points in the open pruning region formed by lines L pruned. That is, the distance from any point inside this region to the query point f f q ,1 plus the I-distance h of the feature route R ( f q ,1 pruned.
+
+Proof. The open pruning region containing point f q ,1 is formed by lines L parts as shown in Fig. 9 b. The fi rst part (part 1) is the open pruning region outside circle C intersection of circle C 2 and open pruning region, excluding the circle C pruned without causing any false miss.
+
+In Fig. 9 b, s 1 and s 2 are positioned on the circle C 1 f q ,1 with radius x or len ( f q ,1 s 1 ). The radius of the smallest circle C
+First, assume a point s 5 inpart1isoutsideofthecircle C 2 beseenthat d ( R ( s 5 , f q ,1 , f 1,1 , f 2, 1 ))= d ( R ( s ( f we only need to prove len( s 5 s 7 )  X  len( s 5 s 6 ). It is easy to prove angle
+When a point s 8 in part 2 is inside the circle C 2 but outside the circle C
+Therefore d(R( s 8 , f q ,1 f 1,1 , f 2,1 )) b d(R( s 8 , f
+Finally, assume a point s 4 in part 3 is inside the circle C  X  s ( s f length of s 4 f q , q , i.e., d(R( s 4 , f q ,1 f 1,1 , f any false miss.
+ entirely contained inside pruning regions, the R-tree node can be from a point in the R-tree node cannot contain the given query point and can safely be
+Otherwise, if the R-tree node is an internal node output the R-tree node itself. The routes . 3.2.3. Filtering algorithm algorithm utilizes R-tree indexes to generate closed and open pruning regions that are used to points in the queried data set. The example in Fig. 11 illustrates how the
+In this example, the R-tree nodes at the fi rst level contain R fi ltering process in two subspaces sub 1 and sub 2 .
+
+Initially, as shown in Fig. 11 b we use 2 NN strategy and point f q , q inside the subspace sub 1 . Then we fi nd nearest neighbor f
+Finally we fi nd nearest neighbor f 2,1 of f 1,1 and nearest neighbor f
+Because either I-distance of any feature route from sets { f the MINDIST from the query point f q , q and R-tree node R from the query point f q , q and R-tree node R 1 and the I-distance of R ( f difference. We repeat these steps for all points in the feature point route set { f
+R new feature route set is found in the subspace sub 1 , we don't try to prune R-tree node R point p 6 in node R 6 and points p 4 , p 5 and p 8 in node R and { f q ,2 , f 1,2 , f 2,2 } have not been drawn.
+ simplicity, only subspace sub 2 is shown in Fig. 11 d. We take the center of node R ( f q ,3 , f 1,3 , f 2,3 ) from it. As before, three circles are drawn. Point p pruned by the new circles. So far, the only potential MTRNNs are point p
+R . Now we apply the open region pruning approach. The open pruning region is the region p 11 in node R 10 are left as candidate MTRNNs.
+ fi p
+MTRNNs has been generated. 3.3. Re fi nement step: removing false hit points
+The re fi nement step further eliminates points in the MTRNN candidate set S re fi nement approaches are applied to guarantee all false hits will be eliminated. Fig. 13 shows the pseudo-code for the complete re fi nement step. words, this approach does not introduce any false miss.
+ p cannot be pruned by using the fi rst approach. Note that query point f new feature route , is shorter than d 1 , this point could be pruned. Similar to the
+S partial route growing to the feature type that the query point f algorithm. Normally when all queried data points are far away from the query point f distance from a queried point p to the query point f q , q point of the feature route to point p . If this happens, point p cannot be pruned. 4. Complexity analysis following distances 1. The expected distance  X  between any pair of points each from a different feature 2. The expected feature route distance E fr have features is  X  = 1 ffiffiffiffiffiffiffiffi is E fr = k  X  1  X  X   X  = 4.1. Cost of baseline algorithm
+R-tree traversal is the same as the number of node accesses during the traversal. node accesses is given as
+In this formula, h is the height of R-tree, P NA easily derived [8] . For the P NA iteration 1 is k  X   X  and for all other following iterations are (k -i + 2) X  second part of the R-LORD cost is C lord  X  kM in [5] . kM is removed from the C are within the range in LORD is replaced by R-tree node pruning in R-LORD.
+The components that should be considered when deriving cost formula for C current search range T v ( dis1 in Fig. 14 ) and the expected number of points point than current search range T v and will be examined in an iteration.
+For the initialization step, the current search range T v of partial routes is  X  k 2  X  2 M and the expected number of points to be examined is M . For the
+T decreases to ( k  X  1)  X  , the expected number of partial routes is updated to formula of LORD is derived as follows Therefore, the expected cost of R-LORD can be given as algorithm [5] .
+ total number of permutations is k !, the cost for one queried point is: Therefore, the total cost of the baseline algorithm for all queried points is: 4.2. Cost of MTRNN algorithm
+The ef fi ciency of the MTRNN algorithm is primarily based on the fi use it as the total cost of the MTRNN algorithm.
+ fi r algorithm cannot prune any point in this minimum set.
+
+Assume that the number of feature route is l and that these feature routes start outside circle C with radius r 2 . The area outside C 1 but inside C 2 is  X  be starting points of feature routes we have 1  X  r 2 distance from the query point f q , q to the starting point of a feature route is r . We have r =
+Next we discuss the area covered by an open pruning region. We fi gure, f q , q F q ,1 is just the expected distance r from the query point f h = r  X  r 1 = known values, x is also known.
+ Therefore, inside a region formed by f q , q L 1 and f q , q other. Therefore, the regions not covered by open pruning regions are of area xrl .
+For one feature route , a closed region can cover a region with expected area has area So far, we can calculate that the total area that was not covered by open and closed regions is A circle C 1 . Finally only a region with area A NU =  X  r 2 closed pruning regions. We ignore the formula for this situation. MTRNN set S c by applying formula 1 A model. Our experiment results in Section 5.3.2 and in Section 5.3.6 also con upper bound is applies to. 5. Experimental evaluations number and identity of RNNs returned. 5.1. Settings 5.1.1. Data sets description
+We evaluated the performance of the MTRNN algorithm with both synthetic and real datasets.  X  feature types as well as the queried data.  X  different feature types. 5.1.2. Parameter selection
+There were three data parameters in our experimental setup.  X 
+Feature Type (FT): number of feature types used to show the scalability of the algorithm.  X 
+Cardinality of Feature Type (CF): number of data points in each feature type.  X  Cardinality of Queried Data (CQ): number of data points in the queried data set.
+Table 2 lists the characteristics of each data set and their parameter settings unless speci  X   X  Number of Subspaces (NS): the number of subspaces for generating feature routes was set to 30. algorithm is designed to solve classic RNN problems, not MTRNN problems. Since ours is the experimental output and assess the impact of MTRNN on the speci 5.2. Evaluation methodology
+We evaluated the scalability of the MTRNN algorithm with the following questions: (1) How do changes in number of feature types affect MTRNN performance? (2) How do differences in cardinality for each feature type affect performance? (3) How do differences in cardinality in the queried data set affect performance? (4) How do changes in number of feature routes affect the
+We evaluated the impact of MTRNN on query results compared to classical RNN by asking: (5) What is the percentage difference in number of RNNs returned for the two queries (6) What is the percentage difference in speci fi c RNN points returned?
+In every experiment for the MTRNN algorithm, we report CPU and IO time for the terms of number of nodes accessed, and percentage of candidates remaining after points and averaged the results.
+ We de fi ne the following three metrics for evaluation purposes:
+For evaluation of MTRNN algorithm performance: (1) Filtering ratio fr re fl ects the effectiveness of the
+For evaluation of the impact of MTRNN on query results compared to RNN: (2) The percentage difference in number of RNN points p n (3) The percentage difference in speci fi c RNN points p s
+In other words, p n shows how much the new MTRNN query affects the answer to the question p indicates how signi fi cantly the new MTRNN query affects the answer to the question be meaningless if no RNN is found for the classical RNN query. the running environment. 5.3. Experimental results evaluations of MTRNN performance alone on various other measures. The feature type data and queried data. 5.3.2. Performance w.r.t. number of feature routes
+However, when number of feature routes reaches a certain value (200 in the the true for both synthetic and real data sets. 5.3.3. Scalability of MTRNN w.r.t. number of feature types feature types, CPU time and the re fi nement step become dominant ( FT the longer feature routes and thus the looser distance bound.
+
+A closer look at the IO cost shown in Fig. 20 reveals that while both re fi nement IO grows faster because the number of permutations involved in the increases. 5.3.4. Scalability of MTRNN w.r.t. cardinality of feature types the contribution of re fi ned feature routes. These results indicate that our 5.3.5. Scalability of MTRNN w.r.t. cardinality of the queried data set exceeded 10 min even when the data set reached 100 k).
+
+Why does this happen? First, the fi ltering ratio is large enough and improves much less signi dramatically. Thus, more points are left as candidate MTRNNs after the rise in total run time.
+ 5.3.6. Filtering ratio of MTRNN w.r.t number of feature routes
+Next we evaluated how the number of feature routes affects the signi fi cant when the number of feature routes exceeds 150, which indicates our the contributes to ef fi ciency of the fi ltering step. The fi performed before open region pruning.
+ ratio is more than 90% and becomes steady.
+ improves with increasing number of subspaces.
+Finally, to highlight the potential impact of the MTRNN query approach, we quanti data set CLU is more than 20% and most of the percentages reached more than 50%. The algorithm tends to fi nd more RNNs when FT is relatively large. differed by more than 50% from those generated by classical RNN queries. 5.3.8. Discussion during the fi ltering step. As can be seen from Figs. 21 and 23 ,the similar effects. Nevertheless, a good fi ltering algorithm will always help to increase
+On the other hand, when number of feature types is small, total execution time is not signi dominant and performance could be improved by increasing the number of feature routes (thus store more R-Tree nodes in memory.
+ making. For example, in Fig. 26 for the CA data set with three feature types p very high value of p s . Deciding whether to look at p n , p 6. Related work dealt with monochromatic R k NN queries in arbitrary dimensionality for the in fl uence of a single feature type, the feature type of the given query point. in the presence of order constraints. In paper on Trip Planning Queries (TPQ) [4] that 7. Conclusions and future work data points are evaluated and the true MTRNN points are identi signi fi cantly from results of traditional RNN queries. This in business and con fi rms the value of further investigation of MTRNN query approaches. important for some business applications since in reality the in
+MTRNN queries as well as indexing, data structure, and other methods for ef direction to extend our MTRNN work is to design some good heuristic approaches to corresponding measurements to evaluate the results that suf
+References

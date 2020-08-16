@@ -1,0 +1,1 @@
+  X  Inference: Prob ( latent variables | data ) . Intractable  X  [TehNeWe06] Collapse latent space for better approximation.  X  Q: Is the improvement worth the extra computation?  X  Theorem : For LDA, when documents are long, computation not worth it .  X  Our rigorous mathematical analysis is also verified empirically:

@@ -1,0 +1,22 @@
+ Esra Bas n 1. Introduction
+A deterministic multidimensional 0 X 1 knapsack model is istics are some of the solution approaches to the problem problem, and tested the strong duality gap.
+ in this paper as well as some other rules proposed in the considered in this paper.
+ problems such as loading problem and production planning continuous knapsack models with uncertain parameters, and 2. Fuzzy knapsack models models, a few fuzzy continuous knapsack models, and some special fuzzy knapsack models.
+ Chang and Lee (2012) integrated knapsack model with Data (2011) used Support Vector Machine (SVM) as a data mining fuzzy model. 3. Fuzzy multidimensional 0 X 1 knapsack model defuzzified by t-norm and t-conorm fuzzy relations 2003 ; Bas and Kahraman, 2009 ): A  X  a  X  X  A L  X  a  X  , A R  X  a  X  X  A R  X  a  X  X  5  X  rules, and a numerical experiment tions. Then, a methodology will be developed to evaluate ture as well as one rule proposed in this paper. 3.2.1. Fuzzy multidimensional 0 X 1 knapsack model and defuzzification by t-norm and t-conorm fuzzy relations
+The following model is a multidimensional 0 X 1 knapsack model with fuzzy parameters: max s : t : x j A f 0 , 1 g8 j A f 1 , 2 , ... , J g X  6  X  ~ M Inuiguchi et al., 2003 ): x j A f 0 , 1 g8 j A f 1 , 2 , ... , J g X  7  X  ~ P 2009 ; Inuiguchi et al., 2003 ).
+ 8 n A rule proposed in this paper. methodology are given in Table 3 .
+ considered for each problem, and solved using model pairs (8) X (11) for selected a -cut levels.
+ fuzzy numbers for different a -cut levels. Accordingly,  X  ~
+D  X  D  X  from model pair (10) and (11) where D  X  D  X  D distance matrices. Let ~ D A , k 0 be a vector such that ~ D where ~ D mj  X  X  ~ D matrix (16) for m A M , j A J and k  X  1, 2, 3. ent v scenarios: ~ D [ w such that P m A M w m  X  1.
+ the following holds (adapted from Li, 2010 ): p  X  ~ 3.2.4. Numerical experiment as follows, respectively: max Z L  X  a  X  X  s : t : x j A f 0 , 1 g8 j A f 1 , 2 , ... , J g X  23  X  and max Z R  X  1 a  X  X  s : t : x j A f 0 , 1 g8 j A f 1 , 2 , ... , J g X  24  X 
+Model (24) follows since Eq. (5) holds. The steps of the methodology given in Table 3 will be as follows: v m  X  1, 2, y ,5 as follows: ~
+D  X  2 6 6 6 6 6 6 6 6 6 6 4  X  2 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 4 k  X  1, 2, 3: Ranking of rules according to maximum distance metric : Ranking of rules according to Euclidean distance metric : Ranking of rules according to Manhattan distance metric : metric, while dominated by all other rules except by Rule with multiple attributes are aggregated using fuzzy SAW. 4.1. Preliminaries ~ A ~ R  X  ~ R  X  Chen, 2000 ).
+ (adapted from Chen, 2000 ): ~ A ~ B  X  X  a 1  X  b 1 , a 2  X  b 2 , a 3  X  b 3  X  X  27  X  (adapted from Chen, 2000 ): ~ A ~ B  X  X  a 1 b 1 , a 2 b 2 , a 3 b 3  X  X  28  X  ~ A  X  X  a 1 , a 2 , a 3  X  is defined as ( Yao and Wu, 2000 ) d  X  ~
+A , 0  X  X  1 4  X  a 1  X  2 a 2  X  a 3  X  X  29  X  on fuzzy SAW multidimensional 0 X 1 knapsack models, and the evaluation results are aggregated by fuzzy SAW method.
+ for the case study are given in Table 13 .
+
+Step 4: Obtaining importance weights of profit and cost variables for importance weights of attributes. 1, by each score.
+ fuzzy evaluation matrix.
+ project portfolios.
+ remarkable that, portfolios P1, P3, and P4 are the common portfolios in the first top-ranked 3 portfolios. 5. Conclusions
+In this paper, a multidimensional 0 X 1 knapsack model with model for the solution of the model and use of surrogate Acknowledgments References

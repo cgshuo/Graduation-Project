@@ -1,0 +1,256 @@
+ 1. Introduction
+A fault is an unpermitted deviation of at least one characteristic property or parameter of a system from the acceptable, usual or standard operating condition ( Simani et al., 2002 ).
+
+Faults can cause economic losses as well as damage to human capital and the environment. There is an increasing interest on the development of new methods for fault detection and isolation, FDI, also known as Fault Diagnosis, in relation to reliability, safety and ef fi ciency ( Isermann, 2005 ).
+
+The FDI methods are responsible for detecting, isolating and establishing the causes of the faults affecting the system. They should also guarantee the fast detection of incipient faults (sensi-tivity to faults) and the rejection of false alarms that are attribu-table to disturbances or spurious signals (robustness).
+The FDI methods are broken down into three general groups, the process history based methods ( Venkatasubramanian et al., 2002c ), those based on qualitative models ( Venkatasubramanian et al., 2002b ), and the quantitative model based methods, also known as analytical methods ( Venkatasubramanian et al., 2002a ).
+The quantitative model based methods make use of an analy-tical or computational model of the system. The great variety of the proposed model based methods is brought down to a few basic concepts such as: the parity space; observer approach and the parameters identi fi cation or estimation approach ( Isermann, 1984 ; Frank, 1990 , 1996 ; Isermann, 2005 ).
+
+Many papers and books have been devoted to making descriptions and establishing links among the different approaches for model based diagnosis ( Frank, 1990 ; Venkatasubramanian et al., 2002a ; description of each approach and their limitations are presented in
+Witczak (2007) .In Witczak (2007) and Metenidin et al. (2011) it is recognized that observers and parity space approaches do not always complexity on the observer design increases, while an exact model of Metenidin et al., 2011 ).
+
+Parameter estimation approach requires the knowing of the relationships between such parameters and the physical coef of the system, as well as the in fl uence of the faults in these coef demands a high computing time, wh ich makes it infeasible for most situations ( Isermann, 2005 ; Witczak, 2007 ).
+
+The topics of robustness and sensitivity are of high interest in FDI. Thus, many robust analytical methods have been developed et al., 2000 ). However, the unavoidable process disturbances and the modelling errors make that most FDI methods become unfeasible in practical applications ( Simani et al., 2002 ; Simani and Patton, 2008 ). Therefore, further research on the topic of robust and sensitive FDI methods is indispensable ( Isermann, 1984 ; Simani et al., 2002 ; Simani and Patton, 2008 ).
+The FDI methods based in observers or parity space demand large efforts to generate robust and sensitive residuals, related to the fault detection. The generation of a residual is highly depen-dent on the model that describes the system.
+
+ThispaperproposesanapproachforFDIinindustrialsystemsvia attractive tools for solving various problems related to modern FDI use of meta heuristics, in order to obtain a robust and sensitive diagnosis. Some FDI methods that use meta heuristics are reported in Witczak (2007) , Yang et al. (2007) , Wang et al. (2008) and Camps-Echevarr X a et al. (2010) and Metenidin et al. (2011) . The meta heuristics Particle Swarm Optimization (PSO) and Ant
+Colony Optimization (ACO) have simple structures. Moreover, they were recently applied to FDI ( Liu et al., 2008 ; Liu, 2009 ; Samanta and Nataraj, 2009 ; Duarte and Quiroga, 2010 ; Metenidin et al., 2011 ). Therefore, they were selected for this approach.
+This work is also aimed at studying the in fl uence of parameters for the development of a new variant of PSO, named Particle Swarm
+Optimization with Memory (PSO-M). The new algorithm has the objective of reducing the number of iterations/generations that PSO means less computational time, which allows faster diagnosis. PSO-M can be easily extended to other optimization problems.
+The proposed approach also permits the direct estimation of sensors. This estimation is based on the residual, which is directly obtained between the measurements of the output of the system and the output that estimates the model. This avoids restrictions to the nature of the model.
+
+The main contributions of this paper can be summarized as follows: the study of a new approach for the development of robust and sensitive FDI methods based on direct fault estimation with the meta heuristics PSO and ACO; the study of the in of their parameters in order to increase the robustness and sensitivity; and the development of a new variant PSO-M, which uses a pheromone matrix from ACO for storing the history of PSO, useful for improving the computational cost that is required by
+PSO. The viability of the proposal is demonstrated by diagnosing the simulation data from a DC Motor.
+
+This paper is organized as follows. The second section introduces the modelling of faults and the model-based FDI methods via parameters estimation. The proposed approach for FDI is also described in this section. The third and fourth sections give a brief description of the algorithm for PSO and the algorithm for ACO, respectively. The fi fth section justi fi es and describes the PSO-M and its simulations. The other sections present the experimental methodology, experiments and results, following the same order. The tenth section presents a comparison between Parity Space,
+Diagnostic Observers and our proposal for FDI. Finally, some conclud-ing comments and remarks are presented. 2. Modelling faults and FDI based on direct fault estimation
+FDI based on model parameters, which are partially unknown, requires online parameters estimation methods. For that purpose the input vector u  X  t  X  A R m , the output vector y  X  t  X  model structure must be known ( Isermann, 2005 ).
+
+The models for describing the systems depend on the dynamics of the process and the objective to be reached with the simulation. The most used model is the linear time invariant (LTI), which has two representations: the transfer function or transfer matrix, and for non-linear models.
+
+Let us express the input/output behavior of SISO (single input single output) processes by means of ordinary linear differential equations y  X  t  X  X   X  T  X  t  X   X   X  t  X  X  1  X  where  X  t  X  X  X  a 1 ... a n b 0 ... b m  X  2  X  and
+T  X  t  X  X  X  y 1  X  t  X  ... y n  X  t  X  u 1  X  t  X  ... u m  X  t  X  X  3  X  where y n  X  t  X  and u m  X  t  X  indicate derivatives ( y n  X  t  X  X  dy
+The respective transfer function becomes, through Laplace transformation: G  X  y  X  s  X  u  X  s  X   X  B  X  s  X  A  X  s  X   X  b 0  X  b 1 s  X 
+The faults affecting the system may eventually change one or several parameters in the vector  X   X  t  X  . The FDI based on model parameters is divided into two steps. The fi rst is meant for the estimation of the model parameters vector  X   X  t  X  . The second for detecting and isolating the faults based on known relationships between model parameters, physical coef fi cients of the system and faults ( Isermann, 1984 , 2005 ).
+
+The main drawback of this approach is that the model para-meters should have physical meaning, i.e., they should correspond with the parameters of the system. In such situations, the detec-tion and isolation of faults are very straightforward. Otherwise, it is usually dif fi cult to distinguish a fault from a change in the parameters vector  X   X  t  X  . Moreover, the process of fault isolation may become extremely dif fi cult because model parameters do not uniquely correspond with those of the system. It should also be pointed out that the detection of faults in sensors and actuators is possible but rather complicated ( Witczak, 2007 ; Metenidin et al., 2011 ).
+
+The two approaches that are commonly used for estimating the model parameters  X   X  t  X  are classi fi ed with respect to the mini-mization function they use ( Frank, 1990 ; Isermann, 2005 ): sum of least squares of the equation error; sum of least squares of output error.
+
+The FDI based on parameters estimation considering the minimization of the sum of least squares of the output error requires numerical optimization methods. These methods give more precise parameters estimations but the computational effort is bigger, and on-line applications are, in general, not possible ( Isermann, 2005 ). Another typical limitation regarding parameters estimation-based approaches is related to the fact that the input signal should be persistently excited ( Witczak, 2007 ; Metenidin et al., 2011 ).
+
+Instead of estimating the model parameters vector  X  , let us consider explicitly the faults in a SISO system in a closed loop described by a LTI model as y  X  s  X  X  G yw  X  s  X  w  X  s  X  X  G yf where w  X  s  X  A R is the reference signal of the control system, f f
+A R are faults in the actuator, process and output sensors, of the system while G yf 2008 ).
+
+This proposed approach considers the estimation of the faulty requires a model that directly represents the effect of the faults in the actuator, process and sensors of the system. This kind of model is widely used in other FDI model based methods such as those based in observers or in parity spaces ( Frank, 1990 ; Isermann, 2005 ; Ding, 2008 ).
+
+The estimation of  X  f allows diagnosing the system in a direct way: from the minimization of the sum of the square of the output errors. The optimization is described as follows: min F  X  ^  X  f  X  X   X  I s : a where I is the number of sampling instants and ^ y t  X  ^  X  measured by the sensor at the same instant ( Ding, 2008 ).
+The proposed approach in this paper permits the direct estimation of the faults taking place in the actuator, process or sensors. This allows alleviating one of the limitations of the model based methods for FDI ( Witczak, 2007 ; Metenidin et al., 2011 ).
+In order to obtain robustness to model uncertainties, distur-bances or noise, the algorithms ACO and PSO are applied to the faults estimation. These two algorithms showed robustness in other applications. Their parameters can be manipulated in order to increase this characteristic. Depending on the model used with the proposed approach and the applications of PSO and ACO there is no necessity of making additional efforts in the generation of a robust residual. Thus, this proposal allows avoiding another limitation of the model based FDI methods ( Witczak, 2007 ; Metenidin et al., 2011 ).
+
+The proposed approach requires to meet the following assumptions:
+There is a known model of the system that represents the dynamics of the faults.
+ The faults cannot be intermittent.
+
+The steps of the proposed methodology are 1 Formulate the optimization problem, see Eq. (6) . 2 Take the vector ^  X  f  X  0 problem and compute the objective function F  X  ^  X  f
+F  X  ^ faults. Otherwise, go to step number 3. 3 Apply ACO, PSO or PSO-M to solve the optimization problem: estimations of  X  f (It is recommended PSO-M). 4 Diagnosis: If any component of ^  X  f is different from zero, then the fault that corresponds with that component is affecting the system. The magnitude of the fault coincides with the value of the estimation.
+
+Due to model uncertainties, noise in the measurements and other disturbances, the value of the objective function is not equal to zero, even when the estimation of the fault vector ^  X  with the real fault vector  X  f . Therefore, the fault vector can be different from zero even when the system is not affected by faults. This causes uncertainties in the decision.
+
+Step number 2 of the methodology allows avoiding this disadvantage. A threshold for the objective function is determined.
+It is considered that the system is not affected by faults and that the measurements are affected by noise up to 8%. If this threshold faults. 3. Particle swarm optimization
+Many strategies that mimic different natural behavior have been proposed for handling dif fi cult optimization problems. The
+Swarm Intelligence brings together some optimization algorithms that are based on the observation of simpli fi ed social models. This is the case of Particle Swarm Optimization (PSO), which was introduced by Kennedy and Eberhart in 1995 ( Kennedy and
+Eberhart, 1995 ; Kennedy, 1997 ). PSO is based on the social behavior of fl ocking birds and schooling fi shes.
+
+PSO has been applied to different fi elds requiring parameter optimization in a high dimensional space. This is a result of its simplicity, high ef fi ciency in searching, easy implementation and its fast convergence to the global optimum ( Kennedy and Eberhart, 1995 ; Kameyama, 2009 ). All these advantages, in addition to its applications in automatic control, system identi fi cation, and some recent results related with the FDI area ( Poli, 2007 ; Samanta and
+Nataraj, 2009 ; Liu, 2009 ; Duarte and Quiroga, 2010 ) motivated the selection of PSO in this study. 3.1. Description of the algorithm PSO
+PSO works with a group or population (swarm) of Z agents (particles), which are interested on fi nding a good approximation to the global minimum x 0 of the objective function f : D R n -R
+Each agent moves throughout the search space D . The position problem. On each l th iteration, its value is updated and it is represented by a vector X z l A R n .
+
+Each particle accumulates its historical best position X z  X  pbest  X  which represents the achieved individual experience. The best position that was achieved along the iterative procedure and among all the X gbest represents the collective experience.
+The generation of the new position needs the current velocity of the particle V z l A R n and the previous position X z
+X The vector V z l is updated according to the following expression:
+V where V z l 1 is the previous velocity of the z th particle; diagonal matrix with random numbers in the interval [0,1]; and c , c 2 are the parameters that characterize the trend during the velocity updating ( Kennedy, 1997 ; Kameyama, 2009 ). They are called cognitive and social parameter, respectively. They represent how the individual and social experience in fl uence in the next agent decision. Some studies have been made in order to deter-mine the best values for c 1 and c 2 . The values c 1  X  c c  X  c 2  X  2 : 05 or c 1 4 c 2 with c 1  X  c 2 r 4 : 10 are recommended
+Some variants of the algorithm have been developed with the objective of improving some characteristics of PSO, e.g. velocity, stability and convergence.
+ Eqs. (7 ) and ( 8 ) represent the canonical implementation of PSO.
+Another well known variant is the one with inertial weight, which considers either constant inertial weight or inertial weight reduc-tion. The idea behind this variant is to add an inertial factor balancing the importance of the local and global search ( Beielstein et al., 2002 ; Kameyama, 2009 ). This parameter  X  affects the updating of each particle velocity by the expression
+V  X 
+Nowadays, the most accepted strategy for  X  is to establish
+A  X   X  min ;  X  max and to reduce its value according the number of the current iteration l by means of
+The basic PSO is recognized as a particular case for the alternative that considers inertial weight if assigning  X  all the performance of the algorithm ( Beielstein et al., 2002 ; Kameyama, 2009 ).
+
+The parameter called constriction factor  X  ( Clerc and Kennedy, 2002 ; Kameyama, 2009 ) is introduced in order to facilitate the control of the particle  X  s velocity
+V where  X  2 and  X   X  c 1  X  c 2 4 4.
+
+The literature recommends to set  X   X  0 : 729 with c 1  X  c
+This is equivalent to use the inertia weight variant with through the entire procedure and establishing c 1  X  c 2  X  1 ( Eberhart and Shi, 2001 ).
+ There are different topologies for PSO. In this work, is used the
+Gbest topology. It determines that all the particles are connected to each other and they are part of a unique neighborhood ( Kameyama, 2009 ).
+
+A pseudo-code for PSO is given in Fig. 1 . 4. Ant colony optimization
+Ant Colony Optimization (ACO) was initially proposed for integer programming problems ( Dorigo and Caro, 1992 ). ACO is inspired on the behavior of ants seeking a path between their colony and a source of food. This behavior is due to the deposit and evaporation of pheromone.
+
+ACO was successfully extended to continuous optimization problems ( Dorigo and Blum, 2005 ; Silva-Neto and Becceneri, 2009 ; Socha and Dorigo, 2008 ). An advantage of this algorithm is that its parameters can be manipulated in order to achieve more ef fi cient hybridization with other algorithms. 4.1. Description of the algorithm
+For the continuous case the idea of ACO is to mimic the behavior of ants ( Dorigo and Blum, 2005 ; Silva-Neto and Becce-the continuous case that was reported in Silva-Neto and Becceneri (2009) was applied. This variant was applied to other problems problem into k possible  X  k n values. At each iteration the algorithm generates a family of Z new ants. This generation uses the information that was obtained from the previous ants, which is saved in the pheromone accumulative probability matrix PC (the matrix has dimensions n k where n is the number of variables in the problem). This matrix is updated at each iteration l as pc ij  X  l  X  X  where f ij are the elements of the pheromone matrix F A M and they express the pheromone level of the discrete value j th of the variable i th. This matrix is updated in each iteration based on the evaporation factor C evap and the incremental factor C f  X  l  X  X  X  1 C evap  X  f ij  X  l 1  X  X   X  ij ; best C inc f ij  X  l 1  X  X  14  X  where being x  X  best  X  i the component i th of the best ant X gbest
+The scheme for generating a new ant X z l at the iteration l needs from the ant X z l to be generated, the following generation mechanism is set as x where m : f n m Z f nm 8 m  X  1 ; 2 ; ... ; k  X  17  X  and ^ m :  X  pc n ^ m 4 q rand n  X  4  X  pc n ^ m r pc nm  X 8 m Z ^ m  X  18  X 
+The control parameter q 0 allows controlling the level of randomness during the ants generation. The pseudo-code for ACO is given in Fig. 2 .
+ 5. New variant: Particle swarm optimization with memory (PSO-M)
+PSO has been hybridized successfully with other optimization methods. The interest of combining PSO with other methods is mostly based on its recognized characteristic of not improving the quality of the solutions when the number of iterations is increased ( Angeline, 1998 ). Instead, PSO can fi nd good enough solutions faster than other evolutionary algorithms ( Angeline, 1998 ).
+In the particular case of PSO and ACO, some works have focused on the hybridization between them. For example, in Shelokar et al. (2007) are proposed an algorithm for which ACO is used to perform a local search around each particle of PSO, at each iteration.
+
+Our proposal, called Particle Swarm Optimization with Memory (PSO-M), has the objective of reducing the number of iterations/ quality solutions. This means a less computational time, which allows diagnosing systems in industrial processes.
+ The implementation of the algorithm consists of two stages:
+First stage: A swarm explores the search space, i.e. PSO is applied. A pheromone matrix, as described in Section 4 , stores the information of the search in each iteration.
+
+Second stage: Another swarm makes an intensi fi cation of the promising regions of the search space. For that purpose, its initial position is generated using the generation scheme of ACO, which is described in Section 4 . For this generation scheme, the algorithm uses the pheromone matrix achieved in the fi rst stage.
+It can be concluded that PSO-M uses the memory of ACO for storing the historical behavior of the agents from PSO during the fi rst stage. In the second stage, the algorithms use this memory for addressing the search of another swarm. 5.1. Description of the algorithm This part describes the implementation of PSO-M.
+
+In the fi rst stage, it applies PSO, i.e. a swarm of Z 1 agents explores the search space D following the structure of PSO. The z  X  1 ; 2 ; ... Z 1 , are updated at the iteration l following Eqs. (7 ) and ( 9 ), respectively. The values of the PSO parameters are based on the presented study of their in fl uence in the robust and sensitive diagnosis. Following the idea of ACO for the continuous case, see possible values x n k , and a pheromone matrix F , with dimensions n k , is generated and updated at each iteration.
+
+In order to update the pheromone matrix F , we propose the following strategy:
+On each iteration l , each component of the vector X gbest identi fi ed with only one of the k discrete values that are assigned to the variable that corresponds with that component n th. This connection generates the vector X gbest  X  d  X  .Wede vectorial function G : R n  X  R n .
+ and X gbest  X  d  X  respectively, then it is established
+G where m : j x gbest n  X  n  X  x m n j X  min With the new vector G  X  X gbest  X  X  X gbest  X  d  X  the matrix as in ACO, see Eq. (14) .
+
+The second stage considers a swarm of Z 2 ( Z 2 o Z 1 ) agents that will perform an intensi fi cation of the promising regions of the search space D . For that purpose, the algorithm generates an initial swarm using the information stored in the pheromone matrix F from the fi rst stage. The mechanism for generating the initial swarm is the same as described in Eqs. (16 )  X  ( 18 ):
+The pseudo-code for the PSO-M method is given in Fig. 3 . 6. Benchmark DC motor
+This section describes the main characteristics of the DC Motor control system DR300 ( Ding, 2008 ). This system has been widely used for studying and testing new methods of FDI due to its similitude with high speed industrial control systems ( Ding, 2008 ).
+The system is formed by a permanent magnet, which is coupled to a DC generator. The main function of this generator is to simulate the effect of a fault that results when a load torque is applied to the axis of the motor. The speed is measured by a tachometer that feeds the signal to a PI (proportional-integral controller) speed controller. Fig. 4 shows the block diagram of the DC Motor control system AMIRA DR300.
+
+The voltage U T (Volts) is proportional to the rotational speed of to use the error for computing the control signal U C (Volts) for the PI speed controller. The AMIRA DR300 system also includes an internal control loop for the armature current I A . The controller computes the motor armature voltage U A (Volts) as a function of the reference that is obtained by means of the gain K 1 (Volts/Amp) and the output I A (Amp). 6.1. Mathematical model
+For this study, the internal current loop, which is the process to be controlled, is a single block. The block diagram of the closed loop is formed by the process and the PI controller. The parameters of the laboratory DC motor DR300 are reported in Table 3.1 from Ding (2008) .
+
+This analysis considers that the system can be affected by three it is modeled as a deviation of the control signal; f p represents a fault in the process itself due to a load torque, which is applied to the axis of the motor, and f y represents a fault in the measurement of the motor speed.
+
+The dynamics of the control system in the open loop is described in the frequency domain by U  X  s  X  X  G yu  X  s  X  U C  X  s  X  X  G yf
+G yu  X  s  X  X 
+G where U T is the controlled variable, U C is the control signal, G represents the dynamics of the process in the open loop and G is the transfer function of the fault f p ( Ding, 2008 ). The transfer function of the PI speed controller is
+G  X  s  X  X  U C  X  s  X  E  X  s  X   X  1 : 96  X  1
+E  X  s  X  X  U ref  X  s  X  U T  X  s  X  X  25  X  where E ( s ) denotes the error signal.
+
+Considering the other faults that may affect the system, the equation that describes it by means of the closed loop transfer function is U  X  s  X  X  G yw  X  s  X  U ref  X  s  X  X  G yf
+For the present study, it was considered that the faults are time invariant and under the following restrictions: f ; f y A R : 1V r f u ; f y r 1V f
+A R : 0Nm r f p r 1Nm  X  27  X  6.2. Simulation of the benchmark DC Motor
+It was made simulations of the speed control system for the closed loop. In all test cases, the system was affected by a noise up to 2% or 8%. The addition of noise is aimed to simulate more realistic conditions. The noise affecting the systems is one of the recognized causes of a wrong diagnosis and leads to the necessity of robust FDI methods. All the implementations were made in
+MATLAB R2008a. The reference speed was 3000 rpm, which corresponds to 15 V.
+
+The direct estimation of the faults allowed diagnosing the system. These estimations can be obtained by the solution of the minimization problem described by Eq. (6) .
+
+In the analyzed application, y t  X   X  f  X  is the measurement of the computed from the model at the same time instants. 7. Experimental methodology
+Three aspects were considered: robustness, sensitivity and computational cost. This allows analyzing the merits of the diagnosis based on faults estimation with PSO, ACO and PSO-M. Also, it was analyzed the in fl uence of some parameters from PSO and ACO in the characteristics of the diagnosis.
+
+With this goal in mind, several faulty situations were consid-ered. The cases can represent single fault (only one fault affecting the system); multiple faults (more than one fault affecting the system) or incipient fault conditions (faults of low magnitude). The experiments were divided into three parts: 1 General performance: For the general analysis of the diagnosis via PSO and ACO. This part includes multiple faults situations. The output of the system is corrupted up to a 2% level noise.
+The faulty situations are shown in Table 1 . 2 Robust performance: For the analysis of robustness. The same situations from the fi rst part applies but now with a noise level up to 8%. 3 Sensitive Performance: for the sensitivity analysis. The cases include simple and incipient faults, see Cases 6  X  8from Table 2 ; the measurements are corrupted with a noise level up to 8%.
+Different values for some parameters in PSO and ACO were considered. The General, Robust and Sensitive performance of the variants of PSO and ACO were analyzed. For each faulty situation was made 30 runs of each algorithm. The abbreviations F  X  the mean value of the objective function and Eval for the arithmetic average of the minimum number of objective function evaluations achieved until the fi nal value of the objective function was reached were used. The analysis of the computational effort of the algorithm was based on the number of evaluation of the objective function.
+
+Based on this study, the best set of parameters for ACO and PSO, respectively, were selected. For that selection the Sign test, which is an easy way to compare the overall performance of two algorithms ( Derrac et al., 2011 ) was used.
+
+A comparison between the best variant of ACO and PSO using the Wilcoxon signed ranks test was made. This is a simple and safe nonparametric test for pairwise statistical comparisons ( Derrac et al., 2011 ). The statistical T was computed and it was compared with the value of the Wilcoxon  X  s distribution for Num degrees of freedom (critical value of W ), where Num is the number of cases for which the performance of the algorithms is compared ( Derrac et al., 2011 ). Also, the Wilcoxon signed ranks test for comparing the best variant of PSO against PSO-M was used. 8. Experiments 8.1. Implementation of PSO
+Two variants of PSO were considered: basic (canonical) PSO,  X  PSO
+Table 3 shows the values for the parameters of the algorithm in each variant. These variants will permit to analyze the in the parameters  X  , c 1 and c 2 in the diagnosis. These parameters have a great in fl uence over the quality of the solution and the convergence ( Becceneri et al., 2006 ). The selected values for c c follow the recommendations from Kennedy (1998) , Carlisle and Dozier (2001) and Kameyama (2009) .
+
+In all the experiments were selected Z  X  30, following the idea of taking Z  X  dim  X  D  X  . The values of the coef fi cients c permit to establish the balance between the intensi fi cation and diversi fi cation of the search. In Table 3 the notation l represents the number of the current iteration, yielding a reduction on the inertial weight  X  along the iterative procedure. 8.2. Implementation of ACO
+The variants of ACO were based on the different values for the parameters q 0 and k .Theparameter q 0 permits to establish the level of randomness in the selection of the discrete value of the variable fi cation, a balance between diversi fi cation and intensi fi determines the size of the search space. With k  X  127 the size of the search is duplicated comparing with k  X  63. The six variants that we shows the values for the parameters of the algorithm in each variant.
+The value of Z  X  30 was used following the same criterion as in PSO. 8.3. Implementation of PSO-M
+The variant PSO-M was designed in two stages, see algorithm in Fig. 3 .
+
+First stage: Variant PSO I 1 ( c 1  X  2 and c 2  X  2) with Z
+Itr max 1  X  15. The pheromone matrix has dimensions 3 63.
+
+Second stage: Variant PSO I 1 ( c 1  X  2 and c 2  X  2) with Z 8.4. Stopping criteria
+The implemented criteria for all variants of PSO and ACO are 1. Criterion 1: Maximum number of iterations Itr max  X  100. 2. Criterion 2: Maximum number of iterations for which the best value of the objective function remains constant Itr cte  X  10 and minimum value for the objective function F  X  ^  X  f  X  o 0 :
+For the fi rst stage of PSO-M only the stopping criterion number 1 was considered. In the second stage of PSO-M all the stopping criteria with values Itr max 2  X  25, Itr cte  X  10 and F  X  considered. 9. Results 9.1. Results of the diagnosis with PSO 9.1.1. General performance
+In this part the variants PSO B and PSO I 1 to solving the optimiza-tion problem given in Eq. (6) were applied.
+
+In Fig. 5 it is shown that both variants PSO B and PSO I 1 fault but PSO I 1 is more precise while it presents a greater number of objective function evaluations.
+
+In order to determine the causes of this behavior, in Fig. 6 the best value of the objective function versus the iterations for PSO number of evaluations of the objective function in the variant PSO related with the fact that the algorithm decreases the parameter a function of the number of iterations, allowing a more intensi around the better solutions.
+
+The results of this part point to that PSO I 1 permit a better diagnosis than PSO B . Thus, we only keep the variants of PSO the subsequent studies. 9.1.2. Robust performance In this part the variants PSO I 1 , PSO I 2 and PSO I 3 were applied.
+In Fig. 7 it is shown that there are not evident differences between the estimations of the faults that provide PSO I 1 parameters c 1 and c 2 do not affect signi fi cantly the robustness. On the other hand, there are differences between the number of objective function evaluations: PSO I 3 shows better results in this point. 9.1.3. Sensitive performance
+In this part the objective is the sensitivity analysis of the proposal for FDI, as well as the in fl uence of some parameters from 10 FObj
+PSO in the quality of the diagnosis, see description of the experi-ments in Section 7 .
+
+In Fig. 8 it is shown that the worse estimations were exhibited by PSO I 3 . The performance of PSO I 1 and PSO I 2 was quite similar respecting the quality of the estimations. This indicates that a higher diversi fi cation of the search space is important for a sensitive diagnosis.
+ search of PSO I 1 and PSO I 3 was compared, see Fig. 9 .
+In Fig. 9 it is shown that PSO I 1 performs a greater diversi than PSO I 3 . Based on the better estimations of PSO I 1 based on Fig. 9 , it is possible to conclude that the sensitivity is improved with greater diversi fi cation of the search space. On the other hand, sensitivity does not necessarily imply a higher computational cost.
+
+Taking into account all these results also it was concluded that the better variants for obtaining a sensitive diagnosis are PSO PSO . Based on the Sign test, the variant PSO I 1 was selected as the the test in Table 5 . 9.2. Results of the diagnosis with ACO 9.2.1. General performance In this part the variants ACO 1 : 1 and ACO 2 : 1 were applied.
+In Fig. 10 the performance of ACO 1 : 1 and ACO 2 : 1 is shown. The results indicate that both variants detect the faults. The variant
+ACO 1 : 1 shows the best performance for Case 1. For Case 2, ACO more ef fi cient than ACO 1 : 1 ; for Cases 3 and 4 both variants are similar.
+
+In Fig. 11 acomparisonbetween ACO 1 : 1 and ACO 2 : 1 is shown. This the conclusion is that the greater search space of ACO 2 : 1 value for the parameter q 0  X  0.15 produces greater variations in the valueoftheobjectivefunctionthan ACO 1 : 1 . 9.2.2. Robust performance Fig. 12 shows the performance of six variants of ACO from
+Table 4 . The results fl uctuated within a wide range for some of these variants. Therefore, the variants ACO 1 : 1 and ACO selected. The values of the parameters from ACO 1 : 1 and ACO to a robust variant for the case of study while the others do not.
+Thus, it was concluded that the higher diversi fi cation obtained with the parameter q 0  X  0.15 has a good in fl uence on the robust-ness of the diagnosis. 9.2.3. Sensitivity performance In Fig. 13 the performance of the six variants of ACO from
+Table 4 is shown. The variants ACO 1 : 1 and ACO 2 : 1 give the most accurate estimations, which coincide with best performing algo-rithms in the robustness analysis. Thus, the conclusion is that the higher diversi fi cation obtained with the parameter q 0  X  0.15 also has a good in fl uence on the sensitivity of the diagnosis.
+Considering all the results, ACO 1 : 1 and ACO 2 : 1 were selected as the results of the test.
+ 9.3. Comparison between PSO and ACO
+After the previous study, PSO I 1 and ACO 1 : 1 were chosen as the best variant of PSO and ACO, respectively. Table 8 shows the comparison between them. The faulty situations are the same from Robust Performance and Sensitive Performance analysis.
+The results in Table 8 point out that the PSO I 1 gave absolutely better faults estimations than ACO 1 : 1 in six of the eight faulty situations. On the other two situations, PSO I 1 was better than shown that the number of objective function evaluations needed the objective function was always less in the diagnosis with PSO
+Table 7 shows the results of the application of the Wilcoxon's
+PSO I 1 outperformed ACO 1 : 1 , taking as criterion the value of the objective function. For the second line R  X  represents the sum of the number of evaluations of the objective function.
+
+From the results in Table 7 , it was concluded that PSO I 1 signi fi cant improvement over the estimations obtained by ACO with a level of signi fi cant  X   X  0 : 01. On the other hand, ACO permits to obtain acceptable estimations with a computational important for online diagnosis.
+
+Taking into account the above results the new algorithm PSO-M is proposed. The objective with PSO-M is keeping the quality of the estimations provided by PSO I 1 , which means robust and sensitive diagnosis, while reducing its number of objective function evalua-tions for improving its performance in online diagnosis. 9.4. Validation of PSO-M
+The comparison between the results obtained by PSO I 1 , ACO and PSO-M is shown in Table 8 . This table also shows that PSO-M obtained more accurate faults estimations in six of the eight cases.
+The algorithm PSO-M also reduced the number of function evaluations needed by PSO I 1 in all cases.
+
+In order to evaluate the performance of PSO-M, the Wilcoxon' test for the comparison between PSO I 1 and PSO-M was applied.
+Table 9 shows the test results. R  X  represents the sum of the ranks for which PSO-M outperformed PSO I 1 in the fi rst and second line.
+The value of the objective function and the number of evaluations of the objective function, respectively, were chosen as criteria for the comparison.
+
+The results on the fi rst line from Table 9 indicate that the null hypothesis cannot be rejected, which means that in the estima-tions of faults with PSO-M and with PSO I 1 there are no differences.
+The results from the second line also indicate that there is an over performance of PSO-M, with a level of signi fi cant  X   X  0 the number of evaluations of the objective function, which implies less computational cost.
+
+The comparison between PSO I 1 , ACO 1 : 1 and PSO-M is also shown in Fig. 15 . The algorithm PSO-M obtained similar estima-tions to PSO I 1 as the Wilcoxon signed ranks test showed, and it also permitted to reduce its computational time. The PSO-M improves the disadvantages of the diagnosis via PSO and ACO. 10. Comparison between this proposal and other FDI methods
+A comparison with other FDI methods is included in this section. The main model based approaches for FDI are Parity Space and Diagnostic Observers. Recent techniques for model based FDI are mostly a variation of them and they maintain the principal limitations of the original methods taken into account in the comparison ( Odgaard and Matajib, 2008 ; Li and Dahhou, 2008 ; Narasimhana et al., 2008 ; Fliess et al., 2004 ). Therefore, Parity Space and Diagnostic Observers will be used to compare with the proposal of this paper.
+
+Both approaches generate residuals, which are used to form appropriate decision functions.
+
+The idea is to generate a structured set of residual. Then, at least one measured quantity has no impact on a speci fi c residue. In case of a faulty measurement, the decoupled residue remains small, while the others increase their value. This feature helps to locate the fault ( Frank, 1990 ; Hoe fl ing and Isermann, 1996 ).
+Both approaches are formulated based on the state representa-tion but, in the linear case it can be connected with the transfer function models ( Ding, 2008 ). 10.1. Parity space approach
+The introduction of the Parity Space approach for FDI was made in the early 8s. Different forms of Parity Space Approach have been developed since then. In this paper is considered the original one, which is based on the assumption of a state space model of a linear discrete time system ( Chow and Willsky, 1984 ) and have the form: x  X  k  X  1  X  X  Ax  X  k  X  X  Bu  X  k  X  X  E f  X  f  X  k  X  y  X  k  X  X  Cx  X  k  X  X  F f  X  f  X  k  X  X  28  X  where x A R n is the vector of state variables; u A R m and y measurable input and output signals, respectively. The matrices A , B , C , E f and F f are known and with appropriate dimensions.
+A continuous time parity space can be generated similar to the design of the discrete one ( Hoe fl ing, 1993 ).
+
+Using the notations: y  X  k  X  X  X  y  X  k s  X  y  X  k s  X  1  X  ... y  X  k  X  t ;  X  29  X  u  X  k  X  X  X  u  X  k s  X  u  X  k s  X  1  X  ... u  X  k  X  t ;  X  30  X   X  k  X  X  X   X  f  X  k s  X   X  f  X  k s  X  1  X  ...  X  f  X  k  X  t ;  X  31  X 
+H  X  and
+H  X 
+The matrix H o ; s is called the extended observability matrix of the system. It is de fi ned as ( Ding, 2008 )
+H  X  X  CCA  X  CA s t  X  34  X 
+The parity relation is obtained by y based residual generator, in the absence of faults, is constructed by r  X  k  X  X  v s H o ; s x  X  k s  X  X  v s  X  y s  X  k  X  H u ; s u s
+In the presence of faults the residual becomes r  X  k  X  X  v s H o ; s x  X  k s  X  X  v s H f ; s  X  f ; s  X  k  X  ; r  X  k  X  X  v s H f ; s  X  f ; s  X  k  X  a 0  X  38  X  10.2. Diagnostic observers
+The basic idea of the observers approach is to reconstruct the outputs of the system from the measurements or subsets of the measurements with the aid of observers, using the estimation error as the residual for the detection and isolation of the faults ( Frank, 1990 ; Ding, 2008 ).
+
+In the case of a linear process with the state equations _ x  X  t  X  X  Ax  X  t  X  X  Bu  X  t  X  X  E f  X  f  X  t  X  y  X  t  X  X  Cx  X  t  X  X  F f  X  f  X  t  X  X  39  X  the equations: _ ^ x  X  X  A HC  X  ^ x  X  Bu  X  Hy ^ y  X  C ^ x :  X  40  X  where H denotes the feedback gain matrix that has to be chosen properly to achieve a desired performance of the observer.
+The relations for the state estimation error,  X   X  x ^ x , and the output estimation error, e  X  y ^ y , become _  X  X  A HC  X   X   X  E f  X  f  X  HF f  X  f e  X  C  X   X  F f  X  f  X  41  X  where e is used as the residual, r , for the purpose of detection and isolation of faults. 10.3. Connections between parity space and diagnostic observers
+It was demonstrated that exists a one-to-one mapping between the design parameters of diagnostic observers and parity relation based residual generators. It was also shown that for a given parity relation based residual generator there exists a set of correspond-ing observer-based residual generators. It was also shown how to calculate the respective parity vector when an observer-based residual generator is provided, and vice versa ( Frank, 1996 ; Ding, 2008 ).
+
+The parity space based system design is characterized by its simple mathematical handling. It only deals with matrix-and vector-valued operations. In the case of observers, the design is more complex. Due to the connection between the parity space approach and observer-based approach, a strategy called parity space design-observer-based implementation was developed ( Ding, 2008 ). This strategy makes use of the computational advantage of parity space approach for the system design (selec-tion of a parity vector or matrix) and then realizes the solution in the observer form to ensure a numerically stable and less con-suming online computation.
+ 10.4. Results of the comparison between parity space, diagnostic observers and our proposal when diagnosing faults in the DC motor
+In the DC motor is necessary to diagnose three faults with just one output (one sensor). Parity Space and Diagnostic Observers do not permit to diagnose additive faults when their number is larger than be diagnosed with a Parity Space or Diagnostic Observers, only the proposal: it can diagnose the three faults using only one sensor.
+Considering that only one fault can affect the system, it allows to make a comparison with the Parity Space and Diagnostic
+Observers methods. It was chosen the fault f u . In order to determine the parity vector and to design the observer, the model of the DC Motor was transformed into its state space representa-tion. This permits to compute the elements of both approaches in an easier way. In the case of the proposal of this paper, it can be applied independently on the kind of model describing the system and no further elements need to be designed or computed.
+The parity vector v s  X  X  0 : 1057 0 : 4499 0 : 7162 0 : 0 : 1336 t and matrix H  X  X  194 : 1163 1 : 8394 0 : 021 1 : 3084 were computed. 10.4.1. Robustness analysis In Fig. 16 are showed the residual obtained by Parity Space and
+Diagnostic Observers when no faults are affecting the system and the output of the system is not affected by noise. In this case, the residual is equal zero.
+
+In Fig. 17 , is shown the residual when the system is not affected by faults but the output is corrupted with a noise level up to 8%. In Fig. 17 (b) a zoom of the residual obtained by Diagnostic Observer is shown. Both approaches, Parity Space and Diagnostic
+Observers generate residuals different from zero due to the noise affecting the output of the system. As a consequence, both approaches provide false alarms. This fact is related with the lack of robustness. In order to increase robustness, some thresholds could be established. In Fig. 17 (c) is shown the results of the this case, it is necessary some thresholds which are represented with red lines and indicates when the estimation values are within the 0.1% of the maximum values allowed to this fault.
+
+The residual and the result of the fault estimation approach when the system is affected by f u  X  0.9 at t  X  50 s is shown in
+Fig. 18 . A zoom of the residual obtained by Diagnostic Observer is shown in Fig. 19 . The residual exceeded the thresholds values at this time, in both approaches. Thus, it indicates that system is under a fault f u . Both approaches detected the fault. On the other hand, our proposal also detected the fault and it also allowed to 10.4.2. Sensitivity analysis
+The residual when the system is affected by an incipient fault f  X  0.08 at t  X  50 s is shown in Fig. 20 .Itisalsoshownin Fig. 20 (a) that the parity space based residual did not exceed the thresholds values needed for a robust diagnosis. Thus, for Parity Space the thresholds that avoid false alarms do not allow detecting incipient faults. On the other hand, in Fig. 20 (b) it is shown that diagnostic observers detected the fault. It is shown a zoom of the residual obtained by the Diagnostic Observer in Fig. 21 .Ourproposaldetected value, with the same thresholds established in order to obtain robustness.
+
+The main disadvantage of the proposal of this paper when it is compared with the parity space and diagnostic observers approach is the computational time. Once the parity vector is computed, the parity space approach only needs matrix multi-plication, while the PSO-M algorithm needs to make many the PSO-M algorithm took 906 model simulations (174 s) and took 1081 model simulations (305 s), respectively. On the other hand, diagnostic observers took aroun d 16 s for computing the residual.
+Considering that most industrial processes have high time constants, the processing time required by this proposal does not make impracticable its use. 11. Conclusions
+This study indicates that the application of meta heuristics, in particular PSO and ACO, characterizes a promising methodology for fault diagnosis problems based on direct faults estimation.
+The advantages of the proposed approach are: it does not need to divide the FDI into many steps, such as model parameters estimation, determination of the relationship between model parameters and physical parameters as well as the relationship between the last one actuator, process or sensors, which allows alleviating one of the described limitations of the model based methods for FDI. After comparing the proposal of this paper with Parity Space and Diagnostic Observers, other advantages of it were identi fi to diagnose the system even when the number of faults is longer than the number of sensors; it allowed to obtain robust and sensitive diagnosis in a simple way; it is a general methodology that does not depend on the kind of model used to describe the system, no further elements are needed to be designed or computed, only the simula-tions of the model of the system are required.
+
+The study of the in fl uence of the parameters from PSO and ACO permitted the analysis of the in fl uence of diversi fi cation and intensi fi cation in the quality of the diagnosis. The manipulation of these parameters in order to increase robustness and sensitivity avoid the efforts demanded by the robust residual generation in other model based FDI methods. The study revealed that an adequate balance between these two tendencies, diversi fi sensitive diagnosis based on PSO and ACO. The variants that gave the best results for each algorithm were those that performed higher diversi fi cation during the search.
+
+A new algorithm, PSO-M, was proposed. It has an easy structure and simple implementation. The application of the Wilcoxon signed ranks test indicated that PSO-M over performed PSO taking as criterion the computational cost, while keeping the quality of the estimations. The variant PSO-M was described without loss of generality, which permits its application to other continuous optimization problem.
+ Acknowledgments
+The authors acknowledge the support provided by FAPERJ, Funda- X  X odeAmparo X PesquisadoEstadodoRiodeJaneiro,CNPq,Conselho Nacional de Desenvolvimento Cient X  fi co e Tecnol X gico, and CAPES, Coordena X  X o de Aperfei X oamento de Pessoal de N X vel Superior. References

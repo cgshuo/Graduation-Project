@@ -1,0 +1,95 @@
+ 1. Introduction publishing in various domains, which suggest common classes and properties widely used across data sources. profiles, academic publications, media or geographical data, etc.
+ browsers. Driven by the Linking Open Data (LOD) initiative, millions of instances have been linked with than 500 million represent linkages between data sources, and most sources only link to one another. equivalence reasoning in terms of standard OWL semantics, e.g., through work also uses machine learning and crowdsourcing to cope with complex data linkage tasks [8 used. It will facilitate data linkage in the future if such properties can be learnt and reused.
+ADL, shown in Fig. 1 , can be divided into the offline part and the online part:  X  implicit preference of data publishers on characterizing a type of objects.  X  whether to generate an instance linkage.
+ for cost-effective candidate selection [12] .
+
+Finally, Section 7 concludes the paper with future work. 2. Problem statement
+Let I be the set of URIs, B be the set of blank nodes and L be the set of literals. A triple called an RDF triple .An RDF graph G is a set of RDF triples, and can be serialized to an RDF document.
+For an RDF graph G , a URI u is a class (resp. property )if G entails the RDF triple and properties are disjoint with instances. In this paper, it is assumed that there exists an the definition inconsistency problem.
+
+De fi nition 1. RDF sentence (2)  X  t i , t j  X  st , i  X  j , t i , t j are b-connected; and (3) For an RDF sentence st  X  G , four operations on st are defined to obtain its subjects, properties and values:
+For an instance, we define its context in terms of the Concise Bounded Description, of RDF sentences.
+
+De fi nition 2. Context
+Let u be an instance. The context of u , denoted by Ctx( u ), is a set of RDF sentences Ctc( u )={ st ... , n ) satisfies that u  X  Subj( st i ).
+
+With regard to a given instance for extracting its context, only forward links ( u a context can be reduced as well.
+
+Besides owl:sameAs , the inverse functional property (IFP), e.g., properties whose rdf:type is explicitly defined as owl:IFP example, Urbani et al. [16] conducted reasoning on pD* that includes rules for handling suggesting to use dereferenceable URIs to avoid this problem. semantics is similar to FPs, but localized to a particular class. input of data linkage is just one set of instances.
+
+De fi nition 3. Data linkage confidence measure in range [0, 1] to weigh any ( u i , u
+Given a pre-defined threshold  X   X  [0, 1], a linkage between u instances for which the linkages hold is represented by D all pairs for which the linkages do not hold: D  X  =( U  X  U )\ D approximates O(| U | 2 ) [17] . In some cases, a subset of D data [9] .
+
+Example 1. To better understand, we illustrate a running example in Fig. 2 . Let us consider the instance instances can be directly linked, e.g., sw:Beijing , which are inferred by figure. (Note that this ontology is constituted by an RDF sentence, where and dbp:Peking are added in positive examples. Also, dbp:Perth for more details).
+
+Then, we extract the contexts for the instances in the training set. For example, the context for matchable property pairs, e.g., for geo:Feature in Geonames vs. ( geo:lat , dbp:latitude ) are identified as two discriminative property pairs. We can also find that non-discriminative for dbp:Place in DBpedia. The above is done offline.
+For the online linking, given an instance of geo:Feature in Geonames, e.g., latitude ) and ( geo:long , dbp:longitude ) are matched with those of the instances from similarities are linearly aggregated to link new instances, e.g., 3. Related work
+Glaser et al. [4] implemented a Co-reference Resolution Service (CRS) mainly by reconciliation, which combined FPs, IFPs and owl:disjointWith linkages for the current SW.
+ set and similarity computation to learn discriminative property pairs from the training set. different classes as well as property matching. ObjectCoref [25] applied self-training to learn our approach.
+ domain levels.
+ properties for data linkage by leveraging equivalence reasoning and similarity computation. 4. Training set generation accuracy. Thanks to the LOD initiative, millions of instances have been interlinked with 4.1. Positive example reasoning equivalence reasoning.
+ which satisfies that: (1)  X  s  X  U ; s ; s hi  X  S ; (2)  X  s , o The RDF triple s ; owl : sameAs ; o hi is called a same-as triple .
+SKOS is a common data model for sharing and linking knowledge organization systems via the Web. recommended to link instances, e.g., zbw : 16830  X  0 ; skos exactMatch is reflexive and symmetric. The RDF triple involving exact-match relation is denoted by E .
+ which satisfies that: (1)  X  s  X  U ,  X  s , s  X   X  I ;(2)  X  s and  X  s 2 , s 1  X   X  I .
+ literals could be empty, where for example the values of foaf:mbox_sha1sum method is designed to identify identical email addresses between comparison method has been made.
+ relation is denoted by F .
+
+Additionally, regarding the cardinality constraint owl:cardinality
+De fi nition 4. Equivalence relation relation , denoted by K , is defined as the transitive closure on S equivalence relation will be represented using the symbol more vocabularies being published on the SW, we will incorporate new vocabulary elements in our future work. In terms of the equivalence relation  X  K , the positive examples in the training set are defined as follows.
+De fi nition 5. Positive examples
+Let U be a set of instances. For an instance u  X  U , the positive examples of u , denoted by D which the equivalence relations hold, that is, D  X  u  X  X  X  u
+A simple method to compute the transitive closures on U is the Floyd computational cost for generating positive examples is low. 4.2. Negative example estimation moderate-sized training set that covers various classes and domains. which is significantly more than positives [9] .
+
+De fi nition 6. Negative examples
+Let U be a set of instances. For an instance u  X  U , the negative examples of u , denoted by D which the equivalence relations do not hold, that is, D  X  discriminability.
+ size of D + at the same order of magnitude. semantically equivalent). 2. If the number of instances under a particular class and namespace is still considerable, e.g., blocking scheme is further used, which only keeps the negative examples holding that the local names
+In case that some local name is just a sequence of random characters, we may use scope of this paper.
+
+Example 2. Recalling the example in Section 2 , it is found that some instances are holding the linkages with places in DBpedia and only keep instance URIs whose local names are different with prefix. Assuming l = 2 in this case, the instances like dbp:Perth geo:1816670 . 5. Discriminative property discovery values, and a few properties are more important for characterizing the denoted real-world object. 5.1. Discriminative property pair learning nodes.
+
+Eq. (1) ). It has an object property foaf:based_near , and the values of
+By traversing the blank node, we extract the complete context for instance u . Let v  X  V ,  X  local name;  X 
+If v is a literal, a term vector representing its lexical form is extracted;  X  forward values in the same RDF sentence in the context of u (see Eqs. (3) numbers.
+
+Given any two properties p i , p j w.r.t. two instances u similarity between their virtual documents (the so-called extensional measure): instances, so the real time spent on instance comparison is not too long. field of data mining.
+
+Let D be the training set satisfying that the types of the instances in each instance pair are c we select all instance pairs ( u i , u j )in D , denoted by D D w.r.t. ( c i , d i ) vs. ( c j , d j ) is measured by the information gain IG() as follows and H( D ( pi , pj ) ) gives the information entropy that uses ( p examples resp. negative examples with the similarities higher than including the ones that do not involve ( p i , p j ). The higher the value of IG( p link instances.
+ experiment (see Section 6.1 ).
+ Falcons [3] .
+
+Example 4. Let us see the example in Table 1 . We can compute the entropy of D by H D  X  X   X 
+Assuming the similarity threshold  X  = 0.8, we can measure the entropy of the property pair ( long,dbp:longitude ) is 1.0, whereasthe discriminability of ( to link instances. Additionally, the discriminability of (
+Considering geo:Feature in Geonames vs. dbp:Settlement in DBpedia, if the instances of the training set are not enough, then we will query its super-classes and use the super-classes, e.g., discriminative property pairs. 5.2. Online linking can also achieve good accuracy.
+
+Let u i be an instance to be linked in a class and pay-level-domain pair ( c pay-level-domain pair ( c j , d j ). P denotes the top-k discriminative property pairs w.r.t. ( c for linking ( u i , u j ) is defined as follows:
+A threshold  X   X  [0, 1] is given to eliminate the instances having little confidence values with u formed between u i , u j iff Link( u i , u j  X   X  ). Without loss of generality, we set find a few others with similar property  X  values.
+
+Two special cases are considered: (1) if u i has no class, or ( c values match the one of u i using V-Doc; and (2) if ( c i the discriminative property pairs in the training set w.r.t. ( c well-known properties, e.g., rdfs:label , foaf:name and dc:title property matching [23,24] .
+
+Example 5. For the instance pairs in Table 1 , assuming that ( two discriminative property pairs w.r.t. geo:Feature in Geonames vs. ( geo:1816670, dbp:Peking )is 1 2 1 : 0  X  0 : 8  X  X  X  0 : 9 . To link pay-level-domain are not covered by the training set, we find the instances that involve similar values to that of geo:1816670 . 6. Evaluation at our website, 7 and a part of the results on the PR and NYT tests was cited from the OAEI reports [36,37] . 6.1. OAEI test 6.1.1. Dataset and test goal listed in Table 2 . We briefly introduce them as follows:  X 
+Persons1 and Persons2, resp.) and one pair of RDF files about restaurants.  X  random segments for cross-validation of learning systems using training data. 6.1.2. Experimental methodology 6.1.3. Negative examples spent to adjust the number of remaining negative examples. 6.1.4. Parameter analysis gain measurements.
+F-1-measure
+F-1-measure
+First of all, we tested the F1-measure with the variation of properties. We fixed  X  = 0.8 in the rest of the experiment.
+ slowly. This indicates that a few discriminative property pairs (often k continued to use more property pairs, improper ones would be chosen, e.g., ( led to wrong linkages and caused the F1-measure decreasing.
+ textual values.
+ process.
+ in the future.
+
+Thirdly, we tested various  X  for generating instance linkages. Similar to decide the discriminability cutoff aggregated the top-k discriminative property pairs ( k = 5) with equal weighting, and observed that also implies that an instance is allowed to link to more than one others. 6.1.5. Linkage accuracy comparison them as follows:  X  inference to remove inconsistent results.  X  propagation algorithm to generate similarities among instances (N2R).  X 
+ObjectCoref [25] proposes a self-supervised framework to learn instance, and mines frequent property combinations to improve its accuracy.  X  matchers to exploit a range of characteristics for both concepts and instances.  X  matching.
+ result on Locations. All the four systems achieved very good F1-measure (around 0.9) in the NYT People test. of ADL. Specifically,  X 
+In the PR test, the properties soc_sec_id and phone_number
+Restaurants, which led to some wrong linkages.  X 
+In the NYT test, skos:prefLabel , geo:name , fb:type.object.name properties. Some properties were combined together, e.g., the rest systems, the recall that they achieved was not very stable, since they only used property and missed some candidate linkages. 6.2. BTC2011 test 6.2.1. Dataset and test goal
+Some statistical data of the BTC2011 dataset are shown in Table 5 . It was found that the bulk ( relations, e.g., owl:hasKey , owl:qualifiedCardinality and
+BTC2011 dataset. Moreover, the number of properties to infer semantically different instances is rare, e.g., 6.2.2. Experimental methodology our intended test.
+ large ontology matching [13] .
+ returned by each system. A test case was reviewed by three students, and a student was expected to do 6 relations, the contexts of the instances, and their dereferenced documents. An instance linkage was scored 6.2.3. Training set generation and discriminative property pair discovery pay-level-domains, and find other instances with similar property 6.2.4. Linkage accuracy comparison
+In this test, three systems were chosen for comparison. SameAs.org has been introduced in the previous subsection, we briefly describe the rest of the two systems as follows:  X 
+SameAs.org makes use of at least seven properties that explicitly define the equivalence relations, such as coreferenceData , skos:exactMatch , skos:closeMatch , umbel:isLike  X 
+The semi-automatic approach built inverse indexes on various naming properties (e.g., inconsistency among the students' feedbacks.
+ (see Section 5.2 ). We observed that the discriminative properties are generally well-known properties, e.g., foaf:Person , but less than 4% of them involve foaf:mbox_sha1sum
+But in a few cases, a common mistake was the misuse of owl:sameAs negative examples by ourselves, and found that they were highly accurate ( contain a number of wrong results (e.g., dbp:Paul_McCartney approach can establish a relatively large amount of accurate instance linkages. property pairs. 7. Conclusion  X  pairs.  X  under a specific class pair and a pay-level-domain pair, which can be reused to link instances online.  X  precision and (relative) recall with the aggregation of a few discriminative property pairs.
+In future work, we look forward to combining our  X  global submit them to the OAEI to propose a new instance matching track. Acknowledgments students participating in the evaluation. We also thank the anonymous reviewers for their valuable comments.
+References

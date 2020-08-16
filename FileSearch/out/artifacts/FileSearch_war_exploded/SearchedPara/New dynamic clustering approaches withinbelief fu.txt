@@ -1,0 +1,76 @@
+ LARODEC, Institut Sup X rieur de Gestion de Tunis, Universit X  de Tunis, Le Bardo, Tunisie 1. Introduction artificial intelligence, and statistics, etc.
+
+Most of the respective works focused on numerical clustering. Indeed, one of the commonly used to update cluster modes.
+ drawback, the idea is to combine clustering methods with theories managing uncertainty such as the the studied dynamic environment.
+ model evolution over time. Recently, various dynamic clustering approaches were introduced. These as preliminary methods, dynamic clusters X  number was handled. In [4,7] dynamic clustering methods dealing with incremental and decremental feature set were presented. Partition (BCDP) is a general dynamic framework developed to discover an optimal partition when an measures concept.
+ directions. 2. Backgrounds framework BCDP , the introduction of the necessary backgrounds on K-modes method, the theory of belief functions and the BKM approach is needed.
+ 2.1. Overview of K-modes method clusters, where the value of K , as in K-means [17], is fixed in advance as input parameter.
+By using the K-means paradigm, this categorical counter part considers a simple matching dissimi-the K-modes objective function will also be exposed. 2.1.1. K-modes parameters 1 l K ,where K is the number of clusters to build and s is the attribute X  X  number. Each mode is defined by assigning to q l,j ,where 1 j s , the category that is most frequently en-the degree of dissimilarity and it is defined as follows: where 2.1.2. Objective function K clusters is defined below: subject to: partition)). Q = { Q 1 ,Q 2 , ..., Q K } is the cluster modes set.
+
+To minimize this cost function, the K-modes algorithm uses the same working principle as the K-non-uniqueness of the clusters modes as well as its modes initialization step. uncertainty, so in the next section we will briefly review this theory. 2.2. Belief function theory preliminaries Belief Model (TBM) will be exposed. More details can be found in [26,27]. 2.2.1. Basic concepts assignment (bba) is a function defined as follows: that m ( A ) &gt; 0 .
+
+The total belief fully committed to the subset A of  X  without being also committed to via the belief function bel which is defined as follows with  X  the empty set: It must satisfy this condition: bel (  X  )=0 .
+
+A vacuous bba [26] is such that: defined [26] as follows where A is a singleton event of  X  : is defined as follows: 2.2.2. Combination rules
+To handle information induced from different experts or information sources of evidence, gathering by either the conjunctive or the disjunctive rules of combination [28].
+Let m 1 and m 2 be the two considered bba X  X  which are defined on the same frame  X  .ThetwoTBM combination rules are defined as follows.  X  The Conjunctive Rule: is applied when both sources of information are fully reliable. 2.2.3. Decision making the following formula: 2.3. Categorical clustering using belief function theory Standard version of K-modes method shows good results for precise and certain categorical data. K-modes method (BKM) [2] was introduced, as a novel clustering technique based on this standard
+In the following part of this paper, we present these two major parameters. Therefor, we start by presenting the belief structure of the considered training sets. 2.3.1. Belief dataset structure beliefs on their uncertain values.
+
+Indeed, each attribute A j ,where 1 j s , is represented via one conjunction of all possible cate-relatively to object X i .
+ It may also represent the Bayesian case via the Bayesian belief function concept. 2.3.2. Cluster mode computation adopted.
+
+In fact, the adapted measure into this belief function framework was the mean operator (for more details see [2]).
+ belief mode Q l =( q l, 1 , .., q l,j , .., q l,s ) , such that: m cluster as shown by the previous equation. 2.3.3. Dissimilarity measure tering context. It can be expressed as follows: the mode Q l .
+ intersection and union of these subsets.
+ is computed as follows:
+Another way to write it is: where &lt; m i , m l &gt; is the scaler product defined by: with B w ,B z  X  2  X  j ,and m 2 is the square norm of m ,where m 2 = &lt; m, m&gt; . B Based on these two major parameters, the BKM algorithm can be applied and it has the same skeleton as the standard K-modes method. 3. Related works 3.1. Recent developments on dynamic clustering but change over time.
+ our proposal compared with all these cited ones.
+
+In fact, K-modes method as introduced by [14] to extend the K-means paradigm for categorical do-K-modes methods were proposed [4,7] to handle the dynamic feature uncertain set. The problem of characterized by belief attribute values, all other techniques consider crisp datasets. 3.2. Brief review of belief clustering methods characterized by uncertain attributes X  values and produces a crisp partition. be presented below. 4. New framework for clustering belief dataset into dynamic partition as the distance sum of all pairs of centroids and objects of the two considered groups. 4.1. Principles of dynamic belief clustering
+Like in the belief static framework [2], within dynamical one, objects may be characterized by un-these notions.
+
+As known, the belief K-modes method is not suitable in a dynamic context since it assumes that all it when its cardinality is affected (reduced or extended) without a com plete reclustering. into this extended or reduced collection.
+
+For all later exposed approaches, two phases may be considered namely an initialization and an up-reorganization will be the updating one. Both steps will be detailed in the following. dynamic aspect were introduced in [5,6].
+ 4.2. Basic BCDP notions under belief function context, respectively as follows:  X  The intra-cluster metric which measures how closely related are the objects and the mode of one  X  The inter-cluster distance which computes the degree of separation of two considered clusters:  X  The inter-object distance which indicates the dissimilarity of two items:
+These distances will be considered by our proposals to conduct the dynamic clustering task. 4.3. Dynamic clustering using cohesion minimization under uncertainty methods. Thus, these approaches will be called IKBKM Min and DKBKM Min . in the same cluster. 4.3.1. Incremental method 4.3.1.1. IKBKM Min idea
+At the beginning, a new cluster initially empty will be added. It will receive one or more objects distances iteratively to minimize them. 4.3.1.2. Algorithm outlines tected between two successive iterations. Another stopping criterion may be considered namely the with very poor improvement.
+ phase.
+ IKBKM Min Algorithm Data: P partition, K*1 intra-cluster vector, n*n inter-object matrix, NoMaxIter begin end reports all dissimilarities of pairs of objects.
+
+Initially, the cluster with the minimum of internal distance is the new one which is empty at the beginning.
+ Let us mention that F parameter is equivalent to the objective function to minimize Eq. (21). 4.3.2. Decremental version 4.3.2.1. DKBKM Min idea be merged? puted. Recall that we obviously want to minimize this measure. Then, DKBKM Min algorithm iterates until stability during its updating phase. 4.3.2.2. Algorithm outlines Let us indicate that the same stopping criterion as the incremental method are considered here. DKBKM Min algorithm summarizes the first proposed decremental approach. DKBKM Min Algorithm Data: P partition, K*1 intra-cluster vector, n*n inter-object matrix, NoMaxIter begin end ered here. 4.4. Separation maximization based dynamic belief clustering
+Clustering problems usually have one of the following forms namely the minimization or the maxi-try to propose the two respective dynamic versions namely incremental and decremental approaches. maximization function is as follow:
+Let us mention that the mean-based distance, measuring the distance between the means of clusters, may be considered. 4.4.1. Incremental method 4.4.1.1. IKBKM Max idea empty. So, which cluster must be splitted or reduced? their sum maximization. The same updating process as the already exposed dynamic approaches is, here, applied. 4.4.1.2. Algorithm outlines ones of original cluster C l .
+ (instead of the intra ones) and updates the respective global quality (total separation). the process is terminated.
+ IKBKM Max Algorithm Data: P partition, K*1 intra-cluster vector, n*n inter-object matrix, NoMaxIter begin end 4.4.2. Decremental counter part 4.4.2.1. DKBKM Max idea will be possible during the second main phase namely the updating phase. 4.4.2.2. Algorithm outlines
+To recapitulate, DKBKM Max algorithm outlines the whole proposed decremental approach. First, the similar groups will be fused.
+ DKBKM Max Algorithm Data: P partition, K*K inter-cluster matrix, K*1 intra-cluster vector, n*n inter-object matrix, begin end updating stage.
+ be considered within belief function context instead of their number ( s ). greater interpretability and flexibility.
+
+To recapitulate, it can be easily shown that, among the developed dynamic methods, the decremental version DKBKM Min and the incremental one namely IKBKM Max are computationally harder than respec-tively DKBKM Max and IKBKM Min . 4.5. Concluding remarks partition b y one group.
+ once.
+ are by definition hierarchical clustering approaches. respective to the objects number. This latter is also called online datasets. 5. Experiments
+In order to empirically asses the power of our proposals, we performed a set of experiments using categorical ones. 5.1. From certain to uncertain datasets methods in such dynamic uncertain environment. These data sets are detailed briefly as follows: 1. Breast Cancer Wisconsin 2. Car evaluation 3. Congressional voting records 4. Hayes-Roth 5. Mushroom 6. Nursery 7. Spect heart 8. Tic-Tac-Toe Endgame 9. Zoo
+A summary description of these selected databases is given in Table 1. #Inst, #Attr, #Clas denote respectively the total number of instances, the number of attributes and the number of classes. artificially by taking into account these following basic parameters: 1. The actual attribute values of the training instances. 2. The degree of uncertainty p per attribute. Note that these p j , 1 j s vary in [0, 1]. and f j to the frame of discernment corresponding to this attribute A j . 5.2. Performance indicators the class assigned a priori. It is called the clustering accuracy .
+ labels. This clustering accuracy measure is computed as follows:
+Note that this measure is computed based on a specific table, usually called a matching matrix, in result is to the predetermined benchmark classes.
+ solution.
+ expressed by the iterations X  number needed to reach the final stable partition. 5.3. Empirical results and discussion
+In order to corroborate the efficacy of the IKBKM and the DKBKM approaches, several experimental over time more precisely following any detected dataset change.
+
+The respective experimental results for UCI repository datasets of Table 1 are reported below (Ta-show our competitive results.
+ it is handled by using the proposed selection method in [3].
+ as between the two developed versions of both incremental and decremental contexts.
+We start our evaluation process by the IKBKM versus BKM methods. Tables 2 and 3 give the differ-incremental process, namely IKBKM Min and IKBKM Max , are also compared. actual class number minus one. This is done in order to increase it thereafter.
+Table 2 summarizes the mean clustering accuracy r of the different performed experimentations by using different degrees of uncertainty as mentioned above.
+ is detected according to the Table 2 (Column 3 versus Column 2). Nevertheless, this improvement is negligible for some databases such as Car evaluation (83.9 and 83.5 versus 83.2). Column 3 re-IKBKM Min accuracies 83.9 compared to 83.5 for IKBKM Max , while Hayes-Roth data produces a higher provide slightly better precisions than the static version.
+
+Notice also that IKBKM time performance always outperforms BKM as given by the Table 3. Indeed, We move now to the second dynamic approaches evaluation respectively to the decremental process. et 5 describe the different DKBKM results respectively to both DKBKM Min and DKBKM Max versions. classes increased by one with the aim to reduce it hereafter.
+ veloped dynamic approaches. We observe that, in most cases, DKBKM accuracies are slightly higher than for BKM . However, comparative accuracy results for both versions are detected. Furthermore, DKBKM Max provide better running time values for all testing data as showing by Table 5.
+In order to appropriately monitor the behavior of these decremental methods, then, we have also DKBKM Max approach. The provided iterations X  number by applying DKBKM Max are smaller than the developed decremental methods besides their effectiveness quality.
+ on real life benchmark datasets. The advantage of such dynamic approaches is the speed of conver-moreover the running time results and the better accuracies.
+ uncertainty.
+ als, while for the decremental procedures the DKBKM Max surpasses the DKBKM Min approach. 6. Conclusion and future research directions
+Other worthwhile future work includes the proposition of novel dynamic clustering techniques by Considering these ideas in more details and developing methods suitable for analyzing such dynamic handling other uncertainty forms are worth investigating.
+ References

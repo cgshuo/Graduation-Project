@@ -1,0 +1,92 @@
+ 1. Introduction interoperability.
+ web service and interface information such as input/output parameters. storing web services information.
+ posed for storing and searching the target web services efficiently [4 satisfying the request. For example, assume that a registry contains an English dictionary service, as shown in Fig. 1 . If we transfer the results of the English we can obtain the results of an English  X  Spanish dictionary service. vices, and a domain ontology and (4) QoS-aware composition schemes. approaches are discussed in Sections 2 and 6 , respectively.
+ services. Formally, the problem of non-redundant web services composition can be stated as follows. q , W i (1  X  i  X  l ) is a set of web services, including parallel executable web services. W input parameters of q and output parameters of web services from W q .A non-redundant web services composition problem is to find sets with the sequence ( W query q and contains only non-redundant web services.
+ web service ws 1 . Thus, we refer to the composition as redundant web services composition. sition is a sequence of the sets W 1 , W 2 , and W 3 , denoted by dashed circles. Web services ws executable web services. The input parameters of ws 6 in W
+W . A detailed explanation on the meaning of each web service will be provided in Section 2 . tions into several non-redundant web services compositions.
+
+The key contributions of our work are as follows:  X  description of non-redundant web services composition.  X  redundant web services compositions from the candidate web services at the backward phase.  X  performance benefits of a non-redundant web services composition.
+ conclude our work in Section 7 . 2. Motivating example eters after it is invoked with all input parameters. Generally, all input parameters must be provided.
+Fig. 5 shows seven web services and a query. A description of the web services are as follows:  X  ws 1 : accepts the book title and author name and returns its ISDN number and cost  X  ws 2 : accepts a credit card number (CCN) and cost and authorizes the payment  X  ws 3 : accepts a social security number (SSN) and returns the user id  X  ws 4 : accepts a social security number (SSN) and returns the user id  X  ws  X  ws  X  ws 7 : accepts the ISDN number of a book and returns its cost.
+ parameters of the query, and the bold-faced paramet ers represent the output parameters of the query. 2.1. Limitations of two-phase approach composition.
+ ws dant web services. 2.2. Our motivation an appropriate composition result.
+ services. 3. The proposed system tectural overview of the proposed system and briefly describe its core components. 3.1. Problem de fi nition We define the non-redundant web services composition obtained in response to a user request. To simplify the presentation of concepts in this paper, we shall use the notation in Table 1 . Formally, the problem of web services composition can be stated as follows.
+De fi nition 1. Let q be a user query, and let C be the sequence of steps ( W properties: (1)  X  ws  X  W 1 , ws in K q in (2) for 2 Q i Q l ,  X  ws  X  W
+De fi nition 2. Minimal web services set
+Let q be a user query and let C be the sequence of sets ( W all ws  X  W i , the sequence ( W 1 ,  X  , W i  X  1 , W i  X  { ws }, W
+De fi nition 3. Non-redundant composition
+Let q be a user query and let C be the sequence of sets ( W when C satisfies q and each set W i (1 Q i Q l ) is a minimal web services set. Example 1. Fig. 7 shows four non-redundant web services compositions satisfying q in Fig. 5 . 3.2. Architectural overview Fig. 8 shows an architectural overview of our system. The core engine is shown in a dotted box. their connectivity before the two phase algorithm is run.
+ returned to the user. 4. Two-phase algorithm for non-redundant composition
+In this section, we describe the two-phase algorithm for computing non-redundant composition. 4.1. Link Index over web services according to their connectivity and implemented as a hash table. The connectivity of two web services is defined as follows.
+
+De fi nition 4. Connectivity of web services
+Let ws i and ws j be two web services in the registry WS . Then the two web services ws ws the key value corresponding to the use of a web service ws by k key value k ws by V ws .
+
+Cost) and the input parameters of ws 2 are (CCN, Cost). Thus ws ws as a key.
+ same web service if ( ws i . in = ws j . in ) AND ( ws i . out = ws web services, such as pre-conditions and effects, semantic matching, and QoS, in Section 4.4 .
+The lookup function for the Link Index is shown in Algorithm 2. If the key value k table.
+ 4.2. Forward phase query. The forward phase operates as follows: First, for W
+W , find new web services that contain q in and the output parameters of web services in W cedure is repeated until we reach q out .
+ didate composition. The first step is an initialization step (Lines 1 rameters equal to q in . P 0 stores q in and P 1 stores P web services that take input parameters of P i ; we start from web services in W that the forward step algorithm will terminate within MAX steps.
+
+W contains the web services ws 1 , ws 3 , and ws 4 , which have P parameters of the web services in W 1 . W 2 includes ws 2 cedure will be repeated until P 3 has an output parameter (OrderID) of query q . Theorem 1. Correctness of the forward phase after obtaining the candidate web services composition C =( W
+Proof. Before the loop is executed, i =1, P 0 = q in , and P rameters of q in .If P 1 contains q out , then the single web services satisfy the query ( C =( W main body of the while loop is executed. If ( q out  X  P i query reaches the outputs of the query. Thus, the algorithm returns the sequence of sets C =( W ness of the forward phase.  X  4.2.1. Time complexity number of examinations in Line 12 is bounded by the total number of web services ( N ) and the the forward phase is O ( N  X  ( N + P )). 4.3. Backward phase 4.3.1. Uncovered parameter backward phase.
+ The definition of UP is given below.
+
+De fi nition 5. Cover
+Let ws be a web service and p be a parameter. We say a web service ws covers a parameter p if p
+De fi nition 6. Uncovered parameters
+Let q be a user query, C be the sequence ( W 1 ,  X  , W l ) satisfying q ,and In ( W
+Then, uncovered parameters ( UP )forthesequence C  X  are defined as follows:
+Example 4. Consider the sequence C given by ({ ws 1 , ws 3 in Fig. 5 .Assumethat C  X  is a sequence of ({ ws 2 },{ ws
+Fig. 11 depicts sets of parameters for computing uncovered parameters. Since In ( W {OrderID} and Out ( W 2 ) is a set of {Authorize}, and the result for In ( W ( W Cost}.
+ On the basis of the definition of UP , we can state the following theorem.
+Theorem 2. Let C be the sequence ( W 1 ,  X  , W l ) and let C Then, W i is a set of minimal web services if for all ws  X 
+Proof. If UP J ( Out ( W 1 )  X  X  X  Out ( W i  X  1 )  X  Out ( W the following equation:
+In the other case, ( In ( W i +1 )  X  q in ) must not be a subset of Case 1.
+
+If we substitute the sequence ( W 1 ,  X  , W i  X  { ws },  X  However, this contradicts the second case of De fi nition 1 .
+ Case 2.
+ This also contradicts the second case of Definition 1 .
+
+Since both cases are contradictory to the second case of Definition 1 , the sequence ( W
+Therefore, each set W i satisfying UP ( Out ( W 1 )  X  X  X  Out ( W nition 2 .  X 
+The logic underlying the above theorem is as follows. If the sequence C =( W eters in UP . 4.3.2. Token and token manager assigned to a web service ws , while the Free List keeps track of unassigned tokens. ager are as follows. 1. Create a token t p for a parameter p
+Token Manager creates a token t p for a parameter p .If t 2. Remove a token t p
+Token Manager removes a token p . 3. Assign a token t p to a web service ws  X  If a web service ws r has a token t p and has other tokens, then Token Manager takes t  X  If ws r has only one token t p , then inserting ws into the composition makes ws 4. Unassign a token t p from a web service ws before ws owned it.
+ ws try to insert ws 1 as shown in Fig. 12 (b). Then, ws 1 obtains token t leasing token t Cost . Thus, ws 7 is a redundant web service in this case. 4.3.3. Details of the backward phase
+The backward phase makes the candidate composition C =( W
+Let W  X  i be a minimal set computed by decomposing the set W uncovered parameters for C  X  are created. Then, whenever a web service ws is inserted into W web service.
+ eral non-redundant compositions by using a depth-first search. The algorithm is invoked by the function length of sequence ( l ) is also obtained from the forward phase. C of q at this time.
+ leaf node to the root node means an answer of non-redundant composition. dant web services. Details on GetSubset will be explained in Algorithm 5. puted in Lines 6 through 12. Uncovered parameters are computed and saved in W indicates that all subtrees of the current node have been visited. nodes if the changes in the current node are reflected in the sibling nodes. Example 6. Running example We will explain the dotted region of the tree.
+
+First, a token t OrderID is created and Backward (3, C , C  X 
+OrderID  X  as an output parameter. In the subsets of { ws 5 they do not have redundant web services. Let us move the right child ({ ws ws 6 obtains a token t OrderID and creates tokens t Authorize ws and ws 7 are { ws 2 , ws 7 } and { ws 2 }. These subsets become the child nodes of the node { ws to insert ws 1 into W  X  1 , the redundant web service ws 7
+At the node { ws 2 }, tokens for ws 2. out are obtained and tokens for ws vices satisfying them in W 1 . The web services ws 1 , ws redundant web services will be the child nodes of { ws 2 }.
+ After the backward phase, the four non-redundant compositions in Fig. 7 are returned to the user. dition ws out  X  UP  X  X  J  X  services in the same subset. If ws obtains tokens for ws out invoking GetSubset recursively in Line 7. contain outputs of UP .
+
+Fig. 14 depicts a tree for generating subsets of ws 1 , ws The process begins with the node a. ws 1 obtains tokens t  X 
+Cost.  X  At this time, ws 1 cannot satisfy the user query since ilarly, the set { ws 1 , ws 4 } is included in the result.
+
+After visiting node g, we can obtain the sets { ws 1 , ws quired to create tokens in CreateToken . Thus, the time complexity of the backward phase is O ( l where N is the total number of web services and P is the total number of parameters. 4.4. Extension mantic matching, and QoS. 4.4.1. Supporting preconditions and effects of the city, whereas the other returns arrivals from the name of the city. effect is the condition that holds once the service has been executed successfully. 4.4.2. Supporting service functionality to use the functionality of a web service during web services compositions.
+Generally, a functionality of a web service can be defined as an action that returns departures from the name of the city can be specified as ( Retrieve , Departure Info ). 4.4.3. Supporting semantic matching the output parameter of ws i is  X  UserID,  X  we cannot combine them into a web services composition.  X  of the two web services ws i and ws j .
+ where ws i . out . OntID denotes the ontology class to which the parameter belongs. 4.4.4. Supporting QoS Details of these approaches are presented in Section 6 .
+ we can obtain non-redundant web services compositions having the minimum cost (or other QoS attributes). scope of this study. 5. Experiments with that of existing state-of-the-art algorithms by using various data sets. 5.1. Experimental setup 5.1.1. Environments system. 5.1.2. Data sets and queries
+Table 2 lists the parameters and their value ranges used to generate the web services workload. N eter domain and it determines the number of distinct parameters.
+ and each parameter is randomly assigned into a web service.
+ reported experimental results are averaged over the entire set of queries. 5.2. Experiments on small-scale data sets
+Fig. 17 compares the efficiencies of our algorithms; the number of web services ( N increases the number of links among web services.
+
+Next, we vary the number of web services ( N w ), while the size of the parameter domain ( S long, which is consistent with the results obtained from Fig. 17 . 5.3. Experiments on large-scale data sets ity with respect to the number of web services. 5.3.1. Comparison with one-phase approaches We first present the experimental results of NRC and BC for the data set L . 80,000 web services.
+ because of the restricted number of web services included in the candidate composition. more than the depth in the composition results.
+ of web services increases.
+
+The NRC and FC methods find all web services that are invoked from q backward phase. 5.3.2. Comparison with the two-phase approach method was mentioned for 2P.
+ we omit 2P from the subsequent graphs in Fig. 21 .
+ increase in the number of parameters. 6. Related work effects of web services, and a domain ontology and (4) QoS-aware composition schemes. in tables, and web services composition search is done by an SQL statement. an optimal composition.
+ tem is concerned only with the web service discovery problem. matching.
+
+A number of studies have focused on QoS-aware composition approaches [13 posed to address both scalability and accuracy based by using QoS objectives of service request. unwanted side effects, effect duplications, and contradictory effects. number of web services.
+ users' navigation history and web page content with weighted suffix tree. 7. Conclusion and future research non-redundant web services. 7.1. Future research direction tem will meet users' expectations better.
+ Acknowledgments search Program/Institute of Logistics Information Technology).
+References

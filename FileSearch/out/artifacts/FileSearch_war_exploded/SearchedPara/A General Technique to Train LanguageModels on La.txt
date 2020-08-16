@@ -1,0 +1,38 @@
+ University of Groningen grammar. 1. Introduction systems (Manning and Sch  X  utze 1999).
+ problem, that of extending FAs or CFGs to become PFAs or PCFGs. We refer to this process as training .
+ is maximized.
+ be trained may be structurally unrelated to the input language model. and ungrammatical sentences.
+ to more accurate approximating language models.
+ to train the CFG, it may not be sufficient to accurately train the FA. general PFAs.
+ the input PCFG and the FA. Within this new grammar, we can compute the expected
+PFA. 174 which does not hold for general (unambiguous) FAs.
+ the KL distance.
+ formalisms can be treated in a similar manner.
+ unambiguous FA on the basis of a PFA (section 5.3). 2. Preliminaries automata are based on Paz (1971) and Starke (1972).
+ disjoint sets of terminals and nonterminals , respectively, S
+R is a finite set of rules , each of the form A  X   X  , where A probabilistic context-free grammar G is a 5-tuple (  X  , N , S , R , p are as above, and p G is a function from rules in R to probabilities.  X  = ( A  X   X  )  X  R as an atomic symbol when it occurs within a string d  X  e operator  X  or by empty space. is of the form w  X  X  , for some w  X   X   X  and  X   X  (  X   X  N )  X  derivation (in G ) is a string d =  X  1  X  X  X   X  m , m  X  0, such that  X  ified otherwise. If  X  0  X  1  X   X  X  X   X  m  X   X  m for some  X  d =  X  1  X  X  X   X  m derives  X  m from  X  0 , and we write  X  0 d  X  from itself. A derivation d such that S d  X  w , for some w derivation. We say that G is unambiguous if for each w one d  X  R  X  .
+ m  X  0, we define p G (  X  d  X   X  ) = m probability p G ( w ) of a string w  X   X   X  is defined to be probabilities of all rules  X  = ( A  X   X  ) with left-hand side A sumtoone.PCFG consistency that is decidable (Booth and Thompson 1973). w , w 2  X   X   X  ,and  X   X  (  X   X  N )  X  such that p G ( S d 1  X  w d d 2 with nonzero probability that derives a string w 1 similar.
+ finite sets of terminals and states, respectively, q 0 , q states, respectively, and T is a finite set of transitions, each of the form r r  X  Q  X  X  q q , q f , T , p M ), where  X  , Q , q 0 , q f ,and T are as above, and p in T to probabilities.
+ and symbol c ranges over the set T  X  .
+ by ( r , w )  X  ( s , w )ifandonlyif w is of the form aw , for some a
+A computation (in M ) is a string c =  X  1  X  X  X   X  m , m  X  tation. If ( r 0 , w 0 )  X  1  X  X  X   X  m ( r m , w m ) for some ( r  X   X  T  X  , then we write ( r 176 defined to be { w  X   X   X  | X  c [( q  X  , w ) c ( q f , )] } w  X   X   X  ,( q ( r , w )  X  Q  X   X   X  , there is at most one combination of  X  FAs.
+ c =  X  1  X  X  X   X  m  X  T  X  , we define p M (( r , w ) c ( s , v )) = p M (( r , w ) c ( s , v )) = 0 otherwise. The probability p to be c p M (( q 0 , w ) c ( q f , )).
+ 3. Expected Frequencies of Rules occur in the right-hand side of any rule from R . For each rule  X  , we define If for some A ,  X  ,  X  , w , w ,and w . Therefore where we define following equations: can derive a recursive definition of outer : for A = S .
+ iteration. 4. Intersection of Context-Free and Regular Languages of generality, that G and M share the same set of terminals  X  . (  X   X  N )  X  Q , S  X  = ( q follows:
+Similarly, each rule ( r , a , s )  X  a uniquely identifies a transition r we take a derivation d  X  in G  X  , we can extract a sequence h sequence h 2 ( d  X  ) of transitions from M , where h 1 and h we define pointwise as 178
+S such that h ( d  X  ) = ( d , c )and S  X  d  X   X  w .
+ linear context-free rewriting systems (Seki et al. 1991).
+PCFG G = (  X  , N , S , R , p G )andaPFA M = (  X  , Q , q 0
+PCFG G  X  = (  X  , N  X  , S  X  , R  X  , p  X  ), where N  X  , S  X  defined by
+If d  X  , d ,and c are such that h ( d  X  ) = ( d , c ), then clearly p 5. Training Models on Models basis of another model. 5.1 Training a PFA on a PCFG Let us assume we have a proper and consistent PCFG G = (  X  , N , S , R , p
+M = (  X  , Q , q determinized. Our goal is now to assign probabilities to the transitions from FA obtain a proper PFA that approximates the probability distribution described by well as possible.
+ that for each r , w , c and s , 1 (( r , w ) c ( s , )) = 1if( r , w ) otherwise.
+ frequency of a transition  X  in such computations is given by
+PFA (  X  , Q , q 0 , q f , T , 1 ). Let  X  = ( r a  X  s )  X  T and  X  = (( r , a , s ) properties of function h , we can now rewrite E (  X  )as terms of the expected frequency of rule  X  = (( r , a , s ) inner ( a ) = 1. Therefore, function p M for each  X  = ( r a  X  s )  X  T as That such a relative frequency estimator p M minimizes the KL distance between p p M on the domain L ( M ) is proven in the appendix.
+ 5.2 Training a PCFG on a PFA Similarly to section 5.1, we now assume we have a proper PFA q function p G that lets proper and consistent PCFG (  X  , N , S , R , p ambiguous, there may be cases in other fields in which we may assume grammars are unambiguous. 180  X  in those derivations is given by  X  = ( A  X  X 1  X  X  X  X m ) p
+G for each  X  = ( A  X   X  )as p similar claim from section 5.1. 5.3 Training a PFA on a PFA
+We now assume we have a proper PFA M 1 = (  X  , Q 1
+M proper PFA (  X  , Q 2 , q 0,2 , q f ,2 , T 2 , p 2 ) approximates the KL distance between p 1 and p 2 on the domain L ( M 2 then to apply the algorithm from section 5.2. The obtained probability function p opposed to approximate solutions by iteration.
+ Appendix Leibler distance between p G and p M , restricted to the domain L ( restriction, the KL distance is given by This can be used for many applications mentioned in section 1. For example, an FA approximating a CFG G is guaranteed to be such that L ( M practical approximation algorithms. However, if there are strings w such that w / and p G ( w ) &gt; 0, then (25) is infinite, regardless of the choice of p p to the domain L ( M ) and normalize it to obtain show that our choice of p M minimizes As Z is independent of p M , it is sufficient to show that our choice of p
+Now consider the expression 182 choice of p M in section 5.1, given by properness.
+ # ( w ) = c , c 1 (( q 0 , w ) c  X  c ( q f , )). We rewrite (30) as (31) implies p M ( w ) &gt; 0 for all w such that w  X  L ( impossible for w /  X  L ( M ), the value of is determined solely by p G and by the condition that p w that is maximized, or alternatively that is minimized, under the constraint that p M ( w ) &gt; 0 for all w such that w p ( w ) &gt; 0. For this choice of p M , (29) equals (35). choice of p M , (29) equals (35). It follows that the choice of p with the choice of p M that maximizes (30), which concludes our proof. 184

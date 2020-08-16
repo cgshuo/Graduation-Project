@@ -1,0 +1,74 @@
+ 1. Introduction [18]; and in XML data clustering to determine semantic similarities between XML data [39]. ing [12].
+ plex matches than of discovering simple ones.
+ radically. As an attempt to improve matching efficiency, recent schema matching systems have been developed challenge.
+ used as measures for matching performance.
+ hybrid in nature and is more flexible both in adding new matchers and in modifying the existing ones. Thus, to summarize, the main contributions of our work are: representation for schemas to be matched.
+ We introduced a new structural matching algorithm based on Pr X fer encoding. against large number and large-scale schemas.
+ applicability of our approach, both in terms of matching effectiveness and matching efficiency. ing remarks and our proposed future work are reported in Section 7. 2. Preliminaries XML schema (XSD).
+ attribute uses, is left for ongoing work.
+ trees, which are defined as follows.
+ Definition 1. An ordered labeled tree T is a 4-tuple T  X  X  N declaration.
+
+E T  X f X  n i ; n j  X j n i ; n j 2 N T g is a finite set of edges, where n two nodes.
+ and cardinality . l : N T # Lab NT is a mapping label assigning a label from the given Lab
+Node order is determined by a post-order traversal of the tree. In a post-order traversal, a node n its post-order number after its children are recursively traversed from left to right. parent.
+ used in the literature. Fig. 1 a and b shows the schema trees of the two XML schemas. ferent similarity measure functions called matchers.
+ n and m elements, respectively, the two types are: Simple matching : For each node n ST 1 2 ST 1, find the most semantically similar node n shown in Fig. 1 represents a simple matching.
+
+Fig. 1 b represents a complex matching. schema to correspond to one or more simple nodes from another schema. and produces a similarity value between 0 and 1. It is represented as sim  X  n from source schema and target schema, respectively.
+ set of Pr X fer sequences.
+ allowed.
+ (3,2), (3,3), (3,4), (4,1), (4,1), (4,3), (4,4)}. In total, there are 4 sion of the regular Pr X fer sequence is exploited in the next section. 3. The XPr X M system preparation and schema matching . First, schemas are parsed using a SAX parser part discovers the set of matches between two schemas utilizing both sequences. 3.1. Schema preparation schemas are parsed using the SAX parser and are represented internally as ST1 and ST2 . sequence method. 3.1.1. Pr X fer sequences construction solidated Pr X fer sequence CPS , proposed in [45].
+ the schema tree. For more details see [45].
+ Professor, Faculty, Staff, People, CS Dept US ).
+ 3.1.2. CPS properties CPS =( NPS , LPS ) from a schema tree ST, we could classify these properties into:
+Unary properties: Let n i be a node having a post-order number k , 1. atomic node : n i is an atomic node iff k R NPS ; 2. complex node : n i is a complex node iff k 2 NPS ;
+Binary properties: 2. sibling relationship : Let CPS i  X  X  k i ; LPS i  X  and CPS 3.2. Schema matching phases X  linguistic matching , compatible nodes identification , and matching refinement . presents intricate problems mainly due to the following reasons: els and different possible names and structures.
+
+Computational cost problems : When deciding if an element n linguistic matcher and the structural matcher .
+ stitute the matching result.
+ and ST2 be n and m , respectively. 4. Matcher algorithms (3) matching refinement. 4.1. Linguistic matching compatibility . 4.1.1. Name matcher ogy. To compute name similarity between two strings s 1 and s es ? {Under,Grad,Courses}. We then determine the name similarity between the two sets of name tokens T the average best similarity of each token with a token in the other set. It is computed as follow:
+To measure the string similarity between a pair of tokens, sim  X  t that might be useful in the generation of an initial mapping. The first one is on the number of different trigrams in the two strings: for short strings such as person names. The Jaro similarity measure is given by where M is the number of matching characters and t is the number of transpositions. similarity values, according to the procedure given in Algorithm 1. similarity value that equals 1.0. Algorithm 1 : Name matching algorithm Require : LPS ST 1 &amp; LPS ST 2
+Ensure : NamesimilaritymatrixNsim 1: Nsim  X  X ( 0; 2: for i  X  1to n do 3: s 1 ( LPS ST 1  X  i : name ; 4: for j  X  1to m do 5: s 2 ( LPS ST 2  X  j : name ; 6: sim 1 ( sim edit  X  s 1 ; s 2  X  ; 7: sim 2 ( sim tri  X  s 1 ; s 2  X  ; 8: sim 3 ( sim Jaro  X  s 1 ; s 2  X  ; 9: Nsim  X  i  X  j ( combine name  X  sim 1 ; sim 2 ; sim 3  X  ; 10: end for 11: end for 4.1.2. Data type compatibility type of nodes. We make use of built-in XML data types hierarchy to the same category (such as integer and short) is set to 0.8. the above process is a linguistic similarity matrix Lsim .
+ Require : LPS ST 1 &amp; LPS ST 2 &amp; Nsim
+Ensure : LinguisticsimilaritymatrixLsim 1: Tsim  X  X ( 0; 2: Lsim  X  X ( 0; 3: for i  X  1to n do 4: dt 1 ( LPS ST 1  X  i : datatype ; 5: for j  X  1to m do 6: dt 2 ( LPS ST 2  X  j : datatype ; 7: Tsim  X  i  X  j ( compCoeff  X  dt 1 ; dt 2  X  ; 8: Lsim  X  i  X  j ( combine ling  X  Nsim  X  i  X  j ; Tsim  X  i  X  j  X  ; 9: end for 10: end for 4.2. Compatible nodes identification how to identify compatible nodes. 4.2.1. Structural matching contexts depending on its position in the schema tree.
+ The child context of an atomic node is an empty set.
+
+The leaf context of a node n i is defined as the set of leaf nodes of subtrees rooted at node n node is an empty set too.
+
+The ancestor context of a node n i is defined as the path extending from the root node to the node n the root node is an empty path.
+
+Example 5. Considering the schema tree ST 1of Example 3 , child _ context  X  n ancestor _ context  X  n 1  X  X  NULL , ancestor _ context  X  n Section 3.1.2 as follows: an atomic node (atomic node property) and its child context set is empty.
+For example, consider the schema tree ST 1ofExample 3 , nodes f n two children n 7 ; n 8 , which are leaves. They form the leaf context set of node n consider the schema tree ST 1of Example 3 , the ancestor context of node n the ancestor context of node n 9 (atomic node) is the path n 4.2.2. Structural context similarity algorithm contexts, we need to compare their corresponding sets.
+ of best similarity values. gap between two nodes and the gap vector of a node.
+ numbers.
+ vector.
+
+Example 6. Considering ST 1ofExample 3 , the gap vector (gapvec) of node n Algorithm 3 : Child context measure function Require : n ST 1 &amp; n ST 2
+Ensure : child context similarity child sim 1: if n ST 1 or n ST 2 is an atomic node then 2: return 0; 3: else 4: sum ( 0; 5: child set 1 ( extractChildNodeSet  X  n ST 1  X  ; 6: child set 2 ( extractChildNodeSet  X  n ST 2  X  ; 7: for i  X  1to child set 1 : size do 8: n i ( child set 1  X  i ; 9: max ( 0; 10: for j  X  1to child set 2 : size do 11: n j ( child set 2  X  j ; 12: sim ( linguistic  X  n i ; n j  X  ; 13: if sim P max then 14: max ( sim ; 15: end if 16: end for 17: sum ( sum  X  max; 18: end for 19: child sim ( average  X  sum  X  ; 20: return child sim ; 21: end if tween two vectors (see Algorithm 4).
+ Algorithm 4 : Leaf context measure function Require : n ST 1 &amp; n ST 2
+Ensure : leaf context similarity leaf sim 1: if n ST 1 or n ST 2 is an atomic node 2: return 0; 3: else 4: gapvec 1 ( nodegapVector  X  n ST 1  X  ; 5: gapvec 2 ( nodegapVector  X  n ST 2  X  ; 6: leaf sim ( CM  X  gapvec 1 ; gapvec 2  X  ; 7: end if 8: return leaf sim ;
+Example 7. Considering the two schema trees shown in Example 3 , the leaf context set of ST 1 : n  X  n  X  11  X  X  X f n 2  X  1  X  ; n 3  X  2  X  ; n 7  X  3  X  ; n 8  X  4  X  ; n n  X  2  X  ; n 7  X  3  X  ; n 8  X  4  X  ; n 9  X  6  X  ; n 10  X  7  X  ; n
+CM  X  v 1 ; v 2  X  X  1 : 0. Then, the leaf context similarity between nodes ST 1 : n similarity between ST 1 : n 5 and ST 2 : n 4 is 0.82 and ST 1 : n ancestor contexts. As mentioned before, the ancestor context for a given node n pute the ancestor similarity between two nodes n i and n j in [8]: LCS  X  P ST 1 ; P ST 2  X  : This score is used to ensure that path P paths represented as node sequences P ST 1  X  n 1 n k and P and th is a predefined threshold: length of path P ST 1 . The normalized score is given by: GAPS  X  P ST 1 ; P ST 2  X  : This measure is used to ensure that the occurrences of the P will be less than 1. Eq. (7) presents the normalized measure: the length difference LD between P ST 2 and LCS  X  P ST 1 ; P uates the length difference can be computed as: These scores are combined to compute the similarity between two paths P 4.2.3. Discovering compatible nodes predefined threshold th , sim  X  n i ; n j  X  P th , then the two nodes are compatible nodes. a set of compatible node pairs.
+ f X  ST 1 : n 1 ; ST 2 : n 1  X  ;  X  ST 1 : n 4 ; ST 2 : n 3  X  ;  X  ST 1 : n 4.3. Matching refinement ible node pair. To this, we first give a definition for the compatible node category.
+Definition 8. A category of a given compatible node n i is a set of nodes including: all immediate atomic children nodes of n i , all non-compatible (complex) nodes which are immediate children of n these compatible nodes and the associated category for each one. presented in Section 4.2. For example, the category ST 1 : C
+ST 2 : C 1  X f n 2 g . At first, we extract the ancestor context for each node. Consider P
+ST 1 : n 2 and P 0 2 represents the ancestor context of ST 2 : n by sum function and select the best candidate(s) based on a predefined threshold. many false positive candidates are pruned. Furthermore, we can easily discover complex matchings. 4.3.1. Discovering complex matchings problem partially. To fully solve the problem, we should cope with complex matchings. compatible category C j from the target schema, the resulting match is a complex match.
+Example 10. From our running example, the two categories ST 1 : C ing algorithms on their nodes, we obtain the complex match, ST 2 : C
+ST1 . Moreover, the two categories ST 1 : C 4 and ST 2 : C nodes, we obtain the complex match, ST 1 : C 4 : n 7 matches  X  ST 2 : C tion of the two elements FirstName and LastName from the second schema. 4.4. Complexity analysis [21], we can prove the overall time complexity of our system as follows: complexity of O  X  nS  X  .
+ O  X  n 2 S 2  X  .
+
+XML schema tree. Consider this number is given by c  X  n k complexity of O  X  c 2  X  X  O  X  n 2  X  X  .
+ sponding compatible category. Consider the number of compatible nodes c 0  X  atomic nodes. This phase is performed with a time complexity of O  X  c 0 n 0 2  X  . phases. The following section experimentally confirms this complexity. 5. Experimental evaluation 5.1. Data sets in Table 5 , Part (B), are used to validate matching efficiency. 5.2. Measures for match performance and the number of nodes to measure matching efficiency.
+
+Precision P can be computed from P  X  j B j j B j X j C j , 4 mappings  X j B j X  to total identified mappings  X j B j X j C j X  . Recall R is computed by R  X  trade-off, computed by F -measure  X  2 P R P  X  R . 5.3. Experimental results 5.3.1. Matching quality Flooding SF (RONDO) system and we compared them to our system. Results are summarized in Fig. 5 . only element-level matchings with F -measure of 94%.
+ sure. Fig. 6 shows matching quality for these scenarios.
+ scenario, since precision quantifies efforts needed to remove false positive candidates.
+S 1to S 2 and from S 2to S 1. 5.3.2. Matching efficiency marized in Fig. 7 .
+ shown in Fig. 7 d.
+ complete XPr X M system). Fig. 8 shows the matching response time for these scenarios. approximately 63%. 5.3.3. Matching quality/matching efficiency cost ratio denoted by g matcher . The data type matcher is evaluated as follows: adding the matcher (i.e. 30  X  23 16 23 100). For the structural matcher is computed as follows: 63% improvements in matching quality, this requires only matching efficiency cost of 11%. 6. Related work discuss the usage of Pr X fer sequences. 6.1. Schema matching similar.
+ However, we introduced the concept of compatible nodes in order to cope with complex matchings.
+LSD system is called iMap [10] and is used to discover complex matching, but it lacks matching performance. similarity between each attribute of the second database and each category in the first one. with good matching quality, it does not provide an efficient/scalable solution. scale schemas, such as [44,43] . 6.2. Pr X fer sequences be found in [27]. 7. Conclusions tree structural information in Number Pr X fer Sequences.
+ Acknowledgement Stefanie Quade for improving the quality of the paper.
+
+References

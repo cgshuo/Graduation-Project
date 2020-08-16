@@ -1,0 +1,157 @@
+ 1. Introduction organization boundaries can raise serious privacy concerns.
+
+A step towards the protection of privacy is to remove personal identi credit card numbers, before data is released. However, such a protection is insuf recoded as b [20,29] , 100** N and are no longer distinguishable from each other. Fig. 1 , attribute Disease is an SA and other attributes form a QI. indistinguishable from at least k -1 other individuals.
+ example, in a homogeneity attack [1] , the adversary can fi in the EC, even though the EC contains k or more tuples.
+
+EC in the table contains at least  X  well-represented SA values. In principle, values in the person's EC. Several measures were proposed to quantify the meaning of
+These include entropy  X  -diversity [1] , recursive ( c ,  X  on [1,2] .
+
+De fi nition 1. (  X  -diversity) Let T be a table, E be an EC in T based on QI and f
+E . E satis fi es the recursive ( c ,  X  ) -diversity if f integer constant; E satis fi es the simple  X  -diversity if f T satis fi es the given diversity.
+
+For example, in Fig. 1 , table (b) satis fi es the recursive (3,2)-diversity and table (c) satis
+Since existing diversity measures are de fi ned in terms of speci discuss these problems in the next subsection. 1.1. Problems of narrow eligible ranges existing  X  -diversity algorithms.
+De fi dataset.
+ privacy requirement that provides suf fi cient protection.
+ measures. For example, the largest  X  that a data owner can specify for the simple 1 f decreases. Thus, an SA distribution limits the maximum  X  of the simple distribution limits the maximum  X  if c is fi xed and the minimum c if
+If the eligible range of an original table is narrow, it will be dif
+UCI repository [11] for simple  X  -diversity, an algorithm of the simple values it has. The eligible ranges of the datasets in Table 1 for ( c , of Adult dataset using Salary as the SA is c  X  4 if given two types of privacy risks. have a certain SA value. person is within a very small set. 3 seeing the data.
+
+To reduce the risk of negative disclosure using existing  X  narrow eligible range will limit the data owner's ability to reduce the risk.  X  -diversity and choose  X  =2, the table (c), which satis fi b wants to use a ( c ,  X  )-diversity algorithm to anonymize table (a) with c =3 and has hepatitis . This is because Bob is in EC 1, whose QI value is
+In general, to reduce the risk of positive disclosure using existing 1.2. Our contributions and SA values to generalize, it is more likely to produce anonymous data of higher utility.
+To allow the generalization of SA values, we need to de fi 1. We propose a functional (  X  ,  X  )-diversity, which extends existing privacy breaching. 2. We analyze strength of various  X  -diversity measures and establish conditions for an existing measures. retained in (general) QI values. We present a heuristic algorithm to use this partial order to for given original tables. 4. We compare our algorithm with two existing  X  -diversity algorithms, the Incognito-based ( c , requirements that cause the other methods to produce empty output. On the other hand, for ( achieve this with little performance penalty. 1.3. Related work literature.
+ methods, and local-recoding methods [8,18] .
+ be prevented by k -anonymity. Ef fi cient heuristic implementations of the existing algorithms that extend ef fi cient k -anonymity algorithms [1,19] and several ef attack [22] , minimality attack [10] , BCF attack [23] , and composition attack [24] . knowledge of the adversary was proposed in [25] , which also de values.
+
+Privacy measures for numerical sensitive data were studied in [26 speci fi ed threshold t . However, t -closeness does not speci table is heavily skewed. Therefore, like other existing  X  original table has a heavily skewed SA distribution.
+ measuresthedifferencebetweentheadversary's prior(  X  1 ) andposterior( d and the ratio of posterior and prior beliefs is greater than [34] for using synthetic data generation as the anonymization technique to publish maps. directly in two separate tables, which can be jointed using group id. the balance between privacy protection and utility preservation [41,42] . 1.4. Roadmap
+The rest of the paper is organized as follows. In Section 2 ,wede 2. Functional (  X  ,  X  )-diversity
+Let A be the set of attributes of data tables, consisting of two disjoint subsets, quasi-identi any data tuple t , t [ QI ] and t [ SA ] denote its QI and SA, respectively. Each attribute A has a taxonomy T A de fi ned as a tree structure. Leaf nodes of T it is a general tuple .
+
+De fi nition 5. (Generalization) Let v and v  X  be two values of an attribute. We say that v covers v or v is an ancestor of v  X  in the taxonomy. Let t 1 and t t [ S ]  X  t 2 [ S ] (or t 1  X  t 2 if S = A ), if for each attribute A
+De fi and t 2 belong to the same EC iff (if and only if) t 1 [ QI ]= t then t [ QI ] is also the QI of E .
+
+De fi
+The induced frequency of a in E is where original, and w ( a )=0, otherwise.
+ attributed to the fi rst tuple of table (a) is 1/(1+1)=0.5, but the frequency of hemal disease . Also, in the EC 1 of QI value b [20,29] , 1000*
+De fi nition 9. (Cumulative frequency) Assume that the base SA values are a f  X  f 2  X  X  X  X  f m . We call f k the k th dominant SA frequency and a dominant SA values is F ( k )=  X  i =1 k f i .
+
+Example 10. In Fig. 3 , according to table (b), for EC 1 of table (a) (with QI value F (1)=0.5, F (2)=0.75, F (3)=1 and F (4)=1.
+
+De fi nition 11. (Functional (  X  ,  X  )-diversity) A partition P of a table T satis short) if for each equivalence class E , F ( k )  X   X  ( k ), for every 1
+SA values and  X  ( k ) is an increasing function over [1, m ] with
+Obviously, there can be many possible bounding functions of cumulative frequencies. To be speci function in this paper.
+In general, 2  X   X   X  m and 1  X   X   X  b 1 (because under (  X  ,  X  (1)=  X  =0.5,  X  (2)=0.75,  X  (3)=1 and  X  (4)=1.
+
+Theorem 13. Let E be an equivalence class in an anonymous table that satis o is among one of the k dominant SA values.
+ of o to be a is l ( t [ SA ], a ) since only base values covered by t [ SA ] are probable. Thus, values of E . Then, Pr [ S ]=  X  i =1 k Pr [ a i ], where a therefore, Pr [ S ]= F ( k ). Since E is (  X  ,  X  )-diversi the tuple are generalized to the roots of their taxonomies.
+
+De fi nition 14. (Utility measure) The information of a value v in a taxonomy is Iv  X  X  = 1 information retained by G relative to information in the original dataset O , that is, um G  X  X  =
+Example 15. In Fig. 3 , the information of tuple 1 or 2 of table (a) is 1 then the utility of table (a) is um G  X  X  = 13 12  X  3 =0 :
+With the privacy and utility measures as we de fi ned, the optimal (
+Problem 16. Given an original dataset T , a privacy requirement ( satis fi es (  X  ,  X  )-diversity and maximizes um ( G ).
+ Theorem 17. The optimal (  X  ,  X  ) -diversity problem is NP-hard.
+Proof. (Sketch) The (  X  ,  X  )-diversity problem can be reduced to a simple
+Because the optimal k -anonymity problem is NP-hard [13] , so is the optimal ( 3. Strength of various  X  -diversity measures
+In this section, we compare the (  X  ,  X  )-diversity, the ( c , a speci fi c(  X  ,  X  )-diversity where  X  = u .
+
+De fi nition 18. (Strength of requirements) A privacy requirement r dataset that satis fi es r 1 also satis fi es r 2 .
+
+Lemma 19. A simple  X  1 -diversity is stronger than a simple diversity if  X  1  X   X  2 and c 1  X  c 2 .
+
+We only have a suf fi cient condition for the ( c ,  X  )-diversity because for ( c , partial order.
+
+First, let us compare the strength of (  X  , u )-diversity and simple bound simple  X  -diversity that is stronger than a given (  X  -diversity requirement, so that the output of an existing simple requirement.
+
+Theorem 20. A simple  X  -diversity is stronger than a (  X  , u ) -diversity iff u cumulative frequency of the fi rst k dominant SA values and that
+By De fi nition 1 , simple  X  -diversity requires that the k cumulative frequency Fk  X  X  =  X  k i =1 f i  X  k  X  , for 1  X 
+F ( k )  X   X  ( k ), where
+We now show that  X  ( k )  X   X  ( k ) for 1  X  k  X  m . Because u k  X   X   X  + 1  X   X  (Only if) We prove by contradiction. Assume that a simple
+Recall that 1 u  X   X  b 1. Let  X  = 1 u and  X  = u  X   X  .By De that contains u  X   X  tuples with distinct base SA values. In this EC, since f  X  -diversity and not the (  X  , u )-diversity. This contradicts the assumption that this simple diversity.  X 
+Among all the simple  X  -diversity requirements stronger than the ( anonymous data obtained under this simple  X  -diversity requirement will not only satisfy the ( maximum utility.
+
+Corollary 21. The simple  X  1 -diversity is the weakest simple Proof. Follows Theorem 20 and Lemma 19 .  X 
+Example 22. In Fig. 4 , the x -axis is k , the number of dominant SA values, and the y -axis is diversity, the strongest (  X  ,  X  )-diversity speci fi ed using diversity that is stronger than the (  X  , u )-diversity (represented by line EGJ).
+Next, let us compare the strength of (  X  , u )-diversity and ( c , requirement that is stronger than a given (  X  , u )-diversity requirement if both c and determine one of c and  X  , assuming the other is fi xed.
+
+Theorem 23. A( c ,  X  )-diversity with m +1  X  m ( c ,  X  )-diversity with 1  X  c  X  m  X  1
+Proof. (If) Similar to the proof of Theorem 20 , we derive a function of the fi rst k dominant base SA values, and show that  X  ( k ) diversity. We consider two cases.
+
+Case 1: 1  X  c  X  m
+We show that this ( c ,  X  )-diversity is stronger than the ( f )  X  c  X  ( m  X   X  +1)  X  f  X  . Since c  X  m  X  1
+Solving the previous inequality for f 1 results in f 1 b 1
+Fk  X  X  =  X  k i =1 f i b k u . Therefore, this type of ( c ,  X  k  X  X  =
+Since  X  k  X  X   X   X  k  X  X  N  X  + 1 that  X  ( k )  X   X  ( k ), for 1  X  k  X  m .
+
+Case 2: m +1  X  m
+We show that this ( c ,  X  )-diversity is stronger than the ( f b 1 u because
+This ( c ,  X  )-diversity also requires F ( k ) b  X  ( k ), where 1  X  k  X  u ,  X  ( k )=1  X   X  ( k ) for u +1  X  k  X  m , and the ( c , (Only if). We prove it by contradiction.
+
+Case 1. Assume that a ( c ,  X  )-diversity with m +1  X  m u  X  1  X  X   X  m  X   X  +1  X  X  ( c cannot be less than 1).
+
+Since this assumption is true for all 2  X  u  X  m and 1 u  X   X  b values, or equivalently (by De fi nition 18 ), every dataset that satis c  X  2 and there are 5 base SA values.
+ one of the remaining 4 base SA values. Since f 1 = 120 432 ( c ,5)-diversity for any c  X  2. But, since f 1 =0.277 N 0.25=
+Case 2. Assume that a ( c ,  X  )-diversity with 1  X  c  X  m cannot be larger than m ).
+
+Similar to Case 1, we consider a special situation where m =5, u =4, f = 80 288 =0 : 278 b 1  X  52 288 + 52 288 =0 : 361 = c  X  f m  X  1
+Again, the weakest ( c ,  X  )-diversity stronger than the given (
+Corollary 24. A ( c ,  X  ) -diversity where m +1  X  m u  X  1  X  X   X  m  X   X  +1  X  X  ;a ( c ,  X  ) -diversity where 1  X  c  X  m +1  X  m Proof. Follows directly from Theorem 23 and Lemma 19 .  X  weakest ( c ,  X  )-diversity that are stronger than the (  X  stronger than the weakest simple  X  -diversity represented by line DGJ. 4. Sequential sweep algorithm labeled by a unique QI value. If an EC does not satisfy the given ( heuristic order of QI values and then discuss main steps of the algorithm in some details. 4.1. A heuristic order of QI values
+Without loss of generality, we assume that the QI consist of attributes A the lattice de fi ned by taxonomies of these attributes. For each QI value q , q [ A in the taxonomy of A i at some level (assuming the root is at level 0). We use L given a value, we can easily fi nd its S i , j and L i , j de fi ne the amount of information retained by a QI value as follows.
+First, consider any value in a single attribute, say A i , at level L as level of a taxonomy tree may cover different number of leaves, I ( S value in S i , j . Next, consider a QI value q such that q [ A information retained by q is given by Notice that different QI values may retain the same amount of information.
+De fi nition 26 . (Order  X  I ) The level vector of a QI value q is v value q precedes another QI value q  X  (written q  X  I q  X  )if v and v [ h +1] N v  X  [ h +1]).
+ b 0.5,0,0 N , as shown in Fig. 5 (b). Thus, a 1 b 1  X  I a 1 b 0 general than), but can be ordered by  X  I .
+
+Proof . We prove it by contradiction. Let the vectors associated with q , q v
+Since v q q [ A i ] are ancestors of q [ A i ]. Since the taxonomy is a tree, q [ A [ A ]= q 2 [ A i ]. But, this implies q 1 = q 2 , a contradiction.
+De fi nition 30 . (Next EC) Let q 0 be a base QI value of a base tuple t and q next EC of t based on  X  I is q  X  such that q  X   X  q 0 , q  X 
+Example 31 .In Fig. 5 (b), if the EC of QI value a1b0 contains two tuples t next EC for t 1 is the EC of a0b1 and the next EC for t 2 4.2. The algorithm subsection and leave the details to subsequent subsections.
+ algorithm attempts to fi nd more ECs.
+ same level vector. There are H =  X  d i =1 h i items in V , where h
+The algorithm also maintains a list of ECs, called the closedECList, in which every EC satis requirement. The Step 3 initialize closedECList.
+ 10). The algorithm will then consider the next EC in the ECList.
+When the previous process terminates, either all ECs satisfy the ( most general QI value) is left to consider. If this last EC does not satisfy the ( generalize the SA values of some tuples in this EC in Step 11. Finally, in Step 12, the anonymous table is returned.
+ Theorem 32. The time complexity of Sequential Sweep Algorithm is O H + h
+H =  X  d i =1 h i ,h i is the height of the taxonomy of QI attribute A fi nal destination EC for each tuple. So, it takes OH  X  T jj  X  X  for the algorithm to Steps 5  X  10). Generalizing SA values for T jj tuples takes Oh
+OH + h SA  X  X   X  T jj  X  X  .  X  4.3. Generalize SA values
+If the input table or the last EC does not satisfy the given ( (  X  ,  X  )-diversity requirement.
+ values. Suppose this time tuple 2 is selected for generalization. After that, the dataset satis results of (0.5,3)-diversity is table (a) in Fig. 3 . 4.4. Select tuples to sweep
+EC, a be the dominant base SA value and f ( a ) be its induced frequency. According to De effectively reduce skewness of SA distribution only if l ( t [ SA ], a ) removal maximizes the reduction of the induced frequency of the dominant base SA value. b 3 5 4.5. Find next EC
+TolocatethenextECforagivenbasetuple t inthecurrentEC,afunction (null if the tuple is currently not in any EC), and the set V of items. First, it subsequenttothecurrentitemwhoselevelvector v satis fi esthefollowingconditions: v [0] the current item, and for 1  X  i  X  d , v [ i ]  X  v t [QI] [ i ], where v [ i ]isthe i represented by v (that is, the levels v [ i ]) and information about t [QI] (that is, each t [ A by v [ i ])touniquelyidentifyaQIvalue q ,suchthat q  X  t [QI]and v 4.6. Multiple sensitive attributes ( a ) for all SA attributes, where a i is the dominant base SA value in SA the tuples in the EC to their respective Next ECs . 5. Experiments protection than k -anonymity, and 1-D  X  -diversity is the most ef such as Mondrian [6] and Anatomy [2] in our study.
+ with a 2.8 GHz processor and 1 GB RAM.
+ 5.1. Algorithms for (c,  X  )-diversity and simple  X  -diversity
+In this section, we brie fl y review the Incognito algorithm for ( c , [7] , both of them are the most ef fi cient in their respective categories. 5.1.1. The Incognito algorithm for (c,  X  )-diversity graph. A generalization is represented by an i -dimensional vector. For example, the 3D vector the value in v  X  is at one level higher than the value in v .
+Given a data table and a set of taxonomies of attributes. The algorithm
+The time complexity of this algorithm is O T jj + 5.1.2. The 1-D algorithm for  X  -diversity space and a partition of tuples into buckets based on SA values. fi re fl respective buckets based on their mapped QI values.
+
+The time complexity of this algorithm is O T jj +2 5.2. Privacy protection
+Since there is no standard measure of privacy, we decided to use ( requirement, we specify the best  X  -diversity requirements that provide suf
+In this experiment, we measure the excessive protection made by different methods.
+De fi nition 35. (Excessive protection) Let f 1 , f 2 ,..., f respect to a (  X  ,  X  )-diversity requirement is de fi ned as eE  X  X  = cumulative frequency and the bounding function given in De min E  X  P  X  f eE  X  X g .
+ over all the ECs of the anonymous dataset.
+ (  X  excessive protection of CLD and 1DLD, for each given (  X  ,
+De fi CLD and 1DLD.
+ diversity requirements in the x  X  y plane of Figs. 9 and 10 . CLD.
+ example, if the (  X  ,  X  )-diversity requirement is  X  =0.4 and on the ( c ,  X  )-diversity requirement where c =2 and  X  =4; but if the ( minimum excessive protection may be from a totally different partition based on a ( c ,  X  1DLD is similar.
+
+Fig. 12 shows more details for cases where a given (  X  ,  X  k ( dataset and the (0.45,4)-diversity requirement.
+ not included in Fig. 13 . 5.3. Comparison of utilities Information , Classi fi cation Accuracy and Count Query as three utility measures. 5.3.1. Information
+In Figs. 14 and 15 the utility is measured by the information de recoding scheme.
+
+In this experiment, QI and SA attributes were treated equally. However, it is not dif signi fi cant role. 5.3.2. Accuracy
+In this experiment, we measured the utility of anonymous data in terms of the classi number of classi fi cation rules.
+
+We used the ID3 algorithm [47] to learn decision trees fi set.
+
+We de fi ne the ratio of classi fi cation accuracies to be rca = accuracies.
+ information but has lower classi fi cation accuracy.
+
+As a slightly different yet related measure of utility, we also considered the number of classi learned from a dataset that has a certain classi fi cation accuracy and covers (i.e., satis classi fi cation accuracy and covers 4320 tuples. We say that a classi number of covered tuples).
+ and CLD. 5.3.3. Count query query, the count query , of the following form. where b i (1  X  i  X  s ) is a value in the taxonomy of attribute A and c i is the fraction of count contributed by t [ A i ]de
+We de fi ne the relative error of a count query to be rerror =| ACT count queries and we reported the average relative errors in Figs. 19 and 20 . becomes stronger.
+ algorithms on one-dimensional queries are very small.
+ reports relative errors (on the y-axis) of 1D count queries on various speci becomes stronger. 5.4. Execution time
+In this experiment, we considered the execution time of the three algorithms under various ( satisfying the given (  X  ,  X  )-diversity are obtained by a brute force search. For example, to algorithm starting with  X  =2 and tried each subsequent  X  until the output table satis fi nd the best output of CLD, we ran the algorithm for various combination of c and  X  -diversity and ( c ,  X  )-diversity requirements that guarantees the given ( measures typically has much less utility than those obtained from the brute force search.
+Fig. 22 shows the execution time of the three algorithms for various ( requirement increases. Fig. 22 (b) shows the similar results.
+It is worth mentioning that the performance of CLD may seem to be identical for different ( because the same c and  X  may be found to satisfy different ( fi nd these c and  X  for these (  X  ,  X  )-diversity requirements. The 1DLD also behaves similarly. 6. Conclusion
+In this paper, we propose a new  X  -diversity measure called the functional ( diversi fi ed anonymous data. We compare our algorithm with two state-of-the-art interesting to extend our method to work on numeric attributes as well. In this paper, we use ( adversary needs to defeat our system, in a way similar to [50] . Acknowledgment The work of this paper was supported in part by NFS grant IIS-0524612.
+References

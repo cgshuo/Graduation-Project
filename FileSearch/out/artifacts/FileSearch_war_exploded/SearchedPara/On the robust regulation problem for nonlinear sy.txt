@@ -1,0 +1,53 @@
+ 0. Introduction
+Fuzzy logic control techniques have been proposed as an problems in dynamic systems. These techniques represent a with uncertainties in such systems. In particular, the fuzzy method based on the computational rule of inference and model is still unavailable for the fuzzy control design.
+In the past decade, Takagi X  X ugeno X  X  fuzzy models (T X  X ) have system has been addressed from the so-called fuzzy dynamic model which is composed by a family of local linear models smoothly connected through fuzzy membership functions. More-the main reason why a number of methods have been recently Won, 2006 ; Sala and Arin  X  o, 2007 ).
+
+On the other hand, the most frequently studied problem in disturbance (sometimes also referred to as the generalized loop system in which all trajectories are bounded and the 2005 ). The peculiar aspect of this design problem is the
+Huang and Lin (1994) and Huang (1995) extended the results including the very important case of periodic signals, and demonstrated that the solvability of the output regulation problem is equivalent to the solvability of a set of partial conducted to explore the problems associated with the output (Castillo, 1993 ; Castillo et al., 1993 ; Shi, 1993 ).
+In all the aforementioned works, it has been remarked that a gives a measure of the robustness of the controller. In the and manifold invariance, an immersion being an observable conditions to solve the robust regulation problem have been solves the problem. Moreover, Huang (2001) has shown that a by a polynomial of the exosystem states, while nonlinear immersions were studied in Huang and Chen (2004) where a exosystem states.
+ developed. This robust regulator is a fuzzy error feedback steady state inputs for the admissible values of the system proposed fuzzy controller is implemented in a dynamic model, case study is presented and the implementation of the fuzzy concluding remarks. 1. Robust regulation problem for nonlinear systems _ x  X  f  X  x ; u ; w ; m  X  , (1a) _ w  X  s  X  w  X  , (1b) e  X  h  X  x ; w ; m  X  , (1c) values in a neighborhood } R s of the nominal ones; w 2 R system output and the reference signal.
+ vary in a neighborhood of the nominal values. This problem possible, a dynamic controller of the form _ z  X  j  X  z ; w ; e  X  u  X  W  X  z ; w  X  nominal values, the following conditions hold: Assumption 1. The equilibrium point w  X  0 is stable in the
+Lyapunov sense, and all the eigenvalues of S  X  @ s =@ w j imaginary axis.
+ following result: exist mappings x  X  p  X  w ; m  X  and u ss  X  g  X  w ; m  X  X  the origin , satisfying the equations @ p  X  w ; m  X  @ w 0  X  h  X  p  X  w ; m  X  ; w ; m  X  (2b) immersed into a system _ z  X  j  X  z  X  ; z 2 R d , (3a)  X  w ; m  X  X  c  X  z  X  (3b) c  X  0  X  X  0, and the matrices
+F  X  @ j @ z are such that the pair
+A
+NC !  X 
+C 0  X  ; A 0 B 0 H 0 is detectable , where
+A  X  @ f  X  x ; u ; w ; 0  X  @ x
+C  X  @ h  X  x ; w ; 0  X  @ x _ z  X  A 0 z 1  X  B 0 u  X  t  X  G 1  X  C 0 z 1 e  X  , _ z  X  j  X  z 2  X  G 2  X  C 0 z 1 e  X  , u  X  t  X  X  Kz 1  X  Hz 2 , (5)
+G must guarantee that
+A ! is also Hurwitz .
+
+Remark 1. Eqs. (2) are known as the Francis X  X sidori X  X yrnes steady state zero output submanifold and the mapping u ss  X  w ; state zero output submanifold.
+
+In general, finding a nonlinear immersion for a nonlinear that a linear immersion of the form _ z  X  Fz ; z 2 R r ,  X  w ; m  X  X  H z can be readily found if the steady state input is given tion can be relaxed by allowing the immersion to explicitly account when devising immersion calculation procedures. This immersion was called the generalized immersion.
+
+It is worth mentioning, however, controller (5) can only and fuzzy observer design techniques in order to enlarge the guaranteed. 2. Fuzzyfication because the immersion may be nonlinear and time-varying.
+To face this problem, we propose the use of a generalized immersion combined with Tagaki X  X ugeno fuzzy models to solve recently used to stabilize nonlinear systems and enlarge the region of attraction (see e.g. Tanaka and Wang, 2001 ).
+For this purpose, let us assume that there exists a solution  X  w ; m  X  , and g  X  w ; m  X  for @ p  X  w ; m  X  0  X  h  X  p  X  w ; m  X  ; w ; m  X  , and a generalized immersion _ z  X  f  X  z ; w  X  ; z 2 R d , (6a) u ss  X  g  X  w ; m  X  X  c  X  z ; w  X  . (6b)
+On the other hand, it is well known that it is possible to nonlinear system by the suitable aggregation of local linear subsystems. One of these approaches is the Takagi X  X ugeno subsystems are defined as Plant rule i : IF Z 1 is F 1 i and ... and Z p is F pi u ss ; i  X  X  , also F 1 i denote the corresponding fuzzy sets.
+Thus, for a given z  X  X  , the aggregate fuzzy model may be of gravity defuzzifier, namely _ z  X  t  X  X  u the r fuzzy subsets. Usually, one tries to choose the linear
+Wang, 2001 ). In some cases, the linear subsystems may be equilibrium point.
+
+Since, in general, the solution of the regulation problem is rewritten as _ z e  X  C 0 z 1  X  h 1  X  z 1 ; w ; m  X  , (9) where
+A  X  @ f @ x (7) gives _ z  X  A 0 z 1 B 0 _ z  X  t  X  X  e  X  C 0 z 1  X  h 2  X  z 1 ; w ; m  X  . (12) z steady state zero output submanifold. To make invariant this .
+
+Finally, the full control signal is given by u  X  t  X  X  Kz 1  X   X  C 0 0  X  ; to be detectable.
+
+The following result, which is the main result of the paper, summarizes the previous discussion:
+Theorem 2. Let us assume immersion (7) exists and the pairs  X  A ; B 0 and  X  A i ; C ; i  X  1 ; 2 ; ... ; r with
+A  X  inequalities _ z 1  X  t  X  X  A 0  X  B 0 K _ z 2  X  t  X  X  u  X  Kz 1  X  from G i  X  loop system (1a) plus the controller (15) X (17) are given by _ x  X  t  X  X  A 0 x  X  B 0 Kz 1  X  B 0 _ z 1  X  t  X  X  A 0  X  B 0 K _ z 2  X  t  X  X  which can be written in compact form as _ Z  X  where nonsingular transformation 0
+B @ to the i -th matrix A i  X  such that the linear matrix inequalities A
+P  X  PA i  X  C T M T i  X  M i C  X  o 0 ; i  X  1 ; 2 ; ... ; d equations (2) that when z 1 goes asymptotically to zero, the is equal to m i  X  z 2 ; w  X  H i z 2  X  t  X  X  c  X  z 2 ; w  X  X  g  X  w ; m  X  , error submanifold. &amp;
+Remark 2. Notice that the main feature guaranteeing the zero the nonlinearity of the steady state input. 3. A case study
+Let us consider the Lienard model  X  y  X  f  X  y ; m  X  _ y  X  g  X  y ; d ; m  X  X  u , (20) study we consider g  X  y ; d ; m  X  X  a 2 y  X  m 1  X  m 2 d and f  X  y ; m  X  X  1 m recast as _ x  X  x 2 , (21) _ x  X  g  X  x 1 ; d ; m  X  f  X  x 1 ; m  X  x 2  X  u . (22) dynamics is then described by _ w  X  s  X  w  X  , d  X  R 1 w , y  X  R 2 w , where w 2 R 5 , s  X  w  X  X  X  w 2 w 3 c 2 1 w 2 w 5 c 2 w 4  X   X  10000  X  and R 2  X  X  00010  X  . Notice that the exosystem frequencies with possible unknown amplitude satisfying c 1 known with c 2 a c 1 .
+
+The tracking error for this system is defined as e  X  x x  X  w 4  X  : p 1  X  w  X  , x  X  w 5  X  : p 2  X  w  X  , u  X  X  a 2  X  c 2 2  X  w 4  X  m 1  X  m 2 w 1  X  immersion only for the term b g  X  w ; m  X  X  m 1  X  m 2 w 1  X 
+An observable immersion for this term can be given by the system _ z  X  F  X  w 4 ; z  X  , b g  X  w ; m  X  X  H z , where F  X  w 4 ; z  X  X  col  X  c 1 z 2 ; c 1 z 3 ; c 1 z 2 ; c 2 w 4 z 4 z 5  X  and H  X  X  10010  X  , while z  X  col  X  m 1  X  m 2 w 1 ; m 2 w 2 = c 1 ; m 2 w 3 = c 2 1
+Notice that the nonlinearities appear only in the time-c _ z  X  t  X  X  b g  X  w ; m  X  X  where F m 1  X  z ; w  X  X  around the point  X  x 1 s ; x 2 s  X  are A  X 
+Then, it is possible to design a controller (15) X (17) with u  X  t  X  X  Kz 1  X  t  X  X  a 2  X  c 2 2  X  w 4  X  conditions required in Theorem 2. 3.1. Numerical simulation results
+In the simulation runs, the nominal values of the uncertain and reference frequencies are chosen as c 1  X  2 p = 15 and c open-loop system is unstable around the origin x  X  0. The model. In this application, we used the linearization of the generalized immersion (6a) with F
+Figs. 1 and 2 show the error and input signals for both once the amplitude of the reference signal was changed. this purpose, a variation of 20%, 30% and 30% on the nominal parameters. Namely, 15% at t  X  10s, 20% at t  X  20s, and 15% 4. Conclusions
+The performance of the robust regulator has been examined showing a remarkable better performance, despite significant Acknowledgments This work was supported in part by the National Council of
+Science and Technology of Mexico (CONACyT) under Project no. 46538 and PROMEP under Project 103.5/08/2919. This work was Guadalajara.
+ References

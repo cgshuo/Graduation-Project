@@ -1,0 +1,24 @@
+ Marc Schatkun * 1. Introduction
+In his 2004 paper, Egghe re-introduced a seldom-used evaluation metric called the Miss (denoted by M ), and in conjunc-yielded the undetermined form 0 0 when substituted into the universal IR surface equation. By using other mathematical undetermined form 0 0 and are likewise valid (the results may be actual outcomes of real-world IR evaluation trials). 15 remaining universal IR evaluation points are both derived from the Swets 2 2 relevance-retrieval contingency table swered. Third, Egghe X  X  continuous extension argument is briefly analyzed in terms of his own work, and the concept is ap-solving an open problem. 2. Finding a complete set of universal IR evaluation points In his 2004 paper, Egghe relied on previously proven semi-universal surface equations to derive his universal IR surface (3) and (10) X (14), as follows:
+Each relevance metric P , R , F , M and its complement 1 P ,1 R ,1 F ,1 M on the left side of Eq. (20) is defined at its Eq. (20) neatly cancel and yield 1.
+ a , b , c , d as given by the Swets 2 2 relevance-retrieval contingency table (see Table 1 ).
+The four relevance metrics P , R , F , M and their complements may now be defined as: Eq. (20) may now be similarly derived using the Swets definitions above: ( P , R , F , M ) e (]0, 1[ \ Q ) 4 .
+
+From this point on, several questions will be asked and answered as a guide toward deriving a complete set of valid, uni-versal IR evaluation points: Question 1 : What is the complete range of values for the relevance metrics P , R , F , M in actual IR evaluation trials?
+Question 2 : Considering the complete range of values for P , R , F , M revealed in Question 1, how many possible ways may the quadruple ( P , R , F , M ) be constructed? Hence, 4 4 = 256 possible quadruples may be listed. However, restrictions exist on which values may be inserted into each ples will reflect actual IR outcomes, while most will not.
+ valid and pertain to actual IR evaluation outcomes? This is the key question in this article, and the answer is not obvious when inspecting the traditional definitions of for this task since it yields the undetermined form 0 0 when any a , b , c , d goes to zero. constructed.
+
+Mathematically: variable goes to zero.
+ in mapping (10). Next, consider what happens when two Swets variables go to zero (see Table 3 ). only when both Swets variables in the denominator of a given relevance metric go to zero (cases 7 X 10). Next, consider the four cases when three of the Swets variables go to zero (see Table 4 ).
+Now the ( P , R , F , M ) quadruples contain two undetermined forms, since every non-zero Swets variable is found in the as a separate table).
+ metrics P , R , F , M e ]0, 1[ \ Q are represented by the IR points in Table 5 .
+ 3. Relationship to Egghe X  X  work Several questions may be asked regarding the relationship of Table 5 to Egghe X  X  work: was continuous extension. Egghe (2004) wrote, tinuous extension of the surface on ]0, 1[ 4 ... (pp. 25 X 26).
+ needed to exclude them.
+ continuous extension is still useful and may be applied to some of the quadruples ( P , R , F , M )in Table 5 . sal IR surface (20)? components of a continuously extended IR quadruple is not necessarily zero or one (cases 1 X 4). Furthermore, the undeter-mined form 0 0 does not belong to [0, 1] and thus may never appear in any of the components (of a continuously extended IR surface (20): 1. The Swets definitions  X  a a  X  b ; a a  X  c ; b b  X  d ; c c  X  d  X  from which ( P , R , F , M ) are defined must be valid. 2. At least one of the relevance metrics P , R , F , M e {0, 1}, and 3. P ; R ; F ; M R f 0 0 g .
+ find (using his own definition). The quadruples that contain 0 0 must be excluded as candidates for continuous extension (20). X  Question 6 : How do the results of Table 5 affect Egghe X  X  2004, 2007 and 2008 papers? are represented.
+
+In the conclusion of his 2008 paper, Egghe wrote that surface Eq. (20)  X  X  X as proved in Egghe (2004, 2007) to be the nec-tem. X  (p. 875). This statement is troublesome since zero or one may not be arbitrarily inserted into the components of of Table 5 conflict with other aspects of Egghe X  X  work remains open. 4. Conclusions
+This brief article shows how a complete set of valid, universal IR evaluation points may be found simply based on the the cases may be interpreted as valid continuous extensions of Egghe X  X  universal IR surface. The remaining nine cases that prove their validity.
+
+The detailed extension of Egghe X  X  work described here is very much about finding the complete range of valid values for ables are suggested again as a starting point. All solutions would be subsets of Table 5 . Acknowledgements The author is grateful to Ms. Enid Irwin, Ms. Virginia Tucker and Dr. Tefko Saracevic for their encouragement and to Dr. Geoffrey Z. Liu for his editorial help.
+ References

@@ -1,0 +1,67 @@
+ 1. Introduction preserve the privacy of each participant.
+ preserved.
+ function.
+ data sites. If the database size of two databases are represented by d possessed by both parties are c 1 and c 2 , then inequality that the computation of the form c 1  X  c 2 d the correct result. 1.1. Our contributions encryption.
+ points of this paper are summarized in Section 7 . 2. Background will be used are as follows. 2.1. Notations Let us define the following notations which will be used in this paper.
+L i Frequent i -itemset.
+
+C i Candidate i -itemset.
+
+L g Global frequent itemset. Support of these itemsets are  X   X  AND operation between two binary bits. If a , b  X  {0, 1} then ab is also equivalent to a
+E
+D 2.2. Summary of Yao's garbled circuit the simple case there is one gate, for instance Boolean  X  illustrates the gate, with the associated keys.
+ obfuscate the inputs. This is shown in Table 1 .
+ Alice cannot learn which key Bob is requesting.
+ computing the corresponding garbled truth table for each. 2.3. Association rule mining (ARM)
+More formally, any combination of items are known as an itemset. That is, an itemset I with length k is known as a k -itemset. The general form of an association rule is X
+X  X  confidence are calculated as,
+This repeats until L k +1 is empty. Then the set, L 1  X  L more comprehensive description of the Apriori algorithm and related algorithms. 2.4. Some binary operations 2.4.1. Integer addition
+Let two integer numbers X and Y be of  X  bits. X  X  X  X  X  X   X  1 2.4.2. Two's complement number from a large number (must be power of two). Let X be an integer with complement of numbers. More detailson two's complement can be found in [21] . we want to compute X  X  Y , we add X with two's complement of Y . That is: 2.5. Fully homomorphic encryption (FHE) respectively. Then, the homomorphic properties for X and Y can be represented as follows: posed by [23] , and it remained unsolved until the breakthrough result of Gentry. would allow anyone to compute indefinitely on encrypted data.
+ terms. The ciphertext of this simplification is according to the following: where p is the private key, q and r are chosen randomly, and m is the message m follows: the public key and private key of the asymmetric version, then we can encrypt two bits x , y see that these equations will decrypt with the correct result. mining application. 2.5.1. Fully homomorphic encryption for integers by representing the integer as a binary vector and encrypting each bit separately. For instance, an homomorphic encryption scheme. Similarly decryption can be expressed as Eq. (14) functions which will be used in our proposed solution. Let us consider  X  fj  X  1 g ,  X   X   X   X   X  1 jj ... fj  X  1 g , and  X   X   X   X   X  1 jj  X  Homomorphic AND operation (  X  ):  X  Homomorphic XOR operation (  X  ):  X  Homomorphic addition ( ): integer. Thus  X  =  X   X  . This operation is performed according to the description in Section 2.4.1 . 3. Proposed solution encryption to compare the frequency counts of itemsets. 3.1. Motivation and model de fi nition | DB which are the support and confidence thresholds, respectively.
+Our protocol follows a two stage process. In the first stage, the global frequent itemset L minimum support s (as defined by Eq. (2) ). The second stage determines association rules from L encryption.
+ itemset, with counts c 1 and c 2 in A and B , respectively, is frequent or not:  X 
+Step 1: data site A sends counts c 1 and | DB 1 | to other party B .  X 
+Step 2: data site B sends counts c 2 and | DB 2 | to other party A .  X 
+Step 3: both A and B compute whether c 1  X  c 2 DB us. The following equation, Eq. (15) , generalizes this step, such that it can support percentages.
+Eq. (15) can be rewritten as: preserve the privacy of their respective databases, A and record all of the transactions as transcripts and examine them in the future. 3.2. Secure comparison of two integers or N .
+ form.
+
+Algorithm 1. Comparison of two plaintext integers ( M and N ) input ; integers M , N output : (One bit output. If output =0 then M  X  N otherwise M Begin to the negative of the same number. Therefore, Y is equivalent of (M complement form*/ End
+With the consideration of fully homomorphic operators, which are two  X  -bit numbers, while encrypted. Let A and B encrypt their secret numbers as ciphertexts,  X  and  X  , are compared in Algorithm 2 .
+
+Algorithm 2. Comparison of two ciphertext integers (  X  and input ; ciphertexts  X  ,  X  output : ciphertext  X   X 
+Begin return  X   X  End
+For future reference, we define Algorithm 2 as a function: HomComparison ( integers and returns the encryption of one bit (MSB) result this case  X  Alice). If R  X  D sk  X  l  X   X  X  X  0 then M  X  N , else M 3.3. Proposed two party ARM
+Using the function HomComparison , we present Algorithm 3 , where each iteration computes L enables the generation of all frequent itemsets L g .
+
+Algorithm 3. Global frequent itemset generation between A and B input of A ; L k with counts input of B ; L k with counts , s output ; L k +1 Begin Both Alice(A) and Bob(B) for ( All I  X  C k +1 ) do end for End  X  , respectively.
+ can be combined and simplified as follows:
+L split into  X  1 and  X  2 such that L i ={  X  1  X   X  2 } and { with B , respectively. Then for the association rule  X  1  X   X  which can be expressed as securely. Algorithm 4 generates all association rules from the global frequent itemset L
+Algorithm 4. Association rule generation from L g input of B ; L g , c output ; AR (Set of all association rules) Begin
+Both Alice(A) and Bob(B) for All ( L i  X  L g ) do rules from L i */
+Alice(A)
+Bob(B) Alice(A) If R =0 then end if Bob(B) end for
+End 4. Security analysis [28,29] .
+ the result sent by Bob.
+
+Consider following notations. x , y inputs of Alice ( A ) and Bob ( B ), respectively. f ( x , y ) function computed by A on inputs x and y . f ( x , y ) function computed by B on inputs x and y .
+ VIEW A ( x , y ) view of A .
+
+VIEW B ( x , y ) view of B . r
+A randomness of A . r B randomness of B .
+
+S , S 2 simulators to generate input and function of other party for A and B , respectively. O A output of A .
+ O
+B output of B . m i message exchanged between A and B .
+ Therefore, The proposed protocol can be considered secure in semi-honest model if following equations are held: Case 1: when A is corrupted (adversary):
+Case 2: when B is corrupted (adversary): where,  X  c denotes computational indistinguishability.
+  X 
+Case 1 (A is corrupted) : in the proposed protocol A receives only one bit encrypted result
+Fig. 5 depicts A 's view and simulated outcome (  X   X  c  X   X   X 
+Case 2 (B is corrupted) : A exchanges her ciphertext  X  to B . B tries to guess the value of only correspondence that B receives from A . Therefore, discovering the count of itemsets from hardness-assumption of the encryption scheme itself. Fig. 6 depicts B 's view and simulated outcome ( 5. Performance analysis rule mining application. 5.1. Integer comparison with Yao's garbled circuit methods. So we will use this form to compare the two approaches of comparing two integers. garbled circuit for comparing two numbers.
+ 5.1.1. New garbled table compare thousands or tens of thousands of numbers. 5.1.2. Chance of error greater overhead for generating a garbled circuit. 5.1.3. Oblivious transfer overhead reduce the communication and computation overhead. 5.2. Performance comparison 5.2.1. Communication Bob's input. This incurs additional communication cost.
+ whole Yao's garbled circuit approach.
+ comparison and since we are repeatedly comparing numbers, the saving is great. 5.2.2. Storage execution of the algorithm must be discarded.
+ 5.2.3. Computation having each party to evaluate their respective halves. 5.3. Summary of performance analysis 6. Experimental evaluation 3.40 GHz Intel Core i7-2600 with 16 GB of memory, running the Linux (3.1.0 respectively. 7. Conclusion computation. The security analysis is based on the hardness assumption of the encryption scheme. and security of the underlying cryptosystem.
+
+References

@@ -1,0 +1,42 @@
+
+Department of Information Management, National Central University, Chung-Li 320, Taiwan, ROC Article history: Received 13 January 2011 Received in revised form 21 November 2011 Accepted 29 November 2011 Available online 9 January 2012 Keywords: Patent classification Vector space model (VSM) IPC taxonomy Support vector machines (SVM) K -means
+K nearest neighbors (KNN) 0306-4573/$ -see front matter  X  2011 Elsevier Ltd. All rights reserved. doi: 10.1016/j.ipm.2011.11.001 Corresponding author.
+ E-mail address: ylchen@mgt.ncu.edu.tw (Y.-L. Chen).
+ 1018 Y.-L. Chen, Y.-C. Chang/Information Processing and Management 48 (2012) 1017 X 1030 Table 2 Most accurate classification results so far.
+
+Prediction level Class 0.7813 65.75 84-Fold increase HITEC ( Tikk et al., 2007 ) Subclass 0.1543 53.25 345-Fold increase HITEC ( Tikk et al., 2007 ) Main-group 0.0139 36.89 2654-Fold increase HITEC ( Tikk et al., 2007 ) Subgroup 0.0014 36.07 25,764-Fold increase TPC algorithm (proposed in this paper) 1020 Y.-L. Chen, Y.-C. Chang/Information Processing and Management 48 (2012) 1017 X 1030 Table 3 Overview of the TPC algorithm.
+ Algorithm: Three phase categorization (TPC)
+Phase 1 Employ SVM prediction to choose the best k 1 subclasses tk
+Phase 2 2.1. For all training documents d j in subclasses tk
+Phase 3 3.1. For all training documents in subgroups tk 2 1022 Y.-L. Chen, Y.-C. Chang/Information Processing and Management 48 (2012) 1017 X 1030 Table 4
+Top k 1 subclasses vs. accuracy (%) among 400 testing documents. k 1 1 3 5 7 9 11 13 15 17 19 21
+Accuracy 43.25 67.50 76.00 81.50 85.75 88.50 90.25 91.50 92.50 93.25 93.75
+Accuracy 94.25 94.75 95.00 95.50 95.75 96.00 96.25 96.50 96.75 96.75 97.00 1024 Y.-L. Chen, Y.-C. Chang/Information Processing and Management 48 (2012) 1017 X 1030 Table 5
+Top k 2 subgroups vs. accuracy (%) for k 1 = 11. k 2 1 3 5 7 9 11 13 15 17 19 21
+Accuracy 24.58 48.87 55.08 66.10 68.93 72.88 77.12 79.10 79.94 81.92 83.90 Accuracy 88.14 90.11 90.11 92.09 92.09 92.94 92.94 95.20 95.20 96.05 96.05
+Table 6 k and k 4 vs. accuracy (%) for k 1 = 11 and k 2 = 37.
+ K -means ( k 3 ) 66 67 95 134 135 167 168 169 170 171
+KNN (k 4 ) 2 43.62 43.03 X X X X X X X X 3 26.41 26.41 43.03 X X X X X X X 4 23.15 23.15 29.38 43.62 43.03 X X X X X 5 21.37 21.37 27.30 33.53 33.53 43.62 43.62 44.81 44.51 43.62 6 19.29 19.29 18.10 31.45 31.45 32.34 33.53 33.53 33.53 33.53 7 15.13 15.13 21.37 28.49 28.49 32.34 33.53 33.53 33.53 33.53 8 12.17 12.17 18.10 19.29 19.29 25.22 28.49 28.49 28.49 28.49 2 XXXXXXXXXX 3 XXXXXXXXXX 4 XXXXXXXXXX 5 43.62 43.62 43.62 43.62 43.62 43.62 43.62 43.62 X X 6 33.53 33.53 34.42 34.42 34.42 34.42 34.42 34.42 X X 7 33.53 33.53 33.53 34.42 34.42 34.42 34.42 34.42 43.62 43.62 8 28.49 28.49 28.49 28.49 28.49 28.49 28.49 28.49 35.61 35.61  X  X  X  X  X  is the symbol indicating that k 4 value is larger than k Table 7
+Maximum number of documents classified correctly from 400 testing documents for all combinations of k k 1 1234567891011121314151617181920 1026 Y.-L. Chen, Y.-C. Chang/Information Processing and Management 48 (2012) 1017 X 1030
+Table 7 ( continued ) k 1 1 2 3 4 5 6 7 8 9 1011121314151617181920 Table 8
+Number of documents classified correctly from 400 testing documents for all combinations of k
+KNN (k4) 2 147145XXXXXXXXXXXXXXXXXX 3 8989145XXXXXXXXXXXXXXXXX 4 787899147145XXXXXXXXXXXXXXX 5 72 72 92 113 113 147 147 151 150 147 147 147 147 147 147 147 147 147 X X 6 65 65 61 106 106 109 113 113 113 113 113 113 116 116 116 116 116 116 X X 7 51 51 72 96 96 109 113 113 113 113 113 113 113 116 116 116 116 116 147 147 8 414161656585969696969696969696969696120120  X  X  X  X  X  is the symbol indicating that k 4 value is larger than k 1028 Y.-L. Chen, Y.-C. Chang/Information Processing and Management 48 (2012) 1017 X 1030 189).
+ information and knowledge management (pp. 78 X 87).
+ databases into hierarchical topic taxonomies. VLDB Journal, 7 (3), 163 X 178. VLDB conference (pp. 446 X 455).
+ 10 X 25.
+ 26 (2), 269 X 277.
+ discovery and data mining (PAKDD 2004).
+ conference on research and development in information retrieval (SIGIR X 99) (pp. 230 X 237). 20 (1), 19 X 62.
+ 1200 X 1215.
+ Neural Networks, 11 (3), 574 X 585.
+ Processing (TALIP), 7 (2), 1 X 19.
+ 20 (5), 641 X 652.
+ 17 (4), 491 X 502.
+ information retrieval. Information Processing &amp; Management, 25 (6), 665 X 676. and probability (pp. 281 X 297).
+ similarity between patent documents and scientific publications. Scientometrics, 82 (2), 289 X 306. Mitchell, T. (1997). Machine learning . New York: McGraw-Hill.
+ symposium on computer and information sciences (pp. 606 X 615).
+ Porter, M. (1980). An algorithm for suffix stripping. Program, 14 (3), 130 X 137. Applications , 244 X 267.
+ network. Expert Systems with Applications, 31 (4), 755 X 765.
+ World Patent Information Journal, 30 (1), 21 X 33.
+
+Categorization/dataset/wipo-alpha-readme.html &gt;.

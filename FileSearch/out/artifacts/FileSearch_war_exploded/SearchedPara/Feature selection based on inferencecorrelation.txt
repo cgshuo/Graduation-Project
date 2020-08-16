@@ -1,0 +1,62 @@
+ Mechanical Engineering Department, University of Cincinn ati, Cincinnati, OH, USA 1. Introduction
+Advances in information technologies have made it possible to collect large amount of data inexpen-sively. Consequently, data mining and Knowledge Discovery in Database (KDD) became important This criterion is more conducive to searching the optimal su bset of features with a backward search studies showed that the selected features are still good pre dictors for the response variable. selection method is compared with various benchmark method s implemented in WEKA [37]. Finally, conclusion is drawn in section 6. 2. Literature review concept without building a model.
+
+Supervised feature selection methods have two main element s: a selection algorithm and a criterion ingly. For classification problem, the dependency measures are mutual information [33], information  X  lation coefficient, RReliefF [35], and mutual information. Such dependency measures are not suitable modeling.
+
+Among the dependency measures used in supervised feature se lection, the most promising one in the in estimating high-dimensional probability functions.
+ A popular dependency measure used in supervised feature sel ection is Relief and its extension [35]. individually and only provides us with pair-wise correlati on information. been proposed [41].
+ search methods include forward selection, backward elimin ation, and methods that combine forward main categories of floating search methods: forward (SFFS) a nd backward (SFBS). Basically, in the backward selection (SBS). Therefore, the SFFS proceeds dyn amically, increasing and decreasing the search (SFBS) works analogously but starting with the full f eature set. 3. Development and analysis of inference correlation
+In this section, we develop an approach to measure the depend ency between the response variable of two conditional probability density (or mass) functions given the response. 3.1. Dependency analysis for binary classification given that the response variable takes either value. Let  X  variables, X
+Definition: For any two multi-variable real functions, F ( x where x define the inner product of F ( x Definition: For any two multi-variable real functions, f ( x x , x product of f ( x Definition: Let Y be one response variable with two classes, y density function (pdf), respectively. Thus, P ( X the conditional probability mass function and probability density function of random variables X defined as follows for discrete and continuous predictor var iable(s) respectively: Accordingly, we define inference correlation from X X across all distinct regions of predictor variables.
+ independency of a binary response variable on a continuous v ariable will be calculated as: parameter  X  goes from 0 to 1 which is shown in Fig. 1(b).
+
+In the second example, given Y = 0 and Y = 1, X follows normal distribution of N (0, 1) and N (  X  , inference correlation changes from 0 to 1.
+ Compared to our method to measure the difference between two conditional pdfs or pmfs, Kullback-D [ P ( X | Y = 0) || P ( X | Y = 1)] = P 0). Furthermore, an inference correlation is a scalar measu re ranging from 0 to 1. 3.2. Properties of inference correlation
+Inference correlation has a couple of favorable properties . (1) 0 6  X  (2)  X  (3)  X  (4) If X (5) If X (6) If X (7) Empirically,  X  (8) On computing I The proofs for these properties are provided in Appendix. 3.3. Application of inference correlation much less affected by the sparsity of data points compared to backward search method. Anyway, the feature selection method combining inference correlation and sequential forward search performs much better than those methods using pair-wise correlation crit erion.
+
+Let us examine 4 cases with 2 predictor variables shown in Fig . 2, where the response variable has feature selection. 3.4. Computation of inference correlation
+Given a dataset, one can estimate the inference correlation by scanning the contingency table. On  X  X assign a distinct value, from 0, 1, to c discrete values in  X  X discrete values in  X  X The value of IDX is calculated as  X  x  X  x , where  X  x  X  X
+Create two empty frequency tables, F corresponding frequency table and assign the FREQ value as 1, keeping ascending order of the IDX order of the IDX value.
+
+Set two pointers pointing to the top of the two sorted frequen cy tables F two frequencies and accumulate the product, and then move do wn both pointers. Otherwise, move down calculate the norms for two tables.
+ Calculate the inference correlation from the dot product an d norms calculated at foregoing step.
+Calculation of inference correlation has a time complexity of O ( NI backward search. 3.5. Dependency analysis for a multiple-class or continuou s response variable
+We extend the inference correlation measure to the situatio n where the response variable contains dimensional predictor variables, denoted as [ X previous section, discretize the continuous entries in X . Write the transformed X as [  X  X with  X  X for two m -dimensional probability functions in (10), the ability of X to discriminate y classes can be expressed by  X  ( j ) Then we define the inference correlation from X to Y as a whole as the weighted average of: the computation approach of general discrete output. 3.6. Discussion on discretization variable in terms of intervals with equal length or equal num ber of data points.
+One might wonder whether the selected features will change w ith the discretization parameters like power. For example, suppose the binary response variable, Y , can be determined by two continuous variables, X functional relationship with X of discretization and may select X power of feature subset with X statistical modeling.
+ variables, X is a functional relationship between X predictor variables into equal-frequency intervals, the e stimates of inference correlation for X or discretization. 4. Feature selection based on inference correlation 4.1. Feature selection then one may choose to use sequential backward search which i s more conducive to finding the global best feature sets.
+
+Note that the parameters NI continuous variable by zero or nonzero values.
+ forward or backward search will be N times of computations.
+
+Let us make some explanation on determining the discretizat ion interval number during feature se-( this situation. 4.2. Comparison with other methods a classification problem. There are two independent variabl es X X inside a circle with radius of 2. The response variable Y has a functional relationship with X If interacting features X independent variable X is limited to  X  2 6 X variable Y also has a functional relationship with X data points and calculate the canonical correlation betwee n Y and 3 predictor variables, X with the known relationship.
+ find some combinations of original variables to reduce the di mension.
+
+However, feature selection based on inference correlation can easily drop the redundant variable, X and calculate the inference correlation from X 5. Experiment and case study 5.1. Synthetic dataset literature. The first dataset is Corral [24], having six Bool ean features A Feature I is irrelevant to Y and uniformly random, and feature R matches with the value of Y 75% of the time. The other datasets are from MONK X  X  problem [1]. The re are 3 MONK X  X  datasets available in UC Irvine machine learning repository. The target concep ts are: (1) MONK1: ( A 1), (2) MONK2: exactly two of A (
+A are added. A is able to obtain the 4 exact interacting features, A in Fig. 5. Even though feature R is the first one to be included, it is excluded eventually.
+For the MONK X  X  problem, in [41], Zhao and Liu used FCBF, CFS, R eliefF, and FOCUS implemented in WEKA to select features. The results are reproduced in Tab le 3. Only ReliefF and FOCUS perform problem. The time complexity of FOCUS is P m and MONK2 problem and set the threshold to 0.95 for MONK3 prob lem due to the 5% class noise, by sequential backward search we can obtain the exact set of rel evant features. X Y have a complicated nonlinear relationship with the first 4 in dependent variables X that is, X by an independent neural network system with random paramet ers. Each neural network contains a hidden layer with 10 neurons. In these 16 predictor variable s there are 12 relevant variables X illustrated in Fig. 6.
+ exact interacting features, X threshold is chosen to be greater than 0.9625, then an irrele vant variable, X study. For comparison, the variable weights calculated by R ReliefF algorithm are shown in Table 4 close. It is a pair-wise feature ranking method. Surprising ly an irrelevant variable X with interacting features. Furthermore, we do not know how m any features should be selected in the pair-wise ranking method.
+ this example, the response, Y , can be completely separated by 2 predictor variables, X nonlinearly. Thus, the inference correlation for X a bad performance on the classification with a balanced accur acy rate of about 50%, which indicates usually biased. 5.2. Real-world dataset
+Here we apply the feature selection method to a couple of data sets retrieved from UC Irvine machine learning repository [1], and compare the method with other b enchmark methods implemented in WEKA CHISQUARE, INFOGAIN, and RELIEFF. Among those benchmark me thods, CHISQUARE, INFO-GAIN, and RELIEFF only rank the feature with a weight quantit y and do not suggest how many features are CMC, SPECTF, PBC, WDBC, MUSK (v2). The summary of these 5 d atasets is tabulated in Table 5. along with the level of inter-correlation among features. C ONSISTENCY evaluates the consistency CONSISTENCY implemented in WEKA for feature selection. Bes t-first search algorithm uses a search CHISQUARE, INFOGAIN, and RELIEFF are pair-wise ranking cri teria, so we just pick the top ranked features are likely to be inter-correlated and redundant.
+ regardless of the selected features. 6. Conclusion
+In this paper, we propose a unified criterion, inference corr elation, to measure the dependency be-algorithm-specific wrapper feature selection methods.
+ Acknowledgment
+The research is supported by the National Science Foundatio n under Grant No. 0555962 and No. 0825710. Any opinions, findings, and conclusions or recomme ndations expressed in this material are those of the authors and do not necessarily reflect the views o f the National Science Foundation. Appendix predictor variables is similar. (1) 0 6  X  Proof : Since  X  is equivalent to the inequality 0 6 I variables X
+Since P ( X X Since I Schwarz inequality, we have Therefore, 0 6  X  (2)  X  X
+Proof: if P ( X Therefore,  X  If  X  We must be having P ( X Otherwise, for any constant  X  , since P ( X h P ( | y 0 )  X   X P ( | y 1 ) , P ( | y 0 )  X   X P ( | y 1 ) i &gt; 0 .
+
+Let  X  = h P ( | y By transformation, we have It contradicts with the condition I Then P Since P then  X  = 1. Therefore, P ( X (3)  X  is, where P ( X  X  p ( X 1 , X 2 , . . . , X m | y 1 )  X  0.
+
+If P ( X Then I Conversely, if  X  Therefore, P
+Since P ( X X (4) If X on X that is, I
+Proof: Consider discrete variables X Since X Because X Thus, Let us study the inner product of P ( X Similarly, we can get Substitute the proceeding 3 equations into I We have (5) If X  X  ference power of those predictor variables.
+
+Proof: Since X everywhere in X (6) If X then  X  inference correlation.
+
+Proof: Here we only consider discrete predictor variables X for continuous variables is similar.
+
+Since X that the probability P [ X function can be expressed as: Make some transformation for P ( x it.
+ Then substitute the foregoing equality into following inne r product: Substitute the foregoing equation into I
+The factor P can be cancelled out. After cancellation, the left term is ex actly I Therefore, I (7) Empirically,  X  variables are unlikely to have less inference power.
+ ability these variables have. It is equivalent to the inequa lity
+Unfortunately, we cannot theoretically prove this inequal ity; so we designed an experiment to study this conclusion. Let the number of classes of X these conflicting cases, the difference never exceeds 0.01. (8) On computing I not change the quantity of I
+Proof: References

@@ -1,0 +1,137 @@
+ There has been considerable interest in random projections, an approximate algorithm for estimating distances between A  X  R n  X  D be our n points in D dimensions. The method multiplies A by a random matrix R  X  R D  X  k , reducing the D dimensions down to just k for speeding up the compu-tation. R typically consists of entries of standard normal pairwise distances (in the expectation). Achlioptas proposed sparse random projections by replacing the N (0 , 1) entries in R with entries in { X  1 , 0 , 1 } with probabilities { 1 achieving a threefold speedup in processing time.
+We recommend using R of entries in { X  1 , 0 , 1 } with prob-fold speedup, with little loss in accuracy.
+ H.2.8 [ Database Applications ]: Data Mining Algorithms, Performance, Theory Random projections, Sampling, Rates of convergence Random projections [1, 43] have been used in Machine privacy preserving distributed data mining [31], to name a few. The AMS sketching algorithm [3] is also one form of random projections.
+
+We define a data matrix A of size n  X  D to be a collection Copyright 2006 ACM 1-59593-339-5/06/0008 ... $ 5.00. be computed as AA T ,atthecostoftime O ( n 2 D ), which is often prohibitive for large n and D , in modern data mining and information retrieval applications.
+
+To speed up the computations, one can generate a ran-dom projection matrix R  X  R D  X  k and multiply it with the
+The (much smaller) matrix B preserves all pairwise dis-tances of A in expectations, provided that R consists of i.i.d. entries with zero mean and constant variance. Thus, we can achieve a substantial cost reduction for computing AA T ,from O ( n 2 D )to O ( nDk + n 2 k ).
+
+In information retrieval, w e often do not have to materi-ested in storing the projected data B in main memory for efficiently responding to input queries. While the original data matrix A is often too large, the projected data matrix B can be small enough to reside in the main memory. with zero mean. In fact, this is the only necessary condi-and error tail bounds. It is often convenient to let r ji a symmetric distribution about zero with unit variance. A  X  X imple X  distribution is the standard normal 1 , i.e., r ji  X  N (0 , 1) , E( r ji )=0 , E It is  X  X imple X  in terms of theoretical analysis, but not in terms of random number generation. For example, a uni-form distribution is easier to generate than normals, but the analysis is more difficult.
+
+In this paper, when R consists of normal entries, we call about which many theoretical results are known. See the monograph by Vempala [43] for further references.
+We derive some theoretical results when R is not restricted provements over the so-called sparse random projections .
+In his novel work, Achlioptas [1] proposed using the pro-
+The normal distribution is 2-stable .Itisoneofthefew stable distributions that have closed-form density [19]. jection matrix R with i.i.d entries in where Achlioptas used s =1or s =3. With s =3,onecan to be processed (hence the name sparse random projections ). Since the multiplications with point arithmetic is needed and all computation amounts to highly optimized database aggregation operations.
+This method of sparse random projections has gained its popularity. It was first experimentally tested on image and text data by [5] in SIGKDD 2001. Later, many more publi-cations also adopted this method, e.g., [14, 29, 38, 41].
+We show that one can use s 3(e.g., s = s = D log D ) to significantly speed up the computation.
+Examining (2), we can see that sparse random projec-one-third of the data are sampled. Statistical results tell the data to obtain good estimates. In fact, when the data are approximately normal, log D of the data probably suf-bounds, common in normal-like distributions, such as bino-mial, gamma, etc. For better robustness, we recommend choosing s less aggressively (e.g., s =
+To better understand sparse and very sparse random pro-ventional random projections , in the next section.
+Conventional random projections multiply the original data matrix A  X  R n  X  D with a random matrix R  X  R D  X  k ,con-sisting of i.i.d. N (0 , 1) entries. Denote by { u i } n i u , u 2 and v 1 , v 2 . For convenience, we denote m a = u T 1 u 2 = It is easy to show that (e.g., Lemma 1.3 of [43])
+E
+E where the subscript  X  N  X  indicates that a  X  X ormal X  projec-tion matrix is used.
+
+From our later results in Lemma 3 (or [28, Lemma 1]) we can derive
+E
+Therefore, one can compute both pairwise 2-norm dis-tances and inner products in k (instead of D ) dimensions, achieving a huge cost reduction when k min( n, D ).
+It is easy to show that (e.g. Lemma 1.3 of [43]) where  X  2 k denotes a chi-squared random variable with k de-grees of freedom. v 1 ,i i.i.d. is any entry in v 1  X  R k
+Knowing the distributions of the projected data enables us to derive (sharp) error tail bounds. For example, various Johnson and Lindenstrauss (JL) embedding theorems [1,4,9, 15,20,21] have been proved for precisely determining k given some specified level of accuracy, for estimating the 2-norm distances. According to the best known result [1]: 1  X  n  X   X  , for any two rows u i , u j ,wehave (1  X  ) u i  X  u j 2  X  v i  X  v j 2  X  (1 + ) u i  X  u j 2 . (9) Remark: (a) The JL lemma is conservative in many ap-plications because it was derived based on Bonferroni cor-rection for multiple comparisons. (b) It is only for the l distance, while many applications care more about the in-ner product. As shown in (5), the variance of the inner product estimator, Var is probably the weakness of random projections.
+A popular variant of conventional random projections is can estimate the vector cosine angles,  X  =cos  X  1 by the following result [7, 17]: from a =cos(  X  )
+The advantage of sign random projections is the saving in storing the projected data because only one bit is needed for the sign. With sign random projections, we can com-pare vectors using hamming distances for which efficient al-gorithms are available [7,20,36]. See [28] for more comments on sign random projections.
+We propose very sparse random projections to speed up the (processing) computations by a factor of [1] proved the upper bounds for the variances of v 1 2 and v 1  X  v 2 2 for s =1and s =3.
+Main results of our work are presented in this section with detailed proofs in Appendix A. For convenience, we always let s = o ( D )(e.g., s = ments are bounded, e.g., E( u 4 1 ,j ) &lt;  X  ,E( u 4 2 ,j of asymptotic normality only requires bounded third mo-ments and an even much weaker assumption is needed for ensuring asymptotic normality. Later we will discuss the possibility of relaxing this a ssumption of bounded moments.
+The first three lemmas concern the moments (means and variances) of v 1 , v 1  X  v 2 and v T 1 v 2 , respectively. Lemma 1.
+ As D  X  X  X  , i.e., Var  X  denotes  X  X symptotically equivalent X  for large D .
+Note that m 2 1 = dimensions of u 1 are roughly equally important, the cross-terms dominate. Since D is very large, the diagonal terms may be of the same order as the diagonal terms. Assum-ing bounded fourth moment prevents this from happening.
+The next Lemma is strictly analogous to Lemma 1. We present them separately because Lemma 1 is more conve-nient to present and analyze, while Lemma 2 contains the results on the 2-norm distances, which we will use. Lemma 2.
+ The third lemma concerns the inner product.
+ Lemma 3.
+
+Therefore, very sparse random projections preserve pair-wise distances in expectations with variances as functions of s . Compared with Var( v 1 2 ) N ,Var( v 1  X  v 2 2 ) N of convergence is O ror (square root of variance). When s = convergence is O
+When s&lt; 3,  X  X parse X  random projections can actually achieve slightly smaller variances.
+The asymptotic analysis provides a feasible method to study distributions of the projected data.
+
+The task of analyzing the distributions is easy when a nor-mal random matrix R is used. The analysis for other types fact, intractable). To see this, each entry v 1 ,i = 1  X  k in some simple cases [1] we can study the bounds of the moments and moment generating functions.
+
+Lemma 4 and Lemma 5 present th e asymptotic distribu-strictly analogous to Lemma 4.
+
+Lemma 4. As D  X  X  X  , with the rate of convergence where L =  X  denotes  X  X onvergence in distribution; X  F v 1 ,i the empirical cumulative density function (CDF) of v 1 ,i  X ( y ) is the standard normal N (0 , 1) CDF.
+Lemma 5. As D  X  X  X  , with the rate of convergence | F v
+The above two lemmas show that both v 1 ,i and v 1 ,i  X  v ,i are approximately normal, with the rate of convergence determined by
+The next lemma concerns the joint distribution of ( v 1 ,i Lemma 6. As D  X  X  X  , and where
+The asymptotic normality shows that we can use other random projections matrix R to achieve asymptotically the same performance as conventional random projections ,which fast, we can simply apply results on conventional random projections such as the JL lemma and sign random projec-tions when a non-normal projection matrix is used. 3 Var ( X  a MF )= 1 k m 1 m 2 + a 2 +( s  X  3)
+Var ( X  a MF )  X  = 1 where the subscript  X  X F X  indicates  X  X argin-free, X  i.e., an part involving s  X  3leadstoVar( X  a MF )  X  .
+
+We will compare  X  a MF with an asymptotic maximum like-lihood estimator based on the asymptotic normality.
+The tractable asymptotic distributions of the projected data allow us to derive more accurate estimators using max-imum likelihood.
+
+In many situations, we can assume that the marginal norms m 1 =
+In the proof of the asymptotic normality, we used E( | r ji ing moments when other projection distributions are used. as m 1 and m 2 can often be easily either exactly calculated or accurately estimated. 4
+The authors X  very recent work [28] on conventional ran-dom projections shows that if we know the margins m 1 and m a maximum likelihood estimator (MLE).
+
+The following lemma estimates a = u T 1 u 2 , taking advan-tage of knowing the margins.
+
+Lemma 7. When the margins, m 1 and m 2 are known, we can use a maximum likelihood estimator (MLE) to estimate ( v ,i ,v 2 ,i ) converges to a bivariate normal, an asymptotic MLE is the solution to a cubic equation The asymptotic variance of this estimator, denoted by  X  a is
+Var ( X  a MLE )  X  = 1 from 0 to 1, indicating possibly substantial improvements. provement will be huge. When cos(  X  )  X  0 (i.e., a  X  0), we plicate detection) are mainly interested in data points that are quite similar (i.e., cos(  X  )closeto1).
+We have seen that the parameter s plays an important role in the performance of very sparse random projections . It is interesting that s  X  3 is exactly the kurtosis of r as r ji has zero mean and unit variance. 5 tive kurtosis. A couple of examples are
+Computing all marginal norms of A costs O ( nD ), which is often negligible. As important summary statistics, the marginal norms may be already computed during various stage of processing, e.g., normalization and term weighting.
+Note that the kurtosis can not be smaller than  X  2because of the Cauchy-Schwarz inequality: E 2 ( r 2 ji )  X  E( r 4 may consult http://en.wikipedia.org/wiki/Kurtosis for refer-ences to kurtosis of various distributions.
+The very sparse random projections are useful even for heavy-tailed data, mainly because of term weighting .
+We have seen that bounded forth and third moments are needed for analyzing the convergence of moments (variance) and the convergence to normality, respectively. The proof of asymptotic normality in Appendix A suggests that we only need stronger than bounded second moments to ensure asymptotic normality. In heavy-tailed data, however, even the second moment may not exist.
+
+Heavy-tailed data are ubiquitous in large-scale data min-wise distances computed from heavy-tailed data are usually dominated by  X  X utliers, X  i.e., exceptionally large entries.
+Pairwise vector distances are meaningful only when all dimensions of the data are more or less equally important. For heavy-tailed data, such as the (unweighted) term-by-document matrix, pairwise distances may be misleading. Therefore, in practice, various term weighting schemes are the entries instead of using the original data.
+
+It is well-known that choosing an appropriate term weight-ing method is vital. For example, as shown in [23, 26], in text categorization using support vector machine (SVM), choosing an appropriate term weighting scheme is far more important than tuning kernel functions of SVM. See similar
+We list two popular and simple weighting schemes. One variant of the logarithmic weighting keeps zero entries and replaces any non-zero count with 1+log(original count). An-of the Box-Cox transformation [44, Chapter 6.8], these vari-ous weighting schemes significantly reduce the kurtosis (and skewness) of the data and make the data resemble normal.
+Therefore, it is fair to say that assuming finite moments (third or fourth) is reasonable whenever the computed dis-tances are meaningful.
+
+However, there are also applications in which pairwise dis-tances do not have to bear any clear meaning. For example, intersections). If we expect the original data are severely heavy-tailed and no term weighting will be applied, we rec-ommend using s = O (1).
+
+Finally, we shall point out that very sparse random pro-jections can be fairly robust against heavy-tailed data when s = ments, as long as D we can still achieve the convergence of variances if s = in Lemma 1. Similarly, analyzing the rate of converge to normality only requires that ensure asymptotic normality. We provide some additional analysis on heavy-tailed data in Appendix B.
+Some experimental results are presented as a sanity check, using one pair of words,  X  X HIS X  and  X  X AVE, X  from two rows of a term-by-document matrix provided by MSN. D = 2 rences of word  X  X HIS X  (word  X  X AVE X ) in the j th document (Web page), j =1to D . Some summary statistics are listed in Table 1.
+
+The data are certainly heavy-tailed as the kurtoses for u ,j and u 2 ,j are 195 and 215, respectively, far above zero. Therefore we do not expect that very sparse random projec-tions with s = D log D  X  6000 work well, though the results are actually not disastrous as shown in Figure 1(d). Table 1: Some summary statistics of the word pair,  X  X HIS X  ( u 1 )and X  X AVE X ( u 2 ).  X  2 denotes the kurtosis.  X  ( u 1 ,j ,u 2 ,j )= E ( u fects the convergence of Var Lemma 3). These expectations are computed empir-ically from the data. Two popular term weighting schemes are applied. The  X  X quare root weighting X  replaces u 1 ,j with ing X  replaces any non-zero u 1 ,j with 1+log u 1 ,j .  X  ( u 1 ,j ,u 2 ,j ) 78.0 7.62 3.34 cos(  X  ( u 1 ,u 2 )) 0.794 0.782 0.754 heavy-tailed) data, for s =1 , 3 , 256 = presented in Figure 1. We then apply square root weighting and logarithmic weighting before random projections. The results are presented in Figure 2, for s = 256 and s = 6000.
+These results are consistent with what we would expect:
+We provide some new theoretical results on random pro-jections, a randomized approximate algorithm widely used in machine learning and data mining. In particular, our
+D -fold speedup in processing time with little loss in accu-racy, where D is the original data dimension. When the data Figure 1: Two words  X  X HIS X  ( u 1 )and X  X AVE X ( u 2 ) from the MSN Web crawl data are tested. D =2 16 . Sparse random projections are applied to estimated a = u T 1 u 2 ,withfourvaluesof s : 1,3,256= and 6000  X  D log D , in panels (a), (b), (c) and (d), respectively, presented in terms of the normalized standard error, ducted for each k , ranging from 10 to 100. There are five curves in each panel. The two labeled as  X  X F X  and  X  X heor. X  overlap.  X  X F X  stands for the empirical variance of the  X  X argin-free X  estimator  X  a
+MF ; while  X  X heor. MF X  for the theoretical vari-ance of  X  a MF , i.e., (27). The solid curve, labeled as  X  X LE, X  presents the empirical variance of  X  a MLE ,the estimator using margins as formulated in Lemma 7. There are two curves both labeled as  X  X heor.  X  , X  for the asymptotic theoretical variances of  X  a MF (the higher curve, (28)) and  X  a MLE (the lower curve, (30)). cost reduction by a factor of D log D is also possible.
+Our proof of the asymptotic normality justifies the use of an asymptotic maximum likelihood estimator for improving the estimates when the marginal information is available.
+We thank Dimitris Achlioptas for very insightful com-ments. We thank Xavier Gabaix and David Mason for point-ers to useful references. Ping Li thanks the enjoyable and helpful conversations with Tze Leung Lai, Joseph P. Ro-mano, and Yiyuan She. Finally, we thank the four anony-mous reviewers for constructive suggestions. Figure 2: After applying term weighting on the orig-inal data, sparse random projections are almost as accurate as conventional random projections, even for s = 6000  X  D log D . Note that the legends are the same as in Figure 1. A projection matrix R  X  R D  X  k consists of i.i.d. entries r Pr ( r ji = E( r ji )=0 , E( r 2 ji )=1 , E( r 4 ji )= s, E( | r 3 ji
+We denote the projected data vectors by v i = 1  X  k R T u For convenience, we denote m a = u T 1 u 2 =
+We will always assume s = o ( D ) , E( u 4 1 ,j ) &lt;  X  , E( u 4 2 ,j ) &lt;  X  By the strong law of large numbers P P
+The following expansions are useful for proving the next three lemmas. m m a = Lemma 1.
+ As D  X  X  X  ,
+Proof of Lemma 1 . v 1 = 1  X  column of R , 1  X  i  X  k . We can write the i th element of v from which it follows that = 1 from which it follows that E ` Var Var
+As D  X  X  X  , Lemma 2.
+
+E
+Var As D  X  X  X  , ( s  X  3)
+Proof of Lemma 2. The proof is analogous to the proof of Lemma 1.
+ Lemma 3.
+
+E
+Var As D  X  X  X  ,
+Proof of Lemma 3. v = 1 = 1 =  X 
+E = 1 = 1 = 1
+Var
+Lemma 4. As D  X  X  X  , with the rate of convergence where L =  X  denotes  X  X onvergence in distribution, X  F v 1 ,i the empirical cumulative density function (CDF) of v 1 ,i  X ( y ) is the standard normal N (0 , 1) CDF.
+
+Proof of Lemma 4. The Lindeberg central limit theo-rem (CLT) and the Berry-Esseen theorem are needed for the proof [12, Theorems VIII.4.3 and XVI.5.2]. 6 E ( z j )=0 , Var ( z j )= Let s 2 D = Lindeberg condition Then which immediately leads to
+We need to go back and check the Lindeberg condition. weaker than our assumption that E ( u 4 1 ,j ) &lt;  X  . It remains to show the rate of convergence using the Berry-Esseen theorem. Let  X  D =
+Lemma 5. As D  X  X  X  , with the rate of convergence |
+Proof of Lemma 5. The proof is analogous to the proof of Lemma 4.
+
+The next lemma concerns the joint distribution of ( v 1 ,i Lemma 6. As D  X  X  X  ,  X  and Pr ( sign ( v 1 ,i )= sign ( v 2 ,i ))  X  1  X   X 
+Proof of Lemma 6. We have seen that Var ( v 1 ,i )= m 1 The Lindeberg multivariate central limit theorem [18] says The multivariate Lindeberg condition is automatically satis-fied by assuming bounded third moments of u 1 ,j and u 2 ,j trivial consequence of the asymptotic normality yields Strictly speaking, we should write  X  =cos  X  1 .
+
+Lemma 7. Assuming that the margins, m 1 and m 2 are known and using the asymptotic normality of ( v 1 ,i ,v 2 can derive an asymptotic maximum likelihood estimator (MLE), which is the solution to a cubic equation
+Denoted by  X  a MLE , the asymptotic variance of this estima-tor is
+Proof of Lemma 7. For notational convenience, we treat ( v need to keep track of the  X  X onvergence X  notation.
+The likelihood function of { v 1 ,i ,v 2 ,i } k i =1 is then lik where
+We can then express the log likelihood function, l ( a ) ,as log lik
+The MLE equation is the solution to l ( a )=0 ,whichis
+The large sample theory [24, Theorem 6.3.10] says that  X  a
+MLE is asymptotically unbiased and converges in distribu-tion to a normal random variable N the expected Fisher Information, is after some algebra.
+ Therefore, the asymptotic variance of  X  a MLE would be
+We illustrate that very sparse random projections are fairly robust against heavy-tailed data, by a Pareto distribution.
+The assumption of finite mome nts has simplified the anal-ysis of convergence a great deal. For example, assuming (  X  + 2)th moment, 0 &lt; X   X  2and s = o ( D ), we have
+Note that  X  = 2 corresponds to the rate of convergence for the variance in Lemma 1, and  X  = 1 corresponds to the rate of convergence for asymptotic normality in Lemma 4. From the proof of Lemma 4 in Appendix A, we can see that achieving asymptotic normality.
+
+For heavy-tailed data, the fourth moment (or even the second moment) may not exist. The most common model for defined if  X &gt;m . The measurements of  X  for many types of the copies of books sold in the US, etc.
+
+For simplicity, we assume that 2 &lt; X   X  2+  X   X  4. Un-der this assumption, the asymptotic normality is guaranteed and it remains to show the rate of convergence of moments and distributions. In this case, the second moment E exists. The sum shown in [11, Example 2.7.4]. 8 Thus, we can write from which we can choose s using prior knowledge of  X  .
+For example, suppose  X  =3and s = that the rate of convergence for variances would be O ( D of convergence to normality is O ( D 1 / 4 ), as expected.
+Of course, we could always choose s more conservatively, Since D is large, a factor of D 1 / 4 is still considerable. What if  X &lt; 2? The second moment no longer exists. not really meaningful to compute the l 2 distances when the data do not even have bounded second moment.
+Note that in general, a Pareto distribution has an addition we can without loss of generality assume x min =1. Also note that in [34], their  X   X   X  is equal to our  X  +1.
+Note that if x  X  Pareto(  X  ), then x t  X  Pareto(  X /t ).

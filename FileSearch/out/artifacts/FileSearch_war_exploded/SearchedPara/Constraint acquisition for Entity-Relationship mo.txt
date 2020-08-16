@@ -1,0 +1,191 @@
+ 1. Introduction
+Database design is based on the assumption that the semantics of the underlying application domain has been completely captured by the present database model. However, the complete acquisition of such knowledge presents many challenges. a database.
+ must not have any entry for Gender that is blue , for instance.
+ of semantic information an advanced understanding of logics is required. Sometimes designers misunderstand integrity experience and knowledge. In view of these problems and the importance of the sound and complete gathering of semantic straint acquisition.
+ would enable the participants to better comprehend the consequences of not specifying u .
+The idea of utilising sample databases in the database design process is not new. Armstrong databases constitute an strong database must violate all the constraints not implied by R and, therefore, must contain as many tuples as system of candidate keys 1 over n attributes has lower bound 1 class of constraints an Armstrong database exists.
+ with Armstrong databases, our sample databases show explicitly the consequences of not specifying u . Unlike Armstrong base that is acceptable as a future database instance.
+ provides sufficient evidence to support the decision of either specifying or discarding the candidate. In order to implement this idea, we address the question of how to generate such sample databases semi-automatically. and multivalued dependencies themselves capture all those constraints necessary to perform database normalisation up sample database. The idea of exploring propositional search algorithms for generating such counterexamples is possible problem. In this paper, we reduce the problem of acquiring Boolean and multivalued dependencies to the problem of gen-cide whether a candidate constraint captures desirable domain knowledge or not. Moreover, the enormous progress of the performance of SAT-solvers in recent years make it feasible for us to deal with challenging problems that can occur in practice.
+ approach. Entity-Relationship (ER) models have evolved into one class of the most popular conceptual data models since to discover semantic knowledge from examples has also been pointed out in other research domains such as business pro-example illustrates our idea.
+ gathered the single multivalued dependency we are thinking about the specification of the functional dependency whether Title ! Writer captures important information about the application domain?
+In a first step, we translate the problem whether R implies u into the problem of the corresponding formulae in the propositional logic fragment [19]. That is, we represent the MVD r in R as propositional formulae r 0  X  V that V W or V A is true whenever V T is true , and u as u 0  X  V subscripts of the propositional variables indicate their correspondence to the attributes of the entity type. In a second step, we generate all models of R 0 [f: u 0 g , i.e., all truth assignments that make all formulae in
+R propositional analytical tableaux. In this example, the only model of R and V A true , and V W false .
+ u is not implied by the multivalued dependency in R :
+Title Writer Actor 11 1 10 1 when the truth assignment h assigns true to the corresponding variable V Actor -column ( Title -column) since the truth value of the propositional variable V of the propositional variable V W , associated with the attribute Writer , is interpreted as false by h . in the following entity set: Title Writer Actor The Godfather M. Puzzo M. Brando The Godfather F.F. Coppola M. Brando the case of a movie that has different writers.
+ key of M OVIE would include all its three attributes.
+
+On the other hand, assume that there is considerable consensus among the database design participants that this entity the instance in the table above). Consequently, we will specify Title ! Writer in this case. In particular, a key of M consist of Title and Actor in this case.
+
+The article is organised as follows: we will summarise important notions and notations from Entity-Relationship model-the semantics of the ER model that we employ for the description of our ideas [38,39,27] . Relationship model defined. Furthermore, we will briefly summarise the correspondences between the implication of
+Boolean and multivalued dependencies and the logical implication of propositional fragments. These correspondences are essential to our approach.
+ computing all satisfying truth assignments.
+ approach when applied to challenging problems that arise in practice.
+ identify important constraints. Moreover, we provide a detailed example of our technique in Section 7.
+We conclude in Section 8 by summarising our approach and commenting on some potential work in the future. 2. Concepts in Entity-Relationship modelling Entity-Relationship model [26] and some of its extensions [38,39,27] .
+ attributes.
+ An entity over E is a mapping e : attr  X  E  X ! S e  X  A  X  X  e 2  X  A  X  for all A 2 id  X  E  X  , we must have e 1  X  e
+Example 2. We specify an entity type C LIENT as follows: its attribute set is value property.
+ the diagram, if needed. Fig. 2 illustrates the entity type C are called key attributes .
+ A relationship over R is a mapping r : comp  X  R  X [ attr  X  R  X ! E 2 comp  X  R  X  and r  X  A  X 2 dom  X  A  X  for all A 2 attr  X  R  X  .
+ r ; r 2 2 R t with r 1  X  X  X  X  r 2  X  X  X  for all X 2 id  X  R  X  we must have r types only. However, we will discuss other options for components shortly.
+ Example 3. Consider the entity type together with the relationship type
+The two relationships form a relationship set over R ENTAL . Note that the key of R rented out more than once at any rental time.
+
+Relationship types are commonly illustrated by diamonds. For each relationship type, the corresponding diamond is linked by edges to the rectangles representing its components. For key components, the corresponding edge is marked by The object types from Examples 2 and 3 are shown in Fig. 3 .
+
+Relationship types with role names. It may well occur that a relationship type must be used to model relationships be-relationship type M OTHER with components comp  X  M other  X  X f is : C id  X  M other  X  X f of : C lient g (every client can have at most one mother who is also a client).
+When we display the relationship type M OTHER we simply draw two edges to the entity type Client and label them by the corresponding role names is and of . The key component of:C example is illustrated in Fig. 4 .
+ Hence, U really is a specialisation of C .
+ In the ER diagram of Fig. 5 , there are three specialisations of the entity type P L ECTURER . Moreover, G RADUATE is a specialisation of the relationship type S is component of another relationship type.
+
+Higher-order relationship types. Previously, we have only allowed entity types to occur as components of relationship while all other object types have at least one component. We need to ensure that the components of an object type are relationship type S UPERVISE is of order 3 and the unary relationship type G assigns to each object type O in S an object set I  X  O  X  X  O ponents C or p : C , and for each object o 2 O t , we have that o  X  C  X  or o  X  p : C  X  belongs to C
+An Entity-Relationship diagram (ER diagram) of an ER schema S is a directed graph with the elements of S as nodes, and components p : C 2 comp  X  O  X  .
+ An example of an ER-diagram is given in Fig. 5 . The object types P different groups of people that work at a university. The ternary relationship type S uate students by lecturers in a project in a semester.
+ are up to n n
+Example 4. Consider the entity type C USTOMER where attr  X  C the three singletons {Name}, {Address}, {Phone} qualifies as the key for C with the same name, different customers with the same address, and different customers with the same phone number. In C 3. Boolean and multivalued dependencies on object types
+ER schemata. Subsequently, we present the correspondences between (i) the implication of functional and multivalued ean dependencies and the logical implication of Boolean propositional formulae. cess of inspecting candidate constraints. 3.1. Dependencies on object types note the set of its features , i.e., object type O will form the basis for the definition of our dependencies.
+ tured by Armstrong X  X  well-known axioms [1]. We will now introduce functional dependencies into the framework of ER modelling.
+ object set O t over O satisfies the FD X ! Y , denoted by
+F 2 X we have o 1  X  F  X  X  o 2  X  F  X  , then for all F 2 Y we have o also agree on all the features in Y .
+ C
+LIENT that the address of each client functionally determines the phone number of the client. Formally, we specify the functional dependency Address ! Phone .
+
+FDs are incapable of modelling many important properties that database users have in mind. Multivalued dependencies (MVDs) provide a more general notion and offer a response to the shortcomings of FDs [52,20,53 X 56] . An object set O t over O satisfies the MVD X Y , denoted by have o 1  X  F  X  X  o 2  X  F  X  , then there is some o 2 O t such that for all F 2 XY we have o  X  F  X  X  o have o  X  F  X  X  o 2  X  F  X  .
+ tional database design and 4NF [20].
+ Example 6. Consider the entity type D VD with attr  X  D vd the movie, independently of the special features available on the DVD. Formally, we specify the multivalued dependency Title Actor on D VD .
+
+The entity set consisting of the two entities does not satisfy the MVD Title Actor . However, if we add the two entities to the previous two entities, then the resulting set satisfies the multivalued dependency, indeed. we can formally define them as follows.
+ following properties: every F 2 F  X  O  X  is a Boolean dependency, if u is a Boolean dependency, then : u is a Boolean dependency, if u ; w are Boolean dependencies, then  X  u ^ w  X  are Boolean dependencies.
+
+An object set O t over O is said to satisfy the Boolean dependency u over O if for all distinct o if u  X  F 2 F  X  O  X  , then o 1  X  F  X  X  o 2  X  F  X  , if u  X : w , then f o 1 ; o 2 g satisfies u if and only if f o if u  X  X  u 1 ^ u 2  X  , then f o 1 ; o 2 g satisfies u if and only if f o junction _ bind stronger than implication ) . We also usually omit the outermost parentheses of a Boolean dependency.
+Note that the key f K 1 ; ... ; K n g is satisfied by O t
+Moreover, the functional dependency f F 1 ; ... ; F n g!f F
+F dencies. Notice, however, that multivalued dependencies are not special cases of Boolean dependencies. Indeed, Boolean dependencies form an important subclass of so-called equality-generating dependencies while multivalued dependencies tion of database dependencies.
+
+Example 7. Consider the entity type N ETWORK with the following set of attributes some communication network, and Channel-1, Channel-2 and Channel-3 are the frequencies in different channels. Two sta-operates the network: two stations that belong to the same centre can always communicate with one another. This con-straint can be expressed as the Boolean dependency An entity set that satisfies this Boolean dependency is: Centre Station Channel-1 Channel-2 Channel-3 New Zealand Wellington 100 200 320 New Zealand Auckland 100 210 300 New Zealand Dunedin 110 200 300 Australia Canberra 150 250 360 Australia Perth 170 250 380
+O . We say that R (finitely) implies u , denoted by R u ( R dependencies in R also satisfy u . Furthermore, R implies u in the world of two-element object sets if and only if all
+O of constraints. 3.2. The violation of functional and multivalued dependencies in two-element object sets tain two elements only. A thorough understanding of these notions is crucial to our technique. Let O denote an object type, and let O t  X f o 1 ; o 2 g denote a two-element object set over O .
+First, we consider the functional dependency X ! Y where X ; Y # F  X  O  X  . The only case in which O o the entity type C LIENT from Example 2 violates the functional dependency address ! phone :
+Let us now consider the multivalued dependency X Y where X ; Y # F  X  O  X  .If O sarily agree on all features in X , but there is no o 2 O features in F  X  O  X  XY . Since O t  X f o 1 ; o 2 g this condition boils down to the fact that o and o 2 disagree on some feature in Y and that o 1 and o 2 two-element object set over the entity type DVD from Example 6 violates the multivalued dependency Title Actor : Indeed, the two entities agree on Title , but disagree on Actor and disagree on Special-feature .
+The relationship between the satisfaction of functional and multivalued dependencies by two-element object sets can be summarised as follows.
+
+Lemma 1. Let O denote an object type, and let O t  X f o 1 ; o multivalued dependency X Y if and only if O t satisfies the functional dependency X ! YorO X ! F  X  O  X  XY.
+
+Consequently, the multivalued dependency X Y is violated by a two-element object set if and only if both functional object sets. For example, the following object set over the entity type D dency Title Actor : but both functional dependencies Title ! Actor and Title ! Special feature are violated. 3.3. Correspondences to propositional logic ables. The set F V of propositional formulae over V are recursively defined as follows: every propositional variable in V is a formulae in F V , if u 2 F V , then : u 2 F V , if w 1 ; w 2 2 F V , then  X  w 1 ^ w 2  X 2 F V .
+ of a formula.
+
+Let 0 ; 1 denote the propositional truth values false and true , respectively. A truth assignment over V is a mapping h : V !f 0 ; 1 g that assigns each variable in V a truth value. A truth assignment over V is extended to a function
+H : F V !f 0 ; 1 g that maps every formula u in F V to its truth value H  X  u  X  as follows: if u 2 V , then H  X  u  X  X  h  X  u  X  , if u  X : w for w 2 F V , then H  X  u  X  X  1 ; if H  X  w  X  X  0 0 ; otherwise if u  X  w 1 ^ w 2 for w 1 ; w 2 2 F V , then H  X  u  X  X  1 ; if H  X  w We say that a truth assignment h over V satisfies (or is a model of) the formula u in F if and only if every truth assignment that satisfies all the formulae in R no model of R 0 [f: u 0 g .
+ now extend this bijection to classes of data dependencies on O and propositional formulae in F
+Firstly, consider the functional dependency u : X ! Y on O where X  X f F the propositional formula
+Secondly, consider the multivalued dependency u : X Y on O where X  X f F
+F  X  O  X  XY  X f F 00 1 ; ... ; F 00 m g . In this case, define U  X  u  X  to be the Boolean propositional formula
+U  X  u  X  X  u 0 .If u  X  F is a feature of O , then let u 0  X  /  X  F  X  . The rest of the mapping is straightforward: for u  X : r we have u 0  X : r 0 , and for u  X  X  u 1 ^ u 2  X  we have u 0  X  X  u 0 1 ^ u 0 2  X  .
+ V . The following result was proven in [19], and we formulate it here in the context of Entity-Relationship models.
+Theorem 1. [19] Let R [f u g be a set of functional and multivalued dependencies on the object type O, and let R the set of propositional formulae that correspond to R [f u g . Then the following are equivalent: R implies u , R implies u in the world of two-element object sets, R 0 logically implies u 0 .
+
+The major proof argument [19] shows a one-to-one correspondence between two-element object sets O counterexample for the implication of u by R and a special truth assignment h by R 0 . In fact, for O t  X f o 1 ; o 2 g and all F 2 F  X  O  X  we have o o
+Example 8. Consider again the entity type M OVIE from Example 1 with and R  X f Title Writer g . Furthermore, let u be Title ! Writer . The two-element entity set M Title Writer Actor The Godfather M. Puzzo M. Brando
+The Godfather F.F. Coppola M. Brando three propositional variables V T ; V W and V A , and R 0 fined by assigning true to V precisely when V 2f V T ; V A
+M
+Theorem 2 established a correspondence between Boolean dependencies and propositional formulae [22,19,24] . Again, we formulate the result in the context of Entity-Relationship models. Notice the formula / at least one of the variables /  X  F  X  to be false . According to the special truth assignment h really is a set.
+
+Theorem 2. [19] Let R [f u g be a set of Boolean dependencies on the object type O, and let R propositional formulae that correspond to R [f u g . Then the following are equivalent: R implies u , R implies u in the world of two-element object sets,
+R 0 [f / 0 O g logically implies u 0 .
+
+The following example illustrates the necessity of having the formula / cannot be reduced to the statement: R 0 logically implies u 0 .
+ Example 9. Let O denote an arbitrary object type. Every object set over O satisfies the Boolean dependency u  X _ imply u 0 . On the other hand, / 0 O obviously implies u 0 .
+
+The following lemma reduces the implication problem from all possible database instances to those which contain pre-immediately from Definition 3 .
+ object set O t with the following properties: O t # O t , O t satisfies all dependencies in R , and O t violates u .
+
+It was shown that these results are not extendable to neither join nor embedded multivalued dependencies [19]. We will multivalued dependencies. 4. Tools for propositional search problems alternative approaches for solving the problem. 4.1. All satisfying truth assignments underlying application domain. Hence, one may wonder for which classes of dependencies there are collections of sample der what such a collection looks like, or even how it can be generated (automatically). two-element object sets that satisfy the already specified data dependencies in R and violate the candidate dependency two-element object sets O t 1  X f o 1 ; o 2 g and O t 2  X f o 0 process.
+ fying truth assignments of a formula, is sometimes called ALLSAT .
+
+In the next subsection, we will illustrate how analytical tableaux can be utilised to solve ALLSAT. 4.2. Propositional tableaux logic from an analytical tableaux point of view we recommend [64].
+
+In an a -expansion both conclusions a 1 and a 2 are appended on top of one another, whereas in a b -expansion the tree ment, b is true precisely if at least one of the pair b 1 The tree consisting of a single node is a tableau for f F 1 ; ... ; F n g .
+
+If T is a tableau for f F 1 ; ... ; F n g , and T 0 results from T by applying an expansion rule, then T and a 2 occur in # , and for every b which occurs in # , at least one of b branch is either closed or completed.
+
+Theorem 3. Every complete open branch of a tableau for R 0 and violates u 0 .
+ conditions for every a and b : No variable and its negation are both in S .
+ If a 2 S , then a 1 2 S and a 2 2 S .
+ If b 2 S , then b 1 2 S or b 2 2 S .
+ truth value as follows: If p 2 S , then give p the value true .
+ If : p 2 S , then give p the value false .
+ If neither p nor : p is an element in S , then give p the value true or false at will. It can be shown that every element of S is true under this truth assignment.
+ Example 10. Suppose we want to refute  X  p _ q  X _ r and : X  p ^ q  X  . Then we obtain the following tableau: i.e., we obtain two truth assignments h 1  X  r  X  X  true , h of R [f: u g .
+
+Example 11. Consider the complete tableau from Example 10 . The following truth assignments can be read off the tableau. pqr True False True True False False False True True False True False False False True These form the set of all truth assignments that satisfy  X  p _ q  X _ r , but violate p ^ q . 4.3. SAT-solvers and ALLSAT-solvers In general, we can apply any existing solutions to ALLSAT and the respective implementations. for an overview of many practical applications of SAT.
+
+Our second and final remark is that there are also designated ALLSAT-solvers (e.g., [67,68] ). 5. Assisting constraint acquisition plexity and feasibility of our approach, and comment on its integration into other frameworks. 5.1. The process in general
+We assume that the participants of the database design process have agreed on an ER schema S . However, we consider only the features of the object types are given.
+ the constraint acquisition process has either been completed or which is under consideration. sideration without providing object sets of the other entity types.
+ schema. 5.2. Acquiring the constraints on an object type constraints that should be specified explicitly on O . Initially, the set R will be empty. Some user or designer may suggest that the constraint u captures important semantic information about the object type into its corresponding set R 0 [f u 0 g of propositional formulae.
+
+Subsequently, we employ any ALLSAT-solver to enumerate all models of R can conclude that u 0 is already implicitly specified by R implied by R . Consequently, u does not need to be specified. In the other case, there is some model for R consists of 1 X  X  only, i.e., o 1  X  F  X  X  1 for all F 2 F  X  O  X  . Let V F 2 F  X  O  X  , i.e., /  X  F  X  X  V F . The second object o 2 has the truth value h  X  V to record the feature).
+Example 12. Reconsider Example 1 where the entity type M OVIE the multivalued dependency Title Actor , and the current candidate constraint u is the functional dependency Title ! Writer . The MVD in R is encoded as the propositional formulae V propositional tableau attempts to refute R [f: u g .
+ The only open branch of that tableau defines the truth assignment h  X  V object set O t h is
+Title Writer Actor 11 1 10 1 the 0 in the Writer -column, and M. Brando for the 1 in the Actor -column. Thus, we obtain Title Writer Actor The Godfather M. Puzzo M. Brando The Godfather F.F. Coppola M. Brando In this way we can generate two-element object sets from the truth assignments.
+R by the design participants. Consequently, we specify u to exclude these forbidden database instances and constrain the application domain appropriately.
+ Our approach is summarised as a flowchart in Fig. 6 .
+ polynomial time [59,69] .
+ we have obtained the set R consisting of the multivalued dependency Title Actor and the functional dependency element which is the functional dependency Title ! Writer .
+
+The last example illustrates an opportunity for optimising our approach. Whenever it is possible to foresee that two to inspect w . In any case, we prevent the situation where both dependencies u and w will become members of R . 5.3. Remarks on the performance and feasibility
+We have implemented the proposed approach in Java using Jigloo opinion on the usefulness of the proposed approach.
+ features occurring in R [f u g . For example, the conjunction of constraints in R truth assignment may satisfy V R 0 ^: u 0 . This, however, means that we need to generate 2 (one for each model). benchmark databases from the Transaction Processing Process Council [72] TPC-A 4 3 TPC-D/H/R 8 7.6 TPC-E 33 5.8 TPC-W 8 10.25 occur [73].
+ cies as a problem that is generally feasible in practice.
+
+Moreover, all sample databases contain only 2 different objects. According to our approach we can make the decision or after we have identified all sample databases as unacceptable, cf. Fig. 6 .
+ adequately addressed beforehand. 5.4. Integration into other approaches and database design Our techniques may become even more powerful when integrated into more general approaches. erating all typical sample data such that candidate constraints cannot only be rejected but also accepted. and how our approach can augment the validation process in Object-Role modelling.
+Completeness has been identified as one of the major factors that determine the quality of a data model [79,31] .In this context, completeness refers to whether the data model has captured all requirements of the application domain information systems. Empirical studies show that more than half the errors which occur during systems development are requirements errors [80 X 82] . Requirements errors are also the most common cause of failure in systems develop-ment projects [80,83,84] . The cost of errors increases exponentially over the development life cycle: it is more than 100 times more costly to correct a defect post-implementation than it is to correct it during requirements analysis stage, in order to catch requirements errors as soon as they occur, or to prevent them from occurring altogether [86]. Improving quality of conceptual models is also likely to improve quality of delivered systems [87 X 89]. While a good conceptual model can be poorly implemented and a poor conceptual model can be improved in later stages, all things being equal, a higher quality conceptual model will lead to a higher quality information system. Thus conceptual model example, a poor quality conceptual model may increase development effort (as a consequence of detecting and correct-ing defects) or result in a system that does not satisfy users (as a consequence of not specifying or not correcting defects). In a recent study on the impact of requirements errors, Lauesen and Vinter [81] found that in practice, most requirements errors are not corrected. Given fixed schedules and budgets, it is often too expensive and/or politically unacceptable to correct requirements errors discovered after the analysis stage. This means that requirements errors lying data model and the quality of delivered systems. Section 7 illustrates how optimisation techniques for database result in a higher degree of normalisation, potentially up to Fourth Normal Form [20] since our approach can deal with functional and multivalued dependencies, in particular. 6. A real-world case study of multivalued dependencies
+Our iterative approach towards constraint acquisition includes support for deciding whether to specify multivalued [20].
+ date-intense such as transactional databases.
+ becomes even more challenging. Moreover, many practitioners and academics are under the impression that data violating necessary to identify those multivalued dependencies that capture important semantic information about the application domain. Our approach offers support for this task.
+
+We illustrate the kind of support we offer by analysing an example from the research study in [93]. In that paper, the Form condition. As an example, we select one of these entity types that is from the field of grants databases: tivalued dependency the database violated the Fourth Normal condition [93].
+
+If our approach to constraint acquisition had been applied, both MVDs would have become candidates at some stage. Let us consider the MVD Keyword Grant Code first.
+ word, Grant_Code, Discipline, and University_ID, respectively, of the entity type G Keyword Grant Code translates into V K ) X  V G _ X  V D ^ V U tion 3.3. The set of all truth assignments that satisfy the negation of this formula consists of V True False False False True False True False True False False True We may now translate these three truth assignments into three different two-element entity sets that violate the MVD
+Keyword Grant Code . The entities
+The entity set says that both grants with code MARSDEN_Standard_2008 and MARSDEN_Fast-Start_2008 are grants associ-
+Victoria University. The second entity set corresponds precisely to the second truth assignment which assigns true only to V MARSDEN_Standard_2008 and MARSDEN_Fast-Start_2008 are grants associated with the keyword Marsden , and MARS-corresponds to the truth assignment which assigns true only to V
+DEN_Standard_2008 and MARSDEN_Fast-Start_2008 are grants associated with the keyword Marsden , and MARSDEN_Stan-dard_2008 is available to the discipline of IS at Victoria University, and MARSDEN_Fast-Start_2008 is available to the DEN_Standard_2008 should also be available to the discipline CS at Victoria University, and the grant with code MARS-DEN_Fast-Start_2008 should also be available to the discipline of IS at Victoria University. Since we have not been able to find any acceptable database instance, our approach suggests to specify the MVD Keyword Grant Code .
+ We will now consider the second multivalued dependency Grant Code Discipline which translates into the formula V ) X  V D _ X  V K ^ V U  X  X  . Thesetoftruthassignments thatsatisfy V V False True False False False True False True True True False False
+The entity set corresponding to the first truth assignment consists of consists of consists of the MVD Grant Code Discipline .
+
+The specification of both MVDs Keyword Grant Code and Grant Code Discipline has considerable consequences for the for instance, into G RANT _A REA ={Grant_Code, Discipline} with key {Grant_Code, Discipline}, G RANT _K EYWORD ={Keyword, Grant_Code} with key {Keyword, Grant_Code}, and U NIVERSITY _I NTERESTS ={University_ID, Keyword} with key {University_ID,Keyword}. Clearly, this schema has several advantages over the original schema G and update anomalies. Note that this decomposition was only possible, once the MVDs Keyword Grant Code and
+Grant Code Discipline had been identified as invaluable semantic constraints of the application domain. This, however, was not the case in practice. 7. An example for acquire-by-example
+In this section, we will present an example that demonstrates the support of our technique for acquiring con-approach into existing transformation techniques for ER diagrams, and normalisation techniques for relational databases. 7.1. From overloaded object types to quality ER schemata ber and a certain type, and insurance policies. The entity type B In the constraint acquisition process the first task might be to determine a key for B whose values suffice to identify entities in an entity set.
+ A first guess might be that C _ ID forms a reasonable key. Hence, we consider the candidate FD The tableau for the corresponding formulae looks as follows: single attribute on the right. Consequently, after some intervention by the designer we derive the following counterexamples: FD.
+ Accordingly, we do not specify the FD C ID ! Acc No .
+ insurance policies. Hence, we do not specify neither C ID ! Acc Type nor C ID ! In Pol . In particular, we do not specify f C ID g as a key.
+ We may now proceed by checking the suitability of all remaining attributes of B lowing counterexample relation:
+Acc_No Acc_Type 0553-0331410-38 Cheque 0553-0331410-38 Savings cide to specify the FD Acc No ! Acc Type .
+ tion we can try to decide whether the FD should be specified on top of We utilise the following tableau to read off any potential counterexamples.
+ Indeed, the tableau is closed which confirms our assumption that the key is already implied by R in the context of B may have multiple accounts. However, the accounts of customers are independent of the insurance policies. As a first approximation one may ask whether the multivalued dependency tableau.
+ The tableau is open and every possible satisfying truth assignment must assign true to V V Acc No . The left-most open branch shows that V Acc Type must be interpreted as false while the truth assignment for V below. The second counterexample relation results from the right-most open branch where V assignments.
+C_ID C_Name Acc_No Acc_Type In_Pol 001 Sylvester 0331410 Cheque Life 001 Sylvester 1240501 Savings House
+C_ID C_Name Acc_No Acc_Type In_Pol 001 Sylvester 0331410 Cheque Life 001 Sylvester 1240501 Cheque House
+C_ID C_Name Acc_No Acc_Type In_Pol 001 Sylvester 0331410 Cheque Life 001 Sylvester 1240501 Savings Life
+The first two relations from the top seem unacceptable: the customer has two different accounts and also two different both of them cannot be independent of one another. Consequently, we ask now whether the multivalued C ID ; C Name Acc No ; Acc Type represents useful semantic information.
+ The open branches of the tableau define the following counterexample databases:
+C_ID C_Name Acc_No Acc_Type In_Pol 001 Sylvester 0331410 Cheque Life 001 Sylvester 1240501 Savings House
+C_ID C_Name Acc_No Acc_Type In_Pol 001 Sylvester 0331410 Cheque Life 001 Sylvester 1240501 Cheque House quently, we specify the MVD above. At this point we have acquired the following constraint set R C ID ! C Name Acc No ! Acc Type C ID ; C Name Acc No ; Acc Type .
+ capture the semantics of the application domain.
+ valued dependency. We may therefore apply several guidelines for transforming the single overloaded entity type B a quality ER diagram.
+ gram in Fig. 8 .
+
+The new ER schema clearly separates the information about the customer accounts from the information about the cus-tomer X  X  insurance policies. The diagram also shows how the key of B C_ INFO we know that the FD C ID ! C Name holds, i.e., C _ ID is now a key for C_ of both relationship types C_ ACCOUNT and C_ INSURANCE . Finally, because of the FD Acc No ! Acc Type we know that f C info ; Acc No g forms a key for C_ ACCOUNT . However, the FD Acc No ! Acc Type is not a key dependency on C_ with attributes Acc _ No and Acc _ Type . Notice that { Acc _ No } is now a key for A_ the unary relationship type C_ INSURANCE that associates customers with insurance policies. 7.2. Normalisation of a relation schema Alternatively to the last process we may view the initial entity type B After the constraints have been acquired as described in the last subsection, we may normalise B Form decomposition of B ANK [97]: C_ INFO ={C_ID, C_Name} with key {C_ID}, C_ ACCOUNT ={C_ID, Acc_No} with key {C_ID, Acc_No}, A_ INFO ={Acc_No, Acc_Type} with key {Acc_No}, and C_ INSURANCE ={C_ID, In_Pol} with key {C_ID, In_Pol}.
+
+Notice that the relational database schema [44] both the ER diagram and the relational database schema.
+ 8. Conclusion task for any database designer.
+ straints are satisfied, then the candidate should be specified.
+
+It is future work to combine our techniques with already existing tools [75], and to integrate our approach with other expressiveness of our constraints while maintaining the kind of decision support we have suggested in this paper. develop a thorough design and normalisation theory for these databases [109 X 112] . Acknowledgements This research is supported by the Marsden fund council from Government funding, administered by the Royal Society of New Zealand.
+
+Sven Hartmann is supported by a research grant of the Alfried Krupp von Bohlen and Halbach Foundation, administered by the German Scholars Organisation.
+
+References

@@ -1,0 +1,19 @@
+ Information Security  X  A Strategic Approach, Vincent Leveque. IEEE Computer Society &amp; Wiley Interscience. 263 pp., ISBN: 0471736120, Cost: $62
+The book aims to provide readers with practical guide on how to work with their organizations to develop and implement a successful information security plan by improving management practices and by establishing information security as an integral part of overall strategic planning.
+
+The book starts with a practical concept (or model) of information security strategic planning, which in-cludes three key security planning factors (i.e., the business environment, information value, and risk) and two main aspects of security strategy (technology strategy and management strategy). A practical guide to developing an information security strategy is then provided, covering the  X  X  X uts and bolts X  X  of a long-term information security plan. Separate chapters covering technology strategy and management strategy clearly demonstrate that both are essential, complementary aspects in strategic security planning.
+
+Following this practical introduction to strategy development, subsequent chapters cover the theoretical foundation of an information security strategy, with a focus on the three key security planning factors. Accordingly, enterprise planning models, information economics, and risk analysis are discussed in-depth.
+In addition, two separate studies are developed, helping readers understand how the development and implementation of information security strategies can work within their own organizations.
+
+The book has several strengths. The book provides practical, tangible, focused guide on strategic informa-tion security planning, a unique angle of information security, while other technical or non-technical informa-tion security books typically provide only a conceptual overview of strategic security planning when information security management is discussed. As a result, this book can provide information security man-agers, information technology executives, and consultants with tangible guidelines on information security plan development while others cannot.
+
+Therefore, this book is quite valuable to technical managers who are weaker in management. Nevertheless, by linking information security to general management strategy, the book is also fairly tangible and valuable to non-technical executives.
+ Finally, the book is clearly written.
+
+There are several weaknesses of the book, however. In Fig. 5.2 (SOS Chief Security Officer Organization chart), the accident response part is somehow missing. It would be helpful to use the two case studies as exam-ples in illustrating the theory of information economics in Chapter 7 and the theory of risk analysis in Chapter 8. Unfortunately, this is not done.
+
+In the risk analysis part of the case studies, the information security threats are not explained in a tangible way; some emerging cyber attacks such as denial-of-service attacks, worms, botnets, and identity theft are not mentioned, though some (indirect) effects are mentioned. As a result, although technical managers will not be affected in reading the book, non-technical executives may only be able to gain some not-so-concrete understandings.
+
+Finally, in the case studies, there seems a gap between the technology strategy part and the risk analysis part.
+

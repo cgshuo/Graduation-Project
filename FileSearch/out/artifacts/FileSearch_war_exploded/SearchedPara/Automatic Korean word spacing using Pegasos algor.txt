@@ -1,0 +1,31 @@
+ 1. Introduction ( Jung, Lee, &amp; Lee, 2008; Milevskiy &amp; Ha, 2011 ).
+ space. This technique lets us use raw texts as training data.
+ required by HMMs in order to ensure tractable inference.
+ tributions are the following: show that the Pegasos-struct outperforms HMMs and traditional binary SVMs.  X   X  We show that the Pegasos-struct is faster than CRFs and structural SVMs without loss of performance.  X  We show that the second-order Markov model for Pegasos-struct has the best performance. setup and results. The final section gives some concluding remarks. 2. Previous works approach.
+ highly on the morphological analyzer X  X  results.
+ of n characters in a given character sequence. They defined the most likely word-spacing tag y = y characters x = x 1, n as
+They defined the word-spacing probability ( input -first model , I (2,2,1,2)), P ( y Because of sparse data, they used a linear interpolation as follows: where a 1 + a 2 + a 3 + a 4 = 1 and b 1 + b 2 + b 3 + b 4 dence assumptions required by HMMs.
+ Kruengkrai, 2009 ).
+ lem. We also use a Pegasos algorithm for fast training of structural SVMs. 3. Automatic Korean word spacing I + deul / B + eo / I + ga / I + syeoss / I + da / I +./ I .
+
+I , B , I , I , I , I , I &gt;. 3.1. Structural SVMs above example, x is a sequence of characters and y is a sequence of word spacing tag. lowing quadratic program. where d W i ( x i , y )= W ( x i , y i )-W ( x i , y ), W ( x , y ) is a feature vector function, ( x loss function that counts the number of mislabelings for output y relative to the correct output, y
+Tsochantaridis, Hofmann et al. (2004) presented a cutting-plane algorithm that requires O( n / e precision, e .
+
+We used the margin rescaling formula of 1-slack structural SVMs for automatic word spacing as follows:
+While 1-slack formulations have |Y| n constraints, one for each possible combination of labels  X  ^ y cutting plane algorithms. The pseudocode of the algorithm is given in Algorithm 1.
+Algorithm 1. 1-Slack Cutting Plane Algorithm 1: Input: ( x 1 , y 1 ), ... ,( x n , y n ), C , e 2: S  X  3: repeat 4:  X  w ; n  X  arg min 5: for i =1, ... , n do 6: ^ y i argmax 7: end for 8: S S [f X  ^ y 1 ; ; ^ y n  X g 9: until 10: return ( w , n ) 3.2. Pegasos algorithm for structural SVMs solution. The Pegasos algorithm minimizes the following objective function for binary classification SVMs.
+Parameter k is the number of examples used for calculating the subgradients, and A i = 1,2, ... , m }(| A t |= k ). The subgradient of f ( w ; A
+The Pegasos consists of two major steps in updating w t : (1) substeepest gradient update w cifically, in each iteration, the Pegasos looks for a steepest gradient search direction given A onto the set { w :|| w || 6 1/sqrt( k )}.
+
+Parameter k is the number of examples used for calculating the subgradients, and A i = 1,2, ... , m }(| A t |= k ), d W i ( x i , y )= W ( x that counts the number of mislabelings for output y relative to the correct output, y obtain a variant of the stochastic gradient method.
+ of size k in S (line 4), finds the  X  X  X ost violated X  X  sequence of labels y calculates w t +1/2 (line 7), and sets w t +1 to be the projection of w can be found using the same inference algorithms (i.e., Viterbi algorithm) as y poses over variable subsets no larger than the subsets in the decomposition of W ( x solve the argmax in line 5.
+
+Algorithm 2. A Pegasos algorithm for structural SVMs (Pegasos-struct). 1: Input: S , k ,T,k 2: Initialize: Choose w 1 s.t. k w 1 k 6 1 = 3: For t = 1,2, ... , T 4: Choose A t # S , where | A t |= k 5: 8  X  x i ; y i  X 2 A t : y i  X  argmax 6: g t  X  1 = k t 9: Output: w t +1 3.3. Generating features
+For CRFs, structural SVMs, and Pegasos-struct, we use first-order feature function g ( y g ( y t 1 , y t ). Table 1 summarizes first-order features. In this table, x and second-order transition feature g( y t 2 , y t 1 , y t as labels. That is, the label at position i is y i = s i 1 4. Experiments data sets.
+
+We used four evaluation measures: character-unit precision ( P and word-unit F -measure ( F 1 word ). -P char = # correctly spaced characters/# characters in the test data. -R word = # correctly spaced words/# words in the test data. -P word = # correctly spaced words/# words produced by the system. which is the most prominent part of such cases. 4.1. HMMs using SRILM toolkit ing tag y as bility P ( x , y ).
+ terior probability P ( y i | x ) of an word-spacing tag y ngram -count and hidden -ngram commands of SRILM toolkit ( Stolcke et al., 1998 ). 4.2. Results on an Intel Core i7 CPU PC with 3.33 GHz and 12 Giga bytes of RAM. quire more than 12 Giga bytes of memory, but Pegasos-struct and SVM-Perf(non-struct) use less memory). algorithms but is guaranteed to converge to the actual structural SVM solution. asos-struct with a significance level less than 0.01 (the two-tailed p -value is 1.2 10
+Pegasos-struct + 2nd-order improved P char from 98.37% to 99.09% (44% relative improvement) and P 96.00% (41% relative improvement). 4.3. Error analysis uation method that considered compound nouns. 5. Conclusions SVMs without loss of performance.
+ word spacing, we can use the models for word segmentation.
+ processing by rules should help.
+ Acknowledgements References

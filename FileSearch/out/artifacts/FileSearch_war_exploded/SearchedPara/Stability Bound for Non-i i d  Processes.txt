@@ -1,0 +1,1 @@
+ Given bounded output Y = [0, B ] and bounded kernel, k(x,x) &lt;  X  for all x, the the following inequality holds with probability 1  X   X  for Support Vector Regression, with regularization parameter  X , over algebraically mixing sequences.

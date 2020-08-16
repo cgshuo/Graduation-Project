@@ -1,0 +1,4 @@
+ x Proof. A 1 j + A 2 j = and ^ y 1 i + ^ y 2 i = 1 , we can rewrite it as  X   X  following property: min( w 1 j ; w 2 j ) = 0 8 j = 1 : : : m . objective of the constraint X  X  linear program will be: In which F ij and H ij are: According to Lemma 1, non-negative. Since j = min( w 1 j ; w 1 j ) 0 , thus: min( w 1 j ; w 2 j ) = 0 or equivalently w 1 j w 2 j = 0 8 j = 1 : : : m . as: is zero, we have: D ij = I ( w 1 j = 0) Clearly, we v 1 ij + v 2 ij = 1 , because: is complete.
+ an integral solution.
+ assignment X  X  and Y  X  , that increases the objective or does not change it. reduces the number of fractional values in the solution. we show that all of the feasibility requirements are satisfied. y i 0 , we prove that min ij v = 1 or of = 2 , we can improve the objective.
+ Therefore, we can write V new V old as:

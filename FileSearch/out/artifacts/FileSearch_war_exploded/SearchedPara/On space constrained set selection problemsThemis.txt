@@ -1,0 +1,129 @@
+ 1. Introduction interest. Obviously, the volume of data generated in such situations is huge.
+ data to keep around.
+
+Limited space can become a restricting factor even when the amount of data is not large, but when the actual available which space allocation should be done with care. Mobile users in general face an analogous problem in terms of bandwidth. over the communication link.
+
+Observe that all the above examples lead to space constrained optimization problems. We wish to fill the given space mined by the number and importance of the queries that we can answer based on the stored data. The view selection prob-in the literature.
+In this paper we study the above optimization problem for the case when the benefit we get for admitting items in the straints make the problem harder, and in Section 6 we discuss how they affect the solution procedure. For the rest of the paper we refer to this optimization problem as the constrained set selection (COSS) problem.
+Several problems that have been presented in the literature [21,24,17] are related to the COSS problem. Nevertheless, and also provide intuition about the nature of the problem from a theoretical perspective. In this paper, we make the following contributions.
+ interesting in practice.
+
+We derive the complexity of the above optimization problems, and propose several algorithms for their solution. Since there are no known polynomial time approximation algorithms for these problems, we examine the use of known opti-mization principles in this context [7] , such as greedy and randomization.
+
+We explore the properties of the above techniques with an experimental evaluation. Our results illustrate the behavior of the algorithms under different settings, and highlight the benefits of each approach.
+
+We discuss some theoretical properties of the proposed algorithms. Based on our analysis, we present worst case scenar-among the techniques proposed.
+ 3 reviews the related work. In Section 4 we present the formulation of the optimization problem, and Section 5 proposes proposed algorithms. Finally, in Section 7 we present a theoretical analysis of the algorithms and discuss their relative performance. 2. Applications of the COSS problem
+In the following sections we present with more detail two specific example applications of the problem. The first appli-cation comes from the world of data warehousing, and the second from pervasive computing. 2.1. Aggregate selection for approximate querying in datacubes often interested in inquiring about the data that generated the summarized form. In such cases, generating good estimates produce estimates for the detailed values.
+ jeans sold in each city of NY state (a range query). It turns out that we can use the information that is stored in the aggregates shown in Fig. 1 b, and will be able to produce estimates for all the values marked as  X  X  x  X .
+Now consider the case where we are allowed only a limited amount of space for storing the aggregates. We can compute is necessary for the reconstruction of the important queries. The importance, or benefit, of each query can be determined 2.2. Profile-driven data management
+We draw our second example from the area of pervasive or mobile computing [2,29,23] . The premise of pervasive comput-wants to be answered by the data items in the cache of the computer. Each query is associated with a benefit value, which storage requirements. Furthermore, each data item may help answer more than one queries.
+
+One of the problems in the aforementioned context is what data to send to a mobile computer. The choice of the data to (in both cases we can only transmit a limited specified amount of data).
+ queries). (1) Find location, requires map. (2) Find rental car, requires car agency list, and map. (3) Find restaurant, requires restaurant list, and map.
+ fore, the benefit gained is zero. Also observe that the map item is useful in answering all 3 queries. 3. Related work where the Bond Energy Algorithm [18] has been employed for its solution. In this domain the problem can be stated as requires a certain amount of space (to store the values of the attribute in the relation), and may be used by more than one applications. We want to find an allocation of the attributes to the memory hierarchy (e.g., main memory, local disk, are credited, which is not true for our case.
+
+The COSS problem is related to a family of optimization problems known as the Weighted constrained Maximum Value sub-Hypergraph problem [21] , and the studies show that even simple instances of the problem do not accept polynomial solutions. We are not aware of any algorithms proposed for the COSS problem in that area.
+Much work has been devoted to the Set Cover problem [6] , which is similar to the optimization problem we are trying to mization problem from a practical point of view, and we hope that the results we report will stimulate more work in this area.
+
+The COSS problem has also appeared in the domains of aggregate selection for approximate querying in datacubes [22] , and profile-driven data management [2] , which exemplify its diverse practical applications. However, the solution of the lem in these domains. 4. Problem formulation
+In the following paragraphs we establish the terminology used in the rest of the paper, we present the formal statement of the problem, and discuss its complexity.
+ Let components be the individual data items that are available for use, and objects be the consumers of the components. associated with a benefit, which is claimed when the object is satisfied. Components are associated with a space require-
+Example 3. According to the terminology we introduced above, the problem of view selection for approximate querying in while the sets of aggregates needed by the reconstruction algorithm are the components.
+
+Similarly, in the profile-driven data management problem (see Example 2 ) the objects are the queries contained in the user profile, and the components are the data items required to answer the queries.
+ the graph is shown in Fig. 2 .
+
+Let V  X  i ; 1 6 i 6 j V j be a binary vector having 1 in position i if and only if we have selected component v tion, and s  X  v i  X  ; 1 6 i 6 j V j be a function determining the space requirements of component v vector having 1 in position j if and only if all the components required by object u fying the space constraint. Then, the constrained set selection (COSS) optimization problem can be stated as follows. Problem 1.
+
+It is easy to show that the Knapsack problem reduces to a special case of the COSS problem. Hence, according to the fol-lowing lemma, the optimization problem is NP-Hard.
+ Lemma 1. The COSS problem is NP-Hard.
+ d has space requirement s  X  d k  X  and benefit b  X  d k  X  . We wish to select a subset D efit
+P has unit benefit (i.e., b  X  u k  X  X  1), and requires one and only one component v each component v k with b  X  d k  X  objects from U , and let s  X  v cludes the reduction. h
+Observe that in the special case where all the queries have the same benefit, the problem is one of trying to satisfy the largest number of objects possible given the space constraint. 5. Algorithms for the COSS problem
+In the following paragraphs we propose several different algorithms for the solution of the COSS problem. We start by than greedy algorithms, without getting stuck in local minima. 5.1. On finding the optimal solution
+There are two reasons we include an exhaustive algorithm in our discussion. First, it will demonstrate the dramatic dif-ference in execution time between the optimal algorithm and the heuristics. The exhaustive algorithm has to test O  X  2 very small sizes of the problem.
+
+Evidently, in order to find the optimal solution we do not need to enumerate and examine every single possible answer in bound to be sub-optimal, because we can always add new objects to the solution. Similarly, for answers that have already and the one that prunes the search space NaivePrune .
+
+Dynamic programming has been applied for the solution of the Knapsack problem, some instances of which can be solved 7.2 .
+
+What makes the COSS problem difficult is the fact that in order to satisfy an object we need all the corresponding com-ponents. Materializing a subset of the components for some object does not credit us part of the object X  X  benefit. 5.2. Solutions based on bond energy
+We now present algorithms based on the bond energy algorithm [18] . This technique has been used for the vertical par-starts by computing a measure of interrelation between each pair of components v possible pairs of components is captured in the square matrix A (line 5 of the algorithm):
+This measure is a function of the number and the benefit of the objects that require both components, v number of objects and their benefits, the stronger the connection between the pair of components is.
+Then, the procedure MakeBlockDiag  X  X  permutes the columns of A (or equivalently the rows since A is symmetric), and tion is expressed by the formula which is the mathematical representation of the bond energy. We are seeking for the maximum value of this expression over optimal form for A [18] .
+
+Note that in order to transform matrix A into a semiblock diagonal form, we add one column at a time in the matrix posi-
+Instead, we can enhance the technique by using a greedy column selection approach. That is, choosing in every step among version of the algorithm BondEnGr (Bond Energy Greedy) , and its time complexity now becomes O  X j V j mented with another two variations of the algorithm, where we make sure that during the split step we do not include which are the extensions of BondEn and BondEnGr , respectively. 5.3. Solutions based on greedy algorithms mulation. Let S k be the set of components that the algorithm has selected during the past k iterations, and O k  X  1. Let CO k  X  U O k be the set of candidate objects for selection during iteration k  X  1. Let C set of components, which are not in S k , required for object u ponents is given by the formula f  X  u l  X  X  P v each object. The greedy step can take any of the following four forms. given by f  X  u i  X  . Let u l  X  argmin u i f  X  u i  X  be the object that requires the least additional space. Then, O benefit values. The time complexity of this algorithm is O  X j U j formally, let u l  X  argmax u required components have unexpectedly high space requirements. We will refer to this algorithm as GrBen (Greedy Ben-efit) . Its time complexity is O  X j U j 2  X  . space required by the selected components is minimal. More formally, for each object u space required for storing the corresponding components, given by f  X  u the highest benefit per unit of additional space required by its components. Then, O alternatives. We will refer to it as GrBenSp (greedy benefit per unit space) . Its time complexity is O  X j U j tion of the new component, and s is the space requirements of the new component. If the selection of no component causes any new objects to be satisfied then the algorithm picks the component with the smallest space requirements.
+This algorithm explores the applicability of choosing components instead of objects. We do not expect it to perform well when most of the objects require more than one component in order to get satisfied. The time complexity of this algo-rithm is O  X j V j 2  X  and we will refer to it as GrComp (greedy component) . 5.4. Simulated annealing nique enables the algorithm to avoid local minima and stabilize in a final state that is close to optimal.
+The simulated annealing algorithm that solves the COSS problem is depicted in Fig. 5 . We start with an initial solution procedure. In simulated annealing apart from uphill moves, downhill moves are also allowed under certain circumstances. function from the previous iteration, and T is a time-varying parameter controlling the above probability. When T is high (in the beginning of the process) the probability of accepting downhill moves is high. Then, T is slowly decreased (line is a constant number (dependent on the problem size).
+
+The function GetNewSimAnSolution() (lines 19 X 26) determines what the proposed solution for the next iteration of the algorithm is going to be. The next solution is chosen at random among all the neighbours of the current solution. We term alty to the total benefit.
+
+The complexity of the simulated annealing approach is determined by the number of iterations. The work done in each above parameters did not have significant effects on the quality of solutions found. 5.5. Tabu search tions that has already visited in the past, and thus it is less probable to get stuck in local minima or cycles. 19). However, as with simulated annealing, this requirement is not strict.
+
+Note that the changes that lead to the new solution cannot involve any of the objects in the tabu list Q proceed to the next iteration.
+
+Similar to the simulated annealing method, the complexity of tabu search is controlled by the user. An important differ-solution (like simulated annealing), or as involved as exhaustive enumeration. Therefore, there is a tradeoff between the number of iterations the algorithm will execute, and the complexity of each iteration. In our experiments we use a greedy algorithm to select the new solution. 6. Experimental evaluation range from 10 to 1000. The number of components is in each case twice the number of objects, and more than half of the we generated random numbers following uniform, Gaussian, and Zipfian distributions.
+
+In the experiments we measure the sum of the benefits of the objects that are satisfied given the components that are normalized by the total space requirements of all the components in the problem. 6.1. Scalability of the algorithms
+The first set of experiments examines the efficiency of the algorithms in terms of the time required to produce the solu-tremendous difference in the computation time needed by the naive approach and the rest of the algorithms. NaivePrune , only for problems involving fewer than 20 objects. As shown in Fig. 7 b the bond energy algorithms scale more gracefully. Nevertheless, when the problem size becomes large, i.e., more than 600 objects for BondEn and more than 400 objects for are able to scale to thousands of objects. The time they required was under 2 min in all cases we tested. 6.2. Evaluating the quality of the solutions
+In this set of experiments we evaluate the quality of the solutions produced by the proposed algorithms. First we compare are minimal in all the cases we considered. Observe also that the greedy method of constructing the bond energy matrix ( BondEnGr ) in some cases improves the quality of the solutions. However, the more involved split procedure (represented among them.
+
+In the next set of experiments we compare the quality of the solutions of the bond energy and the greedy algorithms. The remains the same. The two graphs correspond to the cases where the assigned object benefits and component space require-rithms perform in the middle range, while GrComp performs the worst.
+
+The poor performance of GrComp is explained by the nature of the algorithm, which builds the solution one component at slow rate at which the algorithm improves the solution at the lower left part of the graph in Fig. 9 a.
+We also conducted a series of experiments where we varied the number of objects. Fig. 11 depicts the total benefit ious problem sizes.
+
+In Table 1 we report the results of the experiments with SimAn and Tabu . We use the solution provided by GrBenSp as the
+We experimented with varying the number of objects and the space constraint, and we allowed the algorithms to run an equal amount of time to the time required by GrBenSp to produce the solution.
+
+Unlike SimAn , Tabu was able to improve on the initial solution in all the cases tested. We believe that the reason Tabu outperforms SimAn is because the solution space is too large, and this makes it extremely difficult for SimAn to head to the correct direction. Remember that SimAn moves in the solution space by selecting at random one of the numerous solu-more effectively, because it employs a more structured way of taking steps at each iteration. 6.2.1. Comparison to optimal solution
+An interesting observation is the fact that both SimAn and Tabu improve the solution only by a small amount (less than or 10, for which we could get the optimal solution to compare against the other algorithms. The results of these experiments point in the graph represents an experiment with a different graph G connecting objects to components. As we move in the graph from left to right there is an increase in the average number of objects that are connected to each component. lem degenerates to the Knapsack problem.
+
+Note that in many settings in both graphs GrBenSp finds a solution very close to optimal. Though, there are also cases find much better solutions than the greedy algorithm in our previous experiments (see Table 1 ). Nevertheless, the graphs
+GrBenSp performs poorly. 7. Discussion
+In the following paragraphs, we investigate in more detail some properties of the algorithms. These are properties rele-scenarios, when compared to the optimal solution. This analysis indicates how poor the performance of the algorithms can become under certain conditions. Finally, we conclude by summarizing the benefits and drawbacks of each approach, and by providing a practical guide for selecting among the proposed solutions. 7.1. Soft space constraints
+So far we have made the assumption that the space constraint is a fixed number given in the input of the COSS problem, to the user to examine the solutions, and decide whether the increase in benefit justifies the larger space requirements.
+We now describe how we can change the algorithms in order to operate in this environment. The goal is to alter the algo-rithms so that they incrementally produce solutions which occupy more space and, naturally, have larger total benefit.
+Bond Energy: The bond energy algorithms cannot readily provide the new solution, because they have to rerun the Split procedure (see Fig. 3 ), which determines which components should be in the solution. Running the Split procedure each time we allow more space for the solution is an expensive operation, requiring time O  X j V j essarily a superset of the previous one, since we select the components from scratch.
+ constraint. Once we remove this condition, the greedy algorithms can produce with linear complexity at each iteration a new solution with increased space requirements. At each step we are only adding new objects or components, thus, we get a solution that is a superset of the solution of the previous iteration.
+ current solution requires space more than the space constraint. Since the process of forming a solution involves a ran-domization step, there is no guarantee that the new solution will be a superset of the old one. Once again, the solutions produced by the algorithm are not guaranteed to be supersets of the previous solutions.
+In the following section, we focus on the greedy algorithms. More specifically, we examine the performance of these algo-7.2. On the optimality of the greedy solutions
+As we have already discussed, the COSS problem degenerates to the Knapsack problem when each component satisfies at most one object. In this case, we can consider the set of components required by each object as a single super-component, and attach to it a space requirement equal to the sum of the space requirements of the corresponding components. We can also show that the following theorem holds.
+
+Theorem 1. Consider the Knapsack problem with n objects. Let the space constraint W be equal to the space needed by the i benefit per space ratio finds the optimal solution.
+
+Proof. Fig. 13 illustrates a linear ordering of the n objects according to their benefit per space values. We name u optimal for the Knapsack problem when the space constraint is set to w whether this optimality property carries over to the COSS problem and the corresponding algorithm GrBenSp .
+Unfortunately, the answer is negative. The reason is that unlike Knapsack , in the COSS problem each component may help straint W 1 is not necessarily a subset of the optimal solution for a space constraint W for the COSS problem. Theorem 2 formally states this observation.
+ not necessarily a subset of the optimal solution for a space constraint W
+Proof. We prove this theorem using a counter-example. Consider the instance of the COSS problem depicted in Fig. 14 .We indicate the benefit of each object and the space requirements for each of the components by the numbers in parentheses below the names of the objects and components. Assume that the space constraint is W tion for this particular instance of the COSS problem is the set of objects O space constraint be W 2  X  16 units. In this case, the optimal solution is composed of the set of objects O total benefit 24 units. We observe that the optimal solution O greater than W 1 . h 7.3. Analysis of the greedy algorithms
+In this section, we present theoretical results on the behaviour of the greedy algorithms when compared to optimal. These choose among those algorithms.
+
+In Figs. 15 and 16 we illustrate examples where the algorithms perform poorly in terms of quality of the solution. The benefit of each object and the space requirements for each of the components are indicated by the numbers in parentheses constraint is set to W units.
+
+Theorem 3. In the worst case, the GrComp algorithm provides a solution that is at least W solution, for any b &gt; 0 and W &gt; 3 .
+
+Proof. Intheinstanceofthe COSS problemdepictedin Fig.15 a GrComp willfirstselectcomponent v componentwillyieldanybenefit,and v 1 hastheminimumspacerequirementsamongallthecomponents.Subsequently,itwill select component v 2 in order to get the benefit from satisfying object u objects that can be satisfied, since the total space required by the set of the selected components, i.e., f v space constraint W . On the contrary, the optimal algorithm will select the components f v
+Theorem 4. In the worst case, the GrBen algorithm provides a solution that is at least  X  W 1  X  X  1 1 solution, for any b &gt; 0 and W &gt; 2 .
+
+Proof. In Fig. 15 b we give an example for GrBen . In this case the algorithm will accept in the solution object u the highest benefit value among all the objects. The space required by u times worse than the optimal solution. h for any b &gt; 0 and in the limit as W !1 .
+
+Proof. For the GrSp algorithm consider the scenario depicted in Fig. 16 a. The algorithm will select the objects f u
+The components needed to satisfy these objects have the lowest space requirements, i.e., they occupy space of 2 units per 3 1 b . Thus, GrSp can be approximated by 1 : 33 b . h tion, in the limit as b !1 .
+ responding components, which are f v 3 ; v 4 g . This ratio is 1 for u
+In the next iteration the object u 4 is selected. Note that in order to satisfy u of u 2 , which requires component v 2 , and has a ratio of 5 b 4 which requires components f v 1 ; v 2 g , has a ratio of b 1
+In the third iteration the algorithm selects object u 5 , which now only needs component v viable choice at this point, because the remaining available space is just b = 2.
+
+In summary, the GrBenSp algorithm selects the set of objects f u f v ; v 4 ; v 5 ; v 6 g , which occupy space 2 b  X  W . The total benefit of this solution is
+The optimal solution for this example consists of the set of objects f u quantity is approximated by 1.77. h 7.4. Choosing among the alternatives
+The experiments demonstrate that the bond energy algorithms perform worse than some of the greedy approaches. At a first glance this is a rather surprising result, given that the BondEn algorithms have higher complexity and seem to make choices with greater care. However, we observe that all the decisions that BondEn makes are based on just pairs of compo-that this prevents BondEn from capturing the true, more complex, associations inherent in the problem, narrows the infor-especially since it does not scale as well as the greedy algorithms.
+
+The greedy approaches are better than the bond energy algorithms for another reason as well. They are able to incremen-contrary, the bond energy algorithms cannot readily provide the new solution, because they have to rerun the split proce-dure (see Fig. 3 ), which is expensive.
+ choice, since they both have the same time complexity and provide solutions of similar quality. shows that three of the greedy approaches we examined, including GrSp , may perform arbitrarily poorly under certain cir-sense, since it avoids making poor decisions that lead to solutions very far from optimal.
+Finally, we should note that Tabu can in many cases improve on the solution provided by the greedy algorithms. An inter-8. Conclusions
+We derived the complexity of this problem, and since there are no known approximation algorithms for these problems, we explored the use of greedy and randomized techniques.
+
+We presented an extensive experimental evaluation of the algorithms that illustrates the relative performance of the dif-ferent approaches, and demonstrates the scalability of the greedy solutions. Finally, we examined some properties of the in practice for choosing among the alternatives. Both our experimental and theoretical analysis demonstrate that GrBenSp is a practical solution for the COSS problem.
+
+References

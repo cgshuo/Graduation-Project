@@ -1,0 +1,125 @@
+ 1. Introduction based or stateless HTTP-based standards, such as REST.
+ simplify WSMO and was followed by SAWSDL [12] , which constitutes an evolution of WSDL-S. MicroWSMO [14] .
+ applications.
+ aspects, e.g. [1,3] . Some support that bottom-up user-de
+Treiber et al. [19] talk about  X  socially enriched mashups descriptions in order to improve service discovery.
+ models). Moreover, if an element in one of the models is added, updated or removed n accordingly.
+ semantic service model or updating an existing one requires signi and contributes to the conceptual modeling of services, which remains an open and active semantic service models.
+
+Section 6 . Finally, in Section 7 we conclude the paper and discuss future research directions. 2. Methodology
+To ensure RSM's rigor, we draw upon the design science research methodology [24] and de work:  X  development of a reference service model. Summarizing, the two main problems identi enrichment of service descriptions with metadata coming from the users (social annotation of services).  X  bottom-up social annotation of services.  X 
+Design and development . In order to formulate a solution that ful related literature ( Sections 3 and 4 ), which proved that currently no suf address obj1 and obj2 .
+ existing elements of the model.  X  ( Section 6.1 ).  X  both in Table 4 as well as in the context of the demonstration activities ( Section 6 ). 2.1. The six service contracts
+In order to structure our analysis and provide a well-de fi has been reshaped in [25] and extended in our previous work [15] . The service contracts are de  X  in the service descriptions.  X  invoked. Usually, these functionalities are expressed as capabilities that de service invocation and the effects that the service execution will produce.  X   X  comprise the service's behavior and may be implemented in various ways.  X  execution, and thus usually are given using non-semantic descriptions.  X 
+The Social Descriptions which accommodate the user's perspective on a speci metadata and by monitoring the user's behavior when using a service). 3. Related work WSMF mediators are implemented using WSMO Mediators (OO, WW, WG, GG). de fi ned in OWL-S can be modeled in WSMO. However, there are aspects, such as the orchestration speci detailed in OWL-S.
+
+WSMO does not introduce such restrictions. contracts. Finally, RSM considers and accommodates Social Descriptions.
+They are grouped into three categories: no logic prede fi the form of a UML-pro fi le. The metamodel consists of fi for speci fi c SWS languages, thus allowing code generation.
+ that the SWS metamodel of [30] also contributes to ( i ) and ( iii ). elements of the minimal service model derive from hRESTS and WSMO-Lite. It thus de mandatory or optional MessageParts. MessageParts support fi not recognize and provide the means for supporting the bottom-up social annotation of services.
+OASIS proposed in 2006 a Reference Model for SOAs, which includes a de speci fi c implementations [33] .
+
+In the same line of work, in late 2009 OMG released SoaML. SoaML provides a metamodel and a UML pro compatible with the OASIS Reference Model for SOAs.
+ e.g. Policy and Contract [35] .
+ technical services by adding business information, and creates a uni
+The general design principle of USDL is to provide a uni fi level [36] .
+ (functional) and technical aspects. However, the two efforts have different starting points; ours is in annotation of services. 4. Analysis of semantic service frameworks service discovery, composition, publishing and invocation [6,37] . example, they provide mechanisms for matchmaking, such as WSMO Goals and OWL-S Service Pro based) Web services and the semantic description is decoupled from the WSDL identi fi ed the following efforts that belong to this category: OWL-S, SWSF, WSMO and WSMO-Lite.
+However, most of these efforts suffer from high complexity and require speci as expertise on ontology and rule languages, ontology engineering and type of service-based system.
+ placed under this category.
+ order to annotate a service. Unlike traditional SWS frameworks which are bound to speci
+WSML and OWL  X  OWL-S, lightweight semantic service frameworks are more service clients.
+ semantic service frameworks. We describe and analyze them, and different aspects of the service description as de fi ned by the six service contracts. 4.1. Semantic Web Service frameworks SWSF, WSMO and WSMO-Lite.
+ like the OWL-S Editor [41] are available for supporting the development of OWL-S Services. OWL-S de order to describe an upper ontology for services:  X 
+The Service which provides the point of reference for a service. It de the other classes, namely presents , describedBy and supports .  X  engines.  X 
+The Service Grounding which speci fi es how a client can access the service.  X 
+The Information Model is represented using OWL ontologies. Both the Service Pro service's operations and their inputs and outputs and the service's preconditions and effects. of the service. Still we need to take into consideration that the Service Pro service, in order to link an instance of a Service Pro fi by the OWL-S Process Model.
+
+The Technical Descriptions are represented by the Service Grounding which speci and SWSL-Rules.
+
+The Information Model is represented using SWSL ontologies. SWSO presents a conceptual model which speci
+Services can be described. There is also a formal representation of that model, which is given in conceptual model of OWL-S, extends its expressivity and facilitates process interoperability. message types to WSDL messages. Therefore, the following statements hold true for both. de Behavioral Descriptions of a service can be expressed by the FLOWS-Core process model. complement each other.
+ Descriptors.
+
+The Web Service Modeling Ontology ( WSMO ) [10,44] was fi separately.
+
+WSMO consists of four top-level elements that need to be described in order to de discussion to WSMO Ontologies and Web Services.
+
+The Ontologies provide the means for encoding the necessary semantics per case by de de fi ned in an ontology.
+ a Web Service. The capability describes the functionality offered by the Web Service and is de assumptions, postconditions and effects.
+ postconditions specify the state of the information after the execution of the Web Service (e.g. con balance).
+ dependencies of a Web Service with other Web Services.
+
+WSMO provides all the elements in order to de fi ne a Web Service according to the postconditions and the effects are encoded.
+ service.
+ communicate with the Web Service is provided, while the Technical Descriptions are provided in the WSDL service. WSMO-Lite became a W3C Member Submission in 2010. It identi services (a service ontology) as well as languages used to de
+Goals and Mediators out of scope. Therefore, the only top-level elements that are de Services and Ontologies.
+
+The WSMO-Lite service ontology de fi nes the following elements: ii. The Classi fi cation root which describes the service's functionalities. This classi iii. The Non Functional Parameter which represents a concrete domain-speci iv. The Conditions to be ful fi lled before the service invocation. vi. The Axiom which represents the logical expressions for service's conditions and effects.
+The Functional Descriptions are expressed using the classi capability of the service, which is expressed by the service conditions and effects. The Non-Functional Descriptions are represented using Non-Functional Parameters. as they are represented in the respective WSDL fi le.
+ using an ontology or in the non-functional properties of a service. 4.1.1. Discussion OWL or WSML.
+
+Most of the SWS frameworks recommend the use of ontologies for de
+Similar to OWL-S, SWSF provides the FLOWS-Core Process Model in order to de mappings to WSDL, through OWL-S and SWSO grounding respectively. far is summarized in Table 1 . 4.2. Lightweight semantic service frameworks SA-REST and MicroWSMO.
+ performed by referencing semantic concepts from a semantic model, i.e. an ontology. semantics while being agnostic to the semantic ontology language. This is a signi accommodating the semantic information in the WSDL service.
+
+Various tools are available to support the annotation of Web Services following the WSDL-S speci Tools for Web Services [51] and Radiant [52] .
+
+WSDL-S proposes the following fi ve extensibility elements: are represented partially by the category elemen t. Non-Functional Descriptions can also be de earlier, enables the association of these constructs with concepts of the Information Model.
+The Technical Descriptions are described suf fi ciently in the WSDL elements that model the schema mapping with elements de fi metadata can be included by using the modelReference element.
+ services [54] .
+
+The extensions proposed by SAWSDL are:  X  wsdl:operation, wsdl:fault, xs:element, xs:complexType, xs:simpleType and xs:attribute.  X 
+The liftingSchemaMapping element which speci fi es the mapping simpleType.
+  X 
+The loweringSchemaMapping element which speci fi es the mapping simpleType.
+
+The Behavioral Descriptions may be represented by WSDL related speci
+Similarly, the Non-Functional Descriptions can be provided by using WSDL related speci WSDL-S, social metadata can be included by using the modelReference element. predicates:  X  operation which annotates the operations of a service.  X  input which annotates the inputs of an operation.  X  output which annotates the outputs of an operation.  X  domain-rel which models the domain of a service.  X  method which refers to the method used for accessing the service, i.e. GET or POST.  X  p-lang-binding which describes the programming languages supported by the service.  X  sem-rel which describes a link in a service.  X  the inclusion of formal semantics in the HTML description.  X  data-format which enables the description of data formats, e.g. XML, RSS.  X  protocol which refers to the protocol used for invoking a service, i.e. SOAP REST.  X   X  model the conditions and effects of each operation.
+
+Both the Behavioral Descriptions and the Functional Descriptions are weakly de lightweight approach for service descriptions thus sacri fi derived from the domain-rel, sem-class and sem-rel elements.
+ sem-class element.
+ and outputs.
+ authors, MicroWSMO is an equivalent of SAWSDL for RESTful services. The following classes are de  X 
+Service which annotates the service description.  X 
+Operation which annotates a description of a speci fi c operation.  X 
+Address which speci fi es the URI of a speci fi c operation.  X 
+Method which speci fi es the HTTP method used by a speci fi  X 
+Input which indicates the description of the inputs of an operation.  X 
+Output which indicates the description of the outputs of an operation.  X 
+Label which speci fi es a textual description for a service, an operation or a message.  X  Mref which associates a service description with an ontological class. de fi full expressivity provided by the SWS frameworks. More speci included by reusing the Mref element. 4.2.1. Discussion in expressivity comparing to the SWS frameworks.
+ describe operations, but do not propose the use of a speci to be a deliberate decision, as these efforts aim to be detached from speci Order Logic.
+ through these states are not modeled by any of the four.
+
+The technical descriptions are given in SA-REST and MicroWSMO via attributes and classes that were de whereas WSDL-S and SAWSDL utilize the WSDL speci fi cation.
+ 4.3. Overview encoded using different languages.
+ that a trade-off between expressivity and complexity exists.
+ discussion so far is summarized in Table 3 . 5. Design and development of the reference service model Service Client and Service Feedback. The following paragraphs discuss how these concepts emerged. cluster similarity and low inter-cluster similarity. This means that all the elements of a speci Output , Service Context and Service Logic .
+ to a technical one, i.e. Web Service, while OWL-S models services as processes. but not service clients. The OBELIX service ontology de fi importance from a modeling point of view.
+ technical constructs. OWL-S de fi nes input, output and effect as parts of the process. SWSF de effects to express Service Output . Likewise, WSMO-Lite and WSDL-S de Service Output , whereas USDL de fi nes them as part of its functional module. models use the operations of the service to express Service Logic . Ontology through service contract, composition and process.
+ category and SA-REST uses domain-rel to refer to a speci fi semantic service frameworks leave it up to the service engineer to de information, e.g. using modelReference in SAWSDL or by de
+Model uses the Interaction for that purpose, while USDL uses the interaction module. SoaML de could be included as part of the Service Description. A Social Descriptions class could be de Service Feedback .
+ relationships of RSM to the SOA service modeling efforts discussed in Section 3 . The de one or more capabilities that require speci fi c input and produce a speci image, which is required for interacting with a Service . More speci acquired from other sources, e.g. databases, fi les or other services. execute a Service.
+ spatiotemporal parameters (e.g. time and location of the user or the service). is adapted by the circumstances of the Service Client .
+ maintaining it.
+
+The Service Client ( S CL ) models the entity that consumes/uses a Service because: they bene Service is mandatory, or they need to compose it into their own service-based application/mashup. creates the description of a Service by providing Service Feedback .
+The main relationships de fi ned in RSM are the following:  X 
+A S P provides one or more S : S P  X  provides 1 ::  X  S  X 
+A S requires one or more S I : S  X  requires 1 ::  X  S I  X 
+A S produces one or more S O : S  X  produces 1 ::  X  S O :  X 
+A S implements a S L : S  X  implements S L  X 
+A S is executed in a S C : S  X  is executed in S C  X 
+A S receives S F : S  X  receives S F  X 
+A S CL consumes one or more S : S CL  X  consumes 1 ::  X  S  X 
+A S CL obtains the S O : S CL  X  obtains S O  X   X  A S CL adapts the S C : S CL  X  adopts S C Hence a service can be expressed as the following collection of sets: S = h S P ; S I ; S O ; S L ; S C ; S F ; S CL i Fig. 1 provides a visual overview of RSM's concepts and their relationships.
+Descriptions. 6. Demonstration and evaluation of the reference service model 6.1. Encoding of the reference service model in OWL of speci fi c implementation, like the one described in the next sections. de ontology can be accessed at http://wapps.islab.uom.gr:8084/SWSWebInterface/ .
+De fi nition 1. De fi nition of the ServiceProvider in OWL. b owl:Class rdf:about=" ... /s3o/ns#ServiceProvider" N b rdfs:label xml:lang="en" N Service Provider b /rdfs:label b rdfs:comment xml:lang="en" N The organization that provides a service b rdfs:subClassOf rdf:resource=" http://xmlns.com/foaf/0.1/Organization "/ b rdfs:isDe fi nedBy rdf:resource=" ... /s3o/ns#"/ N b owl:disjointWith rdf:resource=" ... s3o/ns#ServiceContext"/ b owl:disjointWith rdf:resource=" ... s3o/ns#Service"/ N b owl:disjointWith rdf:resource=" ... /s3o/ns#ServiceInput"/ b owl:disjointWith rdf:resource=" ... /s3o/ns#ServiceOutput"/ b owl:disjointWith rdf:resource=" ... /s3o/ns#ServiceClient"/ b owl:disjointWith rdf:resource=" ... /s3o/ns#ServiceFeedback"/ b owl:disjointWith rdf:resource=" ... /s3o/ns#ServiceLogic"/ b /owl:Class N 6.2. The Semantic Service Search Engine SAWDL-reference service model and SA-REST-reference service model mappings. handled using a common API ( Table 6 [before translation phase]). created at design-time and stored in mapping fi les. The general pattern followed to de sarest:output and sawsdl's wsdl:OutputMessage.
+ keyword search, tag clouds and service recommendation ( Fig. 4 ). 6.3. MyPortal.gov portal (MyPortal.gov [61] ). The selection of public administration as the application domain is justi eventually lead to higher quality and innovative public services that would and become more agile and proactive. Citizens will bene fi makers, contributing once again to public service innovation and quality. MyPortal.gov is available at http://195.251.218.39/cyprus/ .
+ explicitly and implicitly is formally expressed and then included in the speci annotate any public service description using a comma-separated list of tags ( Fig. 5 ). service usage patterns. For example, the  X  Issue a marriage permit for adults those that used  X  Register marriage  X  and  X  Issue a marriage permit for adults is employed in order to identify service usage patterns and used for ensuring the anonymity of implicit social data, e.g. [62] , thus preserving the user's privacy.
+Two workshops were carried out to evaluate MyPortal.gov. The services that they use as this will allow them to fi nd services more easily and to bene 7. Conclusions and future research providers.
+ annotation of services.
+ Provider , Service Client and Service Feedback.
+
+The main contributions of RSM can be summarized in the following: vi. It can be applied to SOAP-based and RESTful services alike.
+The adoption of a reference model is primarily a social process. Hence, the engaging the community to the speci fi c problem. Providing a prerequisite to attract and create real possibilities for future adoption and take up. lightweight services is born, namely Linked Services [31,63] . In this new research recommendation and lightweight composition.
+
+References

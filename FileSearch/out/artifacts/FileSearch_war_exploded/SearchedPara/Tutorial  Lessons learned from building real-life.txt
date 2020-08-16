@@ -1,0 +1,8 @@
+ In 2006, Netflix announced a $1M prize competition to ad-vance recommendation algorithms. The recommendation problem was simplified as the accuracy in predicting a user rating measured by the Root Mean Squared Error. While that formulation helped get the attention of the research community, it put the focus on the wrong approach and metric while leaving many important factors out.
+
+In this tutorial we will describe the advances in Recom-mender Systems in the last 10 years from an industry per-spective based on the instructors X  personal experience at companies like Quora, LinkedIn, Netflix, or Yahoo!. We will do so in the form of different lessons learned through the years.
+
+Some of those lessons will describe the different compo-nents of modern recommender systems such as: person-alized ranking, similarity, explanations, context-awareness, or multi-armed bandits. Others will also review the us-age of novel algorithmic approaches such as Factorization Machines, Restricted Boltzmann Machines, SimRank, Deep Neural Networks, or Listwise Learning-to-rank. Others will dive into details of the importance of gathering the right data or using the correct optimization metric.
+
+But, most importantly, we will give many examples of pro-totypical industrial-scale recommender systems with special focus on those unsolved challenges that should define the future of the recommender systems area.
+

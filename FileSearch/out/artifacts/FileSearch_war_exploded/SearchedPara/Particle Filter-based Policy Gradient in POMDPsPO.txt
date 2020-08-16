@@ -1,0 +1,1 @@
+  X  Use Particle Filter to estimate the be lief state  X  Optimi ze a parametric policy D i f fic u lti es:  X  Likelihood ratio methods suffer from high variance  X  Finite-difference methods cannot apply (si nce the resampling 

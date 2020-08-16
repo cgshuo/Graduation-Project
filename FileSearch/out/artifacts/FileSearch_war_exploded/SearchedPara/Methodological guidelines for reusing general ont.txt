@@ -1,0 +1,136 @@
+ 1. Introduction confirmed by the results of a simple experiment. Using Watson on-line term  X  part  X  . Our search returned a great number of results (4031). reuses the general ontology DOLCE-Lite. 6 A search for ontologies containing the term from a general ontology.
+  X  five-line SPARQL 8 query.
+
+Thus, we can save time and effort if we reuse general ontologies that explicitly define of implementing a Java program that refers to  X  how things are done to conflicting uses of this relation in biomedicine ontologies.
+ ontology will be reused.
+ 2. Background
+Examining formal ontologies such as DOLCE-Lite, 9 SUMO-OWL, other notions, possibly with the participation of specialists in such concepts. ontology that requires either non-monotonic [19] or imprecise reasoning [20]. theories and examples ( Sections 2.4 and 2.5). 2.1. Ontological distinctions assumed in DOLCE. This will make Section 2.2 more comprehensible. papers are physical endurants.
+
+On top of the above, non-physical endurants have another distinction adapted from [21]: 2.1.1. Information object and description system concrete entities).
+
+Example 3. OWL, Prolog, 16 Spanish, among others are description systems. 2.2. Basic concepts semantic order (the most foundational concepts are listed first) as follows:  X   X   X  language is a description system.  X 
+Ontology :  X  An ontology is a formal, explicit specification of a shared conceptualisation .A that the ontology should be machine readable, which excludes natural language. consensual knowledge, that is, it is not private to some individual, but accepted by a group. can continue to exist although no one uses it. As a consequence, the meaning of match with the definition of  X  ontology  X  as a discipline.  X  law, enterprise, and automobile ( [24], page 33).  X 
+General ontology : (see the first paragraph of the Introduction section).  X 
+Section 2.4.  X  after , etc.) and/or their representations ( second , minute , hour , time zone , etc.).  X 
+Ontology developer : a social agent who is in charge of ontology development.  X  ontology to be built should cover ( [14], page 38). An ORSD is an information object.  X   X   X  should be part of the ontology requirements specification document (ORSD). 2.3. Formal concept analysis definitions useful for our work.
+
+De fi elements are called attributes, and I is a binary relation between G and M (that is, I g  X  G has the attribute m  X  M ([27], page 179).
+ failure), (acetylsalicylic acid, interacts with ethyl alcohol), among others.
+X p G and Y p M as follows [26]:  X 
+X d  X  { m  X  M |( g , m )  X  I  X  g  X  X }. For example, {morphine, pentazocine}  X 
+Y d  X  { g  X  G |( g , m )  X  I  X  m  X  Y }. For instance, {interacts with ethyl alcohol, opiate}
+De fi nition 2. A formal concept of a FC K =( G , M , I ) is defined as a pair ( A , B ) with A called the extent and the intent of the formal concept ( A , B ), respectively. 4.
+
+De fi nition 3. We say that concept ( A 1 , B 1 ) is a subconcept of ( A because the set of objects of C 1 is a subset of the set of objects of C of C subconcept of C 2 , then they are related by a line, and C
+De fi nition 4. A many-valued FC is a tuple K =( G , M ,( W m ) whose elements are called attributes; W m is the set of possible values for the attribute m with the constraint ( g , m , w 1 )  X  ( g , m , w 2 )  X  w m  X  M ([27], page 184).
+  X 
+G= {option 1, ... , option 4};  X 
+M = {feature 1, ... , feature 3};  X   X   X 
+De fi nition 5. A conceptual scale for a subset B p M of attributes is a (one-valued) FC S Therefore, S B =( G B , M B , I B ), where G B = {high, low} is the set of objects; M greater or equal to low.
+ Consequently, S B =( G B , M B , I B ), where G B = {yes, poorly} is the set of objects, M I is the relation shown in Table 3.b.
+
+De fi nition 6. Let S be the set of conceptual scales for the many-valued FC K =( G , M ,( W K =( G , M S , I S ), where  X 
+M S ={( m , w )| m  X  M , w  X  W m }; and  X  ( g ,( m,w ))  X  I S if and only if there exists v  X  W m , a scale S
+Example 10. If K is the FC of Example 7, then  X   X 
+M S = {feature 1 &gt; low, feature 1 &gt; high, ... , feature 3 &gt; yes}.  X  I
+S is the relation shown in Table 4 .  X  (option 1, feature 1 &gt;low)  X  I S because (option 1, feature 1, high) feature 2 is more important. 2.4. Meronymy, mereology and mereologies part theory 18 of parts and associated concepts [9,3]. We can say Most authors agree on the following core of axioms and definitions [16]. Axiom 1 (re fl exivity). Every object of the universe of the discourse is a part of itself. Axiom 3 (transitivity). If x is part of y , and y is part of z , then x is part of z . of  X  A number of additional mereological predicates can be introduced by their definition:
+De fi nition 7. A proper part is a part that is not the individual itself.
+De fi
+De fi common part.
+
+De fi common whole.
+
+De fi nition 11. The disjoint relation is the logical negation of overlaps . 2.5. Time modeling ontologies. These notions are based on [12]  X  ways of defining the concept of time point, see [35].  X 
+Hayes [58] also studies different ways of defining the concept of time interval.  X  another fact.
+
+Example 13. Drug 2 was registered later than drug 1.  X  Open and closed intervals . Interval endpoints may or may not be inside the interval.
+Example 14. The interval [1985, 1986) is closed on the left and open on the right.  X  Proper intervals . An interval with different endpoints is called a proper interval [39].
+Example 15. [1985, 1986] is a proper interval, but [1985, 1985] is not  X  Temporal granularities refer to the detail level used to represent temporal entities. Example 16. The duration of an event in days can be converted into minutes. an interval between two different calendar days into working days [40].  X 
+Total ordering . Total ordering means that, for every pair of time points t systems.
+
+Example 17. The time point t 1 at which process P 1 is started on machine M machine M 2 may not be linked by either relation t 1 b t 2 shared resources. 3. Methodological guidelines for reusing general ontologies following use cases. most appropriate general ontology into the ontology to be developed. should start directly from Use Case (2).
+ 3.1. Use Case 1. Conducting a comparative study of reusable general ontologies 3.1.1. Use Case 1.1. Identifying the type of general ontology to be reused heuristics are applied to all CQs for the ontology being built.
+ satisfied: (CM 1 ) 22 the CQ refers to a relation R that establishes an order; and (CM can be a geographical, cosmological, anatomical and topographical space regions and 3D regions. 1) The is _ located_in relation R , which relates two 2D regions. can check that the two conditions are met:  X 
+Satisfaction of CM 1 : a place p 1 can be located at place p  X  b ::  X  means is located in . For instance, Sant Cugat del Vall X s  X  province of Barcelona, then the province of Barcelona has other places. 2) The is_contained_in relation R , which relates two 3D endurants.
+Example 19. A small bottle is (contained) in its box . 3) The is _ structural_part_of relation R , which relates two endurants.
+Example 20. The hydroxyl group is (structural) part of paracetamol. 4) The is_involved_in relation R , which relates two perdurants. Example 21. Nitrating phenol is (involved) in synthesizing paracetamol . Another heuristic derives from Heuristic 1.
+ then an implemented mereology should be reused. Example 22. Main_component_of is a subrelation of structural_part_of .
+Section 2.1 of  X  Instruction Manual for the Annotation of Temporal Expressions Annotation Guidelines Version 1.2.1  X  [45].
+  X 
+Nouns:  X  day  X  ,  X  minute  X  ,  X  weekend  X  ,  X  midnight  X  ,  X 
+Proper names:  X  Monday  X  ,  X  January  X  ,  X  New Year's Eve  X 
+Specialized time patterns: 8.00, 12/2/00, 1994, 1960s.  X 
+Adverb:  X  currently  X  ,  X  hourly  X  ,  X  daily  X  ,  X  monthly  X 
+Noun/adverb of time:  X  today  X  ,  X  yesterday  X  ,  X  now  X  .  X 
+Prepositions of time:  X  on  X  ,  X  in  X  ,  X  at  X  ,  X  from  X   X 
+Conjunctions of time:  X  before  X  ,  X  after  X  ,  X  while  X  , item is 3 (as in  X  He arrived at 3.  X  ), three .
+
+Heuristic 4 (mereology reuse III). If the CQ refers to a time relation (using the words implemented mereology should be reused. 3.1.2. Use Case 1.2. Identifying comparative attributes general ontologies.
+ ontologist familiar with general theories.
+ 3.1.3. Use Case 1.3. Searching for general ontologies engine (e.g., Google 23 ), ontology search engines (e.g., Swoogle be used.
+
+OpenCyc in OWL 29 in Prot X g X , 30 in NeOn Toolkit 31 or in the free version of TopBraid composer. ontology 34 (see also [15]). 3.1.4. Use Case 1.4. Building a comparative table candidate ontologies, forming a one-valued FC.
+ 3.2. Use Case 2. Making a decision on which general ontology is to be reused 3.2.1. Use Case 2.1. Reformulating the CQs and add linking axioms with typical vocabulary of the general theories identified in Use Case 1.1. ontology should, wherever possible, be formulated by means of mereology vocabulary. Another goal is to identify axioms that link CQ terms to general ontology terms. axioms.
+ term overlap . the term underlap .
+ the CQ to include the term proper part of .
+ include the term is direct part of .
+
+Notice that it is not always easy to know if object o 1 is really a direct part of o composed of substances s 11 and s 12 , but there may be an s shown more clearly in Example 26.
+
+Heuristic 10 (disjoint) . If we want to know which parts of object o include the term are disjoint .
+ subrelation of part_of .
+ cell a part of itself.
+ 3.2.2. Use Case 2.2. Identifying the attributes of the general ontology to be reused underlap . There follows a series of heuristics for making a decision on mereology reuse in this use case. antisymmetry of part_of , and the weak supplementation principle. This heuristic has the purpose of ensuring the right meaning of part_of and proper_part_of . Example 27. The CQ on Pharmacia Iberia X  in Example 26 works thanks to the reflexivity of part_of . antisymmetry of the part_of relation.
+ weak supplementation principle would be used by the inference engine to detect the incorrect fact.
+Heuristic 15 (transitivity) . Suppose that the ontology should model X that has parts X parts of X? In such a case, the transitivity axiom should be reused. using transitivity, because Apiretal X  has paracetamol, and paracetamol has an alcohol group. be included in the general ontology.
+
+Example 31. If the CQ has been reworded to include the term The heuristics for identifying time modeling attributes are as follows: Heuristic 17 . Heuristic 16 is also valid for time.
+
+Example 32. If the CQ has been reworded to include the term (by means of time units).
+ registration of the drug, that is, it associates a time with an event. relations between time entities.
+ Example 34. Is the Fungusol X  registration date before Apiretal X 's? Example 35. Is the Fungusol X  registration date before 1980? the ontology should model relative time.
+ Example 36. (See Example 34).
+ The other heuristics for the reuse of time modeling are listed in Annex I. the terms defined in Section 2.4.
+
+Example 37. If we represent the disjoint relation through the following Prolog rule:
+Prolog does not fi tDe fi nition 11. the table containing the results of the comparative study output of Use Case 1.4. 3.2.3. Use Case 2.3. Determining the most appropriate general ontology  X  following attributes should be analyzed:  X  attributes should be analyzed:  X  developed. In this case, the following attributes should be analyzed: development does not require density. definitions.  X 
+Reliability . In this case, the following attributes should be analyzed:  X  Theoretical support . It refers to whether the candidate ontology implements a tested theory. scale. The decision-making steps are a group decision technique, e.g., Delphi [55], may be useful in this step. 3. Outputting the derived FC from each many-valued FC . over the other candidate ontologies. to each attribute. This step may also involve discussion to reach a consensus. study output in Use Case 1.4 filtered using the attributes identified in Use Case 2.2. 3.3. Use Case 3. Assembling the whole ontology decomposed as follows (see Fig. 11 ). 3.3.1. Use Case 3.1. Customizing the general ontology  X  ontology taking into account the attributes required in the domain ontology being developed. removed.  X  ontology being developed to the selected general ontology.
+  X  the two ontologies are written in different languages.
+ into different languages is not always possible.  X  output in Use Case 2.2 and to remedy any deficiencies detected in Use Case 2.3. rules. 3.3.2. Use Case 3.2. Integrating the general ontology in the domain ontology being developed
+We have identified the following scenarios:  X  this case, the decision reached in Use Case 2 should be revised.  X  easily solved.
+ not necessary in the domain ontology, then the part relation of SUMO-OWL can be reused as it is. 3.3.3. Use Case 3.3. Evaluating the whole ontology [56]. Its purpose is to validate the adequacy and logical consistency of taxonomic relationships. [57,58] . 4. Case study: Reusing general ontologies to build a pharmaceutical product ontology applying the heuristics to identify the types of general ontology to be reused (see Use Case 1.1).
+Case 2.3, we followed the steps shown in Section 3.2.3 , that is:
+FC of Table 13 . 4. Deciding which candidate ontology is the best . The lattices provide the following information:  X   X 
+Fig. 14 ).  X  ontology.  X  Oswebsite and OBO, whereas SUMO-OWL and DOLCE-Lite score high on theoretical support. to SUMO-OWL; therefore, we selected this ontology rather than DOLCE-Lite. attributes belonging to different dimensions.
+ The selected ontology is used to assemble the whole ontology as follows (Use Case 3.1): except the concepts and object properties shown in Fig. 16 .
+ (b) reflexivity to part; (c) asymmetry to properPart; and (d) antisymmetry to part. the execution of this use case.
+
+BiologicalActiveSubstance ; the concepts AlgidolSubstance subclasses of DrugSubstance ;conceptssuchas AlgidolProduct of Product (  X  an artifact that is manufactured and intended to be sold
+Isoniazid , among others, are subclasses of Molecule and BiologicallyActiveSubstance inducing a change in the structure or functioning of an organism that Caffeine is part of Frenadol because there is an individual of
+Frenadol, which is an individual of Frenadol. This is a means to obtain a part classes are interpreted are disjoint. Therefore, individuals Frenadol X . However, given that inheritance cannot be applied to individuals, the fact of that kind of Frenadol is not inferred from the fact that Caffeine their results as shown in Section 3.3.3 . To answer CQ 4 we have added this rule to the ontology: paracetamol interacts with ethyl alcohol, Frenadol X  also interacts with ethyl alcohol. than the other ontologies because OWL-Time separates time entities ( ( DateTimeDescription and DurationDescription ).
+ The selected ontology is assembled in the whole ontology according to the following use cases: are (a) the concepts DateTimeDescription, TemporalEntity, Instant inDateTime (between TemporalEntity and DateTimeDescription and TemporalUnit ); and (c) the data properties day , month are required.
+ Use Case 3.2. Integrating the general ontology in the host ontology . We have reinserted the term the ontology to be reused as a superclass of both TemporalEntity meaning of Abstract in SUMO is different from the meaning of abstract entity (but not a Dolce abstract particular).
+ A partial view of the resulting ontology is shown in Fig. 17 .
+ 5. Controlled experiment 5.1. Experiment setup 5.1.1. Context
+Semantic Web course as part of the Master in Artificial Intelligence program at UPM. test the methodological guidelines proposed in this paper. 5.1.2. Objectives methodology. 5.1.3. Steps
+The experiment consisted of the following steps: explanations, speaking of tables rather than FCs and graphs rather than lattices. (c) a questionnaire available on the Web. or with a partner of their choice. Nine groups were formed. 4. Collecting the complete questionnaire. The answers were analyzed as described in Section 5.2. 5. Analyzing data (see Section 5.3). 5.1.4. Task
+Each group had to develop a cultural event ontology that answers, at least, the CQs its explanations necessary? A score of 5 was the best, and a score of 1 was the worst. 5.2. Statistical processing that assigned the worst scores (with a mean of 2.30) have been ruled out. 5.3. Data analysis is a candidate for future research. 6. Conclusions particularly by formal ontology researchers.
+ construction.
+ (adapted from [11] ,page10).
+ detailed OWL mereologies appear.
+ circumstances change.
+ formal definitions of the general ontologies that they have to reuse. engineers should be allowed to work with their own variations of the proposed methodology. 7. Future work that supports them and experimentation.
+ reuse of ontologies with concepts with an intermediate level of abstraction, for example, works on extraction of meaning from texts (see for example [62]). [66,67] ).
+ without additional software support even for ORSDs with hundreds of CQs. already mentioned, some examples in Section 3 have been checked in Prolog, assuming the CWA. Acknowledgments for providing us some of the examples that we have used in Section 2.3. Annex I. Other Section 3.2.2 heuristics applied to time modeling
+Heuristic 21 (convex intervals) . If we want to know about time intervals without be reused.
+ since a call is open during a gapless time interval.
+
+Heuristic 22 (non-convex intervals) . If we want to know about time intervals with every 8 hours, every working day), then non-convex intervals should be reused. meeting on 13 February 2012? by reasoning with non-convex intervals. and/or Y not included) , then the system can answer the question by reasoning with open intervals. included) , then the system can answer the question by reasoning with closed intervals. we are dealing with different granularities.
+ are dealing with different time zones.
+ not yet worked with or tested this attribute in our ontologies.
+ now, all our ontologies assume total ordering.
+ has to model infinity.
+ community extinction is infinity.
+ Heuristic 29 (density) . If time is assumed to be continuous, then density should be represented. numbers is also assumed.
+ of its application in the future.
+References

@@ -1,0 +1,41 @@
+ K : X  X X  X  R .
+ P 2 K ( x , x 0 ) .
+ tion 5, and experiments are reported in Section 6. ( x with kernel methods. 2.1. Support Vector Machines f ? and b ? are defined as the solution of  X   X   X   X   X   X   X  corporate a mechanism for learning the kernel. 2.2. Learning the Kernel hyper-parameter minimizing a cross-validation score. several proposals allowing for more flexibility. the distinction is appropriate in most cases. available data without training any classifier. 2001; Chapelle et al., 2002).
+ Learning (MKL) framework (Lanckriet et al., 2004). that defines the actual SVM kernel straints MKL 1 :  X   X   X   X   X   X   X   X   X  the original SVM problem (1). The squared RKHS norm ` of the group-LASSO (Yuan &amp; Lin, 2006). used to select relevant input variables.
+ tion.
+ Composite Absolute Penalties (CAP) family. 3.1. Composite Absolute Penalties (  X  norm parameters is of hierarchy differs from the one that follows. 3.2. Hierarchical Penalization courages sparseness among and within groups:  X   X   X   X   X   X   X   X   X  which induces sparseness in  X  m .
+  X  here is grouped variable selection.
+ The minimizer of Problem (6) is the minimizer of leading coefficients within the selected groups. little or no adjustments.
+ penalization of Section 3.2. 4.1. Variational Multiple Kernel Learning is equivalent to Problem (4), is stated as:  X   X   X   X   X   X   X   X   X   X   X   X   X   X   X  zero as u/ 0 =  X  if u 6 = 0 and 0 / 0 = 0 . lowing section. 4.2. Variational Composite Kernel Learning cluding MKL:  X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X  lem at hand.
+ hence Problem (8) is equivalent to  X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X  (CKL):  X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X  imum for the algorithm described in Section 5. penalty on the RKHS norms:  X   X   X   X   X   X   X   X   X   X   X  order optimality conditions for  X  m (  X  L  X  X   X  where s ` = P Problem (10) yields the claimed result.
+ Note that the outer exponent 2  X  k  X  k H group sizes.
+ convex if and only if 0  X  q  X  1 and 0  X  p + q  X  1 . third one also provided (i) P m  X  G 0  X  p + q  X  1 .
+ the following particular cases of interest:  X  p = 0 , q = 1 yields a LASSO type penalty on the  X  p = 1 , q = 0 yields a group-LASSO type penalty on  X  p = q = 1 we recommend the balanced setup p = q = 1 2 . pretability issues. carried out by a projected gradient descent update. 5.1. A Gradient-Based Wrapper optimization problem: where J (  X  ) is defined as the objective value of  X   X   X   X   X   X   X   X   X   X  by an efficient projected gradient descent scheme. 5.2. Computing the Gradient  X   X   X   X   X   X   X  which can be solved by any SVM solver.
+ J (  X  ) is also the dual objective value:
+J (  X  ) =  X  where  X  ? solves Problem (14).
+  X  simply 5.3. CKL Algorithm developed for MKL by Rakotomamonjy et al. (2007). Ac-Algorithm 1.
+ Algorithm 1 Composite Kernel Learning initialize  X  solve the SVM problem  X  J (  X  ) repeat until convergence Depending on each BCI paradigm, these EEG signals are acquisition system easier to use and to set-up. 64 channels).
+ acter in the P300.
+ vided into L = 64 groups.
+ and between groups.
+ implemented by our algorithm, with p = 0 and q = 1 . by these algorithms is also reported.
+ Algorithms AUC # Channels # Kernels removes about two thirds of the channels.
+ solution, that is vances to one.
+ be relevant for the BCI P300 Speller paradigm. of parametric function spaces.
+ pretable solutions.
+ SVM problem.
+ regression or ranking.
+ the European Community, under the PASCAL Network of interpretation of the BCI experiments.
+ conference on Machine Learning (pp. 41 X 48). baumer, N. (2004). The BCI competition 2003: progress 264.
+ tion . Cambridge University Press.
+ machines. Machine Learning , 46 , 131 X 159. tems 11 (pp. 204 X 210). MIT Press.
+ MIT Press.
+ tion Processing Systems 15 (pp. 569 X 576). MIT Press. Research , 3 , 1157 X 1182.
+ Learning Research , 5 , 27 X 72.
+ chine Learning (ICML 2007) (pp. 775 X 782). Omnipress. (pp. 45 X 50). Springer.
+ tion, and beyond . MIT Press.
+ for brain computer interfaces. EURASIP Journal on Ap-plied Signal Processing , 19 , 3103 X 3112.
+ Machine Learning Research , 7 , 1531 X 1565. formation processing systems 20 . MIT Press. Series B , 58 , 267 X 288.
+
+SVMs. Advances in Neural Information Processing Sys-tems 13 (pp. 668 X 674). MIT Press.
+ Royal Statistical Society. Series B , 68 , 49 X 67.

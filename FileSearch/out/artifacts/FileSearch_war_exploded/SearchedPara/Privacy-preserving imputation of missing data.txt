@@ -1,0 +1,94 @@
+ 1. Introduction
+The cost per byte of secondary storage has fallen steeply over the years. Many organizations have taken mining.
+ imputed from the rest of the data.
+ privacy-preserving data mining algorithms X  X ike most data mining algorithms X  X ssume data is complete. In methods of data cleaning are also required.
+ detail. 1.1. Related work Like data mining itself, pre-processing algorithms perform best when they have access to sufficient data. as good imputation results).
+
+Several methods for dealing with missing values have been proposed. One general approach to handling rithm for data that is horizontally partitioned between two parties (e.g., [23,20,18] ). algorithms on some data sets [12] .
+ quent data mining than either of the above methods. Imputation techniques range from fairly simple ideas [22] .
+ commonly used methods are regression-based imputation and decision-tree-based imputation.
+Regression imputation [3] imputes missing values with predicted values derived from a regression equation early related with existing data values.
+ the parts of the tree that will not be needed.
+
+Lindell and Pinkas [23] provide a privacy-preserving algorithm for computing the ID3 tree for databases
+We do, however, make use of some of Lindell and Pinkas X  X  subprotocols, which we describe in Section 2.3 . 1.2. Our contributions tree. The second version does not leak any information beyond the computed imputed value, but incurs slightly increased communication and computation costs.
+
+We also briefly describe private protocols for data imputation based on other well-known imputation meth-data are suited to those methods.
+
+We begin in Section 2 by introducing some definitions and existing subprotocols. We describe our privacy-data imputation using the mean, the mode, linear regression, and clustering-based prediction. 2. Preliminaries Alice and Bob have a horizontally partitioned database. That is, Alice holds a database D  X  X  d 1 ; ... ; d  X   X 2 Alice and Bob holds a database D B  X  X  d value, we also refer to it as the class attribute . Together, D
+D  X  D A [ D B with no missing values. 1 Additionally, there is another instance I 2 Bob (not included in  X  d each other X  X  data should be revealed to either party.
+
+Throughout this paper, n denotes the number of instances in the joint database, m denotes the number of key encryption and s to denote the maximum number of bits required to represent any symmetric key encryption.
+ tocol is based, our privacy model, and some cryptographic primitives we use in our solutions. 2.1. Lazy decision-tree algorithm decision-tree algorithm that is a straightforward simplification of ID3. directly trace the path that would have been taken if an ID3 tree had been built from the training data. ing set of instances.
+ current set (or subset) of instances by D , the set of values taken by the class attribute by f c set of values taken by an attribute A as f a 1 ; ... ; a k
+D  X  a j  X  , and the number of instances of D  X  a j  X  in which the class label is c tional entropy after splitting on attribute A is defined as
+The computation of this algorithm in a distributed privacy-preserving manner is the main result of this paper and is described in Section 3 . 2.2. Privacy definition
+The paradigm of secure distributed computation provides cryptographic solutions for protecting privacy in tailored, more efficient, solution to privacy-preserving imputation.
+ to whom Alice and Bob send their data. The TTP uses the imputation algorithm chosen by Alice and Bob to compute a missing value and sends the computed value to Bob. In a private protocol, Alice and Bob compute have been learned by simply giving them each their initial input and final output. input and output alone.)
+We note that there are advantages and limitations to this privacy definition. The definitions are quite ing each other X  X  data values correctly. However, these definitions do not address what the output itself other X  X  data. 2.3. Cryptographic primitives able hardness assumptions under which the various cryptographic primitives described in this section are secure. 2.3.1. Random shares ing, we choose N to be a large prime, where the field F is isomorphic to Z
+Alice and Bob have additive random shares of a value x 2 F if Alice knows a random value a 2 F and Bob tions and subtractions in F . That is, if Alice and Bob share values x and y via random shares a b these are random shares of x  X  y . 2.3.2. Oblivious transfer 1-out-of-n oblivious transfer (denoted OT n 1 ) is a two-party protocol where the sender has n inputs f x by using a protocol that carries them out all at once [17] . 2.3.3. Yao X  X  secure circuit-evaluation protocol
+Yao X  X  two-party secure circuit-evaluation protocol [31] allows two parties holding inputs a and b to pri-tocol heavily depends on the size of a Boolean circuit for f and on the performance of OT bly large. We make use of Yao X  X  protocol for private computation in several cases, but only on functions involving a small number of small inputs. 2.3.4. Purity checking protocol
+In a purity checking protocol, Alice has a vector of values X  X  X  x
+Y  X  X  y 1 ; ... ; y n  X  . The protocol outputs c if x 1  X  X  x protocol based on secure equality testing is described in [23] . 2.3.5. Secure x ln  X  x  X  protocol
+When Alice and Bob have random shares of x , denoted as v (such as the one in [23] ), computes the shares of x ln  X  x  X  as w ties learn nothing else.
+ 2.3.6. Private indirect index protocol
+In a private indirect index protocol ( PIX ), Bob has a vector of values X  X  X  x have random XOR shares of an index i . That is, i 1 2 Alice and i tion of OT n 1 . 2.3.7. Secure scalar product protocol
+In a secure scalar product protocol ( SPP ), Alice has a vector X  X  X  x Y  X  X  y 1 ; ... ; y n  X  . The protocol privately computes the scalar product as X Y s s B are random shares learned as output by Alice and Bob, respectively, and the parties learn nothing else.
+An SPP protocol is given in [13] . 3. Privacy-preserving imputation based on lazy decision trees
+We now describe our main privacy-preserving data imputation protocol. It is based on the lazy decision-tree algorithm described in Section 2.1 . Recall the definitions of D the value taken by the attributes along the path.
+ cost of communication and computation. 3.1. Our basic protocol be reversed.)
+Our privacy-preserving protocol follows the same basic outline. However, the privacy requirements pro-s shared bit-vector representation of any D 0 D . That is, Alice and Bob have, respectively, bit vectors  X  p ; ... ; p n  X  and  X  q 1 ; ... ; q n  X  such that p i q i  X  1if d entropy computed for each attribute in each iteration is also held as random shares by the two parties. purity checking protocol (see Section 2.3 ).
+
+To compute the root of the lazy decision tree, Alice and Bob compute random shares of the entropy for ten as
+Alice and Bob, they can compute shares of p j  X  and D  X  a
+Section 2.3 ) and local additions and subtractions, Alice and Bob can jointly compute a random sharing of each Entropy  X  D ; A i  X  .
+ After this computation, Alice has a vector  X  Ent A 1 ; ... ; Ent has  X  Ent B 1 ; ... ; Ent B m  X  such that Ent A i  X  Ent B that yields the least entropy is computed as random shares (min min  X  min A min B ) between Alice and Bob using Yao X  X  protocol. Note that either Ent
+Entropy  X  D ; A i  X  or Ent A i  X  Ent B i  X  Entropy  X  D ; A sion-tree computation not be revealed to either party. To achieve this, we maintain them as random shares between Alice and Bob.
+ compute the attribute at level j of the lazy decision tree, Alice and Bob should split the database D the attribute A s chosen at level j 1. This involves finding I  X  A the attribute index s is randomly shared between Alice and Bob. Alice and Bob compute a random sharing p 2 Alice and q i 2 Bob per instance (1 6 i 6 n ) such that D ), we set p i  X  1 and q i  X  0 for all i .
+
+If D j is pure, then Bob learns the unique label using the secure protocol that checks if D tation protocol of Section 3.3 for the split D j for each of the attributes f A shares of the split entropy Entropy  X  D ; A i  X  . (i.e., Ent gain is zero for any attribute that has already been chosen at a previous level. 3.2. Secure computation of the number of instances of the database that is only identifiable by random shares held by Alice and Bob, respectively. 3.2.1. Secure Hamming distance
+A secure Hamming distance protocol, shown in Fig. 3 , is useful for us when applied to a subset D represented by bit vectors X  X  X  x 1 ; ... ; x n  X  and Y  X  X  y x dom shares of this Hamming distance, which is also equal to j D parties are then able to compute their needed results locally.
+The only communication that happens between the two parties is during the invocation of SPP using two tions and one decryption for Alice and n modular exponentiations and one encryption for Bob. The SPP pro-this protocol is secure. 3.2.2. Secure computation of the total number of instances in a subset with a given class label
+D . The input D 0 is represented by the bit vectors X  X  X  x 1
+Bob, respectively, where x i y i  X  1 if instance d i 2 D 0 1 6 i 6  X  , Alice computes w i  X  1if d i  X  M  X  X  c and w i  X  x i y i  X ^ w i  X  1 for 1 6 i 6 n . This relation can be rewritten as  X  x w i  X  y i  X  1 and the number of instances satisfying  X  x i Alice and Bob using SPP . The complete protocol is shown in Fig. 4 .
+
+The communication and computation complexity are the same as that of SPP . The privacy of this protocol follows from the privacy of the SPP protocol. 3.3. Secure protocol to compute split entropy
+Alice and Bob, respectively, such that p i q i  X  1if d i 2 D
+The protocol computes random shares of the entropy after splitting D values a 1 ; ... ; a k . In the decision-tree computation, the entropy after splitting the database D as shown in Eq. (1) in Section 3.1 . Alice and Bob use Yao X  X  protocol to privately compute an XOR sharing representation of D  X  a j  X  D 0 for 1 6 j 6 k . That is, D  X  a
+Alice and S  X  X  S 1 ; ... ; S n  X 2 Bob, where for 1 6 i 6 n ; R otherwise. Using the protocols of Section 3.2 , Alice and Bob compute random shares of j D  X  a 1 6  X  6 g and 1 6 j 6 k . Random shares of the terms p j  X  x log x protocol. The complete Secure Split Entropy protocol is shown in Fig. 5 . nication complexity is O  X  ns log N  X  . The computation complexity is O  X  n log N  X  invocations of OT involves two parties jointly computing random shares of j D  X  a equal to that of O  X  log N  X  OT 2 1 invocations.
+
+The total computation complexity is the cost of O  X  X  n  X  g  X  k log N  X  OT modular exponentiations and O  X  gk  X  encryptions for Bob.
+
+The output of the Secure Split Entropy protocol is a random sharing of the entropy after splitting D attribute A . Yao X  X  protocol securely computes the subset D  X  a protocol securely computes random shares of the entropy after splitting D 3.4. Secure split protocol
+The Secure Split protocol is used to determine if a given instance is in a subset D inputs v and i are shared between Alice and Bob as v a  X  b mod N and i  X  i to Alice and b and i 2 are known to Bob. The inclusion of the given instance in D
+Alice and q 2 Bob such that p q  X  1 if the instance is in D
+Assuming that the instance belongs to Alice, Alice X  X  inputs to the protocol are the instance  X  v protocol, Alice and Bob learn bits b 1 and b 2 , respectively, such that Alice and Bob only as random shares.
+ use Yao X  X  protocol to learn two bits b 1 2 Alice and b 2 2 Bob such that
+The communication and computation complexity of the first stage is that of one invocation of OT second stage of the protocol involves one comparison which is done using Yao X  X  protocol, requiring
+O  X  s log N  X  bits of communication and O  X  log N  X  invocations of OT 3.5. Secure protocol to check if D is pure
+The Subset Purity Checking protocol takes as input a subset D itive of Section 2.3 , in this case, Alice and Bob only have an XOR sharing of D two bit vectors P  X  X  p 1 ; ... ; p n  X 2 Alice and Q  X  X  q 1 p i q i  X  0 otherwise.
+
+Let j D 0 c j denote the number of instances in D 0 where the class attribute takes value c . For 1 tion 3.2.2 . Alice and Bob then use Yao X  X  protocol to check whether there exists j such that  X  a A and  X  a A i  X  a B i  X  0mod N for every i 6  X  j . If so, Bob X  X  output from Yao X  X  protocol is c Yao X  X  protocol for the comparison described above requires O  X  sg log N  X  bits of communication and returns only random shares to Alice and Bob. Yao X  X  protocol is secure and does not leak any information.
+We note however that this protocol breaks our convention that its output is secret shares. We discuss the resulting privacy implications in Section 3.7 . 3.6. Secure protocol for majority label
+Alice and Bob use the Total Instances with Class Label protocol of Section 3.2.2 to compute random shares i 2 Alice and a B i 2 Bob of j D , respectively, for Bob to learn the index j  X  argmax 1 6 i 6 g c to Bob and nothing to Alice. 3.7. Performance and privacy analysis
+Having defined all the subprotocols required by the Private Lazy Decision Tree Data Imputation protocol, we now return to its complexity and privacy. 3.7.1. Complexity
+Alice and Bob communicate with each other to compute the attribute with the maximum information gain
+O  X  m 2 k  X  n  X  g  X  log N  X  OT 2 1 invocations, O( m ) OT and O  X  m 2 kg  X  encryptions for Bob.
+
+Our solution offers at least a log-factor improvement over using Yao X  X  generic solution. Using Yao X  X  pro-vate computation requires a number of invocations of OT 2 nm log  X  N  X  . The resulting communication complexity is X  X  m parison, our solution, including the invocations of Yao X  X  protocol where we require it, is dominated by
+O  X  m 2 nk  X  circuits of input size O  X  log N  X  . The number of invocations of OT this performance penalty than to avoid engaging in the computation at all. 3.7.2. Privacy parties send their shares of data to the TTP. The TTP computes the missing value and sends it to Bob, and value.
+ each level of the path in the decision tree are only available as random shares to Alice and Bob. We have tree and to Bob consisting of the length of the path and the learned value for the missing attribute. and Bob the length of the path. 3.8. Enhancing privacy privacy as in the TTP model.
+ ean (with 0  X  false and 1  X  true ). Each of these variables is randomly shared between Alice and Bob, via shares is pure A ; is pure B ; majority class A , and majority class that is pure A is pure B  X  is pure and majority class  X  majority class contains the most frequently occurring class label in database D .
+ In the modified version of Subset Purity Checking , is pure A ; is pure B ; majority class but a new random sharing of each is computed and sent to Alice and Bob. In the modified version of Majority Label , the values of is pure A , is pure B ; majority class majority _ class proceeds as usual. The value of majority _ class is randomly shared as majority class as majority class A and majority class B .
+ the end of all iterations, Alice sends the value of majority class private protocol for Bob to learn the desired imputed value. 4. Other imputation protocols however, the results of the decision-tree solution are likely to be better in most settings. Let a the values of the attribute M for which I 2 Bob has a missing value for the instances d 4.1. Mean
+Because Bob will inevitably be able to compute the sum of Alice X  X  values for attribute M from the mean of tocol. Alice computes a  X  value I ( M )as  X  a  X  b  X  = n . 4.2. Mode
+Alice computes the frequencies of the possible values  X  c
+Bob computes the frequencies in his database D B as b 1 ; ... ; b inputs a 1 ; ... ; a g and b 1 ; ... ; b g for Bob to learn j  X  argmax value. 4.3. Linear regression
+We describe the protocol for two variables. The extension to multiple regression is straightforward. Sup-fitting the straight line y  X  mx  X  b , where m  X  can compute the missing value. 4.4. Clustering ters, where m is a user-specified parameter. Let C A i  X  X  a A denote the shares of the m cluster centers for Alice and Bob, respectively. Let the instance I  X  X  x where x denotes the missing value.
+
+Alice and Bob jointly and securely compute the shares of the distance between I and each of the m cluster centers using only the first k coordinates. Let Z A  X  X  z A shares of the distances, respectively. They use Yao X  X  protocol to compute random XOR shares i are Alice and Bob X  X  shares, respectively, of the missing attribute in cluster C invoke PIX twice, once for the vector  X  p A 1 ; ... ; p A tions, they supply i 1 and i 2 as input. This gives them random shares of p A and sends them to Bob for him to compute the missing value. 5. Conclusions
+Privacy-preserving methods of pre-processing data are a critical component of enabling privacy-preserving results are likely to be inaccurate.
+ show privacy-preserving protocols for several other methods of data imputation.
+Future directions include private solutions for other data imputation methods, handling vertically parti-parties.
+
+References

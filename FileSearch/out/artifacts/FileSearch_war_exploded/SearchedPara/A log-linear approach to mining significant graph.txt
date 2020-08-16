@@ -1,0 +1,108 @@
+ 1. Introduction graph-relational patterns.
+ are limited. In recent years, the fi eld of link-based mining has evolved [22], which addresses the speci links object nodes that have node attributes. This tightly de expected outcomes. A signi fi cance measure can then be de internet movie database, IMDB [25]. The graph nodes represent movies, and edges represent the language, country of production, and other key attributes. In Fig. 1 there is an example where the movie referenced in the movie  X  Lord of the Rings: I  X  that is in turn referenced in other movies. simplest non-trivial link-based pattern type consists of a single edge and its two adjacent nodes. In our
+USA  X  . Patterns involving the same item on multiple nodes can be found ef
+Frequent itemset mining on a table representing graphs may also yield the following pattern:
+The contribution of this paper relates to a third example: shape do not have to be trivial. In the IMDB database the following pattern also holds: that this pattern is signi fi cant beyond intra-node and correlation patterns. only one unique set of attributes over all nodes. We will refer to complex patterns as patterns, items must be present on at least one node in the subgraph. Node identi {0.C=1, 1.C=1}. Patterns may be unexpected if they are found to be signi signi fi cantly less frequent than expected, but under the support threshold it will not be reported.
+In this paper, we develop means to evaluate the statistical signi node and correlation patterns and address the task of ef fi patterns in the node attributes of relatively small structural subgraphs. In order to facilitate the de of the result set that has to be examined by a domain expert, by orders of magnitude. 2. Background and notation 2.1. Background on graph-relational data represents a graph and is naturally represented through a relation R representation R 2 c ( N , I ), where N is a node identi fi used in Agrawal's fi rst paper [2] R 2 b ( N , b 1 , ... , b representations, subgraph structures are represented as joined relations, constructed from R performance, and hence we chose a graph-based representation as we describe in the following paragraph.
+In a strictly graph-based representation, the two relations R represented by R 1 as the structural graph. The graph represented by R be applied to the combined graph.
+ any node can be reached from any other node within, on average, a small number (2 users are typically very much interested in patterns with many items. combination of two distinct graphs (structural and labeling) allows for increases in ef fi ndings in this paper.
+ approaches. In this paper, we allow instances to overlap when counting pattern support. 2.2. Measures of interest work of Agrawal et al. [2,3] con fi dence was used to rank rules. Measures such as bond, all-con used [51,53] .
+ uncertain graphs instead of a concrete single graph.
+
+Statistical signi fi cance has been used in other contexts to determine how likely it would be to chance [18] or simpler patterns alone. Independence of items may be tested using a
+Bolton and Adams [10] describe a general testing strategy for signi model, known model patterns, and noise. Log-linear models are speci
+DuMouchel and Pregibon [19] returns itemsets that are signi al. [50] present an algorithm for fi nding all signi fi cant association patterns. algorithms that are faster than the full log-linear model. Following Ref. [10] we determine signi pattern level using Poisson testing as one of the presented techniques. 3. Graph-relational patterns
+We model data such as our movie example ( Fig. 1 ) as follows: movies and edges represent the  X  referenced in  X  relationship. In addition, we de
+D m  X  1 }. Where each D k is a labeling function that assigns binary labels to nodes so D has descriptor D k . We use the term  X  descriptor  X  for raw node attributes to distinguish them from are speci fi c genres, keywords, and other movie attributes. For example, the movie
+Fi  X  .
+
+De fi nition 1 (Set-labeled graph). A set-labeled graph G ( V , U ,{ D functions { D 0 , ... , D m  X  1 }, one for each descriptor.
+
+When discussing patterns within the text of the introduction and later examples, we use the notation
+Our goal is then to discover frequent graph-relational patterns that are signi than expected based on simple intra-node and correlation pattern components, which we de
+Note that infrequent patterns are not considered although they could be signi follows: 1. Find frequent graph-relational patterns 2. Determine simple (intra-node and correlation) components of the patterns 3. Compute signi fi cance of frequent graph-relational patterns ( V , U s , D k s )isa subgraph of G ( V , U ,{ D 0 , ... , D and corresponding descriptor labels.
+
+We de fi ne the shape S ( V , U ) of graph G ( V , U ,{ D movies. Two graphs S 0 and S 1 are isomorphic if there is a (descriptor) label preserving bijection from S edge in S 0 . U maps to one edge in S 1 . U and vice versa, expressed as S they are automorphic .
+  X  produced in the USA are referenced in movies produced in ENGLISH for a  X  Y  X  shaped pattern with 4 nodes. We use such a listing of the edge set as a general shape speci we omit the general speci fi cation in unambiguous cases, such as for single-edge patterns. is shown in Fig. 5 (bottom).
+ patterns in addition to the pattern listed above  X  {(0.USA=1, 1.USA=0), (0.ENGLISH=1, 1.ENGLISH=1)},  X  {(0.USA=1, 1.USA=1), (0.ENGLISH=0, 1.ENGLISH=1)}, and  X  {(0.USA=1, 1.USA=1), (0.ENGLISH=1, 1.ENGLISH=1)}.
+
+Note how the concept of graph-relational patterns makes the statement more speci match of each descriptor in both presence and absence values.
+
+De fi nition 2 (Graph-relational item). A graph-relational item is de representing one of the labeling functions D p  X  { D 0 , ... an instance of I ( V i , U i , D p i ) if its shape S ( G
+D
+De fi nition 3 (Graph-relational pattern). A graph-relational pattern P is a set of items { I ... , D k  X  1 i } representing a subset of the labeling functions of the graph { D with S ( P )= S p .
+ and all others are considered as arbitrary.
+
+English movies not produced in the USA. In the (bottom-left) of the  X  movies produced in the USA are also produced in ENGLISH  X  somebody who explicitly intends to mine the combination of graph-and node data.
+Fig. 6 (bottom-right) illustrates a correlation pattern for the also patterns that show negative correlation as in {0.USA=1, 1.USA=0} for the
+De fi nition 4 (Intra-node pattern). Anintra-nodepattern P j (intra) is de fi ned through the values of the D  X  k . v  X  j alone, for D to S ( P j (intra) )basedonbijection M ij . v i s = v  X  j
+De fi nition 5 (Correlation pattern). A correlation pattern P p de fi ned through a single graph-relational item. A subgraph G ( s ) p
+S ( P correl ) based on bijection M ij . v i s = v  X  j and the labeling function satis
+De fi nition 6 (Instance of a pattern). A subgraph G ( s ) ( V s its shape S ( G ( s ) ) is isomorphic to S(P) and if for each labeling function D the bijection M ij . v i s = v  X  j maps the pattern to the subgraph D desired [11]. The pattern is frequent if Support( P )  X   X  relational items { I ( V i , U i , D 0 i ), ... , I ( V i
+This section has de fi ned the necessary elements to complete the discuss the use of log-linear models for determining the statistical signi 4. Signi fi cant graph-relational patterns using log-linear models 4.1. Log-linear model
+Wedeterminefrequent,unexpectedorsigni fi cantpatternsbasedonalog-linearmodelspeci de fi ning intra-node and correlation pattern effects as the expected in found in references such as Refs. [4] and [ 12]. Log-linear modeling is de
+De fi nition 7 (Pattern variable). A pattern variable is a node-descriptor pair, using the subgraph node identi variables are binary.
+
+For example, variables 0.A and 1.A refer to descriptor  X  A determine signi fi cance for a pattern are: 1. Calculate observed support values for pattern variables 2. Determine the log-linear model terms based on expected interactions 3. Compute expected support values by fi tting model parameters 4. Test observed and expected support values against an appropriate distribution the contingency table of a pattern with its expected values based on intra-node and correlation patterns. contingency table. Cell indices {(11), ... ,(00)} refer to patterns {A=1, B=1}, this setting are the saturated model and the independence model
+The model states that the natural log of the expected support ( m terms. The term  X  represents the mean of the log-expected values or grand mean in the table and each  X  subscripts denote indices for categories in each variable. Each set of equations speci on the combinations of indices i A and i B . Each value  X  [12]. Additional linear constraints apply to log-linear models (similar again to analysis of variance):
+The  X  .  X  represents summation over an index. For example, Speci fi cally, the term  X  i model is the number of parameters free to change given the system constraints. For signi corresponds to one degree of freedom per term for binary variables. If parameters  X  i can be written as a direct-estimate, which in this case is a simple product where n is the total number of instances,  X  i and B.
+ models. Expected values for these more complex models can be calculated using iterative
+Proportional Fitting (IPF) and Iteratively Reweighed Least Squares [12]. These techniques on the given model.
+ variables {0.A, 1.A, 0.B, and 1.B}. Intra-node terms model the descriptors of nodes as if the nodes were isolated from another:
+De fi nition 8 (Intra-node terms). Given a pattern P there are n intra-node patterns for each v
+D  X  l  X  1 }). The pattern variables for each v j are used to de variables. These terms are called intra-node terms.
+ the term  X  i
+De fi nition 9 (Correlation terms). Given a pattern P there are k correlation patterns P represented in P . The pattern variables for each p are used to de of variables. These terms are called correlation terms.
+ corresponding to the term  X  i more complete example of the terms is given in the next section.
+ ef fi 4.2. Contingency tables for graph data total is equal to the number of instances ( n ). Given such a partial table, standard because row-column totals are skewed.
+ cells. Khamis simply describes the splitting procedure as starting with the dividing cell totals along the diagonal. This allows the application of standard model symmetric variable combinations can only count towards the degrees of freedom once. the number of automorphisms for the shape, Fig. 7 (bottom).
+ The following two examples illustrate the process.
+
+For this undirected shape the additional constraints hold. The above constraints and the single variable superscript 1.A re i.e. for any value i ,  X  i 0.A =  X  i 1.A since the nodes are indistinguishable. occur for models that represent multiple descriptors.
+ as follows with the intra-node terms Eqs. (4) and (5) followed by the correlation terms (Eq. (6)):
+Additional symmetry constraints hold again: determining the symmetry constraints as listed above. Fig. 8 graphically depicts the model. values for patterns are computed, we must determine if the observed support values differ signi based on the model. There are two options for testing signi test. 4.3. Poisson testing fi its expected value based on the log-linear model.
+
+The p -value for Pois( X  X  x , t ) is the sum of all Pois( X = k , t ) for k with respect to its modeled Poisson distribution we fi nd the p -value based on a two-tailed test.
+The Poisson test uses the same log-linear model parameter
+Poisson test only tests the signi fi cance of a single cell, while a global test like be signi fi cant globally (using  X  2 testing) but may not be locally signi 4.4.  X  2 testing ( ), which compares the estimated values m i number of count values free to change given constraints speci freedom in the  X  2 distribution test can be calculated by degrees of freedom) and subtracting the number of terms in the model (full model degrees of freedom). combinations for all nodes. Given k -descriptors and n -nodes that is: {( n , c )} where n id is a group identi fi er and c is the cardinality of the group in the multi-set.
+Example 3 (Pattern multi-set). Given a pattern P , with a 1-edge shape and nodes P . V
+P . M ={(1,2)}. This multi-set has one element with identi
+This results in the two-element multi-set P . M ={(1,1),(2,2)} where the middle node (represented by id two end nodes (represented by id  X  2  X  ) are not distinguishable within the shape. number of descriptors, k , and the node group cardinality, c :
+The intra-node degrees of freedom describe all combinations of 2 degrees of freedom):
+Eq. (12) excludes empty sets since they all correspond to possibilities. Over all groups it is a power-set: Accounting for each descriptor there are (correlation degrees of freedom): Empty sets are combined into one  X  as in Eq. (12).
+ The full model then has degrees of freedom (full model degrees of freedom):
+The equation is corrected to allow only one set of 1-variable terms and one for degrees of freedom: which F df =6 are distinguishable terms. The  X  2 test distribution has ( S distribution with S df  X  F df degrees of freedom. A signi hypothesis that implies that only correlation and intra-node terms affect support. 4.5. Direct-estimate models i.e. they are not direct-estimate models. Instead they must be that any acyclic graph is also triangulated.
+ terms only in the direct-estimate expression. Based on notation from Section 4.1 we have: Additional details on direct-estimate models can be found in Ref. [12]. where a pattern is signi fi cant if the majority of tests have signi 5. Algorithm appropriate relational joins of the relations R 1 and R 2 between nodes and descriptors as equivalent to edges among nodes results in a very inef conventional approaches and is used in the remainder of the paper. 5.1. Graph-based search
+However, the counting of instances in the EDI setting is only ef descriptors. 5.2. Apriori search patterns with a single edge of the original unipartite graph. In this simple case the shape is given by R size of the shape. 5.3. Hybrid search the algorithm for fi nding signi fi cant patterns are given in the next section.
+Algorithm 1. GR-TRAVERSAL ( G , S ,  X  ,  X  ) 1: Inputs { G , a set-labeled graph} { S , set of graph shapes} {  X  , the minimum support threshold} {  X  , the minimum p -value threshold} 2: P  X   X  3: for each shape S in S do 4: F  X  GR-APRIORI( G , S ,  X  ) 5: P  X  GR-SIG( G , F ,  X  ) 6: P  X  P  X  P 7: end for 8: return P 5.4. Algorithm details a manually selected set of shapes.
+ the statistical analysis of patterns with small shapes and a large number of node attributes.
+The main algorithm consists of a simple loop that discovers patterns for each shape of interest (Steps 3
+APRIORI (Step 4, detailed in Algorithm 2) is applied and returns frequent patterns, followed by signi (Step 5, listed as Algorithm 3). As fi nal result all frequent and signi
+Algorithm 2 . GR-APRIORI ( G , S,  X  ) 1: Inputs { G , a set-labeled graph} { S , a graph shape} {  X  , the minimum support threshold} 2: O  X  set of canonical node orders of S 3: I  X  scan G for instances of S 4:
+ X  X  X   X  5: F 1  X  frequent 1-item-patterns 6:
+ X  X  X  X   X  F 1 7: k  X  1 8: while F k  X  X  X  do 9: C k +1  X  Canonical-Cand( F k ) 10: F k +1  X   X  11: for each candidate C in C k +1 do 12: C . auts  X  AutomorphicCopies( C , O ) 13: C . support  X  scan I for matches to ( C . auts ) 14: if C . support  X   X  then 15: add C to F k +1 16: end if 17: end for 18:  X  X  X  X   X  F k+1 19: k  X  k +1 20: end while 21: return  X  one node  X  joined with  X  B on one node  X  results in both  X  returned as part of the result, represents all automorphic instances.
+Algorithm 3 . GR-SIG ( G , F ,  X  ) 1: Inputs 2: n  X  number of canonical node orders of the shape for F 3:  X  X  X  scan G for missing support values based on F 4: for each canonical pattern P in Fdo 5: o  X  P . support 6: o  X  o / n 7: models  X  BuildModels( P ) 8: pvalue  X  1 9: for each model in modelsdo 10: e  X  DirectFor mula( L , P , model ) 11: pv  X  CalcSig( o , e ) 12: if pv b pvalue then 13: pvalue  X  pv 14: end if 15: end for 16:  X   X   X  /| models | 17: if pvalue  X   X  then 18: OUTPUT P , pvalue 19: end if 20: end for testing using a correlation-only model (Poisson-correlation), and values are gathered by making a single scan through the instance transactions (step 3).
+The algorithm proceeds by checking each pattern for signi the single full model described in Section 4.1.
+ expected values for the entire contingency table are used. The full model tests also require some form of the expected value for a single cell, all expected values are discovered in the IPF process. 6. Experiments under Windows XP.
+  X  of 77,562 unique attributes. 6.1. Example patterns
+We start with concrete observations from patterns identi fi of these patterns is signi fi cant based on intra-node and correlation patterns at a signi
+Interestingly, there are two cells in the table, (0101) and (1010) , that are considered signi where degrees of freedom are four according to Section 4.4, results in a value
+In fact, for all of our data sets  X  2 testing returns almost all patterns as signi that do not have famous scores but are comedies, and its signi demonstrated.
+ examples of the type of patterns discovered using GR-APRIORI. As a speci that states  X  proteins in the RIBOSOME interact with proteins involved in RNA METABOLISM ribosome proteins to interact with other proteins that are indeed involved in RNA metabolism.
+In addition, patterns with a larger number of descriptors were discovered such as: biologically interesting since it suggests a detailed pro
+GR-APRIORI is designed to discover such multi-descriptor patterns in an ef structural): considered as having 11 edges.
+ organization (simple patterns). For example: with a p -value of ~0.00 reveals a chain of proteins (1-0-2) linking nucleus provides additional information, suggesting a more extensive transport mechanism.
+Table 8 shows a comparison with the standard approach of looking for signi based on an example set of variables from the yeast data that show signi arti complex patterns, one chain of 4 nodes with 4 descriptors and one branching  X  Y  X  with 4 nodes and 4 descriptors graphs for a support threshold of 20. There are relatively few signi
+The six signi fi cant patterns of 1-edge were all the cores of the 3-edge embedded patterns. The 8 signi were also cores of the embedded patterns, although not all cores were signi shaped patterns. Twelve other patterns had the same node labels as the arti non-random distribution of those labels. The fi nal three patterns included some random descriptors. was 28 with an expected support of 9.66 and p -value of 4.62E-8. 6.2. Performance of signi fi cant pattern mining versus quality of results. Fig. 13 depicts the sensitivity and speci set and the 1-edge shape. Sensitivity is the ratio of patterns correctly classi applying the full model with Poisson testing. Speci fi city is the ratio of patterns correctly classi 200, and 300. The perfect fi t has sensitivity of one and speci p -value of all possible models), direct-estimate-maj (considers pattern signi testing are compared with Poisson testing based on the full model.
+ trade-off sensitivity for a relatively high speci fi city. In order to assess the potential bene sensitivity and speci fi city, we report the time and number of signi
+Fig. 14 (bottom) shows the number of patterns returned as signi in the plot. We found in our data that the full model  X  2 number of signi fi cant patterns and are still not particularly selective for good pattern results.
+The Poisson test of the full model returns approximately an order of magnitude fewer signi model returns very few signi fi cant patterns, but misses many that are considered signi patterns.
+
+Rather than using an alternative model in place of the full model, fast models may be used as a pre-this application, a model should have a very high sensitivity with respect to the full model, while speci however, change the scaling but just the pre-factor of the complexity. 6.3. Frequent pattern mining ef fi ciency
+To perform these experiments, we created graphs of varying degrees of sparseness by degree threshold and the average degree according to each of the de suf fi likely due to the calculations related to graph automorphism.
+ (both structural and descriptor edges) as previously discussed. Fig. 16 shows the total time for considered meaningful in a network with a diameter of only 3 determined by the types of patterns under consideration: EDI-based algorithms are expected to be ef descriptors [7].
+
+Overall, it can be seen that the GR-APRIORI algorithm is ef 7. Conclusions model of expected interactions in such data and determine statistical signi signi fi cance testing is used to accurately re fl ect the signi fi similar concepts to classi fi cation problems.
+ Acknowledgments Presidential Fellowship program.
+
+References

@@ -1,0 +1,90 @@
+ 1. Introduction humans, but also be machine processable, hence usable by software agents searching the Web to (reasoning and data handling) of the scalability issue for ontologies include:  X  requirements in terms of capability as well as in terms of performance,  X 
+Translating the ontology axioms into rules supported by a deductive DBMS [3 reasoning and performance, and  X  querying and updating requirements for ontology management.
+ offers signi fi cant advantages over the alternative approaches, in particular:  X  traditional proprietary data and ontological data captured for example on the web.  X 
+The DBMS-based approach can indeed solve the scalability issue raised by real ontologies.  X  optimized querying, concurrent access, recovery mechanisms, security, and access rights.  X  system they already have, while adopting new tools speci fi
+Databases [7] , that extends a relational DBMS to store an ontology database and ontology functionalities. To make the solution ef ontological knowledge management is both feasible and ef fi [12] , while more expressive OWL-based formalisms remain untractable. (i.e. stored in the database) and incrementally maintained.
+
+The paper is organized as follows. Section 2 presents related work. A DL-Lite(R, the LUBM benchmark. Finally, Section 9 summarizes the paper and mentions future work. 2. Related work 2.1. ABox storage sugar (offdry, sweet, or dry) and the years where the wine was at its best. Storage strategies de relational DBMS to store the ontological content. They have been identi instances in a subsumption hierarchy) has been reported in [15] . 2.1.1. One table only 2.1.2. Two tables only: one for class instances and one for property instances it separates class instances from property instances (and stores the TBox in other tables). A single instances of all classes, and a single b domain, property, range and property instances in the Relationship table, while TBox axioms are stored in other prede 2.1.3. Multiple tables: one table per class, with all properties of the class possibility distribution).
+ predicates. Grouping of RDF tuples is done dynamically as new triples are added to the ontology. 2.1.4. Multiple tables: one unary table per class and one binary table per property additional columns to handle asserted and inferred facts. This will be explained in Section 4.2 . 2.2. Reasoning
+As stated in the Introduction , different mechanisms can implement reasoning over large ontologies. 2.2.1. Mapping onto Logic Programming (LP) rules and vice versa [3] . For example, the axiom Wine  X  Drink is translated into the rule possible to achieve lower computational complexity for the DL names of classes/properties become arguments of meta-predicates. For example, the fact (Petrus,Wine) , the axiom Wine  X  Drink is written as isSub(Wine,Drink) 2.2.2. KBMS-DBMS two-phase coupling system where data is stored. Inferences about stored database objects are performed by reasoner.
+ 2.2.3. DL reasoner-DBMS coupling two components. 2.2.4. Embedding reasoning in DBMS rules inferencing. It also allows selective inference (i.e. the user can choose the set of rules to validate_model and sem_apis.validate_entailment detect inconsistencies in the ontology. reasoner) in order to detect logical inconsistencies. 2.2.5. Performing reasoning during query evaluation
+In this approach, reasoning is performed as part of query processing. In a query that results from reasoning on the axioms de fi ned in the TBox. For example, x)  X  Wine(?x), body(?x,full), produced By(?x,?y), locatedIn(?y,CoteDOr) retrieval queries (e.g. Wine(?x) )in [1] . Query processing bene evaluated. 2.3. Ontology formalism example, [3] and Minerva [2] adopt a subset of DL, the Description Horn Logic (DHL). languages differ in the class and property constructs they support (see Fig. 5 inclusion axiom ( C LHS  X  C RHS ). OntoMinD supports DL-Lite(R, since it has low reasoning complexity. 2.4. Materialization table [28] ,andupdatesthemonuserdemandwiththe sem_apis.create_entailment procedure. an axiom or fact is added to or removed from the ontology. 2.5. Explanation inferred it and by which rules.
+ explanation about inferred axioms in the TBox, for subsumption and unsatis 3. DL-Lite(R,  X  ) ontologies example of a DL-Lite(R,  X  ) ontology. We will use this motivating example throughout the paper. 3.1. DL-Lite(R,  X  ) formalism Lite(R,  X  )allowsforexpressingclasssubsumption(e.g. Wine  X  subsumption (e.g. sugar  X  taste ), disjointness between classes (e.g.  X  sugar - X  WineSugar ), and mandatory or prohibited participation to a property (e.g. Wine  X  X  X  weight  X  X  X  ).
+ constructs are unquali fi ed existential restriction (  X  P speci fi cation in Fig. 6 we use C to denote a simple class, object property expression. C l ( C r ) denotes a class on the LHS (RHS) of an inclusion axiom, and property.
+
+Note that any axiom with intersection on its RHS C l  X  C r1 any equivalence axiom C l  X  C r is rewritten as two inclusion axioms is rewritten as C l  X  C  X  X  X  . The domain D of a property P
+OP is de fi ned by the inclusion axiom  X  OP - X  R , while the range range(DP)  X  R .
+ and v is a datatype value).
+ 3.2. DL-Lite(R,  X  ) ontology sugar (giving its taste). The years in which a wine was excellent are recorded. 4. Storing the ontology discusses the storage cost in our approach. OntoMinD stores a DL-Lite(R,
+DBMS. The de fi nitions of classes and properties, i.e. meta-data, are stored as rows in speci (stated by the user) and inferred (deduced by reasoning) data and meta-data. 4.1. Ontology schema (TBox) converting this ER meta-schema to a relational one.
+ unique number, resource_id , which identi fi es it. It is also identi labels and comments. OntoMinD de fi nes for each existential restriction expression each one is linked to a property P through an onProperty relationship. an inclusion axiom where the class on the RHS ( right ) is either inclusion axiom where the LHS and RHS are each an object property.
+The domain of a property and the range of an object property are each one de for the domain of sugar , an axiom is de fi ned with  X  sugar de fi ned by a range relationship. The inverse ( OP -) of an object property ( 4.2. Ontology instances (ABox) identi fi es it. The ABox contains facts which can be asserted, or inferred, or both. Each fact (e.g. dry) ) is assigned a unique identi fi er fact_id .Afact C(a) 4.2.1. Class instances For each class C a table composed of four columns records its instances: C (fact_id, indiv_id, asserted, inferred) whether the fact C(indiv_id) is asserted, and inferred (0/1) whether this fact is inferred. which take the same value on the column indiv_id . 4.2.2. Property instances For each property P a table composed of fi ve columns records its instances: P(fact_id, domain, range, asserted, inferred) before for the fact P (domain,range) . 4.3. Example
+Bordeaux  X  Wine ,  X  sugar  X  Wine ,  X  sugar - X  WineSugar , following TBox-update statements of the tbox_add package: tbox_add.add_class(  X  Bordeaux  X  ); tbox_add.add_c_inclusion_axiom(  X  Bordeaux  X  ,  X  Wine  X  ); tbox_add.add_objectProperty(  X  sugar  X  ); tbox_add.add_c_inclusion_axiom(some_of(  X  sugar  X  ),  X  Wine tbox_add.add_c_inclusion_axiom(some_of(inverse_of(  X  sugar tbox_add.add_p_inclusion_axiom(  X  sugar  X  ,  X  taste  X  );
+Let us issue the following ABox-update statements of the abox_add package: abox_add.add_class_fact(  X  Petrus  X  ,  X  Wine  X  ); abox_add.add_property_fact(  X  Petrus  X  ,  X  dry  X  ,  X  sugar abox_add.add_class_fact(  X  Petrus  X  ,  X  Bordeaux  X  ); (dry) ( WineSugar is the range of sugar ). It also infers adds the asserted fact Bordeaux(Petrus) ( Bordeaux is a subclass of Wine , and the fact resulting database is shown in Fig. 8 (the tables Top , some_sugar ( some_inverse_taste are omitted). 4.4. Storage cost materialization is nowadays irrelevant. The needed storage capacity can be computed as follows.  X   X 
+Eachpropertyfact,say P(a,b) ,inferstwoclassfacts:  X  P(a) and case, P is subsumed byall other properties and by their inverses, i.e. by2 m fact is: (2 n+ 4 m )+(2 m  X  1)=6 m+ 2 n  X  1.
+
+For an ontology with: (i) a TBox containing n classes and m properties de class facts and M asserted property facts, the resulting OntoMinD ABox will contain at most: ( n +2 m asserted facts.
+ that C1  X  C2, C2  X  C3, ... ,Cn  X  1  X  Cn ( n  X  1 axioms), infers ( n 5. Reasoning tasks
+Reasoning is performed in order to provide answers to users' queries. Queries can be speci query (see Sections 6.2 and 6.4 ).
+ answers to the ABox queries). A class is satis fi able if it can contain instances. A class consistent if no individual belongs to disjoint classes.
+
+OntoMinD implements TBox reasoning using two internal PL/SQL stored procedures to check class satis
+B  X  axioms in order to fi nd out all the inferred subsumption axioms. For example, if the axioms property fact to/from the ABox.
+
+TBox and LOGSPACE in the size of the ABox. 5.1. Class satis fi ability removed from the TBox.
+Algorithm 1. Compute_negative_closure 5 . 5.2. Class subsumption To get all the class subsumption links, OntoMinD computes the positive closure closure of positive inclusion axioms ( C l  X  C r where C r therefore omitted.
+
+Algorithm 2. compute_positive_closure. 5.3. ABox consistency The add_class_fact procedure adds an individual i to a class axiom of the negative closure (e.g. B  X  C  X  D  X  X  X  ), it checks whether 5.4. ABox realization called materialization. Practically each time a user adds a new fact, Bordeaux  X  Wine, Wine  X  Drink . OntoMinD automatically closes the TBox by adding the inferred axiom: (ClosTrimoulet) and Drink(ClosTrimoulet) .
+ reasoner, the TBox and ABox contain only the asserted axioms and facts: (ClosTrimoulet). While in OntoMinD processing the query Q(?x) their union. For instance QuOnto checks the TBox and rewrites the query, which in this case, becomes:
+Wine(?x)  X  Bordeaux(?x) . the fact GreatBordeaux(Petrus) generates the inferred fact
+Ifwewanttomaterializeallinferredfacts,wehavetostorethefact cycle, e.g.  X  P  X  X  X  P -. Then a fact may generate an in fi  X 
+P implemented. 5.4.1. Adding and deleting facts 20). Thus if Bordeaux  X  Wine is in the TBox, adding/deleting the fact (ClosTrimoulet) to/from the ABox.
+
+Inference rules ( T : TBox, A : ABox): 1. if ( B 1  X  ...  X  B n  X  B in T and B 1 (x), ... ,B n (x) 2. if OP(x,y) in A then add  X  OP(x) and  X  OP -(y) to A ; if DP(x,v) in A then add  X  DP(x) to A ; 3. if (( OP 1  X  OP 2 in T or OP 1 - X  OP 2 -in T ) and OP 4. if (( OP 1  X  OP 2 -in T or OP 1 - X  OP 2 in T ) and OP
+Since the domain and the range of an object property are de fact
+OP(x,y) infers  X  OP(x) and  X  OP -(y) by rule 2, and B 1 (x) automatically created when the property OP is added to the TBox.
+Algorithm 3. add_class_fact( i , C , add_mode).
+Fig. 8 ) contains the asserted facts Wine(Petrus) , sugar(Petrus,dry) abox_del.delete_class_fact(  X  Petrus  X  ,  X  Wine  X  ) removes the fact asserted and inferred). Then running the statement abox_del.delete_property_fact( (Petrus,dry) , un-infers the facts Wine(Petrus) , WineSugar(dry) then re-infers Wine(Petrus) thanks to the fact Bordeaux(Petrus)
+Algorithm 4. delete_class_fact( i , C , del_mode).
+Algorithm 5. delete_class_fact_step1( i , C , del_mode).
+Algorithm 6. re_infer_class_facts. 5.4.2. Asserted and inferred facts which have an add_mode parameter that can take the value  X  from 0 to 1 (lines 7 to 8).
+ table (lines 9 and 12). 5.4.3. Explanations provide no or only limited support for the explanation of logical consequences [30] . new inferred facts as shown below.
+
+N exec abox_add.add_property_fact(  X  Petrus  X  ,  X  dry  X  , consequences of this statement, i.e. the un-inferred and re-inferred facts.
+N exec abox_del.delete_class_fact(  X  Petrus  X  ,  X  Bordeaux N exec abox_add.add_class_fact (  X  Petrus  X  ,  X  Food  X  ) 6. Querying the ontology 6.1. Querying the TBox given property, its domain, its range, and its inverse.
+ relational meta-schema contains the tables: Class (resource_id, name) C_pos_inclusion_right (axiom_id, resource_id, asserted, inferred, nb_left_classes)
+C_pos_inclusion_left (axiom_id, resource_id) SQL query: SELECT c2.name FROM Class c1, C_pos_inclusion_right r, C_pos_inclusion_left l, Class c2
+WHERE c1.name =  X  Wine  X  AND The user will get a complete answer including reasoning (that has been done at TBox-update time).
+A less trivial example is asking for the superclasses of Bordeaux query: SELECT c3.name FROM Class c1, Class c2, Class c3,
+WHERE c1.name =  X  Bordeaux  X  AND 6.2. Querying the ABox A conjunctive query is composed of terms C(x) or  X  P(x) or is written: Q(?x,?y)  X  Wine(?x), sugar(?x,swe et), fromChateau(?x,?y) Section 6.4 .
+ The simplest conjunctive query has a single term. For example, class, may be written by the following SQL query: SELECT r.name FROM Wine w, A_Resource r WHERE r.resource_id=w.indiv_id previous query to get only the infer red facts by adding the condition
+Top ). The function abox_qry.get_mostspeci fi c_classes returns only the most-speci ( RedBordeaux ).
+ More complex conjunctive queries involve several classes and properties. For example, sweet), body(?x,?y) that fi nds the body of the sweet wines, can be expressed in SQL by: SELECT r1.name AS "wine", r3.name AS "body" FROM Wine w, A_Resource r1, sugar s, A_Resource r2, body b, A_Resource r3
+WHERE r1.resource_id = w.indiv_id AND 6.3. Mixed queries accesses both. The SQL query is: SELECT i.item_name AS "wine", i.unitary_price AS "price", r2.name AS "chateau" FROM Item i, A_Resource r1, fromChateau f, A_Resource r2
+WHERE i.unitary_price N 1000 AND 6.4. Non-ready ABox queries
+TBox: GreatBordeaux  X  X  X  fromChateau ,  X  fromChateau  X  Wine
+ABox: GreatBordeaux(Petrus) individuals.
+
+On the contrary, both queries: Q(?x)  X  Wine(?x) , and Q(?x) SQL. Indeed, variables that appear in the head can represent only existing individuals.
+We are currently working on the non-ready queries issue for a future release of OntoMinD. 7. OntoMinD implementation future work.
+
+The OntoMinD PL/SQL packages offer the following ontology functionalities:  X  ontology (with DL-Lite(R,  X  ) features) is also supported. It is done in 2 steps: the OWL  X 
+TBox updating : procedures to add and delete classes, properties, and axioms.  X  ABox updating : procedures to add and delete class facts and property facts.  X   X  functionality is also available via normal SQL queries.
+
+OntoMinD can be easily installed in Oracle by running a script 8. Experiments update time, while Oracle Semantic applies it on users' demand. 8.1. LUBM description reasoning capabilities. The ontology describes a university domain. 8.1.1. Schema
+We adapted the LUBM ontology schema to be in DL-Lite(R,  X   X  we removed the transitive characteristic (not supported in DL-Lite(R,  X  we replaced the quali fi ed existential restrictions (not supported in DL-Lite(R, purpose, we added 3 object properties and used them in unquali ResearchGroup and Department as range respectively.
+ property. 8.1.2. Instances 8.1.3. Queries measured. 8.1.4. Ontology systems
+We evaluate OntoMinD (release 2.0) and Oracle 11 g Semantic (release 11.1.0.6.0). 8.1.5. Environment
+Windows XP Prof. OS. 8.2. Storing the ontology 8.2.1. Translating OWL fi les to SQL fi les
+To store the LUBM ontology in OntoMinD, we fi rst wrote an XSLT program to translate the OWL schema to an SQL fi le containing OntoMinD TBox-update statements. We run this SQL
+XSLT program to translate the OWL fi les containing the ontology instances to SQL triples and create an associated model lubm . We wrote XSLT programs to translate the OWL in Fig. 11 . 8.2.2. Load times and DB sizes
+The fi ve ontology ABoxes differ by the number of universities they describe (and the number of fi les), 5 universities (93 fi les), 10 universities (189 fi Semantic inserts them in the table lubm_rdf_data but discards them in the view mdsys.semm_lubm . class facts. First, OntoMinD adds two restriction classes equivalence axiom with an intersection.
+ property table to speed up queries.
+ used. The index on the name column of this table is rearranged (coalesce) after loading each time constant. In Oracle Semantic, loading the last fi les is much slower than loading the include the other tablespaces (undo, temp, etc.). 8.3. Querying the ontology 8.3.1. Translating queries to SQL conjunctive query on the RDFS triples table. A few other parameters have to be speci that have to be applied for this query. 8.3.2. Completeness and soundness
+OntoMinD is complete and sound for all queries. The number of answers returned by each query for the intersection construct. Q12 queries the Chair class, de fi de fi
+Semantic's inference on the subsumption tree and ABox data [28] . 8.3.3. Execution times
+We run each query 10 times, and record the 10th execution time as a hot run linear behavior for queries Q2, Q4, and Q8.
+ class and property instances as triples in a single huge table is less ef considered in querying, OntoMinD is considerably faster than Oracle Semantic in all tested cases. 9. Conclusion handling ontologies with a large TBox.
+ Oracle Semantic in all tested cases.
+ Acknowledgements like to thank the anonymous reviewers for their constructive comments and suggestions.
+References

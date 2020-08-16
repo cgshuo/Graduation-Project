@@ -1,0 +1,1 @@
+ Poster M46: Linear Programming Analysis of Loopy Belief Propagation for Weighted Matching , S. Sanghavi, D. Malioutov, A. Willsky. ation of weighted matching:  X  LP relaxation tight  X  max-product convergent and correct,  X  LP relaxation loose  X  max-product does not converge.

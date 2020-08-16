@@ -1,0 +1,74 @@
+ 1. Introduction
+Periodic behaviors can commonly be found in real-world applications such as planning, scheduling, bank-
+Unfortunately, these periodic behaviors are usually more complex than those defined in more potential periodic association rules can be discovered.
+ in fuzzy periodicities.
+
+To accommodate the phenomenon that system behavior may change over time, a flexible model of asyn-
+Since there is some uncertainty and imprecision in asynchronous behaviors, we introduce fuzzy theory in the form of fuzzy periodic calendars, that is, fuzzy periodicity.
+ components. Temporal components are used to describe temporal behaviors in each time granularity. With suitable for mining periodic patterns. The fuzzy calendar schema can be obtained by constructing temporal components for every time granularity; a fuzzy periodic calendar is based on a fuzzy calendar schema and we need to develop algorithms for discovering them.
+
+In this work, we propose an efficient algorithm for discovering fuzzy periodic association rules. Unlike of database. We can then obtain fuzzy periodic association rules.
+ is given in Section 7 . 2. Fuzzy periodic calendar ing temporal components to each time granularity, we can further use temporal operations to combine these year  X  .
+
+A fuzzy periodic calendar is the combination of crisp, fuzzy and cyclic components, obtained by assigning each time granularity of the fuzzy calendar schema to a temporal component. For example,  X  periodic calendar in a fuzzy calendar schema of 3 time granularities, where where the fuzzy component e A is replaced with its corresponding crisp component A . For example,  X  15 ; June ; year  X  is the crisp periodic calendar of  X  f cycle crisp periodic calendar.
+
+Let the fuzzy periodic calendar  X  e A ; B ; C  X  which is interpreted as  X  X  bership functions l e membership functions with the relationship of conjunction as:
+In this work, we use the algebraic product for the definition of conjunction which means want the larger fuzzy set to have a larger impact on the result and vice versa. With the definition of l (2) , we can derive can be discovered at all. Therefore, these patterns will be excluded in our mining process.
+To calculate the matching degree of a time period, T , to a periodic calendar, proposition of the following form: Then the matching degree is computed as l e time period T  X  17 = June = 2003 to the periodic calendar  X  3. Our mining system temporal database of transactions, the transaction data are collected and separated by time. Let set of items t c such that t c I . Let D be in a fuzzy calendar schema with m time granularities, i.e.,
+U ; U 2 ; ... ; U m , and let D be divided into a sequence of n partitions, P of transactions occurring in the corresponding time period T their matching degrees to the fuzzy periodic calendar. 3.1. Association rules in time intervals
+For an itemset I I , a transaction t is said to contain I if and only if I t transactions containing itemset I in partition P i . We say that an itemset I is frequent in P support threshold of s % if where j P i j denotes the number of transactions in partition P An association rule with respect to a time interval, T i , is an implication of the form
+P if c % and s % , and a given time interval T i , association rules in T greater than or equal to c % and s % in P i , respectively.
+
+As usual, two subproblems are involved. The first subproblem is to find all frequent itemsets in P if j P i  X  I  X j = j P i  X  X  X j P c % in time interval T i called a k -itemset. The set of frequent k -itemsets is commonly denoted by L 3.2. Fuzzy periodic association rules
+Let l i be the matching degree, or weight, of the time period T
+D with respect to the fuzzy periodic calendar, e O ; and l l
+P than 0, and the weights of the rest  X  n r s  X  partitions are equivalent to 0. Then we say the partitions
+P fuzzy periodic calendar.
+ The crisp periodic count of an itemset I in O , denoted a where e c otherwise e c where n is a user-specified match ratio threshold and 0 &lt; n 6 1.
+
+The fuzzy periodic count of an itemset I in e O , denoted b where e a crisp and fuzzy periodicities. Therefore, the total count of an itemset I in crisp periodic count in O and it fuzzy periodic count in e is defined as weighting factor. We say that an itemset I is frequent in a fuzzy periodic calendar weighting factor h , and it is proportional to the largest possible value of the total count. odic patterns will be discovered.
+ endar to help generate a smaller number of candidate fuzzy periodic calendars. In Property 1, the itemset the corresponding fuzzy periodic calendar.
+ periodic calendar e O ,if n &gt; a O  X  I  X  P  X  n  X  1 n  X  h  X  ; and h 6  X  0 .
+Proof. It is easy to find that calendar e O is by definition. Suppose that I is a frequent itemset in the fuzzy periodic calendar If we assume that h 6  X  0, Eq. (17) can be rewritten as From Eq. (12) , we derive 0 6 b e
+Eq. (19) can be rewritten as Combining Eqs. (15) and (20) , we can find out the range of a  X  n  X  1 n  X  h  X  but smaller than n .
+
+For example, if n  X  0 : 8 and h  X  0 : 4, those itemsets whose crisp periodic counts are greater than  X  n  X  1 n  X  h  X  , it will not be a frequent itemset in the corresponding fuzzy periodic calendar
+Proof. This can be easily proved by assuming that I is a frequent itemset in the fuzzy periodic calendar therefore an itemset I will not be in the corresponding fuzzy periodic calendar in the crisp periodic calendar a O is smaller than  X  n  X  1 n  X  h  X  . h
+From Property 1 and Property 2, we know that for any frequent itemset that holds in the fuzzy periodic 4. Mining fuzzy periodic association rules cess of discovering crisp periodic patterns first and then the discovery of fuzzy periodic patterns.
+Suppose the database D is with the fuzzy calendar schema of m time granularities, i.e., U represent the i th time interval in U j . Intuitively, each a i component can be denoted as e a i j . Moreover, the cyclic component of U symbol  X  X   X  . Suppose a partition P i is in time period T in time granularity U j . Then the weight l i of each partition P 4.1. Discovering crisp periodic patterns erate all candidate itemsets, and their corresponding candidate crisp periodic calendars. ered by O . Assume the number of partitions covered by O is r , and let these r partitions be P define the crisp cumulative count of I in O , M O r ,as
+Then, we say I is frequent in O if M O r 4.1.1. Phase 1 crisp periodic calendars of I , Q q ,is Moreover, the candidate set of crisp periodic calendars, Q ,is calendars Q .
+
+Firstly, we find L 2 in partitions, P 1 , P 2 , ... , and P in each transaction of a partition. A 2-itemset I is said to be frequent in partition P greater than or equal to j P i j s % as given in Eq. (6) . Note that partition P periodic calendars,  X   X  ; a t 2 2 ; ... ; a t m m  X  ;  X  a (4,July,2006), then it is covered by 3 different 1-cycle periodic calendars ( X ,July,2006), (4, X ,2006) and (4,July, X ). Starting from partition P 1 , we process partitions one by one. Initially, L below. (1) Case 1. I 6 2 L 2 . That is, I is not a frequent 2-itemset in P (2) Case 2. I 2 L 2 but  X  a t 1 1 ; a t 2 2 ; ... ;  X  ; ... ; a t m (3) Case 3. I 2 L 2 and O l 1 2 Q 1 . In this case, the frequent 2-itemset I is already in L along with their respective candidate 1-cycle periodic calendars Q count them.
+ can calculate the crisp cumulative count of I in the candidate 2-cycle periodic calendar  X   X  ;  X  ; a where g j is the total number of time intervals in time granularity U (4,December, X ). Note that there might be some  X  a i 1 ;  X  ; a by summing up its counts in the candidate 2-cycle periodic calendars, and so forth. a  X  I  X  of an itemset I in O is M O r than  X  n  X  1 n  X  h  X  or the crisp cumulative count M O r is smaller than  X  n  X  1 n  X  h  X  r . 4.1.2. Phase 2
+First, we use L 2 discovered in phase 1 to generate the other candidate k -itemsets, i.e., C follows: where H is the JOINT operation given in [1] . For any itemset I 2 C
+Let I j be an itemset in C j , where j P 3 ; and I 2 is an itemset in L subsets of I 3 in L 2 as endars for each itemset I k in C k , for k P 4, are obtained by phase 2. 4.2. Discovering fuzzy periodic patterns
+With the candidate crisp periodic calendar derived in Section 4.1 , we can further generate the candidate  X  2 k 1  X  candidate fuzzy periodic calendar will be generated with respect to O  X  25 ; April ;  X   X  , its candidate fuzzy periodic calendars will be  X 
+After deriving the candidate fuzzy periodic calendars for itemsets in L calendar O be s and these partitions are P a as and the cumulative weight is
+Then, the fuzzy periodic count of a frequent itemset I in total count of itemset I in e O as 5. An illustration
+We give an example to illustrate the working of our system. Consider the database shown in Table 1 . For convenience, an itemset is denoted as a concatenation, instead of a set, of component items. For example,
+D , and D is segmented into eight partitions, P 1 ; P 2 ; ... ; and P and two half years in each year. The time interval T 1 of P in year 2004, and it is denoted as s 1 = h 1 = 04, where s 04 means year 2004. 5.1. For crisp periodic patterns
+Firstly we generate frequent 2-itemsets L 2 from D partition by partition. Note that the support count threshold for each partition is 3 0 : 4  X  1 : 2.
+
+Processing of P 1 . Among all the possible combinations of 2-itemsets in P periodic calendars and their crisp cumulative counts in these patterns, are recorded as in Table 2 .
+Processing of P 2 . We find that one new 2-itemset AE in P
+Processing of P 3 . The itemsets AD and DF generated in P inserted into Q 1 and the crisp cumulative counts of AD and DF in their crisp periodic calendars are updated.
+
+Processing of P 4 and P 5 . The itemsets generated in P 4 periodic patterns of these itemsets are updated.
+
+Processing of P 6 . We find that three 2-itemsets AD , AE and DE in P new itemset DE is added to L 2 and the information of AD and AE are updated.
+Processing of P 7 and P 8 . The itemsets generated in P 7 periodic patterns of these itemsets are updated.
+ 1-cycle periodic calendars. For instance,  X   X  ;  X  ; 04  X  ,  X   X  ; h
+Also, the crisp cumulative count of candidate k -cycle crisp periodic calendars can be derived by summing be derived by summing up its crisp cumulative counts in  X  s of AD in  X  s 1 ;  X  ; 04  X  is 2. The crisp cumulative count of AD in  X  s cumulative count of AE in  X   X  ; h 1 ;  X   X  is the summation of its counts in  X  s addition of its crisp cumulative counts in  X  s 1 ;  X  ;  X   X  and  X  s with crisp periodic counts smaller than the lower bound will be excluded. The lower bound is be 0 : 7 2 2  X  2 : 8 and 0 : 7 2 2 2  X  5 : 6, respectively. The crisp periodic calendars of itemsets in L 3 we remove DE from L 2 for it does not fall into any periodic calendar. Then, we generate C
+L  X f AE ; AD ; AF ; DF g . The candidate periodic calendar of ADF is  X  s periodic calendars of AD , DF ,and AF . 5.2. For fuzzy periodic patterns
+C . We further generate the candidate fuzzy periodic calendars of itemsets in L didate fuzzy periodic calendars  X  e s 1 ;  X  ; 04  X  ;  X  s 1 that for candidate crisp periodic patterns, only ADF and its periodic calendar  X  s fuzzy periodic counts in the database. Take AD and its fuzzy periodic calendar  X  e s weights of partitions P 2 ; P 4 ; P 5 ; P 6 ; P 7 ; and P 0.25, respectively. AD is frequent in P 5 ; P 6 ; and P 7  X  e s 1 ;  X  ; a  X  I  X  X  h b e frequent itemset AD in  X  e s 1 ;  X  ; f 04  X  , we have the following association rule:
+Note that the old rule D !  X  e s 1 ;  X  ; e 04  X  A is deleted since its confidence is less than 75 % in P 6. Experimental results
+In this section, we present experimental results obtained from a PC with a 2.0 GHz CPU and 1.0 GB mem-the experiments. 6.1. Experiment 1: synthetic datasets fuzzy calendar schema in Fig. 3 is used in experiment 1. 6.1.1. Discovering crisp periodic association rules
+We compare the performance of our method and the Temporal-Apriori by using both methods to discover greater than the number of frequent itemsets.
+
+Our method has a smaller number of candidate periodic calendars than Temporal-Apriori. The reason is duced with Temporal-Apriori. From Figs. 4 X 6 , we can see that even though our method generates more can-
+Meanwhile, our method always scans the database at most twice for discovering crisp periodic association poral-Apriori varies dramatically for different cases. 6.1.2. Discovering fuzzy periodic association rules
+To discover fuzzy periodic association rules, we give the support vector threshold the value of 0.05, the ering the neighborhood of the regular periodicities. 6.2. Experiment 2: KDD CUP 2000 dataset
+This experiment deals with the KDD Cup 2000 dataset [19] which contains the click-stream and purchase data from Gazelle.com, a leg-wear and leg-care web retailer, with 1203 items and 777,480 transactions obtained in the period of January 30, 2000 to March 31, 2000. A fuzzy calendar schema (time intervals: day are separated into 8 time intervals as 0 X 3am, 3 X 6am, 6 X 9am, 9 X 12pm, 12 X 15pm, 15 X 18pm, 18 X 21pm, and collected in a period of 3 h. 6.2.1. Discovering crisp periodic association rules match ratio thresholds for Temporal-Apriori and our method are given in Fig. 10 . Temporal-Apriori level-
+Temporal-Apriori generates is smaller than the number our method generates. We can see that our method poral-Apriori employs, even though it generates a smaller set of candidates to be discovered. 6.2.2. Discovering fuzzy periodic association rules Furthermore, we also use our method to discover fuzzy periodic association rules in the KDD CUP 2000 ber of frequent itemsets discovered in fuzzy periodic calendars are larger than those discovered in crisp lower bound also becomes larger. Therefore, more candidate itemsets will be generated when a larger fuzzy weighting factor is chosen. 7. Conclusion Fuzzy periodic calendars capture the way in which human beings reason with periodic events in daily life. fuzzy sets for describing complicated periodicities such as  X  X  X very other year  X  .
+We have also developed algorithms for discovering fuzzy periodic association rules from temporal dat-
+References

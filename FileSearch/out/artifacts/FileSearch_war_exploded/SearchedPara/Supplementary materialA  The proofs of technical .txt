@@ -1,0 +1,12 @@
+ Quoc Tran Dinh quoc.trandinh@epfl.ch Anastasios Kyrillidis anastasios.kyrillidis@epfl.ch Volkan Cevher volkan.cevher@epfl.ch A.1. The proof of Theorem 3.2 Proof. Let x k  X  dom( F ), we define and text that This condition can be written equivalently to Therefore, the last relation leads to If we define d k := x k +1  X  x k then Consequently, we also have We consider the norm  X  1 k := d k +1 (2) that  X  k = d [  X  ] [1] . Now, we define M k := and d we deduce e Let P estimate k P k k as k P k k X  max Therefore, from the definition of [  X  ] [2] we have By substituting (5) into (6) we obtain Substituting (4) and (7) into (3) we obtain By rearrange this inequality we obtain terov, 2004), we can easily show that Combining (8) and (9) we obtain sequence x k From (11) in the main text, we have provided that 0 &lt;  X   X  5  X  follows from (11) in the main text that for all k , which shows that x k  X  x  X  to zero at a quadratic rate.
+ A.2. The proof of Theorem 3.5 Proof. First, we note that Hence, we can estimate d k +1 as  X  the main text.
+ Indeed, we note that the function: is increasing in [0 , 1  X  1 / we have: Therefore, if induction, we have  X  k  X   X  for k  X  0. If we define quadratic rate.
+ A.3. The proof of Lemma 2.2.
+ Proof. From the self-concordance of f we have: On the other hand, since g is convex we have for any v  X   X  X  ( x ). Hence, where  X  ( x ) := k X  f ( x ) + v k  X  x . Let: F ( y )  X  F ( x ) which leads to: uniqueness of x  X  follows from the increase of  X  . Algorithm 1 ( Fast-projected-gradient algorithm )
+Input: The current iteration  X  i and a given tol-erance  X  in &gt; 0.
+
+Output: An approximate solution U k of (25) in the main text.
+
+Initialization: Compute a Lipschitz constant L and find a starting point U 0 0.
+
+Set V 0 := U 0 , t 0 := 1. for k = 0 to k max do . end for tor). The algorithm is presented as follows. rithm 1 is typically O q L  X  able, we can set  X  k :=

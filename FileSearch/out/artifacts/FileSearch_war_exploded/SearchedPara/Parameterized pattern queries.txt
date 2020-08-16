@@ -1,0 +1,101 @@
+ 1. Introduction stock market prices (where a common problem for example consists in detecting two consecutive peaks in and query evaluation techniques built on well-known pattern-matching algorithms. straints is a part of our pre-processing phase.
+ algorithms in the worst case, and is lower on the average.
+ input sequence.
+ or redundant comparisons [9,10] .
+
+We implemented our algorithms and carried out several evaluations. The experimental evaluation shows compared to a na X   X  ve approach. The filtering approach is also implemented and discussed. propose a quadratic algorithm for building the table of edges, instead of the O( n 2. Informal presentation tion of interest, and to perform querying and analysis tasks on these sequences. 2.1. Motivating examples the example of lysozyme, composed of 130 amino acids: KVFERCELARTLKRLGMDGYRGISLANWMCLAKW ESGYNTRATNYNAGDRSTDYGIFQINSRYWCNDGK TPGAVNACHLSCSALLQDNIADAVACAKRVVRDPQ
+GIRAWVAWRNRCQNRDVRQYVQGCGV courage any user.
+
+Next, consider another application that aims at analyzing the behavior of web users on a site in order @x ).
+
+Finally, let us take a spatio-temporal application that will serve as a support to our examples in the rest of the paper. As in [16] , we consider a partition of a 2D embedding space such that each zone is queries.
+ such queries (they will be referred to by Q i , i =1, ... ,4 in the following)  X  Q 1 : which objects went through zone a , then crossed zone d and moved to zone c ?  X  Q 2 : which objects went through zone b , then crossed c and e and then moved to f ?  X  Q 3 : which objects went from f to d crossing another zone? zone?
+The corresponding patterns for these queries are respectively Q with an instantiation of @x different from f and d , and Q ent from those of @y . 2.2. Features of the model Variables can be seen as references to some symbols of the input sequence. can be combined with the constraint Polar(@x) where Polar is a predicate which checks whether the @x has been met when a match is found with Y.A.@x .
+
+Next, by replacing constant symbols with variables, the user can relax the constraints on sequences we saw that A.@x.B.@x matches all the sequences where a page @x is accessed successively from two dis-we can relax the pattern as @y.@x.@z.@x , along with the constraints @x != @y and @y != @z . This urls.
+ the following benefits: essary to transform one into another. out the evaluation of these queries.
+ we can still rely on efficient pattern-matching operations. 3. The model a , b , c , ... denote symbols from R , and @x , @y , @z , ... variables. A sequence is a word in R t
+Q in a pattern.
+ pattern is a substring of T . More formally:
+Definition 1 ( Substitution and valuation ). A substitution r is a finite set of the form { x i 2 [1, n ]. r ( P ) denotes the pattern obtained from P by replacing, for each x
+Each element x i / t i is called a binding for x i and the set of variables { x tively the set of variables and constant symbols in P .
+ denote a valuation by m ). Hence the definition: a valuation m such that m ( P ) is a substring of s .
+
+A query q is simply a pair  X  P ; C  X  such that P is a pattern, and C  X f c url comparisons. 4. Query evaluation approach which repeatedly checks the new read symbols and backtracks on the sequence whenever a mis-in Table 1 . 4.1. The na X   X  ve approach position i , and a shift of P whenever a mismatch occurs. 4.1.1. The C OMPARE operation runtime valuation , initially empty. If P [ j ] is a variable @x , the following binding rules apply:
+Consider for instance the matching attempt for P = a.@x.b.@x and T = a.c.b ... . The comparisons are successful, then so is the matching attempt, else there is a mismatch. In both cases the S performed. 4.1.2. The shift operation
+AC OMPARE operation is performed each time a new symbol is read. Whenever a mismatch occurs (say, at sequence, else a new shift is necessary. Fig. 1 shows an example.
+ shifted one symbol to the right. Fig. 2 illustrates this algorithm.
+ symbol of the sequence is potentially checked several times against the pattern. 4.2. Optimized evaluation 4.2.1. The KMP algorithm substring T = a.b.c.a.b.c.a .
+ P [0] = a on T [ i +2]= c .
+ mined by examining the pattern, at compile-time, independently from any specific sequence. s tern, then the shift is of length l 1 j e l j . Fig. 4 illustrates this. not miss any solution. The edges are precomputed and stored in a table called the table of edges . performing a matching attempt. 4.2.2. Extended KMP algorithm stores the current symbol of the sequence, then the mismatch occurred because the value of @current shift is possible.
+ a . The current symbol that leads to the mismatch is m ( @ current )= a . ditions and the substitutions that must be performed at runtime.
+ 4.3. Edges
+As shown by the previous examples, the choice of an edge at runtime depends on conditions on the vari-covers these conditions and substitutions.
+ where m min is a valuation and r shift a substitution, which satisfies the following properties:  X  m min ( r shift ( P [0]. . P [ length 1])) = m min ( P [ m length ]. . P [ m 2]. @ current ),  X  there does not exist an edge e 0  X  X  length ; m 0 min ; r substitution m , the edge e is applicable iff m min m (we sometimes say that m is compatible with m is the substitution used to bind the edge X  X  variables after the shift. Both m time.
+
+If ( length , m min , r shift ) is an edge of P [0]. . P [ l 1] and m (see Fig. 4 ). The new runtime valuation is m r shift .
+
+To illustrate this, let the sub-pattern be @x.b.@y.c.@z.@x.a.d . There exists an edge e (4, m length 4 with m min ={ @x/b, @current/c } and r shift ={ @x/@z,@y/a } formed if the following conditions hold: (i) @x is bound to b and (ii) @current is bound to c . m ( r shift ( @x.b.@y.c )) = m min ( @z.@x.a.@current )= @z.b.a.c . 4.3.1. Computing the edges A brute-force technique for determining the edges of P consists in considering, for each sub-pattern
+P [0 ... m 1], all the possible edges of length i &lt; m . This algorithm runs in O( m The algorithm relies on the following property (see Fig. 8 ):
+Lemma 1. Let e = (i + 1, m min , r shift ) be an edge for P[0 ... l]. Then there exists an edge e
+P[0 ... l 1] with where r j m m
+In other words, let m 0 min  X  m min j  X  i 1 ; m 0 min ; r 0 shift  X  is an edge e 0 for the pattern P [0 ... l 1]. h
+This lemma leads to an optimized algorithm E DGES C ONSTRUCTION edges, deducing Edges [ l ] from the edges in Edges [ l 1]. Each step of the algorithm is of the form:
+Edges [ l ] :  X  (0, ; , ; ) for each ( i , m min , r shift ) 2 Edges [ l 1] endfor Consider the pattern a.@x.b.a.@x.@y and assume that we already computed the edges at position 4: 2, we compute the possible edges of length 1, 2 and 3 and add the default edge (0, ; , ; ).  X   X  0 ; ; ; ; X 2 Edges  X  4 and P  X  5 2 V ) X  1 ; f @ current = a  X   X  1 ; f @ current = a g ; ; X 2 Edges  X  4 and  X  (2, ; ,{ @x/@x }) 2 Edges [4] and ( P [1], P [4]) 2 R 2 { @x/@x }) 2 Edges [5].
+ Finally we add the default edge (0, ; , ; )to Edges [5].
+ Proposition 1. E DGES C ONSTRUCTION is in the worst-case quadratic in the size of the pattern.
+P evaluation is clearly independent of the core of our algorithm. 4.3.2. Representation of edges describes the association between the variables valuations and the edges. an array Edges  X  l  X  X  e l 0 ; e l 1 ; ... ; e l L
+P [ { @current }, an array of bits f l v . Given a symbol a in P as follows: k is compatible with the edge e l k . Since a variable in m entries, one for each a 2 symb ( P ), and one that represents the compatibility for all the symbols in R symb ( P ).
+ Here are the edges of the pattern P = a.@x.b.a.@x.@y.a , to be used when a comparison fails with
+P [6] = a .  X  e 6 0  X  X  0 ; ; ; ; X  the default edge that corresponds to a shift of the whole pattern;  X  e 6 1  X  X  2 ; f @ y = a g ; f @ x = @ current g X  , because if m is compatible with { is of the form a. @current ; it matches the beginning of P , a.@x , @x being bound to @current .  X  e 6 2  X  X  3 ; f @ x = a ; @ current = b g ; f @ x = @ y g X  , because if m is compatible with { of @x being the former binding of @y .
+ of length 5 or 6. The array of bits for these edges are: length, the rightmost bit set to 1 gives the shift that must be performed. uation: m ={ @x/a,@y/c,@current/b }. In order to choose the edge, the following AND is performed:
+The rightmost 1 in E is at the third position; edge e 6 2 4.4. The M ATCH algorithm T [ i + k ], which can be found directly in B .
+ @current . It takes as an input the current position l in P and returns the new position l found, the substring that matches P is output.
+ Input : l , the current position in P
+Output : l 0 , the next position in P begin end 4.4.1. Complexity analysis  X  l V  X  1  X  l be estimated to be V  X  l V  X  1  X  l m is smaller than the word size w . Then l
+P input sequence.
+
+The filtering rate is then estimated by the following formula: a shift. It can be estimated to be matching.
+
+The worst case corresponds to a pattern which only consists of distinct variables. In that case the time complexity is O( n  X  k ). 5. Multiple patterns evaluation input sequence. 5.1. Patterns containment end of a pattern P a variable which does not already appear in P yields an equivalent pattern, i.e., b.@x.a b.@x.a.@y . Indeed, since @y can be bound to any symbol, a sequence that matches b.@x.a lowing conditions hold: (i) P = marking ( P ), and (ii) if P is of the form P forward that for any pattern P , there exists a unique equivalent normalized pattern. For instance the normalized pattern of @y.c.@x.@y.@z is @x 1 . c . @x 2 . @x
+The containment relation holds on equivalent classes of patterns. A pattern P sequence S matching P 2 at position l matches also P 1 at l . This means first that j P there exist two valuations m 1 and m 2 such that both m 1
+Definition 4. A pattern P 1 contains a pattern P 2 , denoted P valuation m 1 such that m 1 ( P 1 ) is a prefix of m 2 ( P by binding the variables.
+ left to right. At each position one checks that the current symbol from P iable; (ii) a variable can be relaxed to another variable whose subscript is greater or equal.
+Consider again P 1 = a.@x 1 . b and P 2 = a.c.b . Then, a can be relaxed to a , c to @x for instance P 1 = a.@x 1 . b.@x 1 and P 2 = a.@x 1 . b.@x ond occurrence of @x 1 in P 1 . However the second occurrence of @x that case, P 1 E P 2 . have a unique minimal common ancestor or least upper bound ( lub ) with respect to relation E . Proposition 2. The set of patterns over  X  R [ V  X  ordered by E is an upper semi-lattice.
+Proof. Let P 1 and P 2 be two patterns and U be the set of (normalized) patterns P containing P
+P 1 E P and P 2 E P . U is non-empty, because it contains at least the pattern P two distinct lubs in U , P lub  X  either P lub reasoning holds for P lub same for P lub
+It follows that P lub The following algorithm computes the lub of two patterns. Function N has not yet been used. S ubst  X  d 1 ; d 2 ; r  X  is a set of substitutions. A triple ( d ( d 1 , d 2 ) from, respectively, P 1 and P 2 , with a symbol r in the lub. L UB ( P 1 [0 ... m 1 ], P 2 [0 ... m 2 ]) Input : two patterns P 1 and P 2
+Output : the lub of P 1 and P 2 begin end
+The final normalization is necessary to remove the useless variables which may appear in the suffix. 5.2. Filtering
+From the previously defined interpretation of the containment relation, If P filter of the patterns contained in the subtree.
+ only one path from the root to any node. This guarantees that any pattern can be reached, if needed. assuming an alphabet with only four symbols a , b , c and d . The pattern set is { @x spanning trees, shown in the bottom part.
+ the right part were adopted. 5.3. The clustering algorithm
+The insertion of a new pattern P is performed in two steps:  X  Candidate parent selection .
+ N 0 of N , P 6 N 0 , i.e., P is strictly contained in N but does not contain any child of N .  X  Lub selection .
+
+First, for each child N 0 of N , one computes lub ( P , N in N .Now: (2) else P is inserted as a child of N .
+ both @x 1 . a and b.@x 1 . c which constitute therefore two possible paths. Since s  X  @ x s  X  b : @ x 1 : c  X  X  1 parent.
+
+Next one determines the lubs of P with each child of b.@x in b.@x 1 . c . For instance lub ( b.a.c.a , b.c.c )= b.@x
+It may happen that several equivalent choices are possible. Assume for instance that the pattern P is inserted. The candidate parent is @x 1 . a , and one must choose between L
+L quickly, and that less comparisons are necessary. In our example, since @x we create the lub lub ( P 0 , b.a.a )= b.a.@x 1 .
+ Each internal node N of the tree has at most j R j  X  j var(N) j children.
+Proof. Assume that the size of longest pattern is l , and that there exists a node N of length l l 6 l +1.
+ created for these children. So for the first free variable x instantiate @x 1 , each of them with a different instantiation for @x instantiate @x 1 . We can iterate the same reasoning for the second free variable @x variable of the non-normalized parent. h 5.4. Multi-pattern evaluation may be active or inactive , according to the following rules: (1) Initially the automaton A root associated with the root is active; others automata are inactive. (3) When a matching fails for some automaton A P , its parent becomes active and A
+Consider the tree of Fig. 11 and the sequence a.c.b.c.a.d.b . . Each pattern P automaton A P status.
+
+The first symbol of the sequence matches P 1 . Hence A P symbol is c : a matching is found with P 3 . A P ( Fig. 12 c). Let us now focus on the subtree rooted at P a matching is found. A P
+When the fourth symbol, c , is received, the matching attempt fails for P proceeds then as follows:  X  P 4 is matched by the sequence; notifications are sent and the automaton A  X  A P
+Finally after receiving a.d.b , A P that case a mismatch occurs at once because the second symbol is d whereas both A its children will succeed. 6. Experiments
+In order to validate our approach, we have implemented and compared two algorithms in Java on a Pen-tium 4 processor (3 GHz) with 1,024 MB of memory. The first algorithm, N respect to the following parameters:  X  the length of the patterns;  X  the number of variables in each pattern;  X  the size of the alphabet.
+ 6.1. Evaluation of the extended KMP algorithm there is a high probability to have a mismatch on the first symbol of the pattern, thus both N parisons performed by N A  X   X  VE .
+ Fig. 13 illustrates also the impact of variables on the processing cost, both for N sible on the average, which means that longer sub-patterns must be re-processed after a mismatch. This explains that, on the average, the performance is affected as well.
+ It turns out that the number of variables has a low impact on the relative gain of M N increases. Moreover, remind that when a mismatch occurs, we perform an AND operation for each variable located before the mismatch position.
+ nonetheless an exception for small patterns ( m = 5 or less), where N cost is approximately 1.85  X  10 6 for a pattern length of 5, 10, 15 or 20. 6.2. Filtering size of the alphabet, (3) the length of the patterns.
+ which is of course higher for small alphabets.
+ creating a new internal node. These differences grow with respect to the number of patterns. slightly better results over a large number of patterns, for previously presented reasons. since each time a matching has been found for an internal node, all its children must be activated. these data we evaluate the gain of the M ATCH algorithm over N These results on real-life dataset confirm the evaluation on synthetic data. The gain of M is 1.3 ( Fig. 17 with length = 10) as for the synthetic dataset ( Fig. 13 with j R j = 4). 7. Related work exact and approximate string matching and context-sensitive string matching.
+Most studies on sequence databases aim at extending SQL with pattern-matching operators. In [2] , the
+O( k  X  j R j ), and the worst-case time complexity in O  X  k n d m eterized matching problem.
+ techniques.
+ on the sequence. The technique is designed for simple patterns without variables. 8. Conclusion and filtering in a multi-pattern evaluation context, with quite effective gains. applying our variable-relaxation mechanism to the nodes of tree-structured documents (e.g., HTML or XML) [41,42] . We plan to investigate this new class of pattern-matching applications.
+References

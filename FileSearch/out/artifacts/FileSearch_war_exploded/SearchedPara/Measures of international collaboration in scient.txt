@@ -1,0 +1,26 @@
+ 1. Introduction data. The simplicity of these measures led us to refer to them as  X  X  X imple-choice X  X  measures. 2. Measuring international collaboration measures of influence as  X  X  X ooperative-choice models X  X . 3. Random-choice model which will allow a measure of two-nation preference to be developed. 3.1. Baseline model
+The probability of randomly drawing an author from t is a Probability that both authors are from country s : a 2 s .
+
+Probability that one author is drawn from s , and the other from the alternative set, t :2 a other countries, we have a t =1 a s ; otherwise a s + a t and t overlap.)
+Then, considering only papers with at least one author from s , the probability, call it g with a member of the alternative set indexed by t , is given by
+We note that, in Eq. (1) , the raw value of the alphas could be replaced by the relative values a following equivalent 1 form will sometimes be more convenient: assuming that sets s and t constitute our full universe, that a erality, we conclude, simply keeping in mind that the relative a  X  X  are being used.
+
+We also note that
+Consequently, ratios. This observation that will be useful below. 3.2. Limiting cases ability. But if the s is, relative to t , a minor contributor quantitatively ( a too is reflected in our formula.
+
+More generally, trivial algebra shows that if then see this expectation confirmed formally.
+
+On the other hand, it is interesting that underestimate the probability of outside collaboration, if choices were made purely by chance. 3.3. Same-country preference easily to extend our results to papers with arbitrary numbers of authors.
+First note that Eq. (1) allows us an immediate estimate, based on the random-choice model, of same-would be, as revealed by two author papers, when bias is not a determining factor, by g defined as the set of all countries other than s .
+ of at least one foreign collaborator if the number of authors was n &gt; 2? Denoting 1 a note that the fraction of papers with no national author is a n one national author.
+
+Similarly, the fraction of papers with only national authors is a n case of only national authors and no national author are excluded, which has probability  X  1 a n foreign collaboration, is with own-country preference being measured by g  X  n  X  ss  X  1 g Bias within the class of n -author papers, then, is indicated by divergence from this result. of international collaboration for papers with at least one national author? If h with at least one author from s has exactly n authors, 2 and g authors, that there be a non-national collaborator, then the overall probability is of same-country preference is
+The point is, with countries varying greatly in quantitative contribution, then EVEN WITH NO BIAS, reasonable that measures of bias be formulated as deviations from the above no-bias value. 4. Cooperative models dicted by the random-choice model: take an approach similar to that in Bookstein et al. (2006) . agreed with the data. We shall build our cooperative-choice model by starting with the random-choice be the probability that a collaboration be acceptable if both candidate authors are from s ; let h
+Probability of a successful collaboration, with both authors from s : a 2 set: 2 a s a t h st .
+
+Then the observed fraction is estimated by the probability G
+Here the relative sizes of the two populations are given by the measurable parameters a assume that we are using relative values, so that a s + a try bias. But, more generally, we can make the transformation a G  X  X .
+
+Then, since 1 G st = G ss we can determine: or, finally, allows us to estimate the ratio of the h s in terms of the empirical quantities a and G . 4.1. Comments following candidate is attractive: the underlying populations. But substituting from Eq. (2) for g first instinct! random-choice probability ratio and the ratio of population sizes. But since (see Eq. (9) ) choice. 5. Conclusion stant factor of 1/2, and simply use G st Appendix bility of drawing the same item twice.
+ for our purpose.) Then we can select: two authors from the target nation in N 0 2 ways; one national and one foreign author in N 0 N 1 ways and, for completeness; two non-national authors in N 1 two authors, without regard for nationality, in N
+Expanding we find this is equal to 2 N 1 /(2 N 1 + N 0 1), or in terms of probabilities, 2 a This agrees with our earlier result in the limit of large N (so 1/ N ! 0). References

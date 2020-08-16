@@ -1,0 +1,27 @@
+ In this paper, we prop ose a novel framew ork using Ge-netic Programming to combine image database descriptors for content-based image retriev al (CBIR). Our framew ork is validated through several experimen ts involving two im-age databases and speci X c domains, where the images are retriev ed based on the shap e of their objects.
+ Categories and Subject Descriptors: H.3.3 [Informa-tion Storage and Retriev al]: Information Searc h and Re-trieval[Query form ulation, Searc h process] General Terms: Measuremen t, Experimen tation Keyw ords: Content-based Image Retriev al, Genetic Pro-gramming
+Advances in data storage and image acquisition technolo-gies have enabled the creation of large image databases. In order to deal with these data, it is necessary to develop ap-propriate information systems which can supp ort di X eren t services. The focus of this paper is on CBIR systems. Ba-sically , CBIR systems try to retriev e images similar to a user-de X ned speci X cation (e.g., image example), according to image content prop erties (such as color and shap e).
+Di X eren t descriptors encoding di X eren t or even the same image prop erties have been prop osed to supp ort image re-trieval by content [4]. These descriptors are commonly cho-sen in a domain-dep enden t fashion, and, generally , are com-bined in order to meet users' perception. This paper pro-poses a novel framew ork to combine image database descrip-tors, impro ving e X ectiv eness in retriev al tasks. This frame-work is based on an arti X cial intelligence (AI) optimization technique, called Genetic Programming (GP) [5]. We val- X 
+This work was supp orted in part by AOL, CNPq, FAPESP (Proc.03/14096-8), Microsoft Escience project, FCT project POSI/EIA/58194/2004, and NSF grants DUE-0121679, DUE-0333531, IIS-0307867, DUE-0136690, IIS-0086227, and IIS-0325579.
+ represen ted as a GP expression tree, whose non-leaf nodes are numerical operators and the leaf node set is comp osed of the similarit y values d i , i = 1 ; 2 ; : : : ; k .
+The entire combination disco very framew ork can be seen as an iterativ e process. Starting with a set of training im-ages with known relev ance judgmen ts, GP  X rst operates on a population of random combination functions. These com-bination functions are then evaluated based on the relev ance information for the training images. If a stopping criterion is not met, our GP technique will go through the genetic transformation steps to create and evaluate the population of the next generation. GP System
+Terminals : This list includes widely used and recen tly prop osed shap e descriptors for comparison purp oses | Mo-ment Invarian ts (MI) [4], Fourier Descriptors (FD) [4], Beam Angle Statistics (BAS) [1] (with 40 and 60 samples), and Contour Multiscale Fractal Dimension (CMFD) [2].
+ Functions : + ;  X  ; =; sqrt .
+
+Fitness Functions : A  X tness function measures how ef-fectiv e a combination function represen ted by an individual tree is for ranking images. A formal de X nition of the chosen  X tness can be found in [3].
+
+Repro duction : We used 0.05 of the population size as the repro duction rate.
+
+Crosso ver : For crosso ver, a metho d called tournament se-lection [5] is used.
+
+Mutation : Our experimen ts considered 0 : 25 as the per-centage of individuals selected for mutation.
+
+Stopping Criterion : We stop the GP disco very process after 50 generations.
+
+Image Databases: Two di X eren t databases have been used to compare the prop osed GP-based shap e descriptors: (a) Fish Shap es Database: This database contains 100 classes with 10  X sh shap es each, obtained by rotating and scaling one hundred  X sh contours available online 1 ; and (b) MPEG-7: shap e database of the MPEG-7 project with 70 classes and 20 images each, for a total of 1400 images.
+ We randomly split the data into training and test parts. The training set used a random 50% sample for each class. We also considered two di X eren t samples (S1 and S2) for each data set.
+Our experimen ts compare the GP-based approac h with a comp osite descriptor deriv ed from a Genetic Algorithm (GA) and the best simple descriptor, taken as baselines. The GA-based descriptor uses a  X xed-length sequence of real numbers (weights) to indicate the importance of each descriptor.
+
+We used precision after 10 images are returned as our comparison criterion. Table 1 shows the average precision for each simple descriptor. Note that the BAS60 descriptor yields the best result with both collections.
+
+Table 2 presen ts the average precision of the GP-based shap e descriptors, using di X eren t  X tness functions. With re-gard to the MPEG-7 collection, GP-based descriptors out-perform the BAS60 baseline. Note also that GP presen ts www.ee.surrey .ac.uk/Researc h/VSSP/imagedb/demo.h tml

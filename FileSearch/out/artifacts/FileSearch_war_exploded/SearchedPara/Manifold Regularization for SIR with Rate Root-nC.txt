@@ -1,0 +1,16 @@
+ the name of SIR.
+ unlabelled samples.
+ regularization encodes the marginal distribution of the unlabelled predictors. Section 6 concludes this paper. in the sample set. 2.1 Sliced Inverse Regression predictors X. We can consider the following regression model [7].  X  X and covariance matrix  X  of predictors X ; calculate the matrix  X  = that the generalized eigen-decomposition is equivalent to the following optimization, ization on (2).
+ proposed in [3], standings of discriminative dimension reduction. 2.2 Manifold Regularization for SIR with the distribution P (X) , the following formulation can be applied, by D ii = we take the summation of k regularizations where G = [ g 1 , ..., g k ] .
+ (5) as R = trace R = trace SIR manifold regularization.
+ obtained before.
+ following conditions hold.
+ of predictors P (X) , the fourth order moment exists, i.e., E where vec () vectorizes a matrix into a column vector. We start by splitting Q into two parts T 1 and T 2 , Q = Substituting the function  X  (  X  ) into (7), we have  X   X   X   X   X   X   X   X   X   X   X  dent and both are sampled from P (X) . The E pendent and both are sampled from P (X) . The E following two theorems for the convergence of Q and S .
+ a deterministic matrix E ( Q ) = E O  X  deterministic matrix E Proof . D ii = O  X  can be asymptotically achieved when n  X  X  X  . U  X 
+ X  U T , problem (6) is equivalent to  X trace (6). We then get (11). This completes the proof.
+ G algorithm is given by the following three steps: searching direction H k , the 1-D searching along the geodesic is given by
+A ( t k ) as the starting position for next searching. using direction is H space. of the standard SIR and the localized SIR on the same experiments for reference. 5.1 USPS Test manifold regularized SIR is effective on exploiting the local geometry of a dataset. supervised training of the localized SIR (sLSIR).
+ Dimensionality 7 9 11 13 15 17 19 21 5.2 Transductive Visualization localized SIR performs better than SIR, but not as good as the regularized SIR. SIR, the manifold regularized SIR, and the localized SIR. |  X  ( x ) | = | E (  X  ( k z  X  x k ) | x ) | 6 1 , which implies that E T a.s = E  X   X  ( x ) xx T  X  + O  X  n  X  1 / 2  X  , it is sufficient to show that E ( T Cov ( vec ( T 1 )) = E First, because x i and x j are independent when i 6 = j , it follows, Next, we show E ( vec ( E ( T 1 ))) ( vec ( E ( T 1 ))) T and the other is O
+E = = = Therefore, the first term in E For the second term in E M under the Conditions 3.1, and thus we have  X   X   X   X 
+ X  n 2 ( n  X  1) 2 Combining the above two results, we have Proof of Lemma 3.2 Similar to the proof of Lemma 3.1, E to show that E ( T 2 ) = E Next, we split E E  X  = = = Following the same method used in the proof of Lemma 3.1, we have and  X  Therefore, we have Cov ( vec ( T 2 )) = O validate the effectiveness of the regularized SIR.
+ Acknowledgments project number M58020010). References [8] Li, L. (2007). Sparse sufficient dimension reduction. Biometrika 94(3): 603-613.

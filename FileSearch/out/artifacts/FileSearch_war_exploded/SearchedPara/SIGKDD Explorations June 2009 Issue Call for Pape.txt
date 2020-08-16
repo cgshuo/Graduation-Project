@@ -1,0 +1,3 @@
+ This special issue (June 2009) will focus on Open S ource Analytics and t he Interoperability of Open Data Group. middleware. support that deployment and the interoperability of analytics. Topics of interest include, but are not limited to: 
+Submissions should be emailed to opensourceanalytics at labcomputing.org, preferably in a PDF format and should not exceed 10 pages. In addition, pleas e email the authors, title, abstract, and contact informa tion for the corresponding author in ASCII text to the same address. 
+Detailed formatting instructi ons are available from http://www.acm.org/sigs/sigk dd/explorations/submissions.php

@@ -1,0 +1,77 @@
+ 1. Introduction this trend gave rise to the generalizations known as fuzzy decision trees, cf. [13 mechanism being in their design:  X  Fuzzy ID3 [27  X  29,7,14,15,23] information gain or gain ratio are used as a measure of attribute selection.  X  Yuan and Shaw's Fuzzy decision tree (FDT) [31,32,18] the tree building.  X  Gini index based FDT [33,34,2,17,19] attribute for splitting, attribute values are fuzzified based on the split-point value.  X  Wang's FDT [12,16] its consequent to select the expanded attributes encoded in terms of fuzzy sets.  X  Normalized fuzzy Kolmogorov  X  Smirnov based FDT [21,22,24] splitting.
+ using the Pearson Chi-squared test.
+  X   X   X  threshold (  X  ), which can effectively control the level of detail captured by the tree.  X  2. Selected preliminaries of the AFS theory The following example serves as an introductory illustration of the most generic ideas. Let M be a non-empty set. The set EM* is defined as where  X  and  X  denote a disjunction and conjunction, respectively. Boolean values and the order relations) are shown in Table 1 . attribute shown in Table 1 . Here we consider the following terms: m 1 :  X  old person  X  , m 2 :  X  tall person  X  , m 3 :  X  high self-appraisement person m :  X  male  X  , m 7 :  X  female  X  (i.e., not male ), m 8 :  X  good performance on test A performance on test B  X  , m 10 :  X  good performance on test C represents a conjunction of the concepts in A i and  X  i  X  I
+A represented by  X  m  X  A  X  = m 1 m 6 + m 1 m 3 + m 2 which translates as  X  old male  X  well-defined meaning such as the one we have discussed above.
+De fi nition 1. ([49]) . Let M be a non-empty set. We define a binary relation R on EM [  X 
+It is evident that R is an equivalence relation. The quotient set EM  X  m m 8 + m 1 m 4 + m 1 m 6 m 7 + m 1 m 4 m 8  X  EM and  X  = m 3
+Theorem 1. ([49]) . Let M be a non-empty set . Then ( EM , and  X  defined as follows : elements in I  X  J ), C k = A k , if k  X  I , and C k = B k
+In Example 1 , Let  X  = m 1 m 4 + m 2 m 5 m 6  X  EM and  X  = m (2) come as follows:  X 
+De fi nition 2. ([51]) . Let  X  be any concept defined on the universe of discourse X . R
+R satisfies the following condition: x , y  X  X ,( x , y )  X  is larger than or equal to that of y ,or x belongs to concept
+De satisfies the following conditions: 1. If ( x , y )  X  R , then ( x , x )  X  R ; 2. If ( x , x )  X  R and ( y , y )  X  R , then ( x , y )  X  R ; 3. If ( x , y ), ( y , z )  X  R , then ( x , z )  X  R ; 4. If ( x , x )  X  R and ( y , y )  X  R , then either ( x , y ) complex concept on X . 3. Coherence membership functions of fuzzy concepts
+De fi nition 4. ([52]) . Let X , M be sets and 2 M be the power set of M . Let the following axioms:
+X is called universe of discourse; M is called a concept set and
+Let X be a set of objects and M be a set of simple concepts on X . defined by Eq. (3). For instance, we have by comparing the values of the attributes of x 4 and x 7 shown in Table 1 .
+De fi nition 5. Let M be a set of simple concepts on the set X and ( M ,
+A ( x ) p X is defined as follows: 1. For  X  ,  X   X  EM ,if  X   X   X  in lattice ( EM ,  X  ,  X  ), then 2. For x  X  X ,  X  =  X  i  X  I (  X  m  X  Ai m)  X  EM ,if A  X  i ( x )= 3. For x , y  X  X , A p M ,  X  =  X  m  X  A m  X  EM ,if A  X  ( x )
+Theorem 2. Let M be a set of simple concepts on X and ( M , that for any m  X  M and x  X  X ,{ m }  X  ( x )  X  S . For each simple concept and M  X  ( X ) = 1. If for each concept  X  =  X  i  X  I (  X  or then {  X   X  ( x )|  X   X  EM } is a set of coherence membership functions for ( EM , The proof is given in the Appendix.
+ and
+T (  X  ( x ),  X   X  ( x )) is completely determined by the membership degrees concepts described by the given data distribution.
+ discussion, we first introduce the following definition.
+De fi nition 6. [49]. Let  X  be a simple concept on X ,  X   X  : X  X  satisfies the following conditions: 1.  X   X  ( x )=0  X  ( x , x )  X  R  X  , x  X  X ; 2.  X   X  ( x )  X   X   X  ( y )  X  ( x , y )  X  R  X  , x , y  X  X , where R  X  is the binary relation of the concept  X  .
+ two AFS structures defined in Eq. (4). If for any m  X  M and any x 1. {  X   X  ( x )|  X   X  EM } is a set of coherence membership functions of ( EM , function for each fuzzy concept  X  =  X  i  X  I (  X  m  X  A or where N u is the number of times u  X  X is observed . x  X   X  as | X | approaches to infinity .
+ The proof is presented in the Appendix.
+ overall space by taking both fuzziness and randomness in account via  X   X  different data sets drawn from the same probability space will be consistent.  X  determined by the probability distribution.
+
+In Example 1 , let  X  1 = m 3 ,  X  2 = m 8 ,  X  3 = m 3 + m 8 some degree and  X  m ( x )=0 for x not belonging to m . Assume that every x can obtain the corresponding membership functions. The membership degrees of x
+Since EI algebra ( EM ,  X  ,  X  ) is closed under the logic operation
+EM , their membership functions and logic operations  X  ,  X  called AFS fuzzy logic. 4. Generation of fuzzy rules from AFS decision trees trees. 4.1. Basic notions
+Table 2 . As noted, the first four examples belong to the category. 1. The set of fuzzy variables (or attributes) is denoted by where V i is a fuzzy variable over the universe of discourse U 2. For each variable V i  X  V, we use the notation  X  value of training sample j is u j i  X  U i .  X  D i denotes the set of fuzzy terms (i.e., simple concepts) associating with V  X  v p i denotes the fuzzy term for the variable V i . (e.g., v 3. The set of fuzzy terms (simple concepts) for the decision variable is denoted by D defined over the universe of discourse Y . 4. The set of training examples is 5. M is the set of all simple concepts attribute Y ), v p c  X  v q c ,  X  v a fuzzy classification on X with l classes, e.g., X =  X  k =1 6. For each node N of the fuzzy decision trees  X  V N is the set of attributes appearing on the path leading to the node N  X   X  N is a fuzzy concept in EM , and  X   X  N ( x j ) is the membership degree of sample x  X   X   X  N is the  X  (  X   X  (0, 1)) cut set of fuzzy set  X  N , i.e.,  X  S Vi N denotes the set of N 's children when V i  X  ( V  X   X  P v c N denotes the example count for decision v q c  X  D  X  P N and I N denote the total example count and information measure for node N , where I  X  G V 4.2. Construction of AFS decision trees The construction of the AFS tree consists of the following main design steps. Discretization of attributes with the use of fuzzy terms three fuzzy terms (i.e., simple concepts) to each attribute V v k i with its underlying semantics  X  the value of V i is closer to the k -th cut point fuzzy terms are defined by Eq. (9).
+ Node splitting criterion
+V i to split the current node N is G V (defined by Eq. (12)).
+ Stopping condition
+First, a given node N can be expanded if the samples in the set current node N is negative or the set of N 's children is empty, i.e., S 4.3. Rule extraction and pruning
+Once the AFS decision tree has been built for the given threshold 4.3.1. Rule extraction leading to the terminal node, i.e.,  X  N i  X  EM , where N i i representing the antecedent part of rule r i . Let us introduce the following notation where | A r
+The condition A r
+X  X  4.3.2. Pruning the rule-base applied to the training data.
+ consequent.
+ v c  X  D c , k =1, 2, ... , l , a rule can be obtained and read as: Rule k :If x is The original tree is shown in Fig. 2 .
+ r 1 :If x is m 19 m 28 , then x belongs to the class 2; r 2 :If x is m 19 m 29 , then x belongs to the class 3; r 3 :If x is m 19 m 30 , then x belongs to the class 3; r 4 :If x is m 20 m 28 , then x belongs to the class 2; r 5 :If x is m 20 m 29 m 39 , then x belongs to the class 1; r 6 :If x is m 21 m 37 , then x belongs to the class 2; r 7 :If x is m 21 m 38 m 1 , then x belongs to the class 2; r 8 :If x is m 21 m 38 m 3 , then x belongs to the class 1; r 9 :If x is m 21 m 39 m 2 m 29 , then x belongs to the class 1; r 10 :If x is m 21 m 39 m 2 m 30 , then x belongs to the class 1; r 11 :If x is m 21 m 39 m 3 , then x belongs to the class 1. EM by the logic operation  X   X   X  defined by Eq. (1).
+ Rule 1 :If x is  X  1 , then x belongs to the class 1; Rule 2 :If x is  X  2 , then x belongs to the class 2;
+Rule 3 :If x is  X  3 , then x belongs to the class 3; 4.4. Determining the optimal threshold  X   X   X  of  X 
+However, it is very difficult to determine the optimal threshold compute the sub-optimal value of the threshold  X  using the Fitness Index F ( where | X | is the number of training samples,  X  Classification rate since the tree could be very likely overfitted. We estimated the optimal threshold algorithm to avoid a possible overfitting effect.
+ { x set of fuzzy terms for the decision variable (decision attribute) is D simple concepts on U , where m 2
+V is large  X  ( i =1,2, ... , 9) and m 19 = v no-credit c , m  X 
+The root node embraces all the training samples without any restrictions, that is significant enough for the predefined value of the threshold ( considering smaller values of the threshold  X  .
+ x , x 12 , x 14 }, X r 2 ={ x 3 , x 4 , x 6 , x 7 , x 8 , x Table 1 ). After pruning, we arrive at Rule 1 and Rule 2 : Rule 1 :If x is  X  1 , then x belongs to the class of no-credit ;
+Rule 2 :If x is  X  2 , then x belongs to the class of credit ; where the children of the node form the set {( root | v small
+In Fig. 6 , node 1 contains 8 samples having membership degrees larger than node should be split further. The 3rd attribute  X  self-appraisement ( N
+There are 6 samples falling into node 3 and these samples belong to the Rule 1 :If x is  X  1 , then x belongs to the class of no-credit ;
+Rule 2 :If x is  X  2 , then x belongs to the class of credit ;
+Comparing the situation where the threshold  X  =0.8 with the case where of this index is displayed in Fig. 7 ; it clearly shows that For comparison, the C4.5 decision tree produced the following rules: Rule 1 :If x is annual payment  X  20, then x is no-credit ; Rule 2 :If x is annual payment &gt;20, then x is credit . similar to the rules extracted from the AFS decision tree with 4.5. Inference of decision assignment and associated con fi which are not included in X , we need to express the fuzzy concept ( X  X 
+U 1  X  U 2  X  ...  X  U n ). In what follows, for each fuzzy concept x =( u 1 , u 2 , ... , u n )  X  U 1  X  U 2  X  ...  X  U n ,  X  =  X  are defined over U 1  X  U 2  X  ...  X  U n as follows: where U A here R m is the binary relation of simple concept m defined by Definition 2 . We call function of  X  and  X   X  U ( x ) serves as the upper bound of membership function of  X   X  ( x )  X   X   X  L ( x ) for each x  X  U 1  X  U 2  X  ...  X  U n ,  X   X  ( x )=  X   X  ( x )=  X   X  L ( x ) for each x  X  X .
+
+In virtue of Eq. (18), we can expand the fuzzy concept  X  =
+U  X  U 2  X  ...  X  U n . The membership functions  X   X  U ( x ), the AFS fuzzy logic.
+
+When we are provided with a new pattern x  X  U 1  X  U 2  X  ...  X  ( x ) by Eq. (18) and x belongs to the class arg max v confidence degree of the membership degree  X   X  ( x ) estimated by
+The confidence degree C  X  ( x ) quantifies confidence we associate with the larger value of C  X  ( x ) we obtain. In fact, the value of C the fuzzy concept  X  . The larger value of C  X  ( x ) advises us to trust x  X 
+X , C  X  ( x )=1, then there exists a training sample x 0 such that the values of both x equal. For each testing sample x , we know that it belongs to the class arg max  X  ( x ), the estimate of all membership degree of x belonging to of x , every confidence degree C  X  ( x )of  X   X  L ( x ), k =1, 2, 5. Experimental studies belonging to m and N x =1, i.e. x is observed for one time. On each attribute V 5.1. Experiment 1 implemented by ourselves while the parameters are respectively set to be afsdtcode.sourceforge.net .
+ and the set of fuzzy terms for the decision variable (class attribute) is D semantic meaning  X  the value on V i is large  X  , m 3 2,
+The trees in the five-fold cross validations induced by the sub-optimal thresholds degrees of the data for  X  1 and Fig. 9 shows the membership degrees of the data for confidence degree of the estimate of membership degree of the samples belonging to the estimate of the membership degree of the samples belonging to to  X  1.00%. This implies that the classification result of a testing sample x with C confidence.
+The testing error of each data set is reported in Table 8 , where AFS average ranks are assigned) [56].
+  X  find r i j  X  the rank of the algorithm j on the i-th dataset;  X  compute the average rank R of algorithm j : R j = 1 N  X  i  X  the null hypothesis states that all algorithms have the same performance;  X  compute the Friedman statistic:  X  2 F  X  12 N kk  X  1  X  X   X  j  X  if  X 
+In our case,  X  2 F =12.87, while the critical value for the significance level with an appropriate  X  . We denote the ordered p values by p  X  In our case, R AFS1 =2.8750, R FS-DT =6.3036, R FDTs =6.2500, R R
+SVM =3.3393, and with  X  =0.05, k =8 and N =28, the standard error is SE  X  than FDTs, FS-DT, KNN and C4.5 at the significance level  X 
+AFS 1 obtains the best ranks in the Friedman test. 5.2. Experiment 2 (see Table 7 ) are also reported in Table 10 .
+ and the best performance in accuracy. 5.3. Analytical comparison 5.3.1. Structure complexity obtained for the five-fold cross validation.
+ 5.3.2. Comparison of AFS fuzzy logic and  X  conventional  X   X  o  X  space formed by the two arbitrarily selected features.
+ performance. 5.3.3. Consistency of the coherence membership functions
+Iris data, the membership functions of the fuzzy concepts 6. Conclusions on the training and testing data.
+ Acknowledgment
+National Natural Science Foundation of China under grants 61175041 and 61034003. Appendix A
+Proof of Theorem 2. Let  X  =  X  i  X  I (  X  m  X  A that for any A i ( i  X  I ), there exist B h ( h  X  J ) such that A which implies that Thus condition 1 of Definition 5 holds.
+ For x , y  X  X , A p M ,  X  =  X  m  X  A m  X  EM ,if A  X  ( x ) p
+In addition, M  X  ( X )=1, condition 3 of Definition 5 holds. Therefore { ( EM ,  X  ,  X  ) and ( M ,  X  , X ).  X 
+Proof of Theorem 3.1. According to [60], it is clear that for any U Proof of Theorem 3.2. Let p ( x ) be the density function of the probability space ( drawn from (  X  , F , P ). Hence referring to [61], for any x Here x  X   X  x p  X  , S (  X  x ) is the size of the area  X  x , X larger if | X | is large enough, that is, | X |  X   X  x  X   X  For any i  X  I ,  X   X  A i in Eq. (7) or (9) with x  X  X , assume that any j either  X  j p A i  X  ( x )or  X  j  X  A i  X  ( x )=  X  . Let and  X  max be the maximum size of S (  X  j ), j =1, ... , q and x  X   X  as | X | approaches infinity.  X 
+References

@@ -1,0 +1,54 @@
+ 1. Introduction tinue to seek possible methods to closely model stock market behaviors.
+ the conceptual gap between vector and roster data.
+ moving average analyses [34,33] . Subsequently, many time series models based on fuzzy theory have been presented. In bama. The fuzzy time series model constructs the fuzzy relation R and uses a Max X  X in composition operator to calculate sequent study, Huarng proposed another model to define interval length with distribution-based length and average-based produce forecasts.
+ tionships [4,5,12,19,28,27] .
+ index forecasting based on two advanced methods, cumulative probability distribution approach (CPDA) [40] and rough set rules and weights and (3) defuzzifying to calculate forecasting results based on rule support values. search framework and algorithms used for analysis. Section 4 verifies the effectiveness of the proposed model with two empirical databases, Taiwan Stock Exchange Capitalization Weighted Stock Index (TAIEX) and New York Stock Exchange
+Composite Index (NYSE), and by comparison with the forecasting accuracy of the models developed by Chen [4] and Yu [41] . Finally, in Section 5 , findings and conclusions are presented. 2. Literature review theory. 2.1. Fuzzy sets, fuzzy numbers and TFN
+In 1965, Zadeh first introduced the concept of fuzzy set for modeling the vagueness type of uncertainty. A fuzzy set defined on the universe X is characterized by a membership function such that l sup  X  e A  X  , is defined by the set f x 2 X j l e a 2 [0,1] [43] .
+
+The special significance of fuzzy sets is that membership functions, defined on the set X of real numbers in the form e imprecise numerical quantities, they should capture intuitive concepts of approximate numbers or intervals such as
+A common approach is to limit the shape of membership functions defined by LR-type fuzzy numbers [9] . A special case of LR-type fuzzy numbers, TFN, is defined by a triplet using the notation
+The membership function for this TFN is defined as where l e imum membership value is chosen, and linguistic value is determined. 2.2. Fuzzy time series
+Song and Chissom first proposed fuzzy time series analysis in 1993 to model fuzzy relationships among observations
+U ={ u 1 , u 2 , ... , u n }, where u i are possible linguistic values of U . A fuzzy set resented as follows.
+ denoted as f i ( t )( i =1,2, ... ) are defined, and let F ( t ) be a collection of f Y ( t )( t = ... ,0,1,2, ... ).
+ F ( t 1) ? F ( t ).
+ to as a FLR, can be denoted by A i ? A j , where A i is the left-hand side and A 2.3. Rough set theory (RST)
+RST is a nonparametric technique that has foundations in mathematical set theory and has been widely applied to deci-sion problems [36] . RST was developed by Pawlak and Skoworn [24] and has been described as an effective mathematical prediction, stock market rule-generation, market research, climate change and the development of expert systems for The NASA Space Center [10] .
+
+Rough set philosophy is founded on the assumption that, in the universe of discourse associated with every object, some ference between the upper and lower approximation constitutes the boundary region of concept X . mation system in the form of a decision table with a set of objects U ( o (accident type).
+ means that objects 1 and 3 are indiscernible while the other objects are characterized uniquely with all available and upper approximation set {1,3,4,5} [38] . 3. Proposed model and algorithm
+Section 3.1 briefly introduces the conceptual basis and framework of the proposed model, and the steps of the algorithm are described in detail in Section 3.2 . 3.1. Proposed model guistic forecasts to produce numerical forecasts.
+ to discretise the data into the requisite number of intervals and avoids the problems of thin partitioning. ies observations to generate reasonable and understandable rules. Additionally, the rule support values, produced from Based on these advantages of CPDA and RST, this study proposes a hybrid fuzzy time series model, which incorporates linguistic forecasts based on weighted FLR and use the weight matrix (from phase II) and the defuzzification matrix in the proposed algorithm section. 3.2. The proposed algorithm the proposed model as follows: Step 1: Make a hypothesized estimation of normal distribution for datasets.
+ Step 2: Define the universe of discourse U .
+ Step 3: Define the lengths of linguistic intervals.
+
+The appropriate number of categories, based on human short-term memory function, is seven and seven plus or minus guistic values to present stock indices are introduced as follows: A
+A = (somewhat low stock index), A 4 = (normal stock index), A and A 7 = (very high stock index).
+ Step 4: Define fuzzy sets and fuzzify the observations.
+ Step 5: Establish FLR.
+ Step 6: Generate rules from FLR by rough set induction method.
+ Step 7: Weight FLR based on rule support value.
+ Step 8: Produce linguistic forecasts based on normalized trend-weighted FLR.
+ Step 9: Defuzzify to calculate numerical forecasts and modify the forecasts.
+ 4. Verification of the proposed model databases and the evaluation methods are detailed as follows. 4.1. The characteristics of the databases TAIEX database : The daily trading stock index data from the Taiwan Stock Exchange Cooperation were used for analysis.
+The database covered the period 1990 X 1999 and included 2824 records of daily stock trading prices with single-attribute closing price.
+
+NSYE database : This trading database was downloaded from The New York Stock Exchange (NYSE) Euronext (the holding company created by the combination of NYSE Group, Inc. and Euronext N.V.) statistics data library. This study extracted partial daily trading data from the database for the period 1990 X 1999 (2428 records with one attribute, closing price). 4.2. Evaluation methods for each year was split into two sets. One dataset, consisting of stock index data for the previous 10 months (January X 
+October), was used for training. Another dataset, consisting of data for the last two months (November X  X ecember), was used for testing.
+
+Evaluation method 2 : In this evaluation method, the stock index data was split according to a three-year moving window 12/1992 for testing followed by 1/1991 X 12/1992 for training and 1/1993 X 12/1993 for testing.
+To examine whether the proposed model has made improvements in forecasting accuracy, two fuzzy time series models, is used as an evaluation criterion to compare the forecasting performance of listing models 4.3. Performance evaluation using different methods
+To evaluate the proposed models under different conditions by using two methods (CPDA method, rough set method), (TAIEX) and Table 14 (NYSE) based on evaluation method 1.
+
+These performance tables both show that the hybrid model performs better than the model only using CPDA method or bears the minimum average RMSE. From these performance evaluations, it is clear that the hybrid model, which integrated
+CPDA and rough set methods, achieved the best forecasting accuracy. 4.4. Performance verification using TAIEX database To verify the improvement in forecasting accuracy of the proposed model, two fuzzy time series models, developed by 15 (evaluation method 1) and Table 16 (evaluation method 2).
+ is outlined in the next subsection.
+ 4.5. Performance verification using NYSE database (evaluation method 2). Table 19 is an illustration of the NYSE year 1999 testing period to detail the forecasting error comparison.
+
+The performance comparisons, in Tables 17 and 18 , clearly demonstrate the superiority (superior performance in 34 out of 36 comparisons) of the proposed model compared to the listing methods. From the outstanding performance in the NYSE datasets, the robustness of the proposed model is strongly convincing.
+ 5. Findings and conclusions
+This study proposes a hybrid fuzzy time series model, which integrated CPDA and rough set methods, to enhance fore-casting accuracy. From the verification of the proposed model, there are four important findings: (1) Based on the performance comparison ( Tables 15 X 18 ), the proposed model outperforms the listing fuzzy time series (2) Using CPDA method in the preprocess phase to define and partition the universe of discourse can improve forecasting (4) The proposed model performs better when using evaluation method 2 as opposed to evaluation method 1(see Tables
+In summary, from the empirical analyses using two large scales of stock databases, two important conclusions are noted: (1) By the synthesis of the two advanced methods, using CPDA to preprocess observations and rough set rule induction
+Although this study has made great improvement in stock market forecasting using fuzzy time series, there are two sug-precious metals prices, to assess the proposed model and (2) develop an application system based on the proposed model to implement the forecasting in stock markets and evaluate the profit of these practical transactions.
+References

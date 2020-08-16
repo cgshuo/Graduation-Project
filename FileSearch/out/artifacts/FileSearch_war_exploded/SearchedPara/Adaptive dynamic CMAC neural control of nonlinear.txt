@@ -1,0 +1,64 @@
+ 1. Introduction
+It is well known that the major advantage of a sliding-mode excite unstable system dynamics. To tackle this problem, a second-order sliding-mode control (SSC) system which is an and SSC systems are difficult to be implemented in real-time applications.
+ lers have been developed to compensate for the effects of and some are based on the gradient decent method; thus the can be guaranteed. Recently, a cerebellar model articulation table, the network structure of a CMAC network cannot be chosen too small, the learning performance may be not good enough to achieve a desired performance.
+
+To tackle this problem, a dynamic structure CMAC network (DSCN) is proposed for the structure adaptation of a CMAC network structure growing unboundedly and some requires layers automatically. Then, the proposed DSCN is utilized to computation.
+
+In this paper, an adaptive dynamic CMAC neural control (ADCNC) system which is composed of a computation controller and a robust compensator is developed. The computation con-knowledge of a certain amount of memory space and the self-proposed ADCNC system are derived in the sense of Lyapunov teed to be stable. It should be emphasized that the proposed
+ADCNC system requires no prior knowledge about the system is provided as a simulation example. The simulation results mance and no chattering phenomena can be achieved by the proposed ADCNC system.
+
+This paper is organized as follows. Problem formulation is proposed ADCNC system. Simulation results are provided to validate the effectiveness of the proposed ADCNC system in
+Section 4 . Finally, Section 5 concludes the paper. 2. Problem formulation
+Chaotic systems have been studied and known to exhibit et al. (2009) , Jiang (2002) , Peng (2009 )  X  x tions of system (1) may display complex phenomena, including various periodic orbits behaviors and some chaotic behaviors sensitivity to parameters change and initial points. represented as follows  X  x  X  t  X  X  f n  X  x , t  X  X  u  X  t  X  X  2  X  deviate from the nominal value and a external disturbance is added into the system, the chaotic system can be modified as  X  x  X  t  X  X  f n  X  x , t  X  X  D f  X  x , t  X  X  u  X  t  X  X  d  X  t  X  X  f n surface as Lin et al. (2009 ) e  X  t  X  X  x  X  t  X  x c  X  t  X  X  4  X  s  X  t  X  X  _ e  X  t  X  X  a 1 e  X  t  X  X  a 2 (3) and (4) obtain _ s  X  t  X  X   X  e  X  t  X  X  a 1 _ e  X  t  X  X  a 2 e  X  t  X  phenomenon, a SSC system is considered with a second-order sliding surface defined as Lin et al. (2009 )  X  t  X  X  _ s  X  t  X  X  b 1 s  X  t  X  X  b 2 respect to time and using (3) and (6) obtain _ s  X  t  X  X   X  s  X  t  X  X  b 1 _ s  X  t  X  X  b 2 s  X  t  X  where c 1  X  a 1  X  b 1 , c 2  X  a 2  X  a 1 b 1  X  b 2 , c 3  X  a (2005) , Lin et al. (2009 ) u ssc  X  t  X  X  _ u where Z ssc is a given positive constant with the assumption _ z  X  x , t  X  r Z ssc . Imposing the control law _ u  X  t  X  X  _ u (10) yields _ s  X  t  X  X  _ z  X  x , t  X  Z ssc sgn  X  s  X  t  X  :  X  11  X 
+Consider the candidate Lyapunov function in the following form as
+V  X  t  X  X  _
+V  X  t  X  X  s  X  t  X  _ s  X  t  X  X  _ z  X  x , t  X  s  X  t  X  Z ssc 9 s
+If the second-order sliding surface _ s  X  t  X  X   X  s  X  t  X  X  b _ s cannot be implemented in real-time applications. 3. Design of the ADCNC system
+The proposed ADCNC system is composed of a computation mance with a desired attenuation level. 3.1. Network structure of DSCN space is represented as Lin and Chen (2009 ) f Gaussian function has its maximum value, i.e., f ij ( z i defined as Y  X  z , m j , v j  X  X  m sample interval is given by y  X  output represents in a vector form as y  X  a T H  X  z , m , v  X  X  17  X 
+A trade-off problem between the computation loading and to add a new Gaussian function in association memory and to clusters, DSCN will not generate a new Gaussian function but incoming data z and m j as Lin and Chen (2009 ) d  X  : z m j : :  X  18  X 
+Find a minimum distance which is defined as d  X  min as follows N  X  k  X  1  X  X  N  X  k  X  X  1 :  X  20  X 
+The initial parameters of the new Gaussian function will be defined as m v avoid the endless growing of DSCN structure and the overload
+Y relationship becomes weak between the input and the j th as Hsu (2007 )
+I  X  k  X  X  major contribution is DSCN can be operated directly without function. 3.2. Approximation of DSCN
+Since the system dynamics f ( x , t ) may be unknown in the cannot be implemented. In this paper, a DSCN is utilized to
+Chen (2009 ) _
+D n which is a finite positive constant such the inequality as Wang (1994 )  X  a n , m n , v n  X  X  argmin f v : : vectors that are needed to best approximation cannot be determined. An estimation DSCN identifier is defined as _ ^ f  X  ^ a
+T H  X  z , ^ m , ^ v  X  X  ^ a T ^ H  X  27  X  _ ~ f  X  _ f _ ^ f  X  ~ a T ~ H  X  ~ a T ^ H  X  ^ a T ~ H  X  D  X  28  X  parts as Golea et al. (2002) , Hsu et al. (2009 ) a n  X  respectively, Z P and Z I are positive coefficients, and a n : a n : r D a two parts as Golea et al. (2002) , Hsu et al. (2009 ) ^ a  X  respectively, and ^ a I  X  parameter vector satisfies : ^ a I : r D a I ,where D a I ~ a _ ~
+Then, the Taylor expansion linearization technique is linear form ( Peng and Lin, 2007 ), i.e., ~
+H  X  A T ~ m  X  B T ~ v  X  h  X  33  X  _ ~ f  X  Z I ~ a T I ^ H Z P ^ a T P ^ H  X  ^ a T  X  A T ~ m  X  B where ^ a T A T ~ m  X  ~ m T A ^ a and ^ a T B T ~ v  X  ~ v term h is bounded by : h :  X  : ~ H A T ~ m B T ~ v : : ~ c and ~ v satisfy : ~ a :  X  : a n ^ a : r : a n :  X  : ^ a : r D a  X  : ^ a :  X  36  X  : : ~ v  X  : v n ^ v : r : v n :  X  : ^ v : r D v  X  : ^ v : :  X  38  X 
+Next, the uncertain term e is bounded by 9 9  X  : ^ a T h  X  ~ a T ~ H  X  Z P a n T P ^ H  X  D :  X  : ^ a T h  X  ~ a T  X  A T ~ m  X  B T ~ v  X  h  X  X  Z P a n T P  X  : ~ a T A T ~ m  X  ~ a T B T ~ v  X  a n T h  X  Z P a n T P  X  X  x 1 , x 2 , x 3 , x 4 , x 5 , x 6  X  1 , : ^ a : , : ^ m  X  n T C  X  39  X  where n  X  [ x 1 , x 2 , x 3 , x 4 , x 5 , x 6 ] T , C  X  X  1 , : ^ a :: ^ v : T , x 1  X  X  c 0  X  2 c 1 D m  X  2 c 2 D v  X  D a  X  Z  X  c bounded vector, if C can be guaranteed to be bounded, the uncertain term e is bounded. 3.3. ADCNC system design
+The proposed ADCNC system is shown in Fig. 3 , where the controller output is defined as u adc  X  t  X  X  _ u where the computation controller is chosen as _ u is the principal controller and the robust compensator _ u designed to achieve L 2 tracking performance with a desired using (1) and (5) obtain _ s  X  t  X  X   X  s  X  t  X  X  b 1 _ s  X  t  X  X  b 2 s  X  t  X   X  _ f  X  x , t  X  X  _ u  X  t  X  &amp; x c  X  t  X  X  c 1  X  e  X  t  X  X  c where c 1  X  a 1  X  b 1 , c 2  X  a 2  X  a 1 b 1  X  b 2 , c 3  X  a _ s  X  t  X  X  _ f _ ^ f  X  _ u rc :  X  44  X 
+By the approximation property (34), (44) can be rewritten as et al., 2002 ) Z s 2 d t r s 2  X  0  X  X  Z I ~ a T I  X  0  X  ~ a I  X  0  X  X  ~ m conditions s (0)  X  0, ~ a I  X  0  X  X  0, ~ m  X  0  X  X  0 and ~ v ing performance in (46) can be rewritten as R s 2 d t R e 2 d t
+The physical meaning of (47) is the effect of any uncertain this is the case of minimum error tracking control without disturbance attenuation. To proof the stability of the ADCNC form
+V  X  1 2 s 2  X  obtained
+If the parameter adaptive laws are selected as ^ a  X  s ^ H  X  50  X  _ ^ a  X  _ ~ a I  X  s ^ H  X  51  X  _ ^ m  X  _ ~ m  X  Z m s A ^ a  X  52  X  _ ^ v  X  _ ~ v  X  Z v s B ^ a  X  53  X  and design the robust compensator as _ u  X   X  d then (49) becomes _
+V r s 2 r s 2 yields
+V  X  T  X  V 2  X  0  X  r inequality 1 2 Z s 2 d t r V 2  X  0  X  X  1 2 d 2
+Thus, the L 2 tracking performance is achieved. Since V 2 implies that lim t -1 s  X  0( Slotine and Li, 1991 ). 3.4. Boundary analysis using projection algorithm
+Though the stability of the ADCNC system can be guaranteed, projection algorithm ( Wang, 1994 ) as following: _ ^ a  X  8 &lt; :  X  58  X  _ ^ m  X  _ ^ v  X  where the projection operators are given as
+Pr  X  s ^ H  X  X  s ^ H s ^ a T ^ H
+Pr  X  Z m s A ^ a  X  X  Z m s A ^ a Z m s ^ m T A ^ a
+Pr  X  Z v s B ^ a  X  X  Z v s B ^ a Z v s ^ v T B ^ a If the initial value of ^ a is bounded (i.e., ^ a  X  0  X  A
+X ^ v be guaranteed by the modified adaptive laws (58) X (60). Next, define variables as
+V
+V m  X  ~ m T s A ^ a  X  and V  X  ~ v T s B ^ a  X 
+If the projection algorithm is taken place, the property ~ o Thus, the following equations can be obtained  X  s 2  X  V for  X  : ^ m :  X  D m and s ^ m T A ^ a 4 0  X  X  68  X  and
+V  X  s 2 ten as _
+V  X  r s  X  e  X  _ u rc  X  :  X  70  X  ten as _
+V r se  X  d r s 2 proposed ADCNC system with the projection algorithm can be guaranteed. 4. Simulation results design steps of the ADCNC system are summarized as follows
+Step 1: Initialize the pre-defined parameters of the ADCNC system.
+
+Step 3: Calculate the distance between incoming data z and m j .If d min Z d th is satisfied, a new Gaussian function is generated with initial parameters are give in (21) X (23). If condition is not satisfied, go to next step.
+ condition is not satisfied, go to Step 5.
+ Step 5: The output of DSCN identifier is given as ^ a T ^ given in (54).
+ learning is true, go to STOP.
+
+To show the effectiveness of the proposed DSCN which the network structure can grow or prune systematically and their
+RBF network is applied to estimate the change of the control system dynamics. The simulation interval time is 0.001 s.The simulation results of the ADCNC system with RBF network are the change of the control system dynamics well for q  X  7.0. are selected as a 1  X  b 1  X  2, a 2  X  b 2  X  1, Z P  X  20, learning rates, convergence of tracking error can be easily are too large, the parameter adaptation laws may lead to simulation results of the ADCNC system with I-type learning respectively. The tracking responses of state x are shown in ing error is slow.
+
+To speed up the convergence, the proposed PI-type learning ADCNC system with PI-type learning algorithm are shown in number of the receptive-field basis function are shown in tracking error and control parameter are accelerated by the (1,1) are shown in Figs. 10 and 11 for q  X  2.1 and q  X  7.0, respectively. The tracking responses of state x are shown in basis function are shown in Fig. 10 (d) and Fig. 11 (d). The the convergence of the tracking error.
+ shown in Fig. 12 (c) and Fig. 13 (c), and the number of the receptive-field basis function are shown in Fig. 12 (d) and 5. Conclusions This paper has successfully developed a dynamic structure
+CMAC network (DSCN) with online adjusting suitable memory space of the CMAC network. In the memory reinforcement process, new associative memories will be generated when the current architecture is insufficient. On the other hand, the inefficient memories will be detected and reorganized in the memory reorganization process. Then, an adaptive dynamic
+CMAC neural control (ADCNC) system with a proportional X  proposed ADCNC system is composed of computation controller a DSCN identifier is the principal controller and the robust error and controller parameters. And, the self-constructing the layers in CMAC network automatically.
+ Acknowledgment
+The authors appreciate the partial financial support from editor and reviewers for their valuable comments. References

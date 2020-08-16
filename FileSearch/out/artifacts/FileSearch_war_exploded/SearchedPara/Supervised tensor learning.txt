@@ -1,0 +1,45 @@
+ REGULAR PAPER Dacheng Tao  X  Xuelong Li  X  Xindong Wu  X  Weiming Hu  X  Stephen J. Maybank tensor version reduces the overfitting problem.
+ Keywords Convex optimization  X  Supervised learning  X  Tensor  X  Alternating projection 1 Introduction in subspace selection methods, e.g., linear discriminant analysis (LDA). the number of unknown parameters used to represent a learning model. MLSM 1 U y  X  { + 1 ,  X  1 } ,and1  X  i  X  N .
+ w 1 learning (MDML).
+ conclusions. 2 Tensor algebra R following definitions. for all index values.
+ matricizing of X as mat d ( X ) or briefly X ( d ) .
+ X the tensor product X  X  Y is and [[ X  X  Y ;  X  i  X  i ]]  X  R L i  X  L i . R  X  X  X  X  L (
+X  X  d U ) l for all index values. The mode-d product is a type of contraction. ( X  X  d U )  X  t V can be simplified as X  X  d U  X  t V.
+ matrix product between V and U .
+ and
+X  X  R square is the energy of the tensor.
+ tensor product of M vectors u i  X  R L i ,where 1  X  i  X  M minimum number of rank-1 tensors that yield X in a linear combination. 3 The relationship between LSM and MLSM R x  X  R L and y to U 1  X  U 2  X  X  X  X  X  X  U M . 2 sample-size (SSS) problem.
+ problems.
+ x = vect ( X )  X  R L ,where L = L as shown in Fig. 5 . 4 Convex optimization-based learning optimization-based learning.
+ transformed to this form ( f f ( w ) | m h ( w ) | p tion problem. Therefore, a convex optimization problem [3] is defined by w  X  in D is the optimal solution of Eq. (14) if and only if cone programming (SOCP) [19], the semidefinite programming (SDP) [43], and as SVM, MPM, Fisher discriminant analysis (FDA) [6, 8, 14], and DML. used to model learning problems.
+ mization problem defined in Eq. (14) are all affine.
+ quadratic and the constraint functions in Eq. (14) are all affine. QCQP, i.e.,  X  where P i  X  S n + for 0  X  i  X  m .
+ constraint. When c i = 0forall1  X  i  X  m , SOCP transforms to QCQP. function subject to a matrix semidefinite constraint where F i  X  S m for all 0  X  i  X  n and c  X  R n .
+ optimization-based learning as R
+L + N + 1  X  R for all 1  X  i  X  N are convex constraint functions; x i  X  R L { + b we can obtain a large number of learning machines, such as SVM, MPM, FDA, and DML. We detail this in the next section. 5 Supervised tensor learning: a framework ( y (1  X  i  X  N )and w  X  R L with X (1  X  k  X  M ) in (21), respectively. Therefore, STL is defined by b we define the classification tensorplane, i.e., X M k = 1  X  k w k + b = 0. with Lagrangian multipliers  X  = [  X  1 , X  2 ,..., X  N ] T  X  0. to b is where z = X i M k = 1  X  k w k + b .
+ k k issue is proved in Theorem 1.
+ for STL: function: and the slack variables  X   X  R N . w { 1 , 2 ,... M } is closed.
+ sequence of items { w  X  d , t , b  X  d , t ,  X   X  d , t ; 1  X  d  X  M } via defined as Eq. (22) converges. 6 Supervised tensor learning: Examples STL with different learning criteria, such as SVM, MPM, FDA, and DML. 6.1 Support vector machine versus support tensor machine shown in Fig. 7 .
+ SVM, finds a projection vector w  X  R L and a bias b  X  R through with Lagrangian multipliers  X  i  X  0,  X  i  X  0for1  X  i  X  N . The solution is determined by the saddle point of the Lagrangian [ I problem of Eq. (29) in SVM is a QP.
+ c with an intuitive parameter  X  as ber of support vectors and the marginal errors.
+ squares SVM, (  X  SVM.
+ extension of the soft-margin SVM, i.e., the soft-margin STM. with the linearly nonseparable problem.
+ with Lagrangian multipliers  X  i  X  0,  X  i  X  0for1  X  i  X  N . The solution is determined by the saddle point of the Lagrangian k Eq. (29).
+ have the tensor extension of the  X  -SVM, i.e.,  X  -STM,  X   X   X   X   X   X   X   X   X   X   X   X  with Lagrangian multipliers  X   X  0and  X  i  X  0,  X  i  X  0for1  X  i  X  N .The solution is determined by the saddle point of the Lagrangian M , k = j ), because least-square STM, 4inTable 1 by the following optimization problem, y ( X ) = sign [ X M k = 1  X  k w k + b ] with  X  | | . When STM is obtained from N training measurements X ( 0 P is bounded by where  X  is a universal constant.
+ found in [2]. 6.2 Minimax probability machine versus tensor minimax probability machine x ( y i = X  1), MPM is defined as, y ( x ) = sign [ w T x + b ] .
+ and Bertsimas [23] proved a probability bound, MPM is an SOCP. This problem can be further simplified as where b is determined by sion of MPM, i.e., tensor MPM (TMPM). TMPM is a combination of MPM and STL.
+ vectors w k  X  R L k (1  X  k  X  M ) and the bias b in TMPM are obtained from  X   X   X   X   X   X   X   X   X   X   X  s . t . (
+X simplified as [ I ( saddle point of the Lagrangian 1 by the following optimization problem, (1  X  i  X  N ) associated with the class lables y surements. The projection direction w maximizes we know FDA is a special case of the linear discriminant analysis (LDA). value and the bias b is calculated by are Gaussian distributed with identical covariances.
+ S FDA, i.e., tensor FDA (TFDA). TFDA is a combination of FDA and STL. More-analysis (GTDA) [38].
+ tors w k  X  R L k (1  X  k  X  M ) and the bias b in TFDA are obtained from 1 by the following optimization problem, w 6.4 Distance metric learning versus multiple distance metrics learning maximization. = W T W . where A =[ [ x metrics learning (MDML) learns M metrics k = W T k W k (1  X  k  X  M )for X as close (far) as possible. The MDML is defined as  X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X  problem,  X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X   X  and mat j (( X i  X  X l )  X   X  j W j )) 7 Iterative feature extraction model based on supervised tensor learning example of IFEM is given in [39].
+ features in IFEM) is used to represent the original tensor X i . w tensors is illustrated in Fig. 11 .
+  X  found by minimizing the Euclidean distance  X  = 8 Experiment vision research. 8.1 TMPM for image classification great help for many applications.
+ tensor.
+ reasonable.
+ image representation.
+ problem directly and meanwhile represent the ROIs much more naturally. as shown in Figs. 15 and 16 .
+ corresponding testing set.
+ proposed one (TMPM). from 5 to 30 with a step 5.
+ the computational learning theory and its real performances. ing set. This is actually consistent with the statistical learning theory. gence property and the insensitiveness to the initial values. enough to achieve the convergence.
+ bottom. method for TMPM. The theoretical proof is given in Theorem 1. always 0.05 and 0.235, respectively. 9Conclusion FDA (TFDA), and the multiple distance metrices learning (MDML). Based on ment TMPM for image classification. By comparing TMPM with MPM, we know TMPM reduces the overfitting problem in MPM.
+ References Author Biographies

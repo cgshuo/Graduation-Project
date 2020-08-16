@@ -1,0 +1,10 @@
+ the number of workshops that feature summarization.
+ question.
+ efficiency in information processing.
+
+Some of the possible topics for papers include:  X  automatic abstract or title creation;  X  single-and multiple-sentence compression and information fusion;  X  multi-document summarization;  X  cross-lingual summarization;  X  evaluation of summarization;  X  summarization for specific domains (news, genomics, legal, etc.);  X  summarization for different genre and media (speech, emails, web, etc.);  X  operational summarization systems;  X  user studies involving summarization.
+
+Important Dates:  X  June 18, 2006  X  submission due.  X  September 17, 2006  X  notification to authors.  X  November 1, 2006  X  submission due for revised version. the above site.
+ For more information, contact Donna Harman
+National Institute of Standards and Technology 100 Bureau Dr, Stop 8940 Gaithersburg, MD 20899-8940 USA
+E-mail: donna.harman@nist.gov

@@ -1,0 +1,45 @@
+ 1. Introduction af fi Kim et al. (2013 ).
+ (2013 ) which does not cover the controller synthesis. af fi process of the main theorems in the next section: 2012 ): (a)  X   X  PA  X  A T P o 0 :
+P  X  F T  X  A  X   X  I  X  F F T ! 3. Stabilization conditions for af fi ne fuzzy system 3.1. Af fi ne parallel distributed compensator following: then u  X  K i x  X   X  i ; i  X  1 ; 2 ; ... ; r  X  9  X  as follows: ut  X  X  X  where h i x  X  X  and  X  i x  X  X  is de fi ned as (4) . _ xt  X  X  X   X  r 3.2. Fuzzy Lyapunov function candidate Lyapunov functions as following:
+Vx  X  X  X   X  r Tanaka et al., 2003 ).
+ 2002 ).
+
+From (20), it is obtained that _ Vx  X  X  o 0, if x
+P for the fuzzy rule i  X  i A I  X   X  and for other fuzzy rules.
+ rule, the following inequality is held:
+F rewritten as follows: proof is completed.  X  ~ x  X   X  x  X  26  X 
+I 0 !  X   X  B T B 0 @ v iq are de fi ned such that ^
+F iq x  X  X  ~ x T matrices are obtained from ^
+K  X  W T 1 Y i for the fuzzy rules R i  X  i A I  X   X  X  37  X  and ^
+K
+Proof. From (32) , one has ^
+P and from (33) , one concludes that
+P  X  W T  X  A  X  kI  X  W W T ! for the fuzzy rule i  X  i A I  X   X  and
+P  X  F T  X  A  X   X  I  X  F F T 0 @ W  X  ^ 8 &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; : ^ 0 B B B B B B B B
+B @ paper, the system and input matrices are as following: obtained as _ ~ xt  X  X  X   X  r tion (26) are used.
+ that for large enough  X  ; k 4 0 for the fuzzy rule i  X  i A I  X   X  and o 0  X  52  X  for the other fuzzy rules, where ^
+P  X   X  r
+ X 
+ X 
+F
+The matrices of APDC controller are obtained from ^
+K  X  W T 11 Y i for the fuzzy rules R i  X  i A I  X   X  ^
+K _ Vx  X  X  X  z T t  X  X  zt  X  X   X  2 w T t  X  X  wt  X  X  o 0  X  53  X 
+One has _
+Vx  X  X  X  z T t  X  X  zt  X  X   X  2 wt  X  X  T w  X  t  X  for the fuzzy rule i  X  i A I  X   X  and  X  there exist slack matrices W and F such that
+P  X  W T  X  A  X  kI  X  W W T ! and for the fuzzy rule i  X  i A I  X   X  and
+P  X  F T  X  A  X   X  I  X  F F T ! for the other fuzzy rules, where  X   X  and  X  Assume W and F as W  X  F  X  5. Simulation examples compared to Wang and Yang (2013 ). 5.2. Numerical example 2 ( Wang and yang, 2013 ):
+Plant Rule i : If x 1 t  X  X  is M i ; then where  X   X   X  3  X 
+B  X  0
+B @
+L  X  X  010  X  71  X 
+P  X  0
+B @ the transpose of its symmetric element.
+ de fi system proposed design method ( Chang et al., 2009 ): _ x t  X  X  X  2  X  f 0 x 2 t  X  X  X  w  X  t  X  _ x t  X  X  X  D H x 2 t  X  X  X  generator system is represented as following:
+Plant Rule i : If x 1 t  X  X  is M i ; where
+A  X 
+B
+L  X  X  100  X  75  X  and the membership functions are shown in Fig. 4 . region are calculated as following: For the fuzzy rule R 1 which 30 3 r x 1 r 10 3 : For the fuzzy rule R 3 which 10 3 r x 1 r 30 3 :
+T selected to be as  X  1  X   X  2  X   X  3  X  3.
+ ing:
+P region is achieved by the proposed approach. References

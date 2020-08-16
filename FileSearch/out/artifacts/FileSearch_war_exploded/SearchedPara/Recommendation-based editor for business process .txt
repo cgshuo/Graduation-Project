@@ -1,0 +1,86 @@
+ 1. Introduction inexperienced users is still very steep [61]. Pure awareness of the modeling language syntax is often insuf working knowledge of the user is required in order to ef fi con visualization techniques. However, there is room for improvement, and a full-retaining high fi delity to the user's modeling intentions. 1.1. Problem description improve the quality of process models and to increase the productivity of the modeler. aggregated. This information is then used to suggest appropriate items, e.g., books from a recommendation system in the business process modeling domain, the following aspects are essential:  X  the user's modeling intentions,  X  the modeling context, and  X  the modeling history of a related community of users.
+
+The next section introduces a running example that is used in the remainder of the paper. 1.2. Running example which best matches her modeling intention.
+ can only be invoked after she has already started modeling the business process. model by inserting or deleting elements. Finally, she can store the modi future process model reuse. 1.3. Contributions a user at process modeling time and to better meet the user's model requirements. prototype implementation. For the validation, Petri nets were serialized to PNML [72]. The feasibility and usefulness of the modeling support system. This experiment con was on the evaluation of the bene fi ts in using the recommendation system. This evaluation con feedback. The evaluation results highlight additional bene  X  violate the correctness criteria (e.g., structural deadlocks, which occur if an alternative synchronized by an AND-join in a process model),  X  the system overcomes the limitation of a controlled vocabulary for labeling process elements, and  X  business process model.
+ languages.
+ order to consider relevant process models in case they do not conform exactly to the speci related work, and Section 8 concludes the paper with an outlook on future research. 2. Tagging of business process models tagging, cf. Section 2.2 ). In the remainder of this paper we use the term 2.1. Automatic tagging
+The motivation of Information Retrieval is to be able to fi with only few keywords that adequately capture the intended information need. For this, is geared towards identifying the most descriptive tags for business process models. with each business process model a tag characterization of the form [ a process model that are searchable later on (cf. Section 3 ), T additional metadata criteria, as described in the remainder of this section. fi is assigned a tag score for this business process model based on a modi word removal), | P | denotes the total number of indexed business process models, and |{ p process models, where the tag t i appears. The purpose of the idf part log words that all business process models have in common. attribute two versions: one with WordNet information included and one without. tags, we use the similarity measures presented in [24].
+ both the search and the recommender component can work solely on automatically acquired data. 2.2. Manual tagging insertion of the following metadata criteria is allowed:  X 
+Process name : each business process model or part can be identi  X  user can annotate more purpose criteria),  X   X 
+Process description: a textual description of the process model (part), and  X  introduce more annotation properties.
+ annotate each process model activity with the following metadata:  X  cost: the costs for the design of a process activity, and  X  quality: the quality of the design of a process activity.
+ model parts, as presented in the next section.
+ characterization looks as follows:
+Now, the user additionally tags the attribute purpose yielding the 3. Searching for process model parts method to suggest related process models, although they do not conform exactly to the speci 3.1. Basic search
+The implementation of the index and search functionality is based on the open source search engine Lucene. where the f i are the names of the fi elds and the V i the associated sets of values. Thus, the de mapped one-to-one to Lucene documents: each attribute a i the Vector Space Model and the Boolean Model (cf. [58]).
+ different vocabulary.
+
+The respectively. The advantage of these search criteria is that modelers can search for a speci
+For instance, the modeler is interested in process models starting with for instance send request . 3.2. Extended search optional search criteria that further limit the query results (see Fig. 4 ). 3.2.1. Process design cost and quality
+A process design P , a business process model in our context, is a set of ordered pairs ( a where a i isa process activityand  X  i is thestartingtimeof a of time where activity a i is executed.). Each process activity a e.g., ( v i ,cost , v i ,quality ) for cost and quality of the process design.
+The evaluation of the process model design in attribute k is obtained from the evaluation v process model design via an aggregation function f 1 done with the function f cost .
+
+The cost function for the process design is de fi ned as follows: where f cost is the sum of design costs of all process activities in the design. For attributes like cost, f all activities contained in the design. Thus, given a set R ={ P we are interested in the P i with the lowest costs of a process design, i.e., min the lowest quality of any process activity included in the process design: where f quality is the quality of the process design. Here, for a set R ={ P the query, we are interested in the P j with the highest quality of a process design, i.e., max
+A process model with lower design costs and of high quality is ranked higher than less signi 3.2.2. Structural errors structuredness property the veri fi cation might be extended for checking free-choiceness. Free-choiceness instance, the model is not s-coverable. 5 We decided for the veri detected whenever the user inserts new nodes into her workspace.
+ a weighted sum of different ranking criteria and will be explained in more detail in Section 4 . 3.3. Related search results often useful to suggest related process models although they do not conform exactly to the speci a user pro fi le into consideration which is based on the user's search history. To de used:  X  a sequence of accessed recommendations by the user usr = b recommendations by the user u ,  X  a sequence of posed queries by the user u (after removing stop words) sq = posed queries by the user u ,  X  a sequence sm of newly created models or models opened for being editing by the user u where sm = and pm u early documentation of a process through subsequent phases of analysis and execution. the user is in at the moment can help to estimate the degree of process property can be provided in this stage.
+ visualized. 4. Ranking of recommendations Then the modeling context (e.g., the control-fl ow 6 ) is also crucial for the recommendation process. additional criteria that are described in this section: and patterns observed in other users' preferences, to patterns observed in other users' preferences, 3. Process design score and process design quality , which were introduced in Section 3.2. edited and remove common stop words, which yields the set T with their related synonym sets, as described in Section 3 , resulting in the set T determined by querying the Lucene index, where the query term is the concatenation of all tags in the set T 4.1. Frequency score remedy this, we integrate a frequency score into our ranking that re automatically decrease (relative to recommendations, which have been selected more often). number of users u who have selected the process k is: where t ik is calculated as follows: t equals 0 if the user i has never selected the process k ; otherwise it equals 1. The ranking r users is calculated by:
+Let us assume that the second process in Fig. 5 has been selected more often than the part CustomerOrder . 4.2. Operation score where i =0, ... , n , avgInsNodes 0 =0, freqScore is the frequency score for a speci number of newly inserted elements in a speci fi c process model.
+
+To calculate the average number of deleted elements in a process model, we use the following de where analogously to this de fi nition, i =0, ... , n , avgDelNodes process model, we recursively retrieve all these elements. 4.3. Overall ranking The basic ranking is determined with the following formula: values f cost ( P ) and f quality ( P ) equal zero.
+
+For such a case, the reranking of search results of Fig. 6 gives the following view of the recommendations. 5. The usefulness and ef fi ciency of a recommendation-based editor and ef fi ciency of the support system is also essential. 5.1. Theoretical background based editor and about the reduction of modeling time (when using the system). load and fi nally the working memory overload. Recently, Sweller [66] stated that
+Accordingly, two questions arise:  X   X  result (cognitive overload due to the amount of new information).
+ questions:  X   X  Planned Behavior (TPB) [2].
+ did not differ between novices and experts. All studies con novices when working with the computer [55].
+ system for all users (question 3). To fi nd support for in subjective norms , and perceived behavioral control . Attitude toward the behavior is de feelings about performing a behavior. Subjective norm is de toward performing that behavior can be obtained. Perceived behavioral control is de discussion:  X 
+What in fl uences the selection of a recommendation? 5.2. Hypothesis based upon theoretical underpinning The following two hypotheses address the question about the willingness of users working with the system: scratch.
+ elements from scratch.
+ hypothesis: process modelers without any modeling support.
+ process from these recommendations than do previous users.
+ three hypotheses that also address the question about modelers' productivity: experiences.
+ experience.
+ recommendation, will create a model of higher quality than do process modeling beginners. The last question about user behavior is investigated as follows: 6. Research design
+To validate our hypotheses we provided several modeling tasks for different groups of participants. 6.1. Design setting 1 the self-assessment of the participants with respect to modeling experiences. variations of process models.
+
+To populate our repository, we used process models from real world projects concerning order management. interviewees were well educated in Petri nets. For the fi expected solution. The fi rst process model was about handling customer orders. The interviewees had fi recommendation-based editor was not obligatory and thus the interviewees were free to ignore the system. for different modeler types with varying levels of modeling experiences. 6.2. Design setting 2 instructed to model a business process without any modeling support. The students were enrolled in provided on the basis of an informal natural language description (one complete text page) of the advanced group had all passed the exam of the  X  Work students of the fi rst phase.
+
+To benchmark the received solutions of the base group we used four criteria: missing? Is the order of activities accurately modeled? 2. Syntactic correctness. Are joins and splits nested properly? information? 4. Labeling of process elements. Did the members select appropriate labeling? the process, three process model parts of equal quality for the answers of the participants and the generated logs. When fi recommender system to state reasons for selecting a speci 6.3. Results
+The fi rst questionnaire (design setting 1) was answered by ten participants. Since [64] could neither con in fl models edited by previously interviewed persons.
+ who successfully performed their exercise during the  X  Work 10 graduate and 18 post-graduate students. Participants of the advanced group received a monetary incentive. shows that the preference (for using a recommendation) is highly signi used to test the signi fi cance of the results when considering the median. A small p-value con recommendations instead of modeling the process from scratch.
+ number of reused elements is higher than that of newly created elements. The 95% con overlap between these two intervals, and thus there is a signi coef recommended elements rather than modeling the elements from scratch. required to ful fi ll the modeling task without modeling support. The 95% con
+To evaluate H2b, we used a Pearson correlation test which resulted in a value of will need less time to model her process from the recommendations than did the previous users. expert participants of the constructive group as shown in the number of recommendations due to their level of modeling experiences. difference between the mean number of searches performed for either type of users. The 95% con [0.343,1.823]. Since the intervals overlap, there is no signi searches.
+ constructive group 2 solutions had no valid syntactical structure, but all solutions re value 0.00  X  0.05. This p-value shows that the preference is highly signi support of the recommendation system is higher.
+ criteria. For participants of the advanced group, the primary in of process elements label (4 times) and fi nally the process output (3 times). three recommendations, and the number of recommendations. 6.4. Discussion without recommendation support. Richer interaction with the system (interactive elements, videos) is bene 6.4.1. Interpretation that the repository includes a high number of process models with different model qualities. novices. The evaluation results call for tools such as Wo semantic fl ow of process models.
+ work is required on this criterion.
+
+The reasons for selecting a recommendation are strongly in weight of 0.95 for w 1 in the ranking function that was presented in Section 4.3. 6.4.2. Implications been implemented in several commercial tools. But there is insuf of modeling experiences and the usage of our recommendation system. 6.4.3. Limitations selected more frequently than low quality models.
+ required. 7. Related work related works. tools. by [13] for blog entries.
+ implementation as the respective project documents are dif approaches focus on a semi-automatic composition or discovery of Web services de required process models which can be used to complete a model effectively.
+Generally, a semi-automatic composition of Web services is easier than a composition of business processes. search and the ranking of data-centric XML documents [25] are not further considered in this paper. process element labels. Currently, we are updating the fi structures. document [7] or the popularity of a webpage [5].
+ feedback. recommender system [15]. A recommendation-based modeling support system can be regarded as a speci recommendation mechanism has also been integrated in the work of [60]. scenario. For further information on other variants of recommendation mechanisms, we refer to [27,74] . paper are manual tagging, extended search, operation score ranking and empirical 8. Conclusion search functionality for process model parts stored in a repository. A user pro models although they do not conform exactly to the speci fi mandatory and optional criteria. The fi rst mandatory criterion is a modi model parts), and the third is the number of operations (deletion and insertion) being performed for a speci considered in the ranking process if users have selected them.
+
+To investigate the effectiveness of the recommendation system, we conducted two empirical studies. The lower overall modeling time at the moment).
+Once a suf fi cient number of process models is contained in the repository, automatic classi development of process models by process modelers.
+ Acknowledgement
+The authors would like to thank the reviewers for their very constructive and detailed comments, which signi the paper.
+ Appendix A. Excerpt of the questionnaire for the constructive group.
+Modeling experiences. 1. Working experiences with Petri nets (yes/no) 2. How many processes have you modeled so far:  X  less than 10  X  between 10 and 30  X  more than 30
+Modeling intention  X 
+Documentation  X 
+Veri fi cation  X 
+Discussion  X 
+Development of an information system  X  Improvement of a process
+In fl uence factors on modeling  X 
+Modeling gaol  X 
+Enterpreise gaol  X 
+Business process requirements  X 
+Business rules  X  Syntactical rules
+Information sources used during modeling  X 
+I received information from colleagues  X 
+I obtained information from competent persons  X 
+I browsed the World Wide Web  X  I retrieved process models from a repository Informal description for the advanced group want to identify the current process. For this, you conducted two interviews. The works in the management and approves business trip requests.
+
+Interview with Mr. Maier: If I decide to make a business trip, then I another business trip. If both are not possible, then I revise the form for inquiry and
+Interview with Mrs. Muller: If an employee makes a business trip inquiry, then I check  X  the regulations for business trips of the merrily company into his p.o. box with the note  X  authorized  X  or  X  not authorized receive an answer, I pass the information to the accounting.
+
+References

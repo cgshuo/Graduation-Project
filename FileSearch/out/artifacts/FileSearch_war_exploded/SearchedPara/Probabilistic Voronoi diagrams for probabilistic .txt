@@ -1,0 +1,206 @@
+ 1. Introduction database.
+ cess Nearest Neighbor (NN) queries on an uncertain database. The PVD for a given set of uncertain objects o data space, where each data point in this region has a higher probability of being the NN to o continuously.
+ for processing a PMNN query on a set of uncertain objects.
+ just a simple distance metric.
+ the probabilistic bisectors between two neighboring objects that form the basis of PVCs for the PVD. name it the pre -computation approach in this paper.
+ nique the incremental approach in this paper.
+
+In summary, we make the following contributions in this paper:  X   X 
+We provide an algorithm for evaluating PMNN queries based on the pre-computed PVD.  X 
+We propose an incremental algorithm for evaluating PMNN queries based on the concept of local PVD.  X  approach significantly.
+
+Section 6 reports our experimental results and Section 7 concludes the paper. 2. Preliminaries and problem setup
+Let O be a set of uncertain objects in a d -dimensional data space. An uncertain object o d -dimensional uncertain range R i and a probability density function ( pdf ) f
+For uniform distribution, the pdf of o i can be expressed as f uncertainty region and the pdf are represented as R i =( c the radius of the region. We also assume that the uncertainty of objects remain constant. probabilities of being the NN to the query point. Suppose that the database maintains only point locations c o , o 2 , and o 3 , respectively (see Fig. 1 ). Then an NN query with respect to q returns o the least among all other objects. In this case, o 1 and o database maintains the uncertainty regions R 1 =( c 1 , r then the NN query returns all three ( o 1 , p 1 ),( o 2 , p Fig. 1 ).
+ A Probabilistic Nearest Neighbor (PNN) query [4] is defined as follows:
+De fi
+P of tuples ( o i , p i ), where o i  X  O and p i is the non-zero probability that the distance of o
+R is the uncertainty region of an object o i , we need to first find out the probability of o
+Thus, p ( o i , q ) can be expressed as follows: where the function P (.) returns the probability that a point v
+Fig. 1 shows a query point q , and three objects o 1 , o 2 centered at q with radii 5, 6, 7, 8, and 9 units, respectively, divide the uncertain region R and o 1 similarly R 2 is divided into six sub-regions o 2
+Then p ( o 1 , q ) can be computed by summing: (i) the probability of o abilities of o 2 and o 3 being outside the circular region ( q ,6), (ii) the probability of o the probabilities of o 2 and o 3 being outside the circular region ( q ,7), (iii) the probability of o region o 1 query point of a moving query.
+ paper, we propose PVD based approaches for evaluating a PMNN query. processing cost.
+
+In the rest of the paper, we use the following functions: min ( v maximum, respectively, of a given set of values v 1 , v 2 and an uncertain object o .
+
+We also use the following terminologies. When the possible range of values ( R 3. Background related to our work. Then we present existing work on Voronoi diagrams. 3.1. Probabilistic nearest neighbor that minimizes the aggregate distance to a set of static query points. top-k -PNN.
+
+Any existing methods for static PNN queries [4,5,7] or its variants [8 based approach and also for the probability calculation in the PVD. and assign the object to the class with the highest probability. [21 most probable NN for a moving query point. 3.2. Voronoi diagrams thus, [29] cannot be used for PNN queries.
+ boundary of the Voronoi edges. The Voronoi diagram of [14] can be described as follows.
+
+Let R 1 , R 2 , ... , R n be the regions of a set O of uncertain objects o ... , V n in the data space can be determined such that a point in V point in R j , i.e., where p is a point in the data space.
+ Then, the cell V i of object o i can be defined as follows:
+The boundary B ( i , j )of H ( i , j ) can be defined as a set of points in H ( i , j ), where p regions are circular, the boundary of object o i with o j where c i and c j are the centers and r i and r j are the radii of the regions for objects o o . Fig. 2 shows an example of this Voronoi diagram for uncertain objects o of objects overlap or too close to each other.
+
+In this approach, a Voronoi cell V i only contains those points in the data space that have o Diagram (PVD) that works for any distribution of data objects.
+ ject o i , the UV-diagram defines a region (or UV-cell) where o in Fig. 2 , all points that are left side of the hyperbolic arm closest to o region left to this hyperbolic line (i.e., closest to o 2 above) and is not suitable for our purpose. 4. Probabilistic Voronoi Diagram A Probabilistic Voronoi Diagram (PVD) is defined as follows:
+De fi of regions, denoted by PVC ( o i ), such that p ( o i , q )&gt; p ( o and p ( o j , q ) are the probabilities of o i and o j of being the NNs to q. boundary. Let o i and o j be two uncertain objects, pb o
+PVC ( o j ). Then, for any point q  X  pb o q  X  PVC ( o j ), p ( o i , q ) b p ( o j , q ).
+ (2D) spaces. We briefly discuss higher dimensional cases at the end of this section. 4.1. Probabilistic Voronoi Diagram in a 1D space these values in a database. In this section, we derive the PVD for 1D uncertain objects.
+An uncertain 1D object o i can be represented as a range [ l and n i be the midpoint and the length of the range [ l i objects o i and o j is a point x within the range [ min ( l point x  X  b x and p ( o i , x  X  X  ) b p ( o j , x  X  X  ) for any point x to satisfy all three conditions.
+ for continuous spaces.
+
+A naive approach for finding the pb o cost.
+ and non-overlapping. Fig. 3 (a) is an example of a non-overlapping case. (Note that if l are assumed to be the same and no probabilistic bisector exists between them.)
+Lemma 4.1. Let o i and o j be two objects where m i  X  m j and m j .
+
+Proof. Let o i and o j be two equi-range objects, i.e., n
+Then, by using Eq. (1) , we can calculate the probability of o
+Similarly, we can calculate the probability of o j being the NN to x , as follows.
+If we put n i = n j in the above two equations, we have p ( o the point x are equal.
+
+Now, let x  X   X  m i  X  m j 2  X  be a point on the left side of x . Then we can calculate the probability of o
+Similarly, we can calculate the probability of o j being the NN to x
+Now, if we put n i = n j in theabove two equations,then we have p ( o for a point x  X  X  on the right side of x .
+
+Thus, we can conclude that x is the probabilistic bisector of o distributions.
+ tribution, the pdf s of these two objects are also similar.
+
+Let x be the bisector of two midpoints m 1 and m 2 , i.e., x and p ( o 2 , x ), respectively. We can see that A 1 = A 2
+To prove it formally, let o i and o j be two equi-range objects, and x computed as follows: po i ; x  X  X  X   X  n i  X  1 s  X  1 1 n
+Similarly, Fig. 3 (c) shows two dark shaded areas A  X  1 and A dark shaded areas representing p ( o 1 , x  X  X  ) and p ( o that p ( o 1 , x  X  X  ) b p ( o 2 , x  X  X  )at x  X  X   X  m 1  X  m
+Hence, we can conclude that x is the probabilistic bisector of o overlapping (see Fig. 4 (a)).
+
+Lemma 4.2. Let o i and o j be two non -overlapping objects , where n max ( u i , u j )], then the probabilistic bisector pb o
+Proof. Let n i &gt; n j , and x be the bisector of two midpoints m mum distances from x to o i and o j are d i and d j , respectively.
+Then, by using Eq. (1) , we can calculate the probability of o
+Similarly, we can calculate the probability of o j being the NN to x as follows.
+Since, we have d j  X  d i  X  n i  X  n j 2 , i.e., n i =2( d j
+Since p ( o i , x )= p ( o j , x ), we have pb o On the other hand, let x  X   X  m i  X  m j 2  X  be a point on the left side of the probabilistic bisector.
+Then, by using Eq. (1) , we can calculate the probability of o
+Similarly, we can calculate the probability of o j being the NN to x
+So, we can say p ( o i , x  X  )&gt; p ( o j , x  X  ) for a point x on the right side of pb o
+Fig. 4 (a) shows two objects o 1 and o 2 and their pdf s, where n different.
+
+Let x be the bisector of two midpoints m 1 and m 2 , i.e., x and p ( o 2 , x )of o 1 and o 2 being the NN to x , respectively. Fig. 4 (b) shows two dark shaded areas A p ( o 2 , x ), respectively, for x . We will prove that A
+Let n i &gt; n j , and x be the bisector of two midpoints m distances from x to o i and o j are d i and d j , respectively.
+Then, we can calculate the probability of o i being the NN to x as follows.
+Similarly, we can calculate the probability of o j being the NN to x as follows.
+Since, we have d j  X  d i  X  n i  X  n j 2 , i.e., n i =2( d j Thus, p ( x , o i )= p ( x , o j )at x  X  m i  X  m j 2 .
+
+Similarly, Fig. 4 (c) shows two dark shaded areas A  X  1 and A x left of x . Likewise, Fig. 4 (d) shows two dark shaded areas A point x  X  X   X  m 1  X  m 2 2  X  .Wecanseethat A  X  X  1 b A  X  X  2 .Thus,wecansaythat p ( o
+Hence, we can conclude that x  X  m i  X  m j 2 is the probabilistic bisector of o distributions.
+
+Lemma 4.3. Let o i and o j be two overlapping objects , where n [ min ( l i , l j ), max ( u i , u j )]. 1. If l i = l j , then the probabilistic bisector pb o 2. If u i = u j , then the probabilistic bisector pb o 3. If m i = m j , then the probabilistic bisectors pb o Proof. We will first prove the case where l i = l j .
+
+Let n i &gt; n j , x  X  m i  X  u j 2 , and d be the distance from x to both m
+For this case, we will divide the proof of the lemma into two parts based on the following two scenarios:
+Let us first assume n i 2 &gt;  X  n j . Then, by using Eq. (1) , we can calculate the probability of o
+Similarly, we can calculate the probability of o j being the NN to x as follows.
+However, n i 2  X  n j  X  2 d , that is n i =4 d +2 n j . By replacing n the left, and p ( o i , x  X  X  ) b p ( o j , x  X  X  ) for any point x
+Now, let us assume n i 2 b n j . Then, p ( o i , x ) and p ( o
+Since n j  X  n i 2  X  2 d , we can simplify above two equations and show that p ( o
+Fig. 6 (a) shows two objects o 1 and o 2 , where l 1 = l 2
+Let x be the bisector of m 1 and u 2 , i.e., x  X  m 1  X  u 2 o and o 2 being the NN to x , respectively. Fig. 6 (b) shows two dark shaded areas representing p ( o will prove that p ( o 1 , x )= p ( o 2 , x )at x  X  m 1  X  u
+Let us assume that n i 2  X  n j . Then, by using Eq. (1) , we can calculate the probability of o
+Similarly, we can calculate the probability of o j being the NN to x as follows.
+However, n i 2  X  n j  X  2 d , that is n i =4 d +2 n j . By replacing n ing.
+Thus, we can see that p ( o i , x )= p ( o j , x ), pb o
+Similarly, Fig. 6 (c) shows two dark shaded areas representing p ( o the area for o 1 is greater than that of o 2 , we have p ( o and p ( o 2 , x  X  X  ), respectively for a point x  X  X   X  m 1 distributions.
+
+Hence, we can conclude that x  X  m i  X  u j 2 is the probabilistic bisector of o distributions.
+
+Similarly, we can prove the second part of the lemma for u
+Now, we give a proof the third part of the lemma. Let m i
+Then, by using Eq. (1) , we can calculate the probability of o
+Similarly, we can calculate the probability of o j being the NN to x
+However, n i 2  X  n j 2  X  2 d ,thatis n i =4 d + n j . By replacing n po point x  X  on the left, and p ( o i , x  X  X  ) b p ( o j , x this case as it is a straightforward extension to the discrete one.
+Similarly, we can prove that the other probabilistic bisector exists at x
+Note that, since n i &gt; n j and m i = m j , o i completely contains o mid-point ( m i ), and the probability of o i is higher than that of o case, we have two probabilistic bisectors between o i and o and pb o 1 o 2  X  m 1  X  l 2 2 . Finally, Fig. 5 (c) shows an example of the third case for objects o 2 are two probabilistic bisectors. In such a case, two probabilistic bisectors, x right to x 2 form the Voronoi cell of o 1 , and the subspace bounded by x We will see (in Algorithm 1 ) how to use our lemmas to find the probabilistic bisectors for these scenarios.
+Let o k be the third object that overlaps with the range [ min ( l calculate the NN probability of object o i from x as follows.
+Similarly, we can calculate the NN probability of object o
+Since n i = n j ,wehave p ( o i , x )= p ( o j , x )and pb third object.
+ the ranges two candidate objects, we again use one of the Lemmas 4.1 abilistic bisector is essentially close to the actual probabilistic bisector.
+Algorithm 1. ProbBisector1D ( o i , o j , O ) 4.1.1. Algorithms
+Based on the above lemmas, Algorithm 1 summarizes the steps of computing the probabilistic bisector pb jects o i and o j , where O is a given set of objects and o computes pb o base.
+ 1.15, 1.18, and 1.21).
+
+The function FindProbBisector1D computes pb o it should continue the search for pb o is to the left of x and within the range [ min ( l i , l j using lemmas, we choose ipb as close as possible to pb o
+Algorithm 2. ProbVoronoi1D( O ) can find the candidate probabilistic bisectors that comprise the probabilistic Voronoi diagram in 1D space.
+To avoid computing probabilistic bisectors for all pairs of objects o
+Heuristic 4.1. Let o i be an object in the ordered ( in ascending order of l x = pb o right of x , i.e., x  X  &gt; x ; therefore pb o for each object o i , it computes probabilistic bisectors of o function getCandidateObjects based on Heuristic 4.1 (Lines 2.4
+For this final step, the algorithm first finds the most probable NN o
+Then for each pb o is the left side object and o j is the right side object of the probabilistic bisector. If o o  X  is updated with the most probable object on the right region of pb cess continues until SPBL becomes empty, and the algorithm finally returns PVD .
+The proof of correctness and the complexity of this algorithm are provided as follows. 4.1.2. Correctness
+Let SPBL be the list of probabilistic bisectors in ascending order of their positions. Let o to the starting point l of the 1D data space. Let pb o following two cases: (i) Case 1: o  X  = o i . The probability p pb o i o j and the probability p j of o j being the nearest is the highest for points on the right side of pb abilistic bisector is found. Hence, pb o o since o j will be the most probable on the right of pb o (ii) Case 2: o  X   X  o i . Let us assume that p i &gt; p  X  at pb some point within the range [ l , pb o such bisector is found within this range, p i &gt; p  X  is not true at pb until it fetches another pb o 4.1.3. Complexity
+The complexity of Algorithm 2 can be determined as follows. Let C complexity of executing the Lines 2.4  X  2.8, which is O ( nNC has a small number of surrounding objects (in the worst case it can be n 4.2. Probabilistic Voronoi Diagram in a 2D space as a circular region R i =( c i , r i ), where c i is the center and r The area of o i is expressed as A i =  X  r i 2 . In this section, we derive the PVD for 2D uncertain objects.
+Let o i and o j be two circular objects, q be any point on the data space and d area between object o i and a circle ( c  X  , r  X  ). Then, based on Eq. (1) the probability p ( o where,  X  s  X  0.
+
+Similar to the 1D case, a naive approach to find the probabilistic bisector pb bisector bs c (i.e., r i  X  r j ), depending on radii and relative positions of objects pb called the initial probabilistic bisector, to approximate the actual probabilistic bisector pb we will use examples where two candidate objects are non-overlapping, Lemmas 4.4
+For two equi-range uncertain circular objects o i and o j
+Lemma 4.4. Let o i and o j be two circular uncertain objects with uncertain regions ( c probabilistic bisector pb o
+Proof. Let x be any point on bs c centered at x with radius d +2 r i . Suppose circles centered at x with radii d +1to d +2 r o calculate the probability of o i being the nearest from x , as follows.
+Similarly, we can calculate the probability of o j being the nearest from x , as follows.
+Since, r i = r j and o i
+Similarly, we can prove that for any point x  X  left to x , p ( o So far we have assumed a discrete space. Next, we consider continuous uniform distributions.
+Let x be any point on the bisector bs c computed and represented areas under a curve. For example, Fig. 9 (a) shows p ( o objects o 1 and o 2 , respectively. We can see that two areas are equal, i.e., p ( o lows. By using Eq. (2) , we can compute p ( o i , x ) and p ( o po
+Since the probability function is continuous, the NN probabilities for o to the left and to the right, respectively. For example, for any point x than that of o 2 as shown in Fig. 9 (b). Thus, p ( o 1 , x area for o 2 is greater than that of o 1 as shown in Fig. 9 (c). Thus, p ( o
+The probabilistic bisector pb o
+Lemmas 4.5 and 4.6 show how the probabilistic bisector of two non-equi-range objects o and c j ( Figs. 10 and 12 ).
+
+Next, we will show in Lemma 4.5 that the shape of pb o distance of this curve from bs c pb
+Lemma 4.5. Let o i and o j be two objects with non -equi -range uncertain circular regions ( c bisector of c i and c j . Then the maximum distance between bs move towards positive or negative infinity along the bisector bs
+Proof. Let x  X  c i  X  c j 2 be the intersection point of bs (in Fig. 10 , o 1 1 A point towards c i (along the line xc i ), such that the probabilities of o
+Suppose a point x  X  is on bs c curvature of the portion of the circle that falls inside an object ( o a small portion of the curve of an infinitely large circle. This circle divides both objects o large values of dist ( x  X  , x ). Similarly, we can show the case for a point x
+Let x  X  c i  X  c j 2 be the intersection point of bs c from point x . Then, based on Eq. (2) , we can represent p ( o
+Similarly, p ( o j , x ) can be computed as follows. abilities p ( o 1 , x )and p ( o 2 , x ), respectively. We have found that the area of o probable NN than o 1 to x .Thus, x needs to be shifted to a point towards c o being the NNs to the new point become equal. Fig. 11 (b) shows such a point x x )| b | p ( o 1 , x )  X  p ( o 2 , x )|. To prove that the maximum distance between bs x  X  , x  X  X   X  bs c tween the probabilities decreases comparing to x , i.e., | p ( o the difference between the probabilities decreases comparing to x , i.e., | p ( o holds for a continuous space.
+
+Next, we show in Lemma 4.6 that pb o bs
+Lemma 4.6. Let o i and o j be two objects with non-equi-range uncertain circular regions ( c be the midpoint of the line segment c i c j .If r i &gt; r and c i . If the circular range of o i increases such that r lies between x and c i , and dist ( x , x  X  ) b dist ( x , x
+Proof. Suppose a circle centered at x with radius dist c i o is a more probable NN than o i to x , i.e., p ( o j , x )&gt; p ( o abilities of o i and o j being the NN to x  X  become equal. Let o x  X  X  more towards c i , i.e., dist ( x , x  X  ) b dist ( x , x  X  X  We omit the proof of this lemma for a continuous space as it is similar to the proof of Lemma 4.5 .
+Fig. 13 shows an example, where object o 3 influences the probabilistic bisector of objects o centered at s 1 with radius dist ( s 1 , c 1 )+ r 1 encloses one candidate object o bility of o 3 being the NN to s 1 is zero. However, for any point between s that point, and thus o 3 influences pb o
+Lemma 4.7. Let o i and o j be two objects with non-equi-range uncertain circular regions ( c and bs c line bs c
+Proof. Since r i b r j , we have maxdist ( s , o i ) b maxdist ( s , o greater than the maximum distance maxdist ( s , o j )of o to the point s , otherwise o k has the possibility of being the NN to s and hence o any one of these two objects is considered for computing the PVD. 4.2.1. Algorithms
+Voronoi edge e ij (i.e., bs c the function FindProbBisector2D to determine pb o Algorithm 3. ProbBisector2D ( o i , o j , e ij , O )
+The function FindProbBisector2D (see Algorithm 4 ) takes two non-equi-range objects o of c i and c j , and the set of objects O as input, and returns pbr for pb representing the required deviations of the probabilistic bisector from the bisector of c function first determines a point x  X  on the line c i c j 1D space). If x  X  is to the left of e ij , then lval and hval are set to x ments of the bisector e ij , where other objects influence pb that the maximum distance of pb o the curve of pb o the pbr . To avoid a brute-force approach of computing lval and hval for every point of an ls extreme points and the mid-point of ls . Finally, the algorithm returns pbr for pb Algorithm 4. FindProbBisector2D ( o i , o j , e ij , O ) Algorithm 5. ProbVoronoi2D (O) creates a Voronoi diagram VD for all centers c i of objects o jects, and finally it returns the PVD for the given set O of objects.
+Fig. 14 shows the PVD for objects o 1 , o 2 , and o 3 . In this figure, PVC ( o o , and o 3 , respectively. The boundaries between PVCs, i.e., PBRs of objects, pbr that region. Fig. 14 shows a dark gray region where pbr o 4.2.2. Complexity jects. The total complexity of the algorithm is O ( nlogn )+ O ( n ered to find upper and lower bounds of the probabilistic bisector. Then we have C probabilistic bisector. 4.3. Discussion 4.3.1. PVD for road networks designed for the nearest neighbor (NN) query [31  X  34] or its variants [35 of an edge Edge ( n i , n j ) connecting two nodes n i and n
+Fig. 15 (a) shows a road network, where three objects o 1 distance Dist ( o 1 , o 2 ) between two objects o 1 and o objects o 1 , o 2 , ... , o n in a road network consists of a set C of cells VC (1), VC (2),
+In this figure, for the sake of simplicity, the Voronoi cell VC ( 1 ) of object o the corresponding data object. For example, nodes n 11 , n equidistant from o 1 and o 2 .
+ ject. Fig. 16 (a) shows the extents of three uncertain objects o o , o dots) of objects.
+ ence points to build an SPT. In Fig. 16 (a), o 1 , o 2 ,and o in this figure, o 1 1 , o 1 2 , o 1 3 ,and o 1 4 are the four boundary points of o each node of the network is visited by the nearest reference point. When a node n tain region specified for object o j . So any other object o of o j to n i , maxdist ( o j , n i ), then o k has the possibility of being the nearest object to node n jects who have the possibility of being the nearest to that node. For example, node n because mindist ( o 2 , n 7 ) is the minimum distance from any object to n n ) b mindist ( o 3 , n 7 ). On the other hand, n 8 is labeled by two objects o from any object to n 8 ,and maxdist ( o 1 , n 8 )&gt; mindist ( o
+When a node n i is labeled with only one object o j , then every point on the shortest path between n probable object. For example, every point on the connecting shortest path between o points on the connecting edges need to determined. For example, n bor for n 1 and all points on the connecting edges Edge ( n abilities of o 2 and o 3 being the NN with respect to n 1 the NN to n 1 is higher than that of o 3 , then n 1 is labeled with only o object. Now, if two adjacent nodes are labeled with different objects o find the boundary of the two Voronoi cells of o i and o j ject on the network.
+
+PVD in a road network is left for future work. 4.3.2. PVD for other distributions uniform pdf) for an arbitrary distribution is the scope of future investigation. 4.3.3. PVD for higher dimensions detailed discussion on PVDs in spaces of more than 2 dimensions. 4.3.4. Higher order PVDs gation of higher order PVDs is a topic of future study. 4.3.5. Handling updates work.
+ range do not affect the performance of the system. 5. Processing PMNN queries
+We name this approach I-PVD-PMNN in this paper. 5.1. Pre-computation approach algorithm can be summarized as follows.
+ answer for the updated query position.
+ the sampling based approach for processing a PMNN query.)
+Fig. 17 (a) shows that when the query point is at q  X  , PVD-PMNN returns o
+When the query point moves to q  X  X  , the algorithm returns o which is an expensive operation. Indexing Voronoi diagrams [40 in high-dimensional spaces. Thus, for efficient search of the PVCs, we index the PVCs of the PVD using an R
+R -tree [44,42] . In a 1D space, each PVC is represented as a 1D range and is indexed using a 1D R
+B , B 3 , B 4 ], [ B 5 , B 6 , B 7 , B 8 ], and [ B 9 , B 10 tersects both [ B 5 , B 6 , B 7 , B 8 ]and[ B 9 , B 10 , B and o 2 ; on the other hand, the query point q  X  X  X  only intersects a single MBR [ B most probable NN to q  X  X  X  .
+ query when the buffered cells cannot answer the query.
+ data space or when there are frequent updates in the database. 5.2. Incremental approach incremental approach. 5.2.1. Known region where k =3. Then the radius r of this known area is determined by max ( maxdist ( q top-3 most probable nearest neighbors are o 1 , o 2 ,and o ate a PMNN query in the client  X  server paradigm. 5.2.2. Algorithm ing object as the most probable NN. To define the guaranteed region for an object, we have two conditions. the condition in the following equation (see Eq. (3) ) holds, then it is ensured that o the database. of being the NN to q .
+
+To formally define a region based on the above inequality, we re-arrange Eq. (3) as follows. ellipse are q s and c i . i.e., the sum of the distances from q confirmed to be the most probable nearest neighbor, as dist ( q and o 3 , and a moving query path from q  X  to q  X  X  X  . In this figure, since q gion of o 3 , thus o 3 is guaranteed to be the most probable NN for q most probable NN when the query point moves to q  X  X  X  .
+
+We can compute the lower bound of probability, lp ( o i , q ) for object o when the client is at q 2 , we assume that a point object exists at d to q 2 , which gives us the lower bound of the probability.
+ able NN from the current query location. If the probability of the virtual point object o second condition for the guaranteed region can be defined as follows:
+Based on the above observations, we define a probabilistic safe region for an object o object o i .
+ the known region. If q is inside a PVC cell, the object o and repeats the above process on newly retrieved set of objects. 5.2.3. Discussion space.
+ computation approach and the incremental approach for point data sets can be found in [22,28] . 6. Experimental study
+We compare our PVD based approaches for the PMNN query (P-PVD-PMNN and I-PVD-PMNN) with a sampling based ap-[4,5] can be used. Note that, by using the existing method in [6] , for each uncertain object o a sampling based approach.
+ for both centralized and client  X  server paradigms, the communication cost only applies to the client executing a PMNN query. 6.1. Experimental setup We present experimental results for both 1D and 2D data sets.
+ any separate experimental results for overlapping objects. scenarios.
+ these to the server in advance.
+
+We run the experiments on a desktop computer with Intel(R) Core(TM) 2 CPU 6600 at 2.40 GHz and 2 GB RAM. 6.2. Performance evaluation (I-PVD-PMNN) in Sections 6.2.1 and 6.2.2 , respectively.
+ summarized results in subsequent sections and the detailed results can be found in [46] . 6.2.1. Pre-computation approach
+In the pre-computation approach, we first create the PVD for the entire data set and use an R the node capacity of 50 entries for the R  X  -tree. point. 12 K, the data set sizes for U and Z are both set to 10 K. Fig. 20 (a) rather than computing top-1-PNN for every sampled location of the moving query.
+The results for both Z and L data sets show similar trends with U data set as described above (not shown). mance of our P-PVD-PMNN with Naive-PMNN for both U (see Fig. 21 (a) periments, we set the trajectory length to 5000 units.
+ not vary with increase of the data set size, which is the case in Fig. 21 (a) both directional (D) and random (R) query movement paths. U(10 K), Z(10 K), and L(12 K). We set the trajectory length to 5000 units. be reduced for a larger value of buffer window, because the server does not need to access the R
+PVCs can serve the subsequent query points of a moving query. the number of communications remains constant.
+
+The results on Z and L data sets show similar trends with U data set described above (not shown). performs Naive-PMNN by at least an order of magnitude in all evaluation metrics. 5000 units while evaluating a PMNN query for 1D data sets. The data set size is set to 100. Fig. 23 (a) for U data sets. and thereby a moving query needs to check higher number of PBRs than that of a smaller data set. Fig. 24 (a) that our P-PVD-PMNN outperforms Naive-PMNN by at least an order of magnitude in all evaluation metrics. data set size to 100 and the trajectory length to 5000 units. The experimental results show ( Fig. 25 (a)
+P-PVD-PMNN outperforms Naive-PMNN by 1  X  2 orders of magnitude for I/O and processing costs, and 2 in terms of communication costs.
+We run the above sets of experiments for Z data sets, which show similar results as U data sets. 6.2.2. Incremental approach
+Naive-PMNN. In both cases, we use the page size of 1 KB and the node capacity of 50 entries for the R
+I-PVD-PMNN with Naive-PMNN. iments, for both U and Z, we have set the data set size to 10 K. Fig. 26 (a) ber of times with the server. Figures also show that our I-PVD-PMNN outperforms the Naive-PMNN by 2 for both I/O and communication costs.
+ data sets. Figures also show that our I-PVD-PMNN outperforms Naive-PMNN by 1
+Fig. 27 (d)  X  (f) shows the performance behavior of Z data sets, which are similar to U data sets. cation costs.
+
+We also observe that the performance behavior of Z data sets are similar to U data sets (not shown). outperforms Naive-PMNN in all evaluation metrics. crease of k . Figures also show that our I-PVD-PMNN outperforms Naive-PMNN by 2 costs and communication costs. for all data sets. time, I/O costs, and the communication costs increase with the increase of the trajectory length.
+The experimental results for Z data sets show similar performance behaviors to U data sets (not shown). 7. Summary uation metrics.
+ dimensional spaces.
+
+References

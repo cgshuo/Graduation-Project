@@ -1,0 +1,94 @@
+ 1. Introduction patterns is an important data mining activity due to the pervasive nature of these data [1 inadequate because of the enormity and diversity of data sources.
+ burst.
+ of interest using a basic or a complex topic.
+
+To identify hot spots, we assign a discrepancy score to each of the O ( n score of an interval. Our work is perhaps the fi rst one to use the temporal scan statistic to stamped document set.
+ intervals as a hot spot in this paper, but the algorithm can be easily modi score.
+ improve the ef fi ciency of the naive implementation and present an algorithm, which we refer to as the Ef the naive implementation practice.
+ different methods for computing the topic presence for different purposes. In this paper, we de an ef fi cient procedure to compute the presence measure of a topic in each of the O ( n experiments show that the proposed methods work very well in practice.  X  by the EHE algorithm.  X 
+The synthetic data set is generated with a hot spot set at a speci spot with a relatively high presence of the given topic, when compared to the bursty intervals reported in [7] .  X  between relevant documents and hot spots. We found that hot spots contained a signi many of the topics studied in the experiments. Therefore, extracting hot spots is a very meaningful activity.
+The rest of the paper is organized as follows. Related work is discussed in Section 2 . Some preliminary de de fi nition of discrepancy score are given in Section 3 .In Section 4 ,wede ef fi
+Experimental results are discussed in Section 7 . Section 8 concludes the paper. 2. Related work steams.
+ with an abnormal presence of a given topic. However, there are signi inspired by the temporal scan statistic method, which is extensively used to in parameters s and  X  , where s is used to capture the substructure in a bursty state and may require several iterations.
+ the given topic, whereas the proposed methods in [7] can fi non-overlapping time intervals that are statistically equally signi signi fi cant is our future work.
+
+The concepts of scan statistics were introduced by Joseph Naus [26] almost systems and uses scan statistics extensively for this purpose [28 scan statistics models for disease outbreak risks over the time line. A typical outbreak is de scan statistics are discussed in [32,33] .
+ to characterize the trends of activity patterns of the topics by Chen and Chundi [3] . degree of unusualness of this window with respect to the rest of the data. applications of fuzzy sets are in control systems and at the leading edge of Arti keyword topic based on fuzzy set theory, was fi rst discussed by Chen and Chundi [2] . 3. Preliminaries point t j ,in T . Let T ij and T kl be two intervals of T . T describe the amount of an event p during a time interval T time period. Let m be the number of times p appears in T ij discrepancy score of p in t using the following formula:
+Let D be a document set spanning the time period T . Let T
+T . Let p be a given topic. Let m ij denote the presence measure of p in D set B to | D |. Then, the discrepancy score of T ij with respect to the given topic p is computed as ds ( m
+A hot spot of an event p is a time interval T ij that has the highest discrepancy score. 3.1. Fuzzy set theory f : A  X  [0,1]. For each x  X  A , f(x) is the grade of membership of x that belongs to the fuzzy set. If A ={ x be denoted as { f ( x 1 )/ x 1 , ... , f ( x n )/ x n }. For element x belong to F .
+
+Traditional logical operators and , or , and not , denoted by Given two fuzzy sets B =( A , f 1 ) and C =( A , f 2 ): 4. Computing the presence measure of a topic 4.1. Presence measure of topics
+We de fi ne a basic topic p as a list of pairs, {( kw i , w which are the values of each w i  X  (0,1]. We require that the sum of all w the weight of that keyword is 1.
+
+We use the function S kw ( p ) to obtain the set of keywords in the given topic p . Function Ex ( kw kw appears in the document d j ; if it exists, the function returns a 1, otherwise it returns a 0.
+Given a basic topic p ={( kw i , w i )|1  X  i  X  s } and a document d
+Given a document set D and a topic p ,wede fi ne the related document set Rt document set and mb is the membership function de fi ned by Eq. (5) . For each document d in D is related to p . topic p . all keywords in S kw ( p ), its mb ( p , d i )=1.
+ speci fi c topic.
+ where p is a complex topic, on document set D .
+
+Given topics p 1 and p 2 , d j  X  D , when p = p 1  X  p 2
+When p = p 1  X  p 2
+When p = p 1  X  p 2
+The presence measure of a complex topic is de fi ned similarly. Let Rt document set D . Then the presence measure of p over D is simply the sum of mb ( p , d Example 4.1 . Presence measure of basic and complex topics
+Suppose the document set and topics are given as: D ={ a , b , c , d , e , f }, p ( congress ,0.5)}.
+ Suppose Bill is contained by { a , b , d , f }, Clinton by { b , f }, and congress by { b , d , e } . For basic topics, we get:
+So the presence measure of topic  X  Bill Clinton  X  is greater than the presence measure of topic When using Eqs. (7)  X  (9) , we get:
+Hence, the presence measure of the topic p 1  X  p 2 is less than the presence measure of the topic p presence measure of p 1  X  p 2 .
+
+We can use the presence measure of a topic on the document set m ( p , D ) to describe the degree of af 4.2. Computing the presence measure of a topic at a time point
+To compute the presence measure of a topic in an interval, we time point of the interval. According to the de fi nition in the previous section, the related document set, Rt computed fi rst at each time point t using the set of documents appearing in that time point. In Rt documents in Rt p , D . point. Each keyword in the index points to a list containing the document IDs in which it appears. which we refer to as the membership list . Let doc  X  mbv denote a pair consisting of where each time point connects to a list of doc  X  mbv pairs. The doc presence measure of the basic topic at a time point is the sum of every mbv value in doc
+A typical complex topic has the format of p = p h op p j , where p of subtopics p h and p j are available. For every time point t appears in the doc  X  mbv ( t i ) lists of both p j and p h membership values of d k from both lists, and the result are stored as the new membership value of d the complex topic p .If d k appears in only one list, the operation is applied to the membership value of d doc  X  mbv ( t i ) lists of p h and p j at each point, we have a new membership list for p with a doc 4.3. Computing the presence measure of a topic in a interval
+The presence measure of a topic p in a interval T ij is the sum of its presence measure at each time point in T measure of a topic p in each interval can be computed as follows:
+We fi rst compute the presence measure of p in each time point t these values in the mlist of p which stores the pairs ( i , m value of p at time point t i .
+
+Based on the mlist , we build a list clist containing cumulative presence measure values. The i only those time points in the mlist with non-zero presence measures of the topic. Let fi rst element in clist is b 1, m 1 N , because cm 1 = m 1 . And cm time point, showing how the other elements are determined.
+
+We use the clist to retrieve the value of presence measure of the topic in any interval T
+T 5. Method to extract hot spots spot for a given topic explores each interval of T , computes the discrepancy score of the interval, and then maximum discrepancy score. Let b i denote the number of documents in the time point t m two vectors m i ( p ) and b of size n as input.
+ fi m ij and b ij values for interval [ i , j ]. Therefore, the naive implementation takes O ( n that m ij ( p ) can be accessed in constant time. Similarly, we can access b the maximum possible discrepancy value, we prove the following lemma.
+
+Lemma 5.1 . Given an interval T ij such that m ij  X  M and
+M
+Proof . Consider a sub-interval T gh of T ij where i  X  g  X  ( m gh , m gh ). Now we need to show ds ( m gh , m gh )  X  ds ( m f  X  0 b
+We describe an algorithm, which we refer to as the EHE, Ef documents in interval [1, i ].
+ documents for each interval ef fi ciently; hence, the running time of the algorithm is O ( n
+For any time point that contains a zero presence measure of topic p but may contain some baseline value or m b  X  0, we call it the zero-presence-measure point. It is easy to show that it always can measure point as its starting or ending point.
+
+Proof . For a given time interval T ij , it is assumed that time point i and the density of time period ( i 0 , j 0 ), m i 0 j 0 b score function, it is decreasing with b if m is fi xed, so ds ( m a zero-presence-measure point is higher or equal to those that do not, and so we can always with non-zero measure points.
+ beginning or ending at zero-presence-measure points.
+ later section.
+ d = dmax , then ( i , j ) is pushed onto the stack; if d ij 6. Simpli fi cation of complex topics
+We assume that a topic is represented as a rooted directed acyclic graph, which we refer to as topic DAG . steps required to compute the presence measure.
+ topic DAG intoa functionally equivalenttopic DAG thatdoes notcontain redundant operations.We refer to thesimpli as a non-redundant topic DAG .
+The simpli fi cation procedure uses the following equalities to recognize redundant subexpressions. generates the corresponding non-redundant topic DAG as output. The procedure order [40] , in which we index a node in the DAG after all its children are indexed. So in the depth-mark the sink nodes.
+ dimensions of RF range from 0 to s . Each entry in RF is a triple. The these operations in the topic DAG, the triple stores value entries in RF are initialized according to the above equalities and all other triples to sets to 0 and RF [ p ,0](3)= p .
+
+In the simpli fi cation procedure, RF [ u l , u l ](1) and RF [ u to  X  1, the results of u l and u r are computed and available in the corresponding nodes. Let x = RF [ u and then we need to check RF [ x , y ]( u . op ). If RF [ x , y ]( u . op ) is equal to
+In Fig. 3 , we show the algorithm for updating RF entries in detail. Fig. 4 gives the procedure of simpli
+DAG (p) . We also give a concrete example to illustrate the effect of the simpli value for i and j , op 2 for iorj , and op 3 for i not j .In Fig. 6 , we showed 7. Experiments 7.1. Data sets and system setup are tagged as  X  title  X  in data fi les and the distinct keywords that are not English stop words.
+R Project ( http://www.r-project.org ). 7.2. Naive vs EHE time intervals that cannot contribute to the highest discrepancy scores, and hence cannot be hot spots.
+We de fi ne a simple notion called  X  percentage of ef fi ciency compared to the naive one.
+ ef fi keywords, the EHE algorithm scanned only 40% of intervals as the naive algorithm did.
+For Reuters and CNN data, the smallest improvement in ef fi appear in at least 256 and 128 days respectively. The percentage of ef value of percentage of ef fi ciency increases with time point increments is that the prediction process quite encouraging for real-world data sets where it is common for keywords/topics to appear in few time points. 7.3. Study of effectiveness of the EHE algorithm 2) we computed hot spots of single keywords used in [7] and compared the outputs. 7.3.1. EHE algorithm on a synthetic data set if i random variable with the mean at b [ i ] r [ i ]. The accuracy is de the topic in the hot spot is compared to the outside of it, the higher the accuracy of the EHE algorithm. hot spots; the y-axis plots the corresponding accuracy value. The hot spot is [34  X  37] and the EHE algorithm outputs [34  X  constraint. When we relax the constraint to at least 50%, the accuracy jumps to over 90% in all cases. 7.3.2. Comparison with previous work
+In this section, we compare the hot spots extracted from our method with the results in [7] .We illustrated in [7] .
+
+We used the two-state automaton model de fi ned on page 14 of [7] with parameter 0.01.
+ the 28 topic keywords. Column 2 lists the hot spots of keywords when the time span is set to 1975 whereas column 3 lists the same when the timespan is set to 1975 in individual VLDB and SIGMOD data sets, respectively, for the time span 1975 points. Fig. 11 illustrates two examples to highlight this point. In the from 1977 to 1995 and includes other time points with a relatively high value of m / b . is interesting to observe that, for popular topics such as mining , the hot spot in the time period 1975 spot of the same topic in the expanded time period.
+ 7.4. Hot spots of topics conceptual schema and indexing model , whose hot spot from VLDB is much earlier than that from SIGMOD. the and operator is used to combine topics.
+ measure for or operator. On the other hand, the and operator works as a one basic topic. For topic conceptual schema and indexing model , the hot spot in VLDB is 76 conceptual schema and indexing model in this time period.
+ and was evenly weighted.
+ topic was a complex topic. In the experiments, to test the simpli or ( Carter Bosnia and negotiate ))). This topic contained nine operators and three basic topics. The simpli lot of effort in computing the presence measure of the topic.
+ documents related to Simpson trial must be a subset of documents related to Simpson . similar to those in the conference data.
+ 7.5. Comparison with vector space model reasonable to expect that the documents in the hot spot contain a signi the hot spots.
+ numbers of documents within hot spots and have the top fi 5 listed the numbers in SIGMOD. For topic xml in VLDB, topics indexing and xml query in SIGMOD, the top documents were all in their hot spots. On the average, more than half the documents from the top documents. However, it does contain relevant documents, with a non-zero similarity score in Lucene. of relevant documents.
+ is due to the difference in the usage of these operators in our system and Lucene. 7.6. Highly related keywords understand the context within its hot spot.
+ documents with non-zero presence measures for the given topic within the hot spot. Then, we of all non-topic keywords from these documents. We choose the top related keywords  X  to the give topic in its hot spot.
+ section. The highly related keywords are information-rich. For the topic around Christmas and New Year, and were about fi re-related accidents that killed children. The hot spot of understand both the hot spot and the topic at the same time.
+
+Reuters is very similar to one from CNN as can be seen in Fig. 13 . It is not surprising to time.
+ data as a highly related keyword due to the fact that the documents are from conferences related to databases. 8. Conclusion and future work to its presence outside the interval. The interval of T with the highest discrepancy score is de
+Ef fi computational cost.
+ algorithm showed encouraging improvement in the performance. The simpli subexpressions within complex topics.
+ designing methods to identify hot spots of a topic as a document set evolves.
+References

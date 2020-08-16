@@ -1,0 +1,1 @@
+  X L i n k i n g Hebbian learning and Bayesian decision making  X  B iologically realistic plasticity rule with provable convergence  X  P opulation coding leads to Bayes optimal decisions

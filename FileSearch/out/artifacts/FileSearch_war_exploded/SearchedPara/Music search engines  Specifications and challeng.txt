@@ -1,0 +1,14 @@
+ 1. Introduction ments in the field of MSEs will appear in the near future (Sahami, Mittal, Baluja, &amp; Rowley, 2004 ). which have to be addressed by MSEs. Finally, we furnish our conclusions (Section 4). 2. Characteristics of existing music exploration systems 2.1. Functionalities The most common functionalities found in existing systems are the following: Known examples are Allmusic and Yahoo!Music .
+ Search for Lyrics : Lyrics.com and SearchLyrics.com .
+ music. With track identification systems ( Shazam ), users record tracks and the system outputs metadata. pedia and Sloud) where users query by humming.
+ recommender systems are Pandora, Last.fm , Yahoo!Music , OneLlama , and Musicovery . 2.2. Input/output textual input and audio input.
+ extracted directly from the audio (Fig. 2 d for Sony X  X  Music Browser ).
+ mark in any dimension.
+ Music by Sun Microsystems  X  Fig. 2 f). 2.3. Similarity measures measures exist: perception ( Berenzweig et al., 2004 ), but they do not require any human input. However, they require a reasonable amount of reliable social features.
+ sent the audio and the social similarity. 3. Specifications and challenges 3.1. Specifications appropriateness for MSEs. 3.1.1. Functionalities relevant music. Searching for music-related information is important too and is already provided by engines like
+GoogleMusic. 3.1.2. Input/output types summarizes various aspects: musical characteristics (mood, genre), metadata and relationships between results. 3.1.3. Similarity measures
+Hybrid similarity measures are the most promising ones and should be preferred. 3.1.4. Architecture and copyright issues or/and as music snippets. 3.2. Challenges which are imperative to solve and have an implementation of real-world MSEs.
+ will help just to index it.
+ Aucouturier, Pachet, &amp; Beuriv X , 2005 ) and not easily indexable.
+ pected for musical audio ( Sahami et al., 2004 ). Nevertheless, independent MSEs are also expected to appear. 4. Conclusion have to be confronted when implementing a real-world MSE.
+ Appendix A. Supplementary data References

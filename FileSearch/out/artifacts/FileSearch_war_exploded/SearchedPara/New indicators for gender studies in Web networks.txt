@@ -1,0 +1,118 @@
+ 1. Introduction &amp; Gome  X  z, 2003 ).
+ within research policy. In 1999 the  X  X  X omen and Science X  X  sector was set up. Gender Impact Assessment throughout the 5th European Framework Programme for Research, Technology Development and Dem-onstration ( Schultz et al., 2001 ).
+
+One part of the gender studies funded by the European Commission is related to bibliometric and patent authors, questions can be asked about the publication indicator: do women publish more than men, in science is changing with this new technology? Can we get more information from the new Web indicators than was previously possible with the bibliometric indicators alone? Web based S&amp;T indicators ( www.webindicators.org ).
+ more unequal? The results of these studies will be discussed in a forthcoming paper.
+Bordons et al. (2003, p. 160) , have referred to the results of a working group on women and science, science policy in the European Union: organised by women and, in this connection, three of the five ISSI Presidents were women!
+Is there a continuation of gender equality in the global interdisciplinary research group COLLNET? We ask this question because a high percentage of the 64 COLLNET members from 20 countries of all conti-nents are also ISSI members.
+
+The COLLNET members intended to co-operate on both theoretical and applied aspects on the topic group is to examine the phenomena of collaboration in science, its effect on productivity, innovation work and co-authorship in science as well as collaboration in e-science (more details of COLLNET, see website: www.collnet.de ).
+ the bibliographic and Web collaboration networks of COLLNET are presented here. This study is a con-search question posed was to which extent collaboration structures on the Web follow the same rules as collaboration networks measured by traditional bibliometric data. However the focus on gender is a new approach in the present paper. 2. Data The same data are used as in Kretschmer and Aguillo (2004) . Here in brief:
+Both bibliographic and Web co-authorship networks of the 64 COLLNET members from 20 countries were examined. COLLNET is comprised of: 13 female EU members, 13 female non-EU members, 17 male EU members, 21 male non-EU members.
+ In total: 26 female members and 38 male counterparts.
+ bases, a request was made to all the 64 COLLNET members for their complete bibliographies, indepen-two COLLNET members. Thus, it concerns 223 bibliographic multi-authored publications. From this, the respective number of common publications between two members was determined as the basis for the anal-ysis of the co-authorship network. The co-authorship network developed according to this method covers the entire lifetime collaboration between the COLLNET members. The last COLLNET data are from June 2003 and the Web searches took place in July 2003. 3. Methodology
+Gender studies in science can be done under various conditions. For example, on one hand we can focus on a special set of authors and study the links between these authors from multi-authored publications data, called network analysis ( Otte &amp; Rousseau, 2002 ).
+ Indicators for gender studies under both conditions are introduced here: Bibliometric and Web indicators of gender co-operation,
+Web visibility rates and indicators of gender centrality in bibliographic and in Web networks. 3.1. Bibliometric indicators of gender co-operation to evaluate patents and publications produced by co-operation among inventors/authors of different gender: Participation counts the number of publications with at least one author of a given gender
+Contribution measures the involvement of each gender in the production of a publication
+Number of authors (called Presence in
+Naldi et al., 2004)
+Table 1 shows the calculation of the three indicators in the case of a publication produced by four tigation of collaboration in COLLNET. Beyond Naldi and Parenti an additional bibliometric indicator of gender co-operation is introduced here: 3.2. Web indicators of gender co-operation In addition to the bibliometric indicators of co-operation, the four new corresponding Web indicators: Web Visibility of Participation , Web Visibility of Contribution , Web Visibility of Number of authors ,
+Web Visibility of Arrangement in the by-line publications visible on the Web .
+
+Multi-authored publications are visible on the Web under the condition that bibliographic publications website at least, i.e. WVP i &gt; 0 (explanation see below). 3.3. Web visibility rates
+A high percentage (78%) of all bibliographic multi-authored publications of the COLLNET members in Kretschmer and Aguillo (2004) :
+The Web visibility rate of a multi-authored publication , i , from bibliographic data (WVP means: Whereas Vaughan and Shaw are counting all of the pages of the websites on which this biblio-in Kretschmer and Aguillo (2004, p. 409) ].
+ A multi-authored publication from bibliographic data is visible on the Web if the following is valid: WVP i &gt;0.
+ divided by the total number of multi-authored publications ( n ): The Web visibility rate of a pair of collaborators A and B (WVC rates of all of their co-authored publications: A pair of collaborators is visible on the Web if the following is valid: WVC
+The average Web visibility rate (WVC 0 ) of k pairs of collaborators is equal to the total sum of WVC divided by the total number of pairs of collaborators ( k ):
+These indicators of Web visibility rates are used for the study of gender differences on the Web. 3.4. Indicators of gender centrality in bibliographic and in Web networks trality describing the role played by particular COLLNET members were already used in Kretschmer and Aguillo (2004) . Here in brief: Degree Centrality and Betweenness Centrality.
+
+Explanations : Between two COLLNET members (node A and node B), there exists an edge if both have (A,B). These pairs will be studied related to gender aspects.
+
+A path from node X to node Y is a sequence of distinct edges between pairs of collaborators: distance d XY . The betweenness centrality refers to the shortest paths in the network, see below. Degree centrality of a node A is equal to the number of nodes (or edges) that are adjacent to A: with many scientists.
+ Betweenness centrality BC A is the number of shortest paths (distance d paths in the network.
+ G XAY is the number of shortest paths from node X to node Y passing through node A. G of shortest paths from node X to node Y (X,Y 6  X  A).
+ We are using these centrality indicators to describe the role played by particular COLLNET members.
+We compare female and male scientists in relation to their central role in the network. 4. Results 4.1. Bibliometric and Web indicators of gender co-operation 4.1.1. Study with focus on the set of multi-authored publications
+The bibliometric results of Naldi and Parenti are compared with both the bibliometric and Web results of the COLLNET study. The bibliometric study of Naldi and Parenti is based on a data sample of about 35,000 authors from six European countries. The publications produced by co-operation are from several areas of science (mainly medicine and life sciences).
+
+Whereas the COLLNET members are a small specific group of researchers in the area of scientometrics X  comparison with the current pilot study. et al., 2004 ).
+ tion of women in co-operation is striking. The results of the analysis of the co-operation of COLLNET members oppose the above mentioned study by Naldi and Parenti. As mentioned above, the bibliometric study of the 64 COLLNET members is based on a data sample of 223 multi-authored publications between at least two COLLNET members.
+ The Participation of women could be found in 65.3% of all items and the Participation of men in 76%. between Female and Male COLLNET members is rather equally distributed.
+
+After using the multi-authored publications from bibliographic data in the following, multi-authored publications visible on the Web (WVP i &gt; 0) are considered.
+
+The Web Visibility of Participation of women has only slightly changed from the bibliometric value of The Web Visibility of Female Contribution has changed from 45% (female contribution) to 46.2% and
+Web Visibility of Number of Female Authors from 47.9% (Number of Female Authors) to 47.7%. Both indi-cators have only very slightly changed on the Web.
+ An overview about the results is presented in Table 2 . The results of the analysis in co-operation of
+COLLNET members oppose the above mentioned study by Naldi and Parenti. Collaboration patterns be-tween male and female members of COLLNET are almost equally distributed. Whereas very slight differ-the study of average Web visibility rates presented in the next section.
+
+Results regarding the Arrangement in the by-line and Web Visibility of Arrangement in the by-line are shown below. 4.2. Average Web visibility rate of multi-authored publications (WVP pairs of collaborators (WVC 0 )
+Studies are presented on the one hand focusing on the set of multi-authored publications and on the other focusing on the set of authors.
+ 4.2.1. Study with focus on the set of multi-authored publications
+The average Web visibility rate of the 223 multi-authored publications (WVP
+There are: 78 publications with only male co-authors and 54 publications with only female co-authors and 91 publications with both male and female co-authors and 2.11.
+
+The average Web visibility rate of multi-authored publications (WVP higher than the corresponding values for the other types of publications.
+ A Chi-square test was performed on the data (number of publications and shows a significant ( p &lt; 0.01) difference of both distributions.
+
+Moreover the 91 publications with both male and female co-authors are classified according to two types. There are: 33 publications with female co-authors as first authors in the by-line and
+WVP 0 = 2.09, 58 publications with male co-authors as first authors in the by-line and WVP 0 = 2.12.
+ der in the by-line. 4.2.2. Study with focus on the set of authors
+Kretschmer and Aguillo could find that (2004) 48 of the 64 COLLNET members (=75%) have published in co-authorship at least once with at least one of the other COLLNET members (bibliometric data). The lication. However, in continuation triples or quadruples, etc., could be considered as well.
+All of the 63 pairs of COLLLNET members are studied. There is the question who is collaborating with whom with regards to gender. Forty four of these 48 members (92%) are visible as co-authors in the co-authorship network obtained from the Web. There are 56 pairs of collaborators in the Web network, i.e. 89% of the 63 edges obtained from bibliographies.
+ Some gender differences, in particular those found between European Union and non-European
+Union countries, are presented. Differences in collaboration patterns between male (m) and female (f) COLLNET members and between EU (E) and non-EU (N) members are studied as well as combinations.
+
+The values of average Web visibility rates of pairs of collaborators (WVC the values of the average Web visibility rates of co-authored publications (WVP collaboration. For example,  X  X  X f X  X  means both collaborators are female.
+ orators is a female EU member and the other one a female non-EU member. per pair of collaborators ( F P ) shown by bibliometric data.
+ F (4.6 for female collaborator pairs, 4.9 for male collaborator pairs, 4.2 for male/female collaborator pairs).
+
+However, there is one special case: The frequency of publications per pair of collaborators between males of the EU countries (EE/mm) is striking: F P = 8.6.
+ from the European countries is striking (EE/mm).
+
+Both WVP 0 and WVC 0 are in general higher between male pairs (row: total average; column: mm) than
+NN. Both WVP 0 and WVC 0 are in general highest between members from the European Union and lowest between European and non-European members (column: total average; the same one is valid in column: ff higher frequency of university websites in the EU than in non-European countries except North America.
+In particular, the WVC 0 and WVP 0 between males of the EU countries are striking (EE/mm). It corre-sponds with the frequency of publications per pair of collaborators ( F
+Leo Egghe and Ronald Rousseau from Belgium are very highly outstanding collaborators. However the also striking even when excluding the collaboration data of Egghe and Rousseau. try differences are more pronounced in the pattern of the WVC
+In summary, although in general there is almost no gender difference between the frequencies of publi-cations per pair of collaborators obtained from bibliographies ( F collaborators on the Web are strongly gender oriented in the data of WVP female scientists could be the cause of this pattern of Web visibility rates.
+Although we have used different methods: on the one hand focusing on the set of publications (biblio-metric and Web indicators of gender co-operation) and on the other focusing on the set of authors, the trends of the results do correspond. 4.3. Gender centrality in bibliographic and in Web networks
+We shall focus on the role played by particular COLLNET members along the four stages of the studied time period.
+
+We are starting with the three steps of the COLLNET development following the explanation of the cor-Aguillo, 2004 ): First step of the development of COLLNET (1998 X 1999). An important trigger in the creation of COLL-
+NET was the first Berlin Workshop on Scientometrics and Informetrics/Collaboration in Science, Berlin 1998.
+
+Second step (2000 X 2001). In conjunction with the Second Berlin Workshop on Scientometrics and Infor-metrics/Collaboration in Science and in Technology, the first COLLNET meeting was held in Berlin 2002
+NET meeting took place in February 2001 in New Delhi, India and a third meeting in July 2001 in Syd-ney (Australia) in conjunction with the 8th International ISSI Conference on Scientometrics and Informetrics.
+ Third step (2002 X 2003). From here, COLLNET meetings have been held regularly. to show the development of both the bibliographic COLLNET co-authorship network and the Web net-work in four stages:
+First or preliminary stage : Collaboration of the future COLLNET members until 1997, i.e. before 1998Number of co-authored papers from 1.1.1979 to 31.12.1997: 71.
+ stage and first step of COLLNET development) Number of co-authored papers from 1.1.1979 to 31.12. 1999: 97.
+ steps) Number of co-authored papers from 1.1.1979 to 31.12.2001: 159.
+ and third steps) Number of co-authored papers from 1.1.1979 to 31.6.2003: 223.
+ five members with the highest betweenness were selected, both in the bibliographic and in the Web net-female members are marked in bold type. Five of these 12 members are part of the 26 most productive authors in the journal Scientometrics from 1978 to 2002 ( Schubert, 2002 ), in alphabetical order: L. Egghe, I . Gomez ,
+B.M. Gupta, H . Kretschmer , R. Rousseau.
+ Two of these five are women (marked in bold letters).
+
+For additional information: The COLLNET members L. Leydesdorff and R. Wagner-Do  X  bler are also part of the above named 26 most productive authors. L. Egghe and R. Rousseau and D.deB. Beaver have All of these five members are men.
+ the corresponding cell, or W related to the Web network.
+ is valid for bibliographic and Web networks. Therefore, a rough overview about the data per member was made by the sum of B and W for comparison of the two time periods before foundation of COLLNET in stage 4, i.e. 2001 X 2003).
+ Kundra and R. Rousseau (three men) are the most central actors followed by H. Kretschmer (woman). There is no difference between degree centrality and betweenness.
+ of COLLNET.
+
+Whereas L. Egghe, I . Gomez , C.R. Karisiddappa, I.K. Ravichandra Rao and C.S. Wilson (two women (two women and one man) are newcomers in the second time period (2001 X 2003). work. (All of these three members are men.) The following three members (in alphabetical order): H . Kretschmer (female), R. Kundra (male) and L . Liang (female) are the founding members of COLLNET with H . Kretschmer as co-ordinator. Five of the 12 central actors are coming from the EU countries.
+ are female members as well as two of the three founding members of COLLNET. It may well be that this entific networks. 5. Conclusion with this new technology? Some initial results of investigations into the visibility of gender in collaboration networks on the continuation of gender equality in COLLNET in comparison with the central positions of women in ISSI Presidents.
+ ric and Web indicators of gender co-operation do not correspond with the Web visibility rates.
+However, the pilot study should be continued both with other small samples and with larger samples of because here the differences in the use of the Internet and the Web are to be expected.
+In the same way, a relevant long-term study is to be recommended, because of the dynamic nature in oration in e-science in the literature, i.e. Web hyperlinks between homepages of scientists.
+Terveen and Hill (1998) report on an empirical investigation into emergent collaboration:  X  X  X inks be-tween websites can be seen as evidence of a type of emergent collaboration among website authors X  X . The authors have used SNA for analysis of the link structures.
+
+It was intended to use the same method for the analysis of hyperlink structures between the homepages of the COLLNET members.
+
+In July 2003 we could find homepages of 17 COLLNET members in the Web. However, contrary to the bibliographic and Web collaboration networks, there were not any links between the homepages!
+From the 17 COLLNET members who had placed homepages on the Internet, are: 7 female (=27% of the 26 female members) and 10 male (=26% of the 38 males), 12 members from European Union countries (= 40% of the 30 European Union members) and five mem-bers from N countries (=15% of the 34 members from the non-EU countries).
+
+While there appeared to be no difference between the female and male members, a tendency is apparent in favour of the EU when compared to the non-EU countries. A Chi-square test was performed on the country differences in creation of homepages.
+ Acknowledgement This work was supported by a grant from the Common Basis for Science, Technology and Innovation
+Indicators part of the Improving Human Research Potential specific programme of the Fifth Framework for Research and Technological Development of the European Commission. It is part of the WISER pro-( www.webindicators.org ). The authors thank Mike Thelwall for his helpful comments. Editorial discus-sions with Colin Reddy are acknowledged. Furthermore the authors thank Liwen Vaughan for her comments.
+ References

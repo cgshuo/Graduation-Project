@@ -1,0 +1,47 @@
+ 1. Introduction of items produced in some social process.
+ 2. Definitions and problems
+Let N + = {1,2, ... } and Z be a random variable defined on N so that where f ( k ) &gt; 0, and k is an integer strictly larger than 1. if and only if d ( k j f )  X  a as k  X  1 , i.e.,
+Example 2.1 (a) Let where a &gt;0, b &gt;0, b ( k ) = b ( b +1) ( b + k 1), and k 2 N with It is easy to check that
+From and (b) Let generalized Zipf distribution, though it does not hold that F ( k ) 3 ck
+Example 2.2 (a) Let with where 0 &lt; h &lt; 1 and k =1,2, ... As (b) Let with exponent a &gt; 0. For the Zipf distribution, obviously, when F ( k ) is the generalized Zipf distribution.
+ tion and the trigamma distribution ( Sibuya, 1979 ). 3. Characterizations of the generalized Zipf distribution
+Definition 3.1. Let u ( k ) be a positive function defined on N only if
+Example 3.1 (a) Let u ( k ) = log k . Since we have and as k  X  1 . Then we get and (b) Let where a &gt; 0. Since we get d ( k j u )  X  0as k  X  1 . Thus u ( k ) varies gradually.
+Lemma 3.1. u (k) is a gradually varying function if and only if as k tends to infinity.
+
+Proof ( Necessity ). From Definition 3.1, with d ( k j u ) approaching zero. Put d ( k j u )= n k . Since and as k  X  1 , it holds that ( Sufficiency ). From it follows directly that d ( k j u )  X  0as k  X  1 . h where u (k) is a gradually varying function.
+ holds that D ( k j F )= a + n k , i.e., where n k = o(1) as k  X  1 . Then F ( k ) has the form for k  X  1 , where
+Proof ( Necessity ). From Definition 2.1, with n k  X  0as k  X  1 . This is equivalent to i.e., Then we get as k  X  1 . Since F ( k ) is strictly decreasing, it holds that ( Sufficiency ). Next, suppose with we get and as k  X  1 . h Example 3.2. The Yule distribution has its probability function with and a &gt; 0. As Example 3.1(b) shows, is a gradually varying function. We can write F ( k )as Example 3.3. Let where 0 &lt; h &lt;1, k 2 N + . Equivalently, it follows that of the Waring distribution: for b =1 h and a = h .
+We define the proportional hazard rate by We denote the conditional probability function and the corresponding conditional expectation by P ( k j k P m )and e ( m ), respectively. when k  X  1 .
+ Proof ( Necessity ). Since (recall Lemma 3.1) and
+It is clear that as k  X  1 . Thus r ( k )  X  a as k  X  1 . ( Sufficiency ). Next, we suppose that as k  X  1 . This is equivalent to i.e., We shall divide the proof into three steps.
+ Proof. Considering and we have
+From (4.1) and (4.2) , we get
+Next, suppose u ( k ) is a gradually varying function, it follows that with n k  X  0as k  X  1 . There exists a positive integer k such that n i.e., From
+An application of Stolz  X  Theorem I to (4.3) shows that
+Proof. From the equation
+Step 3. If it holds that for a &gt; 1, then F ( k ) belongs to the generalized Zipf system.
+Proof. We have and as k  X  1 . We consider and substituting (4.5) and (4.6) into (4.7) , we get F ( k ) is a generalized Zipf distribution. h bounded proportionate hazard rate function, that is, tail.
+ produced k items.
+ ductivity P k .
+ sense,
+P a striking characterization of the generalized Waring distribution. 5. Some asymptotic properties a gradually varying function.
+ the necessity result: If the limit holds for b &gt; 0, then it follows that
+Theorem 5.1. d(k j P) = a 1 + o(1) as k tends to infinity, i.e., if and only if and In order to prove Theorem 5.1 the following remark is needed. the ratio of P ( k +1)to P ( k ) is of the form:
+Thus, we have and as k  X  1 .
+
+From Corollary in Section 3 and Remark 5.1, this implies that where u ( k ) is a gradually varying function. It thus holds that as k  X  1 . There exist positive integers K 1 , and K 2 such that for all k &gt; K 1 , and for all k &gt; K 2 . Put K = max{ K 1 , K 2 }. It holds that
+Theorem I shows as k  X  1 . Put
+Substituting (5.1) and (5.2) into (5.4) yields with ku ( k ) 3 1as k  X  1 . Considering and
+We have We get and
+From the given condition that it follows that as k  X  1 . Then we have and This completes the proof. h
+Theorem 5.2. Let u (k) be a positive function defined on N with where c k &gt; 0 and e (k) = o(1) as k  X  1 .
+
+Definition 5.1. Let u ( k ) be a positive function defined on N for any fixed positive integer j P 2.
+ Corollary 5.1. If u (k) varies gradually, then u (k) varies slowly. The proof is presented in an Appendix A to Section 5.
+Corollary 5.2. If u (k) is a gradually varying function, then for any fixed e &gt; 0 and all k large enough.
+ p. 277) for a similar discussion).
+ Acknowledgement Appendix A Theorem 5.2 and Corollary 5.1 will be proved in this Appendix A .
+Proof of Theorem 5.2 ( Necessity ). Putting or equivalently we have e ( k ) = o(1) as k  X  1 . Since we can choose a real number d so that for 0 &lt; d &lt; 1. We have and where h ( k ) = o(1) when k  X  1 . Hence it follows that
+Putting we get and we obtain ( Sufficiency ). The converse is easier. Suppose and d ( k j u ) = o(1) as k  X  1 . h
+Proof of Corollary 5.1. From (A.1) , with e ( k ) = o(1) and h ( k ) = o(1) as k  X  1 . Thus C a gradually varying function, then it is necessary that with e ( k )  X  0 and C k  X  c ( c &gt;0)as k  X  1 . Then we have and we have Let s k  X  p. 199 ). It thus holds that (A.3) implies therefore that for any fixed positive integer j P 2. It follows that Hence, u ( jk ) 3 u ( k )as k  X  1 and u ( k ) varies slowly. h References Further reading

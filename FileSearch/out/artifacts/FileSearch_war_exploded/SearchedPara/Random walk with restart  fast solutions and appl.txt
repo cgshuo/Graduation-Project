@@ -1,0 +1,34 @@
+ Hanghang Tong  X  Christos Faloutsos  X  Jia-Yu Pan up with 90%+ quality preservation.
+ Keywords Relevance score  X  Random walk with restart  X  Graph Mining 1 Introduction challenge is its speed. especially for large graphs.
+
+Mathematically, RWR requires a matrix inversion. There are two straightforward solu-while the second is slow on query time.
+
+Here we propose a novel solution to this challenge. Our approach, B_LIN, takes the tions in on-line response process.
+
+The main contributions of the paper are as follows:  X  Theoretical justification and analysis, giving an error bound for NB_LIN;  X  Extensive experiments on several typical applications, with real data. The proposed method is operational, with careful design and numerous optimizations. Sect. 6 . 2FastRWR 2.1 Preliminary Table 1 gives a list of symbols used in this paper.
+ r j that the particle will finally stay at node j [ 25 ].
+Equation ( 1 ) defines a linear system problem, where r i is determined by
+The relevance score defined by RWR has many good properties: compared with those multi-facet relationship between two nodes [ 29 ].
+ simply set 0. In other words, Blk outputs a local estimation of r i . quadratic space and cubic pre-computation. 2 conducted at a coarse resolution. 2.2 Algorithm giveninFig. 2 . 2.3 Normalization on W weightedmatrix W .Themostnaturalwaymightbebyrownormalization[ 25 ].Complementa-social network.
+ for the following reasons: 2.4 Partition number k : case study PreCompute method.
+ the ranking vector have the following format:
+As a direct application of NB_LIN, we have the following fast algorithm (BB_LIN) for one class of bipartite graph when n 1 n 2 as in Table 4 . 2.5 Low-rank approximation on  X  W 2 elements are eigen-values of  X  W 2 .
+ large, doing eigen-value decomposition itself might be time-consuming. approximation. 3 Justification and analysis 3.1 Correctness Here, we present a brief proof of the proposed algorithms 3.1.1 B_LIN Proof Since  X  W 1 is a block-diagonal matrix. Based on Eq. ( 3 )and( 4 ), we have
+Then, based on the Sherman X  X orrison lemma [ 26 ], we have comes from the low-rank approximation for  X  W 2 .
+ the original whole node space, B_LIN decomposes it into the following simple steps: (3) Doing RWR within the latent concept space (multiply the result of (2) by  X  ); (4) Jumping back to the node space(multiply the result of (3) by U ); 3.1.2 NB_LIN Lemma 2 If  X  W = USV holds, NB_LIN outputs exactly the same result as PreCompute . of Lemma 2 . 3.1.3 BB_LIN Lemma 3 BB_LIN outputs exactly the same result as PreCompute . Proof Substituting Eq. ( 5 ) into Eq. ( 2 ), we have Solving r i , 2 directly completes the proof of  X  X 2 X  in Table 4 . completes the proof of Lemma 3 . 3.2 Computational and storage cost and storage cost. For the limited space, we only provide the result for B_LIN. 3.2.1 On-line computational cost capable of meeting the (near) real-time response requirement. 3.2.2 Pre-computational cost parts: (1) partitioning the whole graph; (2) inversion of each I  X  c  X  W 1 , i ( i = 1 ,..., k ) ; (3) low-rank approximation on  X  W 2 ; (4) inversion of ( S  X  1  X  VQ  X  1 1 U ) . k + 1 small matrices ( Q  X  1 sparse n  X  n matrix (  X  W 2 ), and (3) partitions the whole graph. 3.2.3 Pre-storage cost cost as shown in the following: 3.3 Error bound for NB_LIN (Table 3 ), we have the following lemma: ( 1  X  c ) n Proof Taking the full eigen-value decomposition for  X  W : respectively. U =[ u 1 ,..., u n ] ,and S = diag ( X  1 ,..., X  n ) .Wehave
+By Lemma 2, we have Thus, we have which completes the proof of Lemma 4 . 4 Experimental results 4.1 Experimental setup 4.1.1 Datasets  X  X oIR weighted graph matrix W , which contains 5 , 000 nodes and  X  774 K edges  X  CoMMG which contains 54 , 200 nodes and  X  354 K edges.  X  X P nodes and  X  1 , 834 K non-zero edges in W .  X  X C and  X  661 K non-zero edges in M .
+
+All the above datasets are summarized in Table 6 . 4.1.2 Applications paper, we test the following applications:  X  Center-piece subgraph discovery (CePs) [ 29 ]  X  Content based image retrieval (CBIR) [ 14 ] 4.1.3 Parameter setting c simplicity, that is c = 0 . 9, m = 80 and  X  1 = 10  X  8 .
+
+For B_LIN and NB_LIN, we take  X  2 = 10  X  4 to sparsify Q 1 , U ,and V which further Blk ( k ).
+ For the datasets with groundtruth (CoIR and CoMMG ), we use the relative accuracy Rel Acu as the evaluation criterion: ( a ) (b) (c) ( d ) respectively.
+ Another evaluation criterion is RelScore , PreCompute , respectively.
+
+All the experiments are performed on the same machine with 3.2GHz CPU and 2GB memory. 4.2 CoIR results for initial retrieval.
+ of magnitude speedup (compared with OnTheFly ); and (2) save one order of magnitude age (21M/180M) and 161  X  on pre-computational cost (90Sec/14,500Sec), compared with compared with OnTheFly ; and (2) saves 10x on storage(17M/180M) and 48  X  on pre-com-putational cost (303Sec/14,500Sec), compared with PreCompute . 7 (The improvement becomes even more significant with the increase of the scope.) 4.3 CoMMG results For this dataset, we only compare NB_LIN with OnTheFly and PreCompute . The results ( a ) (b) (c) ( a ) (b) isshowninFig. 6 . ( a ) (b) (c) 4.4 AP results
+Again, B_LIN lies in the upper-left zone in all the figures, which means that B_LIN age (269/609,020M) and 214  X  on pre-computational cost (8.7/1875Hour), compared with PreCompute . 4.5 AC results We evaluate BB_LIN for the following four tasks:  X  C_C: Given a conference, find its most related conferences  X  C_A: Given a conference, find its most related authors  X  A_A: Given an author, find its most related authors  X  A_C: Given an author, find its most related conferences BB_LIN is further referred as BB_LIN(C/A C/A). (For example, BB_LIN(C, A) denotes using BB_LIN for C_A task.) for C_C (0.013/23.98Sec). 5 Related work low-rank approximation.
+
+Random walk related methods. There are several methods similar to RWR, including method is orthogonal to the partition method.
+
+Low-rank approximation. One of the widely used techniques is singular vector decom-decomposition has been proposed for sparse matrices [ 1 ]. 6 Conclusions main contributions of the paper are as follows:  X  Afastsolution(BB_LIN)foroneparticularclassofbipartitegraphs.Ourmethodachieves
+FutureworkincludesexploringerrorboundsforthegeneralcaseofB_LIN andperforming comparative experiments with other candidate solutions, such as [ 9 , 16 ]. References Authors Biography

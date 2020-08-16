@@ -1,0 +1,125 @@
+ 1. Introduction
+The scenarios of applying process mining technology are illustrated in Fig. 1 . This techniques for ef fi ciently managing multiple discovered process variants [21,28] . paper, we will investigate how to mine process models with prime invisible tasks. 1.1. Motivation situations can lead to process models containing invisible tasks:  X  automatically or manually.  X  (i.e., not recorded).  X  task and jumping to any previous task as a result of human interventions to improve the human interventions cannot be expressed in the control fl clear as possible.
+
+Management system named TiPLM 1 for Xiamen King Long United Automotive Industry Co. Ltd.,
+TiPLM contains a business process management subsystem named TiWork speci fi c language of TiWork fl ow.
+ deployed, similar things happened and the event traces were recorded manually on paper. branches will justly be replaced by two places which can be mined by the classical focuses on just such routing nodes that cannot be detected by the necessary ones. As a result, the above mentioned proportion in the high, i.e., one cannot assume that the mined process only contains visible tasks. 1.2. Problems related to invisible tasks on the structure of the mined model. Furthermore, it is still dif approach can be applied to any process modeling language with executable semantics. problems encountered when mining process models using the different from those of the black transitions in other fi sound, but the mined models have various problems.
+
+Tasks B and C as well as B and D are parallel in N 1 , while they are mutually exclusive in N
+As a result, the behavior of N  X  2 is not equivalent to that of N only place associated with B. Here N  X  3 is not a WF-net at all. N and N 3 is a special case of N 5 . The invisible task in N
+As to the above given event logs, each mined process model by the 1. It is a sound WF-net, but it cannot reproduce the given log, e.g., N 2. It is a WF-net but not sound and cannot reproduce the given log, e.g., N
+In this paper, a new mining algorithm will be proposed based on the method for invisible tasks will be proved and the classi fi
+Section 5 . Section 6 shows the evaluation results on the new algorithm using both arti concludes the paper and gives future work. 2. Related work
+Petri nets, which do not need to concern invisible tasks, their emphases are focused on the ef
+Although the problem is converted to another form, the dif
+In [34] , the authors de fi ne a method for extracting a probabilistic work routing nodes. The correctness of the method can be proved too. However, the work of cases. When interpreting the semantics of the control fl in the model.
+ fi minutes to mine an acceptable model.
+ process models from event logs with prime invisible tasks based on the classical of our work done in [39] by extending the motivation, formal de tasks are formalized based on WF-nets. Finally, the small in the de fi nition of  X  W )is fi xed. 3. De fi nitions and classi fi cation of invisible tasks 3.1. De fi nitions about invisible tasks
+De fi nition 1 . (Trace function traces and IWF-net)
+Let N =( P , T V  X  T IV , F ) be a sound WF-net. traces ( N )  X  t  X  T V ,  X   X   X  traces ( N ): t  X   X  and  X   X   X  traces ( N ), ( P , T V , T IV , F ).
+
+Based on an IWF-net and the trace function traces , the conceptual invisible task can be de
+De fi nition 2 . (Invisible task) respect to W.
+ behavior of a WF-net, it cannot be detected by any mining algorithm. We will de
+De fi nition 3 . (Invisible elementary path)
+Let N =( P , T V , T IV , F ) be a sound IWF-net. An elementary path is a sequence EP =( n n  X  P and  X  0  X  i , j  X  k :( n i = n j )  X  ( i = j ). An elementary path IEP is invisible iff elementary paths of an IWF-net N is denoted as IEP N .
+
+De fi nition 4 . (Input/output visible task set of a place) Let N =( P, T V ,T IV ,F ) be a sound IWF-net. For any p  X   X   X  p ={ t  X  T V | t  X   X  p  X  X  X  IEP  X  IEP N :( t  X   X  IEP i  X   X  p  X  ={ t  X  T V | t  X  p  X   X  X  X  IEP  X  IEP N :( t  X  IEP o  X   X  p = IEP
+De fi nition 5 . (Prime invisible task) one of the following three requirements holds: 1.  X  t ={ i }  X  (| t  X  | N 1  X  X  X  p  X  t  X  :|  X  p | N 1), 2. t  X  ={ o }  X  (|  X  t | N 1  X  X  X  p  X   X  t :| p  X  | N 1), 3. The following sub requirements hold at the same time: (a) Surround.  X  p  X   X  t ,  X  t  X   X   X  p : t  X   X  T V and  X  p (b) Succession.  X  t  X   X  {  X  p | p  X   X  t },  X  t  X  X   X  { p  X  (c) Necessity.  X  t  X   X  {  X  p | p  X  t  X  },  X  t  X  X   X  { p  X  | p (d) Simplicity.  X  t  X   X  T IV :  X  t =  X  t  X   X  t  X  = t  X  X   X  removing some invisible tasks or being changed to other ones with equivalent behaviors.
+Fig. 5 (c), t 1 and t 2 violate Requirements 3a and 3c at the same time. But t
+Fig. 5 (d) also violates Requirement 3c. In Fig. 5 (e), t invisible tasks in Fig. 5 (f) are not prime because they all violate Requirement 3c. The problem of mining prime invisible tasks can be formalized as follows.
+De fi nition 6 . (Mining problem)
+Let N =( P , T V , T IV , F ) be a potential sound IWF-net and W invisible tasks is to construct an IWF-net N  X  =( P  X  , T and contains only minimal amount of prime invisible tasks.
+ compare the mined model N  X  and W to determine whether the mining result is good enough. 3.2. Classi fi cation of prime invisible tasks
+Before detecting prime invisible tasks from event logs, we will The formal de fi nitions are given one by one in the following.
+De fi nition 7 . (SKIP type) type iff there is an elementary path ( n 0 , n 1 , ... , n SKIP type. Otherwise ( k N 2), t is of LONG-SKIP type.
+
+The invisible task in N 2 in Fig. 3 is of SHORT-SKIP type and the one in N
+De fi nition 8 . (REDO type) Let N =( P , T V , T IV , F )beanIWF-net.Foranytask t  X  T such that n 0  X  t  X  and n k  X   X  t .If k =2, t is of SHORT-REDO type. Otherwise ( k
+The invisible task in N 3 in Fig. 3 is of SHORT-REDO type and the one in N behaviors.
+
+De fi nition 9 . (SWITCH type)
+Let N =( P , T V , T IV , F ) be an IWF-net. For any task t ( n , n 1 , ... , n k ) and ( m 0 , m 1 , ... , m j ) such that path from n x to m y than ( n x , t , m y ).
+ among multiple alternative branches.
+ WF-nets. We can see this from the detection method illustrated in the next section. tasks of such type is given below.
+
+De fi nition 10 . (INITIALIZE type)
+Let N =( P , T V , T IV , F ) be an IWF-net with the source place i. For any task t { i }  X  (| t  X  | N 1  X  X  X  p  X  t  X  :|  X  p | N 1).
+
+De fi nition 11 . (FINALIZE type)
+Let N =( P , T V , T IV , F ) be an IWF-net with the sink place o. For any task t 1  X  X  X  p  X   X  t :| p  X  | N 1).
+
+Now we give the intuitive explanation about our classi fi backward path missing). All the above situations cannot be dealt with by the 4. Detection of prime invisible tasks
+The reduction rule for identifying redundant mendacious dependencies is given in Section 4.2 . 4.1. Ordering relations for mendacious dependencies readers are referred to [8,26] .
+
+De fi nition 12 . (Basic ordering relation)
+Let N =( P , T V , T IV , F ) be a potential sound IWF-net and W  X  a N W b iff  X   X  = t 1 t 2 t 3  X  t n  X  W , i  X  {1, ... , n  X  a  X  W b iff  X   X  = t 1 t 2 t 3  X  t n  X  W ,i  X  {1, ... , n  X   X  a  X  W b iff a  X  W b  X  b  X  W a ,  X  a  X  W b iff a N W b  X  ( b  X  W a  X  a  X  W b ),  X  a # W b iff a  X  W b  X  b  X  W a , and  X  a  X  W b iff a N W b  X  b N W a  X  a =  X  W b .
+ are based on them. N W re fl ects that two tasks can are executed successively and parallel routing .
+ event log W , the number of events in W is denoted as | W |. The two relations  X  , the other four ordering relations between the n tasks can be computed in O ( n procedure is O (| W |+ n 2 ).
+
+Otherwisetheminimalorderingrelationsbetweentaskscannotbeidenti event log is the same as the one proposed in [26] (i.e., loop-complete). The de
+De fi nition 13 . (Complete event log)
+Let N =( P , T V , T IV , F ) be a potential sound IWF-net and W 1.  X 
+W  X  p traces ( N ): N W  X  p N W , 2.  X 
+W  X  p traces ( N ):  X  W  X  p  X  W , and 3.  X  t  X  T V ,  X   X   X  W : t  X   X  .
+ process model.It onlydemands thattheevent log contains all possiblebasic relations (i.e.,
+De fi nition 14 . (Advanced ordering relation)
+Let N =( P , T V , T IV , F ) be a potential sound IWF-net and W a  X 
+W b  X  X  X  x ; y  X  T V : a  X  W x  X  y  X  W b  X  y  X  W x  X  x  X  W b would becheckedto seewhether a  X  W y holds(theenumerationtimes is C above, in the worse case, the complexity could be O ( n 4 fi gures. For log W 2 , we distinguish the mendacious dependency A inserting a place as done by the  X  algorithm.
+
+De fi nition 15 . (Direct WF-net with prime invisible tasks) (DIWF-net for short) iff: 1.  X  a ; b  X  T V  X  T IV : a  X   X   X  b  X  ;  X   X  M  X  N ; i  X   X  : N fi ring sequences such that a is directly followed by b . without changing the observable behavior of the IWF-net.
+ in non-DIWF-nets may not be detected correctly. As a result, our algorithm may fail to that are not DIWF-nets.
+ leads to that the invisible task cannot follow a directly. The mendacious dependency a those of the WF-net in Fig. 7 (c). The essential reason is that the two invisible tasks t method illustrated at the end of Section 3.2 .
+ invisible task t  X  T IV such that a  X   X   X  t  X  ; and t  X   X   X 
+Proof . The theorem is proven to be correct in both directions. 1. Assume that there exists a prime invisible task t  X  T such that a p in  X  a  X   X   X  t , p out  X  t  X   X   X  b . (a) According to Requirement 3b in De fi nition 5 , a N W (b) Because t is prime, | p in  X  | N 1 and |  X  p out | N 1 hold (Requirement 3c in De (c) Now we still need to prove y  X  W x . Assume that there is a causal relation between any p
+Hence, we have shown that a  X  W b and  X  x ; y  X  T a  X  W x 2. Assume a  X  W b holds, i.e., a  X  W b and there exist two tasks x , y such that a to prove that there exists an invisible task t  X  T such that a (b) Now we will show that all these constructs have various issues. In Fig. 8 (a), a # the one shown in Fig. 6 .
+
+Hence, the theorem is proven to be correct in both directions. de fi ned below.
+
+De fi nition 16 . (Real causal dependency)
+Let N =( P , T V , T IV , F )beapotentialsoundIWF-netand W 4.2. Identifying redundant mendacious dependencies
+Fig. 9 shows two WF-nets (i.e., N 7 and N 8 ) involving redundant invisible tasks. In both N replaced by the combinational function of t 1 and t 2 . When mining process models from W be necessary when they involve multiple parallel branches.
+
+A  X  W C , B  X  W D and A  X  W D can be derived from W 7 and A dependencies.
+In Rule 1, W is an event log and T W ={ t |  X   X   X  W : t  X   X  in Fig. 9 . 5. The mining algorithm  X  # constructing the mined process model is introduced in detail. 5.1. Construction of prime invisible tasks
+The process model N 9 is a sound DIWF-net and one of its complete log is W
+BEDHGI , BDEHGI , ADI , ADFI , BEI }. t 1 corresponds to D to F  X  W I ).
+ about the relations between a task and an event log (i.e., integrity.
+
+De fi nition 17 .(  X  , fi rst, last)
+Let N =( P , T V , T IV , F ) be a potential IWF-net, W p is an visible task of N . We have the following three operators:  X  t  X   X  if and only if there is an i (1  X  i  X  n ) such that t = t  X  fi rst (  X  )= t 1 , and  X  last (  X  )= t n .
+ generating the places here, only  X  W relations are considered because they do re are de fi ned formally as follows.
+
+De fi nition 18 . (PreSet/PostSet function for a transition)
+Let N =( P , T V , T IV , F ) be a potential IWF-net, W p 1. X W I ={( P I , A )| P I p T W  X  A p T W  X  t  X  A  X  (  X  2. Y W I ={( P I , A )  X  X W I |  X  ( P  X  I , A  X  )  X  X W I 3. PreSet ( t )={ P ( P 4. X W O ={( B , P O )| P O p T W  X  B p T W  X  t  X  B  X  (  X  5. Y W O ={( A , P O )  X  X W O |  X  ( B  X  , P  X  O )  X  X W O 6. PostSet ( t )={ P ( B , P
+See the WF-net N 10 in Fig. 11 and one of its complete log is W computation processes of PreSet by example, which is similar to that of PostSet . From W
+C  X  W E , D  X  W E , B  X  W D , C  X  W D , A  X  W C , B  X  W E and A set containing two places between C and E as well as D and E corresponding to p whole detection method. The core idea of ConIT can be illustrated in the following between visible tasks are detected. And then the redundant mendacious dependencies are identi tasks as well as the ones among invisible tasks are identi fi rst, then prime invisible tasks of SKIP/REDO/SWITCH types are identi
+De fi nition 19 . (Construction algorithm ConIT)
+Let N =( P , T V , T IV , F ) be a potential sound IWF-net and W prime invisible tasks is de fi ned as follows. 1. T W ={ t  X   X  |  X   X  W }, 2. T I ={ fi rst (  X  )|  X   X  W }, 3. T O ={ last (  X  )|  X   X  W }, 4. D M ={( a , b )| a  X  T W  X  b  X  T W  X  a  X  W b }, 5. R M ={( a , b )  X  D M |( a , b ) isredundant }, 6. D M = D M  X  R M , 7. X I ={( P in , P out )|(  X  ( A , X )  X  P in ,( Y , B ) x  X  W y ))  X  (  X  ( A 1 , X 1 ), ( A 2 , X 2 )  X  P in :(  X  8. Y I ={( P in , P out )  X  X I |  X  ( P  X  in , P  X  out )  X  of place sets in X I according to set inclusion relation, 9. X I  X  ={( P in , P out )|(  X  ( A , X )  X  P in ,( Y , B ) x  X  W y ))  X  (  X  ( A 1 , X 1 ), ( A 2 , X 2 )  X  P in :(  X  invisible tasks, 10. Y I  X  ={( P in , P out )  X  X  X  I |(  X  ( P in 1 , P out 1 inclusion relation and there is no other invisible elementary path between each place set in Y the ones between visible tasks and invisible tasks, 13. T W = T W  X  { t ( P 14. ConIT ( W )=( T W , T I , T O , D S , D P ).
+ all tasks, fi rst tasks and last tasks, i.e., T W , T I and T invisible tasks and visible tasks are added. Finally, the task set T Step 14 returns the necessary results.
+ 1. T W ={ A , B , C , D , E }, 2. T I ={ A }, 3. T O ={ E }, 4. D M ={( A , C ), ( B , E ), ( A , E )}, 5. D R ={( A , E )}, 6. D M ={( A , C ), ( B , E )}, 7. X I = Y I ={(({ A }, { B }), ({ B }, { C })), (({ B }, { C }), ({ C }, { E }))}, 8. X  X  I = Y  X  I ={(({ A }, { D }), ({ D }, { E }))}, 10. D P ={( t 1 , t 3 ), ( t 2 , t 3 ), ( t 1 , D ), ( t 2 11. T W ={ A , B , C , D , E , t 1 , t 2 , t 3 }, and 12. ConIT ( W 10 )={ T W , T I , T O , D S , D P }. 5.2. Construction of the mined process model
+Based on the algorithms proposed in Section 5.1 , the mining algorithm named model in DIWF-net.
+
+De fi nition 20 . (Mining algorithm  X  # )
+Let W  X  be a loop-complete event log over a task set T (i.e., W two arti fi cial places.  X  # ( W  X  )isde fi ned as follows. 1. W ={ t i  X  t o |  X   X  W  X  }, 2. ( T W , T I , T O , D S , D P )= ConIT ( W ), 3. X W = f A ; B  X  X  j A p T W  X  B p T W  X  X  X  a  X  A ; b  X  B : a  X  X  X   X  X  X  b 1 ; b 2  X  B : b 1 # W b 2  X  b 1 ; b 2  X  X   X  D P  X  X  4. Y W ={( A , B )  X  X W |  X  ( A  X  , B  X  )  X  X W : A p A  X   X  6. T W  X  = T W  X  { t i || t i  X  |=1  X  X  X  p  X  t i  X  :|  X  p |=1} 7. F W  X  ={( a , P ( A , B ) )|( A , B )  X  Y W  X  a  X  A }  X  1  X  X  X  p  X   X  t o :| p  X  | N 1}  X  {( t i , p )| t i  X  ={ p } 8. their related arcs.
+
+To illustrate the  X  # algorithm, we show the result of each step using the log W shown in Fig. 11 . Here ConIT has been shown before and the steps in 1. W  X  10 ={ t i ABCDEt o , t i ABDCEt o , t i ADBCEt o , t 2. ( T  X  W , T I , T O , D S , D P )= ConIT ( W  X  10 ), 3. X I = f X f A g ; f B g X  ;  X f A g ; f t 1 g X  ;  X f A g ; f B 4. Y I = f p 1 =  X f A g ; f t 1 ; B g X  ; p 2 =  X f t 1 ; B g 5. P W ={ p 1 , p 2 , p 3 , p 4 , p 5 , i , o }, 6. T W ={ A , B , C , D , E }, 7. F W = f X  i ; A  X  ;  X  A ; p 1  X  ;  X  A ; p 4  X  ;  X  p 1 ;  X  D ; p 5  X  X  p 5 ; E  X g , and 8.  X  # ( W 10 )=( P W , T W , F W ).
+Comparing the above results with the DIWF-net N 10 shown in Fig. 11 , we can established successfully too. 6. Experimental evaluation of the work are discussed in Section 6.4 . 6.1. Implementation of the  X  # algorithm 6.2. Evaluation criteria between the mined model and the given log [30] .
+
+The metric f is determined by replaying the log in the model, i.e., for each case the arti neither tokens left nor missing, the fi tness measure evaluates to 1.0, which indicates 100% the extent to which the event traces can be associated with execution paths speci log can be parsed by the model without any error. The token-based
+For each distinguished event trace T i (1  X  i  X  k ): n i is the number of event trace T missing tokens, r i is the number of remaining tokens, c i during log replay of the current trace. Note that for all i , m metric will be used as an evaluation criteria, i.e., f =1.
+ and x i is the mean number of enabled transitions during log replay of the current trace T model and the given log. The equivalence between two models cannot re 6.3. Evaluation results algorithm.
+ plug-in of ProM has been applied to several real-life logs and many smaller arti and the horizontal axis represents the number of each chosen log (i.e., from L1 to L96 ).
+According the types of invisible tasks they contain, the 96 arti fi highest one in all the 7 groups. This is because 3/4 examples in the approaches 100%. While for the  X  algorithm, the correct rate is only 4/96 the mendacious dependencies found from the given log, the  X  # shows that the  X  # algorithm is a good extension of the  X  distinguish invisible tasks of SHORT-REDO type and length-1-loops correctly. extent.
+ be used. This is because there are too many parameters with in algorithm performs better than the GA algorithm. Fig. 15 lists the comparison results of the All 46 testing logs are chosen from the above-mentioned 106 example logs randomly.
+Three perspectives are concerned when comparing the mining results of the explained as follows: will be considered. From Fig. 15 (a), we can see that on the chosen 46 example logs, the GA algorithm. Either f  X  # N f GA or f  X  # = f GA  X  BS  X  # connecting the source place, and AND-join tasks connecting the sink place, etc. 2. The number of invisible tasks in the process models mined by the two algorithms, i.e., nI ( that for almost all the testing example logs, the number of invisible tasks mined by the which is much bigger than the number of visible tasks in the same model. on each log by the GA algorithm is almost 100 to 1000+ times as that spent by the
+The evaluation results show that so long as the event logs are complete, the
+DIWF-nets successfully. Compared to the GA algorithm that can handle invisible tasks, the (e.g., mining capability, mining quality and mining ef fi 6.4. Limitations of the  X  # algorithm
+From De fi nition15 and Theorem1 ,itisobvioustoseethattheminingcapabilityofthe nets that cannot bemined bythe  X  # algorithm(e.g., thetwo WF-nets N of its complete event log is W 10 ={ ac , bcde , bdce }. Taking W
+Fig. 16 (a). After one token is put in the source place of N soundness of N  X  10 . However, if the only invisible task executes after c connecting a and the only invisible task t  X  in N 10 , t  X  free-choice construct between e and t  X  .For N 11 , one of its complete event log is W net by the  X  # algorithm is N  X  11 as shown in Fig. 16 (b). After analyzing the structure of N structural sound. However, N 11 and N  X  11 are not behavioral equivalent. N complete. These two assumptions should be relaxed further in future works.
+As far as the completeness of the given log is considered, the correctness of the itisnotnecessarythattheeventlogmust becompletebeforethe  X  # eventlog cannot be assessed at all bynow and the correctnessofthe N and  X  W ), more  X  W and  X  W will be found which lead to more invisible tasks more than they would lead to  X  missing  X  ones. Furthermore, the even non-WF-nets from incomplete logs. Utilizing the Wo fl the 7. Conclusion correctness of the method has been proved theoretically.
+
+The  X  # algorithm has been implemented as a plug-in of ProM and evaluated using a lot of arti the algorithm.
+ Acknowledgements 90718010).
+ on process mining techniques and tools at Eindhoven University of Technology.
+References

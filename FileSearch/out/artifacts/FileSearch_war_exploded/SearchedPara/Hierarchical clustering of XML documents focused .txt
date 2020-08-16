@@ -1,0 +1,110 @@
+ 1. Introduction content.
+ research domain [2], that calls for suitable methods for information handling [7,26]. organization) and to identify XML documents with similar structures as sources of somehow related contents. that support query processing [15,16,35] and improve the construction of query plans [18]. Grouping structurally similar XML documents is problematic for the following reasons. and to assess the impact of their discriminative power on clustering effectiveness. underestimated, with a consequent degrade of clustering effectiveness. of structural components. This is highly undesirable in the foresaid applicative settings. To address the highlighted issues, our contribution is threefold.
+ the structural components addressed at the level of that cluster in the hierarchy. competitors in effectiveness and scalability. Cluster summarization is also shown to be very representative. experimental evaluation. Finally, Section 7 concludes and highlights major directions of future research. 2. Related works comparing semi-structured data.
+ 2.1. Structural similarity detection [17,13,55] , or with the purpose of characterizing a document with respect to a given DTD [9]. clustering algorithm to evaluate how closely cluster documents correspond to their respective DTDs. removal and update operations, that are performed on the individual nodes of the XML trees. quadratic complexity of the tree edit distance still remains.
+ documents or a cluster of XML documents). Level similarity measures the occurrences of common elements in each also considered by counting occurrences of common elements sharing common ancestors. where N here denotes the size of the larger document.
+ operators. Although this approach is more efficient than [29], in the worst case it is not linear. where N is the number of tags in both documents.
+ discriminatory co-occurrences of (combinations of) structural components. 2.2. Clustering by structure and summarization structure. Our review is by no means exhaustive. A comprehensive coverage is provided in [3]. Hierarchical clustering has been largely adopted [18,36,23,37] , because of the high quality of its results. nodes, the original DTDs need be suitably simplified, which causes some loss of structural information. respectively, to the nodes (as well as attributes) and parent clusters is defined as the proportion of non-overlapping edges in the associated s-graphs. appropriate clustering level for the single-link hierarchies is determined by exploiting a C -index. impractical when processing large-scale databases of XML trees (e.g., the time complexity of S-GRACE is O ( NV M are, respectively, the number of distinct nodes and s-graphs in D ). consequent degrade of clustering quality.
+ and the comprehension of their properties requires further in-depth customized investigations. obtained results.
+ performed.
+ substructures themselves.
+ substructures of the XML trees).
+ LevelEdge representations within that cluster.
+ documents at hand to guide the clustering process in the derivation of a hierarchy of nested clusters. whose usual settings are well-known values, i.e., 95%, or 99%.
+ intelligible understanding of the structural properties of the clusters in the hierarchy. 3. Preliminaries the document elements (i.e., nodes).
+
+De fi nition 3.1. XML tree . An XML tree is a rooted, labeled, ordered tree, represented as a tuple t =( r components have the following meaning:  X 
+V t is a set of nodes;  X 
+E t p V t  X  V t is a set of edges, catching the parent  X  child relationships between nodes of t ;  X  r t  X  V t is the root node of t , i.e. the only node with no entering edges;  X   X  is an alphabet of node tags (i.e., labels);  X   X  t : V t  X   X  is a node labeling function.
+
+Let n i and n j be two nodes from V t . n i is the parent of n hierarchical relationship is represented as n i  X  n j . Instead, if there is a path from n intermediate edges), n i is an ancestor of n j , whereas n indicated as n i  X  p n j : clearly, if p =1, the ancestor of all paths from r t to any node n in V t is denoted as paths ( t ), i.e., paths t  X  X  X  r
+Nodes in V t are divided into two disjoint subsets: the set L from L t , i.e., height t  X  X  X  max p r t  X  p l l  X  L t num t : V t  X  N maps nodes to their numbering and that m i indicates that m i precedes m j in the (predefined) sibling ordering.
+ individual nodes, edges and paths).
+
+De satisfies the following conditions for each n , n i , n j  X  n i ; n j  X  E s iff  X  n i  X  X   X  p  X  n j in t with p  X  1;  X  num s ( n i ) b num s ( n j ) iff num t (  X  ( n i )) b num  X   X  s ( n )=  X  t [  X  ( n )].
+ that matches a contiguous portion of t , since  X  maps the parent s  X  summarizes hierarchical relationships by mapping parent  X  unrepresentative) substructures in the XML trees.
+ Hereafter, the notions of substructure, (structural) component and tree pattern are used as synonyms.
+Clustering by structure aims to divide a collection D ={ t clusters such that C i p D and C i  X  C j =  X  for all i , j =1, homogeneity between XML trees within distinct clusters.
+ analysts, fixed classification criteria, or in-depth customized analysis. separating the individual clusters from level i  X  1 (i.e., obtained at stage i components, that has not yet been considered up to stage i structural-homogeneity along the paths from root to the leaves of the cluster hierarchy.
+All types of tree-like components can be handled for clustering at each stage. Notation T components addressed at stage i . Example definitions of T  X  The selection of one-node substructures modeling the individual nodes in the XML trees, i.e.,
+In such a case, the generic substructure s consists only of its root r  X 
+The selection of one-edge substructures modeling the parent
+Here, the individual substructure s consists only of one edge ( r
+XML tree t in D .  X  The selection of one-path substructures modeling the distinct root-to-node paths in the XML trees, i.e., XML tree t in D .
+ Interestingly, more sophisticated definitions of T ( i ) may involve induced or embedded subtrees. trees can be modeled as transactions over a feature space S that indicates the presence/absence of the related component s of T
+Let x ( t ) be the high-dimensional transactional representation over S context of x ( t ) is true if s is a substructure of t , otherwise it is false. Hence, x x ={ F s  X  S ( i ) | s  X  t }, with the meaning that the features explicitly present in x
+At each stage i , the set D ( i ) ={ x ( t ) | t  X  D } comprises all transactions over S convenience, we introduce a mapping t  X   X  X  : 2 D i  X  X   X  2 trees in D , i.e., t ( C )={ t | x ( t )  X  C }.
+ clusters in large-scale databases of high-dimensional transactions.
+ multiple stages, as described in the next section. 4. Hierarchical clustering of XML trees The scheme of the hierarchical clustering process proposed in this manuscript is sketched in Fig. 1 . The
+This is accomplished by establishing the most appropriate set of structural components T
+At each clustering stage i , P represents the partition containing all clusters of XML trees sited at level i
+Instead, P ( i ) is the partition produced by GENERATE-CLUSTERS
+P contain clusters of transactions over the feature space S becomes the last level of the cluster hierarchy to be partitioned in the subsequent stage i +1. the latter type.
+
+The body of each clustering stage i (lines 6  X  19) consists of two phases: separation (lines 6 At the generic stage i , each cluster C within P is divided by means of the
+Section 4.1. Here, it suffices to anticipate that GENERATE-CLUSTERS number of child clusters, which contain transactions over the feature space S of the foresaid cluster C . At this point, each child cluster C in R is associated (lines 10 purpose of cluster summarization) and R is then added (at line 13) to the partition P clusters in P is reiterated (between lines 6  X  14) until each cluster in P is individually partitioned.
+Summarization takes place after cluster separation. Each cluster C within P structural information within C .
+ proceeds to partition them at the subsequent level i +1 with respect to the elements of T are already homogeneous according to the previously considered sets of structural components T (previously unconsidered) structural patterns in T ( i +1) caught by the representative of the parent cluster. 4.1. Cluster generation structural features.
+ actual (resp. artificial) groups.
+ that automatically partitions D into an appropriate number of child clusters. The fundamentals of below. Instead, a discussion on the convergence of GENERATE-CLUSTERS against a wide variety of established competitors can be found in [11]. The general scheme of the GENERATE-CLUSTERS algorithm is reported in Fig. 2 . considered for splitting.
+
+The PARTITION-CLUSTER procedure at line L7 iteratively evaluates, for each transaction x reassignment improves the degree of structural homogeneity of the two clusters. The contribution of x The local quality Quality ( C ) of a cluster C is a key component of dataset D , i.e., follows quality, the contribution of each cluster is weighted by Pr( C ) really worth. 5. Cluster summarization
+Pr( s | C ), that is higher than the frequency Pr s C  X  C with which s occurs throughout C guarantees that the XML tree pattern is representative of certain structural properties from the cluster. tree patterns.
+
+De the two tree patterns is rooted at some leaf node of the other tree pattern. Let s that l is some leaf node of s i . The operator s i  X  l s j
+E jj X  E s i  X  V s j  X  1, wherein the root r s j of s j is a child of l. Formally, if l two mappings  X  i : V s i  X  V s and  X  j : V s j  X  V s satisfying the following conditions for each h  X   X  i r s  X   X  n  X  V s  X   X  n  X  V s  X   X  n , n  X   X  V s  X   X  ( n , n  X  ), ( n , n  X  X  )  X  E s  X   X  i l  X  X  ;  X  j r s
+Let s i and s j be two tree patterns. The set of all possible parent individual leaves of s i is denoted where L s from an horizontal arrangement of its components.
+
+De structure, in which the two tree patterns are merged under the same root label. Let s  X 
+V  X  V s satisfying the following conditions for each h  X  { i , j } (wherever subscript h figures):  X   X  i r s  X   X  n  X  V s  X   X  n , n  X   X  V s  X   X  ( n , n  X  ), ( n , n  X  X  )  X  E s 5.1. Mining representative XML tree patterns Such substructures are obtained via progressive combinations of the elementary structures in C . Fig. 1 ) and a significance threshold  X  . The procedure starts (at line M3) by considering a space S frequency in cluster C is higher than in the whole partition C the definition of cluster quality in Section 4 , are directly provided by focusing only on such features from the beginning strongly prunes the space of candidates. candidate s is associated (lines M5  X  M7) with a bit list B ( s ), that keeps trace of the transactions in C pattern, which is henceforth obtained through the intersection (at line N4 of the the bit lists associated with its constituents, without costly re-scans of all the available transactions. whereas the others do not include F s .
+
+At the heart of MINEREP is a loop (lines M8  X  M20), that distils representative tree patterns from C candidates can be generated.
+ construction (at line N4 of the CANDIDATE-GENERATION scheme in Fig. 4 ), includes all those transactions in C M14 and M15) from the bit list.
+ requires time O (| V s || V t |). Precisely, a preprocessing phase of the revised s-graph associated to t .
+
+The representative tree patterns are distilled in L ( k ) in C  X  C , i.e., it must hold that Pr s jC  X  X  &gt; Pr s jC purpose, as it is discussed in Section 5.3 . The resulting set L generation of candidate tree patterns at the subsequent iteration k +1. identification of representative substructures are analyzed in the following sections. 5.2. Candidate generation trees within cluster C . H C is used to prune (at lines N7
+CANDIDATE-GENERATION then combines (lines N3  X  N21) each pair of distinct tree patterns s (parent  X  child or sibling) tree patterns.
+ admissible combination of s i and s j . B shall be refined into the actual bit lists of such candidates by the (at lines M11 and M12).
+
+The set T (at line N5) contains all parent  X  child tree patterns obtainable from s prunes T (lines N6  X  N12): the height of each candidate s in T is tested (lines N7
+At this point, CANDIDATE-GENERATION considers the sibling pattern obtainable from s associated (at line N17) with the estimation E of its actual bit list and, then, is added to C (at line N18). Once all pairs of representative tree patterns are considered for combination,
+C of new candidate tree patterns. 5.3. Representativeness of candidate tree patterns
+As to the use of statistical hypothesis testing in MINEREP  X  n
+B ( s )  X  C }|.  X  n n
+I C  X  x t  X  X   X  B s  X  X   X  C (recall that C is the set of siblings of C ).  X  n s C , the number of (transactions corresponding to) XML trees in C , that do not contain s . The value of n two alternative definitions, according to the nature of s . Precisely, n resulting at any iteration k  X  2. Otherwise, n I s C follows from complementing n
+D ( s )=  X  for elementary components at iteration k =1.  X  n n s I C  X  x t  X  X   X  D s  X  X   X  C if s is a combined tree pattern (at any iteration k n s C , i.e., n I s I C  X  x t  X  X   X  C  X  B s  X  X   X  C (at iteration k =1).
+
+The above statistics enable the computation of two marginal totals, namely, the overall numbers n values of the foregoing statistics, respectively denoted as n n following test-statistic: expected statistics is high, i.e. if  X  2 ( s , C )&gt;  X   X  from such representative). 6. Evaluation main objectives. homogeneous with respect to the type of structural patterns considered at that level in the hierarchy. subsumes the structural properties of the XML documents of a cluster. similar or even better levels of effectiveness and scalability.
+ speed. 6.1. Data sets below. 6.1.1. Real data corresponding to as many scientific publications. These individually belong to one of 8 classes: proceedings (4764 documents), mastersThesis (5 documents), 413 documents), book (1, 125 documents), www (38 documents), pages ), that occur in (nearly) all of the XML documents.
+ The Sigmod collection groups 988 documents complying to three different class DTDs: despite the occurrence of some overlapping tags, such as volume , number , authors , title and year .
+Real is a collection of 649 XML documents assembled and used in [18], that encompasses the following 5 classes:  X  by the Astronomical Data Center at NASA/GSFC.  X 
+Forum, 264 documents concerning messages sent by users of a Web forum.  X  distribution.  X 
+Wrapper, 53 documents representing wrapper programs for Web sites;  X  structural characteristics with which to isolate the individual document classes (i.e. sources). 6.1.2. Synthetic data sets Four synthetic data sets were generated from as many collections of DTSs. strong structural differences and, thus, can be neatly separated by most clustering algorithms. challenging applicative-settings, wherein the XML documents share multiple forms of structural patterns. different classes.
+ 100 XML documents. In particular, DTD1 and DTD2 share nodes Instead DTD5 and DTD6 share nodes A11, ... , A15, whereas 6.2. Competitors
+Dalamagas et al.'s approach [23], whose performances are reported from [2] too. 6.3. Evaluation of clustering effectiveness
+Three main methods for assessing clustering effectiveness are described in [31,34] , namely  X  explanation of the data at hand;  X   X  relative criteria , when evaluation takes place in comparison with other clustering schemes. evaluate clustering effectiveness. More specifically, we investigate the behavior of actual data classes, we measure the effectiveness of both discovering natural clusters.
+ are disjoint subsets of XML documents, that represent a true partition of D (i.e., D =
+GENERATE-HIERARCHY . P ( l ) together with all possible cluster leaves sited at any preceding level l average precision (i.e. exactness) and recall (i.e. completeness) [6]. level l &gt;1 (in which case possible cluster leaves at any preceding level l columns represent discovered clusters and rows represent true classes. Each entry m (corresponding to XML documents in D ), that are assigned to cluster C The table provides an immediate visual description of the degree of agreement between the results yielded by finely caught through precision and recall. Intuitively, each cluster C i.e., such that m ij is maximal. For any cluster C j , the index h ( j ) of the class C
+P ( C ) and recall R ( C j ) for cluster C j are defined as follows:
+Hence, the average precision P (1) and recall R (1) for partition P
+L ( l ) be the set of all cluster leaves sited at any level l documents is hence P ( l )  X  L ( l ) . Therefore, the definitions of P summation and averaging involve P ( l )  X  L ( l ) rather that only P 6.4. Single-stage clustering allows one to understand the effectiveness of GENERATE-CLUSTERS occurrence of one form of structural pattern within their tree structures.
+Table 1 shows the comparative evaluation of GENERATE-HIERARCHY values of average precision and recall for GENERATE-HIERARCHY The behavior over DBLP is essentially due to the fact that larger than the actual number of classes and an average recall lowered to 0.92. one cluster contains XML documents originally belonging to the overlap on the title and url nodes. The other cluster instead includes XML documents from the overlap only on the title node). Apart from these two clusters, all other clusters produced by precision.
+
+SGrace and XRep did not successfully complete their tests on DBLP . This is indicated by means of symbol entries of Table 1 .
+ precision and recall as GENERATE-HIERARCHY . However, it is worth to underline that the performance of that, in this test, the performance of GENERATE-HIERARCHY first level (beneath the root) of the hierarchy in Fig. 7 .
+ parameter of the chosen competitors.
+ reported in [2]. The unavailability of this information is indicated by means of symbol 6.5. Multi-stage clustering
+A second aspect to investigate is the behavior of GENERATE-HIERARCHY in some meaningful sequence to progressively partition the available XML documents. In the following tests, root), edges are accounted for at the second level and root-to-leaf paths are addressed at the third level.
+Fig. 6 shows the hierarchy produced by GENERATE-HIERARCHY node level (i.e., the first level beneath the root) of the cluster hierarchy. trees in the class.
+ The behavior of GENERATE-HIERARCHY is confirmed by experimenting over one of the DTDs, IndexTermsPage , contains 920 documents. Fig. 7 shows that
+DTD (mainly category, content, term and categoryAndSubjectDescriptorsTuple IndexTermsPage class leads to two subclasses C 1 and C 2 , that can be described by two DTDs, both subsumed by IndexTermsPage . C 1 is a subclass of 437 documents, in which the optional elements of the remaining 483 documents (in which the foresaid optional elements occur) are assembled into subclass level of C 1 and C 2 in the cluster hierarchy of Fig. 7 .
+ The results of multi-stage clustering over both Synth4 and Sigmod are summarized in Table 2 . Notably, collection of XML documents) plus the time required for cluster generation and summarization. 6.6. Cluster summarization collection of XML documents. Let t be an XML tree and R a set of substructures. The representativeness to t is the fraction of nodes in t matched by the embedded substructures of R : where, V t is the set of nodes of the XML tree t and V s  X  t some set of substructures from C . The representativeness representativeness of Rep ( C ) with respect to the individual XML trees in C : low  X  values.
+
+If C includes structures that do not frequently occur within C
+ X  [ Rep ( C )] is low if cluster C includes structurally heterogeneous XML trees and, hence, are matched in a high percentage by the substructures extracted by
+ X  has instead a different interpretation, whenever several structures frequently occur in both C and C frequency within C is not greater (at line M3 of Fig. 3 ) then the occurrence frequency within C
+ X  [ Rep ( C )] ceases to reflect the degree of structural homogeneity of C (that still remains high, being C Table 3 shows the average  X  values over all data sets, computed by averaging the hierarchies produced by GENERATE-HIERARCHY in Sections 6.4 and 6.5. In all tests, the statistical significance representative substructures is set to 0.05 and, hence, the corresponding threshold As it can be noticed, Synth1 exhibits the maximum value of clusters. 6.7. Scalability number of both documents and clusters to process large-scale databases of XML trees. as Synth2 ). 7. Conclusions and further work Two aspects must be taken into account in the process of clustering XML documents by structure. XML documents themselves.
+ due to further neglected forms of structural components.
+ differentiated understanding of its structural properties.
+ Cluster summarization was also empirically proved to be very representative. features, and thus pursue an effective clustering of semantically related XML documents.
+References

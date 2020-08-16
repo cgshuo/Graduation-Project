@@ -1,0 +1,80 @@
+ 1. Introduction research was concerned with either moving objects or data streams, but not with both. algebra that would satisfy all requirements for spatio-temporal data management [1 spatio-temporal databases [7] .
+ support data stream management and that can pose continuous queries have been developed [8 disregarded, and most of the current DSMSs offer very rudimentary support for geospatial data. Some DBMS vendors [11 [11] , spatial cartridge [15] or extensibility framework to invoke methods from a spatial library [16 model movements of objects in a database and to pose queries about the history of such movements. traditional DBMSs [20] : relations as relational snapshot queries because they operate on a snapshot of the relations at a given time need a DSMS that supports spatio-temporal data types and operations for geospatial objects.
+In general, the main contributions of the paper can be summarized as follows: (i) We describe a novel formal framework and an implementation approach to the management of spatio-temporal objects (iii) We design a type system, at the abstract level, by adopting multi-sorted algebra. (iv) We show the embedding of proposed data types and operations into an SQL-like language. (v) We describe an implementation approach, based on the UDAF paradigm. (vi) We prove the proposed formal framework by a developed prototype in a pure DSMS environment.
+Section 6 concludes the paper and discusses future research directions. 2. Related work
+In the last two decades, many spatio-temporal data models and corresponding query languages have been studied and and the trajectory location management perspective. member functions.
+ model future motion plans of moving objects, was presented in [29] .
+
+Both, the complete history of movem ent and the MOST approaches imply store-and-then-query paradigm approach is primarily concerned with the complete history of spatio-temporal objects whereas the MOST is primarily thetypesystemtowardssupportingnew information flow processing applications. These new applications need to process huge volumes of continuous data streams, i.e. real-time, t ransient, time-varying sequences of data items produced frequently changing data.
+ scheduling decisions for each tuple. The TelegraphCQ DSMS is based on the Telegraph framework and implemented as an The result is a new model that gives the user control over the granularity at which one can express simultaneity. data types and operations have been completely neglected.
+ for spatio-temporal data types and operations on them is missing. Opposed to that, our formally grounded framework geospatial DSMS.
+ for managing, querying and visualizing evolving locations of moving objects. processing engine [46] .
+
+The work presented in [47] defines a geo-stream as a data stream carrying information about geometry or geometries on them. This work resolves two important issues: definiti on of windows semantics through a data type based approach geo-streams and moving objects.
+
+Our work may be most similar to that of Patroumpas and Sellis [44] , Huang and Zhang [47] , and Ali et al. [16 it overcomes limitations of [44] , and is complementary to [47,16  X  a rather limited and non-standard spatial support.  X   X 
+It includes a proof of the concept [49] as an extension of a moving objects database.  X 
+Our strategy fully incorporates the data stream paradigm, viewing data streams as unbounded, explicitly timestamped and time-ordered sequences of tuples. It includes a prototype system implemented as a spatio-temporal extension of an object-relational DSMS.  X  of incoming events and to provide consistency guarantees over space and time. The work presented in [16 user-defined modules (UDM) within the query pipeline of a DSMS [46] . Opposed to that, our work primarily focuses on first-class citizens. Additionally, it also includes a rich set of spatial, temporal and spatio-temporal operators. 3. The type system [51,19,47] .
+ of choosing a concrete, finite representation is needed.
+A many-sorted algebra consists of sets and functions. A signature is a pair of sets S and operations respectively. Each operation consists of a ( k + 2)-tuple
+Operation names ( operators ) are denoted by n and s 1 , ... of two coupled many-sorted signatures. (ii) The second signature defines a collection of polymorphic operations over the types of the type system.
+The notation s + denotes a list of one or more operands of sort s . The third extension is that if s ( s 1  X  ...  X  s n )isalsoasort [52] .
+ type  X  that change over time, we introduce the notion of a temporal function which is an element of type
+The temporal functions are the basis of an algebraic model for the spatio-temporal data types, where the geospatial data types point , multiPoint , line or polygon , resulting in movingPoint as values of type as values of type  X  ( multiPoint ), movingLine as values of type spatio-temporal context.
+ goal (which could change in time as traffic conditions vary).
+ moving(line) , etc.
+
+Abstract semantics of data type  X  are defined by its carrier set denoted by D applied to BASE and SPATIAL data types ( Table 1 ).
+ spatio-temporal DBMS in an extensible DBMS environment, with the goal to support modeling and querying the history of movement [30] .
+ that all spatio-temporal data are persistently stored on a disk. 3.1. Abstract semantics of geospatial streaming types may contain elements from a number of different data sources, if their tuples have the same schema any value from T , i.e.  X   X  T .
+ relational model:  X  Valid (creation) time of a data stream tuple defined by the temporal attribute A  X 
+De fi nition 1. A geospatial data stream schema  X   X  T is represented as a set of attributes A attributes (denoted by A  X  ) has an associated geospatial domain D temporal domain T . The values of other n  X  2 attributes are drawn either from the atomic type domain D domain D  X  i .
+ Finally, a geospatial data stream is defined in the following way:
+De fi nition 2. A geospatial data stream S  X  T is a potentially infinite sequence of tuples belonging to the schema of by the increasing values of A T .
+ instantaneously and that it arrives to the system in the order it was created. Therefore, at time
+Because streams are unbounded, when a stream is used in an SQL-like query, the system must be told how and when to stream, and the SQL-like query is then applied to each of these relations. our previous work [54,55] .
+ later for the purpose of SQL-like language embedding.
+ type constructor is a closed time interval, having current instant of time now on the right side. elements b s , t N with ever increasing values of t . Hence, a carrier set of data streaming (
+Data type streaming (  X  ) can have a value undefined. However, streaming ( instant to  X  : contains the current system time. However, data within the stream can also have value is unknown. We set the following definition: value of the streaming ( arrive to the stream with the timestamp less than or equal to t query returning other data types will be a standard one-time query. 4. Operators 4.1. Lifting operations to streaming data types result of the operation) to be of the temporal type.
+ inside : point  X  polygon  X  boolean .
+ time. Thus a lifted operation inside will have a signature: inside : moving ( point ) X  moving ( polygon )  X  moving ( boolean ).
+ or the polygon is undefined, and false otherwise.
+ result is changed into a moving data type as well. Formally, for each operation with a signature its corresponding temporally lifted version is defined by: a line , having a signature: distance : point  X  line  X  real .
+
+Using temporal lifting, 3 different operation signatures are obtained: distance : moving ( point ) X  line  X  moving ( real ) distance : point  X  moving ( line )  X  moving ( real ) distance : moving ( point ) X  moving ( line )  X  moving ( real ).
+
+The same principle can be applied to streaming data types resulting in the following three signatures: distance : streaming ( point ) X  line  X  streaming ( real ) distance : point  X  streaming ( line )  X  streaming ( real ) distance : streaming ( point ) X  streaming ( line )  X  streaming ( real ).
+
+This process can be generalized, taking a generic operation with a signature
+That operation can be lifted to all signatures matching:  X  distance : streaming ( point ) X  moving ( line )  X  streaming ( real ). 4.2. Geospatial streaming operations interaction with domain and range are defined in [19,7] . Here we present those appropriate for streaming data types: deftime : streaming (  X  )  X  streaming ( range ( instant )) rangevalues : streaming (  X  )  X  streaming ( range (  X  )) trajectory : streaming ( point )  X  streaming ( line ) streaming ( points )  X  streaming ( line ) traversed : streaming ( line )  X  streaming ( polygon ) streaming ( polygon )  X  streaming ( polygon ) atinstant : streaming (  X  ) X  instant  X  intime (  X  ) atperiods : streaming (  X  ) X  range ( instant )  X  streaming ( at : streaming (  X  ) X   X   X  streaming (  X  ) streaming (  X  ) X  range (  X  )  X  streaming (  X  ) atmin : streaming (  X  )  X  streaming (  X  ) atmax : streaming (  X  )  X  streaming (  X  ) present : streaming (  X  ) X  instant  X  bool streaming (  X  ) X  range ( instant )  X  bool .
+ Function present checks whether a stream is defined at a given instant or within a given period. would be a moving data type that changes with time, in effect a streaming ( moving ( type at output. As a consequence it cannot be used within continuous queries, but only within one time queries. 5. Implementation under the control of the DSMS.
+ a value of the respective argument type, obtained by a type constructor called intime . a time interval and a simple function, describing temporal development of a value during that time interval.
+The geospatial stamp and the timestamp represent two related but separate attribute values represent a unique spatio-temporal reference of a data stream element. We propose its implementation in a DSMS with sources and the functions which read data from these data sources. The instant component implicitly used in the type constructor intime represents valid time.
+
+De to an appropriate geospatial data type, i.e. intime (  X  ).
+ The carrier set for intime (  X  ) at the discrete level is 5.1. User-de fi ned aggregate functions
+To create a UDAF, the user must implement at least three functions
+Accumulate This function is called once for each value aggregated. Generally, this function total computed so far.
+ calculations on the variables which were defined for use with the aggregate function. language. This approach is used in the Expressive Stream Language (ESL), an application language of the Stream Mill system [57] .
+ operation is not defined is called non-blocking and can be applied to data streams freely.
+The proposed temporal data type for presenting a spatio-temporal reference of a data stream element enables the two successive spatio-temporal data stream elements with spatio-temporal references consisting of successive point object as a linear function of time.
+ PostgreSQL-like syntax: CREATE AGGREGATE moving (intime(point)) ); An aggregate function is made from one or two ordinary functions: a state transition ( accumulate )function an optional ( terminate )function FINALFUNC . A temporary variable of date type the function is mapping(upoint) (discrete data type for moving points) and the data type for the new input data is intime(point) (given as an argument of the defined UDAF). An aggregate function can provide an initial condition ( function FINALFUNC is omitted.
+
+Algorithms 1 and 2 describe an abstract implementation of UDAF
+Algorithm 1. moving(IP) input : set IP of spatio-temporal references of type ipoint output : moving object mo of STYPE mpoint summary : A set of spatio-temporal references is aggregated into a moving object. 1: INITCOND  X  NULL 2: for each ip  X  IP do 3: mo  X  accumulate ( mo , ip ) 4: end for 5: return mo Algorithm 2. accumulate ( mo , ip ) stream elements.
+
+De over spatio-temporal references of data stream elements.
+
+In combination with different window operators, i.e. stream-to-relation operators [34] on spatio-temporal data streams, the proposed UDAFs produce moving objects in a form of a sliced representation as intermediate results of a continuous query.
+ streams carrying information about current movements. 5.2. SQL-like language embedding: CSQL spatio-temporal data stream schema: carStream ( ) of a tuple, which is assumed to be monotonically increasing.
+
+The following examples illustrate spatio-temporal continuous queries Q1 : Find all cars within the area of interest ( e.g. a rectangle) .
+ Q2 : For each car, find its minimal distance from the point of interest during the last half an hour . last ten minutes .
+ Q4 : Find all cars/drivers that have traveled more than 50 km during the last hour . Q5 : Report the trajectories of cars with id 1, 2, 3 and 4 in the last 2 h . Q6 : Find trajectories of the cars that were within 100 m from a point of interest within the last 30 min . Q7 : Report the movement of all cars that have crossed the street number 10 in the last 2 h . Q8 : Continuously report the location of all cars within a particular city district . 6. Conclusion and future work processing, but includes only rudimentary support for spatial data.
+ containing the history of movements with geospatial data streams.
+
+Thus, in our future work, we are going to support the  X  data stream-database the focus of a continuous query to stream tuples that qualify a certain predicate. including query optimization and sophisticated graphical user interface.
+ Acknowledgments Ministry of Science, Contract 036-0361983-2020.
+ to the improvement of the quality of the paper.
+
+References

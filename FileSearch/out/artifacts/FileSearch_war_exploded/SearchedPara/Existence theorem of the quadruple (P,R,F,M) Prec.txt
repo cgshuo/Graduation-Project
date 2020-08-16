@@ -1,0 +1,30 @@
+ also show that this result is also true for two numbers instead of three. 1. Introduction output hence where documents are  X  X  X ore X  X  or  X  X  X ess X  X  retrieved). uments. Precision ( P ) is the fraction of the retrieved documents that are relevant documents that are retrieved: relevant documents that are retrieved (see Egghe, 2004 ).
+ Proposition 1.1. Let ality) and the fraction of retrieved documents. Then we have the following four equations: other ones follows the same lines.
+
+Now, using the two equations in (7) or (8) , we trivially have the following corollary: Corollary 1.2. For any IR system and any query we have the equation for 0 &lt; P, R, F, M &lt; 1.
+ is also true for two rational values in ]0,1[.
+ (incl. query). 2. Co-existence theory of the measures precision, recall, fallout and miss numbers P = precision, R = recall, F = fallout and M = miss, we have that
+We now pose the question: given four numbers x , y , z , u such that any value larger than 1  X  one can even take x = y 6  X  z = u ).
+In other words, we have a natural necessary condition that but less trivial than the converse, described in the previous section.
+Theorem 2.1. Let the numbers x ; y ; z ; u 2 0 ; 1  X \ Q be given such that other orders of the measures P, R, F, M. In general we can say that we have
+Proof. Since x ; y ; z 2 0 ; 1  X \ Q we can write x  X  x 1 x &lt; x 2 , y 1 &lt; y 2 , z 1 &lt; z 2 . Rewrite documents of our IR system) such that
+For ret we take ret  X  X such that (since x 1 &lt; x 2 , y 1 &lt; y 2 and z 1 &lt; z 2 ) of which we choose (since x 1 &lt; x 2 ) relevant documents in ret . Hence we already have that
+For rel we add to the x 1 y 1 z 1 points in j ret \ rel j , x and hence
+Note that
+Define hence we add (by (24) and (26) ) construction.
+
+Check also that agreeing with (18) . It is clear from (25) that All choices have been made: everything is fixed now, but we still have to pove that
+This is where (13) comes in. (13) implies hence
+But, using (21), (23) and (27)
+Further, again by (21), (23), (27) and (30)
+Combining (29) X (31) we have R , F , M } in any order. h to the same problem.
+ isfies (13) , i.e.
+Let X be a set of
+Hence R = 0.8 = y is satisfied. Note that and we add have a complete picture as in Fig. 2 . It is clear from Fig. 2 that so that as required.
+ Note that, indeed, j X j = j rel j + j  X  rel j = 440.
+ M = miss of this IR system.
+
+First Proof. Given the numbers x , y , z , as above, define by Theorem 2.1 , (any order) of an IR system. Hence the assertion on { x , y , z } is proved. h where c is a positive rational number. Using (7) and defining we have that M = miss of this IR system.
+ corollary. h 3. Conclusions
+In this paper we showed that the equation is the necessary and sufficient condition for a quadruple  X  x ; y ; z ; u  X 2 0 ; 1  X \ Q  X  fallout, miss} = { P , R , F , M } of a certain IR system.
+ correspond to recall X  X recision, ... , curves of existing IR systems. References

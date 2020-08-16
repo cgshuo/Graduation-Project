@@ -1,0 +1,106 @@
+ 1. Introduction
+In the last few years we have been witnessing the appearance of many applications that require the management of a cations, CAD, GIS, etc., where similarity queries have become a crucial concern [1 X 5] . their similarity.
+ algorithm.
+ nities to use different fs-distances.
+ of dimensionality.
+ be investigated or it can be discarded from the search.
+ value of the fs-distance parameter.
+ the top of many multidimensional indexing structures.
+ sions of the paper.
+ 2. Basics and notation and hence all its descendants can also be discarded from the search. vious multidimensional index structures.
+
+Formally speaking, the fs-distance used in the nn-search algorithm is defined by d : X X ! R feature space domain, usually X  X  R n .
+ Let X i be the domain where the i th-feature is drawn. Thus, the feature space can be defined as X  X  vectors representing the objects of the database where similarity searching is done. The two typical queries used to do nn-search inside the feature space are formally defined as follows: NN  X  ~ q  X  X f ~ o 2 U : 8 ~ x 2 U d  X  ~ q ; ~ o  X  6 d  X  ~ q ; ~ x  X g d  X  ~ q ; ~ o  X  6 d  X  ~ q ; ~ x  X  .
+ the former one.
+
+The distance from the query point to a region is a ptor-distance that, ideally, it is defined as where ~ p 2 X , N is an index node and R N denotes the region covered by N . Obviously, d ptor-distance function.
+
+B of the fs-distance d : R is the case of B d  X  ~ q 0 ; r 0  X  in Fig. 1 .
+ used to process the nodes of the index tree: addresses of the pages that must be processed and also the distances  X  d Algorithm 1. Nearest Neighbour Search Begin
+End 3. Related work tance-based indexing [12,7] .
+
+There are many works that present multidimensional index that can be used to solve similarity search, some of them approaches, however they mainly fight against the well-known curse of dimensionality. tances [26], like Artert et al. in [27].
+ resent human perception of similarity.
+ index whose matrix presents the highest similarity with the query matrix is selected for use.
+The aforementioned research pieces deal with the time-consuming distance computation problem in index-based simi-applicability to a large range of fs-distances and it is not restricted to the R-tree index family. 4. fs-Distances and ptor-distances order to make efficient the nn-search algorithms.
+
+Actually, any approximation ptor-distance (called d aprox those regions where is not possible to find a query candidate because if d discarded. Thus, d aprox  X  ~ q ; R N  X  &gt; r can be also used as prune condition. precision because if d aprox  X  ~ q ; R N  X  6 r 6 d min  X  ~ q ; R been defined by means of d min and the squared one  X  B 0 1 distance.
+ the definition of approximation distances and prune conditions to be used in the search algorithms. 4.1. fs-Distances constraints
+Traditionally [12], a distance is defined as a function d : X X ! R (1) d  X  x ; y  X  P 0 (2) d  X  x ; y  X  X  0 () x  X  y (3) d  X  x ; y  X  X  d  X  y ; x  X  (4) d  X  x ; z  X  6 d  X  x ; y  X  X  d  X  y ; z  X  8 x ; y ; z 2 X erties 1, 2 and 3, it is called semi-metric , so this is the name we use in the rest of the paper. With the main goal of providing a general definition about fs-distances and having in mind that X  X  that each fs-distance is defined in terms of distances for each X where F : R n ! R  X  measures the proximity between points in every dimension.
+Distance in X i is usually measured by means of j p i q i required to be a distance, in fact, it could return negative values.
+However, 8 x ; y 2 X i every d i must satisfy two basic requirements: (1) d i  X  x ; y  X  X  0 () x  X  y (2) either d i  X  x ; y  X  X  d i  X  y ; x  X  P 0 (prop. 2.a) or d dratic form distances.
+ Following this, we introduce some concepts in order to define the fs-distance constraints.
+Definition 4.1. Let f : R n ! R  X  (1) We define in R n an f-ball with radius r (2) We say that an f-ball with radius r is bounded if 9 ~ (3) f is a bounded ball function if f -balls with finite radius are bounded. (5) We say that f is a uniformly scaled function if f  X  k ~ p  X  X  s  X  k  X  f  X  ~ p  X  8 k 2 R s  X  k  X  X  k 2 the ball size increases in a quadratic way.
+ two multidimensional points, specifically  X  ~ inf f  X  r  X  ; non-bounded balls, it is not difficult to adapt our proposal to solve this specific case.
+If d  X  ~ p ; ~ q  X  X  f  X  d 1  X  p 1 ; q 1  X  ; ... ; d n  X  p f  X  p ; ... ; p n  X  X  f  X  p 1 ; ... ; p n  X  .
+It is obvious that if f is symmetric and it is a bounded ball function, then 8 a ; b ; c 2 Da 6 b 6 c then j d  X  a ; b  X j 6 j d  X  a ; c  X j and j d  X  b ; c  X j
+Definition 4.4 ( fs-distance ). Let X  X  Q n i  X  1 X i be a multidimensional space. Let d where (1) F : R n ! R  X  , (2) d fs is a semi-metric defined on X , (3) every d i is X i -order consistent for 1 6 i 6 n , (4) F is a bounded ball function, (5) F is a uniformly scaled function.
+
+Then, we say that d fs is a fs-distance in X . 4.2. The approximation ptor-distance of the fs-distance that we call sbb-distance . Like L 1 distance the s mallest b ounding b oxes that enclose the similarity distance balls, as Fig. 4 shows. example, in Fig. 4 we can see a two-dimensional ball with radius 1 for a Euclidean weighted distance, defined by dimensions is respectively 1 = 6 and 1 = 2. But it happens that the rectangle defined by the two points  X  ~ inf d  X  1  X  ;
+So that an fs-distance d defined in terms of its component distances  X  d weight vector: We are ready now to introduce the distance that we use to approximate an fs-distance.
+Definition 4.5 ( sbb-distance ). The sbb-distance associated with an fs-distance d is where (1) d  X  ~ p ; ~ q  X  X  F  X  d 1  X  p 1 ; q 1  X  ; ... ; d n  X  p (2) ~ w  X  X  w 1 ; ... ; w n  X 2 R n  X  is the weight vector associated to d , which can be expressed as  X  (3) s is the scale ratio associated with F (Definition 4.1 ) framework. whose balls enclose those of the fs-distances.
+
+Theorem 4.1. Let d fs be an fs-distance and let d sbb be its associated sbb-distance, then
+Proof. d fs  X  ~ p ; ~ q  X  X  F  X  d 1  X  p 1 ; q 1  X  ; ... ; d We will prove that F 0  X  ~ x  X  6 F  X  ~ x  X  8 ~ x 2 R n .
+ Let ~ x 2 R n , since s is a bijective function, there exists k 2 R such that s  X  k  X  X  F  X  ~ x  X  . Consider then ~ y  X  1 k ~ x .
+
+We know that inf F  X  1  X  i 6 y i 6 sup F  X  1  X  i for 1 6 i
+If every d i satisfies property 2.a then 0 6 y i 6 sup F  X  1  X 
+Conversely, if every d i satisfies property 2.b then F is a symmetric function and then
+Hence, it is always true that j y i j 6 j sup F  X  1  X  i j and so j
+As s is a non-decreasing function, then defined by:
+Then, one of the following sentences is true: (1) 9 ~ x 2 R n such that F 0  X  ~ x  X  &gt; F  X  ~ x  X  , (2) 8 ~ x 2 R n we have that F 0  X  ~ x  X  6 F  X  ~ x  X  .
+
+Proof. Two situations can bring about that ~ w 0  X  ~ w (1) 9 1 6 j 6 n such that w 0 j &gt; w j
+In this case, F 0 is not a lower bound of F . (2) 8 1 6 i 6 n we have that w 0 i 6 w i
+Theorem 4.2. The sbb-distance  X  d sbb ) associated to an fs-distance  X  d distances d box defined by: where s is the scale ratio associated to d fs ,w 0 i a weight vector and d
+Proof. By Lemma 4.1 , we conclude that either d box is not a lower bound of d ditions for the similarity search algorithms) or d box  X  ~ p ; ~ q  X  associated balls. h function for an fs-distance. 5. Implementing ptor-distances in the nn-search algorithm two different situations from a topological point of view ( Fig. 5 ). On one hand, a point  X  ~ p and internal  X  d int ) distance.
+ region. In many situations this rectangle defines the whole region.
+R  X  X  ~ l ; ~ u  X  for some ~ l ; ~ u 2 X . The external distance between ~ p and R is where d  X  ~ p ; R  X  X  0.
+ boundaries.
+
+Definition 5.2 ( Internal distance ). Let ~ p 2 X be a multidimensional point and let H  X  X  internal distance between ~ p and H is where hole defined by H . [16] and Q-tree [17]. Specifically, this definition does not affect indexes like R-tree family ones. sible topological relationship between a query point and a region. as: d min . Lemma 5.1 and Theorem 5.1 prove finally that.
+
+Lemma 5.1. Let ~ p 2 X be a multidimensional point and let R be a rectangle defined in X . Then (1) d ext  X  ~ p ; R  X  6 d sbb  X  ~ p ; ~ q  X  for ~ q 2 R (2) d int  X  ~ p ; R  X  6 d sbb  X  ~ p ; ~ q  X  for ~ q R R
+Proof (1) If ~ p is inside R then d ext  X  ~ p ; R  X  X  0 and obviously d (2) If ~ p is outside R then d int  X  ~ p ; R  X  X  0 and obviously d
+The following theorem can be used to affirm that d aprox is a lower bound of d
+Theorem 5.1. Let ~ p 2 X and let R N be a rectangular region in X with or without holes, then
+Proof. (1) If ~ p is inside R N then d aprox  X  ~ p ; R N  X  X  0 and obviously (2) If ~ p is outside R N there are two possibilities:
+Applying Theorem 4.1 we have that
+Considering this result and the definition of d min , we obviously obtain that
+Summarizing, we have shown the utility of sbb-distance for building a lower bound of d restrictive, and thus the user has a high degree of freedom to choose the appropriate fs-function. 6. Cases of use
+Although the fs-distance may be very complex and it may have a high computational price, the cost for calculating and so its complexity is not significant for the whole search process. artificial vision.
+ approach. (1) The distance must be checked in order to satisfy fs-distance constraints. (2) The weight vector and the scale ratio must be determined in order to define the associated sbb-distance . (3) The sbb-distance must be used to define external and internal distances. (4) d aprox (Definition 5.3 ) is defined from external and internal distance. (5) Now, in Algorithm 1 we should replace d min by d aprox over two well-known distance families: Minkowski and Quadratic form distances. 6.1. Minkowski distances tical balls. When the weights of each dimension are equal, this family includes well-known L ean  X  L 2  X  or Manhattan  X  L 1  X  distance.
+
+A general definition for these distances is: where ~ p ; ~ q 2 X  X  Q n i  X  1 X i are multidimensional points, c i &gt; 0 is a constant used to weight i th dimension, and w i : X i X i ! R  X  is a function that satisfies property 2a, i.e. w  X  1 6 i 6 n ).
+ The value of k determines the specific distance in the collection. Recall that: If k P 1 then d k is a metric.
+ high-dimensional spaces. 1. Every Minkowski distance is an fs-distance. d k may be defined as where
+Thus, we can affirm: (1) d k is a semi-metric by means of its own definition (2) Every w i is X i -order consistent by means of its own definition (3) F is a bounded ball function:Assume that ~ q 2 B F  X  b  X  , then (4) F is a uniformly scaled function since, for ~ p 2 R n
+In fact, F is lineal scaled since the scale ratio is the identity function, i.e. s  X  a  X  X  a . 2. The weight vector and the scale ratio.Since ~ sup F  X  b  X  X  b mum distance:
+External distance : d ext  X  ~ p ; R  X  X  max 1 6 i 6 n f c i
+Internal distance: d int  X  ~ p ; R  X  X  min 1 6 i 6 n c i h 6.2. Quadratic form distances functions, that are defined as d 2 A  X  x ; y  X  X  X  x y  X  A  X  x y  X  ean distance when A is a diagonal matrix, with a ii denoting the weight of i th dimension.
+A general definition for quadratic form distances is where
+A is a symmetric and positive definite n n matrix dist  X  ~ p ; ~ q  X  X  X  d 1  X  p 1 ; q 1  X  ; ... ; d n  X  p n ; q 8 1 6 i 6 nd i : X i X i ! R must be X i -order consistent and it also must satisfy propriety 2b, i.e., d
+F : R n ! R  X  such that F  X  x  X  X  1. Every quadratic form distance is an fs-distance. (1) d A is obviously a semi-metric (2) Every d i is X i -order consistent because of its own definition (3) F is a bounded ball function. In [26] authors determine that (4) F is a uniformly scaled function. 8 ~ p 2 R n ; k 2 R 2. The weight vector and the scale ratio.
+ It has just been proved that F is a homogeneous function and so s  X  k  X  X  k .
+Moreover 8 i ; w i  X  1 ffiffiffiffiffiffiffiffiffiffi 3. The ptor-distances.
+External distance: d ext  X  ~ p ; R  X  X  max 1 6 i 6 n j h i
+Internal distance: d int  X  ~ p ; R  X  X  min 1 6 i 6 n h 0 i 7. Experimental results data by means of the associated distances to the fs-functions.
+ can be taken about the proper fs-distance.
+ mance of a k -nearest neighbor search on a d-dimensional space by using distance functions the sbb-distance where d approx , as defined in Definition 5.3 , has been used to measure the distance from a point to a region.
+Qatris iCatalog [36]. 7.1. Dataset description
+L since we use integer data type in the data file.
+ page size of 16 Kb, the numbers for the three files are shown in Table 1 . 7.2. nn-Query design and experimental scenario description (10 attributes) is 0.02. Of course, the sum of the set of weights f c show mean values for the set of queries. 7.3. Measuring the nn-query cost index and data pages) for using our framework with this data set is 1.07, that is a 7% more of accessed pages. is applied on a portion not too large of the file.
+ subset is given by the distance to the furthest neighbor.
+ usefulness of our framework. 7.4. The influence of dimensionality on the query cost time shows a similar tendency than the page access for the different data sets. 8. Conclusions tances, that  X  mercial product called Qatris iManager  X  , which has been developed by the Spanish software company SICUBO [36]. Acknowledgements useful comments and his help on the mathematical formal proofs. This research has been co-founded by the Spanish Government and the European Union (FEDER) through the grants TIN2005-09539 and TIN2008-03063.
+ Appendix A. The minimum bounding box for quadratic form distances
+In this section we will demonstrate that for every quadratic form distance A previous result is presented in Theorem A.1 .
+
+Let A 2 M n n be a symmetric and positive-definite matrix and let u : R n R n ! R be an inner product on R n defined by So, matrix A can be used to define a quadratic form  X  u  X  ~ x ; ~ x  X  ), and a norm on R n  X k ~ x k Theorem A.1. The dual space of  X  R n ; kk A  X  is  X  R n ; kk Proof. Let ~ a 2 R n be an element of the dual space of  X  R n ; kk
+The Cauchy X  X chwarz inequality states that if ~ p ; ~ q 2 R n then
+Let ~ x ; ~ a 2 R n and ~ b  X  ~ aA 1 , then we have that
+Thus,
+Moreover, this maximum value is reached if the vector ~ aA and
+Then, k ~ a k X  sup xAx t  X  1 j ~ a ~ x t j X 
+As a particular case of Theorem A.1 let ~ a  X  ~ e i , where ~ e j  X  i
+References

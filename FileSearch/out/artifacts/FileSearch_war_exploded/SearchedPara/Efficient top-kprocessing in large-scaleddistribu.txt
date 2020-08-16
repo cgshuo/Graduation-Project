@@ -1,0 +1,138 @@
+ 1. Introduction
+The rapid development of communication technology has significantly reduced the cost of maintaining a ing/removing a server requires updating the information only in a small part of the network. quality X  X , respectively. The objective is to efficiently answer queries of the form: SELECT address FROM PROPERTY ORDER BY 0.3  X  size +0.5  X  NSR +0.2  X  NAQ DESC
+STOP AFTER 10 which returns the top-10 houses maximizing a function that computes a weighted sum of the columns of
+PROPERTY (e.g., the weight on NSR is 0.5). The system should support queries with any weighting. 1.1. Problem definition
+We consider a distributed database that integrates a large number of servers in a network. Our discussion ical connections among servers). The acyclic graph can be easily implemented, by requiring each vertex to logical topology.
+ region (i.e., the server X  X   X  X  X urisdiction region X  X ) of the ranking space.
+ a preference function f ~ q , which computes a score f ~ q query. 1.2. Motivation and contributions who present an algorithm that minimizes the number of tuple transfers. Unfortunately, the minimization does not necessarily result in the least network communication, because two servers may need to exchange many messages before a tuple is transmitted. To alleviate the problem, Balke et al. [1] develop an index which equivalence implies that both queries have identical weights on all attributes).
+Motivated by this, we develop bran ch ca ching (BRANCA), an efficient technique for supporting top-k que-ries in large-scaled distributed databases. The core of BRANCA is the integration of two orthogonal method-
+Specifically, semantic caching improves conventional cache-replacement schemes (such as  X  X  X east recently other hand, tags additional information to each entry in a routing table, which serves as a brief summary of the data in the subnet corresponding to that entry. In BRANCA, each participating server caches data mic findings with a solid theoretical analysis to prove the effectiveness of BRANCA.
+The rest of the paper is organized as follows. Section 2 explains the fundamental concept of  X  X  X ranch caches X  X . Section 3 presents the query algorithm of BRANCA, while Section 4 analyzes its performance. Sec-tion 5 elaborates the maintenance of branch caches during query processing. Section 6 reviews the previous experimental evaluation that validates the efficiency of BRANCA in practice. Finally, Section 8 concludes the paper with directions for future work. 2. Branch caches
+Let X be any server in the underlying topology, and e an edge adjacent to X . The topology becomes two R that are stored in this subgraph.
+
+Apparently, a server X has as many branch subgraphs as the number of its neighbors in the topology. For each item in X . bc ( e ) has the form top-k result in the entire network  X  they are only the result in a branch subgraph.
+A , for instance, has two neighbors: B and another server connected by edge e
+Hence, A has two branch subgraphs: (i) A . bsg ( e 1 ), which includes all the servers in set S containing B and set S 2 . Accordingly, A maintains two branch caches A . bc in the example) of A . bc 1 indicates that, among all the data stored in S in A . bc 2 , we can assert that tuples o 3 , o 4 ,and o 5 A . bsg ( AB ).
+
+Likewise, B also has two branch subgraphs, and the same number of branch caches. Fig. 1 demonstrates the is decided by a cache-replacement strategy explained in Section 5 ). 3. Top-k processing with BRANCA
+BRANCA performs top-k retrieval based on the following rationale. First, it attempts to derive as many high level (Section 3.1 ), and then clarify the details of pruning (Section 3.2 ). 3.1. The high level algorithm
+Fig. 2 presents the pseudo-code of top-k search with BRANCA. Next, we explain the algorithm using the running example of Fig. 1 .
+ any of the branch caches of A .In Fig. 1 , the content of A . ds , which involves a single object o top of the figure. Clearly, S ={ o 1 , o 2 , o 3 , o 4 , o that maximize the preference function f {0.5, 0.5} (Statement 5), and place them in rslt (={ o
+Next, TOPK (Statements 6 X 9) inspects whether each branch subgraph of A can be eliminated from further consideration. This is accomplished by function PRUNE-BRANCH which, as analyzed in the next section,  X  ( The first application of PRUNE-BRANCH ) For the neighbor of A in S ment 8) is invoked with parameters A . bc 1 , {0.5,0.5}, 2, { o clear after the next section), meaning that if a tuple o in S appear in A . bc 1 . Hence, S 1 does not need to be explored.  X  ( The second application ) For the neighbor B of A , PRUNE-BRANCH is invoked with parameters A . bc {0.5,0.5}, 2, { o 3 , o 7 }. This time, PRUNE-BRANCH returns false, and hence, B is added to list For each server Y in list contact , TOPK simultaneously requests the top-k result rslt Statement 11, which has the form rslt B = TOPK ( B ,{0.5,0.5},2, A ) here.
+
+The execution of TOPK on server B proceeds in the same manner as described earlier, except that the branch
+Statements 1 X 5, it obtains a set rslt containing two objects { o (i.e., B . bc 1 is not taken into account). Then,  X  ( The third application ) At Statement 8 (for the neighbor of B in S
+B do not have any changes, Statement 14 has no effect. TOPK finishes on server B , and returns { o Now the control returns to Statement 11 at server A , with rslt { o , o 4 }. The algorithm proceeds by incorporating (Statement 12) the two objects of rslt was { o 3 , o 7 } before A relayed the query to B , after incorporating rslt 13, rslt B is inserted in A . bc 1 , creating an item { { 0.5,0.5},2,{ o allocated for caching is exhausted, a cache-replacement algorithm (the topic of Section 5 ) is invoked to expunge the least useful information, taking into account all branch caches of A (Statement 14). Finally, the query results are the two objects o 3 , o 7 in rslt that maximize f
+The performance of TOPK is determined by the effectiveness of PRUNE-BRANCH , which was applied three 3.2. Pruning with branch caching value k , can any tuple o in X . bsg satisfy the following conditions simultaneously: (i) o has a score f and (ii) o does not appear in X . bc ?
+The answer to the above question is directly related to the pruning strategies of PRUNE-BRANCH . To under-search X . bsg only if our target question has a positive answer.
+
+Without loss of generality, we assume that X . bc includes c cache items:
+For each i 2 [1, c ], denote k i as the lowest score (with respect to f c = 2 for the branch cache B . bc 2 in Fig. 1 . According to the first item in B : bc result  X  ~ q 1 ; k 1  X  X f o 6 g , and k 1  X  f ~ q k  X  2 ; result  X  ~ q 2 ; k 2  X  X f o 4 ; o 5 g . Between o 4 and o f  X  o 5  X  X  0 : 52.
+
+The vector ~ q i and value k i (1 6 i 6 c ) decide a d -dimensional plane H  X  ~ q where ~ x is a variable in the ( d -dimensional) ranking space. H  X  ~ q spaces: one contains the origin of the space, and the other does not. We represent these half-spaces as
+H  X  ~ q i ; k i  X  and H  X   X  ~ q i ; k i  X  , respectively. Formally, H  X  ~ q and for H  X   X  ~ q i ; k i  X  : determine a half-space H  X   X  ~ q ; k  X  covering all the points ~ x with the property: We have:
+Lemma 1. Let H  X   X  ~ q 1 ; k 1  X  ; H  X   X  ~ q 2 ; k 2  X  ; ... ; H
+H  X   X  ~ q ; k  X  is completely enclosed in then there is no tuple o in X.bsg such that (i) f ~ q  X  o  X  &gt; k and (ii) o does not appear in X.bc . (i), o appears in H  X   X  ~ q ; k  X  . According to condition (ii), o is not in any H that o falls in H  X   X  ~ q ; k  X  , but not in the region of Formula 5 . This contradicts the fact that H pletely enclosed in the region of Formula 5 . h be pruned) is a Linear Programming (LP) problem. To clarify this, we need an alternative form of Lemma 1 . Corollary 1. If then there is no tuple o in X.bsg such that (i) f ~ q  X  o  X  &gt; k and (ii) o does not appear in X.bc . is true. h
+Simplex algorithm [18] . Based on the above analysis, Fig. 3 presents the pseudo-code of PRUNE-BRANCH .We 4.1 (using the servers of Fig. 1 ).
+
+Example 4.2 ( Pruning details in Example 4.1 ). The first application of PRUNE-BRANCH occurs after TOPK , when executed at server A , obtains rslt ={ o 3 , o 7 }, which are the two objects in A . ds [ A . bc maximize f {0.5, 0.5} . Here, PRUNE-BRANCH is invoked with parameters A . bc { o 3 , o 7 }. Statement 1 of Fig. 3 calculates k = f {0.5, 0.5} the query vector ~ q . As in Inequality 4 , ~ q and k determine a half-space H the square represents the ranking space, the half-space H H  X  ~ q ; k  X  . The line crosses o 7 , and corresponds to the equation 0.5  X  x [1] + 0.5  X  x [2] = 0.6.
+At Statement 3, c equals 2, the number of items in A . bc
+The first one H  X   X  ~ q 1 ; k 1  X  is decided by Item I 1 of A . bc is the score 0.19 of o 1 for f {0.7, 0.3} . The other half-space H ~ q  X f 0 : 3 ; 0 : 7 g , and k 2 equal to the score 0.19 of o the part of ranking space above Lines H  X  ~ q 1 ; k 1  X  and H  X  ~ q
+The grey area of Fig. 4a shows the region represented by H entirely in this area, Lemma 1 indicates that the subgraph A . bsg ( e consideration. Hence, PRUNE-BRANCH returns true at Statement 8.
+
+The second execution of PRUNE-BRANCH is invoked with the same parameters as the previous execution, score 0.6 of o 7 . For Line H  X  ~ q 1 ; k 1  X  , ~ q 1 is {0.6,0.4} (in Item I
+Similarly, for Line H  X  ~ q 2 ; k 2  X  , ~ q 2 is {0.7,0.3} (in Item I Fig. 4b , part of H  X   X  ~ q ; k  X  lies outside the grey area. As a result, contacts its neighbor B , as described in Example 4.1 ).
+
+The last application of PRUNE-BRANCH happens at server B , after TOPK has obtained rslt ={ o
+B . ds [ B . dc 2 . This application is invoked with parameters B . bc two applications, k changes to the score 0.575 of o 4 for f vious applications). For Line H  X  ~ q 1 ; k 1  X  , ~ q 1 is {0.3,0.7} (in Item I
+For Line H  X  ~ q 2 ; k 2  X  , ~ q 2 is {0.6,0.4} (in Item I inates B . bsg ( e 2 ), because the shaded area of Fig. 4c covers H 4. Theoretical evidence of the effectiveness of branch caching
+As demonstrated in the experiments, after a number of queries , BRANCA is able to solve the subsequent top-small number of servers . Next, we provide the theoretical reasoning behind this phenomenon.
+We introduce the concept of query space , which is a d -dimensional plane passing the maximum points on while Fig. 5b demonstrates a 3D example where the plane is the triangle.
+ crosses the diagonal at point A , and hence, a query at A produces the same top-k tuples as ~ q can convert any query vector to a point in the query space with an equivalent top-k set (e.g., ~ q general scenario. Assume that, in Fig. 5a , ~ q 1 and ~ q
+Indeed, the shaded area in Fig. 5a shows the pruning region (Formula 5 ) decided by ~ q
+H  X  ~ q 1 ; k 1  X  is the line that passes o and is perpendicular to ~ q
+H  X   X  ~ q ; k  X  , where k is the score of o for f 1 , the subgraph X . bsg can be eliminated.
+ Next, we generalize the above discussion to arbitrary dimensionalities.
+
+Lemma 2. Assume that X.bc is a branch cache responsible for a subgraph X.bsg. Let ~ q ~ q
+Proof. Since ~ q is in the segment ~ q 1 ~ q 2 , it can be represented as x ~ q k
+Consider any vector ~ x in H  X   X  ~ q ; k  X  . Since ~ q ~ x &gt; k , we have leading to
+As both x and 1 x are larger than or equal to 0, at least one of the following two inequalities holds: ~ q ~ x &gt; k 1 and ~ q 2 ~ x &gt; k 2 . This means that ~ x falls in the region of H an arbitrary point in H  X   X  ~ q ; k  X  ; therefore: whose score (with respect to query ~ q ) is larger than the score k of o . It means that ~ q o reasoning, either ~ q 1 o 0 &gt; k 1 or ~ q 2 o 0 &gt; k 2 the fact that tuple o is the top-1 tuple for both ~ q 1 and ~ q
+To establish statement (ii), recall that, before exploring any branch subgraph, our TOPK algorithm first obtains the tuple with the highest score among all branch caches. Let the highest score for ~ q be k least k (since o belongs to a branch cache). Hence, H  X   X  ~ q ; k indicates that our algorithm. h
+For instance, assume that queries A and B in Fig. 5a return the same top-1 tuple o . The above lemma indi-branch subgraph that X . bc is responsible for.
+ The next corollary generalizes Lemma 2 to arbitrary dimensional ranking spaces. query ~ q covered by the convex hull of Q .
+ will show that TOPK does not need to search X . bsg in answering a query at ~ p ness of the corollary according to Lemma 2 (treating ~ p 1 apply the above reasoning to reduce dimensionality. Specifically, we arbitrarily select a vertex of the polyhedron (the vertex is an element in Q ), and shoot another ray from it to ~ p carried out repetitively, eventually we obtain a point ~ p
+Lemma 2 , TOPK does not need to search X . bsg in answering a query at ~ p to search X . bsg in answering a query at any of ~ p d 3 ; ... ; ~ p cached queries.
+ it without accessing X . bsg .
+ ries has increased from quadrilateral ABCD to the pentagon.
+ section.
+
+So far we have assumed that a branch cache contains only top-1 queries. If the cached queries have higher with k objects o 1 , ... , o k . 5. Cache replacement Fig. 4b .
+
+A . bc 2 in Fig. 1 is redundant since, as shown in Fig. 4b , H mally, (following the notations in the previous section), let X . bc contain c items I
+I  X f ~ q c ; k c , result  X  ~ q c ; k c  X g . Then, the j th (1 where line H  X  ~ q j ; k j  X  and half-spaces H  X   X  ~ q j ; k item is redundant can be cast as a linear programming problem, in the same way as checking the integrity of Eq. (6) . The next lemma shows that redundant items are indeed useless in query processing. TOPK algorithm ( Fig. 2 ) prunes X.bsg, the subgraph can also be pruned even if I does not exist in X.bc . Proof. Without loss of generality, assume that I 1 is the redundant item. Thus, Formula 8 holds with j =1.
+Consider any tuple o in result  X  ~ q 1 ; k 1  X  . Since o 2 H  X  ~ q the c 1 half-spaces H  X   X  ~ q 2 ; k 2  X  ; ... ; H  X   X  ~ q i.e., f q statement (i) of the target lemma.
+ To prove statement (ii), assume that TOPK prunes X . bsg for an arbitrary top-k query ~ q . According to Lemma 1 , we have where k is the k th largest score of the tuples in X . ds and all the branch caches of X . Let us remove I ing to statement (i), the value of k remains unchanged. Furthermore, by Formula 8 , H ered by Hence, H  X   X  ~ q ; k  X  is fully covered by
+For example, as mentioned earlier, Item I 3 of A . bc 2 in Fig. 1 is redundant ( I trated in the figure). According to the above lemma, the object o
+Indeed, o 3 is included in the second item I 4 . Lemma 3 also points out that I the performance of any query.
+
+Therefore, in case the permissible cache space of a server X has been exceeded, we should first evict the evaluating the quality: where m is the number of branch caches in X (also the number of its neighbors), and X . bc for the worst branch-cache (i.e., the one having the smallest volume vol ( X . bc chance that a neighboring server needs to be contacted in answering a query. Fig. 6 formally presents the pseudo-code of CACHE-REPLACE for handling cache-space overflows.
+CACHE-REPLACE takes a parameter size tar , which is a system constant smaller than the maximum cache size is no more than size tar . In the sequel, we elaborate the details using an example.
+Example 4.3. Assume that, in Fig. 1 , server A incurs a space overflow, and CACHE-REPLACE is invoked with items in A . Since only I 3 is redundant, Statement 5 inserts the remaining items into S REPLACE .
+
+Then, Statements 7 X 9 perform greedy iterations until enough items have been evicted from S
+S shaded area in Fig. 4b ). Eliminating I 4 , however, brings bcQuality down to 0, because A . bc terminates by retaining I 1 and I 4 in A . bc 1 and A . bc
+It is natural to wonder whether Statements 1 X 4 can be omitted, since a redundant item leads to zero decrease in bcQuality , and hence, will be selected by Statement 7 anyway. To see why the removal of the redundant items is beneficial, consider a scenario where there are 100 such items before CACHE-REPLACE ments 1 X 4, after CACHE-REPLACE finishes, there would be still 80 redundant items in the branch caches. Our overflow without harming the pruning effectiveness.
+
+Formula 5 can be a complex concave hyper-polygon in high-dimensional space, whose exact volume calcula-tion requires expensive CPU-overhead. Fortunately, CACHE-REPLACE does not demand precise volumes; it
+Monte-Carlo approach. First, a points are randomly generated in the ranking space. Then, we count the num-
+Although so far we have assumed that the underlying relation R is static, our technique can be easily caches are cleared at the boundary time of two intervals, and guaranteed to be valid during each interval. 6. Related work
+Top-k retrieval has been extensively investigated in the database and information retrieval areas. In this tralized databases. 6.1. Solutions on vertically partitioned data
+The solutions of this category address the following scenario. A relation R is vertically partitioned, such horizontally partitioned across a significantly larger number of servers.
+ in detail. 6.2. Solutions on horizontally partitioned data
+The previous work most related to ours is due to Balke et al. [1] , and referred to as BNST in the sequel following the author X  X  initials. They aim at reducing the number of objects transmitted among servers, as opposed to our approach that minimizes the number of messages . Their objective is reasonable for applica-tions where an object (such as a document, an image, or a video) has a large size, such that forwarding an to exchange frequently information about the  X  X  X tatus X  X  of query execution, as long as the communication mission of a tuple entails (almost) the same overhead as an empty message.
+ of o 1 is 0.5). Server A initializes a top-result list containing empty entries e
+A first computes the top-1 result in its local dataset A . ds (i.e., o returns the best object o 3 in its local database. After receiving o the top-1 object o 7 in its local database. C stores o 7 in e returned to A , after which C re-sets e 0 D to ; .
+
+After receiving o 7 , A keeps it in e C . Since o 7 has a larger score than objects o o is similar. Specifically, since e C is empty, A issues another request to C .As e again. D returns o 8 (i.e., the second best object in D . ds )to C , which keeps it in e that of o 5 in e 0 C .As o 5 has a higher score, it is sent to A . A keeps o result list with the highest score as the second query result.
+
+The above algorithm contacts all the servers at least once. To remedy the drawback, BNST adopts an index which may terminate a query without sending messages to the entire network. However, as mentioned in Sec-6.3. Solutions in centralized databases are normalized to have unit magnitude.
+
+In Fig. 7b , assume that the tuples have been sorted according to ~ q equals the length of segment OA , where A is the projection of o on ~ q
+Assume that a user issues a query ~ q 2 . Let us draw a line H
+The line crosses the right boundary of the data space at point B . Let us shoot another line H lower than the length of segment OC , then o 0 cannot be the top-1 result of ~ q descending order of their scores for ~ q 1 , and stops as soon as an object below H the visited objects, the one with the highest score for ~ q
+Obviously, the effectiveness depends on how similar ~ q 1 PREFER to answer a top-k query by leveraging multiple views simultaneously. Among other work, the  X  X  X TOP AFTER X  X  operator is defined in [7] for formulating top-k queries with SQL. [35] present a ranked index based on the concept of  X  X  k -dominating set X  X . They also develop a branch-and-bound algorithm based on R-trees [2] . Chaudhuri and Gravano [11] suggest a method that converts a top-tional databases, and the relevant optimization issues.
+
+The above solutions are not directly applicable to the problem addressed in this paper, since they demand sive number of tuples. 7. Experiments
+This section experimentally evaluates the effectiveness of the proposed algorithms. We simulate a distrib-uted environment using a machine with a 2.8 Ghz Pentium 4 processor. Specifically, the network organizes sional space with domain [0,1] on each axis.
+ We test two distributions: Gaussian and Zipf. In a Gaussian dataset, each coordinate of a point follows a
+Gaussian distribution with mean 0.5 and variance 0.25. In a Zipf dataset, data is skewed towards the  X  X  X ax-uniform). All the dimensions are mutually independent.
+
+Each top-k query is generated as follows. The query vector contains d positive weights, each of which ran-domly distributes in [0,1]. k is another random value in [1, k from 10 to 50. Each query is issued by a random server in the network. The query cost is dominated by the communication overhead. In practice, the overhead is determined by the number of network messages, which in turn is proportional to the number of servers contacted in query processing. the number of contacted servers.
+
+We adopt the simplex implementation in the GNU Linear Programming Kit, requires the Monte-Carlo approach to calculate the volumes of pruning regions. For this purpose, we fix the parameter a to 10 5 , which guarantees the precision of numerical evaluation. Every time a cache overflow occurs, 20% of the cache is emptied, i.e., the parameter size We present the experimental results in two parts. In the next section, we study the characteristics of
+BRANCA with respect to several data and query parameters. Then, Section 7.2 compares BRANCA with environments. 7.1. Characteristics of BRANCA same amount of cache space, measured in the largest number of tuples that can be accommodated. We exam-ine three cache sizes 500, 1000, and 2000. The parameter k
+Focusing on Gaussian data, Fig. 8a shows the cost of BRANCA (in terms of how many servers are con-good pruning power even with small caches. Second, the pruning effectiveness increases continuously as the needs to contact only three servers (out of 1000).
+
+Fig. 8b shows the same results for the Zipf dataset, revealing similar observations, except that the query maximal corner; hence, the number of different query results is smaller. Therefore, given the same amount of cache space, the pruning effect is stronger than in Fig. 8a .
+
+Next, we study the amount of workload on individual servers, using the settings in the previous experi-and 2000, respectively. The y -axis captures the number of neighbor contacts by each server, averaged over times.
+ servers do not need to contact any neighbor at all.
+
+We proceed to examine the efficiency of our cache-replacement strategy. The efficiency depends on two fac-affected by the dimensionality d of the dataset, and the value of k effect using Gaussian data (the results for Zipf data are similar and omitted). Fixing k solving the linear programming problem (for removal of redundant cache items) is more expensive in high-dimensional space. Second, the overhead of checking whether a point lies in a half-space is linear to d .
+Fig. 10b exhibits the computation cost for different k max less than 1 s.
+ (i.e., after 10,000 queries, as shown in Fig. 8 ), we issue 5  X  10 2000 and network sizes at least 1000, on average a server has an overflow every more than 10 ing mechanism. Furthermore, management of the cache content entails little overhead. 7.2. Comparison with BNST Having demonstrated the characteristics of BRANCA, we proceed to compare its efficiency against BNST. lized performance. Each result in the following diagrams is the average overhead of 10,000 queries. from 100 to 10,000, with the other parameters set to their default values. In all cases, BRANCA outperforms hand, with cache size at least 1000, BRANCA contacts less than 10 servers per query even in the largest network.
+ In Fig. 12a , the cost of BRANCA grows with the network size, while it is almost unaffected in Fig. 12b .
+When the network size increases, each branch cache is responsible for a subgraph containing a larger number the maximum corner), resulting in steady query performance as the network size grows.
+The next set of experiments evaluates the influence of k max
+As expected, its cost increases with k max . As mentioned in Section 7.1 , a large k of servers contacted in a query increases by less than 1 as k demonstrating the above phenomena, except that the difference between BRANCA and BNST becomes even more obvious.
+
+Fig. 14 shows the results when d changes from 2 to 4. The efficiency of BRANCA is lower as the dimen-combinations, and hence, a larger cache is necessary to achieve the same query cost. Note that BRANCA ing less than two servers, for both Gaussian and Zipf data. In all experiments, when the cache size reaches 2000, the query cost is limited to below 20 server contacts. plots the query overhead as a function of dataset cardinality. For Gaussian data, BRANCA incurs higher cost outperforms BNST by orders of magnitude.
+
+In summary, our technique can process top-k queries very efficiently in large-scaled environments. Except cooperation of less than five servers, even in a network with 10,000 servers. Furthermore, BRANCA also dem-onstrates good scalability with respect to the dataset distribution, cardinality, and number k of results requested. 8. Conclusions and future work very large number of servers. Traditional distributed top-k algorithms are inadequate because they either
+We propose an alternative approach BRANCA, which combines semantic caching with routing indexes to sig-with extensive experiments.
+
+For future work, we plan to adapt BRANCA for supporting other query types in both relational and non-any monotone preference function. Another promising topic is nearest neighbor search, where each server closest to a query point.
+ Acknowledgements
+Yufei Tao was supported by Grant CUHK 1202/06 from the Research Grant Council of the HKSAR gov-ernment. Shuigeng Zhou was supported by the National Natural Science Foundation of China (grant number 90612007) and the Shuguang Scholar Program of Shanghai Education Development Foundation.
+References

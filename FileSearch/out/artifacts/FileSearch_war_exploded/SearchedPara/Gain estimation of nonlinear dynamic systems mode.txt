@@ -1,0 +1,67 @@
+ 1. Introduction
+Fuzzy controllers are constructed based on heuristic rules and condition for nonlinear fuzzy control systems.
+ upper bounds of the model functions. These values are dif that can be computed directly from the FBFN's parameters. such as sectorial restrictions on membership functions. 2. Dynamic gain estimation of nonlinear dynamic systems modeled by FBFNs 2.1. Local linear model of a nonlinear systems represented by FBFNs as following:
+R i : If u  X  k 1  X  X  A i 1 AND u  X  k 2  X  X  A i 2 AND ... AND u  X  k m  X  X  A y  X  k 1  X  X  B i 1 AND y  X  k 2  X  X  B i 2  X  AND y  X  k n  X  X  B i then y  X  k  X  X  b i input and the output,
+A ... A m and B 1 ... B n are fuzzy membership sets, and b represents a singleton function of the output.
+ x  X  k  X  X  f  X  x  X  k 1  X  ; u  X  k 1  X  X  y  X  k  X  X  c T x  X  k  X   X  2  X  where x  X  k  X  X  y  X  k  X  ; ... y  X  k n  X  1  X  T ; u  X  k  X  X  u  X  k  X  f  X  x  X  k 1  X  ; u  X  k 1  X  X  X  f x ; u  X  X  X  where  X  A i
+When the states of the system are around a certain trajectory described by x x  X  k 1  X  X  y 0  X  k 1  X  ; ... ; y 0  X  k n  X  ; u 0  X  k 1  X  X  u x  X  k  X  X  f  X  x 0  X  k 1  X  ; u 0  X  k 1  X  X  ; x 0  X  0  X  X  X  0 ; 0 x  X  k  X  X  fx 0  X  k 1  X  ; u 0  X  k 1  X   X  X  X  Ax 0  X  k 1  X  ; u 0 y  X  k  X  X  c T x  X  k  X   X  8  X  where
+Ax 0 ; u 0  X  X  X 
+The matrices A and B are constructed from the linearizing coef the following formulas ( Xu and Shin, 2011 ): a and b
+By changing the variables, Eq. (8) becomes ~ x  X  k  X  X  Ax 0 ; u 0  X  X  ~ x  X  k 1  X  X  Bx 0 ; u 0  X  X  ~ u  X  k 1  X  ~ y  X  k  X  X  c T ~ x  X  k  X   X  12  X  where ~ x  X  k  X  X  x  X  k  X  x 0  X  k  X  , ~ u  X  k  X  X  u  X  k  X  u the dynamic gain:
+Let N : u A L m pe -y A L n pe be an unbiased operator and L
+L  X  x :  X  0 ;  X   X   X  R n :  X  x  X  p o  X  L n pe  X  x :  X  0 ;  X   X  where the truncated signal x T is de fi ned as follows: x : t -x T  X  t  X  X  x  X  t  X  if t 1989 ):  X 
+N  X  pW  X  sup u
+Based on the obtained models, two methods to estimate the L 2.2. L 2 gain estimation of nonlinear systems represented by FBFN models local L 2 gain of the nonlinear system will also be less than  X 
+N  X 
+Bruinsma and Steinbuch (1990) can be used to calculate the values of their H 2.3. L  X  gain estimation of nonlinear systems represented by FBFN models
+This subsection provides an analytical computation of the L
+L non-smooth Newton's method ( Gerdts, 2008 ).
+ Theorem 1. (Dynamic in fi nity gain of FBFN systems):
+W  X 
+N  X  under the dynamic constraints:
+ X   X  k  X  1 ; l  X  X  A  X   X  k ; l  X 
+ X  :  X  0 ;  X   X  X  0 ;  X   X   X  X  X  n n ;  X   X  k ; k  X  X  I  X  18  X  where A and B are the coef fi cient matrices given in Eq. (9) . ~ x  X  k  X  X   X   X  k ; 0  X  ~ x  X  0  X  X  ~ y  X  k  X  X  c T ~ x  X  k  X  ;  X  19  X  ~ x  X  k  X  X   X   X  k ; l  X  ~ x  X  l  X   X  20  X  and has the following properties:  X  k ; k  X  X  I ~ x  X  k  X  X   X   X  k ; 0  X  ~ x  X  0  X   X  k  X  1 ; l  X  X  A  X  k  X   X   X  k ; l  X   X  21  X  ~ y  X  k  X  X 
+Eq. (22) can be rewritten as follows: ~ y  X  k  X  X  as provided in Eq. (23) , then its L  X  gain is given as follows:  X 
+L  X  1  X  sup where  X  G l  X  k  X   X  i is any induced norm of G l  X  k  X  . following non-smooth optimal control problem:  X 
+N  X   X  W  X  sup 3. Design a stable MLFC with an adaptive output scaling factor
+The control effort u  X  k  X  that drives the plant can be computed as follows: u  X  k  X  X  u  X  k 1  X  X  T  X  u  X  k  X  u  X  k  X  X  K out u  X  k  X   X  26  X  where  X  u  X  k  X  is the output of the fi rst layer and K out r  X  k  X  : e  X  k  X  X  y ref  X  k  X  y  X  k  X  ; r  X  k  X  X  e  X  k  X  e  X  k 1  X  signals are adopted to normalize the values of e  X  k  X  and r  X  k  X  e  X  k  X  X  K e e  X  k  X  ; r  X  k  X  X  K r r  X  k  X   X  28  X  i  X  n ; n  X  1 ; ... ; n 1 ; n and j  X  m ; m  X  1 ; ... ; m 1 two adjacent membership functions is 1 = n :
+Rule  X  i ; j  X  : IF e is E i AND r is R j THEN  X  u is U i ; j also be noted that the rule-base table is symmetric about the set point. computed by using the following fuzzy rules: Rule  X  i ; j  X  : If e is E i and r is R j then  X  K  X   X  k  X  is D  X   X  30  X  reduced. When the system output is moving into the reference signal  X  e very small ( e -0 ; r -0), the scaling factor is reduced  X  D  X  modi fi cations may be made in accordance with desired system responses. of the reference model. This layer uses the performance error  X  k  X  X  y d  X  k  X  y  X  k  X  ; _  X   X  k  X  X  third layer since they have similar functional objectives. Similarly to the applied in the third layer to compute the output scaling factor updating value
+Rule  X  i ; j  X  : If  X  is E i and _  X  is R j then  X  K  X   X  k  X  is D where D  X  is the linguistic value of  X  K  X   X  k  X  ,  X  and _  X  performance error by the same scaling factors as e  X  k  X  and r  X  k  X  :  X  k  X  X  K e  X   X  k  X  ; _  X   X  k  X  X  K r _  X   X  k  X   X  33  X  formula:
+K out  X  k  X  X  min K out  X  k 1  X  X  the output scaling factor K out does not exceed the maximum value K
+K  X  L 2 K where  X  N  X  pW is the p -gain of the nonlinear plant as de systems are presented in the next section. 4. Stability condition for FBFN-based PI fuzzy control systems cannot be easily extended since the complexity of the problem will grow signi membership functions.
+
+Lp  X  1 2 o e o L  X  p  X  1  X  AND Lq  X  1 2 o r o L  X  q  X  1  X  AND e Lp  X  membership values can be found as follows:
+H
+H
+H
+H methods:
+ X  u  X  k  X  X   X  U p ; q L  X  q  X  1  X  K r r u  X  k  X  X  G e K e e  X  G r K r r  X  C D  X  44  X  where the parameters G e , G r , C and D are given in Tables 4 and 5 . 1. The nonlinear process has a fi nite p-gain:  X  N  X  pW o  X  2. The maximum output scaling factor of the PI fuzzy controller satis
+K follows:
+S
+S  X  e 2  X  k  X  X  X  N  X  u  X  k  X  X  X  N  X  K out e 2  X  k  X  X   X  46  X  u  X  k  X  X  y ref  X  k  X  ; u 2  X  k  X  X  u  X  k 1  X  K
+From the schematic diagram in Fig. 7 , the values of e 1  X  k  X  and e e  X  k  X  X  u 1  X  k  X  S 2  X  e 2  X  k  X  X  X  y d  X  k  X  N  X  u  X  k  X  X  X  e  X  k  X   X  48  X  e  X  k  X  X  S 1  X  e 1  X  k  X  X  X  u 2  X  k  X  X  T  X  u  X  k  X  X  u  X  k 1  X 
+D  X  2 qL  X  3 L 2 K r r 4 L 4 0  X  50  X  and
+G
+K r TG e K e jj  X  G r K r jj
+As the output membership functions U i ; j are bounded by 1
+U
+U
+From the de fi nition of S 1  X  e 1  X  k  X  X  in Eq. (46) , the values of G the upper bound of S 1  X  e 1  X  k  X  X  can be computed as follows:
+S  X  e where M e is the maximum magnitude of the error signal M e  X  2 K e T  X  K r  X  X  L ;  X  1  X  TC jj X  G r K r jj M e L  X  54  X 
+S  X  e 2  X  k  X  X  X  N  X  K out e 2  X  k  X  X  r K out  X  N  X  pW e 2  X  k  X   X  where  X  N  X  pW is the gain of the nonlinear operator N  X  X  de  X 
+S system to be stable input-output are obtained as follows:  X  K out  X  N  X  pW o 1 and  X  1  X  2 o 1  X  57  X   X 
+N  X  pW o 1 and 2 K e T  X  K r  X  X  the fuzzy controller is as follows:
+K proposed by Haj-Ali and Ying (2004, 2003) . 5. Simulation Results
+The control variables of the tower crane system are the tower motor voltage M u  X  M  X  ; u 2  X  M F  X  60  X  and  X  of the payload in the Y-Z, and the X-Z plane.
+
+By using x 11  X  x p , x 12  X  _ x p , x 21  X   X  , x 22  X  _  X  crane system are given by ( Wu et al., 2013 ): _ x _ x _ x _ x where  X  1  X  0 : 2 s ;  X  2  X  0 : 1 s ;  X  3  X  0 : 15 s ,  X  4 h  X  h 3  X  0 : 01 sin  X  t  X  ; h 2  X  h 4  X  0 : 01 cos  X  t  X   X  62  X 
+The disturbances d 1 , d 2 , d 3 , and d 4 are functions of time: d  X  d 3  X  0 : 1 sin  X  t  X  exp  X  0 : 2 t  X  ; d 2  X  d 4  X  0 : Other system parameters can be found in Table 6 .
+ With the following simple feedback gains to stabilize the plant:
+K  X  X  k 11 k 12 k 21 k 22 k 31 k 32 k 41 k 42  X  X  110011 10 10 the equations of the system then become: _ x _ x  X  _ x  X  _ x  X   X  h 4  X  t  X  x 41  X  t  X  4  X  X  d 4  X  65  X  into two independent subsystems: y 1  X  N 1  X   X  1  X  and y 2 obtained to approximate the fi rst and the second process, respectively:
+If u  X  k 1  X  X  A i 11 ;:::; u 1  X  k 6  X  X  A i 16 y  X  k 1  X  X  B i 11 ;:::; y 1  X  k 6  X  X  B i 16  X 
+N 1  X  2 W  X  0 : 1 ;  X  N 2  X  2 W  X  0 : 04  X  66  X  where  X  N 1  X  2 W and  X  N 2  X  2 W denote the L 2 -gains of the input space W 9 f u A  X  g .
+
+K
+K e 2  X  1 ; K r 2  X  0 : 1 ; K  X  2  X  0 : 1 ; K _  X  2  X  30 ; K
+K
+K desired reference trajectory very closely. 6. Conclusion (AMFLC) was proposed with a mechanism to tune the output scaling factor. The References

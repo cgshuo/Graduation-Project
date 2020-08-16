@@ -1,0 +1,67 @@
+ 1. Introduction and materializes it in the form of answers for human questions.
+ same role: they want to know more.
+ those cases, we are forced to search for new algorithms that are able to access this knowledge still hidden. to other pages and make the votes of the most relevant pages have higher weight than those of the less relevant.  X  given by the sign.
+ ple, a negative vote from a node that has bad reputation becomes positive in net terms. and negative evaluations in a network. Finally, the conclusions are drawn in section five. 2. Relevance ranking algorithms
+The basic measures in social network analysis take into account the immediate environment of a node to determine its contacts that a node has.
+
+Unlike measures based on the centrality, the relevance-based rankings can get elements not belonging to the immediate more weight than one from a less important.
+ of them adds an interesting element, and in some way, there is a part of each one in our ranking algorithm. 2.1. PageRank lowing formula: factor d is recommended.
+ be used as a criterion for making decisions.
+ the calculation of the ranking. This more general formulation is: as the previous one. However, if there are nodes with a bigger e their context with a constant amount of relevance at each iteration. We refer to this version as biased PageRank . 2.2. Hyperlink-Induced Topic Search (HITS) an iterative process. The meaning of the Authority and Hub values for a given node is as follows: node.
+ which it points to.
+ After each iteration, the values are normalized so that the following invariants are ensured:
+Authority . 2.3. PageRank-based algorithms with weighted arcs. In this case, the score of each node would be calculated as follows: where p ji is the weight of the arc that goes from the vertex V vertices if the corresponding words appear close together in a sentence.
+ through a web graph in order to detect possible web spam. The e the PopRank formulation very similar to the TextRank formulation.
+ formulation of PolarityRank. 3. PolarityRank &amp; Kleinberg, 2010 ). This is exactly what our algorithm aims to accomplish.
+Our ranking algorithm takes from PageRank the idea that the relevance of a node depends on the relevance of the nodes of negative weights. The same principles would apply to the negative relevance values of the nodes. convergence of its calculation are presented. 3.1. Definition contains an associated real value or weight, distinct from zero, being p
+We propose that the sum of the values of e  X  i on the one hand and e this way we obtain scores with magnitudes similar to those of the original PageRank algorithm. 3.2. Algebraic justification as the matrix of the ( p ij ).
+ absolute values of the row j ; p j can be written as p j  X  The PolarityRank can now be expressed as q  X 
+Define now two matrices Q  X   X  X  q  X  ij  X  and Q  X  X  q ij  X  as q can be seen as the sum of the elements of column j from matrix Q the matrix Q . We can now express PolarityRank as follows:
+We define the matrix A  X   X  X  a  X  ij  X  as a  X  ij  X  q  X  ij = q as and the vector e of m 1 elements as Finally, we define the matrix A of m m elements
+With the previous auxiliary vectors and matrices, we can write the PolarityRank Eq. (1) much more easily as
+A is a stochastic matrix: All the elements of A are between 0 and 1 (both inclusive): and obviously, the sum of the elements of each column is 1. i and e i have been chosen so that
+We now define the vector with m 1 elements f = e / m (i.e., the elements of e  X  the vector with m 1 ones.
+
+Let us analyze the matrix fu t :
+Its elements are between 0 and 1, and the sum of the elements in each column is 1, so fu negative values, they will always remain non-negative since the elements of A are also non-negative.
+The Eq. (2) can then be written as:
+If we name B = ((1 d ) fu t + d A ), the expression defining the PolarityRank (1) can then be written as the eigenvector corresponding to eigenvalue 1. 3.3. Convergence demonstrate that converges.
+
+As we have seen, the expression (1) equals the expression (2) : x =(1 d ) e + d Ax . Let us express x
+PolarityRank iterative calculation: and therefore for any norm compatible with the vector and matrix. For example, using norm 1, and
+In this case, k A k 1 = 1 (recall that it is stochastic) and d &lt; 1, then lim 4. Experimental applications ficulty of the existence of edges with negative weights.
+ perform two types of experiments: the edges that have negative weights.
+ PolarityRank ( PR  X  ): we calculate the relevance applying PolarityRank to a graph with positive and negative edges. also compare our results with other well-known techniques for each problem. 4.1. Semantic orientation producers.
+ close or equal to 1, while acceptable would have a positive value, but of lesser magnitude than excellent .
+Different authors have conducted experiments to build opinion lexicons, resources where adjectives or other type of dination of adjectives using but suggests contrary semantic orientations.
+ lexicon with semantic orientations of adjectives. 4.1.1. Experimental setup Epinions . 1 The corpus contains nearly 234,000 reviews totaling more than 134 million words. observed in the corpus are shown.
+ semantic orientation to his teammates.
+
+Now we just have to select some nodes that will work as positive and negative seeds. The e + and e for the other nodes are equal to zero.
+ these values:
+To measure the goodness of the values we obtain, we use the Micro-WNOp resource ( Cerini, Compagnoni, Demontis, For-dard and those calculated by our method, we get two rankings. We compare both rankings by the Kendall distance s
+Kumar, Mahdian, Sivakumar, &amp; Vee, 2004 ), which is calculated by the following formula: these pairs. Z is the total number of ordered pairs in the gold standard . We use a value of 1 from our lexicon.
+
+To assess whether the use of the PolarityRank algorithm is an improvement respect to the original PageRank algorithm, edges were not taken into account in these experiments, since the PageRank algorithm does not consider them.
+We have also computed the semantic orientation of the nodes in the graph using the well-known Pointwise MutualInfor-sitive seed ( excellent ) and a negative seed ( poor ): contain the words within 10 words of one another, in either order. 4.1.2. Results to the graph with no negative edges (0.242) and than the one obtained by applying the Pointwise Mutual Information-Information Retrieval algorithm (0.255).
+ in those graphs with a more balanced number of positive and negative edges.
+ 4.2. Instance selection more in common with it than with any other. The nearest neighbor technique (or its variant, the k -nearest neighbors) has proven to be one of the methods that have shown better results for the task of classification. the boundaries of each class ( Aha, Kibler, &amp; Albert, 1991; Wilson &amp; Martinez, 2000 ). of the ranking produced by PolarityRank. In Fig. 2 the pseudocode of the WITS algorithm is included. discrete. 4.2.1. Experimental setup
+The experiments were carried out with 10 data sets taken from the well known UCI repository ( Asuncion &amp; Newman,
+In our experiments we have calculated instance rankings that have subsequently been used to determine the processing so that
+To evaluate the similarity between two instances the function needs to be adjusted adequately.
+ The weights p ij of the edges are calculated in the following manner:
+Let us In + ( v i ) be the set of indexes of the instances that have the same class as between v j and v i , sim ( j , i ).
+
+Let us In ( v i ) be the set of indexes of the instances that have a different class than value between v j and v i with the opposite sign, sim ( j , i ).
+ stances used as seeds has been a percentage of the total set of instances of the dataset; experimentally it has been number of items and ns the number of seeds.
+
+Once PolarityRank is calculated, we use the value of the normalized difference of PR same procedure that we used in the semantic orientation experiments. 4.2.2. Results the total of classified instances, so that a higher value indicates a better precision.
+We have compared the results obtained by the WITS algorithm using as processing order both PageRank ( PR ) and Polar-DROP3 and by the WITS algorithm using as processing order, respectively, the rankings produced by PageRank ( PR ) and PolarityRank ( PR  X  ).
+ italics. In case of a tie between several winning techniques, a combination of bold with italics has been used.
+We can see that the best average precision is obtained by PolarityRank ( PR instances that it selects, it does not include those that misclassify.
+
+PR improves DROP3 in all the datasets. When PolarityRank is used as processing order in WITS it also improves PageRank in six occasions, tying in one and losing in the remaining three. Regarding reduction, PR exceeds PR and losing two. However, with a very small loss in reduction (only a difference of 0.25%) PR ter precision with regard to PR (an improvement of 1.68%), being this measure also much more important than the reduction.
+ able to identify very well the most characteristic elements of each data set. 5. Conclusions
+In this paper we have presented a ranking algorithm, on graphs with weights, which can handle both positive and neg-votes) between the nodes of a network.
+ ing database. In both cases we have conducted an experimental study and results show that the use of this new ranking provides an information that cannot be captured by the algorithms of the PageRank style.
+PolarityRank can be applied to any knowledge propagation problem: whenever a small amount of information on some of apply PolarityRank to web spam detection and to computation of trust and reputation in social networks. References

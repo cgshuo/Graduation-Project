@@ -1,0 +1,88 @@
+ 1. Introduction to be extracted without compromising privacy.
+ resulting dataset Y is released for analysis. Perturbation approaches typically face a
+Recently, Euclidean distance-preserving data perturbation for the census model the same algorithm is applied to X .
+ 1.1. Summary of our contributions called the known input attack which proceeds in three steps. (columns in Y ). expression we derive later). estimates of their associated known original data tuples.
+ 1.2. Paper organization breach. Section 4 describes the main contribution of the paper 2. Related work aim to preserve Euclidean distance by projecting private data to a new space. 2.1. General data perturbation and transformation methods 2.1.1. Additive perturbation perturbed data to improve accuracy. Moreover, they nicely extend to additive noise the record based on data owner preference. 2.1.2. Multiplicative perturbation estimated, but do not preserve Euclidean distances among records. 2.1.3. k-anonymization projected onto the quasi-identifiers, cannot be distinguished from at least k 2.1.4. Data micro-aggregation 2.1.5. Data swapping and shuf fl ing
+However, neither swapping or shuffling preserves Euclidean distance, which is the focus of this paper. 2.1.6. Other techniques of two clustering algorithms.
+ 2.1.7. A survey
+Fung et al. [34] provided a detailed survey of work related to this paper (using the descriptive term querying. 2.2. Euclidean distance-preserving data perturbation preserving data perturbation.
+ information that could be used to recover the original training tuples. preserving data perturbation method of Oliveira and Zaiane.
+ considering. orthogonal matrix randomly from the set of those that satisfy the input  X  did not do this).
+ dimensions. They pointed out that linear regression can be used to re-estimate private data tuples. independent known input tuples is greater than n as well as less. dimensions.
+ incorporate a larger variety of prior knowledge into the attack. Our approach is tailored to known input brief ICA overview. 2.2.1. ICA overview combination of independent random variables, i.e., V =A S
+Gaussian; (ii) n  X   X  n ; and (iii) A has rank n (full rank). satisfies (i)  X  (iii) and whose components are independent. But observed is n combination of the rows of S . The columns of V can be thought of as samples that arose from a random vector permutation matrix P ,if A , S is a solution, then so is ( ADP ), ( P 2.2.2. ICA based attacks
+Liu et al. [37] considered matrix multiplicative data perturbation, Y = MX , where M is an n generated independently from the same distribution with mean zero and variance
+ICA approach to estimate X directly from Y : S = X , V = Y otherwise). They assumed the attacker has known input prior knowledge, i.e. she knows, described in the previous paragraph, they instead applied ICA separately to S 3. Euclidean distance-preserving perturbation and privacy breaches perturbation. 3.1. Notation and conventions
+In the rest of this paper, unless otherwise stated, the following notations and conventions are used. have real entries (unless otherwise stated). All vectors are assumed to be column vectors and M matrix. 3 The set of all n  X  n , orthogonal matrices is denoted by
+Likewise, given p  X  n and q  X  n matrices A and B , let A B distance-preserving data perturbation (but not which one) is also make public. 3.2. Euclidean distance-preserving perturbation
+A function H : R n  X  R n is Euclidean distance-preserving if for all x translation [ 39 , pg. 128]. In other words, H may be specified by a pair M at the origin.
+ follows. The private data owner chooses ( M T , v T ), a secret Euclidean distance-preserving function, and {1, ... , m }. Then, for 1  X  i  X  m , the data owner produces y
+Euclidean distance between the private data tuples is preserved in the perturbed dataset: for all 1 y  X  ( j )  X  . Moreover, if v T =0, then length of the private data tuples is also preserved: for all 1 3.3. Privacy breach
+For simplicity, we assume the attacker produces an estimate for a single unknown original data tuple. will employ a stochastic procedure and produce 1  X  j  X  m and non-zero, the private original data tuple that was perturbed to produce y
+De fi nition 3.1. An  X  -privacy breach occurs if ^ x  X  x ^ j  X  x no more than  X  .
+
+In the next section, we describe and analyze the known input attack. The main focus of analysis concerns, that an  X  -privacy breach occurred. 3.4. Example than the one illustrated here. 4. Known input attack
+For 1  X  a  X  m  X  1, let X a denote the first a columns of X . The attacker is assumed to know X steps. For the remainder of the paper we use interchangeably 1. Infer as many as possible of the input  X  output mappings in perturbed counterparts of X a in Y . 2. For each perturbed tuple y j in Y which is not mapped onto by procedure will result in an  X  -privacy breach when estimating the original tuple associated with y done using a closed-form expression derived later). (b) Estimate the original tuple associated with y j as ^ M 3. Choose the y j with the highest probability from step 2 and produce assumed to be orthogonal (does not involve a fixed translation, v
+Euclidean distance-preserving perturbation ( v T  X  0). 4.1. Inferring  X  a
+The attacker may not have enough information to infer  X  a address given her available information.
+Given I p {1, ... , a }, an assignment on I is a 1  X  1 function following conditions for all i , j  X  I , (1)  X  x i  X  =  X  y correct linkage between tuples in X a and Y , i.e.  X   X   X  I be more. If  X  is the only valid assignment on I , then it must equal there exists only one maximal uniquely valid subset of {1, subset of {1, ... , a } along with its corresponding assignment.
+The following straight-forward algorithm will meet the attacker's goal by employing a top subset space of {1, ... , a }. The inner for-loop uses an implicit linear ordering to enumerate the size requiring O ( 1 ) space.
+
+Algorithm 1. Overall algorithm for finding the maximal uniquely valid subset 1: For  X  = a , ... ,1, do 2: For all I p {1, ... , a } and | I |=  X  ,do 4: Otherwise output  X .
+ the known original data tuples ( a =3). Algorithm 1 proceeds as follows.  X 
+Check if I ={1, 2, 3} is uniquely valid. Since the distances of y permutation. Thus, I has more than one valid assignment (is not uniquely valid).  X 
+Check if I ={1, 2} is uniquely valid. To see that I is uniquely valid note that any valid assignment,  X  x 2  X   X   X  y  X  (2)  X  . And, it can be checked that  X  (1)  X  identity assignment on I .  X  The algorithm performs a depth-first search with each node, assignment on I 1 . The search proceeds by considering all valid assignment, ^  X  1 on ^ I 1 . In turn, ^ I 1 and ^  X  search is terminated.
+ are not valid assignments on ^ I 1  X  I 1  X  ^ i 1
+Euclidean distances; formally put, all j  X  ({1, ... , m }\ (2) for all i 1  X  I 1 ; x i 1  X  x ^ i  X  y  X  enumerate all possible, valid, extensions of  X  1 on ^ I 1 form: (i) for all  X   X  I 1 , ^  X  1  X   X  X  X   X  1  X   X  X  and (ii) search discussed in the previous two paragraphs).
+ Algorithm 2. Determining Unique Validity Main
+Inputs: I p {1, ... , a }.
+ASSIGNMENT  X   X  I . Algorithm 3. Determining Unique Validity Recursive
+Inputs: I 1 p I and  X  1 a valid assignment on I 1 . 4.1.1. Comment
+The order by which the elements of ( I \ I 1 ) and C I 1 ;  X  from smallest to largest index number.
+
+Algorithm 1 has worst-case computational complexity O ( m few pairs of original data tuples will have the same Euclidean distance. 4.2. Known input  X  output attack
+Assume, without loss of generality, that the attacker applies Algorithm 1 and learns uniquely valid subset of {1, ... , a }. Further, to simplify notation, we may also assume that of Y . As such, the attacker is assumed to know X q and the fact that Y this, she will apply an attack, called the known input  X  output attack , to produce q private tuple that was perturbed to produce y j . The known input algorithm at the beginning of Section 4 . More formally, the known input of all M  X  O n such that MX q = Y q . 1. For each q b j  X  m , compute the probability that the following stochastic procedure will result in an estimating x ^ j . (a) Estimate M T by choosing a matrix, ^ M , uniformly from (b) Estimate x ^ j as ^ M  X  y j . 7 2. Choose the y j with the highest probability from step 2 and produce
+A key component of the known input  X  output attack is the computation of that an  X  -privacy breach will result from the attacker estimating x as to maximize  X  x ^ j ;  X  . Another key component of the known input
+In most cases, M ( X q , Y q ) is uncountable and it is not obvious how to choose
+Section 4.4 . Before getting to Section 4.4 , we discuss some important linear algebra background. 4.3. Linear algebra background
+Let Col ( X q ) denote the column space of X q and Col  X  ( X
+Likewise, let Col ( Y q ) denote the column space of Y q and Col
+Col ( X q ). The  X  Fundamental Theorem of Linear Algebra  X  and M T is orthogonal, then it can be shown that Col ( Y q
+Let U k and V k denote n  X  k matrices whose columns form an orthonormal basis for Col ( X be shown that Col ( M T U k )= Col ( Y q )= Col ( V k ). Let U basis for Col  X  ( X q ) and Col  X  ( Y q ), respectively. It can easily be shown that Col ( M 4.4. A closed-form expression for  X  x ^ j ;  X  Now we return to the issue of how to choose ^ M uniformly from  X  x ^ j ;  X   X  Pr ^ M  X  y j  X  x ^ be an affine, bijection from O n  X  k to M ( X q , Y q ). 8
+Theorem 4.1. Let L be the mapping P  X  O n  X  k  X  M T U k U is the mapping M  X  M ( X q , Y q )  X  V  X  n  X  k MU n  X  k .
+ Algorithm 4. Uniform Choice From M ( X q , Y q )
+Inputs: U k ,an n  X  k matrix whose columns form an orthonormal basis of Col ( X n  X ( n  X  k ) matrices whose columns form an orthonormal basis of Col
+Outputs: ^ M a uniformly chosen matrix from M ( X q , Y q chosen as M T ; when k = n  X  1, ^ M is one of two choices (one of which equals M provided in Appendix A. First of all, from Algorithm 4 , ^
+Therefore,
+Since U
+As a result, the derivation continues
+Since Col ( M T U n  X  k )= Col ( V n  X  k ), then there exists ( n
+B  X 
+U  X  n  X  k M  X  T ,(ii) B = U  X  n  X  k M  X  T V n  X  k .Thus, B is orthogonal. where the second equality is due to the fact that B  X   X  O
+O
+Let S n  X  k U  X  n  X  k x ^ j denote the hyper-sphere in R n  X  k uniformly from O n  X  k , then any point on the surface of S denote the  X  hyper-sphere cap  X  consisting of all points in S
+Therefore, Eq. (3) becomes where SA (.) denotes the surface area of a subset of a hyper-sphere. form expression, for  X  x ^ j ; , where,  X  (.) denotes the standard gamma function, ac ( x ) denotes arccos 1  X  x ^ j kk U  X 
+Comment: it can be shown that U  X  n  X  k x ^ j is the distance from x the distance from x ^ j to the column space of X q is sufficiently small, less than x second case in Eq. (5) .
+
+Recall that the attacker seeks to use the closed-form expressions for the best estimation of x ^ j . This is naturally done by choosing j to maximize
+U doing so, first note that U k , U n  X  k , V k , and V n  X  k where A is an q  X  k matrix that can be computed 13 from U in Appendix A.
+ Algorithm 5. Known Input Attack Algorithm Inputs: Y ,  X  0, and X a .
+
+Outputs: a b j  X  m and ^ x  X  R n the corresponding estimate of x
+Comment: The -privacy breach probability  X  ( ) equals max x . Part 1 of this example showed how Algorithm 1 inferred the following mappings to perturbed tuples x
+X =[ x 1 x 2 ] and Y q =[ y 1 y 2 ]. Consider perturbed tuple y x ^ associated with y 4 ( x ^ 4  X  x 4 in this case) and  X  x ^ k =1, so, n  X  k =1 and the second or third cases of Eq. (6) apply. It can be shown that V
+V
+There are only two Euclidean distance preserving transformations fixing the origin that satisfy the input x rotation, these are the elements of M ( X 2 , Y 2 ). So ^ only one of these choices, [2,0]  X  , represent a breach so 4.5. Known input attack on general distance-preserving data perturbation distance-preserving perturbation ( v T  X  0). 4.5.1. Extending the algorithms for inferring  X  a  X  on I is valid if  X  i , j  X  I ,  X  x i  X  x j  X  =  X  y  X  ( i ) ^ i  X  I 5 I 1  X  X  ), must change: the set of all j  X  ({1, ... , m }\  X  1
+Algorithms 1, 2, and 3 work correctly as stated. 4.5.2. Extending the known input attack The basic idea is simple and relies on the fact that the same v x and y 1 , and consider the following differences x 1  X  =( x
+Let X q  X  1  X  denote the matrix with columns x 1  X  , ... , x M examines them all and chooses the highest privacy breach probability. 5. Experiments and discussion show one standard deviation above and below the average. 5.1. Experiments only involving the known input attack
+Algorithm 1 to compute I , the maximal uniquely valid assignment. Use steps 2 breach probability (a closed-form was given immediately above Algorithm 5 ).
+To measure the accuracy of the attack, we report the average of four.
+ taken to compute I is given in Fig. 5 top. For the Letter Recognition data, k takes a value in {2000, 4000, bottom.
+
+Fig. 2 top). For real data, its performance is nearly perfect
+Figs. 2 and 3 bottom. Interestingly on the synthetic dataset, the transition from for as small as 0.07).
+ reasonable.
+ known inputs and less than 30 s of run-time. 5.2. Experiments comparing the known input  X  output attack with Kaplan's attack tuple to maximize the breech probability (as done in Algorithm 5 ). following. (i) Choose a tuple y  X  randomly from Y whose unperturbed counterpart x does not appear among the a known inputs, then produce an estimate x ^  X  ^ x kk = x ^  X  kk .
+ tuple is 100 to 1000 times faster than Kaplan's. 6. Conclusion to estimate an unknown original tuple with less than 7% error with probability exceeding 0.8. random projection data perturbation: Y  X   X   X  1 = 2 ^ RX where a standard normal distribution (this type of data perturbation for orthogonal on expectation and the probability of orthogonality approaches one exponentially fast with in [43] .
+ Appendix A. Supplementary data Supplementary data to this article can be found online at http://dx.doi.org/10.1016/j.datak.2012.10.004 .
+References

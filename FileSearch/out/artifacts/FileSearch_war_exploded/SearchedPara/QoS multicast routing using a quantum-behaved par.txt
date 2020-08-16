@@ -1,0 +1,76 @@
+ 1. Introduction
+The provision of quality-of-service (QoS) guarantees is of utmost importance for the development of the multicast services and have been used by various continuous media applications networks and distributed systems ( Guerin and Orda, 1999; parameters specifying resource availability at network nodes or width), path constraints (e.g., end to end delay) and tree tion among multiple QoS parameters, however, make the problem constraints ( Drake and Hougardy, 2004 ).
+
+Due to the NP-completeness of QoS multicast routing, many heuristic algorithms such as genetic algorithms (GAs) have been 2001; Haghighata et al., 2003; Liu and Wu, 2003; Zhang et al., by starting with multiple random search points and considering complained that GA encounters some faults such as lack of local search ability, premature convergence and slow convergence speed.
+
+During the last decade, the development in optimization theory sees the emergence of swarm intelligence, a category of stochastic search methods for solving global optimization (GO) problems. Ant colony (AC) and particle swarm optimization (PSO) are two paradigms of this kind of methods, and recently have et al., 2009 ).
+
+The PSO algorithm was originally proposed by J. Kennedy as a 1995 ). It can be easily implemented and is computationally inexpensive, since its memory and CPU speed requirements are low. PSO has been proved to be an efficient approach for many continuous GO problems and in some cases it does not suffer the decades, many researchers have proposed a lot of improvements 2003; Janson and Middendorf, 2005; Parrott and Li, 2006 ).
+Recently, a new variant of PSO, called quantum-behaved particle swarm optimization (QPSO), has been proposed in order 2004a, 2004b, 2005 ). The iterative equation of QPSO is very easier to implement.
+
+The QPSO algorithm has been shown to successfully solve a wide range of continuous optimization problems ( Coelho and Alotto, routing problem, which is a significant attempt to explore the integer programming and then solved by the QPSO algorithm with routing methods based on PSO and GA.
+ network model of QoS multicast routing problem is introduced. the proposed QPSO-based QoS multicast routing approach. The experiment results are provided and analyzed in Section 5. The paper is concluded in Section 6. 2. Problem statement
+E ), where V denotes the set of nodes and E denotes the set of there exists at most one link between a pair of ordered nodes. a set of destination nodes of the multicast tree. Let R + define the some QoS metrics: delay function delay ( e ): E
+R ; and delay jitter function delay _ jitter ( e ): E -R + delay ( n ): V -R + ; cost function cost: cost  X  n  X  : V which has the following relations: D  X  X  p  X  s , t  X  X  X  C  X  T  X  s , M  X  X  X  B  X  p  X  s , t  X  X  X  min  X  bandwidth  X  e  X  X  , e A p  X  s , t  X  X  3  X  DJ  X  p  X  s , t  X  X  X  PL  X  p  X  s , t  X  X  X  1 cost function. B ( U ) A R + is bandwidth function. DJ ( U a. delay constraint: D ( p ( s , T )) r QD ; b. bandwidth constraint: B ( p ( s , T )) Z QB ; c. delay-jitter constraint: DJ ( p ( s , T )) r QDJ ; d. packet-loss constraint: PL ( p ( s , T )) r QPL ; delay-jitter constraint and QPL is packet-loss constraint.
+Therefore, QoS multicast routing problem can be represented as following:
+Minimize C  X  T  X  s , M  X  X   X  6  X  s : t : D  X  p  X  s , T  X  X  r QD  X  6a  X  B  X  p  X  s , T  X  X  Z QB  X  6b  X  DJ  X  p  X  s , T  X  X  r QDJ  X  6c  X 
+PL  X  p  X  s , T  X  X  r QPL  X  6d  X  3. Quantum-behaved particle swarm optimization
+In the PSO with m individuals, each individual is treated as a The particle moves according to the following equations:
+V
+X for i  X  1, 2, y , m ; j  X  1, 2, y , D , where c 1 and c 2 can be adjusted to balance the exploration and exploitation of
+G minimization problem:
+Minimize f  X  X  X  , s : t : X A S D R D  X  9  X  then P i , k can be updated by
+P  X  8 &lt; :  X  10  X 
+G can be found by G k  X  P g , k , where g  X  arg min r , R i , k U  X  0 , 1  X  . Generally, the value of V interval  X  V max , V max .
+
+Trajectory analysis ( Clerc and Kennedy, 2002 ) demonstrated each particle converges to its local attractor, p i , k  X  X  p defined at the coordinates p  X  c sequence of uniformly distributed random numbers in (0, 1), i.e. j j i , k U  X  0 , 1  X  .
+ i flies in the D -dimensional quantum space with a d potential Y at iteration k +1 c  X  Y j i , k  X  1  X  X  1 ffiffiffiffiffiffiffi which satisfies the bound condition that c  X  Y j i , k  X  1 Y By the definition of wave function, the probability density function is given by and thus the probability distribution function is
+Using Monte Carlo method, we can measure the j th component of position of particle i at the ( k +1)th iteration by X where u j i , k  X  1 is a sequence of random numbers uniformly L C  X  X  1 = m  X  position of the particle updates according to the following equation: X
+The parameter a in Eqs. (16) and (17) is called contraction X  swarm optimization (QPSO) algorithm. The search procedure of the algorithm is outlined below.
+ Procedure of the QPSO:
+Step 1 : Initialize the current positions and personal best positions of all the particles.
+ Step 2 : Execute the following steps.
+ Step 3 : Compute mean best position C .
+ Step 4 : Properly select the value of a .
+ to 7.
+ Step 6 : Evaluate the objective function value f ( Xi , k ). Step 7 : Update P i , k and G k .
+
+Step 8 : Update each component the particle X  X  position accord-ing to Eqs. (11) and (17).
+
+Step 9 : While the termination condition is met, return to step 2.
+
+Step 10 : Output the results including global best position and its fitness value. 4. The QoS multicast routing based on QPSO In this section, we turn our attention to the goal of solving QoS multicast routing problem by the QPSO algorithm. Since the problem is a combinatory optimization problem, we have to modify the algorithm to be suitable for the discrete problem fitness function. 4.1. Representation of the particle and initialization
+In order to apply the QPSO algorithm to the routing problem, we need to represent a path serial as a feasible solution (or a position) in the search space of the particle. In our proposed method, we design a new integral representation scheme for In this representation scheme, the number of paths (no loop) to the j th end node can be numbered by an integer variable x possible path serial with each component x j varying within the combinatory optimization problem is thereupon reduced to a 9
+M 9 -dimensional integer programming.
+
+The initial population is a matrix with row vectors represent-ing particles X  positions. The dimension of a row vector is number of end nodes. The value of the j th (1 r j r 9 M 9 randomly selecting an integer number within f 1 , 2 , ... , n 4.2. Fitness function
+In this study, we tackle the multicast routing problem as a each routing path from source node s to each end node satisfies Minimize f  X  T  X  s , M  X  X  X  f c  X  o 1 f b  X  o 2 f d  X  o 3 f delay-jitter and packet loss, respectively. The functions f and f pl are defined by f  X  cost  X  T  X  s , M  X  X   X  19  X  f  X  f  X  f  X  f  X  4.3. Loop-deletion operation
+Implementation of QPSO on the problem yields an optimal multicast tree denoted by a path serial. The path serial is a dimensional integral vector with each component being the path number of a path from the source node to the corresponding end node. To make the multicast tree a feasible solution of the of loop deletion is as follows.
+
+Loop-deletion operation: 1. for i  X  1to 9 M 9 2. for j  X  1to i +1 4. Compare the costs of the routes that constitute the loop and delete the more expensive route. 5. endif 6. endfor 7. endfor
+By the above operation, we can obtain a non-loop optimal multicast tree with least cost. The loop-deletion should be 4.4. QPSO based multicast routing algorithm
+When QPSO is employed to solve QoS multicast routing problem, the value of parameter a is controlled to decrease  X  X  a 0 a 1  X  X  MAXITER k  X  = MAXITER  X  a 0  X  24  X  where MAXITER is the maximum number of iteration the algorithm executes, and k is the number of current iteration.
+With above specifications, the QPSO-based QoS multicast routing algorithm is outlined as follows.
+ QPSO-based QoS multicast routing algorithm
+Input : The dimension of the particles X  positions (equal to the number of end nodes); population size; parameters of the network model.
+ Output: The best fitness value after QPSO executes for MAXITER iterations; optimal multicast tree.
+
+Procedure : 1. Initialize the population randomly and carry out the loop personal best positions 2. for k  X  1to MAXITER 3. Compute the mbest position C and the value of a by (24) ; 4. for each particle in the population, execute the following step; 5. Compute the fitness value of each particle; 6. Update the personal position P i , k and the global best 7. Update each component of the particle X  X  current position by 8. Executed the loop-deletion operation for the multicast tree 9. endfor 10. endfor 5. Simulation results
+To test the performance of the QPSO-based multicast routing algorithm, we performed two sets of experiments and evaluated the performance of the algorithm from the perspectives of the best multicast tree obtained, mean of best fitness values, convergence speed, routing request success ratio, etc. For the purpose of performance comparison, PSO and GA were also tested on the same problems. For all the testing problems, we did not take packet-loss constraints into account. All the experiments were implemented with Visual C++6.0 on Windows XP and executed on a PC with 2.10 GHz-CPU and 512 MB-RAM. 5.1. Results of experiment 1
+In the first set of experiments, we used the network model shown in Fig.1 as our testing problem to compare the perfor-mances of multicast routing methods based on QPSO, PSO and GA. nodes. The network model has 23 nodes with node 0 being the The experiment configurations were as follows. The population sizes for PSO, QPSO and GA were 50 and maximum number of were executed without regard to packet-loss constraints, the fitness function was the formula (18) without the last part on 100 150 200 250 300 350 400 Mean of Fitness Value 120 140 160 180 200 220 240 260 280 300 18 20 22 24 26 28 30 32 34 Mean of Average Delay 28 30 32 34 36 38 40 42 44 value of a varied linearly from 1.0 to 0.5 over the course of to 0.4 over a running and acceleration coefficients c 1 and c fixed at 2.0. For GA, the solution was binary-encoded and the binary tournament selection was used. The probability of cross-We adopted two sets of constraints in the experiments: (1) delay constraint QD  X  25, delay-jitter constraint QDJ  X  35and bandwidth constraint QB  X  40. Each algorithm executed for 30 runs on each case. The performances of the algorithms were compared from perspectives of the best multicast tree obtained, mean of fitness value and convergence speed.
+
+The best multicast tree of each case that satisfies the the multicast tree from the source node to the end nodes. It is generated by QPSO have the least costs, indicating that QPSO could yield better multicast tree than PSO and GA.
+
+To make a further comparative analysis of the algorithms X  two sets of constraints. Table 3 summarizes the results of the unpaired t -test on mean best fitness value (standard error of difference of the two means, 95% confidence interval of this the QPSO algorithm beats PSO and GA in a significant manner on the tested problem under both sets of constraints. Under Constraint Set 1, there is statistically significant difference between QPSO and PSO or GA. However, the difference between QPSO outperforms PSO and GA in an extremely significant manner on the problem. Besides, PSO shows significantly better performance than GA.
+
+To investigate the convergence properties of the algorithms, we visualize the convergence process of each algorithm on the convergence properties of the algorithms averaged over 30 runs than PSO and GA on the tested problem. 5.2. Results of experiment 2
+The second group of experiments was conducted in order to cost of link was selected in [2, 10] randomly. Bandwidth was by 2/3 light velocity. Delay jitter was selected in 5 X 15 ms randomly. The bandwidth constraint uniformly distributes in delay-jitter constraint uniformly distributes in [20, 50].
+For comparison, QPSO, PSO and GA were tested on the same sets of problems. The maximum number of iterations executed by each of the three algorithm on each problem was set to be 10 times the number of nodes in the network, that is to find a satisfactory solution. The other parameters of each algorithm were configured as in the first group of experiments. The algorithms were evaluated from angles of least cost of obtained multicast tree, execution time and routing request success ratio.
+
+By simulation, scalability of the algorithm with the problem the problems with different numbers of network nodes. It can be observed that the multicast tree obtained by QPSO on each problem has lowest least cost on average, showing that QPSO can generate the higher-quality solutions on the multicast routing problems. Fig. 7 shows the execution time of each algorithm on Least Cost of Multicast Trees Execution Time (s) the problems with different numbers of network nodes. The and PSO on the problems with the same network scale. Between
+QPSO and PSO, they seem to consume almost the same amount of computational time on the problem with the same scale. conclude that QPSO consumed least computational time among the three competitor algorithms to find out the solutions with same quality.
+
+The performance of the algorithm can also be evaluated by the routing request success ratio y req (Wang and She, 2001). y defined by y  X  N ack = N req  X  25  X  where N ack is the number of successful routing request, N number all routing request. Successful routing request means that the multicast tree obtained by the algorithm satisfies the plicated to compare all of the QoS parameters synchronously. The comparison of routing request success ratios among QPSO, thus has the best convergence performance. 6. Conclusion
+This paper proposed a QoS multicast routing method based on a modified QPSO algorithm for Internet, mobile network or other high-performance networks. The method provides QoS-sensitive of the path from the source code to each end code in the network, and thus the routing problem was solved as an integer programming with the constraints representing QoS require-ments. To obtain the feasible solution, a loop-deletion was proposed to operate on the multicast tree represented by the particle X  X  position. The QPSO-based routing algorithm, together with the method based on PSO and GA, was tested and evaluated.
+The results showed that the QPSO-based algorithm can yield better multicast trees with rapider convergence speed than PSO-experiments that on the problems with different scales, QPSO-based algorithm consumed less computational time, yielded the has good scalability with problem scales.
+ References 100 110 120 130 140 150 160 170 0 0.2 0.4 0.6 0.8 1 1.2

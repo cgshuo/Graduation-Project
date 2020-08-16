@@ -1,0 +1,110 @@
+ fi 1. Introduction
+Hybrid systems are dynamical systems that involve the interac-phases, transitions, computer program codes, etc.
+
+Hybrid systems allow to describe numerous physical processes such as chemical process control where the continuous evolution can be changed by the actuators states (valves and pumps), embedded systems where the discrete part represented by the program interacts with the physical part represented by the air traf fi c management systems, etc. Moreover, the notion of hybrid system can be used to represent complex nonlinear con-strategy which consists in decomposing the domain range of the sidered complex nonlinear system becomes by modeling as an hybrid system switching between linear or af fi ne sub-models.
+The analysis and control of hybrid system require that the system's dynamic behavior must be de fi ned by a mathematical model. This model can be developed using the physical laws that the physical laws describing the behavior of the system are not suf fi ciently well known or the system involves not easily measur-able parameters. In addition, it can lead to very complicated models that cause problems of exploitation and implementation. However, for engineering, a mathematical model must provide a compromise between accuracy and simplicity of implementation. A solution to this problem consists in using the identi fi approach which allows building a mathematical model from tion of hybrid systems represented by Piecewise AutoRegressive systems with eXogenous input (PWARX) is considered in this since the PWARX models can approximate any nonlinear system models and other representations of hybrid systems allow to transfer the results of PWA models to other classes of hybrid systems, such as Jump Linear models (JL models) ( Feng et al., 1992 ), Markov Jump Linear models (MJL models) ( Doucet et al., 2001 ), Mixed Logic Dynamical models (MLD models) ( Bemporad systems (MMPS models) ( De Schutter and Van den Boom, 2000 ), Linear Complementarity models (LC models) ( van der Schaft and Schumacher, 1998 ), Extended Linear Complementarity models (ELC models) ( DeSchutter, 1999 ).
+
+The PWARX systems are obtained by decomposing the state-input domain into a fi nite number of nonoverlapping convex polyhedral regions, and by associating a simple linear or af involves both the estimation of the parameters of the af fi an area of research where considerable work has been done in
+This approach is based on three main steps: data classi fi that the classi fi cation of data represents the  X  corner stone approach toward the objective of PWARX system identi fi cation use classical clustering algorithms for the data classi fi algorithms may converge to local minima in the case of poor most of them assume that the number of sub-models is a priori known.
+
+In this paper, we improve the performance of the existing number of sub-models. The performance of this method is illustrated by a simulation example. An experimental validation show the ef fi ciency of the developed approach.
+
+PWARX based on clustering procedure. In Section 4 ,weproposea solution to overcome the main problems of the existing methods. fi application of the developed approach to olive oil esteri reactor is presented. 2. Model and assumption In this paper, we address the problem of identifying PieceWise
+Auto-Regressive eXogenous (PWARX) systems described by y  X  k  X  X  f  X   X   X  k  X  X  X  e  X  k  X  ;  X  1  X  bounded polyhedron H in R d :  X   X  k  X  X  X  y  X  k 1  X  ; ... ; y  X  k n a  X  u  X  k 1  X  ; ... ; u  X  k n n af fi ne function de fi ned by f  X   X   X  X  where  X   X  X   X  T 1 T , s is the number of sub-models, f H i polyhedral partitions of the bounded domain H and  X  i A R parameter vector.
+ The following assumptions are assumed to be veri fi ed: A1 The number of sub-models s is unknown.
+ A2 The orders n a and n b are known.
+ cally distributed with zero mean and fi nite variance s 2 domain H R d such as 8 &gt; &lt; &gt; :  X  4  X 
+Problem statement : Identify the number of sub-models s , the partitions f H i g s i  X  1 and the parameter vectors f
+PWARX model using a data set f y  X  k  X  ;  X   X  k  X g N k  X  1 samples' number. 3. Identi fi cation of PWARX models based on clustering approach be summarized as follows: constructing small data set from the estimating the s sub-models with their partitions. 3.1. Data classi fi cation 8 X   X  ; y  X   X  A C decisively in fl uences on the performance of the algorithm.
+The optimal value of n  X  is always a compromise between two phenomena: accuracy and complexity. The bigger this parameter is, the better the estimation of the parameters is.
+We also de fi ne  X  k as follows:  X  k  X  t 1 k ; ... ; t n  X  ascending order, the indexes of the elements belonging to C
+Among the obtained local sets C k , some may contain only data square method to determine the local parameters  X  k :  X   X  X  where  X   X  X   X   X  t 1 k  X  ...  X   X  t n  X  and
+Y  X  X  y  X  t 1 k  X  ... y  X  t n  X  k  X  T :
+The obtained parameter vectors f  X  k g N k  X  1 are then classi from the k-means approach.
+
+These algorithms are interesting from a theoretical point of parameter vectors. Moreover, they are characterized by the sim-case of poor initializations. 3.2. Parameters estimation the s ARX sub-models de fi ned by the parameter vectors  X  the i th sub-model is obtained from the data of cluster D parameter vector of each sub-model according to the rule:  X   X   X  k  X  ; y  X  k  X  X  A D i 3  X  k A D i :  X  7  X  3.3. Regions estimation
+The fi nal step consists in determining the regions H i . The methods of statistical learning such as the Support Vector
+Machines (SVM) offer an interesting solution to accomplish this task ( Wang, 2005 ; Duda et al., 2001 ). The SVM are a popular 2002 ; Weston and Watkins, 1999 ).
+
+H and H j , i a j , the linear separation problem is to fi nd w b
+A R such that: w
+T  X  k  X  b 4 0 8  X  k A H i ; w T  X  k  X  b o 0 8  X  k A H j :  X  8  X 
+This problem can be easily rewritten as a feasibility problem with linear inequality constraints. The estimated hyperplane separating H i from H j is denoted with M i ; j  X   X  m i ; j m the points in H i belong to the half-space M i ; j  X  r m i ; j inequalities ( Ferrari-Trecate et al., 2003 ):  X  M where Mx r m are the linear inequalities describing the bounded domain H. 4. Chiu's clustering technique
+The classi fi cation is an important problem to achieve the ti fi cation of both sub-models and partitions depends on the presents an area of research in which few results have been methods for the identi fi cation of PWARX models are based on of nonlinear criteria. Consequently, they may converge to local performance. Also, most of these algorithms assume that the number of sub-models is a priori known. To overcome these these methods based on the Chui's clustering algorithm. 4.1. Principle point having the highest potential value is chosen as the depends on the minimum value of the potentials or the required number and centers computing.
+
+Potential computing : We consider the local parameters obtained by applying the least square method to the grouping obtained by objective of our proposed classi fi cation technique. Thus, we following expression: P  X   X  N parameter with many neighboring local parameters will have the highest potential value. The constant r a is the radius de neighborhood which can be determined by the following expres-sion: r  X  where  X  can be chosen as follows 0 o  X  o 1.
+
+Outlier processing : From the set of local parameters (  X  1 equation attribute to the outliers a low potential, we can following equation:  X   X  min  X  P  X  X   X   X  max  X  P  X  min  X  P  X  X  ;  X  12  X  where P is the vector containing the potentials P i such that P  X  X  P 1 ; ... ; P N and  X  is a parameter chosen as 0 o  X  o set of local parameters is fi ltered and reduced to (  X  i  X  N with the highest potential value as the fi rst cluster center. P guaranties that these parameters are not selected as cluster that must be chosen larger than r a to avoid obtaining cluster centers which are too close to each other. The constant r computed using this formula: r  X   X 
+N every local parameter is updated by the following formula:
+P the k th local parameter.
+
+The number of sub-models s is a parameter that we would like to determine. Therefore, we have developed some criteria for algorithm of the next section.
+
+To search the elements belonging to each cluster, we compute the distance between the estimated output and the real one and arg min  X   X  T i  X  k y k  X  ; i  X  1 ; ... ; s :  X  16  X  4.2. Algorithm Algorithm 1. Identi fi cation algorithm
+Data : Dispose of f  X  i g N i  X  1 from a given data set  X  Main steps : -Compute P i for every f  X  i g N i  X  1 according to (10) -Determine the fi ltered local parameters f  X  i g N  X  i  X  1 -Compute the fi rst cluster center  X  n 1 from (10) repeat
+Compute the other cluster centers according to the updated potential formula  X  15  X  If P n k 4  X  then Compute V  X  c  X  such as : where  X  n k is the current cluster center and  X  n c ; c  X  1 are the last selected ones : if V  X  c  X  4  X  ; c  X  1 ; ... ; k 1 then j accept  X  n k as a cluster center and continue else j reject  X  n k and compute a new potential end else j reject  X  n k and break end until V  X  c  X  r  X  ; c  X  1 ; ... k 1
+Result :Determination of the number of clusters s and the parameters f  X  i g s i  X  1 between the new cluster center and the existing ones. 4.3. Properties
+The new clustering technique has several interesting properties which can be summarized as follows: This method automatically generates the number of sub-models. This method does not require the initialization of centers.
+Therefore, the problem of convergence towards local minima does not appear.
+
+This method removes the outliers by associating small values to their potentials. This operation improves the performance of the clustering step. 5. Simulation example
+We now present an example to illustrate the performance of the proposed method.
+
+Hence, the objective of the simulation is to compare the ef fi ciency of the proposed approach with that of the modi fi ed k-measures are used ( Juloski et al., 2006 ):
+The maximum of relative error of parameter vectors is de fi by
+ X  where  X  i and  X  i are the true and the estimated parameter vectors for the sub-model i . The identi fi ed model is deemed acceptable if  X   X  is small or close to zero.
+ acceptable if s e 2 is small and/or close to the expected noise variance of the true system.
+
+The percentage of the output variation explained by the model is de fi ned by: FIT  X  100 1 the mean value of y .
+ to 100.
+
+Consider the following PWARX model ( Boukharouba, 2011 ): y  X  k  X  X  where s  X  3, n a  X  1, n b  X  1 and  X   X  k  X  X  X  y  X  k 1  X  u  X  k 1  X  regressor vector and the partitions f H i g s i  X  1 are de
+H  X f  X  A R 2 :  X  10 : 30  X  Z 0 and  X  00 : 50  X  4 0 g ;
+H  X f  X  A R 2 :  X  10 : 30  X  r 0 and  X  1 0 : 30  X  o 0 g ;
+H  X f  X  A R 2 :  X  1 0 : 30  X  Z 0 and  X  00 : 50  X  r 0 g :  X  22  X  output y ( k ) is illustrated in Fig. 1 .
+
+Firstly, we determine the local parameters using the least square method with n  X   X  20. The obtained parameter vectors are presented in Fig. 2 .
+
+Secondly, we use the Chui's clustering algorithm in order to that the proposed method is able to remove the outliers. More-symbols.
+
+Table 1 presents the estimated parameter vectors obtained with the proposed method and the k-means one.
+
+The regions H i are determined using the SVM algorithm. For the
+H  X   X  A R 2 : 0 H  X   X  A R 2 : 0 H  X   X  A R 2 : 1 H  X   X  A R 2 : 0 H  X   X  A R 2 : 2 H  X   X  A R 2 : 0
+Now, we can get the output of the system with the two methods as it is shown in Figs. 4 and 5 .
+ proposed method and the k-means method.
+
+Based on the results presented in Table 2 we observe that the proposed method gives the best results compared with those
+FIT is close to 100). 6. Experimental example: a semi-batch reactor
+This section presents an application of the proposed method to added value which is used in fi ne chemical industry such as cosmetic products. 6.1. The semi batch-reactor equation: Acide  X  Alcohol 2 Ester  X  Water :  X  29  X  increased if water is removed from the reaction. The removal of water is achieved by the vaporization technique while avoiding butanol), characterized by a boiling temperature of 118 1 greater than the boiling temperature of the water (close to 100 water may be provided by a temperature slightly greater than 100 1 C.
+
+The block diagram of the process is shown in Fig. 6 .Itis constituted essentially of:
+A reactor with double-jackets: It has a cylindrical shape manufactured in stainless steel. It is equipped with a bottom cing the reactants, a sensor of the reaction mixture tempera-ture, a pressure sensor and an ori fi ce for the condenser. The intended for heating or for cooling the reactor.
+
+A heat exchanger: It allows to heat or to cool the coolant three electrical resistances controlled by a dimmer for varying the heating power. It is intended to achieve the required to cool the reactor when the reaction is completed.
+A condenser: It allows to condense the steam generated during indicate the end of the reaction which can be deduced when no more water is dripping out of the condenser.
+ A data acquisition card between the reactor and the calculator. as illustrated in Fig. 7
+Heating stage: The reactor's temperature T r is increased to 105 1 C.
+
+Reaction stage: The temperature should be kept constant at 105 1 C until the end of the reaction which can be detected by the absence of water at the condenser (when no more water is dripped out of the condenser).
+
+Cooling stage: The reactor's temperature is decreased. 6.2. Existing method for modeling the reactor plant. The heating power P e and the reaction temperature T represent respectively the inpu t and the output of the system. disturbances. In previous work of our laboratory based on some
+The obtained measurements, presented in Fig. 8 ,arethenusedto parameters with the least square approach.
+
+The obtained system is described by the following discrete transfer function ( Mihoub et al., 2009 ):
+H  X  z  X  X  0
+A validation experiment of this model is then applied. The obtained results are presented in Fig. 9 which shows that the obtained model generates an estimated output with large error.
+These poor results are due to the nonlinearity that charac-terizes the dynamic behavior of the reactor as illustrated in easy to remark that each step of the operating cycle present a linear behavior. Consequently, this reactor can be modeled by a
+PWARX model. 6.3. PWARX model for the semi-batch reactor
+The alternative of considering a PWA map is very interesting because the characteristic of the system can be considered as piecewise linear in each operating phase: the heating phase, the reacting phase and the cooling phase. Previous works have demonstrated that the adequate estimated orders n a and n can adopt the following structure: y  X  k  X  X  where the regressor vector is de fi ned by  X   X  k  X  X  X  y  X  k 1  X  ; y  X  k 2  X  ; u  X  k 1  X  ; u  X  k 2  X  T and the parameter vectors is denoted by  X  We have picked out some input  X  output measurements from the N  X  220 and another one of length N  X  160 for the validation. to represent the reactor by a PWARX model with a number of neighboring n  X   X  70. Our purpose is to estimate the number of sub-models s , the parameter vectors  X  i  X  k  X  ; i  X  1 ; ... ; hyperplanes de fi ning the partitions f H i g s i  X  1 . The obtained results are as follows: The number of sub-models is s  X  3.
+
+It remains only to determine the partitions f H i g s i  X  1 de fi ned by the following inequalities:
+H  X f  X  A R 4 : M i  X  Z 0 g ;  X  32  X 
+M  X  0
+M  X  0
+M  X  0
+To validate the obtained models, we have considered a new input the best results in terms of precision. 7. Conclusions
+In this paper, we have considered the problem of clustering we have recalled the main steps of clustering based approach.
+This presentation shows that the used clustering algorithms
+In addition, these algorithms are sensitive to the presence of problem of convergence towards local minima is overcome. potentials to these points. Finally, our approach generates the number of sub-models. Numerical simulation results are pre-sented to demonstrate the performance of the proposed approach.
+Also, an experimental validation with an olive oil reactor is References

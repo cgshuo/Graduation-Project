@@ -1,0 +1,53 @@
+ 1. Introduction existing tools and techniques ( Sewell et al., 2000 ). with mixed success.
+
+Although FEA and experimental stress analysis are two through a case study in this paper.
+ other engineering applicat ions are also discussed. 2. Artificial intelligence  X  inverse problem analysis Problem Solver can be utilised to solve such problems. The most common and popular ANN in use today is the improve training speed.
+ predicted pressures.
+ with some component of past updates. This gives faster convergence to the minimum.
+ the output is retained and no backpropagation occurs. is made from neurons.
+ Z  X  F Testing Inputs Desired Response (Socket Strains) Input (Socket Strains) Network
+Y  X  F ! is the bias for the j th neuron in the output layer.
+Mathematically an ANN with one hidden layer can be expressed as follows:
+Y !  X  F  X  W t F  X  V t X !  X  V 0 !  X  X  W 0 !  X  X  3  X  function, given by the following equation:
+F  X  u  X  X  1 =  X  1  X  exp  X  su  X  X   X  4  X  applied as shown below:
+MF  X  u  X  X  0 : 5 a  X  1 F  X  u  X  X  X  2 F  X  u  X  b  X  5  X  8 i , 1 r i r m ) : 5 a r Y i r 2 b  X  6  X  trying to predict. 3. Inverse Problem Engine design is detailed below. find a function relating the input and output. 45 1 the component for reuse.
+
+Loading is achieved using small load cells designed and measured from the gauge.
+ to each load ( Fig. 5 ).
+ generated using a random number generator (rand()) that produces values between the minimum and a maximum load training file in Fig. 5 .
+ 3.2. Selection of ANN topology (architecture) the network; the number of PEs per layer; the type and recall.
+ a trial and error testing process.
+ prosthetic socket in a clinical environment. or trapping in a local minimum.
+ minimum. Fig. 7 d shows behaviour of a network when it found to be approximately 10%.
+ shown in Table 1 . 4. ANN inaccuracy case study (Fig.8).
+ 0.25 0.27 0.29 0.31 0.33 0.35 0.37 0.39 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 Average error Average error 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 of the actual load value.
+ (approximately 0 N) load ranges the ANN predicts poorly sections. 5. Correction methodology development (Fig. 10 ).
+ then given to the ANN to train.
+
+The theory of superposition was then used to generate complete load range.
+
+Average Error results against predicted load can be seen in Fig. 12 . give the corrected values. The corrected ANN output was load ( Fig. 13 ).
+ middle of the range.
+ Fig. 14 .
+ of the load to be 82 N.
+ difference  X  X  1 10 8 82 5  X  X  5 10 6 82 4  X 
+Therefore corrected ANN load  X  predicted load  X  difference the actual loads. 6. Correction methodology validation 20 40 60 80 100 120 140 160 20 40 60 80 100 120 140 160 Load (N)
+Load (N) 0 20 40 60 80 100 120 140 160 0 20 40 60 80 100 120 140 160 trained ANN ( Table 4 ).
+
+The ANN output and corrected ANN output were then the inherent errors in the ANN solution. Difference between Difference between Difference between Predicted and Actual (N) Difference between
+Predicted and Actual (N) Load (N)
+Load (N) 20 40 60 80 100 120 140 160 20 40 60 80 100 120 140 160 180 Load (N)
+Load (N)
+Difference between Actual and Predicted (N) 
+Difference between Actual and Predicted (N) -40 -30 -20 -10 10 20 -30 -25 -20 -15 -10 -5 10 15 and Predicted (N) and Predicted (N) 20 40 60 80 100 120 140 160 20 40 60 80 100 120 140 160 Load (N)
+Load (N) 0 20 40 60 80 100 120 140 160 0 20 40 60 80 100 120 140 160 method, is summarised in the steps below: 10. The problem patterns are shown to the ANN and the 251 rows in the file (in KPa).
+ and so are the strains).
+ 8. Discussion of this methodology are: functions in each training iteration; and applied from existing ANN training data; pattern mean square error.
+ independent of the size of the problem.
+
+This enhancement to the ANN output can be embedded as a 10 20 30 40 50 60 70 Load (N) 20 40 60 80 100 120 Load (N) 0 10 20 30 40 50 60 0 20 40 60 80 100 120 10 20 30 40 50 60 70 80 90 Load (N) 10 20 30 40 50 60 Load (N) 0 20 40 60 80 100 120 140 0 5 10 15 20 25 30 10 15 20 25 30 35 40 Load (N) 0 5 10 15 20 25 30 will publish data from this in due course.
+ currently be achieved. 9. Conclusions ANN solution envelope.
+ part of a sophisticated embedded system.
+ a well-fitted socket.
+ Acknowledgments for this research.
+ References

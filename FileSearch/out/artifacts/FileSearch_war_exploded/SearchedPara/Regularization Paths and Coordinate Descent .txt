@@ -1,0 +1,2 @@
+ problems.  X  J oint wor k with Rob Tibshirani and Jerome Friedman and regression analysis Keywords: Lasso , Logistic Regression .
+ Models (with R. Tibshirani, Chapman and Hall, 1991), and Elements of Statistical Learning (with problems. His website is www -stat.stanford.edu/~hastie

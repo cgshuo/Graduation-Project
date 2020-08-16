@@ -1,0 +1,27 @@
+ 1. Introduction framework of Lotkaian informetrics, illustrated by several examples. appears in the law of Lotka ( Lotka, 1926 ). 2. Information Production Process and effort function the amount of effort from a source needed to produce i items i = 1,2 ... , i AF , produced by an IPP is to define the Exponential Informetric Process. 3. Exponential informetric process the items is finite. More precisely, we define a set of functions denoted EF
+Informetric Process the following density function v ( f , a ): where low, explain the relationship between average of effort and entropy. 3.1. Entropy and effort that the entropy remains constant ( Egghe, 2005 ).
+ (2005) that these conditions imply the following properties: (a) m ( f , a ) is a function with decreasing density over the interval [ A ... 1 [. (b) The two principles, maximum entropy and least effort are verified simultaneously.
+Note: Here we will use a = e, where  X  X  X  is the Euler number, and Log = Log logarithmic function in any base.
+
+Also, in the following, for f 2 EF we denote as v ( f )=e is finite.
+ dition (2) is not satisfied.
+
+The reader will see that, for the following effort function: we have where B P 1. If m (f) is an Exponential Informetric Process the same holds for m (g). on the interval [1.. 1 [ we can write means of Proposition 1 , will be presented in the following. 4. Characterization of an Exponential Informetric Process function with the effort functions of a Lotkaian distribution. 4.1. Lotkaian distribution use or production of information is that of Lotka, given here in continuous form: function.
+ and neither is a density function. 4.2. Effort function and Exponential Informetric Process 4.2.1. Characterization by logarithmic effort function kaian distribution.
+
+Theorem 1. Let g be an effort function so that Limit x !1
+Proof (a) C is finite (b) C is infinite the logarithmic function b  X  Log( x )with b &gt;1.
+
+Examples (a) Exponential case (b) Mixed case (c) General inverse power law (d) Other examples the two following cases are possible:  X  X f g ( x ) = Log( x ) we know that m ( g ) is not an informetric process  X  X f g  X  x  X  X  Log  X  x  X  X  Nevertheless, we can provide a necessary condition, presented in Theorem 2 .
+Theorem 2. Assume g is an effort function so that the Limit average of produced effort is infinite.
+ b &lt;1.
+ Since a &lt; 1, we know that f is not an Exponential Informetric Process.
+Condition (5) implies:
+Since g is an increasing function not majorized we can choose A so that: Since the quantity of effort osition 1 . h 4.2.2. Characterization by generic effort function ing a finite ( Theorem 3 ) or infinite ( Theorem 4 ) quantity of effort. exists and verifies the condition: with C &gt; 1, then g is also an Exponential Informetric Process. Proof. The same as in the Theorem 1 , using the argument Theorem 2 .
+ verifying the condition: The proof is the same as in Theorem 3 , using the argument that the quantity of effort this case, infinite. 4.3. Moment and Exponential Informetric Process integer greater than 1.
+
+Theorem 5. Let n be an integer greater than 1 and g an effort function so that Limit the condition: acterized by moments of order n.
+ order n : (a) C is finite (b) C is infinite 5. Conclusion are closely linked.
+ b &gt; 1, we have an Exponential Informetric Process.
+ Acknowledgements for his relevant remarks on Theorem 1 .
+ References

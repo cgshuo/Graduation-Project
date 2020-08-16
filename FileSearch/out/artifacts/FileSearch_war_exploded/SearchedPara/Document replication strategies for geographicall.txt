@@ -1,0 +1,68 @@
+ 1. Introduction will discuss next, this architecture leads to two extremes for the placement of the web index and query processing.  X  ( Cambazoglu, Zaragoza, et al., 2010 ).
+ and potentially the revenues of the search engine.
+
+A search engine architecture based on selective replication of documents on data centers emerges as a feasible mid-Yates et al., 2009; Cambazoglu, Varol, Kayaaslan, Aykanat, &amp; Baeza-Yates, 2010 ). on non-local data centers so that future queries can be efficiently and effectively processed. in Section 9 . 2. Preliminaries 2.1. Architecture cessing queries that originate from its subset of IPs and is said to be the local data center for those queries. data centers.
+ order of scores and the top k results are returned to the user.
+ ent document collections to the final search results.
+ details about the architecture. that will contribute to the global top k set and forwards queries to only those data centers. 2.2. Document replication framework ments in the above-mentioned search architecture. In our replication framework, the documents that are frequently for some queries. The latter benefit is since queries are processed over a smaller portion of the index. the search quality, average response time, and query workload, respectively.
+In our document replication framework, we assume that the amount of compute resources made available to the search since query processing times depend on both index sizes and computing powers of data centers. of the hardware because the ratio between the local and replicated index sizes is the same for all data centers. changes in Fig. 2 b, whereas it remains the same in Fig. 2 c. 2.3. Formal problem definition
+We are given a set D X f d 1 ; d 2 ; ... ; d N g of N documents, a set Q X f q
+C X f C 1 ; C 2 ; ... ; C K g of K data centers. Every data center C to a disjoint set Q  X  # Q of queries. Moreover, each document d postings the document contributes to the index) and the frequency f results of queries in Q .
+
+Definition 1 ( Document replication ). A document replication U is a mapping from a document d in Cf C  X  g , i.e., U ( d j ) denotes the set of non-local data centers on which document d on C  X  , i.e.,
+Let / j be the number of non-local data centers on which d amount while the second assumes that each data center has a local capacity constraint. find a document replication U such that the total replication amount does not exceed G , i.e., while a given performance objective is optimized.
+ each data center C  X  2C , find a document replication U such that the replication amount on each C capacity L  X  , i.e., while a given performance objective is optimized. 2.4. Baseline solutions in ( Cambazoglu, Varol, et al., 2010 ). In this heuristic, each document d between the past access frequency and the space overhead of d in decreasing order of their profits. At each iteration, a document d capacity check P d term is the cost of sorting the documents and the latter is the cost of decoding the document replication solution. the documents that are non-local for C  X  (i.e., those in DD into a separate set L  X  if the local capacity check P d documents in each set L  X  are replicated on the respective data center C similar to the DR-G problem. 3. Setup For simulations, we create two different setups, referred to as distributed search engine with five data centers. In Europe In five most populated cities in each country.
+ distant computers available to us.
+ 2005 ).
+ For each data center, we extract samples with about 8.5 and 7 million queries from the query logs of Yahoo!, for the eliminated, duplicate terms are uniqued, and query terms are alphabetically sorted. test set.
+ documents. We evaluate the queries using a modified version of Terrier. 0.53 for the training query set and 0.32 for the test query set. For the respectively.
+ important, especially for low k and K values.
+ training query set and 0.51 (0.47) for the test query set in case of the constraint or local capacity constraints, respectively. The baselines given in Section 2.4 are similarly named as
+B-L . The default case with no replication is denoted by NR tem with respect to the replication amount in the FR scenario, i.e.,  X  K 1  X  ity is reached. A single simulation run takes under an hour with the parameters in our experiments. 4. Optimizing search quality 4.1. Objective to that of a centralized search architecture.
+
+We denote by R i the set of relevant documents obtained by evaluating query q ment collection D . Also, we denote by b C i the data center that serves query q documents are replicated via some U . We measure the result quality of a query by its precision, defined as follows.
+Definition 2 ( Precision of a query ). For a given document replication U , the precision q ( q fraction of the relevant documents on b C i to all relevant documents, i.e.,
+DR-G and DR-L problems. 4.2. Solution
+Our solution to the DR-G problem is based on a combinatorial reduction to the well-known 0 X 1 knapsack problem exceed W and their total value is maximized. For every pair of document d introduce an item t j  X  into the item set T with an associated weight w
+U ( d j ) of data centers where document d j will be replicated as
+Here, each item t j  X  2T represents the replication of document d cision by 1 = jR i j for each query q i 2Q  X  such that d j able space, bounded by the global capacity G , i.e., we pick an item of weight w Hence, the proposed reduction correctly maximizes P  X Q ; U  X  .
+ tion capacity, we solve a different knapsack problem instance for each data center C d
+The knapsack capacity is set to the local replication capacity L stance associated with each data center C  X  and obtain a solution set T ument replication U as
+This reduction correctly maximizes P  X Q ; U  X  since replicating d bounded by the local capacity L  X  , i.e., we pick an item of weight w sack problem instance associated with C  X  .
+ capacity constraint.
+ sack solution(s) as a document replication is O ( NK ), it is not shown in the complexities. 4.3. Performance evaluation 16% of the index is replicated, the loss in the average precision is at most 10% with respect to the uments in search results (previously shown in Fig. 3 ). pected, the improvements over the baselines are less pronounced at high replication amounts. In general, The precision values in the World setup are lower than those in the setup contain relatively more unique documents. Hence, the in
+World , whereas it requires only 4% replication in Europe 5. Optimizing response time 5.1. Objective objective in replicating documents, we try to reduce the average query response time.
+In this scenario, the average query response time is determined by the time needed to compute the query results on rithm is to maximize the number of queries that can be entirely processed by the local data centers without any for-warding, thus eliminating the network latency and the overhead of query processing on non-local data centers. If all as follows.
+
+Definition 3 ( Locality of a query ). For a given document replication U , the locality c ( q documents are replicated via U , i.e., problems. 5.2. Solution
+F X f S 1 ; S 2 ; ... ; S m g of m sets, where each set S i a given capacity W .
+ ity constraint is not violated by the placement of the item. The heuristic has a complexity of O ( m + the sum of the sizes of the sets in F , i.e., v  X  P S values and the last term refers to the cost of sorting the items.
+
+The solution we propose for the DR-G problem is based on a combinatorial reduction to our variation of the set union knapsack problem. Let us consider every data center C  X  2C . For each document d the main set T with an associated weight w j  X   X  s j . Moreover, for each query q
+S T , we form the document replication U as
+Here, each item t j  X  2T represents the replication of document d locality C  X Q ; U  X  . Replicating d j on data center C  X  consumes a space of s capacity, we solve a separate problem instance for each data center C item t j  X  into the main set T  X  with the same weight as before. For each query q into family F  X  . The capacity W  X  is set to the local replication capacity L solution for the DR-G problem.
+
+O ( Mk + NK lg N ), respectively. 5.3. Performance evaluation network latencies between the data centers and the network latencies between users and their local data centers ( Cambazoglu, Varol, et al., 2010 ).
+ According to the figure, the best-performing replication strategy is setup, at 16% replication, it outperforms its respective baseline B-L is relatively small.
+ depends on the setup. In Europe , the lowest average response time is attained by range, achieving about 17% reduction over the average response time attained by result in average response times higher than that of NR . For the at relatively larger replication amounts. At 16% replication, the average response time saving relative to Interestingly, the performance of the replication strategies relative to 1%.
+
+It is interesting to observe that, in the Europe setup, NR (141 ms versus 206 ms), whereas FR performs better than NR latencies between the data centers form the main overhead in the proposed strategies can outperform the NR and FR strategies when the replication amounts are low. cation amounts. Similarly, in the World setup, more documents need to be replicated to perform better than the 6. Optimizing query workload 6.1. Objective are processed on non-local data centers that are determined by an oracle query forwarding algorithm. The performance load incurred by a query is defined as follows.
+
+Definition 4 ( Remote load of a query ). For a given document replication U , the remote load x ( q center b C i , i.e., documents are replicated via U , i.e.,
+L problems. 6.2. Solution problem (see Section 5.2 ). For each pair of document d j item t j  X  in the main set T with an associated weight w j  X 
+C 2Cf C  X  g , we introduce a set S ir  X f t j  X  : d j 2D r \R capacity G . After having a solution T to the reduced problem, we form the document replication U as
+In this formulation, each item t j  X  2T represents the replication of document d plies  X D r \R i  X  # b D U i for query q i 2Q . This, in turn, implies that q w ( q and 5 .
+ lication capacity, we solve a separate problem for each data center C t in T  X  with an associated weight w j  X   X  s j . For each pair of query q duce a set S  X  ir  X f t j  X  : d j 2D r \R i g . The capacity W associated with each data center C  X  , we form the document replication U as lems have time complexities of O ( MK + Mk + NK lg( NK )) and O ( MK + Mk + NK lg N ), respectively. pattern. 6.3. Performance evaluation workload estimated for query evaluation over the entire index. Hence, the normalized workload is 1.0 for the computation.
+ In general, the proposed algorithms perform similar to the baseline algorithms. In the possible to decrease the workload by 21% (with 2% replication) relative to to NR goes up to 24% (with 4% replication). In both setups, it is possible to reduce the workload relative to half, replicating only a small fraction of the documents (e.g., 1%).
+ cache has a major impact on the query workload. In case of the of about 48% and 41% in the Europe and World setups, respectively (these values are not displayed in the plots). 7. Impact of query forwarding quality and the average query response time.
+
+Fig. 11 demonstrates the relative performance in precision and query response time values if we add query forwarding two plots show the reciprocal of the average precision values attained by the search system where no queries are to particular replication amounts (left to right: 100%, 64%, 32%, 16%, 8%, 4%, 2%, 1%, and 0%). sponse time, except for very low replication amounts. 8. Related work warding algorithm proposed in ( Baeza-Yates et al., 2009 ).
+ slightly modified version of the algorithm in ( Cambazoglu, Varol, et al., 2010 ) as our baseline.
+To our knowledge, so far, no work has proposed sophisticated document replication algorithms for multi-site search 2008 ).
+ lication of documents.
+
+The closest application of document replication to ours is that on geographically distributed web servers, where the ( Zhuo et al., 2003 ). 9. Conclusions replication algorithms used in previous works.
+ the best replication rates are between 4% and 16% for minimizing the average response time and between 2% and 4% for minimizing the query workload. We also confirmed the performance benefits of result caching in multi-site search architectures.
+ algorithm used in our work can be replaced with a practical query forwarding algorithm and the impact on the optimum replication rates can be observed. Acknowledgments This publication is based on work performed in the framework of the Project COAST-ICT-248036, funded by the European
+Community, and partially supported by the Scientific and Technological Research Council of Turkey under grant EEEAG-109E019 and COST Action IC080 ComplexHPC.
+ References

@@ -1,0 +1,18 @@
+ data samples [1].
+ methods. 2.1 Problem Formulation of all radii S subject to of abnormal (negative) samples.
+ membership U .
+ refined and converged to a stable configuration.
+For classifying a sample x , the following decision function is used: outside all of those hyperspheres.
+ the classified samples: computed as Proof For all i , from equation (2) we have If x i is normal data sample then error ( i )= Else where J = { j : x i  X  S j and 1  X  j  X  m } .
+
+We can prove that is an upper bound of primarily concentrate on the first one.
+ Theorem 2. Proof 1  X  i  X  p , we will prove that  X  d ij &gt; 0 for all j .Itmeansthat  X  i = have:  X  i = follows x&gt;  X  1, we have  X   X   X   X  It follows that 2.2 Calculating Radii, Centres and Slack Variables follows where C 1 = 1  X  samples.
+ obtain in (11) and obtain the following L ( R,c, X , X , X  )= =  X  2 = = =  X  u
+We come up with the following optimisation problem min subject to double logarithmic of tolerance , i.e. log ( log (1 / )). 2.3 Calculating Membership U ( R,c ). Given 1  X  i  X  p , let us denote The membership matrix can be updated as follows 2.4 Iterative Learning Process steps until a convergence is reached as follows 2.5 Theoretical Background of FMS-SVDD In the objective function Theorem 3. Given a m -multivariate function f ( x 1 ,x 2 ,...,x m )= d&gt; 1 . The following optimisation problem subject to yields the solution as follows If d i 0  X  0then x i 0 =1and x i =0 , i = i 0 Else x i = where i 0 =argmin Proof Case 1 : d i 0 &lt; 0 since d&gt; 1.
+ Case 2 : d i 0  X  0 The Lagrange function is of where  X  is Lagrange multiplier.
+
+Setting derivatives to 0, we gain From U The following inequality holds Proof 1 ,...,p is solution of the following optimisation problem subject to Therefore, we have It means that or It is certain that for i = p +1 ,...,n and j =1 ,...,m we have this optimisation problem, Theorem 4 is proved.
+We compared the proposed method with SVDD [14] and HMS-SVDD [8]. The classes, respectively.
+ method outperforms other kernel methods.
+ SVDD.
+ DOI 10.1007/978-3-642-37456-2_49 Chen X  it should be  X  X ianqian Chen X . _______________________________________________ ________________________________________________

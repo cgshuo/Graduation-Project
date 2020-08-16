@@ -1,0 +1,1 @@
+ Karthik Sridharan, Nathan Srebro, Shai Shalev-Shwartz  X  No  X  X ow noise X  or any other assumptions stochastic objective (log n)/n average online regret for online optimizat ion  X  1/n rate on SVM objective necessary for obtaining simple oracle inequalities on the expected loss of SVM

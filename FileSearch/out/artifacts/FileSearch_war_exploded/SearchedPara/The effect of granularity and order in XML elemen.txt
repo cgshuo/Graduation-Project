@@ -1,0 +1,39 @@
+ Nils Pharo * 1. Introduction in addition to full documents.
+ Daffodil 1 retrieval system.
+
+We have investigated two research questions in this article: 1. What level of document granularity do searchers judge to be the most relevant? 2. In what order do searchers interact with and judge the relevance of elements of different granularity? 2. Background groups), documents (approximately 12,000 articles from a selection of IEEE Computer society X  X  journals 2005).
+ travelling guides.
+ in general were positive to both the 2004 and 2005 systems, but that the 2005 system had better  X  X  X earnability X . to provide context.
+ without context, which, surprisingly, showed not much preference of searchers for the context providing system. tent in the 2005 interface.
+ to use document metadata as their initial entry point.
+ pler tasks.
+ affects the relevance judgements of said elements. 3. Method searchers). In our data we have analysed 218 sessions performed by 73 different searchers. track.
+ be to the whole document, but which actually leads to the document X  X  metadata. 2006 ). Also the interface contained the relevance judgement tool. Relevance are judged on a three-point scale: 0. Not relevant 1. Partially relevant 2. Relevant on the events in the sessions, including both input from searchers and the system X  X  response ( Table 1 ). 4. Findings 4.1. Preferred level of granularity resented as follows: 1. article = top level of document in which all other elements are included 2. fm = front matter, the metadata of the article 3. sec = section, the second level of granularity 4. ss1 = subsection level 1 5. ss2 = subsection level 2 6. bm = back matters, appendices 13.5% of the documents searchers inspected were assessed on article level. than developing sophisticated strategies for each specific system.
+ further in other data sets, such as the Wikipedia collection.
+ Note, however, that the distribution of partial relevance assessments does not differ much across elements. such because the searchers felt they were too broad or narrow. 4.2. Interaction order spected?, and (c) in what order are elements relevance assessed? 4.2.1. Order of inspected elements 4.2.2. Inspection of articles large majority (82%) of all searchers.
+ action. Table 5 contains the distribution of interaction order.
+ process.
+ inspect sub-elements and then the full article. 4.2.3. Order of element assessments assessment of subsequent elements.
+ small.
+ ment of the full article and one or more of its parts.
+ ments were assessed both before and after the article-element assessment. need, however, to contrast this with the cases where assessment values differ. of 2 X 1.
+ element assessments have been recorded, i.e. an assessment ratio of 3, 26 X 1. in the  X  X  X igher X -column within the  X  X  X efore X -column.
+ article.
+ evant after the article is assessed.
+ surprise since searchers probably tend to understand the task as being fulfilled having judged the full article. article tend to be assessed before the article.
+ 5. Discussion and conclusion account the preference of searchers to interact with sub-elements rather than full documents, if possible. important than the articles X  sections and subsections.
+ ations, literature reviews or results.
+ rigorous constraint on the document structure are probably better candidates for structural document mark-up. retrieval it must be followed up by more research to control the effect of the system interface. different types of tasks and queries are emphasised.
+ needs. This will be the subject of future research.
+ Acknowledgements make this paper better.
+ Appendix Simulated work tasks at INEX 2005
+Task ID: C1: One of your friends has recently bought a small handheld
+Global Positioning System (GPS) unit, and the possibilities offered by this technology have caught your interest. You would like to explore new killer applications for mobile devices. Therefore, you are looking for examples and descriptions of applications that use GPS, for devices such as mobile phones, PDAs (Personal Desktop Assistants) and other wireless and mobile devices.
+
+Find, for instance, information that discusses examples of how applications that use GPS can be used to accomplish new tasks or provide new services.
+ Appendix ( continued )
+Task ID: G1: New anti-terrorism laws allow intelligence agencies like the
+FBI (Federal Bureau of Investigation) and CIA (Central Intelligence Agency) to monitor computer communi-cations to spot suspected criminals and terrorists. You would like to find information about how this affects your own and other people X  X  privacy and to know what concerns have been raised.
+
+Find, for instance, information that discusses the Carnivore or Echelon projects or other similar surveillance of computer communication.
+ References

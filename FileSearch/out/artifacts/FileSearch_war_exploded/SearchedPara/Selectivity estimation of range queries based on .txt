@@ -1,0 +1,73 @@
+ 1. Introduction ators. Selectivity estimation is an integral part of query optimization. and materialized views. nel methods [11,18] , have been proposed to reduce the storage requirements of histograms without estimation.
+ [22] .
+ imental results. Section 9 summarizes our contributions. 2. Literature survey function does not fit the actual distribution well.
+ assumptions on the distributions of data.
+ and rounding errors [19] .
+ secondary storage may be needed [6] .
+ prohibitively costly for high-dimensional data.
+ of DBH or PRM can be very large. In addition, dynamically updating a DBH or PRM can also be a problem.
+ ous problem for high-dimensional applications.
+ size estimation [2] and point/range query estimation [10] .
+ series mainly in the basis functions used and the way to compute the basis functions. 3. Definitions and background
+In this section, we introduce the mathematical foundation of our approach. 3.1. Desirable properties stored statistics and parameters should be easy and can be performed dynamically. 3.2. Attribute value normalization
+Let T be a relation with attributes X 1 ; ... ; X d and x  X  x for all i  X  1 ; ... ; d .
+ domain [ l , r ] R , where l &lt; r , as follows. Let max
+X , respectively. If the minimum and maximum are not known in advance, let min large enough values, respectively, such that few or no tuple can have an X than max i .
+
+A value x i of X i can be normalized as
+From now on, we shall assume all attribute values are so normalized and shall not distinguish x unless otherwise stated.
+ 3.3. Queries conjunctive qualifications on multiple attributes in range queries. Let a  X  X  a  X  l ; r d ,and a i 6 b i for all i  X  1 ; ... ; d . We have the following types of queries: 1 6 i 6 d .  X  General range queries : have a qualification that is a conjunction of range predicates a where both i and i 2f &lt;; 6 g .
+
+In this research, we consider single-attribute range queries as well as multi-attribute ones. 3.4. Data density functions naturally represented by its frequency function. Indeed, if we look at the set of values f a not be distinct) of X one by one, we can represent its distribution by a function
+We call the above function ^ f  X  x  X  the data density function to facilitate selectivity estimation.
+
+Now let us consider the multi-attribute relation case. Let X  X  X  X relation, and A  X  l ; r  X  d be a set of n tuples, where l 6 X i  X  1 ; ... ; n . The data density function ^ f  X  x 1 ; ... ; x Note that attributes X 1 ; ... ; X d are not necessarily independent. we attempt to find an estimator for ^ f  X  X  X  , denoted by good approximation to ^ f  X  X  X  . 3.5. Sample probability
+Let a  X  X  a 1 ; ... ; a d  X 2 R d , b  X  X  b 1 ; ... ; b d  X 2 R d , and a to the hyper-interval can be represented as an integral of its data density: 3.6. Selectivity total number of tuples in the relation 2 , whereas the distribution selectivity ^ r tuple is in the hyper rectangle  X  a ; b , with respect to a data density approximation function of the relation, while the distribution selectivity is an estimate of it based on ^ f  X  x  X  X  ^ f  X  x  X  . 4. Data density approximation using cosine series derived approximate data density function to estimate selectivities.
+In the field of numerical analysis, a generalized function like approximation, requires only small amount of storage space, and can also be implemented easily. 4.1. One-dimensional case functions satisfying normal X  X  means of a data density function ^ f  X  x  X  is where the coefficients ^ b i are given by are referred to [21] for more information. The function ^ f ^ b which contains infinite numbers of functions, is
+That is, we have chosen / 0 = 1, and / i  X  x  X  X  we can see that series is orthonormal.
+ an example in the following.
+ formula Eq. (4.3) , we can calculate the coefficients of the data density estimator as follows: density function can be written as 4.2. Multi-dimensional case
+Suppose f V 1 ; ... ; V n g are sample tuples from a relation T with d attributes. Each V vector  X  V k 1 ; ... ; V kd  X  . Let i d  X  X  i 1 ; ... ; i d d -dimensional situation, e.g., ^ b i d  X  ^ b  X  i x  X  X  x 1 ; ... ; x d  X 2 X  l ; r d . Then is an orthonormal basis of L 2  X  X  l ; r d ; R  X  . To see this, let j indexes, it follows Eq. (4.7) has value 1 if j i = k i , for all i  X  1 ; ... ; d , and 0 otherwise.
+The coefficients of the data density function estimator are given by where x  X  X  x 1 ; ... ; x d  X 2 X  l ; r d . Note that only the m the d -dimensional case. 4.3. Significant coefficients distribution, the larger the m value needed to achieve a desired accuracy. the low frequency coefficients and yet not lose significant accuracy. coefficient ^ b  X  i i  X  X  i d 6 m 1is K  X  m  X  d 1 the indexes of such subset of coefficient ( i 1 ; ... ; i for each coefficient. 4.4. Data density approximation algorithm Algorithm DDEC ( S , V [ n ]): data density estimator using cosine series
+Input: (1) S : a pre-determined subset of the m d coefficients X  composite indexes f i d  X  X  i m 1 g , where m is a pre-determined number; (2) V 1 ; ... ; V where V i  X  X  V i 1 ; ... ; V id  X  .
+
+Method: 5. Selectivity estimation
+In this section, we discuss how to estimate selectivities using the estimator called the cosine (data density) estimator. 5.1. Selectivity for one-dimensional case
+Let X be a random variable such that X 2 X  l ; r R , and ^ inition (Sections 3.3 and 3.4 ), which is an estimate of r ( a , b ). The integral is usually easy to evaluate with a suitable choice of a basis { / that case. 5.2. Selectivity for multi-dimensional case
+Assume a  X  X  a 1 ; ... ; a d  X 2 X  l ; r d , b  X  X  b 1 ; ... ; b rate of the mean square error is given by
+That is, when n and m are large enough, the difference between the distribution selectivity P instance selectivity P f X  l ; x g is approximately o( n 1/2 constant 0.5, which is independent of dimension d . It is a desirable property of this estimator. 5.2.1. Range queries
+Suppose a range query has a qualification that is a conjunction of range predicates a 1 6 i 6 d , then its distribution selectivity is given by 5.2.2. General range queries
+Suppose a general range query has a qualification that is a conjunction of range predicates a 1 6 i 6 d , where i and i 2f &lt;; 6 g . Assume i is 6 for i 2f i i 2f j 1 ; ... ; j m gf 1 ; 2 ; ... ; d g .
+
+Now we can approximate this type of general range query as follows. Choose a vector n  X  X  n very small values n i &gt;0if i 2f i 1 ; ... ; i k g ; n i small values c i &gt;0 if i 2f j 1 ; ... ; j m g ; c i = 0, otherwise. Let a b by
+Since all n i  X  X  and c i  X  X  are zeros or very small positive values, ^ r  X  a selectivity of the original general range query using a and b . 5.3. Selectivity estimation algorithm present only the algorithm for computing the distribution selectivity of a range query. Let U integrals of the orthonormal basis / i d (c.f. Eq. (5.2) ).
+ Algorithm selectivity ( S ; a ; b ; ^ b  X  X  ): computing the selectivity of a range query
+Input: (1) S : a subset of the m d coefficients X  composite indexes f i is a pre-determined number; (2) a  X  X  a 1 ; ... ; a d  X  , b =( b f ^ b i d : i d  X  X  i 1 ; ... ; i d  X 2 S g : the coefficients of the estimator Output: selectivity estimation ^ r  X  a ; b  X  .
+
+Method:
+When a dimension j is not involved in the query, it implies that the whole range of X query. Since of coefficients in S in the above algorithm, we can use only a subset of S , denoted as P  X  i ; ... ; i j 1 ; 0 ; i j  X  1 ; ... ; i d  X  ; i d 2 S g , to compute the selectivity. 6. Dynamic maintenance tial changes. It turns out that our cosine estimator can be updated easily and dynamically. 6.1. Dynamic update of coefficients
+Therefore, the coefficients can be easily updated as follows: (i) Insertion (ii) Deletion (iii) Update applying the DDEC algorithm directly to the updated relation.
+ not follow the same distribution as the underlying data. 6.2. Comparisons maintenance scheme is also very complex.
+ mator. The main difference lies in the basis functions used. 7. Complexity analysis tion techniques, such as (Harr) wavelets, DCT, kernel(-spline), sketch, and Legendre polynomials. (including its index), 4 d reals for a kernel knot, and 1 + O(1 + log D + (log D ) where D is the attribute domain size. The O(1 + log D + (log D ) (one real).
+ explain them in details in the following subsections. 7.1. Estimator construction complexity
+O( m ) space. The sketch needs to store a seed with each atomic sketch (O  X  m log D much more space than the other methods.
+ derive coefficients from histograms, and O( Hm ) time for the DCT. 7.2. Estimation complexity the data relation and query relation. It also has a complexity of O( m ). is large. 7.3. Update complexity tribution does not change, an update can be accomplished in O(1) time. 8. Experimental results a 1.66 GHz CPU and 1 GB memory.
+ accuracy. We briefly summarize the results as follows. the multi-dimensional experiments. process.
+Legendre estimators all can update quickly. are also some one-dimensional cases that Legendre polynomials perform the best. The sketch is the worst.
+ In the following, we discuss the results in details.
+ 8.1. Results on synthetic datasets distributions. We run 1000 range queries with selectivity ranging from 0 to 1. 8.1.1. Synthetic datasets relation LINEITEM has attributes OORDERDATE, LSHIPDATE, LRECEIPTDATE, etc., whose values are generated as follows: where OORDERDATE is uniformly distributed between 0 and 2000, and random(num) returns a random attributes. Other attributes are generated in the same way.
+ 1 6 i 6 B , the frequency of it appearing in the relation, denoted as f 8.1.2. Estimator construction speed the number of knots) increases only moderately, from 30/4 knots in one dimension, 400/4 to 3000/4 3 knots in three dimensions, recalling that 4 d estimator is the fastest to construct, followed by the cosine estimator, in multidimensions. 8.1.3. Estimation speed 8.1.4. Update speed performs the updates in batch, while the latter on the fly.
+ ficients and the auxiliary coefficients. 8.1.5. Estimation accuracy sider only the space consumed by the atomic sketches themselves; no seed space is accounted for. while the coefficients of the wavelets are chosen by the largest absolute value criterion. of the sketch is not included; otherwise, the errors could have been orders of magnitude worse. limit of the DCT without concerning about the histogram sizes.
+ cosine transform, while the largest absolute value terms of the wavelets. the data distribution, the larger the number of coefficients needed to achieve the same accuracy. 2000%), they are left out of the figures and subsequent discussions. 256 the wavelets and Legendres.
+ wavelets and DCT are partitioned into 16 million (=(256) 3 is specified to form a multi-dimensional range query.
+ 32.01%, respectively. histograms. 8.2. Results on real datasets iments with ranges [1,100] and [1,400], respectively.
+ 48.37%.
+ tively. The cosine performs the best.
+ [0,9], and low cloud amount [0,9], are used for the experiments. cosine, DCT, kernel, and wavelet methods, respectively.
+ contribute to the large errors.
+ chose the attributes GRGC ([1,101]), EHREFPER ([101,109]), EHHNUMPP ([1,15]), RFID ([1,32]), SSU-SEQ ([0,62,465]), and LGTKEY ([2001,62,465,000]) for our experiments. and LGTKEY, for the one-and two-dimensional experiments. As observed, Legendres, DCT, and cosine 24%, and 32.1%, and 93%, respectively.
+
+For example, with 500 coefficients, the cosine has an error of 38% while the DCT 48%. 9. Conclusions sketch, and Legendres, are summarized as follows:  X  The cosine estimator is fast to construct, especially in the multi-dimensional cases.  X  The cosine estimator derives estimates the fastest. manner. concerning the size of underlying histograms.
+ for query optimization in today X  X  database systems.
+
+References

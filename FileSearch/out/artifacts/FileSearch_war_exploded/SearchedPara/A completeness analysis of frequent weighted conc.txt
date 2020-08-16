@@ -1,0 +1,120 @@
+ 1. Introduction (1) Construction methods and algorithms of CLs [1,7,9,10,13,17 lattice's intent may vary as well.
+
+FWCL's knowledge representation. Section 6 offers some conclusions and discusses future work. 2. Preliminaries value of single attribute intent. 2.1. Concept lattice (CL) attributes and I is a binary relation between G and M , IG  X  M .Ifg called the intent, for which the following two conditions are satisfied. relation I .
+De
+B called a concept lattice and denoted by b L ( G , M , I ),
+Let h 1 =( A 1 , B 1 )and h 2 =( A 2 , B 2 ) be any two nodes of the concept lattice
+B ), such that h 1  X  h 3  X  h 2 ,then h 1 is the direct specialization of h child ( h 2 ). h 2 is the direct generalization of h 1 , h follows, where J is the set of indices of the concept lattice's nodes.
+De fi nition 2. ([5]) Let b M ,  X  &gt; be a partial order set, and X is the subset of M . For any h lower bound of X . Likewise, for any h , and h  X  X , we have s elements of M , their supremum and infimum both exist, then infimum, then b M ,  X  &gt; is called a complete lattice.
+ In [5] , it is proved that the concept lattice is a complete lattice. bound set of h j , then the upper bound set of X ( denoted as super ( X )) is
+Proof. From Definition 2 ,forany h and h  X  , h  X  X and h  X   X  super ( X )aretheupperboundof X . Suppose that there exists h the upper bound of X ,forany h , h  X  X ,wehave h  X  h  X  X  ,thatis h therefore, for h j  X  X , the upper bound set of X is the intersection of P ( h
+C ( h j ).  X  super ( X ), and the infimum of X is the maximum element in sub ( X ). 2.2. Weighted concept lattice (WCL)
+Let K =( G , M , I ) be a formal context and a set of attributes is denoted by M ={ m attributes W ={ w 1 , w 2 , ... , w n }where w i  X  W (0  X 
+De fi nition 3. ([24]) A formal context is defined as a quadruple K between G and M and I p G  X  M . h w =( A , B , w ) is a triple, A 0  X  w  X  1, and the following two relations are satisfied: concept of K w , A is called the extent of h w , B is called the intent of h
+De fi nition 4. ([24]) Let h w =( A , B , w ) be a weighted concept of a formal context K In particular, if A =  X  ,or B =  X  , we assume that weight ( B )=1.
+Remark 3. Assume W to be the set of weights of individual attributes. If h
+De fi nition 5. ([24]) Let h w1 =( A 1 , B 1 , w 1 ), h w2 =( A
+K .If( A 1 p A 2 )( B 1 t B 2 ), then h w1 is called the posterity node of h is called the hierarchy order of concepts. In particular, if there is no h of h w2 , we denote Child ( h w1 ) to be the set of all the child nodes of h to be the set of all the parent nodes set of h w2 . All the weighted concepts of K weighted concept lattice, are described as b L w ( G , M , I , W ), The resulting WCL is shown in Fig. 2 .
+ 2.3. Automatic acquisition of intent weight value of a single attribute in WCL as the weight value to measure the importance of a single attribute intent.
+For any object g j and g j  X  G (1  X  j  X  n), P( m i / g j ) denotes the probability of g information of G providing the attribute m i , and is computed in the form
+An attribute set of M ={ m 1 , m 2 ,  X  , m n }inaformalcontext K following form. 3. Frequent weighted concept lattice (FWCL)
+B , w ) in the weighted concept lattice, w = weight ( B ), we introduced the following: if w (FWCL).
+ have an infimum, likewise #6 and #8 would not have a supremum. FWCL's nodes, and in this way to ensure the completeness of the resulting construct.
+Fig. 3 (a) shows a part of the weighted concept lattice. Suppose L
+K , h w1 , h w2 , h w3 , h w4 and h w5  X  L w . The following partial order relations exist: h are child nodes of h w3 ;furthermore, h w1 and h w2 have no partial order, h the infimum of h w1 and h w2 ,and h w3 is supremum of h w4 constructedisasshownin Fig. 3 (b). Since h w4 and h w5 have no supremum, h shown in Fig. 3 (b) is an incomplete lattice. Hence, h w3 of having weight values being lower than the threshold, see Fig. 3 (c).
+For an infrequent weighted concept h w =( A , B , w ), if any m , m (important) concept; otherwise, if there exists m  X  B , weight ( m ) (important) concept should be retained because it may contain some important attributes.
+De fi nition 6. Let L w be a weighted concept lattice constructed from the formal context K h  X  Top , and h w  X  Bott , (1) If Parent ( h w )( Child ( h w )) is a Top ( Bott ) node, then h (2) If Parent ( h w )( Child ( h w )) is not a Top ( Bott ) node:
+As shown in Fig. 5 ,t 1 ,t 2 ,  X  t n are Parent ( h w )( Child ( h concepts ( h w is a parent virtual concept in Fig. 5 (a), and h
+As illustrated in Fig. 6 ,t 1 ,t 2 ,  X  ,arein Parent ( h w are more than two frequentweighted concepts and parent virtual concepts ( h virtual concept in Fig. 6 (b)).
+
+If h w is both a parent virtual concept and a child virtual concept, then h virtual concept's intent is defined as  X  1; that is, if h concept (node).
+ FWCL.
+ which the user is interested.
+
+De fi nition 7. Let L w be a weighted concept lattice constructed from the formal context K as b L fw ( G , M , I , W ),  X  &gt;,  X  L fw  X  for short.
+
+De fi nition 8. Let h w1 , h w2 , h w3  X  L fw . h w1 is the frequent posterity concepts of h if and only if h w1  X  h w2 , or equivalently, ( A 1 p A 2 frequent parent concept (direct frequent predecessor) of h successor) of h w2 .
+
+Suppose now that  X  =0.116, then the FWCL constructed from Table 1 is shown in Fig. 7 . lattice (the intent weight value of node #2 is assigned  X  practically relevant.
+ Theorem 1. FWCL is a complete lattice .
+
+Proof. Let L w be a WCL constructed from the formal context K node subset of L fw , where J ={1, ... ,| L fw |} be the set of indices of L h , h w  X  X ,if h w  X  does not exist, then h w  X   X  X , h w  X   X  proof of uniqueness of the nodes in MinP ( X ) and MaxC ( X ).
+Depending on the number of nodes in X , we have two situations: (1) If there exists only one node h w in X ; obviously  X  X = h (2) If the total number of nodes of X is greater than or equal to two ( i) For any two nodes, there exists the partial order relation in X , i.e., for any h ii) For some part of nodes, there exists the partial order relation in X . XM , and the existence of the infimum of XN .
+ If there is only one node in XM ( XN ), the node is the supremum (infimum) of XM ( XN ). MaxC ( XN ) cannot be empty.
+
+Suppose that the total number of nodes of MinP ( XM )isgreaterthanorequaltotwo( concept lattice is complete as well. Therefore, in WCL, there must exist one node h h w j  X  XM p L w ,and h w j  X   X  Min P( XM ) p L w ,wehave h lattice).
+
+FWCL (from Definition 6 , h w is a frequent node or a virtual node). From h from h w  X  h w j  X  , we follow that h w is the supremum of XM ,thatis, MinP ( XM )={ h
+Example 2. Referring to Fig. 7 , let us suppose that X ={#3, #2, #8, #13}, then {#6, #8}, then MinP ( XM )={#2},  X  X =#2, and XN ={#6, #8}, MaxC ( XN )={#13},
+Theorem 2. Let L fw be a FWCL constructed from the formal context K if the weight value of each single attribute in M is greater than or equal to
+Proof. While the weight value of each single attribute in M is greater than or equal to degrades to the general weighted concept lattice.  X  4. Algebraic system of the FWCL
+FWCL, and investigate some algebraic properties of the FWCL. 4.1. Related de fi nitions and operators
+De fi nition 9. Let J be the set of indices of the nodes in FWCL, then the largest element Sup defined as follows:
+Remark 5. Suppose h w =( A , B , w ) is the largest element. If B difference with the general virtual node, we assign w=1 and h
+Especially, we define weight (  X  )=1. In the FWCL, Sup  X  and Inf
+Theorem 3. Let L fw be a FWCL constructed from the formal context K
+FWCL , then Sup  X  and Inf  X   X  L fw ; furthermore , Sup  X  and Inf
+Proof. Suppose Sup  X  =( A , B , w ). (1) Existence.
+ w  X   X  , Sup  X  is a frequent weighted concept. While w b  X  , w =1
+Definition 7 , it follows that Sup  X  =( A , B , w )  X  L fw (2) Uniqueness.
+
+From Definition 1 , we have B  X   X  unique; i.e., Sup  X  is unique.
+
+Similarly we can prove that Inf  X   X  L fw and Inf  X  is unique.
+De fi nition 10. Let L fw be a FWCL constructed from the formal context K that for any h w  X  , h w  X   X  A , we have h w  X  h w  X  , then h that for any h w  X  , h w  X   X  A , we have h w  X  h w  X  , then h is composed of all the frequent upper bounds, is called the frequent supremum of A .
+De fi nition 11. Let L fw be a FWCL constructed from the formal context K defined as follows: h w1  X  h w2 is the greatest frequent lower bound of h follows: h w1  X  h w2 is the least frequent upper bound of h
+De fi nition 12. Let L fw be a FWCL constructed from the formal context K
+FWCL, noted as V . 4.2. Algebraic properties
+Let L fw be a FWCL constructed from the formal context K w interesting algebraic properties.
+
+Proposition 1. For any h w1 , h w2 and h w3 ,h w1 ,h w2 ,h
+Proof. From Definition 10 and Definition 11 , we have h w1 h  X  h w3 , we have h w2  X  h w3  X  h w1  X  h w3 , that is, h w1 frequent upper bound of h w1 and h w2 . Furthermore, From Definition 11 , we have h h  X  h w2 , so we have h w1  X  h w2  X  h w1  X  h w3 . Similarly we can prove h
+Remark 6. Proposition 1 states that FWCL has the property of rank preservation.
+Example 3. In Fig. 7 , let h w1 =#11, h w2 =#13, and h w3 #11  X  #13  X  #11  X  #6.
+
+Proposition 2. For any h w1 and h w2 ,h w1 =( A 1 , B 1 , w the frequent infimum and supremum; furthermore, h w1  X  h w2 supremum of h w1 and h w2 .
+
+Proof. (1) if h w1  X  h w2 , we have h w2 as the frequent supremum of h (2) if h w1  X  h w2 , we have h w1 as the frequent supremum of h (3) if B 1  X  B 2  X  B 1 or B 2 ; that is, there exists no partial order relation between h i) if weight ( B 1  X  B 2 )  X   X  , from Definition 3 , we follow f ( g ( B
+Suppose there exists h w4 =( A 4 , B 4 , w 4 )  X  P 1  X  P 2 and B 4 p B 1  X  B 2 ; furthermore, since h w4  X  h w3 , we have B supremum of h w1 and h w2 ; moreover, it is unique.
+
+Example 4. Consider fig. 7 and take h w1 =#6, h w2 =#11, B d, 0.17)= h w1  X  h w2 , i.e., h w3 is the frequent supremum of h
+Example 5. Referring to Fig. 7 , consider h w1 =#6, h w2 =#8, B (15679, dfs,  X  1)= h w1  X  h w2 , i.e., h w3 is the frequent supremum of h iii) if weight ( B 1  X  B 2 )  X   X  and weight ( B 1  X  B 2 ) necessarily unique, therefore h w4 = h w1  X  h w2 and h w4
+Example 6. In Fig. 7 , h w1 =#5, h w2 =#8, B 1 = be , B 2  X  p B 1  X  B 2 , weight (  X  )=1&gt;  X  , h w4 =#1=(123456789,
+Likewise we can prove h w1  X  h w2 to be the frequent infimum of h Remark 7. The proposition states that FWCL is a type of lattice.
+Proposition 3. Operators  X  and  X  are closed; that is for any h
+Proof. For any h w1 and h w2 , h w1 , h w2  X  L fw , according to Proposition 2 , it follows that h h w2 . Since the frequent infimum necessarily exists and is unique, h
+Proposition 4. Operators  X  and  X  satisfy associativity . For any h h
+Proof. By Definitions 10 and 11 , we have h w2  X  h w2  X  h h w1  X  h w2  X  h w1  X  ( h w2  X  h w3 ); furthermore, since h w3
+Likewise, we have h w1  X  ( h w2  X  h w3 )  X  ( h w1  X  h w2 )
+Similarly, we can prove that ( h w1  X  h w2 )  X  h w3 = h w1
+Example 7. As it can be seen from Fig. 7 , we consider h w1 #12  X  #6=#12, #11  X  (#13  X  #6)=#11  X  #6=#12, i.e. (#11  X  #13) Proposition 5. Operators  X  and  X  satisfy laws of commutativity, idempotency law and absorption.
+Proof. (1) Commutativity. For any h w1 and h w2 , h w1 , h w2  X  L
+The frequent supremum (frequent infimum) of h w1 and h w2 h w2 and h w1 , so operators  X  and  X  satisfy the law of commutativity. (2) Idempotency law. For any h w , h w  X  L fw , we have h
+From Definition 10 and Definition 11 , we have h w  X  h w  X  likewise, we can prove that h w  X  h w = h w . Therefore, operators (3) Absorption law. For any h w1 , h w2 and h w3 , h w1 , h
+Proof. By Definition 10 and Definition 11 , we have h w1  X  frequent upper bound of h w1 and h w1  X  h w2 ; furthermore, h so we have h w1  X  ( h w1  X  h w2 )  X  h w1 , and hence h w1
+Similarly, we can prove that h w1  X  ( h w1  X  h w2 )= h w1
+Proposition 6. Operators  X  and  X  satisfy distributive inequality, that is for any h h  X  ( h w2  X  h w3 )  X  ( h w1  X  h w2 )  X  ( h w1  X  h w3 ) and h
+Proof. By Definition 10 and Definition 11 , we have
+According to Eqs. (4) and (5) , we follow that h w1  X  ( h from Definition 11 ,( h w1  X  h w2 )  X  ( h w1  X  h w3 ) is the greatest frequent lower bound of h h  X  ( h w2  X  h w3 )  X  ( h w1  X  h w2 )  X  ( h w1  X  h w3 ).
+
+Similarly, we have h w1  X  ( h w2  X  h w3 )  X  ( h w1  X  h w2
+Proposition 7. Let V be an algebraic system of the FWCL, then Sup on operator  X  in V .
+
+Proof. From Definition 8, Definition 9 and Proposition 2 , for any h
+Proposition 5 , we have h w  X  Sup  X  = Sup  X   X  h w = h w , and hence, Sup on operator  X  ; therefore, Sup  X  is the identity element on operator operator  X  in V .
+
+Remark 8. The property states that for the algebraic system V , the identity element on operator while the identity element on operator  X  is the smallest element Inf . element of the operator  X  .
+
+Proposition 8. Let V be an algebraic system of the FWCL, then Inf operator  X  in V.
+
+Proof. From Definition 8, Definition 9 and Proposition 2 , for any h and Proposition 5 , we have h w  X  Inf  X  = Inf  X   X  h w = Inf operator  X  ; therefore, Inf  X  is the zero element on operator V .
+
+Remark 9. The property states that for the algebraic system V , the zero element on operator the zero element on operator  X  is the largest element Sup
+Example 9. Consider Fig. 7 : #14 is the zero element on operator Proposition 9. Let V be an algebraic system of the FWCL , then V is a semigroup .
+Proof. From Proposition 3 and Proposition 4 , we have that operator associative law in V ,so V is a semigroup.  X  Proposition 10. Let V be an algebraic system of the FWCL , then V is a monoid . identity element in V ; therefore, V is a monoid.  X  5. The completeness of the FWCL's knowledge representation Theorem 4. The FWCL's knowledge representation is complete .
+Proof. Let L w be a weighted concept lattice constructed from a formal context K (1) For any h w1 and h w2 , h w1 , h w2  X  L w , suppose weight ( B
+From Definition 7 , we have h w1 , h w2  X  L fw . Since h w2 not exist such that h w1  X  h w3  X  h w2 . Suppose h w3  X  L have h w3  X  L w and h w1  X  h w3  X  h w2 , which is in contradiction with the condition that h h w1  X  h w3  X  h w2 . Therefore, h w2 is also the parent node of h and h w2 are the grandparent  X  grandchild relations, for any h an infrequent node, and knowledge extracted from h w1 and h is extracted from h w1 , h w2 and h w3 . ii) Suppose there exists no partial order relation between h representation of the FWCL is complete.
+ 6. Conclusions WCLs.
+ automatic semantic image annotation.
+ Acknowledgments Returning Students and Scholars Research Project of Shanxi Province, PR China (grant no. 2009-77).
+References

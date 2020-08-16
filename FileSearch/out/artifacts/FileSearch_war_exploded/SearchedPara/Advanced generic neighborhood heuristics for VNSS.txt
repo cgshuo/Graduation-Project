@@ -1,0 +1,47 @@
+ 1. Introduction probabilistic reasoning ( Pearl, 1998) have been modelled and solved using WCSP . knowledge of the problem, as well as a lot of experiments. more detailed description of H-PGLNS , more detailed descriptions of the instances we tested, new experiments on Kbtree instances, a comparative study with H-PGLNS , new experiments on the influence of parameter nbSets .
+Section 7 is devoted to experimentations. Finally, we conclude. 2. Valued Constraint Satisfaction Problems unsatisfied constraints. 2.1. Definitions A VCSP is defined by a tuple  X  X ; D ; C ; S ; j  X  where: X  X f x 1 ; ... ; x n g is a set of n variables.
+ for these variables.
+ constraint is.
+ X has a value in A ; otherwise it will be called partial . costs of all constraints in C unsat  X  A  X  :  X  A  X  X  j  X  c i  X  There are four main classes of VCSP depending on the adopted valuation structure: maximal level among unsatisfied constraints.
+ goal is to minimize the total sum of weights of unsatisfied constraints. solved as a WCSP 2 : Frequency assignment to radio links ( Cabon et al., 1999 ), (1995). 3. Related work propagation among variables to unassign variables that are connected. 3.1.
+ ConflictVar returns for an assignment A , all selected variables.
+
+Algorithm 1. ConflictVar. 1 2 3 4 5 6 7 8 9 of better quality than the current one. 3.2.
+ H-PGLNS (propagation guided large neighborhood search) variables).
+ carried out, and its dependence on the effectiveness of the filtering algorithm.
+Algorithm 2. H-PGLNS. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 4. VNS/LDS+CP 4.1. Principle timeout is reached (line 3).
+
+Algorithm 3. VNS/LDS+CP. 1 2 3 4 5 6 7 8 9 10 11 provide a such trade-off (see Loudni and Boizumault, 2008 for more details). 4.2. Limited discrepancy search
+Algorithm 4. n -Ary optimization LDS+CP. 1 2 3 4 5 6 7 8 9 10 11 12 13 domain (if it is not an empty one) (line 6). 4.3. Constraint propagation constraints.
+ wished, filtering can be carried out by various algorithms: details). 5. New generic neighborhood heuristics constraints. First, we introduce a few definitions.
+ set of all neighboring variables of x is denoted neighbors ( x ). neighbors  X  x  X  X unassigned , the freedom degree of x is said to be maximal. 5.1. Extensions of conflictvar variables.
+ 1.
+
+Fig. 1 a). The first variable is randomly selected among conflicted ones. 2.
+ 3.
+
+Fig. 1 c, the next variable to be chosen is the dashed one. 4.
+ has two selected neighboring variables, whereas other variables have only one. 5.
+ 5.2. ConflictVar-Connected subset among the following:
+Algorithm 5. ConflictVar-Connected. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 2. the subset of conflicted variables (lines 8 and 9), 3. the subset of variables not selected yet  X  X \ X unassigned  X  (line 11). 5.3. ConflictVar-Star
+Algorithm 6. ConflictVar-Star. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 1. the subset of conflicted variables neighboring to selected ones (line 7), 2. the subset of conflicted variables among X conflicted (line 9), 3. the subset of variables not selected yet (line 10).
+X allowed are updated (lines 12 X 14).
+ degree. 5.4. ConflictVarAndSat-Star conflicted variables.
+ ones.
+ still between 1 and their degree. 5.5. ConflictVar-MaxDeg degree (ties are randomly broken).
+
+Algorithm 7. ConflictVar-MaxDeg. 1 2 3 4 5 6 7 8 9 10 11 conflicted) variables with the highest value of card . deterministic criterion.
+ 5.6. ConflictVar-H-Cost found). 5.6.1. Example violation costs are reported on each edge).
+ been considered.
+
+Algorithm 8. ConflictVar-Cost. 1 2 3 4 5 6 7 8 9 10 11 12 13 6. Benchmark problems Experiments have been performed on instances of three different problems: instances are well-known to be (very) hard to solve.
+ GRAPH instances are random instances close to RLFAP ones. KBTree instances are random structured instances of medium size.
+RLFAP and GRAPH instances are WCSP s, whereas KBTree instances are MAXCSP . 6.1. RLFAP instances the MAX problem is defined as follows:  X  A  X  X  6.2. GRAPH instances the RLFAP ones. Table 3 summarizes the main characteristics of each GRAPH instance. 6.3. KBTree (random binary cluster tree) instances s
+A  X  C
+ X  / 7. Experiments 7.1. Experimental protocol 7.2. Results for RFLAP and GRAPH instances 7.2.1. Comparing to H-PGLNS Scen09 and Scen10), PGVNS is the worst heuristic because: 7.2.2. Comparing to ConflictVar and Scen07 (which are among the most difficult ones). (except on Graph13 where results are very similar). 4.
+ 5.
+ unassigned. and is really very close to the optimum on other instances. instances. 7.2.3. Influence of nbSets on ConflictVar-H-Cost heuristics 7.3. Results for KBTree instances ConflictVar-MaxDeg remains the best one.
+ 7.4. Synthesis life optimization problems.
+ and the structure of the constraints graph.
+ unassigned. 8. Conclusion cost criteria.
+ Acknowledgments Appendix A. Constraints graph of RLFAP instances Note : The variables contained in the same ellipse form a clique. A.1. Instance scen06 A.2. Instance scen07 A.3. Instance scen08 References

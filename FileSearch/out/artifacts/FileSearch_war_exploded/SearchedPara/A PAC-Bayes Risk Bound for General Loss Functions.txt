@@ -1,0 +1,16 @@
+ Francois.Laviolette@ift.ulaval.ca in these circumstances.
+ by where h ( x )  X  { X  1 , +1 } , f Q ( x )  X  [  X  1 , +1] , and called the posterior distribution 1 .
+ I ( a ) = 0 otherwise. We then have: Since E given by the exponential loss (which is used, for example, in Adaboost [9]). written as PAC-Bayes theorem [2, 3, 4, 5] currently only upper bounds the first moment E  X  Q to the zero-one loss of a Gibbs classifier. For this task, let us first write h 1  X  k ( x ) . We now define the error rate R ( h 1  X  k ) of h 1  X  k as where sgn( g ) = +1 if g &gt; 0 and  X  1 otherwise.
+ If we now use E classifier. Indeed, if we define Equation 5 can be rewritten as risk R ( G Q ) of this new Gibbs classifier is then given by Equation 7. where Note that Equations 7 and 8 imply that the form | f Q ( x )  X  y | r / 2 , for r  X  X  1 , 2 } . In these cases we have which gives c = 1 for r = 1 , and c = 3 for r = 2 .
+ theorem will hold for any prior P and posterior Q defined on kl  X  success q and probability of success p . Note that an upper bound on kl both and upper and a lower bound on R ( G Q ) .
+ The upper bound on kl denotes the Kullback-Leibler divergence between distributions Q and P defined on H  X  . P are clearly possible). In this case we have where We then have the following theorem.
+ we have function.
+ Note that Theorem 1 directly provides upper and lower bounds on  X  Q when we use Equations 7 Consequently, we have the following theorem.
+ classifiers, any prior distribution P on H , and any  X   X  (0 , 1] , we have E majority vote precisely under these circumstances.
+ weak learning algorithm produces a classifier h t with the smallest empirical error ples. After each boosting round t , this distribution is updated according to where Z t is the normalization constant required for D t +1 to be a distribution, and where |H| = 2 discretized in our numerical experiments.
+ uniform prior P ( h ) = 1 / |H|  X  h  X  X  . We therefore have experiments.
+ loss. 4.1 Results for the Exponential Loss More precisely, we have chosen For this loss function, we have tunately, we can obtain a tight upper-bound only for small values of  X  . containing 8124 examples and 208 examples respectively.
+ parallel to the true risk curves. 4.2 Results for the Sigmoid Loss We have also investigated the sigmoid loss T Q ( x , y ) defined by 0.4 0.3 0.2 0.1 0 (right) data sets. The risk bound and the true risk were computed for  X  = ln 2 . 0.5 0.4 0.3 0.2 0.1 0 different values of  X  on the Mushroom data set.
+ limited to  X   X   X / 2 . Under these circumstances, we have over, the bound appears to be as tight as the one for the exponential risk on Figure 1. W 0.4 0.3 0.2 0.1 0 (right) data sets. The risk bound and the true risk were computed for  X  = ln 2 . similarly as the true loss.
+ Acknowledgments Work supported by NSERC Discovery grants 262067 and 122405.
+ [1] David McAllester. Some PAC-Bayesian theorems. Machine Learning , 37:355 X 363, 1999. [7] Leo Breiman. Bagging predictors. Machine Learning , 24:123 X 140, 1996.

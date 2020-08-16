@@ -1,0 +1,86 @@
+ 1. Introduction
+Several models have been developed and applied over years to analyze the number and growth characteristics of journals,
+Wong &amp; Goh, 2010 ). Recently, Sangwal (2011a) proposed a new equation, based on progressive nucleation mechanism Sangwal, 2012a, 2012b ).
+ butions dealing, among others, with improvement and modification of the h index (for example, see: Alonso, Cabrerizo,  X  on the relationship between different bibliometric evaluation measures ( Burrell, 2009; Van Raan, 2006 ), attempts have been made to give mathematical models to the h index and its modifications and to investigate its dependence on time 2008 ).
+
+Among the various models proposed so far for the investigation of the dynamics of cumulative citations L he concluded that and defined successful, outstanding and unique scientists, respectively.
+ that the cumulative citations and ka X  X  law, i.e. Lotka X  X  law.
+ may be observed from the plots of the growth of Hirsch index h as a function of citation time t , reported by Anderson better scientometric approach to investigate his/her scientific career.
+
+Burrell (2007a) recognized the simplicity of his model and admitted that all of the assumptions on which the model is approaches zero.
+
+Recently, the present author ( Sangwal, 2012b ) proposed a general approach to explain the cumulative number L ( t )of tionary nucleation is more or less satisfied.
+
+The aim of the present study is twofold: (1) to model data on the cumulative fraction of citations of individual papers parameters, and, on the basis of the modeling data, to propose an expression for the time dependence of the cumulative
+L ( t ) of citations of papers published by selected authors with the theoretical predictions. 2. Progressive nucleation mechanism for growth behavior of citations
+The PNM for the growth behavior of citations with time t in an individual system is based on the following postulates ( Sangwal, 2012a, 2012b ): (3) The nature of the dependence of cumulative number of citations L (4) The citation behavior (pattern or trend) of different papers of an author is characterized by different values of C
+The above concepts are used below to discuss the citation behavior of an individual author X  X  papers receiving different growth of citations of individual papers of an author with time t since the year Y by ( Sangwal, 2011a, 2012b ) where C is the maximum number of citations that the paper can receive (i.e. citability of the paper), the time constant and the exponent sionality of the growing nuclei, and the time by diffusion and mass transfer processes, the parameter m = 1/2 and 1, respectively.
+If L i ( t ) denotes the cumulative citations of the i th paper and a fraction a sum of citations from a collective of n papers may be written as
+When new papers are published successively at equal time intervals D (a positive integer), the cumulative fraction a of citations may be given by simple solution because the citations of every new ( i + 1)th paper are characterized by different sets of C However, Eq. (11) can be solved numerically for real collectives of n papers. or D =0, a sum ( t )= n a 1 ( t ), (2) for all values of D &gt; 0 and i &gt;1, a 3. Modeling the citation behavior of individual and collectives of papers lowing situations: authors are more complicated than the simplified situations given above.
+
+Using the data generated for the above situations, a general expression of the time dependence of cumulative fraction 2012b ). Keeping these facts in mind, the above values of H and q were selected. value of time constant H = 10 years but with different exponent q plots were drawn using the values of H and q i in Eq. (6) . The cumulative fraction a papers with H = 10 years and q = 1.5, 2, 3 and 5 is presented in the upper lonely curve. This cumulative fraction a
+From Fig. 1 the following two features may be noted: (2) The nature of the curve of the time dependence of the cumulative fraction a
+It should be mentioned that the data of the cumulative fraction a also be represented by Eq. (6) . The best-fit values of constants, denoted here as a where d is an empirical correction time which gives a better fit for the data in terms of a tion time d leads to higher values of time constant H 0 and exponent q terms of H 0 and q 0 , the best fit is obtained when d =0.
+ different values of H (i.e. 5, 10 and 15 years) and two sets of q 2, 3 and 5, and (ii) 5, 3, 2 and 1.5.
+
+Fig. 2 shows as an example the dependence of cumulative fraction a his/her successive sets of four papers is characterized in the sequence: q dependence is observed for the citability of his/her successive sets of four papers characterized in the sequence: q and 1.5.
+
+From Fig. 2 one notes that, as in the case of simultaneous publication of a set of papers, the maximum fraction a of citations is equal to the sum of the fractions a i (max) of citations of individual papers i , i.e. a
+Moreover, as found previously ( Sangwal, 2012a ), despite different sets of C four papers, the data can be represented satisfactorily by the relation of papers, and a 0 is the sum of all of the maximum fractions. The best-fit values of the constants a ability data of the two sets of successively published four papers in the sequences (i.e. q publication duration t .In Fig. 3 a the solid curve represents a fit of a sum ( t ) data for initial H = 10 years described by relation: a drawn with slope 0.5 for initial H = 5, 10 and 15 years, dashed curve covering the entire H represents the best fit according to the relation: H 0 = 7.71 + 0.72 t , r for initial H = 5 years is drawn with slope of 2.
+Fig. 3 a shows that the value of a 0 does not depend significantly on the choice of q time constant H to generate the data and the value of a 0 t &lt; 30 years. However, among the different initial H used to generate the a the entire t range up to 40 years is obtained when the value of H is about 10 years. Then a to 40 years.
+
+Fig. 3 b also shows that the value of H 0 does not depend significantly on the choice of q er is the value of H 0 . In this publication duration, the dependence of H where y 0 , y 1 and y 2 are fitting parameters and y 0 = H . At low t (&lt;15 years), H the initial H equal to 10 and 15 years. The value of the slope of the plots of H
+H = 10 years, the entire data follow a linear dependence: H
+In contrast to the behavior of a 0 and H 0 noted above, the exponent q q for q 1 4 in the sequence 1.5, 2, 3 and 5 is lower than that for q decreases steeply first up to t = 36 years and then attains a constant value. The value of t (denoted by t on t for H equal to 5 and 15 years is different below and above t but the order is reversed when t &gt; t max .
+
+From Fig. 3 a and b it may be noted that practically linear dependences of a period are observed when initial H = 10 years. In this case, a 2.08 &lt; q 0 &lt; 3.1. This means that, with increasing number of successively published papers, H data of Fig. 1 are a special case of the above situations. In that case, D = 0 and n =4.
+The relative complicated dependences of a 0 , H 0 and q 0 value of a 0 is practically independent of H . However, for t &gt; 28 years, with an increase in H the value of a attaining a minimum value at H 10 years and then it increases. Fig. 4 b shows that for t &lt; 32 years the constant H increases with H , but for t = 36 and 40 years H 0 first decreases from H above H 10 years. From Figs. 4 a and 4b it may be seen that the dependences of a particular range of H , when a 0 increases with H , H 0 also increases. In contrast to the dependences of a dependence of q 0 on H is different, as seen from Fig. 4 c. For t &gt; 12 years, the value of q for t = 36 and 40 years is practically the same for a given H . The value of q its value somewhat decreases with increasing H for t = 4 years.
+ and 4b, it may be seen that, corresponding to a 0 = t , there is a particular value of H 10 years when H lication career length t 4 H .
+
+It should be noted that there are two time constants H 0 and T in the plots of a
+H 0 corresponds to the time up to which the ascending part of the resultant a tween H 0 and t (see Fig. 3 b). The latter time constant T corresponds to the citation time t on a particular a sum ( t ) approaches its maximum value a sum (max) as represented by the linear dependence between a ( Fig. 3 a). The time constant T is approximately equal to 3 H
+A linear dependence between a 0 and t with a slope of unity is expected for cumulative citations of papers where a new paper is published per year. Higher values of H 0 , and accompanied with them lower values of q lower value of q 1 in the set of q 1 4 of the four papers (see Fig. 1 ).
+
+In the range of relative time t / H 0 when the approximation e expression: citation periods t , q 0 is the lowest, and for t &gt; 36 years, q seen that the approximation e x =1+ x holds reasonably well with an error less than 20, 40 and 70% up to t / H respectively. This means that the power-law relation (14) may be used in a wide range of t / H that there are three regions of the dependence of a sum ( t )on t : (1) 0 &lt; t / H
+H 0 &lt; 3 when a sum ( t ) slowly deviates from the power-law relation and approaches a maximum value at T 3 H t &gt;3 H 0 when a sum ( t ) remains independent of t . to the absorption of the disseminated contents by the reader.
+
+It may be noted that the physical model proposed in the present paper shows similarities with the model of  X  X  X ursty and paper, appears, grows in intensity for a certain period of time and finally fades away. 4. Predictions of progressive nucleation mechanism
+Eq. (12) is the general expression which can easily be extended to analyze the cumulative citations L individual authors as functions of citation duration t . For this purpose, in Eq. (12) the ratio a
+Therefore, if L sum ( t ) is the sum of citations produced by successively published papers at time t , the ratio a defined in terms of cumulative citations L sum ( t ) by the relation inition of the fraction a ( t ) of cumulative citations L ( t ) at time ( t ); see Eq. (6) where a follows:
+Eq. (16) is the same as Eq. (6) but now the term a ( t ) of Eq. (6) represents a successively published papers. According to Eq. (16) , in the region 0 &lt; t &lt; H career limited to H 0 , such that H 0 &lt; T /3, may be represented by (cf. Eqs. (15) and (16) ) where the cumulative papers N = D N H 0 and k 0 is a citability parameter relating L ( t )= L sum ( H 0 )/ a av ( H 0 ). Obviously, since q 0 = 2, in this region L the number of cumulative citations L sum is directly proportional to the publication rate D N and citability constant k
+From Eq. (17) the following two parameters relating cumulative citations L introduced: where
+Here the citability proportionality constant k 0 = L sum ( H
+Eq. (19) represents the time dependence of v sum in the time interval between t beyond which the time constant H 0 increases linearly with publication duration t (see Fig. 3 b). agreement with the predictions of the deterministic model of Hirsch (2005) and the stochastic model of Burrell (2007a, 2007b) . In the case of the deterministic model, from Eqs. (1) and (2) one finds the citation acceleration
+Comparison of this equation with Eq. (18) suggests that, for the given time constant H author, the proportionality constant Ab 2 is directly proportional to the citability-related parameter k lication rate D N . According to the stochastic model the citation acceleration (see Eq. (3) )
+This relation is very similar to that described by Eq. (18) , implying that the average citation rate D L =2 k concluded that the basic concepts of our approach are sound.
+
+Eq. (17) contains three parameters, viz. the citability parameter k an author (see Figs. 3 b and 4 b), it may be concluded that the value of the k lyze and compare the scientific activities of different authors.
+
+The above predictions of the constancy of citation acceleration a according to Eq. (17) can be tested by analyzing the data are easily accessible from websources such as Google Scholar, Elsevier X  X  Scopus and Thomson Reuters X  ISI Web of
+Knowledge (Web of Science). 5. Application of Eq. (17) to the citation data of selected authors We analyzed the expected constancy of citation acceleration a of Eq. (17) from the dependence of cumulative citations
+L _ were collected from Thomson Reuters X  ISI Web of Knowledge (Web of Science) and covered the period up to 2010. The cumu-lative citations L sum ( t ) were calculated from the reported data (see also Table 4 ) equally be fitted with two or more sets of the constants C in Fig. 5 were drawn with the values of C 0 , H 0 and q 0
+KS, where the fitting curve lies below and above the citation data between 1980 and 1995 and between 1995 and 2004, respectively.
+
+From Table 2 one finds that the value of the time constant H 30 and 90 years for the other authors. These values of H 0 nent q (see Section 3 ). In contrast to the behavior of H characterized by enormously different citation parameters H career of an author. This point is discussed below.
+ lication careers. To illustrate this idea we reexamine in more detail the cumulative citation data of MK and KS.
+In view of the fact that the time constant H 0 for the cumulative citations L the publication career t , it is expected that the citation data of an author follows power-law relation when H of Y 0 according to the power-law relation which follows from Eq. (17) , where a  X  C 0 = H q 0 0 and t =( Y Y according to Eq. (22) with the values of a and q 0 indicated by arrows in Table 3 .
+Comparison of the dashed curves, drawn according to Eq. (22) with the values of a and q curves, drawn according to Eq. (16) with the values of C 0 inclusion of the data of the initial stage in the analysis. However, it may be seen from Table 3 that q these authors during this period.
+ mentioned above were examined again using Eq. (22) with q tween L 1 = 2 sum and Y with slope a 1/2 . Fig. 6 shows the plots of L from these plots that an approximately linear dependence between L between 1982 and 1990, there are two regions of linear increase: between 1990 and 2001 and between 2001 and 2010. ation involving constant values of citability parameter k during her/her publication career may be attributed to changes in these parameters.
+It is a common observation that the publication rate D N of an author fluctuates enormously in successive years during and is practically career independent for WS. In contrast to the above cases, it shows wavy nature for the D N and ZZ. Therefore, it may be suspected that L sum ( t ) and D N The interdependence between D N and a may be established from Eq. (18) rewritten in the form
+According to this relation, ( L sum / D N ) 1/2 increases linearly with t for an author, with slope ( a / D N ) there is indeed a linear dependence of ( L sum / D N ) 1/2
+For example, in the case of KS if the last point is omitted during the analysis, one finds that ( L with his publication career t (with slope 0.41).
+ factor IF used for journals:
+Since IF of a journal for a given year Y is defined with reference to the total number L defined by Eq. (24) now refers to a given author. 6. Analysis of ranking of selected authors according to their citation data of D N and k 0 of an author during his/her publication career spanning over t years, one can use Eq. (17) with q measure to establish the ranking of the scientific impact of different authors. in the tables.
+ side the h -core.
+
+With reference to Tables 4 and 5 one notes that the h index is not a suitable measure to compare the impact of the sci-1 according to the h index has tumbled down to 4 according to the h rate.
+ Hirsch constant A equal to 32.7, although its value lies between 2.8 and 6 for most of the authors.
+The citation acceleration a based on cumulative citations L Becke is the leader.
+
+Finally, it should be mentioned that the present author ( Sangwal, 2012d ) discussed previously the time dependence of R rate in the form of R rates of different authors. 7. Conclusions
+Modeling the growth behavior of cumulative citations L sum that, for all nonzero values of constant publication rate D N , the time dependence of L tinct regions: (1) in the region 0 &lt; t &lt; H 0 , L sum (see Eq. (17) ), and (2) in the region t &gt; T , L sum ( t ) approaches a constant L agreement with the predictions of the deterministic model of Hirsch (2005) and the stochastic model of Burrell, 2007 .
+Eq. (17) of the time dependence of L sum ( t ) contains three parameters, viz. the citability parameter k lication career t which is essentially equal to the time constant H stochastic model of Burrell (2007a, 2007b) , respectively.
+
+Confrontation of the time dependence of cumulative number L lication careers. It is suggested that plots of ( L sum ( t )/ D N ) and D N for an author.
+ Acknowledgement
+The author is indebted to one of the referees for pointing out similarities between the physical model proposed in this paper and the model of  X  X  X ursty and hierarchical structure in streams X  X  proposed by Jon Kleinberg. References

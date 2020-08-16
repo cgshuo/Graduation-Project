@@ -1,0 +1,141 @@
+ 1. Introduction understanding of the semantics of the managed data.
+ both expressive and tractable.
+ particularities of XML.
+ annotated by their type: E for elements, A for attributes, and S for text (PCDATA) in XML data. an entire XML document or relatively to selected context nodes. the data should still be analyzed using the same  X  one fits all achieved when using a sufficiently rich query language.
+ the country. Further, each company can list its shares in up to four stock markets globally. often on upper bounds, lower bounds are of interest too, e.g., for ensuring data privacy. cost for unpaid services, without querying or integrating data. simplified integrity checking, and more efficient processing of common queries and updates. request for the current value of all shares of Barrick Gold. market  X  nodes, it has to be decided if it has a descendant
+Then, we could rewrite query (1) as follows so that it can be evaluated on this view instead. 1.1. Contributions known from XPath.
+ still tractable.
+ constraints that is effective for flexible XML data processing. 1.2. Organization related to our study here. Section 9 concludes our work. 2. Terminology 2.1. The XML tree model denoting text (PCDATA). These sets are pairwise disjoint. The elements of L = E node in V . A node v  X  V is an element node if lab ( v )  X  att are partial mappings defining the edge relation of T : for any node v partial mapping val assigns a string to each attribute and text node: for each node v path p of T is a finite sequence of nodes v 0 , ... , v m lab ( v 1 ).  X  . lab ( v m ) over the alphabet L , denoted by lab ( p ). For a node v
+Note that every XML tree has a tree structure: for each node v and there is a permutation  X  on {1, ... , m } such that a u = = is an equivalence relation on the node set V of the XML tree. 2.2. Node selection queries language PL :; X ; X fg consisting of expressions given by the following grammar:
+Herein,  X   X  L is any label,  X  denotes the empty path expression, denotes the single-label wildcard, and  X  _  X   X  denotes the variable-length wildcard.
+Let P , Q be words from PL :; X ; X fg . P is a refinement of Q ,denotedby P
+Canada._.share .Notethat  X  is a pre-order on PL :; X ; X fg we write T  X  Q ( v , w )if w is reachable from v following a Q -path in T .  X 
+Q  X  ={ w | T  X  Q ( v , w )}. In particular, we use  X  Q  X  as an abbreviation for r
+For a subset Z p {.,_,_  X  }, let PL Z denote the subset of PL is the set of simple path expression without wildcards.
+
+Since attribute and text nodes in an XML tree T are always leaves, Q position other than the terminal one. Note that each prefix of a valid Q is valid, too.
+Let P , Q be words from PL :; X ; X fg . P is contained in Q , denoted by P  X 
+P  X  p v  X  Q  X  . It follows immediately from the definition that P
+We work with the quotient set PL :; X ; X fg =  X  rather than with PL consecutive variable-length wildcards, i.e., if it has no consecutive class contains a unique word in normal form. Each word from PL removing superfluous variable-length wildcards and replacing each occurrence of in the normal form of Q .
+
+The empty path expression  X  has length 0. The natural homomorphism from PL to words in normal form. By abuse of notation we use the words from PL
+For nodes v and v  X  of an XML tree T , the value intersection of v  X 
+Q respectively, by following Q -paths. 3. From expressive towards precious classes problem becomes at least intractable [40]. Let  X  denote the positive integers, and let
+De fi nition 1. A cardinality constraint  X  for XML is an expression of the form where Q ; Q  X  ; Q 1 ; ... ; Q k  X  PL :; X ; X fg such that Q . Q and max  X  N with min  X  max.
+
+Herein, Q is called the context path, Q  X  is called the target path, Q bound, and max the upper bound of  X  .If Q = , we call  X  absolute; otherwise
+For a cardinality constraint  X  , let Q  X  denote its context path, Q
+De if and only if for all q  X   X  Q  X  , for all q  X  0  X  qQ  X  such that for all x holds.  X  q  X   X  q  X  Q  X   X  in T for which for all i =1, ... , k , field nodes x automatically satisfies the constraint. 3.1. Some examples stock markets that operate in the country. This constraint is satisfied by T . Exchange.
+ company cannot be listed more than once in the same stock market. The key card (_ the Toronto Stock Exchange a share is identified by its code; and card ( 3.2. Intractability of the implication problem denoted by  X   X  ( f )  X  , if and only if every (finite) XML tree T that satisfies all the class C is to decide, given any finite set of constraints denote its ( finite ) semantic closure , i.e., the set of all constraints (finitely) implied by problem. As the following result shows this is already true for some large subclasses [26]. Theorem 1. The finite implication problem for each of the following classes is coNP-hard .  X  graph G , there is a corresponding constraint set  X  i  X  { and max are determined by the actual constraint sets used in each of these transformations. simultaneous use of arbitrary length wildcards in both target and field paths as permitted in C 3.3. Max-constraints to the rescue cardinality constraints that is as expressive as possible but does not include any of C the following one:
+It is easy to see that M ext does not include any of C 1 , C assume that we have k  X  1 for all max-constraints in M ext
+Q ; ... ; Q  X  restriction for M ext .
+ field paths Q 1 , ... , Q k are all required to be expressions in PL generalized to show that even the implication problem for the more expressive class
+We give some examples to illustrate the difference between both classes: the constraint card ( {transaction._.date.S}))  X  100 belongs to the class M andthusalsototheclass card (  X  ,(_. account,{transaction._  X  .date.S}))  X  100 belongs to the class {transaction._  X  .date.S}))  X  100 belongs to neither M nor to a field path.
+De fi nition 3. We call M ext the class of max-constraints for XML and use the abbreviation to denote these constraints.  X  expressiveness to the language that has important applications in data integration. card (_*. Canada ,(_._,{_. S }))  X  2 and  X  2 = card (  X  ,(_._._.,{_. S })) translation, i.e., replacing empresa by company , papel by share and so on.
+Over trees with the structure of T  X  , it is easy to check that the constraint card ( single-label wildcards) is equivalent to  X  2 . However,  X  tree T i with the structure of T and every corresponding equivalent tree T rise to a class of constraints that is no longer precious. For the class 3.4. A plan for verifying the tractability of max-constraints class M ext can be reasoned about efficiently.
+ We will proceed as follows: First we will characterize the implication problem associated with 4. Sound inference rules for max-constraints to the notion in the relational data model ( [1], pp. 164  X  + p  X  * (respectively,  X  * p  X   X  + ). Herein,  X   X  + ={  X  | Table 1 shows the set of inference rules for the implication of max-constraints in the class respective cardinality constraint lies in M ext .
+ wildcards are permitted to occur only in the context and target paths.
+Proof. Suppose an XML tree T violates card ( Q ,( Q  X  , S is some node q  X   X  Q  X  and some node q  X  0  X  qQ  X  such that for some x
+However, since P  X  = P k p P , for every q  X   X  q  X  Q  X   X  it holds that there is a y then it is easy to see that there are x 1 , ... , x k with x
+This shows that T also violates  X  = card ( Q ,( Q  X  , S  X  Lemma 2. The subnodes rule is sound for the implication of max-constraints in the class
+Proof. Suppose an XML tree T violates card ( Q ,( Q  X  ,{ P . P that for some x  X  q  X  0  X  P : P  X   X  it holds that
+For every pair of distinct nodes q  X  i and q  X  j in the previous set, it also holds that q
+This holds true, since T is a tree and due to the condition of the subnodes rule Q variable-length wild cards. Consequently, we have
+This shows that T also violates  X  = card ( Q ,( Q  X  .P ,{ P set { q  X   X  q  X  Q  X   X  |  X  y . y  X  q  X   X  P . P  X   X   X  x = v any further since the implication problem becomes intractable as seen in Theorem 1 . 5. Axiomatic characterization of implication M ext . Completeness means we need to show that for an arbitrary finite set there is some XML tree T that satisfies all members of  X  but violates by  X  .
+ target nodes q  X   X  that all have value-equal field nodes q target nodes q  X   X  that all have value-equal field nodes q tree T  X  ,  X  , which we call the mini-tree .
+ each upward edge receives a label of 1 and each downward edge resulting from called the cardinality network . A downward edge resulting from condition i). Otherwise, we can construct a counter-example tree T . 5.1. Cardinality networks Let  X   X  {  X  } be a finite set of max-constraints in the class expressions of members in  X   X  {  X  }, and fix a label  X  0  X  path expressions in PL {.} . For that purpose we replace each single-label wildcard constraint in  X   X  {  X  }. This transformation turns Q  X  into Q
+To continue with our construction, let p be an O  X  -path from a node r node q  X   X  and, for i =1, ... , k  X  , let p i be a O i  X  -path from a node r node-disjoint. From the paths p ; p  X  ; p 1 ; ... ; p k  X  each of the nodes r i  X  with q  X   X  .
+ The marking of the mini-tree T  X  ,  X  is a subset M of the node set of T leaves of T  X  ,  X  , and otherwise M consists of all descendant nodes of q We use mini-trees to calculate the impact of max-constraints in does not require all its field paths. Let T  X  ,  X  be the mini-tree of the max-constraint max-constraint  X  is said to be applicable to  X  if there are nodes w for all i =1, ... , k  X  . We say that w  X  and w  X   X  witness the applicability of
+Employees are identified by their employee id. In this context, the constraint  X  ,  X  3 } of max-constraints, where can take on more than one role in each project. The left picture of Fig. 4 shows the mini-tree of are marked by  X ). All max-constraints  X  1 ,  X  2 and  X  3 are applicable to { eid . S }))  X  2 is not applicable to  X  .  X  We define the cardinality network G  X  ,  X  of  X  and  X  as the node-labeled digraph obtained from T node-labelsof G  X  ,  X  are exactly the nodes and node-labels of T
+Furthermore, for each max-constraint  X   X   X  that is applicable to witness the applicability of  X  to  X  we add a directed edge ( w the reversed edges from T  X  ,  X  are referred to as upward edges of G descendant of the node w  X  in T  X  ,  X  , and thus the witness edge ( w asedge-labels: everyupward edge e of G  X  ,  X  has weight  X  ( y , v )} witnesses the applicability of some  X   X   X  to  X  edge ( v i  X  1 , v i ) for each i =1, ... m . We call t a path of length m from node v u to v in G containing only edges of the path. In the cardinality network G weights of its edges, i.e.,  X  t  X  X  X   X  n minimum over the weights of all paths from v to w ,or  X  if no such path exists. Example 7. Let  X  and  X  be as in Example 6 . The cardinality network of in Fig. 4 . Then d ( v , w )=6 and d ( v , u )=  X  .  X 
+In the following section we will prove the following crucial fact. If the distance d ( q then  X   X   X   X  + . In other words, if  X  is not derivable from
+Example 8. Let  X   X  = card (_  X  . year ,( quarter . project ,{_. eid . S }))  X  .  X  5.2. Encoding inferences as shortest paths handle than the inference rules in Table 1 .
+
+Lemma 3. Let  X   X  {  X  }, where  X   X  card Q  X  ; Q  X   X  ; Q  X  1 distance d ( q  X  , q  X   X  )  X  max  X  in the cardinality network G The strategy to prove this lemma is to encode an inference by following example to illustrate the main steps of the proof. max-constraint where leave the technical details for later.
+
+Proof. Due to the infinity rule there is nothing to show if max simple path in G  X  ,  X  from q  X  to q  X   X  with  X  = d ( q  X  without loss of generality that D consists of a sequence  X  sequence of upward edges each of weight 1 followed by a single witness edge w assume that q  X  ; w  X   X  1 ; ... ; w  X   X  n form a proper descendant chain, q in T  X  ,  X  . This situation is illustrated by the cardinality network G that d ( q  X  , q  X   X  )=300,000 and that the thick arrows show the path D from q
+We formally prove that each of these assumptions hold in A afterwards. 1. The final witness edge in D can be replaced by a witness edge that ends in q that  X  n +1 is indeed an empty sequence and w  X   X  n  X  q  X  dashed arrow in Fig. 6 . 2. If there is a witness edge ( w  X  , w  X   X  ) in the cardinality network G then for each node w between w  X  and w  X   X  in T  X  ,  X  there is also a witness edge ( w , w corresponds to the applicability of some  X   X   X   X   X  + to  X 
+Fig. 7 , follow from this assumption. 3. If there is a witness edge w  X  1 ; w  X   X  1 with weight max also a witness edge w  X  1 ; q  X   X  with weight max  X  1  X  max assumption to our example is shown in Fig. 8 .
+
+From Assumptions 1 and 2, we can conclude that there is a simple path D consists of the sequence  X   X  1 , ... ,  X   X  n where each  X  where w  X   X  i  X  w  X  i  X  1 for i =1, ... , n  X  1 and w  X  1
+At this stage we can use Assumption 3 repeatedly to conclude that there is a single witness edge D from the max-constraint that is applicable to  X  . Due to the applicability of  X  to context-path-containment and target-path-containment rule to obtain
+Since holds, applications of the weakening rule show that also holds which proves the lemma.  X  5.3. Establishing completeness We have now the tools to prove the completeness of our set of inference rules. Theorem 2. The inference rules in Table 1 are complete for the implication of max-constraints in Proof. Let  X   X  {  X  } be a finite set of max-constraints in the class satisfies all max-constraints in  X  but does not satisfy  X  there is no such path. In particular, we have  X   X  ( q  X  )=1 and in T  X  ,  X  . We extend T 0 as follows: for each node n on the path from q
+Suppose T 0 has been constructed down to the level of u 1 successor of u in T  X  ,  X  . Then  X   X  ( u )  X   X   X  ( v ) due to the upward edges in G a new edge ( u i , v j )in T if and only if j is congruent to i modulo For i =1, ... ,  X   X  ( q  X   X  ) let T i be a node-disjoint copy of the subtree of T the leaf node q  X  i of T 0 with the root node of T i for all i =1, construction guarantees that T satisfies  X  .  X 
+Example 10. Let  X  and  X  be as in Example 6 . A counter-example tree T for the implication of nodes have the same text content.  X  5.4. Dealing with empty sets of fi eld paths
+Example 11. Consider the XML tree in Fig. 9 . We could use a constraint year has at most four quarters.
+
+Suppose now that we allow k =0 in the definition of M ext rules in Table 1 still hold for this case. Using the superfield rule we can derive So when constructing the cardinality network G  X  ,  X  for some  X   X  . As we have demonstrated above the counter-example tree T constructed for  X  . However, it is easy to validate that by our construction T satisfies not only violate  X  , thus showing that  X  does not imply  X  .
+ If  X  has an empty set of field paths, then we will construct the cardinality network G have demonstrated above the counter-example tree T constructed for would also violate  X  (as  X  implies  X   X  ), thus showing that
+Finally, note that  X   X  =( Q  X  ,( Q  X   X  ,{_*}))) does not generally imply merging two copies of T  X  ,  X   X  on all nodes other than q T would satisfy  X   X  but violate  X  .
+
+Remark 4. In M ext we may also allow max-constraints without any field paths, say of the form definition of M ext the target path Q  X  must then be in PL no longer precious. 6. Algorithmic characterization of implication suitable nodes of the cardinality network.
+ Theorem 3. Let  X   X  {  X  } be a finite set of max-constraints in network G  X  ,  X  .  X  techniques. This establishes a surprisingly compact method.
+ Algorithm 1. Max-constraint implication Input: a finite set  X   X  {  X  } of max-constraints in M ext Output: yes, if  X   X   X  ; no, otherwise
+Method: G simplicity of Algorithm 1 enables us to conclude that the implication of max-constraints in polynomial time in the worst case.
+ Theorem 4. If  X   X  {  X  } is a finite set of max-constraints , then the implication problem
+O (|  X  | X  l  X (  X   X   X  +|  X  | X  l )), where |  X  | is the sum of the lengths of all path expressions in and l is the maximum number of consecutive single-label wildcards that occur in
+It is important to note the blow-up in the size of the counter-example with respect to complexity of Algorithm 1 is that of the algorithm dedicated to (numerical) keys only [24].
+Remark 5. If we simply replace each variable-length wildcard then Theorem 3 does not hold.
+
+To see this, consider  X  =card (_* .year ,( quarter.project ,{_. eid . S })) { project ._. eid . S }))  X  3, and  X  2 = card (_*. year.quarter ,( project ,{_. eid . S })) cardinality network shown on the third picture in Fig. 4 . But then by Lemma 3 , shown by the counter-example tree on the fourth picture in Fig. 4 . 7. Soft max-constraints the ability to decide implication efficiently. Clearly, if then there is no need to test  X  anymore.
+ during the runtime of the database.
+ discourse or preferences.
+ different quality levels, e.g., in terms of accuracy and reliability.
+Example 12. Recall the XML database for bank transactions. The max-constraint behavior, but violations may occur.
+ such as cardinality estimates for query optimization or resource planning.
+Consider a max-constraint  X  = card ( Q ,( Q  X  ,{ Q 1 , ... are interested in the maximum number of target nodes q  X  that share with q
+XML tree T we set f T  X  ( q , q  X  0 ) as the maximum of #{ q through all x i  X  q  X  0  X  Q  X  (with i =1, ... , k ). The max-constraint By Definition 2 , T satisfies  X  as a hard integrity constraint if and only if f
+Alternatively, T satisfies  X  as a soft constraint if holds for every context node q  X  Q  X  . In our bank example above, the max-constraint 100 transactions.
+ constraints.
+ Proof. Let  X   X  {  X  } be a finite set of max-constraints from
+XML tree T that satisfies all max-constraints in  X  (as hard constraints), but violates that all share the same information on their field paths. Hence T violates 8. Related work [6,9,12,19,33,34,39,44,47,50] . For a recent survey, see [51]. efficient use of regular path languages.
+ practice, where exceptions to common rules frequently occur. Moreover, the class work on this subject [13,15,22  X  26]. In particular, the class and numerical keys explored in our previous work. 9. Conclusion cardinality constraints.
+ interesting in practice where exceptions to the common rule occur frequently. of database constraints, including functional, multivalued and inclusion dependencies [5,20,21,27 tools.
+ Acknowledgment organization.
+ Appendix A. Verifying our assumptions in the proof of Lemma 3 We show next that the three assumptions used to prove Lemma 3 are indeed correct. the conference version [14] to the more expressive class M ext paths, then the proofs can be shortened considerably. The following result provides evidence that our first assumption holds. Lemma 4. Let  X   X  {  X  } be a finite set of max-constraints in the class w  X  and w such that Q  X   X  ~prefix( Q  X   X  ).suffix( Q  X   X  ), q  X   X   X 
+F p prefix ( Q  X   X  ) such that card Q  X  ; F ; Q  X  distinguish two different cases.
+
+Case 1. Suppose that all field paths of  X  are different from marked. We discuss two subcases.
+
+Case 1. a) . Suppose that suffix( Q  X   X  )~  X  . That is, prefix( Q and only the leaves of T  X  ,  X  are marked we know that for all j =1, construction of O i obtain the following inference: in which we fi rst apply target-path-containment rule, followed by k super fi eld rule.
+ Case 1. b) . Suppose that suffix( Q  X   X  )  X   X  .
+ Since w  X   X   X  q  X   X   X  suffix Q  X   X   X  X   X  it follows from the definition of the mini-tree T 1  X  i  X  k  X  , it holds that O  X  . O  X   X  . O i  X   X  Q  X  . Q  X  wildcards in  X  , we have that Q  X  . Q  X   X  . Q i  X   X  Q  X  . Q
+We next divide each of Q  X   X  , Q  X   X  and Q i  X  into prefix and suffix so that q  X  Q  X   X  Q  X   X   X  prefix Q i  X   X  . As before it still holds that
+From this we obtain the following statements: 1. Q  X  . Q  X   X   X  Q  X  .prefix( Q  X   X  ). 2. Q i  X   X  suffix( Q  X   X  ). Q j  X  for every j =1, ... , k 3. suffix( Q  X   X  ).prefix( Q i  X  )  X  Q  X   X  . 4. suffix( Q i  X  )  X  Q j  X  for every j =1, ... , k  X  . 5. Q i  X   X  suffix(Q  X   X  ).suffix( Q i  X  ).
+
+Furthermore, there is a max-constraint  X   X   X   X   X   X  + with Q all j =1, ... , k  X  ,suchthat  X   X  is applicable to  X  , w  X  met: a. If a variable-length wildcard appears in suffix( Q i  X  b. If a variable-length wildcard appears in prefix( Q  X   X  suffix( Q  X   X   X  ), but not in both.
+
+Note that if a variable-length wildcard appears in suffix( Q
+This shows that conditions (a) and (b) are both satisfied for prefix( Q
+On the other hand, suppose that the variable-length wildcard does not appear in ( Q prefix( Q i  X  ). Since  X   X  M ext , it follows that the variable-length wildcard is not in Q single-label wildcards of length  X  l and setting suffix( Q wildcard does not appear in prefix( Q i  X  ). Since prefix( Q prefix( Q  X   X   X  )~prefix( Q  X   X  ).
+
+Choosing F properly with F  X  prefix( Q  X   X   X  ), we obtain the following inference: in which we first apply the target-path-containment rule, followed by k conditions for the application of the subnodes rule are met.
+Case 2. Suppose now that there is a field path of  X  which is in T  X  ,  X  are marked. We consider two subcases.
+
+Case 2. a) . Suppose that Q ~  X  . Hence, w  X   X  = q  X   X  . Since w there is some Q  X  j and some i j with 1  X  i j  X  k  X  such that O which implies that O  X  i in which we fi rst apply the target-path-containment rule then the super pre fi x-epsilon rule and k  X  applications of the fi eld-path containment , and again the super
+Case 2. b) . Suppose that Q  X   X  . Since w  X   X   X  q  X   X   X  suffix Q to  X  that, for some 1  X  i  X  k  X  ,thereisaprefix( O i  X  )suchthatprefix( O definition of applicability and the fact that all descendant nodes of q prefix O j of suffix( O i  X  ) such that O j  X  Q j  X  , and also that O w  X   X   X  Q  X  : Q  X   X  : prefix Q  X  prefix O j of suffix( Q i  X  ) such that O j  X  Q j  X  ,wehavethat Q
+We next divide Q  X   X  , Q  X   X  and Q i  X  into prefix and suffix so that q w  X   X  Q  X  : Q  X   X  : prefix Q  X  j =1, ... , k  X  ,
+The following statements hold. 1 Q  X  . Q  X   X   X  Q  X  .prefix( Q  X   X  ). 2 prefix( Q i  X  ). Q j  X  suffix( Q  X   X  ). Q j  X  for every j =1, 3 suffix( Q  X   X  ).prefix( Q i  X  )  X  Q  X   X  . 4 Q j  X  Q j  X  for every j =1, ... , k  X  .
+
+It also holds that there is a max-constraint  X   X   X   X   X   X  + for all j =1, ... , k  X  , such that  X   X  is applicable to  X  aIfthereisa Q j for j =1, ... , k  X  such that the variable-length wildcard appears in Q b If the variable-length wildcard appears in prefix( Q  X   X  or suffix( Q  X   X   X  ), but not in both. c If the variable-length wildcard appears in suffix( Q i  X 
+Note that if there is a Q j for j =1, ... , k  X  (recall that Q by Statement (4), it also appears in Q j  X  .Since  X   X  M ext
+This shows that conditions (a), (b) and (c) are satisfied for prefix( Q
+On the other hand, suppose that for every j =1, ... , k  X  length wildcard does not appear in both prefix( Q  X   X  ) and suffix( Q prefix( Q  X   X   X  )~prefix( Q  X   X  ) and suffix( Q  X   X   X  )~suffix( Q variable-length wildcard appears in prefix( Q i  X  ). Since since suffix( Q  X   X  ) prefix( Q  X   X  ), a suitable prefix( Q prefix( Q  X   X  ) by an appropriate sequence of single-label wildcards of length second case, we assume that the variable-length wildcard does not appear in prefix( Q suffix( Q  X   X   X  ) can be obtained by replacing each variable-length wildcard in suffix( Q appropriate sequence of single-label wildcards of length  X 
+Note that, due to the definition of applicability and the fact that every Q 1  X  m  X  k  X  such that for all j =1, ... , k  X  , it holds that Q suffix( Q m  X  )~ Q m . Q  X  m , we get the following inference: in which we first apply the target-path-containment rule, then the superfield rule to introduce the prefix-epsilon rule, and finally the superfield rule. we prove the following lemma.
+ Lemma 5. Let  X   X  {  X  } be a finite set of max-constraints in the class  X  coincides with q  X  or is an descendant node of it in T  X  ,  X  expression Q  X  and a suffix of Q  X   X  , denoted suffix( Q  X   X  and w  X   X  1 ; q  X   X  w itnesses the applicability of  X   X  to
+Proof. Since w  X   X  1 is an ancestor node of q  X   X  and w  X  suffix O  X   X   X  Q  X   X  2 for Q  X   X  ~prefix( Q  X   X  ).suffix( Q suffix Q  X   X  : suffix Q  X  1 j  X  Q  X  1 j for Q  X  1 j  X  prefix Q to derive the following max-constraint from  X  1 . where R  X  suffix Q  X   X  : suffix Q  X  1 1 ; ... ; suffix Q  X  there is also a variable-length wildcard in Q  X  1 j for every j  X  1 Therefore, the max-constraint in Eq. (A.1) is also in the class
+Next, we note that if the variable-length wildcard appears in Q would not be in M ext . Thus, we can replace any variable-length wildcard that appears in Q single-label wildcards of length  X  l . If variable-length wildcard appears in Q by this process. Otherwise, if the variable-length wildcard does not appear in Q containment rule to Eq. (A.1) we get the following max-constraint which is still applicable to
+Then we can apply the superfield rule to obtain where S  X  suffix Q  X   X  : Q  X  1 ; ... ; suffix Q  X   X  : Q  X 
+According to applicability we have Q  X  1 : Q  X   X  1 p Q  X  2  X  produce where T  X  Q  X  1 ; ... ; Q  X  k single-label wildcards of length  X  l .
+
+From Eqs. (A.3) and (A.4) we infer by means of the multiplication rule.
+ We now distinguish between two different cases.
+
+Case 1. Assume first that for all i =1, ... , k  X  we have Q applicability of  X  1 to  X  , that for all j  X  1 ; ... ; k  X 
+Q , it follows that Q  X  i reduces to
+Case 2. For the remaining case we suppose that there is some l with 1 in T
+ X  ,  X  are marked. Applicability of  X  1 to  X  means that for all j  X  1
+O  X  suffix Q  X  1 j : suffix Q  X  i
+Q , it follows that Q  X  i where T  X   X  Q  X  1 ; ... ; Q  X  k  X  ; suffix Q  X  1 1 : suffix Q containment rule, this reduces to
+Hence, in both cases we derive that  X   X   X   X   X  R  X  . It is immediate that This concludes our proof of the assumptions made when verifying Lemma 3 .
+References

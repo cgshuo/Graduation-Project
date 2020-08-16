@@ -1,0 +1,57 @@
+ Article history: Received 26 July 2010
+Received in revised form 13 June 2011 Accepted 5 October 2011 Available online 8 November 2011 Keywords: Vehicle routing problem
+GRASP 0952-1976/$-see front matter &amp; 2011 Elsevier Ltd. All rights reserved. doi:10.1016/j.engappai.2011.10.002
+E-mail addresses: duhamel@isima.fr (C. Duhamel), placomme@sp.isima.fr (P. Lacomme), caroline.prodhon@utt.fr (C. Prodhon). solution and its cost. Let S n be the incumbent solution whose metaheuristic search space 1 1 j v k j v Table 1
+Travel cost between nodes. 0 03710410 1 5051031 2 10 10 0 2 10 5 3 525042 4 657506 5 3101010 2 0 (0,3,2,1) 0 1 2 3 (0,5,0) 0 1 2 3 (0,5,0) 0 (0,3,0) 1 2 3 (0,5,0) Table 2 Scale factors in numerical experiments.
+
+Publications Computers Mflops Scale Taillard (1999 ) 50 MHz Sun Sparc 10 27 0.007 Gendreau et al. (1999 ) 50 MHz Sun Sparc 10 27 0.007 Wassan and Osman (2002 ) 50 MHz Sun Sparc 1000 25 0.006 Lima et al. (2004 ) 2 GHz Pentium 4 1737 0.420 Choi and Tcha (2007 ) 2.6 GHz Pentium 4 2266 0.547 Prins (2009a ) 1.8 GHz Pentium 4M 1564 0.378 Tarantilis et al. (2004 ) 400 Mhz Pentium II 262 0.063 Li et al. (2007 ) 1 GHz Athlon 1168 0.282 Brand ~ ao (2011 ) 1.4 GHz Pentium 4M 1216 0.294 This work 2.1 GHz Opteron 4140 1.000 Table 4 Deviation and computational time.
+ Table 5 Number of best solutions.
+ Taillard (1999 ) 6314// Gendreau et al. (1999 ) 5462// Wassan and Osman (2002 )5423// Lima et al. (2004 )54/ // Choi and Tcha (2007 ) 10 1 7 1 10 1 Prins (2009a ): SMA-D1 8 2 / / / / Prins (2009a ): SMA-U2 / / 7 1 / / Prins (2009a ): SMA-U1 / / / / 8 2 Hybrid ELS 8 2 1 4 5 3 Table 7 Deviation and computational time on HVRP instances.
+ Taillard (1999 ) 0.9310 14.08 / / Tarantilis et al. (2004 ) 0.6172 38.25 / / Li et al. (2007 ) 0.0317 80.58 0.28 488.09 Prins (2009a ) SMA-D2 0.0774 35.81 / / Brand ~ ao (2011 ) 0.0850 44.59 0.05 1789.41 (Hybrid ELS) Greedy
+Split (Hybrid ELS) DFS Split 0.0698 79.79 2.45 2644.56 Table 8 DLP_HVRP instances.
+ Hybrid ELS with BFS split 401.81 36 12 Hybrid ELS with DFS split 399.99 48 12 Table 9 Hybrid ELS performances with the two split procedures for the 4 set of instances. Table A1-1 Hybrid evolutionary local search performances on VFMP_F instances. n BKS Taillard (1999 ) Gendreau et al.
+Lima et al. (2004 ) Choi and Tcha Table A1-2 Hybrid evolutionary local search performances on VFMP_V instances. Table 10 Comparative study of articles on routing problem.
+ Publications Methods Problems Benchmarks used
+Gendreau et al. (1999 )
+Wassan and Osman (2002 ) instances
+Tarantilis et al. (2004 )
+Li et al. (2007 ) Record-to-record travel This publication Hybrid ELS VFMP-F/VFMP-V/VFM
+Golden X  X /Taillard X  X /Choi X  X /Li X  X /VFMP and HVRP instances and new DLP Instances Table A2-1
+Hybrid ELS performances on HVRP instances with/without DFS Split procedure. (2009a ):SMA-D2 Table A2-2
+Hybrid ELS performances on Li X  X  instances with/without DFS Split procedure. Table A1-3
+Hybrid evolutionary local search performances on VFMP_FV instances. Table A3-2 GRASP ELS performances on French counties DLP_HVRP_2 (100 o n r 150). Average 8710.77 376.73 8659.09 389.76 Table A3-1 GRASP ELS performances on French counties-DLP_HVRP_1 ( n r 100). Average 4394.62 114.17 4395.91 123.20 Bajart, V., Charles, C., 2009. Syst emes d X  X nformation Ge  X  ographique, Rapport de Projet, ISIMA, 3 eme Anne  X  e. / http://www.isima.fr/ lacomme/students.html Boudia, M., Louly, M., Prins, C., 2006. A memetic algorithm with population management for a production-distribution problem. In: Dolgui, A., Morel, G., Pereira, C. (Eds.), Preprints of the 12th IFAC Symposium on Information
+Control Problems in Manufacturing INCOM X 06, vol. 3, Saint Etienne-France, pp. 541 X 546.
+ Table A3-3 GRASP ELS performances on French counties (150 o n r 200).
+ Average 11,776.57 728.76 11,888.11 699.38 Table A3-4 GRASP ELS performances on French counties DLP_HVRP_4 (200 o n ). Average 14,436.62 1198.13 14,491.56 952.06 Brand ~ ao,, J., 2011. A tabu search algorithm for the heterogeneous fixed fleet vehicle routing problem. Comput. Oper. Res. 38 (1), 140 X 151.
+ Choi, E., Tcha, D.-W., 2007. A column generation approach to the heterogeneous fleet vehicle routing. Comput. Oper. Res. 34, 2080 X 2095.
+ Desrochers, M., 1988. An Algorithm for the Shortest Path Problem with Resource Constraints. Research Report G-88-127, GERAD, Montreal, Canada.
+ Duhamel, C., Lacomme, P., Prins, C., Prodhon, C., 2010. A GRASPxELS approach for the capacitated location-routing problem. Comput. Oper. Res. 37, 1912 X 1923. Duhamel, C., Lacomme, P., Prodhon, C., 2011. Efficient frameworks for greedy split and new depth first search split procedures for routing problems. Comput. Oper. Res. 38 (4), 723 X 739.
+ Dongarra J. Performance of Various Computers Using Standard Linear Equations Software. Report CS-89-85, University of Tennessee, 2009.
+ Feo, T.A., Resende, M.G.C., 1995. Greedy randomized adaptive search procedures. J. Global Optim. 6, 109 X 133.
+ Gendreau, M., Laporte, G., Musaraganyi, C., Taillard, E., 1999. A tabu search heuristic for the heterogeneous fleet vehicle routing problem. Comput. Oper. Res. 26, 1153 X 1173.
+ Golden, B., Assad, A., Levy, L., Gheysens, F., 1984. The fleet size and mix vehicle routing problem. Comput. Oper. Res. 11, 49 X 66.
+ Lacomme, P., Prins, C., Ramdane-Cherif, W., 2001. Competitive genetic algorithms for the Capacitated Arc Routing Problem and its extensions. EURO-GP 2001 (4th European Conference on Genetic Programming), C  X  ome, Italie, 18 X 20 avril 2001. Published in Lecture Notes in Computer Science, E.J.W. Boers et al. (Eds.), EvoWorkshop 2001, Lecture Notes in Computer Science, vol. 2037, Springer-Verlag, Berlin, Heidelberg, pp. 473 X 483.
+ Li,F.,Golden,B.L.,Wasil,E.A.,2007.Arecor d-to-record travel algorithm for solving the heterogeneous fleet vehicle routin g problems. Comput. Oper Re. 34, 2734 X 2742. Li, X., Tian, P., Aneja, Y.P., 2010. An adaptive memory programming metaheuristic for the heterogeneous fixed fleet vehicle routing problem. Transport. Res. Pt. E 46 (6), 1111 X 1127.
+
+Lima, C.M.R.R., Goldbarg, M.C., Goldbarg, E.F.G., 2004. A memetic algorithm for the heterogeneous fleet vehicle routing problem. Electron. Notes Discrete Math. 18, 171 X 176.
+
+Osman, I.H., Salhi, S., 1996. Local search strategies for the mix fleet routing problem. In: Rayward-Smith, V.J., Osman, I.H., Reeves, C.R., Smith, G.D. (Eds.), Modern Heuristic Search Methods, Wiley, Chichester, pp. 131 X 153.
+Prins, C., 2004. A simple and effective evolutionary algorithm for the vehicle routing problem. Comput. Oper. Res. 31, 1985 X 2002.
+
+Prins, C., 2009a. Two memetic algorithms for heterogeonous fleet vehicle routing problems. Eng. Appl. Artif. Intell. 22, 916 X 928.
+
+Prins, C., 2009b. A GRASP evolutionary local search hybrid for the vehicle routing problem. In: Pereira, F.B., Tavares, J. (Eds.), Bio-inspired Algorithms for the Vehicle Routing Problem, Studies in Computational Intelligence, 161. , Springer, Berlin, pp. 35 X 53.
+
+Prins, C., Prodhon, C., Wolfler-Calvo, R., 2006. A memetic algorithm with popula-tion management (MA 9 PM) for the capacitated location-routing problem. In: Gottlieb, G., Raidl, G. (Eds.), Lecture Notes in Computer Science, vol. 3906, Springer, pp. 183 X 194.
+
+S  X  orensen, K., Sevaux, M., 2006. MA 9 PM: memetic algorithms with population management. Comput. Oper. Res. 33 (5), 1214 X 1225.
+
+Taillard, E.D., 1999. A heuristic column generation method for the heterogeneous fleet VRP. RAIRO Oper. Res. 33 (1), 1 X 14.
+
+Tarantilis, C.D., Kiranoudis, C.T., Vassiliadis, V.S., 2004. A threshold accepting metaheuristic for the heterogeneous fixed fleet vehicle routing problem. Eur. J. Oper. Res. 152, 148 X 158.
+
+Wassan, N.A., Osman, I.H., 2002. Tabu search variants for the mix fleet vehicle routing problem. J. Oper. Res. Soc. 53, 768 X 782.
+
+Wolf, S., Merz, P., 2007. Evolutionary local search for the super-peer selection problem and the p-hub median problem. In: Blesa, M., Blum, C., Naujoks, B.,
+Roli, A., Rudolph, G., Sampels, M. (Eds.), Lecture Notes in Computer Science, vol. 4771, Springer, pp. 1 X 15.
+

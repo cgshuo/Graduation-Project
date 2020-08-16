@@ -1,0 +1,63 @@
+ 1. Introduction
+Even though there are many new approaches for clustering data [4 means suffers from many well-known weaknesses such as:  X 
+Clustering is strongly dependant on initial representatives;  X 
+A representative may be trapped in the local optimum during optimization;  X 
+The presence of outliers influences clustering;  X 
+It assumes that all attributes have equal importance for clustering;  X  The number of clusters is user-dependant etc.
+ mentation in popular software. This gap was aroused due to
+Sonnenburg et al. [22] also emphasized that  X  black-box  X  for component-based design of representative-based clustering algorithms. examination of algorithm performance when single RC is added or removed). [22,24] .
+ algorithms. and gives an outlook on further research directions. 2. Related work algorithms.
+ numeric and categorical datasets.
+ brackets.
+  X  or transformations.
+
+Milligan and Cooper [44] , Walesiak and Dudek [60] developed the measures for the given data types.
+ (see Table 2 ) as well as some commercial software (IBM SPSS Modeler, Matlab). different  X  Update representatives  X  methods, namely  X  batch versions of K-means (Lloyd, MacQueen, Forgy, Hartigan and Wong). uses  X  batch  X  and  X  online  X  clustering, but uses them sequentially, i.e. it first executes  X  online  X  K-means on representatives received from  X  batch flexibilities in K-means, i.e. only the number of iterations can be changed.
+Section 4 . 3. Proposed clustering design architecture reusable (software) components given by [27] .
+ clustering sub-problem. 3.1. General component-based algorithm architecture hopefully integrated efforts in algorithm development from RapidMiner and WhiBo community. levels of abstraction and are independent. This allows easy extension of the proposed framework. adapters that enable using generic algorithms in different softwares (Layer 5).  X  of RCs and their parameter settings.
+ (step 3), and concrete algorithm logic is defined when generic algorithm instantiates RCs from to evaluate and compare them with other algorithms. 3.2. Sub-problems and reusable components various RCs in generic algorithms. We propose a sub-problem I/O structure in Table 3 . 3.2.1. Initialize representatives XMEANS.
+ 3.2.2. Measure distance used throughout the algorithm in all RCs using MD. 3.2.3. Update (create) representatives representatives. In case that  X  Initialize representatives create() function ( Fig. 2 ) is called to calculate cluster representatives. 3.2.4. Evaluate clusters of internal cluster evaluation measures. In the proposed GC algorithm ( Algorithm 2 in Section 3.4 ), throughout the algorithm to choose best clustering models (e.g. in
+XMEANS, and GMEANS use the  X  Evaluate cluster  X  RC to determine which cluster to split next). 3.2.5. Stop criteria execution.
+ subsection. 3.3. Generic clustering algorithm structure measure is used only in the  X  Update representatives  X  phase, but in levelallowsconsistentinteractionin usage of RCs throughout thealgorithm (e.g. iftheRC COSINEfor will be also used in  X  Initialize representatives  X  ,  X  Update representatives 3.4. Generic clustering algorithm fl ow K-means algorithm designed with RCs described in Table 1 is shown in Algorithm 1 . Algorithm 1. Original K-means algorithm.
+ Input : Output : Parameters :
+GCAlgorithm(Dataset, K) 1. // Initialization 2.  X  Initialize representatives  X  with RANDOM to initialize K representatives 3. // Refinement 4. repeat 5. for each instance from dataset 6. for each representative 7.  X  Measure distance  X  with EUCLID (instance, representative) 8. end 9. end 10. Assign instance to nearest representative by calculating mean 11. until REPSTAB  X  Stop criterion  X  assembling RCs into algorithms. The algorithm is shown in Algorithm 2 and consists of three phases: 1. Initialization, where initial (minK) representatives are generated; Algorithm 2. Generic representative-based clustering algorithm. Input : Output :
+Parameters :
+GCAlgorithm(Dataset, minK, maxK, refinePartitions) 1. // Initialization 2. Use  X  Initialize representatives  X  to initialize min_K representatives 3. // Refinement 4. repeat 5. for each randomly (without replacement) sampled instance from dataset 6. for each representative 7.  X  Measure distance  X  (instance, representative) 8. end 9. Assign instance to nearest representative 10. If  X  Update representatives  X  .isOnline() then 11.  X  Update representatives  X  .update() 12. end 13. If not  X  Update representatives  X  .isOnline() then 14.  X  Update representatives  X  .update() 15. until  X  Stop criterion  X  16. // Hierarchical division 17. If maxK&gt;minK 18. Split each cluster binary using  X  Initialize representatives 19. repeat 20. Do  X  Evaluate clusters  X  on child clusters and parent clusters 21. Choose best difference between child and parent clusters evaluation 22. If difference is positive 23. If refinePartitions is local 24. Do Refinement (Parent cluster dataset, child centroids) 25. If refinePartitions is global 26. Do Refinement (Whole dataset, all centroids) 27. until number of clusters=maxK or no splitting in last loop
+The GC algorithm has three global parameters. These are:  X  minK: number of clusters that should be generated in the  X   X  maxK: number of clusters that should be produced after the  X  refinePartitions: defines how clusters should be refined in the
+There are two possibilities:
+The proposed algorithm efficiently combines the refinement phases from is also important to define for each  X  Update representative tagging each  X  Update representative  X  RC as  X  online  X  or algorithm.
+ maxK).
+ used for DIANA, PCA, XMEANS, and GMEANS RCs is shown in Algorithm 3 . Algorithm 3. Initialize representatives RCs hierarchical divisive algorithm. Input : Output : Parameter :
+Hierarchical division (Dataset, K) 1. Binary split (Dataset) 2. repeat 3. for each cluster 4. parentEC=  X  Evaluate cluster  X  (current cluster) 5. childCluster=Binary split (current cluster) 6. children EC=  X  Evaluate cluster  X  (childCluster) 7. Do Refinement (childCluster dataset, childCluster centroids) 8. end 9. Choose best improvement between parent and child clusters evaluation 10. Replace parent cluster with child clusters 11. until K clusters 3.5. Generic clustering algorithm complexity clusters is increased by 1). So, maximum execution time of the whole algorithm is: of X-means and G-means algorithm, which have similar division strategies. 4. Experimental evaluation (A more detailed characterization of these RCs is given in the Appendix of this paper). These are:  X 
+Initialize representatives: DIANA, GMEANS, KMEANS++, PCA, RANDOM, SPSS, XMEANS  X 
+Measure distance: CITY, CORREL, COSINE, EUCLID  X  Update representatives: BOTTOU, MEAN, MEDIAN.
+ the reported results are shown on average.
+  X  components could vary. 4.1. Comparison with well known algorithms same implementation). Table 5 shows silhouette values for ten datasets. with the same, best result), worst RC-based algorithms and their difference, respectively. algorithms are visualized in Fig. 5 .
+ silhouette value. Best algorithms on every dataset are shown in Table 7 . subsection.
+ but 17 more algorithms had the same silhouette value (SV) where PCA and COSINE gave the best result (in 3 algorithms) for every 4.2. Detection of well performing components algorithm is the same. Next, we separated RCs in two groups, the  X  best  X  group, unless they are proved significantly worse than the best RC. Components in the use in an RC-based algorithm that should cluster the selected dataset in a good way. The shown in Table 8 .
+ significantly better than the other distance measures, but we could not differentiate on the best way, we pointed out good parts of an algorithm which constitute a well-performing algorithm. algorithms for these datasets.
+ subsection.
+ values for every  X  Initialize representatives  X  and  X  Distance measure upon request).
+ performance on a dataset which is analyzed in the following subsections. 4.3. Average performance of algorithms
+Using the procedure described in Section 4.2 , we identified the datasets. We explored why algorithms were tagged as  X  best  X  COSINE or EUCLID perform as  X  best  X  on average with a 100% confidence. algorithms, where algorithms with MEDIAN only have 4/28=14% of MEDIAN (Rule 7) produced  X  best  X  algorithms.
+ produces mostly  X  best  X  algorithms (confidence 92%), while using RANDOM (Rule 8) results in
+CITY+BOTTOU (Rule 1) and CITY+MEAN (Rule 2) showed a synergic effect producing always the individual usage didn't guarantee a  X  best  X  algorithm. 4.4. Searching for the right number of clusters (K) and maxK to 2K.
+
+Compared to previous experiment, besides using COMPACT for refinement strategies of child clusters during hierarchical division. were dependent on the RCs an algorithm has.
+
+In Table 10 we show the results for algorithms grouped by is the average (with standard deviation) number of clusters found by 12 (3 UR algorithm, as for every new division IR RCs are used.
+ sometimes also capable of finding the right K.
+ global refinement strategy managed to detect the desired number of clusters. strategy managed to find the right K.
+ silhouette index value, or for detecting the right K, etc.). 5. Algorithm space search approach from [82] could be adopted for the search in the space of RC based clustering algorithms. (7  X  broadens the algorithm search space even more.
+ (number of iterations) with parameter 10. Fig. 9 shows a genotype of an RC-based algorithm. 6. Discussion and outlook developers:  X   X 
+Reduced need for re-implementation of representative-based clustering algorithms and their parts,  X  Better understanding of the algorithm structure and behavior (e.g. for educational purposes). experimental section, we made several conclusions:  X   X 
+Sometimes only one RC made the difference for the  X  best  X   X 
+On the other hand, sometimes only the synergy of RCs produced the  X 
+On average, it is better to use MEAN or BOTTOU than MEDIAN for  X 
+Using DIANA improved the probability of a partitioning algorithm being the probability of an algorithm being the  X  rest  X  .  X  cutting edge performance.
+ document data [106  X  108] etc.
+ Appendix. RC characterization characteristics are given for  X  Initialize representatives respectively.
+
+The RCs for  X  Update representatives  X  are described with the following characteristics:  X   X  several times.  X   X 
+PCA-based: defines whether principal component analysis is used for representatives' calculation.  X  Discrete: defines whether the proposed representatives are from the discrete object space, or not.
+References

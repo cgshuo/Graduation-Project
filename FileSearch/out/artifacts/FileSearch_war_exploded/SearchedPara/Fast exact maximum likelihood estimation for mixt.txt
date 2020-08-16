@@ -1,0 +1,58 @@
+ 1. Introduction Minka, 2002 ).
+ which is a linear combination of two multinomial language models p and q r  X  a p  X  b q  X  1  X  data D .
+ properties.
+ and fast algorithm. 2. Mixture language model where the mixture language model was successfully used. 2.1. Mixture language model for relevance feedback evance feedback ( Lavrenko &amp; Croft, 2001; Miller, Leek, &amp; Schwartz, 1999 ). D  X f d 1 ; d 2 ; ... ; d J g is P  X  D j h  X  X  f  X  R known. Usually it is calculated directly as ^ p i  X  b P  X  w i j p  X  X  where cf i is the number of times word w i occurs in the collection. documents, but not very common in the collection.
+ guage modeling approach works better than Rocchio method in terms of precision. 2.2. Mixture language model for novelty detection vant document is generated.
+ els: A general English language model h E , a user-specific topic model h bility k E , k T and k d core , respectively:  X  X  X arietta  X  are more likely to be generated from the new document model h of a topic, while h d core is the core information of a particular relevant document. k ; k ; k d core ; h T core ; h E were fixed. The document core model h of the document. has read before is more likely to be novel. With the document information model h mation contained in each document can be defined as
+One major step here is estimating the document core model h b  X  k 3. Existing solution: EM algorithm r i  X  a p i  X  b q i  X  2  X  LL  X  model, document model or topic model.
+ where n is the iteration number.
+ Although this solution is used often, it has several weaknesses. choose between speed and accuracy.
+ computational cost because of the iterative nature of the algorithm. 4. New exact solution function of several variables subject to one or more constraints. ject to the constraints (Eq. (3) ) with respect to q i @ q i Applying the constraint that
+X
+According to Eq. (5) , we get: k  X 
+Substitute k in Eq. (4) with the right-hand side of Eq. (6) ,weget
+Statement :If q i : i  X  1 k maximize the objective function (Eq. (3) ), q Proof. We prove the statement by contradiction.
+
+Let D q represents a small positive number. If q 1 &gt; 0 is false, then q multinomial distribution and cannot be negative. Then we have: LL  X  q 1  X  D q ; q 2 D q ; q 3 ; ... ; q k  X  q  X  0and q 2 &gt; 0. Eq. (10) to (11) is based on the assumption So far, we have shown that:
+LL  X  q 1  X  D q ; q 2 D q ; q 3 ; ... ; q k  X  Thus q i : i  X  1 k do not maximize the log likelihood of data (Eq. (3) ) Now we have finished the proof of the statement. h
+According to the statement, we can claim that the ratio p q likelihood of observed data:
+Algorithm 0. Sort p i f and
+Then q i  X  X  are given by where k is given by k  X 
+The complexity of the algorithm is same as sorting, which is O  X  k log  X  k  X  X  . 5. Fast O  X  k  X  algorithm
+The key part of the Algorithm 0 is to find the thresholding pair  X  f algorithm.
+
+Now we prove that the average computation cost is O ( k ) using recursion. Let C tion cost for n , then we have the following recursion:
+C k  X  k  X  Algorithm 1. Find t Input : A set of k distinct elements.
+
+Output : The element t 2 X  1 ; 2 ; ... ; k such that and 1: S p 0 ; S f 0 2: A f 1 ; 2 ; ... ; k g 3: repeat 4: randomly select a pivot s from A 5: L ; ; G ; ; S f S f ; S p S p 6: for all i 2 A do 8: G G 9: else if f i 10: L L 11: else 12: S f S f  X  f i ; S p S p  X  p i 13: end if 14: end for 16: A L ; S p S p ; S f S f ; t s 17: else 18: A G 19: end if 20: until A  X ; Output: t  X  s From Eq. (16) , it can be derived that
+C k  X  2 k model p using Algorithm 1.
+ randomly selecting s .
+ example, Line 7 can be implemented as if f i p s &gt; f s shared/fastem.cpp . 6. Experimental results a is set to 0.9 arbitrarily. exact time for EM algorithm depends on the stopping criteria. in our experiment. 7. Conclusion ognition and part-of-speech tagging, etc.
+ selection technique explicitly.
+ Acknowledgements ta Cruz.
+ References
+ A common language modeling approach assumes the data D is generated from a mixture of several language models. EM algorithm is usually used to find the maximum likeli-hood estimation of one unknown mixture component, given the mixture weights and the other language models. In this to find the exact solution, where k is the number of words abilities of many words are exactly zeros, which means that technique.
+ Categories and Subject Descriptors: B.3.3 [Informa-tion Search and Retrieval]: Information Search and Re-trieval General Terms: Algorithms, Languages Keywords: language models
+Mixture of language models is commonly used in IR ap-plication. Assume a sequence of data D is generated from a language model r , which is a linear combination of two multinomial language models p and q : where  X  and  X  are interpolation weights that sum to 1.
+The problem is to find q i  X  X  that maximize the likelihood the constraints frequency of word i in D .
+ The log-likelihood of the data is:
+This modeling approach has been applied to various infor-context sensitive language model smoothing [6], and novelty detection [5]. For example, p is the corpus language model, r is the language model used to generate document related to a query, and q is a query language model to be learned from relevance feedback.
+
+We can treat the maximum likelihood estimator (MLE) of p as already known, usually it is calculated directly as: where df i is the number of times word i occurs in the col-lection.
+
+The major task is to find the MLE of q , which is usually obtained using the EM algorithm. Despite its popularity and simplicity, EM has two weaknesses. First, it is a com-putationally expensive greedy search algorithm. This ex-pense discourages the use of the language modeling approach for the ad-hoc retrieval task in situations where computa-web search engine. Second, EM only provides an approx-imately optimal result with increased computational com-plexity, which we will discuss later. section, since the work is not commonly known for the IR community and it is the basis of our new algorithm. method and calculate the derivatives with respect to q i : Applying the constraint that
+We can prove by contradiction that if q i : i = 1  X  X  X  k max-imize the objective function (2), q 2 &gt; 0 and p 1 f q consequence is that all the q i  X  X  greater than 0 correspond to the smallest p i f to find the exact q that maximize the likelihood of observed data:
+Algorithm 0 : Sort p i f t such that and
+Then q i  X  X  are given by:
+Where  X  is given by:
+The key part of the Algorithm 0 is to find the threshold-gorithm for finding ( f t , p t ).
+ Algorithm 1 Find t 1: S p  X  0 , S f  X  0 2: A  X  X  1 , 2 ,  X  X  X  , k } 3: repeat 4: select a pivot s from A 5: L  X  X  X  , G  X  X  X  , S  X  f  X  S f , S  X  p  X  S p 6: for all i  X  A do 8: G  X  G 9: else if f i p 10: L  X  L 11: else 13: end if 14: end for 16: A  X  L , S p  X  S  X  p , S f  X  S  X  f , t  X  s 17: else 18: A  X  G 19: end if 20: until A =  X 
+The general idea of Algorithm 1 is to first select a random term/element/word s (Line 4) as a pivot to partition the words into two sets L and G (Line 7 and Line 9). Then we decide whether t is in set L or G (Line 15). Then we recurse each iteration being roughly half of the previous one. The whole process is a geometric series converges as an average linear time algorithm.
+
+Now we prove that the average computation cost is O(k) using recursion. Let C k be the average computation cost for n , then we have the following recursion: From (10), it can be derived that
+Hence the average computation cost is O ( k ). k is the number of words with none zero frequency in D . Because words not in data D do not influence the estimation of  X  and are ranked lower than the pivot, we can ignore them in Algorithm 1. This property is nice, because k could be much smaller than the vocabulary size. For example, if D is a document generated by the mixture of document language model q and background English language model p , we only need to process words in the document while estimating the document language model p using Algorithm 1. If we use EM, all words in the whole vocabulary need to be processed.
+The algorithm can also be modified to a worst case O ( k ) algorithm. This can be achieved by using s corresponding to the median of f i p a s .
+
+If implemented appropriately, the division operations can be mostly avoided in this algorithm. For example, Line 7 sion is a much more time consuming floating point oper-ation than multiplication. Our simulations show that EM algorithm converges to the results of our exact algorithm, while our algorithm takes about the same time as 1 to 3 EM iterations to finish. Needless to say that EM algo-rithm needs many iterations to converge [3]. The source code of our algorithm written in C is provide online at www.soe.ucsc.edu/ yiz/papers/sigir07poster.
+
+Another merit of our algorithm is that we know the prob-abilities of some words in language model q are exactly zero (Equation (8)), which means that the mixture language model also serves as a feature selection technique. [1] D. Hiemstra, S. Robertson, and H. Zaragoza. [2] W. Kraaij, R. Pohlmann, and D. Hiemstra. Twenty-one [3] W. X. Y. Zhang and J. Callan. Exact maximum [4] C. Zhai and J. Lafferty. Model-based feedback in the [5] Y. Zhang, J. Callan, and T. Minka. Novelty and [6] X. Zhou, X. Hu, X. Zhang, X. Lin, and I.-Y. Song.

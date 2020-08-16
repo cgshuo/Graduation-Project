@@ -1,0 +1,80 @@
+ 1. Introduction follow from the ambiguity and complexity of natural language. both the character and type of data is very diversified.
+ ever, the expectations are big. should be located as close to the top of the list as possible.
+One can take advantage of some additional information to improve document ranking, including information about queries, documents, and user interests.
+ drift (Mitra, Singhal, &amp; Buckley, 1998; Xu &amp; Croft, 2000).
+A hypothesis by Fox, Nunn, and Lee (1988) uses more information about documents to improve re-trieval effectiveness: Effective integration of more information should lead to better information retrieval. information will lead to better answer set quality.
+ 1986).
+ and used now in Google, and the HITS 1 method proposed by Kleinberg (1998). A re-ranking method Zhang &amp; Dong, 2000; Zhu, Hong, &amp; Hughes, 2001).
+ where improvement is defined formally in a space of distance vectors from the ideal document. direction of future work and some possible generalizations. 2. Description of the method We make the following assumptions: A1. user query concerns one topic, A2. initial relevance weights of documents are given, A3. inter-document relationships are known, which are expressed by a metric distance function. means of distances, where a smaller distance corresponds to a greater similarity (Da
+Ma z function. We assume that the distances between documents are metric. tem, r  X  X  r 1 ; r 2 ; ... ; r n  X  X  X elevance vector, where r
+D  X  d ranking r , therefore also on the system from which we obtain the answer. 2.1. The solution idea
+The initial relevance weight of a document d i , represented by r and denote it as r . For an estimation error we use the Hamming distance function find a vector ^ r satisfying the condition condition (*) is satisfied.
+ vector, and the ideal vector. 2.2. Document space, ideal document, relevance function different weights.
+ more relevant) are highlighted.
+
+Formally, the connection between the distance from the ideal document and a relevance weight is expressed by a relevance function.
+ A relevance function in a metric document space D is a function r : D ! R such that: A1. 9 d 8 d 6  X  d  X  r  X  d  X  &gt; r  X  d  X  X  , A2. 8 d 8 e  X  d  X  d ; d  X  X  d  X  e ; d  X ) r  X  d  X  X  r  X  e  X  X  , A3. 8 d 8 e  X  d  X  d ; d  X  &gt; d  X  e ; d  X ) r  X  d  X  &lt; r  X  e  X  X  . Finally, the third condition states that when the distance from d grows, weights decrease.
+To visualize this notion, let us assume that documents are represented by points in R function may then define a bell-shaped surface with a single peak d .
+It is worth noting that using r 1 we can determine the distance d  X  d the value of the relevance function r i (i.e., relevance weight). vance weight of the other. It follows from the metric space properties that and equivalently using relevance weights very high weights. 2.3. Distance vector space, ideal vector, set of feasible vectors r  X  X  r 1 ; r 2 ; ... ; r n , where r i is the relevance weight of document d transformed to a distance vector c  X  X  d  X  d 1 ; d  X  ; d  X  d
+We define ideal vectors: documents if he/she had enough time to read all the documents in the answer set).  X  Ideal distance vector c  X  X  X ector containing exact distances from the ideal document d . other.
+ be a set of all distance vectors. We can find a subset C 0 means that for all pairs of documents, d i and d j , in the answer set distances d  X  d fulfil the triangle inequality.
+ Consequently, we will call it a feasible set: Moreover, c P 0.
+ inter-document distances (matrix D ). In Appendix A it is shown that set C
+Example 1. We will show a feasible set when there are two documents in the answer set. So c  X  X  c distance matrix D  X  0 d includes feasible set C 0 and ideal vector c ). 2.4. Estimation of linear relevance function parameters document. Let us assume that the maximal relevance score is equal to 1, so r some hints on how the parameter a can be estimated.
+ one can obtain that
+Hence, the value of parameter a . 3. Improving document weights To determine a better distance vector ^ c , we have to solve the following problem: this case  X  X  X etter X  X  means closer to the ideal vector c wherever it is in the feasible set C vector).
+ the proximity to unknown ideal distance vector is also increased. 3.1. Change matrix
+Given distance vector c and metric matrix D , we can calculate minimal changes of coordinates c of c , which will guarantee that conditions (**) are satisfied:
+The value of z i ; j is the minimal required change of c j change matrix.
+
+Example 2. Let c  X  X  2 ; 8 ; 3 , D  X  spective (to satisfy the conditions (**)), and it should be increased by 2 from the c 3.2. The DWI Algorithm
+Let us observe that in a single iteration of a for loop the maximal absolute value z is found. If it is non-zero, then one of the constraints associated with c modification of c k and c j ensures that the associated constraints are satisfied (i.e., z DWI Algorithm while
+In Appendix A we show some properties of the DWI algorithm, in particular that it enables us to approach the ideal distance vector c . 3.3. Examples
+Example 3. Let us assume that n  X  2, D  X 
+Fig. 5. For the initial vector the change matrix calculated is Z  X  completed.
+ initial vector c , because
+Let us examine another ideal vector, say c  X  X  0 ; 3 . In that case we would obtain the method.
+ this area. His/her information need can be represented by the query Let us also assume that there is a dictionary in the form of a list: This is the most common setting both in classical and Web information retrieval. do not occur in documents, and so, will not affect our calculations. order is the same as in the dictionary. Query q is then represented by vector
+Let us assume that in response to the query we obtained a set of four documents D  X f d the following characteristics:  X  d  X  d smaller degree about classification  X  d 3 ; 2  X  1  X  and regression  X  d cludes information about regression  X  d 4 ; 7  X  2  X  and classification  X  d document. Undoubtedly, the least information is included in the first document. obtain or
+It generates the following ordering of documents:
+Documents with interesting information are behind document d include these names in the query, because he/she does not yet know them.
+DWI algorithm, so that the best document  X  d 2  X  comes ahead of the worst  X  d distance matrix: Of course, it is a metric matrix.
+ from the ideal document. Let us assume that the relevance function is r  X  1 0 : 03 c . Hence,
+Using this, the initial distance vector may be calculated: Z is
+The solution is found after only one iteration, and a new distance vector is determined
+Using the relevance function new weights are calculated fell to the third position, and the most relevant documents d creased.
+
+Initially, strongly related documents, such as d 1 and d 3
+Lower weights (of d 3 and d 4 ) then increased, and the higher weight (of d d 4. Summary since distances are determined using all the terms in the documents. between solutions.
+ vector is not in the feasible set.
+ Appendix A is a solution of problem RR (Theorems 3 and 4).
+
+Theorem 1. Let C 0 be a feasible set for a distance matrix D . Set C
+Proof. Let us take k  X  1 2 max i ; j d i ; j . It is easy to see that c  X  X  k ; k ; ... ; k 2 C element. h
+Let us introduce the following notations related to the DWI algorithm: c 0  X  X  X ector c after modification of one coordinate,
+Z 0  X  X  X hange matrix Z associated with c 0 (after modification of one coordinate of c ), c  X  p  X   X  X  X ector c in the beginning of iteration p of the while loop,
+Z  X  p  X   X  X  X hange matrix Z in the beginning of iteration p of the while loop, iteration of the for loop in the DWI algorithm. m 6 1 = 2 m holds.
+ Lemma 3. After modification of c k condition m 0 i 6 m i holds for i  X  1 ; 2 ; ... ; n . Theorem 2. DWI algorithm stops .
+ i.e., for some p , pressed as close to zero as required.
+
+Let us consider a single iteration of the for loop, i.e., the modification of coordinates c
+Lemmas 1 and 2 the modification of c j at worst ensures that the condition m lowing change of c k preserves the condition. It only causes the value z not increase.
+
+Now, we show by induction that the inequality m  X  p  X  1  X 
+Let us then assume that for the first j 1 columns the condition holds
+In iteration j after the modification of c j we obtain particular,
+Hence, It completes the induction step.
+
+Then, after n iterations of the for loop the following dependency holds: or equivalently, after one iteration of the while loop
+It follows that in iteration p of the while loop the following inequality is satisfied:
+Knowing that
+We obtain from the sandwich theorem
+Theorem 3. Vector ^ c found in the DWI algorithm satisfies the following property:
+Proof. In every single iteration of the for loop some coordinates c c  X  c j  X  z k ; j = 2, c 0 k  X  c k  X  z j ; k = 2. We can plot the feasible set for c point  X  c j ; c k  X  does not contain feasible points, so it does not contain  X  c  X  c j ; c k  X  are on opposite sides of the line x  X  c 0 j or the line y  X  c
+In the former case modification of c j makes the distance from c decrease by j z cation of c k makes it at worst increase by j z j ; k = 2 j . Since j z does not grow.
+
+Analogously in the latter case, modification of c k makes the distance from c decrease by j z modification of c j makes it increase by j z k ; j = 2 j at worst.
+So, for every point c in the feasible set the condition k c holds also when the algorithm terminates. h
+Let us define a distance d  X  c ; C  X  between the vector and the set of vectors as D , then d  X  c ; C  X  6
+Theorem 4. Vector ^ c found in the DWI algorithm satisfies the following property: m &lt; maxerror . By Lemma 4, and consequently
+Since and then by the sandwich theorem lim maxerror ! 0 d  X  ^ c ; C References

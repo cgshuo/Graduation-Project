@@ -1,0 +1,100 @@
+ matrix factorization ( Lee &amp; Seung , 2001 ; Mairal et al. , 2010 ). Tewari , 2009 ; Nesterov , 2012 ; Richt  X arik &amp; Tak  X a X c , 2012 ); ( 2009 ); et al. , 2013 ; Hazan &amp; Kale , 2012 ; Zhang et al. , 2012 ); works, but yields different update rules than SAG or SDCA. of surrogate functions, which are minimized instead of f at every iteration. 2 Algorithm 1 Basic Scheme input  X  0  X   X ; N (number of iterations). 1: for n = 1 ,...,N do 2: Compute a surrogate function g n of f near  X  n  X  1 ; 3: Update solution:  X  n  X  arg min  X   X   X  g n (  X  ) . 4: end for output  X  N (final estimate); defined below, which will be shown to have  X  X ood X  theoretical properties. Definition 2.1 ( First-Order Surrogate).
+ satisfied: surrogates.
+ yses: Lemma 2.1 ( Basic Properties -Key Lemma).
+ all  X  in  X  , Assume that g is in S L, X  ( f, X  ) , then, for all  X  in  X  , properties of Algorithm 1 . quality of a sequence (  X  n ) n  X  0 for non-convex problems: stationary point condition if 0 .
+ Proposition 2.1 ( Non-Convex Analysis).
+ point condition. from Nesterov ( 2007 ) originally designed for proximal gradient methods. R &gt; 0 , have where  X  , L  X  if  X  &gt; 2 L or  X  , 1  X   X  4 L otherwise.
+ slightly better rates can be obtained when the surrogates ar e strongly convex. have for all n  X  1 , When f is  X  -strongly convex, we have for all n  X  1 , sharper results. This is confirmed in the next proposition: Proposition 2.4 ( Second-Order Surrogates).
+ all n . Then, If f is  X  -strongly convex, the convergence rate is superlinear with order 3 / 2 . The proofs of the different claims are provided in the supplem ental material. Lipschitz Gradient Surrogates.
+ S S descent step  X   X   X   X   X  1 L  X  f (  X  ).
+ Proximal Gradient Surrogates.
+ admits the following majorant surrogate in S 2 L ( f, X  ): The approximation error g  X  f is indeed the same as in the previous paragraph and thus: 2009 ).
+ DC Programming Surrogates.
+ the following function g is a majorant surrogate in S L Variational Surrogates.
+ sets. Define  X  f as  X  f (  X  1 ) , min  X  L  X  X  &gt; 0: becomes a block-coordinate descent procedure with two block s. Saddle Point Surrogates.
+ Jensen Surrogates.
+ that k w k 1 = 1 and w i 6 = 0 whenever x i 6 =0. Then, we define for any  X  in R p with of auxiliary functions . Quadratic Surrogates.
+ the following function is a first-order majorant surrogate: et al. , 2010 ).
+ priori unknown Lipschitz constant?), and on how cheaply it c an be minimized. sumptions that &amp; Tewari ( 2009 ); Nesterov ( 2012 ); Richt  X arik &amp; Tak  X a X c ( 2012 ). Algorithm 2 Block Coordinate Descent Scheme input  X  0 = (  X  1 0 ,..., X  k 0 )  X   X  = ( X  1  X  ...  X   X  k ); N . 1: for n = 1 ,...,N do 2: Choose a separable surrogate g n of f near  X  n  X  1 ; 3: Randomly pick up one block  X   X  n and update  X   X   X  n n : 4: end for output  X  N = (  X  1 N ,..., X  k N ) (final estimate); that similar guarantees as for Algorithm 1 can be obtained. Proposition 3.1 ( Non-Convex Analysis).
+ of Proposition 2.1 hold with probability one. rates.
+ S L ( f, X  n  X  1 ) , the sequence ( f (  X  n )) n  X  0 almost surely converges to f  X  and where  X  , L  X  if  X  &gt; 2 L or  X  , 1  X   X  4 L otherwise.
+ to f  X  and we have have an expected linear convergence rate Tak  X a X c ( 2012 ) for composite functions. in Algorithm 3 .
+ gives a convergence rate. Algorithm 3 Frank-Wolfe Scheme input  X  0  X   X ; N (number of iterations). 1: for n = 1 ,...,N do 2: Let g n be a majorant surrogate in S L,L ( f, X  n  X  1 ). 3: Compute a search direction: 4: Line search:  X   X  , arg min 5: Update solution:  X  n ,  X   X   X  n + (1  X   X   X  )  X  n  X  1 . 6: end for output  X  N (final estimate); Proposition 4.1 ( Convex Analysis).
+ Assume that f is convex and that  X  is bounded. Call R , max  X  and recent work of Lacoste-Julien et al. ( 2013 ). ( 2004 ).
+ Proposition 5.1 ( Convex Analysis).
+ all n  X  1 , When f is  X  -strongly convex, we have instead a linear convergence rate : for n  X  1 , Algorithm 4 Accelerated Scheme input  X  0  X   X ; N ;  X  (strong convexity parameter); 1: Initialization:  X  0 ,  X  0 ; a 0 = 1; 2: for n = 1 ,...,N do 3: Choose a surrogate g n in S L,L +  X  ( f, X  n  X  1 ); 4: Update solution:  X  n , arg min  X   X   X  g n (  X  ); 5: Compute a n  X  0 such that: 7: end for output  X  N (final estimate); This section is devoted to objective functions f that split into many components: do not always admit first-order surrogates.
+ require storing information about past iterates.
+ its convergence properties.
+ Proposition 6.1 ( Non-Convex Analysis).
+ conclusions of Proposition 2.1 hold with probability one.
+ Proposition 6.2 ( Convex Analysis). Algorithm 5 Incremental Scheme MISO input  X  0  X   X ; N (number of iterations). 1: Choose surrogates g t 0 of f t near  X  0 for all t ; 2: for n = 1 ,...,N do 4: Update solution:  X  n  X  arg min 5: end for output  X  N (final estimate); rithm 5 are majorant and in S L, X  ( f t , X  n  X  1 ) with  X   X  L , we have Assume now that f is  X  -strongly convex. For all n  X  1 , better than ours.
+ periments and practical implementation heuristics. SPAMS, LIBLINEAR and SHOTGUN on the dataset ocr because of index overflow issues. the smallest decrease of the objective, and set L = L  X   X  ; the value of L .
+ software package will be publicly released with an open sour ce license. We compare LIBLINEAR, FISTA, SAG, ASGD, SGD, MISO1, MISO2 an d MISO2 with T = 1000 minibatch strategy for the dataset rcv1 with T = 10 000 blocks. 2008 ; Le Roux et al. , 2012 ). Since SAG, SGD and ASGD cannot deal with  X  1 -regularization, we compare here LIBLINEAR, FISTA, SHOTGUN and MISO. We use for LIBLINEAR the option -s 6 -e 0.000001 . We proceed strategy is outperformed by MISO1 and MISO2 for high precisi ons. large-scale machine learning problems.
+ coefficients. of features, where storing (dense) information about the pa st surrogates is cumbersome. grant agreement CCF-0939370.
+ Definition A.1 ( Directional Derivative).
+  X  f (  X  )  X  (  X   X   X   X  ) .
+ Definition A.2 ( Feasible Direction).
+ is in  X  . In other words, z can be written as  X   X   X   X  , where  X   X  is in  X  . Definition A.3 ( Stationary Point).
+ stationary point if for all  X   X  6 =  X  in  X  , subdifferential of f .
+ The converse is trivial.
+ found in Borwein &amp; Lewis ( 2006 , Proposition 3.1.6). Definition A.4 ( Lipschitz Continuity).
+ in  X  , we have In that case, we say that the function is L -Lipschitz.
+ Definition A.5 ( Strong Convexity).
+ definition is equivalent to having for all  X  in [0 , 1] and  X  ,  X   X  in  X  , Note that the value  X  = 0 leads to the classical definition of convex functions. convex if and only if for all  X  in [0 , 1], we have In other words, if and only if which is equivalent to ( 8 ).
+ We provide in this section a few propositions and lemmas whic h are used in this paper. Lemma B.1 ( Convex Surrogate for Functions with Lipschitz Gradient). Proof. This lemma is classical (see Nesterov , 2004 , Lemma 1.2.3 and its proof). Lemma B.2 ( Relation between Quadratic Surrogates and Lipschitz Constants ). Then,  X  f is L -Lipschitz continuous when one of the following conditions is true: Proof.
+ First point: a proof of the first point can be found in Nesterov ( 2004 , Theorem 2.1.5). Second point: fix  X  in R p . Since f is twice differentiable at  X  , we have for all  X   X  in R p and thus theorem, as done for example in Nesterov ( 2004 , Lemma 1.2.2) Third point: the twice differentiable case.
+ 1983 , proof of Proposition 2.6.5): the general result comes from a continuity argument. Lemma B.3 ( Surrogate for Functions with Lipschitz Hessian). all  X , X   X  in R p , Proof. This is again a classical lemma (see Nesterov , 2004 , Lemma 1.2.4). Lemma B.4 ( Lower Surrogate for Strongly Convex Functions). inequality holds for all  X , X   X  in R p : immediately leading to the desired inequality.
+ Lemma B.5 ( Second-Order Growth Property).
+ of f on  X  . Then, the following condition holds for all  X  in  X  : For all  X  in  X , we have Lewis , 2006 , Proposition 2.1.2). This is sufficient to conclude. Lemma B.6 ( Lipschitz Continuity of Minimizers for Parameterized Function s). Then, the function  X  1 7 X  arg min  X   X  tion of Lemma B.5 , we have and  X  second argument. Thus, g is Lipschitz with constant L k  X   X   X  2  X   X   X  2 k 2 and This is sufficient to conclude.
+ Lemma B.7 ( Differentiability of Optimal Value Functions). the optimal value function  X  f (  X  1 ) , min  X   X  1 f (  X  1 , X   X  2 ) , where  X   X  2 , arg min  X  2  X   X  2 f (  X  1 , X  2 ) . Moreover, prove the differentiability of f before detailing how to obtain the Lipschitz constants. Differentiability of f : of Lemma B.6 . Then, we have L k  X   X   X  2  X   X   X  2 k 2 (see the proof of Lemma B.6 ). Thus, Lemma B.6 . We can now show that  X   X  f (  X  1 ) =  X  1 f (  X  1 , X   X  2 ).
+ Proof of the first point: 2004 , Section 3.2.5).
+ continuity of  X  1 f in its first argument and the inequality g (  X   X  1 )  X  0, we have we can apply Lemma B.2 to ensure that  X   X  f is L  X  -Lipschitz continuous. Proof of the second point:  X   X  Thus, function  X   X  f and we obtain the desired Lipschitz constant 2 L 2  X  . Proof of the third point: When  X  1 7 X  f (  X  1 , X  2 ) is affine,  X  1 f (  X  1 , X  2 ) is independent of  X  1 . where the upper-bound on the gradient of g was shown in the proof of Lemma B.6 . Lemma B.8 ( Pythagoras Relation).
+ Let  X , X , X  in R p . Then Lemma B.9 ( Regularity of Residual Functions).
+ Let f,g : R p  X  R be two functions. Define the difference function h , g  X  f . Then, Proof.
+ Proof of the first point: its tangent, therefore convex. Let us indeed fix  X  in R p : simply due to the trivial relation described in Lemma B.8 . Proof of the second and third points: for all  X  and  X   X  in R p , according to Lemma B.1 and B.4 and Summing the two inequalities we have that Lemma B.2 (whether h is convex or not).
+ gives us elementary techniques to combine surrogate functi ons. Lemma C.1 ( Combination Rules for Majorant First-Order Surrogates). S Lipschitz Gradient Surrogates.
+ When f is differentiable and  X  f is L -Lipschitz, we consider the following surrogate: that g is in S L,L ( f, X  ) and S L  X   X ,L ( f, X  ) when f is  X  -strongly convex. Proximal Gradient Surrogates.
+ we have presented the following surrogate DC Programming Surrogates.
+ we have presented the following surrogate easy to see that the approximation error g  X  f has a L 2 -Lipschitz continuous gradient. Variational Surrogates.
+ as  X  f (  X  1 ) , min  X  S we also have that  X  h is Lipschitz continuous.
+ such that we can choose L  X  X  = L  X  .
+ Saddle Point Surrogates.
+ We then apply the negation rule of Lemma C.1 to conclude. Jensen Surrogates.
+ R the following function g for any  X  in R p continuous gradient with constant L  X  obtained below with simple calculations: L  X  greater than L k x k 2 Quadratic Surrogates.
+ definite, the following function is a first-order majorant sur rogate: The fact that it is majorant is simply an application of the me an-value theorem. various extensions and applications, which we do not consid er in our paper. Proposition D.1 ( Convergence Rate for Algorithm 6 ).
+ Algorithm 6 Block Frank-Wolfe Scheme 1: for n = 1 ,...,N do 3: Randomly pick one block  X   X  n in { 1 ,...,k } and compute a search direction: 4: Line search: 6: end for output  X  N = (  X  1 N ,..., X  k N ) (final estimate); is bounded and call R , max  X  Algorithm 6 converges almost surely to f  X  and we have for all n  X  1 , otherwise.
+ point  X  when noticing that h (  X  ) = 0 and  X  h (  X  ) = 0. Then, for all  X  in  X , we have and the third inequality follows from the second one. g L -Lipschitz continuous according to the definitions of the sur rogate functions. Then, and thus, by summing over n , and the non-negative sequence ( h n (  X  n )) n  X  0 necessarily converges to zero. in  X : Note that  X  n minimizes g n on  X  and therefore  X  g n (  X  n , X   X   X  n )  X  0. Therefore, using Cauchy-Schwarz inequality. Then, Proof. We separately prove the two parts of the proposition. Non-strongly convex case: g = g n , X  =  X  n  X  1 , X   X  =  X  n ), we have Then, following a similar proof technique as Nesterov ( 2007 , Theorem 4), we have decreasing we can use the bounded level set assumption, whic h yields  X  -strongly convex case: which states that f (  X  n  X  1 )  X  f  X  +  X  2 k  X  n  X  1  X   X   X  k 2 2 and obtain At this point, it is easy to show that which is sufficient to conclude.
+ Proof. We separately prove the two parts of the proposition. Non-strongly convex case: From Lemma 2.1 (with g = g n ,  X  =  X  n  X  1 ,  X   X  =  X  n ,  X  =  X   X  ), we have By summing this inequality, we have Beck &amp; Teboulle , 2009 ).  X  -strongly convex case: for all n . Combined with ( 14 ), this yields and thus Proof. We separately prove the two parts of the proposition. Non-strongly convex case: functions h n instead of Lemma 2.1 , we have Then, again following the proof of Proposition 2.2 , 3). This is sufficient to obtain the first part of the propositio n.  X  -strongly convex case: Starting again from ( 15 ), and using the second-order growth property of f , we have setting.
+ Definition of an approximate surrogate  X  g n : We define recursively the sequence of functions (  X  g n ) n  X  0 as follows: such a way that  X  n is a minimizer of  X  g n over  X  for all n  X  0 and that  X  g n  X  f . Almost sure convergence of ( f (  X  n )) n  X  0 and consequences: g n (  X  and converges almost surely. We also have  X  g Thus, the term  X  g n (  X  n )  X  f (  X  n ) converges almost surely to 0. Asymptotic stationary point conditions: for all  X  in  X , Proposition 2.1 .
+ We can then obtain the following inequalities for all  X  in  X  We can now proceed by considering two different cases.
+ Case 1: without strong convexity: proof of Proposition 2.2 , we have using Jensen inequality, we thus have E [ r n ]  X  1  X  E [ r n is sufficient to conclude.
+ Case 2: under strong convexity assumptions: us to a similar relation as in the proof of Proposition 2.2 : and following again the proof of Proposition 2.2 , we have yielding the desired convergence rate. We then separately prove the two remaining parts of the propo sition. Without strong convexity assumptions: g We also remark that Combining the two previous inequalities yields Summing these inequalities and using the fact that r n  X  r n  X  1 yields which gives the desired convergence rate.
+ With strong convexity assumptions:  X  n , 1 2 E [ k  X   X   X   X  n k 2 2 ]. We can now rewrite the first inequality in ( 17 ) as for all  X  in [0 , 1], Thus, we have by induction and again, since  X  X  n  X  r n , we obtain the convergence rate of (  X  n ) n  X  0 satisfies such conditions.
+ Proof. We have from the strong convexity of g n : f (  X  n )  X  min g | h denoting by r n , f (  X  n )  X  f  X  yields convergence rate. our surrogate functions.
+ Preliminaries: for all  X  in  X , Definition of the estimate sequence by induction:  X  Initialization of the induction for n = 1 : are chosen such that We can thus define  X  Induction argument: R p  X  R such that for all  X  in R p  X  g f (  X  n )  X  min  X   X   X   X  g n (  X  ). We first remark that from ( 20 ). Then, we can combine this inequality with ( 21 ). where Minimizing B (  X  ) yields and thus, using the closed form of v n computed in ( 23 ), we have into ( 22 ),  X  g n  X  f (  X  n ) +  X a n  X  1 =  X  n for all n  X  0. This cancels the factor in front of k  X  n k Combining with the fourth condition of H n  X  1 , we have we can finally show, Obtaining the convergence rate: all n  X  1, we have A n = La 2 n  X  1 . Moreover we have that for all n  X  0, we have a n  X  q  X   X  . Thus, A n  X  1  X  q  X   X  the second convergence rate.
+ Almost sure convergence of f (  X  n ) : Let us denote by  X  g n , 1 T P T t =1 g t n . We have the following recursion relation following inequalities, which hold with probability one implying the almost sure convergence of f (  X  n ).
+ Asymptotic stationary point conditions: for all  X  in  X , converges to zero, we conclude as in the proof of Proposition 3.1 . proposition in several steps and start with some preliminar ies. Preliminaries: are drawn according to the following conditional probabili ty distribution: where  X  , 1 /T . Thus we have for all t in { 1 ,...,T } and all n  X  1, we have We can now study the first part of the proposition.
+ Monotonic decrease of E [ f (  X  n )] : Eq. ( 24 ), we have Non-strongly convex case (  X  = L ); convergence rate: by taking the expectation It follows from ( 25 ) that A n =  X  X  n + (1  X   X  ) A n  X  1 and thus ing, we obtain that leading to the convergence rate of Eq. ( 4 ), since A 0 = 1 2 k  X   X   X   X  0 k 2 2 .  X  -strongly convex case: second-order growth condition of Lemma B.5 hypothesis, we have the surrogate function g n , we have after a few calculations Following the proof of Proposition 4.1 , we have Taking the expectation and defining r n , E [ f (  X  n )  X  f  X  ], we have where we have used Jensen inequality similarly as in the proo f of Proposition 3.2 . same convergence rate.
+ with a different sparsity level than Figure 2 .
+ problems. 2(1):183 X 202, 2009.
+ Bertsekas, D.P. Nonlinear programming . Athena Scientific Belmont, 1999. 2nd edition. the Institute of Statistical Mathematics , 40(4):641 X 663, 1988. Springer, 2006.
+
+International Conference on Computational Statistics (CO MPSTAT) , 2010. obtain a solution with about 3% nonzero coefficients. obtain a solution with about 50% nonzero coefficients. Boyd, S.P. and Vandenberghe, L. Convex Optimization . Cambridge University Press, 2004. ing (ICML) , 2011.
+ Journal of Fourier Analysis and Applications , 14(5):877 X 905, 2008. Clarke, F.H. Optimization and Nonsmooth Analysis . John Wiley, 1983. Machine Learning , 48(1):253 X 285, 2002.
+ Okonometrie und Unternehmensforschung , 1967.
+ 1413 X 1457, 2004.
+ distances. Technical report, CMU-CS-01-109, 2001.
+ large linear classification. Journal of Machine Learning Research , 9:1871 X 1874, 2008. and DC programming. IEEE Transactions on Signal Processing , 57(12):4686 X 4698, 2009. regularized smooth convex optimization. preprint arXiv:1302.2325v4 , 2013. ence on Machine Learning (ICML) , 2012.
+ Horst, R. and Thoai, N.V. DC programming: overview. Journal of Optimization Theory and Applications , 103(1):1 X 43, 1999.
+ I: General purpose methods. In Optimization for Machine Learning . MIT Press, 2011. analysis. In Advances in Neural Information Processing Systems (NIPS) , 2010. Learning (ICML) , 2013.
+
+Journal of computational and graphical statistics , 9(1):1 X 20, 2000. (NIPS) , 2012.
+ Information Processing Systems (NIPS) , 2001.
+ coding. Journal of Machine Learning Research , 11:19 X 60, 2010. other variants. Learning in graphical models , 89:355 X 368, 1998. CORE Discussion Paper, 2007.
+ Journal on Optimization , 22(2):341 X 362, 2012.
+ Mathematical Programming , 108(1):177 X 205, 2006.
+ for minimizing a composite function. Mathematical Programming , 2012. Magazine , 27(6):81 X 91, 2010.
+ 1211.2717v1 , 2012.
+ Proceedings of the International Conference on Machine Lea rning (ICML) , 2009. Mathematical Programming , 117:387 X 423, 2009.
+ ence. Foundations and Trends in Machine Learning , 1(1-2):1 X 305, 2008. IEEE Transactions on Signal Processing , 57(7):2479 X 2493, 2009. Transactions on Information Theory , 49(3):682 X 691, 2003.
+ boosting approach. In Advances in Neural Information Processing Systems (NIPS) , 2012.

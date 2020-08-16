@@ -1,0 +1,126 @@
+ 1. Introduction
+NTCIR-1 and NTCIR-2 (NACSIS-NII Test Collection for Information Retrieval Systems-1/2, for de-are provided. Combining Japanese and English monolingual retrieval and bi-directional cross-language niques in multi-lingual environments can be examined.
+
+Comparative research issues that can be studied on these collections are, for example, as follows:  X  Monolingual vs cross-language retrieval.  X  Japanese vs English retrieval.  X  Japanese to English vs English to Japanese translation.  X  Dictionary-based vs parallel collection-based translation.  X  Using parallel collection techniques vs not using parallel collection techniques.
+We carried out such comparative studies using NTCIR-1 and NTCIR-2. Our research interests reside in studies.
+ tion environments and Section 4 presents our NTCIR-2 workshop experiments. In Section 5, we will ana-lyze an issue of  X  X  X symmetry X  X  in search effectiveness that we encountered in the evaluation work, and present other experiments to shed light on the issue. 2. Cross-language information retrieval test collections 2.1. Defining cross-language information retrieval
+Hull and Grefenstette (1996) proposed five definitions for multi-lingual information retrieval as follows: (1) IR in any language other than English. (3) IR on a monolingual document collection which can be queried in multiple language. (4) IR on a multi-lingual document collection, where queries can retrieve documents in multiple (5) IR on multi-lingual documents, i.e. more than one language can be present in the individual Hull and Grefenstette (1996, p. 49) .
+ the queries should be submitted across languages.
+ expressed in a natural language in multi-lingual environments of information access. enstette (1996) .
+We can consider the definition (4) as a mixture of the situations of the definition (3) and (3)
+When assuming that each query and document are expressed in a language, CLIR essentially falls either multi-lingual collections. 2.2. NTCIR-1 and NTCIR-2 NTCIR-1 and NTCIR-2 are IR test collections created in the NTCIR project ( Kando, 2001 ; NTCIR uments are either (1) author abstracts of conference papers from  X  X  X ACSIS Academic Conference Papers ries. An example of a search topic is shown in Fig. 1 .
+
+The NTCIR-2 Project Group (2001, p. 5) states that  X  X  X ore than half of (1) ( X  X  X ACSIS Academic Con-ference Papers Database X  X  collections, Ntc1-j1/e1 and Ntc2-j1g/e1g) and about 25% of (2) ( X  X  X ACSIS ment alignments) but the alignments are not announced by results submission. X  X 
+The set of 49 search topics (101 X 149) in Japanese and English of NTCIR-2 are intended to retrieve rel-evant documents from the combined document collections of NTCIR-1 and NTCIR-2 as shown in Table 1 . these search topics.
+ files are utilized.
+
+For NTCIR-1, the document ID numbers indicate that 584 out of 609 English documents assessed as relevant in Ntc1-e1 collection have their Japanese counterparts in Ntc1-j1 collection.
+We may assume more than half of Japanese documents and more than 90% of English documents in  X  X  X ACSIS Academic Conference Papers Database X  X  collections (Ntc2-j1g/e1-g) are parallel from the
+NTCIR-1 collections (Ntc1-j1/e1) where the alignment is explicitly indicated by the same document ID numbering.
+
+For NTCIR-2, the document alignment information is not provided in the CD-ROMs. 2.3. Defining CLIR in the monolingual collection case retrieval of E X  X  or J X  X , otherwise ( Fig. 2) .
+ lates the query if the query language is not same as the collection language. nical point here is the query translation if the system adopts a  X  X  X uery translation strategy X  X . 2.4. Defining CLIR in the multi-lingual collection case this is also out of the range of test collection based studies.
+ 2.5. Monolingual baseline
+Given Japanese and English parallel topic descriptions and a Japanese monolingual document collec-than the monolingual topic description.
+ lingual baseline run can be understood as a sort of CLIR run with manually translated queries. topic description on the target language side, a CLIR system without pre-translation feedback might be equivalent to monolingual retrieval systems on the target language side although such good translation is not realistic in automatic query construction.
+ for researchers in CLIR although an indirect query translation approach using a multi-lingual latent semantic space ( Dumais, Landauer, &amp; Littman, 1996 ) and document translation approaches ( Oard, 1998 ) are also studied.
+ 2.6.  X  X  X osetta stone questions X  X  in CLIR
+We can find many Rosetta stones around the world ranging from personnel/organizational web pages to language other than English on internationally accessible media. When people are opening a WWW home-
+Although the translation of documents enables people to access the information directly, human read-tion access by direct translation lacks exhaustive coverage in two senses:  X  Document coverage: Not all documents are translated.  X  Language coverage: Documents are not translated into all languages.
+
+We can thus understand current cross-language information access issues as the problem of how to deal coverage.
+
+Therefore, we formulate the  X  X  X osetta Stone Question 1 X  X  in modern information access technologies as follows: ment collection help to access the documents that are not translated? X  X   X  X  X osetta Stone Question 2 X  X  concerns the problems of language coverage and pivot languages. Let us as the pivot language between X and Z.
+ Although test collections in more than three languages are provided by NTCIR-3 ( NTCIR-3, 2002 ) for this paper. 2.7. Which language is more difficult? of equivalence in search effectiveness through different language collections. 3. NTCIR-2 workshop system description experiments.
+
+The document collections are indexed wholly automatically, and converted to inverted index files of terms. 3.1. CLIR evaluation system
+As shown in Fig. 4 , our query translation CLIR approach is symmetrical for J X  X  retrieval and E X  X  re-fields of the Ntc1-j1/e1 collections.
+ pseudo-relevance feedback procedure when applied. 3.2. Query translation from KYWD and KYWE fields as described by Chen, Gey, Kishida, Jiang, and Liang (1999) .
+This field provides many phrasal keywords as well as single words and they are similarly registered as
+The most frequent keyword pair is used when more than one translation pair is found. 3.3. Term extraction
+Queries and documents in target databases are analyzed by the same module that decomposes an input sequence of nouns or nouns preceded by modifiers. 3.4. Vector space retrieval
+Each document is represented as a vector of weighted terms by tf*idf in inverted index files and the query is converted in similar ways. The similarity between vectors representing a query and documents is computed using the dot-product measure, and documents are ranked according to decreasing order of matching scores.
+ 3.5. Phrasal indexing and weighting
+Our approach consists of utilizing noun phrases extracted by linguistic processing as supplementary pendently based on its occurrences. 3.6. Pre-translation and post-translation pseudo-relevance feedback
+An automatic feedback strategy using pseudo-relevant documents, i.e. those ranked within top n by a pilot search, is adopted for automatic query expansion.
+ and the final relevance ranking is obtained.
+ source language database, as well as after query translation.
+
+The whole retrieval procedure is as follows: (1) Automatic initial query construction from the source language topic description. (2) First pilot search submitted against the source language database. (3) Term extraction from pseudo-relevant documents and feedback. (4) Query vector translation using a bilingual dictionary. (5) Second pilot search submitted against the target language database. (6) Term extraction from pseudo-relevant documents and feedback. (7) Final search against the target language database to obtain the final results. tries to retrieve the documents written in other languages.
+ 3.7. Term selection
+Each term in pseudo-relevant documents is scored by some term frequency and document frequency based heuristics measures described by Evans et al. (1993) .
+ empirically.
+
+In effect, the following parameters must be determined in feedback procedures: (1) How many documents to be used for feedback? (2) Where to cut off ranked terms? (3) How to weight these additional terms? relevance judgments provided by the NTCIR Project Group (1999) . 3.8. Parallel collection usage these parallel documents as the resource for CLIR. The source language query is submitted against the database are utilized for term extraction in order to construct the target language query vector.
+This strategy worked perfectly well for the NTCIR-1 test set and the mean average precision of J X  X  re-trieval for the NTCIR-1 set reached 36.80% (long query, rel1 judgment, 39 topics of NTCIR-1 test set) without using any query translation method. This seems to be better than any NTCIR workshop 1 CLIR systems.
+
+Among the 332,918 Japanese documents in the NTCIR-1 collection, only 181,485 are known to have 55% of the whole collection is parallel) gave this performance led us to suppose, wrongly, that such a method is generally applicable.
+ lelism in the collections is very high and the document alignment is also known. 4. NTCIR workshop 2 experiments
+Our NTCIR workshop 2 experiments are designed to evaluate the limits of the effectiveness of query translation based CLIR, given a monolingual IR system with regard to different retrieval settings. the fields except  X  X  X ield X  X  fields (see the example given in Fig. 1 ). 4.1. J X  X  and E X  X  Baseline runs
+Table 3 shows our monolingual baseline runs, which are selected because they use exactly the same set-tings as the target language side of our CLIR runs. JJS-BASE is Japanese monolingual baseline run with short queries and JJL-BASE, with long queries. EES-BASE and EEL-BASE are English monolingual base-back X  X  was applied to these runs.
+ well as between JJL-BASE and EEL-BASE. 4.2. J X  X  and E X  X  CLIR runs
+Table 4 shows CLIR runs with various settings evaluated by rel1(S&amp;A) judgment files ( NTCIR-Group, 2001 ).
+Pre-translation feedback seems to be always effective and an improvement of as much as 16.5% is ob-served. The parallel collection usage makes some small improvement except in J X  X  short retrieval where some degradation was observed.
+
+Table 5 shows the average number of terms in original queries or translated queries. Translated query constituent single word terms again in the target language side.
+ Table 6 shows examples of original query vectors and translated query vectors.
+The translation processes introduced many noisy terms or erroneously translated terms but they are mainly very frequent single word terms and their IDF values are low.
+
+Instead phrasal translation provides high IDF and possibly useful terms. Once phrasal terms in the either as supplemental phrasal indexing units or only as decomposed single words. of the target language side and with CLIR baseline runs listed in Tables 3 and 4 . (1) MBASE: Monolingual BASEline (2) CBASE: CLIR BASEline (3) DSW: Decomposed Single Words (4) NO-SUBPTR: NO SUB Phrase TRanslation (5) NO-PTR: NO Phrase TRanslation
+In the runs DSW, NO-SUBPTR and NO-PTR, phrasal terms from feedback procedures are added as usual and only phrasal terms extracted from the source language topic description are eliminated.
+Even though translated phrasal terms themselves are not utilized, their constituent single word terms work well and retrieval effectiveness does not change much.
+
+Failing to use the phrasal terms or their sub-phrases extracted from the original topic description as are translated as a word unit, it does not help much because word by word conversion is not adequate to properly translate multi-word concepts.
+
+From these runs, we can confirm that phrases are normally very good translation units although phrases themselves are not as good as single words as indexing units.
+
+Ballesteros and Croft (1997) suggested that phrasal translation can greatly improve effectiveness but the translated phrases are decomposed into their constituent single words and down-weighted properly, they should behave just like translated single words on a word-by-word basis.
+It seems that the CBASE runs are 22.4% worse than MBASE runs where original query translation is assumed to be ideal. Although feedback strategies always help, giving 15% improvement at best, ideally a better query translation is preferable for better retrieval effectiveness.
+It is also worth noting that in E X  X  retrieval pre-translation feedback makes some small improvement it is not the case in J X  X  retrieval.
+ rable collections.
+
+With respect to the comparison of a CLIR performance with a monolingual one excluding any feedback influences, JES-BASE is 27.6% from EES-BASE, JEL-BASE 14.9% from EEL-BASE, EJS-BASE 40.4% from JJS-BASE and EJL-BASE 30.2% from JJL-BASE, respectively. These results suggest that relevance which can neutralize the effects of noisy information. 4.3. Quality of translated query vectors BASE, EJL-BASE, JES-BASE and JEL-BASE are equivalent to monolingual runs JJS-BASE, JJL-BASE, and S&amp;A&amp;B) of relevance judgment against two test collections (Japanese/English) are provided. lection, given the statistics from the set of relevant documents and the whole collection.
+As the first measure of the information about relevance given by the occurrence of each term, we adopt 1998 ).
+
+Another measure we tried is the probabilistic term weighting proposed by Robertson and Spark Jones (1976) . For the whole query, a simple sum of each term weight was utilized.
+ P (occ j rel), and the distribution of the query terms in the whole collection, P (occ). Table 8 shows the quality of query vectors thus measured.
+ basis are 0.36 X 0.65 in short query runs and 0.16 X 0.51 in long query runs. impact on the effectiveness. However, the correlation coefficient between AVG(SUM(MI)) and the mean average precision(abbreviated to MAP) of each run accounts for 0.558; correlation coefficient between
+AVG(SUM(PW)) and MAP is 0.577, and AVG(CE) 0.559. It may not be surprising that the three measures run by run basis. These three different term precision measures seem to behave very similarly in large collections. With S&amp;A judgment, AVG(SUM(PW)) of JES-BASE is 4.2% from EES-BASE while EJS-BASE 15.7% from JJS-BASE. JEL-BASE is 18.7% from EEL-BASE while EJL-BASE 31.2% from
+JJL-BASE. This supports the existence of asymmetry between J X  X  and E X  X  CLIR as observed in CLIR run experiments. 5. A question concerning asymmetry in search effectiveness 5.1. Asymmetry between J X  X  and E X  X  the same language settings are listed below: AVG(JJS-BASE,JJL-BASE): 0.3816, AVG(EES-BASE,EEL-BASE): 0.3887, AVG(JES-BASE,JEL-BASE): 0.3077, AVG(EJS-BASE,EJL-BASE): 0.2478.
+ It is natural to ask why E X  X  runs are worse than J X  X  while J X  X  runs perform as well as E X  X  runs.
+Assuming any difference in the quality of topic description between Japanese and English seems to con-ity of J X  X  translation with E X  X  translation. We can compare a J X  X  translation result with another J X  X  compare something that is not comparable.
+ that the J collection and the E collection are equivalent in discriminating relevant documents.
+We will examine this asymmetry from another aspect without assuming the difference in translation quality of different language pairs. 5.2. Two types of discrepancy
+The sources of difficulties of information retrieval seem to fall into either one of the following: (1) discrepancy between user aboutness of the query and author aboutness of the collection, (2) essential difficulty of the information needs that cannot be adequately expressed by a bag of word The second case is clearly out of the scope of this paper.
+ listing relevant documents judged by assessors. Assuming that the information needs are represented by source of difficulty can be seen from two aspects: 5.2.1. Topic-query discrepancy
+Discrepancy between information needs and the query. Users cannot always express their information of crucial concepts and adds noisy terms. 5.2.2. Document-collection discrepancy collection is not necessarily detrimental when targeted to another collection. themselves though they may choose another indexing system or indexing language where available. Docu-ment expansion is one of the techniques addressed to such a problem though it is extremely expensive. them more satisfactory results without modifying their queries.
+
+Although both the mean average precision of runs and query quality measures introduced in the previ-consideration when more than one collection is available. 5.3. Reiterative translation experiments
+The following experiment hopefully explains the asymmetry without comparing the quality of J X  X  trans-lation with E X  X  translation.
+
+Query vectors utilized in CLIR baseline runs, JES-BASE, EJS-BASE, JEL-BASE and EJL-BASE are re-named JEJS-BASE, EJES-BASE, JEJL-BASE and EJEL-BASE, respectively.
+ are named JEJES-BASE, EJEJS-BASE, JEJEL-BASE and EJEJL-BASE, respectively. Table 9 shows the results obtained.
+ Compare EJS-BASE with a MAP of 0.2151 with the 0.2556 of JEJS-BASE and EJES-BASE with a MAP of 0.2208 with the 0.2319 of JEJES-BASE and the 0.2805 of EJL-BASE with the 0.3034 of JEJL-the difference of the translation quality.
+
+Let us compare the 0.2151 of EJS-BASE with the 0.2208 of EJES-BASE and the 0.2805 of EJL-BASE runs.
+ types of discrepancy.
+
+A comparison of the MAP of the run sequence JJS-BASE, JES-BASE, JEJS-BASE and JEJES-BASE with EES-BASE, EJS-BASE, EJES-BASE and EJEJS-BASE, enables us to evaluate query discrepancy ences are neutralized.
+ Comparing the MAP of the run sequence JJS-BASE, EJS-BASE, JEJS-BASE and EJEJS-BASE with
+EES-BASE, JES-BASE, EJES-BASE and JEJES-BASE, we might evaluate collection discrepancy in each language collection, eliminating the query discrepancy problem.
+
+In each run sequence, either the number of runs with the same target collection or the number of runs with the same original topic description is controlled so that the discrepancy is neutralized. Let us compare the MAP average of each run sequence: AVG(JJS-BASE,JES-BASE,JEJS-BASE,JEJES-BASE) = 0.2780 is greater than AVG(EES-BASE,EJS-BASE,EJES-BASE,EJEJS-BASE) = 0.2462.
+ AVG(JJL-BASE,JEL-BASE,JEJL-BASE,JEJEL-BASE) = 0.3308 is greater than AVG(EEL-BASE,EJL-BASE,EJEL-BASE,EJEJL-BASE) = 0.3060.
+ the same in each run sequence and the use of the target collection is symmetrical to the counterpart. AVG(JJS-BASE,EJS-BASE,JEJS-BASE,EJEJS-BASE) = 0.2543 is less than AVG(EES-BASE,JES-BASE,EJES-BASE,JEJES-BASE) = 0.2700.
+ AVG(JJL-BASE,EJL-BASE,JEJL-BASE,EJEJL-BASE) = 0.3074 is less than AVG(EEL-BASE,JEL-BASE,EJEL-BASE,JEJEL-BASE) = 0.3293.
+ translation is predominant.
+
+There seems to be no way to separately measure these three factors determining the CLIR effectiveness, namely topic-query discrepancy, document-collection discrepancy and translation quality. 6. Conclusions We have presented a set of CLIR evaluation experiments on the NTCIR-2 test collection, consisting of
+Japanese and English monolingual baseline runs, Japanese X  X nglish, and English X  X apanese cross-language runs. We have examined many run settings including different treatments of phrasal terms in the query translation as well as query generation processing, combinations of pre-and post-translation feedback and other parallel collection based techniques.
+ the application of pre-translation feedback techniques.
+
+Through comparative evaluation experiments, asymmetry between J X  X  and E X  X  CLIR performance is observed. An explanation of this asymmetry is offered from two aspects: (1) query translation quality and (2) two types of discrepancy in retrieval processing.
+ parallel (or comparable) collections of more than two languages combined by a pivot language are in-volved. NTCIR-3 ( NTCIR-3, 2002 ) and NTCIR-4 ( NTCIR-4, 2003 ) will become useful research resources for such studies by providing of comparable document collections.
+ Acknowledgements The author thanks NII for providing us of NTCIR-1 and NTCIR-2 CD-ROMs. We participated in the
+NTCIR workshop 2, utilizing NTCIR-1 and NTCIR-2 that are developed by NII, thanks to the under-vided the data.
+ References

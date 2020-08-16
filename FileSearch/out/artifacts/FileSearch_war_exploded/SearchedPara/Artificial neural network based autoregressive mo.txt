@@ -1,0 +1,69 @@
+ 1. Introduction
+Parametric modeling technique in form of Autoregressive (AR)
+An AR model can be mathematically expressed as y  X  n  X  X  Taking the z -transform of (1) gives H  X  z  X  X  Y  X  z  X  X  X  z  X   X  b 0 which is known as the system transfer function.
+
+AR modeling technique has received the most attention in the major reason for this includes the ease associated with the computation of its model parameters as compared to other modeling techniques ( Shiavi, 2007 ). Furthermore, AR model in object shape description and analysis.
+
+Despite the success of AR model in various areas of applica-tions ( Chon and Cohen, 1997 ; Chon et al., 1999 ; Liang and two main drawbacks namely, the accuracy of the estimated model parameters highly depends on the methods used in determining the unknown model parameters. The use of inaccu-
+In this paper, a new method of determining the AR model and Hwang, 2002 ; Haykin ; Rumelhart and MacClelland, 1986 ; Rumelhart et al., 1986b ; Tagliarini ).
+
+In recent times, ANN has been extended to complex-number complex-autoregressive (CAR) models have been reported in Aibinu et al. (2010 , 2009) .
+
+The remaining part of this paper is organized as follows: tion techniques is discussed in Section 2 while the newly proposed AR model coefficients determination is presented in conclusion are contained in Section 4 and 5 respectively. 2. AR model coefficients determination techniques
+Modeling technique involves representation of data in an efficient and parsimonious form using minimum adjustable determination and model validation. Model selection involves choosing an appropriate parametric form for the signal to be modeled. Among the known parametric models are AR model, gressive (VAR) model, moving average (MA) model, autoregres-the use of computationally efficient algorithm to determine model parameters. In most cases and especially for AR model, the required model parameters are the model coefficients and the desired features of the signal.
+
+In this paper, AR model has been selected since the computa-paper. AR model coefficients estimation and model validation using various signals are subsequently discussed. square approach ( Bruce, 2000 ; Shiavi, 2007 ). 2.1. Autocorrelation method
+To determine AR model coefficients using autocorrelation data sequence s ( n ) has been windowed, that is y  X  n  X  X  contaminated with a wide sense stationary (WSS) noise having simplification gives r  X  l  X  X  relation r yy  X  l  X  and the AR model coefficients,  X  a 1 , a called the Yule X  X alker (YW) normal equation ( Marple, 1987 ; for a large data length and it is known to always produce a stable model. One of the most successful computationally efficient techniques for solving (4) is the Levinson X  X urbin algorithm (LDA) ( Proakis and Manolakis, 2007 ; Shiavi, 2007 ). 2.2. Covariance method
+In contrast to autocorrelation method that assumes data zero outside this window, the covariance technique does not points and does not apply window to the data ( Kay, 1988 ; covariance method are more accurate than those obtained from method would produce a stable filter ( Marple, 1987 ).
+Modifying the error equation within the range of the given x  X  and the covariance normal equation is expressed as a r xx  X  k , l  X  X  r xx  X  k , 0  X  ; k  X  1 ; 2 , ... , p  X  6  X  where r  X  k , l  X  X  2.3. Least squares approach
+In the least squares method, the AR model coefficients are obtained by minimizing the mean square error (MSE) with namely the forward, the backward and forward-backward techniques. 1. Forward linear prediction 2. Backward linear prediction 3. Combined forward and backward linear prediction The popular Burg algorithm method is based on this technique ( Proakis and Manolakis, 2007 ). 3. Development of RVNN-based AR model coefficient determination technique
+The autocorrelation technique has been shown to yield AR spectra with the least resolution among the three previously ciated with the inherent windowing in the data. Moreso, the 1975 ; Kay and Marple, 1981 ).
+
+Dehoon et al. (1996) have also shown that Yule X  X alker Similarly, the covariance matrix solution produces AR model parameters whose resulting spectra have more false peaks and quency locations than other approaches.
+ has been observed as one of the major shortcoming associated the estimated AR model as small deviation may cause the 1996 ).
+
+All the aforementioned problems have limited the use of AR operations of biological neural systems in the human body. Furthermore, this approach mimics the iterative procedure through the learning and weights adaptation procedures. RVNN tion and/or autocovariance matrix. Hence, a new method of RVNN is hereby proposed.
+
+Consider the AR model shown in Fig. 1 , which is driven by a according to y  X  n  X  X  order respectively.
+
+Consider the RVNN-based AR model shown in Fig. 2 , the output y ( n ) is expressed as y  X  n  X  X  a where M is the number of neurons in the hidden layer, w l 1 function. The hidden node output W l can be expressed as
+W  X  b l gives y  X  n  X  X  a linear), the AR model coefficients are given as a  X  a properly trained two-layer RVNN shown in Fig. 2 .
+L  X  N p  X  1  X  18  X  where N isthedatalengthand p is the model order.
+The total number of training equations N eq that can be order, p . This can be expressed as
+N  X  p n L  X  19  X  hidden layer, the number of the unknowns N un from such a network is given as
+N  X  X  p  X  1  X  n M  X  X  M  X  1  X  X  20  X  Case 1 :
+Thus, using the overdetermined case given in (21c), the tion of the model coefficients from y  X  n  X  X  a must satisfy  X  p n L  X  1 p  X  2 b M  X  22  X  model order.
+ performance of the proposed RVNN-based AR model for three 4. Performance analysis of RVNN-based AR model coefficients determination technique
+In evaluating the performance of the proposed technique, obtained are subsequently discussed. 4.1. AR model coefficients estimation using RVNN-based AR modeling technique
+In computing AR model coefficients using the proposed tech-equation: y  X  n  X  X  a 1 y  X  n 1  X  a 2 y  X  n 2  X  X  w  X  n  X  X  24  X 
+Gaussian-distributed noise with zero mean and variance s 2
+AR model coefficients are to be subjected to the following constraints ( Haykin and Kesler, 1979 ),  X  1  X  a 2  X  o a 1 o 0  X  25a  X  9 a  X  1  X  a 2  X  9 r 9 4 a 2 9  X  25b  X  a 4 a 2 o 0  X  25c  X 
+The relationship between the spectral peak and the AR model coefficients is given by cos  X  2 p f 0  X  X  a 1  X  1  X  a 2  X  4 a a proposed method using 100 data samples are compared to those obtained using modified Yule X  X alker equation (MYWE) method for the same model order as shown in Table 2 . A measure of introduced. MCMSE is given as
+U  X  q proposed RVNN-AR model technique gives better results when compared with MYWE using MCMSE. Furthermore, the values of (25)a X  X . Thus, RVNN-based AR model shows greater accuracy when compared to that obtained using MYWE approach though the plots of the PSD for the two techniques appear similar. 4.2. Computer simulated data: sinusoidal signal
+The performance of the proposed algorithm with sinusoidal some of the existing parametric techniques include poor fre-line splitting has highest probability of occurrence in Burg sequence ( Marple, 1987 ).
+
+The performance of the proposed RVNN-based AR modeling amplitude sinusoidal signal with SNR of 50 dB and 100 Hz 10th order Burg algorithm and RVNN-based approach with 101 samples and five neurons in the hidden layer. The proposed phenomenon of line splitting tends to disappear as the data
+The performance of the proposed algorithm in resolving x  X  n  X  X  where k is the number of sinusoids present in the signal, F 2 4 6 8 10 12 14 5 10 15 20 25 30 35 40 45 50 has been evaluated for k  X  8, so that F 1  X  11 : 2Hz, F 2
+F  X  12 : 5Hz, F 4  X  12 : 7Hz, F 5  X  14 Hz, F 6  X  14 : 3Hz, F
+The ability of the proposed technique to resolve various number of neurons in the hidden layer using the formalism based AR model and Burg Algorithm were able to resolve the the two techniques is affected by number of data samples. In once the formalism stated in (22) holds.
+
+The performance of the proposed technique with varied model the two techniques once the system is over modeled while various frequencies in the signal. model problem in biomedical signal processing, speech and audio 5 10 15 20 25 30 35 40 45 50 55 60 dB 5 10 15 20 25 30 35 40 45 50 55 60 dB impairment; parkinson disease detection using voice signal; speech coding; speech recognition; speech enhancement and audio indexing; etc.
+
+The use of Exponential autoregressive model for VAD system environment was done using the Frame-wise false alarm rate mance measurement. Results obtained shows that PNN-VAD achieves better performance over G.729 Annex B technique ( Farsinejad et al., 2008 ).
+ que compared with AMR-WB scheme ( Prasad et al., 2006 ). In to perform excellently in high SNR.
+ graphy and its tonal effects makes it an ideal language in investigating tonal and voice impairment related activities
+RVNN-based AR model has been used to detect voiced and unvoiced parts of the pronounced word. The block diagram of the proposed system is shown in Fig. 10 .
+
+Speech waveform y ( n ) can be represented by y  X  n  X  X  one or several impulses with spacing corresponding to the a coefficients obtained from incoming frames. The first nine numbers in the Yoruba language are all double syllables. The total of 594 voice samples from 22 speakers pronouncing each 10 11 12 13 14 15 16 17 18  X 10 0 10 20 30 40 50 60 10 11 12 13 14 15 16 17 18  X 10 0 10 20 30 40 50 60 voiced part in a recorded speech.
+ based AR model) technique, two AR model coefficients, a 1 classification using K -means algorithm is given as f  X  computed from  X  i  X  X  proposed in Giannakopoulos (2011) was used in the determina-tion of the threshold. Due to some performance limitations experienced in both RVNN-based AR model and energy based
+Energy based system with the output of the RVNN-AR model technique while the second hybrid method shown in Fig. 11 b output of the energy based technique.
+
+The performance of all the techniques is evaluated using the compression ratio k where  X 
+This compression ratio gives the ability of the underlying time of completion (TOC) of a given algorithm.
+
+Frame size from 2 to 20 ms with an increment of 5 ms was of 5 ms frame size gave better detection and removal of the unvoiced part without loss of quality when compared to other voiced and unvoiced portion often resulted in almost equal the frame size was reduced.
+  X 10 10 20 30 40 50 60 dB 10 11 12 13 14 15 16 17 18  X 10 0 10 20 30 40 50 60 10 11 12 13 14 15 16 17 18  X 10  X 5 0 5 10 15 20 25 30 layer. This technique has been compared to the use of fixed energy thresholding technique outperforms the use of RVNN-based AR modeling technique in accurately determining the except in some isolated cases, thus cascade arrangement of
+RVNN-AR model and energy method contribute to some extent to the overall system performance. 5. Summary
+In this paper, a new method of computing AR model coeffi-methods of estimating the AR model coefficients have been discussed and presented. The newly proposed RVNN-based-AR model coefficients determination technique has been able to voice signal has been presented in this paper. The proposed hybrid schemes has also been shown to outperform RVNN-based AR model and energy method when both are used individually.
+The use of the above techniques (RVNN-based AR VAD, Energy currently under investigation.
+ References

@@ -1,0 +1,22 @@
+ We present the Personalized News (PEN) recommender sys-tems framework 1 , currently in use by a newspaper website to evaluate various algorithms for news recommendations. We briefly describe its system architecture and related com-ponents. We show how a researcher can easily evaluate dif-ferent algorithms thanks to a web-based interface.
+ H.3.3 [ Information Storage and Retrieval ]: Information Search and Retrieval X  Information filtering recommender system, news, online evaluation
+Researchers in the recommender systems community have developed open-source platforms which try to bring a grow-ing number of recommender algorithms under one roof. Most of these platforms are designed for research purposes to con-duct offline evaluations and only a few target online evalua-tions on production websites.
+
+In this paper, we are interested in online evaluation of state-of-the-art algorithms for news recommendations. Un-fortunately, it is not possible to use current open-source plat-forms because they are not tailored to the specific needs of news recommendations and thus are difficult to adapt to the news domain [1].
+
+To this end, we present the PEN recsys framework for online evaluation of news recommender systems. PEN recsys is designed with 4 criteria in mind. First, it has to be fast . The framework must provide real-time recommendations as soon as possible, without making the users wait. Second, it must be reliable . It is not acceptable for a newspaper website to suffer from crashes. Third, a flexible design is Note that this paper is an extended abstract of [2]. distribution. The component topic model is in charge of keeping the topic model up-to-date.
+
+The performance component generates performance re-ports of the algorithms under evaluation. The database stores the clicks, statistics and performance reports for of-fline analysis.
+
+Finally, the backup component periodically triggers backup to the hard disk of the various states of the system such as the current topic model and click statistics. This is useful if we want to roll back to a previous set of parameters.
+It is important to deliver recommendations to the user as soon as possible. With this in mind, the platform is designed to reduce this latency to the minimum. Hence tasks that are not essential for generating recommendations are run in the background. For instance, the database is known to be a bottleneck. Thus statistics are first cached in memory and later stored in the database when resources are available.
+The PEN recsys framework follows the software-as-a-service paradigm and is implemented using Java EE technologies. It scales very well since each component can be physically located on different sites.
+The framework contains various recommender systems such as the 4 versions of context-tree recommender systems [1], a simple collaborative filtering, a content-based approach, most popular articles, and random articles. We plan to im-plement more algorithms in the future.
+
+To add a new algorithm, we just need to implement a sin-gle method getRecommendations . If required, the algorithm can have access to the click statistics, fresh news stories, or topic model via the specific components.
+The PEN recsys framework has a web-based control panel (Fig. 2). The researcher can configure the general behaviour of the framework, enable/disable an algorithm, fine tune its parameters (see Fig. 3).
+
+The researcher can also check the performance of the en-abled algorithms. Figure 4 shows the performance panel with 3 metrics: success@5, mean average precision and the average clicks per visit.
+We presented the PEN recsys framework which aims at helping researchers and practitioners to evaluate algorithms for news recommendations. The PEN recsys framework is fast, reliable, flexible and scalable. With the help of a simple control interface, it is possible to fine tune each recommender system and have a direct feedback of their performance.
+In the future, we plan to increase the set of recommender systems available on this platform. [1] F. Garcin, C. Dimitrakakis, and B. Faltings.
+ [2] F. Garcin and B. Faltings. Pen recsys: a personalized

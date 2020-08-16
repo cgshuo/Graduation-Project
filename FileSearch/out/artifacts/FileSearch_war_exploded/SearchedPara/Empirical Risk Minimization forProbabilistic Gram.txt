@@ -1,0 +1,188 @@
+ Columbia University Carnegie Mellon University to expectation-maximization, to minimize the empirical risk. 1 .Introduction mon in such learning to estimate a model in a parametric family using the maximum tated data) as well as semisupervised and unsupervised settings (i.e., using unan-we can estimate (e.g., hidden Markov models, probabilistic context-free grammars).
+These parametric families are used in diverse NLP problems ranging from syntactic and morphological processing to applications like information extraction, question answering, and machine translation.
+ ciple of maximum likelihood estimation (MLE). In the supervised case, and with traditional parametrizations based on multinomial distributions, MLE amounts to is also an unbiased estimator.
+ samples required to accurately learn a probabilistic grammar either in a supervised or in an unsupervised way. If bounds on the requisite number of samples (known as  X  X ample complexity bounds X ) are sufficiently tight, then they may offer guidance to learner performance, given various amounts of data and a wide range of parametric advantages to language engineers.
+ grammatical inference  X  X earning the structure of a grammar or an automaton (Angluin 1987; Clark and Thollard 2004; de la Higuera 2005; Clark, Eyraud, and Habrard 2008, grammar, and our goal is to estimate its parameters. This approach has shown great empirical success, both in the supervised (Collins 2003; Charniak and Johnson 2005)
+Manning 2004; Cohen and Smith 2010a) settings. There has also been some discus-generate data.
+ imum likelihood principle for probabilistic grammars in a distribution-dependent setting. Distribution dependency is introduced here by making empirically justified assumptions about the distributions that generate the data. Our framework uses and bounds for probabilistic graphical models (Dasgupta 1997). Maximum likelihood esti-algorithms for performing empirical risk minimization.
+ the learned finite state automaton, instead of measuring KL divergence between the 480 parameters.
+ probabilistic automata and hidden Markov models by Abe and Warmuth (1992). In probabilistic automata X  X hey showed that a polynomial sample is sufficient for MLE. which goes beyond probabilistic automata. Abe and Warmuth also showed that the problem of finding or even approximating the maximum likelihood solution for a two-that illustrates the NP-hardness of identifying the maximum likelihood solution for probabilistic grammars in the specific framework of  X  X roper approximations X  that we define in this article. Whereas Abe and Warmuth show that the problem of maximum likelihood maximization for two-state HMMs is not approximable within a certain 3-SAT to the problem of maximum likelihood estimation, the alphabet used is binary the alphabet size varies, and the number of states is two.
+ from Vapnik X  X  (1988) empirical risk minimization framework. This framework is re-means that we make no assumptions about the distribution that generated the data.
+Naively attempting to apply the ERM framework to probabilistic grammars in the therefore, we would have to give treatment to distributions that are unlikely to be true for natural language data (e.g., where some extremely long sentences are very probable).
+ tion 3 we discuss probabilistic grammars in a general way and introduce assumptions grammar.
+ over which we maximize likelihood. This is again required in order to overcome the based on bounded approximations that have been used for deriving sample complexity bounds for graphical models in a distribution-free setting (Dasgupta 1997). estimating as more samples are available.
+ enables us to derive sample complexity bounds. In Section 5 we present the sample complexity results for both the supervised and unsupervised cases. A question that in our framework even when given enough samples.
+ in our framework, when given access to the required number of samples. We show that in the supervised case, we can indeed maximize likelihood in our approximation we adapt the expectation-maximization algorithm (Dempster, Laird, and Rubin 1977) with proper approximations.
+ native kind of distributional assumption and connections to regularization by maxi-appendices. A table of notation that is used throughout is included as Table D.1 in Appendi xD.
+ noise condition. In Cohen and Smith (2010c) we proved NP-hardness for unsupervised parameter estimation of probalistic context-free grammars (PCFGs) (without approxi-to empirical risk minimization in our approximation framework. 2 .Empirical Risk Minimization and Maximum Likelihood Estimation
+We begin by introducing some notation. We seek to construct a predictive model that maps inputs from space X to outputs from space Z . In this work, where we are provided with examples of the form ( x , z ) setting, where we are provided only with examples of the form x q to denote the estimated distribution. 482 (also called  X  X he concept space X ), such that
+Note that if p  X  Q , then this quantity achieves the minimum when q equivalent to finding q such that it minimizes the KL divergence from p to q . distribution  X  p n , for use in Equation (1) instead of p , defined as: where I { ( x , z ) = ( x i , z i ) } is 1 if ( x , z ) = ( x such that
+Equation (3) immediately shows that minimizing empirical risk using the log-loss is for estimating a probabilistic grammar in computational linguistics (Charniak 1993; Manning and Sch  X  utze 1999). 3 is by bounding the excess risk , which is defined as above by the KL divergence between p and q .
+ empirical process R n ( Q ), defined as follows: as n  X  X  X  . For any &gt; 0, if, for large enough n it holds that (with high probability), then we can  X  X andwich X  the following quantities: where the inequalities come from the fact that q opt minimizes the expected risk
+E consequence of Equations (7) and (8) is that the expected risk of q from the expected risk of q opt , and as a result, we find the excess risk enough n ,issmallerthan2 . Intuitively, this means that, under a large sample, q not give much worse results than q opt under the criterion of the log-loss.
+R (
+Q ) do not hold because the log-loss can be unbounded. This means that a modifi-kind of convergence. We give a treatment to this in the next section. for most samples of size n . We will make this notion more rigorous in Section 2.2. 2.1 Empirical Risk Minimization and Structural Risk Minimization Methods
+It is therefore desirable in these cases to create a family of subclasses that have increasing complexity. The more data we have, the more complex our the method of sieves (Grenander 1981) are examples of methods that adopt such an as a penalization of the empirical risk method, using a regularization term. we have a derivation with a small probability, the log-loss becomes very large (in 484
+R ( Q ). Because grammars can define probability distributions over infinitely many large.
+ imations { Q n | n  X  N } for probabilistic grammars such that to
+Q We are then interested in the convergence of the empirical process (in our specific framework), which means that E p  X  log q is that we have E p ( q  X  n ; Q n )  X  E p ( q  X  ; Q ). 2.2 Sample Complexity Bounds Knowing that we are interested in the convergence of R n (
+E converge? X  asked when learnability is considered (Vapnik 1998):  X  X ow many samples n are re-of samples are also called  X  X ample complexity bounds, X  and in a distribution-free generates the data.
+ guage. This setting poses technical difficulties with the convergence of R ways, and then calculate sample complexity bounds of the form N ( ,  X  , dependence on the distribution is expressed as dependence on the parameters in the assumptions about p .
+ of accuracy ( ) which the learning algorithm has to reach with confidence (1 learning algorithm then returns an hypothesis according to Equation (9). 3 .Probabilistic Grammars process. Hidden Markov models (HMMs), for example, can be understood as a random walk through a probabilistic finite-state network, with an output symbol sampled at terminal symbol analogous to the emissions of an HMM).
+ conditionally independent of the others given a single structural element (one HMM astring.
+ and a grammatical derivation z : i th event occurs in the derivation. The parameters  X  are a collection of K multi- X  k ,1 , ... ,  X  k , N k , each  X  k , i is a probability, such that ent ways to carve up the random variables. We can think of x and z as correlated p ( z ) interchangeably with p ( x , z ).
+ with t being the number of symbols in the HMM). For PCFGs, each multinomial among the K multinomials corresponds to a set of N k context-free rules headed by k th nonterminal.
+
+D ( G ) to denote the set of all possible derivations of G . We define D let | x | denote the length of the string x ,and | z | = K (number of event tokens) of the derivation z . 486 grammars, parametrized by  X  ,and q would be a specific probabilistic grammar with problem of parameter estimation X  X dentifying  X  from complete data or incomplete data mation as the identification of a hypothesis from the concept space  X   X   X  negated log-concept space F ( G ) = { X  log h  X  ( z ) |  X   X  assume that there is a fixed grammar G and use H to refer to to
+F ( G ). 3.1 Distributional Assumptions about Language decay of the frequency of long strings x .
+
+This estimation was done by minimizing squared error between the frequency ver-of the curve, which is actually a monotonically increasing function. We plotted the approximate curve together with a length versus frequency curve for new syntactic p ( x , z ): 488 requirements by P (  X  , L , r , q , B , G ).
+ ability results. For example, Clark and Thollard (2004) put a bound on the expected resembles the exponential decay of strings we have for p in this article. and bounded by a quantity that depends on L , r and q . 5 (derivations) given inputs (sentences) is a common way to quantify the noise in a distribution. Here, both the sentential entropy ( H s ( p ) = as well as the derivational entropy ( H d ( p ) =  X  x , z following result.
+ Proposition 1 Let p  X  P (  X  , L , r , q , B , G ) be a distribution. Then, we have Proof can be omitted from the distribution. It holds that where Z 1 = { z | p ( z ) &gt; 1 / e } and Z 2 = { z | p ( z ) reaches its maximum for  X  = 1 / e . We therefore have more than 1 / e (and hence, it may appear in Z 1 ) by solving 1 / e to | z | X  log(1 / eL ) / log r . Therefore, there are at most (1 + log L ) / log 1 |
+Z | and therefore we have where we use the monotonicity of  X  . Consider H d ( p , Z tions). We have: where Equation (13) holds from the assumptions about p . Putting Equation (12) and Equation (14) together, we obtain the result.
+ grammars do not satisfy its conditions. 3.2 Limiting the Degree of the Grammar
+When approximating a family of probabilistic grammars, it is much more convenient can have across all context-free grammars.
+ 490
+A  X   X 
+A demonstrates an example of this transformation on a small context-free grammar. the original CFG, G . A simple transformation that converts each derivation in the new grammar to a derivation in the old grammar would involve collapsing any path nonterminals from the original grammar only. Similarly, any derivation in G can be converted to a derivation in G by adding new nonterminals through unary application of rules of the form A i  X  A i + 1 . Given a derivation z in G , we denote by  X  corresponding derivation in G after adding the new non-terminals A this article, we will refer to the normalized form of G as a  X  X inary normal form. X  tion of both the number of nonterminals in the original grammar and the number of rules in that grammar. More specifically, we have that K = be translated to a PCFG with max k N k  X  2 such that the two PCFGs induce the same equivalent distributions over derivations.
+ Utility Lemma 1
+Let a i  X  [0, 1], i  X  X  1, ... , N } such that i a i = 1. Define b a See Appendi xA for the proof of Utility Lemma 1.
+ Theorem 1 tion of G as defined earlier. Then, there exists  X  for G such that for any z have p ( z |  X  , G ) = p (  X  G  X  G ( z ) |  X  , G ). Proof
+For the grammar G , inde xthe set { 1, ... , K } with nonterminals ranging from A such that p ( z |  X  , G ) = p ( z |  X  , G ).
+ can construct  X  for G so that again we have equivalence between G ,  X  and G ,  X  . more manageable. We showed that these assumptions bound the amount of entropy as a is justified for them as well. 4 .Proper Approximations
+F ,
+F spaces in the sequence vary as a function of the number of samples we have. We next 492 model. Our approximations are based on the concept of bounded approximations (Abe,
+Takeuchi, and Warmuth 1991; Dasgupta 1997), which were originally designed for graphical models. 7 A bounded approximation is a subset of a concept space which is asymptotic properties that control the series X  tightness.
+ where bound is a non-increasing function such that bound ( m ) the expected values of functions from F m on values larger than some K minimization model from Section 2.1. Note that K m can grow arbitrarily large. where tail is a non-increasing function such that tail ( m ) in the supervised setting.
+ ness all hold.
+ of
+F obtain accurate estimation.  X  = 0 . 1, because it has more than two rules. Any value of  X  Rule  X  General  X  = 0  X  = 0 . 01  X  = 0 . 005 4.1 Constructing Proper Approximations for Probabilistic Grammars
+We now focus on constructing proper approximations for probabilistic grammars whose this point in the article, we focus on using such proper approximations with the log-loss.
+
+Note that T ( f ,  X  )  X  F for any  X   X  1 / 2. Fi xa constant s &gt; 1. same transformation on  X  (which outputs the new shifted parameters) and we denote by  X  G (  X  ) = X  (  X  )theset { T (  X  ,  X  ) |  X   X   X  G } . For each m f  X  F } .
+ why we are required to limit the grammar to have only two rules and why we are required to use the normal from Section 3.2 with grammars of degree 2. Consider the that the choices made in binarizing the grammar imply a particular way of smoothing the probability across the original rules.
+ property. 494 Proposition 2  X  ( L , q , p , N ) &gt; 0suchthat F m has the boundedness property with K See Appendi xA for the proof of Proposition 2.
+ Proposition 3 m &gt; M we have for tail ( m ) = See Appendi xA for the proof of Proposition 3.
+ probabilistic grammars we are interested in estimating. They consist of three prop-erties: containment (they are a subset of the family of probabilistic grammars we approximations). 4.2 Coupling Bounded Approximations with Number of Samples
+At this point, the number of samples n is decoupled from the bounded approximation (
+F m ) that we choose for grammar estimation. To couple between these two, we need is a clear trade-off between choosing a fast rate for m ( n ) (such as m ( n ) = n increasing functions of such K m , the bounds will degrade.
+ complexity bounds which are asymptotically interesting for both the supervised and unsupervised case. 4.3 Asymptotic Empirical Risk Minimization It would be compelling to determine whether the empirical risk minimizer over conclusion to this section about proper approximations, we motivate the three re-quirements that we posed on proper approximations by showing that this is indeed true. We now unify n , the number of samples, and m , the inde xof the appro xima-tion of the concept space F .Let f  X  n be the minimizer of the empirical risk over ( f ( g an asymptotic empirical risk minimizer if E E  X  p n g n  X  E Shwartz et al. 2009). Then, we have the following Lemma 1
+Denote by Z , n the set f  X  F { z | C n ( f )( z )  X  f ( z ) z  X  D is in Z where the expectations are taken with respect to the data set D . See Appendi xA for the proof of Lemma 1.
+ Proposition 4
+Let D = { z 1 , ... , z n } be a sample of derivations from G . Then g an asymptotic empirical risk minimizer.
+ Proof
+Let f 0  X  F be the concept that puts uniform weights over  X  ,namely,  X 
+Note that 496 that where Equation (16) comes from z l being independent. Also, B is the constant from
+Section 3.1. Therefore, we have: derivations of length log 2 n or greater can be in Z , n . Therefore where  X &gt; 0 is a constant. Similarly, we have p ( z  X  Z | E fact that C n ( f  X  n )  X  F n , and therefore C n ( f  X  n 5 .Sample Complexity Bounds
+Equipped with the framework of proper approximations as described previously, we hinge on the convergence of sup f  X  F fast, if the covering numbers for F n do not grow too fast. 5.1 Covering Numbers and Bounds on Covering Numbers
+We next give a brief overview of covering numbers. A cover provides a way to reduce
+G .An -cover is a subset of G , denoted by G , such that for every f f  X  G such that d ( f , f ) &lt; .The covering number N ( , -cover of G for the distance measure d .
+ distribution  X  p n that describes the data z 1 , ... , z
+N key result regarding the connection between covering numbers and the double-sided convergence of the empirical process sup f  X  F empirical processes of the type we discuss in this article.
+ Lemma 2
+Let F n be a permissible class 9 of functions such that for every f
+I { | functions from F n after being truncated by K n . Then for &gt; 0 we have p sup provided n  X  K 2 n / 4 2 and bound ( n ) &lt; .
+
+See Pollard (1984; Chapter 2, pages 30 X 31) for the proof of Lemma 2. See also Ap-pendi xA.
+ to compute directly. Fortunately, they can be bounded using the pseudo-dimension (Anthony and Bartlett 1999), a generalization of the Vapnik-Chervonenkis (VC) the pseudo-dimension of F n is bounded by N , because we have functions in F are linear with N parameters. Hence, F truncated, n dimension that is at most N . We then have the following. 498
+Lemma 3 (From Pollard [1984] and Haussler [1992].) Let F n be the proper approximations for probabilistic grammars, for any 0 &lt;&lt; K n we have: 5.2 Supervised Case assumption that the sample is generated from the parametric family we are trying to data does not have to be a probabilistic grammar.
+ Theorem 2 Let G be a grammar. Let p  X  P (  X  , L , r , q , B , G ) (Section 3.1). Let tion for the corresponding family of probabilistic grammars. Let z 0 &lt; X &lt; 1and0 &lt;&lt; K n and any n &gt; M and if then we have where K n = sN log 3 n .
+
+Proof Sketch relying on Lemma 3: for the log-loss, because the log-loss can obtain arbitrary values. bound. Multiplicative bounds can be more informative than additive bounds when the bound to an additive bound and vice versa). Let  X   X  (0, 1) and choose =  X  K substituting this in Theorem 2, we get that if then, with probability 1  X   X  , where H ( p ) is the Shannon entropy of p . This stems from the fact that any f . This means that if we are interested in computing a sample complexity bound
+Equation (17) is an oracle inequality X  X t requires knowing the entropy of p or some upper bound on it. 5.3 Unsupervised Case
+In the unsupervised setting, we have n yields of derivations from the grammar, x classes are now the sets of log marginalized distributions from define f  X  as We denote the set of { f  X  } by F n . Analogously, we define define the operator C n ( f ) as a first step towards defining (for F ) in the unsupervised setting. Let f  X  F .Let f be the concept in f ( x ) = z f ( x , z ). Then we define C n ( f )( x ) = z hard to show that the boundedness property is satisfied with the same K form of bound ( n ) as in Proposition 2 (we would have bound 500 Utility Lemma 2
+For a i , b i  X  0, if  X  log i a i + log i b i  X  then there exists an i such that log b i  X  .
+ Proposition 5
+There exists an M such that for any n &gt; M we have for tail ( n ) = Proof Sketch
+From Utility Lemma 2 we have p  X   X  an  X   X  1suchthat where the last inequality happens for some n larger than a fixed M . overcomes this problem for Bayesian networks with fixed structure by giving a bound on the covering number for (his respective) F which depends on the covering number of F .
+ a probabilistic grammar can be arbitrarily large. Instead, we present the following proposition shows that the covering number of F (or more accurately, its bounded approximations) can be bounded in terms of the covering number of the bounded approximations of F , and the constants which control the underlying distribution p mentioned in Section 3.
+ Utility Lemma 3
+For any two positive-valued sequences ( a 1 , ... , a n )and( b | log a Proposition 6 (Hidden Variable Rule for Probabilistic Grammars)
+Let m = Proof f , f  X  F distribution p , p ( x ) across all derivations for the specific x ,thatis: The inequality in Equation (18) stems from Utility Lemma 3.
+ ( f and f are arbitrary functions in F truncated, n and F f and f 0 to be functions from the respective covers.).
+ 502 Theorem 3 any n &gt; M ,andif where m = where K n = sN log 3 n .
+ in the unsupervised setting that behaves like O (log log K case, similarly to the way we described it for the supervised case. Setting =  X  K (0, 1)), we get the following requirement on n : where t (  X  ) = 6 .Algorithms for Empirical Risk Minimization
+We turn now to describing algorithms and their properties for minimizing empirical risk using the framework described in Section 4. 6.1 Supervised Case
+ERM with proper approximations leads to simple algorithms for estimating the proba-we draw n examples according to Theorem 2. We then set  X  = n log-loss with respect to these n examples, we use the proper approximation etrized by  X  is the constraint that  X   X   X  k , i  X  1  X   X  and  X  k 1 +  X  k ,2 for this optimization problem is
+We count the number of times a rule appears in the samples and then normalize this to the full hypothesis class H (Corazza and Satta 2006; see Appendi xB). Because we truncate this solution, as done in Equation (22).
+ to compute sample complexity bounds. We explore this connection to smoothing with a Dirichlet prior in a Maximum a posteriori (MAP) Bayesian setting in Section 7.2. 6.2 Unsupervised Case setting requires minimizing (with respect to  X  ) the following: with the constraint that  X   X   X  k , i  X  1  X   X  (i.e.,  X   X   X  (  X  )) where  X  = n after drawing n examples according to Theorem 3. 504 required for adapting the results from Cohen and Smith to the case of having an arbitrary  X  margin constraint.
+ decision problem.
+ Problem 1 (Unsupervised Minimization of the Log-Loss with Margin)
+Input: A binarized context-free grammar G , a set of sentences x [0, 1 2 ), and a value  X   X  [0, 1].
+
+Output: 1 if there exists  X   X   X  (  X  ) (and hence, h  X  H ( G )) such that and 0 otherwise.
+ 3-SAT (Sipser 2006), known to be NP-complete, to Problem 1. The problem 3-SAT is defined as follows: Problem 2 (3-SAT)
+Input: A formula  X  = clause has three literals.
+ Output: 1 if there is a satisfying assignment for  X  , and 0 otherwise. string will yield a solution for the instance of the 3-SAT problem. c are literals over the set of variables { Y 1 , ... , Y N } its negation,  X  Y j ). Let C j be the j th clause in  X  ,suchthat C following CFG G  X  and string to parse s  X  : 1. The terminals of G  X  are the binary digits  X = { 0, 1 2. We create N nonterminals V Y r , r  X  X  1, ... , N } and rules V 3. We create N nonterminals V  X  Y 5. We create the rule S 1  X  A 1 . For each j  X  X  2, ... , m 6. Let C j = a j  X  b j  X  c j be clause j in  X  .Let Y ( a 7. The grammar X  X  start symbol is S n . 8. The string to parse is s  X  = (10) 3 m ,thatis,3 m consecutive occurrences of
+Y = 0iftherule V Y r  X  0or V  X  Y the parse tree, such as V Y 3  X  0 used in the tree together with V maintain the restriction on the degree of grammars, we convert G assignment is consistent (so that contradictions do not occur in the parse tree). Lemma 4 (i.e., the highest scoring parse according to the PCFG) of s extracted from the parse tree is consistent.
+ Proof
+Because the probability of the Viterbi parse is 1, all rules of the form of inconsistencies. We show that neither exists in the Viterbi parse: 1. For any r , an appearance of both rules of the form V 2. For any r , an appearance of rules of the form V Y r
+Figure 3 gives an example of an application of the reduction. 506 Lemma 5
+Define  X  and G  X  as before. There exists  X   X  such that the Viterbi parse of s parse tree with weight 1 of s  X  under  X   X  .
+
+Proof ( =  X  ) Assume that there is a satisfying assignment. Each clause C isfied using a tuple ( y 1 , y 2 , y 3 ), which assigns values for Y ( a assignment corresponds to the following rule:
+Y r = y , set the probabilities of the rules V Y r V rule probabilities results in a Viterbi parse of weight 1. (
+C we have a rule that is assigned probability 1, for some ( y 1 , y 2 , y 3 the values of the assignment for the corresponding variables in clause C extracted.
+ Theorem 4
+Problem 1 is NP-hard when either requiring  X &gt; 0 or when fixing  X  = 0. Proof 1 as the result of running Problem 1.
+ from Lemma 4. Otherwise (more than a single derivation), the optimal  X  would have to give fractional probabilities to rules of the form V Y contradiction to getting value 0 for Problem 1.
+ 1  X   X  , we have becausethesizeoftheparsetreefor(10) 3 m is at most 10 m (using the binarized G and assuming  X  =  X &lt; (1  X   X  ) 10 m . This inequality indeed holds whenever  X &lt; means that lem implied by Equation (21), we propose a rather simple modification to the expectation-maximization (EM) algorithm (Dempster, Laird, and Rubin 1977) to ap-proximate the optimal solution X  X his algorithm finds a local maximum for the max-imum likelihood problem using proper approximations. The modified algorithm is given in Algorithm 1.
+ normalizing, we truncate the values by  X  . It can be shown that if  X  after each iteration of the algorithm. 508 Algorithm 1: Expectation-Maximization Algorithm with Proper Approximations. the optimization problem of minimizing the log-loss (with respect to  X 
+M-step minimizes (in iteration t ): E r  X  log h ( x , z | with respect to the distribution r ( x , z ) =  X  p n ( x ) p ( z described in Bishop (2006) for the EM algorithm. 7 .Discussion we can improve the tightness of our proper approximations by taking a subsequence of
+F grow faster. Table 2 shows the trade-offs between parameters in our model and the effectiveness of learning.
+ to Clark and Lappin (2010).
+
+Jaeger (1999). These algorithms are not prone to local minima, and converge to the the underlying model that generates the data. 7.1 Tsybakov Noise about properties shared among treebanks. The main consequence of making these variation in probabilities across labels given a fixed input).
+
+Tsybakov noise holds under the assumptions presented in Section 3.1. We show that and still not satisfy the Tsybakov noise conditions.
+ context.
+ noise condition if for any &gt; 0and h , g  X  H such that h , g have from the concept class that has small excess risk should shrink to 0 at the rate in
+Equation (25). Distribution-dependent bounds from Koltchinskii (2006) are monotone goes to 0 enables sharper derivations of sample complexity bounds. 510 bilistic grammars in most cases. Let G be a probabilistic grammar. Define A = A a matri xsuch that Theorem 5
+Let G be a grammar with K  X  2 and degree 2. Assume that p is G ,  X  that  X   X  1,1 =  X   X  2,1 =  X  and that c 1  X  c 2 .If A G (  X  the Tsybakov noise condition for any ( C ,  X  ), where C &gt; 0and  X  See Appendi xC for the proof of Theorem 5.
+ construct an hypothesis h such that the KL divergence between p and h is small, but dist( p , h ) is lower-bounded and is not close to 0.
+ of assumptions that could lead to better understanding of rates of convergences and empirically. 7.2 Comparison to Dirichlet Maximum A Posteriori Solutions counts is also a common way to smooth probabilities in models based on multinomial pseudo-counts can be framed as a maximum a posteriori (MAP) alternative to the set the probability of each rule (in the supervised setting) to
+Dirichlet smoothing can be formulated as the result of adding a symmetric Dirichlet denominator when there are more data. In this sense, the prior X  X  effect on learning diminishes as we use more data. A similar effect occurs in our framework:  X  = n where n is the number of samples X  X he more samples we have, the more we trust the regardless of the number of samples we have. With our framework, smoothing depends 7.3 Other Derivations of Sample Complexity Bounds complexity bounds for probabilistic grammars. 7.3.1 Using Talagrand X  X  Inequality. Our bounds are based on VC theory together with (Massart 2000; Bartlett, Bousquet, and Mendelson 2005; Koltchinskii 2006), most prominently through the use of Talagrand X  X  inequality (Talagrand 1994), which is a concentration of measure inequality, in the spirit of Lemma 2.
+ and are based on the diameter of the -minimal set X  X he set of hypotheses which have meaningful bounds for it, in which case we may be able to get tighter bounds using diameter of the -minimal set using  X  p n . the normalized expected count of the features.
+ the optimal parameter by applying modifications to rather simple inequalities such i.i.d. random variables deviating from its mean. The modification would require us to split the event space into two cases: one in which the count of some features is requires that the count of the rules is bounded.
+ empirical risk minimization does not amount to simple frequency count. 7.4 Open Problems
+We conclude the discussion with some directions for further exploration and future work. 512 could be a weighted sum). Then, use the sample complexity bounds for each summand to derive a sample complexity bound on this sum.
+ would attempt to identify how unannotated data can reduce the space of candidate probabilistic grammars to a smaller set, after which we can use the annotated data sample complexity bounds for probabilistic grammars. dimension of a probabilistic grammar with the log-loss is bounded by the number of parameters in the grammar, because the logarithm of a distribution generated by a a given grammar, determined by consideration of various properties of that grammar.
+We conjecture, however, that a lower bound on the pseudo-dimension would be rather close to the full dimension of the grammar (the number of parameters). and pseudo-dimension for certain types of grammars. Bane, Riggle, and Sonderegger (2010), for example, calculated the VC dimension for constraint-based grammars.
+Ishigami and Tani (1993, 1997) computed the VC dimension for finite state automata with various properties. 7.5 Conclusion
+We presented a framework for performing empirical risk minimization for probabilis-tic grammars, in which sample complexity bounds, for the supervised case and the unsupervised case, can be derived. Our framework is based on the idea of bounded approximations used in the past to derive sample complexity bounds for graphical models.
+ were tested using corpora, and found to fit the data well. our framework, given enough samples. We showed that directly trying to minimize empirical risk in the unsupervised case is NP-hard, and suggested an approximation based on an expectation-maximization algorithm.
+ Appendix A .Proofs We include in this appendi xproofs for several results in the article. Utility Lemma 1
+Let a i  X  [0, 1], i  X  X  1, ... , N } such that i a i = 1. Define b a Proof holds for arbitrary i &lt; N . Then: and this completes the proof.
+ Lemma 1
+Denote by Z , n the set f  X  F { z | C n ( f )( z )  X  f ( z ) z  X  D is in Z where the expectations are taken with respect to the data set D . Proof Consider the following: 514 mizer of the empirical risk. We next bound E E  X  p n C n the requirement of proper approximation that we have Proposition 2  X  ( L , q , p , N ) &gt; 0suchthat F m has the boundedness property with K Proof
+Let f  X  F m .Let Z ( m ) = { z || z | X  log 2 m } . Then, for all z  X  follows from f  X  F m (  X  k , i  X  m  X  s ) and the second from requirements on p we have
+E | f | X  I { | f | X  K for  X  = sNL
+Utility Lemma 4 (From [Dasgupta 1997].) Let a  X  [0, 1] and let b = a if a and b = 1  X   X  if a  X  1  X   X  . Then for any  X  1 / 2suchthat  X  log a / b  X  .
+ Proposition 3 m &gt; M we have for tail ( m ) = Proof
+Let Z ( m ) be the set of derivations of size bigger than log
+T ( f , m  X  s ). For any z /  X  Z ( m ) we have that f ( z )  X  f ( z ) =  X 
+Without loss of generality, assume tail ( n ) / N log 2 m s . From Utility Lemma 4 we have that log(  X  into Equation A.2 ( N = 2 K )togetthatforall z /  X  Z ( m ) we have f ( z )
+It remains to show that the measure p ( Z ( m ))  X  tail ( m ). Note that fixed.
+ Proposition 7 Proof and | z | X   X  | x | . Therefore, if we let X ( m ) = { x || f  X  F
+Denote by f 1 ( x , z ) the function in F m such that f ( x ) = 516 where z ( x ) is some derivation for x . We have if m &gt; M then  X  log m q log 2 m  X  m  X   X  log m .
+ Utility Lemma 2
+For a i , b i  X  0, if  X  log i a i + log i b i  X  then there exists an i such that log b i  X  .
+ Proof
+Assume  X  log a i + log b i &lt; for all i . Then, b i / a fore  X  log i a i + log i b i &lt; which is a contradiction to pages 30 X 31).
+ Lemma 2
+Let F n be a permissible class of functions such that for every f
+I { | f | X  K functions from F n after being truncated by K n . Then for &gt; 0 we have p sup provided n  X  K 2 n / 4 2 and bound ( n ) &lt; .
+ Proof
+First note that equality, we have extension on pages 30 X 31 to get Lemma 2, using the shifted set of functions Appendix B .Minimizing Log-Loss for Probabilistic Grammars the unsupervised case) is a conve xoptimization problem of the form case of the expectation-maximization algorithm and  X  which is a margin determined by the number of samples. This minimization problem can be decomposed into several optimization problems, one for each k , each having the following form: where c i  X  0and1 / 2 &gt; X   X  0. Ignore for a moment the constraints  X 
+We use Lagranian multipliers to solve this problem. Let F (  X  1,  X  2) = c the Lagrangian: 518 hence when equating the derivative of g (  X  )to0,weget  X  = problem indeed gets the optimal value for the primal. Because the primal problem is (Boyd and Vandenberghe 2004). Indeed, we have (B.2).
+ adding the constraints in Equation (B.3) and (B.4). When c solution is  X   X  1 =  X  and  X   X  2 = 1  X   X  . Similarly, when c  X  2 =  X  and  X   X   X  [0, 1] such that  X &gt; X  we have we need.
+ Appendix C .Counterexample to Tsybakov Noise (Proofs) Lemma 6 A = A G (  X  ) is positive semi-definite for any probabilistic grammar G ,  X  . Proof Let d k , i be a collection of constants. Define the random variable: which is always larger or equal to 0. Therefore, A is positive semi-definite. Lemma 7
+Let 0 &lt; X &lt; 1 / 2, c 1 , c 2  X  0. Let  X  , C &gt; 0. Also, assume that c Then, for small enough , we have t ( )  X  0.
+ Proof
+We have that t ( )  X  0if
+First, show that 520 which happens if (after substituting a =  X  1  X  , b =  X  2  X  )
+Note we have  X  1  X  2 &gt; 1 because c 1  X  c 2 . In addition, we have  X  enough (can be shown by taking the derivative, with respect to of  X  is always positive for small enough , and in addition, noticing that the value of  X   X  which is equivalent to Therefore, Equation (C.3) holds, and therefore t ( )  X  0 for small enough . Theorem 5
+Let G be a grammar with K  X  2 and degree 2. Assume that p is G ,  X  that  X   X  1,1 =  X   X  2,1 =  X  and that c 1  X  c 2 .If A G (  X  the Tsybakov noise condition for any ( C ,  X  ), where C &gt; 0and  X  Proof define v (  X  ) to be a vector indexed by k , i such that
+Simple algebra shows that for any h  X  H ( G ) (and the fact that p that D KL ( p h ) &lt; + / 2 but dist( p , h ) &gt; C 1 / X  have Note that  X   X   X  1,1  X  1 / 2and  X  2,1 &lt; X  . Then, we have that
+We also have if (This can be shown by dividing Equation [C.6] by c 1 + c 2
+Now, consider the following, which can be shown through algebraic manipulation: Then, additional algebraic simplification shows that (C.5), we have that || v (  X  ) || 2 2 &gt; X  2 . Therefore, which means dist( p , h )  X  condition with parameters ( D ,  X  ) for any D &gt; 0. 522 Appendix D .Notation Table D.1 gives a table of notation for symbols used throughout this article. Acknowledgments References 524

@@ -1,0 +1,17 @@
+ Large data collections containing millions of math formulae in different formats are available on-line. Retrieving math expressions from these collections is challenging. Based on the notion that visually similar formulas are related, we pro-pose a framework for appearance-based formula retrieval in two different modalities: symbolic for text documents and image-based for videos.
+
+We believe that we can achieve high quality formula re-trieval results using the visual appearance of math notation without complex formula semantic analysis.
+
+We represent mathematical notation using different graph types to take advantage of the information available on each domain. For symbolic formula retrieval, math expressions in text formats like L A T E X are parsed to generate Symbol Layout Trees [4]. For image-based formula retrieval, image processing techniques are used to create a graph-based image content representation.
+
+We store these graphs using an inverted index of pairs of primitives defined by the triplet ( p, q, r ), where p and q are the labels of two primitives connected in the graph by the path r [4].
+
+Retrieval is a two-stage process: candidate selection and reranking. The first stage uses pairs of primitives from the query graph to find matches in the inverted index. Each match is given an initial score using the Dice coefficient of matched pairs of primitives [4].
+
+The best top-K candidates from the first stage are se-lected for re-ranking using a detailed similarity metric. Two steps are performed for each candidate: matching and scor-ing. The matching step is done by searching for the largest common substructure between query and candidate graphs. Matching is related to the problem of finding the maximum common subgraph isomorphism (MCS) between two graphs. In addition, we consider label unification for symbolic for-mula retrieval, and our wildcard query nodes can match en-tire subgraphs. In the scoring step, multiple similarity cri-teria define a score vector used to sort candidates, either by lexicographic order or by a function of these scores.
+In the next stage of our project, different datasets and benchmarks will be required to evaluate each modality. For symbolic formula retrieval, we will use the most recent ver-sions of the NTCIR MathIR Tasks benchmarks [1]. To the best of our knowledge, there are no benchmarks for large scale image-based formula retrieval. However, the same col-lections used for symbolic formula retrieval could be adapted by rendering math expressions to images. In addition, we will use datasets of math lecture videos for image-based for-mula retrieval.
+
+Traditional graded-scales of relevance used for evaluation of retrieval systems have been shown to have inconsistency issues [2]. We plan to use pairwise candidate comparisons during our evaluation phase. Some aggregation methods exist that generate relevance scores and ideal rankings using these pairwise candidate comparisons [3].
+
+The proposed framework can be adapted to work for other domains like chemistry or technical diagrams where visually similar elements are usually related.
+ Mathematical Information Retrieval, Content-Based Image Retrieval, Graph-Based Retrieval This material is based upon work supported by the National Science Foundation (USA) under Grant No. HCC-1218801 [1] A. Aizawa, M. Kohlhase, I. Ounis, and M. Schubotz. [2] K. Radinsky and N. Ailon. Ranking from pairs and [3] M. N. Volkovs and R. S. Zemel. New learning methods [4] R. Zanibbi, K. Davila, A. Kane, and F. Tompa.

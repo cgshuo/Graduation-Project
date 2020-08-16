@@ -1,0 +1,102 @@
+ 1. Introduction ARGUS (see [1]).
+
+When tables are linked through simple linear constraints, cell suppressions must obviously be coordinated between considered for a decision which of the approaches (if any) should eventually get implemented in s -work of a current joint European cooperation project.
+ recoding X .
+ prove current heuristics. the proceedings of that conference (see [2]). 2. Methodological background with sets of linked tables belonging to this class.
+ four alternative approaches to handle linked tables using the modular method. 2.1. Definitions and notations try in a particular region.
+ we define: A relation is a hierarchy consisting of only one parent vertex and the corresponding child vertices.
+A table given as a cross combination of relations  X  R 1 R referred to as  X  X on-hierarchical X  or  X  X nstructured X .
+
+A covering hierarchy G of a set of hierarchies f H 1 , ... , H each hierarchy H j is part of hierarchy G . For a more precise definition of covering hierarchies we refer to [3].
+If G is the covering hierarchy of a set of relations f R 1
+The level of a relation R j in a simple breakdown of a hierarchy G is the level of the root of R
+Without loss of generality, we define the level of R 1 to be 0. Note that for any j &gt; 1 the root category of R of R l for some l  X  j . We then say that R j and R l are linked .
+ as illustrative as the graphical one, but is much better suited to represent hierarchies with larger structures.
+Note that G is a covering hierarchy of the set of relations f R
+Finally, according to the definition above, relations R 2
+Next, consider an m -dimensional table T given as  X  G 1 G dimensional simple tables T j 1 j 2 ... j m . Each of the simple tables T  X  R i.e., they share identical cells.
+
+Note that, theoretically, the set S  X  T  X  also contains lower dimensional tables T
+R 1 by R i 0 and assign it a  X  X evel X  of 1, i.e., now we can represent an n -dimensional table  X  R erate) m -dimensional table  X  R 1 j
+To illustrate the concepts, we will make use of a 2-dimensional table T given as  X  G breakdown by region) is given in Fig. 1 (or equivalently in Table 1 ) and G Table 2 , filled with some fake  X  X ork hours X  data.
+
+An example for a 2-dimensional simple subtable of this table T is, e.g., T
+An example for a degenerate subtable (1-dimensional) is, e.g., T bles are shown in Fig. 3 .
+ The set S  X  T  X  would consist of 12 simple subtables in case the degenerate tables are not taken into account: In case the degenerate tables are counted as well, the set would consist of 20 simple subtables, i.e., tables R 2.2. Secondary cell suppression in hierarchical tables is called the p % rule).
+ causes a loss of information.
+
+The problem of finding an optimum set of suppressions known as the  X  X econdary cell suppression problem X  is to find a hard to solve. For practical applications, the formulation of the problem must be relaxed to some degree. 2.3. Modular approach easily.
+ can be dealt with independently of each other.
+
+Let f L i 1 ; ... ; L i k with levels  X  L 1 j subtables. Moreover, all groups that satisfy L 1 j presence of degenerate tables).
+
+C given of all possible classes and groups for a hierarchical table with m  X  2 ; G relations up to level 1.
+ (2, 1) consist of 1-dimensional tables and the other groups consist of non-degenerate 2-dimensional tables. chetti/Salazar Linear Optimization tools (see [4]) are used to select secondary suppressions. problems related to non-global methods for secondary cell suppression. 2.4. Extension of the modular approach for dealing with linked tables
+Ref. [3] presents an idea to extend the current methodologies to deal with a set of linked tables f T be covered.
+ sidered in any other table presenting the data in a breakdown of the same spanning variable and at that much detail. The idea of [3] is then as follows. For N tables f T 1 ; ... ; T table exists having all the specified tables as subtables. The spanning variables will be numbered 1 up to M . i by H i 1 ; ... ; H i I
+Define the M -dimensional table by the table with spanning variables according to hierarchies G each i =1, ... , M hierarchy G i covers the set of hierarchies f H i the cover table.
+ with the explanation of the concepts, we will first introduce a small toy example. This toy example will be used for illustration. 2.4.1. Toy example ( H , consisting of two categories Act I and Act II) and  X  X egion X  ( E , consisting of relations R Fig. 1 ). Hence, F and H each consist of one relation only.
+
+The three linked tables will be given as two 2-dimensional tables T given by crossing only part of E with both F and H : T 3  X  R E In Fig. 5 the cover table is shown and in Fig. 6 the three linked tables are given. into account: S  X  T  X  X  R E 1 F H ; R E 2 F H . If we count also those degenerate tables that are still 2-dimensional tables we have to add R E 1 F ; R E 2 F ; R E 1 H and R E and H .
+
+We will now describe several approaches to deal with such a set of linked tables. 2.4.2. Complete Modular Approach table in a specially ordered way. This would take care of all links between the tables in the set f T these tables are subtables of this cover table. This would result in a set of N protected tables f T proach considers a table structure which is much more complex than that of the tables which actually get published. control that are not foreseen for publication is likely to be rather low. 2.4.3. Adapted Modular Approach The modular approach can easily be adapted. The idea is now basically to use the modular approach on the cover table T , but only consider those subtables that are also subtables of at least one of the specified tables T the other subtables. In the following we denote this subset of S  X  T S  X  T C  X  .
+ ping during that process any simple subtable that is not a subtable of any of the tables in the set f T order the simple subtables will be protected is the same as in the  X  X omplete X  modular approach, we only skip some subtables.
+ of S  X  T C  X  are R E 1 F H ; R E 1 F ; R E 2 F ; R E 1 H ; R 2.4.4. Linked Subtables Modular Approach
+This somewhat more complex approach deals with sets of linked, simple subtables at a time. For each table T level 0 of the corresponding covering hierarchies, i.e., U can be represented as U :  X  X  R 1 can be stated as V :  X  X  R 1 i T .
+ relation which can be expressed formally by requiring j =1.
+ pairs of linked 2-way tables, e.g., f X  R E 1 F  X  ,( R E 1 2.4.5. Traditional approach the sub-table level.
+
+In case of two linked tables T 1 and T 2 , the approach would be as follows: 1. Protect table T 1 on its own. table T 1 . 3. Table T 2 , with the additional suppressions carried over in step 2, is protected on its own. 4. Each cell in T 1 that is also present in T 2 will get the status of the cell in the protected table T 5. Repeat step 1 X 4 until no changes occur in protecting table T Graphically this would look like:
+Adding a third table to the set of linked tables, i.e., considering f T that case several schemes can be thought of. For e.g., (a) Protect T 1 , carry pattern over to T 2 , protect T 2 (b) Protect T 1 , carry pattern over to T 2 , protect T 2
+The choice to be made may depend on the structure of the links between the tables T linked tables need to be considered simultaneously, the more schemes can be constructed.
+In the toy example tables T 1 ; T 2 and T 3 are T 1  X  E F ; T such difficulties. 3. Illustrative examples examples that are larger than the toy example we used to illustrate the ideas in the previous sections. Example 1
+With respect to G we consider two hierarchies, G 1 and G 2 level of G is given by  X  R G 1 ; R G 2 ; R G 3 ; R G 4 ; ... ; R two hierarchies.
+
+The first table of this instance is given as G 2 F and the second table as G cover table T C that are also subtables of T 1 or T 2 i F ; with i  X  4 ; ... ; 20 g .
+
+According to the Adapted Modular Approach, we deal with these subtables successively within the usual backtracking proach. For the traditional approach we start with the first table G ondary suppressions from the area where both tables overlap, i.e., f R G
+G 1 F H , do secondary suppression with HiTaS, and carry new secondary suppressions in f R ary suppressions in f R G i F , with i  X  1 ; ... ; 3 g and thus the process finished successfully. The results are summarized in Table 3 . For a more detailed presentation of the results see Table 4 in the appendix.
+The table G 2 F contained 72 primary unsafe cells, 26 empty cells and 1343 cells in total. Table G 0.4 with a i the cell value.
+ adapted modular and the traditional method is rather similar for table G
+The traditional method on the other hand performs rather poorly at the second level of variable F in the G 5.1.
+ Example 2
+In this example, we add a third table to the two tables of example 1. This third table is given by G table T C of example 2 it holds: S  X  T C  X  X f R G i F H , with i  X  1 ; ... ; 3 g[f R G i F , with i  X  4 ; ... ; 20 g[f R then given by S  X  T C  X  X f R G i F H , with i  X  1 ; ... ; 3 g[ X  R
+In the traditional approach, when selecting secondary suppressions assigned earlier in the process in a table T ond table for the first time), we have to consider two of those areas, e.g., T suppressions to the third table. In our instance the overlap areas are T
+T \ T 3  X f R G i with i  X  1 ; ... ; 20 g and T 2 \ T 3  X f R G superior results, especially for the 3-dimensional table.
+ Example 3 of example 1, G 1 F and G 2 F H . Again, we add a third table, which is this time given by G sisting of only one category as H j 5 .
+
+Hierarchy H must then be extended, since we now consider two relations. The first one, H full population into category 5 and the  X  X est X . The second one, H gories (except category 5). H * denotes then the covering hierarchy of H as G 2 F H and the second and third table can be joined into one, e.g., G of H 1 , but the two cells specified by the two other categories of H the  X  X est X .
+ into category 5 of hierarchy H ) is comparatively small. 4. Combining the adapted modular with the traditional approach: dynamic recoding
+Presently, it is not yet known how large the sets of tables can be that could be handled efficiently by the adapted be allowed by a first implementation of the method. In practice, there will probably always be (large) linked tables mentation. A way out of the dilemma could be to handle in such a situation only some of the tables using the adapted modular method. In order to avoid time consuming complex repetitions, the remaining tables should be processed under only after others already got published.
+ might be imposed to avoid changing the suppression pattern of a linked table.
+Data managers know which response variables to tabulate by which combination of a set of spanning variables G but sometimes they are not sure which amount of detail to consider, i.e., they are not sure which hierarchy H mation loss at each level could determine the preferred level of detail in the spanning variables. current one. 4.1. Dynamic recoding
+We assume that we are given two sets of linked tables, S 1
+T each table in S 2 . That is, for each of those tables T i numbers that are all fixed, except for the k i th element. Which hierarchy H k dimension of such a table will be established by the procedure outlined below. Denoting by H hierarchy for dimension k of table T , we use the set of indices ( h of that table.
+ set S  X  T  X  of subtables of the cover table T of S 1 .
+ of tables S 1 . The resulting suppression pattern will then be  X  X ocked X . When processing the tables of S the procedure, we do not allow any changes in the suppression pattern for the tables of S the suppression pattern of any subtable belonging to the set S of S 2 are linked only through subtables belonging to the set S of this independence, it does not matter if we deal with the tables of S method.
+
+In the second phase, we will usually face the problem that protecting a subtable T table T in S 2 while keeping the status of all cells of subtables belonging to S will then continue in the following way. Determine H k h by  X  R 1 l
+H h k as the base hierarchy that results after deleting all descendants of the root category of relation R pattern for the tables in S 1 . 4.2. An illustrative example
+This is an example based on a real application from the German Business Tax Statistics. In this instance we consider four tables given by cross combination of hierarchies for four different spanning variables: E (economy level). The tables of the instance are constructed using F to the district level). The NACE classification E employed by this statistic involves 305 relations on levels 1to5.
+E structure of E 2 .
+
+The tables of the instance are now given as T 1  X  X  E F  X  E 2 F 1 H  X  .
+
+The fixed design table set S 1 consists of the first three tables. With respect to table T data managers wish to publish legal form data on the state level (i.e., dimensions 2 and 3 of table T (here: regarding the first dimension, k = 1) consists of table T for the tables of S 1 in phase 1.
+
+However, it is probably not the most detailed (with respect to dimension 1) table with this property. Our result was obtained using the current implementation of the modular method. The dynamic recoding procedure of Section 4.1 would going on. 5. A special application of partial suppression technology overall weight of the suppressed cells, e.g., it minimizes partial cell suppression methodology of [9] is, on the other hand, to compute intervals around the true cell values a method cover certain pre-defined protection intervals. Based on the assumption that in a publication the true cell
+P
+Although the partial cell suppression problem is computationally much easier to solve compared to the complete cell an interval publication strategy. Of course the strategy could be to suppress all cells where z approach.
+
+In this paper we propose now a strategy to use partial cell suppression as complementary technique for complete cell are carrying over suppression patterns between linked tables. 5.1. Using partial suppression to compute protection levels vidual contributions to a sensitive cell.
+ if the feasibility interval for a secondary suppression imported from, say, a subtable T when computing feasibility intervals for suppressed cells of subtable T resulting feasibility interval for the sensitive cells of subtable T heuristic.
+ will therefore be enough to require for any suppression s in a subtable T table T b that the feasibility interval for s computed on the basis of a suppression pattern for T interval of s in subtable T a .
+
+We therefore propose the following strategy: (1) Compute a suppression pattern for subtable T a using complete suppression. (2) Compute a partial suppression pattern for subtable T a during processing.
+ ranges. 6. Summary and final conclusions
+This paper has presented a few ideas for a backtracking algorithm that might be implemented in order to extend the Modular Approach X , gave promising results.
+ future version of s -ARGUS the results of such a comparison should be considered. lished, while others which are linked to the published tables still have to be protected. cussed partial cell suppression methodology. We have drafted a method to determine protection levels for secondary suppressions in a theoretically sound way using partial suppression methodology. This may eventually help to improve the performance of the modular method regarding information loss.
+ Acknowledgements
+This research was partially supported by the European Commission under Grant Agreement No 25200.2005.003-2007.670:  X  X SSnet on statistical disclosure control X .
+ Appendix
+References

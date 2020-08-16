@@ -1,0 +1,42 @@
+ other natural processes [47], [18], [33].
+ analysis [36] etc.
+
+The optimization problems of these approaches often methods [4]. solved by methods in [23] and [29]. norm which can be solved by Singular Value Decom-position thresholding [5].
+ / X  norms) and a large number of optimization techniques / X  / X  norm is defined as  X   X   X   X  2 / X  0 =  X   X   X   X   X   X  X  X   X   X   X  2 / X  0 for any scalar  X  .Theterm X  norm  X  here is for convenience.  X   X   X  2  X  =  X  x  X  =  X  x  X  2 = A. Related Sparsity Models
+LASSO (Least Absolute Shrinkage and Selection Opera-Hilbertian norm used for regularization [3].
+Along these  X  1 norms approaches, some variants have features in many applications [38].
+ B. Related Optimization Techniques the optimization problems.
+ x are the model variables which need to be deter-/ X  relaxation. to solve the structural sparsity problems.
+An auxiliary function for problem is a function which satisfies the following, Then the iterative updating algorithm is, where  X   X  is the result of the  X  -th iteration. Using this value of  X  (  X  ) will monotonically decrease: by the definition of  X   X  +1 in (8).
+ functions are not unique.
+ constant  X  if the following holds [27],  X  (  X  )  X   X  (  X   X  )+  X   X   X   X   X ,  X   X  (  X   X  )  X  + of the algorithms.
+ theorem: satisfies (6) and (7),  X  =  X   X   X  1 Proof: First we prove that  X  (  X ,  X  )=  X  (  X  ) . = = =  X  (  X  )+  X  X  X  (  X  ) =  X  (  X  ) .
+  X  (  X  )+  X  X  X  (  X  )  X   X  (  X   X  )+  X   X   X   X   X ,  X   X  (  X   X  )  X  +  X  (  X ,  X  ) =  X  (  X  )+  X  X  X  (  X  )  X   X  (  X   X  )+  X   X   X   X   X ,  X   X  (  X   X  )  X  + =  X  (  X ,  X   X  ) , (2)  X  is a constant w.r.t.  X  , indicating that  X  can be and theorem.
+ tion) Algorithm.
+ Require:  X  (  X  ) , X , X  (  X  ) , X  0 , X  0 , X   X   X   X  0 , X   X   X  0 ,  X   X   X   X  , while Not converged do  X   X   X   X  1
+Solve  X   X   X  argmin  X   X   X   X   X   X  2 +  X  X  X  (  X  ) , if  X  (  X   X  ) &lt; X  (  X  ) then 6:  X   X   X   X   X  Lipschitz condition satisfied. else 8:  X   X   X  X  X   X  Lipschitz condition not satisfied. end if end while return  X   X  guarantee of the convergence for our algorithm. function  X  , Algorithm 1 converges.
+ tion of  X  .
+
+Line4ofthe GLAF Algorithm is a sub-problem of this optimization in the rest of the paper. which  X  2 / X  0 -norm is imposed as constraint.
+
+Let  X  subspace.
+
+Consider the following regression problem,  X  (  X ,  X   X  )= -norm and  X  2 / X  1 -norm can be row-wise decoupled:  X  (  X  )=  X  = min where  X  = Appendix A.
+ to solve the induced optimization problem. the regression problem in the following form, min The corresponding Lipschitz auxiliary function is  X  (  X ,  X   X  )= where  X  and  X  are defined as in (18) and (19). Then GLAF min Thus for problem (22) , we have where  X  = Then  X  ( x  X  )=  X  .Andif x  X  =0 , X   X  x  X   X  0 =0 , and  X  / X  0 -norm as Constraint min  X  is defined as same as (18). Unlike other problems
+Theorem 5.3: The following gives the global optimal  X  = .
+ Proof: We denote  X  , then the following bound holds, The proof will be given in the Appendix B.  X  (  X  ) approximated by quadratic functions.
+ B. Computational Complexity Analysis of Lipschitz auxiliary function. that  X  is a  X   X   X  matrix and  X  is a  X   X   X  matrix, where If  X  is large and we do not want to compute  X  X  X   X   X  in respect to  X  .  X  / X   X  (  X  X  X  +log(  X  )) (see Theorem 5.3).
+ [23].
+
+Again, the AGLAF algorithm requires no optimization property, that  X   X  , then the following bound holds, where value in  X  -th iteration.
+  X   X   X  0 , X   X   X  0 , X   X   X  0 ,  X   X   X   X ,  X   X  1 , while Not converged do  X   X   X   X   X   X  (  X  ) / X  ,
+Solve  X   X  argmin  X   X   X   X   X   X  2 +  X  X  X  (  X  ) , if  X  (  X  ) &lt; X  (  X  ) then else end if end while return  X  / X  -norm multi-task learning.
+
+In this experiment, we solve the following problem, 100  X  120 matrix (denoted by  X   X  ). Then we randomly set  X  =1 and  X   X  =300 in this experiment. We apply both observe that AGLAF always converges faster than GLAF Figure 1(b).  X  / X  norm method gives much lower error.
+ B. Multi-task Learning on Image Data  X  evenly divide each image into 8  X  8=64 blocks and / X 
+We also solve the model in (28) with  X  = for large-scale data.
+ number selected joint variables.
+ following,
+Lemma 10.1: The global optimal solution of is given by Proof: Denote then,  X   X  is scaler. By substituting (40) into (37), we have  X  (  X  )=  X   X   X  a , and (  X  )= (42)  X   X  is given the following, or which completes the proof.
+ Now we are ready to prove Theorem 5.1.
+ Lemma 10.1 immediately leads to Theorem 5.1. convex and  X  (  X  ) is convex on  X  , where  X  (  X  ) at  X   X  +1 . Since  X   X  +1 is the optimal solution of 0  X   X  X  X  (  X   X  +1 , X   X  ) ,or we have By combining (45) and (46) , we have By considering the fact that +  X  (  X   X  +1 )  X   X  (  X   X  ) (  X   X  2  X  2 (  X  =  X   X  (  X   X  )  X   X  (  X   X  )  X 

@@ -1,0 +1,34 @@
+ 1. Introduction capability to support today's complex business processes.
+ is dynamic. It has many uncertainties [3,4] which have not been dealt with in traditional scheduling literature. (1) The uncertainties of work fl ows : (2) The uncertainties of resources : literature either.
+ These new challenges mentioned above need to be overcome in work fl ow scheduling contexts. a preferable balance between global optimization and local optimization. information about each individual task. each separate invocation of the work fl ow process. during process enactment. can only work on one task at one time.
+ directions are addressed in Section 7 . 2. Methods of work fl ow scheduling two kinds: static methods and dynamic ones. 2.1. Static scheduling instance is initialized.
+ data. Tasks in the selected path will be scheduled together at once, e.g. t 1 , t 2 , t 4 and t 5 are scheduled. 2.2. Dynamic scheduling certain strategy, and put into execution as soon as the allocation is done. instances in the system as a whole. 2.3. Phased scheduling in can add more scheduling places so that the changes of the environment can be re fl ected and handled in time. method. Then we elaborate on the process of the scheduling and the key algorithms. 3. Work fl ow scheduling system based on colored Petri net work fl ows [6  X  10] .
+ [6] to model different instances.
+ follow to support phased scheduling.
+ De 1) WFCP =(  X  , P , T ; F ; C , G , E , I ) is a WFCP-net [8] ; 3) M 0 : The initial execution marking of WFCP satisfying:  X  p  X  P :Type( M 0 ( p ))= C ( p ) MS ; 4) S 0 : The initial scheduling marking of WFCP satisfying:  X  p  X  P :Type( S 0 ( p ))  X  C ( p ) MS . of all the guard functions for scheduling) and GE (the set of all the guard functions for execution). represents the execution states of work fl ow instances in traditional literature. De changes along with the scheduling of tasks.
+ De 4. Phased method of work fl ow scheduling
+Fig. 3 illustrates the process of the phased work fl ow scheduling. 4.1. Initialization
+SP need to be initialized and scheduling tokens and execution tokens need to be placed in the source place. 4.2. Scheduling 4.2.1. Scheduling condition following conditions.
+
+De fi satis fi ed: scheduling token and execution token of instance  X  001  X  are not matched. De The conditions of activating a scheduling are as follows.
+ Rule 1. A scheduling is activated if and only if: 1) There is at least one enabled scheduling place sp ; 2)  X  t ( t  X  sp  X   X  t is schedulable task). 4.2.2. Schedulable task seeking lead to a new scheduling marking. The process is shown in Fig. 5 .
+The algorithm which seeks all schedulable tasks is as follow: 4.2.3. Resource allocation and task scheduling global optimization can be achieved to some extent.
+
+In order to complete scheduling of work fl ow tasks, two decisions always need to be made [10] : 1) By which resource are the tasks executed? that have the same skills. That is, we need to choose one from those resources to execute a task. 2) In what order are the tasks picked up for execution? requirements should be taken into consideration besides temporal and causal constraints. The scheduling problem can be described as following: allocating those tasks to the proper resources and executing them in the proper order. referred to [11] .
+
+Algorithm 1. set SeekSchedulableTask(queue ESP ){ //this algorithm seeks all schedulable tasks at a certain point of time //returns the set of schedulable tasks ST //
+ESP is a queue which contains all the enabled scheduling places at first }/ / SeekSchedulableTask 4.3. Execution A task that has been scheduled waits to be executed. The conditions that a task can be executed are as following: Rule 2. The execution of task t  X  T is enabled iff: 1) the task has been scheduled; 2)  X  p  X   X  t ; Ep ; t  X  X  b hi  X  Mp  X  X   X  GE t  X  X  b hi = true : of executing task t .
+ to the execution marking.
+ formula: 5. Experimental results and analysis work fl ow scheduling.
+ work fl ow, whose process model is shown in Fig. 6 , running in a work fl ow system. p adding execution token and scheduling token in p 1 as shown in Fig. 7 (a). t Fig. 7 (f) after the scheduling.
+ the time that resource j need to complete task i ,  X  means task i cannot be executed by resource j . shown in Fig. 8 ).
+ scheduling marking after the scheduling is shown in Fig. 9 (i).
+ b.t total earliness.
+ here.
+ the three scheduling methods: 1) Percentage of late tasks: number of late tasks/number of executed tasks . when using static scheduling method compared to other methods. 2) Total Tardiness:  X  number of instances increasing. 3) Average throughput time of instances:  X  is not the practical case.
+ can handle the dynamic nature of work fl ows and achieve a balance between several instances.
+Phased scheduling method proposed in this paper can perform very well in both circumstances. It can reach global optimization to some extent and achieve a good balance between different instances. between static scheduling and dynamic scheduling. 6. Related work scheduling methods.
+ which resource and in what order the tasks are executed.
+ instances can be executed properly. Those make it natural to scheduling work fl ows by phases. predictions, and how to reduce the cost associated with the escalations for tasks going to miss their deadlines. execution of parallel tasks, they can be executed concurrently. 7. Conclusion accomplish the scheduling of work fl ows very well.
+ some extent and can achieve a good balance between several instances. requirements or adapt to some changes of the system.
+ Acknowledgement well as the Science-Technology Project of Shenzhen under grant No. JC200903120046A. References

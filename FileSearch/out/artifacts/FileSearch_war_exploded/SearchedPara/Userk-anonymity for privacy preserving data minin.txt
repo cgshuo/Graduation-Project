@@ -1,0 +1,36 @@
+ 1. Introduction this specific problem until very recently ( Hong et al., 2009; Navarro-Arribas and Torra, 2009 ). degree of privacy, providing k -anonymity at user level, while preserving some of the data usefulness. finally, Section 5 concludes the paper.  X  2. Motivations: query logs and privacy search engine companies can be done without risking the privacy of their users.
+A query log from a WSE is composed of lines of the form: sidered as a generic query log format.
+ as social security numbers has been removed ( Xiong and Agichtein, 2007 ). niques, applied to the query terms, are vulnerable to frequency analysis ( Kumar et al., 2007 ). 2010 ), or to choose the publishable queries ( Korolova et al., 2009 ). greatly improved both in terms of computational efficiency and on the results obtained. 2.1. Privacy by means of k-anonymity removing some queries from the log.
+ identify users as in the case of the released logs from AOL ( Barbaro and Zeller, 2006 ) for some given k . protection process.
+ ough utility to be used in data mining processes.
+
+In the following sections we will introduce the microaggregation of query logs, and discuss our results. 3. Microaggregation of query logs microaggregation and how we use it to protect query logs. 3.1. Microaggregation small clusters and then replacing the original data by the centroids of the corresponding clusters. the protected data.
+ mains in Torra (2008) .
+ From the operational point of view, microaggregation is defined in terms of partition and aggregation: Partition . Records are partitioned into several clusters, each of them consisting of at least k records. the representative of the cluster to which they belong to.
+
+That is, k ij = 1 if record x j is assigned to the i th cluster. Let lation of microaggregation with g clusters and a given k is as follows:
+V =( V 1 , ... , V s ) are considered, x and v are vectors, and d becomes d to require for numerical data that v i is defined as the arithmetic mean of the records in the cluster. I.e.,  X  more than one variable at a time (multivariate microaggregation), heuristic methods have been developed. tation of MDAV for categorical data is given in Domingo-Ferrer and Torra (2005) . 2001; Sweeney, 2002 ).
+
+Algorithm 1. 3.2. Distance and aggregation of query logs step of the microaggregation and an aggregation operator to be used in the aggregation step.
+We will denote the user query tree for a given user id i as: where u i  X  u i 1 ; u i 2 ; u i 3 ; ... is the vector of queries for user id composed of u i j  X  t i j ; r i j ; u i j ; / i j use j u i j as the number of queries for user id i , and / min( A ) in the original log, the normalization of x i (the original values) and denormalization of x 0 for all x i 2 A , and x 0 i 2 A 0 is given by: 3.2.1. User query distance tance functions used as: d d t ( t i , t j ): Distance between two timestamps t 1 , t 2 timestamps. d u ( u i , u j ): Distance between two domain names (the clicked URL). Given two domain names: X = x and assuming m P n , the distance is given by where w i =2 m i /(2 m 1) and a i =0if x i = y i (case-insensitive string equality) or 1 otherwise. That is, d of a i . Note that we consider most relevant the right-most part of the domain name. malized by the maximum length of the strings. d u ( u i , u j ): Distance between two single queries of the form u
+Given the previous distance functions, the distance between two users is calculated as: where d H is the Hausdorff distance in the metric space ( u , d 3.2.2. Comments on the distance function 2010 ).
+ information loss.
+ tactic level. A semantic approach could lead other interesting results which are to be explored. 3.2.3. User query aggregation user queries: the aggregation of queries C u is defined as:
+The centroid u  X  is composed of queries from the cluster queries u queries from user i , we pick a sub-vector u  X  , i of queries such that: is, in a more formal way, given a frequency function f on query strings, we require that, where where u i  X  : u j if the query string of both queries are equal, that is, if and only if / izing the URL to the right-most common part (sub-domain). 4. Evaluation the logs, which correspond to 55666 lines of query logs.
+ words. 4.1. Profile exposure level values as different queries they have and with probability proportional to the number of repetitions. Level ( PEL )( Erola et al., submitted for publication ) that is defined as follows: should be as low as possible.
+ user and value of k .
+ close. 4.2. Information loss sure the information loss as: process. 4.3. On the relation of the PEL and IRL smallest values of k .
+ ( PEL ) and a low information loss ( ILR ).
+ 2006 )). 4.4. Utility in data mining our results on a simple clustering just to give a generic idea.
+ dexes: the Jaccard index and the Rand index.
+
+P  X  p 0 1 ; ... ; p 0 n ments ( a , b ) such that: r : a and b are in the same cluster in P and P 0 . s : a and b are in the same cluster in P but not in P 0 . t : a and b are in the same cluster in P 0 but not in P . u : a and b are in different clusters in P and P 0 .
+ Then the indexes are defined as: Jaccard index Rand index indexes.
+ the Rand index.
+ we can provide high privacy protection to the data while preserving the partitions of the clustering. making use of some clustering technique: categorization, classification, etc. 4.5. Frequency analysis the figure corresponds to the original data.
+ 10 queries are the 10 most popular, with some minor exceptions.
+ values of k , but the overall result is quite good. ervation in bigger datasets. 5. Conclusions microaggregation.
+ plexity that the second one imposes, and also because it already produced satisfactory as show in Section 4 . tistical disclosure control. Other operators could easily be used, if required. degree of anonymity and privacy.
+ Acknowledgments
+IDER INGENIO 2010 CSD2007-00004, Audit Transparency Voting Process PT-430000-2010-31, and N-KHRONOUS TIN2010-de la Cierva Grant (JCI-2008-3162) from the Spanish MICINN.
+ References

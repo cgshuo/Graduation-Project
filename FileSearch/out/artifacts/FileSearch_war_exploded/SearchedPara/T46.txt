@@ -1,0 +1,1 @@
+  X  Recent results characterize performance of simple convex programming-based estimators (e.g. basis pursuit, lasso)  X  Basic questions : Can we do better with more computation?  X  Main results :

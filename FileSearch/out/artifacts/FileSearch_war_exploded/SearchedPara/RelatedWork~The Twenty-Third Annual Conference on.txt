@@ -1,0 +1,9 @@
+ initialize for do Receive new instance Predict
+Receive label if then end if end for
+ALGORITHM: Perceptron
+Initialize prediction function for do Receive instance Predict a label Receive the true label 
+If then algorithm suffer a mistake if condition satisfied then
+Update prediction function to end if end for
+Kernel function measures the similarity between the two instances x and y. RRRyx nn  X  X  :),(  X  xfy  X   X   X  X  X   X  Perceptron:  X  Dual Ascent Framework:  X  Large Margin Classifiers: the number of prediction mistakes M made by DUOL on this sequence of examples is bounded by: dataset. Primal problem: and .
+
+Dual ascent: . number of mistakes (According to paper [3] and [4]). t

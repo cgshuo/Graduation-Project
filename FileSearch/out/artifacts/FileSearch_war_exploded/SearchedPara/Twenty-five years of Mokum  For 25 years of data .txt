@@ -1,0 +1,166 @@
+ Reind P. van de Riet * 0. Introduction rently, one is more realistic, is more concerned with tools to find errors and to remedy these systems. significance in the third chapter.
+
+So the paper will be about trees, triggers and triples in Mokum.
+The following principles are being used: is that we want to be able to prove correctness of access and usage of software tools. 2. Design and implementation are one and cannot be considered independently . tem X  or even  X  X  X okum X  and hope that the context makes clear what we mean. 1. The Mokum system 1.1. Introduction to Mokum of software.
+ rect implementation.
+ does not have the power of a proof of correctness, but it helps to ascertain a high quality of a design. and sending messages to (other) objects. There is the notion of time, so that timers can be set. The script. So an object being an instance of type T is automatically an instance of type S. All types are
+As has been said above, all types can be put in a tree, the type tree , structured according to the archical principle. In the diagram for the type tree the is head. The is _ a relationship is transitive.
+ tionship between keeper and collection, there is a special relationship between types the arrow from T to S, an arrow with open head. The coll _ of one coll _ of relationship for a certain type, the drawing of the instance of type T, wants access to an attribute A of object O related, then access can immediately be denied. We say that A is not visible to T and therefore to O take into account that the coll _ of relationship can be inherited: isa(T,S):-T=S;(is _ a(T,T1),isa(T1,S)). attr(A,T):-isa(T,S),attr _ of(A,S). vis(A,T):-attr(A,T); reasoning . So as accessability criterion, Mokum uses: acc(CO,A,O,T):-(CO=O,attr(A,T)); CO is the calling object, O the object and A the attribute in which calling (in one of T  X  X  triggers). The type S is the type of is e.g. a doctor, who in another function is also a docent and criterium, in the other case, the algorithm correctly denies access. communication between sites is such that security is guaranteed, to be discussed in Section 3 . 1.2. More theory
+Note that the is _ a relationship is used in a transitive fashion; the lection provides for no confusion about granting access.
+
+Note that for determining accessability with acc the predicate accessability. However, if keeper _ of(CO,T1,O,S) holds, then holds. So visibility is a necessary property for accessability.
+ rithm which takes these special arrows in consideration.
+ roles in an organization.
+
+It is also possible that within one type there are more than one leads to confusion when determining which collection is meant in the test for control, there does not seem a need for such multiple coll relationships and to add these names as extra parameter in the into unique ones, e.g. by combining attribute names with the name of the type they are being defined in. can be done using an index based on hashing, which in actual practice means constant computation time. 1.3. Several kinds of access one for writing access. The interesting observation is that both are the same, if the above access algorithm is not dependent on the coll _ of relationship, but rather on the assume that  X  X  X  + R X  is the default permission. Of course, what kind of access the pertinent coll _ of relationship stands for. So one type tree with labelled technician can change the condition of the Engine of a Car.
+ site as the site for the T (basic) objects.
+ readable and writable only when they are the  X  X  X wn X  attributes of the they cannot change it.
+ that the predicate glb(P1,P2,P3) defines the greatest lower bound is _ a(T,S,P) , coll _ of(T,S,P) and keeper _ of(Co,T,O,S,P) carry this Permission label the following form: attr(A,T,P):-isa(T,S,P),attr _ of(A,S). isa(T,S,P):-(T=S,P=permission _ to _ read _ and _ write); vis(A,T,P):-attr(A,T,P); acc(CO,A,O,T,P):-(CO=O,attr(A,T,P)); inates from inheritance. Suppose one has three types TA, TB and TC and TA furthermore that TB has a coll _ of relationship with a type TC. Evidently, through the Task 1 objects. The whole can be designed in a type tree as depicted in Fig. 3 . A straightforward solution to this problem is that we introduce a matrix whether access is allowed is determined by i.e. access is allowed according to the greatestlowerbound of ACC Task Task 1 Task 2 Technician R + W W R
+Prod Mgr R + W R R + W then the Technician cannot write the skills attribute of Task 2 1.4. Changing a collection his boss and the corresponding access should be granted by his boss and not by himself. Therefore, we have adopted the rule in Mokum that it is the privilege (and task) of an object collection C of an object B , if and only if the following relationships exist for the types and the following keeper _ of relationship exists:
+Compare this condition with the one in general for access protection, where we have substituted attribute of B and that coll _ of TD as a direct attribute of Except for one special case (see next section) we have that  X  X  into account that the type TA inherits the coll _ of relationship with
+T1 .
+ Another condition is that A got D from some source, as e.g. its own collection of sage, or created it itself (see next section).
+ Then, as a result of add(A,D,B) , D has become a member of question is who puts D in it? It could be the object itself, having some kind of superuser X  X  power.
+Changing the contents of collections also must be protected. It can be done by adding a label to the between TA and TB : the label  X  X  X dd X  for adding and  X  X  X emove X  for removing. critical tasks. Details about these actions are studied in the next section.
+We postpone a study on this matter to a next section. 1.5. Creating and removing objects type, then is _ a(allT, T) . Also coll _ of(allT,T) , and tree. Further, we assume that from the very beginning there exists one object, called super . coll _ of(allT) contains one element: super itself.
+ coll _ of(T) , for all T , including thing.
+ who asked for the creation and it is put in super . coll _ henceforth the new object O ) to this collection is satisfied: of its own collection. Adding a type T to a given object O objects, types of objects and their attributes, including collections, a bit more sophisticatedly.
+Nevertheless we have completed the Mokum model of this paper with functions terpart functions are also simple to imagine: when super gets a message from all the collections: super . coll _ of(T) , including the one for Thing. 1.6. Should the type be kept private? private.
+ ple when the would-be-nurse is still in the process of being examined. Such an object may be member of of(nurse) , but it has no intrinsic meaning.
+ vate is to ask more functions from super . Now one has to use keys so that only M can ask a key has to be created with type keyT , given to M and kept by identifiers, so it will not harm the collection of nurses to also have one special object: We consider this setting as more complex than the first one.
+ determined by ( keeper_of (CO,T1,O,S),isa(T,T1),attr(A,S)) medical record (suppose that they still exist) any longer.
+ two hospitals has a problem (two problems). 1.7. Who is accessing whom? keeper. The way to get hold of a member of a collection is by means of a query: select(O, from coll _ of(T), where O.attr= value).
+
+To get this object is not within the access protection area, except, of course that own collection. What can me do with O ? If it wants to read an attribute of wants to change an attribute of O , again that is done through possible as it would mean removing O from its collection, which is only permitted to some manager of 1.8. Integrity constraints on collections suffer from an eye disease. 1.9. Special situations need special solutions 1.10. A simple but very common example S&amp;P system hierarchy of clients, call their types CL j , where EMP i 1 is _ a EMP i , for i =2, ... , n and CL j 1 is _ a
+The hierarchy for the clients means that CL j 1 has more properties (in the form of attributes) than CL for employees means that an employee of type EMP i 1 has more rights than those of type EMP clients. For example, EMP 3 has R access to CL 3 , while EMP between CL 2 and CL 3 , therefore to CL 3 . Suppose EMP 1 sound and provable correct S&amp;P system for this simple example.
+EMP 3 coll _ of(R) CL 3 ; EMP 2 coll _ of CL 2 ; EMP 1 coll EMP 1 coll _ of EMP 2 ; EMP 1 coll _ of EMP 3 .
+
+If one wants flexibility in changing roles between the employees, say employee risks, one can give employee 3 type EMP 2 , and as long as it functions purely as an EMP but when it has to take over the tasks of employee 2 , put these clients of type CL last resort on what is in the collection of employee 2 . 1.11. Multiple inheritance resulting relation? 1.12. Some additions to the DKE50 paper we have explicitly used the transitive property in the access of a Researcher
+SP of type Subm _ paper , by putting SP in a collection kept by by SP . Then RE could access the reports by asking for:
+RE.coll _ of Subm _ paper.coll _ of Ref _ report[i].text2 as defined in the dynamic diagram of the original Fig. 1 .
+ by explicitly extending the access of RE one more coll _ of ing an extra arrow from the coll _ of arrow [ DKE-author to Subm report ]. We call it a leap-frog arrow: leap _ frog(DKE-author, Subm _ paper, Ref _ report)
+An algorithm taking leap-frogging and diversity of access permissions into account is acc2(CO,A,O,T,P):-acc(CO,A,O,T,P); (leap _ frog(T,T1,T2),acc(CO,coll _ of(T1),X,T,P1);acc(X,A,O,T1,P2), doctor accesses the list of hobbies of his patient can be relieved by putting the in general may be the better option, with as partial solution the leap-frog relationship. Two other changes to this diagram are also needed: The referees need write access to
+Two typos are also mentioned: in the 4th box X  X  X RR X  should be replaced by  X  X  X RRi X . 1.13. Proof of correctness for access algorithm needed? the student Pete, who also is his patient, can be accessed, although Pete is not his student. instance of type S.
+
+There are three cases to consider: 1. T = T 1 is _ a ... T n =S, n P 0.In this case there are again two possibilities: O have the same types, such as one doctor accessing another doctor. In this case there must exist a between T and S (which can be T) as in the next case. 2. T = T 1 is _ a ... T n coll _ of S 1 is _ a ... S m =S, n P 0, m P 0.There are again two cases: O instances of which O 1 is the keeper, so keeper (O 1 ,T,O or this is not the case, so that the next case is applicable. type of O. 1.14. Some remarks about implementing a most simple Mokum system
+Objects O are identified by their unique object identifier: keeper _ of(CO, T, O, S):-member _ of((CO, T, L),coll _ of
+Note that oid  X  X  can occur multiply in collections, as an object can be member of multiple collections. 2. WorkFlow diagrams 2.1. Introduction to WorkFlow diagrams flow see [19,22,29] . 2.2. The library example dynamic diagram in the form of a State Machine Diagram is shown in Fig. 8 . lic and with a  X  X   X  are private.
+ with multiple objects simultaneously.
+ denoted by a single letter, such as U for the ag argument of a User in borrow. after producing an appropriate error message. borr with 1. a + sign means increase.
+ In general: x + :  X  y means  X  X  X dd y to x  X  and x -:  X  y means  X  X  X elete y from x  X . the following meaning: (a) ag: agent: entity controlling the action; (b) rec: recipient: entity into whose possession something is transferred; (c) go: goal: entity effected by the operation of ag.
+
+Example: WordNet says that the agent in borrow must be a living thing; well, a User this usage is approved! more references in the same area see [4,25 X 28] .
+ of objects participating in the diagram. Take as example the first actions specified: borrow(ag: User=U)(go:Book=B)(rec:Librarian=L), do (ag:L): check (U 2 L.Users) of Books and on nr_of_borr is performed and if successful: send (U, X  X  X ick up your book at desk X ), send (Deskadm, [U,B],  X  X  X ive book X ),
+T1 is now , U.nr_of_borr+ :  X  1, me.Borrowings+ :  X  [U,B,T1] is performed, as a direct translation of: send (rec:U)(msg= X  X  X ick up your book at desk X ), send (rec:Deskadm=D)(go:[U,B])(msg= X  X  X ive book X ), T1 is now , U.nr_of_borr+ :  X  1, L.Borrowings+ :  X  [U,B,T1]
+The following instruction: set _ alarm _ clock (me,T1 + 4, [U,B,T1], 3) setting a timer in the form of the alarm_clock.
+
+In the first case it is doing the following: select ([u,b,T] 2 me.Borrowings where u=U and b=B), alarm_set-:  X  [U,B,T], me.Borrowings-:  X  [U,B,T], U.nr_of_borr-:  X  1, next (state1); ( send (U,  X  X  X rong book returned X ), next (state2)).
+ contains all the alarms which have been set.
+
+In the second case it is doing: ([U,B,T1] 2 me.Borrowings), ( send (U,  X  X  X eminder to return book X ), ( N &gt;0, set _ alarm _ clock (me, T + 4, [U,B,T1], N 1), next (state2)); ( send (U,  X  X  X ook not returned; even after three reminders X ), next (state1))) where N is the number of times a reminder is being sent.
+ dynamic diagram. 2.3. The researcher example State Machine with six states. The figure at the bottom right is taken from the original ColorX diagram. facility would demand a kind of multi-threading, Mokum does not provide, however. 2.4. A person X  X  life example on: they are bank Customers and (sometimes) Patients in a hospital (the one of Fig. 1 ). triggers for G and the angel A ( Fig. 12 ).
+
+Divine objects and  X  X  X eep flying X  for angels. 2.5. The garage case integration of internal and external data as in an ERP system.
+ ities. Now the different aspects are being discussed: 2.5.1. About tasks need to be specified in a dynamic diagram, but we will not do so. more important for the Sales Person than for the Technician (see Fig. 14 ). 2.5.2. About the organizational chart but he/she has the most rights of all employees, as the type CEO the task of a Technician, but also of a Sal Adm Employee. 2.5.3. Delegation of duties situation is of course common practice in real systems. 2.5.4. Translation into Mokum relationship, for representing that a Technician is _ a Employee, but also a Sales Person ing a salary, and skills. 2.5.5. More about delegation 2.5.6. About external persons employees, such as the Sales Person in our garage example. See Fig. 18 . 2.5.7. About internal persons manager can access this.) can be made about the manager. 2.5.8. About the security administrator
+All the above functions can all be realized in Mokum using type trees in a manner still to be analyzed.
+
+Roles and tasks can be represented by appropriate coll _ of task. This should be recorded in this employee X  X  representing object in the information system. 2.6. Implementing triggers of that box. If that box contains actions with different agents, say action1(ag:A), action2(ag:B), action3(ag:A), ...
+
+Then action1 is translated in some actions for a trigger of the type of A ending with a send message: send (B, X  X  X xecuteB X , some parameters), next (state_waiting_for_B). action2 is being given ending with sending the message: send (A, X  X  X xecuteA X , some parameters) Boxes with NEC and PERMIT follow the above rules for direct translation. ment such a system.
+ 2.7. Comparison with UML2 2.7.1. The diagrams in UML2 and conclusions class diagram, without the class for Librarian, see Fig. 20 .
+ of this library! determined in the Mokum way.
+ ioural Modelling Diagrams, possible. In Fig. 22 we see an Activity Diagram in UML for the Life example: grams in UML2, as they also indicate messages to be sent.
+ although the appearance is different. Below we have indicated the similarities and the differences: Structure and Object diagrams + + Activity-and State machine diagrams + + Semantic-linguistic diagrams + S&amp;P in a provable correct way + Other diagrams (9 * )+ 3. Mokum in cyberspace 3.1. Translating global Mokum into local Mokum into local Mokum systems. The type IC_hosp_adm is defined with they are responsible for a collection of clients, supposedly of patients in the hospital. kind of central site, controlling the communications between the sites. and trigger names are unique they identify the types to which they belong. 3.2. Preliminaries of MAP needed: MAP .
+ Examples where this protocol is needed are shown in Figs. 23, 25 and 26 . which is needed to approve the access.
+ administration in the central bank. 3.3. Provability by means of triples 3.3.1. Initial remarks do in the next section. We will show that our protocol has the following correctness properties: 1. If all conditions are met, A gets B X  X  attribute value; get this value.
+ What do we mean when we say that an object B believes that &lt;t, c &gt; k 1. data items: uninterpreted pieces of data, which usually are sent in a message. facts or as more complex rules. as the sender and the receiver of a message sent by a send action.
+We introduce the following predicates: expressing that A has D in its possession, which it can read, can copy or send to another agent B: after which the following event is carried out for agent B: receive(agent: B, agent: A, data item: D) after which also B has data item D and: knows(agent: B, data item: D).
+ what type an argument has we forget the type, such as  X  X  X gent X  or  X  X  X ata item X .  X  X  X ent X  as predicate denoting something has been sent. So, when A sends a message M to B, expressed as send(A, B, M) then we assume that A has prior to this action, the following fact in its knowledge base: knows(A, M) and conclude that the knowledge of agent B is extended with: received(B, A, M) ^ knows(B, M) ^ knows(B,knows(A, M)).
+ message.
+ which presupposes that there are for each active object O a pair of keys (k is the decrypted data item, i.e. readable. 3.3.2. Encryption, PKI and communication protocols.
+ We assume that the set of all objects is O . The set of all pairs of keys is
+K ={(k +O ,k O )}, where O 2 O . " O 2 O : for the first key k +O , for the second key k O , O is the only one knowing this key: knows(O,k der; the predicate formula for this is received(O,S,M).
+ tent of the message is, etc. We suppose that there is a primitive can read  X  O ; M ; k a 0  X  , where M = N k a , where either a = +Q and a 0 = Qor a = Q and a 0 = +Q, with the meaning that if knows  X  O ; k been encrypted with key k a .
+
+We now have two cases to be analyzed: any case one can also conclude that: knows(Q,N).
+So Q has sent O a message meant only for O. We can conclude that knows(Q,k equal to S cannot be concluded for sure.
+ receives the message M from some (obvious) sender S and M is doubly encrypted: M=N k S k +O .
+ was sent, is Q then O can conclude that it must have gotten M from Q; so S = Q. 3.3.3. Jurisdiction and trust
+We may have jurisdiction(agent:T, domain: D) jurisdiction(agent:T, domain: D) ^ (agent: A 2 domain: D) ) trust(A, T), where trust is defined as follows: trust(agent: A, agent: T) ^ knows(A, M k T ) ^ (k +T ,k T knows(T, k T ) ) A holds M for true
+Note that A can verify that M has been encrypted (signed) by T by using k ment. Suppose the message M was: h  X  X  X redit card number: X  CCN,  X  X  X gent: X  A i the interpretation can be: has_credit_card_number(agent: A, credit card number: CCN). 3.4. Provability problems and a solution in the form of triples 3.4.1. Introduction with a simple example agents realizing the distributed Mokum system protocol MAP.
+ lowing protocol when an email E is received: 1. check that E has been sent by some customer C. a client B does nothing.
+ B may receive other kinds of emails, but we are not interested in what it is doing with them. This is about the simplest example protocol one can imagine. So let us see what correctness means.  X  X  X hat is the AEX index? X .
+
+The bank agent B in principle carries out the following protocol: 1. Determine from N and A the customer C. 2. Check whether C is a real customer of this bank. value of i .(For this section we denote such a message as follows: 4. If not, do nothing. 5. send U the response using the email address R. 6. End of protocol In order to analyze the correctness of this protocol we have to do two things: Positive case: prove that when all conditions are satisfied the customer C gets what he or she wants and Negative case: When S is not a customer no response is sent by B. need double encryption as follows: The email E has the following structure:
+E=H+M1 k +B , number and return address is put in M1 so that I cannot read or change this. M1 =  X  X  X ame: X + h N i + X  X  X ccount_number: X + h A i + X  X  X eturn_address: X + h R i +M2 k crypted part of M1 to get M2. So, finally, it can read: M2 =  X  X  X hat is the AEX Index? X .
+ message U.
+ base KB, such as: knows(B, k B ), knows(B, k +S ), knows(B, is_customer( h N,A i )).
+ private key: : knows(I, k B ).
+ The negative proof then can run as follows: I has not.
+ actions of an agent or object or site is defined with a so-called triple : A: Pre: {conditions}, Act: {actions}, Post: {conditions}.
+ Applied to the bank example, the triple looks like:
+Pre: {received(B, S, M1), knows(B, k B ), M1 = M2 k +B , M2=H+M3 k S , H =  X  X  X ame: X  + h N i + X  X  X ccount number: X  + h A i +  X  X  X eturn_address: X  + h R i ,
+M3 =  X  X  X hat is the AEX Index? X . knows(B, k +S ),},
+Act: {knows(B,customer( h name: N i , h account_number: A i )), determine( i = AEX Index), U =  X  X he AEX Index is: X  + h i i , send(B, S {with email_address h R i }, U)},
+Post: {sent(B, S,  X  X  X he AEX Index is: X  + h i i ) knows(B, customer( h name: N i , h account_number: A i )), distributed Mokum case, are so straightforward that simple inspection is enough. by the real sender S belong to a client. This is supposedly the case as the actions have finished. Another way of looking at the triple is as a deontic constraint: the triple has to be harmonious! uted Mokum system. 3.4.2. Object-tripology at in the following way: {actions: T} Post: {post-conditions}.
+ icate:  X  X  X eceived(A,B,M 1 ) X , where M 1 is the message sent by B to A. We assume that M protocol is harmonious as well, thereby proving the protocol to be correct.
+Definition. A Train of triggers T =T 1 T 2 T n has a harmonious triple {PreCond} T {PostCond} if the two conditions PreCond and PostCond exist and have the properties: We now have to relate the harmony property of triples of triggers to triples for a train of triggers: but rather in a chain of triggers. For each trigger T i in have {received(O i ,O i 1 ,M i 1 ) ^ Precond i }T i {sent(O i ,O tion 3.4.1 , we call {Precond i }T i {Postcond i } a genuine harmonious train triple (ghtt).
+Train Theorem. If T =T 1 T 2 T n is a train of triggers executed by objects O if for i =2, ... , n , {Postcond i 1 } , {Precond i } then {PreCond 1 } T {PostCond n } is harmonious too.
+
+Proof. The proof is very straightforward: there are two sides: ? : Suppose for some i {Precond i } holds and O i started T {received(O i ,O i 1 ,M i 1 )} holds. So, because T i is a ghtt, after executing T i . {sent(O i ,O i +1 ,M i ) ^ Postcond i } holds. But because {Postcond i } , {Precond i +1 } {Precond i +1 } holds. This process is repeated for i =1, ... , n 1 so that finally we have {Postcond {sent(O i ,O i +1 ,M i ) ^ Postcond i } holds, so {received(O i ,O i 1 ,M i 1 ) ^ Precond i } holds because T i is a ghtt. So Postcond i 1 also holds because {Postcond i 1 } , {Precond i }.
+
+Continuing this argument for i = n , ... ,2 we finally have that {Precond for i =2, ... , n , {Postcond i 1 } , {Precond i } is always met because between the execution of T i 1 and T the form:  X  X  X nows(O i , ... ) X . 3.5. Application to MAP is interested is an attribute of type TB, located at site SB.
+
+Another less simple but still simple case is that TA is _ of the calling A. The checking can now be done in SA or SB. The really interesting case is that TA TB. This is defined by the unique name Attr.
+ for their safe and secure communication.
+ is also unique; it is called the credibility part. A asks C to check the presence of B in C. positive result.
+ easily be defined. Note that each state has one trigger, so we identify the state with its trigger.
+The actions are numbered: 1: A sends request to T 2,3: T sends h t,c i to B and B acknowledges this 4,5: T sends h t,c i to C and C acknowledges this 6: T sends h t i to A 7: A asks C to check and send h t,c i 8: if B 2 C.coll then C sends h t,c i to A 9: A asks B to send the value of B.Attr, and shows h t,c i 10: if the h t,c i sent by A is the same as the h t,c i sent earlier by T, B sends B.Attr.
+C X  X  collection. been successfully performed.
+ afterwards. If it is not unique, we have proved the statement for the unique situation, ergo for this one. when d is added to the knowledge base we denote this by KB Pre: knows(T,t) ^ ( " O: knows(O,t) ) O=T) Act: send (ag:T)(rec:A)(par: t) Post: knows(T,t) ^ knows(A,t) ^ ( " O: knows(O,t) ) (O = T _ O = A)) to be correct.
+ then numbered as in Fig. 28 .
+ globally known.
+A1: on start the action:
+T2: on help in access: B3: on accept token: sender is T1, h t1,c1 i is par,
+T4: on ackB: C5: on token for checking: sender is T, h t1,c1 i is par,
+T6: on ackC: A7: on first-token: h t1 i is par,
+C8: on please check: sender is A2, t1 is par, A9: on found: sender is C1, h t1,c1 i is par,
+B10: on please send: sender is A1, h t1,c1 i is par, A11: on result: sender is B, V is par,
+KB A + :  X  B.Attr, KB A :  X h t,c i ,KB A -:  X h t i ,/ * A can now play with B.Attr = V In Fig. 30 we have depicted these triggers, without programs, as they are identical to the programs above. boring it will be given in Appendix A .
+ straightforward and has already been shown by the analysis in Fig. 26 . check was positive may be done as follows: Look at when A got the knowledge of (B.Attr), i.e. after the statement: KB B 2 C.coll if this is the case it sends the token it first got from T.
+C to A. In that send action the test for B 2 C.coll must then evidently successfully have taken place. 3.6. Radu Serban X  X  work
+For more details we refer to his work [24] . 4. Related work Appendix A. Correctness of MAP based on triples  X  X  X nows(A,B.Attr) X  as a result of  X  X  X B A + :  X  B.Attr X .
+
+TR on some_text sender is S, P is par, after a send message: send (ag:S)(rec:R)(msg:  X  X  X ome_text X )(par: Q) the real sender is S and the real parameter is Q. Or in logical form: sent(S, R, Q) ) received(R, S, Q) objects, say O 1 ,O 2 and O 3 know data item d: known(d,[O only, is expressed by: known( h t,c i ,[T]). The effect of a receival is expressed as follows: if known(d,L) before, then received(O 1 ,O 2 ,d) ) known(d,L 0 ) afterwards with L 0 =L+O 1 , provided O 2 is in L and not O 1 in L. (Actually, it is not possible that O 2 is not in L, otherwise O conditions of the triggers constituting MAP; (the knowledge about received and sent is not listed): PreA1 = B 2 C.coll ^ known(B.Attr,[B]);
+PreT2 = PostA1; PostT2 = PreT2 ^ known( h t i ,[T]) ^ PreB3 = PostT2 ^ known( h t,c i ,[T,B]) a ^ known( h t i ,[T,B]); PreT4 = PostB3; PostT4 = PreT4; PreC5 = PostT4 ^ known( h t,c i ,[T,B,C]) ^ known ( h t i ,[T,B,C]); PreT6 = PostC5; PostT6 = PreT6; PreA7 = PostT6 ^ known( h t i ,[T,A,B,C]); PreC8 = PostA7 ^ known( h t i ,[T,A,B,C]); PreA9 = PostC8 ^ known( h t,c i ,[T,B,A]);
+PreB10 = PostA9; PostB10 = PreB10 ^ known( h t,c i ,[T,A]) PreA11 = PostB10 ^ known(B.Attr,[B,A]); want to prove.
+ is being used, by introducing the statement e.g. in trigger A9: h t2,c2 i is decrypt( h t1,c1 i ,k A ), h t3,c3 i is decrypt( h t1,c1 i ,k +C )
+If now we want to prove backwards that known( h t,c i ,[T,B,A]) necessarily means that received(A,C, h t,c i ), in the precondition, we can rely on the fact that the only object in the world knowing k as a triple, we have Triple TrA9: Pre: {received(A,C, h t,c i k C k +A )}
+Act: { on found: sender is C1, h t1,c1 i is par, h t2,c2 i is decrypt( h t1,c1 i ,k A ), h t3,c3 i is decrypt( h t1,c1 i ,k
+KB A + :  X h t1,c1 i , send(ag:A)(rec:B)(msg:  X  X  X lease send X )(par1:Attr)(par2: h t1,c1 i ), next (A11).} Post: {knows(A, h t,c i )} above considerations we can conclude that the formal parameter C1 is the same as this C.
+Note that for all triggers in MAP we have to prove in the part that {received(O from the fact that we use double encryption, so O i can be sure that O 11 times. Now we have for all the triggers:
+For the first trigger A1 we need to establish:
+Here O 0 stands for the object calling A, supposedly the System S sending the message M message:  X  X  X elp in access X . As is clear from the definition of this trigger, we have Precond and PreT2 = PostA1. (1) is rewritten as {received(A,S, X  X  X tart the action X ) ^ PreA1}A1{sent(A,T,  X  X  X elp in access X ) ^ PostA1}
+To show that this is a ghtt we have: ? : As Post A1 = PreA1 this part is obvious.
+For the second trigger T2 we need to establish:
+We have PostT2 = PreT2 ^ known( h t i ,[T]) ^ known( h t,c i ,[T]). ? : we note that the  X  X  X nown X  part follows from the execution of the trigger.
+For the third trigger B3 we need to establish: Now we have PostB3 = PreB3; ? and are obvious, so (3) is a ghtt.
+For the fourth trigger T4 we need to establish:
+Now PostT4 = PreT4 so ? and are obvious, so (4) is a ghtt.
+For the fifth trigger C5 we need to establish: Now PostC5 = PreC5 so ? and are obvious, so (5) is a ghtt.
+
+For the sixth trigger T6 we need to establish: Now PostT6 = PreT6 so ? and are obvious, so (6) is a ghtt.
+
+For the seventh trigger A7 we need to establish: Now PostA7 = PreA7 so ? and are obvious, so (7) is a ghtt.
+
+For the eighth trigger C8 we need to establish: tion of C8, so (8) is a ghtt.
+
+For the ninth trigger A9 we need to establish: Now PreA9 = PostA9, so ? and are obvious, so (9) is a ghtt.
+
+For the 10th trigger B10 we need to establish: cution of B10, so (10) is a ghtt.
+
+For the eleventh trigger A11 we need to establish: low from the execution of A11, so (11) is a ghtt.
+ around X ! Appendix B. About  X  X  X okum meaning of  X  X  X okum X  is:  X  X  X eruzalem X  or  X  X  X afe haven, a place of God X . these songs [8] we counted 20 such songs. One of the most popular is (presentation by Jaap Boeschoten): Translation: Give me Amsterdam, so much better than Paris; Give me Amsterdam, my Mokum X  X  Paradise;
+Give me Amsterdam, with its Amstel and its IJ;  X  X ause in Mokum you are rich and happy, give me Amsterdam! league Andy Tanenbaum).
+
+References

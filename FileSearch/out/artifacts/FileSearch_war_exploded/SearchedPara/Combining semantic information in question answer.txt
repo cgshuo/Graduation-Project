@@ -1,0 +1,81 @@
+ 1. Introduction the main objective of a QA system is to determine  X  X  X HO did WHAT to WHOM, WHERE, WHEN, HOW and WHY? X  ( Hacioglu &amp; Ward, 2003 ).
+
+Consequently, most QA systems have used named entity recognizers (NERs) to extract possible answers to a question extract NEs of this type as potential answers.
+ of question cannot be answered using an NE-based QA system.
+ prove the performance of current QA systems, or even deal with particular types of questions. WHY? X  in a sentence (see Fig. 1 ), which indicates that they may be very useful in answer extraction.
+Furthermore, interest in using semantic information extracted from formal knowledge representation in QA, such as when dealing with open-domain QA systems, researchers focus on using a very extended open-domain semantic network languages and so has the advantage that it supplies multilingual information ( Vossen, 1998 ). both types of questions (CN-based and NE-based).
+ 2. Background of semantic information applied to QA domains.
+ tential answers. This architecture is widely accepted in the NLP community. (Section 2.1 ) and WordNet semantic classes (Section 2.2 ) in the QA field. 2.1. Semantic roles in QA example sentence contains five syntactic constituents labeled with their corresponding semantic role. (1) [ agent Mary] hit [ thing hit John] [ manner with a baseball] [ domain or the verb to general sets consisting of very few elements.
+ evant results presented.
+ in the QA system must be analyzed.
+ A2.
+
+QA systems can be divided into two main groups depending on how they use semantic roles: (i) to complement other methods and (ii) as a core method in the QA process. 2.1.1. Semantic roles as a complementary method et al., 2006 ).
+
+Hence, it is impossible to know whether semantic roles are capable of improving QA systems themselves or not. 2.1.2. Semantic roles as a core method presented in Table 1 .
+
+As shown in Table 1 , most of the systems use a mapping between the semantic information of the question and the using semantic roles. The evaluation of this approach using the TREC2004 question corpus showed a MRR the type of answer and extract a list of possible answers.
+ fact that the SRL tools have serious problems in annotating questions. 2.2. WordNet semantic categories in QA using the WordNet ontology as a world knowledge resource for open-domain language-based applications, such as QA ( Clark, Fellbaum, &amp; Hobbs, 2008 ).
+
+Authors like Na, Kang, Lee, and Lee (2002) presented the possibility of using WordNet as an Answer Type Taxonomy, find an acceptable answer.
+ ( Prager, Radev, &amp; Czuba, 2001 ). In this case, hypernym information is used in the answering process. ognition and Classification. 3. Two proposals for answer extraction based on semantic information by improving the precision of the QA systems.
+
+These proposals have been implemented as part of the answer extraction module of a general QA system. The imple-approach using semantic classes.
+ Bank role are specified.
+ retrieval module that play the location role (see example 2). (2) Where was Pythagoras born? Samos Pythagoras was born [ approach is not always effective, as explained below. 3.1. Answer extraction based on semantic role patterns role (example 3), and in the other, by the A4 role (example 4). (3) [ A0 Mary] is going [ A2 to John X  X  house]. (4) [ A0 Mary] is going [ A4 to the park].
+ these roles, represents the location role if they appear as arguments of the same verb. verbs.
+ Section 2.1.2 are also solved.
+
+The automatic pattern construction process consists of four stages: selected. (b) The search engines used to submit the terms to the Web are MSN, mation is obtained from WordNet. about semantic roles. (a) Each sentence is annotated with semantic roles using the SemRol tool ( Moreda &amp; Palomar, 2006 ). (c) Next, the arguments corresponding to the noun phrases of the question are replaced by h QARG (d) The other arguments of the sentence are replaced by h ARG (e) The sentence verb is replaced by the list of verbs obtained for this pattern. (f) Finally, all other words are removed. ferent verbs, a single pattern is obtained containing the set of tags and a list of those verbs.
+An example pattern is shown in example 5. The list of verbs comes first and then the pattern. (5) be, bear, jh QARG 1 ih AM LOC ih ARG 1 i answers to the different question types.
+ omar, 2006 ), and they are generalized in patterns. 3.2. Extension of semantic role patterns with WordNet semantic classes the semantic role patterns, in order to achieve a higher precision. swer pattern in the following way:
+The head of the noun phrases corresponding with these possible answer arguments are extracted using MINIPAR because it is the WordNet top class.
+
+Example 6 shows this new type of pattern: the list of verbs, the pattern, and semantic classes of WordNet. (6) be, bear , jh QARG 1 ih AM LOC ih ARG 1 ij list-of-categories list-of-categories[0] = entity ? physical entity ? object ? location ? region list-of-categories[1] = entity ? physical entity ? object ? location ? region ? area ? center ? seat ? capital. database patterns and their semantic classes, the argument is extracted as a potential answer.
+This matching is implemented using two approaches for comparison purposes:
+Given example 6, if a potential answer class were entity ? physical entity ? thing ? part ? body part would match 4. Evaluation but also for common noun based ones.
+
+For this purpose, two experiments were conducted: information in QA systems for classic factual questions. 2. A test consisting of a balanced question set of location semantic information applied to QA systems is preferable to the information provided by NEs. 4.1. Evaluation environment criteria and measures to obtain the QA performance results. 4.1.1. Question set In this evaluation we used questions from the QA evaluation forums plus a new question set defined by us. taken because the second experiment makes a comparison in relation to this type of questions only. have never been used before.
+ We defined a CN-based question as a question whose answer is a common noun. engines.
+ ple 7. (7) Where is the pancreas located? abdomen Where are sheets put? bed questions, composed of a subset of TREC-12 (2003), TREC-15 (2006) and OpenTrivia.com of these questions is included in the test question set. 4.1.2. Corpus question: 200 snippets from MSN 13 (September 2009), 200 snippets from AskJeeves 14 (September 2009), 200 snippets from Google 15 (September 2009), 200 snippets from Altavista 16 (September 2009), 200 snippets from Gigablast 17 (September 2009). 4.1.3. Evaluation criteria and measures ous information.
+ Incorrect , if the top scored answer obtained by the system is not Correct . Not answered/Unknown , if the system does not give an answer strict than others.
+ The measures used to evaluate the system were: Precision ( questions answered correctly/total questions answered ) Recall ( questions answered correctly/total questions ) F b  X  1  X  X  2 Precision Recall  X  =  X  Precision  X  Recall  X  X  of questions. 18 4.2. Evaluated systems
+The evaluation tests the following answer extraction approaches integrated in the same general QA system: referred to as SR-patterns.
+This approach is hereafter referred to as SR-patterns-class-cont. terns-class-exact.
+ In addition, to widen the evaluation analysis, a baseline approach was defined. after referred to as SR-baseline.
+ poral questions. This approach is hereafter referred to as NE-baseline. 4.3. Evaluation results ual review of sub-process outputs nor post-execution adjustments were made to automatic processes of the system presented. 4.3.1. Prior experiments Our proposed approaches use the snippets in two processes: pattern building and answer extraction.
+On the one hand, we compared the performance of the pattern building process (PB) using incomplete sentences to extract the missing parts.
+ binations to test: PB_incomplete-AE_incomplete, PB_incomplete-AE_complete, PB_complete-AE_incomplete and PB_com-plete-AE_complete. Four experiments were conducted comparing the average F question types (see Table 3 ).
+ advantage of using complete sentences than does the pattern building process. The average F complete ones on the original websites. 4.3.2. First experiment for each of the systems evaluated. The best mean results are highlighted in bold.
+The results show that (i) the defined baseline (mean F b  X  1 the types, (ii) SR-patterns approach ( F b  X  1 mean 70.87%) surpasses the SR-patterns-class-cont (mean F the best approach (SR-patterns) for all the types and the mean.
+ unique answer role is AM-TMP.
+ not very common in WordNet. For that reason, in this type of questions the F tained the best results.
+ one of those contained in the patterns DB.
+ in approaches using WordNet classes is lower than that obtained by the SR-patterns approach causing a drop in F mation matching.
+
+The following examples show how a question which is incorrectly answered by the SR-patterns approach can be an-of question accounts for the increase in precision. (8) What is the capital of Italy? Rome
+SR-patterns:  X  X attern.match: be, jh QARG1 ih LOC ih ARG1 i  X  X nswer.list: papal city of Vatican (score 0.4)  X  X esult: Incorrect
+SR-patterns-class-cont  X  X attern.match: be, jh QARG1 ih LOC ih ARG1 ij ! physical object &gt;  X  X nswer.list: papal city of Vatican (score 0.4)  X  X esult: Incorrect
+SR-patterns-class-exact (Not answered)  X  X attern.match: class no match ( ? physical object ? dwelling ? house)  X  X nswer.list:  X  X esult: Not answered (9) Where is Las Vegas? Nevada
+SR-patterns:  X  X attern.match: be, jh QARG1 ih LOC ih ARG1 i  X  X nswer.list: median just south of The International (score 1.2), Nevada (score 0.8)  X  X esult: Incorrect
+SR-patterns-class-cont  X  X attern.match1: be, jh QARG1 ih LOC ih ARG1 ij ! physical object ? location  X  X attern.match2: be, jh QARG1 ih LOC ih ARG1 ij ! abstr action ? group ? system  X  X nswer.list: median just south of The International (score 1.2), Nevada (score 0.8)  X  X esult: Incorrect
+SR-patterns-class-exact (Correct)  X  X attern.match: match ( ? object ? location)  X  X nswer.list: Nevada (score 0.8)  X  X esult: Correct
+On the other hand, the examples below show how questions which are correctly answered by the SR-patterns ap-sion and recall.
+ (10) Where are roots located? soil
+SR-patterns:  X  X attern.match: locate, jh QARG1 ih LOC ih ARG1 i  X  X nswer.list: soil (score 2.6), crown (score 0.3)  X  X esult: Correct
+SR-patterns-class-cont  X  X attern.match: be, jh QARG1 ih LOC ih ARG1 ij ! physical object  X  X nswer.list: soil (score 2.6), crown (score 0.3)  X  X esult: Correct
+SR-patterns-class-exact  X  X attern.match: no match ( ? material ? ground)  X  X nswer.list:  X  X esult: Not answered (11) Where do seahorses lay eggs? (pouch X  X elly)
+SR-patterns:  X  X attern.match: lie, jh QARG2 ih QARG1 ih LOC ih ARG1 i  X  X nswer.list: pouch (score 1.9), male (score 0.4)  X  X esult: Correct
+SR-patterns-class-cont  X  X attern.match: no match (lie j ... j! physical entity)  X  X nswer.list:  X  X esult: Not answered
+SR-patterns-class-exact  X  X attern.match: no match (lie j ... j! physical entity)  X  X nswer.list:  X  X esult: Not answered approaches produce. 4.3.3. Second experiment table, the best F b  X  1 marks are in bold.
+
+The NE-based approach, which is the best approach for NE-based questions (85.70% F patterns), performs substantially less well in the case of CN-based questions (12.19% F patterns).
+
+Therefore, NE-based approaches have an important limitation in detecting non-entity based answers. Only NE-based processes.
+ entity which increases the recall but sacrifices precision.
+ especially in CN-based questions. Fig. 5 shows the F b  X  1 name and NE questions.
+ different use of WordNet than the one presented in this study. So, again, the results cannot be compared. 5. Conclusions hierarchy of WordNet.
+
+NE-baseline answer extraction module. The SR-patterns approach achieved the highest F recall resulting in a lower F b  X  1 (69.51% in SR-patterns-class-exact averaging both experiments). using these proposals are able to deal with other types of questions, like common noun based questions. without any kind of complex reasoning. In this case, the study is focused on semantic information in the text. question arguments.
+ require a deeper reasoning.
+ Acknowledgements this work by doing a deeper research and making broader scope experiments. References

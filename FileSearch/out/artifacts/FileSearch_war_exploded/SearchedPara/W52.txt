@@ -1,0 +1,1 @@
+  X  They respond to false matches  X  We describe a confidence measure that indicates whether the stimulus disparit y is inside or outside the range of preferred disparities on a population  X  We integrate this confidence measure into a disparity estimation strategy that outperforms 

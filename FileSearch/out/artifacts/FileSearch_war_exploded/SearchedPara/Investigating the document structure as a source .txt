@@ -1,0 +1,137 @@
+ 1. Introduction
+Multimedia Information Retrieval (MIR) aims at retrieving multimedia contents such as images, videos or audio objects, surrounding the multimedia object or the associated document title (one can for instance cite approaches of Gong, Hou,  X  (2008) .
+ rounding the multimedia objects.
+
+XML documents are natural candidates for our study. Indeed, XML ( eXtended Markup Language ) is the most common lan-tured documents, where textual content can be easily understood by human readers.
+ In the particular context of XML multimedia retrieval and as defined in Westerveld and Zwol (2006) and Tsikrika and themselves (images for example) or multimedia fragments , which are composed of multimedia objects and associated text. They can be considered as document parts containing at least one multimedia object. and multimedia objects.
+ multimedia elements and then we explore the surrounding information to retrieve relevant multimedia fragments. For both
+Although our multimedia retrieval approach is applicable to any media type as it is only based on the multimedia object Multimedia 1 and CLEFImage 2 ).
+ tion 5 . Results and future works are discussed in Section 6 . 2. Related work
+We review in this section existing approaches for context-based multimedia retrieval, more precisely for context-based image retrieval, where queries are expressed using keywords (text) and the images annotated (indexed) by keywords pro-context to index images. 2.1. Using textual context
+A first way to index images is to manually or automatically annotate them by concepts provided by the user and/or &amp; Milios, 2006; Piotrowski, 2009; Popescu et al., 2008 ).
+ Other approaches state that there is a strong correlation between an image and its surrounding text in the document.
+Therefore images search is often carried out using the textual content of the image name (and sometimes its extension) associated text of the image is generally extracted from src search engines on the Web (as Google 3 and Lycos 4 ) use such methods.
+
+Indyk, 2002; LaCascia et al., 1998 ). Dunlop (1991) and Dunlop and Rijsbergen (1993) proposed a link-based method where are represented in a graph, and links between nodes are then used to retrieve images. More precisely, textual documents linked to the same image form a class that will be used as a textual representation of this image. 2.2. Using structural context uments may indeed help to evaluate images relevance, by giving information on the interest of their surrounding textual parts.
+
+In particular, in XML-based multimedia retrieval, two types of results can be returned according to the document struc-ture ( Tsikrika &amp; Westerveld, 2007, 2008; Westerveld &amp; Zwol, 2006 ): the multimedia objects themselves (called  X  X  multimedia elements  X  X  in the INEX example, might be the multimedia objects themselves or their ancestors or their descendants.
+As XML documents can be considered as trees, both types of results (multimedia elements or multimedia fragments) are nodes of the document tree.
+ media fragment: MF4), MF5, MF6, MF7 and MF8.
+
+To our knowledge, only a few approaches for multimedia element retrieval using document structure were proposed in the literature. Kong and Lalmas (2005, 2007) approach consists of dividing textual content into Region Knowledge the same Region Knowledge.
+
+In our previous work, we proposed two methods to retrieve multimedia elements ( Torjmen, Pinel-Sauvagnat, &amp; Bough-used in our multimedia fragment retrieval method, we detail it in Section 3.1 .
+
+Concerning multimedia fragment retrieval approaches, most of the proposals in literature combine textual XML retrieval retrieval framework.
+
+Another approach consists of using an XML retrieval system to assign a score to each XML element and then filtering re-cessing is used. This method shows its effectiveness when the retrieved fragments are the whole documents.
+Kong et al. in Kong and Lalmas (2007) use a Bayesian network incorporating element-based language models for the re-be confirmed on a larger collection, such as the Wikipedia collection of INEX Multimedia Fragment task 2006 X 2007. To our knowledge, until 2005 when the INEX evaluation campaign introduced a new task called Multimedia Task ( van is why most of the works presented here were proposed in this framework. The INEX Multimedia track moved to the imageCLEF WikipediaMM Task in 2008. The collection associated to the task is now composed of images annotated in
+Some approaches dealing with this type of XML documents can be found in Torjmen, Pinel-Sauvagnat, and Boughanem ture cannot really be used as a contextual factor to improve multimedia retrieval.
+As a conclusion, state-of-the-art approaches for fragments selection use either a combination of classical XML and con-tance of textual content surrounding multimedia elements and fragments. 3. From multimedia elements to multimedia fragments
+The approach we propose in this paper retrieves multimedia fragments from multimedia elements. The relevance scores timedia element or also a descendant of a multimedia element. All ancestors and descendants of a multimedia element and the multimedia element itself are consequently  X  X  X ood X  X  answers (i.e. fragments to be returned).
+Our approach follows two main steps: (1) we first retrieve candidate multimedia elements (Section 3.1) and (2) we then combined with the corresponding element score using the hierarchical relation between the multimedia element and the considered multimedia fragment (Section 3.3 ). 3.1. Multimedia element retrieval: Ontologylike approach
+To retrieve relevant multimedia elements, we have already proposed in previous work two methods based on textual and
+An XML document can be represented as a hierarchical tree, composed of a root (document), simple nodes (element and/ leaf node). The relevance score of a multimedia element me according to query q = t can be evaluated thanks to the following general formula: where  X  L doc ( me ) is the set of textual (leaf) nodes of the document containing the multimedia element me .  X  RSV ( ln i , q ) is the content relevance score of a textual (leaf) node ln follows: w q j and w ln i j are the weights of term j in query q and leaf node ln ber of documents containing j , and ief j is the inverse element frequency of term j , i.e. log ( j LN j / j LN the number of leaf nodes containing j and j LN j is the total number of leaf nodes in the collection.  X  / ( me , ln i ) is a factor allowing to weight the importance of leaf node ln the relevance of nodes M and N .
+
+To evaluate factor / , we make the following assumption: thanks to its tree representation, an XML document can be seen timedia element.
+ measures as textual content of a multimedia element is generally small or can even be absent. Among these metrics, one can cite Rada, Mili, Bicknell, and Blettner (1989) and Wu and Palmer (1994) that can be simply adapted as follows:
+Rada: where dist ( me , ln i ) is the distance (number of edges) between node me and node ln
+Wu X  X almer: with N 1 = dist ( me , CS ) and N 2 = dist ( ln i , CS ) are the distances which separate me and ln ancestor CS and N = dist ( CS , root ) is the distance between CS and the root.
+
+Even if these metrics allow to distinguish between leaf nodes, some brother nodes of a multimedia element may more influence the relevance score than its descendants, although we intuitively assume the contrary. This is illustrated in come this problem, we introduced a depth factor as follows ( Zargayouna, 2004 ):
+Depth ( CS ( me , ln i )) is maximum number of edges between CS ( me , ln multimedia element.
+
+We then have for all three leaf nodes: The descendant node F of the multimedia element ME participates thus more in the ME representation than nodes K and 3.2. Initial score of multimedia fragment
+Once each multimedia element me is assigned a score according to the OntologyLike approach, we then compute an initial that a document may contain several multimedia elements). This score does not take into account the multimedia informa-document score: a multimedia fragment contained in a relevant document is more likely to be relevant than another con-tained in a non-relevant document.
+ where according to Eq. (5) ),  X  L mf is the set of leaf nodes being descendant of mf ,  X  dist ( mf , ln k ) is the distance between node mf and leaf node ln importance of the dist parameter,  X  q 2 ]0 1], inspired from work presented in Mass and Mandelbrod (2005) , allows the introduction of document rele-vance in inner nodes relevance evaluation,  X  and S XFIRM ( root , q ) is the relevance score of the root element, i.e. the relevance score of the whole document. 3.3. Multimedia fragments retrieval
+To compute the final score of each multimedia fragment, we then combine the score of their associated multimedia ele-men, Pinel-Sauvagnat, and Boughanem (2009) , which is considered in this paper as a baseline for comparison with two others combination methods, described in Section 3.3.2 . 3.3.1. Simple combination more multimedia elements is to linearly combine its initial score obtained by the XFIRM system ( S of the associated multimedia elements: ments contained in mf when mf is ancestor of me i or 1 otherwise ( mf is descendant of me
+If two multimedia fragments associated to the same multimedia elements have the same relevance score, we first rank the one having the highest hierarchical level, the latter is supposed to be more exhaustive. whole documents) when k is small and second multimedia fragments containing many multimedia elements may also be favored compared to those having only one multimedia element. 3.3.2. Adding structural information in the relevance score of multimedia fragments
+To overcome the aforementioned limits, we propose to correlate the importance of multimedia elements in the relevance element node and a multimedia fragment node, the less the multimedia element participates to the relevance of the frag-elements in the relevance of multimedia fragments, we integrate in formula (10) the h factor as follows:
+We evaluated two different values of h , which both take into account the distance between nodes me
+Or where Dist ( me i , mf ) is the distance (number of edges) between the multimedia element me fragment mf (ancestor or descendant). Adding 1 to the Dist factor is done to avoid the zero value. pose in formula (13) to use the K parameter to tune its importance, with K 2 [0.1,1]. ments A and B would have the highest score in the document (0.8) since they contain the two multimedia elements. If we ments B and A , which contain two multimedia elements but more irrelevant information.
+In the following section, we describe the evaluation of our approach. 4. Experimental evaluation
+Our aim in these experiments is to study the impact of structural factors to first evaluate the relevance of multimedia elements and then the relevance of multimedia fragments.
+ rika &amp; Westerveld, 2008; Westerveld &amp; Zwol, 2006 ) assessments and appropriate evaluation metrics.
+
+Concerning multimedia element retrieval, formula (5) was validated in previous work ( Torjmen et al., 2010 ). We focus to official participants to INEX (Section 5 ). 4.1. Experimental setup
+The core collection of the Multimedia track is the English version of the Wikipedia XML collection, composed of about 660,000 XML documents (4.6 Giga-Bytes without images). This collection contains 30 millions elements, and more than 2006 and 2007 are respectively composed of 9 and 19 topics. experiments. 4.1.1. Evaluation of multimedia element retrieval
+The effectiveness of our approach of multimedia element retrieval is evaluated with the Mean Average Precision (MAP), commonly used in IR.
+
+In the official INEX campaign, assessments on both 2006 and 2007 test sets are done on multimedia fragments and not on multimedia elements. In order to properly evaluate our method, we constructed a new assessments base composed only of relevant multimedia elements (i.e. images) extracted from the original assessments provided by organizers. 4.1.2. Evaluation of multimedia fragment retrieval
+Our approach for fragment retrieval is evaluated according to two strategies: in the first one, fragments can be returned with overlap (multimedia elements and/or descendants and/or ancestors can 2006 ) in the INEX terminology; in the second one, the returned fragments cannot overlap (i.e. in our approach, we should decide whether we should which is the non-parametric equivalent of the paired samples t -test.
+
+In our experiments, we consider that the difference between two methods is very significant when p &lt; 0.05 (results marked by ). 4.1.3. Relevance assessments of multimedia fragments
+The relevance assessments of multimedia fragments provided by INEX organizers contain some pure textual fragments (without any image) that were judged as relevant by INEX assessors. Although the specificity of the Multimedia tack was clearly defined before doing the assessments (multimedia fragments must be multimedia elements or must contain or be vance assessments are  X  X  X ure X  X  textual fragments.
+ task definition, we decided to filter the assessments by keeping only fragments associated with at least one image.
+Jointly to this assessment filtering, we filtered official submissions ipants also returned purely textual fragments) in order to compare approaches. 4.2. Evaluation of multimedia element retrieval depend on parameter w in Eq. (5) , some preliminary runs are necessary to calibrate our model. 4.2.1. System calibration Results with some representative values of w in Eq. (5) are shown in Table 1 .
+ values in the rest of the paper. 4.2.2. Evaluating factor / We evaluated different runs, corresponding to different values of factor / : information. two runs (Rada and WP) respectively correspond to Eqs. (3) and (4) . the other runs (OntLike_w = X ) correspond to Eq. (5) with w = 0.1 or w = 0.2.
+ positively influences the relevance .
+ Rada and WP ones (improvements are statistically significant):
+The Rada measure only uses the distance between the image and each textual node: this does not ensure that textual nodes included in the multimedia element participate more in its relevance than textual nodes included in its brother nodes, etc. The use of the Depth factor in OntoLike_w = X run solves this issue.
+ the multimedia elements. However, when considering leaf nodes that are not descendants of an ancestor (other than the consequence, in WP run (formula (4) ), we will have /  X  2 Dist  X  CS ; root  X  contribution of each leaf node.
+ cide (and thus Dist ( CS , root ) = 0) and they not participate to the image relevance. experiments (best compromise). A 2-fold cross validation with the two different values of w will be done when comparing 4.3. Evaluation of Multimedia fragment retrieval according to the Thorough strategy briefly describe in the following section the metric used to evaluate systems. 4.3.1. Evaluation metrics based on  X  X  X ffort-precision/gain-recall X  X .
+
+Effort-precision ( ep ) is calculated, at a given cumulated gain value ( r ), as follows: where i ideal is the rank position at which the cumulated gain of r is reached by the ideal curve and i which the cumulated gain of r is reached by the system run.
+
+Gain-recall ( gr ) is calculated as follows: specS ( e j ) is the specificity of the j th element in the system ranking and specI ( e ranking.
+
+The non-interpolated mean average effort-precision, denoted MAeP , is evaluated by averaging the ep values obtained for each rank where a relevant document is returned. 4.3.2. Evaluation of the simple combination between scores
+In order to find the best multimedia fragment types to return to users (the multimedia element itself, ancestors or descendants), we evaluated the following cases on our simple combination of scores (Eq. (10) ): Only images (i.e. multimedia elements) ( I ) are returned.
+ Only image descendants ( D ) are returned.
+ Only image ancestors ( A ) are returned.
+ Only images and image descendants ( ID ) are returned.
+ Only images and image ancestors ( IA ) are returned.
+ Only image descendants and ancestors ( DA ) are returned.
+ Multimedia fragments composed of images, or image ancestors or descendants ( IDA ) are returned. MAeP evolution against k for all the cases mentioned above, and for both 2006 and 2007 test sets.
+The curve denoted by I on both figures show results when only image elements are returned. This curve does not depend of k , but it was plotted in order to directly compare all the types of returned elements cited above. initial scores of fragments evaluated by the XFIRM system ( k = 1).
+ age scores.
+ results in these assessments where images are more relevant details in Section 4.4.4 .
+
+At last, we also observe that combining both scores (image and XFIRM score) leads to a slight improvement of results (with 0.1 &lt; k &lt; 0.6 on the ID run).
+
+To summarize, we conclude that returning images and/or image descendants and/or image ancestors ( IDA ) is generally the best strategy for the Thorough task. We will thus keep this strategy for the rest of experiments. 4.3.3. Is structure useful to improve results?
+As mentioned in Section 3.3.2 , structural information can be taken into account in our multimedia fragment retrieval ancestors in our formula.
+
+We now vary k and compare results when using the classical combination of Eq. (10) (run Baseline ), and results when and fragments. Table 4 details the gains obtained by the Dist K equation compared to the ones obtained by the Div Dist equation, when k equals 0.1 (best combination is obtained when k is between 0 and 0.2).
+For both test sets 2006 and 2007, Dist K outperforms Div Dist . 4.4. Evaluation of multimedia fragment retrieval according to the Focused strategy and specific elements of the documents to be returned.
+
+As our approach is evaluated in the INEX context, we decided to not return fragments composed of image descendants in ment can be a multimedia element (image) or a multimedia element ancestor. 4.4.1. Evaluation measure follows: where p r is the document part assigned to rank r in the ranked list L topic q . rsize ( p r ) is the length of relevant text contained by p by p r .
+ Recall at rank r is defined as follow: where Trel ( q ) is the total amount of relevant text for topic q .
+
+The interpolated precision measure iP [ x ] is as follows: where R [ j L q j ] is the recall over all documents retrieval.
+
+The INEX official metric was iP [0.01] ( Kamps et al., 2007 ). 4.4.2. Evaluation of the classical combination between scores
+We study in this section the classical combination between the image scores and initial scores of multimedia fragments obtained by the XFIRM system (Eq. (10) ). Fig. 9 shows the iP [0.01] evolution against parameter k . each image element will contribute with the same relevance score to evaluate the score of its ancestors, and therefore hierarchical level in the XML document tree (i.e. the root element). 4.4.3. Is structure useful to improve results? images and/or ancestors.
+ Best results are obtained with low values of K ( K between 0.1 and 0.4 for both test sets), which means that the factor the significance tests presented in Table 5 .
+ in function of K .
+
+We observe that when giving a large importance to the distance between the image element and its ancestors to calculate ancestor scores ( K between 0.1 and 0.4), image elements are almost always returned. On the contrary, when giving a low effectiveness, to return images and ancestors? We discuss this question in Section 4.4.4 (see Table 6 ).
+Let us now compare results obtained with the classical combination of Eq. (10) (run Baseline ) and with the Dist ( me factor according to Eq. (12) (run DIV Dist ) and Eq. (13) (run Dist K = 0.1). Results are shown in Fig. 12 .
+The impact of the structure is very clear. Using the factor Dist outperforms results comparing to those obtained by the (12) and (13) , on both test sets). 4.4.4. Effect of multimedia fragment type on search performance
+In the Focused strategy, returned results should be multimedia fragments composed of either multimedia elements (ob-ancestors, (2) only image ancestors, or (3) only images.
+
+Table 6 compares results obtained with the three types of multimedia fragments for INEX 2006 and INEX 2007. The com-parison is done between: results obtained when only images are returned ( Images ), best results when images and/or image ancestors are returned ( Images Ancestors Dist K = 0.1 with k = 0), and best results when only image ancestors are returned ( Ancestors Dist K = 0.1 with k = 0). The percentage of returned image elements is also given for each result.
+
+Returning images and/or image ancestors leads in fact to always return image elements (100% of results are image ele-where always image ancestors are returned ( Ancestors Dist K = 0.1), results significantly decrease.
+To better understand this result, we computed the percentage of multimedia fragments which are more relevant than the percentage is 3.48% for INEX 2007.
+ small texts) than some text and an image (most of the more relevant elements in the relevance judgments are images). dependent on the collection and associated relevance judgments. 5. Comparison of our approach with INEX official approaches To show the effectiveness of our proposed method, we compared our results to those obtained by official participants to according to the official measure iP [0.01].
+ idation (parameters are learned on the 2006 collection and evaluated on the 2007 one, and vice versa). 5.1. Thorough strategy: INEX MMF 2006 assessments. Column %Text. Frag. indicates the percentage of elements in runs that do not contain any images. According to these official relevance assessments, our system would be ranked second after the Queensland University of
+Technology Qutau , but 7th compared to all runs. The system of the university Qutau is the GPX system GPX ( Geva, 2005, 2006 ). The GPX system rewards elements having the greatest number of unique query terms. Moreover, if an element textual fragments which do not meet the aim of the task.
+
+Let us now compare results using our filtered assessments (only fragments having at least one image are kept in the number of returned results, and thus biases the comparison between approaches. Table 9 however gives an idea of such a comparison.
+ we would have had a MAep of 0.3106 for the filtered assessments (and thus we would have been ranked first). 5.2. Focused strategy: INEX MMF 2007
+The same analysis was done for the focused strategy. Table 10 ranks the results of different INEX participants and our results using the iP [0.01] metric and the official assessments. Columns %images and %Text. Frag. are respectively the does not contain any images.
+ cle-MM run of Utwente ) are composed of entire documents and not document parts. Conclusions that can be drawn with our approach is the opposite: returning multimedia fragments leads to better results than returning whole documents. than using the official relevance assessments can be drawn here. 5.3. Adhoc task versus Multimedia task in focused retrieval were evaluated in the Multimedia task framework and the surprising conclusion was that the adhoc runs were better than multimedia retrieval system.
+
+Ecole des Mines de Saint-Etienne ( EMSE.boolean.Prox200NF.0010 ) which uses the proximity between the document terms and the query terms by taking into account the structure of documents ( Beigbeder, 2006 ).
+Whatever the considered relevance assessments, our approach is ranked first with an improvement of respectively 9% and 24% over the best official adhoc run.
+ 6. Discussion and future work multimedia elements to evaluate the relevance of multimedia fragments.
+
+Our results on INEX multimedia track test sets showed that the document structure helps to improve effectiveness in both tasks.
+
+Concerning multimedia elements retrieval, structural information is used to weight the importance of different textual not all be taken into account with the same importance degree.
+ be taken into account in the same way: some parts are more important than others, and they can be identified with their underlying structural information.
+ We can summarize the comparison of our method with the approaches of the official INEX participants as follows: factors). Our approach is different: we start to retrieve relevant multimedia elements and we then use them to retrieve relevant multimedia fragments. This technique outperforms results of official participants.
+Secondly, INEX 2007 organizers showed that using an adhoc XML retrieval system is better than using a specific multi-media retrieval system even when the user need had a multimedia character. Our experiments showed the contrary: the media need.
+ links between elements. Moreover, we plan to study the combination of XML multimedia retrieval with content-based mul-timedia retrieval approaches.
+ References

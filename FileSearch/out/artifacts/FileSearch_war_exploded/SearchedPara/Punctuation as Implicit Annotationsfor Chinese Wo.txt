@@ -1,0 +1,17 @@
+ Tsinghua University Tsinghua University 1. Introduction boundaries.
+ research community. 2. Segmentation as Tagging events (or tags) from them: facilitate the presentation of our method.
+ define this distribution.
+ Della Pietra (1996):
+For Chinese word segmentation, the binary valued functions f functions in Equations (2) and (3). 3. Method have 506 that punctuation comes into play. 3.1 Positive Examples four training examples from the sentence in Table 1, as listed in Table 2. 3.2 Negative Examples This process is summarized in Figure 1.
+ mum entropy modeling. Here we use the data provided by Microsoft Research in the
+SIGHAN 2005 Bakeoff. The trained model (the MSR model) was used in earlier work segmentation.
+ Appendix A provides more details on this issue.
+ 3.3 Training available. 4. Evaluation and Peking University (PKU).
+ words. Take the one multiword  X  - X  z / v b - X   X  v @  X  [ Institute of Chinese 508
+Our method segments it into six correct words  X  - X  z / v b - X   X  v @ segmentation. 4.1 Influence of Granularity are not counted.
+ better than the MSR model. However, as Table 4 shows, both models degrade on the was also documented by Peng, Feng, and McCallum (2004). 4.2 Named Entity List Recovery this, we generate four data sets from each of these lists of names: (a) 702 cities and counties of China seen in the MSR data (b) 1,634 cities and counties of China not seen in the MSR data (c) 7,470 Chinese personal names seen in the MSR data (d) 20,000 Chinese personal names not seen in the MSR data sets. The results are in Table 6.
+ occur very sparsely in the MSR data. Hence the MSR model doesn X  X  do well even on these two data sets. 4.3 Unknown Words Recognition tences with the pattern  X  X  / Y  X  X  X  " Y  X  (X is a resident of Y, and X loves 4.4 Summary 510 words. This is not a disadvantage as long as the result is consistent. 5. Related Work and the model involves no punctuation marks.
+ the use of a huge Web corpus.
+ tation, but usually are less accurate and more complicated than ours. 6. Conclusion task as well.
+ Appendix A: Input to the Training Algorithm models looks like this: +L C0= 3 C1= I C2= C0C1= 3 I C1C2= I +L C0= 0 C1= C2= G C0C1= 0 C1C2= G -L C-2= I C-1= C0=  X  C-2C-1= I C-1C0=  X  +L C-2= C-1= G C0=  X  C-2C-1= G C-1C0= G  X  +R C-2= I C-1= C0=  X  C-2C-1= I C-1C0=  X  +R C-2= C-1= G C0=  X  C-2C-1= G C-1C0= G  X  -R C0= 3 C1= I C2= C0C1= 3 I C1C2= I -R C0= 0 C1= C2= G C0C1= 0 C1C2= G
+Section 3.3. Acknowledgments References

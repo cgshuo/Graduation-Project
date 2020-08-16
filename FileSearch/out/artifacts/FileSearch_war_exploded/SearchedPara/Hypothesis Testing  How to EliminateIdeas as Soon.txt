@@ -1,0 +1,7 @@
+
+Retail Rocket helps web shoppers make better shopping decisions by providi ng personalized real -time recommendations through multiple channels with over 100MM unique monthly users and 1000+ retail partners.
+
+The rapid improvement of the product is important to win on the high-concurrency market of real -time personalization platfor ms. 
+The necessity of introducing constant innovations and improvements of algorithms for recommendation systems requires correct tools and a process of rapid testing of hypotheses. It`s not a secret that 9 out of 10 hypotheses actually do not improve the performance at least. We had the task stated as follows: How to detect and eliminate the idea that doesn`t improve as early as possible, to spend a minimum of resources on that process. 
+In the report we will talk about: Roman Zykov is the Chief Data Scientist at the Retail Rocket. In Retail Rocket is responsible for algorithms of personalized and non-personalized recommendations. Previous to Retail Rocket, Roman was the Head of analytics at t he biggest e -commerce companies for almost ten years. He received Ms.Sc. in applied mathematics and physics from the MIPhT in 2004.
+ recommender systems, A/B t esting, AA/BB testing, hypothese s testing, diversification, Bayesian statistics , evaluation

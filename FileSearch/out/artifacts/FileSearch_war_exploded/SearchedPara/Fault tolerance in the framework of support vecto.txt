@@ -1,0 +1,89 @@
+ 1. Introduction
+According to the terminology collected by Chen and Patton fault. A performance degradation can be accepted. The fault-by reconfiguring the controller.
+
+Fault-tolerant control systems can be classified into two strategies for controller reconfiguration.
+ occurs. This reaction consists in the reconfiguration of the detection system, there are other two elements in any active fault tolerant controller: a reconfigurable controller and a controller reconfiguration strategy.
+
+An adequate bibliographical review on reconfigurable fault-Among them, they can be cited: control law re-scheduling the state of the system is reconstructed by means of a model estimator. Moreover, this estimator computes the probability the fault information and the sensor signal values.
+The MBPC can reconfigure by itself when an actuator fault (1998) . When actuators are redundant and are connected in a the requirement of physical redundancy.
+
+Maciejowski (1997) it is proposed to do this by modeling the plant by means of complex high-fidelity models implemented using advanced simulation languages. Simulation will be per-have proposed to re-tune the controller.
+ the problem cannot be completely solved in an automatic way, objectives are neglected and the way to do it.
+ (1999) has been used. In Polycarpou and Vemuri (1995) and
+Wang (1999) inordertocomputeasignalthataddedtothenominal computed using a neural network trained on-line. algorithm employed to on-line training the SVM is the AOSVR
+In the proposed approach the controller parameters are not
+SVM can be found in Section 3. The fault tolerant strategy proposed is described in Section 4. The plant used in the experiments and the way it has been modeled can be found in 2. Model based predictive control description The model-based predictive control (MBPC) strategy, see algorithm computes the future control actions to minimize a of systems under consideration is described by the following general nonlinear ordinary differential equation: _ x  X  t  X  X  f  X  x  X  t  X  , u  X  t  X  X  , x  X  0  X  X  0  X  1  X  subject to hard and state constraints u  X  t  X 
+A U , 8 t Z 0 x  X  t  X  A
+X , 8 t Z 0  X  2  X  differentiable. 2.1. Optimization problem of controlled variables: J  X  restrictions: Restrictions on the value of the manipulated variable: U Restrictions on the variation of the manipulated variable: k  X  1 , ... , m  X  5  X  Restrictions on the future values of the outputs: Y min k r ^ y k  X  t  X  j  X  r Y max k , j  X  N 3 k , ... , N 4 r from the present point to the desired set-point w i : r
+Other parameters are as follows: i and b i : weighting factors for each output and input, respectively.
+
+N output.
+
+U and control increments, respectively.
+
+Y min k and Y max k : minimum and maximum values of the output between the horizons defined by N 3 k and N 4 k .
+N i : Control horizon.
+ through the expression chosen for ^ y k and by means of the as a standard non-linear programming (NLP) problem. signals u k  X  t  X  , u k  X  t  X  1  X  , ... , u k  X  t  X  N u k the first one, u k ( t ), is actually applied to the plant. 2.2. MBPC integral action
+MBPC can exhibit an integral action under certain circum-in the cost function equation (3).
+
+The perturbation model assumes that perturbations at time k are equal to model error and in the future they will remain constant, as is expressed in ^ d  X  k  X  X  y  X  k  X  ^ y  X  k  X  ^ d  X  k  X  j  X  X  ^ d  X  k  X  X  8  X  action. 3. Support vector machines
+In this section, the SVM for regression ( Vapnik, 1995 )is introduced. Suppose we have a training data set f X  x e -SV regression: f  X  x  X  X  / w , x S  X  b with w A X , b A R  X  9  X  product is defined as / u , v S :  X  P N i  X  1  X  u i  X  v i [ u ] function can be seen as a convex optimization problem: minimize 1 2 J w J 2  X  C subject to function shown in L  X  1 2 J w J 2  X  C It follows from the saddle point condition that the partial have to vanish for optimality: @ L @ b  X  @ L @ w  X  w @ L @ x dual problem maximize subject to function is obtained as Eq. (17).
+ expressed as Eq. (17): w  X  f  X  x  X  X  vectors x i . 3.1. Computing b b can be computed by means of the Karush X  X uhn X  X ucker a  X  X  i A  X  0 , C  X  it is hold that x b as follows: b  X  y i / x , x i S e for a i A  X  0 , C  X  X  18  X  b  X  y i / x , x i S  X  e for a i A  X  0 , C  X  X  19  X  3.2. Nonlinear case
+Nonlinear function matching problems can be transformed to linear matching problems in a higher dimension space through obtained in the transformed space using methods described in the transformed space.
+
+This allows to rewrite support vector algorithm as follows: maximize subject to
+The expansion in Eq. (17) can be written as f  X  x  X  X 
+Note that in the nonlinear setting, the optimization problem space, not in the input space. A way to solve efficiently There are several kinds of kernel functions suitable for kernel: k  X  x , x u  X  X  exp J 3.3. Incremental learning
+The more common way in which an SVM is trained is by time a sample is added to the training set a new SVM must be trained.
+
+Accurate online support vector regression (AOSVR), described regression. This algorithm makes possible to add and also to scope of this paper. A very brief description is as follows. The optimization problem in Eq. (20) must hold the Karush X  satisfy the KKT conditions at each step. 4. Fault tolerance strategy
+Controller performance can be seriously affected by the
+Plant faults are those that affect the plant, and can be can be unknown or can be some design parameters, anyhow the fault originates changes in the plant output that cannot be explained by changes in the control inputs or perturbations. p  X  t  X  X  p  X  t  X  X  d H  X  t t f  X  X  23  X  and t f is the time in which the fault arises: p  X  t  X  X  partial or total loss of power. 4.1. Plant fault tolerance induced by the fault.
+ In this paper an on-line trained model strategy is proposed. under the faulty situation.
+ three sampling periods after the plant fault is detected.
+This strategy has two main drawbacks. The first is that the model cannot be accurate enough. The first problem can be avoided by training the on-line model from the moment the the nominal model to the on-line trained one.
+ W ( t ) of size N is defined as W  X  t  X  X f u  X  t N 1  X  , u  X  t N 2  X  , ... , u  X  t  X g X  25  X  support vector set will be dominated by data coming from the internal representation of the plant.
+ The training set of the on-line trained SVM is described by taken from the plant: E  X  k  X  X f x  X  k  X  , x  X  k 1  X  , ... , x  X  k N  X g where x  X  k  X  X f e 1  X  k  X  , ... , e n  X  k  X g X  26  X  One disadvantage of training in the proposed way is that the according to the operation point.
+ out of the scope of the paper and it is assumed that one is available. Due to the nature of the fault tolerance method estimation of the fault size is not required. 5. Plant description A -2 A -The flow V fed to the reactor contains only substance A with an unmeasurable perturbation in the temperature T 0 . reactor and cooling jacket: _ C  X  _ C  X  _ T  X  V V _ T  X  The concentrations of substances A and B are C A and C B , while the temperature in the cooling jacket is given by T via the Arrhenius law: k  X  T  X  X  k i 0 exp (1995) . The manipulated variables are V / V R , where V R volume, and Q . It is assumed that concentrations C B and C C (mol X l ) C (mol X l ) T ( X C) T ( X C) time is 18s.
+
+E changes in the plant outputs. 5.1. SVM model for the Van Der Vusse reactor two-inputs X  X wo-outputs CSTR two different SVM are required.
+In order to make possible to learn the cross relationships between inputs and outputs, the input vectors of each SVM by the SVM.
+
+SVM is in Eq. (33). Output for the SVM that models the C B is { T ( k )}: been performed with the AOSVR algorithm. Although this used to train a nominal SVM. For the problem at hand the advantage over batch algorithms is that these algorithms are incapable of finding an adequate solution.
+
+T output.  X 2400  X 2300  X 2200  X 2100 95 100 105 110 115 120 6. Fault tolerance control results 6.1. Control with restriction results CPSV controller. The controller must control only the C B reached using plant inputs V and Q as control inputs. As the at each sampling time.
+
+The CPSV controller parameters chosen for simulated experi-in Table 3 .
+
+In every simulated experiment considered in this paper the changes in the C B reference are the same: From simulation between t  X  1.1 and t  X  2.2h the reference value is 1moll from that instant until the end of the simulated experiment, which occurs at t  X  3.3h, the reference value is 0.95moll are observed. Moreover, control signals do not violate their simulation is adequate.
+
+As it was mentioned in Section 2.1, the optimization problem at each sampling time. In a PC type computer equipped with a compromise the system control.
+ stable response. 6.2. Control results in the presence of faults
+The plant behavior in the presence of faults and without perturbations has been studied. This has been carried out by the remaining ones belong to the second category. 6.2.1. Faults that the system is able to recover by itself shown.
+  X 2000  X 1500  X 1000
+Q (kJ X h ) T ( X C) time.
+ and the second reference change is not completely verified.
+Control inputs have bigger changes than in the simulated between the fault instant and the second reference change. oscillations observed in the C B plant output.
+
+In both simulated experiments, the CPSV integral action can explain the self-recovery ability. experiments are shown in Fig. 5 .
+
+In simulated experiment 3 the C B output linearly goes away violation of the restriction upper value of the T output.  X 2000  X 1500  X 1000  X 500 111 112 113 114 115 116 117 118  X 2000  X 1500  X 1000  X 500 111 112 113 114 115 116 117 increases. Simulated experiment 8 is different because both figure, the case with the former restriction is also shown. tendency after the fault occurs and not oscillatory behavior appears.
+ The same can be observed in the simulated experiment 4 in Relaxing this value has no physical sense. 6.4. Fault tolerance results results for this strategy are shown.
+ on-line trained plant model is the one shown in E S B  X f C B  X  k i  X g , i  X  0 , ... , 6 S  X f T  X  k i  X g , i  X  0 , ... , 6  X  34  X  of them models one of the plant outputs. The SVM use the shown in Table 5 .
+
+The stability of the controller when a fault is accommodated example of these essays can be seen in Fig. 7 , where the C 6.4.1. Plant fault simulated experiments
+The CPSV controller using the AOSVR adaptive model has been tested on the Van Der Vusse reactor in the presence of time (h) time (h) time (h) time (h) in which a fault of size 50K at time t  X  1.6h is shown. The but with smaller fault sizes have been performed with the same result.
+ the upper restriction over the output T value. 6.4.2. Comparison of CPSV with nominal and adaptive model
+CPSV has a more predominant effect than the adaptive model, some simulated experiments have been carried out. These  X 2400  X 2200  X 2000  X 1800  X 1600 95 100 105 110 115 120  X 2400  X 2200  X 2000  X 1800  X 1600 95 100 105 110 115 120 simulations are the same that appears in Table 4 and have simulated both on the plant controlled by an SVPC using a nominal model and another one using an AOSVR adaptive model.
+
+When the fault size is equal or greater than 95K the result the C B reference. This situation gets worse when some of  X 2000  X 1500  X 1000
+Q (kJ X h ) T ( X C)  X 2400  X 2200  X 2000  X 1800
+Q (kJ X h ) T ( X C) accommodate even when a fault tolerant strategy is adopted.
+The results obtained are generalizable for faults in the E accommodation.  X 2000  X 1500  X 1000  X 500 111 112 113 114 115 116 117  X 2000  X 1500  X 1000  X 500 111 112 113 114 115 116 7. Conclusions simulation in a Van Der Vusse reactor.
+
+The SVM based MBPC, in conjunction with the adequate that makes it able to cope with faults without taking any shown.
+
+The paper presents a strategy for achieving fault tolerant control in the framework of SVM based MBPC. The strategy is emerged after the fault occurs.
+
+Results obtained under simulation show that this is a incipient plant faults.
+ References

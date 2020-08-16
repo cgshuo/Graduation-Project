@@ -1,0 +1,105 @@
+ 1. Introduction well-established and the literature currently focuses on developing more efficient and effective algorithms. are already available for both of tree and graph structured databases. clude the following.  X  addressing the issue.  X  our hiding algorithms are all relevant in this sense.  X  problems.  X 
+Development of efficient and effective sanitization techniques. We develop heuristics to do so.  X  experimental evaluation and Section 7 concludes. 1.1. Related work  X  knowledge hiding from this transaction.
+ approach is the assumption that sensitive itemsets must be disjoint. An extension is presented in [11] . introduced in [14] .
+ by the original database D , yielding a new sanitized database D not hiding-failure free.
+ of transactions that needs to be sanitized. three typical constraints (minimum gap, maximum gap and maximum window) of sequence mining. for tree and graph databases. 1.2. Related work  X  tree/graph mining and matching algorithm for frequent subtree mining. Additionally, the algorithm can also mine graph structured data. algorithm is presented in [23] .
+ the literature [24  X  35] . 2. Frequent itemset and sequential pattern hiding problems and their respective sensitive knowledge hiding problems.
+
+Let I X  i 1 ; i 2 ... ; i n fg be a set of items (symbols). A transaction T is any non-empty subset of I is a collection of transactions, D X  t 1 ; t 2 ; ... t m fg , where each t
+De fi nition 1. Support Given an itemset X ,the support set of X in database D ,denoted S S X  X  X  X  T : X T  X  T  X  D fg .The support of X in D ,denoted sup
+De fi nition 2. Frequent itemset mining [36]
+X : X I ; X  X  X  X  ; sup D X  X  X   X   X  fg . Frequent itemset mining is the problem of finding F ( D ,  X  ) the itemset I X  a ; b ; c ; d ; e ; f ; g ; h fg . Letting the support threshold 1-itemsets at line 1, and so on.
+ have been developed to efficiently mine frequent itemsets using different techniques and approaches [37 hiding problem.
+
+De fi nition 3. Frequent itemset hiding the problem of transforming database D to database D  X  such that:  X   X 
+X i  X  P h : sup D  X  X i  X  X  b  X  :  X   X 
+The transformation is called sanitization , and the sanitized database D in F  X  X  ; i : e :; P h  X  F D  X  ;  X   X  X   X   X  . The objective with the second requirement ( distortion ) is to keep D requirement, the problem can trivially be solved by simply letting D sample database introduced in Fig. 1 (a). The database given in Fig. 2 (b) is a sanitized database (with at  X  solutions on the same problem instances.
+
+De fi nition 4. Association rule hiding 1. the support of every rule in D is less than  X  1 , i.e. i.e.  X  X i  X  Y i  X  P h : sup D  X  X i 2.  X  (data/knowledge quality) reduction minimization. easily use any method developed for frequent itemset hiding to reduce the support after transforming P
+X  X  Y n g into P h  X  X 1  X  Y 1 ; X 2  X  Y 2 ; ... ; X n  X  Y n as confidence reduction is the other possibility.
+ pattern mining aims at finding significant patterns by also taking the event ordering in the account. t  X  where t i  X  ,  X  i  X  {1, ... , T n }. We denote the set of all sequences as {2
+V  X   X  *, denoted U  X  V ,if U can be obtained by deleting some symbols from V , i.e., U = there are m indices i 1 b ... b i m such that u 1 p v i of itemsets.
+
+The support of a sequence S is the number of sequences in D that are supersequences of S patterns that have a support not less than  X  : FD ;  X   X  X  X  S mining algorithms, e.g. [40] .
+
+De fi nition 5. Sequential pattern hiding
+Let P h  X  S 1 ; S 2 ; ... ; S n fg with S i  X  {2  X   X  X  X  }*, 1.  X  S i  X  P h ; sup 2.  X  dimensional (spatio-temporal) sequences are studied extensively in [5,6,1] . 3. Tree and graph patterns tools and applications. 3.1. Preliminaries
+De fi nition 6. Labeled directed graph
+A labeled directed graph G is a 6-tuple G =( V , E ,  X  V ,  X 
+V is the set of vertices,  X 
+E ( E V  X  V ) is the set of edges,  X   X  V is the set of vertex labels,  X   X  V ( V  X   X  V ) is vertex label assignment function,  X   X  E is the set of edge labels, and  X   X  E ( E  X   X  E ) is edge label assignment function.
+ When the graph lacks edge labels, it is denoted as a 4-tuple G =( V , E , sented as a tuple G =( V , E ) with implicit labels and label assignment functions.
+De fi nition 7. Labeled rooted tree
+A (labeled rooted) tree with root r is a labeled directed graph T =( V , E ) such that  X 
+T is rooted at the vertex r  X  V , i.e. r = root ( T ),  X  T is acyclic, i.e.  X  v  X  V there exists a unique path from r to v .
+ ancestor of y . Immediate ancestor (descendant, resp.) is called parent (child, resp.) relationship. x , y have common parent. We adopt the following notation: parent (v) as the parent of v
+T , ... , T m }.
+ and similarly pre (v) as v 's position in the pre-order traversal. 3.2. Tree patterns subtrees as defined next.
+
+De fi nition 8. Induced and embedded subtrees [19]
+Given two trees P =( W , F )and T =( V , E ), P is said to be an induced subtree of T ,denoted P  X  : W  X  V such that (i)  X  v  X  W .  X  W ( v )=  X  V (  X  ( v )), and (ii) ( u , v ) mapping  X  preserves both the vertex and edge labels and parent denoted P  X  e T , iff there exists an injective function  X  exists a path in T starting from root (T) to  X  ( v )goingthrough and ancestor  X  descendant relationships. The notational simplification P or embedded) is understood from the context. Clearly, embedded subtrees generalize induced subtrees, i.e. P that injective functions never map any two elements to the same object, i.e. the mapping ensures distinctness. Another important issue in tree containment relationship is the relevance of order as defined next.
+De fi nition 9. Ordered and unordered subtrees
+Given two trees P =( W , F )and T =( V , E ), and provided that there is a mapping the order of pre-order traversal of both P and T , then it is called an ordered mapping. That is, if u , v  X  subtree is also an unordered subtree, and unordered subtrees generalize ordered subtrees. the most relaxed. Fig. 3 illustrates the four classes on an example. 3.3. Graph patterns
+H is considered as the pattern graph and G as the data graph in mind.
+De fi nition 10. Subgraph and induced subgraph isomorphism
+Given two graphs H =( V 1 , E 1 ,  X  V ,  X  V graph )of G ,denoted H  X  ie G , iff there exists an injective function v )  X  E 1 there exists (  X  ( u ),  X  ( v ))  X  E 2 and  X  E and existence of edge relationships. H is called an induced subgraph of G ,denoted H such that (i)  X  v  X  V 1 ( v )=  X  V (iii)  X  ( u , v )  X  E 1 there exists no (  X  ( u ),  X  ( v )) istence and non-existence) relationships. The notational simplification H embedded) is understood from the context. Clearly, embedded subgraphs generalize induced subgraphs, i.e. H
+Note that when the graphs are edge label free then the expression Fig. 4 shows the concepts on an example.
+ 4. Tree hiding algorithm is inefficient, and hence we later develop efficient subtree matching algorithms to replace it. formalized with the pattern tree support definition.
+
+De fi nition 11. Pattern tree support
+Given a data tree T =( V , E ) and a pattern tree P =( W , F ), T is said to support P iff P sup D P  X  X  X  T  X  D : P  X  T fg jj . A data tree T may support P in various ways, however. c number of distinct T nodes) that T supports P , i.e. the range is 0 wsup D P  X  X  X   X  T  X  D c T P  X  X  . Then, support and weighted support of a pattern forest P are denoted as sup and wsup D P  X  X  X   X  P  X  P wsup D P  X  X  , respectively.
+
+We compute the support through the matching mechanism as defined next. 4.1. Subtree matching is also a subtree of T .
+ other three classes can be defined similarly.
+
+De fi nition 12. Induced-ordered subtree matching
+The pattern tree P =( W , F ) matches subtree T [ v ]of T =( V , E ) when,  X  | W |=0, i.e. P is an empty tree, or  X  | W |&gt;0, i.e. P is non-empty and the following two hold together,  X   X 
+W ( root ( P ))=  X  V ( root ( T [ v ])), and  X 
+P has k children and for the ordered children sequence c 1 sequence ( c n 1 , c n 2 , ... , c nk )of root ( T [ v ]) such that Section 4.3 ) using dynamic programming. To do so, we introduce the match count table M . and all of the respective edge labels match too. Then, the table entries are computed as follows. that there are two distinct matches starting from vertex 11, and one match starting from vertex 7. table on the example trees by disregarding edge labels. 4.1.1. Subtree matching in the other containment classes struction of the table.
+ replaced by the following.  X 
+P has k children and for the ordered children sequence ( c post-order enumeration) descendant subsequence ( c n 1 , c dants than only in children. 4.2. Tree hiding problem
+De fi nition 13. Tree hiding problem
+Given a data tree database D , a pattern tree set (forest) P threshold  X  , transform D into D  X  such that:  X   X 
+P  X  P h : sup D P  X  X  b  X  , and  X  D and D  X  are as similar as possible.
+
+The transformation is called the sanitization . Let the support threshold value to be value for  X  is selected so that mining at support  X  (  X   X   X   X  needs to be a parameter in the respective hiding process.
+ formation operator and the similarity measure between D and D including tree topology manipulation to vertex-edge label updating. Since we want D that of D , hence fake-pattern free. Since updating a vertex (resp., edge) label with a symbol from pattern introduction, our sole operator is updating labels with a special symbol that the label is masked or missing. With this operator, D similarity measure counts the number of  X  symbols introduced into D to obtain D Under this concrete setting, optimally solving the tree hiding problem is NP-hard as shown next. Theorem 1. Tree hiding problem is NP-Hard of restricted problem implies the NP-Hardness of the original problem [41] .
+The former problem is due to the disclosure threshold which allows D match for every sensitive pattern. Therefore, for any sensitive pattern P if sup former being data tree subset selection and the latter being node subset selection. support of data trees may be quite diverse.
+ to give support to the pattern tree.
+ nodes 7 and 11, hence it is ineffective.
+ applications trees are not edge labeled. 4.3. Bottom-up tree hiding (i) the tree database, (ii) the sensitive pattern set P h induced-ordered, induced-unordered, embedded-ordered and embedded-unordered). The output D least value. Each iteration of the outer loop starts from the first tree of D itemsets and sequence sanitization tasks as well [6] .
+
+Line 10 solves the local scale sanitization problem: given a data tree T post-order traversal of T  X  and at each visit node v  X  T  X  there cannot be any other match not involving v in T  X  [ v ]. Hence, as far as the T lap) that start in higher levels in the data tree.
+ wards, when the node 5 visited there is no matching starting from it. Algorithm 1. Bottom-up tree hiding algorithm
+Input: Tree database D , sensitive pattern set P h , disclosure threshold
+Output: Tree database D  X  in Fig. 5 by masking only the node 7. The naive method again solves the case by masking two nodes, 7 and 11. and the naive methods perform the same for embedded classes.
+ we need efficient matching algorithms. The next section develops efficient solutions. 4.4. Ef fi cient subtree matching 4.4.1. Induced-unordered subtree matching
+Let P and T be the pattern and data trees with the respective immediate subtrees
+Let us consider  X  T [1], T [2], ... , T [ l ]  X  be the left node set and added between matching subtree pairs. Clearly, when the maximum matching has the cardinality k , then every matches to a distinct subtree in  X  T [1], T [2], ... , T [ l ] ity of O ( nm * n 5/2 ), where n =| T | and m =| P |.
+ Algorithm 2. Induced-unordered subtree matching Input: Data tree T =( V , E ), Pattern tree P =( W , F )
+Output: Subtrees of T matching P 4.4.2. Embedded-unordered subtree matching able in practice. 4.4.3. Embedded-ordered subtree matching holds.
+ Algorithm 3. Embedded-unordered subtree matching Input: Data tree T =( V , E ), Pattern tree P =( W , F )
+Output: Subtrees of T matching P
+Fig. 8 , the root's node interval is b 1&gt; and its children interval is bining operator  X  (line 6) operates as follows: For intervals l = the two intervals overlap. The interval combination is the reason that | M ( v )| is polynomial. 4.4.4. Induced-ordered subtree matching rithm and has the same complexity. The only difference is in line 17, where only returning M way, only the children (not all descendants) are propagated.
+ Algorithm 4. Embedded-ordered subtree matching Input: Data tree T =( V , E ), Pattern tree P =( W , F )
+Output: Subtrees of T matching P 5. Graph hiding
+If a pattern graph H is an embedded subgraph of data graph G , i.e. H weighted support is 4, as there are four different ways that G supports H .
+De fi nition 14. Graph hiding problem
+Given a database D of data graph, a sensitive pattern graph set P  X   X 
+P  X  P h  X  sup D P  X  X  b  X  ; and ,  X  D and D  X  are as similar as possible.
+ the similarity measure is minimization of the number of  X  NP-Hard (Theorem 2 ).
+ Theorem 2. Graph hiding problem is NP-Hard restricted version) [41] .
+ an established algorithm by Ullman [26] to solve the subgraph inclusion test problem. 5.1. Ullman's graph inclusion algorithm graph and the | H |-size subgraph of G which is dictated by the current permutation matrix. restricted to be 0 or 1, and every row and column sums to 1. Let M jacency matrix of H ,and P be a permutation matrix for M G which is composed of the first | H | rows and the first | H |columnsof M ( P  X 
+P tices. Notethatthe operatorusedhere isnot equality(=) asin subgraph isomorphismbut of embedded subgraphs. Basically, the U test is performed by checking the equality of every non only one 1, then we need no summation during the matrix multiplication. test (in line 7) for  X  - X  symbols as well.
+ Algorithm 5. GraphInclusion ( M H , M G , P , k ) Input: Adjacency matrices M H and M G , permutation matrix P , current row k
+Output: Permutation List P . label between the corresponding vertices. In case there is no edge between the two vertices, symbol 5.2. Subgraph hiding this is the point where we need good heuristics.
+ we develop three heuristics for local scale sanitization as defined next.  X  can be done in linear time with respect to the number of vertices of G .  X  computation of P as other steps can be computed very efficiently.  X  here is that since we need to make | P |=0, we pick one vertex for each of P ings. Hence, we repeat the entire procedure, starting from the computation of new P , until P = may require much more invocation of Algorithm 5 . 6. Experimental evaluation 2 GB RAM, running Windows 7 operating system.
+ define M 1as F D  X  ;  X   X  X  = F D ;  X   X  X  , the ratio of preserved frequent patterns in D
+All the efficiency results are averaged over 5 runs. 6.1. Tree hiding The experiments are conducted on three datasets: CSLOGS [19] , with the forest generator of [19] . All the datasets are edge-label free.
+CSLOGS dataset consists of 59,691 user browsing subtrees of RPI computer science department web pages ( rpi.edu/ ). The number of distinct web pages is 13,361 and each tree contains 23.3 vertices on average. 8074 trees where each tree contains 7 vertices on the average over 9060 distinct labels. with 10 distinct vertex labels, and each tree contains 50 vertices on average. To determine sensitive patterns, we first run a tree mining algorithm on pattern3 for both datasets. The patterns are given in Figs. 11 (a) Turkish poet), and pattern3 concerns Orhan Veli Kanik (another Turkish poet). ID to URL mappings for unordered (IU) , embedded-ordered (EO) , and embedded-unordered (EU) at various disclosure thresholds. Before studying the performance on the three datasets, we conducted experiments on firmed that tree depth has marginal effect on runtime while it has significant impact on effectiveness.
+The performance results of CSLOGS , T50M50N10 , and WEBLOG all cases. Higher M 1 results suggest that valid mining models are possible on the sanitized databases. For patterns. 6.2. Graph hiding
+The experiments are conducted on three datasets: SYNTHETIC ( dataset is a real social network dataset containing user ratings/taggings of movies. contains 66 different labels (atoms) and edge alphabet contains 4 different labels (bond types). Although graph per day) from the single large graph.
+ given in Figs. 14 (a)  X  (c), 15 (a)  X  (c) and 16 (a)  X  (c). The ID to movie name mappings for measure is concerned. We also note that Heuristic1 shows a comparable M 1 performance on are low for MOVIELENS , all the heuristics perform similarly as far as the M 0 and M 1 metrics are concerned. 7. Conclusion databases.
+ hiding.
+ disclosure of sensitive patterns. Detailed exploration of these issues remains as a future work.
+References

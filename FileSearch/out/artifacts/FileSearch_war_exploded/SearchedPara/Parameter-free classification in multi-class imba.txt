@@ -1,0 +1,87 @@
+ 1. Introduction advantageously replace the original attributes for classification purpose. The publication of the objects. Since this pioneering work, many CBA -like methods (e.g., [3  X  easily interpretable.
+ less objects than the other class(es). According to [7],  X  large segment of the data mining community  X  . A frequency-confidence approach, such as The common fundamental issue affecting these proposals is that they are
+OVA classification framework, namely the OVE (One-Versus-Each) framework. A key idea of the irrelevant for every other class taken separately. We make the following contributions.  X  their relevance in the predicted class and their irrelevance in every other class.  X  evaluate our approach.
+
+We discuss further related work in Section 6 . Finally, Section 7 briefly concludes. 2. Context &amp; motivations
+R p
+TI is a given binary database where some items C p I , called classes, partition the transactions, i.e., subset of items I p I is called itemset. Its support and frequency, in R , are defined as follows:
+De fi nition 1. Support of an itemset
+The support of an itemset I p I in a binary database R is:
+De fi nition 2. Frequency of an itemset
+The frequency of an itemset I p I in a binary database R is: database R restricted to a subset T p T of transactions. Such a database is denoted R
+To avoid lengthy notations, the support of a class c  X  C , i.e., sc fg transactions in the 3-class binary database depicted in Fig. 1 , is given by T (and will) be illustrated.
+The associative classification is based on classification rules , i.e., association rules of the form I classification rules constituting the classification models that are learned:
+De fi nition 3. Frequency-con fi dence
+The frequency of a classification rule I  X  c in a binary database R is:
+Its confidence is: selected classification rules are frequent enough and confident enough. contrast measure [11] .
+
+De fi nition 4. Growth rate The growth rate of a classification rule I  X  c in a binary database R is: growth rate that is large enough. Emerging patterns belong to the family of contrast patterns [14]. Other measures such as the lift [15] enable us to quantify interests of rules:
+De fi nition 5. Lift
+The lift of a classification rule I  X  c , in a binary database R is: positive correlation, between I and c , that is large enough.
+
+In the binary database represented by Fig. 1 , considering the itemset Y sY ; R T approaches in an OVA framework. 2.1. Frequency-con fi dence approaches
+The confidence of Y  X  c 2 conf Y  X  c 2 ; R  X  X  X  40 = 45  X  X  is much higher than that of Y  X  represents  X  the transactions classified in c 3 (all of them are supersets of Y ) than those in c exists with two classes. It is, therefore, present as well in an successively restricted to every pair of classes. 2.2. Emerging pattern approaches
+Thegrowthrateof Y  X  c 2 GR Y  X  c 2 ; R  X  X  X  40 = 75  X  X  = 5 5 = 5  X  X  = 40 = 95  X  X   X  2 : 375  X  . However, as explained above, Y better favors rules concluding on majority classes. 2.3. Positive correlation approaches 2.4. Other issues conflicts, i.e., to the selection of two rules X  X  c and X
+Fig. 1 ,theliftsof Y  X  c 2 lift Y  X  c 2 ; R  X  X  X  40 = 75  X  X 
+That would mean taking into account the repartition, in the different classes, of the committed by a rule and it is in contradiction with the mere definition of the instance, in the binary database depicted in Fig. 1 , the model to classify in c processes of these frameworks to get a better understanding of their characteristics and differences. 3.
+ One-Versus-Each framework Let us consider, without loss of generality, a context T ;
+If an itemset has a frequency below the threshold associated with the class c threshold (i.e., a maximal frequency threshold) needs to be set for every class c parameters: of a classification rule concluding on c i . More precisely, X must be must be  X  i,j -infrequent in R T c itemsets selected at the body of the classification rules.
+
+De fi nition 6. OVE -classi fi cation rule
+Given a parameter matrix  X  , a classification rule X  X  c i following assertions are true: 1. X is frequent in R T c 2. X is infrequent in every other class, i.e.,  X  j  X  i ; fX 3. X is a minimal body, i.e.,  X  Y  X  X ;  X  j  X  if Y ; R T c constraints and per-pair-of-classes growth rates. In particular, with a same value frequency thresholds) and a same value  X   X  [0,1] in the other cells of  X 
+We now identify two constraints, on the parameter matrix  X  body of such a rule X  X  c i intuitively needs to better represent the class c
+ X  : the frequency threshold  X  i , i must be greater than the infrequency thresholds satisfy the following constraint, namely C row : OVE
+Proposition 1. If  X  satisfies C row , then any OVE -CR X  X  such that GR X  X  c i ; R  X  X  &gt; 1.
+
+Proposition 2. If  X  satisfies C row , then any OVE -CR X  X  such that lift X  X  c i ; R  X  X  &gt; 1.
+
+As illustrated earlier on the toy example in Fig. 1 , two classification rules Y conflicts. This leads us to the second constraint on  X  , namely
+C column forces the number of errors X  X  c i makes in a class c holds (proof in the Appendix ): satisfies C column , then S  X  is conflict-free, i.e., it does not contain a pair of To conclude this section with a broader perspective, notice that any method following the works on several two-class problems (  X  every class against the union of the other classes 4. Introducing the fi tcare algorithm matrix  X  , an efficient algorithm is proposed in detail to compute exactly the OVE -CRs into a classifier is explained. Finally, an optimization method to discover 4.1. Extraction
+Given a context T ; I ; R fg with p classes { c 1 , c 2 , OVE -CRs is divided into p independent sub-problems. They correspond to the p rows of the parameter matrix concluding on a class c i (respecting the frequency constraint parametrized by (  X  namely EXTRACT , computes such a set S  X  , i . The complete set of search-space. Since the conclusion of the rule is fixed, this search-space is the potential bodies of the breadth-first way, i.e., EXTRACT starts witha level containingtheonly itemset having zero item, an itemset, called child ,with k + 1 items is constructed by union of an itemset, called (class items excluded) that is greater than any item already in decrease the number of itemsets EXTRACT enumerates, hence its running time.
+For child to actually be inserted among the futureParents superset is infrequent in R T c the search-space is safely pruned. However, this time, not inserting itemsets, enumerated later on, not to be supersets of child forbiddenPrefixes (Line 13). When constructing new itemsets from a
+EXTRACT efficiently computes the set of additional items (the of a branch of forbiddenPrefixes (Line 6). By excluding those items as valid extensions of bodies are enumerated. Taking advantage of this necessary structure, bodies that are infrequent in R forbiddenPrefixes (Line 17). In this way, no strict superset of an infrequent body is ever enumerated.
+From a technical point of view, the support of an itemset X is stored in p bitsets representing sX of the individual items (but the classes) are stored in the same way. Therefore, the support of a
+Line 10, with a simple  X  bitwise and  X  operation between the support of the prefix tree to store and access the forbiddenPrefixes is based on performance considerations too. 4.2. Classi fi cation are used when it comes to classifying a new transaction t ( each class. It simply is the sum of the frequencies in this class of the bodies of the
+Notice that the class in which an OVE -CR concludes does not predicted for t is the one providing the highest likelihood score, i.e., arg max 4.3. Automatic discovery of a locally optimal  X  leading to the best classifier is practically impossible. Since manually tuning procedure was designed. 4.3.1. A constrained hill-climbing technique optimum of f .
+ Our method is a constrained hill-climbing technique. The search space are the possible parameter matrices set of OVE -CRs with Algorithm 1) and a better effectiveness, transactions in T c i must be matched by the OVE -CRs concluding on c
+S (  X  , i ) of OVE -CRs concluding on c i is:
+We now provide details about fitcare 's key points. 4.3.1.1. Initialization. During an initialization step, fitcare by units of 1 = T c i and, to satisfy C row , any infrequency threshold full-coverage of T c i is not reached, the i th row of  X  is set to the values providing the highest
+The parameter matrix computed in this way violates C column satisfy C column , every infrequency threshold  X  i , j strictly greater than  X  .
+
+EXTRACT is then called for each row that has been modified. If the best coverage rate of T lowered by units of 1 = T c i and, if necessary to satisfy rolled back accordingly.
+ The initialization goes on in this way, oscillating between the enforcement of matrix satisfying both C row and C column leads to the extraction of (  X  ) i  X  {1, ... , p } discovered earlier. In practice, these rates often are (1, frequency thresholds and is fast thanks to frequency-based pruning. the remaining traversal of the parameter space, the coverage rates ( how this function indicates the next move to do in the parameter space. input, it must reflect the quality of the classification by the related in T  X  c i , i.e., labeled with c i in a testing data set
+We baptize this measure global growth rate .Itisaratioofasumoffrequenciesin T terms in both sums is the same. It corresponds to the sum of the numbers of higher g ( c i , c j ), the less confusion with c j when classifying the transactions in T improve the classifier. improving the function is improving this minimum. Assume that it is obtained for the pair ( c conclusions of the matching OVE -CRs:
+Sorting these values is also sorting the causes for the low g ( c g ( c i , c j )) usually are the i th and the j th ones. The i th value indicates to what extent the
+The j th value indicates to what extent the OVE -CRs concluding on c correspond to the errors made in c j by the rules concluding on the p -2 other classes.
+Each of these values directly relates to an infrequency threshold that lowering  X  j,i (by 1 = T c i ), while a large k th value ( k the transactions in every class while satisfying C row and coverage rates means an abortion: the parameters in the matrix worse classifier. When this happens, fitcare returns the best classifier (i.e., the best set of terminates. 4.3.2. fi tcare : algorithm Algorithm 2 more formally presents fitcare . The initialization of However, the way fitcare moves in the parameter space during the initialization (respecting both way it does it during the hill-climbing. Two variables coordinate the execution: allowing maximal cover rates. When classId is at most p , the Boolean variable whether the classId -th row of  X  may violate C column (Line 5) and whether the been extracted (Line 7). Just after the initialization, isParameterModified immediately becomes p + 1 (Line 15). That is why, below, the validation or invalidation of a new set of Then, the way fitcare moves in the parameter space, respecting 4.3.2.1. (In)validation of a new set of OVE -CRs allowing maximal cover rates. Given a set of Section 4.3.1 , an infrequency threshold is lowered (Line 22). If a better set of have been tried so far. If the answer is  X  all of them  X  , (Line 24) and fitcare terminates. 4.3.2.2. Traversing the parameter space respecting C row and extraction of the related OVE -CRs, RATIONALIZEROW checks whether the enforcement of made if necessary (Line 6). If it is not necessary, the next row of last one, in which case a validation or invalidation of the set of (Line 7), either to enforce C column (Line 6) or earlier (Line 23), the related the maximal cover rate is reached. Doing so, the infrequency thresholds may be decreased as well so that (as described earlier for the initialization step). LEARNRULESCONCLUDINGON is output (Line 24) and fitcare terminates. 5. Experimental validation fitcare 's C++ implementation is distributed under the terms of the GNU GPLv3. and competitive state-of-the-art rule-based classifiers: CPAR and have been shown to achieve better performances than older proposals (such as classifiers based on emerging patterns). HARMONY was kindly provided by their authors [21], the that of [24] and the KEEL platform [25] includes the DeEPs
+The performances of these algorithms are compared with those of
+ROC curve) is not used because the chosen implementations of instead of scoring each class for this transaction.
+ those of the best contender. It then stresses that fitcare imbalanced context. Finally, further experiments on synthetic data sets assert that class. 5.1. Global accuracy average accuracy of each classifier is reported as well as its average rank. algorithms (with CD  X  0.96). HARMONY is better ranked than the state-of-the-art associative classifiers in terms of global performance. 5.2. Balanced error rate class: where ER c i is the error rate on the transactions that should be classified in c test, the chart in Fig. 3 is obtained (still with CD  X  0.96). Although
+DeEPs , which is also ranked last according to the global accuracy. 5.3. Performance in minority classes 5.3.1. Per-class accuracy results classifiers over these 19 classes.
+ the chart in Fig. 4 is obtained (still with CD  X  0.96). This time, any of the three other competitors. We therefore conclude on the superiority of classify transactions in minority classes. That makes fitcare global accuracy or the balanced error rate.
+
+Back to the detailed results in Table 4 , it can be observed that the superiority of minority classes and fitcare only provides the best per-class accuracy for one of them. 5.3.2. F-score results w.r.t. the sizes of the minority classes).
+ F-score.
+
+Table 5 lists the F-scores obtained by CPAR , fitcare , HARMONY
+CD classes are significantly better than those of CPAR and DeEPs that are not significantly different from fitcare 's.
+ 5.4. Evolution of performance in imbalanced contexts turned into a minority class by randomly partitioning T c (averaged over all partitions of the class(es) that is/are artificially smaller). classes. In all cases, a same conclusion is drawn: CPAR and DeEPs are not. Indeed, when x increases, the per-class accuracies of When only 10% of its transactions are kept, CPAR correctly classifies one tenth of them; looks biased towards the minority class(es). Indeed, DeEPs three quality measures used in the previous experiments, DeEPs fitcare 's and DeEPs 's performance are not affected by this parameter, whereas majority classes. Because CPAR and HARMONY instantiate the towards majority classes that is theoretically explained in Section 2 . 5.5. Run time constraints to prune the classification rule search space. In this regard, it can be said extractions are tested first. Nevertheless, and despite C why CPAR , HARMONY and DeEPs usually run faster than fitcare most demanding data sets.
+ 6. Related work
+The related work is organized in four categories corresponding to the key domains of the paper. 6.1. Rule-based algorithms and the association-rule-based (i.e., CBA-like ) algorithms.
+
+Association-rule-based techniques like CBA [2], APRIORI-C recently proposed a new instance-centric strategy to directly mine classification rules. framework. 6.2. Classifying in strictly more than two classes strictly more than two classes. In this framework, a p -class problem is divided into p ( p variable. As such, the methods following this framework are meta-models. For example, [40] uses same problem. 6.3. Classifying in imbalanced classes
+Barandela et al. [41] identify three main strategies to learn classifiers from imbalanced contexts:  X  (i) By re-sampling data. This strategy  X  the most famous one the classifiers learned in a second step. Under-sampling usually gets the upper hand. the effect on accuracy rate.  X  well-structured, survey for readers interested in those approaches and other ones not mentioned here.  X  (iii) By integrated algorithms. The last strategy is the one have been adapted. To the best of our knowledge, HARMONY [21] is
+Today, class imbalance still is considered a difficult and open problem. Some works [54 been dedicated to it. Interested readers may refer to a recent survey by Sun et al. [58]. 6.4. Parameter tuning parameter space and maximize the accuracy of CBA -like classifiers. Our algorithm, classes. 7. Conclusion and perspectives classification in imbalanced contexts.
+ Acknowledgments We wish to thank Jianyong Wang and George Karypis for providing the FOSTER.
+ Appendix A Proposition 1.
+
+By Definition 1 , the lift of X  X  c i in R is:
+Rewriting fX ; R  X  X  using Definition 2 gives:
+Because the p classes partition the transactions, we have:
+Using again Definition 2 , these per-class supports are turned into per-class frequencies:
+ X  forces fX ; R T
+Finally, because C row imposes that  X  j  X  i ,  X  i , j  X   X 
+Proof of Proposition 3. Assume, by contradiction, that S  X 
+By anti-monotonicity of the frequency, we have: X  X  c i and Y  X  c j respect the frequency/infrequency constraints parametrized by
+Because C column imposes that  X  i , j  X   X  j , j , a contradiction ( Therefore the initial assumption is false, i.e., S  X  is conflict-free.
+References

@@ -1,0 +1,9 @@
+ applications has arisen. resources. approach. for future work are presented. appropriate to apply the fixed point theory that we utilize. 
+The entities in the DB schema are classified as follows:  X  rCONTAIN, rUSE, and eResource  X  eNavigateParam  X 
+Database: eField, eTable, and eDatabase  X  rALLOCDB  X 
+Predefined environment: dComponentType, dComponentTypeCategory, dCom-ponent-TypeConstraint, dTypeCategory, and dType show checking algorithms. 3.1 Frame-Type Checking frame-type checking. as in Fig. 4. described by using fixed point (Fig. 5). summarized as follows: 3.2 Resource-type Checking applications. We define the domain for resource-type checking (Fig. 6). (Fig. 7). 
+Figure 8 shows the algorithm for resource-type checking. 
+The algorithm is summarized as follows: application W is sound with regard to resource-type. 3.3 Form-Parameter Name Checking define the domain for form-parameter name checking (Fig. 9) (Fig. 10). parameter names. 
+The algorithm is summarized as follows: 3.4 Form-Parameter Type Checking m1 by a server and m2 by a client. 
+Figure 13 shows the algorithm for form-parameter type checking. validity of each type. The body of Fig. 14 shows the details of the result. 
+We will explain part of the result in the following:  X  Frame-type error which is undesirable.  X  Resource-type error however, component1 uses resource with type 20 .  X  Form-parameter name error parameter name in  X  nama  X .  X  Form-parameter type error parameter-type error. frame structure (frame-type), and resource-type, by static analysis. are executed via tool support. framework to support model-driven development of web applications. 

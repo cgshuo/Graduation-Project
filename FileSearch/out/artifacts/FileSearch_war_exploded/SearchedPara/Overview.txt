@@ -1,0 +1,27 @@
+ ACL 2011 June 2011 Portland, Oregon _ _ drugs drugs 1998.  X  lexical database of English created by experts  X  wide-coverage of upper-level conceptual hierarchie s  X  replicated or extended to other languages
+Infrastructure. Communications of the ACM 1995. person-years  X  Wikipedia  X  DBpedia  X  Freebase  X  Open Mind
+EMNLP-07.
+Language Models and Wikipedia. WWW -08.
+Web-Search Queries. EMNLP-08.
+IJCNLP-09.
+Query. SIGIR-09.
+ACL-10. and tokenization and 35 for verbs for verbs  X  in documents: at least one verb in most sentences  X  in queries: less than 3% of tokens  X  17% queries contain capitalization, of which 4% are all-caps is indicative of an actual proper noun for 73% of cases token of query, first-letter capitalization for all t okens
+Comparison of Tag and Query Logs. SIGIR-09.
+Language Processing. SIGIR 2010, Web N-gram Workshop . (entered by users to annotate documents) documents 20 times submitted by Web users  X  investigate impact of user demographics on Web searc h  X  user profile data (birth year, gender, zip code)  X  set of pairs of (query, clicked URL) from query lo gs  X  census demographic data for various zip codes Below poverty (%)
+Per-capita income ($k)
+Per-capita income ($k) Year of birth, young identifiable information (names, numbers) from query l ogs 100M profiles data, for 744K users  X  arrange data into buckets by age, gender, zip code user)  X  classifiers using bag-of-words features  X  gender identification: accuracy of 83.8% than always guessing the middle age point queries, location classification becomes much less ac curate guess queries that may have been submitted by user  X  use combinations of guessed queries putting them together can uniquely identify a user drugs
+Search Queries. CIKM-07.
+Extraction. AAAI-08.
+EMNLP-09.
+Distributional Similarities for Queries. NAACL-HLT-2 009.
+Logs. COLING-10.  X  target classes, available as small sets of seed in stances classes  X  collection of Web documents  X  collection of Web search queries  X  collection of articles from Wikipedia  X  ranked lists of instances, one per class each class gold standards (clicked search results)  X  Web documents  X  clusters of similar instances  X  collect set of candidate instances from queries documents queries world britney spears celine dion bruce springsteen capitalized tokens as instances restaurant Cascal in Mountain View --&gt; Cascal, Mountain Vi ew in Web documents queries according to both criteria  X  for efficiency, no attempt to parse the queries  X  normalized combination of context and click-through ve ctors  X   X  X f you were interested in instance I, would you also be interested in instance Ic in any intent? X   X  also, annotate with type of relation between instance and co-clustered instance  X  CL-CTX: context  X  CL-CLK: click-through  X  CL-HYB: hybrid  X  CL-Web: context collected from Web documents rather than queries drugs drugs of Class Attributes from Query Logs. IJCAI-07.
+Queries in Extracting Class Attributes from Text. CIK M-07.
+Step Two: Harnessing the Wisdom of the Crowds. WWW -07.
+Search Queries. ECIR-10.
+Web Contents for Name Entity Queries. WWW -10.
+Discovery. WSDM-11.  X  small sets of seed attributes, one per class  X  anonymized search queries along with frequencies  X  ranked (longer) lists of attributes, one per class containing an instance and a candidate attribute attributes
+CartoonChar 6 ... 7 5 4 3 2 1
+CellPhoneModel AircraftModel 40 39 38 37 36 35 34 ...
+WorldWarBattle
+VideoGame
+TerroristGroup 40 39 38 37

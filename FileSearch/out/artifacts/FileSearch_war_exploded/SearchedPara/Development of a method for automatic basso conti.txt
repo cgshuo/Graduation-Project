@@ -1,0 +1,31 @@
+ 1. Introduction
+In baroque music composers indicated the accompaniment of their works in the notes of the bass part with numerical brought about a great demand for a system that plays basso continuo automatically. tem by Cope (2004) , and the CHORAL expert system by Ebcioglu (1988) are examples of this.  X  less of its length.
+ 2. A method for automatic basso continuo playing 2.1. Overview of basso continuo playing major and bar three and four are that of C minor.
+ continuo realisation.
+ skills.
+ ured bass, which is followed by beam search dynamic programming to search for the optimal chord sequence. Dynamic basso continuo playing, which is that it varies from performer to performer. 2.2. Overview of the proposed method
+To simplify the process, the following basic assumptions are made in the proposed method: detail of each module is demonstrated in the following sections. 2.3. Figure interpretation in Section 2.5 . 2.4. Chord allocation all voices are set in proper range are stored.
+ isfying Eq. (1) are stored as possible chords. appropriate chord sequence is described in the next section.
+ 2.5. Finding the most appropriate chord sequence all possible chords which can be located at time t , and let x t 2 X t be a certain chord at time t . entire pieces is sought. 2.5.1. Local cost figure interpretation cost is the scale degree of a bass note.
+ of  X  X 4 X  X .
+ pared 5 seventh and ninth.
+
+The larger k becomes, the more complete chords become and the more usual spacing tends to be used with the general causes poor chord spacing.
+ 2.5.2. Transition cost transition cost of Fig. 6 b is larger than that of Fig. 6 a. Table 3 lists some of the factors for transition cost. 2.5.3. Determining cost to performer, and these guidelines are not the only solution. 2.5.4. Searching by DP of capacity required to memorise one chord, then the amount of memory needed M ( n ) can be expressed as Eq. (3) . backwards since tonal music tends to converge to cadence.
+ Let l denote an adjustmental factor, then  X  X  X armony cost X  X  P ( x t , x t +1 ) can be defined by Eq. (5) . the smaller l becomes, the more the chords tend to become complete with usual spacing. algorithm is explained as shown in Algorithm 1 .
+ Algorithm 1. Search for the optimal chord sequence.
+ Input : A set of figured bass notes b 1 , b 2 , ... , b t , ... , b n
+Output : An optimal chord sequence 1: initialise W and V 2: for t = n to 1 do 3: V chord ( b t ) 4: if t = n then 5: w j V j 6: W V 7: else 8: W VW 9: end if 11: end for 12: return the best chord sequence from W 3. Simulation figures are stored.
+
+From the calculated chord candidates, the beam search seeks the optimal chord sequence, which minimises the accumu-4. Experiment ments were carried out on Intel Core Duo 2.16 GHz CPU with 2GB memory.
+ 4.1. Experiment 1
+In the first experiment, the correlation between the amount of memory used and the number of input bass notes was beam search, when n = 4, is 4.117 megabytes; on the other hand, that with the beam search is 0.0011 megabytes. 4.2. Experiment 2 change information were supplemented in advance.
+
+The soloists were asked to evaluate each accompaniment on a scale of one to five. Three accompaniments of each piece were prepared as MIDI files, where all files have the same volume and the same tone colour. Bass-Part only (BPO) Four-Part by a professional musician (FPPM)
+Four-Part by our system (FPOS) the FPPM of Purcell that chords played with arpeggiation sounded harmonious. On the other hand, chords were merely arpeggiation can become harsh and tedious. 4.3. Experiment 3 posed method.
+
+No. (1) shown in Table 6 is caused by harmonising non-harmonic tones. Rapid bass movement could sound noisy when all without each assumption should be investigated.
+ 5. Conclusion and future work human realisation.
+
+In order to achieve the complete development of an automatic basso continuo playing method, time and effort will be this paper.
+ Acknowledgement Technology Promotion Agency, Japan, and the financial support by the Nakajima Foundation. References

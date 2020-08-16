@@ -1,0 +1,79 @@
+ 1. Introduction growing scholarly community. In response to this current limitation, we have developed an advanced cita-tion-based system for identifying experts in selected research areas.
+
+Context-based Cluster Analysis and Cluster-based Ontology Generation frAmework. This is followed by our system. Finally, Section 6 concludes the paper. 2. Current citation-based retrieval systems on citation information stored in citation databases.
+ used for finding publications that cite the authors or publications specified by users. The Open Citation using Kohonen X  X  Self-Organizing Map (KSOM) and Fuzzy Adaptive Resonance Theory (Fuzzy ART) belong to the same or similar research field ( He &amp; Hui, 2002 ).
+
+Citation-based retrieval systems enable users to retrieve scholarly information based on the knowledge 3. Enhanced citation-based document retrieval system 3.1. System components the following major components: collect scientific documents. Documents collected are processed to extract useful information such as URL addresses of the downloaded files, titles, keywords, authors X  information, citations, and full text.
+Scholarly Citation Database  X  This is a citation database that stores citation indices and information extracted from documents collected by the Indexing Agents.
+
+Clustering Techniques  X  This component uses various clustering methods (such as document clustering and author clustering) to mine the citation database.
+
+In addition to the original PubSearch components, two major components have been developed for the new enhanced citation-based document retrieval system. These are: tiple sets of clustering results.
+
+Cluster-based Ontology Generation frAmework: This is the process of generating ontology from cross-clus-tering contexts generated from the CCA technique. 3.2. Context-based cluster analysis to represent such relationships formally and mathematically to be easily interpreted in other applica-cross-clustering contexts accordingly. 3.2.1. Cross-clustering relation generation relations.
+ the Appendix . 3.3. Cluster-based ontology generation framework To convert the knowledge from the CCA-based approach into ontology, we propose the Cluster-based
+Ontology Generation frAmework (COGA). In COGA, the knowledge stored in the database is known as sche-process of COGA is shown in Fig. 3 , which comprises the following steps.
+
+Class Mapping . It maps the schematic, discovered and context knowledge into schematic, discovered and context classes.
+ in a database is organized as schematic tables. Thus, schematic relations can be identified automatically using the relations between the tables.
+ tions are generated based on information of relations between the schematic knowledge stored in the data-base and the discovered knowledge stored in the multiple resultant sets of clusters. ing relations between the corresponding discovered classes to the context classes. base, the multiple resultant sets of clustering data and the generated clusters X  relations. The proposed COGA approach is generic. In this research, we use the COGA approach for generating
+Experts Ontology. 4. Application: identifying research expertise 4.1. The system 2006 ).
+
+To support citation-based retrieval, Agglomerative Hierarchical Clustering (AHC) has been performed on the Scholarly Citation Database to generate the following clusters:
+Keyword (or document) clusters  X  generated based on citation keywords using Self-Organization Map (SOM).
+ Author clusters  X  generated based on author co-citation analysis.
+
+Journal clusters  X  generated based on the clustering of document keywords according to journals and conferences.
+ Date clusters  X  X enerated based on the clustering of document keywords according to date information.
+Organization clusters  X  generated based on the clustering of document keywords according to authors X  affiliations.
+ tors, we have adopted the AHC to perform a bottom-up clustering process. An AHC algorithm can be found in ( He &amp; Hui, 2002 ).
+ clusters. In this paper, we focus on finding expertise in research areas. 4.2. Finding expertise in research areas research area. It is also very useful for identifying speakers for invited talks and seminars.
+Research on finding expertise has attracted much interest from the academic community. Most systems developed so far have been based on social and collaborative aspects of making expertise recommendations
+Recently, data mining techniques have been used for finding experts. These include keyword-based mining technique is only applicable to finding expertise within an organization or small domain area. Another are related to query keywords. However, CiteSeer does not provide information on researchers who work in Hui, 2002; He et al., 2002 ) system to provide author cluster search.
+
+In this research, we propose an approach that combines document clustering and author clustering for finding experts in research areas from a citation database using the CCA technique. With our proposed follows. 4.2.1. Keyword-Author Cross-Clustering Context Generation is already illustrated as Table A.III . 4.2.2. Finding expertise process Input, Identifying Researchers and Retrieving Researcher X  X  Information, Ranking of Researchers and Visualization.
+
+Identifying Related Researchers : In the Keyword-Author Cross-Clustering Context, relations between key-word clusters and author clusters are stored. Each keyword cluster corresponds to a set of keywords and each author cluster corresponds to a set of authors X  names. Hence, the set of keywords and the set of authors X  names can be generated from a keyword-author relation. Each set of keywords represents a research area and each set of authors represents a group of researchers. Theoretically, if a group of researchers has a relation with a research area, then they work in the research area. Thus, relations in the Keyword-Author Cross-Clustering Context can be used to derive the research areas of researchers or experts.
+ the input query. The author cluster sets corresponding to the two relationships, which are {CA identified as researchers in the two author clusters CA 2
+Ranking Expert : The identified researchers are ranked using the citation information. They are ranked mation available in the Citation Database. Scores are calculated and the researchers are ranked accord-ingly. Researchers with high scores are regarded as experts .
+
+Retrieving Expert X  X  Information : To provide information on researchers, the Researchers Database is con-structed. The Researchers Database stores information on researchers such as their contact information, home page, email address, etc. Such information can be extracted from the Web using an intelligent agent. Experts information is stored in the Experts Database .
+
+Expert Retrieval : The experts and expertise information can be retrieved from the Experts Database. 4.3. Expert ontology generation The discovered knowledge on experts can be converted into ontology using the COGA approach. To apply COGA, we need to label classes corresponding to the knowledge stored in the Citation Database, Researcher
+Databases, Document Clusters Database, Author Cluster Database and Experts Database. These kinds of knowledge, which have been classified as Schematic, Discovered and Context Classes, are mapped into Doc-are also labeled. The Experts Ontology is given in Fig. 7 . 5. Performance evaluation 5.1. Information retrieval measurements using a query to find the researchers in the research areas. Then, we set a confidence threshold T in the same area citing his work is greater than T C . In this experiment, we set T plete link, average link and Ward X  X  methods, are used.
+ cision. In addition, Ward X  X  method gives poor performance in terms of recall, precision and F -measure if the confidence threshold is assigned to higher values. 5.2. Comparison with other approaches
+Our proposed approach has used CCA to integrate these two techniques. For comparison, we have used the the CCA-based approach (complete link and Ward X  X ). We have adopted the KSOM and ART for document clustering and ACA for author clustering.
+
+From the three figures, the proposed CCA-based approach with the adopted complete link and Ward X  X  meth-ods are referred to as CCA-CL and CCA-Ward , whereas ACA , KSOM and ART represent author clustering, and document clustering based on the KSOM and ART techniques respectively.
+ Experimental results have shown that the ACA-based author clustering technique achieved high recall. retrieve almost all researchers in a particular research group that corresponds to the input keywords. based on document clustering technique achieved good precision. However, as the document clustering techniques tend to generate a large number of clusters, documents published by a certain researcher are retrieval. Thus, document clustering techniques do not achieve good recall. Generally, KSOM-based docu-ment clustering technique achieved better retrieval performance than the ART-based clustering in terms of the F -measure.
+
+Combining the clustering results of both techniques together, the CCA-based technique achieved by the CCA-based approach was significantly better than the author clustering technique. As a result, the average F -measure of the CCA-based approach was considerably better than the others. This is shown in
+Fig. 14 . 6. Conclusion
+A number of citation databases have been constructed, including some commercial ones. In this paper, we have surveyed some of the most popular citation-based document retrieval systems. Our survey has revealed development of PubSearch, we have significantly improved the performance of our citation-based document
+Ontology Generation frAmework. We have described these techniques and have presented our system devel-ness of our new system with encouraging results achieved consistently. Our key experimental findings are summarized as follows.
+
+First, we tested the system for finding expert based on recall, precision and F -measure, Ward X  X  method measure. Next, we compared two CCA implementations with other approaches, namely ACA, KSOM and Appendix Vectorization: some formal definitions:
+Definition 1 ( Cluster Set ). Let S ={ D 1 , D 2 , ... , D the data items in S into a set of k clusters CS = { C 1 , C 1 6 s , t 6 m and 1 6 p 6 k , then D s and D t are similar or (ii) If D q 6 k and k 6  X  l , then D s and D t are dissimilar. CS is called cluster set .
+Definition 2 ( Cluster Number ). Let CS = { C 1 , C 2 , ... , C ing method CM to a set of data items S ={ D 1 , D 2 , ... , D the cluster number for D i in CS.
+
+Definition 3 ( Combined Vector ). Let S ={ D 1 , D 2 , ... , D cluster sets obtained from applying the clustering methods CM a data item D i where 1 6 i 6 m is the vector v i =( d 1 , d for D i in CS j .
+Definition 4 ( Vectorization ). Let S ={ D 1 , D 2 , ... , D ter sets obtained from applying the clustering methods CM of m vectors V ={ v 1 , v 2 , ... , v m } from the cluster sets CS vector for a data item D i in S .
+ Distance Evaluation: To calculate distances between vectors generated in the Vectorization process, the and stored as a distance matrix .
+ as combined vectors, we have adopted the Agglomerative Hierarchical Clustering (AHC) to perform a bot-tom-up clustering process. This results in a set of combined vector clusters . of data items, then e ( S ) denotes the entropy ( Mitchell, 1997 )of S .
+ Definition 5 ( Purity Set ). Let S be a set of data items and T if e(S) 6 T P .
+
+We denote C J ( S 1 , S 2 ) as the Jaccard measure between two sets S Definition 6 ( Common Value ). Let S be a set of data items and T the common value of S if and only if (i) S is a purity set, and (ii) C subset of items in S that has the value I .
+ Definition 7 ( Common Value Set ). Let S be a set of data items. We define common Value Set S set of all of common values in S . A common value set can be empty.
+
+Definition 8 ( Dimension Set ). Let VC = { v 1 , v 2 , ... , v sional combined vector, with 1 6 k 6 m . We define the i th dimension set d d (VC) = { v 1 i , v 2 i , ... , v mi }, where v ki , with 1 6 k 6 m , is the value of v
+Definition 9 ( Relationship Vector ). Let VC = { v 1 , v dimensional combined vector, with 1 6 k 6 m . The relationship vector V V =( S 1 , S 2 , ... , S n ), where S i = S CM ( d i (VC)) with 1 6 i 6 m .
+
+Definition 10 ( Cross-Clustering Relation ). Given a set of clusters CS = {CS applying n various clustering techniques to a set of data items. Let S from CS. The cross-cluster relation of CS i ,with1 6 i 6 n , is a relation I 2 ( p , q ={ q 1 , q 2 , ... , q i 1 , q i +1 , ... , q n }) 2 I ,with p 2 2 and { q 1 , q 2 , ... , q i 1 , p , q i +1 , ... , q n } 2 S
+Example A1. Fig. A1 illustrates the corresponding cross-clustering relation of a relationship vector ({1,2},{2,3}) generated when combining document and author clustering results. It implies a relation from a set of document clusters { C 1 , C 2 } to a set of author cluster (CA 3.2.2. Cross-clustering Context Generation In this section we discuss the use of FCA theory for representing cluster relationships. of attributes, and I is a relation between G and M .( Chandrasekaran et al., 2001 ).
+Definition 12 ( Clustering Context ). Let CS = { C 1 , C 2 j (CS) = ( G CS , M CS , I CS ) where G CS = S , M CS = CS. A relation ( D context, each object corresponds to a document and each attribute to document a cluster. An object has a relation to an attribute if the document belongs to the corresponding document cluster.
+Definition 13 ( B-relation ). A formal context K m =( G m context K n =( G n , M n , I n ), denoted as K m b K n ,if K
+Definition 14 ( B-relation Set ). A B -relation set of formal context K ={ K if K i b K j , " i , j 2 [1, n ].
+
+Example A2. Table A.II represents a clustering context corresponding to the author clustering result pre-they have the same object set.
+ Definition 15 ( Projection Context ). Given a B -relation set S a context K i =( G i , M i , I i ), with 1 6 i 6 n , is a context K 1 6 j 6 g , is a subset of M i and A k , with 1 6 j 6 g , is a subset of A attributes of all contexts in S K .
+ Definition 16 ( Cross-Clustering Context ). Given the B -relation set S of data items. The cross-clustering context of a clustering technique CS context K pi ={ G pi , M pi , I pi }of S K on j (CS i ) in which I results presented in Fig. 2 . Table A.III presents the cross-clustering context on K { K , K 2 }. This context provides a mathematical model representing relationship between document and author clustering results, which is useful for finding expertise as discussed in the following sections. References

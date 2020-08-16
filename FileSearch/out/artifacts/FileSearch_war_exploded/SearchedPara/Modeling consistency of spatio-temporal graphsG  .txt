@@ -1,0 +1,95 @@
+ 1. Introduction production processes [41] .
+ studied to understand these phenomena and their distribution in space and time [30] . makes a distinction between time-varying spatial and semantic relations [9]. constraints. It also defines the mapping from the spatio-temporal graph to the spatial their differences.
+ consistent and may lead to problems for tax assignments.
+ application. Finally, Section 6 concludes the paper and draws further research directions. 2. Spatio-temporal graph model 2.1. Temporal dimension 2.2. Spatio-temporal entities account. 2.3. Topological relations
+Entities are primarily related in space by topological relations,
+RCC8 model [31], whose semantics is that  X  geometry x is connected to geometry y 2.4. Filiation relations
+There is a continuation relation  X  c if entity e at time t between an entity at time t i and t j , this does not imply that the entity exists between t
+Transitivity is a property of the continuation relation. Let t is a  X  c for entity e between time t i and t j and also between t
+A derivation, denoted by  X  d , occurs when an entity e at t transitive, since this depends on the particular semantics of the derivation relation. 2.5. Spatio-temporal graph subgraphs).
+ therefore, they are not necessarily modeled in the spatio-temporal graph. 2.6. Formalization of the graph model the value of a thematic attribute of entity e at time t is denoted by U ( e , t ). restrict ourselves to time with a total order.
+ Let us consider a set of topological relations  X  and a set of filiation relations contains the topological relations defined in Table 1 , excluding DC, and
+A topological relation T  X   X  between the geometry of entity e by T [( e i , t i ), ( e j , t j )], which is equivalent to say that T ( Geom ( e
+A filiation relation  X   X   X  between entity e i at time t i continuation relation  X  c , since it applies to the same entity, e continuation relation of entity e between t i and t j .
+ The definition of a spatio-temporal graph G with a set V of vertices and two sets of edges E
+De fi nition 1. Spatio-temporal graph.
+ Given a domain of entity labels I , a time domain T , a set of topological relations spatio-temporal graph G bea tuple ( V , E  X  , E  X  ) where(i)
+T ,( e j , t j )), where ( e i , t i ), ( e j , t j )  X  V represent topological and filiation relations, respectively. and 2006) and provinces (at 1925, 1976 and 2006) of Chile.
+Fig. 2 shows the evolution of provinces and how they change their boundaries from 1925 to 2006. 2.7. Operations over spatio-temporal graphs operators over graphs.
+
+De fi nition 2. Operators.
+
+Given a time domain T and graphs G 1 =( V 1 , E  X  (i) The union graph of G 1 and G 2 is a spatio-temporal graph (ii) The intersection graph of G 1 and G 2 is a spatio-temporal graph
+Fig. 3 provides an example of the join operator. 3. Spatio-temporal database of the data or to detect inconsistencies and clean the data. 3.1. Database schema and instances
+De fi nition 3. Given a set U of possible attribute values, a time domain relations. A classification of attribute names that store different types of data is: (i) The set powerset of  X  2 .(iii)Theset A T ofpossible temporal attribute names thattakevalues in names that take values in  X  .  X  Spatial objects can be modeled with different abstraction mechanisms. For values in attribute attributes with names in A S will take values from Ad .
+
+The schema of a database table R with a list of attributes A a ) (i.e., ( a 1 , ... , a n ) is a tuple of table P) for which P [A domain for each attribute. In that case, the value a i corresponding to an attribute A topological and filiation relations. 3.1.1. Entities
+De fi nition 4. An entity table is of the form E[ID, Time, U 1 , thematic attributes U i  X  A U for i  X  [1, n ] and G  X  A S at time t 1 such that Id ( e )= id 1 and Geom ( e , t 1 )= g 3.1.2. Topological relations 3.1.3. Filiation relations involved and the type of filiation relation.
+
+De fi nition 5. A filiation table is of the form F[ID 1 , Time primary key of the table contains all its attributes.  X  generality, we assume that if there is a filiation relation represents it. The name of that filiation table is F Type we can derive both regions and provinces, the filiation information is stored in tables F the filiation information allows us to define foreign keys between F
+Type 2 .Namely,F Type there exist entities e 1 and e 2 at times t 1 and t 2 , respectively, such that Id ( e
+De fi nition 6. The schema  X  of a spatio-temporal database is a tuple ( tables, respectively.  X  sets so that it is easy to distinguish between entity and filiation tables. A database instance D will be a set of tuples belonging to both relations above for each type of table. We will refer to the combination of the schema denote it by M =  X   X  , D  X  . 3.2. Mapping database and graph representations relations between entities of types Type 1 and Type 2 . 3.2.1. From database to graph Given a set U of attribute values, a time domain T , a set of topological relations spatio-temporal database M =  X   X  , D  X  , with schema  X  =( define a spatio-temporal graph G =( V , E  X  , E  X  ):  X  V ={( e , t )|E( id , t , u 1 , ... , u n , g )  X  D , E[ID, Time, U
+Geom ( e , t )= g , Type ( e )=E}.  X  E ={((e 1 , t 1 ), T,( e 2 , t 2 ))|{E 1 ( id 1 , t 1 , u 1
+R ,T( g 1 , g 2 ) 4 ,T  X   X  , and e 1 and e 2 are entities with Type ( e
+Type ( e 2 )=E 2 , Id ( e 2 )= id 2 , U 1 ( e 2 , t 2 )= v  X  E
+ X  ={(( e 1 , t 1 ),  X  ,( e 2 , t 2 ))|F E 1 E 2 ( id 1 , t
+Type ( e 2 )=E 2 } 5  X  {(( e , t 1 ),  X  c ,( e , t 2 ))|E( id , t 3.2.2. From graph to database Given a U of attribute values, a time domain T , a set of topological relations spatio-temporal graph G =( V , E  X  , E  X  ), where for each ( e , t ) define a spatio-temporal database M 1 =  X   X  , D  X  with  X  =(  X  R  X  ={E[ID, Time, U 1 , ... ,U n , G]|( e , t )  X  V , Type ( e )=E, entity e has n functions U time instant, and return a value in U }.  X  R  X  ={F E
+The database instance D for schema  X  is the union of the following sets:  X  {E( id , t , u 1 , ... , u n , g )|( e , t )  X  V , Type ( e )=E, Id ( e )= id ,E[ID,Time,U  X  {F E they exist. It is possible to relax this condition by including alternative transformation rules. 1. Cleaner data : Consider the case in which (( e 1 , t 1 transformation to the database and then back to the graph would remove that tuple from E entities, more information can be added.
+ up with the same initial database.
+
+Example 2. Fig. 4 shows the spatio-temporal database M 1 = Example 1 , where the geometries of entities in the graph are theones shown in Fig. 1 .In geometric attribute representing the geometry of the region. (ii) A filiation table F derivation relations between regions.  X  optimization of the spatio-temporal database with respect to redundancy.
+De fi nition 7. Given a set U of attribute values, a time domain and two spatio-temporal database M 1 =  X   X  1 , D 1  X  and M (i) The union of spatio-temporal databases , denoted M 1  X  M (ii) Given a filiation table F E Example 3. Cont. example 2.
+ In addition to the spatio-temporal database M 1 of Example 2 , consider a database The database M 2 represents part of the evolution of provinces in Chile from 1925 to 2007.
+ X  Year 2 ] for derivation relations between provinces. In addition, consider a filiation table F F The join of the database whose instance is shown in Fig. 7 is denoted by relations implicitly in the spatio-temporal database, the join of regions and provinces.  X  processing on graphs can be adapted to this model. 4. Consistency of spatio-temporal databases database. 4.1. Integrity constraints dependent and impose conditions over the filiation relations. 4.1.1. Model constraints [MC] database.
+ filiation table F E relations can only exist between different entities existing with a temporal order as a shorthand for u 1 , ... , u n , and  X  =v  X  is a shorthand for u attribute in the table.
+
+De fi nition 8. MC.
+
+Given a spatio-temporal database M =  X   X  , D  X  with  X  ={ R 1 For every E|ID, Time, U 1 , ... ,U n ,G]  X  R  X  , an instance D c(PK): 2. For every filiation table F E instance D should satisfy the following foreign key (FK): 3. For every F E 4.1.2. Spatio-temporal semantic constraints [STSC]
+So far, we have restricted ourselves only to continuation relations (
+Given entities E 1 ( id 1 , t 1 ,  X  1 , g 1 ), E 2 ( id 2  X 
+E 2 ( id 2 , t 2 ,  X  2 , g 2 )isan expansion of E 1 ( id 1 , t geometry expands.  X 
+E 2 ( id 2 , t 2 ,  X  2 , g 2 )isa contraction of E 1 ( id 1 geometry contracts.
+  X 
+E ( id 1 , t 1 ,  X  1 , g 1 ) splits into E 2 ( id 2 , t 2 , with id 1 ceases to exist after the split and that entities with id t ,  X  2 , g 2 ) and E 3 ( id 3 , t 3 ,  X  3 , g 3 ), then ( id  X 
+E ( id 2 , t 2 ,  X  2 , g 2 )isa separation of E 1 ( id 1 , t  X 
+E ( id 1 , t 1 ,  X  1 , g 1 )andE 2 ( id 2 , t 2 ,  X  2 , g 2 g
+This filiation relation is represented in the spatio-temporal database by ( id  X 
+The annexation of E 1 ( id 1 , t 1 ,  X  1 , g 1 )toE 2 ( id database by ( id 1 , t 1 ,  X  an , id 2 , t 2 )  X  F E into several entities, or to merge several entities into one. (  X  sp ), separation (  X  se ), merging (  X  me ), and annexation ( Example 4. Splitting.
+ following constraints: sp 1 : 8  X  (E( id 1 , t  X  ,  X   X  , g  X  )  X  F E E ( id 1 , t sp 2 : 8  X  (E( id 2 , t  X  ,  X   X  , g  X  )  X  F E E ( id 1 , t sp 3 : 8  X  (E( id 1 , t 1 ,  X  1 , g 1 )  X  E( id 2 , t 2 , GeomUnion ({ g 2 , g 3 })).
+ associated with the same entity in a time later than t 1 ; constraint sp geometry of the original object is equal to the union of the geometries of the two new entities. Example 5. Separation.
+ following constraints are needed: se 1 : 8  X  (E( id 2 , t  X  ,  X   X  , g  X  )  X  F E E ( id 1 , t se 2 : 8  X  E( id 1 , t 1 ,  X  1 , g 1 )  X  E( id 1 , t 2 ,  X  original geometry of id 1 is equal to the geometric union of geometries of id Example 6. Merging.
+ entity of id 2 , the following constraints are needed: me 1 : 8  X  (E( id 1 , t  X  ,  X   X  , g  X  )  X  F E E ( id 1 , t me 2 : 8  X  (E( id 2 , t  X  ,  X   X  , g  X  )  X  F E E ( id 1 , t me 3 : 8  X  (E( id 1 , t 1 ,  X  1 , g 1 )  X  E( id 2 , t 1 ,
+F E E ( id 1 , t 1 ,  X  me , id 3 , t 2 )  X  F E E ( id 2 , t
+Constraint me 1 ensures that after merging, the original entities cease to exist; constraint me two entities from it is derived.  X  Example 7. Annexation.
+ and id 2 , we need the following constraints: an 1 : 8  X  (E( id 1 , t  X  ,  X   X  , g  X  )  X  F E E ( id 1 , t an 2 : 8  X  (E( id 1 , t 1 ,  X  1 , g 1 )  X  E( id 2 , t 1 ,
+Constraint an 1 ensures that the entity that is annexed ceases to exist; and constraint an id 2 is equal to the geometric union of the geometries of id specific ones follows.
+De fi nition 9. STSC.
+ Given a set U of attribute values, a time domain T , a set of topological relations the following spatio-temporal semantic constraints ( STSC ) over it: 1. Identity-existence dependency (IED): another entity, then it may not continue existing. These constraints are formalized as follows: where E 1 and E 2 are not necessarily different entity tables in 2. Topological-filiation dependency (TFD): different types of derivation relations. Formally, where E i  X  R  X  for all i  X  [1, n ]; F E just a subset of them.  X  { g constraints can formalize several other types of filiation relations. particular to the spatio-temporal database.
+
+A spatio-temporal database M =  X   X  , D  X  satisfies a set of integrity constraints satisfied by D . 4.2. Satis fi ability of integrity constraints spatio-temporal databases.
+
+De fi nition 10. Given a spatio-temporal schema  X  , a set of integrity constraints spatio-temporal database M =  X   X  , D  X  such that D  X   X  and D satisfiable.  X 
+Proof. Given a schema  X  =( R  X  , R  X  ) and a set of constraints
+D contains only one tuple in any entity table E[ID, Type, U and one in a filiation table.
+
+De fi nition 11. Given a spatio-temporal schema  X  , a set of integrity constraints exists a spatio-temporal database M =  X   X  , D  X  such that: (i) D contains a tuple in the entity table E; and (iii) there exists F filiation table F E As the following example shows, not all sets of MCs and STSCs are strongly satisfiable.
+Example 8. Consider a schema  X  =( R  X  , R  X  )with R  X  ={E  X  ,ID 2 , Type 2 ]} and the following set of constraints  X  :
+Constraints (1)  X  (4) correspond to MCs and (5)  X  (6) to STSCs with exists a database instance, say D e , with at least one tuple in F constraint (3) tuples {E 1 ( id 1, t 1 , u 1 , ... , u n , g
+E ( id 2 , t 2 , v 1 , ... , v m , g 2 )}  X  D e , which triggers constraints (5) disjoint. Though the set  X  of constraints is not strongly satisfiable. exist subsets of constraints for which checking consistency can be done in polynomial time. 4.3. Checking consistency of a spatio-temporal database section concentrates on techniques for checking MCs of type FC and STSCs. 4.3.1. Naive approach that F E check if  X  is satisfied would be:
+If Q FC (  X  ) is empty, this means that the database instance satisfies constraint in the answers to Q FC (  X  ), this implies that  X  is not satisfied and that either id for  X  .
+ similar queries can be combined. 4.3.2. Optimized approach temporal comparison, but over different values for derivation relations.
+Consider F E them. Let the set {  X  1 , ... ,  X  m } be the values for attribute in  X  is:
+A very similar check-query is possible for an IED-2. For IED-2, the check-query replaces E statements and the F E  X  applied.
+ form: where {E 1 ,E 2 } R  X  ;{F E the identity and, therefore, we replaced  X  1 ({ g 1 }) by g
+Now, let us consider F E
+TDF-1 constraints. Then, a Spatial SQL check-query for constraints of the form (TDF-1) in entities.
+ same form, but with different derivation relations, into one check-query. 5. Consistency checking experimental evaluation shows the number of parcels existing at each time instant. artificially add some relations by considering some particular relationships between geometries. cadastral information of parcels. Finally, the results of our experiments are presented. 5.1. Spatio-temporal database generation
+R ={Parcel[ID, Time, G]} and R  X  ={F Parcel Parcel [ID 1 , Time simply by P and F P P , respectively.
+ these database instances share the same P table but have different filiation relations in table F previous time instants.
+ of the geometry of parcels in consecutive time instance and a parameter of filiation relations. For every  X  , we denote by F P P ( database instance that contains the instance for table P and F the entity table P: 1. If PPi( g i , g j ) and not EQ( g i , g j ), then ( id 2. If PO( g i , g j ), Area ( g i )&gt;Area ( g j ) and Area (Intersection( g 3. If PP( g i , g j ) and not EQ ( g i , g j ) then ( id i 4. If PO( g i , g j ) and Area( g j )&gt;Area( g i ) and Area(Intersection( g consider that there is a relation  X  se and  X  an . Different values of different entities. Table 2 describes the properties of the spatio-temporal database instances D 0.5,  X  =0.7 and  X  =0.9, respectively. 5.2. Integrity constraints contain: 1. Identity-existence dependency (IED):  X  1 : P i 1 ; t 3 ; g 2  X  X   X  F P P i 1 ; t 1 ;  X  sp ; i 2  X  2 : P i 1 ; t 3 ; g 2  X  X   X  F P P i 1 ; t 1 ;  X  me ; i 2  X  3 : P i 2 ; t 3 ; g 2  X  X   X  F P P i 1 ; t 1 ;  X  sp ; i 2  X  4 : P i 2 ; t 3 ; g 2  X  X   X  F P P i 1 ; t 1 ;  X  me ; i 2 way the database instance is constructed guarantees that these constraints are satisfied. 2. Topological-filiation dependency (TFD):  X  5: 8 P i 1 ; t 1 ; g 1  X  X   X  P i 2 ; t 2 ; g 2  X  X   X  P i 3  X  6: 8 P i 1 ; t 1 ; g 1  X  X   X  P i 2 ; t 1 ; g 2  X  X   X  P i 3  X  7:  X  P i 1 ; t 1 ; g 1  X  X   X  P i 2 ; t 2 ; g 2  X  X   X  P i 3
+F P P i 1 ; t 1 ;  X  sp ; i 6 ; t 2  X  Equals g 1 ; GeomUnion g  X  8: P i 1 ; t 1 ; g 1  X  X   X  P i 2 ; t 1 ; g 2  X  X   X  P i 3 ;
+F P P i 5 ; t 1 ;  X  me ; i 6 ; t 2  X  X   X  Equals g 6 ; GeomUnion g  X  separation and annexation and are helpful to illustrate other forms of TFD. Finally, constraints of Examples 4 and 6 of splitting and merging which are adapted to the context of our application. 5.3. Experimental results Intel Xeon QUAD core E5620 (2.40 GHz/12 MB cache L3) and 32 GB RAM. and to keep consistency in the notation, Q TFD-3 ( X ) and Q TFDs particular to this application and were not previously defined. check-queries of type Q TFD-1 ( X ).
+ semantic levels. 6. Conclusion and future work pursued and applied to the cadastral domain.
+ Acknowledgments Lausanne, who provided the cadastral data for the experimental evaluation.
+References

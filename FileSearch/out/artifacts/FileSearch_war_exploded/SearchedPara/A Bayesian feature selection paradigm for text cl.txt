@@ -1,0 +1,58 @@
+ 1. Introduction documents.
+ where a common lexicon-based approach is Backward Maximum Matching (BMM). Then, every document is represented as selection methods are urgently needed to reduce the size of feature set.
+  X  method was given by Rogati and Yang (2002) . However, the method may deteriorate when the categories are extremely bined the back-propagation neural network (BPNN) method with the semantic feature space (SFS) method. However, this (1983) .
+
+In this paper we will seek some alternative method to overcome the difficulties encountered by previously mentioned a Bayesian feature selection paradigm for text classification.
+
+Booth, Casella, and Hobert (2008) . Given a training set of short documents: D X f d vector of binary attributes indicating whether terms occur or not in document d select the relevant features. Let the latent p -vector, D =( d output of a feature selection task is an index, D . However, suppose that there is an objective function, p : P a straightforward optimization problem of finding the value of D with the highest score. parameters.
+ tering by Tadesse, Sha, and Vannucci (2005), Kim, Tadesse, and Vannucci (2006) . and results. We conclude the paper with a brief discussion in Section 7 . 2. Background which is dichotomized at 40.
+ we can calculate the posterior distribution by where pr ( M k ) is the prior probability of model k , and f ( Data j M where h k is the parameter of M k , and f ( h k j M k ) is its prior probability. A conjugate prior for h which is a mode of the posterior distribution in (1).  X  X  X orgotten X  X , and we say the chain has  X  X  X onverged X  X . Then { M ( t ), t = M the distribution pr ( M k j Data ). 3. Model-based objective functions 3.1. The generative probabilistic model
+In statistics, generative models are used to generate random sample, while in machine learning they are used to mod-characteristics.
+
+Given a training set, D X f d 1 ; d 2 ; ... ; d N g ; d i  X  X  x distributions: where pr ( c i ) is the mixture weight, f  X  x i j h c i  X  is the document generation density of an observation, x is the parameter vector of the c i th generation density corresponding to category c gory k for k =1, ... , G .
+
+The generative model states that: each piece of data d i =( x this has been done, then our training set could be rewritten as G separate categories in Table 1 . 3.2. Identifying the relevant features identically distributed in all categories.
+
+To identify the relevant features, we introduce a latent p -vector, D =( d feature defines a mixture distribution and d j = 0 otherwise. We use ( D ) and ( D respectively. Thus, in each category k , we decompose x i where C k  X f x i j c i  X  k ; i  X  1 ; ... ; N g with cardinality N variables.
+
+Here we will adopt the same notations as in Liu, Neuwald, and Lawrence (1995) . For vectors a =( a ( b , ... , b n ) T , integer k and gamma function C ( ), define ab  X  X  a  X  k a 1 ; ... ; k a n  X  T , and a k  X  a k 1 ; ... ; a k n
+Then, the conditional likelihood is given by 3.3. Prior formulation and choice of hyperparameters
+Recall that D =( d 1 , ... , d p ) T . Assume that d j s are independent Bernoulli random variables:
+Thus the number of features in the model, p D  X  P p j  X  1 the proportion of variables expected a priori to discriminate the different classes.
+For the Bernoulli parameter vectors, we specify the conjugate prior by product Beta distributions, k =1, ... , G , Each N k , j and N k N k , j should have 1 added to it to avoid the zero cases. noulli parameter vectors are also product Beta distributions, section. 3.4. The posterior density
+After some algebras (see the Appendix for details), we have the following: where
+This yields our proposed objective function for out feature selection problem: 4. Stochastic search
+Once we have constructed an objective function p : P p ! R problem. The reason is that the total number of possible feature indices is 2 intractable. Therefore, a more intelligent search algorithm is required.
+
+Our posterior samples for D are obtained using Metropolis moves, which was suggested for model selection by Madigan 1. Add / delete . Randomly choose one of the p indices in D 2. Swap . Choose independently and at random a 0 and a 1 in D
+The new candidate, D new , is accepted with probability 5. Posterior inference while the latter identifies the features with the marginal posterior probabilities, pr ( d threshold a . 6. Experiments 6.1. Effectiveness measures ture observation, x f , the predictive density is given by tion p ( D ) needs to be specified in our feature selection framework.
+ item actually belongs to). Then we have and the harmonic mean of recall and precision: positives, false negatives, true negatives: tp k , fp k , fn 2002 ): imental section were created in Matlab R2007a. 6.2. Feature selection to choose the threshold for these methods.
+ In our comparison experiments, we first obtained the number of selected features p feature scores in descending order for each method. A  X  X  X ut X  X  indicates that the feature set, was selected. 6.3. The data sets public hotline (MPH) data set. Let us first describe the two data sets. 6.3.1. RCV1-v2 data set
+Machine Learning Research. We used the LYRL2004 split to separate the 804,414 documents into 23,149 training and 781,265 test documents. There are 46,933 features (stemmed words) occurring in one or more training set documents.
+For more details, see Lewis et al. (2004) . Based on the vector space model, each document was represented by a 46,933-dimensional vector where x i , j = 1 if the j th term occurred in document d ary classification problems. Then the sufficient statistics for category k are
+To save computing time, we chose the categories with 100 or more samples on the training set ( k : N egories and 56 Region categories with 100 or more training samples, which are quiet sufficient for our experiment. 6.3.2. The Mayor X  X  public hotline (MPH) data set important to reduce the feature set size in order to improve the classification performance. ments. Table 2 shows the numbers of call record documents held by each department: A subset of 8657 records was ran-numbers and punctuation with spaces in the Chinese documents, and removed function words and holiday words using an open large lexicon. Then the traditional Backward Maximum Matching (BMM) approach was used to segment these doc-remained.
+
+Based on the vector space model, each document was represented by a 23,371-dimensional vector where x i , j = 1 if the j th term occurs in document d i 6.4. The effectiveness of varying the parameter values To identify the relevant features, we introduce a feature index vector where d j = 1 if the j th feature is relevant and 0 otherwise.
+ and (4) , respectively. The following values were employed: 6.4.1. RCV1-v2 data set
+Figs. 2 and 3 show the summary traces for the number of selected features and the corresponding marginal posterior We will discuss the effectiveness of varying values of / and log10( h ) in the following. ence. We ran 600,000 iterations with the first 300,000 used for burn-ins for each category.
+Fig. 3 displays the histograms of the corresponding marginal posterior probabilities, pr ( d build our classifiers. Figs. 4 X 6 show the selected feature rate with different choices of / and log10( h ).
+Recall that / is the prior probability of d j = 1 for j =1, ... , p , and p expected a priori to discriminate between the different classes, where p the minimum are less than 0.075 for Topics C 1 C 4 . For Topic C less than 0.05, and the deviations between the maximum and the minimum are less than 0.05 for Industries C maximum and the minimum are almost less than 0.05 for Regions C the final feature selection result. nomenon has also been observed for h . In the following experiments, we will fix log10( h )= 30. 6.4.2. The Mayor X  X  public hotline data set ations was run with the first 150,000 used for burn-ins.
+
+Figs. 7 and 8 show the summary traces for the number of selected features and the corresponding marginal posterior We will discuss the effectiveness of varying values of / and log10( h ) below. model with the desired features. We can then treat the latter part of D s as samples from f ( D j X , C ).
+Fig. 8 displays the histograms of the corresponding marginal posterior probabilities, pr ( d posterior probabilities larger than 0.8 to build our classifiers.
+ feature rate increases when / increases, and the deviation between the maximum and the minimum selected rate is less than 0.027. The results are not sensitive to the prior information / .
+ sented based on the future classification performance. 6.5. The results 6.5.1. RCV1-v2 data set ( k : N classifiers. The CHI, IG, and DF  X  X  X ut X  X  methods were used for comparisons. category, in which more than 2000 features are selected.
+ made.
+ the whole range of all 3 category sets, and also outperforms the  X  X  X ut X  X  methods.
+Fig. 16 shows the smoothed F1 values. Again our method improves the smoothed F1 for almost the whole range of all equally in our model, but the F1 values focus on the classification results of positive samples. with the accuracy values. 6.5.2. The Mayor X  X  public hotline data set accuracy.
+ shown for different values of log10( h ). Table 4 shows the cases when log10( h ) is between 10 and 50.
+Our feature selection method improves the accuracy value by more than 6% with about 10% of features, compared to the whole dimensionality, except in the extreme cases when log10( h )= 100 and 300. When log10( h )= 30, 1942 features accuracies than the others when log10( h ) is between 10 and 50.
+ dimensionality, and worked better than the other methods except in the extreme cases. 6.6. Summary of the experiments
+From the previous empirical study, we can see that our model-based feature selection method can sharply reduce the useful for in practice for feature selection in text classification.
+ mation, and is quite robust. Some care should be taken when choosing the value of h . 7. Conclusion and discussion ject in Changchun and much labor and material resources were saved.
+
+Our method is fully Bayesian and we provide standard default recommendations for the choice of priors. We experi-utes for a standard personal computer to apply our method to a similar sized data set in Matlab. hotline project data set. The accuracy value was directly related to the dispatch efficiency. The well-known corpora run multiple times for each category, and the future classification performance was improved. However, the two-class mands in this feature selection framework in the future work, and the idea of the generative model may be used to describe the text generation mechanism.
+ Acknowledgements
+This research was partially supported by the National Natural Science Foundation of China (Grants 10871038, 10926186 and 11025102), the National 973 Key Project of China (Grant 2007CB311002), Jilin Project (20100401), HK RGC Grants
+HKUST6011/07P and HKUST6015/08P. The authors wish to thank the Editor, an Associate Editor and two referees for very helpful comments and constructive criticisms which have helped improve the paper a great deal. Appendix A
+In this appendix, we give details of the derivation of the marginalized full conditional: References

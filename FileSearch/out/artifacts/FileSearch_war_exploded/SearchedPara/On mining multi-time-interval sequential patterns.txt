@@ -1,0 +1,65 @@
+ 1. Introduction turns to buy a scanner and a microphone after buying a computer.
+ of items precisely.
+
+CD burner in six months, or (b) a customer revisits website A within a week and website B after three weeks.
+Initially, we assume that the intervals are defined as ti finally, after an interval of ti 1 , d is rented.
+ h a , ti 1 , b , ti 1 , c , ti 1 , d , ti 1 , a i indicates that the time-interval between items a and b is ti icant challenge of mining time-interval sequential patterns.
+ items in the pattern. For example, we may have a multi-time-interval sequential pattern h a , ti ti respectively.
+
+Finally, conclusions are drawn in Section 6. 2. Related work patterns, (6) sequence classification [11], and (7) mining fuzzy sequential patterns [4,7]. mulation they proposed can be made identical to most existing formulations that involve time constraints. vance the research of mining time-interval sequential patterns. 3. Problem definition h ( a 1 , t 1 ),( a 2 , t 2 ),( a 3 , t 3 ), ... ,( a n , t n ) i , where a stamp, but can occur multiple times with the different time stamps.
+Let t represent the time-interval between two items, and let T the number of time-intervals. The time line is divided into r ranges as follows: ti 0 denotes the time-interval t satisfying t =0. ti 1 denotes the time-interval t satisfying 0 &lt; t 6 T 1 ti j denotes the time-interval t satisfying T j 1 &lt; t 6 ti r denotes the time-interval t satisfying T r 1 &lt; t 6 ping partition of the time domain, and let the inequality ti be defined as follows:
+Definition 1. Let I ={ i 1 , i 2 , ... , i m } be the set of items and TI ={ ti
+B = h b 1 ,&amp; 2 , b 2 ,&amp; 3 , ... , b s 1 ,&amp; s , b 1. b i 2 I for 1 6 i 6 s . 2. &amp; i is a list of time-intervals, where its size is i 1 for 2
+TR b w b i 2 TI denotes the time-interval between b w and b
+For ease of reference, we define an index system &amp; i  X  m ; n  X  X  X  TR in a multi-time-interval sequence B = h b 1 ,( ti 1 ), b 2 (1) &amp; 2  X  1 ; 1  X  X  X  ti 1  X  X  X  TR b 1 b 2  X  means that a time-interval between b (2) &amp; 3  X  1 ; 2  X  X  X  ti 2 ; ti 1  X  X  X  TR b 1 b 3 ; TR b (3) &amp; 4  X  1 ; 3  X  X  X  ti 2 ; ti 1 ; ti 1  X  X  X  TR b 1 b 4
+We also can acquire other multi-time-intervals, such as: &amp; by assigning different m and n . A multi-time-interval sequence satisfies the following property:
+Property 1 ( Descending property ). The time-intervals in &amp;
+In the example above, &amp; 4  X  X  ti 2 ; ti 1 ; ti 1  X  X  X  TR than the time-interval between b 2 and b 4 , and so on. Therefore, it satisfies TR
+Definition 2. Let A = h ( a 1 , t 1 ),( a 2 , t 2 ),( a 3 interval sequence. B is contained in A if there are integers 1 1. b 1  X  a j 1 ; b 2  X  a j 2 ; ... ; b s  X  a j s . 2. t j i t j k is in the time interval of &amp; i  X  k ; k  X  for 2
+For example, the multi-time-interval sequence h a ,( ti 1
+A = h ( a ,1),( b ,3),( c ,5),( d ,6),( e ,8) i , where ti
+Definition 3. A multi-time-interval sequence C  X h c 1 ; &amp; sequence B = h b 1 ,&amp; 2 , b 2 ,&amp; 3 , ... , b s 1 ,&amp; 1. c 2. &amp; 0 m  X  X  TR b i
+For example, a multi-time-interval sequence C = h a ,( ti
+B = h a ,( ti 1 ), b ,( ti 2 , ti 1 ), c ,( ti 2 , ti 1 , ti 1. b i 1  X  a ; b i 2  X  b ; b i 3  X  d ; where i 1 =1, i 2 = 2 and i 2. &amp; 0 2  X  X  ti 1  X  X  X  TR ab  X  and &amp; 0 3  X  X  ti 2 ; ti consider a multi-time-interval sequence B : h b ,( ti 1 ), e ,( ti h e ,( ti 2 ), c i , h b ,( ti 3 ), c i , h b ,( ti 1 ), e ,( ti h b ,( ti 3 ), c i }, and B  X  X  3-subsequences are { h b ,( ti follows:
+Example 1. Consider the sequential database shown in Fig. 2 with TI ={ ti 3&lt; t 6 6, ti 3 :6&lt; t 6 1 . The 3-multi-time-interval sequence ( b ,( ti
+Therefore, its support is 75%. If minimum support ( min _ sup ) is 50%, then h b ,( ti pattern in the sequence database.
+ ingly, if a multi-time-interval sequence is not frequent, then its super sequence will not be either. 4. Algorithms second algorithm, the MI-PrefixSpan algorithm. Sections 4.1 and 4.2 introduce these two algorithms. 4.1. The MI-Apriori algorithm
+L tially scanning the database determines the supports of all sequences in C erate L k . To accomplish this, C k is derived by applying the function MI-Apriori _ gen ( L scanning the database and deleting all infrequent multi-time-interval sequences. (1) the method to generate C k and (2) the method for computing their supports. 4.1.1. Candidate generation method
+We will first discuss the generation of C 2 , and then discuss the generation of C
+The generation of C 2 can be accomplished by joining L 1 with L
+For example, suppose ( b ) and ( c ) are in L 1 and TI ={ ti { h b ,( ti 0 ), b i , h b ,( ti 1 ), b i , h b ,( ti 2 ), b i , h c ,( ti In summary, C 2 can be expressed as L 1 TI L 1 , where denotes joining.
+Next, consider the generation of C k . Let B = h b 1 ,&amp;
+If two subsequences of B that take the first and the last item away from B exist in L sequences will be a candidate for L k . Let there be two ( k 1)-sequences: l h b ; &amp; 0 3 ; b 3 ; &amp; 0 4 ; ... ; b k 1 ; &amp; 0 k ; b l and l 2 will produce h b 1 ,&amp; 2 , b 2 ,&amp; 3 , ... , b time-intervals on generating  X  TR b 1 b k  X  , which are unnecessary to be included in C phase to remove them. First, the descending property indicates that the time-intervals in each &amp; didates without satisfying this property would not be generated in C intervals for TR b 1 b k . In other words, if an interval does not overlap with  X  TR be a time-interval for  X  TR b 1 b k  X  . For example, the combination of ti with ti 1 (0 &lt; t 6 3) and ti 2 (3 &lt; t 6 6), but disjoints with ti tion matrix constructed for the time-intervals in Example 1 .
+
+Below, we give an example to explain the whole process of the generation of C
+Example 2. Suppose we have TI ={ ti 0 , ti 1 , ti 2 , ti 3 generation phase, there exist at most four possible candidates: h b ,( ti ( ti , ti 2 , ti 1 ), e i , h b ,( ti 1 ), c ,( ti 1 , ti 1 ), d ,( ti erty. We find that two of them can be excluded and the remaining ones are h b ,( ti h b ,( ti 1 ), c ,( ti 1 , ti 1 ), d ,( ti 3 , ti 2 , ti 1 c ,( ti 1 , ti 1 ), d ,( ti 3 , ti 2 , ti 1 ), e i is infeasible because ti ( ti , ti 1 ), d ,( ti 2 , ti 2 , ti 1 ), e i can be considered in C inate a candidate in C k if any of its ( k 1)-subsequences are not in L 4.1.2. Support counting method 4.2. The MI-PrefixSpan algorithm database are given.
+
+Definition 4. Let A = h ( a 1 , t 1 ),( a 2 , t 2 ),( a 3 h b ,&amp; 2 , b 2 ,&amp; 3 , ... , b m 1 ,&amp; m , b m i ( m 1. b i = a i for 1 6 i 6 m and 2. t i t k is in the time-interval of &amp; i ( k , k ) for 2 6 to as a k-prefix .
+
+Definition 5. Let A = h ( a 1 , t 1 ),( a 2 , t 2 ),( a 3 multi-time-interval sequence contained in A . Let i 1 &lt; i
+B . A data subsequence A 0 : h X  a 0 1 ; t 0 1  X  ;  X  a 0 2 to B if and only if: 1. B is a prefix of A 0 and 2. the last n i s elements of A 0 are the same as the last n i times corresponding to positions in p .
+ are obtained: [sid,(1),(1)]: h ( a ,1),( b ,3),( c ,3),( a ,5),( e ,5),( c ,10) i . [sid,(4),(5)]: h ( a ,5),( e ,5),( c ,10) i .
+Similarly, if A is projected with B = h a ,( ti 1 ), b ,( ti
+Definition 6. Let A 0  X h X  a 0 1 ; t 0 1  X  ;  X  a 0 2 ; t 0 b ,&amp; 3 , ... , b s 1 ,&amp; s , b s i . Then k  X h X  a 0 s  X  1 a to form a multi-time-interval sequential pattern a 0 , and then construct the a 0 -project database S j 0 algorithm is shown in Fig. 5 .
+ the supports of these candidate patterns. First, we consider how to construct a 0 -project database S j a is a frequent pattern that we previously used to project the database, c denotes a frequent item in S j new projected database S j a 0 can be constructed by reading every sequence A in S j k into S j a 0 . The algorithm for constructing a 0 -project database S j
+Example 3. Consider the sequence database shown in Fig. 2 with TI ={ ti 6&lt; t 6 1 , and with min _ sup = 50%. If a = h a i , the a  X  X roject database S  X  [10,(1),(1)]: h ( b ,3),( c ,3),( a ,5),( e ,5),( c ,10) i . [10,(4),(5)]: h ( e ,5),( c ,10) i . [20,(2),(7)]: h ( b ,7),( e ,7),( d ,8),( e ,8),( c ,14),( d ,15) i . [30,(1),(8)]: h ( b ,8),( e ,11),( d ,12),( b ,13),( c ,13),( c ,16) i .
+Let a 0 = h a ,( ti 1 ), e i . Then we can construct the a 0 -project database S j results are given below. [20,(2,6),(7,8)]: h ( c ,14),( d ,15) i . [30,(1,3),(8,11)]: h ( d ,12),( b ,13),( c ,13),( c ,16) i .
+ relationships of items are complicated, we use a table, named table , to record the supports. Let a = h b b row corresponds to a multi-time-interval relationship in &amp; identify all multi-time-interval candidate patterns of a 0 = h a ,&amp; of C infeasible candidates before the support counting process.
+
+Example 4. Suppose a = h a ,( ti 1 ), e i , and { c , d } are frequent items c in S j information matrix, secondly, the final candidate set is shown in Fig. 7 c.
+Next, we consider how to count the supports of the cells in table . Cell (&amp; in S j a that contain item c and the time differences between this item and the items preceding a match &amp;
+Example 5. The table for a = h a ,( ti 1 ), e i is shown in Fig. 7 c and the h a ,( ti [20,(2,6),(7,8)]: h ( c ,14),( d ,15) i . [30,(1,3),(8,11)]: h ( d ,12),( b ,13),( c ,13),( c ,16) i .
+ To determine the supports, these two sequences should be processed.
+In [20,(2,6),(7,8)]: h ( c ,14),( d ,15) i , c occurs in position 1 ( p the time-interval &amp; 3 (1,1) = ti 3 and time t 2 =14 8 = 6 is in the time-interval &amp; of table (( ti 3 , ti 2 ), c ) and go to the next sequence with a different sid .
+In [30,(1,3),(8,11)]: h ( d ,12),( b ,13),( c ,13),( c ,16) i , c occurs in position 3 ( p t 1 =13 8 = 5 is in the time-interval &amp; 3 (1,1)= ti 2 1 to the cell of table (( ti 2 , ti 1 ), c ). When p i =4, time t t 2 =16 11 = 5 is in the time-interval &amp; 3 (2,2) = ti sequence with a different sid .
+
+After scanning all of sequence s i in S j h a ;  X  ti 5. Empirical evaluation Java execution environment.
+ efficient only when the original database or the projected database can fit in main memory. supports of all candidate patterns in a single stage, the anti-monotonocity property cannot be adopted here. 5.1. Synthetic datasets to those in the same itemsets. A value w is drawn from a Poisson distribution with mean T tribution with mean w .
+ parameters are fixed: N = 10000, N S = 5000, N I = 25,000, T initially collected to determine the set TI . These values are separated into five equal depth intervals ti which each contains roughly the same amount of data. The resulting set is TI ={ ti datasets in Table 2 are used for comparison.
+ and 10 summarize the run time of these seven algorithms with the following results: run times. min _ sup decreases. This phenomenon can be easily explained. Suppose we have a k -sequential pattern without time-intervals and there are r different types of time-intervals. From this pattern we can generate r C exponentially with the number of traditional sequential patterns.
+ the MI-PrefixSpan algorithm, and both time and space are significantly reduced. amount of data). Accordingly, time-interval sets TI -3 = { ti ti the candidate patterns to decrease, which in turn generates fewer patterns. 5.2. Real datasets as an item. In TW-STOCK, it contains 11 different kinds of items and all data-sequences are equal-length.
+We first use the SC-POS to compare the run times. The min _ sup is varied from 2.0% to 3.0% and TI ={ ti where ti 0 : t =0, ti 1 :0&lt; t 6 6, ti 2 :6&lt; t 6 12, ti generalize the SC-POS dataset to a higher level of abstraction. The min _ sup is set to 10% and TI ={ ti ti : t =0, ti 1 :0&lt; t 6 20, ti 2 :20&lt; t 6 40, ti 3 :40&lt; t time-interval the items Canned Food and Natural Food have in a single-time-interval pattern h CF , ti time-interval approach can easily solve this problem and all the time-intervals can be found.
+Fig. 17 , where P denotes the percentages of week X  X  range of a stock price (i.e. distance is increasing. For example, the possible time-interval between itemset N cessive itemsets. 6. Conclusion term customer behaviors, helping us take appropriate actions beforehand. [28] to advance their algorithm X  X  performance drew the same conclusion as ours. applications.
+ Acknowledgements 020.
+
+References

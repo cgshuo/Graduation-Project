@@ -1,0 +1,52 @@
+ 1. Introduction in which retrieved documents are presented in a ranked way (e.g. in search engines). systems).
+ by retrieved that are relevant 3-expressions).
+ 1 R ,1 F ,1 M , hence they are known, once P , R , F and M are fully described.
+However, the description of the measures P , R , F and M is far from complete. What do we mean by (2000, in Chinese) and Deng et al. (2000, in Chinese) .
+ R ( M ).
+ interrelations between P , R , F and M . In Section 5 , the same is done for random retrieval. problems. 2. General IR model using the retrieval density function in the continuous case: then we suppose that H is differentiable and we denote H we have
+D t ! 0): indeed Hence h ( t ) 2 [0,1], for all t 2 [0, N ], by definition.
+ (in the next sections) the different retrieval types: retrieve all non-relevant documents and then the relevant ones. consider the full range t 2 [0, N ], where N = j X j ). function is constant here. F ( t ) and M ( t ) (and, later on, interrelations between P , R , F and M ). bership value of 1. The same is true for the set rel, the set of relevant documents. (keeping  X  2 [0, N ] fixed) 3. Perverse retrieval ristic findings and correct one of their results.
+
+Perverse retrieval is defined via the retrieval density function h as follows: that non-relevant documents are grouped first.
+ It is easy to see that Hence we have the following formulae, using (7) X (10) : For 0 6 t 6 N  X  this yields For t &gt; N  X  this yields We hence have obtained the graph in Fig. 1 .
+  X  0 : 1.
+ applies. Formula (21) yields which in (20) yields From Fig. 1 , the R ( F ), P ( M ), M ( R )and P ( F ) curves are straightforward  X  see Figs. 3 X 6 . which in (18) yields val case.
+
+We now study the  X  X  X ual X  X  case: perfect retrieval. 4. Perfect retrieval
+Perfect retrieval is defined via the retrieval density function as follows: It is easy to see that Hence we have the following formulae, using (7) X (10) : For 0 6 t 6  X  this yields For t &gt;  X  this yields These formulae yield the graph in Fig. 8 .
+ The graphs of P and R can be found in Buckland and Gey (1994) for  X  P ( R ) graph which is also appearing in Buckland and Gey (1994)  X  see Fig. 9 . Also the P ( M ), F ( M ) and R ( F ) graphs are straightforward from Fig. 8  X  see Figs. 10 X 12 .
+For the M ( R ) graph, note that if ( R , M ) 6  X  (1,0) then (32) and (34) apply. From (32) we have which in (34) yields which is a concavely decreasing function  X  see Fig. 13 .
+
+For the P ( F ) graph, note that if ( F , P ) 6  X  (0,1), then (35) and (37) apply. From (37) we have which in (35) yields which is a convexly decreasing function  X  see Fig. 14 .
+
+This ends the case of perfect retrieval. 5. Random retrieval
+Random retrieval is defined via the retrieval density function as follows: for all i 2 [0, N ]. Note that  X  domly picking a relevant document from X . It is clear that and hence we have the following formulae, using (7) X (10) :
+We now turn our attention to the most important retrieval type: normal retrieval. 6. Normal retrieval 6.1. The retrieval density function h (0) = 1, h ( N ) = 0 and h as depicted in Figs. 17 and 18 : h 000 &lt; 0 respectively h requirements on h 000 since we do not need them in the sequel. relations between P , R , F and M . 6.2. The properties of the functions P(t), R(t), F(t) and M(t) We start with a Lemma which will be applied twice further on.
+Lemma 6.2.1. Let for x 2 ]0,N] such that u (0) = 0. (i) If u 00 &lt; 0 and u 000 &lt; 0 then w is concavely decreasing (strictly). (ii) If u 00 &lt; 0 and u 000 &gt; 0 then w is convexly decreasing (strictly). (iii) If u 00 &gt; 0 and u 000 &lt; 0 then w is concavely increasing (strictly). (iv) If u 00 &gt; 0 and u 000 &gt; 0 then w is convexly increasing (strictly).
+Proof. From (47) it follows that iff
+If u 00 &lt; 0 then u 0 is strictly decreasing and hence (49) is proved since u i 2 [0, x ] and since the right hand side of (49) is the average of these u
+For w to increase strictly we need the opposite inequality sign in (48) which is so if u creases strictly, hence (49) with opposite inequality sign, hence w
+Since we have i &lt; x for $ x 0 2 [ i , x ]. Taking i = 0 we have, since u (0) = 0,
+So
+If u 000 &lt; 0 then (52) and (50) imply that w 00 &lt; 0, hence w is concave. If u is convex. h Based on (5) and (7) we have that where t 2 ]0, N ], H (0) = 0, H 0 ( t )= h ( t )&gt;0, H 00 according to the above Lemma, we have that P ( t ) is concavely decreasing. Of course, P  X  0  X  X  lim lim t ! &gt; 0 h  X  t  X  by de l X  X o  X  spital X  X  rule. So P (0) = h (0) = 1. Further P  X  N  X  X  the total number of relevant documents, hence  X  = j rel j . Note also that it follows from (48) that
+P Hence the graph of P ( t ) can be depicted as in Fig. 19 .
+ For R ( t ) we have, based on (5) and (8) that so that and so that R is concavely increasing. We even have that Note also that R (0) = 0 and R  X  N  X  X  h ( N ) = 0).
+ For F ( t ) we have, by (9) so that Note that F (0) = 0, F ( N ) = 1 (since in Fig. 21 .
+ Finally we study the graph of M ( t ). From (10) we have since  X   X  We have
+Now and
+For (60) and (61) we apply Lemma 6.2.1 .Wehave u (0) = 0 since t = N then. Furthermore, since we have that u 0 ( x )= h ( N x )= h ( t )&gt;0, u 00 ( x )= h
+According to the Lemma we have that the function x ! u  X  x  X  have that M ( t ) is concavely decreasing. Note that M  X  0  X  X   X  l X  X o  X  spital X  X  rule. Finally so that M 0  X  0  X  X   X  N We have the graph of M ( t )in Fig. 22 .
+ will study the interrelationships between these measures. 6.3. Interdependency results between the measures P, R, F and M straightforward and short and for the sake of completeness.
+ and y 00 (t) exist and such that x is injective in t. Then we have that the function x ! f(x) = (y differentiable and we have
+Proof. where t = x 1 ( x ) (i.e. x = x ( t )). Hence (63) follows. Further, by (63) whence (64) . h We will now use the above theorem to determine the inter measures relationships. Let us start with
+R ! P ( R ). We have P 0 ( t )&lt;0, P 00 ( t )&lt;0, R 0 P ( R = 0) = 1 and P  X  R  X  1  X  X   X  appeared already in Egghe (1992)  X  see also Gebhardt (1975) ).
+The next graph that we study is F ! P ( F ). We have P 0 ( t )&lt;0, P by (63) . However (64) does not give a clear sign for P 00 (in general). So, we can only conclude here that P ( F ) is a decreasing function of F .
+Now we study the function M ! P ( M ). We have P 0 ( t )&lt;0, P implies that P 0 ( M ) &gt; 0 but (64) does not give a clear sign for P
+Now we consider the function F ! R ( F ). We have R 0 ( t )&gt;0, R function of F . Figs. 20 and 21 also show that R ( F = 0) = 0 and R ( F = 1) = 1. Also, by (63) , R depicted as in Fig. 24 .
+
+Next we consider the function M ! R ( M ). We have R 0 ( t )&gt;0, R implies that R 0 ( M ) &lt; 0. Also (64) gives a decision: R decreasing function of M . Figs. 20 and 22 also show that R ( M =0)=1, RM  X   X 
+R  X  M  X  0  X  X  1 the graph of M ! R ( M ) can be depicted as in Fig. 25 .
+
+We, finally, study the case of the function M ! F ( M ). We have F one defines a type C variable as one leading to d 2 R in Robertson X  X  terminology.
+ function M ! R ( M ) is concavely decreasing, as generally shown above. 6.4. Counterexamples to concavity and convexity and illustration of the obtained results F ( t ) is convexly increasing and M ( t ) is concavely decreasing. and non-concave, showing that the above theory cannot be improved or extended. 7. Conclusions and open problems convex nor concave.
+ ([0,1] \ Q) 4 to represent the precision, recall, fallout and miss of an IR system. points ( P , R , F , M ) on this surface, which we leave here as an open problem. Acknowledgement References

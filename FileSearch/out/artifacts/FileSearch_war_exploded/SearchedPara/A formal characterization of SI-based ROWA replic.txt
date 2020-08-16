@@ -1,0 +1,140 @@
+ 1. Introduction dynamic content Web servers.
+ required by SI.
+ fate ( atomicity ). These two characteristics will be stated as Property P1 in this paper. con fl icting transactions ; and, ( P3 ) transactions read the latest items' version . The delaying the start of transactions [14] ; this fact voids one of the main advantages of the SI level. by a single primary replica. On the other hand, it is dif its updates in total order before such transaction is validated (according to the certi
+If the system wants to provide consistent snapshots while preserving the ordering of con to de fi ne a new condition ( P4 ) Total order of committed update transactions . P4 along with P1 are suf incorrect or incomplete, since in some cases the algorithm being followed in such protocols is suf of these properties.
+ and P4, or, P1, P5 and P6, respectively.
+
+Finally, conclusions end the paper. 2. Multiversion schedules paper, we will use the identi fi ers S t and H t in order to refer to schedules.
+A database ( DB ) is a collection of data items, denoted by upper case letters as X . A transaction T operations on database items ended by a commit or abort operation. Each T ( X )). The T i 's commit and abort operations are denoted C by the order  X  T of items read and, respectively, written by a transaction T could be applied to local variables.
+Let L be a set of transactions. In order to process operations from a transaction T translate T i 's operations on data items into operations on speci that maps each W i ( X ) into W i ( X i ), each R i ( X ) into R ordered set of multiversion operations. We assume that there exists an initial transaction T before any other transaction and initializes all data items X
+De fi nition 1 . Complete MV-schedule
+A complete multiversion schedule (MV-schedule) over a set of transactions L is a schedule H 1) H = h (  X  T 2) if p i , q i  X  T i and p i  X  T 3) if R i ( X j )  X  H then W j ( X j ), C j  X  H and t ( C item was read.
+ transaction. Finally, we assume that an MV-schedule is complete for the sake of simplifying de 3. Snapshot-based isolation levels
+In SI,  X  reading from a snapshot  X  means that a transaction T
+T will successfully commit if and only if there is not a concurrent transaction T snapshot at its start operation. Similarly to the SI case, GSI needs to avoid the lost-update anomaly.
+In the following, we formalize the concept of snapshot of the database. Let us de
+MV-schedule H t its associated commit time as c i = t ( C be the set of versions of a data item X in an MV-schedule H
+H at time  X   X   X  + is de fi ned as latestVer ( X , H t ,  X  )={ X
+De fi nition 2 . Snapshot
+Let H t be an MV-schedule over L . The snapshot of the database DB at time  X  X  X  DB latestVer ( X , H t ,  X  ) transactions T j and T i  X  L , and time  X   X   X  + :
+Note that this wcon fl ict () predicate uses  X  as the starting point of transaction T different starting points depending on the isolation level being assumed. Thus, a strict SI level needs use  X   X  b i as stated in the following de fi nitions.
+
+De fi nition 3 . GSI-schedule
+Let H t be an MV-schedule over L . H t is a GSI-schedule if and only if for each T 1. if R i ( X j )  X  H then X j  X  Snapshot ( DB , H t , s i 2. for each T j  X  L X wcon fl ict ( T j , T i , H t , s i ) establishes that the time intervals [ s i , c i ] and [ s condition being evaluated by the database replication protocols when transactions are certi [14,27] . If for all T i  X  L , conditions (1) and (2) hold for s case the next de fi nition of SI-schedules.
+De fi nition 4 . SI-schedule
+Let H t be an MV-schedule over L . H t is an SI-schedule if and only if for each T 1. if R i ( X j )  X  H then X j  X  Snapshot ( DB , H t , b i 2. for each T j  X  L X wcon fl ict ( T j , T i , H t , b i ) 4. Replicated database system replication protocol. The distributed system comprises m sites, where I for sites to execute and for messages to be transmitted; they are arbitrary but
+RDBS is fully replicated, that is, there is a logical database DB such that each site k
+In what follows, L is the set of logical transactions (user programmed) committed over DB , while L transactions executed over DB k at each site k  X  I m . We consider that the database DB
+H , and all operations in the system are totally ordered; i.e., there is an injective function t : database DB. Hence, the protocol performs a transformation T such that T L  X  X  = paper is the ROWA Transformation.
+
+De fi nition 5 . ROWA Transformation
+Let L be a set of logical transactions over DB . The ROWA Transformation, T L  X  X  , de transactions for all k  X  I m such that there is a single transaction satisfying T ( i )  X  I m is the delegate replica of T i . The rest of physical transactions, T
+T  X  L } is the set of physical transactions over DB k for each site k A replication protocol generates, physical, replicated schedules over the ROWA Transformation T ( L ).
+De fi nition 6 . R-schedule
+Let L be a set of logical transactions and T L  X  X  be the ROWA Transformation. Let H where t :  X  k  X  I operation the real time at which it happens; and it veri fi
+From the previous de fi nition, H t k can be derived from S also that new data item versions are available as soon as a transaction T
+RDBS to be read by other transactions. In the following, we present a notation in order to consider the each logical transaction T i  X  L and an R-schedule S t over T L  X  X  , C min ( i )  X  I m such that c i min ( i ) = min k  X  I schedule) and its existence.
+
+De fi nition 7 . 1MV-schedule
+Given a set of logical transactions L and the ROWA Transformation T ( L ), then an R-schedule S provided that the particular logical schedule H t  X  is an MV-schedule over L , where H explicitly as follows:
+For each T i  X  L and k  X  I m 1) Remove from S the operations such that: W i ( X i ) k , with k 2) H is obtained with the rest of operations in S after step 1 applying the renaming: W 3) Finally, t  X  ( W i ( X i ))= t ( W i ( X i ) site ( i )
+The previous de fi nition is a constructive one for an R-schedule S transaction T i site ( i ) and the fi rst commit operation of all T existing commit action or to take the last one. While the accesses (e.g., those made by other transactions in such I fi formally stated in the next de fi nition.
+
+De fi nition 8 . Given a set of logical transactions L and the ROWA Transformation T ( L ), then an R-schedule S schedule, respectively a 1GSI-schedule, if and only if S t SI-schedule, respectively a GSI-schedule.
+
+Note that this de fi nition does not restrict the kind of MV-schedule at each replica k an MV-schedule. Let us see this with an example.
+
+Example 1 . Given two transactions { T 1 , T 2 } where T 1 assume that T 1 ' s site is I 1 and T 2 ' s site is I 2 . At I assigns for the fi rst three operations the time values 1 schedule H t 2 is as follows W 2 ( X 2 ) W 2 ( Y 2 ) C 2 W for the last three operations values 10  X  12.
+
+Example 1 holds the following properties. Both H t 1 and H
+De fi nition 6 . We can now build F ( S t )as W 1 ( X 1 ) W 1 ( Y values for X and Y ,as I 1 has the values written by T 2 and I and Y will invalidate S t . So, our de fi nitions  X  requiring completeness satisfy certain properties. These protocols' properties are suf protocols that will be also easy to develop.
+
+In order to summarize the speci fi cations given up to this point, and to help the reader in the de 5. ROWA protocols with SI replicas
+De fi nition 5 , and guarantee the property of atomicity in the RDBS for each transaction. Each transaction T copy replication protocols or could be any one  X  e.g., the one local or closest to the client process operations of T i at site(i)  X  except its commit, in these eager protocols needs to be done only at the primary site. So, both the con property.
+
+De fi nition 9 .( P1  X  ROWA protocol)
+Given a set of logical transactions L , then an R-schedule S every update transaction T i  X  L these two conditions are held: 1. (Atomicity) For every site k  X  I m : C i k  X  S. 2. (Update propagation) If op i site ( i )  X  S is the last operation (before commit) at site ( i )
+It has been said how to build a 1MV-schedule from an R-schedule (see De schedule satisfying P1 is indeed a 1MV-schedule.
+
+Theorem 1 . Given a set of logical transactions L and an R-schedule S then S t is a 1MV-schedule.
+
+Proof . By using the transformation F ( S t )in De fi nition 7 , we build the schedule F ( S over L. (1). H = h (  X  T (2). If p i , q i  X  T i and p i  X  T (3). If R i ( X j )  X  H then W j ( X j ), C j  X  H and t  X 
+In Theorem 1 and De fi nition 7 as H t  X  receives the time values from S the fact that the RDBS can be composed of replicas generating SI-schedules: Assumption 1 . SI replicas For each site k  X  I m , every MV-schedule H t k over L k is an SI-schedule.
+One could intuitively infer from the previous assumption that if each replica k example proves that the usage of individual SI-schedules at each k RDBS is a 1SI-or a 1GSI-schedule.
+
+Example 2 . In this example two sites { I 1 , I 2 } and the next set of transactions { T
+T = R 2 ( Z ) W 2 ( X ) C 2 , T 3 = R 3 ( X ) W 3 ( Z ) C 3 sites I m . T 2 and T 3 are locally executed at site I 1 ( RS respectively ( H t 2 in Fig. 1 ). The writesets are afterwards applied at their respective remote sites.
+In the 1MV-schedule H t of Fig. 1 , T 4 reads X 1 and Z 3 and T 2 , satisfying that WS 1  X  WS 2  X   X  , are executed at both sites in the same order. As T with regard to T 3 , the obtained 1MV-schedule is not a 1GSI-schedule.
+This example has indeed shown that the usage of individual SI-schedules at each k level obtained in RDBS is 1SI or 1GSI. Schedules H t 1 and H proposed approach, its transaction T 4 reads an X version ( X ( Section 6 ) or 1GSI-schedules ( Section 7 ). 6. One copy snapshot isolation schedules
+De fi nition 4 . Hence, a nice property to be considered is that the commit operations of con ordered at site k  X  I m , i.e., it serializes the execution of con 4 states. This reasoning is formalized in the next property.
+
+De fi nition 10 . (P2  X  Total order of con fl icting transactions)
+Given a set of logical transactions L , then an R-schedule S that for every T i ,T j  X  L such that WS i  X  WS j  X   X  , and for every k, k
+Property P2 serializes the execution of con fl icting transactions in the 1MV-schedule (as De previously seen in Example 2 where only T 1 and T 2 are con fi rst part of De fi nition 4 . The following property formally states that.
+De fi nition 11 . (P3  X  Latest-Version Read)
+Given a set of logical transactions L , then an R-schedule S that for every T i ,T j  X  L such that WS j  X  RS i  X   X  ,if R for every k  X  I m .
+
+Theorem 2 . Given a set of logical transactions L and an R-schedule S (SI replicas) and also Properties P1, P2 and P3, then S t
+Proof . By the conditions in Theorem 1 , S t is a 1MV-schedule. Thus, let H ( De fi nition 7 ). By De fi nition 8 of 1SI-schedule, we will prove that H 1) If R i ( X j )  X  H then X j  X  Snapshot ( DB , H t , b i
+Thus, { X j }= latestVer ( X , H t , b i )by De fi nition 2 . Suppose R some transaction T r such that c j b c r b b i .
+
+If R i ( X j )  X  H ,byconstructionof H t in De fi nition 7 , R 2) For each T j  X  L :  X wcon fl ict ( T j , T i , H t , b i (2.a) If WS j k  X  WS i k =  X  then by Property P1 and De fi (2.b) If WS j k  X  WS i k  X   X  for T i , T j  X  L , then  X  ( b however, this issue goes against the main bene fi t of SI.
+ maintains all nice properties of SI but allows transactions to read from an older snapshot. 7. One copy generalized snapshot isolation schedules 3 . This total order of update transactions is formally introduced in the next property.
+De fi nition 12 . (P4  X  Total order of update transactions)
+Given a set of logical transactions L , then an R-schedule S that for every pair of update transactions T i , T j  X  L and for every k , k
+The aim of the next theorem is to prove that the 1MV-schedules generated by a ROWA protocol that satis
+P4 are actually 1GSI-schedules; i.e., they comply with all conditions stated in De
+Theorem 3 . Given a set of logical transactions L, and an R-schedule S (SI replicas) and also Properties P1 and P4, then S t is a 1GSI-schedule.
+Proof . By conditions of Theorem 1 , S t is a 1MV-schedule. Thus, let H
+By De fi nition 8 of a 1GSI-schedule, we will prove that H the following total order in the rest of the proof: c 0 k b subsets of transactions L ( i )={ T 0 , T 1 , T 2 , ... , T clear that H t k ( n )= H t k and H t ( n )= H t .
+
+Induction base . H t (0) is a GSI-schedule. L 0  X  X  = T 0 fg so H
+Induction hypothesis. H t ( j ) is a GSI-schedule 1  X  j  X 
+Induction step. We will prove that H t ( i ) is a GSI-schedule, with T schedule, by Hypothesis, for any pair T j , T j  X  L ( i  X  considered total order,  X wcon fl ict ( T i , T j , H t ( i ), s
+Therefore, in order to prove that H t ( i ) is a GSI-schedule, we only need to prove for T (1) if R i ( X r )  X  H ( i ), X r  X  Snapshot ( DB , H t ( i ), s (2) for each T j  X  L ( i )  X wcon fl ict ( T j , T i , H t
+Proof of (1). Consider RS i  X   X  ,if RS i =  X  then it holds. Let T obtain a newer version from transactions committed after T
+Y  X 
+WS i respectively.
+
+Let X  X  RS i be an item read by T i such that X  X  WS i
+T  X 
+LX k  X  Ver ( X , H t )  X  c r b c k b c i
+Thus, X r site ( i ) is not the latest version in H t ( i ) c b b i , by construction of H t ( De fi nition 7 ), then there exists s
+Proof of (2). By previous proof of (1), T i transaction T i
+By Property P1 and Assumption 1 : WS j  X  WS i =  X  for any T proof of (1): WS j  X  RS i =  X  for any T j  X  L 2 ( i ). Let T
+WS
+De fi nition 7 , a commit time c j site ( i ) for a transaction in L relation with respect to the other commit times; in particular c
+For any value s i  X  ( c i then WS j  X  WS i =  X . Otherwise, T i these transactions do not con fl ict with T i . The rest of transactions do not either con sooner than s i .
+
+To conclude, if there does not exist T i again (2) holds.  X  update transactions concurrently and even in different order. 8. Relaxing properties same order at all replicas, and Property P2, requiring that only con order at all replicas respectively. We need to guarantee that con it is not trivial in a replicated setting since, e.g., a non-con at one site while at another one just after the second con constitutes a weakened version of Property P4 while it is still stronger than Property P2.
+De fi nition 13 . (P5  X  Non-con fl icting transactions interleaving)
+Given a set of logical transactions L , then an R-schedule S that for every T i , T j  X  L and for every k , k  X   X  I m such that WS Next, we are going to see in an example how it is possible to build an R-schedule where Property P5 holds.
+Example 3 . Let us suppose that there are two replicas { I
+WS  X  WS 3  X   X , WS 2  X  WS 6  X   X  and the rest do not con fl ict among each other. At the
+SI-schedule: c 0 1 b c 1 1 b c 2 1 b c 3 1 b c 4 1 b c 5 1 b of T 4 and T 5 is different from the scheduling of the former.
+ since data items read by these transactions would not belong to any valid global snapshot (recall De
+S such that is equivalent to a valid global snapshot; recall De
+De fi nition 14 . (P6  X  Compatible snapshot read)
+Given a set of logical transactions L , then an R-schedule S that for each T i  X  L,  X  s i  X   X  + with s i  X  b i site ( i )
+From the R-schedule S t de fi nition given in De fi nition 6 , it is easy to infer that S
+T ( L ) refers to  X  k  X  I m DB k and, hence, Snapshot (  X 
+Property P5. In the next theorem we prove that R-schedules complying with Properties P5 and P6 satisfy De generate 1GSI schedules.
+
+Theorem 4 . Given a set of logical transactions L, and an R-schedule S (SI replicas) and also Properties P1, P5 and P6 then S t is a 1GSI-schedule.
+Proof . By conditions of Theorem 1 , S t is a 1MV-schedule.Thus, let H
+De fi nition 8 of a 1GSI-schedule, we will prove that H t is a GSI-schedule ( De s ). Finally, by Assumption 1 and construction of Theorem 1 , we obtain that X factmakes true condition (1) in De fi nition 3 . Inparticular, if s there must be a transaction T p  X  L such that s i b c p b transaction in S t satisfying such condition. On the other hand, by Theorem 1 , De this is not possible by Property P6 as in such a case s i Therefore, condition (1) of De fi nition 3 is satis fi ed.
+
+If we focus on condition (2) of De fi nition 3 we have to verify if for each T considered ( s i , b i ) and ( b i , c i ). In the fi rst case, let T
+WS j  X  WS i  X   X  . Assume that there exists a transaction T p replicas k  X  I m  X  site i  X  X  fg will have c j k b c i k that go against Property P5, con replicas. While in the second range, ( b i , c i ), we use the same transaction T
+WS 1GSI-schedule.  X  valid snapshot (e.g. by means of stored procedures); or, delayed until the last con have been implemented in [27] and will be discussed in the next section. 9. Related work conditions identi fi ed in our paper. 9.1. Previous correctness justi fi cations
+SI is a relatively recent isolation level, since it was fi followed a similar approach in our work, and some of our fi everywhere (considering server architecture), and both eager and lazy (regarding update propagation). serialization graphs were extended to all currently speci
+Inspired in such work, Lin et al. [26] have provided a graph-inspired speci approach.
+ examples of such new approach can be found in [21] .
+ pace, but only in the same sequence. This implies that there can be a quite long interval from the moment a the
+The existence of several variants of SI in replicated environments was regular SI was named Conventional SI (CSI). Such work was later re copy protocol.
+ any certi fi cation-based database replication protocol that uses SI replicas with failures. 9.2. Discussion of concrete protocols
+P1.9 (atomicity) states. To that purpose, we will consider the classi transactions (primary-copy/update-everywhere) and when updates are propagated (eager/lazy). transaction of a client to a site where it has been applied by tagging [5,34] or de our formalization supports these approaches since all of them satisfy Property P1. paragraph, satis fi es Property P1. Besides, these protocols trivially hold Property P2 (Total Order of Con update transactions. SI-based update-everywhere protocols perform a certi gotten at the database and must pass a validation test (certi of previously validated transactions that are concurrent to the transaction (speci rest of sites that apply them in this order. Hence, Property P4 is satis increase the availability and avoid the bottleneck of the central certi (Property P4) that generates lGSI-schedules. If this certi protocol variation is presented in [27] that permits the concurrent execution of non-con approach to increase the throughput of the system [28,36] .
+ and its performance is hardly acceptable.
+P3 nor P4. 10. Conclusions properties based on the de fi nitions of SI-and GSI-schedules that have been shown as suf level is being provided by any new ROWA database replication protocol developed for SI DBMSs. Acknowledgments readability of this paper.
+
+References

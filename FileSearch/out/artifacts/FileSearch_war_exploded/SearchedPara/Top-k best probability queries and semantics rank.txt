@@ -1,0 +1,113 @@
+ 1. Introduction [9], and mining uncertain data [10,11] . 1.1. Motivation USD $100 on product A, and it has a 0.29 chance of obtaining a profit of USD $25. (generation rule) [1,2,6,13] . For example, tuples t 2 and t
+R = t 3  X  t 6 .
+ tuples in each possible world.
+ of its probabilities of existence in the top-2 in Table 2 .
+ with threshold 0.3 in the example listed in Table 3 is the set containing 4 tuples { t with PT-k queries. These are listed below:  X 
+The PT-k queries may lose some important results. According to PT-2 query, tuple t result, the reason being that tuple t 1 (25, 0.29) is not worse than tuple t and top-2 probability. That is, t 1 .profit (25) is significantly greater than t less than t 2 .top-2 probability (0.3072). In business, investors may like to choose project t the profit compared to project t 4 , while project t 1 is only slightly riskier than project t
+Therefore, t 1 should be acceptable in the top-k answers.  X  attributes, profit and top-2 probability in t 4 (13, 0.3072) and t obvious that investors will choose project t 3 which is more dominant than projects t probability.  X  waste time using trial and error to find the most suitable threshold value. top-k answer. To address this concern, we propose a new approach called probability queries have the following desirable properties: and t 2 have the top-2 best profits and therefore should be in the top-2 answer. probability than a tuple in the top-2-highest scoring tuples. Then, the rest of the tuples t because they are dominated by tuple t 3 in both profit and top-2 probability. need for the threshold for processing the top-k queries on probabilistic databases. tuples with the best top-2 ranking scores but also the top-2 highest probabilities to the users. algorithm to overcome these challenges. We also introduce a new property properties than other existing top-k queries. 1.2. Contributions
+Our contributions are summarized as follows:  X  the inclusive and exclusive rules (generation rule) on probabilistic databases.  X   X   X  method is compared with the top-k best probability method in terms of effectiveness and efficiency. concludes our contributions and outlines future research. 2. Preliminary of probabilistic databases and top-k queries 2.1. Probabilistic database model
+Generally, the probabilistic database D  X  t 1 ; ... ; t n almost all probabilistic tuples in probabilistic databases are independent.
+De fi nition 1. Probability of a tuple is the likelihood of a tuple appearing in the data set presented as a new dimension in the table with values of 0 Example: In Table 1 , tuple t 1 has a 0.29 probability of obtaining a USD $25 profit.
+Based on the probability theory, if the probability of tuple t data.
+ probabilistic data.
+
+De fi nition 2. A possible world represents the semantics of a probabilistic database. Each possible world W number of tuples which are members of probabilistic database its existence. The probability of the existence of possible world W which are the likelihood and unlikelihood of tuples in the possible world W possible world space.
+ Example: Table 2 is the possible world space that lists all possible worlds of Table 1 . model, they are grouped as a generation rule.
+
+De fi can be mutually exclusive or inclusive in the possible world space.  X 
+The exclusive rule is in the form of R  X  h  X  t h 1  X  t h 2 of tuples in the same exclusive rule must be less than or equal to 1, pR  X 
+The inclusive rule is in the form of R h  X   X  t h  X  same probability pR h  X   X  pt h  X 
+R and t 2.2. Calculation of top-k probability define the top-k probability of tuple which is mentioned on papers [1,2].
+De fi nition 4. The top-k probability of a tuple pr top k ( t i
+Mathematically, the top-k probability of a tuple pr top k the tuple is in the top-k .
+
+Example: In Table 2 , since t 2 is one of the top-2 tuples in possible worlds ( W the sum of the probabilities of the existence of these possible worlds. That is, pr 0.3.
+ is 2 research.
+
+Let probabilistic data D be a ranked sequence ( t 1 , t 2 (1  X  i  X  n ) be a subsequence from t 1 to t i .
+
+In the possible world space, the top-k probability of tuple t tuple t i is ranked at the ( j +1) th position, there are also j tuples in the subsequence set S worlds.
+
+Theorem 1. Given a ranked sequence S t i  X  t 1 ; t 2 ; ... ; sequence S t i .pr S t i ; j is calculated as follows: pr S t In special cases
+B pr (  X  ,0) = 1
+B pr (  X  ,j) = 0
+B This Poisson binomial recurrence has been proven in [24].
+ pr S ; 1 , the probability of any one tuple appearing in the sequence S
+Theorem 2. Suppose that tuple t i and the subsequence S t ( n &gt; i  X  j &gt;0) .pr ( t i , j ) is calculated as follows: This Poisson binomial recurrence has been proven in [24].
+
+Example: Given the data set in Table 1 , the 1st and 2nd rank probabilities of tuple t to kth probabilities of tuple t i .
+
+Theorem 3. Given a tuple t i ,pr top k ( t i ) is the top-k probability of t follows:
+Example: Given the data set in Table 1 , the top-2 probability of tuple t possible worlds. 2.3. Calculation of top-k probability with a generation rule account.
+
+Let a probabilistic database D  X  t 1 ; t 2 ; ... ; t n  X  X  with t tuple t i . 2.3.1. Exclusive rules
+Tuples in the same rule are mutually exclusive R  X  h  X  t h calculate the top-k probability.
+
+To compute the top-k probability pr top k ( t i ) of tuple t t  X  ...  X  t h than or equal to tuple t i . The tuples involved in R hRight t .  X 
+Case 1: R hLeft + =  X  , i.e. all the tuples in rule R h + when calculating the top-k probability of tuple t i . Consequently, all tuples in R  X 
+Case 2: R hLeft +  X   X  , i.e. all tuples in R hRight + can be ignored, and the tuples in R probability of t i . There are two sub-cases for these changes. these tuples will be removed from subsequence S t i  X  1 when calculating pr + Sub-case 2: t i  X  R hLeft + , i.e. all tuples in R hLeft theorems are used normally.
+
+Example: In Table 1 , the top-2 probability of tuples t 6 and R + = t 3  X  t 6 . The subsequence S t respectively.
+
+The exclusive rules are produced in subsequence S t 6 .  X 
+In exclusive rule R 2 + , t 3 is removed because t 3 and t  X 
+In exclusive rule R 1 + , t 2  X  t 4 are produced as t 2  X  4
+The subsequence S t 6 is produced by the exclusive rule { t pr 2 ( t 6 ) with the set S t 2.3.2. Inclusive rules
+Tuples in the same rule are mutually inclusive R h  X   X  t h possible worlds. To compute the top-k probability pr top following cases. -Case 1: All the tuples in rule R h  X  are ranked lower than tuple t -Case 2: At least one tuple in inclusive rule R h  X  is ranked higher than or equal to tuple t
+Theorem 3 is modified as follows: +Sub-case2: t i  X  R h  X  ,i.e.thereare z tuples ranked higher than t tuple t R as follows:
+B pr S t
+B pr S t
+B pr S t
+Example: Assuming two inclusive rules R 1  X  = t 3  X  t 5 and R p ( R )= p ( t 4 )= p ( t 6 ) = 0.4 are in probabilistic database D X  t rules are produced in subsequence S t 5 .  X  because t 4 has a higher rank than t 6 . We compute the top-4 probability of tuple t -In inclusive rule R 1  X  = t 3  X  t 5 , tuples t 3 , t 5 are ranked higher than tuple t probability p ( t 3,5 )= p ( R 1  X  ) = 0.7. The set S t 5 the inclusive rule is applied to calculate the top-4 probability of tuple t 3. The top-k best probability queries 3.1. De fi nition of the top-k best probability ranking score cannot be considered more important than the top-k probability and vice versa. and top-k probability.
+
+De fi nition 5. Domination of top-k probability tuples
+For any tuples t i and t j in probabilistic data, t i dominates t probability of t i is greater than the top-k probability of t
+Example: in Table 3 , tuple t 3 dominates t 5 , because t top-2 probability (0.7304) of t 3 is greater than top-2 probability (0.3072) of t
+De fi nition 6. Non-dominated tuple
+Example: in Table 3 , tuples t 1 and t 3 are the non-dominated tuples in the set { t which are in both the top-k best ranking scores and the best top-k probabilities.
+De fi nition 7. Top-k best probability query
+The answer to the top-k best probability query Q top k consists of two sets Q score tuples in the data without considering the top-k probabilities, and Q probability in the set D  X  Q score fg  X  t pmin
+Q , and remove the redundant tuples based on the non-dominated tuples concept for set Q highest scores tuples, therefore t pmin is selected as the lowest top-k probability in Q have better top-k probabilities in the rest of tuples { D answer set to the top-2 best probability query is Q top 2 without considering the top-2 probabilities (the common result), and Q top-k probability in { t 1 , t 3 , t 4 , t 5 , t 6 }, where t 3.2. Signi fi cance of top-k best probability query previous proposals. 3.2.1. k-highest ranking score tuples and dominating concept for semantic answers
+It is appropriate to use the non-dominated concept for selecting answers to users. 3.2.2. Threshold vs. bestPr automatically initialized and updated during execution for effective pruning. 3.3. Finding top-k best probability and pruning rules best probability algorithm. 3.3.1. Selecting the answer to the top-k best probability queries D into two sets Q score ={ t 1 , t 2 , ... , t k } and D  X 
+To select all non-dominated tuples for Q pro , we first pick the tuple t lowest top-k probability tuple is always the first non-dominated tuple in { Q other tuples in D  X  Q score . This means that all tuples in D bestPr  X  min k i  X  1 pr k top t i  X  X  . To select the non-dominated tuples from { t t executed, all the non-dominated tuples of Q pro are found. The answer set Q probability query.
+ conduct calculations by following the pruning rules. 3.3.2. Pruning rules activate the stopping condition which negates the need to calculate the remaining tuples. its top-k probability.
+
+Theorem 4. Given any tuple t i and bestPr, if p ( t i )  X 
+Proof. The top-k probability of t i is calculated by Theorem 3 with p ( t i )  X  bestPr , and  X  without the need to perform top-k probability calculation.
+
+Theorem 5. Given any t i  X  m ,t i and bestPr, if p ( t i  X  m
+Proof. The top-k probability of t i  X  m is calculated by Theorem 3 with pr top k ( t i  X  m )  X  bestPr , and p ( t i  X  m )&gt; p ( t
+We note that Theorem 5 is used in our algorithm, in which only the p ( t eliminating the current tuple, because the other pr top k assigned the best top-k probability value among tuples t tuples.
+ Theorem 6. For any t i and bestPr, if bestPr  X  -S  X  t 1 ; t 2 ; ... ; t i  X  X  is the ranked sequence . -t the generation rules .
+
+Proof. The top-k probability of t i + m is calculated by Theorem 3
+In the worst case, t i + m is in exclusive rule R h .
+For any m &gt; 1, we have sequence S t i S t i  X  m  X  1 . It is also true when calculating the pr
+In exclusive rules, we have t R hLeft  X  t L max for any produced tuples
+For the probability of any tuple, we have 0 b p ( t i + m Hence, if bestPr  X  3.4. The top-k best probability algorithm
+Algorithm 1 finds the top-k best probability answer Q top  X  score of the probability data set, the first k tuples { t minimum top-k probabilities from t 1 to t k (line 5) and the first value of p minimum pr top k which equals the bestPr (line 6).  X 
+The set Q pro containing non-dominated tuples is selected from lines 8 to 13. A current tuple t set Q top k (line 12). The new values of bestPr and p prev  X  ( p ( t i )&gt; bestPr ) is presented for Theorem 4 , and the second condition ( p ( t non-dominated tuples in the rest of the tuples.  X 
+Overall, the top-k best probability algorithm returns the answer Q 4. Semantics of top-k best probability queries and other top-4.1. Semantics of ranking properties the different semantics of ranking queries.
+ Let set Q k top D  X  X  be the answer to the top-k query on probabilistic data D :  X  Exact-k :If D jj  X  k then Q k top D  X  X   X  k . When Q k top
+The second property is  X  Containment  X  for capturing the intuition of users on results returned.  X  Containment : For any k , the set Q k top D  X  X   X  Q k  X  1 top
+The third property illustrates that the ranking answer should be unique.  X 
+Unique ranking : If probabilistic data D  X  D  X  , then the result Q
+The fourth property stipulates the limitation of score values on probabilistic databases.  X 
+Value invariance :Let D be score set ( t 1 . score  X  t 2 . score ( t . score  X   X  t 2 . score  X   X  ...  X  t n . score  X  )namely D
+The fifth property shows the dynamic postulate of ranking queries.  X 
+Stability : Given a tuple t i  X  v i ; pt i  X  X   X  X   X  D , D  X  v is better than v i , and p  X  ( t i )  X  p ( t i ). If t i  X  top-k query semantics on probabilistic data. We name the sixth property as  X  k -best ranking scores : Let probabilistic data D X  D c ; set of probabilities. For any k , Q k top D c  X  X   X  Q k top probabilistic databases between our approach and previous approaches. 4.2. Top-k queries satisfying semantic properties of the users when compared to other existing work.  X  example of the probabilistic data in Table 1 , the U-top-2 answer is the vector ( t property.  X  on the probabilistic data of Table 1 , the answer set is { t in [3,4]. The answer returned by U-3-rank does not contain tuple t k -best ranking scores property.  X  query on Table 1 returns answer sets { t 1 } and { t 3 , t subset of set { t 3 , t 5 }. Moreover, Global-top-2 answers may not contain tuples t
+Global-top-k also violates the k-best ranking scores property.  X 
+Value invariance property. Moreover, the answer to the E-score query with k =2in Table 1 is a set { t contain tuple { t 2 }. Hence, it fails on the k-best ranking scores property.  X  t , t 5 , t 4 , t 6 ). The E-rank top-2 query answer is ( t 1 , t query answer fails to reach the k-best ranking scores property.  X  query answer { t 1 , t 2 , t 3 , t 4 , t 5 } contains the top-2 highest score tuples { t weakly satisfied.  X 
+U-popk [16]: U-popk approach selects k tuples in order, in which, tuple top excludes tuples t 2 from the top-2 highest score for the probabilistic data in Table 1 .  X  non-dominated tuples Q pro . In the worst case, Q pro can contain only one tuple t top-k best probability result because it contains Q score 5. Experimental study 5.1. Real data
+We use the International Ice Patrol Iceberg Sighting database for our real data set.
+The database contains a set of iceberg sightings represented by tuples, each tuple ( t differences in confidence levels as probabilities, which are R/V(0.7) pt data.
+ controlled by exclusive rules R r  X  t r 1  X  t r 2  X  ...  X  where pt r j is the probability of sighting sources of tuple t
+After reprocessing all tuples in the IIP database 2009, the IIP probabilistic database D X  t 2137 exclusive rules. One of the exclusive rules is R r = t probabilistic database for the top-10 best probability query, the answer to this query being ( t in Table 5 . Tuple t 1 has the highest value in the Drifted Days attribute, t scoring tuples in the data set ( t 1 , t 2 , t 3 , t 4 , t which is better than a tuple with a minimum top-k probability in ( t probability.
+ equal to the minimum value of the top-10 probability from t probability.
+ to 15. For these settings, we execute programs to obtain the results shown in Figs. 2 and 3 . queries.
+ 5.2. Synthetic data results shown in Figs. 4 and 5 .
+ smaller for the top-k best probability algorithm than PT-k for all probabilistic data sets.
+PT-k . 6. Conclusions proven pruning rules. Then, five semantic ranking properties and a new both efficiency and effectiveness.
+ managing, mining, and cleaning uncertain data.
+
+References

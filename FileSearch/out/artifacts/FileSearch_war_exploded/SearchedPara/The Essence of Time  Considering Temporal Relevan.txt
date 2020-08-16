@@ -1,0 +1,23 @@
+ Real-time news and social media quickly reflect large-scale phe-nomena and events. As users become exposed to this information, time plays a central role in prompting both information authorship and seeking activities.
+
+The objective of this research is to develop a retrieval system which can anticipate a user X  X  likely temporal intent(s), consider-ing recent or ongoing real-world events. Such a system should not only provide recent news when relevant, but also higher rank non-timestamped or even older documents which are temporally perti-nent as they cover aspects related to recent event topics.
+Key challenges to be addressed in this work include: a suitable source and method for event detection and tracking, an intent-aware ranking approach and an evaluation methodology.
+ Categories and Subject Descriptors: H.3.3 [Information Storage and Retrieval] -Information Search and Retrieval -Retrieval Mod-els General Terms: Algorithms, Experimentation Keywords: Temporal, Time, Event, Relevance, Intent
+In this work we propose a notion of temporal relevance, whereby recent events related to the query topic influence the relevance of non-timestamped or older documents during retrieval.
+
+Previous analysis suggests a great deal of information seeking activity is likely to arise from interaction with media as users wish to learn more about trending or hot topics. As such, many search topics have a temporal affinity, affecting not only query volume but also in many cases, intent at different periods in time [2].
+Users may first wish to find out more about the event itself. News articles are undoubtedly most relevant for these initial needs. How-ever, further information needs may arise from knowledge of the event, in order to answer more in-depth related questions such as: who , where , why and how? Each topic is likely to have documents considered temporally pertinent , that is, they refer to aspects most involved with the event. Conversely, when an event is no longer prominent, documents covering these typically less popular aspects will become no longer temporally pertinent and therefore less im-portant.
+
+To model temporal relevance we treat it as an intent-aware rank-ing [3] problem. For each intent, during ranking we compute a measure of temporal intent pertinence, thus higher ranking intents that refer to aspects related to recent events. Using Topic Detection and Tracking (TDT) techniques [1], Wikipedia article revision his-tory and viewing counts can be mined for event-driven signals for many real-life topics, allowing the measurement of various tem-poral characteristics. Early analysis suggests Wikipedia provides an effective source of event-based evidence for TDT tasks. Ef-fectiveness evaluation of such a system in real-time poses a num-ber of challenges. We propose an evaluation methodology based on query-log mining and crowdsourcing for on-going relevance as-sessment.
+We propose four research questions (RQ) which this thesis will investigate, following each is an underlying hypothesis:
+RQ1: Can search topics with recent event-related temporal in-tent be detected?
+If there is a chance that a user X  X  query has an intent that was prompted by a recent event, then it is appropriate to consider tem-poral relevance in document ranking.
+
+RQ2: Can the temporal sensitivity of a query topic (or, intent ) be computed using historic and recent Wikipedia article revision history, and page view statistics?
+Wikipedia provides large-scale coverage of article creation/edit history and page view statistics for real-life topics. This tempo-ral evidence is accurate and extensive enough for mining user be-haviour and editing trends driven by events.
+
+RQ3: Given the temporal sensitivity of a query topic, can intent ranking be improved by incorporating temporal intent pertinence?
+An intent X  X  temporal pertinence may change as the trending topic changes. Increasing the ranking of aspects that are temporally per-tinent will improve relevance ranking for a user that is looking for information relating to a temporally-prompted intent.
+
+RQ4: If a query topic itself is not temporally sensitive, yet, an aspect is related to a recent event, can intent ranking be improved by incorporating temporal intent pertinence?
+Similar to the previous hypothesis, although a query topic may not be itself directly temporally sensitive, the user X  X  intent may be prompted because it is related to a recent event. [1] J. Allan. Introduction to topic detection and tracking , pages [2] A. Kulkarni, J. Teevan, K. M. Svore, and S. T. Dumais. [3] C. Zhai, W. W. Cohen, and J. D. Lafferty. Beyond independent

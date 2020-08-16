@@ -1,0 +1,55 @@
+ L. Egghe * 1. Introduction 2008; The STIMULATE6 Group, 2007 ).
+ Scopus have decided to present it as an indicator.
+ of time, i.e. in function of career length in the Burrell paper.
+ follows.
+
+Let the career period of a researcher be described by time t = 1,2,..., t exactly, the year of the first publication) and so on, until t = t year t = 1 and their citations obtained in the same year, we then can derive the first h -index, denoted h tinue this way until we reach the final year t m : we consider all years t = 1,..., t citations to these publications in this period. This yields the last h -index h h -sequence.
+ past). Concretely, the first index (which we will denote by h citations to these papers in the year t m . The next h -index, denoted h t h .
+ noted without stars in Liang (2006) ) was used only for practical reasons: (only) if t h h ; ... ; h t m instead of the more natural h 1 ; ... ; h t the citing period ( t =1, t = 1 and t =2, ... ) manually, which is very time-consuming.
+We fully understand that Liang wanted to avoid the time-consuming calculation of the sequence h physicists) by replacing it by the sequence h 1 ; ... ; h paper.
+
+The h -sequences will be studied for continuous time t e R tions conforming with Lotka X  X  law note the sequence h 1 ; ... ; h t m by h ( t ), t e [0, t increasing and we indicate that the concave increase is the most natural one.
+We also show that h  X  t  X  P h  X  t  X  , for all t e [0, t m increases.
+ both h ( t ) and h * ( t ) are concave.
+ cation production per year. We end the paper by proposing open problems and advises. 2. Study of the h - X  X  X equence h(t) proved in Egghe and Rousseau (2006) that, in this case, the h -index ( t -dependent here) equals for each t e [0, t m ] (note that, for t = 0, we have T (0) = 0 and h (0) = 0 naturally).
+We will now study the shape of the function h ( t ) in three simple, natural cases. 2.1. The case of constant production t e [0, t m ] that T ( t )= bt . Then (2) implies ing year is 1978, up to 2007, totalling 30 years of publications. power function or an exponential function. These cases will be studied below. 2.2. The case of increasing production per year, using a power function the previous case). Hence for every t e [0, t m ]:
+Now, according to (2) we have 2.3. The case of increasing production per year, using an exponential function
+Here we assume a number (density) of publications per time unit being bc t e [0, t m ]:
+Now, according to (2) we have which is, for c &gt; 1, increasing and where h 00 ( t ) &lt; 0 iff c cave h ( t ) or an S-shaped h ( t ) (since a &gt; 1 we have that, for t small enough we always have c h ( t ) is not possible here).
+
+For a moderate increase per year of the production (i.e. c &gt; 1 but close to 1) we hence have, if t is concavely increasing.
+ sufficient condition for h * ( t )= h ( t ) for all t e [0, t 3. Liang X  X  h -sequence h * ( t ) the start of the career at t = 0). Liang starts at time t period (in normal time) between t m t and t m (for t 6 t m Hence, in reverse time, one considers a number of publications, denoted as T * ( t ), equalling for the reverse time as described above ( e.g. formula (8)). Then we have, supposing Lotka X  X  law ( 1 ), for all t [0,t m ].
+
+Proof. Using Lotka X  X  law (1) we have that, for every t e [0, t by (2). If we apply this for t m t (also belonging to the interval [0, t or
+Further, using again (1) and (2) to the publication set T * ( t ), we have that for all t e [0, t m ]. Formulae (8), (10), and (11) prove formula (9), finishing this proof. h if they are (more or less) equal. A characterization of this will be given in the next Theorem.
+Theorem 3.2. Both h-sequences h(t) and h * (t) are identical: words: (12) is valid iff for a certain constant b &gt;0.
+
+Proof. Formula (9) and (12) yield, for all t e [0, t m ] using also (2). Using again (2) we have so that we have (necessary and sufficient to have (12)) (otherwise, stated: T * ( t )= T ( t ) for all t e [0, t m Denoting t = x , t m t = y , hence t m = x + y , (14) requires for all x ; y 2 R (since the above is required for all t e [0, t tion T ( ) must be linear: there exists a number b 2 R such that
+Note that (13) trivially implies (12) since h  X  t  X  X  T  X  t  X  b ( t m t )= bt , hence h  X  t  X  X  T  X  t  X  yet!).
+ that h * ( t )  X  h ( t ).
+ We close this section with the following Theorem on the comparison of h * ( t ) and h ( t ).
+Theorem 3.3. If T 0 ( t )( strictly ) increases ( i.e. T ( t ) convex ) then for every t e [0, t m ].
+ Proof. It follows from (2) and (9) that h * ( t )&gt; h ( t ) if and only if (and similarly for the P sign; we leave this to the reader). By the mean value theorem on the function T ( t ) (supposed to be differentiable) we have for a certain k 2 t ; t m and for a certain n e [0, t m t ].
+
+Since t &gt; t m 2 we have that t ; t m  X  t m 2 ; t m and 0 ; t Hence (18) and (19) imply hence (17). By the mean value theorem on T ( t ) we now have for a certain g e ] t m t , t m [ and for a certain j e ]0, t [. Now, since t &lt; t m 2 we have that t we have by (20) and (21) T 0 ( j )&lt; T  X ( g ) and hence yielding again (17). This concludes the proof. h implies that h * ( t ) cannot be convex in this case (since h * (0) = h (0) = 0 and h * ( t
+Of course, if T ( t ) (strictly) decreases (what we do not expect to be the case, usually) we have h  X  t  X  t e [0, t m ]. In this case, h ( t ) cannot be convex.
+
+Note that h * (0) = h (0) = 0 and h  X  t m  X  X  h  X  t m  X  X  T  X  t
+We have
+T (0) (smallest value) and T ( t m ) (largest value), so that (22) and (23) imply that which means that, from t = 0 onwards, h * ( t ) increases faster than h ( t ). 4. General relations between h ( t ) and h * ( t ) strictly concave .
+
+Proof. Based on (9) we have the general formulae, for all t e [0, t which is strictly positive (assuming, of course, that T ( t ) strictly increases) since h ( t (by (2) and the fact that T ( t ) strictly increases). Further
+Each term in the above formula is negative because a &gt; 1, since h
+This shows the strict concavity of h * (i.e. h * 00 ( t ) &lt; 0 for all t e [0, t If we replace h ( t ) and h * ( t ) in the above Theorem, we again have a valid result. strictly concave .
+
+Proof. We again invoke Eq. (9): valid for all t e [0, t m ]. A little bit of algebra yields, for all t e [0, t for all t e [0, t m ]. Putting x = t m t we have: for all x e [0, t the case studied in Sections 2.1 and 2.2. 4.1. Example: h * (t) versus h(t) in case of Section 2.1 t e [0, t m ]: hence both h ( t ) and h * ( t ) are strictly concave. 4.1. Example: h * (t) versus h(t) in case of Section 2.2
+Here we assumed (4) yielding formula (5). From these results we have, using formula (9) that h ( t ) is convex iff b +1&gt; a (the last two cases confirm Theorem 4.1). 5. Verification of these results on the h -sequences of Egghe and extension to the g -and R -sequences and citations to these papers in this period. citations to these papers in this period. So, only for t = 30 we have h (30) = h * (30). beginning period.
+ verse time).
+ the h -core.
+ of Egghe used in Figs. 2 and 3 . 6. Remarks and conclusion time-consuming manual way.
+ yearly basis, generating a h -sequence after many years, but this, obviously, requires a lot of patience! theoretical results.
+
+Egghe case that the cumulative production T ( t ) more or less compensates the exponent 1
+T ( t )= ct a ( c a constant) resulting in equation
+The function h ( t ) is entirely below this line if and only if which is equivalent with Similar inequalities can be given for h ( t ) above (25) and h * ( t ) below or above (25). Acknowledgement for the preparation of Figs. 2 X 7 .
+ References

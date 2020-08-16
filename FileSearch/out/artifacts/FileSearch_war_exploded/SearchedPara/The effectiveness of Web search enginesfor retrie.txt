@@ -1,0 +1,84 @@
+ 1. Introduction on trends in ecommerce-related Web searching ( Spink, Jansen, Wolfram, &amp; Saracevic, 2002 ). ecommerce friendly search engines ( The Economist Survey, 2004a ).
+ merce searchers.
+ ture research, and conclusions. 2. Literature review engines are the most important promotional method used by ecommerce sites and they represent the most merce information on the Web are needed ( Wigand &amp; Benjamin, 1995 ). information, currency, and both digital and non-digital goods and services X  X  ( Rosenbaum, 2000 ). There are numerous ongoing research centers on ecommerce, such as the Wharton Forum on Electronic
+Commerce ( http://econ.Wharton.upenn.edu ) and eBusiness Research Center ( http://www.smeal.psu.edu/ customers actually finding relevant sites ( Spiteri, 2000 ). 2.1. Web search engine evaluation
+For locating ecommerce sites, search engines and directories are the most frequently used Web portals 2.1.1. Web search engine relevance evaluation Several researchers have examined elements relating to precision. Chu and Rosenthal (1996) used three proposed a methodology for evaluating Web search engines.
+ this study, using chaos theory to highlight possible patterns.
+ gine that retrieved the links.
+
+REtrieval Conference (TREC) X  X nspired methods with 54 queries taken from real Web search logs, although differences between performances of search engines, with Northern Light the top ranked search engine.
+Using a task-centered approach, Spink (2002) evaluated the Inquirus, a meta-Web search engine, with 22 the number of links, query modification, directory structure, links displays, and user preferences.
+Shang and Longzhuang (2002) evaluated six popular search engines, (AltaVista, Fast, Google, Go, iWon, and NorthernLight), with 3000 queries from two domains, using a generally automatic test design. The of the ranking.
+ highest precision among the four search engines.
+ engines. The researchers conducted no statistical analysis comparing search engines. Griesbaum (2004) investigated the retrieval effectiveness of three German Web search services (Alta-better than AltaVista, but there was no significant difference between Google and Lycos. HotBot, and AltaVista) and four meta-search engines (MetaCrawler, ProFusion, MetaFind, and Meta-
+EUREKA). Experimental results showed that on average the performances of selected meta-search engines performed.
+ 2.1.2. Web search engine ranking evaluation
+Singhal and Kaszkiel (2001) compared the performance of a state-of-the-art keyword-based document algorithm.
+ tion, there was an approximately 60% overlap on search engines. Eastman (2002) reported that links of the best ranking for the top 20 documents; however, there was no statistical comparison performed.
+Soboroff, Nicholas, and Cahan (2001) suggested an automatic method that maps queries with a random set pairing these queries with known Web documents.
+ the researchers report that their method provided results consistent with human-based evaluations. 2.1.3. Web search engine result stability for Web search engines.
+ search engines.
+
+Mowshowitz and Kawaguchi (2002) measured the performance of 12 search engines with 12 queries and the consistently the most biased search engine in terms of stability of links. than ecommerce search engines. These studies have not specifically examined ecommerce queries. 2.2. Ecommerce search engine evaluation ( ForeSee Results, 2002, 2004 ).
+ ecommerce sites were ambiguous and provided few opportunities for comparison shopping.
+Mukhopadhyay, Rajan, and Telang (2004) modeled search engine competition, showing that lower quality but has declined over time, with the exception of Yahoo!, which has offered a superior product. tiveness of search engine ranking.
+ engines, and large and small commercial organizations. 3. Research questions
+We address three research questions in this study: (1) Which type of search engine performs better for sponsored links more relevant than organic links for ecommerce searching? Our three hypotheses addressing these three research questions are: ecommerce search engine relative to non-ecommerce search engines.
+ the development of future ecommerce search engines.
+ the lowest rank).
+ ( Jansen, Spink, &amp; Saracevic, 2000 ).
+ Hypothesis 3. Sponsored links will be more relevant than organic links. search engines and search engine optimization approaches.
+ in this case from Google, in response to the query bedding . 4. Research methods engines for use in the study. 4.1. Web search engines merce searching. The following describes each search engine type:
+Metacrawler search engines: These Web search engines do not have their own database. Instead, they search other search engines and rank the links according to a meta-ranking algorithm. isons, costs, and reviews.
+ General purpose search engine: These Web search engines typically use crawlers to index Web documents. needs.
+ include several pay per click listings in a sponsored portion of their search results (see Fig. 1 ). directory-based search engines supplement their listings with crawler-based results. are: Excite (Meta search engine), Froogle (Ecommerce engine), Google (General engine), Overture (paid mation about each search engine.
+ more popular the engine is in terms of links.
+
+The Alexa.com ranking is an indicator of the popularity of an engine. Alexa Research ( www.alexa.com ) ularity or Alexa rating may indicate ( FirstPlace Software, 2004 ).
+ The following is a description of the search engines selected: Excite ( http://www.excite.com ) X  X eta search engine X  X xcite retrieves the most relevant links from
+Froogle ( http://www.froogle.google.com ) X  X commerce search engine X  X s an ecommerce-focused engine
+Google ( http://www.google.com ) X  X eneral search engine X  X as originally founded as a Stanford University
+Overture ( http://www.overture.com ) X  X aid for inclusion search engine X  X as purchased by Yahoo! to the businesses  X  Web sites ( Marketing Tops, 2003 ).
+ commercial content is accepted for free ( Sullivan, 2004 ). 4.2. Ecommerce queries include:  X  X  X ouses for sale in Lews county X  X ;  X  X  X egion free DVD software X  X ;  X  X  X ow AND cost AND flights miles X  X , and  X  X  X aseball card price guide X  X . Appendix A contains the full list of 100 queries. 4.3. Ecommerce Web links engine. The SERP typically included 10 organic links and a number of sponsored links. address within a 30 min period.
+ run concurrently (i.e., the submission process for each search engine began at the same time). read format: Query, Search Engine, Rank, Title, Description, Uniform Resource Locator (URL), and Type a unique identifier. Fig. 2 shows the layout of the processed results. 4.4. Preparation for user evaluation tifier, we could later repopulate this data.
+ we had 3221 unique records containing the fields of Query, Title, Summary, and URL. application interface used by the evaluators.
+ their interpretation of the query and the scenario.
+ their rating of the result (1 for relevant, 2 for somewhat relevant, and 3 for not relevant). 1, 2, and 3).
+ 4.5. Evaluator judgment of links retrieved from this survey.
+
+After administering the pre-survey, we instructed the participants on how to complete the study. The (which also appeared whenever the evaluators opened the software application): of the query.
+ hyperlink.
+ make certain that each user carefully evaluated each individual search result. lowing reasons: Page Content, Load Time, Professionalism of Page, Summary, Title, Trust, and URL, or other, noted by typing in another basis.
+ analysis. 5. Results
+We now address our three research questions: (1) Which type of search engine performs better for ecom-sored links more relevant than organic links for ecommerce searching? 5.1. Comparison among search engines using an ecommerce search engine relative to non-ecommerce search engines. a difference of means (relevancy means) among the five groups (search engines) tested.
+The first step in the evaluation was to complete a one-way ANOVA statistical analysis to compare means HSD ( X  X  X onestly significantly different X  X  test).
+
+Tukey  X  s HSD post hoc test compares each control group to the other groups. The asterisks in the mean Yahoo! Directories.
+ higher evaluations are prevalent for Yahoo! Directory (mean = 2.4) and Froogle (mean = 2.3). among Excite (mean of 2.1, n = 977), Overture (2.1, n = 848), or Google (2.1, n = 899). queries.
+ for 85% of the search links evaluated.
+ of the bases for rating for the search links evaluated. 5.2. Differences by rank
+Our second research question investigates whether the top-ranked links are the most relevant for ecom-relevant links have the lowest rank ).
+ regression analysis.
+
+Therefore, we conducted a cross-tabs analysis, which examines the relationship between two categorical Table 8 shows the number of links at each average relevance evaluation and rank. 155 somewhat relevant documents at rank 1 and 135 at rank 10. However, the trend was not statistically significant.
+ search engine. 5.3. Difference between organic and sponsored links all sponsored.
+ a two-way ANOVA to determine if there was any difference between organic and sponsored links by search engine, with descriptive results displayed in Table 9 .
+
+The two-way ANOVA is a factorial method that allows us to study the interaction among the independent between organic and sponsored links among search engines. However, the results of a two-way ANOVA showed no significant interaction with Type of Links * Search Engine on average relevance evaluations. reverse is true. 5.4. An issue with duplicate links number of links from each search engine and the number of duplicate links. conducted a one-way ANOVA statistical analysis to compare means and variance among the search engines imental error) alone. In fact, the difference is now stronger than when the duplicates were included.
+We conducted a Tukey  X  s HSD analysis to inform us when search engine mean relevance evaluations were significantly different, as shown in Table 12 .
+ uations are prevalent for Yahoo! Directory (mean = 2.39) and Froogle (mean = 2.37). relevant. 6. Discussion Overture. There was also no statistical difference between Froogle and Yahoo! Directories. searching ?), it appears that an ecommerce search engine and a search directory best support ecommerce stantially fewer links than Froogle, however.
+ the aggregate performance increase over time may be considerable.
+ prisingly, organic links were more relevant than sponsored.
+ Web searchers.
+ clustering.
+ be the most beneficial market approach.
+ evaluation. that Web search engines servicing this population should handle these types of queries. (0.89), so this does not appear to be a major issue for this set of queries. 7. Conclusions and future research
+We began with a review of the relationship between the growth of ecommerce and the continuing develop-gine evaluation and ecommerce Web searching. We found that few of these studies have investigated the merce searches.
+ their choosing of some links as more relevant than others.
+ Web searching.
+
+Overall, this study supports the ongoing research into ecommerce searching technology. The concept of engines.
+ Acknowledgements
+We thank the four evaluators (Philip DePaola, James Trainor, Samantha Guss, and David Montanez) for of this research.
+
+Appendix A. Ecommerce queries 10. 7th edition singles for sale magic the gathering 11. Days of knights online store DE 12. + X  X  X an Francisco X  X  + X  X  X eal estate X  X  + X  X  X or sale by owner X  X  13. Low price tennis racquets 14. Lowest price korg nxs-5r synthesizer module 15. Whole sale disposable cameras 16. $3.59 cameras 17. Kdur 20 MEQ prices 18. MOTELS FOR SALE JACKSONVILLE 19. For sale Yamaha xt600 20. Land for sale in Minnesota 21. Monmouth county + party stores 22. Homes for sale UK 23. Sailboats for sale + Utah 24. For AND sale AND 1988 AND Toyota AND Celica AND convertible 25. Order +win98 purchase cost price 26. Bauxite prices 27. Food under $5.00 28. 1975 mobile home prices 29. For sale 280 zx ground effects 30. Marshall swift residential cost handbook 31. Unlimited long distance $25 32. Jordan cattle prices 33. Cigarettes for $12 carton 34. v.a. homes for sale in San Diego, CA 35.  X  X 128 bit free encryption tools X  X  36. $500 AND basic AND Web AND presence AND design AND e-com 37. Seacat boat prices 38. 4 cylinder used cars for sale in thunder bay 39. + X  X  X sed cars for sale in Thunder Bay X  X  40. New cars priced under $10000.00 41. Homes AND for AND sale AND in AND Queensland, Australia 42. 56k v9 pci modem driver free download 43. For sale ford f350 diesel 44. MITCHELL BROTHERS OFARREL CREDIT CARD 45. CASINO FOR SALE CRIPPLE CREEK COLORADO 46. Textronic printers X  X ree offer 47. Toyota MR2 for sale in Calgary 48.  X  X  X astles for sale in England X  X  49. Beatles CDs for sale  X  X  X et it Be X  X  50. Gothic boots online stores 51. Dealer cost Pontiac 52. NJ puppies free to good home 53. Snakes for sale: colubrids 54.  X  X  X anada X  X exico freight prices X  X  55. Acid free envelopes 56. Nokia 2160 hands free kit 57. Restaurant for sale in Spain 58. Wooden pallets prices 59. Israel AND rj45 AND cable AND meter AND price AND il AND co 60. Land for sale in northern Idaho 61. Time share for Sale Lake Buena Vista 62. Mark mcgwire baseball cards prices 1989, 1991 63. Cars for sale in Washington state under $100.00 64. 55b Cornwall road brampton for sale information 65.  X  X  X thernet 2 credit card X  X  AND drivers AND  X  X  X indows nt X  X  66. Easter bunny $2 bill 67. Oleanders for sale in Goliad Co. Texas 68. at&amp;t $30 rebate 69. Volkswagon westfalia camper for sale Canada 70. Sitting Bull Wild West $1 souvenir playing card 71. Epil Stop Spray with Free Robe and life time supply of roll on 72. Girlactik $10.00 girLActik 73. Nice houses under the cost of $20,000 located in Chesapeake near the Hickory Middle School 74. Western digital 40gb retail boxed 75. OMRON AND RS55-50 AND retail AND systems 76. 20$ rolex 77. + X  X  X ibbs free energy X  X  +review 78. Best AND price AND xerox AND M950 AND M940 79. What is the selling price of Petroleos Mexicanos 14.5% ending in 2006? 80. $10 adult vcd Japanese exchange 81. Rollerskates to buy in the UK 82. For sale 1964 ford pickup 83. Dirt bike for sale in Pennsylvania 84. 1000 min for $20.00 85. Yamaha price wx5 86. Oldsmobile transmission prices 87. Region free DVD software 88. Bahamas AND restaurants AND prices AND ratings 89. Low AND cost AND flights AND Glasgow 90. 2001 Nissan Xterra Dealer Invoice 91. POINT OF SALE DEVICE 92. 1969 Camaro Convertible for sale in Florida 93. C AND Class AND Mercedes AND For AND sale AND London 94. Atlantic city free vacation giveaway 95. Acreage for sale Oregon Harrisburg 96. Cheap Go-karts for sale in PA 97. I want to buy things with my frequent flier miles 98. HUD homes for sale in Chino, CA 99. Baseball card price guide 100. Wig stores in New York References

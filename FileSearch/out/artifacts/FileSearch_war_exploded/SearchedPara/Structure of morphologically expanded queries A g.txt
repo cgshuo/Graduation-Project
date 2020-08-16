@@ -1,0 +1,44 @@
+ 1. Introduction ground in many of the works done in query reformulation, namely the appropriate selection of a subset of search terms among a list of candidate terms. However, we cannot evaluate a priori the quality of a subset with respect to another of possible subsets and predicts their quality in some unsupervised manner.
+
+Before considering any query reformulation process it is very important to take into account that modern information has the effect of rendering all queries flat , without structure.
+
+However, there are many cases in which queries have some known linguistic structure , such as degree of synonymy which assumes terms are independent and scores documents accordingly. mulation and term independence assumption. The morphological query structure of the query has been chosen to show how our approach is capable to improve state-of-art approaches like Porter X  X  stemmer.
+
+In Section 2 we propose a novel way to represent expanded queries that encodes information about the term correlation but at the expense of introducing parameters (weights) which may be hard to set. Section 3 shows one experiment where and Section 6 draws the main conclusions and describe the future lines of work. 2. Ranking independent clauses of dependent terms terms is independent and therefore the relevance information gained by seeing query terms can be computed separately and added linearly (or log-linearly), for example, in BM25: their presence should diminish as we see other terms in this group, very much like in Eq. (1) does for term frequency, and unlike (2).
+
+This situation arises very often in modern IR tasks and systems, in particular in the following areas: terms:
+Boolean retrieval models and the Inquery [3] retrieval model have used query representations even more general than respect relevance, as is usually done across terms. d j :  X  d C T .
+ Consider this example. Imagine that we are given a corpus with four terms A  X  D :
+Doc ABCD d 1 2101 d 2 0111 d 3 1202
+Now consider the query with two clauses: This query can also be represented by the matrix:
+Transformed Doc Clause 1 Clause 2 d 1 j q 2.7 0 d 2 j q 0.7 1 d 3 j q 2.4 0 tained in the postings of the query terms. This means that one can compute the needed term statistics on the fly after any extra disk or memory access.
+ cies ( ctf ) and clause collection frequencies ( ccf ) can be computed as: terms in query expansion tasks. In our case, this weight always takes the value 1.
+ From these measures, we can define the probability of a clause in a document, p p  X  c j Col  X  , in the following manner: One possible choice is the number of postings containing at least one term in the clause ; we refer this as icf may be unfairly large for clauses with lowly weighted common terms. Furthermore, in some settings this number may not likely to be highly scored). Another possibility is to use the expected idf for a clause term in a document: idf .
+ number of retrieval systems [2]; we display several in Table 1 . 3. Query clause experiments
+We have performed experiments to demonstrate the dangers of the term independence assumption for queries with 3.1. Stemming
+One can view stemming as a form of global query expansion: we expand a term in the query with every term in the mor-phological thesaurus sharing the same stem. However, doing this directly on the query hurts performance  X  mean average independence hypothesis produced by adding so many strongly correlated terms at query time. are collapsed (this is also seen empirically in Table 2 , last row). 3.2. Our genetic algorithm
+Because we need to perform the selection of a particular set of terms among a huge amount of possible combinations of heuristic method such as a genetic algorithm.
+ algorithms mimic the principles of natural evolution: heredity and survival of the most fit individuals. close to the optimum.
+
+Chromosomes of our GA are fix-length binary strings where each position corresponds to a candidate query term. A posi-chosen for reproduction are proportional to its fitness. We apply the one-point crossover operator and random mutation experiments.
+
+There have been several works applying GAs [9] to different aspects of information retrieval, and also to the stemming query, but document examples and the algorithms induce the key concepts in order to find other relevant documents.
+Mainly two information retrieval problems have been tackled with GAs: assigning weights to the query terms based operators instead of the classical blind operators, as well as niching techniques.
+A common factor of the above mentioned works is that they relay on some kind of information provided by the user. In have studied the GA which is applied without user supervision. 3.3. Testing the viability of the approach
+Our first experiments have been aimed to test how much the GA can improve the results of a search. To this purpose, we relevant  X  R a  X  .
+ search in the document collection indexed by stems. We can observe that our system achieved an important improvement quickly. 4. Experimental results
+The system has been implemented in Java, using the JGAP library, algorithm, on a Pentium 4 processor.
+
+GA parameters. Finally, we provide global measures for the whole set of queries that we have considered. 4.1. Selecting the fitness function ments that also contain the rest of the terms of the query and therefore it will obtain high scores.
+We have considered three alternative fitness functions, fitness function used in the remaining experiments. 4.2. Tuning the GA parameters values of the crossover rate around 25%. Mutation rates values around 1% are enough to produce a quick convergence. quickly. 4.3. Overall performance
+Table 4 (Stem Expansion (Clauses)) shows the results obtained using stemming as query expansion but building a clause stems.
+
+In order to show the improvement of our approach, we have compared the genetic algorithm performance with the re-genetic algorithm achieved an improvement of the performance, greater than the one achieved with other stemming meth-ods traditionally used in the stemming process, such as Porter. 5. Related works do-feedback has tackled the issue of term re-weighting, from early Rochio algorithms to more modern probabilistic ap-proaches of relevance feedback. While these works discuss the ranking function, to our knowledge they all assume Query
+Term Independence and concentrate on the re-weighting formula. Again, we are not concerned here on the re-weighting will be query-dependant . 6. Conclusions and future work
+In this paper we try to show the importance of term dependence issues, how they show up unexpectedly in simple exper-iments and how they can have a strong adverse effect in performance. Furthermore we propose a method to represent and take into account a simple form of dependence between terms.
+
+On the other hand, we have shown how the clauses can be combined with an evolutionary algorithm to help to reformu-ranked documents retrieved with these terms.
+ cosine, and square-root cosine.
+ revealed a clear improvement of the performance, both over the baseline, and over other stemming expansion methods. cover the original query.
+ different query expansion approaches like co-occurrence measures or methods based in Information Theory. Acknowledgements This paper has been funded in part by the Spanish MICINN projects TIN2007-67581-C02-01 and TIN2007-68083-C02-01.
+References

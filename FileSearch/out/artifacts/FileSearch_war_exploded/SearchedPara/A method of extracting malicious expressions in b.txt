@@ -1,0 +1,100 @@
+ 1. Introduction world. Therefore, BBS to be discussed in this paper includes the above SNS applications. are serious problems for users, which are postings about mental abuse and warnings of crimes. 2006, and the Internet Environmental Improvement Act was established in June 2008. Moreover, there were cabinet  X  persons with a revised version was appended in December 2008. Considering those laws and measurements, legislative preparations in Japan is more advanced than other countries and there are many court cases and case examples. WEB information. Therefore, it can not apply to filter the part of malicious articles in the same site. and to improve detecting method with knowledge partly because of its automatic learning. Web article even they are using automatic filtering techniques.
+ sions in changing Web, especially for inappropriate Web contents and a common hierarchy method. The presented method improve the rate of false positive of the traditional method without degrading the rate of false negative. sented method from the experimental data. Section 6 presents conclusion and possible further works. 2. The presented system 2.1. The outline of context analysis
+Fig. 1 shows examples for malicious and non-malicious expressions, where the abbreviation RPG in (b1) means a role playing game.
+ cles  X ,  X  X  this woman is BBW  X ) in (b3).
+ quence of expressions based on the traditional method and SC expressions corresponding to context analysis. 2.2. Inadequate and crime expressions
+In this paper, expressions to be detected are classified into two categories of inadequate and crime expressions. 2.2.1. Inadequate expressions
+Inadequate expressions which people feel irritated have four main categories as follows: (d) hh OBSCENTITY ii means the trait of behaving in an obscene manner as follows: matical expressions, both are not included in this paper discussion because they have no SC expressions. 2.3. Crime expressions
+Bulletin boards include expressions which warn about crimes. They are very important expressions to detect because categories of expressions with warnings of crimes as follows: (c) hh CRIME MATERIAL ii means the tools which are used in the crime processing as follows: (d) hh DRUG ii means a chemical substance that affects the processes of the mind or body as follows: 2.4. The construction of the presented system Fig. 2 shows the construction of the presented system.
+ above results. 3. Rule-based extracting knowledge 3.1. Definition of multi-attribute rules STR: string, or, word spelling.
+ CAT: category by general concepts, or a part of speeches.
+ SEM: semantic information to be defined in this paper.
+ follows:
+N 1 = {(STR,  X  X  He  X ), (CAT, HUMAN)}.
+
+N 2 = {(STR,  X  X  kills  X ), (CAT, VERB), (SEM, MURDER&amp;VIOLENCE)}.
+
+N 3 = {(STR,  X  X  someone  X ), (CAT, HUMAN)}.
+
+In the above examples, (SEM, MURDER&amp;VIOLENCE) denotes semantics for crime expressions, (CAT, HUMAN) means cat-crime expressions can be represented by multi-attribute rules by using these semantics. The p-th multi-attribute matching rule Rule ( p ) is defined as follows: Consider a rule to match the above input expression  X  X  He kills someone  X  can be defined by the Rule (1) as follows: 3.2. Multi-attribute descriptions 3.2.1. Semantic information Semantic information (SEM) depends on Section 2 , so the typical semantics are explained.
+Inadequate and crime expressions are described by combining a variety of words, phrases, categories and semantics as follows: (1) Abuse expressions: (SEM, ABUSE) use for violence or insulting comments towards someone.
+For example, abuse expressions are  X  X  ugly  X ,  X  X  liar  X ,  X  X  stupid  X  and  X  X  crazy  X . (3) Obscenity expressions: (SEM, OBSCENITY) use for the trait of behaving in an obscene manner.
+For example, obscenity expressions are  X  X  naked  X  and  X  X  kid porn  X .
+For example, murder and violence expressions are  X  X  kill  X , and  X  X  shoot  X .
+For example, explosion and arson expressions are  X  X  X errorists X ,  X  X  destroy  X  and  X  X  set fire  X . (6) Crime material expressions: (SEM, CRIME MATERIAL) use for the tools which are used in the crime processing.
+For example, crime material expressions are  X  X  sward  X  and  X  X  muzzles  X . 3.2.2. Multi-attribute rules the result is fixed, otherwise (NON, y ). The detailed method will be discussed in the next section. Tables 1 and 2 show rule-based knowledge for the first and the second stages, respectively.
+Table 1 uses general concepts such as CLOTHES, JOB, DOCUMENT. (CON, NEGATION)) neglects inadequate and crime deci-context analysis by the second stage.
+
+In Table 2 , Rule (18) = {{(CON, CRIME MATERIAL)}{(CON, PLACE)} {(CON, TIME)} {(CON, MURDER&amp;VIOLENCE)}} is the hh MURDER&amp;VIOLENCE ii ) and (NON, hh ABUSE ii )asin Table 2 . 4. Multi-attribute matching 4.1. Construction of machines used this approach for medical reports and Yoshinari et al. (2008) used it for emotion analysis.
+Suppose that R be a sequence of the input structures. The machine multi-attribute pattern-matching (MAPM) machine in 1998 ), but it has the following distinctive features: 4.1.1. goto and output functions two functions: by N R . Therefore, the machine MAPM is also called a set matching machine.
+R 71 = {(SEM, MURDER&amp;VIOLENCE)}}, R 72 = {(CAT, HUMAN)}}.
+
+R 81 = {(CAT, HUMAN)}, R 82 = {(SEM, MURDER&amp;VIOLENCE)}, R Suppose that the input  X  X  he kills someone  X  has the following structures.
+
+N 1 = {(STR,  X  X  he  X ), (CAT, HUMAN)}.
+
+N = {(STR,  X  X  kills  X ), (CAT, VERB}, {(SEM, MURDER&amp;VIOLENCE)}.
+
+N = {(STR,  X  X  someone  X )}, (CAT, NOUN), (CAT, HUMAN)}.
+ Each input structure can include the corresponding rule structure as follows:
+N
+N
+The machine MAPM becomes non-deterministic if there are two more rules that can match the input structure. The ambi-guity can be solved by selecting the longest applicable rules with high priority. are neglected as we used some samples only. 4.2. Multi-stage matching and those of Table 2 are used by the second stage.
+
+The following procedure summarizes the behaviour of the machine MAPM as the procedure MAPM(a, M) that can carry 4.2.1. Procedure MAPM( a ,M)
+A sequence a of input structures is N 1 , N 2 , ... , N n turns the first structure N 1 and modifies a = N 2 ... . N begin end Consider the input sentence  X  X  I get a strong sward  X  in (a1) of Fig. 1 with the following sequence of structures.
+N 1 = {(STR,  X  X  I  X ), (CAT, HUMAN)}.
+
+N 2 = {(STR,  X  X  get  X ), (CAT, VERB)}.
+
+N 3 = {(STR,  X  X  a strong sward  X ), (CAT, NOUN), (SEM, CRIME MATERIAL)}.
+ state 8 produces output (8) = 7 identifying {(CON, CRIME MATERIAL)} which becomes the input of the second stage matching.
+ from the first stage.  X  X  I get a strong sword . X  X s N 1 = {(CON, CRIME MATERIAL)}.  X  X  Bring your company to Tokyo station tomorrow . X  is N 2
+N 4 = {(CON, MURDER&amp;VIOLENCE)} hh MURDER&amp;VIOLENCE ii .
+ following results are obtained from the first stage.
+Bring your company in the next scene of RPG tomorrow  X  X s N I kill them  X  X s N 2 = {(CON, MURDER&amp;VIOLENCE)}.
+ 5. Experimental results 5.1. Basic detection knowledge and experimental data contents of detection knowledge for each expression, where the following abbreviations are utilized. NUM-WORD: The number of word expressions.
+ NUM-RULE: The number of multi-attribute rules.
+ NUM-PAT: The number of surface patterns.
+ sions (1277 non-inadequate (NI) and 1382 crime (NC) expressions) have been prepared from Web pages, like Fig. 1 (b), data, but NI and NC are non-malicious data. 5.2. Experimental results
+The presented method based on multi-attribute expressions in context is called as MULTI and the traditional method and sensitivity ( Altman &amp; Bland, 1994 ) are used as follows: True positive (TP): Malicious expressions correctly determined as malicious. False positive (FP): Non-malicious expressions incorrectly determined as malicious. True negative (TN): Non-malicious expressions correctly determined as non-malicious. False negative (FN): Malicious expressions incorrectly determined as non-malicious. Let NUM_TP, NUM_FP, NUM_TN and NUM_FN be the numbers of TP, FP, TN and FN, respectively. SPECIFICITY: The rate (%) of specificity by calculating NUM_TN/(NUM_TN + NUM_FP). SENSITIVITY: The rate (%) of sensitivity by calculating NUM_TP/(NUM_TP + NUM_FN). sented method has low error rate and can reduce human efforts for a large number of malicious candidates. Other preparations for malicious test data (I and C) are explained as follows: ALL_DATA: The number of all data to be estimated.
+ ALL_CORR: The number of all correct expressions to be extracted.
+ NUM_EXTR: The number of the extracted expressions.
+ C, respectively. MULTI(I) and MULTI(C) are the same meaning.
+ SINGLE for NI and NC, respectively. MULTI(NI) and MULTI(NC) are the same meaning. Table 9 shows evaluation results by SPECIFICITY and SENSITIVITY obtained from TP, FN, TN and FP in Tables 7 and 8 . utes reduction of human efforts.
+
+Moreover, the presented rule-based method has two efficient advantages as follows: (a) Unknown words : The presented rule-based method is proper to extract expressions in changing Web, especially for Consider the following input and rule structures.
+
+N = {(STR,  X  X  Killed  X ), (SEM, MURDER&amp;VIOLENCE)}.
+
+N = {(STR,  X  X  ABC  X ), (CAT, UNKNOWN)}.
+
+N = {(STR,  X  X  Tokyo Station  X ), (CAT,PLACE)}.
+ Rule (7) = R 71 , R 72 , R 73 .
+
+R 71 = {(SEM, MURDER&amp;VIOLENCE)}.
+
+R 72 = {(CAT, HUMAN)}.
+
+R 73 = {(CAT, PLACE)}.
+
+In this case, N 1 R 71 , N 2 R 72 and N 3 R 73 are satisfied because R KNOWN)}. Therefore, transitions are always success by this error recovery.
+ it is easy to restrict the upper bound of possible transitions in the practical system. argotic words. (b) Hierarchical concept matching.
+ Consider  X  X  delete people at Tokyo station  X  with the following structures.
+N = {(STR,  X  X  delete  X ), (SEM, DELETE)}.
+
+N = {(STR,  X  X  people  X ), (CAT, NOUN) (CAT, HUMAN)}.
+
+N = {(STR,  X  X  Tokyo Station  X ), (CAT, PLACE)}.
+
+Suppose that the semantic meaning of the verb  X  X  X elete X  is the super-category DELETE of category MURDER&amp;VIOLENCE
+Hierarchical concept matching is succeeded if DELETE of N edge using concepts.
+ problems as shown in the following examples:  X  X  X QJmcf2O kill  X  X  X aaaqqqbbb X , where  X  X  X Qjmcf2O X  and  X  X  X aaaqqqbbb X  are user ID. Moreover, there are some h Ungrammatical sentence i as follows: To solve this problem, special frozen analysis must be introduced case by case and remains in the future research.
+Support Vector machine (SVM) is a well-known approach. SVMs depend on words or a sequence of words without con-sidering the context of articles which has many disadvantage ( Burgess, 1998 ) as follows: (1) The biggest limitation of the support vector approach lies in choice of the kernel. (2) The second limitation is speed and size, both in training and testing. (3) Discrete data presents another problem.
+However, the detected results by the presented method can use SVM schemes as the learning futures because SVMs re-5.3. Time evaluation and error analysis performance together with essential error analysis for the whole system consisting of the following modules. The first module FOCUS determines the essential text by removing redundant texts (advertising parts) from Web pages. ambiguous name  X  X  Nagoya  X  in the module MOPH can be solved. The module ATTR determines SC expressions by using the presented multi-attribute method.
+ SINGLE uses FOCUS, MOPH, KW and NE. MULTI uses FOCUS, MOPH, NE and ATTR, where NE is included ATTR.
+The presented system has been developed Windows 2003 server and two CPU of Intel Xeon E5440 (2.83 GHz) with 2 GB HTML and its text (TEXT). The sizes of HTML and TEXT are 1 MB and 60 KB, respectively. main module ATTR of MULTI becomes 20 ms for a text article. 6. Conclusion
+The extracting scheme of traditional methods depends on words or a sequence of words without considering the context is a very useful approach for filtering services for inadequate expressions.
+In future work, it needs to build rule-based knowledge for many types of malicious postings together with the error recovery.
+
+References

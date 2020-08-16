@@ -1,0 +1,114 @@
+ 1. Introduction
+There is a variety of process modeling frameworks and tools available, each with its own syntax and seman-specified processes.
+
+We may distinguish industrial frameworks, such as EPCs [12,18] , UML activity diagrams [8] , BPMN [24] demic frameworks have multiple variants. Petri nets variants include, among others, place-transition nets, as p -calculus [21] , CSP [16] and CCS [20] .
+Most of the industrial frameworks suffer from the fact that they have no formally defined semantics, which causes many problems when applying them. The only analysis facilities these frameworks offer are syntax checking and sometimes process simulation. Academic frameworks have exact formal semantics and they offer, besides syntax checking, methods for the analysis of the behavior of modeled processes. Industrial frameworks often offer more  X  X  X odeling power X  X  and comfort than academic frameworks, since they offer more modeling primitives and modeling patterns that can be easily applied to practical situations. Significant research efforts have been devoted to link industrial and academic frameworks: Many industrial frameworks are mapped onto academic frameworks in order to provide them with formal semantics and the accompanying unfeasible, see for instance [18] .
+
+The industrial frameworks cover most of the control structures (connectors and patterns) needed for mod-eling workflow processes used in practice. Typical examples of connectors are the XOR-split, XOR-join,
+AND-split and AND-join. There are also many others like the implicit-OR split and the m -out-of-n split and join. An attempt to incorporate most of the patterns is taken in the YAWL language [4] . For YAWL, the formal semantics is defined in the form of a transition system.
+
+In this paper we study the use of the history as a way to obtain more flexible control structures. By history we understand a series of events performed by a workflow process. History offers a possibility
+From the experiments we have done so far with the control structures of BPMN, UML activity diagrams and EPCs we have seen that semantics for the control structures can easily be formulated using the history.
+ models presented in our framework into industrial ones.
+
+The split connector consumes one object, called case token , and produces as many case tokens as specified its inputs and then it consumes them all and produces one output case token. This semantics corresponds to nector well in order to make correct process models.
+
+Second, we consider the proper completion property of processes, which is normally called soundness for
+Our goal is to have a modeling method that guarantees soundness by construction. We give sufficient condi-tions for processes in our framework to satisfy this property.
+
+Third, we discuss the implementation of the new control structures. Instead of constructing a new workflow flow engine logs the events and that this event log is accessible.
+ whereas in Section 3 we describe the semantics. In Section 4 , we introduce the notion of soundness and tions for future work. 2. Syntax that can be applied to other frameworks as well.
+ The modeling framework comprises the following concepts:
+Process is a graph with two kinds of nodes: tasks and connectors .A workflow process has one initial task task.
+
+Tasks usually correspond to activities carried out by users, such as registering a patient or prescribing medication.
+ more input arcs and one or more output arcs.
+ formed and the choices made. We may have several active cases in a process. We consider them indepen-dently of each other.
+
+Next we formalize these concepts. A graph is a tuple G  X  X  N ; A  X  , where N is a set of nodes and A N N is f m j X  n ; m  X 2 A g , respectively. Given a set S , j S j denotes the cardinality of S .
+Definition 1 ( workflow process ). A workflow process P is defined by a graph  X  N ; A  X  where of join connectors J and a set of transfer connectors X ;  X  A N N is a set of arcs ;  X  the initial task i 2 T and the final task f 2 T satisfy i  X  f  X ; and j i j X j f j X  1;  X  j t j X j t j X  1 for all t 2 T nf i ; f g ;  X  j s j X  1 and j s j P 1 for all s 2 S ;  X  j j j P 1 and j j j X  1 for all j 2 J ;  X  j x j P 1 and j x j P 1 for all x 2 X ; z n 2 N : x  X  z 0 ^ y  X  z n ^ X 8 k : 0 6 k &lt; n :  X  z k ; z
+We denote the outgoing arc of i by a i and the incoming arc of f by a rectangles and connectors by diamonds. Transfer connectors are marked with an X .
+S of the 3-split, the set J of the 3-join, and the set X of the transfer connectors. 3. Semantics
+A workflow system over a workflow process consists of the workflow process and cases in execution. Cases flow management system instantaneously .
+
+As already mentioned in the introduction we explicitly store the history. To this end we keep a global history log , being a sequence of events, where an event is consumption or production of tokens after the firing of a rule. Keeping such a log is a common practice in industrial workflow management systems such as PeopleSoft and Staffware. Thus, a state of the workflow system is a pair  X  m ; h  X  where m is a marking and h is a history log. Using the notion of state we define the semantics of a workflow system as a tran-sition system.
+ over B is a mapping m : B ! N . The set of all multisets over B is N We say that a multiset m over B is non-empty is there exists b 2 B such that m  X  b  X  &gt; 0. We introduce first the notions of a token and a marking.
+ and k 2 N is a case id. A marking m is a multiset of tokens, m 2 N
+Observe that the history logs do not record actions performed by the user but only those performed by the workflow management system. To this end events logged are transfers of tokens from one multiset of arcs to another multiset of arcs. For the sake of simplicity we distinguish between productions and consumptions .
+
+Definition 3. Let P be a workflow process.  X  The initial state r 0 is  X ; ;  X  , where ; denotes the empty marking and  X  X he empty history log. ized to concatenation of logs. Membership of an event in a log is denoted .
+
+As we are going to see, for states reachable from the initial state, history log determines uniquely the corresponding marking. Therefore, the use of marking is for presentation purposes only: actual workflow management systems do not need to have a global look at the marking but will make use only of the history log. We describe the semantics of a workflow system by means of a transition relation between states as follows:
+Definition 4. Let P be a workflow process. The semantics of the workflow system over P is given by a transition system T  X  X  R ; ! ; r 0  X  , where R is the set of states of the workflow system, r ! R R is the transition relation defined by the rules  X  a g  X  below. Let r  X  X  m ; h  X  . ( a ) case creation rule (creates a token with a new id on the outgoing arc of the initial task) r ! r ( b ) start task rule (transfers a token from the incoming arc of a task to the task) r ! r ( c ) complete task rule (transfers a token from a task to the outgoing arc of the task) r ! r ( d ) complete case rule (removes a token from the incoming arc of the final task) r ! r ( f ) transfer rule (removes one token from an incoming arc of a transfer node and puts one token on an ( g ) join rule (removes tokens with the same id from the incoming arcs of a join node and puts one token
+We further assume that the transfer connectors are fair . Formally, let x be a transfer connector and let r 0 ! r 1 !! r n ! be an infinite firing sequence containing infinitely many applications of the ( f )-rule tokens are produced infinitely often for each outgoing arc of x .
+
+We write r ! r 0 if there is a sequence of rules that lead from r to r able from r .
+
+Next we formalize the condition C P 0 above. A join connector should wait for all possible incoming is evidence that no other tokens with the same case id can possibly arrive unless the join itself fires.
+Straight-forward formalization of this intuition is impossible since producing more tokens on the incoming arcs of some join j 1 might require reasoning on the fireability of some another join j definition problem we introduce a tentative firing relation with respect to a join j in a modified process
+P . Using this notion we say that a join can fire, if no additional tokens on the incoming arcs are pro-duced by any sequence of tentative firings.
+ of the reduced process.
+
+Definition 5. Let P be a workflow process defined by a graph  X  T [ S [ J [ X ; A  X  . The reduced process P of P is defined by  X  T [ S [ J [ X ; A 0  X  where  X  n 1 ; n n 2 J .
+
+Proposition 6. Let P be a workflow process. Then, the reduced process P
+Proof. The only arcs present in A but not in A 0 are  X  n 1 connectors and tasks have only one incoming arc n 2 w  X  n 1  X  &gt; w  X  n 2  X  there is a path in P from i to n conditions from Definition 1 are checked immediately. h tentatively whenever there is at least one token present at one of its incoming arcs.
+Definition 7. For each join connector j , we define a tentative firing relation ! r ! j r 0 if  X  r ! r 0 by firing rules  X  a f  X  of Definition 4 ;
+We write r ! j r 0 if there is a sequence of firings that lead from r to r
+We now define the condition C P 0 formally. Let  X  m ; h  X  be a state, m k on the incoming arcs of a join connector j , having the same id k and a tokens with the given id k on the incoming arcs increases original one. The process is in a state in which the join connectors j j  X  X  X  s 1 ; j 1  X  ; k  X  X  X  X  s 1 ; j 2  X  ; k  X  X  X  X  s 1 ; j 3  X  ; k  X  ; h  X !  X  X  s dition C is violated for all of them. Hence, the process deadlocks.
+ multiset of tokens.
+
+Lemma 8. Let P be a workflow process and let T  X  X  R ; ! ; r workflow system over P. Then, for any  X  m 1 ; h 1  X  and  X  m implies m 1  X  m 2 . Moreover, for any  X  m 1 ; h 1  X  and  X  m implies m 1  X  m 2 .
+ Proof. The proof is done by induction on the length of the history log. h The most important corollary of this Lemma states that the condition C knowledge of the history.
+ Corollary 9. For any states  X  m 1 ; h 1  X  and  X  m 2 ; h 2 equivalent to C P 0  X  j ; k ;  X  m 2 ; h 2  X  X  whenever h 1 4. Soundness sition relation N .
+  X  X  a i ; k  X  ;  X  prod ; k ; a i  X  X  * r  X  there exists a history log h f such that r *  X  X  a f ; k  X  ; h  X  r *  X  m  X  X  a f ; k  X  ; h f  X  implies m  X ; .
+
+Next we formulate a structural condition implying soundness of a process. To this end we introduce task is formalized in the following definition.
+
+Definition 11. Let P 1 and P 2 be workflow processes defined by  X  N
+N 1  X  T 1 [ S 1 [ J 1 [ X 1 and N 2  X  T 2 [ S 2 [ J 2 [ X 2
+P , respectively. Let t 2 T 1 . Then, the refinement of t in P
+N  X  T [ S [ J [ X and i ; f 2 T such that:  X  if t  X  i 1 then i  X  i 2 , else i  X  i 1 ;  X  if t  X  f 1 then f  X  f 2 , else f  X  f 1 ;  X  T  X  T 1 [ T 2 nf t g , S  X  S 1 [ S 2 , J  X  J 1 [ J 2 , X  X  X  X   X  n ; n 0  X 2 A if one of the following holds: The following lemma establishes correctness of refinement as an operation.
+
+Lemma 12. Let P 1 ; P 2 be workflow processes as in Definition 11 and let t 2 T process.
+ Proof. Immediate by checking the definitions. h two basic types of workflow processes, called acyclic and cyclic blocks. Then we introduce well-structured tor. Note that the first and the last connectors are unique.
+
+Definition 13. A well-structured workflow process is defined recursively using two kinds of blocks: (1) An acyclic block is an workflow process P  X  X  N ; A  X  such that (2) A cyclic block is presented in Fig. 3 , where T  X f i ; f ; t (3) A well-structured workflow process P is an acyclic block, a cyclic block or P  X  ref  X  t ; P
+Observe that the requirement that P 2 is a block rather than an arbitrary well-structured process does ments of two well-structured processes can be also obtained with series of refinements, where P block.
+
+The workflow process P from Fig. 1 is well-structured. To see this, observe that it can be obtained by the following steps. First, take a cyclic block with task t 1 nector is a split and the last connector is a join.
+ Lemma 14. An acyclic block is sound.
+ precedes them. Joins having n + 1 predecessor joins depend either on non-joins that cannot deadlock by their semantics or on joins with no more than n predecessors that cannot deadlock by the inductive assump-empty. h Theorem 15. A well-structured workflow process is sound.
+
+Proof ( Sketch ). Observe that P being well-structured implies that n w  X  n block and by Lemma 14 sound.
+ of a state reachable in P is either identical to the marking of some state in P on a backwards arc not present in P 0 .
+
+Let  X  m ; h  X  be a state such that  X  X  a i ; k  X  ;  X  prod ; k ; a  X  prod ; k ; a i  X  X  * P 0  X  m ; h 0  X  for some h 0 , then, by soundness of P  X  m ; h 0  X  * P 0  X  X  a f ; k  X  ; h 0 f  X  . Since any firing possible in P sequence of steps can be performed in P , i.e. there exists h
+Otherwise, the only token present in m is placed on a backwards arc, say  X  n observed above, n 2 is a transfer node and it has exactly one outgoing arc, say a immediately fire and move the token to a x . Call this marking m
+P as well. Moreover, it is reachable in P 0 . Soundness of P in P .
+
+The second part of soundness follows from the soundness of P firings of the last joins of the acyclic blocks. h 5. Implementation
+In this section we discuss how an existing workflow engine (WE) can be extended to support workflow pro-cesses as defined above. To this end, we define an activation control extension called (AC).
+We describe the communication protocol between the AC and the WE. The WE sets up the static struc-ture of the AC by creating nodes and arcs connecting them. When it does so, it keeps track of the nodes that only belong to the reduced process P 0 . Then it communicates the tokens received and sent, and the activation of the various nodes. The AC keeps track of the number of tokens waiting at each input arc.
+A node is enabled if there are tokens on some input arc; for enabled nodes except join nodes the WE must predecessor arcs in the reduced process are empty. It is the task of the AC to report this to the WE. The
+WE then executes the firing. When firing transfer nodes with more than one output arc, the WE may select any arc, whether or not it belongs to P 0 . By firing, tokens are consumed and produced, which the WE reports to the AC.
+
+The implementation of the protocol is as follows. Nodes and arcs are objects of classes Node , Arc respec-are computed.
+ satisfy self : dpred  X f c g ) and a list of arcs for the produced tokens (the arcs should be contained in and indf methods update the state by producing, consuming or emptying tokens from arcs.
+After having consumed tokens from the input arc, the repf method will search whether enabled successor cessor join node of j has the direct successor arc of j as indirect predecessor. has been left to the WE. The initial split node s 1 starts by producing two tokens on a
+After the first firing, the successor node j 1 cannot fire because the indirect predecessor arc a
+After a second firing of t 1 , all indirect predecessor arcs of j consumed and an a 17 token is produced. Then x 2 fires, producing a a an a 10 token. Now j 1 is triggered again, after which x 2 case k , thus, terminated successfully.
+
+Below an implementation of the AC in object-oriented pseudo-code is given. 6. Workflow patterns
+In order to evaluate the expressive power of the framework we consider the well-known collection of 21 we do not describe the patterns.
+ one token arrives on each of the incoming arcs; exclusive choice to a transfer connector with one incoming and multiple outgoing arcs; and simple merge to a join connector with multiple incoming and one outgoing arc under assumption that not more than one token arrives on the incoming arcs. Next advanced branching merge to a join; multiple merge to a transfer connector with multiple incoming and one outgoing arc. Dis-criminator and n -out-of-m join cannot be expressed in the basic formalism but they can be expressed with termination can be modeled by adding a final join. The next group of patterns involves multiple instances (MI). MI without synchronization can be mimicked by using a split connector with one outgoing arc that can produce an arbitrary number of tokens. MI with a priori known design time knowledge and MI with a priori known runtime knowledge correspond to a split-join pair enclosing a task where both connectors can produce and, respectively, consume n tokens where n is known at design time or at runtime. MI with no a priori runtime knowledge can also be imitated by a split-join pair such that join is has one incoming arc coming from split (via a task) and another one(s) coming from a different part of the process. State-based patterns include deferred choice, interleaved parallel routing and milestone. We cannot model the deferred split, followed by a set of tasks and then by a join. Implementing the milestone pattern demands history-
+Summarizing the discussion above we observe that our formalism is powerful enough to express eighteen out of 21 patterns of [5] .
+ which XOR nodes have been transformed into transfer nodes, AND splits into split connectors and AND joins
+Note that we have added a final join connector for the final events that makes the workflow process sound. 7. More about history only common in industrial workflow management systems but also allows for modeling of processes with cases discuss two further alternatives and their relation to global history.
+ such as production and consumption of tokens. Case history assumes that the cases are executed indepen-history log one can uniquely derive a set of case histories.
+Similarly, whenever tokens with histories h 1 ; ... ; h n j  X  h tory. For instance, a patient might like to consult a number of doctors. Doctors should be independent in of each other.
+ log. Indeed, recall that processing a token with case id k by a task with the incoming arc a same reason, token histories cannot be determined by inspecting case histories. there is no information about relative order of transitions performed on different cases. 8. Conclusions and future work
+In this paper we have investigated application of case history to controlling workflow processes. We have history is included in the model. We have further defined an appropriate notion of soundness and provided a sufficient condition for it. We further reported on implementation of the framework and its application in YasperWE.
+ rithms in our experimental workflow engine, called YasperWE [2] . YasperWE is an extension of a modeling document manager InfoPath of MicroSoft. Yasper supports workflow design, simulation and analysis. In par-flow engine. With Infopath it is possible to design an XML document and to define different views on that an XML schema is designed with InfoPath. Also a set of forms is defined, one for each view. In YasperWE ated and all resources that can handle the case receive an alert (a work item in the input basket of the identity can be passed to InfoPath. The workflow engine obtains messages from InfoPath about the branch to  X  X  X utsourced X  X  to InfoPath. In InfoPath the whole case history is memorized. So to implement the control structures we have to build a component that inspects the case history and determines the control actions verification easier.
+
+References

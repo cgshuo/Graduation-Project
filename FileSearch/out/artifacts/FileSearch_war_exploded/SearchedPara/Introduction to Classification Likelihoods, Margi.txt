@@ -1,0 +1,2 @@
+ interconnected.
+ 1. Basics of classification (a) Feature-based representations (b) Linear classifiers (c) Principles of classification: likelihood and margin (d) Smoothing and regularization (e) Structured classification 2. Specific techniques (a) Perceptrons (b) Naive Bayes (c) Logistic regression / maximum entropy (d) Support vector machines (e) Comparison and trade-offs 3. Kernel methods (a) Why kernels (and why not)? (b) Kernelized linear classifiers (c) Kernelized perceptrons (d) Kernelizing SVMs and logistic regression (e) Advanced kernels and structure

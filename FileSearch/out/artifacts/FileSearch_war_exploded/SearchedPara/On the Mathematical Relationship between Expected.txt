@@ -1,0 +1,5 @@
+ H.3.3 [ Information Search and Retrieval ]: Retrieval Models
+Subtopic retrieval  X   X  X he task of finding documents that k  X  1 optimal selections S  X  k  X  s =argmax Figure 1: Latent subtopic binary relevance model. t P ( I [  X  We next define R k = as { t, t 1 ,...,t k } and 0 =arg max =arg max
+X =arg max 8 &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; : s  X  k =argmax
+We present a derivation summary; A full derivation may P ( t | q )  X  X  0 , 1 } . This allows us to convert a
+Y =argmax  X  P ( t | q ) P ( t k = t | s k ) top term (specifically making it non-zero ment from the bottom and pushing the =arg max From here we can normalize by =arg max Assuming m  X  n since Exp-n-Call@k optimizes for the case [1] J. Carbonell and J. Goldstein. The use of MMR, [3] S. Sanner, S. Guo, T. Graepel, S. Kharazmi, and [4] J. Wang and J. Zhu. Portfolio theory of information [5] C. Zhai, W. W. Cohen, and J. Lafferty. Beyond

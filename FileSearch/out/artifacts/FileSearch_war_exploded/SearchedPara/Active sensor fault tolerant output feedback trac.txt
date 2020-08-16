@@ -1,0 +1,111 @@
+ 1. Introduction mation ( Marden et al., 2013; Odgaard et al., 2013 ). 2003 ). The recently developed OWTs are foremost examples installed ( Stewart and Lackner, 2013 ).
+ fi presence of modelling and measurement errors has also been proposed in Simani and Castaldi (2013) .
+
+Generally, wind turbines have non-linear aerodynamics and Badihi et al., 2013 ).
+
+T  X  2013 ). 2. The proposed active FTTC compensation methods, adaptive control or controller recon fi methods as an approach to AFTC obviates the need for fault cation steps that are required for FDD based FTC and hence requires no time consuming algorithms for maintaining the
+Within the framework of estimation and compensation, this OWT control problems based on robust fault estimation and shown in Fig. 1 , the proposed FTTC scheme is based on the combination of (a) robust TSDOFC and (b) estimates of the TSDOFC always receives the fault free measurements. the wind turbine and the derivation of its corresponding T S model.
+ 3. Wind turbine modelling the rotor is given by
+P
+ X  ( ) (TSR) which de fi ned as  X   X  The aerodynamic torque is
+T
+ X  where C q  X  X  C p =  X   X  is the torque coef fi cient. turbine drive train in the form: _ 2 6 4
+ X  ratio, and  X   X  is the torsion angle.
+ following linear relation: _
+T  X  1  X 
+ X  where T gr is the reference generator torque signal and  X  and its reference  X  r :  X 
+ X  fault the damping factors are assumed equal. 3.1. The state space model state space model of wind turbine is given as _ x  X  Ax  X  t  X  X  Bu  X  Ev y  X  Cx  X  t  X  where
+A  X 
+B  X  x  X   X  T a  X   X   X   X  T a  X  T a  X  v  X  wind turbine operation. 3.2. The T  X  S model of the wind turbine are required performance in order to take good care of the scenarios in which the system inputs and outputs deviated rotor speed variations.
+ ( C ) matrices. This fact plays a vital role in simpli fi the wind turbine.
+
+T  X  rotor speed (  X  r ) are considered as premise variables. within the operating range: v
+A  X  v v  X  4ms 1 and v max  X  12 : 5ms 1 . According to these limits the other premise variable (  X  r ) is bounded by
+A  X  are determined using Eq. (2) using  X  opt  X  8.
+ The membership function is selected as follows:
+M
+M  X  1 M 1
+N
+N  X  1 N 1 the nonlinear wind turbine in Eq. (7) : _ x  X   X  y  X 
+Cx  X  t  X  where h 1  X  M 1 n N 1 , h 2  X  M 1 n N 2 , h 3  X  M 2 n N 1 con fl fuzzy rules and design conservatism should be made. 3.3. Wind turbine control
+In order to best understand the wind turbine control chal-of the captured power P cap to the wind power P wind must clari fi ed.
+
+The maximum power captured by disc actuator will be ( Odgaard et al., 2013 ) P ( v
+As wind turbines are driven by a naturally generated wind prede fi ned working range.
+ tip speed ratio as shown in Fig. 5 .
+ ef
+From Fig. 5 two points must be highlighted: angle corresponding to maximum allowable conversion ef fi -vary in proportional to the wind speed variation so that  X  optimal rotor rotational speed signal  X  r opt  X  X   X  opt v = aerodynamic subsystem in the low range of wind speed that hence minimises the drive train life time. Moreover, exact 2008 ). change of blade pitch actuator.
+ be recognised ( Sami, 2012 ), these are some undisturbed wind passes the area swept by the rotor without harvesting its power content. wind power as possible.
+ Remark 2.
+ 4. The active sensor FTTC strategy designed from the corresponding local linear model of a T control.
+Cp 4.1. The T  X  S fuzzy PPIO design signals.
+ varying nature of the fault.
+ hence enhances the FTC loop performance.
+ follows: _ x  X 
+A  X  p  X  x  X  Bu  X  E  X  p  X  v y  X 
+Cx  X  D f f s The system matrices A  X  p  X  A  X  n n n  X  X   X  r i  X  1 h i  X  p for all t .
+
+Let e f A  X  g be the fault estimation error de fi ned as e  X  f is constructed. The fi ltered output is given as follows: _ x  X  A s x s  X  A s Cx  X  A s D f f s  X  13  X  given as _ x  X 
+A  X  p  X  x  X  Bu  X  E  X  p  X  v  X  D f f s y  X 
+C x
+A  X  p
+ X  X  A
+E  X  p
+ X  X  E estimate the system states and sensor fault: _ ^ x  X 
+A  X  p  X  ^ x  X  Bu  X  D f ^ f s  X  E  X  p  X  ~ v  X  L  X  p  X  X  C x C _ ^ f  X  t
+ X  X  F  X  p  X  C  X  _ e x  X  e x  X  ometer measured wind speed, L  X  p  X  A  X   X  n  X  l  X  l ,and F de fi ned as e  X  x ^ x  X  16  X  system state and fault signal.
+ observability condition: rank
+Also, the rank condition is achieved since C D f  X  A s D f invertible, then rank  X  C D f  X  X  rank  X  A s D f  X  X  g .
+The state estimation error dynamic then: _ e  X  X  A  X  p  X  L  X  p  X  C  X  e x  X  D f e f  X  E  X  p  X  e v  X  17  X  fault estimation error dynamics are then as follows: _ e _ ~ e  X  t  X  X  ~ A  X  p ; p  X  ~ e a  X  ~ N  X  p ; p  X  ~ z  X  19  X  ~ A  X  p ; p  X  X  ~ e  X  e x
+The objective is to compute the gains L  X  p  X  and F  X  p  X  terised by its radius (  X  ) and centre (  X  ).
+ Remark 5. In the synthesis of control system, some desired suf sented as LMI.
+ nonlinear system represented by T  X  S model is governed by placement LMIs.
+  X  _ f constraints: 2 6 6 6 4  X  2 6 6 6 6 6 6 6 6 6 6 4  X 
+L  X  p
+ X  X  P 1 1 H  X  p  X  ;  X  11  X  P 1 A  X  p  X  X  X  P 1 A  X  p  X  X  T H  X   X  P 1 A  X  p  X  H  X  p  X  C  X   X  P 1 ;  X  2  X  P 1 D f ;  X  X  A T  X  p  X  P 1 D f C T H T  X  p  X  D f  X  D f T P 1  X  T
+Proof. Let the performance output be de fi ned as follows: ~ e  X  C p ~ e a ; C p  X  C p 1 0 tive can be presented mathematically as follows: jj ~ e jj ~ z jj 2  X 
+Consider the following candidate Lyapunov function for the augmented system:  X  ~ e a  X  X  ~ e T a P ~ e a ; where P 4 0  X  23  X  the augmented system the following inequality should hold: _  X   X  ~ e a  X  X 
+ X  terms of, it will become: _  X   X  ~ e a  X  X  ~ e T a  X   X  (24) implies that the following inequality holds: ~
+A T  X  p ; p  X  P  X  P ~ A  X  p ; p  X  P ~ N  X  p ; p  X  C T p 1 nn  X  I 0 nnn  X  I 2 6 6 6 6 6 4  X  P  X 
+F  X  p  X  C  X  D f T P 1  X  28  X  the LMI in Eq. (21) is thus obtained.
+ Chilali and Gahinet (1996) and Mansouri et al.(2008) . symmetric matrix X such that "# substituting X  X  P  X  de fi ned in (24) .
+ 4.2. The TSDOFC design signal in both faulty and fault-free cases.
+ integral of the tracking error e ti  X  _ x  X  A  X  p  X  x  X  Bu  X  E  X  p  X   X   X  Ry r  X  D in e f y  X  C x  X  D f e f
+A  X  p  X  X  C  X  _ x c  X  A c  X  p  X  x c  X  B c  X  p  X  X  S r y r y  X  u  X  C c  X  p  X  x c  X  D c  X  p  X  X  S r y r y  X  match the dimensions of y r and y .
+ mon input and common output matrices.
+
+Aggregation of (30) and (31) gives the following system: _ x  X 
+A a  X  p  X  x a  X  E a  X  p  X  d y  X 
+A  X  p
+ X  X  A x  X  x "#
+E  X  p
+ X  X  E
+A  X  p
+ X  nn  X  X 0 nn 0  X  Y 2 6 6 6 4 nn  X  I 000 nnn  X  I 00 nnnn  X  I 0 nnnnn  X  I 2 6 6 6 6 6 6 6 6 6 6 4 where  X  ^ A T  X  p  X  X  A  X  p  X  B b D  X  p  X  C  X  D in B  X  p  X  b D  X  p  X  D f  X  YD in  X  b B  X  p  X  D f  X  R  X  B b D  X  p  X  S r ;  X  24 c  X  YR b B  X  p  X  S r  X  A  X  p  X  X  X  B ^ C  X  p  X  X   X  X ;  X  2 c  X  A  X  p  X  B b D  X  p  X  ^ A  X  p  X  X   X  I ;  X  4 c  X  Y A  X  p  X  X  b B  X  p  X  C  X  p  X  X   X  The controller gains are thus calculated as follows:
+D  X  p  X  X  b D  X  p  X 
+C  X  p  X  X  X  ^ C  X  p  X  X  D c  X  p  X  CX  X  M T
+B  X  p  X  X  N 1  X  b B  X  p  X  Y BD c  X  p  X  A  X  p  X  X  N 1  X  ^ A  X  p  X  Y  X  A  X  p  X  B b D  X  p  X  C  X  X Y BC c where M and N satisfy MN T  X  I XY .
+ Proof. Let the output performance y p be de fi ned as y  X  C p y mathematically as jj y jj d jj 2
+Consider the following candidate Lyapunov function for the augmented system (32) :  X  x a  X  X  x T a P c x a ; where P c 4 0 _  X   X  x a  X  X  terms of Eq. (32) , this becomes: _  X   X  x a  X  X  x T a  X  A T a  X  p  X  P c  X  P c A a  X  p  X  X  x a  X  x T a ity (36) implies that the following inequality must hold: A a  X  p  X  P c  X  P c A a  X  p  X  P c E a  X  p  X  C n  X  I 0 nn  X  I 2 6 6 4 Assume P c and P c 1 is structured as P c  X  P XY  X  MN T XN  X  MW
+M T Y  X  ZN T M T N  X  ZW "# P De fi ne  X  1  X  XI
+Pre-and post-multiply inequality (38) by diagonals  X   X  T and its transpose and by using the variable change: ^ A  X  p  X  X  Y  X  A  X  p  X  B b D  X  p  X  C  X  X  X  Y BC c  X  p  X  M T NB c b Bp
+ X  X  NB c  X  p  X  Y BD c  X  p  X  X  ^ C  X  p  X  X  C c  X  p  X  M T D c  X  p  X  CX b D  X  p  X  X  D c  X  p  X  Inequality (34) can thus be easily obtained.
+ By using Eq. (29) of Lemma 1 and the variable change A can be easily obtained.
+ Remark 7.
+ problem ( Zhang et al., 2008 ):  X  Matrices M and N T can be calculated based on equality
+MN T  X  I XY using any matrix decomposition techniques such as qr or svd .
+ cope with the tradeoff between design complexity and wind and the effective rotor wind speed.
+ the detailed variations. 5. Simulation results wind turbine benchmark system proposed by kk-electronic the measured rotor angular velocity  X  r and the wind speed operating points.
+ r follows the optimal rotor speed given by
+ X  faults that affect differ ent system components. performance to  X  r opt can be maintained.
+ blem becomes a regulation problem in terms of the tracking measurement and the desired optimal rotor speed. Moreover, y  X  Cx  X  y f  X  C f x  X  the following. 5.1. Generator rotational speed scaling fault  X  f sg  X  compensate the bias from the scaled measurements. and 0.9  X  g fault scenarios.
+ with(out) 1 : 1  X  g scaling fault.
+ receives fault free  X  g measurement.
+ depends on whether the post-fault pairs  X  A  X  p  X  ; and C TSDOFC.Thisisclearlyshownin Fig. 10 ainwhichthemeasured  X  5.2. Rotor rotational speed stuck sensor fault  X  f sr  X  ( fault are shown in Fig. 11 . f (rad/s) f (rad/s)
+Fault
+Fault  X  (rad/s)  X  (rad/sec) f (rad/sec)
+The effect of this fault scenario varies according to the in turn increases the drive train torsional load. 5.3. Rotor rotational speed stuck sensor fault (  X  r opt 4 without control ( Fig. 13 b).
+
+On the other hand, Fig. 14 shows the effect of stuck fault 6. Conclusion mark system.  X  (rad/s) f (rad/s)
+In summary, wind turbines are nonlinear systems that are wind turbine power maximisation controller, these are over a wide range of wind speed. b. Due to the common input common output matrices of wind control is highly reduced. effects. produces a highly fl uctuating output power, and may even the multi-objective approach cannot be avoided for robust wind turbine control design. missing or inaccurate wind speed measurements, the wind between the measured and the actual wind speed. References
+P (W)

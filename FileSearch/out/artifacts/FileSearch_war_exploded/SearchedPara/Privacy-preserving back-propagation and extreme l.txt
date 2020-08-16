@@ -1,0 +1,67 @@
+ 1. Introduction learning [1] . Several protocols are proposed for each method, including decision trees [2 anonymized dataset, in which the perturbed data will match the features of the source data. researchers, privacy legislation prevents the data from simply being released. systems are one of the methods that can be used to manage such issues.
+Our main objectives in this work are:  X  presented later in the paper.  X 
+To show our protocols can address both vertical and horizontal data distribution among the parties.  X  their research, without having access to any individual's private data.  X  public channels.  X  of accuracy of results and time performance.
+ 2. Related work security.
+ protocol compute a weighted sum from weights provided by the server, and input data, u securely compute the private function.
+ client and server; they can be used with two or more parties. the privacy-preserving is done in the testing phase, not in the training phase. also private, and there is no restriction on the number of parties involved. intermediate information from the parties involved and also knows the weight vector. has the same security problems as secure sum.
+ product is used in this protocol as a secure building block.
+
+The secure protocol for neural networks presented in Ref. [42] could be used in a client uses the oblivious polynomial evaluation method, this work is limited to the two-party case. 3. Neural networks intermediate or output . Also, each connector has a weight , w have been designed to handle various types of data and activation functions in multi-layer models. 3.1. The back-propagation algorithm
+Algorithm 1. The back-propagation algorithm
+Algorithm 1 . Finally, using the computed gradients,  X  i s, and step size, 3.2. The extreme learning machine algorithm (ELM) with better average performance than the BP algorithm. as: [  X  threshold of the i -th hidden node. By approximating the samples with zero error, i.e.: means that there exist w i ,  X  i , and b i such that: By using the following substitutions: all N equations of Eq. (5) can be written as:
+Algorithm 2 , adapted from [23] , contains the steps of the ELM. In this algorithm, H [45,46] of matrix H , and the singular value decomposition (SVD) [47] is used to calculate H Algorithm 2. The extreme learning machine algorithm (NCA) [48] , which could be the next candidate to extend our privacy-preserving techniques. 4. Privacy-preserving back-propagation algorithm (SMA) and secure multi -party multiplication (SMM). In SMA, each party, P each obtains their own private output share, y i , such that: without the other parties needing to know the values of the x the protocol, each party obtains their own private output share, y followingpropertyforanytwoplaintexts, m 1 and m 2 : the following property: 4.1. Secure two-party multiplication
+In two-party SMM, denoted by S2M, P 1 and P 2 have their own private inputs x and y 2 , respectively, such that:
+The steps of the algorithm are: 1. P 2. P 1 encrypts the input x 1 , E 1 ( x 1 ), and sends it to P 3. P 4. P 1 decrypts the received value from P 2 , and sets it as the output share y 4.2. Secure multi-party multiplication
+In this protocol, the product of private input shares, x i
+Suppose E i is an additive homomorphic encryption established by P 1. P 1 and P 2 run a secure two-party multiplication for their inputs, such that: 2. Therefore, we have: 3. Each of is the multiplication of n  X  1 items. Now the algorithm is applied to Eq. (10) among P thecase( y 21 * x 3 *  X  * x n ), P 2 is the initiator for the homomorphic encryption system E
+Here is an example for three parties: 1. P 1 and P 2 run the secure two-party multiplication for their inputs, x 2. Therefore, we have: 3. P 1 and P 3 run the secure two-party multiplication for their inputs, y 4. P 2 and P 3 do the same for their inputs, y 21 and x 3 5. Now we have: where y 3 = y 31 + y 32 . 4.2.1. Complexity analysis decryption.
+ the number of parties involved. Thus, the whole building block needs Algorithm 3. Secure multi-party multiplication (SMM) 4.3. Parallel SMM
+To make the algorithm faster, the parties can be divided into two groups at each step (i.e. P group, and P  X  n 4.3.1. Complexity analysis t parallel, which takes two units of time. In this way, each step takes 2 parties, which takes 2 n 2 units of time. The summation of above timings would be:
+Therefore, the complexity of the parallel algorithm has order O ( n ). 4.3.2. Security analysis by using the simulation paradigm, a protocol is secure if there is a simulator S secure two-party multiplication protocol using the simulation paradigm.
+Suppose there are two parties, P 1 and P 2 , each with a private input, x two-party multiplication by  X  , and the desired functionality of
+Furthermore, we denote the first and second elements of f ( x
+P and P 2 respectively. Also, the view of P 1 (resp. P 2 ) during the execution of ( x , x 2 )). Therefore, we have the following two equations:
+Also, the second equation means that the second party's view includes x is just a random number, because they do not know the value of ( x that protocol  X  privately computes f if there are two polynomial-time algorithms S protocol  X  (i.e. the set { x 1 , y 1 , E 1 ( y 1 )}). Simulator S
+For the simulator S 2 , suppose P 2 is corrupted by an adversary. P indicated, E 1 ( x 1 ) is considered a random number received by P send it to P 2 each time P 2 needs a message from P 1 . Thus, S
+As shown above, we can conclude that the incoming messages of P and P 2 from S 1 and S 2 respectively, are indistinguishable. discussed separately, later in this section).
+ be simpler to use the composition theorem.
+  X  Collusion of P 1 and P 2 : P 1 receives from P 3 and, from colluding with P 2 , receives from P 2 . However, these two parties have no information about x with the two equations: containing these three unknown values, they are not able to access P  X  Collusion of P 1 and P 3 : P 1 receives from P 2 and, from colluding with P 3 , receives E 2 ( y 21 any information from it. Also, x 2 and y 21 are not disclosed to P  X 
+Collusion of P 2 and P 3 : P 2 receives E 1 ( x 1 ) from P to get any useful information from the encrypted data.
+
+In general, if n parties are involved in the protocol, and n against collusion attacks by up to n  X  1 parties.
+ 1. P 1 : E 1 ( x 1 )  X  P 2 2. P 2 : E 1 ( x 1 ) x 2  X  P 3
+Now, if P 1 and P 3 collude by P 3 sending the results received from P the received value and reveal P 2 's private input, x 2 . 4.4. Secure multi-party addition
+Using this building block, the summation of private input shares, x where
+The steps of the algorithm in the multi-party case are as follows: 1. P 2. Each party P i ,1  X  i  X  n  X  1, runs a secure two-party addition with P 3. Therefore, we have: 4. Now, y 1, n +  X  + y n  X  1, n is the summation of n  X  1 items owned by parties 1,2, to which the secure two-party addition is applied.
+ used. With scaling, parties agree on an integer exponent s , and each multiplies their input by 10 precision. 4.5. Horizontally partitioned data applications, but the protocol can easily be extended to a more general, arbitrary case.
+Suppose the training data, DB , is horizontally partitioned into DB and | DB i |= n i .
+
+Each item d i , j  X  DB i ,1  X  j  X  n i , is a pair [ V i , j 1  X  i  X  n , P i 's weight vector is: where each element of the vector W is computed as follows:
+The steps of the algorithm are as follows: 1. One party, say P i , is randomly selected from the n parties. 2. Party P i randomly generates an integer number j , such that 1 3. Forward phase : (a) S l ,  X  l  X  {1, ... , k }, is computed for the intermediate layer as follows: (c) S k +1 is computed for the output layer as follows: 4. Backward phase : (a)  X  k +1 is computed as follows: (b) For each 1  X  l  X  k ,  X  l is calculated as follows: 5. Updating the weight vector : For this modification, w i , j vector W . Suppose we want to compute w l , m . We have: to decide whether to continue or stop the iteration.
+ simpler, we use  X  and  X  as two weight vectors, where:  X  For all j =1,  X  , n  X  1 and k = j +1,  X  , n , the two parties P  X  The final private share of P j for the sum squared error would be: with the threshold value t . The steps for this sub-protocol are:  X  The parties run SMA for their private shares, d j s, obtaining: 4.5.1. Security analysis  X   X   X  the summation of the private shares of all parties.  X  final result is the multiplication of these output shares.  X 
+SMM is used in step 3c to produce the private output shares of the weighted sum.  X 
+In computing  X  s in step 4, privacy is preserved as in step 3b.  X 
+Therefore, privacy is maintained for the final and intermediate shares of the weight vector. 4.5.2. Complexity analysis
+We use the following notation in the remainder of this section:  X 
+The number of parties involved in the protocol is denoted by n .  X 
+The number of input cells in the neural network is denoted by p .  X 
+The number of intermediate cells in the neural network is denoted by k .  X  The number of bits exchanged from one party to another is denoted by b . blocks, then analyze the complexity of the main protocol.  X  and p +1 multiplications. We denote this cost by CP SDP .  X 
+SMA and SMM : The computation cost of each sub-protocol is n ( n by CP SMC . Also, the communication cost of each sub-protocol is b
+Using the steps of the protocol for horizontally partitioned data, there are k ( n (i.e. step 4), there are 1 SMM and 2 SMAs in sub-step (a), and 2 k SMAs and k SMMs in (b). n ( n 4.6. Vertically partitioned data into D 1 , D 2 ,  X  , D n owned by parties P 1 , P 2 ,  X  , P is the number of attributes of each input vector. Each item d is the input vector, and C i is its corresponding output. Note that u owned by the first party, P 1 . The weight vector for this network is:
+To make the weight vector private, each party has their own share. For each cell h algorithm are as follows: 1. One item, d i , is randomly selected from the set of training examples. 2. Forward phase : (a) Computing S l ,  X  l  X  {1,  X  , k } as follows: (c) S k +1 and h k +1 are also computed the same way as in the previous protocol: 3. Backward phase : The same approach is applied for  X  l ,1 4. Update the weight vector using the following equation as in the horizontal case. 4.6.1. Security and complexity analysis 5. Privacy-preserving extreme learning machine (ELM) method we first compute each item of the matrix H in Eq. (6) , then apply SVD to compute H vertically partitioned data, based on the steps of the ELM algorithm described in Section 3 . 5.1. Horizontally partitioned data
+Suppose N data samples ( x j , t j ), where x j =[ x j 1 , shared among n parties. For example, a data record owned by party k is shown as ( x [ x ,  X  , t jq k ].
+  X  owned by each party, P l , come before the records owned by party P 1. w i sand b i s are selected randomly. For each w i and b 2. For j =1 to N
+For i =1 to  X   X  Suppose the j -th record of sample data belongs to P k , and we denote it by x  X  Parties compute w i  X  x j k as follows: elements, the steps would be as follows:
+SMM, such that: Therefore, where 5.1.1. Security and complexity analysis k SMMs, N SDPs and one SVD. Therefore, for the main protocol we have, in total: 5.2. Vertically partitioned data
+In this type of data distribution, N data samples ( x j , t assume that the fields in each data record owned by party P
+The steps of this protocol are very similar to the horizontal case: 1. w i s and b i s are selected randomly as in the previous protocol 2. For j =1 to N
+For i =1 to  X   X  The j -th record of sample data is denoted by: Thus we have:  X  Parties compute w i  X  x j as follows:
+The rest of the protocol would be executed in the same manner as the horizontal case. 5.2.1. Security and complexity analysis SDPs and one SVD. Therefore, for the main protocol we have, in total: 5.3. Using other activation functions tangent function has the following definition: activation function, rather than the sigmoid.
+ 6. Experimental results machine in this experiment were as follows:  X 
+Operating system: Windows XP Professional  X 
+CPU: Intel Core 2 Duo 2.8 GHz  X 
+Core 1: 2.8 GHz (3 MB L2 cache memory)  X 
+Core 2: 2.8 GHz (3 MB L2 cache memory)  X  RAM: 3 GB.
+ channels, and do not require secure private communication between the parties. her/his history of X-ray results, dyspnea, visits-to-Asia and smoking status. 14 nodes or variables, it predicts whether annual income exceeds $50 K based on census data. 6.1. Analysis of accuracy loss greater is the accuracy loss due to rounding and/or truncating. numbers in datasets in our experiments, scaling is applied to the input values. 7. Conclusions and future work jointly by the parties to predict the output of the target data. activation functions other than the threshold and sigmoid functions. algorithm [61] ,andthe tiling algorithm [62] .
+
+References

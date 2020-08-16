@@ -1,0 +1,144 @@
+ 1. Introduction Database systems are common for storing enterprise data for various applications. Thanks to the rapid evolution of the
+Internet, people can share information everywhere at anytime by retrieving data from such systems. Although query lan-from posing formal query statements in an arbitrary fashion, which may be frustrating and limit the information sharing naive users to establish a natural language interface to a certain domain and knowledge base.
+Since most human knowledge is recorded in linguistic form, systems that could understand natural language could be of
+Mapping natural language constructs to data storage structures allows users to manipulate databases with natural lan-ogy to map natural language constructs into relational algebra through E X  X  representations. The methodology employs a query execution. We believe the whole process could offer a clear and natural framework for processing natural language queries to retrieve information from database systems. Moreover, Stratica et al. [53] proposed a template-based system by the UML class diagram, we have also proposed a methodology [56] to map natural language constructs into the corre-sponding class diagram and employ structured object model (SOM) methodology to transform the natural language queries with fuzzy semantics into SQL statements for query executions.
+
+As the primary and fundamental goal of systems analysis is to state the users X  requirements for a new information pro-relationship type).
+
+Recently, to model the real world more intuitively and naturally, many studies [8,28,36,37] have been conducted adopt-an entity in the real world. Most of the models produced in object-oriented analysis use the unified modeling language design object-oriented systems with UML. They also introduce the basic elements of the UML for carrying out object-ori-cepts to capture more natural language semantics for database access. 1.1. Objectives
+Studies in natural language processing for DBMS interface attempt to ease the complexity by freeing users from knowing more attractive than formal language processors.
+
+Generally speaking, a query posed on a database can be mapped into a subset of its conceptual schemas. M X tais et al. by class diagrams to construct a natural language interface.
+
+As organizations grow, the database systems and applications become more complex. The purpose of this paper is to ex-and reducing errors. We adopt the UML class diagram notations to extend the logical form of our previous work [58,57] , which employs the E X  X  diagrammatic constructs, to capture natural language query semantics and meet directly with the user intention. Then, by referring to the conceptual schema throughout the class diagram representation, we address the approach to map natural language constructs into class diagrams and show the intermediate logical form can be effi-ciently transformed into relational algebra for query execution. 1.2. Limitations
+Although natural language interface (NLI) is an ideal means for user X  X ystem communication, a frequent criticism concern [62] . Therefore, we have to specify our research limitations as follows: 1. In our processing model, we accept every input sentence that can be parsed by MINIPAR. decision to get answers due to some ambiguity, then users are responsible for answering some questions to clarify the ambiguity. properties and indicators will be a first class citizen in our processing model. future research directions in Section 6 . 2. Related works 2.1. Natural language query processing port applications such as information extraction, machine translation of natural languages, and question answering. For automatic generation of a natural language processor. Sheremetyeva and Nirenburg [51] developed a universal tool, which remetyeva and Nirenburg described an approach to actively acquiring a language computational model to rapidly develop on the output of MINIPAR, the process of natural language understanding can be divided into three stages as follows: 1. Use a parser to parse the sentence. 2. The semantic roles are then built. 3. Finally, semantic roles are mapped into the specific objects in the real world. class diagram, the semantic roles are mapped into their corresponding database objects.
+By employing the MINIPAR parser for an input query sentence, information concerning the subject and objects of the sen-dirty tables into the messy office X , the output will be as Fig. 2 depicts.
+
+The reasons to employ MINIPAR for analyzing sentence structures are explained as follows: ducted on MINIPAR shows that it is able to achieve about 89% precision and 79% recall with respect to dependency relationships. in Sections 3 and 4 . 3. It provides functionalities to detect grammatical relationships between terms and grammatical categories about each term in a query sentence.
+
+From the constituent information extracted from query sentences based on the MINIPAR analysis, we obtain a set of query we define a query sentence Q ={ t 1 , t 2 , t 3 , ... , t
+Q ={ t 1 , t 2 , t 3 , t 4 } = {Andy (N), move (V), {dirty (A), table (N)}, {messy (A), office (N)}}, where t and data in parentheses represent the grammatical categories of terms.
+ After the sentences are parsed by MINIPAR, the corresponding semantic roles can be built. For building semantic roles, structure. The verb argument structure permits a link between the arguments in the surface structures of the input text the mapping result, which can be efficiently transformed into relational algebra for query execution. 2.2. Review of UML and class diagram The unified modeling language (UML) [6] is a notation that combines elements from the three major kinds of OO design: (1) Rumbaugh X  X  OMT modeling [47] . (2) Booch X  X  OO Analysis and Design [7] . (3) Jacobson X  X  Objectory and OOSE (object-oriented software engineering) methods [29] .
+In [42,44,54] , the authors present the concepts and methods of object-oriented analysis and design with UML. They feel hence they provide an introduction to the process of information system development and offer detailed discussion and extensive examples of how to use the UML model in system development.
+
+A domain model is a static model of the structure of a problem domain and can be used to model real-world concepts. By tween concepts. For the UML, a domain model is a class diagram. Our approach mainly employs the class diagram notations aggregation/composition, and generalization X  X pecialization.
+
+We review the details about class diagrams [6,42,44,54] as follows: on this database. contain operations (e.g., Section has an operation create ()). 3. For relationships between/among classes, we can distinguish three categories as follows: ent our approach due to the following reasons: is supposed to be written in the context of an instance of a specific type, which may make our presentation cumbersome. design is a methodically recommended but practically time-consuming step. well-suited for conceptual modeling. transformation target in this paper.
+
+In the following, we will discuss the processing model, and describe the mapping process for mapping a natural lan-guage query to its corresponding class diagram in Section 3 . Based on the mapping mechanism between natural language queries and the class diagram, we formally propose our own representation scheme to extend the mapped class diagram in Section 4 .
+ 3. The processing model and mapping process 3.1. The processing model and map them into the underlying class diagram schema. The parsing and mapping process may refer to 1. The WordNet dictionary (which is an on-line accessible lexical database [26,41] ), 2. The dictionary, which refers to the WordNet dictionary to obtain a synonym list for a specific term, and 3. The underlying class diagram schema associated with the semantic-role frame (CD/SRF).
+After the parsing phase, the query is decomposed into: 1. Semantic roles , each of which is composed of a headnoun and some modifiers (a headnoun is the main noun in a noun phrase; for example,  X  X he London students X  has a headnoun  X  X tudents X  and the other noun  X  X ondon X  is a modifier which modifies the headnoun) and 2. The verb that relates these semantic roles.
+ gram. A  X  X  X roper noun X  (such as  X  X  X mith X ) is a possible object name of a class in a class diagram. cialization relationship can be smoothly constructed.
+
+Our processing model makes the following assumptions: registration database, the OIDs of Student and Professor are studentIdentifier and professorIdentifier , respectively. found in its corresponding  X  X art X  class Section . courseNumber , title , credits , and departmentCode in the superclass Course will be included in its subclass Section.  X  X bject X  class Course , i.e., ( courseNumber , departmentCode ). 3.1.1. The dictionary eralization X  X pecialization relationships one by one to choose the most suitable one. 3.1.2. Expansion of synonym list (S i ) from WordNet
+For synonym construction, we employ WordNet [26,41] , an on-line lexical database containing different word forms that are organized into word senses. For each word sense, a descriptive gloss and a set of synonyms are provided.
+We use the synsets of the WordNet dictionary to accomplish term expansion based on synonymy relations of each term in have the same meaning into the list to get more versatile results. 3.1.3. The schema and the semantic-role frame represented in a class diagram
+For each class, attributes are identified as the headnoun and the modifiers that modify the headnoun. For example, the example, the schema and the semantic-role frame representing the example database are shown in Fig. 10 . 3.2. Description of the mapping process 3.2.1. Mapping noun phrases into classes and attributes
+The noun phrases may consist of more than one noun modifier (which can be adjectives or nouns) or relative clauses that are shown in Fig. 12 . 3.2.2. Mapping transitive verbs into association relationships (which can be mapped into the corresponding attributes) as depicted in Fig. 13 . The mapping between the languages con-structs and the class diagram of this query is shown in Fig. 14 .
+ the following schema: Then, the query  X  X  X ist Smith X  X  students. X  can be mapped as follows:
+The path ( h Teach i h Enroll i ) is our mapping result, where association is enclosed by angle courses taught by Smith. X 
+Nevertheless, for a general schema, there may be many paths between two classes in the class diagram. In such circum-distinguish it. For instance, if there is another h Advise i relationship between and , then  X  X  X ist Smith X  X  stu-dent. X  will cause two ambiguous interpretations. One is  X  X  X ist the students who enrolled the courses taught by Smith. X 
+And the other is  X  X  X ist the students who are advised by Smith. X  3.2.3. Mapping process for verbs that do not transfer actions
+Notice that there are verbs that do not transfer actions. For example, linking verbs and verb appeared in an imperative mood sentence do not transfer actions. For instance, the sentence  X  X  X ist the courses in winter 2006. X  and a subclass linked as a generalization X  X pecialization relationship. The above sentence has the semantic roles (which relationships can be applied accordingly. 4. The logical form
+Generally speaking, queries to a database can be constructed from a subset of its conceptual schema [62] . Therefore, lowing considerations of an English query: 1. The representation of modifiers, 2. The representation for conjunctives  X  X nd X  and  X  X r X , 3. The representation for the word  X  X ll X , and 4. The representation for the negative and affirmative forms of a verb.
+ logical form in the Appendix . 4.1. The representation of modifiers
+After the headnoun and modifiers of a class have been recognized, we respectively associate them with the corresponding attributes and form them into predicates of the form  X  X  class . attribute h constant  X , h 2 {&gt;,&lt;,=, 6  X  , course. X  has the form as shown in Fig. 17 .
+
+We define the predicate  X  X  class . attribute [?] X  as a pseudo predicate; it represents the target attribute for output. 4.2. The representation for conjunctives  X  X nd X  and  X  X r X  following.
+
+From the viewpoint of class diagram,  X  X nd X  and  X  X r X  can be used to conjunct the following three cases: the students located in London and (or) at the G1 class level. X  has the logical form shown in Fig. 18 a. here to conjunct two noun phrases which are not related by any relationship. The  X  X nd X  means that the user wants to obtain both the answer represented by the two pseudo predicates and wants to combine them together. For example, the logical form of  X  X  X ist the courses of 1 credit and (or) 3 credits. X  is as follows. of 3 credits. X  has the logical form shown in Fig. 18 c.
+
+Note that the following example does not fall into this case:  X  X  X ist the students who enrolled in the seminar course and are located in London. X  junction at all.
+ form in Fig. 19 a is used for the former and that in Fig. 19 b is used for the later. 4.3. The representation for the word  X  X ll X 
+Consider the following examples: 1. List the students who enrolled in all the courses of 3 credits. 2. List the students who enrolled in the courses of 3 credits.
+ courses of 3 credits. X  is equivalent to that of (1). The first  X  X ll X  has no effect on this query. 4.4. The representation for the negative and affirmative forms of a verb Student .
+ 5. The transformation of a logical form into relational algebra tional algebra as our target for the following reasons. 1. For the consideration of query optimization. of an n -tuple t =( c 1 , c 2 , ... , c n ) is denoted p i
+In the following, the notations used in [60] will be adopted, in which r , p , , ffl , [ , \ , X , relationships. specialization relationships
+In such cases, if there are edges in E ( c , c ) , say ( c the result is their union/intersection depending on ( c i 1. Use the predicates, except for pseudo predicates, to restrict the classes. 2. Project T ( Q ).
+
+That is, LF ( Q ) will be transformed into p T ( Q ) ( r P predicate composed by the following function.
+ Function 5.1 ( Compose _ predicate ( LF )).
+ Input : a logical form containing only attributes linked by ^ -edges and/or _ -edges.
+Output : the compound predicate P . assumed to be deleted and their corresponding attributes collected in T ( Q ).
+ Function 5.2 ( LF _ to _ RA _ without _ RS ( LF )).
+
+Output : the corresponding Relational Algebra Expression RAE . 5.2. The transformation process for a logical form containing one or more edges eral mixture, respectively. 5.2.1. The transformation process for a logical form containing one association edge
+Without loss of generality, we first assume that the logical form has no edge in E logical forms. For example, the logical form in Fig. 18 b can be decomposed into the following two sub-logical forms: algebra expression is essential to determine an algebraic order from its logical form. class and related classes.
+ can be implemented by computing the affirmative form association relationship followed by a set difference operation.
+The transformation process can therefore be stated in the following five phases: classes and association class. That is, the transformation first produces r
+N sc , where P i and P are the compound predicates of the classes p obtained by compose _ predicate (). 2. Project the OIDs of all classes. Let S i denotes the set of OIDs of the restricted classes CR ( S 1 , S 2 , ... , S n ) denotes the set of OIDs of the restricted association class SCR
+CR 1 , CR 2 , ... , and CR n . ships), say S 1 , S 2 , ... , S k , then define
+Also, define
+Otherwise, define association relationship), say S i , then the set of the answer OIDs can be defined as else target attributes to get the answer. That is, the answer of the query can be produced by
+However, we can often eliminate unnecessary join operations. If, for example, the attributes of CR T ( Q ) then the join on CR i can be eliminated.
+ We illustrate these five phases by the following function.
+ Function 5.3 ( LF _ to _ RA _ with _ one _ RS ( LF )).
+
+Input: a logical form with E ( c , c ) = / , which contains an association relationship E
+Output: the corresponding Relational Algebra Expression RAE . following function.
+ Function 5.4 ( LF _ to _ RA _ with _ Ecc ( LF ).).
+
+Input : a logical form containing edges in E ( sc , c ) and E
+Output : the corresponding Relational Algebra Expression RAE . 5.2.2. The transformation process for a logical form containing one aggregation/composition edge
+The transformation process can therefore be stated in the following phases: ing  X  X hole X  and  X  X art X  classes. That is, the transformation first produces r cp 2 N cp , where P i and P j are the compound predicates of the classes p can be obtained by compose _ predicate (). 2. Project the OIDs of related  X  X hole X  and  X  X art X  classes. Let S CWR and the restricted  X  X art X  class CPR obtained in Phrase 1, respectively. Besides, ( S the restricted aggregation/composition relationship E ( cw , cp ) included in its part class), a relationship associates with the  X  X hole X  class CWR and the  X  X art X  class CPR . Function 5.5 ( LF _ to _ RA _ with _ one _ RG(LF) ).
+
+Output: the corresponding Relational Algebra Expression RAE . following two functions.
+ Function 5.6 ( LF _ to _ RA _ with _ Ecwcw ( LF )).
+
+Input : a logical form containing edges in E ( cw , cp ) and E
+Output : the corresponding Relational Algebra Expression RAE . Function 5.7 ( LF _ to _ RA _ with _ Ecpcp ( LF )).
+
+Input : a logical form containing edges in E ( cw , cp ) and E
+Output : the corresponding Relational Algebra Expression RAE . 5.2.3. The transformation process for a logical form containing one generalization X  X pecialization edge responding superclass or related subclasses.
+
+The transformation process can therefore be stated in the following phases: responding superclass and the related subclass. That is, the transformation first produces r r Pj ( p 1 ( f Nsub ( sub ))), sup 2 N sub and sub 2 N sub and p 1 ( f Nsub ( sub )), respectively. P i and P j can be obtained by compose _ predicate (). 2. Project the OIDs of the superclass and the related subclass. Let S class SUP and the restricted subclass SUB obtained in Phrase 1, respectively. Furthermore, ( S
+OIDs of the restricted generalization X  X pecialization relationship E class are also included in its subclass). We illustrate these four phases by the following function.
+ Function 5.8 ( LF _ to _ RA _ with _ one _ RI ( LF )).
+
+Output: the corresponding Relational Algebra Expression RAE . lowing two functions.
+ Function 5.9 ( LF _ to _ RA _ with _ Esupsup ( LF )).
+
+Input : a logical form containing edges in E ( sup , sub )
+Output : the corresponding Relational Algebra Expression RAE . Function 5.10 ( LF _ to _ RA _ with _ Esubsub ( LF )).
+
+Input : a logical form containing edges in E ( sup , sub )
+Output : the corresponding Relational Algebra Expression RAE . 5.2.4. The transformation process for a logical form containing more than one association edges
+If a logical form contains more than one association relationship linked by edges of E example, the logical form in Fig. 18 c can be decomposed into the following two sub-logical forms: similar to LF _ to _ RA _ with _ Ecc ( LF ), except that  X  X ( N  X  X ( sc i , sc j ) 2 E ( sc , sc )  X  and  X  X  f Escsc ( e i ) X , respectively.
+
+If a logical form containing more than one edge but these edges are not linked by edges of E loss of generality, assume the pseudo predicate is on , it can be organized into a nested association as follows: where , , ... , , are all attached with the pseudo predicate  X  X  X ID [?] X . Then NRs can be transformed by the following function.
+ Function 5.11 ( NR _ to _ RS ( LF )).
+ Input : a nested association NRs = h rs n i
+Output : the corresponding Relational Algebra Expression RAE . For example, in Section 4.2.2, the logical form h Teach i h Enroll i can be organized into
+Thus, NR _ to _ RS first transforms h Teach i , then regards the answer as a class by projecting the OID of 5.2.5. The transformation process for a logical form containing more than one aggregation/composition edges
+If a logical form contains more than one aggregation/composition edge and no E h rg 2 i h rg n 1 i h rg n i , where , , and h rg j i represent  X  X hole X  classes,  X  X art X  classes and aggregation/ composition relationships, respectively. Then, assume the pseudo predicate is on , it can be organized into a nested aggregation/composition as follows: where , , ... , , are all attached with the pseudo predicate  X  X  X ID [?] X . Then NRGs can be transformed by the follow-ing function.
+ Function 5.12 ( NR _ to _ RG ( LF )).
+ Input : a nested aggregation/composition NRGs = h rg n i
+Output : the corresponding Relational Algebra Expression RAE . In the following example adopted from [54] , there exists an aggregation  X  a student club with advisors and members. Then, the logical form of this example can be organized into
+Therefore, NR _ to _ RG first transforms h e 1 i , then returns the answer as a class by projecting the OID of , and finally transforms h e 2 i into the corresponding relational algebra expression. 5.2.6. The transformation process for a logical form containing more than one generalization X  X pecialization edges
+If a logical form contains more than one generalization X  X pecialization edge and no E nized into a nested generalization X  X pecialization as follows: where , , ... , , are all attached with the pseudo predicate  X  X  X ID [?] X . Then NRIs can be transformed by the fol-lowing function.
+ Function 5.13 ( NR _ to _ RI ( LF )).
+
+Input : a nested generalization X  X pecialization NRIs = h rg
+Output : the corresponding Relational Algebra Expression RAE . interpreted as Student  X  X  X s either an X  Undergraduate Student or Graduate Student. Then, the logical form of this example can be organized into
+Therefore, NR _ to _ RI first transforms h e 1 i , then returns the answer as a class the corresponding relational algebra expression. phases to transform a logical form into relational algebra expression: 1. For each c i 2 N c , sc 2 N sc , cw 2 N cw , cp 2 N cp
+P j , P k , P l , P m , and P n are the compound predicates of the classes p p 1 ( f Nsup ( sup )), and p 1 ( f Nsub ( sub )), respectively. P 2. Project the OIDs of all classes and relationships. (1) S i , S CWR , S CPR , S SUP , and S SUB denote the sets of OIDs of the restricted classes CR (2) ( S 1 , S 2 , ... , S n ) denotes the set of OIDs of the restricted association class SCR (3) ( S CWR , S CPR ) denotes the set of OIDs of the restricted aggregation relationship E (4) ( S SUP , S SUB ) denotes the set of OIDs of the restricted generalization-specialization relationship E 3. If a logical form contains an association relationship (i.e., E (1) if ( p 1 ( f Nc ( c i )) == p 1 ( f Ncw ( cw )) or p 1 (2) if ( p 1 ( f Nc ( c i )) == p 1 ( f Nsup ( sup )) or p 4. If there are classes corresponding to shadow rectangle nodes, say S
+Also, define
+Otherwise, define 5. If the edge corresponding to the association has a black circle linked to a class, say S be defined as else ject the target attributes to get the answer. That is, the answer of the query can be produced by We implement these phases by the following function.
+ Function 5.14 ( LF _ to _ RA _ with _ RS _ RG _ RI ( LF )).
+
+Output: the corresponding Relational Algebra Expression RAE . Readers are referred to Fig. 4 for the schema of this example.
+ Example 5.1. In Fig. 24 , we have depicted the logical form LF ( Q )=( N , p , E , f 1. After restricting all classes Student , Section , Department Class Schedule , Course , and Enrollment , we obtain 2. Perform the projections on OIDs, we can obtain the OIDs as follows. 3. (1) Since p 1 ( f Nc ( c 2 )) == p 1 ( f Ncp ( cp 1 )), and the value of both sides is  X  Section  X , then S ter,2006,D1,C1,P1), (S2,winter,2006,D1,C2,P2)}. 4. h S 1 i ( S 1 , S 2 ) S 2 and  X  S 1 ; S 2  X  S 1 ; S 2  X  winter ; 2006 ; D1 ; C2 ; P2  X g . 5. S 1 ; S 2  X  S 1 ; S 2  X  n S 1  X  S 1 p S 1  X  X  S 1 ; S 2  X f 932803 g X   X  f X  9323803 ; S1 ; winter ; 2006 ; D1 ; C1 ; P1  X  ;  X  9323803 ; S3 ; winter ; 2006 ; D1 ; C3 ; P3  X g . 6. Because there is only one attribute Student . name in T ( Q ), we eliminate unnecessary join operations and perform 6. Conclusions and directions for future research 6.1. Conclusions pose to use the class diagram of UML instead of an E X  X  diagram to capture more natural language semantics for querying former remain unchanged.
+
+Furthermore, we have studied the inter-relationship between natural language constructs and the class diagram con-ceptual schema and proposed their basic translation schemes to produce corresponding relational algebraic expressions.
+The basic parts of English sentences can be mapped into class diagram schemas in a natural way. We mainly discuss the major kinds of relationships in object-oriented modeling: namely, association, aggregation/composition, and generaliza-tion X  X pecialization relationships. These relationships have their own mapping schemes for processing natural language queries.
+ 6.2. Directions for future research
+In the future, we will extend our future research into the following areas: modifiers, which are fuzzy in nature, to communicate with fuzzy databases. structured and semi-structured data and information between organizations. XML schemas provide a much richer set of structures, types and constraints for describing data, and are expected to be the most common method for defining and validating highly structured XML documents. Therefore, as an escalating trend advocated by other researchers uments, respectively, for sending or exchanging information across the Internet.
+From the viewpoint of temporal databases, we may further consider to accept queries expressed in  X  X  X ime-stamped form X  sible interpretation of a 2-tuple containing the suppliers number  X  X 1 X  and the timestamp  X  X uly 7, 2000 X , and then we step toward analyzing the nature of time itself to communicate with temporal databases. text is crucial to the success of natural language processing applications, we will further incorporate the ontological semantics as presented by [43] into the natural language processing process, to provide a comprehensive implementation approach to the treatment by computers of the meaning held in texts. As many studies [11,24,59] now utilize search engines to collect Web corpus for natural language applications with increasing frequency, we will also consider to enhance our work with such ability for contemporary applications.
+ Appendix A. A formal definition of the logical form Based on the previous discussion, the logical form for a query Q can be denoted by LF ( Q )=( N , p , E , f 1. N is the set of nodes, which can be further classified into the sets N
+N cp [ N sup [ N sub ). Detailed definitions are listed in Table 4 . is of the form  X  X  class . attribute h constant  X , h 2 {&gt;,&lt;,=, 6  X  , 3. E is the set of edges, which can be further classified into the sets E describe this set of edges in Table 5 . 4. f N is a set of mappings, f N ={ f Nc , f Nsc , f Ncw , f 5. f p : p ? P , where P is the set of the predicates or pseudo predicates labeled by p 6. f E is a set of mappings, f E ={ f Escc , f Ecpcw , f Esupsub explained in Table 7 .
+ impossible for a logical form to have an edge between both objects.
+ form LF ( Q )=( N , p , E , f N , f p , f E ) as represented in Fig. 24 is formally specified as follows: 1. N ={ c 1 , c 2 , sc , cw , cp , sup , sub }= N c [ N sc
+N sup ={ sup }, and N sub ={ sub }. 2. p ={ p 1 , p 2 , p 3 , p 4 , p 5 , p 6 , p 7 }. 4. f ( Department Class Schedule ), f Ncp ( cp )=( Section ), f 5. f p , where f p ( p 1 )= X  X  Studnet . name [?] X , f p ( p 2 )= X  X  Section . term =  X  X inter X  X , f credits = 3 X , f p ( p 5 )= X  X  Department Class Schedule . term =  X  X inter X  X , f and f p ( p 7 )= X  X  Course . credits = 3 X .
+ f Ecwcp ( e 3 ) = (whole, part), f Esupsub ( e 4 ) = (superclass,subclass).
+ (i.e. Max, Min, Avg, Sum, and Count) into the logical form to make the system more versatile.
+References

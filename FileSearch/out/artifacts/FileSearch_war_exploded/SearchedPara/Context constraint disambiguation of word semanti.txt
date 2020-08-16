@@ -1,0 +1,57 @@
+ 1. Introduction 1997 ).
+  X  is needed.
+ biguated by using 104,532 Chinese and 38,372 English field association terms. work. 2. Word ambiguities and case frame method 2.1. Sentence and context ambiguities mean? X  X  in a certain context. First of all, the semantics of word x is defined as follows: Definition 1. SEMANTIC _ CODE for words SEMANTIC( x ) is a set of codes of semantics for word x .
+ ver). Thus, SEMANTIC ( x ) for x =  X  X  X ilimanjaro X  X  is defined as follows: where [ ] means semantic code notations.
+ not easy to determine the word sense.
+ knowledge as described in Section 3 . 2.2. Case frame method plored after Fillmore X  X  research. Nagao et al. (1986) presented relevant work on this area. disambiguation.
+ Example 1. SEMANTIC ( X  X  Kilimanjaro  X  X ) [PLACE n MOUNTAIN]
+Sentence: Tom plans to climb the Kilimanjaro in the summer vacation. (ACTOR: Tom, HUMAN) (OBJECT: Kilimanjaro) SEMANTIC ( X  X  Kilimanjaro  X  X ) in this sentence is [PLACE n MOUNTAIN]. Example 2. SEMANTIC ( X  X  Kilimanjaro  X  X ) [FOOD n DRINK]
+Sentence: Mary likes drinking Kilimanjaro. (ACTOR: Mary, HUMAN) (OBJECT: Kilimanjaro) Therefore, SEMANTIC ( X  X  Kilimanjaro  X  X ) in this sentence is [FOOD n DRINK]. Example 3. SEMANTIC ( X  X  Kilimanjaro  X  X ) [PRODUCT n SOFTWARE]
+Sentence: Data is stored in Kilimanjaro. (ACTOR: data, ARTIFICIAL PRODUCTs) (OBJECT: Kilimanjaro) be stored . Therefore, SEMANTIC ( X  X  Kilimanjaro  X  X ) in this sentence is [PRODUCT n SOFTWARE]. Example 4. SEMANTIC ( X  X  Kilimanjaro  X  X )
+Sentence: Both Mary and Tom usually buy Kilimanjaro, because they like Kilimanjaro. (ACTOR: Mary, Tom, and they, HUMAN) (OBJECT: Kilimanjaro) HUMAN can buy . Therefore, SEMANTIC ( X  X  Kilimanjaro  X  X ) could be [FOOD n DRINK] or [PRODUCT n SOFTWARE]. n DRINK].
+ guities are still hard to solve. 3. Field association knowledge precise fields (topics, areas, categories) or domains from fragments of a document. 3.1. Field association 3.2. Field association term definition h Sports i , but at different levels.
+ (2002, 2003) .
+ Definition 2 ( Levels for field association term ).
+ Level 1. Perfect field association terms: Field association terms belong to a unique terminal field. of h Ball Games i , which is also a sub-field of h Sports i .
+ guish any fields, therefore, level 5 is assigned. 3.3. Field tree fields. Fig. 1 shows examples of field tree and field association terms. as shown in Table 3 .
+ 4. Algorithm of disambiguation by field association scheme 4.1. Field constraint knowledge Definition 3. Field constraint If SEMANTIC( x ) is not singleton, then the field constraint knowledge is defined as follows: For c in SEMANTIC( x ), CONSTRAINT( x , c ) is defined by a set of fields f that restrict c . Table 5 shows CONSTRANIT( x , c ) for x = X  X  X ilimanjaro X  X  and c in SEMANTIC( x ). of { h Food / Coffee i } and { h IT / Software i } respectively. 4.2. Algorithm of disambiguation by field association schemes (1) Let d be a document with a sequence of sentences S 1 , ... ,S (2) D ( h , i , k ) represents the document with a subsequence of sentences S (3) Let L w be the length of the window, which is represented as ( k h + 1). in CONSTRAINT( x , c ) for c in SEMANTIC( x ).
+ cussed in the following formal algorithm, together with examples. [ Disambiguation Algorithm ]
+Input : Document d including sentences S 1 , ... ,S h , ... ,S Output : SEMANTIC_CODE is c if c for x can be disambiguated. Otherwise
+SEMANTIC_CODE becomes empty (denoted by 0). [ Method :] ( Step 1 ){ Initialization } ( Step 2 ){ Increment of L w } ( Step 3 ){ Determination of subdocuments for L w } ( Step 4 ){ Determination of subdocument for target word x } ( Step 5 ){ Disambiguated Semantic of the target word }
+Example 5. As shown in Table 4 , consider the target word x =  X  X  X ilimanjaro X  X . SEMANTIC( x )={ c n MOUNTAIN], c 2 = [FOOD n DRINK], and c 3 = [PRODUCT n SOFTWARE]. In this example, f 1 = h Trip/Africa i , f 2 = h Sports/Mountain Climbing i , f 3 = h Photo/Nature i , f 4 = h Food/Coffee i , f 5 = h IT/Computer i .
+
+As shown in Table 6 ,  X  X  X hirsty( f 4 , 4) X  X  means field f
+MAX = 2, the maximum number of n = 8, and i =7. ( Step 1 )
+L w is initialized by 0.
+ SUB_DOC is initialized by the empty set.
+
+Go to Step 2. ( Step 2 )
+L w is increased by 1. Since L w 6 MAX (=2) and L w 6 n (=8), go to Step 3. ( Step 3 )
+Extract subdocument D ( 7, 7, 7 ), for h = 7 and k = 7 such that L
+Since D (7, 7, 7) has no field association terms, go to Step 2. ( Step 2 )
+L w is increased by 2. Since L w 6 MAX (=2) and L w 6 n (=8), go to Step 3. ( Step 3 )
+For L w =( k h + 1) = 2, there are two subdocuments as follows: (a) Since D (7, 7, 6) that has no field association terms, not append the subdocument. (b) Since D (7, 7, 8) that has a field association term  X  X  coffee  X  X  associating with f ( Step 4 ) Only subdocument D (7, 7, 8) is in SUB_DOC.
+
+Maximum WEIGHT( D ( h , i , k ), f ) becomes WEIGHT( D (7, 7, 8), f go to Step 5. ( Step 5 )
+For f 4 , SEMANTIC_CODE is determined as c 2 = [FOOD n DRINK] by using the fact that CONSTRAINT( Kilimanjaro , h Food/Coffee i ) includes field f
+Set [FOOD n DRINK] to SEMANTIC_CODE and terminate the algorithm.
+The whole process shows how the target word x =  X  X  X ilimanjaro X  X  of S proposed scheme.
+
+Suppose that there is no sentence S 8 in Table 6 . Results from S
+By using the same algorithm, two subdocuments D (2, 7, 7) and D (1, 7, 7) are in SUB_DOC until L subdocuments, is the maximum WEIGHT( D ( h , i , k ), f ) belonging to f f ) 0.57 and WEIGHT( D (1, 7, 7), f 2 ) 1.14). By using CONSTRAINT( x , c [FOOD n DRINK].
+ the number, level points (LP( t )), and positions of field association terms around the target word x . 5. Experimental evaluation 5.1. Comparison with case frame method Sports. Appendix A represents part of the field association hierarchy. WordNet). Part of the experimental words in English can be found in Appendix B . always appear, we append the new case structures to the current work. In the experiments, test documents including ambiguous words were collected from the Internet. The English documents used are mainly from the following sites: Wikipedia ( http://wikipedia.org ), New York times ( http://www.nytimes.com ), Chinadaily ( http://www.chinadaily.com.cn ), etc.
+ The Chinese documents are mainly from the following sites: Sina ( http://www.sina.com ), Sohu ( http://www.sohu.com ), Sogou corpus ( http://www.sogou.com/labs/dl/tce.html ), and other. Each semantic sense of a target word is tested in at least 20 contexts in various documents. The accuracy of experimental results is defined as: Accuracy = a / b Where a is the number of words disambiguated correctly and b is total number of words. in Tables 7a and 7b .
+ ambiguities.
+ 75% for the field association scheme respectively.
+ posed scheme is applicable in solving context ambiguities.
+ Statistically analysis is also made by using McNemar X  X  Test ( McNemar, 1947 ) as follows: ation scheme using an online calculator ( http://www.graphpad.com/quickcalcs/mcnemar1.cfm ).
+ Table 9 presents the results of McNemar X  X  Test for sentence ambiguities. ambiguities.
+ Table 10 presents the results of McNemar X  X  Test for context ambiguities. In conclusion, the field association scheme can perform better than the case frame method. To discuss the accuracy for different field, Fig. 4 shows values of accuracy in some typical fields. because these fields include more typical terms, distinct from other fields. 5.2. Comparison with earlier studies using SENSEVAL-2 methods use Wikipedia ( Mihalcea, 2007 ).
+ For the evaluation measurement the following formula was used: and context ambiguities emerged.
+ methods.
+ [CHAIRMAN] cannot be specified by any fields and the disambiguation for the semantic [CHAIRMAN] fails. proposed filed association scheme is more efficient than the WordNet Relative-based method. cases of WSD it is difficult to extract all these senses by WordNet-based methods. best accuracy without checking all the co-occurrence relationships among the words in the document. 6. Conclusion and future work ter than UNED-LS-U, IIT-2, and the Relative-based in corpus SENSEVAL-2. method, WordNet, and the field association scheme to improve the quality of word sense disambiguation. Appendix A. Part of the field association hierarchy
+A.1. Physical sciences  X  X gronomy X  X nformation science X  X ryptology X  X ystem science X  X iscellaneous
+A.2. Engineering and technology conservancy project X  X ommunications technology X  X iological engineering X  X lectro engineering X  X iscellaneous
+A.3. Applied sciences miscellaneous Appendix B. Samples of the English words in experiments
+Number words Semantics 10 Fish [Animal] [Food] 11 Blackberry [Fruit] [Mobile phone] 12 Barcelona [Place n City] [Sports club] 13 Office [Working place] [Software] 14 Thunderbird [Animal] [Software] [Food n Drink] [Aircraft in military] 15 Tree [Plant] [Structure in computer science] 16 Tiger [Animal] [A name of golf player] [Car] [Beer] 17 Dove [Animal] [Aircraft] [Food n Chocolate] [Toiletry] 18 Mont Blanc [Place n Mountain] [Writing instruments and accessories] Appendix B ( continued )
+Number words Semantics 19 Chocolate [Food] [Place n Mountain] [Mobile phone] 20 Window [Object] [Software] References

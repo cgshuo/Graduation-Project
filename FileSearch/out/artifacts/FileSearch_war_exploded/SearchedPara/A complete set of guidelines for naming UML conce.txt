@@ -1,0 +1,79 @@
+ 1. Introduction developers and users to understand conceptual schemas [1  X  of conceptual modeling [5].
+ system operations, with their pre and postconditions, and state machines [10 [16] comprising the main NamedElements used for defining conceptual schemas in UML. well formed and semantically meaningful.
+ sentence of each guideline. There has been similar work for other languages, notably ORM [18 sentence.
+ work. 2. Entity types and then we present our proposal. 2.1. Literature review entity types, [22] proposed two rules (or guidelines): the first states that corresponds to an entity type in an ER diagram  X  [22] and the second that converted entity type in ER diagrams  X  [22] . The first rule was adopted by most of the later work. [23 standard IDEF1 observed that the name may be  X  a noun or a noun phrase [29] examined 45 class diagrams from the object oriented literature, mainly textbooks, and found that compounds.
+
+A similar approach has been taken by the proposers of guidelines for naming OWL classes. [30] added that as delimiter  X  and  X  a class should always start with upper case in line with this consensus. 2.2. Naming guideline The guideline consists of the form of the name G 1 f and the pattern sentence a countable noun in singular form, and the sentence generated from this name by using the pattern sentence
+An instance of this entity type is a path for wheeled vehicles. follow this guideline, such as DirectedRelationship , Named ProtocolStateMachine , among others.
+
+Note that guideline G 1 f requires the head of the noun phrase to be a substance or thing. For these (rare) cases we could suggest a different pattern sentence, such as:
+An instance of this entity type is a portion of lower ( N ). we did before in the example of Money ( AmountOfMoney ).
+ 3. Attributes 3.1. Literature review and relationship types in ER diagrams. [24] indicated that class in the context of the class for which it is a property
+In the analysis of the use of attributes in 45 class diagrams [29] found that verb  X  adjective strings and they usually denote attributes of type Boolean often suggested to use the Camel case [1,16,32,35] . 3.2. Naming guideline or * (unlimited); the extension to the general case is straightforward. The naming guideline max . We call G 2 the guideline when T is not Boolean , and 3.2.1. Guideline for non-Boolean attributes If T is not the Boolean data type, then the form of the name generated from them are: A sale offer has a price.
+ A product has zero or more images.
+ A product has one or more colors.
+ A sale offer may have an expiration date.
+ An amount of money has a value.
+ A shop has a name.
+
+Camel case as isoCode and, assuming lower (isoCode) is defined as
+A currency has an ISO code. 3.2.2. Guideline for Boolean attributes If T is Boolean , we assume that min is either 0 or 1, and max equals 1. The form of the name are: A shop opens or does not open all day, or it may be unknown.
+ A shop is or is not online.
+
+A product is or is not perishable. 4. Associations guideline. 4.1. Binary associations 4.1.1. Literature review what is named (association, roles, or both) and how it is named.
+  X  preposition (VP), a noun (VN), a preposition and a noun (VPN) or a preposition and a verb (VPV)  X  association names should start with a capital letter, since an association represents a classifier defining two names for the association and one name for each of the two roles [28] . 4.1.2. Naming guideline
+Let R ( p 1 : E 1 [ min 1 , max 1 ], p 2 : E 2 [ min 2 , max and the names of the two roles p 1 and p 2 . The roles p 1 need not be named by the modelers.
+ The guideline has two parts: one for the name of the association R ( guideline for the form of the name of the association G a if R ( p 1 : E 1 [ min 1 , max 1 ], p 2 : E 2 [ min 2 , max  X 
+E 2 :: p 1 : E 1 [ min 1 , max 1 ]  X 
+E 1 :: p 2 : E 2 [ min 2 , max 2 ] following page, adapted to role names. guideline G a 3 f , and generate the following sentences: A publisher publishes zero or more journals.
+ A paper cites zero or more papers.
+ A person writes zero or more papers.
+ A person was born in a town.
+ There are eight roles with an explicit name that follow guideline A paper has zero or more references.
+ A paper has one or more authors.
+ A town has zero or more natives.
+ A person has a place of birth.
+ A journal has one or more editors in chief.
+ A journal has one or more members of the editorial board.
+ An organization has zero or more employees.
+ A person may have an employer.
+ have the same role name (the implicit name journal ) in its two associations with Person .
+Also note that in the example of Fig. 3 there are two associations that are compositions ( Journal therefore they need not be named explicitly. 4.2. n-ary associations 4.2.1. Literature review below formalizes the ORM approach for the UML. 4.2.2. Naming guideline Let R ( p 1 : E 1 , ... , p n : E n )bean n -ary association ( n the names of the roles p 1 , ... , p n . The roles p 1 , ...
+The implicit name of a role is that of the corresponding entity type, starting with lower case. When E same name.
+ guideline for the form of the name of the association G 4 f The examples of Fig. 4 illustrate the proposed guideline.
+ Supplies b product N To b project N generates the pattern sentence: Sells b product N Of b vendor N In b country N generates: CanSubstitute b substitute N In b project N generates: 5. Invariants named [40] . For example: that manages a conference facility the untargeted constraint following invariant: enumeration.
+ that we propose in the following tries to follow the style of the guidelines for the other elements. 5.1. Naming guideline The guideline we propose for naming the invariant I has two parts: the form of the name
+The following examples illustrate the application of the guideline (we omit the OCL expression): which generate the following pattern sentences: A person is identified by his name.
+ A marriage is a relationship between a woman and a man.
+ A section is identified by course and name.
+ A course cannot be a successor of itself.
+ A course consists of sections whose teachers are experts in the course's topics. name of the invariant only. 6. Event types the next section we deal with state transition diagrams.
+ types, operations, preconditions and postconditions.
+ 6.1. Event types consistent with the examples of event types published in the literature. Let Ev be an event type. The guideline we propose for naming Ev has two parts: the form of the name Fragment of a structural schema and its behavioral specification using event types and system operations. sentences: An instance of this event type is a new sale event.
+ An instance of this event type is a new sale item event.
+
+An instance of this event type is an end of sale event. 6.2. System operations
+In the literature, there is a wide agreement on naming operations with verbs: active verbs phrases such as Draw or Move  X  [43] ;  X  It improves clarity to start the name [ should be verbs, in mixed case  X  [32] ;  X  Name operations with strong verbs Let Op be a system operation. The guideline we propose for naming Op has two parts: the form of the name sentence G 7 s : seem possible to give a general rule for its verbalization.
+ the above-mentioned event types. The sentences generated from those names are: An invocation of this operation requests the system to perform the MakeNewSale command. An invocation of this operation requests the system to perform the EnterItem command.
+An invocation of this operation requests the system to perform the EndSale command. 6.3. Preconditions in OCL.
+ general recommendation:  X  You should label assertion clauses to make the text more readable forward here tries to follow the style of the guidelines for the other elements. The guideline we propose for naming Pre has two parts, the form of the name names:  X  the sale is not complete  X  , and  X  there is enough stock which generate the sentences: Before the occurrence of this event, the sale is not complete.
+
+Before the occurrence of this event, there is enough stock. 6.4. Postconditions postconditions can be named and formally specified in OCL.
+ the following tries to follow the style of the guidelines for the other elements.  X  a sale has been created  X  : which produces the sentence: After the occurrence of this event, a sale has been created.
+ sale item has been created  X  , and  X  the product's quantity on hand has decreased After the occurrence of this event, a sale item has been created.
+
+After the occurrence of this event, the product's quantity on hand has decreased. 7. States p. 152] acknowledges that  X  it is important to choose good, meaningful state names p. 105] indicates that  X  state names should be simple but descriptive elements and it is highly consistent with the examples of states published in the literature. 7.1. Naming guideline The guideline we propose for naming S has two parts: the form of the name
+The following examples, taken from the literature, illustrate the application of the guideline:  X 
+MicrowaveOven: ReadyToCook , DoorOpen , CookingInterrupted , Cooking , CookingComplete . [38]  X 
+Patient: Entering, Admitted, UnderObservation, Released. [45]  X 
+PhoneCall: Idle, DialTone, Dialing, Connecting, Busy, ... A few examples of the sentences they generate are: A microwave oven is ready to cook.
+
+A microwave oven is in the state of door open. A patient is entering.
+ A patient is under observation.
+
+A phone call is busy. 8. Case study by the domain experts using the technique called  X  checking validity by elementary sentences verbalization with respect to the manual one.
+
+The case study consisted of four activities: of the 84 association names did not follow guideline G a 3 associations. The modelers and domain experts accepted our proposals. mentioned associations were the ones (verb phrases) we proposed. the iSalut.cat schema produced its automatic verbalization.
+In the analysis, we classified the associations into the following groups:  X  error we found were: found 16 associations whose verbalization had a name inconsistency. multiplicities are contradictory, then either the sentence or the schema is incorrect. -Incompleteness . There was one association in the original schema whose verbalization was missing.  X  two verbalizations they would prefer in terms of language simplicity and naturalness. The results were: -Original . No original verbalization was preferred to the new one. -Similar . There were 38 associations whose verbalizations were considered similar. -New . There were 11 associations whose new verbalizations were preferred to the original ones. 9. Conclusions given have a strong influence on the understandability of that schema. and the given name is grammatically well-formed and semantically meaningful. indicates that in industrial contexts verbalization must be done automatically. and by tool developers wanting to paraphrase conceptual schemas.
+ and therefore there is need to develop a particular version for each required natural language. Acknowledgments and by Universitat Polit X cnica de Catalunya under FPI-UPC Program.
+References

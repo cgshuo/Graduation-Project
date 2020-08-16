@@ -1,0 +1,56 @@
+ 1. Introduction
+Although considerable efforts have been made to address community detection [9 ones close to our work, which will be compared with the proposed PMC in validations. the worst time of MCL. By operating matrices approximately, one can speed up MCL to O ( nk which partitions are the most meaningful with respect to different parameters. which usually converges slowly.
+
+O ( n 2 logn )time.
+ unfolding communities) [19] , and the LP (label propagation) [20] . one giant community remains [14] . A greedy strategy of maximizing the Newman O ( nlog 2 n ) in the cases of sparse networks.
+ order of the sequential sweep over nodes.
+ future works. 2. The PMC algorithm and then gives a complete description of PMC. 2.1. A Markov random walk model
+Let N =( V , E ) denote a network, where V ={ v 1 , ... , v consider a Markov random walk model on N defined as follows.
+Let X ={ X l , l  X  0} denote a random walk series. Let P { X going exactly l steps. X is a discrete Markov chain with a state space V if we have: where a ij is the weight of the edge b i , j &gt; and d i
+X is a homogeneous Markov chain if P ( X l = j | X l  X  1 = i )= p transition matrix of X .
+
+Letting p ij ( l ) be the probability of going to j from i after exactly l steps, we have: where P l is the l -step transition matrix of X .
+ 2.2. A heuristic-optimization process
+Let the community containing a specified sink node be sink community denoted as C the probability will be very low. Based on above analysis, we design the following heuristic:
+Given a sink v j , there exists an integer L , when l &gt; L we have: Correspondingly, the heuristic-optimization process of PMC is described as follows. Step 1 to specify a vertex v j as a sink; Step 2 to calculate an L -step transition distribution in terms of the sink; Step 3 to rank all nodes according to the above transition distribution; constructed. 2.3. Selecting a sink reasonable to select a sink as follows: 2.4. Computing L-step transition probabilities All p ij ( L ) can be calculated by computing the L -step transition matrix P computing all L -step transition probabilities is given as follows:
+Algorithm 2.1. Computing L -step transition probabilities in terms of a sink P 01. for i =1: n 03. end; 04. for l =1: L 05. for i =1: n 07. end; 08. end; 09. return P ( L ) ;
+P ( l ) denotes a L -step transition probability distribution, and we have P time. Each iteration from step 5 to step 7 takes O (  X  d i time complexity of LP is O ( n + Lm ).
+
+Given a sink v j , how can we determine a reasonable L such that we have p where  X  is a preset error threshold.
+
+We define:
+Recalling that P is the one-step transition matrix. Let CP  X  X   X  1
+C ( P ) b 1, then there exist two constants  X  and l 0 such that
+Based on Eqs. (7) and (9) , we have:
+Usually C ( P ) is greater than 1. Let k be the minimum number satisfying C ( P Eventually, we have:
+From Eq. (11) , we have log (  X  )= a  X  L + b , where a = log ( C ( P 2.5. Computing a probabilistic cut
+De fi nition 2.1. Let ( V 1 , V 2 ) be a bipartition of N where V step. We have: community and enter another via only a few  X  bridge links
+De fi nition 2.2. The probabilistic community quality of a bipartition ( V It is easy to show 0  X  PCQ  X  2. A smaller PCQ indicates a better bipartition.
+Let indicator vector X denote a bipartition of a network, where Xi  X  X  X  1 Proposition 2.2.
+ To find a good bipartition is to find a X minimizing the PCQ . That is,
+The solution space of the foregoing constrained quadratic optimization is huge with a size of 2
+P ( L ) , each candidate solution of the new space takes the following form:
+The algorithm that computes x  X  , EP ( V 1 , V 2 ) and EP ( V
+Algorithm 2.2. Computing an optimal probability cut [ x , EP 01. Transform A into B according to SP ( L ) ; 02. //computing transformed transition probability matrix TP 03. for i =1: n 04. for j =1: n 05. TP ( i , j )= B ( i , j )/ sum ( B ( i ,1: n )); 06. end 07. end 08. //computing trapping probability for each position by top-down 09. S 1(1)= T 1(1)= TP (1,1); 10. for i =2: n  X  1 11. S 1( i )= S 1( i  X  1)+sum( TP ( i ,1: i  X  1))+sum( TP (1: i 12. T 1( i )= S 1( i )/ i ; 13. end 14. //computing trapping probability for each position by bottom-up 15. S 2( n  X  1)= T 2( n  X  1)= TP ( n , n ); 16. for i = n -2:  X  1:1 17. S 2( i )= S 2( i +1)+sum( TP ( i +1, i +2: n ))+sum( TP ( i +2: n , i +1))+ TP ( i , i ); 18. T 2( i )= S 2( i )/( n  X  i ); 19. end 20. //computing the PCQ value for each position 21. for pos =1: n  X  1 22. PCQ ( pos )=2  X  T 1( pos )  X  T 2( pos ); 23. end 24. //finding the best cut position and escaping probabilities 25. x =min( PCQ ); 26. EP 12 =1  X  T 1( cut ); 27. EP 21 =1  X  T 2( cut );
+The output x is the position with minimum PCQ . The outputs respectively.
+
+In PCQ, step 1 takes O ( n 2 ) time to transform a matrix; steps 3 to 7 take O ( n 2.6. Stopping criterion heuristic, a reasonable criterion to stop recursive bipartition is: That is, 2.7. Description of the PMC
+Algorithm 2.3. Constructing the community structure of a given network B = PMC ( A ) 01. sink =arg max i { d i }; 02. P ( L ) = PL ( A , sink , L ); 03. SP ( L ) = Sort ( P ( L ) ); //sort P ( L ) into a non-decreasing permutation 04. B = Trans ( A , SP ( L ) ); //transform A into B according to SP 05. [ x , EP 12 , EP 21 ]= PCQ ( B , SP ( L ) ); 06. if ( E 12  X  0.5) and ( E 21  X  0.5) 07. return B ; 08. else 09. //divide B into two sub-matrices by the cut x ; 10. [ B 1 , B 2 ]= Divide ( B , x ); 11. end 12. B 11 = PMC ( B 1 ); 13. B 22 = PMC ( B 2 ); 14. B = diag ( B 11 , B 22 ); //combine B 11 and B 22 into a diagonal matrix.
+PMC is O ( K ( nlogn + Lm )). 3. Evaluation of the PMC methods.
+ threshold  X  , the unique parameter of the PMC, is set to 10 3.1. Validation metrics community labels. Otherwise, modularity is more suitable. 3.1.1. Accuracy
+For each node v , let l t , v be its true community label and let l nodes has been partitioned into communities by an algorithm, l occupied by the majority; this label is assigned as l p , v the fraction of all nodes whose predicted label is equal to true label [18] : 3.1.2. Normalized mutual information (NMI) let T be its true community partition and let P be a partition predicted by an algorithm. Let k communities in T and P , respectively. Given a community i in T and a community j in P , let n i , community j and their intersection, respectively. NMI is defined as [18] :
+The closer P is to T , the larger the NMI to be obtained. 3.1.3. Newman  X  Girvan modularity let P be a community partition predicted by an algorithm. Let e community i to those in community j , and let a i =  X  j e
+It is expected that better community partitions will have larger Q -values. 3.2. Evaluation on synthetic networks 3.2.1. Evaluation on Newman's model Newman's model was proposed by Newman et al. [1] and is defined as: average, each node in the network emits d edges, where d = z set as follows: (red) perform better than the others in terms of both metrics. Accuracy 3.2.2. Evaluation on LFR's model standard deviations of accuracy/NMI over 100 random networks generated by the model. and accuracy. 3.2.3. Evaluation on hierarchical community model dendrogram of communities. It is an extension of Newman's model, which is defined as: which contains s 1 nodes. At the first level, there are k be z 1 links going from v to other nodes within community i , z parameters are set as follows: standard deviations of accuracy/NMI over 100 random networks generated by the model.
+FUC and FM. 3.3. Evaluation on real-world networks and m denote the number of nodes and connections, respectively.  X 
+TRUTH  X  means  X  real communities,  X  and  X  X  X  denotes  X  unavailable a threshold. From these tables, we can have the following observations. 4. Applications of the PMC 4.1. Semantic phrase clustering language comprehension and information retrieval.
+ phrases and 31,784 edges [13] .
+ shows the visualization of the first community: Flute, Bass, Viola, and Fiddle}; Stairs, Wake, Stairway, Rise, Escalator, Stair, Down, Standing, and Resting}; 4.2. Scienti fi c collaboration analyzing and recommending researchers. The weights on the links measure the strength of such are discovered by manually checking the member profiles in detail. obtained by submitting queries such as the following: [author list, article list] = Query (article title).
+ potentially useful information.
+ aforementioned query, one will obtain the following results.
+Article list={ 1. Richard Keller. A Service Level Agreement Language for Dynamic Electronic Services , 2003. 2. Richard Keller, Shawn Wolfe. Workspaces in the Semantic Web . 4. Richard Keller. The MicrobesOnline Web site for comparative genomics , 2005. 5. Richard Keller, Shawn Wolfe. Exploiting Recurring Structure in a Semantic Network , 2004. 5. Conclusions recommendation.
+ framework of heuristic-optimization to address such tasks.
+ Acknowledgments China.
+ Appendix A. The proof of Proposition 2.1 Proof. We first prove that X is ergodic , i.e., X is aperiodic and irreducible . loop 1 v i ; ... ; v j ; v j
+Supposing the length of the first loop is q + p , the length of the second loop is q + p gcd { q + p , q + p  X  1}=1, so k ( i )=1 for any state i of X . Hence, X is aperiodic . (  X 
+That is, Appendix B. The proof of Proposition 2.2 Proof. According to Definition 2.2 , we have: Furthermore, Due to 1 T ( I  X  P )1=0, we have Letting Y =(1  X  k )(1+ X )  X  k (1  X  X ), we have PCQ  X  Y T I  X  P  X  X  Y Furthermore, we have
+References

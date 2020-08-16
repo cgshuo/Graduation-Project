@@ -1,0 +1,24 @@
+ We use the following two well known bounds in our proofs.
+ E [ X i ] =  X  . Let S n = X 1 +  X  X  X  + X n . Then for all t  X  0 , i  X  n, | X i | X  k , then for all t &gt; 0 , of bad super arms containing arm i . Define approximation oracle is at most where f (  X  ) is the bounded smoothness function.
+ empirical mean of X i is close to the actual expectation  X  i .
+ Definition 1 (Nice process) . The process is nice at time horizon t if: Lemma 3. The probability that the process is nice at time t is at least 1  X  2 mt  X  2 . Proof. By Chernoff-Hoeffding bound in Lemma 1, for any i  X  [ m ], The lemma follows by taking union bound on i .
+ sampled with respect to  X  min , that is, sampled at least 6 ln t regret bound in Eq.(4) not tight enough.
+ S which enables us to prove the much tighter bound given in Theorem 1.
+  X   X  oracle at round t . Then, according to line 6 of Algorithm 1, we have N way.
+ true mean vector  X  . If round t is bad, let i = argmin j  X  S one counter in { N i } m i =1 is increased.
+ more counters { N l i } K i l =1 , whose value at round n , N l i,n is defined as follows: S considered is at most n .
+ We write as least where  X  i, 1 is for the initialization.
+ More specifically, we have the following claim.
+ Claim 1. For any time horizon n &gt; m , Proof. By the definition of N l,suf i,n , it is sufficient to show that for any n  X  t &gt; m ,  X  time t , we have the following properties: So we have ` index l satisfies S t = S l i, B .
+ N N N S regret of our algorithm is The theorem follows directly.
+ line 6 in the CUCB algorithm. The corresponding regret bound obtained is P value when c &gt; 1. Then the regret bound is of a second order ln ln n term as in (Garivier &amp; Capp  X e, 2011), with regret at most smoothness function f ( x ) =  X   X  x  X  for some  X  &gt; 0 and  X   X  (0 , 1] , the regret of CUCB is at most: distribution-independent regret bound. The rough idea is, if  X  i min  X  1 / time horizon n .
+ arguments will be still applicable under any condition.
+ For an arm in { i |  X  i min &gt; 0 } , we have E [ X Following the same counting steps as in Eq.(28), we have counter cannot go beyond n i , we have E [ X Therefore, Eq.(29) holds in both cases. We then have n , we can drop the conditional expectation above. The result then follows from Claim 1 and Eq.(18). show how to take advantage of such arm clusters to further improve the regret analysis. in S will be revealed.
+ increasing reward. Define  X  Furthermore, define  X  max = max C  X  U  X  C max .
+ approximation regret of the CUCB algorithm using an (  X , X  ) -approximation oracle is at most Discussion. Comparing with the regret bound in Theorem 1, we are taking the summation over all clusters  X  obtain improved regret bounds.
+ be contained in multiple clusters, here T i,n is larger than T C,n for any C containing i . arm S t  X  S B , which is not an  X  -approximate super arm. If round t is bad, let C = argmin C  X  g ( S By definition N C,t  X  T C,t . The total number of bad rounds in the first n rounds is P C N C,n . into more counters as follows: N call the bad arm S l C,B is sufficiently sampled. Otherwise, it is under-sampled. We write as at least it should not be played in the first place. More specifically, we have the following claim. Claim 2. For any time horizon n &gt; m , Proof. By the definition of N l,suf C,n , it is sufficient to show that for any t &gt; m ,  X  So we have In other words,
+S dated at time t only one l satisfies S t = S l C, B .
+ ` ( X  C, 0 ) = 0. For a cluster C , C algorithm is  X  n  X   X   X   X   X  opt  X   X   X  The theorem follows directly.
+ 2: n  X  0 3: while true do 4: t  X  t + 1;  X  t  X  min {  X  t , 1 } . 6: Play S and update all  X   X  i  X  X . 7: end while Note that if an arm i has never been played,  X   X  i could be any arbitrary value. knowledge of  X  min and f (  X  ), and thus CUCB is applicable to more settings in this sense. where  X  ( c ) = P  X  t =1 1 t c is the Riemann X  X  zeta function.
+ Recall that the definition of  X  min is We have: By Bernstein inequality in Lemma 2, when n &gt;  X  3 , we have times. So, Pr[ P t = 0]  X  mt  X  c . Set ` t = ( c +1) ln t T i,t  X  N i,t  X   X  ln t + 1 &gt; ` t .
+ an  X  -approximate answer in an exploitation round t . We have E [ F t | Y t ]  X  1  X   X  . We have, Consider the second term. We claim that properties: These above inequalities imply that when E t holds, we have With 2 f ( X ) =  X  min , Eq. (38) is in conflict with the definition of  X  min in Eq. (35). In other words, Thus, That means, the regret is at most:

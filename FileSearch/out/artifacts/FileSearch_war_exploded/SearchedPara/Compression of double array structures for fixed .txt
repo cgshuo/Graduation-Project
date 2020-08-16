@@ -1,0 +1,28 @@
+ 1. Introduction static key sets.
+  X  usage is still big.
+ its retrieval speed is very fast.
+ 2. Trie and double array step.
+ keywords; (1) Predictive search: when an input keyword is  X  X  X  X  X , keywords starting with  X  X  X  X  X  are retrieved. (2) Common prefix search: when an input keyword is  X  X  X bc X  X ,  X  X  X  X  X , X  X  X b X  X  and  X  X  X bc X  X  are retrieved. because it requires to traverse sibling states in order to traverse child states.
+For the retrieval, the following two functions are used; select 0 ( i ) returns the index of i th bit 0 in array B rank ( i ) returns the number of bit 1 from B[1] to B[i] 0, respectively.
+ is not so fast because of computing the functions select0 and rank. satisfied as follows; takes O(1).
+
+CHECK array. That is to say, Eq. (1) is changed as follows: traverses from state number 6 to state number 3, CHECK[3] is  X  X  X . methods.
+
+We propose a new data structure that can reduce the size of the double array by removing BASE array. 3. Single array with multi code 3.1. Data structure
+If BASE[ s ] is set to s , Eq. (1) is as follows; each depth, and the CODE have values for each depth.
+
+First of all, the following condition is applied for all state numbers. equation. Then, character c cannot be traversed because of R D equations are determined; stored to MAX array. This array is used in the retrieval algorithm. 3.2. Retrieval algorithm
+An input of retrieval algorithm is KEY = a 1 , a 2 , ... , a algorithm are the same as the original double array. [Retrieval Algorithm] (R-1) s =1; (R-2) for( k =1; k &lt;= n +1; k ++){ (R-3) t = s +CODE[ k ][a k ]; (R-4) if(MAX[ k ]&lt;t 5 MAX[ k + 1] &amp;&amp; CHECK[ t ]== a (R-5) if( k == n +1)return true; (R-6) s = t ; (R-7) } (R-8) else{ (R-9) return false; (R-10) } (R-11)}
+Repeat for character  X  X  X  and  X # X  as follows;
+Finally, because k = n + 1 is satisfied in step(R-5), this algorithm returns true and is finished. 3.3. Construction algorithm
+The following parameters and a function are introduced. height: the height of the trie (The maximum depth of the trie)
+S_SET: a set of the pair of state numbers(o, s) extracted from P R : a set of characters to traverse in the trie.
+ (o, s) 2 S_SET and CODE[k][c]  X  q for c 2 R . (C-1) All CODE values are set to 0. (C-2) (1, 1) is set to P 1 (C-3) MAX[1] is set to 1 (C-4) for( k =1; k &lt;height; k ++){ (C-5) P k +1 =  X  ; (C-6) foreach c in R { (C-7) S_SET =  X  (C-8) foreach ( o , s )inP k { (C-9) When c can be traversed from o in the original trie, ( o , s ) is added to S_SET (C-10) } (C-11) if(S_SET  X   X  ){ (C-12) CODE[k][c] = Y_CHECK( k , S_SET) (C-13) foreach ( o , s ) in S_SET{ (C-14) The state number t traversed from s by c is set to s +CODE[ k ][ c ]. (C-15) CHECK[ t ] is set to c (C-16) (the state number traversed from o by c in the original trie, t ) is added to P (C-17) } (C-18) } (C-19) } (C-20) MAX[k + 1] is set to maximum s ((o, s) 2 P k+1 ) (C-21)} 9 for s = 5 and CHECK[9] is also set to  X  X  X .
+
+CODE[3][ X # X  X  is set to 5, because CHECK[5 + 5] and CHECK[6 + 5] are unused. Finally, in (C-20), MAX[4] is set to 11, because the maximum for the indexes of used CHECK is 11.
+Yamakawa, &amp; Aoe, 2001 ). Morita X  X  method can be used in SAMC. 4. Evaluations 4.1. Theoretical observations list form. Therefore, LOUDS is slower than other methods.
+ is calculated from the implementation of the tx library. 1 key set with variable length (maximum length n ) when k (&lt;= n ) is small, |D 4.2. Experimental observation the space usage and retrieval speed. 4.2.1. Experiments for pseudo data sets were selected from 10,000 keys were used as key sets.
+
+ODA and CDA. and the retrieval time, respectively.
+ keys is bigger or kinds of characters increase, results were the same as the most cases. 4.2.2. Experiments for real data sets
+Experiments were conducted by using zip codes of Bulgaria and USA presented method is more compact than that of LOUDS as succinct data structure. 5. Conclusion compacting the space usage for key sets with variable length by keeping the fast retrieval speed. Acknowledgement Reference

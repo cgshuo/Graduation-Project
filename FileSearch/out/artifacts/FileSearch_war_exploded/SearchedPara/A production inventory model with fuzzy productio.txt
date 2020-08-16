@@ -1,0 +1,90 @@
+ 1. Introduction
+Several researchers of inventory control problem developed to estimate these parameters as random numbers because is better to estimate parameters like production and demand a considerable number of research papers have already been published incorporating imprecise inventory parameters ( Wee considered fuzzy production rate in any production inventory system. Keeping in mind the above-mentioned factor, here tity (EPQ) model incorporating fuzzy production rate. well as EPQ model. Due to this reason, various formations of consumption tendency have been studied by inventory control price dependent demand ( Ouyang et al., 2009 ), advertisement dependent demand. All of them developed their models in crisp for newly launched products for a certain time period at the manufacturer withdraws the additional discount and thus unit that some customers have already accustomed with the product products though price discount is withdrawn. This process of EPQ model.
+ to solve fuzzy inventory models though the topics on fuzzy Feuring, 2000 ; Vorobiev and Seikkala, 2002 ; Chalco-Cano and Roman-Flores, 2009 ).
+ of time for which demand of the item exits compare to other vation of new technology, introduction of new features to the model of an item is finite and fuzzy/random in nature. Few assumption (cf. Pal et al., 2009 ; Roy et al., 2009 ). sold as fresh units. Demand depends on unit selling price and
+After the discount period demand depends only on unit selling sum of all cycle lengths is less than the length of imprecise used to develop the mathematical formulation of the model and is no exact method for solving an optimization problem with meters, the solution methodology is quite general and can be used for and type of fuzzy number.
+
+There are some research works on inventory control problems,
+Maiti (2006) developed an inventory model, where interval valued objective function was transformed to an equivalent multi-objective problem following an interval comparison app-proposed by Ishibuchi and Tanaka (1990 ) and solved using a an inventory model with interval valued inventory costs. They somes, where center and width of intervals were used for where fuzzy parameters were replaced by equivalent interval
+According to them FPO on intervals is the best approach for with all the approaches-RCGA, MOGA and ICGA and results are intervals. 2. Preliminaries
+Let f F 1 and f F 2 be two fuzzy numbers in R with membership functions m e and Prade (1980) and Zadeh (1978) pos  X  f F 1 n f F 2  X  X  sup f min  X  m e 4 , o ,  X  , r , Z and R represents set of real numbers nes  X  f F 1 n f F 2  X  X  1 pos  X  f F 1 n f F 2  X  X  2  X  where nes represents necessity.
+ to f F 2 are denoted by P e defined as P e N e Fuzzy Extension Principle ( Zadeh, 1978 ): If f X 1 , f X e X  X  f  X  f X 1 , f X 2 , ... , f X n  X  , where f : R R R -operation then membership function m e For each z A R , m e  X  sup f min  X  m e X Triangular fuzzy number ( TFN ): A TFN e A  X  X  a 1 , a 2 , a by the membership function m e e  X  x  X  X  membership function m e e  X  x  X  X  According to above definitions following lemmas can easily be derived.
+ Lemma 1. If e f  X  X  f 1 , f 2 , f 3  X  be a TFN with 0 o f 1 number then nes  X  e f 4 b  X  Z a iff  X  b f 1  X  =  X  f 2 f 1 N  X  e f  X  X  P g  X  e f  X  X  N  X  e f  X  X  P c  X  e f  X  X  a -cut set : a -cut of a fuzzy number e A in R is denoted by defined as e A  X  a  X f x A R = m e f : R defined function and ( see Roman-Flores et al. , 2001) e where f  X  A  X  X f f  X  a  X  = a A A g .
+ A  X  X  A L , A R  X f x 9 A L r x r A R g w  X  A  X  X  X  A R A L  X  = 2. 2.1. Comparison of intervals 2.1.1. Fuzzy preference ordering (FPO) of intervals
+There are several approaches in comparison of interval num-
+Ordering of Interval Numbers in Decision Problems X . According to Sengupta and Pal, fuzzy preference ordering scheme gives a
+They used following assumptions for the maximization problem: 1. More profit is better than less profit. 2. More certainty is better than less certainty. maker (DM) undergoes a trade-off between the two. than Assumption 1 (obviously to an optimistic DM, Assumption 1 is somewhat more important than Assumption 2).
+
+According to this set of assumptions they ordered any pair of sets S 1 and S 2 as follows: 1.  X  A , B  X  A S 1 if w  X  A  X  Z w  X  B  X  . 2.  X  A , B  X  A S 2 if w  X  A  X  o w  X  B  X  .
+ Then for a maximization problem: choice.
+
+For  X  A , B  X  A S 2 fuzzy preference between A and B may be constructed.
+ fuzzy set B 0 as rejection of B in S 2 is defined as B 0  X f X  X , B  X  A S 2 = X  X  X  X L , X R  X  / m  X  X  X  , w  X  X  X  m  X  X  X  r m  X  B  X  , w  X  X  X  o w  X  B  X g given by  X  X , B  X  X  problems was developed by Mahato and Bhunia (2006) in the view. These definitions are as follows: and B  X  X  B L , B R as accepts the profit interval A .
+ defined the order relation Z pmax between the intervals A  X  pessimistic decision maker X  X  point of view for solving their inventory model. Due to this reason, ORI is also used in this of view. 2.2. Fuzzy Riemann integral Riemann integral have been defined by Wu (2000) . a -cut of e f  X  x  X 8 x A  X  a , b .If f L  X  a , x  X  and f R on  X  a , b 8 a , the fuzzy Riemann integral number and its a -cut set is given by !
+Riemann integrable on  X  a R  X  a  X  , b L  X  a  X  and  X  a L  X  8 a , the fuzzy Riemann integral and its a -cut set is given by e 0 @ Case 2: If e f  X  x  X  is non-positive and f L  X  a , x  X  and f
+Riemann integrable on  X  a R  X  a  X  , b L  X  a  X  and  X  a L  X  8 and its a -cut set is given by e 0 @
+Considered the first-order ordinary differential equation dY dt  X  f  X  t , Y , K  X  , Y  X  0  X  X  C ,  X  9  X  unique solution Y  X  g  X  t , K , C  X  for t A I , K A K R n , c R  X  10  X  then (9) reduces to fuzzy differential equation d e
+Y dt  X  f  X  t , assuming that derivative ( Buckley and Feuring, 2000 ) of the and Feuring (2000) e
+Y  X  t  X  X  g  X  t , e K , e C  X  X  12  X  is solution of (11) if its a -cut e Y  X  t  X  X  a  X  X  Y L  X  t , following conditions: dY L  X  t , a  X  dY L  X  t , a  X  dY R  X  t , a  X  dY L  X  t , 1  X  8 &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; : extension principle (5). 3. Notations and assumptions for the model 3.1. Notations
+To develop the proposed model, the notations adopted in this paper are as follows: c h holding cost per unit per unit time. c p production cost per unit. c pRM remanufacturing cost per unit. c 3 setup cost in each cycle. e
+T i duration of i th cycle having a -cut e T i  X  a  X  X  X  T iL
+N number of cycles during the planning horizon. t t 0 price discount period in each cycle with t 0 o t 1 . e t 2 i remanufacturing time period in i th cycle with e Q 1 i inventory level in i th cycle at t 0 with a -cut e Q 1 i e Q 2 i inventory level in i th cycle at t 1 i with a -cut e Q e Q 3 i inventory level in i th cycle at t 1 i  X  e t 2 i with e q  X  t  X  inventory level at any time t in i th cycle with s p selling price in each cycle which is a mark-up of produc-e Z total profit during the planning horizon with a -cut 3.2. Assumptions
+In addition, the following assumptions are imposed: 1. e number ( e K  X  X  K 1 , K 2 , K 3  X  ) with a -cut e K  X  a  X  X  K 2. r is the reliability of production process. 3. K 11 is remanufacturing rate. 4. e a triangular fuzzy number ( e H  X  X  H 1 , H 2 , H 3  X  )with  X  H L  X  a  X  , H R  X  a  X  . 5. e time during price discount period and decreases with selling price. But after discount period, it depends only on selling price and is of the form:
+D i  X  t  X  X  m  X  m 2 m 1 . It is also assumed that e D 11  X  X  X  D 111 , D and e A 11  X  X  X  A 111 , A 112 , A 113  X  X  are TFNs with a -cut are the parameters so chosen to best fit the demand function and g is called price elasticity of the demand function. whole planning horizon.
+
+Symbols is used on the top of the above notations to variables. 4. Mathematical formulation of the model
+Here it is assumed that the life time of the product, i.e., P time t 1 i , production stops and remanufacturing of produced starts. According to the assumptions and letting e D 11 =  X  m e
+A =  X  m 1 c p  X  g  X  e a 1 , e D 11 =  X  m 2 c p  X  g  X  e d 2 , equation: d e q  X  t  X  dt  X  with boundary conditions e q i  X  0  X  X  0, e q i  X  t 0  X  X  e e q  X  t  X  e t 2 i  X  X  e Q 3 i . Here a -cuts of e d 1 , e d 2 , e a e d  X   X  X  d 1 L  X  a  X  , d 1 R  X  a  X  , e d 2  X  a  X  X  d 2 L  X  a  X  , d and e a 2  X  a  X  X  a 2 L  X  a  X  , a 2 R  X  a  X  .
+ Solving above differential equation (according to Buckley and e q  X  t  X  X  a  X  X  q iL  X  a , t  X  , q iR  X  a , t  X  ,  X  15  X  where a , t a , t
+Q  X  X  rK L d 1 R  X  t 0  X 
+Q  X  X  rK R d 1 L  X  t 0  X 
+Q
+Q
+Q
+Q e
+T
+T
+T Holding cost during i th cycle is c h g HOC i  X  c h c  X  e
+I  X  e I 2  X  e I 3  X  e I 4 (say), where e
+I  X  e I 2  X  e I 3  X  e I 4  X 
+Let a -cut set of the above four integrals are e I 1  X  a  X  X  I e
+I 2  X  a  X  X  I 2 L  X  a  X  , I 2 R  X  a  X  , e I 3  X  a  X  X  I 3 L respectively, then according to Wu (2000)
+Let a -cut of holding cost is c h g HOC i  X  a  X  X  c h HOC iL then clearly
+Sell revenue in i th cycle is c p f SP i , where
+Let a -cut of f SR 1 and f SR 2 are f SR 1  X  a  X  X  SR 1 L  X 
+Let a -cut of f SP i , i.e., f SP i  X  a  X  X  SP iL  X  a  X  , SP c f SP i  X  a  X  X  c p SP iL  X  a  X  , c p SP iR  X  a  X  , where
+SP
+SP
+Production cost  X  f PC i  X  for i th cycle is given by f PC
+PC
+PC e Z  X  X  c p f SP i c p e Kt 1 i  X  1 r  X  e Kt 1 i c pRM c h g Let a -cut set of e Z  X  a  X  X  Z L  X  a  X  , Z R  X  a  X  , where Z  X  Z  X  So, the problem reduces to
+Determine t 0 , t 1 , l and m 1 to maximize  X  Z L  X  a  X  , Z R  X  a  X  subject to
+As constraints of the problem is fuzzy in nature, using fuzzy respectively in optimistic and pessimistic senses as follows:
+Determine t 0 , t 1 , l and m 1 to maximize  X  Z L  X  a  X  , Z R  X  a  X  subject to pos and
+Determine t 0 , t 1 , l and m 1 to maximize  X  Z L  X  a  X  , Z R  X  a  X  subject to nes respectively, which are entirely determined by the DM, their significance is discussed later.
+
+Lemma 4. For any types of fuzzy numbers e K , e D 11 , e A pos  X  P N i  X  1 e T i r e H  X  Z b 1 , iff P N i  X  1 T iL  X  b Proof. As e K , e D 11 , e A 11 , e H are fuzzy numbers, e e  X  x  X  r b 1 for x r T iL  X  b 1  X  and m e H  X  x  X  r b 1 for x P from definition (1). &amp;
+Lemma 5. For any types of fuzzy numbers e K , e D 11 , e A number. Again from definition of necessity (2), we have nes P definition (1). &amp; 4.1. Optimistic model (OM) Using Lemma 4, the problem (38) reduces to Determine t 0 , t 1 , l and m 1 to maximize  X  Z L  X  a  X  , Z R  X  a  X  subject to 4.2. Pessimistic model (PM) Using Lemma 5, the problem (39) reduces to Determine t 0 , t 1 , l and m 1 to maximize  X  Z L  X  a  X  , Z R  X  a  X  subject to From (40) and (41) it is clear that increase of b 1 and b maximum possible profit (least feasible) from the planning horizon and invites more uncertainty in his/her decision. But b section. 5. Interval compared Genetic Algorithm (ICGA)
+GAs are exhaustive search algorithms based on natural selec-population) and individual solutions are called chromosomes. terminating conditions are encountered. Behavior and perfor-( p ), probability of mutation ( p m ), etc. Here, a new type GA, developed by Guchhait et al. (2010) , with varying population and chromosomes are classified into young, middle age and old for next generation and maximum size of this subset is a percentage of the size of its parent set. To control memory size is imposed ( Maxsize ). Chromosomes with age exceeding every iteration. Present ICGA terminates when difference between maximum fitness ( Maxfit ) of chromosome and average almost equal. If the algorithm does not terminates (converge) under above condition then to exit from infinite loop the gradually decreases with the increase of iteration. Actually the function. This exploration depends on two parameters, the this operator. The theoretical convergence towards the global optimum of a GA, operating with a constant probability of follows a given decreasing law, in function of the generation rate (otherwise, a prohibitive number of generations would be necessary to ensure convergence of the GA towards the global and popsize is taken as fitness of the solution X i .
+Proposed ICGA : and p m  X  0  X  . the population is aintained using entropy originating from information theory. 3. Find fitness of each solution of P ( t ). fitness of P ( t ). 5. While ( Maxfit Avgfit Z E and t o Maxgen )do 6. Increase age of each chromosome. 7. For each pair of parents do parents using fuzzy rule base and possibility theory. 9. Perform crossover with probability e p c . 10. For each offspring perform mutation with probability p 11. Store offsprings into offspring set P C ( t ). 12. End do lifetime and insert into P  X  t  X  1  X  P does not exceed Maxsize . 15. Calculate value of p m  X  t  X  1  X  . 16. t  X  t  X  1. 17. Find fitness of each new solution X i ( t )of P ( t ). fitness of P ( t ). 19. End While 20. Output: Best chromosome of P ( t ). 21. End Algorithm 6. Different procedures of the ICGA , problem under consideration. , subfunction is used for this purpose. valued objective function under constraint, the ratio of the current population is taken as fitness of the solution X i
+If Avgfit Z Z  X  X i  X  , lifetime  X  X i  X  X  Minlt  X  K  X  Z  X  X
+If Avgfit o Z  X  X i  X  , lifetime  X  X i  X  X  Minlt  X  Maxlt 2 where Maxlt and Minlt are maximum and minimum allowed represent the best, average and worst fitness of the current ship functions are presented in Fig. 4 . Membership functions of age intervals are defined by mimicking the natural growth overlapping between these intervals. Here for a species it is assumed that young, middle age and old life intervals are [0, functions are defined. (f) Crossover : below: (iii) After determination of crossover probability ( e p c II. Crossover process: For each pair of coupled solutions X random number c n is generated from the range [0,1]. Then two children C 1 and C 2 are obtained by the formula:
+C 1  X  c n X i  X  X  1 c n  X  X j and C 2  X  c n X j  X  X  1 c n  X  X included in P C ( t ). (g) Mutation : (ii) Mutation process: To mutate a solution X  X  X  x 1 , x 2 by the formula p m  X  t  X  X  p m  X  0  X  exp  X  t = a 1  X  , where ber of generations that the GA can run for convergence. (i) Selection of offsprings : Maximum population growth in a does not exceeds Maxsize . (j) Termination condition : Algorithm terminates when differ-ence between maximum fitness ( Maxfit ) of chromosome, i.e., If the algorithm does not terminates (converge) under above condition then to exit from infinite loop the algorithm will terminate after Maxgen iterations. (k) Implementation : With the above function and values the algorithm is implemented using C-programming language. 7. Numerical illustration
+Here different models are solved using RCGA ( Gupta et al., and that of MOGA are same as taken by Bera et al. (2012) .
+Different parametric values of the ICGA used for solving the models are given below: Initial population size popsize  X  30. Maximum population size
+Maxsize  X  150. Initial value of probability of mutation p
+Expected value of maximum number of generation to converge solution, n  X  4.
+
+Two examples are used to illustrate the model. Parametric values for two examples are presented below: c  X  0.1, m 2  X  2.2, g  X  1 : 5, K 11  X  100, e K  X  X  K 1 , K 2 e
+D  X  X  D 111 , D 112 , D 113  X  X  X  90 , 95 , 100  X  , e A 11  X  X  A
+Example 2. c p  X  1.1, C pRM  X  0 : 4, r  X  0.90, b 1  X  0 : 9, b m  X  D , D 112 , D 113  X  X  X  100 , 105 , 109  X  , e A 11  X  X  A 111 , A 32  X  , e and pessimistic models using ICGA with FPO and presented in Table 2 .
+
+PM models, maximum profit are obtained for N  X  4 and N  X  3 examples are larger than the corresponding values of PM. As a hand, an optimistic DM will adopt for OM.
+ Taking N  X  4forOM,and N  X  3forPM, Example 1 is solved using the proposed models. It is also observed that ICGA takes less Maxsize  X  200.
+ is solved using RCGA, MOGA and ICGA using ORI and FPO of different cases are solved using this approach. note that both the figures represent almost triangular fuzzy numbers for fuzzy profit. Assuming these fuzzy quantities to be perfect triangular numbers, the corresponding membership functions m e formulated as m e and e
+OM of Example 1 is a TFN (193.82, 375.46, 582.96) due to b values of Example 1, profit will never exceed 582.96 but may optimistic DM assumes that demand of the item will last up to H takes value of b 1 near to 1.
+ below 171.72 for the necessity label 0.1. It happens because H 171.72. If the demand of the item lasts more than H L  X  1 b total fuzzy profit can be increased, and so profit may exceed may not get extra profit in these situations. H L  X  1 b 2 due to the increase of b 2 . Again decrease of H L  X  1 b 2 lower limit of fuzzy profit but increase of b 2 increases the b near to 0.
+
+Similarly for Example 2, results of OM and PM are obtained  X  Z  X  numbers, the corresponding membership functions m e e  X  x  X  for OM and PM respectively are formulated as e  X  x  X  X  and m e 8. Conclusion developed, where production rate and demand are imprecise in are derived and discussions are made. An algorithm ICGA is used by the practitioners. For simplicity TFN type membership the areas of inventory, supply-chain, portfolio, etc. Acknowledgment
+The authors are heartily thankful to the Honorable Reviewers of India with Grant no. PSW-089/11-12.
+ References

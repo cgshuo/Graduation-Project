@@ -1,0 +1,272 @@
+ c , d Article history: Received 11 April 2011
+Received in revised form 6 September 2011 Accepted 29 September 2011 Available online 16 November 2011 Keywords: Reconfigurable manufacturing systems Multi-agent systems
+Bio-inspired engineering 0952-1976/$-see front matter &amp; 2011 Elsevier Ltd. All rights reserved. doi:10.1016/j.engappai.2011.09.025 $ Note : This paper is an extended version of a paper presented at the 10th IFAC
+Workshop on Intelligent Manufacturing Systems (IMS X 10), selected by the orga-nization to be submitted to the EAAI Journal. n Corresponding author at: Polytechnic Institute of Braganc -a, Campus Sta Apolo  X  nia, Apartado 1134, 5301-857 Braganc -a, Portugal.
+
+E-mail addresses: pleitao@ipb.pt (P. Leit ~ ao), jbarbosa@ipb.pt (J. Barbosa), damien.trentesaux@univ-valenciennes.fr (D. Trentesaux).
+ Table 1 Bio-inspired applications to solve engineering and mathematical problems.
+Communication
+Control Van Ast et al. (2009) , Boubertakh et al. Finance Fang and Bai (2009) , Yuan and Zou (2009) ,
+Hardware design Zhang et al. (2008b) , Abd-El-Barr et al.
+Image processing Malisia and Tizhoosh (2006) , Tian et al.
+Medicine Meng (2006) , Lee et al. (2009) , Logeswari Military Duan et al. (2009) , Cheng et al. (2009) ,
+Power energy Lee and Vlachogiannis (2005) , Liu et al. Sensor networks Camilo et al. (2006) , Muraleedharan and
+Vehicle routing/ Table 2 Bio-inspired Applications to Solve Manufacturing Problems.
+
+Problem domain Existing solutions inspired by ant and Assembly/disassembly Shan et al. (2007) , Sharma et al. (2009) ,
+Layout optimization Jain and Sharma (2005) , Sun and Teng Manufacturing scheduling Arnaout et al. (2008) , Chen et al. (2008) ,
+Production control Hadeli et al. (2004) Leit ~ ao and Restivo (2006) , Bussmann Supply chain Suva et al. (2004) , Sun et al. (2008) , 1 2 3
+Abd-El-Barr, M., Sait, S., Sarif, B., 2003. Ant colony algorithm for evolutionary design of arithmetic circuits. In: Proceedings of the 15th International Conference on Microelectronics, pp. 198 X 201.
+
+Aggoune, R., Mahdi, A., Portmann, M., 2001. Genetic algorithms for the flow shop scheduling problem with availability constraints. In: Proceedings of the IEEE
+International Conference on Systems, Man, and Cybernetics, vol. 4, pp. 2546 X  2551.
+
+Ai, T.J., Kachitvichyanukul, V., 2009. A particle swarm optimization for the vehicle routing problem with simultaneous pickup and delivery. Comput. Oper. Res. 36, 1693 X 1702.
+
+Albert, F., Koh, S.P., Chen, C., Loo, C., Tiong, S., 2009. Path control of dexterous robotic hand using genetic algorithm. In: Proceedings of the Fourth Interna-tional Conference on Autonomous Robots and Agents, pp. 502 X 506.
+Anderson, C., Bartholdi III, J., 2000. Centralized versus decentralized control in manufacturing: lessons from social insects. Complexity Complex Syst. Ind., 92 X 105.
+
+Arnaout, J.-P., Musa, R., Rabadi, G., 2008. Ant colony optimization algorithm to parallel machine scheduling problem with setups. In: Proceedings of the IEEE
+International Conference on Automation Science and Engineering (CASE 2008), pp. 578 X 582.
+
+Arunachalam, S., Zalila-Wenkstern, R., Steiner, R., 2008. Environment mediated multi agent simulation tools  X  a comparison. In: Proceedings of the Second IEEE International Conference on Self-Adaptive and Self-Organizing Systems Workshops, pp. 43 X 48.
+
+Aziz, N., Mohemmed, A., Daya, B., 2007. Particle swarm optimization and voronoi diagram for wireless sensor networks coverage optimization. In: Proceedings of the International Conference on Intelligent and Advanced Systems (ICIAS 2007), pp. 961 X 965.
+
+Badawy, F., Abdelazim, H., Darwish, M., 2005. Genetic algorithms for predicting the egyptian stock market. In: Proceedings of the Enabling Technologies for the New Knowledge Society: ITI Third International Conference on Informa-tion and Communications Technology, pp. 109 X 122.
+ fork lift vehicle using a genetic algorithm. In: Proceedings of the IEEE International Symposium on Industrial Electronics, vol. 3, 1839 X 1844. Barbosa, J., Leit ~ ao, P., 2010. Modelling and simulating self-organizing agent-based manufacturing systems. In: Proceedings of the 36th Annual Conference on IEEE Industrial Electronics Society (IECON X 10), pp. 2702 X 2707. Bell, J.E., McMullen, P.R., 2004. Ant colony optimization techniques for the vehicle routing problem. Adv. Eng. Inf. 18, 41 X 48.
+ Blum, C., Sampels, M., 2004. An ant colony optimization algorithm for shop scheduling problems. J. Math. Modelling Algorithms 3 (3), 285 X 308. Bonabeau, E., Dorigo, M., Theraulaz, G., 1999. Swarm Intelligence: from Natural to Artificial Systems. Oxford University Press.
+ Bonabeau, E., Theraulaz, G., Deneubourg, J., Aron, S., Camazine, S., 1997. Self-organization in social insects. Trends Ecol. Evol. 12, 5.
+ Boubertakh, H., Tadjine, M., Glorennec, P.-Y., Labiod, S., 2009. Tuning fuzzy PID controllers using ant colony optimization. In: Proceedings of the 17th Mediterranean Conference on Control and Automation (MED X 09), pp. 13 X 18. Bousbia, S., Trentesaux, D., 2002. Self-organization in distributed manufacturing control: state-of-the-art and future trends. In: Proceedings of the IEEE International Conference on Systems, Man and Cybernetics, vol. 5. Brown, J., McShane, M., 2004. Optimal design of nanoengineered implantable optical sensors using a genetic algorithm. In: Proceedings of the 26th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (IEMBS X 04), vol. 1, pp. 2105 X 2108.
+ Bussmann, S., Jennings, N., Wooldridge, M., 2004. Multiagent Systems for Manu-facturing Control. Springer.
+ Caldeira, J., Azevedo, R., Silva, C., Sousa, J., 2007. Supply-chain management using ACO and beam-ACO algorithms. In: Proceedings of the IEEE International Fuzzy Systems Conference, pp. 1 X 6.
+ 2002. Self-Organisation in Biological Systems, Princeton Studies in Complex-ity. Princeton University Press.
+ Camilo, T., Carreto, C., Silva, J.S., Boavida, F., 2006. An Energy-Efficient Ant-
+Based Routing Algorithm for Wireless Sensor Networks, ANTS Workshop, pp. 49 X 59.
+ Chandramouli, K., Izquierdo, E., 2006. Image classification using chaotic particle swarm optimization. In: Proceedings of the IEEE International Conference on Image Processing, pp. 3001 X 3004.
+ Chatterjee, A., Ghoshal, S., Mukherjee, V., 2010. Artificial bee colony algorithm for transient performance augmentation of grid connected distributed generation. LNCS 6469, 559 X 566 (Springer).
+ Chen, A.-P., Huang, C.-H., Hsu, Y.-C., 2009a. A novel modified particle swarm optimization for forecasting financial time series. In: Proceedings of the IEEE
+International Conference on Intelligent Computing and Intelligent Systems (ICIS X 09), vol. 1, pp. 683 X 687.
+ Chen, G., Rogers, K., 2009. Proposition of two multiple criteria models applied to dynamic multi-objective facility layout problem based on ant colony optimi-zation. In: Proceedings of the IEEE International Conference on Industrial Engineering and Engineering Management (IEEM X 09), pp. 1553 X 1557. Chen, R.-M., Lo, S.-T., Wu, C.-L., Lin, T.-H., 2008. An effective ant colony optimiza-tion-based algorithm for flow shop scheduling. In: Proceedings of the IEEE Conference on Soft Computing in Industrial Applications, pp. 101 X 106. Chen, Y.-W., Mimori, A., Lin, C.-L., 2009b. Hybrid particle swarm optimization for 3-d image registration. In: Proceedings of the 16th IEEE International Con-ference on Image Processing (ICIP), 2009, pp. 1753 X 1756.
+ Cheng, C.-T., Fallahi, K., Leung, H., Tse, C., 2009. Cooperative path planner for UAVs using ACO algorithm with Gaussian distribution functions. In: Proceedings of the IEEE International Symposium on Circuits and Systems, pp. 173 X 176. Cicirello, V., Smith, S., 2001a. Improved routing wasps for distributed factory control. In: Proceedings of the Workshop on Artificial Intelligence and Manufacturing: New AI Paradigms for Manufacturing.
+ Cicirello, V., Smith, S., 2001b. Wasp nests for self-configurable factories. In: Proceedings of the Fifth International Conference on Autonomous Agents. Colson, C., Nehrir, M., Wang, C., 2009. Ant colony optimization for microgrid multi-objective power management. In: Proceedings of the IEEE/PES Power Systems Conference and Exposition (PSCE X 09), pp. 1 X 7.
+ Corry, P., Kozan, E., 2004. Ant colony optimisation for machine layout problems. Comput. Optim. Appl. 28, 287 X 310.
+ Cui, X., Potok, T., 2007. A Particle Swarm Social Model for Multi-Agent Based Insurgency Warfare Simulation. In: Proceedings of the Fifth ACIS International
+Conference on Software Engineering Research, Management Applications (SERA X 07), pp. 177 X 183.
+ Das, A., Bhattacharya, M., 2009. A Study on prognosis of brain tumors using fuzzy logic and genetic algorithm based techniques. In: Proceedings of the Interna-tional Joint Conference on Bioinformatics, Systems Biology and Intelligent Computing, pp. 348 X 351.
+ Deen, S. (Ed.), 2003. Agent-Based Manufacturing: Advances in the Holonic Approach, Springer Verlag, Berlin Heidelberg.
+ Deneubourg, J.L., Aron, S., Goss, S., Pasteels, J.M., 1990. The self-organizing exploratory pattern of the Argentine ant. J. Insect Behav. 3 (2), 159 X 168. Di Caro, G., Dorigo, M., 1998. AntNet: distributed stigmergetic control for communications networks. J. Artif. Intell. Res. 9, 317 X 365.
+ Dong, Q., Kan, S., Qin, L., Huang, Z., 2007. Sequencing mixed model assembly lines based on a modified particle swarm optimization multi-objective algorithm. In: Proceedings of the IEEE International Conference on Automation and Logistics, pp. 2818 X 2823.
+
+Dongming, Z., Kewen, Z., Baozhu, A., Jinyong, G., 2008. An approach to mobile IP routing based on GPSO algorithm. In: Proceedings of the Pacific-Asia
+Workshop on Computational Intelligence and Industrial Application, vol. 1, pp. 667 X 671.
+ Dorigo, M., 1992. Optimization, Learning and Natural Algorithms, Ph.D. Thesis, Politecnico di Milano.
+
+Dornhaus, A., Brockmann, A., Chittka, L., 2003. Bumble bees alert to food with pheromone from tergal gland. J. Comp. Physiol. A: Neuroethol. Sens. Neural Behav. Physiol. 189 (1), 47 X 51.
+
+Duan, H., Zhang, X., Wu, J., Ma, G., 2009. Max X  X in adaptive ant colony optimiza-tion approach to multi-UAVs coordinated trajectory replanning in dynamic and uncertain environments. J. Bionic Eng. 6, 161 X 173.
+
+Elmahi, I., Merzouk, S., Grunder, O., Elmoudni, A., 2004. A genetic algorithm approach for the batches delivery optimization in a supply chain. In:
+Proceedings of the IEEE International Conference on Networking, Sensing and Control, vol. 1, pp. 299 X 304.
+
+ElMaraghy, H., 2006. Flexible and reconfigurable manufacturing systems para-digms. International Journal of Flexible Manufacturing Systems 17, 261 X 271.
+Fang, X., Bai, T., 2009. Share price prediction using wavelet transform and ant colony algorithm for parameters optimization. SVM, WRI Global Congress on Intelligent Systems, 3, 288 X 292.
+ Frisch, K., 1967. The Dance Language and Orientation of Bees. The Belknap Press of Harvard University Press, Cambridge, Mass.
+ Gaing, Z.L., 2004. A particle swarm optimization approach for optimum design of PID controller in AVR system. Trans. Energy Convers. 19 (2), 384 X 391.
+Gao, N., Chen, W.D., 2008. A genetic algorithm for disassembly scheduling with assembly product structure. In: Proceedings of the IEEE International Con-ference on Service Operations and Logistics, and Informatics (IEEE/SOLI X 08), vol. 2, pp. 2238 X 2243.
+ argentine ant. Naturwissenschaften 76 (12), 579 X 581.
+
+Goudos, S., Rekanos, I., Sahalos, J., 2008. EMI reduction and ICs optimal arrange-ment inside high-speed networking equipment using particle swarm optimi-zation. Trans. Electromagnet. Compat. 50 (3), 586 X 596.
+ chez Bel-licositermes Natalensis et Cubitermes sp. la The  X  orie de la Stigmergie: Essai d X  X nterpre  X  tation du Comportement des Termites Constructeurs. Insectes Soc. 6, 41 X 84.
+
+Gravel, M., Price, W.L., Gagne  X  , C., 2002. Scheduling continuous casting of alumi-num using a multiple objective ant colony optimization metaheuristic. Eur. J. Oper. Res. 143, 218 X 229.
+
+Hadeli, K., Valckenaers, P., Kollingbaum, M., Brussel, H., 2004. Multi-agent coordination and control using stimergy. Comput. Ind. 53, 75 X 96. Holland, J., 1998. Emergence: from Chaos to Order. Oxford University Press.
+Hong, W.-C., Chen, Y.-F., Chen, P.-W., Yeh, Y.-H., 2007. Continuous ant colony optimization algorithms in a support vector regression based financial fore-casting model. In: Proceedings of the Third International Conference on Natural Computation (ICNC X 07), vol. 1, pp. 548 X 552.
+
+Hu, H., Hu, Q., Lu, Z., Xu, D., 2005. Optimal PID controller design in PMSM servo system via particle swarm optimization. In: Proceedings of the 31st Annual Conference of IEEE Industrial Electronics Society, vol. 5 pp. 79 X 83.
+Jain, P., Sharma, P., 2005. Solving job shop layout problem using ant colony optimization technique. In: Proceedings of the IEEE International Conference on Systems, Man and Cybernetics, vol. 1, pp. 288 X 292.
+
+Jalilvand, A., Kimiyaghalam, A., Ashouri, A., Mahdavi, M., 2008. Advanced particle swarm optimization-based PID controller parameters tuning. In: Proceedings of the IEEE International Multitopic Conference (INMIC X 08), pp. 429 X 435.
+Jiang, B., Zhang, W., Zhang, P., 2009. Research on an improved genetic algorithm which can improve the node positioning optimized solution of wireless sensor networks. In: Proceedings of the International Conference on Computational Science and Engineering, vol. 2, pp. 949 X 954.
+
+Jianhua, W., Xianfeng, H., 2010. A hybrid genetic algorithm for agile supply chain scheduling optimization. In: Proceedings of the Second International Confer-ence on Future Computer and Communication (ICFCC X 10), vol. 1, pp. 396 X 400.
+Jun, L., 2009. A genetic algorithm to logistics distribution vehicle routing problem with fuzzy due time. In: Proceedings of the Sixth International Conference on Fuzzy Systems and Knowledge Discovery (FSKD X 09), vol. 6, pp. 33 X 39. supply chain management. In: Proceedings of the Second IEEE International Conference on Information Management a nd Engineering (ICIME X 10), pp. 124 X 127.
+Karaboga, D., Basturk, B., 2007. A powerful and efficient algorithm for numerical function optimization: artificial bee colony (ABC) algorithm. J. Global Optim. 39 (3), 459 X 471.
+
+Karlra, P., Prakash, N., 2003. A neuro-genetic algorithm approach for solving the inverse kinematics of robotic manipulators. In: Proceedings of the IEEE
+International Conference on Systems, Man and Cybernetics, vol. 2, pp. 1979 X  1984.
+
+Katayama, K., Mackin, K., Matsushita, K., Nunohiro, E., 2006. Applying brightness information in satellite image data search using distributed genetic algorithm. In: Proceedings of the International Conference on Hybrid Information Technology (ICHIT X 06), vol. 2, pp. 84 X 89.
+ Kenedy, J., Eberhart, R., 1995. Particle swarm optimization, In: Proceedings IEEE International Conference on Neural Networks, vol. 4, pp. 1942 X 1948.
+Khanna, R., Liu, H., Chen, H.-H., 2006. Self-organization of sensor networks using genetic algorithms. In: Proceedings of the IEEE International Conference on Communications (ICC  X 06), vol. 8, pp. 3377 X 3382.
+
+Kulkarni, P., Shanker, K., 2007. A Genetic algorithm for layout problems in cellular manufacturing systems. In: Proceedings of the IEEE International Conference on Industrial Engineering and Engineering Management, pp. 694 X 698.
+Kumar, S., Chadha, G., Thulasiram, R.K., Thulasiraman, P., 2009. Ant colony optimization to price exotic options. In: Proceedings of the IEEE Congress on Evolutionary Computation (CEC  X 09), pp. 2366 X 2373.
+
+Lazzerini, B., Marcelloni, F., Dini, G., Failli, F., 1999. Assembly planning based on genetic algorithms. In: Proceedings of the 18th International Conference of the North American Fuzzy Information Processing Society, pp. 482 X 486.
+Lee, J.-H., Choi, Y., Zhang, B.-T., Kim, C.S., 1997. Using a genetic algorithm for communication link partitioning. In: Proceedings of the IEEE International Conference on Evolutionary Computation, pp. 581 X 584.
+
+Lee, K., Vlachogiannis, J., 2005. Optimization of power systems based on ant colony system algorithms: an overview. In: Proceedings of the 13th Interna-tional Conference on Intelligent Systems Application to Power Systems, pp. 22 X 35.
+
+Lee, Y., Cheng, S.-C., Chang, C.-C., Chuang, C.-H., 2009. An ant colony optimization algorithm for DNA copy number analysis in array CGH data. In: Proceedings of the International Conference on Complex, Intelligent and Software Intensive Systems (CISIS X 09), pp. 842 X 847.
+
+Leeton, U., Ratniyomchai, T., Kulworawanichpong, T., 2010. Optimal reactive power flow with distributed generating plants in electric power distribution systems. In: Proceedings of the International Conference on Advances in Energy Engineering (ICAEE X 10), pp. 166 X 169.
+
+Lei, J., Yamada, Y., Komura, Y., 2003. Layout optimization of manufacturing cells using particle swarm optimization. In: Proceedings of the SICE 2003 Annual Conference, vol. 1, pp. 392 X 396.
+
+Leit ~ ao, P., 2008a. A bio-inspired solution for manufacturing control systems, innovation in manufacturing networks. in: Azevedo, A. (Ed.), IFIP, vol. 266. , Springer, pp. 303 X 314.
+
+Leitao, P., 2008b. Self-organization in manufacturing systems: challenges and opportunities. In: Proceedings of the Second IEEE International Conference on Self-Adaptive and Self-Organizing Systems Workshops, pp. 174 X 179.
+Leit ~ ao, P., 2009a. Agent-based distributed manufacturing control: a state-of-the-art survey. Int. J. Eng. Appl. Artif. Intell. 22 (7), 979 X 991.
+Leit ~ ao, P., 2009b. Holonic rationale and self-organization on design of complex evolvable systems. In: Proceedings of the Fourth International Conference on Industrial Applications of Holonic and Multi-Agent Systems, LNAI, vol. 5696, Springer, pp. 13 X 24.
+ manufacturing control. Comput. Ind. 57 (2), 121 X 130.
+
+Li, C., Pi, Y., 2009. A hybrid of particle swarm optimization and ensemble learning for credit risk assessment. In: Proceedings of the International Conference on Computational Intelligence and Software Engineering, pp. 1 X 4.
+
+Li, T., Yang, M., Chen, S., Zhao, Z., Ge, Z., 2008. On QOS anycast routing algorithm based on particle swarm optimization. In: Proceedings of the Ninth Interna-tional Conf. for Young Computer Scientists (ICYCS X 08), pp. 386 X 391.
+Li, Z., Lei, L., 2009. Sensor node deployment in wireless sensor networks based on improved particle swarm optimization. In: Proceedings of the International
+Conference on Applied Superconductivity and Electromagnetic Devices (ASEMD X 09), pp. 215 X 217.
+
+Lima, M., Araujo, A., Cesar, A., 2007. Adaptive genetic algorithms for dynamic channel assignment in mobile cellular communication systems. Trans. Veh. Technol. 56 (5), 2685 X 2696.
+
+Liu, H., Ge, S., 2008. Reactive power optimization based on improved particle swarm optimization algorithm with boundary restriction. In: Proceedings of the Third International Conference on Electric Utility Deregulation and Restructuring and Power Technologies (DRPT X 08), pp. 1365 X 1370.
+Liu, H., Xu, Z., Abraham, A., 2005. Hybrid fuzzy-genetic algorithm approach for crew grouping. In: Proceedings of the Fifth International Conference on Intelligent Systems Design and Applications (ISDA X 05), pp. 332 X 337.
+Liu, Z., Zhao, D., Zhang, X., Dan, B., Guan, F., 2009. Reactive power optimization in power system based on chaos ant colony algorithm. In: Proceedings of the
+International Conference on Sustainable Power Generation and Supply (SUPERGEN X 09), pp. 1 X 4.
+
+Logeswari, T., Karnan, M., 2010. An improved implementation of brain tumor detection using soft computing. In: Proceedings of the Second Interna-tional Conference on Communication Software and Networks (ICCSN X 10), pp. 147 X 151.
+
+Lu, C., Huang, H., Zheng, B., Fuh, J., Wong, Y., 2008. An ant colony optimization approach to disassembly planning. In: Proceedings of the International
+Conference on Apperceiving Computing and Intelligence Analysis (ICACIA X 08), pp. 81 X 84.
+
+Lv, H., Lu, C., 2009. A discrete particle swarm optimization algorithm for assembly sequence planning. In: Proceedings of the Eighth International Conference on Reliability, Maintainability and Safety (ICRMS X 09), pp. 1119 X 1122.
+Ma, M., Zhang, Y., Tian, H., Lu, Y., 2008. A fast SAR image segmentation algorithm based on particle swarm optimization and grey entropy. In: Proceedings of the
+Fourth International Conference on Natural Computation (ICNC X 08), vol. 4, pp. 8 X 12.
+
+Ma, Q., Lei, X., 2010. Dynamic path planning of mobile robots based on ABC algorithm. Lect. Notes Comput. Sci. 6320, 267 X 274.
+ and djia stock indices using particle swarm optimization technique. In:
+Proceedings of the IEEE Congress on Evolutionary Computation (CEC X 08), pp. 1276 X 1282.
+ Malisia, A., Tizhoosh, H., 2006. Image thresholding using ant colony optimization. In: Proceedings of the Third Canadian Conference on Computer and Robot Vision, pp. 26 X 31.
+
+Marinakis, Y., Marinaki, M., Dounias, G., 2008a. Particle swarm optimization for pap-smear diagnosis. Expert Syst. Appl. 35, 1645 X 1656.
+
+Marinakis, Y., Marinaki, M., Zopounidis, C., 2008b. Application of ant colony optimization to credit risk assessment. New Math. Nat. Comput. (NMNC) 4 (01), 107 X 122 (World Scientific Publishing Co. Pte. Ltd.).
+
+Markus, A., Vancza, T.K., Monostori, L., 1996. A market approach to holonic manufacturing. Ann. CIRP 45, 433 X 436.
+
+Massotte, P., 1995. Self-organization: a new approach to improve the reactivity of the production systems. In: Proceedings of the IEEE International Conference on Emergent Technologies for Factory Automation, pp. 23 X 32.
+
+Matlock, A., Holsapple, R., Schumacher, C., Hansen, J., Girard, A., 2009. Cooperative defensive surveillance using unmanned aerial vehicles. In: Proceedings of the American Control Conference (ACC X 09), pp. 2612 X 2617.
+ Maulik, U., 2009. Medical image segmentation using genetic algorithms. Trans. Inf. Technol. Biomed. 13 (2), 166 X 173.
+
+Meng, Y., 2006. A swarm intelligence based algorithm for proteomic pattern detection of ovarian cancer. In: Proceedings of the IEEE Symposium on
+Computational Intelligence and Bioinformatics and Computational Biology (CIBCB X 06), pp. 1 X 7.
+ Miller, P., 2007. The Genius of Swarms, National Geographic, July.
+Montana, D., Bidwell, G., Vidaver, G., Herrero, J., 1999. Scheduling and route selection for military land moves using genetic algorithms. In: Proceedings of the Congress on Evolutionary Computation (CEC X 99), vol. 2, pp. 1118 X 1123.
+Moore, S., Sinclair M., 1999. Design of routing tables for a survivable military communications network using genetic algorithms. In: Proceedings of the Congress on Evolutionary Computation (CEC X 99), vol. 3, pp. 1788 X 1795.
+Moudada, F., Bonani, M., Magnenat S., Guignard, A., Floreano, D., 2004. Physical connections and cooperation in swarm robotics. In: Proceeding of the Eighth Conference on Intelligent Autonomous Systems, pp. 53 X 60.
+
+Munirajan, V., Sahin, F., Cole, E., 2004. Ant colony optimization based swarms: implementation for the mine detection application. In: Proceedings of the
+IEEE International Conference on Systems, Man and Cybernetics, vol. 1, pp. 716 X 721.
+
+Muraleedharan, R., Osadciw, L., 2009. An intrusion detection framework for sensor networks using ant colony. In: Proceedings of the 43rd Asilomar Conference on Signals, Systems and Computers, pp. 275 X 278.
+
+Ning, L., Fei, L., Debao, S., Chang, H., 2004. Particle swarm optimization for constrained layout optimization. In: Proceedings of the Fifth World Congress on Intelligent Control and Automation (WCICA X 04), vol. 3, pp. 2214 X 2218.
+Niu, X., Qiu, Y., Tong, S., 2007. Application of particle swarm system as a novel parameter optimization technique on spatiotemporal retina model. In: Pro-ceedings of the 29th Annual International Conference of the IEEE Engineering in Medicine and Biology Society, pp. 5794 X 5797.
+
+Nouyan, S., Gross, R., Bonani, M., Mondada, F., Dorigo, M., 2009. Teamwork in self-organized robot colonies. Trans. Evol. Comput. 13, 695 X 711.
+
+Ohmori, S., Yoshimoto, K., Ogawa, K., 2010. Solving facility layout problem via particle swarm optimization. In: Proceedings of the Third International Joint
+Conference on Computational Science and Optimization (CSO X 10), vol. 1, pp. 409 X 413.
+ Okino, N., 1993. Bionic manufacturing system. In: Peklenik, J. (Ed.), CIRP Flexible Manufacturing Systems Past X  X resent X  X uture, pp. 73 X 95.
+
+Parunak, H.V.D., Brueckner, S., 2001. Entropy and self-organization in multi-agent systems. In: Proceedings of the International Conference on Autonomous Agents, Montreal, Canada.
+
+Pechoucek, M., Marik, V., 2008. Industrial deployment of multi-agent technolo-gies: review and selected case studies. Autonomous Agents Multi-agent Syst. 17 (13), 397 X 431.
+
+Pen  X  a, J., Upegui, A., Sanchez, E., 2006. Particle swarm optimization with discrete recombination: an online optimizer for evolvable hardware. In: Proceedings of the NASA/ESA Conference on Adaptive Hardware and Systems, pp. 163 X 170. for image segmentation. In: Proceedings of the 2000 Congress on Evolutionary Computation, vol. 1, pp. 272 X 276.
+
+Pessin, G., Osorio, F., Wolf, D., Dias, M., 2009. Genetic algorithm applied to robotic squad coordination. In: Proceedings of the Electronics, Robotics and Auto-motive Mechanics Conference (CERMA X 09), pp. 169 X 174.
+
+Pham, D.T., Afify A., Koc, E., 2007a. Manufacturing cell formation using the bees algorithm. In: Proceedings of the IPROMS Innovative Production Machines and Systems Virtual Conference.
+
+Pham, D.T., Koc, E., Lee, J.Y., Phrueksanant, J., 2007b. Using the bees algorithm to schedule jobs for a machine. In: Proceedings of the Eighth International
+Conference on Laser Metrology, CMM and Machine Tool Performance, pp. 430 X 439.
+
+Qi, E.-S., Chen, J.-Y., Liu, L., 2008. Supply chain partners selection based on RVPK algorithm. In: Proceedings of the Fourth International Conference on Wireless Communications, Networking and Mobile Computing (WiCOM X 08), pp. 1 X 4.
+Qiu, H., Zhou, W., Wang, H., 2009. A genetic algorithm-based approach to flexible job-shop scheduling problem. In: Proceedings of the Fifth International Conference on Natural Computation (ICNC X 09), vol. 4, pp. 81 X 85.
+Railsback, S.F., Lytinen, S.L., Jackson, S.K., 2006. Agent-based simulation platforms: review and development recommendations. Simulation 82 (9), 609 X 623.
+Ramirez-Rosado, I., Bernal-Agustin, J., 1998. Genetic algorithms applied to the design of large power distribution systems. Trans. Power Syst. 13 (2), 696 X 703. Regue, J.-R., Ribo, M., Garrell, J.-M., Martin, A., 2001. A genetic algorithm based method for source identification and far-field radiated emissions prediction from near-field measurements for PCB characterization. Trans. Electromagn. Compat. 43 (4), 520 X 530.
+ Ren, B., Cheng, L., 2009. SMT automatic optical inspection path planning based on MDSPSO algorithm. In: Proceedings of the International Conference on
+Computational Intelligence and Natural Computing (CINC X 09), vol. 2, pp. 134 X 137.
+ Reynolds, C., 1987. Flocks, herds, and schools: a distributed behavioural model. Comput. Gr. 21 (4), 25 X 34.
+ Sallez, Y., Berger, T., Raileanu, S., Chaabane, S., Trentesaux, D., 2010. Semi-heterarchical control of FMS: from theory to application. Eng. Appl. Artif. Intell. 23, 1314 X 1326.
+ Sallez, Y., Berger, T., Trentesaux, D., 2009. A stigmergic approach for dynamic routing of active products in FMS. Comput. Ind. 60, 204 X 216.
+ Samanta, B., Nataraj, C., 2009. Application of particle swarm optimization and proximal support vector machines for fault detection. Swarm Intell. 3 (4), 303 X 325.
+ Sethuram, R., Parashar, M., 2006. Ant colony optimization and its application to boolean satisfiability for digital VLSI circuits. In: Proceedings of the Interna-tional Conference on Advanced Computing and Communications (ADCOM X 06), pp. 507 X 512.
+ Shan, H., Li, S., Huang, J., Gao, Z., Li, W., 2007. Ant colony optimization algorithm-based disassembly sequence planning. In: Proceedings of the International Conference on Mechatronics and Automation (ICMA X 07), pp. 867 X 872. Shanks, N., 2001. Modeling biological systems: the Belousov X  X habotinsky reac-tion. Found. Chem. 3, 33 X 53.
+ Sharma, S., Mohapatra, R., Biswal, B., Choudhury, B., 2009. Generation of robotic assembly sequence using ant colony optimization. In: Proceedings of the
+International Conference on Industrial and Information Systems (ICIIS X 09), pp. 520 X 525.
+ Shi, D., He, J., Wang, L., 2009. Job shop scheduling problem with a novel particle swarm optimization based on tabu search. In: Proceedings of the International
+Conference on Artificial Intelligence and Computational Intelligence (AICI X 09), vol. 2, pp. 97 X 100.
+ Sim, K.M., Sun, W.H., 2002. Multiple ant-colony optimization for network routing.
+In: Proceedings of the First International Symposium on Cyber Worlds, pp. 277 X 281.
+ Sinha, A., Aditya, H., Tiwari, M., Chan, F., 2009. Multi-agent based petroleum supply chain coordination: a co-evolutionary particle swarm optimization approach. In: Proceedings of the World Congress on Nature Biologically Inspired Computing (NaBIC X 09), pp. 1349 X 1354.
+ cooperation in distributed manufacturing systems. In: Proceedings of the
+Second International Workshop on Intelligent Manufacturing Systems, pp. 695 X 717.
+ Sun, R., Wang, X., Zhao, G., 2008. An ant colony optimization approach to multi-objective supply chain model. In: Proceedings of the Second International
+Conference on Secure System Integration and Reliability Improvement, pp. 193 X 194.
+ Sun, Z.-G., Teng, H.-F., 2002. An ant colony optimization based layout optimization algorithm. In: Proceedings of the IEEE Region 10 Conference on Computers,
+Communications, Control and Power Engineering (TENCON X 02), vol. 1, pp. 675 X 678.
+ Suva, C., Sousa, I., Sa  X  da Costa, J., Runkler, T., 2004. A multi-agent approach for supply chain management using ant colony optimization. In: Proceedings of the IEEE International Conference on Systems, Man and Cybernetics, vol. 2, pp. 1938 X 1943.
+ Teodorovic, D., 2008. Swarm intelligence systems for transportation engineering: principles and applications. Transp. Res.  X  Part C 16, 651 X 667. Tewolde, G., Hanna, D., Haskell, R., 2008. Hardware PSO for sensor network applications. In: Proceedings of the Swarm Intelligence Symposium (SIS X 08), pp. 1 X 8.
+ Thangaraj, R., Pant, M., Nagar, A., 2009. Maximization of expected target damage value using quantum particle swarm optimization. In: Proceedings of the
+Second International Conference on Developments in eSystems Engineering (DESE X 09), pp. 329 X 334.
+ Tharumarajah, A., 1998. A self-organizing model for scheduling distributed autonomous manufacturing systems. Cybern. Syst. 29 (5), 461 X 480. Tian, J., Yu, W., Xie, S., 2008. An ant colony optimization algorithm for image edge detection. In: Proceedings of the IEEE Congress on Evolutionary Computation, pp. 751 X 756.
+ Toderici, M., Toderici, S., Imecs, M., 2010. Optimization of induction motor control using genetic algorithms. In: Proceedings of the IEEE International Conference on Automation Quality and Testing Robotics, vol. 3, pp. 1 X 6.
+ Tohka, J., Krestyannikov, E., Dinov, I., Graham, A., Shattuck, D., Ruotsalainen, U.,
+Toga, A., 2007. Genetic algorithms for finite mixture model based voxel classification in neuroimaging. Trans. Med. Imaging 26 (5), 696 X 711. Tong, Z., Ning, L., Debao, S., 2004. Genetic algorithm for vehicle routing problem with time window with uncertain vehicle number. In: Proceedings of the Fifth World Congress on Intelligent Control and Automation, vol. 4, pp. 2846 X 2849. Trentesaux, D., 2009. Distributed control of production systems. Eng. Appl. Artif. Intell. 22 (7), 971 X 978 2009.
+ Tsai, J.-T., Chou, J.-H., 2006. Circuit tolerance design using an improved genetic algorithm. In: Proceedings of the Ninth International Conference on Control, Automation, Robotics and Vision (ICARCV X 06), pp. 1 X 6.
+
+Tunjongsirigul, B., Pongchairerks, P., 2010. A genetic algorithm for a vehicle routing problem on a real application of bakery delivery. In: Proceedings of the 2010 International Conference on Electronic Computer Technology (ICECT), pp. 214 X 217.
+
+Ueda, K., Hatono, I., Fujii, N., Vaario, J., 2001. Line-less production system using self-organization: a case study for BMS. Annu. CIRP 50 (1), 319 X 322.
+Vaario, J., Ueda, K., 1996. Self-organisation in manufacturing systems. In: Proceed-ings of the Japan X  X SA Symposium on Flexible Automation, Boston, US, pp. 1481 X 1484.
+ Vaario, J., Ueda, K., 1998. An emergent modelling method for dynamic scheduling. J. Intell. Manuf. 9 (2), 129 X 140.
+
+Van Ast, Babuska, J.R., De Schutter, B., 2009. Fuzzy ant colony optimization for optimal control. In: Proceedings of the American Control Conference (ACC X 09), pp. 1003 X 1008.
+
+Wai, R.-J., Su, K.-H., 2006. Supervisory control for linear piezoelectric ceramic motor drive using genetic algorithm. Trans. Ind. Electron. 53 (2), 657 X 673.
+Wang, G.,Yan, Y., Zhang, X., Shangguan, J., Xiao, Y., 2008. A simulation optimization approach for facility layout problem. In: Proceedings of the IEEE Interna-tional Conference on Industrial Engineering and Engineering Management, pp. 734 X 738.
+
+Wang, X.-N., Feng, Y.-J., Feng, Z.-R. 2005. Ant colony optimization for image segmentation. In: Proceedings of the International Conference on Machine Learning and Cybernetics, vol. 9, pp. 5355 X 5360.
+
+Weyns, D., Bouck, N., Holvoet, T., 2008. A field-based versus a protocol-based approach for adaptive task assignment. Autonomous Agents Multi-Agent Syst. 17 (2), 288 X 319.
+
+Whitesides, G.M., Mathias, J.P., Seto, C.T., 1991. Molecular self-assembly and nanochemistry: a chemical strategy for the synthesis of nanostructures. Science 254 (5036), 1312 X 1319.
+ Wooldridge, M., 2002. An Introduction to Multi-Agent Systems. John Wiley &amp; Sons.
+Wu, J., Tan, Y., 2009. A particle swarm optimization algorithm for grain logistics vehicle routing problem. In: Proceedings of the ISECS International Colloquium on Computing, Communication, Control, and Management (CCCM X 09), vol. 3, pp. 364 X 367.
+
+Xia, W., Wu, Z., 2005. A hybrid particle swarm optimization approach for job-shop scheduling problem. Int. J. Adv. Manuf. Technol., 360 X 366.
+
+Xu, D.-S., Ai, X.-Y., Xing, L.-N., 2009. An Improved ant colony optimization for flexible job shop scheduling problems. In: Proceedings of the
+International Joint Conference on Computational Sciences and Optimization, vol. 1, pp. 517 X 519.
+
+Yamada, Y., Ookoudo, K., Komura, Y., 2003. Layout Optimization of manufacturing cells and allocation optimization of transport robots in reconfigurable manu-facturing systems using particle swarm optimization. In: Proceedings of the International Conference on Intelligent Robots and Systems, pp. 2049 X 2054.
+Yu, H., Gu, G., Liu, H., Shen, J., Zhao, J., 2009. A modified ant colony optimization algorithm for tumor marker gene selection genomics. Proteomics Bioinf. 7, 200 X 208.
+ Yuan, X., Zou, Y., 2009. Technology program financial forecast model based on CACO-SVM. In: Proceedings of the International Workshop on Intelligent Systems and Applications, pp. 1 X 4.
+
+Zbib, N., Pach, C., Sallez, Y., Trentesaux, D. Heterarchical production control in manufacturing systems using the potential fields concept. Journal of Intelli-gent Manufacturing. doi:10.1007/s10845-010-0467-3. In press.
+
+Zhang, B., Yang, Y., Gan, L., 2008b. Dynamic control of wind/photovoltaic hybrid power systems based on an advanced particle swarm optimization. In:
+Proceedings of the IEEE International Conference on Industrial Technology (ICIT X 08), pp. 1 X 6.
+
+Zhang, J., Chung, H.S., Lo, A.W., Huang, T., 2008a. Optimization of power electronic circuits using ant colony system. Trans. Power Electron. 24, 147 X 162.
+Zhang, Q., Wang, X., 2008. Region water supply system optimization based on binary and continuous ant colony algorithms. In: Proceedings of the Interna-tional Conference on Intelligent Computation Technology and Automation (ICICTA), vol. 1, pp. 130 X 134.
+
+Zhang, R., Wu, C., 2008b. An effective immune particle swarm optimization algorithm for scheduling job shops. In: Proceedings of the Third IEEE Conference on Industrial Electronics and Applications (ICIEA X 08), pp. 758 X 763.
+Zhao, D., Luo, L., Zhang, K., 2009. An improved ant colony optimization for communication network routing problem. In: Proceedings of the Fourth International Conference on Bio-Inspired Computing (BIC-TA X 09), pp. 1 X 4.
+Zhao, F., Zhu, A., Ren, Z., Yang, Y., 2006. Integration of process planning and production scheduling based on a hybrid PSO and SA algorithm. In: Proceed-ings of the IEEE International Conference on Mechatronics and Automation, pp. 2290 X 2295.
+
+Zhengxiong, G., Xinsheng, G., 2010. A particle swarm optimization for the motion planning of wheeled mobile robot. In: Proceedings of the Eighth World Congress on Intelligent Control and Automation (WCICA X 10), pp. 2410 X 2414.

@@ -1,0 +1,120 @@
+ 1. Introduction frequent itemsets were used in various applications where frequent itemsets and their associated supports are useful sals [27], multidimensional patterns [16,42] , etc. and the manager is searching for items c 1 ; c 2 ; ... , and c a and b (or probably both), i.e., the items fulfilling the condition: c language l 2 , an analyst may be interested in the possible translations in the language l language l 1 . In this respect, t may have several translations tr more computations may be performed to get more precise information about the effect of a given product ( resp. terms) ware change impact analysis [26], feature model mining [46], etc.
+ disjunctive rules based on frequently occurring itemsets.
+ ative frequencies of a pattern [14,15] .
+ limitations: der of frequent itemsets, composed by the frequent maximal itemsets [6]; 2. Several essential itemsets may characterize the same set of data and, therefore, they present a certain form of redundancy.
+ getting a more reduced concise representation, following the MDL principle. Indeed, a gain in compactness terms can be a single element within the disjunctive search space.
+ on frequent essential itemsets as follows: ensure to exactly recovering the whole set of frequent itemsets. junctive support.
+
+Exhaustive experiments, focusing on the compactness aspect, show the effectiveness of our concise representation com-closure operator.
+ in Section 7. The paper ends with a conclusion of our contributions and sketches forthcoming issues in Section 8. 2. Background 2.1. Basic concepts In this section, we present the basic concepts that will be of use in the remainder. contains the item i 2 I .
+ The following definition presents the different types of supports that can be assigned to an itemset.
+Definition 2. Let D  X  X  T ; I ; R  X  be a dataset. We distinguish three kinds of supports associated to an itemset I :  X  Conjunctive support : Supp  X  I  X  X jf t 2 T j X  8 i 2 I ;  X  t ; i  X 2 R  X gj ,  X  Disjunctive support : Supp  X _ I  X  X jf t 2 T j X 9 i 2 I ;  X  t ; i  X 2 R  X gj , and,  X  Negative support : Supp  X  I  X  X jf t 2 T j X  8 i 2 I ;  X  t ; i  X  R R  X gj . Roughly speaking, the different supports are defined as follows: to say that I satisfies a given transaction.
+ it independently from the remaining items.
+ Supp  X  I  X  is the number of transactions that do not contain any item of I . Example 2. Consider the dataset in Table 1 . The different supports that can be associated to the itemset AE are: Supp  X  AE  X  X  3, Supp  X _ AE  X  X  7, Supp  X  AE  X  X  1. 1 The next proposition summarizes important properties related to the itemsets supports. Proposition 1. Let i 2 I , and I ; I 1 # I . The following properties hold: Supp  X  i  X  X  Supp  X _ i  X  .
+ Supp  X  I  X  6 Supp  X _ I  X  .
+ If I # I 1 , then Supp  X  I  X  P Supp  X  I 1  X  .
+ If I # I 1 , then Supp  X _ I  X  6 Supp  X _ I 1  X  .
+  X  2 thanks to Definition 3 .
+ Definition 3. Let  X  2 I ; #  X  be a partially ordered set of elements and S be a subset of 2 be represented by its positive border B d  X   X  S  X  or its negative border B d  X  S  X  defined as follows: its negative support. Lemma 1 shows these important properties.
+ ative supports are inferred as follows:
+Supp  X  AE  X  X  X  1  X  j AE j 1 Supp  X _ AE  X  X  X  1  X  j A j 1 Supp  X _ A  X  X  X  1  X  6  X  4  X  3.
+
+Supp  X  AE  X  X j T j Supp  X _ AE  X  X  8 Supp  X _ AE  X  X  8 7  X  1. 2.2. Frequent essential itemset-based concise representation The next definition presents the frequent essential itemsets [15].
+ simultaneously frequent and essential.
+ Example 4. Consider the dataset of Table 1 for minsupp  X  2. The itemset ABC is not an essential itemset since Supp  X _ A  X  X  6, while Supp  X _ E  X  X  4. The itemset AE is also frequent, since Supp  X  AE  X  X  3 P minsupp . the set B d  X   X  F  X  of maximal frequent itemsets [6]. 3. The disjunctive closure operator and associated properties 3.1. Description regenerate the whole set of frequent itemsets without information loss.
+ Hence, a new disjunctive closure operator has to be devised.
+ from the power-set of items P  X  I  X  to that of transactions P  X  T  X  and vice versa. follows: g  X  BD  X  X f 1 ; 2 ; 3 ; 4 ; 5 ; 7 ; 8 g ; g  X  CD  X  X f 1 ; 3 ; 4 ; 6 ; 7 ; 8 g . Based on the operators introduced in Definition 5 , we present the compound operators f g and g f . resulting compound operators as follows: of items which only appear in the transactions that contain at least an item of I . Let T be a set of transactions, h  X  T  X  X  g f  X  T  X  is equal to the set of transactions that contain at least an item only appearing in the transactions of T .
+ f  X f 1 ; 2 ; 3 ; 4 ; 5 ; 6 ; 7 ; 8 g X  X  ABCDE, and h 0  X f 3 g X  X  g f  X f 3 g X  X  g  X ; X  X ; ; h definition.
+ subset of I .
+ Example 7. Consider the dataset of Table 1 . Let us look for the disjunctive closure of AB. We have eighth transaction where A and B do not appear. Thus, only C can augment AB without affecting its disjunctive support.
+Consequently, h  X  AB  X  X  ABC. 3.2. Properties
+In the following, we present the main theoretical properties of the (compound) operators we introduced. The associated proofs are given in the Appendix .
+
+Proposition 2. The following properties hold for all I ; I ( 1 )T 1 # T 2 ) f  X  T 1  X  # f  X  T 2  X  ( 1 0 )I 1 # I 2 ) g  X  I 1  X  # g  X  I 2  X  ( 2 )I # h  X  I  X  ( 2 0 )h 0  X  T  X  # T ( 3 )I 1 # I 2 ) h  X  I 1  X  # h  X  I 2  X  ( 3 0 )T 1 # T 2 ) h 0  X  T 1  X  # h 0  X  T 2  X  ( 4 )f  X  T  X  X  f  X  h 0  X  T  X  X  ( 4 0 )g  X  I  X  X  g  X  h  X  I  X  X  ( 5 )h  X  I  X  X  h  X  h  X  I  X  X  ( 5 0 )h 0  X  T  X  X  h 0  X  h 0  X  T  X  X  ( 6 )g  X  I  X  # T () I # f  X  T  X  The following two propositions straightforwardly derive from Proposition 2 . Proposition 3. Operator h is a closure operator.
+ Thus, operator h is a closure operator. h Proposition 4. Operator h 0 is a kernel operator.
+ (5 0 )). Thus, operator h 0 is a kernel operator. h 4. Structural characterization of the disjunctive search space sentation for the set of frequent itemsets as explained in the remainder. Now, we begin by presenting the definition of a disjunctive closed itemset. Definition 8. An itemset I is said to be disjunctive closed if h  X  I  X  X  I . Equivalently, I is disjunctive closed if Supp  X _ I  X  &lt; min f Supp  X _ X  I [f i g X  X j i 2 I n I g .
+ operator h that will be at the roots of the concise representation we will introduce. appears. Actually, h  X  AB  X  X  ABC.
+
+Proposition 5. Let I # I . The itemset h  X  I  X  is the smallest disjunctive closure containing I : h  X  I  X  X  min Proof. The proof straightforwardly derives from the definition of a disjunctive closed itemset. h Proposition 6 establishes the link between the disjunctive support of an itemset and that of its closure. Proposition 6. Let I # I . Supp  X _ I  X  X  Supp  X _ h  X  I  X  X  .
+ j g  X  I  X j X j g  X  h  X  I  X  X j . It follows that Supp  X _ I  X  X  Supp  X _ h  X  I  X  X  . h Proposition 7 shows that it is possible to deduce the disjunctive closure of an itemset thanks to one of its subsets.
+Proposition 7. Let I ; I 1 # I be two itemsets. We then have:
+Proof. We have I 1 # I # h  X  I 1  X  . Since h is isotone as being a closure operator, we obtain h  X  I idempotency property, we get h  X  I 1  X  # h  X  I  X  # h  X  I 1 Thanks to Proposition 8 , we establish the link between disjunctive closed itemsets and essential itemsets.
+Proposition 8. Let EI be the set of all essential itemsets that can be extracted from a dataset D . tive closed itemsets, is as follows:
+Proposition 9. Let I # I . I is an essential itemset if 8 I
+Proof. Suppose that 9 I 1 I s.t. I # h  X  I 1  X  . According to Proposition 7 , we have h  X  I  X  X  h  X  I
+Supp  X _ I 1  X  X  Supp  X _ h  X  I 1  X  X  X  Supp  X _ h  X  I  X  X  X  Supp  X _ I  X  . Since Supp  X _ I if I is an essential itemset, then 8 I 1 I , I h  X  I 1  X  . h set starting from the set DCI of disjunctive closed itemsets.
+
+Proposition 10. Let I # I . 8 I 1 # I, the disjunctive support of I itemsets.
+
+Proof. The set DCI contains all the disjunctive closed itemsets that can be drawn from a dataset D . Hence, 8 I h  X  I
+ X 2 DCI . We can thus retrieve the exact disjunctive support of I 5. Disjunctive closure-based concise representations 5.1. New concise representation for all itemsets is stated in Theorem 1 .
+ representation of the whole set of itemsets.
+ we are able to get the exact conjunctive support of I . h can be drawn from a dataset (i.e., even the associated supports of infrequent itemsets can be derived using DCI ). 5.2. Effect of setting the conjunctive frequency constraint noted EDCI ( E ssential D isjunctive C losed I temsets). This set is then as follows: Definition 9. The set EDCI is equal to: EDCI  X f h  X  I  X 2 DCI j I 2 FEI g . Example 9. For minsupp  X  1, ABCDE 2 EDCI , since it has AD for frequent essential itemset. The next lemma compares the size of EDCI with that of FEI .
+ Lemma 2. The cardinality of EDCI is at most equal to that of FEI .
+ lower than or equal to that of FEI . h Thanks to Lemma 3 , we can correctly derive the disjunctive supports of frequent itemsets from the elements of EDCI .
+Once disjunctive supports derived, Lemma 1 will then be used when desired to deduce their conjunctive and negative supports.
+
+Lemma 3. Let F be the set of frequent itemsets, I # I and I
+Proof. The proof straightforwardly derives from that of Proposition 8 and the fact that the disjunctive closure of a itemset I is the smallest one covering it among those of EDCI . h elements of EDCI . Nevertheless, is this set sufficient to offer an exact concise representation? concrete example.
+
+Example 10. Let us consider the dataset shown in Table 1 for minsupp  X  1. Let I  X  CDE. The immediate subsets of CDE, belong to EDCI .
+
+During the regeneration process, the itemset CDE will be checked since having all its proper subsets frequent. Suppose CDE will be incorrectly considered as frequent, while it is actually infrequent.
+The previous example clearly shows that EDCI cannot constitute by itself an exact concise representation of frequent of itemsets whenever a wrong computation can arise. The following subsection explores this issue. 5.3. New concise representation of frequent itemsets
+We propose here a new concise representation of frequent itemsets based on disjunctive closed itemsets. This represen-ADCI (stands for A dded D isjunctive C losed I temsets). This set is defined as follows: follows: ADCI  X f h  X  I  X 2 DCI j X  I 2 B d  X  FEI  X \ EI  X ^ X  X  1  X  essential itemsets as infrequent .
+ itemsets.
+
+The next proposition states that both sets EDCI and ADCI are disjoint. Proposition 11. We have: EDCI \ ADCI  X ; .
+ the essential itemsets of an element belonging to ADCI are infrequent . h
+In the remainder, DCI s rep stands for the concise representation EDCI [ ADCI . The exactness of the representation based on DCI s rep is provided through Theorem 2 .
+ representation of the set F of frequent itemsets.
+
+Proof. Let I # I .If 9 I 1 I s.t. I 1 is infrequent, then I is also infrequent. Otherwise (i.e., 8 I computed if it is frequent. Two cases have to be distinguished: sure, obviously belonging to EDCI . Once its disjunctive support at hand, the computation of the conjunctive support becomes then straightforward thanks to an inclusion X  X xclusion identity. 2. If I is infrequent , then two cases arise: (b) If Iis an essential itemset , then necessarily I 2 B d  X  FEI  X \ EI . Let h Thus, the set DCI s rep is an exact concise representation of F . h 1-frequent itemsets, 2-frequent itemsets, and so forth.
+ 10, from which we prune its elements not covered by at least a closure of EDCI . Hence, ADCI  X  ADCI n f I 2 ADCI j9 = I 1 2 EDCI s : t : I I 1 g .
+ The next theorem states the correctness of the regeneration process of frequent itemsets after this pruning. of frequent itemsets.
+ closure operator, h  X  I  X  cannot be subsumed by any element of EDCI . Thus, it can be pruned from ADCI while ensuring ADCI , the set DCI s rep is still an exact concise representation of F . h ship. Hence, if an itemset belongs to FCI s rep , NDI s rep , CNDI s rep or B d While, the disjunctive support is shown if it belongs to DCI s rep or FEI .
+For this dataset, the cardinalities of the different representations are respectively as follows: j DCI s rep j X  13 , derivable using the deduction rules based on the conjunctive supports of all its subsets [12]. The main advantage of CNDI s rep .
+
+It is important to mention that although non-derivable itemsets exploit much larger neighborhoods (for each the retained itemsets. Moreover, computing (closed) non-derivable itemsets is awfully costly since it requires the representation) [12,38] .
+ FEI and B d  X   X  F  X  since being frequent essential itemsets and maximal frequent itemsets. In this respect, note that
+B d  X   X  F  X  # FCI s rep since a maximal frequent itemset is obviously closed. addition, four maximal frequent itemsets are required for ensuring an exact regeneration process of frequent itemsets starting from FEI s rep .
+ not having necessarily the same conjunctive support. For example, AD and ABCDE belong to the same disjunctive equivalence class and, hence share the same disjunctive support equal to 8. However, they have different conjunctive whose the frequent closed itemset is ABDE does not have any of its members being non-derivable. For this reason, ABDE R CNDI s rep .
+
+If we look for the intersection between the different representations, we find that A, B, C, D, E, AE, BD and DE are simultaneously disjunctive/conjunctive closed, non-derivable and essential itemsets. 5.4. Features of the proposed representation following main properties: 6. Experimental results were kindly provided by their respective authors.
+
+The experiments were carried out on benchmark datasets whose characteristics are summarized in Table 3 . occur in the dataset). The CONNECT dataset contains all legal 8-ply positions in the game of connect-4, while gilled mushrooms. The PUMSB dataset contains census data from after deleting all frequent items for a minsupp value set to 80 % in the original fic accidents from the National Institute of Statistics ( corresponding to (anonymized) click-stream data of a Hungarian on-line news portal. The about the market basket of clients in a Belgian supermarket. The the generator from the IBM Almaden Quest research group.
+ All experiments were carried out on a PC equipped with a 1.73 GHz Intel processor and 2 GB of main memory, running the GNU/Linux distribution Fedora Core 7 (with 2 GB of swap memory).
+
+Tables 4 and 6 compare the size of EDCI ( resp. ADCI ) vs. that of FEI ( resp. B d Note that we only selected figures with different layouts.
+ meaningless in such datasets. The next paragraphs give a thorough analysis of the obtained results. the compactness rates offered by the pioneer concise representations of the literature are often low on such datasets. Indeed, the size of DCI s rep is almost equal to that of F for different sparse datasets, such as makes the associated curves collapse ( cf. Fig. 4 (left)). Interestingly, for the 8.23 for minsupp  X  20 % ( cf. Table 7 ).
+ ADCI is smaller than that of B d  X   X  F  X  . This occurs for the representation is largely smaller than FEI s rep on these datasets. For ues, and ACCIDENTS for all minsupp values. Consequently, for the
+B d  X   X  F  X  . This border clearly increases the size of FEI s rep . For example, the size of B d that this latter set is almost empty for all datasets, except exceed 10 . In the figure associated to the KOSARAK dataset, only the curve representing the size of B d Fig. 3 (Bottom)) since the size of ADCI is always equal to 0.
+ DCI s rep vs. FCI s rep , NDI s rep and CNDI s rep : For the icantly reduced compared to those of the other representations. It is also the case for the values than the other concise representations ( cf. Fig. 2 ). Our representation is also the smallest one for the neighborhood explorations used for retaining or not an itemset within the NDI s rep representation, the DCI s rep only hood for essential itemsets on the compactness rates? 7. Related work and discussion in [7]. and disjunctive closed itemsets can also be considered as specific cases of error-tolerant itemsets [58].
+Our work can also be linked with that recently proposed in [48]. This latter work presents a general framework for functions. In addition, the authors did not pay attention to the corresponding link between the power-set of items and an anti-monotone constraint applied, the obtained set of closed itemsets  X  adequate to a condensable function f ( e.g. ness of the regeneration process.
+ tive closed itemsets in our case) whose disjunctive supports are encompassed between two user-defined thresholds. How-ever, they were not applied within the framework of concise representations for frequent itemsets.
+The disjunctive connector has also been used to define exact concise representations of frequent itemsets, like those focused in this work on exact concise representations of frequent itemsets, although many approximate concise repre-[18]. Although they offer very high compactness rates, we did not compare our work to these representations since they do not allow deriving the exact frequency of itemsets. Moreover, their accuracy closely depends on the tolerated error bound.
+
+The representation compactness is the main criterion that is generally used to compare concise representations. Other negative support through De Morgan X  X  law. 8. Conclusion and perspectives In this work, we introduced a new disjunctive closure operator and we thoroughly studied its theoretical properties. till the meaningful information with respect to the MDL principle, especially in the case of dense datasets. ploit the results offered by the general GUHA approach [24].
+ Acknowledgements We would like to thank the anonymous reviewers for their helpful comments and suggestions. We are also grateful to T. CMCU-Utique 05G1412.
+
+Appendix: Proof of Proposition 2  X  Property ( 1 ) T 1 # T 2 ) f  X  T 1  X  # f  X  T 2  X  .
+  X  8 t 1 2 T n T 1  X  X  X  t 1 ; i  X  R R  X  , then  X  8 t 1 2 T n T
+T n T 2  X  X  X  t 1 ; i  X  R R  X  X  X  is true. This implies that i 2 f  X  T  X  Property ( 1 0 ) I 1 # I 2 ) g  X  I 1  X  # g  X  I 2  X  .
+
+Since I 1 # I 2 , then  X 9 i 2 I 2  X  X  X  t ; i  X 2 R  X  is also true. Thus, t 2 g  X  I  X  Property ( 2 )( f g is extensive ) I # f g  X  I  X  i 1  X  i , then i 2 f g  X  I  X  . We then conclude that I # f g  X  I  X  .  X  Property ( 2 0 )( g f is contractive ) g f  X  T  X  # T .
+ that t 2 g f  X  T  X  . Hence, t 2 T . We can thus conclude that g f  X  T  X  # T .  X  Property ( 3 )( f g is isotone ) I 1 # I 2 ) f g  X  I 1  X  # f g  X  I ) g  X  I 1  X  # g  X  I 2  X  (according to Property (1 0 )). ) f g  X  I 1  X  # f g  X  I 2  X  (according to Property ( 1 )).  X  Property ( 3 0 )( g f is isotone ) T 1 # T 2 ) g f  X  T 1 ) f  X  T 1  X  # f  X  T 2  X  (according to Property ( 1 )). ) g f  X  T 1  X  # g f  X  T 2  X  (according to Property ( 1 0 )).  X  Property ( 4 ) f  X  T  X  X  f g f  X  T  X  .
+  X  #  X 
+We have g f  X  T  X  # T (according to Property ( 2 0 )). Hence, f g f  X  T  X  # f  X  T  X  (according to Property (1) ).  X  X  f  X  T  X  # f g f  X  T  X  .
+
+We can then conclude that f  X  T  X  X  f g f  X  T  X  .  X  Property ( 4 0 ) g  X  I  X  X  g f g  X  I  X  .
+  X  #  X 
+We have I # f g  X  I  X  (according to Property (2) ). Hence, g  X  I  X  # g f g  X  I  X  (according to Property ( 1 0 )).  X  X  g f g  X  I  X  # g  X  I  X  .
+
+We can then conclude that g  X  I  X  X  g f g  X  I  X  .  X  Property ( 5 )( f g is idempotent ) f g  X  I  X  X  f g f g  X  I  X  .
+ f g  X  I  X  X  f g f g  X  I  X  .  X  Property ( 5 0 )( g f is idempotent ) g f  X  T  X  X  g f g f  X  T  X  .
+ g f  X  T  X  X  g f g f  X  T  X  .  X  Property ( 6 ) g  X  I  X  # T () I # f  X  T  X  .
+  X ) X 
+Property (2) ), we conclude by transitivity that I # f  X  T  X  .  X ( X  to Property ( 2 0 )), we conclude by transitivity that g  X  I  X  # T .
+ Hence, g  X  I  X  # T () I # f  X  T  X  .
+
+References

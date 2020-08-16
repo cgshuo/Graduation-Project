@@ -1,0 +1,36 @@
+ ventional frequent itemset mining requires the user to specify a min support priate min support threshold is no easy task. If min support is set to be too overwhelming number of itemsets may b e generated. Most of the time, it needs repeated trials and errors to come up with a proper min support threshold.
+In order to remove this restriction, Wang et al. [1] proposed the problem of threshold, Wang et al. [1] allows the miner to specify the desired number of interesting itemsets, which is much easier for the miner to specify.
+We follow the notations in Wang et al. [1] for the problem description. Let I = { i itemset X , denoted as sup ( X ), is the number of transactions in TDB which contain X .
+ length at least min l whose support is higher than that of X .
+The problem is to mine top-k frequent closed itemsets of minimal length is called the TFCI problem in this paper. Each instance of the TFCI problem is represented by &lt;I,TDB,min l, k&gt; .
+ Wang et al. [1] proposed an exact algorithm based on FP-tree [2] to solve the TFCI problem. An extensive performance studies had been performed by Wang In this paper, we show that, in the general case, the TFCI problem is not in APX . This implies that heuristic algorithms rather than exact algorithms are preferable to solve the TFCI problem in reasonable run time.
+
+No existing work has ever considered the inapproximability issue of the TFCI problem. Most existing works consider the NP-completeness of mining specific that the problem of deciding whether there is a maximal itemset of length at sidered the complexity of mining association rules with categorical and quan-titative attributes. However, these works never address the inapproximability issues.
+ Jermaine [6] first considered the inapproximability issue of itemset mining. He showed that mining the itemset that maximizes some correlation function is not approximable. Our work is distinct from Jermaine [6] in the following only show that the TFCI problem is not approximable but also strengthen the inapproximability result by showing that the TFCI problem is not in APX . is not in APX , which immediately implies that mining top-k frequent closed itemsets is not in APX .
+
+We will show that if, for some constant r  X  1, there is a polynomial-time r -the CLIQUE problem in polynomial-time, a contradiction to the fact that the CLIQUE problem is NP-Complete [7]. The CLIQUE problem we consider is as follows.
+ CLIQUE Instance: An undirected graph G =( V, E ) and an integer k .
+ such that | C | = k and, for any u , v  X  C , { u , v } X  E ?
+For any instance y and any algorithm A ,weuse OP T ( y )torepresentan A on y .Wesaythat A is a polynomial-time r -approximation algorithm for
+We now suppose that we are given a CLIQUE problem instance x = &lt;G, k&gt; i  X  m } . Also we suppose that we are given a polynomial-time r -approximation algorithm A for mining top-1 frequent closed itemset for some constant r  X  1. the transaction database TDB = { &lt; ( i 1 ,i 2 ,...,i a ) , ( V  X  for all 1  X  j  X  a } and a = log r
+In the next, we show that we can determine whether there is a k -clique in G in polynomial time by checking if sup ( A ( y ))  X  ( k ( k  X  1) 2 ) a  X  1 r .
+We begin by introducing some useful definitions and lemmas. Let S be an vertices in S . Formally, e ( S )= |{ i | e i  X  S }| .
+ Consider the following lemma that relates sup ( V  X  S )and e ( S ). Lemma 1. sup ( V  X  S )=( e ( S )) a .
+ Proof. sup ( V  X  S )= |{ &lt; ( i 1 ,...,i a ) , ( V  X  and (V  X  S)  X  (V  X  = |{ &lt; ( i = |{ &lt; ( i = |{ i | e i  X  S }| a = e ( S ) a Lemma 2 presents some useful property of closed itemset.
+ Lemma 2. Let X be an arbitrary itemset. Then, there exists an itemset Y such that Y is a closed itemset, X  X  Y and sup ( X ) = sup ( Y ) .
+ is by contradiction.
+
+We note that U =  X  because X  X  U . We assume that every itemset in U is not closed. Let Y be an arbitrary itemset in U .Since Y is not closed, by the definition of closed itemset, there exists an itemset Z such that Y  X  Z and mean Z  X  U .
+ This implies that every itemset in U has a proper superset in U , a falsity. This completes the proof. Proof. The lemma is a direct result of a&gt; log r derived from a = log r Based on the above three lemmas, we show that we can determine whether there Theorem 1 and Theorem 2 are provided for this fact.
+ .
+ Lemma 1, sup ( V  X  S )=( k ( k  X  1) 2 ) a .
+
+By Lemma 2, there exists an itemset Y such that Y is a closed itemset,
+Since A is a polynomial-time r -approximation algorithm for the instance y , This concludes the proof.
+ .
+ This completes the proof.
+ ( NP-Complete [7]. The next two theorems immediately follow.
+ Theorem 3. The problem of mining top-1 closed itemset is not in APX unless P = NP .
+ Theorem 4. The TFCI problem is not in APX unless P = NP .
+ We have provided in this paper a set of proofs showing that there is no APX algorithms, instead of exact algorithms, are preferred to solve the problem. The author would like to thank the anonymous referees for their helpful com-ments. This research was supported by the National Science Council of the Re-public of China under the grant NSC 94-2213-E-027-030.
+

@@ -1,0 +1,2 @@
+ Goals : choosing the kernel in multiple kernel Learning (MKL)
+Penalization approach : b  X   X  arg min but depends on unknown noise variance  X  2 sharp jump in tr A  X 

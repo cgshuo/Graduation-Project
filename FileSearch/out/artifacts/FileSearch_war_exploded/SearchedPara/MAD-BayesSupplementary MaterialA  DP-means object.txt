@@ -1,0 +1,9 @@
+  X  | f (  X  2 ) |  X  c | g (  X  2 ) | for all  X  2 &lt;s 2 . It follows that  X  2  X  2 log P ( x, z,  X  )= Z , and feature means A can be written as follows. P (
+X, Z, A )= P ( X | Z, A ) P ( Z ) P ( A ) = It follows that k are represented in Z . Then as  X  2  X  0.
+ C.1. More interpretable objective The objective for the collapsed Dirichlet process nipulation. We describe here how the opaque tr + a form more reminiscent of the ( K +  X  an N  X  N matrix with C " z tr ( X " ( I N  X  Z ( Z " Z )  X  1 Z " ) X ) = tr ( X " X )  X  tr ( X " Z ( Z " Z )  X  1 Z " X ) = tr ( XX " )  X  = = = for the cluster-specific empirical mean defined as  X  x We again assume a Gaussian mixture likelihood, only now the number of cluster means  X  k has an upper bound of K .
+ We can find the MAP estimate of z and  X  under this tion problem is argmin one such cluster. Call the number of such activated argmin This objective caps the number of clusters at K but contains a penalty for each new cluster up to K . Then the limiting MAP problem as  X  2  X  0 is be performed in parallel.
+ unbounded cardinality case before taking the limit  X  in Eq. ( 13 ): argmin of K possible features.
+ the righthand side becomes c .
+ If the  X  k are known, they may be inputted and the resulting optimization problem is min K-means objective function has been replaced with a Mahalanobis distance, and we have added a penalty ulating the penalty as in previous examples). This Poggio ( 1998 ).
+ The proof of Proposition 1 is as follows. setting A k,  X   X  ( Next, let $ Y $ F = norm of a matrix Y . Then $ Y $ 2 matrices; then, We conclude that f ( A ) is convex.
+ With this result in hand, note

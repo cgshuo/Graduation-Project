@@ -1,0 +1,143 @@
+ 1. Introduction
+In an increasingly competitive business world, where the sources of disturbance are drastically changing and increasing, supply chains actors are faced with the necessity to constantly improve their decision-making practices. The companies identify-ing supply chain risk as  X  an unavoidable and necessary task that with a  X  networked environment  X  ,  X  companies deepen their rela-tionship with partners and thus become more dependent on each is de fi ned by Zsidisin (2003) as:  X  the danger that events or decisions will obstruct the company's achievement of its objec-either amplify or absorb the effect of risks in the supply chain  X  ( Juttner, 2005 ) when the principal risk comes from supply and demand. Mastering the decision making processes of actors is therefore a key to minimizing the risks.
+ collaborative purchasing processes in the supply chain context customer relationship in a dyadic supply chain where actors are independent. This situation may be described as a 2-actor sequen-tial decision problem. For an industrial Decision-Maker (DM) in a partners is common practice (capacity level, lot sizing rules, purchasing strategies, production scheduling ... ). He/she knows that his/her decision will be followed by a series of partner's decisions, which will impact the performance of his decision. The decisional behaviors of independent partners are extremely dif cult to anticipate. These potential different behaviors can be interpreted as different sources of uncertainty for a particular actor of the chain.
+ commensurate. Moreover, we deal with behaviors under uncertainty (the pessimism or optimism of de cision maker) which comes down
+This paper is organized in 7 sections. First, a literature review on supply chains is made ( Section 2 ), then we provide some background on decision trees, possibility theory, pignistic prob-present our approach to model and support the decision-making process with one DM and then we propose a model for sequential this proposal through an industrial case study. 2. Literature review
+In our review, we distinguish the literature that focuses on minimizing risk in supply chains under uncertainty and the literature on coordination mechanisms inside the supply chain.
+On the fi rst topic, mostly optimization approaches have been proposed with a global supply chain optimization model and a
+Wang and Shu, 2005; Petrovic et al., 1999 ). Besides there exist robust optimization methods where suppliers share information the sources of uncertainty pertain to the demand, supply and risks since the decisions made by suppliers impact decisions made by the customer.
+
+Besides, the studies on coordination mechanisms focus on the minimization of sub-optimality of the distributed decision in the supply chain. Hence, an important part of the literature proposes and studies coordination mechanisms to obtain the optimal deci-sion for the supply chain as a whole. For example, game theory is used for designing coordination mechanisms that may optimize the distributed system and studying coordination mechanisms as a supply chains. Furthermore, the supply chains studied in this literature proposes coordination mechanism when the actors use linear mathematic models for production planning ( Dudek and not taken into account. Moreover, in addition to this important academic research works, empirical analysis based on industrial case studies and decision-maker interviews have emphasized the risk with a little attention to the questions: (i)  X 
+How views of supply disruption risk are developed and how these views affect the decision-making process  X  ( Ellis et al., 2010 ), (ii) What are supply chain managers' attitudes toward risk? al., 2012 )?
+Moreover, Singh and Benyoucef (2013) emphasize the role of decision-making processes inside collaborative supply chains. It shows the dif fi culty to establish decisions when confronted viewpoint  X  ( Hallikas et al., 2005 ). 3. Background
+In this section, we recall formal tools we shall use to build the proposed approach. 3.1. Tools for decision under imprecision
+In this section, we recall a model to represent the imprecision on the information (possibility distributions), how to derive a criterion under total uncertainty. 3.1.1. Possibility distributions
+Imprecise information is modeled by expressions of the form v A A where A is a subset of S that contains more than one element. and Prade, 2009 ) that form a possibility distribution on S . The assertion v A A implies that all values from v outside A are supposed to be impossible.
+ fi imprecise probabilistic knowledge of the form P ( E i ) Z 1 ... Prade, 2009 ). It can also be viewed as a random set  X  m ; focal sets E i and masses m  X  E i  X  ; such that:
+E i  X f x A S j  X   X  x  X  Z  X  i g (
+The possibility distribution is then such that:  X   X  x  X  X   X  ( Dubois and Prade, 1982 ). 3.1.2. Pignistic probability distribution
+The so-called pignistic probability extends Laplace principle of presupposes the idea that, while the knowledge or an actor can be too imprecise to be represented by a single probability distribu-tion, the latter is needed when evaluating decisions in order to possessing a certain body of information. When the actor has no actor will bet on them at equal odds. Deriving the pignistic  X  m ; F  X  Pg s  X  x  X  X   X 
+It can be viewed as the subjective probability distribution the decision-maker would provide via betting rates, had his knowl-edge been faithfully represented by the possibility distribution This probability distribution has been proposed by Dubois and Prade (1982) and axiomatized by Smets (2005) , who coined it  X  1953 ) in the game theory. The pignistic probability distribution
+Example 1. For example, let  X   X  c 1  X  X  1 and  X   X  c 2  X  X  0 incomplete information that the probability that the actor uses compute the pignistic probability of each criterion. First, we compute the masses m  X  E i  X  . In this case, the values of values:  X  0  X  0;  X  1  X  0 : 8;  X  2  X  1. Then:
+From Eq. (6) we have: Pg  X  c 1  X  X  X  m  X  E 1  X  = 2  X  X  X  m  X  E 0 : 2  X  0 : 6 and  X  c 2  X  X  X  m  X  E 1  X  = 2  X  X  X  0 : 8 = 2  X  X  0 :
+While in the fi nite case, letting the DM directly provide such subjective probability degrees may be possible, it is too dif case, it is more user-friendly to ask for weak information (like fully in possibility theory, and then to extract the pignistic probability from it. 3.1.3. Hurwicz criterion
+Hurwicz (1951) criterion for decision under total uncertainty is a parametric criterion which takes into account the optimism of consequences of the decisions, f d value to each consequence x A X and  X  the degree of pessimism of decision maker. The Hurwicz criterion achives a trade-off between the most cautious and the most risk evaluations:
+H  X  f d  X  X   X  min d  X  argmax 3.2. Tools for multi-actors decision making
+In this section, we recall the model of sequential decision more precisely, namely decision trees and an egalitarist approach to multifactorial ranking of decisions: leximin. 3.2.1. Decision tree
+In a real dynamic situation, the DM does not make a single of relevant pieces of information. This type of problem is called dynamic decision under uncertainty . The decision made at time t depends on the information available at t . By hypothesis, the information known at time t is still known at time t  X   X  t .The results of an external independent entity, for example nature. In such conditions, we can call  X  t  X f e 1 t ; ... ; e m f e 1
+This kind of problem has motivated many research works are relevant in situations where a DM has a sequence of decisions , possible situation). The set of all strategies is denoted by target is therefore to support the DM who must choose the best strategy,  X  n  X  argmax strategy is applied.
+ decisions. A DT may be de fi ned as a directed acyclic graph path leading to any other node. The set of nodes is made of ( Nielsen and Jaffray, 2006 ): of arcs:  X   X f X  N ; N 0  X  : N A N D  X  ; N 0 A N  X  g D  X  N strategy  X  , i.e. the set of nodes made of: DT is given on Fig. 1 .
+ at D 2 will be made followed by a last event E 2 . Formally:
+Enumerating the strategies may become a very hard computa-(the number of strategies increases exponentially). Different methods have been proposed to fi nd the best strategy ( Hammond, 1988; Machina, 1989; McClennen, 1990; Nielsen and Jaffray, 2006 ).
+ on the Dynamic Programming principle, i.e., backward induction, this kind of game ( Cachon and Netessine, 2006 ). 3.2.2. Leximin criterion several decision-makers without favoring any of them.
+De fi nition 1. ( Barbera and Jackson, 1988 ) Let u j  X  d  X  the levels of satisfaction of the DM j for decision d , and a we de fi ne J  X  a ; d  X  X f j j u j  X  d  X  r a g and j J  X  a u g
+Lm v 2 ( a such that j J  X  a ; u  X j o j J  X  a ; v  X j &amp; 8 b
+This criterion can also be de fi ned by fi rst reordering compo-nents of vectors u and as v in increasing order, and then ranking 4. Ranking decisions taking into account uncertainty on criteria
+In this section, we present how a DM can make decision under where the criteria are not commensurable so an aggregation of satis fi ed if the decision d A D is optimal and not satis fi ed other-wise. More formally, the utility function of DM is: u  X  d  X  X 
+Moreover, we distinguish the case where the criteria are has an imprecise parameter especially we focus on the case where the optimism degree of Hurwicz criterion is imprecise. 4.1. Discrete case
+In the discrete case, we consider that the DM is able to give a The DM will take the decision that maximizes the expected value: d  X  argmax d A D  X   X  c A C Pg  X  c  X  u  X  d  X  X  .
+ for each decision is: 0 : 4 1  X  0 : 3 0  X  0 : 3 0  X  0 : 4 for d decision is d 2 . 4.2. Model of imprecise degree of optimism
+The model is based on the hypothesis that DM is able to give ~  X  on his/her degree of optimism. Those possibility distributions plausible value of  X  and the maximal interval that contains values (see Fig. 2 (c)).
+
+Based on these possibility distri butions and the study of change (which in our approach comes down to computing the pignistic to be optimal. Namely, Pg  X  d  X  optimal  X  X  Pg  X   X  X   X   X  d ; choose the decision that maximizes the expected value: d n argmax d A D  X  Pg  X  d  X  optimal  X  u  X  d  X  X  .
+ minimal value equal 10 and 8 and maximal equal 25 and 30. So the
+Hurwicz criteria of both decisions yield H u  X  d 1  X  X   X  10  X  X  1 25 and H u  X  d 2  X  X   X  8  X  X  1  X   X  30 (see Fig. 4 ).
+
+If  X  A  X  X  5 = 7  X  ; 1 the decision d 1 is optimal so  X   X  d and Pg  X   X  X   X  X  5 = 7  X  ; 1  X ffi 0 : 9.
+
+If  X  A  X  0 ;  X  5 = 7  X  the decision d 2 is optimal so  X   X  and Pg  X   X  X   X  0 ;  X  5 = 7  X  X ffi 0 : 1.
+
+Hence, the utility of DM for decision d 1 is 0.9 and 0.1 for d .
+
+Finally, DM chooses d 1 . 5. Sequential decision problem taking into account uncertainty on criteria method of ranking decisions in a game with two players when knows his/her own criterion and likewise for DM 2 criterion.
+Moreover, we consider that under uncertainty on the criteria, the DM focuses on optimal decisions for each criterion. In other criterion. Otherwise the decision is not considered.  X 
+D j being the index of decision node of DM 1 with j  X  1 ; ... ;
+J  X j D 1 j  X 
+D  X  D 2 1 ... D 2 J : set of decision vectors d 2  X 
+C  X  d 2 optimal.  X 
+C optimal for c 1 A C 1 and d 2  X 
+C optimal  X 
+C  X  d 1  X  : set of criteria c 2 A C 2 for which decision d 1 decision of DM 1 for the DM 2 using c 2  X 
+Pg  X  c i  X  : Pignistic probability of criterion c i  X 
+Pg  X  d 1 j DM 1  X  : is the pignistic probability that d 1 decision from the point of view of DM 1 . The optimality of the decision depends on the criterion c 1 of DM 1 and the criterion
+Pg  X  d 1 j DM 1  X  is the sum of the probabilities of pairs  X  c 1 which d 1 is optimal.  X 
+Pg  X  d 1 j DM 2  X  : is the pignistic probability that d 1 decision from the point of view of DM 2 . In other terms, the pignistic probability induced when the choice of d 1 is optimal for the DM 2 .  X  u  X  d  X  X  1 if decision d is optimal
+DM i with d A D i 5.1. Overview of the approach
+To evaluate the probability that the decision d is optimal in front of the possible criteria, we use the concept of pignistic uncertainty on the criterion. Note that the expected value of DM
+E  X  d ; with utility function u i  X  d  X  , is equivalent to the pignistic probability that d is an optimal decision from the point of view notation Pg  X  d j DM i  X  to refer to this expected value.
+Since the decision of DM 1 affects the possible decision of DM we propose to evaluate the decision of DM 1 using the points of view of DM 1 and DM 2 . Formally we assign a pair of values  X  a to each decision d 1 A D 1 where a d 1  X  Pg  X  d 1 j DM 1 b  X  Pg  X  d 1 j DM 2  X  .
+
+In order to compute the pignistic probability that decision is over, we propose to rank the decisions using the importance given importance to her/his strategic or/and constraining partners whereas his/her non strategic and/or dependant partners will have alowlevelofimportance( Marcotte et al., 2009 ). 5.2. Evaluation of decisions under uncertain criteria
+The problem of computing the chance of optimality for DM 1 and DM 2 can be computed in 6 steps:  X 
+Step 1. Computation of C 2  X  d 2 follows:
+C  X  d 2  X 
+Step 2. Computation of C 1 ; 2  X  d 1 ; d 2  X 
+Step 3. Computation of C 1  X  d 1  X  X [  X  Step 4. Computation of Pg  X  d 1 j DM 1  X  as follows:
+Pg  X  d 1 j DM 1  X  X   X   X  Step 5. Computation of C 1 2  X  d 1  X  for each decision d 1 A follows:  X  Step 6. Computation of Pg  X  d 1 j DM 2  X  as follows:
+Pg  X  d 1 j DM 2  X  X   X  DM 2
+To help ssthe DM 1 choose a decision, we propose to rank the pointofviewofDM 2 .IftheimportancegivenbyDM 1 to DM 2 is very low, then she/he chooses the deci sion which maximizes her/his probability to be optimal for her/him. On the contrary, if the the decision which maximizes the probability for DM 2 .Between More formally let f 1 2 be the utility of a decision of DM of view of DM 2 (the latter being measured by Pg  X  d 1 j DM
+The function f 1 2 is a mapping Pg  X  d 1 j DM 2  X  A  X  0 ; has to respect two requirements: If DM 1 grants very low importance to DM 2 :
+Pg  X  d 1 j DM 1  X  4 f 1 2  X  Pg  X  d 1 j DM 2  X  X  ; 8 Pg  X  d If DM 1 grants the same importance to DM 2 as to himself:
+Pg  X  d 1 j DM 2  X  X  f 1 2  X  Pg  X  d 1 j DM 2  X  X  ; 8 Pg  X  d 1
+To respect these characteristics, we propose that f 1 2  X  Pg  X  d importance given by DM 1 to DM 2 is very low otherwise if s 1 then the importance given by DM 1 to DM 2 is very high.
+In order to fi nd the decision that ensures equity between the two decision makers DM 1 and DM 2 taking into account the importance given by DM 1 to DM 2 , we propose to use the leximin criterion on the vector v  X   X  Pg  X  d 1 j DM 1  X  ; f 1 2  X  Pg  X  d sevsseral cases: if s 1 2  X  1 (very low importance given by DM 1 to DM 2 ): we maximize fi rst Pg  X  d 1 j DM 1  X  and then f 1 2  X  Pg  X  d
+Pg  X  d 1 j DM 1  X  r Pg  X  d 1 j DM 2  X  X  1, 8 Pg  X  d 1 j DM if s 1 2  X  0 (no difference between DM 1 and DM 2 ): we maximize indifferently the minimum between Pg  X  d 1 j DM 1  X  and Pg  X  d DM 2  X  and the other if s 1 2  X  1 (very high importance given by DM 1 to DM 2 ): we maximize fi rst f 1 2  X  Pg  X  d 1 j DM 2  X  X  and then Pg  X  d
+Pg  X  d 1 j DM 2  X  1 r Pg  X  d 1 j DM 1  X  , 8 Pg  X  d 1 j DM
+Note that we do not ask the decision-maker DM 1 for parameter . It is just an artifact of the method. By letting parameter s 1 over its domain, we can explain whether a decision made by DM will be accepted by the two DMs.
+
+If they exist an optimal decision  X  d 1 n  X  for s 1 2 A  X  1 will be to be accepted by DM 2 . 5.4. Example
+We illustrate the method in a general context, where DM 1  X 
+C 2  X f minmax ; Laplace g  X 
+C 1  X f g ; h g 5.4.1. Evaluation of decision under uncertain criteria
+DM 1 has 2 possible decisions {1; 2} and DM 2 has two possible Table 1 and Fig. 5 .
+ To solve this problem, we apply the method presented in
+Section 5.2  X  Step 1. Computation of C 2  X  d 2
+We have 4 vectors d 2  X  two ; two  X  . For this 4 vectors we compute C 2  X  d 2  X 
+Step 2. Computation of C 1 ; 2  X  d 1 ; d 2
+We have 4 combinations  X  d 1 ; d 2  X  1 ;  X  one ; two  X   X  ;  X  2 ;  X  one ; two  X   X  ;  X  1 ;  X  two
+For this 4 combinations we compute C 1 ; 2  X  d 1 ; d 2  X 
+Step 6. Computation of Pg  X  d 1 j DM 2  X  to DM 2
+In this example, we have Pg  X  1 j DM 1  X  X  0 : 58; Pg  X  2 j DM Pg  X  1 j DM 2  X  X  1 and Pg  X  2 j DM 2  X  X  0.
+
+To help DM 1 rank the decisions in terms of the importance given by DM 1 to DM 2 , s 1 2 evolves from 1(verylowimportance)to1(very tovisualizepossiblechangeinthedecision-making,wecollect information in a table ( Table 2 ). On the fi rst line, you
+From Table 2 ,DM 1 chooses decision 1 whatever the importance 6. The case of imprecise optimism degrees
+In this section, we consider the case of Hurwicz criterion with imprecise value of optimism degree  X  . We describe how to compute the sets C 2  X  d 2
+We detail some steps of this method when (i) both DM 1 and DM criteria are Hurwicz criteria with respectively ~  X  1 and optimism degree of this criterion. 6.1. Determination of C 2  X  d 2
+In this section, we give the framework of the algorithm to compute C 2  X  d 2  X  (cf: Fig.3 )  X 
+Step 1.2. Computation of the set of ~  X  2 1 such that vector d optimal for DM 2 : C 2  X 
+The maximal cardinality of C 2  X  decision nodes of DM 2 . Thus, in the worst case, we have j D sets C 2  X  d 2 6.2. Determination of C 1 ; 2  X  d 1 ; d 2
+After determining all C 2  X  d 2 for each d 1 A D 1 . The outline of the algorithm is:  X 
+Step 2.1. Computation of the value of  X  1 for which decision d 1 changes, denoted by  X  1 change , for each d 2 (see Fig. 4 Section 4.2 )  X 
+Step 2.2. Computation of the set of  X  1 such that d 2 vector of DM 2 and d 1 is the optimal decision of DM 1 : C
+In the worst case, we must compute j D 1 j for each C 2  X  d so at most j D 1 j 2 j D 2 j C 1 ; 2  X  d 1 ; d 2 6.3. Determination of C 1 2  X  d 1  X  (step 5)
+In this section we present the algorithm to compute the set of criteria giving an optimal solution the decision d 1 of DM algorithm the result of C 2  X  d 2  X 
+Step 5.1. Computation, for each vector d 2 value of  X  2 for which decision d 1 changes, denoted by  X  for each d 2  X 
+Step 5.2. Computation of the set of  X  1 such that d 2 vector of DM 2 and d 1 is optimal decision of DM 1 : C 1 ; 2 using Eq. (11) C 7. Application of the method to an industrial case-study
+In this section, we apply the method on a real-life case based on a dyadic supply chain where the customer, a French worldwide dermo-cosmetic maker (Pierre Fabre Dermo-Cosm X tique), has to the supplier responds. A DM's decision variable is the order lead time (here 12, 8 or 6 weeks). With the advanced collaboration protocol the customer commits on purchases associated to a family of products 8 weeks in advance (product family aggregation releases delivery needs about the product 1 week in advance. A DM's decision lever is the minimal volume associated to the family engagement (here 50,000, 100,000 or 150,000 products). 7.1. Problem modeling
+According to the notation de fi ned in previous parts, we denote by DM 1 the customer (PFDC) and by DM 2 one of his packaging suppliers. Two sequential decisions have to be made:  X 
+DM 1 has to de fi ne the collaboration protocol and its parameter (6 possibilities) ( Table 3 ),  X 
+In addition, the performance of the supply chain will be subject to a global uncertain event that models the uncertainty of the performance due to different risk sources (scrap, production/ transport delay, breakdowns ... ) (7 possible situations).
+According to the number of scenarios that have to be evaluated, on a discrete event simulation modeling approach. Authors have established a generic representation of the different planning processes for each SC actor based on the MRPII (Manufacturing
+Resource Planning) processes. An upstream planning process is used between partners: plans are made by the customer and in the upstream direction. No information circulates downstream ( Lamothe et al., 2007, Marques et al., 2009 ).
+
+The customer's cost function is 2/3 average customer's stock-7.2. Problem solving
+The customer provides two possibility distributions on the optimism degree of himself/herself and on the supplier. The optimism degrees are represented in Fig. 6 . Here, the DM optimistic (black line) and the DM 2 is known to be pessimistic (dotted line) by DM 1 .
+
+From the simulation we build the decision tree (with 6 deci-the cost function for each DM (DM 1 : customer's cost and DM : supplier's cost). 7.3. Determination of C 2  X  d 2
+Decision 1 of DM 2 is Pareto-optimal for all decisions of DM other words, decision 1 has the minimal  X  min  X  and minimal  X  for each decision of DM 1 . So, whatever the optimism degree of DM 2 ,DM 2 chooses decision 1 for each node.
+
+C 2  X  X  1 ; 1 ; 1 ; 1 ; 1 ; 1  X  X  X  X  0 : 5 ; 1 8 d 2 7.4. Determination of C 1 ; 2  X  d 1 ; d 2
+Whatever the optimism degree of DM 1 , decisions 1,4,5,6 can be chosen: 8 d 1 a 2 ; 3 C 1 ; 2  X  d 1 ;  X  1 ; 1 ; 1 ; 1 ; 1 ; 1  X  X  a  X  and C 1 ; 2  X  3 ;  X  1 ; 1 ; 1 ; 1 ; 1 ; 1  X  X  X  X  0 : 429 ; 0 7.5. Computation of C 1  X  d 1  X  (step 3)
+C 1  X  2  X  X  C 12  X  2 ;  X  1 ; 1 ; 1 ; 1 ; 1 ; 1  X  X  X  X  0 ; 0 :
+C 1  X  3  X  X  C 12  X  3 ;  X  1 ; 1 ; 1 ; 1 ; 1 ; 1  X  X  X  X  0 : 429 7.6. Computation of Pg  X  d 1 j DM 1  X  (step 4)
+To choose between decisions 2 and 3 we compute the pignistic probability that decision 2 is optimal: Pg  X  2 j DM 1  X  X  Pg  X   X  0 ; 0 :
+Pg  X  2 A  X  0 ; 1  X ffi 0 : 008 1  X  0 : 008 ( Table 4 ). 7.7. Determination of C 1 2  X  d 1  X  (step 5) 5 and 6 are dominated by decision 2 and 3. But decision 3 is optimal for  X  2 A  X  0 : 5 ; 1 . So we deduce that C 1 2  X  1  X  X  C
+C  X  4  X  X  C 1 2  X  5  X  X  C 1 2  X  6  X  X   X  , and C 1 2  X  3  X  X  X  0 : 7.8. Computation of Pg  X  d 1 j DM 2  X  (step 6) So, Pg  X  1 j DM 2  X  X  Pg  X  2 j DM 2  X  X  0 and Pg  X  3 j DM 2 (step 7) is pictured ( Fig. 8 ):
+Based on the evaluation of the pignistic probability of each decision of DM 1 from the point of view of DM 1 and DM 2 we compute the optimal solution taking into account the importance given by DM 1 to DM 2 ( Table 5 ).
+
+In this case, the fi nal decision depends on the balance of power between actors. Table 5 shows that the decision chosen by DM
+DM . 8. Conclusion
+In this paper we focused on a decision problem in a dyadic collaborative supply chain. More precisely we addressed the problem of decision making for a customer, taking into account the future decision of his supplier under imprecise information on the criteria of the two SC partners. We proposed a decision method ensuring optimal stability. In other words we focus on the decision that has the best chance to be optimal under an imprecise criterion.
+
+Industrial DMs are daily faced to the issue of exploiting their empirical knowledge of their partners' decisional behavior. This this knowledge may be a strategic advantage in term of value creation and preservation. The model presented in this paper and decision which has the best chance of being optimal under imprecise knowledge, even if research efforts have to be made to improve the robustness of the results and to use real life colla-boration experience in order to improve the mutual knowledge of partners' decisional behaviors.
+ References

@@ -1,0 +1,53 @@
+ 1. Introduction
+T  X  (2006 ) for a quick overview.
+ addressed in the literature.
+ quadratic approaches found in the open literature.  X  R  X  ft  X  X   X  2 dt o 1 ; 8 T Z t 0 ; and  X  f  X  2 ; T  X  X  x P the convex sum property if  X  i Z 0 ; 8 i A  X  r and following notations are occasionally used: Y  X  are functions sharing the convex sum property. 2. Problem de fi nition and preliminaries results 2.1. Control problem de fi nition 2.1.1. Closed-loop system description and Wang, 2001 ) valid on a polyhedral domain: _ x  X  z  X  y  X  8 &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; :
+B , B assumptions.
+ tude limitations: u the set W  X  de fi ned by
+W de fi ned by
+P  X  x A  X  n x : x T h k 1 r 1 ; 8 k A  X  q no where the q vectors h k 1 A  X  n x are given. _ x  X  u  X  8 &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; : saturation effect: u  X  sat u c  X  X  ;  X  7  X  by sat u controller are given as u  X  sat u c  X  X  ; v  X  can be expressed as _ x  X  u  X  8 &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; : sat u ity  X  X  is de fi ned as u  X  X  X 
+De fi from (2) and (10) : _ x  X  z  X  8 &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; : where and the controller output is given as u  X  where K i  X  D c C y i C c i _ x  X  A  X  X  x cl  X  B w  X  X  w B  X   X   X  R  X  E c  X  X   X  u c  X  X  z  X   X   X  X  x cl  X  D w  X  X  w D  X   X   X  u c  X  X   X  15  X  and the DOFC output (14) is rewritten as u  X  K  X  x cl  X  K w  X  w :  X  16  X  2.1.2. Control problem de fi nition 4 a rate less than  X  1 = 2.
+  X  inequalities:
+P where h k  X  h kT 1 0 the validity domain P x of the model (2) ). 2.2. Preliminaries design problem in Section 3 will be presented. set P u as follows:
+P where da Silva and Tarbouriech (2005) .
+ de fi ned in (16) .Ifx cl A P u \ P x veri fi ed:  X  X  fashion as the one given in Nguyen (2013) . 2.2.2. Other preliminary results result are recalled below.
+ ( polyhedral set P u de fi ned in (18) if and only if
+K and G i .
+
+Ph k h "# 3. Main results V i ;
+X "# nn 1 2 6 6 4 b
+C 2 6 6 4 n r 1 n r 1 9 with condition: P X 11  X  P 12 X T 12  X  I :  X  33  X  given by, 8 i ; j  X  X  A  X  r  X  r : E D  X  ^ D
+ X 
+L
+C
+B
+A Scherer et al. (1997) P  X  "# the matrices 9 X 11 I "#
+G
+X
+P
+P diag
+ X  T 2 6 6 6 4 manipulations: _
+Vx loop system (12) : _
+Vx  X  X  X   X  1 x T cl Px cl  X  2 w T Rw o 0 :  X  39  X 
+From (27) and (39) , it follows that: _
+Vx  X  X  X   X  1 x T cl Px cl 1  X   X  2  X  w T Rw o 0 :  X  40  X  prove Property 2.
+ 8 x
+A  X  P  X  X  : _
+Vx  X  X  which proves Property 1.
+
+ X  output z will be less than  X  if
+P  X  P A  X  X  P B w  X  X   X  T  X  X  2 6 6 4 the proof. synthesis tion and of the estimated domain of attraction. X X formulated as the following optimization problem: max  X  subject to :  X  X
+X  X  P 1 and  X  9 1 =  X  2 : P IX condition (45) is equivalent to
+P n X 11 I IP 2 6 6 6 6 4 (24)  X  (29) ; LMI (46) .
+ closed-loop system (characterized by  X  ).
+P x w projection is nothing but the ellipsoid  X  X 1 11 . 5. Illustrative examples resolution of all LMI problems.
+ in Guerra et al. (2012) with, 8 i A  X  2 :
+A  X  2 10
+B  X  B w 2  X  0 a ; u max  X  10 and P x  X  x A  X  2 : x 1 jj r 2012 ).
+ system: _ _ x 2  X  x 1  X  0 : 1 w z  X  x 2  X  u  X  0 : 1 w y  X  x 2  X  0 : 2 w 8 &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; : gx x taken as: u max  X  1.
+
+On P x , functions f and g are such that ( where  X  f max f U  X  X  f A  X  1 f min B A  X  1 f max A  X  1 f max P P  X   X  0 : 0066 ;  X   X  4 : 7607 :  X  54  X  x
+S 9 trajectories remain inside this validity domain.
+P  X  35 : 0764 23 : 4791 12 : 2088 0 : 2352 23 : 4791 61 : 2175 0 : 3027 8 : 3083 12 : 2088 0 : 3027 6 : 1661 3 : 0119 2 6 6 6 4  X  0 : 8938 ;  X   X  0 : 2432 :  X  55  X  x -1 0 1 2 3 -40 -20 0 20 Performance variable 6. Concluding remarks real-time applications.
+ Acknowledgments Appendix A. Supplementary information 005 .
+ References

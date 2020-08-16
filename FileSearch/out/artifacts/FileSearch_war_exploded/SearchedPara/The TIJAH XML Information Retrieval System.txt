@@ -1,0 +1,10 @@
+ Categories and Subject Descriptors: H.3.3:[ Information search and retrieval ]: Retrieval mod-els; H.2.3:[ Languages ]: Query languages; H.2.4:[ Systems ]: Multimedia databases, Query processing, Textual databases General Terms: Experimentation, Verification Keywords: Information retrieval, databases, structured documents, XML, region algebra
+Not many XML information retrieval (IR) systems exist that allow easy addition of and switching between different IR models. Especially for the scientific environment where building a system takes a lot of time and keeps researchers away from the real work, i.e., investigating what is the most effective IR model, a platform that would provide this func-tionality would be ideal. For this reason we developed such an XML IR system. It is centered around a logical algebra, named score region algebra (SRA), that enables transpar-ent specification of IR models for XML databases (see [1] for more details).
+
+The transparency is achieved by a possibility to instanti-ate various retrieval models, using abstract score functions within algebra operators, while logical query plan and op-erator definitions remain unchanged. Our algebra operators model three important aspects of XML IR: element rele-vance score computation, element score propagation, and element score combination. To implement a new IR model, one only needs to provide definitions for these abstract func-tion classes.
+
+To illustrate the usefulness of our algebra our demo sys-tem supports several, well known IR scoring models (e.g., Language Models, Okapi, and tf.idf), combined with differ-ent score propagation and combination functions. The user can select which model to use at run time.
+
+Following good practice in database systems design, our prototype system has a typical three-layered architecture. (1) The conceptual layer takes a NEXI [3] query expression as input, e.g., //article[about(.,java)]
+This research was performed as part of the Complex Infor-mation Retrieval Queries in a Database (CIRQUID) project, funded by the Netherlands Organization of Scientific Re-search (NWO) under grand no. 612.061.210.
+

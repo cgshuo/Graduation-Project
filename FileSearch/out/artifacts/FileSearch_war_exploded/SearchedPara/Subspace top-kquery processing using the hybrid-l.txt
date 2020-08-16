@@ -1,0 +1,79 @@
+ 1. Introduction immediately after they issue the query.
+ in the price and the weight and may issue a query like SELECT * FROM Cameras ORDER BY 0.5*price+0.5*weight ASC LIMIT k .
+ issue a query like SELECT * FROM Cameras ORDER BY 0.4*pixelCount+0.6*sensorSize DESC LIMIT k . attribute but low overall.
+ ranked low for a particular subset of attributes used for a query. approaches lead to high query performance if the  X  closest the space overhead increases in proportion to the number of indexes [7] . space overhead of the view-based approach. More precisely, we make the following contributions in this paper.  X   X  those algorithms.  X  experiments.
+ compare the performance of the HL-index to existing approaches. We conclude the paper in Section 7 . 2. Related work
+We briefly review each of these approaches in this section. 2.1. Layer-based approach methods of this approach.
+
+However, to support an arbitrary linear function, PL-index and AppRI have to build 2
+Here, d represents the number of attributes. In contrast, ONION builds only one index. 2.2. List-based approach difference is not negligible [15,16,19] .
+ the sorted lists, its performance gets worse as the number of attributes mentioned in the query increases. 2.3. View-based approach
+The basic idea behind the view-based approach is to  X  precompute a practical system [7] . 2.4. Other approaches
+There exists a large body of work for efficient computation of skyline queries [17,18,20 to be ranked high instead of finding top k tuples [31,32] .
+ Table 1 summarizes the top-k indexing methods that are compared in this paper and the functions they support. 3. Problem de fi nition target relation R of N tuples has d attributes A 1 , A 2 , tuple in the relation R can be considered as a point in the d -dimensional space [0.0,1.0] scoring function f ( t ): t  X  [  X  1.0,1.0] maps each object t lowest-scored objects in the rest of this paper. Therefore, our goal is to retrieve a sequence of objects [ t f ( t 1 )  X  f( t 2 )  X  ...  X  f ( t k )  X  f ( t I ), k +1  X  l  X  N .Here, t
+The scoring function for top-k queries is generally assumed to be either linear [4
+A linear scoring function is a function of the following form where t [ i ] is the i th attribute value of t and w [ i ] is the preference vector . Without loss of generality, the w [ i ] values are assumed to range between [  X  d | w [ i ]|=1. A monotone scoring function satisfies the following condition [3] :if t [ i ] the w [ i ] values, a linear function may be non-monotone.
+ paper and briefly deal with the variation for non-linear monotone functions in Section 5.5 .
+Under this notation, a subspace top-k query is to find the k lowest-scored objects [ t explained in Section 5 . 4. Hybrid-layer index (HL-index) relation R are partitioned into a disjoint set of layers, { L each layer L i , we construct d sorted lists { L i ,1 , L their j th attribute values.
+ the version of the HL-index construction algorithm for all linear functions. d -dimensional objects, and the output is the set of layers L ={ L
+L }. We explain the algorithm using Example 1 .
+
+Example 1. Let us assume that the input relation R has nine objects, t the objects at the vertices of this convex hull, { t 1 , t
+Section 5 . Then, in Lines 4 and 5, the algorithm constructs two sorted lists, L
+L and L 1,2 list the object IDs in R 1 in the ascending order of their A object in L 1,1 is t 2 because t 2 is the object with the smallest A
+L and L 3 , for the input relation R , as shown in Fig. 2 (d). not discussed in this paper since it is beyond the scope of this paper.
+Before we proceed, we emphasize that, in our HL-index L ={ L in order to compute the object score under a given scoring function as done by Chaudhuri et al. [34] .
+Let N i be the number of objects in R i .Wenotethateach L numbers). Thus, the storage cost of the HL-index is computed as O d N  X  d m  X  m  X  X  X O d N 5. Query processing using the HL-index 5.1. ONION algorithm: layer-level fi ltering top-k objects are guaranteed to be in the first k layers L important theorem.
+
+Theorem 1. [4] (Optimally Linearly Ordered Set Property) Let L ={ L extraction of convex hull vertices. Let o min ( L i ) be the minimum-scored object in L score less than o min ( L i ). That is,  X  o  X  L j ( i b j
+Theorem 1 implies that if we have found k or more objects whose scores are lower than or equal to f
+L through L i , then we can ignore all objects in L i +1 through L
+Corollary 1. [4] Let o min ( L i ) be the minimum-scored object in the layer L f w o min L i  X  X   X  X  or less. That is, H i  X  X  X  of w o  X  X   X  f H ( i ) contains the top k objects .
+
+ONION algorithm. 3 Starting from i =1, the ONION algorithm retrieves all objects in L object scores are evaluated, it identifies o min ( L i ), the minimum-scored object in L H ( i ) contains k or more objects. Otherwise, it increases i by one and repeats the process. perform list-level filtering by retrieving only a subset of objects in each layer. 5.2. List-level fi ltering for the HL-index
+ONION algorithm retrieves all objects from L i in Line 2 is to be able to identify o long as we can identify o min ( L i ) and H ( i ) correctly, we do not have to retrieve all objects in L list-level filtering is then to figure out the way to identify o use S i , j ( n ) to refer to the set of the first n objects at the head of the list L
+S ( n )  X  S i ,2 ( n )  X  ...  X  S i , d ( n ). Informally, S the head of each list L i , j . For instance, S 1 ,(2)={ t t , t , t 9 }  X  { t 1 , t 2 , t 4 }={ t 7 , t 9 }ss. Informally, U objects from the head of each list L i , j .Weuse a i , j example, in Fig. 2 (d), a 1,2 (3)is0.5,the A 2 value of the third object t monotonically increases as n increases. Finally, we set F summarized in Table 2 . Under this notation, Fagin et al. [3] proved the following important theorem:
+Theorem 2. [3] Under any monotone (linear or non-linear) function f, every object in U threshold value F i n  X  X  . That is,
+Now, we extend the notations to handle non-monotone linear functions. We note that a linear function, f terms, w [1]  X  t [1], ... , w [ d ]  X  t [ d ], as shown in Eq. (1) .If w [ j ] increases as t [ j ] does. That is, if we access L i , j from the head (i.e., smallest A
+Theorem 2 . Fortunately, we note that w [ j ]  X  t [ j ] increases as t [ j ] decreases when w [ j ] largest A j object first) when w [ j ] b 0, the threshold value monotonically increases. To ensure that w [ j ] increases as we access more objects, we use alternative definitions of S w [ j ]  X  0, we use the  X  head  X  versions of the definitions in Table 2 . Otherwise, we use the mechanism monotone access . Using this notation, we naturally have the following corollary:
+Corollary 2. Under any linear function f w (), every object in U
+That is,  X  monotone linear function f  X  with the  X  linear function f
+Fig. 4 shows the function getNextObjects () for the monotone access. In Line 3, for each L attribute weight. If the sign is positive, it retrieves the next object of L objects only from the non-zero-weight attribute lists.
+
+Example 2. Let us assume that w [1]=0.5 and w [2]=  X  0.5. Then, the first time getNextObjects () is called on L returns the top object t 2 from the list L 1,1 and the bottom object t returns the next objects, t 1 and t 9 .  X  5.2.1. Identifying o min (L i )
+Theorem 2 provides an important clue on how we can identify o under a monotone (linear or non-linear) scoring function f , the theorem guarantees that after we retrieve S a score less than or equal to F i n  X  X  , then omin ( S i ( n )) is the minimum-scored object in L following corollary.
+
+Corollary 3. [3] Let o min ( S i ( n )) be the minimum-scored object in S
+F n  X  X  , then f ( o min ( S i ( n )))= f ( o min ( L i )).
+ identifying o min ( L i ) by retrieving the first few objects from each list L builds S i ( n ) by retrieving the next objects in L i,j 's in Line 4 until f ( o
+F n  X  X  . Then in Line 6, the algorithm returns o min ( S i ( n )) as o ( S ( n )))  X  F i n  X  X  , from Corollary 3 , we can see that the returned object is the minimum-scored object in L 5.2.2. Identifying H(i) The set H ( i )={ o | f ( o )  X  f ( o min ( L i )) for o  X 
+Corollary 4. Let f be an arbitrary monotone linear function, and f ( o each layer L j (1  X  j  X  i ) , let n j be the minimum n that satisfies F
+Proof. Let o be an object in H ( i ). From the definition of H ( i ), H ( i ) is a subset of L in L j (1  X  j  X  i ). From the definition of H ( i ), o satisfies f ( o )
+F n  X  X  &gt; fo min L i  X  X   X  X  , such an o cannot be in U j ( n the objects in H ( i ) exist in S .Thus, H ( i ) p S .  X 
+From Corollary 4 , we can compute the H ( i ) by retrieving the first few objects in each list L list-level filtering using the HL-index. 5.3. Basic algorithm
+The inputs to BasicLTA are the HL-index and a query Q =( SUB , f scoring function f w (). Starting from i =1, the algorithm first computes o
+Once the algorithm reaches Line 7, o min ( S i ( n i )) is o layer L l (1  X  l b i ), it retrieves next objects from each L greater than f w o min S i n i  X  X   X  X   X  X  (which is the same as f 16, the algorithm checks whether or not top-k objects are found. If S lower than or equal to f w o min S i n i  X  X   X  X   X  X  (i.e., if | H ( i )| increases i by one and repeats the process. We now prove the correctness of BasicLTA.
+Proof. Let R be the set of all objects in the database. Since every returned object has a score f correctness by showing that any object o in R but not in S that, due to the condition in Line 6, f w o min S i n i  X  X   X  X   X  X  from modified Corollary 3 that Consider three cases of o in R but not in S 1 ( n 1 )  X  ...  X  (1) o  X  L i : From Eq. (3) , o min ( S i ( n i )) is the minimum-scored object in L (2) o  X  L l for l &gt; i : From Theorem 1 , we know that f (3) o  X  L l for l b i : Due to the condition in Line 9, n
+Because o  X  S l ( n l ), o should be in U l ( n l ) by the definition of U
+From Eqs. (4) and (5) , we get f w o  X  X  &gt; f w o min S i 5.4. Enhanced algorithm identify o min ( L i ) from layer L i , we retrieve more objects in layers L through L i :
+Lemma 1. During the execution of BasicLTA, the inequality min F
+Proof. o min ( L i )isin S i ( n i )or U i ( n i ). If o min f w o min L i  X  X   X  X  from Corollary 2 . Thus, min F i n i  X  X 
+From Lemma 1 and Theorem 1 , it is easy to see that every object in layers L
+Since we can use the minimum between F i n i  X  X  and f w o fewer objects from L 1 through L i to compute the top-k objects.
+ until we find the o min ( L i ) by repeatedly calling getNextObjects () until F previous layers to retrieve more objects with the score bound f now prove the correctness of EnhancedLTA.
+
+S ( n 1 )  X  ...  X  S i ( n i )atLine15satisfies f w o  X  X   X  min F (1) o  X  L i : Since o min ( L i ) is the minimum-scored object in L (2) o  X  L l for l &gt; i : From Theorem 1 , we know that f (3) o  X  L l for l b i : Due to the condition in Line 8, n
+Because o  X  S l ( n l ), o should be in U l ( n l ) by the definition of U min F i n i  X  X  ; f w o min S i n i  X  X   X  X   X  X   X  X  from Eq. (6) . 5.5. HL-index for monotone functions that the layers are now constructed using skylines, not convex hull vertices. ordered set property under any monotone function f .
+ database, and L i is the set of objects in the skyline over L skyline over L i  X  ...  X  L m , every object in L i +1  X  ...  X  there exist o  X   X  L i such that o is dominated by o  X  . Then f ( o monotony. That is,
+Therefore, f ( o min ( L i ))  X  f ( o ) for any o  X  L j ( i optimally linearly ordered set property [8] . Thus, we can also use the identical algorithm in Fig. 7 .
+HL-index( cvxsky )). 6. Experiments 6.1. Experimental data and environment [8] .
+ time, and the number of objects read from database, Num_Objects_Read , as the measure of the query performance.
+For the real dataset, we use the regular season statistics throws attempted, total rebounds, total assists, and total personal fouls. experiments on a Pentium-4 2.0 GHz Linux PC with 1GBytes of main memory. 6.2. Index building cost duplications, and the index storage cost is computed as the sum of objectID and layerID . m =61 when d =3, m =28 when d =5, and m =12 when d =7. Since the average layer size is computed as (ln N ) layer size will be equal to N when d is very large. Table 5 precisely reflects this trend. the convex skyline) layers and the time for building the lists of TA(e). 6.3. Performance of monotone or non-monotone linear queries
+We now compare the query performance of the HL-index against other existing methods under both monotone and done in the next section when we use monotone linear functions.
+ s (i.e., the size of SUB in Section 3 ), the number of results k , N , d , and the correlation factor cf . generate the set SUB , which is the subset of the sequence numbers of the attributes, for each size s (1 attribute ( i  X  SUB ) in the preference vector w , from { 6.3.1. Comparison of basic and enhanced algorithm Before we compare the HL-index with other approaches, we first show the improvement of EnhandedLTA compared to results. 6.3.2. Experiment 1: query performance as N is varied of objects in each layer of ONION increases sublinearly (more precisely, in proportion to (ln N ) making it particularly useful for a large database. 6.3.3. Experiment 2: query performance as s is varied because the elements of the list are totally ordered. However, when s by 0.5 to 2.6 times over TA(e). 6.3.4. Experiment 3: query performance as k is varied times over TA(e).
+ 6.3.5. Experiment 4: query performance as d is varied 6.3.6. Experiment 5: query performance as cf is varied
+Fig. 13 shows the query performance of the HL-index, ONION, and TA(e) as cf is varied from improves by 1.4 to 3.2 times over ONION and by 1.8 to 3.1 times over TA(e). 6.3.7. Experiment 6: query performance as s is varied when using a real dataset seven-dimensional real dataset. The HL-index begins to outperform the other methods when s
+TA(e). 6.3.8. Experiment 7: query performance as k is varied when using a real dataset in Fig. 11 . The HL-index improves by 2.3 to 3.3 times over ONION and by 1.3 to 5.3 times over TA(e). 6.4. Performance of monotone linear queries preference w [ i ] randomly from {1,2,3,4}, and normalize them to be for ten randomly generated queries, and then, use the average value over them. 6.4.1. Experiment 8: query performance as s is varied when using only monotone linear scoring functions and by up to 2.6 times over SUB-TOPK. HL-index (cvxsky) improves by up to 41.3 over the PL-index when s 6.4.2. Experiment 9: query performance as k is varied when using only monotone linear scoring functions the HL-index shows significant improvement over ONION and TA(e). Compared to SUB-TOPK, HL-index (skyline) shows approximately 10% (which should be higher with a higher sub-dimension such as s (cvxsky) shows up to 5.9 times performance improvement when k by up to 9.5 times over TA(e) and shows performance comparable to SUB-TOPK. 6.4.3. Experiment 10: query performance as cf is varied when using only monotone linear scoring functions performance improvement. 7. Conclusions analysis.
+ functions. Since this version of HL-index does not put any restriction on the sign of the attribute weight 2 monotone (linear or non-linear) functions.
+ memory, which are being and will become more and more prevalent in the foreseeable future [38] . functions while satisfying this property would be an interesting problem. We leave this as future study. Acknowledgments functions. Besides, it includes correctness proofs of the algorithms and extensive experiments.
+References

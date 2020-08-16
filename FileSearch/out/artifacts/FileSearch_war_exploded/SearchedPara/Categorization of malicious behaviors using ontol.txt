@@ -1,0 +1,33 @@
+ 1. Introduction (adding/removing resources on network).
+ protect and secure their networks by monitoring user and resources activities. can disable it), g) and are thus not particularly smart.
+ proxy server will not be able to block other video websites except youtube).
+Umar et al. in [1] proposed  X  An Agent Based System for Activity Monitoring on Network [21,24,23,20,26,25,22,27] .
+  X 
+Rule set for malicious (illegal) applications are defined in the form of is responsible to define and update the rule set.  X  b Rule&gt; b /Rule&gt;  X  Sample Rule Set  X  never be able to monitor it.  X 
+The rule set is static and maintained manually.  X  The proposed framework cannot predict or capture malicious unknown applications. In this paper we have modified the existing ABSAMN architecture and proposed CMBCA (Categorization of Malicious uncovered by detecting unknown illegal applications.
+ concluding remarks are drawn in Section 5 . 2. Ontology, agents and knowledge base incompatible with each other as each concept can have different meaning in different domain ontology [7]. important role in refining or constructing the underpinning knowledge base of information systems [5]. knowledge base is developed in a hierarchal way and contains the following classes.  X 
+Application  X 
+Application Type  X  Resource  X  classed as malicious application if it uses any resources defined in the describe properties, and usually characteristics of the particular class are defined using
+Ontology Agent is responsible to infer the unknown application into a defined new unknown illegal application is captured. 3. System architecture  X 
+Knowledge Elicitation Agent (KEA)  X 
+Sub-Network Agent (SNA)  X 
+Cognitive Ontology Agent (OA)  X 
+Action Agent 3.1. Knowledge Elicitation Agent (KEA) interaction. In the initialization, KEA performs the following steps:  X  IP tag contains the range of the IP Addresses within the sub-network. 2) KEA loads the ontology from the ontology-based knowledge base. 3) KEA makes different Rule Profiles for the sub-networks. server to monitor the activities of the assigned network. 5) KEA passes ontology, rule profile and configuration of the sub-network as arguments to SNA. agents.
+ Knowledge Elicitation Agent 3.2. Sub-Network Agent (SNA) steps: 1) SNA loads ontology, network and rule profile configuration passed by the KEA. 4) if COA reports any malicious activity over the network: b. Waits for AA response. c. Updates its data base and sends record to KEA.
+ Ontology and Action Agents by constantly monitoring the activities of these agents. Sub-Network Agent IPAddress,Action); 3.3. Cognitive Ontology Agent (COA) extract the core information of every process and stores it in a process vector set model V . steps: (a) Pre-processing, (b) Concept Disambiguation, Extrapolation and Detection, (c) Classification. 3.3.1. Pre-processing process vector set V .  X 
+In Step 1, all standard stop-list / stemmer words like (  X  alphabetic char(s) like (  X  %  X  ,  X  _  X  ,  X  #  X  ,  X  @  X  , {(  X  chat  X  ,  X  chatting  X  ,  X  chatted  X  ), (  X  connected  X  ,  X  attribute. This approach signi fi cantly reduces the size of the built-in string attribute V  X  interested in abnormal keystroke frequency. The keys with reduced using the same technique.
+  X  3.3.2. Concept disambiguation, extrapolation and detection disambiguated in order to assign proper category to each of these attributes.
+Built-in string attribute Vi ={ K 1 , K 2 , K 3 , K 4 , ... meanings and K i S q ( q =1, ... , n ) represents the different meanings that K shortest path (smallest number of nodes) in the hierarchy.
+ After identifying the most related senses for each pair of keywords, Concept set (C LSO is added to the concept set else keywords x and y individual concepts are added to the set.
+Malicious keyword concepts are loaded and stored in malicious set ( M and a list of synonym, hypernym synsets for each concept are stored in Synonym (S separate resultant set (R S ) with labels C (Original Concept C in R where Weight (Rs i ) represents the individual weight of concept and Occurrence( Rs base.
+
+In order to disambiguate and assign proper category to DLL attribute, n Category Sets ( C process vector set are assigned abnormal or normal category based on the key frequencies. 3.3.3. Classi fi cation classify the process as malicious or un-malicious using the ontology. are substituted by concepts, we calculate the weight of each ontology class O concepts in O i has the maximum weight will be assigned to W only if the maximum weight Cognitive Ontology Agent } 3.4. Action Agent (AA)
+After initialization each Action Agent moves to the network node assigned and performs the following tasks: 1) Get the handler of the Malicious Process P i (passed in argument by SNA). 2) Perform the Action on P i and report the result of action to SNA. 3) Wait for the response from SNA. 4) If SNA assigns a new task move to new destination and repeat step 1 else Kill itself. 4. Performance analysis We have compared ABSAMN (An Agent Based System for Activity Monitoring on Network) and CMBCA (Categorization of
+PCs. ABSAMN and CMBCA were compared on a same configuration; results show that CMBCA outperforms ABSAMN in every and the accuracy of CMBCA is far more better than ABSAMN.
+ sub-servers. This activity takes 2.96 and 4.07 seconds respectively. be created.
+ administrator can add new rules or update existing rules which itself requires manual maintenance).
+CMBCA learns from the environment and updates its ontology-based knowledge base by adding, updating or deleting performed.
+ unable to capture these violations, which leads to wrong statistics. 50.84 seconds respectively.
+ monitoring is started and again the agent count increases to 52 and 78 respectively. network. 5. Conclusion ABSAMN architecture and proposed a new system, namely, CMBCA which is underpinned by an ontology-based knowledge system used to detect known and unknown malicious activities carried out by users over a network. CMBCA is fully assisted living.
+
+References

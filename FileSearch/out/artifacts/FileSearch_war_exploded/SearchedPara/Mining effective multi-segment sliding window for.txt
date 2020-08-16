@@ -1,0 +1,64 @@
+ 1. Introduction 1.1. Pathogen incidence rate prediction (PIRP) rates of various infectious diseases over time.
+ outbreaks of novel strains of infectious diseases.
+
+Several traditional time series analysis methods, such as ARMA and ARIMA [1  X  produces accurate and easy-to-understand prediction models based on the time points in the window.
+GEP-based time series prediction have produced very good results [8 produce a mathematical model based on that window. 1.1.1. Using fl exible sliding windows series modeling studies. The simple sliding window of size size of a sliding window is the number of time points the window contains.)  X  lies with using GEP and  X  multi-segment  X  sliding windows for time series prediction. dysentery in a region, given in the following table. Let R ( t ) denote R 's value at time point t . time point t using the sliding window W 1 ={ t  X  3, t  X  2, t
+W 2 ={ t  X  13, t  X  12, t  X  1}, trained from the dataset D 2
+In our experiments, GEP found the following accurate model R ( t )= R ( t for the multi-segment window W 2 but it failed to find an accurate model for the simple sliding window W sliding windows may result in different prediction accuracies suitable sliding window is constructed.
+ pathogen in next spring, based on its incidence rates in this spring. 1.2. Research objectives and contributions modeling.
+
+This paper makes the following four main contributions: 1.3. Paper outline
+Section 7 discusses related works. Section 8 discusses future works and concluding remarks. 2. Brief introduction to GEP brief introduction below.
+ and efficient ways to program evolutionary computation [7].
+ modifications to generate new individuals of successive generations. symbolic strings of the genes is fixed, each gene can code for expression trees of different sizes and shapes. longest one occurs when all the symbols in the head are functions with the maximum arity ( multiple genes in an individual, the genes are connected by a linking function, such as the coding region is the first 5 symbols (so the expression tree does not contain the is the first 5 symbols (so the expression tree does not contain the individual.
+ error or relative error between the predicted value and the target is commonly used as fitness function. generations, quality of solutions, and so on) is satisfied.
+ 3. Problem formulation this paper.
+
+The incidence rates of a given pathogen will be given as a time series R : R (1), R (2), diagram for the monthly incidence rates of bacillary dysentery (per thousand persons) over 7 years. 3.1. Sliding window sliding window W , namely the number of time points contained in W . For example, W window (template) for variable time point t . When t = 64, {61, 62, 63} is the sliding window instance of W
+In general, any set of  X  time points that are smaller than t can be considered a sliding window of size greater than t 2 , we have the following: overcome this difficulty, we utilize periodicity in sliding window construction. 3.2. Periodic partition improve prediction accuracy.
+
+De fi nition 1. Periodic partition
+Suppose  X  is a period of a given time series R . For a given time point t (1 disjoint periodic partitions, starting from t . The | i |-th interval ( max (0, t denoted by p i ( t ), is ( max (0, t  X  (| i |+1)  X   X  ), t
+P ( t ); so Pt  X  X  X  p i t  X  X j  X   X  t  X  1  X   X   X  i  X  0 for time point t = 82 are: p 0 (82): (70, 82], p  X  1 (82): (58, 70], p (10, 22] and p  X  6 (82): (0, 10] (see Fig. 4 ).  X 
+For a given periodic partition set P ( t ), a segment s i size of segment s i , denoted by | s i |, is the number of time points contained in s segment { s i | p i ( t ) E P ( t )} satisfying (i) there is exactly one segment s segments in W 3 are: {{58},{68, 69, 70},{80, 81}}. Observe that W since there are more than one segment for some periodic partitions. models for PIRP. Our method finds effective multi-segment sliding windows in two main steps: (i) constructing candidate effective multi-segment sliding windows of a given size; (ii) applying GEP to select the most effective multi-segment sliding window for building the prediction model. 4. Heuristic enumeration of candidate effective sliding windows incidence rates of bacillary dysentery shown in Fig. 3 , we get two observations: method to enumerate candidate effective multi-segment sliding windows for PIRP. in PIRP are: (i) The segments in W are selected from some away.
+ Formally, for a periodic partition set P ( t ) and an associated window W , let S set of segments associated with W . For a given window size satisfies: (ii) Except t in p 0 ( t ), there is no time point later than s (iii) For each i ,| s i  X  1 |  X  | s i |  X   X  , where  X  is a small positive integer. smaller than those further away. Moreover, there is no limit on how large | s determined (condition (ii)). Thus we can use a  X  -tuple consisting of the sizes of all the segments in S sliding windows, denoted astriples in the form of b | s  X  2 2, 5&gt;, b 0, 1, 6&gt;, b 3, 0, 4&gt;, b 2, 3, 2&gt;, b 3, 1, 3&gt;, b s  X  1 : {69, 70}, s  X  2 : {57, 58}.  X 
+Proposition 1. For given sliding window size  X  and segmentation length windows is not greater than C  X   X  1  X   X   X   X  1 .
+ EnumWin , is given in Algorithm 1, which we will explain next.
+
+Enumeration is started by calling EnumWin (0,  X  ,  X   X   X   X  window the size of s 0 is allocated at first, the total size of sliding window is 1  X  8 state the terminal conditions of the recursion. If the total size  X   X  -tuple w has been created (Step 11), a possible value is assigned to calling EnumWin recursively.
+
+Next, we analyze the time complexity of EnumWin . The time complexity of finding a be estimated as OC  X   X  1  X   X   X   X  1  X  . Note that, besides since  X  is often quite small and there are few possibilities for segment sizes to be allocated when 5. Mining effective multi-segment sliding window by GEP multi-segment sliding window evaluation. 5.1. A benchmark evaluation approach
+Let R be a given time series, and W a multi-segment sliding window for variable time point t .Let( z time points in W for t . The training dataset D associated with W is defined to be the set {( R ( z
+GEP individual  X  is a function that takes ( R ( z 1 ( t )),
+We use the relative error between R ( t ) and  X  ( R ( z 1 fit (  X  , D ), is computed as follows. (The pseudo-count of is used to avoid division by zero.) as SelectWin , and its pseudocode is described in Algorithm 2.
+
+If an individual with larger fitness is evolved, it is reserved as well as its associated dataset (Steps 5 in this case, function CreateSeedPop ( pSize ) in Step 3 is invoked only once. multi-segment sliding window.
+ and will compare it against a better one described next. 5.2. A voting theory-based evaluation approach 5.2.1. Biological enlightenment
+By the biological principle known as  X  seek advantage, avoid disadvantage of datasets generated by candidate effective multi-segment sliding windows. For an individual p -order) of  X  on DS to describe the dataset preference of (generated by the effective multi-segment sliding window) that most individuals prefer. 5.2.2. Voting for preferred dataset meaningful outcome of a voting method [14]:  X 
+Pareto criterion: If every voter prefers choice c 1 over choice c  X   X  winner.  X  then c 1 should still be the winner.
+ method to adopt should be based on what seems most fair for the situation.
+Condorcet criterion. Formally, let C be the set of candidates, and V the set of voters.  X 
+Borda Count : For candidate c 1  X  C , let rank ( c i , v m
+Borda c i  X  X  X   X  v m  X  V C jj  X  rank c i ; v m  X  X   X  X  . The candidate with the largest score wins.  X 
+Copeland's Method :Forcandidates c i , c j ,  X  C ,let prefer ( c count c i ; c j  X   X  v m  X  V prefer c i ; c j ; v m be the number of voters who prefer c
+The voting score of c i is Copeland c i  X  X   X   X  c j  X  C win c
+Example 5. Suppose there are 4 candidates c 1 , c 2 , c 3
+Then the score of each candidate computed by Borda Count is c computed by Copeland's Method is c 1 :  X  2, c 2 :3, c 3 :0, c 5.2.3. Sliding window elimination
+By making use of the voting method, VoteWin eliminates  X  ineffective (i) Get the p-order of individuals . VoteWin adopts the same fitness function as SelectWin . The p -order of prediction model based on the dataset.
+
+Algorithm 3 describes the pseudocode of VoteWin . The upper bound of time complexity of VoteWin is O ( ng evolution by removing the datasets that are not preferred by GEP individuals. 6. Experimental study
+Windows 7 SP 3. 6.1. Datasets January 2004 to December 2010 in a province of China. So, there are 84 time points in total in each dataset.
+Moreover, we select two health related datasets, namely Measlnyc and Mumps ,fromtheTimeSeriesDataLibraryat proposed algorithms. The two datasets are denoted as Measlnyc 6.2. Effective multi-segment sliding window discovery 6.2.1. Ef fi ciency test on EnumWin number of candidate effective multi-segment sliding windows depends on three factors: the window size ( s i  X  1 largerthan segment s i (  X  ) and segmentation length ( windows enumerated by EnumWin ,aswellastherunningtimeunderdifferentvaluesof thatthe number of candidate effective multi-segmentsliding windows increases asthevalues of enumerated multi-segment sliding windows increases in a nearly linear manner when can see that EnumWin can enumerate the candidate effective multi-segment sliding windows efficiently. 6.2.2. Effective multi-segment sliding window mining
+A total of 32 candidate effective multi-segment sliding windows were enumerated by EnumWin when
+We use a 4-tuple b | s  X  3 |, | s  X  2 |, | s  X  1 |, s 0 |&gt; minimum training error in a dataset is in bold.
+ or China-C , the best prediction models evolved over these sliding windows are identical.) 6.3. Effectiveness of VoteWin 1000. We also run VoteWin-B and VoteWin-C 20 times independently on each training set. the optimal prediction model may be generated in less number of generations.
+VoteWin-C , respectively. 6.4. Prediction accuracy
+Thus, it is desirable to apply our proposed algorithms to the PIRP problem. 6.5. Scalability test and Mumps 30 include the data from January 1941 to December 1970 (30 years), and datasets Measlnyc data from January 1931 to December 1970 (40 years).
+
+We use the same experiment settings as the one used in the effectiveness tests on Measlnyc it is practicable to apply our proposed algorithms to larger datasets.
+The optimal sliding windows discovered for Measlnyc 20 , Measlnyc respectively. The best prediction models that evolved over these sliding windows are identical: R ( t )=R( t model discovered for Measlnyc 10 (see Table 4 ). For Measlnyc identical to the one discovered for Measlnyc 10 .
+ optimal prediction model for different sliding windows may be identical. 7. Related works 7.1. Time series modeling as econometrics [16,17] , medical data analysis [18  X  20], and meteorology [8]. or on temporal databases [31].
+ methods [35]. 7.2. Time series modeling for health informatics modeling. 7.3. Evolutionary computation for time series modeling be used for modeling and forecasting chaotic time series [37 GP-based time series modeling [45  X  47].
+ called EGIPSYS for symbolic regression problems and demonstrated its utility for time series modeling. 8. Discussions and conclusions considered mining such multi-segment sliding window for GEP-based time series modeling. prediction models can be evolved by introducing more complex operators. general scenario, including in other domains such as economics, meteorology and finance. Acknowledgment
+Guozhu Dong was supported in part by NSF IIS-1044634. Appendix A
+References

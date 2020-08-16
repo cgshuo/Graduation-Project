@@ -1,0 +1,83 @@
+
+Computer Science Department, National Institute of Astrophysics, Puebla, Mexico Advanced Technologies Application Center, Siboney, Playa, Havana, Cuba 1. Introduction to the same cluster should be more similar than objects belonging to different clusters [21]. are more suitable.
+
+The main contribution of this paper is a new dynamic clustering algorithm, called DCS, which deletions, is also introduced.
+
+The experimental evaluation, conducted over different data collections, shows that our proposed organization [3], fi ltering [5], web document clustering [19], among others. and some ideas about future work are presented in Section 5. 2. Related work disjoint clusters or they are incremental ; i.e., they only process additions. dimensional records X 1 ,X 2 ,...,X the data stream clustering problem, like those proposed in [2,17,28]. cover of this graph.
+
+Given a collection of objects O = { o 1 ,o 2 ,...,o function S such that  X  o undirected graph G subgraph is interpreted as a cluster.
+
+Star builds a cover of G becomes empty.
+ L on in Subsection 3.2, our proposed algorithm overcomes this limitation.
+The algorithm proposed in this work, named DCS, introduces a new graph-covering strategy that clustering, by ef fi ciently managing multiple additions and deletions. 3. Clustering based on strength in Subsection 3.2 the new strategy proposed to cover G the DCS algorithm are discussed. 3.1. Basic concepts
+Let G of known as the degree of v .
+
+Let G sub-graph G  X  remaining vertices are called satellites .
+
+Let W = { G 1 G
+Let v, u  X  V be two vertices of G v covers u iff u  X  V .
+
+Let G  X  i =1 ..k, v i  X  V ; M is a  X  -connected component iff it meets the following conditions: ii) There is not another set M , satisfying condition i), such that M  X  M . The set formed by a singleton isolated vertex of G 3.2. Building overlapping clusters using strength
+Finding the minimum vertex cover of a graph G build a cover of G by its center, the problem of fi nding a set W = { G 1 s-graph G i based on a property of the vertices called strength .
+
+The strength of a vertex v  X  V , denoted by v.strength , is computed as follows: adjacent vertices) will lead to cover G previous iterations then, the amount of vertices that could be included in the cover of G ( i | u.Adj | &lt; | v.Adj | , for covering G process we can solve the above mentioned problem.
+ has a strength greater than vertex d . if all the vertices, which could include more vertices than v , were selected before v . L . The isolated vertices of G in this way, the number of s-graphs needed to cover G as a center and added to C if it satis fi es one of the following conditions: 1) v has not been covered yet; i.e., v/  X  C and c  X  C , such that ( c, v )  X  E fi gure, the vertices selected as center are highlighted using a dashed line. i.e., they could be removed from C and G centers that are no longer useful to cover G removed from C . A center c  X  C is redundant if it satis fi es the following conditions: a) c has an adjacent center whose degree is greater than the degree of c . clusters.
+ clusters obtained by the above process.
+ algorithm is showed in Algorithm 1.
+
+It is important to notice that the strategy proposed in this subsection for covering G dashed line.
+ Let n be the size of the object collection O = { o 1 ,o 2 ,...,o O ( n 2 ) .
+ i.e., the computational complexity of Step 2 is O ( n 2 ) .
+ [0, hence, T 4 is O ( n ) .
+ computational complexity of Steps 6 X 8 is O ( n 2 ) .
+ built in a time T 8 = n 2 ; thus T 8 is O ( n 2 ) .
+
+Finally, the time of the entire algorithm is T of the algorithm. By the rule of the sum, T we can conclude that the complexity of Algorithm 1 is O ( n 2 ) . 3.3. Updating the current clustering
+Let X  X  suppose that we have a similarity graph G the list of centers covering G added to/deleted from G
+It is important to me ntion that each add ition or deletion imp acts the topology of G an object to the collection implies the addition of a new vertex in G similarity to all the other vertices in G the vertex that represents this object together with its associated edges are removed from G cases, the strength of some vertices in G
+After some vertices are added to/removed from G of Fig. 6(d) . As it can be seen from this graph, the vertex g became uncovered. least one of the following conditions happens: ii) There is at least one vertex u  X  v.Adj such that the value of u.count changes. conditions happens: to the  X  -connected components that contain: a) The vertices which were added to G b) The vertices which were adjacent to the vertices removed from G
+Therefore, we can update a clustering or covering of G candidates to be promoted to centers must be computed.
+
+Let V the list L , the vertices v  X  V
+Each vertex v  X  V and consequently it will be included in L : v  X  X rocessed X  in order to guarantee that a vertex will not be processed more than once. The above described strategy constitutes the DC S algorithm. The pseudocode of DCS is showed in Algorithm 2.
+ were done to G save time being able to ef fi ciently manage multiple additions and/or deletions of objects. steps. Let n be the number of vertices of G
+Steps 2 X 9 update G R + and objets in R  X  . Steps 2 X 5 spend a time T 1 = n  X  ( n  X  1) T 2 = n 2 ,then T 2 is O ( n 2 ) .
+ The time spent by Steps 10 X 26 depends on the time spent by Steps 12 X 24. The construction of spends a time T 4 =2  X  n 2 Steps 17 X 22, as explained for Algorithm 1, is T 6 =2  X  n 2
+Based on the previous analysis the time of Steps 11 X 25 is T 11  X  25 =6  X  n 2 { v component G = V ,E generated by each vertex v is is O ( n 2 ) .
+
+Finally, based on the aforementioned analysis the total time spent by the DCS algorithm is T T T 3.4. Final considerations about the DCS algorithm saves processing time because it update those clusters just once rather than several times. G collection and it is the fi rst time that the collection will be clustered then, the graph G previous clustering. 4. Experimental results
+In order to show the performance of the proposed algorithm, some experiments were done over algorithms according to the number of clusters.
+ Duo at 1.86 GHz CPU with 2 GB DDR2 RAM, running RedHat Enterprise Linux 5.3. 4.1. Description of the collections contains news published by the AFP agency in 1994 and used in the TREC-5 conference. Reuters-the other two benchmarks contain news in English.
+ union of Reu-Te and Reu-Tr, (4) TDT was built from TDT2 benchmark using the news that have been randomly three from the fi ve folds.
+ the collection.
+
+In our experiments, documents were represented using the Vector Space Model (VSM) [35]. The as: articles, prepositions and adverbs were removed.
+ 4.2. Evaluation measures to evaluate overlapping clusterings [15,30].
+
+We do not use internal measures like the Dunn index [11] and the silhouette width [34], because measures for evaluating overlapping clusters.
+ of a clustering using statistics over pairs of objects.
+
+Let G = { g 1 ,g 2 ,...,g same class but different cluster.
+ (J) and Fmeasure (F) are: where: the Homogeneity and Completeness of a clustering.
+ are substituted in Eq. (3): thus: therefore, Fmeasure takes into account the homogeneity in a clustering. J ( clustering.
+ WorkingonEq.(4)wehave: and then: Fmeasure takes into account the completeness of a clustering.
+ quality of the resulting clusters. 4.3. Quality of the resulting clusters Fmeasure, of the clustering they build. This experiment was conducted as follows. 0.17 an so on.
+
+After that, we computed the values of Jaccard-index and Fmeasure obtained by each algorithm on mentioned interval.
+ means that the Fmeasure and the Jaccard-index var y only a little for dif ferent orders. collection, the best average values of Jaccard-index and Fmeasure. measures, in all the collections used in this experiment.
+ In addition, we show in Table 4 the improvement in percentage of the values of Fmeasure (F) and same evaluation measures.
+
+As it can be seen from Table 4, DCS gets improvements up to the 20.51% considering the Fmeasure and the 28.0% considering the Jaccard-index. 4.4. Time spent for processing multiple operations are done over the two largest collections; i.e., Reuters and TDT. by multiple additions. 4.4.1. Behavior f or multiple additions time a number N the collection there is no previous clustering; therefore, these fi rst N by both algorithms from the beginning. From this point, every time N collection, both methods update the previous clustering.
+
+In the experiment with the Reuters collection we used for N the experiment with the TDT collection we used for N of N experiment we will use  X  = 0.25 and  X  = 0.30 for Reuters and TDT respectively. selected values of N using N values for N from one order to another when we use N algorithm for clustering TDT using N to another. 4.4.2. Behavior for multiple deletions clustering built for Reuters and TDT, every time a number N used for N for Reuters and N 0.30 for TDT.
+ ten times for each value of N DCS algorithms, over Reuters and TDT, for the selected values of N 1500 and N we observed a behavior similar to that observed in the experiment above described. 4.4.3. Behavior for multiple modi fi cations a deletion followed by an addition.
+ and TDT , when a number N decreasing the weight of some terms belonging to the documents (i.e., modi fi ed).
+We used for N for Reuters and N thesamevaluesof  X  chosen in Subsection 4.4.1; i.e.,  X  = 0.23 for Reuters and  X  = 0.30 for TDT. ten times over both collections and for each value of N the average time spent by each algorithm over the ten experiments for each value of N Figure 9 shows the average behavior of Star and DCS over Reuters (see Fig. 9(a)) and TDT (see Fig. 9(b)) for the selected values of N over the Reuters and TDT collections. We conducted other experiments using N 2000 for Reuters; and N behavior similar to that observed in the experiment above described. 4.5. Number of clusters showed in Table 3.
+ the aforementioned values of  X  .
+ clusters than Star.
+ collection; therefore, it loses sense to apply a clustering algorithm over the collection. 5. Conclusions
+From the experiments, we conclude that our proposed algorithm obtains clusterings with a higher apply a strategy similar to DCS to process multiple additions/deletions. of analysis that must be done over the entire collection.
+ where the data change frequently.
+ according to what he expect to obtain with the selected  X  value. relations could exist among the different clusters.
+ Acknowledgment the project CB-2008-01-106443 and grant 32040.
+ References

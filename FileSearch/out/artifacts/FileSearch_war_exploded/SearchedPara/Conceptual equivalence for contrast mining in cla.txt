@@ -1,0 +1,79 @@
+ 1. Introduction
+Understanding the discrepancy between contrasting data groups is fundamental to data analysis [1,2]. Given two groups enrolment and the police are interested in what affects crime rate.
+ how well the cleansed data set resembles the clean one and hence measure the quality of the cleansing method. A third has changed across instances streaming through time space. 1.1. Related work Various methods have been proposed to discover discrepancy between groups.
+ across groups [1,2]. It searches through data groups to find all contrast sets ( cset ) that satisfy: $ ij P ( cset =
+True j G i )  X  P ( cset = True j G j ), and max ij j support ( cset , G the minimum support difference. This paper will propose a new approach named conceptual equivalence mining. There ply the counterpart X  X  classifiers to their own data, and discover their differences.
+A method closely related to conceptual equivalence mining is correspondence tracing [19]. Correspondence tracing ing new rules for each old rule through the instances that they both classify and use the new rules to describe the titative measures and rankings relate to each pair of corresponding old X  X ew rules. Second, conceptual equivalence mining is interested in discrepancies instead of classification accuracy. It actually aims at reducing the dependency on the accuracy of employed classification algorithms. Correspondence tracing takes the improvement to classification accuracy as one primary goal. It ranks all changes according to the accuracy improvement. A change is important to the extent that recognizing it can improve the classification accuracy. Nonetheless, the global information delivered by conceptual equivalence mining and the local information delivered by correspondence tracing are complementary.
+For instance, conceptual equivalence mining can report in general that the rule R of the data group G biggest discrepancy between G 1 and G 2 . Correspondence tracing can report in detail which rules in G R (either agreeing or contradictory).
+ values in the table correspond to the number of attribute X  X alue pairs that match or do not match between the two stance sets supported by each rule. A statistical measurement, such as v values well. This paper will propose a new method to calculate the conceptual equivalence between two groups. The and their rule sets do not need to syntactically match each other. Moreover, the approach applies to numeric data as well as categorical data.
+
+An interesting technique uses fuzzy set theory to decide the similarity between two rule sets R
+R values. A fuzzy matching system then matches each (non-fuzzy) rule in R applications.
+ this means, superficial changes can be discarded and the major shift in data can be captured. However, capturing rule groups. 1.2. Open challenges With due respect to existing achievements, this paper suggests that some problems remain. sometimes advisable to circumvent direct comparisons between rule sets when contrasting groups. But how? between G 0 and G 1 while there are three rules different between G difficulty is that the two sets of different rules may not be commensurable. Existing methods have not offered clear solutions.
+ of comparison can be sub-optimal if the concept of the data becomes complicated, the attribute values become omnifar-where the data are always highly diversified and the domain knowledge is often in short supply.
+Popular learning algorithms like Bayesian probabilistic classifiers have no explicit rules. Rule comparison is thus inapplicable. 1.3. Main contributions of this paper and (2) retraces the data source that has produced the discrepancy.
+ ancy between contrasting data groups.
+ approaches, merits and functions.
+ 2. Background knowledge 2.1. Terminology attribute values and has a class label.
+ brackets at the end of the rule.
+ and use it to represent the underlying concept. 2.2. Literal vs. conceptual equivalence gets conceptual equivalence. 3. Quantifying conceptual equivalence
+A scoring mechanism that is able to quantify the degree of conceptual equivalence between two contrasting groups is proposed in this section. The sub-optimal aspects of possible alternative mechanisms are also analyzed. 3.1. The proposed scoring mechanism
+A new scoring mechanism is proposed that, given two contrasting groups G
+G conceptually resembles G 2 ; (2) the degree that G 2 conceptually resembles G rule sets. It also reduces dependency on the learner X  X  accuracy.
+
+As illustrated in Fig. 1 , a learner is applied to G 1 and G instance I in G 1 or G 2 is classified by both RS 1 and RS from its true class; and (3) no-match , the rule set does not cover this instance and no classification is given. of these outcomes indicate I  X  X  different status of representing conceptual equivalence between G can be three scenarios. 1. RS 1 and RS 2 agree on classifying I . Hence I is a contribution to the conceptual equivalence between G cated a score of +1. The classification results can be: 2. RS 1 and RS 2 disagree on classifying I . Hence I has a negative impact on the conceptual equivalence between G is allocated a score of 1. The classification results can be: reasons and solutions exist.
+ procedure. RS 1 _ Nomatch and RS 2 _ Nomatch are the rule sets formed by matching each no-match X  X o-match instance and is allocated following the above-detailed scoring mechanism.
+
+As a result, this scoring mechanism gives a score of +1, 0 or 1 to each instance in G stances in G 1 and G 2 are n 1 and n 2 respectively. The following formulae are employed to calculate score conceptually resembling G 2 ), score 2 (the degree of G 2 equivalence between G 1 and G 2 ) [ 1,+1]. The more two groups conceptually resemble each other, the greater the value. Second, score the proposed scoring mechanism.
+ further retrace the source of discrepancy, which is to be addressed in Section 4. 3.2. Alternative scoring mechanisms ulous compared with the above proposed method. 3.2.1. Using rule comparisons ison will be further demonstrated in Section 5.3. 3.2.2. Using classification accuracies
+A naive method that measures conceptual equivalence without directly comparing rules was proposed by the authors in previous work [12]. Fig. 2 illustrates the process. Suppose there are two contrasting groups G learned from G 1 and is used to classify data in G 2 , obtaining classification accuracy acc
+G and is used to classify data in G 1 , obtaining classification accuracy acc n and n 2 respectively. The weighed mean of acc 1 and acc 2
+G and G 2 : accuracy. An instance  X  X ondition A, class C X  appears in both G which is not correct. 4. Retracing discrepancy source lates to concepts. 4.1. Ranking discrepancy instances degree of discrepancy. Imagine that an instance I 1 is approved by G
+I is approved by G 1 but is contradicted by G 2 . It is reasonable to assume that I system is proposed to rank instances according to their represented degrees of conceptual discrepancy. learned from its own data group and the other from its contrasting data group. The former is represented as R regard to an instance I is defined as follows. If it approves I , R has a positive has a negative strength. If it does not cover I , R has no strength. er the instance is ranked. discrepancy information can be abstracted into concepts, which is the topic of the following section. 4.2. Abstracting discrepancy concepts in Table 2 that needs only a one-pass linear scan to abstract one data group X  X  rules (for instance G group X  X  (for instance G 2 ).
+
+For each rule R learned from G 1 , the algorithm counts the number of instances in G value . The higher the rank, the greater discrepancy this rule stands for between contrasting groups. 5. Experiments less capable. The employed learner is C4.5rules [29] since it is one of the most commonly used in practice [21]. 5.1. Testing the scoring mechanism this trend, the proposed scoring mechanism is useful. 5.1.1. Design
+The test is designed as follows. A data set G is divided into two exclusive groups G class proportion so that they support the same concept. Keep G for the user X  X  flexibility. The scoring mechanism calculates the conceptual equivalence between G versions. 5.1.2. Data
+The experimental data are benchmark data sets from the UCI machine learning repository [28], whose details are as follows.
+ There are 1728 instances, each with one of four classes: unacceptable, acceptable, good and very good. algorithms. For instance, one target concept is: (A1 = A2) or (A5 = 1).
+ The  X  X ushroom X  data set has 8124 mushroom instances drawn from  X  X  X he Audubon Society Field Guide to North American mark results [31,32] .
+ dren, housing conditions, financial standing of the family, social conditions and health conditions. There are 12,960 instances.
+ are referred to as  X  X  X onors X .
+ (diodes), 10 classes (digits 0 X 9) and 500 instances.
+ ses and 435 instances.
+ 9 attributes (each corresponding to one tic-tac-toe square), 2 classes (win for x or otherwise) and 958 instances. 5.1.3. Result analysis
+The resulting score starts with 1 when no noise exists and almost monotonously decreases while the corruption becomes tween data groups. 5.2. Testing the ranking system data groups and conduct statistical evaluations on the proposed system. 5.2.1. Case study
+This section of experiments changes the underlying concept of a data set, reproduces instances accordingly and tests whether the proposed ranking system can retrace this change. Two UCI benchmark data sets with documented underlying
+Monk-1 and Mushroom can be found on the UCI machine learning repository website [28].
+The test is designed as follows. Each data group G is divided into two exclusive groups G lenge the new methodology, G 1 and G 2  X  X  class distributions are not necessarily identical. Keep G change the concept and apply it to G 2 , revising its instances X  classes accordingly. The unchanged G are put into the ranking system. Some example results are given below.
+ a rule represents between contrasting groups, the higher its rank.
+ data group. The rank of each instance is marked in front of the instance. The more powerful an instance X  X  R their own groups, the higher the instance is ranked.
+ Test Case 1 . For Monk-1 X  X  G 2 , an underlying concept A1 = A2 k A5 = 1 ) Class = 1 is changed to
+A1 = A2 k (A5 = 1 k 2) ) Class = 1. The ranking system returns the following. (1) G 2  X  s concept that contrasts with G 1 : (2) G 1  X  s concept that contrasts with G 2 :
+It is observed that the system accurately captures the concept discrepancy between G
+G while A5 = 2 always relates to Class = 0 in G 1 .
+ print-color = green ) Class = edible . The ranking system returns the following. (1) G 1  X  s concept that contrasts with G 2 : (2) G 2  X  s concept that contrasts with G 1 :
+The system correctly reports that Spore -print -color = green relates to a conceptual discrepancy between G
+Spore -print -color = green implies Class = poisonous in G
+G  X  X  report.
+ to Odor = NOT ( almond k none ) ) Class = poisonous . The ranking system returns the following. (1) G 2  X  s concept that contrasts with G 1 : (2) G 1  X  s concept that contrasts with G 2 :
+The system precisely discovers the discrepancy between G 1 implies Class = edible in G 1 .
+ the ranking system returns the following.
+
+Instances in G 1 that contrast with G 2 (2) Rank = 400: x,y,y,t, Odor = anise, f,c,b,w,e,r,s,y,w,w,p,w,o,p, Spore-print-color = black, y,g, Class = edible cause it satisfies the rule  X  X pore-print-color = green ) poisonous X . However, in G than the instance listed below. 5.2.2. General results set and one of its binary-valued nominal attributes, instances are partitioned into two groups G attribute. G 1 comprises instances that bear the second value of this attribute and G ancy discovery.
+ anism. The third column is an evaluation whether this discovery is indeed a major discrepancy between G concept changes here are inherent instead of manipulated, one needs to manually verify what is going on in G order to evaluate the results. Finally explanations and analysis are given to each result. ing conceptual discrepancy between contrasting data groups. 5.3. Comparison with alternative methods
+Compared with correspondence tracing, both conceptual equivalence mining and correspondence tracing have a ranking alence mining returns the following. Thus conceptual equivalence mining reports in general that Rule 7 of G discrepancy instances and represents the biggest discrepancy between G flected by Rule 12 of G 2 whose rank is 41, and so on. (1) G 1  X  s concept that contrasts with G 2 : o7: Rank = 51: Abdominal-distension = none ) Class = surgical-lesion-no [81.5%] o15: Rank = 35: Abdominal-distension = slight ) Class = surgical-lesion-no [76.2%] (2) G 2  X  s concept that contrasts with G 1 : n12: Rank = 41: Total-protein 6 58 ) Class = surgical-lesion-yes [90.7%] n4: Rank = 25: Abdomen = distended-small-intestine ) Class = surgical-lesion-yes [94.3%]
+In comparison, correspondence tracing reports which rules in G cation accuracy (their ranks). Thus correspondence tracing reports that instances in G (o7) from G 1 are now classified by the new rule 12 (n12) from G is h o7,n4 i , and so on.
+ D (o7,n12) = 0.056 D (o7,n4) = 0.052 D (o15,n12) = 0.031
+Hence conceptual equivalence mining and correspondence tracing consistently point out discrepancy rules like o7, n12, o15 and n4. Combining these two methods, a user can capture conceptual discrepancy between two data groups both in a general and in a detailed format.
+ do not necessarily overlap. For data sets such as Mushroom and Nursery, there are few duplicate instances between G
+G conceptual equivalence is of greater use.
+ 100% accuracy.
+
+Compared with rule comparison, conceptual equivalence can be more applicable. For example, the Hyperplane data [17,18,33] is a benchmark data set in time-series research: erated and uniformly distributed in multi-dimensional space [0,1] tive, and otherwise negative. Two groups of 1000 instances 0.95. 6. Conclusion and future research
+An important approach to acquiring knowledge is to learn through comparison. However, how to compare is not a trivial task. Given two contrasting groups, evaluating literal equivalence or conceptual equivalence takes place depending on parison might not be able to quantify the degree of discrepancy because different rules are not always commensurable. and misleading.
+
+To overcome these problems, a novel quantitative approach is proposed to carry out contrast mining in the context of probabilistic classifiers that are commonly used in real-world applications but produce no explicit rules. groups. Another instance: the current approach calculates the degree of conceptual equivalence between two groups by averaging score 1 and score 2 . It may be interesting to explore other formulae to combine score the equivalence degree more accurately in Formula (3).
+ Acknowledgement
+This research was supported by the Australian Research Council (ARC) Discovery Grant DP0770741. Xingquan Zhu was supported by the National Science Foundation of China (NSFC) Grant 60674109.
+
+References

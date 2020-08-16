@@ -1,0 +1,10 @@
+ Recommender systems have cemented themselves in the daily experiences of most online users. In this work we will elabo-rate on the different challenges faced when creating recom-mendations in the following domains
+We will review how we address these different challenges in Schibsted. Schibsted is an international media company with over 200 million unique users a month, split across 39 countries across the world.
+
+Concretely we will review, and compare the primary chal-lenges between the different domains mentioned as well as the commonalities and general lessons we have learnt. For example in a two sided marketplace, it is important that both actors in the interaction are considered when creat-ing recommendations. Constraints such as price sensitivity and geographical location become important when identify-ing good quality recommendations for our users.
+
+Alternatively, in online news we need to consider issues such as freshness and topical relevance when creating rec-ommendations for users, while also striving to ensure we have editorial satisfaction. Finally we can look to generic recommendation solutions where we provide simple rec-ommendation API end points. In this case it is important to ensure good quality recommendations while ensuring a generic enough solution that it can be used in many differ-ent scenarios.
+
+What makes these challenges particularly interesting is that we approach these different challenges with a holistic view of for improving the overall user experience for our users in Schibsted.
+
+Steven Bourke is a data scientist in Schibsted. He is a member of the recently formed Schibsted product and tech-nology group where he works on building out and research-ing personalisation techniques to be used across Schibsted?s online properties. Previous to that he performed research in the field of recommender systems in the University of Dublin, under the supervision on Prof. Barry Smyth. H.3.3 [ Information Search and Retrieval ]: Information Filtering; J.0 [ Computer Applications ]: General Experimentation, Human Factors Recommender System; E-Commerce; News; Real world de-ployments

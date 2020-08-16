@@ -1,0 +1,110 @@
+ Shichao Zhang  X  Xindong Wu  X  Chengqi Zhang  X  Jingli Lu Abstract Frequent pattern mining is based on the assumption that users can specify the minimum-support for mining their databases. It has been recognized that setting the min-imum-support is a difficult task to users. This can hinder the widespread applications of itemsets, consisting of polynomial approximation and fuzzy estimation. More specifically, actual minimum-supports (appropriate to a database to be mined) according to users X  mining requirements. We experimentally examine the algorithms using different datasets, and dem-from the commonly-used requirements.
+ Keywords Data mining  X  Minimum support  X  Frequent patterns  X  Association rules 1 Introduction in the context of increasing database sizes when modern technology provides efficient and low-cost methods for data collection.
+
+Frequent itemset discovery is widely studied in data mining as a means of generating asso-much work on algorithm scale-up, for example, instance selection [ 19 , 41 ].
+Apriori-based mining algorithms are based on the assumption that users can specify the minimum-support for their databases. That is, a frequent itemset (or an association rule) challenging issue: performances of these algorithms heavily depend on some user-specified a database, whereas a small minimum-support might lead to poor mining performance and can hinder the widespread applications of these algorithms; our own experiences of mining even though a minimum-support is explored under the supervision of an experienced miner, we cannot examine whether or not the results (mined with the hunted minimum-support) are just what users want.
+
+Current techniques for addressing the minimum-support issue are underdeveloped. Some approaches touch on the topic. In proposals for marketing, Piatetsky-Shapiro and Steingold notion of support [ 30 ]; and Omiecinski designed a new interestingness measure for mining cussed independent thresholds and context-dependent thresholds for measuring time-varying In proposals for identifying new patterns, Wang et al. designed a confidence-driven mining specifying the minimum-support.
+In real-world data-mining applications, users can provide their mining requirements in two ways: 1. Identifying frequent itemsets . The term  X  X requent X  is already a threshold from a fuzzy
+In this paper, we propose a new strategy for addressing the minimum-support problem, consisting of polynomial approximation for a specified minimum support on the commonly minimum-support and our algorithms (polynomial approximation and fuzzy estimation) com-database to be mined). This allows users to specify their mining requirements in commonly-We experimentally examine the algorithms using different datasets, and demonstrate that our approaches fittingly approximate actual minimum-supports from the commonly-used requirements (see the experiment part in Sect. 6 ). 2 Problem statement has an associated unique identifier called TID .
+ referred to as k -itemsets.
+
+Each itemset has an associated statistical measure called support , denoted as supp .For supp ( A ) = 1 n each record is a set of items, and 1 ( A  X  D i ) is 1 when A  X  D i and 0 otherwise. An association rule is an implication of the form A  X  B ,where A , B  X  I ,and A  X  B = X  . A  X  B is denoted as supp ( A  X  B ) .The confidence of the rule A  X  B is defined as the ratio of the supp ( A  X  B ) of itemset A  X  B over the supp ( A ) of itemset A .Thatis, con f ( A  X  B ) = supp ( A  X  B )/ supp ( A ).
+
+The support X  X onfidence framework [ 2 ]: The problem of mining association rules from than, or equal to, a user-specified minimum-support ( minsupp ) and a minimum confidence ( minconf ), respectively.
+
+The first step of the support-confidence framework is to generate frequent itemsets using those itemsets whose supports are greater than, or equal to, a user-specified minimum-sup-port. As have argued previously, the above definition has shown that the Apriori algorithm the minsupp .
+
+The main contribution of this paper is to provide a strategy to convert a (user-specified) fuzzy threshold into an actual minimum-support. To construct the converting functions, we in Sect. 2.2. 2.1 The distribution of itemsets [ a , b ] ,where a = Min { supp ( X ) | X is an itemset in D } and b = Max { supp ( X ) | X is itemsets in D .Thatis, the GORP appropriate to the database. For example, assume that most itemsets in D have low supports and others have an extremely high support, and A a v esupp may be bigger than ( a + b )/ 2 (the median of these supports). If A a v esupp is still taken as the GORP ,wemay discover few patterns from D . Similarly, when most itemsets in D have high supports and is taken as the GORP , we may discover a great many patterns from D .
+
+Based on the above analysis, we use the measure, Lean , for evaluating the support dis-tribution when generating the GORP for D ,where Lean measures the tendency of support distribution.
+ where supp ( X k ) is the support of the itemset X k . 2.2 Parameter estimation This subsection estimates the parameters: Lean , [ a , b ] and A a v esupp for a database. any prior knowledge we could estimate a , b and A a v esupp as follows. 1. a = 1 n 2. b = the maximum of the supports of k -itemsets in Apriori ( D , k ) for a certain k . 3. Approximating average support:
+It is easy to understand the assignment of a .For b , we can determine k according to a mining task.
+ of average supports only). Then the number of records containing a specific item is and its support is to the assumptions, the approximate average support of 2-itemsets is Generally, the average support of j -itemsets is Consequently, because m is the average number of items in records, we can approximate A
+We now illustrate the use of the above technique by an example. Consider a supermarket 100,000 rows. The average number of attributes per row is 5. Let k = 2 for computing b and the maximum support of 2-itemsets is 0.0018. Then, we have
+Note that, due to the assumption of independency, A a v esupp approximates to 1/n when n is large enough. This is consistent with the probability theory.
+
+It is often impossible to analyze the Lean of the support distribution for all itemsets in in D when D is very large.
+
+For a sample SD of D , we can obtain the support of all itemsets in SD and calculate the average support of itemsets, written as A Sa v esupp .The Lean S of SD is as follows.
+The average itemset support of a sampling database is larger than that of the original as the gradient degree Lean .
+
+After Lean , a , b , and A a v esupp are calculated, an approximate GORP for D can be estimated using the fuzzy rules in Sect. 4 . 3 Computationally approximating actual minimum-support by a polynomial function Suppose that the users specify a minimum-support r _ minsupp with respect to the interval [ 0 , 1 ] . We need to determine the desired minsupp for mining database D for which the f . We now propose a strategy for constructing the mapping.
+
+A method for finding an approximate polynomial function  X  f for f between X and Y can be performed by the following theorem.
+ Theorem 1 For X and Y , the approximate polynomial function [ 40 ] for fitting the above data can be constructed as where, k = 1 , 2 ,..., N ; N is the number of fitting times; and G k is the fitted data. The proof of this theorem is given in the Appendix.
+ which the order is not over 2 N + 1. Using this approximation function, we can generate an approximate minsupp from the given r _ minsupp . 3.1 Simplifying the polynomial function of f using Theorem 1. This subsection illustrates the construction of a simple and useful approximation function of f . 1. Linear strategy 2. Polynomial strategy g ( we can approximate g as follows. 3. Linear strategy 4. Polynomial strategy The use of the mapping g will be demonstrated in Example 2 later. Here, we only illustrate the use of f .
+ Example 1 Consider a database TD as shown in Table 1 .Let r _ minsupp = 0 . 7 with respect to the interval [ 0 , 1 ] . The itemsets and their supports are listed in Table 2 . in the interval [ 0 . 25 , 0 . 75 ] . The average support is as follows.
+Using the linear strategy, we can construct the mapping as follows
+Therefore, the actual minimum-support for TD is Consequently, the frequent itemsets in TD are A , B and C .
+
+Using the polynomial strategy, when n = 3, we can construct the mapping as follows.
+Therefore, the actual minimum-support for TD is minsupp = f  X  1 ( r _ minsupp ) = Consequently, the frequent itemsets in TD are A , B , C , D , AB , AC , BC ,and CD . 4 Estimating actual minimum-support by fuzzy techniques 4.1 Fuzzy rules set has an infinite number of membership functions that may represent it.
+For a given universe of discourse U , a fuzzy set is determined by a membership function that maps members of U on to a membership range usually between 0 and 1. Formally, let U be a collection of objects, a fuzzy set F in U is characterized by a membership function  X 
+F which takes values in the interval [ 0 , 1 ] as follows
+Using fuzzy set theory, we can build a fuzzy strategy for identifying interesting itemsets without specifying the actual minimum-support.
+
+Let Fsupport be the mining requirements in common sentences (or the fuzzy threshold specified by users). Fsupport is a fuzzy set, such as  X  X arge X  or  X  X ery large X .
+In our fuzzy mining strategy, the sets of the fuzzy sets of parameters Fsupport , Lean and GORP are F _ Fsupport , F _ Lean and F _ GORP as follows: F _ Fsupport ={ VS ( Very small ), S ( small ), SS ( More or less small ), M ( Medium ), F _ GORP ={ VL ( Very Lo w), L ( Lo w), SL ( more or less Lo w), where,  X  X eft gradient X  means that Lean &lt; 0,  X  X ymmetry X  means that Lean = 0, and  X  X ight gradient X  means that Lean &gt; 0.
+ Note that we can use more states than the above to describe the concepts of Fsupport , Lean and GORP . More states for every variable will simulate the system more accurately. However, the product of the input variables and their states numbers determines the number For example, VL right = F _ GORP and M right ={ M , SH , H , VH } .
+ Based on the above assumptions, the fuzzy rule FR in our fuzzy mining strategy is IF Fsupport is A  X  Lean is B THEN GORP is C where A , B and C are fuzzy sets.
+ The following Table 3 is an example for illustrating the construction of fuzzy rules.
+In Table 3 , the first column is the fuzzy sets in F _ Lean ;thefirstrowisthefuzzysets in F _ Fsupport ; and others are the outputs generated for GORP . Each output is a fuzzy rule. For example, M at the intersection of the second row and the fourth column indicates the fuzzy rule: IF Fsupport is SS and Lean is L THEN GORP is M . This means, the lean of the itemsets in a mined database, Lean , matches the fuzzy set Left gradient ;the less small ; and the fuzzy rule outputs the good reference point, GORP , matches the fuzzy set Medium .
+
+Using these fuzzy rules, we can convert the user-specified fuzzy requirement for a data-base to be mined into the actual GORP appropriate to the database by considering the lean of the itemsets in the database. 4.2 Generating interesting itemsets We can identify interesting itemsets in the database D once the actual GORP is determined. because it is simple but also because it matches the understanding of the concepts. We set two sub-concepts to cover most of the domain area, because if only one sub-concept covers will be too complex.
+
+Figure 1 has demonstrated the triangular membership function of GORP with respect to the fuzzy sets in F _ GORP . We provide the parameters according to their common use. In belonging to fuzzy set F .
+ We now define the procedure of identifying potentially interesting itemsets as follows.
+Lean be B (  X  F _ Lean ) ,and GORP be F (  X  F _ GORP ) obtained by using the above fuzzy rules. Identifying interesting itemsets is to generate the set of the Potentially interesting Itemsets (PI), written as  X  D / F .And  X  D / F is defined as where, Itemset ( D ) is the set of all itemsets in D ,and supp ( A ) is the support of A ,
+A potentially interesting itemset A is represented as where, supp ( A ) is the support of A ,  X  F ( supp ( A )) is the degree of A belonging to fuzzy set F and where, a F is the left endpoint of the triangular membership function of F ,and c F is the center point of the triangular membership function of F . 4.3 An example Let TD 1 be a transaction database with 10 transactions in Table 4 .Let A = br ead , B = co f f ee , C = tea , D = sugar , E = beer ,and F = butter . Assume Fsupport = L ( large ).
+
+For TD 1, let k = 2. From Table 4 ,wehave This means Lean = R . According to the fuzzy rules, we obtain GORP = SH and SH right ={ SH , H , VH } . Hence, the set of the potentially interesting itemsets is  X  TD 1 / SH ={ X  X  Itemset ( TD 1 ) | X  F  X  SH right  X   X 
+Assume the membership function of fuzzy set SH for TD 1is
+AccordingtoEq.( 13 ), we can represent the potentially interesting itemsets as follows 5 Algorithm design 5.1 Identifying frequent itemsets by polynomial approximation where minsupp , mincon f ,and mininterest are the thresholds of minimum-support, mini-tively.
+
+As we will see shortly, many frequent itemsets might be related to rules that are not of ( DI MS for Frequent Itemsets by Pruning).
+ Algorithm 1 DIMSFIP
+Input : D: data set; r _mi nsu pp: user-specified minimum-support ( in [ 0 , 1 ] ) ; min-
+Output : Fr eq uent set : frequent itemsets; (1) //calculate minsupp according to r _ minsupp (2) //generate all frequent 1-itemsets (3) //generate all candidate i -itemsets of potential interest in D (4) //Prune all uninteresting i -itemsets in L i (5) output the frequent itemsets Frequentset in D ; (6) endall .
+ The algorithm DI MSFI P is used to generate all frequent itemsets of potential interest in the database D . It is a database-independent and Apriori -like algorithm. (
+D is less than mininterest for any X , Y  X  A , such that X  X  Y = A and X Y = X  ,then frequent itemsets Frequentset in D , where each itemset A in Frequentset must satisfy that fipi ( A ) is true.
+
+After all uninteresting frequent itemsets are pruned, the search space for i + 1 frequent itemsets is reduced. The reduction in the number of frequent itemsets also reduces memory requirements. 5.2 Identifying frequent itemsets by fuzzy estimation Based on the fuzzy estimation in Sect. 4 and the support X  X onfidence framework, we can define that J is a potentially interesting itemset , denoted by pii(J) 3 , if and only if minimum confidence (for the purpose of association-rule analysis).
+ itemsets of potential interest, named as FuzzyMS .
+ Algorithm 2 FuzzyMS
+Input : D: data set; F su ppor t : a fuzzy threshold ( the user-specified mining require-(1) //producing a sample SD of D and estimating the parameter Lean (2) //estimating the parameters a , b and A a v esupp (3) //generating all potentially interesting 1-itemsets (4) //generating all candidate i -itemsets of potential interest in D (5) //Pruning all uninteresting i -itemsets in L i (6) output the potentially interesting itemsets Interestset in D ; (7) endall .
+
+The algorithm FuzzyMS generates all itemsets of potential interest in the database D for the given Fsupport .Itisan Apriori -like algorithm without the actual minimum-support.
+The approximation of the desired factor Lean for the database D is carried out by sam-fuzzy concept (  X  F _ Lean )of Lean is generated according to Lean S . Thirdly, the fuzzy concept F (  X  F _ GORP )of GORP is determined according to Fsupport and Lean using the fuzzy rules. Finally, the desired parameters a F and c F are obtained.
+The remaining part of our algorithm (from Step (3) to (7)) is Apriori -like. Step (3) gen-L L true and A is represented of the form ( A , supp ( A ),  X  F ( supp ( A )) . reduces memory requirements.
+
+Generally speaking, the complexity of the checking property of fipi and pii is exponen-tial. Considering the process of rule generation, most systems focus on mining rules whose linear with the length of the given itemsets. 6 Experiments We have illustrated the use and statistical significance of our approach using an example conducted on a Dell Workstation PWS650 with 2 GB main memory and Win2000 OS. We evaluate our algorithms using both real databases and synthesized databases. Below are two sets of our experiments. Since our work is based on the Apriori framework, we compare our approach with Apriori in this section. 6.1 Experiments for polynomial approximation To illustrate the effectiveness of Algorithm DI MSFI P presented in Sect. 5.1, we choose set has 86 records, each containing five items on average. Table 5 shows the results when Apriori algorithm and the DI MSFI P algorithm. We can see that the times are not different effectively, the threshold of minimum-support is normalized, and Algorithm DI MSFI P does prune many itemsets.
+
+Another larger dataset, Mushroom, from UCI at http://www.ics.uci.edu/  X  mlearn ,isalso that the minimum confidence is 80%. The dataset contains totally 8,124 records and 23 col-umns. We only select the attributes from column 1 to column 16 and from column 21 to column 23. Times are significantly reduced when the number of itemsets is somewhat large. 6.2 Experiments for fuzzy estimation edu.cn/. The Teaching Assistant Evaluation dataset has 151 records, and the average number of attributes per row is 6. Table 7 shows the approximated values and real values of the parameters.
+The numbers of potentially interesting itemsets corresponding to different fuzzy concepts are shown in Table 8 .
+ From Table 8 , we have seen the number of itemsets decreases from 1,032 to 328 when the fuzzy threshold is changed from More or less Lo w to Medium .
+
+For the Teaching Assistant Evaluation dataset, when the users X  mining requirement is  X  X ining large itemsets X , the running results are shown in Fig. 2 .
+
+Figure 2 was cut from the computer screen, where we have generated not only the support of itemsets, but also the degree of itemsets belonging to fuzzy set GORP = SH .This provides more information than the support does, and thus provides a selective chance for users when the interesting itemsets are applied to real applications.
+
+To assess the efficiency, five synthesized databases are used. The main properties of the databases are DB1:T5.I4.D1K, DB2:T5.I4.D5K, DB3:T5.I4.D10K, DB4:T5.I4.D50K and DB5:T5.I4.D100K. Let Fsupport = Medium . The efficiency is illustrated in Fig. 3 . the size of databases from 50 to 100K. 6.3 Analysis Firstly, we choose the Mushroom data from ftp://www.pami.sjtus.edu.cn/. The Mushroom 1 to 16 and from 21 to 23. The sample ratio is 0.1 and the incremental time is 1.76 s.
+We choose the Nursery data from ftp://www.pami.sjtus.edu.cn/. The Nursery dataset has incremental time is 0.11 s.
+
+We also perform experiments using data 9 question 2 aggregated test data file of KDD Cup 2002, downloaded from http://www.ecn.purdue.edu/KDDCUP/ . The question 2 aggregated test data has 62,913 records. The sample ratio is 0.05 and the incremental time is 3.97 s.
+Number of transactions in database = 100,000; average transaction length = 25; number of items = 1,000; large Itemsets: Number of patterns = 10,000 Average length of pattern = 4 Correlation between consecutive patterns = 0.25 Average confidence in a rule = 0.75 Variation in the confidence = 0.1 The sample ratio is 0.05 and the incremental time is 5.31 s.
+
+Number of transactions in database = 100,000; average transaction length = 15; number of items = 1,000; large Itemsets:
+Number of patterns = 10,000 Average length of pattern = 4 Correlation between consecutive patterns = 0.25 Average confidence in a rule = 0.75 Variation in the confidence = 0.1 The sample ratio is 0.05 and the incremental time is 3.97s.
+
+Number of transactions in database = 100,000; average transaction length = 15; number of items = 10,000; large Itemsets: Number of patterns = 10,000 Average length of pattern = 4 Correlation between consecutive patterns = 0.25
+Average confidence in a rule = 0.75 Variation in the confidence = 0.1 The sample ratio is 0.05 and the incremental time is 11.98s.
+
+From the above observations, our approach is effective, efficient and promising. 7 Conclusions Unfortunately, it is impossible to specify the minimum-support appropriate to the database though a minimum-support is explored under the supervision of an experienced miner, we cannot examine whether or not the results (mined with the hunted minimum-support) are really what the users want.
+ because our mining strategy allows users to specify their mining requirements in commonly used modes and our algorithms (polynomial approximation and fuzzy estimation) automati-to be mined). To evaluate our approach, we have conducted some experiments. The results have demonstrated the effectiveness and efficiency of our mining strategy.
+We would like to note that a different membership function can influence our experimental output variables. From the results, we can see that even the simple function worked. So we promising. It would be an interesting topic to explore how the membership function will the next step that we are going to do. Appendix Proof As the proof of Theorem 1 , we will now show how we construct this polynomial function. For U , suppose the polynomial function is where other points can be solved as, where i = 3 , 4 ,..., m .
+ valuedeterminedbyanexpert,or, m  X  2  X  0, then we end the procedure, and we obtain F ( for the remaining data as follows. For the data, let where at the other points can be solved as, where i = 5 , 6 ,..., m .
+ we carry on with the above procedure for the remaining data.
+
+We can obtain a function after repeating the above procedure several times. However, the above procedure is repeated N times ( N  X [ m / 2 ] ) at most. Finally, we can gain an approximation function as follows.
+ References Authors X  biographies

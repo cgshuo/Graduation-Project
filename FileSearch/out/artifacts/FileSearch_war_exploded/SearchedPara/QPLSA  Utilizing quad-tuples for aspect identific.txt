@@ -1,0 +1,73 @@
+ 1. Introduction
+With the prevalence of the Web 2.0 technology, explosive growth of opinions are accumulating on blog posts, shopping retrieval ( Zhang, Yu, &amp; Meng, 2007 ) and opinion summarization ( Lu, Zhai, &amp; Sundaresan, 2009 ). Among these tasks in opinion mining, the problem of multi-facet rating of product reviews was firstly proposed in
+Baccianella, Esuli, and Sebastiani (2009) , which aims to decompose online reviews into ad hoc aspects and rate these  X  lem, we firstly give some definitions here. (1) Head : A head term h is a word (generally noun or verb) which indicates the aspect (Feature).
+Such kind of review aspect mining is especially useful because different consumers may have different preferences to such topic model based approaches represent reviews as bags of words and utilize word co-occurrences for aspect learning.
+
+However, the bag-of-words assumption seriously hampers the aspect segmentation capability of models, leading to inac-ture models has become a new challenge for bag-of-words methods. Fortunately, the widely accepted  X  X  X eature-Opinion X  X  are now represented as bags of phrases instead of regular bags of words. 1.1. Motivating examples entity with the rating . For example, the review in Fig. 1 includes quad-tuples such as, ( hotel , clean , 5 , Quality Inn ); ( service , great , 5 , Quality Inn ); ( location , good , 5 , Quality Inn ).
+ cates the sentiments towards the aspects.
+ Fig. 1 gives a detailed example of the multi-facet rating problem, which is separated into 2 subtasks X  (1) Aspect through the Aspect Identification process, words sharing similar meanings are grouped into the same aspect. By virtue towards specific aspects. 1.2. Contributions frequently enough ( Brody &amp; Elhadad, 2010 ).
+
+In this paper, we further apply the Quad-tuple PLSA (QPLSA for short) model to predict the ratings of the identified aspects. In summary, the main contributions of this paper include: Expectation Prediction (from the local perspective).
+ diction and Global Prediction ( Lu et al., 2009 ).
+ We experimentally inspect the influence of aspect rating variance for different rating prediction approaches. and we conclude our paper in Section 6 . 2. Related work
+Review sentiment analysis has been a hot topic in the research community for years, and various techniques are pro-paper, we focus on a more complex multi-facet rating problem.
+ 2.1. Sentiment analysis at different levels
+Previous work on sentiment analysis mainly focuses on document-level sentiment polarity categorization ( Dave et al., fine-granularity aspect generation. An interesting work, the Multi-Grain Latent Dirichlet Allocation model (MG-LDA) local and global topics for product feature extraction.
+ ( head , modifier , rating , entity ) at the phrase level. 2.2. Ratable aspect generation
+Ratable aspect generation methods (topic-sentiment mixture models) aim to decompose the opinionated reviews into aspects and analyze the opinions towards the aspects ( Lu et al., 2009 ). Especially in recent years, Topic models ing sentiments (ratings/sentiment labels or opinion thesaurus).
+ also focuses on sentence level topic-sentiment mixture models, where the facet coherence and sentiment coherence are generates ratable aspects based on quad-tuples of ( head , modifier , rating , entity ), i.e., bag-of-phrases. 3. Problem definition and preliminary knowledge tions are summarized in Table 1 . The relevant concepts are described in the following. 3.1. Problem definition Phrase A phrase f  X  X  h ; m  X  is a pair of head term h and modifier m .
+ of entity e }.
+ resent A i  X f h jG X  h  X  X  i g , where G is a mapping function that maps h to a cluster aspect A label for given head term h .
+ the aspects of the entity e . Formally, the rating function is given as: entity e on aspect A i , which is a real number. As mentioned previously, the aspects are firstly identified by G . 3.2. Structured PLSA model with latent model topics z as follows, problem in the following, words indicating specific aspect are injected as follows: belonging to aspect z 0 . If there is prior knowledge for aspect z ( Lu et al., 2009 ): 4. QPLSA and EM solution 4.1. QPLSA
+With the focus on mining aspects among reviews, our method is inspired by the work of Lu et al. (2009) , which decom-Fig. 2 are determined by the understandings in the dependency relationships among these variables. As illustrated in aspects are associated with ratings, and words (heads and modifiers) are associated with both aspects and ratings. tribution, all the parameters can be approximated by maximizing the following log likelihood function, h ; m ; r and e . The derivation of EM algorithm is detailed in next subsection. 4.2. The EM solution
+An EM solution is to maximize the lower bound (Jensen X  X  inequality) L where q  X  z  X  could be an arbitrary function, and here we set q  X  z  X  X  p  X  z j h ; m ; r ; e ; K where
+In the M-step, we maximize L with its parameters by Lagrangian Multiplier method. Expand L and extract the terms con-taining p  X  h j z  X  . Then, we have L  X  p  X  h j z  X  and apply the constraint we have
+Note that ^ p  X  h j z  X  should be normalized via
+Similarly, we can obtain other empirical distributions as follows: 4.3. Incorporating aspect prior p  X  breakfast j food  X  ; p  X  potato j food  X  and p  X  drink j food  X  with a high value of probability s (e.g., s  X  0 threshold).
+ all the parameters is given by: head term h by r  X  1 times when estimating p  X  h j z  X  . Therefore, we have: 4.4. Aspect identification aspect label for given head term h . Specifically, we follow the mapping function G as SPLSA ( Lu et al., 2009 ): where the aspect which generates h with the largest probability is considered as the aspect label for head term h . 4.5. Aspect rating prediction methods. 4.5.1. Local prediction and global prediction mally, the function for rating prediction is: where r min (integer) denotes the minimum rating, and r max the review.
+
+For the global prediction, the rating function is learned based on global information. In particular, each aspect A of the modifier conditioned on rating and aspect is obtained as: where m denotes the modifier, S  X  A i ; r  X  is the subset of phrases assigned to A ber of modifier m in S  X  A i ; r  X  . Formally, S  X  A i ; r  X  is calculated as: ditional distribution for modifiers are estimated, the aspect rating prediction function is given as: essary to compute p  X  m j A i ; r  X  .
+ label of phrases in the Aspect Identification stage, we predict the aspect rating about A reviews of entity e . This equation calculates the average rating of all phrases for specific aspect. 4.5.2. Quad-tuple prediction
+For the Quad-tuple Prediction, the rating function is obtained through the quad-tuples. Specifically, we estimate the aspect rating as follows: tute z for aspect A i in conformity with Fig. 2 . Therefore, p  X  z ; r j h ; m  X  is formulated as: from training data, and predicts aspect rating from the global perspective.
+ struct p  X  z ; r j h ; m  X  for SPLSA as: is simply constructed (but not learned) for experimental comparison to QPLSA. 4.5.3. Expectation prediction
+Differently, Expectation Prediction learns the rating function in an expectation estimation manner. We consider r expectation of rating on the distribution p  X  r j e ; z  X  :
+SPLSA as: for the SPLSA assigns each phrase with the overall rating, which actually the same as the Local one for SPLSA. simplicity and better comparison. However, the comparison could be carried out at any level if necessary. 4.6. Analysis of prediction methods indicated that, the SPLSA needs more supervised information than QPLSA for aspect rating. 4.7. Analysis of algorithm complexity
+QPLSA: The time complexity of generative process of QPLSA is O  X  X  L the number of distinct ratings, N e is the number of entities, Iter denotes the iteration times, N ifiers, N h denotes the number of different heads.
+
+Local Prediction and Global Prediction: Time complexity for local prediction is O  X  L
+While for the global prediction, the time complexity is O  X  N
+Quad-tuple Prediction: The time complexity for Quad-tuple Prediction is O  X  N ber of phrases belonging to entity e . And the space complexity is O  X  N
+Expectation Prediction: The time complexity for Expectation Prediction is O  X  N of phrases belonging to entity e . And the space complexity is O  X  N
+Based on the above detailed analysis, we can find that indeed our model has somewhat high time complexity. Thus the version for real-world applications. 5. Experiments
+In this section, we present the experimental results to evaluate the performance of QPLSA in review aspect mining. 5.1. Data set preparation aspects.
+
+Another dataset is about restaurant reviews from Snyder and Barzilay (2007) , which is much sparser than the previous ratings.
+ evaluate the performance of our model on product reviews from a different domains.
+Datasets are preprocessed as follows: (1) Carry out POS Tagging each review; (2) Select phrases according to the tagging; (3) Stem the phrases to their roots using Porter Stemmer in Fig. 3 .
+
+On the other hand, to evaluate the performance of our model in aspect rating, we adopt the aspect ratings accompanied two evaluation metrics are introduced for comparison.
+
+Additionally, our model is implemented in MATLAB on a machine (CPU 3.00 GHz, 3.00 GB memory), we separate hotel out of memory for all 1850 hotel reviews in case of 3-dimensional matrix construction. 5.2. Evaluation metrics vector b h with respect to the estimated parameter vector h as follows: e by the ground-truth ratings. Specifically, q e is formulated as: where q is the Pearson correlation, co v  X  b h i ; h i  X  denotes the covariance of and N is the number of reviews for entity e . Note that q ground-truth ratings and a larger q e suggests a better predictor.
+ 5.3. Experimental methodology
+For aspect identification comparison, we carry out systematic experiments on phrase aspect categorization and topic words extraction.
+ only SPLSA and QPLSA represent reviews as bag of phrases, we further compare the performance of both methods on the 5.4. Experimental results 5.4.1. Aspect identification
+Phrase Aspect Categorization The accuracy of aspect identification on the manually labeled phrases (approved by two 4 X  X  denote the sum of the specific aspects for hotel reviews and restaurant reviews, respectively. aspect identification.
+
+To further validate the superiority of QPLSA over SPLSA, we conduct systematic experiments on hotel reviews. We carry head staff and entity M.motel . QPLSA captures all those correlations and thereafter achieves better results. tion (or extraction) is effective.
+ Note that both QPLSA and SPLSA obtain much better results on the hotel reviews than those on the restaurant reviews.
+The reason is that both methods are based on generative model which employs the co-occurrence information. Actually, hotel review dataset is much more dense, and thus can provide more co-occurrence information for learning. 5.4.2. Aspect rating performance analysis
+QPLSA vs. Baseline Methods To better evaluate the effectiveness of QPLSA, we compare the performance of QPLSA to other state-of-the-art methods as Table 9 .
+ ence is beyond the capacity of bag-of-words methods, QPLSA and SPLSA could discover the topic and sentiment patterns among the phrases.
+
+Furthermore, for the comparisons of 4 prediction methods in Fig. 5 , QPLSA always outperforms SPLSA on the restaurant section. Overall, QPLSA almost can perform better than SPLSA under different prediction approaches. rant reviews. Besides, QPLSA still shows advantages over SPLSA for the q RMSE.
+
+On the whole, QPLSA is demonstrated to be more capable in aspect rating compared to SPLSA. QPLSA is about 9.8% and ter results.
+
+Prediction Approach Performance Analysis Before we compare the results of different rating approaches, we would like like a Gaussian curve, which may degrade the performance of LP.
+
+QPLSA + LP and QPLSA + EP outperform the QPLSA + QP on hotel reviews in terms of RMSE. However, for the restaurant ratings.
+ Similar results are obtained on q e . For hotel reviews, QPLSA + LP and QPLSA + EP outperform QPLSA + QP; while approaches is strongly affected by the difference between the overall ratings and the aspect ratings.
+Aspect Rating Variance Investigation We employ the variance var to measure such difference and the overall rating r considered as the expected rating of the aspect ratings r than 0.5. The results on the 2 subsets are reported in Fig. 7 .
+
+In Fig. 7 , v ar P 0 : 5 denotes the set of hotel reviews whose aspect ratings have variance greater than 0.5, while ger variance, Quad-tuple Prediction would achieves the best performance. 6. Conclusion methods, specially on the reviews whose aspect ratings are not concentrated on the overall rating. Acknowledgement 61473273, 61473274), National High-tech R&amp;D Program of China (863 Program) (Nos. 2014AA012205, 2013AA01A606, 2012AA011003).
+ References

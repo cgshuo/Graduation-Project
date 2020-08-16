@@ -1,0 +1,101 @@
+ 1. Introduction two most popular query languages in the XML domain, are based on path expressions. A so-called query tree pattern have to be found, which is an expensive task, especially when huge XML documents are involved.
+Consider the following query Q 1 addressing a given XML document: Q has two branches, A // B and A / C // D . The elements related to Q expression, before they are composed to the desired query result. This process may become even more complicated and ing a given QTP (such as that of Q 1 ) in an XML document, attracted many researchers, e.g., see [1,4,10,15,22] . 1.1. Our contribution matching process based on the QTP, that is, it guides the query evaluation to enable focused search. tured by the main contributions of our paper: To create an SMP, we use a structure called QueryGuide which acts as a structural summary of the XML document.
+We present some optimization hints for S 3 leading to Optimized S which are the cornerstones for S 3 are discussed in Section 3. We introduce S
+In Section 5, we present the experimental results and conclude our work in Section 6. 2. Basic concepts and related approaches [2], before we sketch and compare five approaches competing with our novel method proposed. 2.1. Data and QTP model inition of QTP is given.
+ Definition 1. An XML tree structure (XTS) X is a tree defined by a tuple ( r , N r 2 N X as an auxiliary node is the root of the XML tree.
+ N X is a set of XTS nodes.
+ E N X N X represents relations between nodes (branches of the tree).
+ I : N X ? String is a function returning the unique label of the requested node. T : N X ? { X  X  X oot X ,  X  X  X lement X ,  X  X  X ttribute X ,  X  X  X ext X  X  is a function which returns the type of a node. tree (i.e., V ( r ) =  X  X  X oot X ). r 00 2 Q is the root of the QTP.
+ Q is a set of query nodes in the QTP defined as follows: Q  X f x j9 n 2 N V  X  n  X  X  V 00  X  x  X g[ r 00 .
+ respectively.  X : X  is the unary NOT operator.
+ E 00 ( Q [ O ) ( Q [ O ) represents branches of QTP. All leaves of the QTP are query nodes. between nodes of the QTP, which has to be satisfied during the matching process over the associated XTS object X . C : Q N X ? { true , false } is a Boolean function deciding whether or not a node n 2 N ciated with a query node q .
+
+X ( r , N X , E , I , T , V ) are contained in an ordered list of X nodes (PTN,&lt;): (1) PTN  X  q  X  X f n j n 2 N X ; V  X  n  X  X  V 00  X  q  X ^ C  X  q ; n  X g . (2) " n 1 , n 2 2 N X : n 1 &lt; n 2 iff n 1 is visited earlier than n
+Example 1. Fig. 2 a is a simple XML document which is represented as an XML tree structure following XPath query:
+It is straightforward to see from Fig. 2 b that the PTN of query node A is the set { a the set { m 1 , m 2 , m 3 , m 4 }, but m 3 is the only potential target node of query node B , because b straint associated with node B in Q 2 . Obviously, ( a 3 , m target nodes of Q 2 are useless.
+ as possible. 2.2. Important methods for QTP evaluation ously, Structural Joins cause substantial overhead even for simple queries like Q queries, even on middle-sized documents, would perform much worse and derive huge volumes of intermediate results [8,16] attempt to improve the efficiency of the Structural Join using index structures. phase of the algorithm. For example, Fig. 3 b shows two intermediate sets which are produced if each leg of Q some false positive results may occur in an intermediate result set like ( a uation process over non-qualified elements in the indexes.
+ the algorithm coincides with that of TwigStack .
+ accessing the referenced nodes of the document are kept in such a way that subsequent merging is avoided and final the main difference between both methods is that TwigList has only changed the complicated stacks used in Twig
+Fig. 3 c sketches the state of the lists used in TwigList when Q ments into its D-List and B-List , while only d 3 and b 2 document access for the query evaluation to the extent possible. 3. Key ingredients for the evaluation of XML path expressions
+The power of our method is founded upon two key concepts: DeweyIDs and QueryGuide . In this section, we introduce these two concepts. 3.1. Node labeling tions [12]. If node u is the n -th child of node v in a given XTS object, then: set to 2 n 1 for simplicity. 4 for other internal XML processing tasks 5 [14].
+ nodes present. Comparison of two DeweyIDs allows ordering of the respective nodes in document order. Furthermore,
+DeweyIDs easily provide the labels of all ancestors. For example, the ancestor IDs of node d 1.5.3.1, 1.5.3, 1.5, and 1.
+ can minimize I/O cost by using DeweyIDs in conjunction with our document summarizer, called QueryGuide . 3.2. Summarization of XML documents documents in a specific path index to facilitate evaluation of XML queries. query evaluation method for complicated XML queries where the QTPs may have more than one branch. introduction of the QueryGuide concept: Definition 4. Considering an XTS object X and a node n , n 2 N string of node n represented as / V ( a 1 )/ V ( a 2 )/ / V ( a path equivalent if their traversal paths are path equivalent.
+ have the same traversal path string  X  X / x / a / c  X . Now consider node c c and, thus, to c 4 , because the path string of c 3 is not the same as the path string of c Predefinition 1. A Structural Summary is an XTS object S which is defined over an XTS object X , represented by S instance nodes .
+ INS ( m )={ n j n 2 N X , P ( n ) P ( m )}.
+
+Example 3. In Fig. 5 a, the instance node set of node M with CID 6 ( M 10 ( M 10 ) is the set { m 4 }. Definition 8. Considering an XML object X and its related Structural Summary S pair ( c , d ) where d is the DeweyID of n in X and c is the CID of node m , m 2 N
+Example 4. The CID of node m 4 in Fig. 4 is set to 10, because m Fig. 5 a( PS ( m 4 )= PS ( M 10 ) =  X  X / x / a / c / m  X ).
+ Fig. 5 a shows that the ancestors of m 4 are x (1,1), a (4,1.7), and c (5,1.7.3).
+Definition 9. The Structural Summary S X is an XTS object defined over an XTS object X such that: " n 2 N X , T ( n )  X   X  X  X ext X  then $ m 2 N S , n 2 INS ( m ). if n , n 0 2 N S and P ( n ) P ( n 0 ) then n = n 0 .
+ Lemma 1. Considering an XML object X and its related Structural Summary S related nodes in S X also have the same relationship.
+
+Proof. n 1 is ancestor of n 2 , thus PS ( n 2 )= PS ( n 1
+P ( n 2 ) P ( s 2 ). In consequence, PS ( s 2 )= PS ( s 1 in exceptional cases, because they usually do not create new path classes. Definition 10. A QueryGuide is a data structure which is defined by the tuple ( S S : RF ( c )={ d j $ n 2 N X , $ m 2 N S , I ( n )=( c , d ), I ( m )= c }. Example 5. Fig. 5 b shows the reference section of a QueryGuide which is used to implement the RF function.
+RF (6) = {1.5.1,1.5.3,1.7.1,1.11.1} is the set of DeweyIDs of the nodes m 4. S 3 : the proposed QTP processing method
+In this section, we attempt to demonstrate how the previously introduced concepts, DeweyIDs and QueryGuide , can be combined to provide an enhanced QTP processing method called S access and facilitate the matching process in the second phase of S the S 3 method is applied. 4.1. Execution plan extraction strategies:
+DeweyID) for the labeling of document nodes (more details in Section 4.2). 2. Providing focused document access by executing a QTP against the Structural Summary of the related document. together.
+
+For example, consider QTP Q 1 (Fig. 1 ) and XTS object X 1 methods have to process all members of PTN( D ), although d the D -leg (// A / C / D )of Q 1 . Furthermore, d 2 cannot satisfy the D -leg, because c bers of PTN( B )={ b 1 , b 2 , b 3 , b 4 } can satisfy the B -leg indeed, but the Structural Summary S
+CID 13 have no d elements as counterparts to match Q 1 . Thus, we can exclude b elements with CID 13 (e.g., b processing in the matching phase. Moreover, a closer look at X too, and b 1 has d 2 as its counterpart, but d 2 cannot satisfy the D -leg of Q ments with CID 7 and b elements with CID 11 cannot be obtained by only using the Structural Summary S indeed match Q 1 but sufficient information in this step is missing about nodes which are referenced by B these nodes should be processed in the matching phase. Execution of Q ( A processing steps.
+ against the Structural Summary of this document. The execution result is organized as a structure called SMP. Definition 11. Considering an XTS object X and a QTP QTP , n 2 N expression from the QTP root to the query node q .
+
+Definition 12. Considering an XTS object X and a QTP QTP , the tuple M ( n j Q QTP j = c . n i 2 N X ,1 6 i 6 c . " q i 2 Q QTP ,1 6 i 6 c , n i M q i . " q i , q j , q k 2 Q QTP ,if q k is a common ancestor of q
+QR ={ m 1 , m 2 , ... , m r }: j m i j = j Q QTP j ,1 6 i 6 r . " m i 2 QR ,1 6 i 6 r , m i M QTP .
+ one MP could be found that has the same sequence of CID s as the sequence of CID s of that match.
+Proof. Consider a final match M ( n 1 , n 2 , ... , n m ) and CM ( c could construct the tuple MP( s 1 , s 2 , ... , s m ) such that s based on Definition 8 , we can conclude that n i 2 INS ( s q , too. Thus, we can derive that s i M q i . On the other hand, consider that q because MP M QTP , then n k is also a common ancestor for n and s j . Hence, all criteria of Definition 12 are met and we can conclude that MP 4.2. Matching process reference section of the QueryGuide which have the same CIDs as the Structural Summary nodes of the related MP. we only need to access the selected subset of nodes which are related to the leaves of the QTP. which maintains a stream of sorted DeweyIDs which are referenced in the Reference Section of the QueryGuide by the QTPs having only two leaves.
+ associated MP of QTPMatcher for QTPs having only two leaves.
+
+Proof. In order to find the matches of a given QTP Q with two leaves ( l ls and rs should be compared. The pair ( d 1 , d 2 ) is a candidate to produce a match, if d
+Thus, all nodes of ls including d 1 match the leg of Q which is related to l ing point w.r.t. Definition 12 is to prove that d 1 and d
+Assume that jp is the nearest common ancestor (NCA) of l 1 also straightforward to show that all other common ancestors of l extended to full matches which are able to satisfy Definition 12 . h Matcher for QTPs having only two leaves.
+
+Proof. Based on Lemma 2 , consider that the pair ( d 1 , d ( d , d 2 ) are two other candidates. With respect to line 19, d line 20 can produce all required matches. h
+Example 6. Consider QTP Q 1 (Fig. 1 ) and XTS object X 1 (Fig. 2 ). Execution of Q
+Fig. 5 ), results in a single MP ( A 4 , B 7 , C 5 , D 11 as its left stream related to B 7 , {1.7.3.1.1} as its right stream related to D
+A and C are ancestors of B in Q 1 and A 4 and C 5 are at the second and third level of S following: (1.7,1.7.1.1,1.7.3,1.7.3.1.1).
+ performed recursively. For the first two leaves of a given QTP, a QTPMatcher , assume matcher
+Fig. 7 ). Then for the third leaf, a new QTPMatcher , assume matcher
+NodeStream object of the third leaf, assume ns 3 as the right input (lines 24 X 28 in Fig. 7 ). matcher like matcher 2 are based on the last query node which has been added to the left input of QTPMatcher (here, matcher acterized by the use of function getLast (lines 14 and 23 in Fig. 8 ).
+
+Lemma 3. Consider l m ,l n ,l k be three leaves of a given QTP Q, and l
+NCA (l m ,l k ) 8 is ancestor or self of NCA (l m ,l n ) and NCA (l
+Proof. NCA ( l m , l k ) and NCA ( l m , l n ) are both ancestors of l is ancestor of NCA ( l m , l k ), then l n would be visited before or after NCA ( l of a pre-order traversal). Thus, l n would be visited before l tions of Lemma 3 . h ciated MP of QTPMatcher.
+
+MP is the associated MP of a QTPMatcher and l 1 , l 2 , ... , l order traversal through Q . Assume ( d 1 , d 2 , ... , d n in Fig. 8 , then the following two facts can be derived:
+Regarding the above assumption, d n and d n +1 have the same prefixes w.r.t. MP ( NCA ( l ( d n , d n +1 ) is a candidate for ( l n , l n +1 ). On the other hand, for each i &lt; n , NCA ( l (Lemma 3 ) and, therefore, MP ( NCA ( l i , l n +1 )) is self of MP ( NCA ( l
+Structural Summary . As a consequence, because d n and d n +1 the same prefixes w.r.t. MP ( NCA ( l i , l n +1 )) for each i &lt; n .
+
+Since ( d 1 , d 2 , ... , d n ) is a candidate for ( l 1 , l other hand, w.r.t. Lemma 3 , for each i &lt; n , NCA ( l i same prefixes w.r.t. MP ( NCA ( l i , l n +1 )).
+
+Based on the above facts, we can conclude that, for each i ( d , d 2 , ... , d n , d n +1 ) satisfies Definition 12 and is a candidate to produce a match. h QTPMatcher.
+ assume that MP is the associated MP of the QTPMatcher and l
+Procedure getNext is recursive and joins the related stream of l same prefix up to their jpl level (level of MP ( NCA ( l i
+Example 7. Consider Structural Summary S 2 and QTP Q 3 in Fig. 9 . Execution of Q
+MP ( E 2 , N 3 , G 4 , H 5 , L 8 ). G , H , and L are three leaves of Q can be joined if they have a common matching ancestor n . N (related node to NCA of H and L ) is at the second level of S forward that the above l element also has the same common e ancestor with the g element (see Lemma 4 ). 4.3. Optimized S 3 than once:
+Example 8. Consider QTP Q 4 and Structural Summary S 2 in Fig. 9 . Execution of Q { mp 1 ( E 2 , G 4 , H 5 , K 6 , L 7 ), mp 2 ( E 2 , G 4 , H 9
+H
+G (those having CID 4) have to be fetched six times.
+
+OS Each GMP is responsible to produce all matches related to its wrapped MPs. grouped with each other into a separate GMP.
+
+After the grouping of MPs, a separate QTPMatcher is instantiated for each GMP (lines 3 X 4). QTPMatchers used for OS ments (see Fig. 12 ). Furthermore, the determination mechanism for join points in S function highestJoinPoint in Fig. 11 ).
+
+False positives did not occur during node matching in an S (e.g., lf i and lf j ) for which the related elements have no common ancestor to match NCA of lf CIDs for QTP leaves.
+
+Example 9. Again consider QTP Q 4 and Structural Summary S have the same node related to leaf G ( G 4 ), the resulting SGMP only has one GMP {( E
+This means that OS 3 fetches elements with CID 4 only once instead of six times done by S these leaves is 3 for mp 2 , mp 4 , mp 5 , and mp 6 . It is 4 for mp the above GMP, QTPMatcher returns combinations of three elements w.r.t. the leaves of QTP ( G , K , L ) as follows: { m [(4,1.3.5.3),(6,1.3.7.1.3),(7,1.3.7.7.3)], m 2 [(4,1.3.5.3),(6,1.3.7.1.3),(11,1.3.7.9)], m 1.9.3.5.9.3)]}. These results have to be checked to remove false positives. m in mp 1 is 4 (level of H 5 ). The next output of QTPMatcher is m therefore, they are joined by QTPMatcher . The last output of QTPMatcher is m Theorem 4. The method OS 3 correctly computes all possible matches for a given QTP Q and an XML document Doc. tives, which are checked and removed (see lines 22 X 30 in Fig. 11 ). h 5. Experimental results 5.1. Experimental setup
+Using our native, Java-based XML database system, called XTC [24], we have implemented the QTP processing methods S for all performance experiments was setup under Java 1.6.0_03 on a 2x3.2 GHz Pentium IV computer, 1 GB main memory, 2x80 GB hard disks, running GNU/Linux, where the maximum heap size of the Java Virtual Machine was 800 MB. want to show the superiority of our proposals S 3 and OS 3 Table 3 presents the collection of queries used.
+ We have compared our methods in terms of total execution time , I/O time , and number of elements read : the user.
+ I/O time is the entire time spent to fetch elements from the document.
+ Number of elements read indicates how many elements have to be read in a matching process. expect that this number is lower for our methods S 3 and especially OS 5.2. Single-path queries range is very large, we have chosen a logarithmic scale. Most remarkably, S be read for D1 by TwigStack and TwigList : they have to read four times more elements than S of 5. Compared to TJFast , S 3 is still more than two times (2.2) faster. Although TJFast and S read all title elements in DBLP, although most of them are children of other elements. Hence, S (0.36) compared to TJFast . For D2 , X1 , and X2 , however, TJFast and S explained, e.g., for X1 , because all price elements in the XMark dataset match X1 ; hence, TJFast and S such situations, because they process the elements without considering their position in the document. 5.3. Tree queries
+S queries is more suitable for TwigList which does not rely on expensive merging phases.
+D8 illustrate the efficiency of using a Structural Summary in S
+S which can be indexed using only a few pages, whereas S 3 and OS because they only read elements related to a single CID during each access.
+Fig. 15 shows our experimental results for the XMark (scale 5) dataset. As depicted in Fig. 15 a, OS than the other methods. S 3 also obtains the same performance except for X5 , X6 , and X7 . Here, S formance for X6 arises, because 162 different MPs related to this query are created by S 6 GMPs in OS 3 . This means that some of the elements are fetched 27 times in S
+QTPMatcher executions, while these nodes are fetched and processed only once in OS cost for queries like X6 (see Fig. 15 a and b) are very high; OS
+GMP. Also, S 3 creates 54 distinct MPs for X7 and 72 distinct MPs for X7 . These MPs are grouped in 6 GMPs in OS sequence, OS 3 is about more than two times faster than TJFast for X5 , X6 , and X7 .
+Fig. 16 shows our experimental results for Nasa and SwissProt. As depicted in Fig. 16 a, S times faster than TJFast and eight times faster than TwigStack and TwigList . For N4 and S2 , we achieve with S cost and elements processed for these queries. 5.4. Scalability analysis embody sub-linear behavior for S 3 and OS 3 . As an exception, S fetch some elements 162 times, but still keeps the linear behavior. We also did scalability tests in terms of memory available, where we performed our experiments for D4 and D5 (see when transactions need to share a fixed or limited amount of memory in a real multi-user environments. 6. Conclusions fetched, but it is still burdened by the expensive merging phase. Twig to load the entire document into the memory.
+
+To overcome these problems, we proposed our method S 3 . We emphasized the power of DeweyIDs and QueryGuide and of S whereas S 3 behaves similarly, but exhibiting linear behavior in the worst case. Acknowledgements Graduate Studies) during the stay of the first author in Kaiserslautern is appreciated.
+References

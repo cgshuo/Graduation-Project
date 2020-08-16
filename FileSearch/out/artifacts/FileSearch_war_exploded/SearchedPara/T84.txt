@@ -1,0 +1,5 @@
+
+Exact learning curves for Gaussian process mean square error as function of number of examples N about discrete spaces?
+Exact learning curves for Gaussian process approximations from continuous spaces performed in the discrete graph case, for: discrete space:  X  This approximation does not account for the additional structure in random graphs: locally tree-like
+Exact learning curves for Gaussian process  X  In this paper we Z =  X  Want to apply the cavity method but first need to:  X  End up with a complex valued Gaussian graphical model
+Exact learning curves for Gaussian process  X  Even for graphs with V = 500 vertices graphs our new approximation (triangles) appears exact  X  More on the poster: other types of random graph,

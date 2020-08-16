@@ -1,0 +1,146 @@
+ 1. Introduction plete decision table [13,15] .
+ to remove the examples with unknown values or replace the unknown values with the most common values. means of fuzzy sets the uncertainty caused by the appearance of unknown values was discussed in [52] .
+Two methods of treating unknown values are available in the LERS system [5] . The methodology proposed imum distribution reduct can derive decision rules that are compatible with the original system. approaches. This strategy can help a decision maker to determine which of rule-extracting methods is could not be well characterized by the approximation accuracy and consistency degree when their values ( b ), support measure ( c ) and cover measure ( # ).
+ with some remarks and discussion. 2. Preliminaries tables, maximal consistent block technique and partial relation.
+An information system is a pair S  X  X  U ; A  X  , where (1) U is a non-empty finite set of objects; (2) A is a non-empty finite set of attributes; (3) for every a 2 A , there is a mapping a : U ! V a , where V Each subset of attributes P A determines a binary indistinguishable relation IND  X  P  X  given by tutes a partition of U , which is denoted by U = IND  X  P  X  , or just U = P . situation, a distinguished value (the so-called null value) is usually assigned to those attributes. information system and P A an attribute set.
+ We define a binary relation on U by cations in classifications [19,23] . It can be easily shown that SIM  X  P  X  X  constitute a cover of U , i.e., S P  X  u  X  6  X   X  for every u attribute set. This is illustrated in the following example: where U  X f u 1 ; u 2 ; u 3 ; u 4 ; u 5 ; u 6 g , C  X f a 1 and D  X f d g . By computing, it follows that where S C  X  u 1  X  X f u 1 g , S C  X  u 2  X  X f u 2 ; u 6 g , S f u
+It is easy to observe from Table 1 that the value of the generalized decision o decision table is the superset of the object X  X  value (see o P is strictly finer than Q ) and denoted by P Q . In fact, P Q () for 8 i 2f 1 ; 2 ; ... ; j U jg , S and 9 j 2f 1 ; 2 ; ... ; j U jg such that S P  X  u j  X  S Q sistent with respect to P , then X is called a maximal consistent block of P . vided by a similarity relation [23] . Henceforth, we denote by MC u 2 U , respectively. It is clear that X 2 MC P if and only if X  X  In fact, the set of all the maximal consistent blocks, MC the attribute set P in a complete information system, i.e., MC where MC C is the set of all the maximal consistent blocks determined by C on U . plete information system, P ; Q A , MC P  X f P 1 ; P 2 ; ... ; P tion 0 is defined as follows:
+P 0 Q () for every P i 2 MC P , there exists Q j 2 MC Q such that P
+If P 0 Q and P 6  X  Q , i.e., for some P i as P 0 Q . 3. Decision rule and information granulation in incomplete decision tables measure and converge measure of a decision rule in incomplete decision tables. sion rules: t  X ^ X  a ; v  X  , a 2 C , v 2 V a [fg , and s  X  X  d ; x  X  , x 2 V has both t and s properties in the given decision table.
+
+Let S  X  X  U ; C [ D  X  be an incomplete decision table, P C , X des  X  X i  X  and des  X  Y j  X  , we denote the descriptions of the maximal consistent block X
+Y in the decision table S . A decision rule is formally defined as This is illustrated in the following example:
+Example 3. As that in Example 2 for Table 1 , let X 1  X f u
+X  X f u 5 ; u 6 g , X i 2 MC C ,and Y 1  X f u 1 ; u 2 ; u 4 ; u can be induced from Table 1 : Z 11 :  X  P ; high  X ^ X  M ; low  X ^ X  S ; full  X ^ X  X ; low  X ! X  d ; good  X  , Z 21 :  X  X  P ; low  X ^ X  S ; full  X  X ^ X  X  M ; high  X _ X  X ; low  X  X ! X  d ; good  X  , Z 32 :  X  S ; compact  X ^ X  X ; low  X ! X  d ; poor  X  , Z 41 :  X  X  S ; full  X ^ X  X ; high  X  X ^ X  X  P ; high  X _ X  P ;  X  X ! X  d ; good  X  , Z 43 :  X  X  S ; full  X ^ X  X ; high  X  X ^ X  X  P ; high  X _ X  P ;  X  X ! X  d ; excellent  X  , Z 51 :  X  S ; full  X ^ X  X  X ; high  X _ X  X  P ; low  X ^ X  M ; high  X  X  X ! X  d ; good  X  , Z 53 :  X  S ; full  X ^ X  X  X ; high  X _ X  X  P ; low  X ^ X  M ; high  X  X  X ! X  d ; excellent  X  .
+In the condition parts of the rules Z 41 and Z 43 , the symbol  X  X  tion of the maximal consistent block. As we know, the symbol  X  X  value of an attribute is missing. In fact, the set f u 4 ; u maximal consistent blocks in MC C and the decision parts of them by using decision classes in U = d , respectively.
+ erage measure of a decision rule Z ij in an incomplete decision table can also be defined as respectively, where jj is the cardinality of a set. It is clear that the value of each of l  X  Z ing example.
+ Example 4. Continue from Example 3 . By computing, we have that
+Example 4 shows that the decision rules Z 11 , Z 21 and Z by an incomplete decision table is not equal to one in general. For instance, above example.
+ incomplete decision tables and mixed incomplete decision tables. ments. We will denote by j Z ij j the cardinality of the set X
+Z d 2 D , respectively.
+ Definition 1. Let S  X  X  U ; C [ D  X  be an incomplete decision table, MC
+U = D  X f Y 1 ; Y 2 ; ... ; Y n g . A maximal consistent block X consistent block X i such that u ; v 2 X i 8 u ; v 2 Y j .
+ Definition 2. Let S  X  X  U ; C [ D  X  be an incomplete decision table, MC
+U = D  X f Y 1 ; Y 2 ; ... ; Y n g . S is said to be consistent if every maximal consistent block X
+S is said to be conversely consistent if every decision class Y consistent.
+
+From the above definitions, it follows immediately that: an incomplete decision table S is consistent () MC C 0 MC an incomplete decision table S is conversely consistent () MC MC C 0 MC D ( MC D 0 MC C ), where MC D  X  U = D . For convenience, we denote U = D by MC relation 0 will degenerate into the partial relation on all partitions induced by the power set 2 which is given in the following definition.
+
+Definition 3. [28] Let S  X  X  U ; A  X  be an incomplete information system and U = SIM  X  A  X  X  f S  X  u 1  X  ; S A  X  u 2  X  ; ... ; S A  X  u j U j  X g . Information granulation of A is defined as dition granulation, decision granulation and granulation of S , respectively. As a result of the above discussions, we come to the following two lemmas. Lemma 1. Let S  X  X  U ; C [ D  X  be a strictly consistent decision table, i.e., MC in MC C .
+
+Proof. Let MC C  X f X 1 ; X 2 ; ... ; X m g and MC D  X f Y 1 class Y 2 MC D , it is the union of some maximal consistent blocks X 2 MC consistent, there exist X 0 2 MC C and Y 0 2 MC D such that X of more than one maximal consistent blocks in MC C . This completes the proof. h Lemma 2. Partial relation 0 is a special instance of partial relation .
+Proof. Let S  X  X  U ; A  X  be an incomplete information system, P ; Q A with P MC
+Q  X f Q 1 ; Q 2 ; ... ; Q n g . It follows from the definition of 0 that for any P such that P i Q j .Next, we prove that S P  X  u  X  S Q  X  u  X  , 8 u 2 U . Assume that MC MC Q  X  u  X  X f Y 1 ; Y 2 ; ... ; Y n g . We know from Property 4 in [23] that S S  X  u  X g X  From the definition of maximal consistent block, we have that u 2 MC u 6 2 MC P MC P  X  u  X  and u 6 2 MC Q MC Q  X  u  X  . Hence, it follows from P 0 Q that for any X exists Y t 2 MC Q  X  u  X  such that X k Y t . Thus, for any u 2 U , we can get that proof. h By Lemma 2 , one can easily obtain the following theorem.
+
+Theorem 1. Let S  X  X  U ; C [ D  X  be an incomplete decision table. (1) If S is consistent, then G  X  C  X  6 G  X  D  X  . (2) If S is conversely consistent, then G  X  C  X  P G  X  D  X  .
+ Proof. (1) If S  X  X  U ; C [ D  X  is consistent, we have that MC any u 2 U one can obtain that S C  X  u  X  S D  X  u  X  , i.e., j S that is G  X  C  X  6 G  X  D  X  .
+ Analogously, (2) can be proved. h
+It should be noted that the inverse propositions of Lemma 1 and Theorem 1 need not be true. 4. Limitations of traditional measures for incomplete decision tables incomplete decision table.
+
+In rough set theory, several measures for a decision rule Z [36] , such as certainty measure l  X  X i ; Y j  X  X j X i \ Y and coverage measure s  X  X i ; Y j  X  X j X i \ Y j j = j Y j sion table. However, because l  X  X i ; Y j  X  , s  X  X i ; Y decision table.
+
+In [40] , approximation accuracy of a classification is introduced by Pawlak. Let F  X f Y in a decision table, i.e., F  X  U = D )and C a condition attribute set. CF  X f CY approximation accuracy of F by C is defined as employing the attribute set C .
+
+Definition 4. [23] Let S  X  X  U ; A  X  be an incomplete information system and P A . The approximation operators apr P and apr P are defined as view of maximal consistent block technique, we call apr C apr C F  X f apr C  X  Y 1  X  ; apr C  X  Y 2  X  ; ... ; apr C  X  Y and
+Similar to formula (2) , the approximation accuracy of F by C can be defined as limitations are revealed by the following example.
+ Example 5 ( Continued from Example 1 ). By computing, one can obtain that U = d  X ff u 1 ; u 2 ; u 4 ; u 6 g ; f u 3 g ; f u 5 gg .
+
+From formula (3) , we have that and
+That is to say a a
+In fact, the maximal consistent blocks induced by a 2 [ a plete decision table is desired.
+ in [36] , is defined as of U = D by a condition attribute set C . In some situations, c of a decision table.
+ as table is also needed.
+ lowing property.
+ a  X  U = D  X  X  0 and c C  X  D  X  X  0 .
+
+Property 1 shows that the extensions of the approximation accuracy and consistency degree cannot well of an inconsistent incomplete decision table. 5. Performance evaluation of a decision-rule set empty set.
+ tent incomplete decision tables. Three incomplete decision tables from the real world are employed to rule set extracted from a general incomplete decision table.
+
+Definition 5. Let S  X  X  U ; C [ D  X  be an incomplete decision table and RULE  X f Z des  X  X i  X ! des  X  Y j  X  ; X i 2 MC C ; Y j 2 MC D g . Certainty measure a of S is defined as where N i is the number of decision classes induced by the maximal consistent block X sion table.
+ decision rule is not equal to zero.
+
+Theorem 2 (Extremum). Let S  X  X  U ; C [ D  X  be an incomplete decision table and RULE  X f Z des  X  Y j  X  ; X i 2 MC C ; Y j 2 MC D g . (1) For any rule Z ij 2 RULE ,if l  X  Z ij  X  X  1 , then the measure a achieves its maximum value 1. (2) If m  X  1 and n  X j U j , then the measure a achieves its minimum value 1 Proof. The results are straightforward and the proof is omitted. h the measure a achieves its maximum value 1 when S is consistent. When we want to distinguish any two .
+
+In the following example, we show how the measure a overcomes the limitation of the extended measure a  X  U = D  X  .
+
+Example 6 ( Continued from Example 5 ). Let S 1  X  X  U ; f a measure a , we have that
+Therefore, a  X  S 1  X  X  1 3 &lt; 1 2  X  a  X  S 2  X  , i.e., a  X  S Example 6 indicates that unlike the extended approximation accuracy a sion class in the decision partition is equal to an empty set.
+ Remark. From the formula (3) , it follows that a C  X  U = D  X  X  0if sense, apr C  X  Y i  X  X   X  does not imply that the certainty of a decision rule concerning Y decision-rule set when an incomplete decision table is strictly and conversely consistent. Proof. It is straightforward from Definition 5 and (1) of Theorem 2 .
+Theorem 3. Let S 1  X  X  U ; C 1 [ D 1  X  and S 2  X  X  U ; C 2 [ D tables. If MC C
+Proof. From MC 1  X  MC 2 and the converse consistencies of S
+Y ; Y 2 q ; ... ; Y s q 2 MC D posed into a family of rules Z 1 p l q ; Z 2 p l q ; ... ; Z
+Since S 1 and S 2 are all conversely consistent, one can see that the maximal consistent blocks of Y same as those of Y k q ( k 6 s ), i.e., X p 1 ; X p 2 ; ... ; X i.e., j X p l \ Y q j X j Y q j and j X p l \ Y k q j X j Y k that is a  X  S 1  X  &gt; a  X  S 2  X  . This completes the proof. h with its decision classes becoming finer.
+
+The following theorem shows the monotonicity of a with respect to the condition part of an incomplete decision table.
+
+Theorem 4. Let S 1  X  X  U ; C 1 [ D 1  X  and S 2  X  X  U ; C 2 [ D tables. If MC D
+Proof. From MC C 2 0 MC C 1 , there exists X p 2 MC C 1 and an integer s &gt; 1 such that X
+X p 2 MC C 2 . That is to say, X both S 1 and S 2 are conversely consistent, we have that X j X p \ Y q j X j Y q j and j X l p \ Y q j X j Y q j ( Y q 2 MC i.e., a  X  S 1  X  &lt; a  X  S 2  X  . This completes the proof. h with its maximal consistent blocks in the condition part becoming finer. show the advantage of the measure a over the extended measure a Here, we compare the certainty measure a with the approximation accuracy a shown in Tables 3 X 5 and Figs. 1 X 3 .
+ table. One can draw the same conclusion from Figs. 2 and 3 . In other words, when a certainty of an incomplete decision table.
+ measure a is much higher than that of the extended accuracy measure a
+Now we investigate how to measure the consistency of a decision-rule set extracted from an incomplete decision table.
+ condition part of a given incomplete decision table.
+ Let S  X  X  U ; C [ D  X  be an incomplete decision table, X 2 MC MC
+D  X  U = D  X f X  u D : u 2 U g . For an object u 2 U , a membership function of u in X is denoted as where d X  X  u  X  (0 6 d X  X  u  X  6 1) represents a fuzzy concept. In fact, if d tent with respect to  X  u D . In other words, if X is a consistent set with respect to  X  u Given this function, one can generate a fuzzy set F D X  X f X  u ; d Definition 6. Let S  X  X  U ; C [ D  X  be an incomplete decision table, X 2 MC MC D  X  U = D  X f X  u D : u 2 U g . Inconsistency measure of X is defined as where d X  X  u i  X  is the membership function of u i 2 U in X .
+ following conditions: (1) e  X  A  X  X  0iff A 2 P  X  U  X  ; (2) e  X  A  X  X  max A 2 F  X  U  X  e  X  A  X  iff A  X  0 : 5; (3) for any A ; B 2 F  X  U  X  ,if d B  X  u  X  P d A  X  u  X  for d (4) e  X  A  X  X  e  X  A c  X 8 A 2 F  X  U  X  .
+ Theorem 5. The inconsistency measure E is an entropy on F  X  U  X  .
+Proof. By Definition 7 , we have that: (1) If X 2 P  X  U  X  , then, for all u i 2 U , either d X  X  u (2) Since 0 6 d X  X  u  X  6 1, we have that max X 2 F  X  U  X  (3) Let X ; Y 2 F  X  U  X  .If d X  X  u i  X  P 1 2 and d Y  X  u (4) 8 X 2 F  X  U  X  , since d X  X  u i  X  X  1 d X  X  u i  X  , it follows that for all u completes the proof. h Theorem 6. The inconsistency measure of a consistent set is 0.
+ Proof. Let S  X  X  U ; C [ D  X  be an incomplete decision table, X 2 MC d measure of a consistent set is 0. This completes the proof. h sion-rules extracted from an incomplete decision table, which is given in the following definition.
+Definition 8. Let S  X  X  U ; C [ D  X  be an incomplete decision table and RULE  X f Z des  X  Y j  X  ; X i 2 MC C ; Y j 2 MC D g . Consistency measure b of S is defined as where N i is the number of decision-rules determined by the maximal consistent block X tainty measure of the rule Z ij .
+
+Theorem 7 (Extremum). Let S  X  X  U ; C [ D  X  be an incomplete decision table and RULE  X  f Z ij j Z ij : des  X  X i  X ! des  X  Y j  X  ; X i 2 MC C ; Y j 2 MC (1) For every Z ij 2 RULE ,if l  X  Z ij  X  X  1 , then the measure b achieves its maximum value 1, and (2) for every Z ij 2 RULE ,if l  X  Z ij  X  X  1 2 , then the measure b achieves its minimum value 0. Proof. The results are straightforward and the proof is omitted. h
+In the following example, we show how the measure b overcomes the limitation of the extended measure c  X  D  X  .
+
+Example 7 ( Continued from Example 5 ). Let S 1  X  X  U ; f a measure b , we have that Therefore, b  X  S 1  X  X  33 125 &gt; 1 9  X  b  X  S 2  X  .
+ the decision part is equal to an empty set. From formula (5) , it follows that c S 2 MC D apr C  X  Y i  X  X   X  . In fact, in a broader sense, apr a rule concerning Y i is equal to zero. So, the measure b is much better than the extended measure c and conversely consistent.
+ Proof. It is straightforward from Definition 8 and (1) of Theorem 7 . following Theorems 8 and 9 .
+
+Theorem 8. Let S 1  X  X  U ; C 1 [ D 1  X  and S 2  X  X  U ; C 2 [ D tables. If MC C 8 l  X  Z ij  X  P 1 2 .
+
+Proof. Since MC C 1  X  MC C 2 and the converse consistencies of S
+X 2 MC C
+Y  X  posed into a family of rules Z 1 pq ; Z 2 pq ; ... ; Z s pq x 2 X i \ Y j , it holds that d D  X  Z il  X  X  l  X  Z ij  X  . Thus, one can obtain that
+Therefore, when 8 l  X  Z ij  X  6 1 2 , we have that
+Similar to the above, one can show that b  X  S 1  X  &gt; b  X  S
+Theorem 8 states that the consistency measure b of a conversely consistent incomplete decision table increases with its decision classes becoming finer when 8 l  X  Z becoming finer when 8 l  X  Z ij  X  P 1 2 .
+
+Theorem 9. Let S 1  X  X  U ; C 1 [ D 1  X  and S 2  X  X  U ; C 2 [ D tables. If MC D 8 l  X  Z ij  X  P 1 2 .
+ know that if x l 2 X i \ Y j , it holds that d C  X  Z il  X  X  l  X  Z
+From MC C
+Clearly, we have X k p X p for every X k p 2 MC C
+S , it follows that
+That is d C
+Thus, when 8 l  X  Z ij  X  6 1 2 , we get that that is b  X  S 1  X  &lt; b  X  S 2  X  .
+
+Similarly, one can prove that b  X  S 1  X  &lt; b  X  S 2  X  when 8 l  X  Z
+Theorem 9 states that the consistency measure b of a conversely consistent incomplete decision table decreases with its maximal consistent blocks in the condition part becoming finer when 8 l  X  Z increases with its maximal consistent blocks in the condition part becoming finer when 8 l  X  Z Figs. 4 X 6 .
+ degree will have the same value 1.
+ the extended consistency degree for evaluating the consistency of an incomplete decision table. measure b is the same as that of the extended consistency degree c uation ability of the measure b is much higher than that of the extended consistency degree c
+In the following, we define a new measure c for measuring the support degree of an incomplete decision table.
+
+Definition 9. Let S  X  X  U ; C [ D  X  be an incomplete decision table and RULE  X f Z des  X  Y j  X  ; X i 2 MC C ; Y j 2 MC D g . Support measure c of S is defined as where N j is the number of maximal consistent blocks in the condition part with respect to Y extracted from an incomplete decision table.
+
+Theorem 10 (Extremum). Let S  X  X  U ; C [ D  X  be an incomplete decision table and RULE  X f Z des  X  X i  X ! des  X  Y j  X  ; X i 2 MC C ; Y j 2 MC D g . (1) If X i  X  U and Y j  X  U , then the measure c achieves its maximum value 1, and (2) if j X i \ Y j j X  1 for any i ; j , then the measure c achieves its minimum value 1 Proof. The results are straightforward and the proof is omitted. h
+Example 8 ( Continued from Example 5 ). By computing the measure c , it follows that
+Hence, c  X  S 1  X  X  7 18 &gt; 6 18  X  1 3  X  c  X  S 2  X  , i.e., c  X  S
+Theorem 11. Let S 1  X  X  U ; C 1 [ D 1  X  and S 2  X  X  U ; C 2 Proof. Since both S 1 and S 2 are all consistent, from MC
+X p 2 MC C 2 , Y q 2 MC D 2 , and X l p 2 MC C 1 . In other words, the rule Z rules Z 1 pq ; Z 2 pq ; ... ; Z s pq in S 1 . Therefore, that is c  X  S 1  X  &lt; c  X  S 2  X  .
+ This completes the proof. h
+Theorem 11 shows that the support measure c of an incomplete decision table decreases with the maximal consistent blocks in its condition part becoming finer.
+
+Theorem 12. Let S 1  X  X  U ; C 1 [ D 1  X  and S 2  X  X  U ; C 2 tables. If MC D
+Proof. From the converse consistencies of S 1 and S 2
+X  X  S 2  X \ Y j  X  S 2  X  X  Y j  X  S 2  X  , where X i  X  S 1  X 2 MC MC This completes the proof. h
+Theorem 13. Let S 1  X  X  U ; C 1 [ D 1  X  and S 2  X  X  U ; C 2 tables. If MC C Proof. Since S 1 and S 2 are all conversely consistent, from MC
+Y  X  be decomposed into a family of rules Z 1 pq ; Z 2 pq ; ... ; Z that is c  X  S 1  X  &lt; c  X  S 2  X  . This completes the proof. h classes becoming finer.
+ data sets are shown in Tables 9 X 11 and Figs. 7 X 9 .
+ tively evaluate the support of all decision-rules extracted from a given decision table.
+Definition 10. Let S  X  X  U ; C [ D  X  be an incomplete decision table and RULE  X f Z des  X  Y j  X  ; X i 2 MC C ; Y j 2 MC D g . Cover measure # of S is defined as the condition part of an incomplete decision table.
+ Example 9 ( Continued from Example 2 ). By computing the measure # , it follows that and U = C  X  MC C  X f X 1 ; X 2 ; ... ; X m g . Thus, Corollary 3. The measure # achieves its maximum value 1 if and only if j U j X  1 . In this case, max  X  #  X  S  X  X  X  min  X  #  X  S  X  X  X  1.
+
+Corollary 4. Let S 1  X  X  U ; C 1 [ D 1  X  and S 2  X  X  U ; C 2 #  X  S 1  X  P #  X  S 2  X  .
+ Proof. It is straightforward.
+ Since the measure # is very simple, its experimental analysis is omitted in this paper. h for a particular application about extracting decision rules from incomplete decision tables. 6. Conclusions Acknowledgements
+The authors wish to thank the anonymous reviewers for their constructive comments on this study. This work was supported by SRG: 7002006 of City University of Hong Kong, the high technology research and development program (No. 2007AA01Z165), the national natural science foundation of China (Nos. of China.
+
+References

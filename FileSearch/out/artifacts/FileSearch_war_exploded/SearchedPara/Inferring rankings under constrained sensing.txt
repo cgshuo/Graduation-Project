@@ -1,0 +1,25 @@
+ n for the pursuit of this quest.
+ in the rank of candidate A in your opinion ? or, whom would you rank second ? to be very few.
+ applications to yielding a better recovery.
+ graph of n nodes.
+ relevant algorithms. Setup. Let S n elements. S i.e., k f k support will be called sparsity of f and is denoted by K i.e., K = k f k be represented by its corresponding permutation matrix den oted by P  X  i.e., P  X  1 let Let Q denote both the matrix ( q equivalently written as P In the election example, it is easy to see that q candidate j in the i th position.
+ permutation under natural majority assumption. 2.1 Relation to Fourier Transform where our solution can be potentially applied.
+ of natural majority condition.
+ Theorem 2.
+ group G , its Fourier Transform at a representation  X  of G is defined as  X  h of Fourier Transform: where | G | denotes the cardinality of G , d a group is the 1 -dimensional representation  X  of h ( ) at  X  0 is P  X  h (  X  ) .
+ respect to the first-order representation of the symmetric group S approximation.
+ It is known that [5] the first order permutation representation of S n have  X  Transforms at irreducible representations. Even though  X  resentations. In particular,  X  trivial representation of degree 1 and  X  pointing out to a familiar reader that what we call  X  the literature; but we will stick to  X  irreducible representations  X  Proposition 1. Consider a function f : S as: for  X   X  S Proof. We have: Therefore, Since Tr is independent of the basis, choosing an appropriate basis w e can write: (6) is true because  X   X  f from (2), it follows that: Using the fact that  X  proposition.
+ of distribution gives unsatisfactory results and requires a d ifferent approach. 2.2 Relation to Compressed Sensing matrix Q . Next, we provide details of this.
+ set of linear equations: be sparse i.e., k f k to and Tao prove that the solution f is the unique minimizer to the LP: the isometry constants of the matrix A do not satisfy the required conditions. A permutations:  X  quantity such that A P quires  X  approach of Candes and Tao does not guarantee the unique reco nstruction of f if k f k constrained information matrix Q = ( q following two properties: Property 1 (P1) . Suppose the function f ( ) is K sparse. Let p The following is true: Property 2 (P2) . Let {  X  n such that  X  different from all the others.
+ of this result and will be proved later.
+ Theorem 1. Consider a function f : S struct f ( ) precisely.
+ Random model, Sparsity and Theorem 1.
+ algorithm is indeed optimal in terms of the maximum sparsity it can recover. tions  X  consider 4 values p Using the equation P  X  1 + P  X  4 = P  X  2 + P  X  3 , we can write the following: recovering f given only Q in this setup.
+ results on the sparsity of f that can be recovered from Q .
+ where  X  ( n )  X  0 as n  X  X  X  . We now have the following two important results: Lemma 1. Consider a function f : S additional information, the recovery will be asymptotical ly reliable only if K  X  4 n . Lemma 2. Consider a function f : S with probability 1  X  o (1) as long as K  X  0 . 6 n .
+ achieves the sparsity bound of O ( n ) .
+ tion under majority .
+ Theorem 2. Consider a function f : S majority condition holds, that is max bipartite graph: consider a complete bipartite graph G = (( V and E = V are satisfied.
+ Let p ing permutations i.e., f (  X  labeled such that p Q arranged in ascending order. Given this sorted version, we have q q = q e Let A Algorithm: initialization : p for i = 1 to M end for Output L = k ( i ) and ( p By property P2, there exists at least one q property P1 ensures that whenever q is not satisfied. Therefore, the algorithm correctly assign s values to each of the p Note that the condition in the  X  X f X  statement being true impl ies that edge e permutations  X  when the condition is satisfied, the only permutations that c ontain edge e e is contained only in permutation  X  iterations, each of the A not require the knowledge of k f k  X  f , as an estimate of mode of f . We wish to establish that when max Since we have assumed that f (  X   X  ) &gt; 1 / 2 and k f k where S  X  S indeed has the maximum weight of all the other matchings. The result now follows. question has wide ranging implications. be supported.
+ weights as the q problem.
+ recovery of distributions with the above considerations ar e natural next steps.

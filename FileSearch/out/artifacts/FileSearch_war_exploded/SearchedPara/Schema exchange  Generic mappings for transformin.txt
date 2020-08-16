@@ -1,0 +1,87 @@
+ 1. Introduction sources of information.
+ format conforming to the target schema.
+ database whose schema conforms to the source template into a format conforming to the target template. database into the database obtained as a result of the schema exchange. senting structural similarities, by means of a source template T source by means of a target template T 2 and a set of correspondences over T tween T 1 and T 2 , (iii) translate any data source over a schema matching with T exchange settings, and (v) convert a data exchange setting into a schema exchange one for its reuse. 2. Motivating examples gest that the target can be obtained from the source by joining the relations jecting the result on the attributes involved by the arrows, and storing the result into the relation dependency : the source by joining two relations using a referential constraint between them. can be applied to different, but structurally similar, data sources. least two relations related by a foreign key, for each pair of relations R and R non-key, non-foreign-key attributes and at least a foreign key attribute that refers to (the key of) R attributes of R , and with the attributes of R 0 not involved in the key. follows: the source named n R and n 0 R , linked by a foreign key named n the mappings at the schema exchange level, described graphically in Fig. 3 . between heterogeneous repositories of data: mat into another; exchange mapping can be derived and later used to implement a transformation similar to the original one; general properties.
+ present study is providing a solid, theoretical basis for this tool. 3. Background mas are called models , and models are called metamodels . 3.1. Schemas and dependencies
+A schema S is composed by a set of relations R  X  A 1 ; ... ; A is a finite set of tuples, each of which associates with each A tains an instance of each relation in S .
+ and x are the free variables of the formula, ranging over the domains of the attributes occurring in S . only in the right-hand size are existentially quantified.
+ Example 1. Given a schema composed by the relations: a dependency of the form: Department  X  x 1 ; x 2  X  ; Department  X  x whereas a dependency of the form: Employee  X  x 1 ; x 2 ; x the attribute Dept of Employee to the attribute Did of Department . 3.2. Data exchange M  X  X  S ; T ; R st ; R t  X  , where: S is a source schema, T is a target schema, v  X  x ; y  X  is a conjunction of atomic formulas over T , and R t is a finite set of tgds or egds over T .
+
+Given an instance I of S , a solution for I under M is an instance J of T such that  X  I ; J  X  satisfies R may have distinct labelled nulls denoting unknown values.
+ S  X f Emp  X  EmpNo ; Name ; Salary ; Dept  X  ; Dept  X  DId ; DeptName ; Building  X g . T  X f Employee  X  EmpNo ; Name ; Salary ; DeptName ; Building  X g .
+
+R st  X f Emp  X  x 1 ; x 2 ; x 3 ; x 4  X  ; Dept  X  x 4 ; x 5 ; x
+R t  X f Employee  X  x 1 ; x 2 ; x 3 ; x 5 ; x 6  X  ; Employee  X  x
+Given the following instance I of the source schema S : A solution for I under the above data exchange setting is the following instance J of T : the source.
+ in J t  X  X  a 1 ; ... ; a k  X  of J we have that h  X  t  X  X  X  h  X  a 1
+In [14] it was shown that, when a solution for an instance I under M exists and the dependencies in R solution for I under M can be computed in polynomial time by applying the chase procedure to I using R chase steps based on the given dependencies. There are two kinds of chase steps: constants occurring in each atom of /  X  x  X  produces a tuple in I and (ii) s  X  x wise the nulls are equated unless they are both constants, since in this case the process fails . The chase of I is obtained by applying all applicable chase steps exhaustively to I . maps x 1 to 234 , x 2 to John , x 3 to 50K , x 4 to D2 , x tuple in the target instance J . This is indeed the only applicable chase step. computed in polynomial time. 4. Schema templates and encoding of schemas versa. 4.1. Schema templates
+We fix a finite set C of construct names .A construct C  X  p challenging issues already arise in this setting.
+ properties that allow the identification of the construct are underlined. Construct names Properties (domain) Relation name  X  R  X  Attribute name ( string ), nullable ( boolean ), in  X  R  X  Key name ( string ), in  X  R  X  FKey name ( string ), in  X  R  X  , refer  X  R  X  value with the construct Attribute .
+ constraints over single constructs and semantic associations between different constructs. Definition 1. Template A ( schema ) template is a pair  X  C ; R dependencies over C .
+ Example 4. An example of a template T  X  X  C ; R C  X  contains the following set of constructs: and the dependencies: bership of a foreign key to a relation and its reference to another relation. Finally, the egd d only relations with attributes that allow null values.
+ assume that they always belong to the dependencies associated with a relational template. and is obtained by instantiating a template.
+ value taken from its domain. A e-schema S over a template  X  C ; R that satisfy R C .
+
+Example 5. A valid e-schema for the template of Example 4 is the following: It is easy to see that this e-schema represents a relational table as foreign key, and a relational table DEPT with DeptNo as key and done by querying the catalog of the system and checking the satisfaction of the dependencies.
+In the following, an e-schema component over a construct C  X  p denote an e-schema component over a construct C  X  p 1 ; ... ; p construct, a tabular notation with a column for each property.
+ vice versa. 4.2. Relational decoding tics of the various e-schema components, according to the intended meaning of the corresponding constructs. Let S be an e-schema over a template T  X  X  C ; R C  X  . The relational decoding of S is a pair  X  S ; R
+S contains a relation R  X  K 1 ; ... ; K m ; A 1 ; ... ; A  X  R  X  r  X  name  X  ,  X  K i  X  k i  X  name  X  X  1 6 i 6 m  X  for each key component k  X  A j  X  a j  X  name  X  X  0 6 j 6 n  X  for each attribute component a  X  F k  X  f k  X  name  X  X  0 6 k 6 p  X  for each foreign key component f R
+S contains an egd over the relation R  X  K 1 ; ... ; K m ; A for each relation component r 2 S such that:  X  R  X  r  X  name  X  ;  X  K i  X  k i  X  name  X  X  1 6 i 6 m  X  for each key component k R
+R contains a tgd over a pair of relation schemas R  X  A 1 ; ... ; A for each pair of relation components r and r 0 in S such that:  X  R  X  r  X  name  X  and R 0  X  r 0  X  name  X  ;  X  F i  X  f i  X  name  X  X  1 6 i 6 n  X  for each foreign key component f Example 6. Let us consider the e-schema S of Example 5 , which is repeated here for convenience: The relational representation of S is the pair  X  S ; R S  X  where: 4.3. Relational encoding Let S be a relational schema with a set of dependencies R schema S such that:
+S contains a relation component r for each relation R  X  A that: a  X  name  X  X  A i and a  X  in  X  X  R ; S contains a key component k i  X  1 6 i 6 m  X  for each egd in R form: such that: k i  X  name  X  X  K i and k i  X  in  X  X  R ;
+S contains a foreign key component f i  X  1 6 i 6 n  X  for each tgd over a pair of relation schemas R  X  A R 0  X  K 1 ; ... ; K n ; A 0 1 ; ... ; A 0 p  X  in S of the form: such that: f i  X  name  X  X  F i , f  X  in  X  X  R , and f  X  refer  X  X  R Example 7. Let us consider the relational schema  X  S ; R S
+The encoding of  X  S ; R S  X  is the following e-schema: 5. Schema exchange schemas. 5.1. Source-to-target template dependency notion.
+
+Definition 3. s X  X  template dependency Given a source template T next. 5.2. The problem of schema exchange
+Given a source template T 1  X  X  C 1 ; R C 1  X  , a target template T denote a schema exchange setting by the triple  X  T 1 ; T 2 Definition 4. Schema exchange Let  X  T 1 ; T 2 ; R C 1 C 2
+The schema exchange problem consists in finding a finite target e-schema S this case S 2 is called a solution for S 1 or, simply, a solution .
+Example 8. Consider a schema exchange problem in which the source template T
+T  X  X  C 2 ; R C 2  X  are the following: with the relational dependencies in R C 1 and in R C 2 shown in Example 4 .
+Assume now that we would like to split each relation over T Fig. 4 and is precisely captured by the following set of tgds R the conclusions have different meanings, since they refer to the source and the target respectively.
+Consider now the following e-schema S for the template T 1 According to the decoding procedure described in Section 4.2, this e-schema encodes the relational schema:
+S  X f EMP  X  EmpName ; DeptName ; Floor  X g in which EmpName is the key. A possible solution S where R 1 ; R 2 ; K 1 ; K 2 are labelled nulls. The decoding of this solution contains three relations:
+R  X  K 1 ; DeptName  X  , and R 2  X  K 2 ; Floor  X  , in which the attributes K tively. There are several null values because the dependencies in R e-schema.
+ where R 1 and K 1 are labelled nulls. By decoding this solution we obtain two relations:
+R  X  K 1 ; DeptName ; Floor  X  , where K 1 of relation EMP is a foreign key for
+Two issues arise from Example 8 : which solution to choose and how to generate it. Solution S homomorphism from S 0 1 to S 0 2  X  R 2 # R 1 ; K 2 # K 1  X  , there is no homomorphism from S 5.3. Universal solutions and core The discussion on the possible solutions for a schema exchange problem leads to the following definition. from S to all the other solutions.
+ lows from an analogous result for the data exchange problem.
+
+Theorem 1. Let  X  T 1 ; T 2 ; R C 1 C 2  X  be a data exchange setting and S weakly acyclic tgds. The chase procedure over S 1 using R and fails otherwise.
+
+Proof. A schema exchange setting can be viewed as a data exchange setting over a source schema S that involve a relation for each construct of T 1 and T 2 solution. In this case, by construction, the output is an instance of T given schema exchange problem. h size. This is clarified in the following example.
+
+Example 9. Consider a schema exchange problem in which the source template T
+T  X  X  C 2 ; R C 2  X  are the following: with the usual relational constraints in R C 1 and in R C with only key attributes.
+
+Assume now that we would like just to copy each relation over T transformation can be implemented by the following tgd: is not used in the target. Let us consider the following e-schema S over T If we apply the chase over S using over R C 1 ; C 2 we obtain the following universal solution S 0 : tion ORDER .
+ However, it is easy to see that the following e-schema S 00 is also a universal solution: more compact than S 0 .
+ the core of universal solutions. 6. From schema to data exchange exchange setting for a given data source. 6.1. Metalinks and S X  X  transformation process describe the relationships between source and target metadata.
+ substitution s .
+ not need to compute them partially and incrementally as in [11].
+
+Given a relational database over a schema S 1 and a schema exchange setting  X  T
+S is an instance of T 1 , we aim at generating a target database over a schema S solution for S 1 . We call such process S X  X  transformation and it can be summarized as follows. ing to a foreign key defined between them. Now consider the following source schema: The encoding of S is the e-schema S that follows: components f t 1 ; ... ; t 5 g :
+The metalink generated by this chase step is: f s 1 ; ... ; s
+The chase ends successfully and produces an e-schema S 0 whose decoding is the schema  X  S Now, on the basis of the above metalink, we derive the following sets of annotated relations: placed with the same variable, we obtain the following s X  X  tgd: The final data mapping scenario is reported graphically in Fig. 6 . instance, the relation EMP had two attributes, the tgd v 1 6.2. Properties of the S X  X  transformation process cedure similar to the one defined in Section 4.3 for schemas.
+ More precisely, let d be an s X  X  tgd over a source schema S and a target schema T , and let R dencies over S and T , respectively.
+
+The encoding of d is an s X  X  template tgd ^ d such that: lhs (rhs) of d ; the lhs (rhs) of ^ d contains a set of atoms of the form Key  X  K ring in d such that there is an egd: in R S  X  R T  X  ; the lhs (rhs) of ^ d contains a set of atoms of the form FKey  X  F occurring in d such that there is a tgd: in R S  X  R T  X  ; the lhs (rhs) of ^ d contains a set of atoms of the form Attribute  X  A occurring in the lhs (rhs) of d such that A i in not involved in the rhs of an egd in R
+Example 11. Let us consider the tgd d 1 of Example 10 , which is reported here for convenience:
+The encoding of d 1 is the following s X  X  template tgd.
+The tgd v 2 in the example above is less general than the original tgd v problem obtained as output captures the semantics of the schema exchange problem given as input. This intuition is captured by the following correctness result.
+
+Theorem 2. Let  X  S ; S 0 ; R SS 0  X  be the output of the S X  X  transformation process when  X  T b R be the set of s X  X  tgds obtained by encoding the s X  X  tgds in R under the schema exchange setting  X  T 1 ; T 2 ; b R  X  .
+ homomorphic to b S i . Since, by Theorem 1 , if a solution exists, homomorphism from S n  X  S 0 to c S n then the former is also a universal solution for S under  X  T The basis is immediate since, for n  X  0, the e-schema S 0 as well as the sets of dependencies R tion, and so S 0 is also a trivial universal solution for  X  T morphism h i from S i 1 to d S i 1 and let S i 1 ! r ; s S definition of encoding of a tgd it easily follows that there is a substitution ^ s from the left-hand side Hence, we can apply a chase step based on ^ r and ^ s to d b
+S  X  d S i 1 [ ^ s  X  b R  X  , where b R is the right-hand side of ^ r , and since left-hand side of r : since, by the inductive hypothesis, there is a homomorphism h homomorphism from L to d S i 1 . At the same time, the composition of the substitutions s , from L to also a substitution from L to d S i 1 . It follows that, on the variables occurring in L and R , h h  X  S
+ X  X  h i  X  S i 1  X [ h i  X  s  X  R  X  X  X  d S i 1 [ ^ s  X  s  X  R  X  X  X  are used in formulas.
+ exchange setting.
+ Proof. Given a data exchange setting M  X  X  S ; S 0 ; R SS 0 can be obtained with the S X  X  transformation process by: (i) defining two templates T
+T stants appear in R SS 0 since the encoding procedure does not consider them. h 7. Related work problem.
+ are treated as first class citizens.
+ ator. The ModelGen operator realizes a schema translation from a source data model M schemas.
+ share the same approach: (i) the system rewrites a source schema S into a representation S (ii) a sequence of rule-based transformations modifies S 0 the target data model; (iii) after n transformations, S 0 schemas.
+ dences between the elements. Many attempts have been done to automate the generation of the target schema used in many contexts to support the design and reuse of software components [28]. we have added a new section (Section 7) discussing related works. 8. Conclusion and future work ically generating a data exchange setting from a schema exchange solution. (i) describe data collections presenting structural similarities, by means of a source template T possible transformation of the source by means of a target template T graphically represented by lines, (iii) translate any data source over a schema matching with T found in: http://gaia.dia.uniroma3.it/ .
+ some of them: that can be generated in the S X  X  transformation process.
+ ginal one for a different pair of schemas.
+ can verify whether there is a join path between two relations.
+ tain properties, e.g., the fact that the dependencies belong to some relevant classes.
+References

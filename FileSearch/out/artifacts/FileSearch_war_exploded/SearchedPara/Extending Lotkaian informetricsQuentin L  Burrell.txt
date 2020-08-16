@@ -1,0 +1,74 @@
+ 1. Introduction
+The general framework for modelling informetric phenomena is that of a population of  X  X  X ources X  producing  X  X  X tems X  in paper  X  but suppose that we are observing a fixed population for a given, fixed period of time.
+More formally, let X denote the number of items produced by or, more generally, the (observed) productivity of a ran-domly chosen source during the period of observation and suppose that the distribution of X in the population is given attention to the continuous formulation in what follows. 2. Pareto Type II distribution
+The classical Pareto distribution is defined by its probability density function (pdf) accepted terminology and make the following: We write Y Par( a ).
+ simply a scaling parameter.
+ From the definition it follows easily that the tail distribution function is given by: ber/proportion of individuals with income greater than x , i.e. the relationship between log x and log U formulation given in (1) .) Remark 1. Note that we refer to U Y as the tail distribution function. Alternatively, since U see e.g. Burrell (1991, 1992, 2005) . In other contexts U Bestravos (1998) .
+ that the discrete nature is not really an issue.) will investigate here is given in the following:
+Proposition 1. If Y Par( a ) and X = b (Y 1) then X has pdf and tail distribution function Proof. If Y Par( a ) and X = b ( Y 1) then from (3) . Hence we have the tail distribution function as required. The pdf in (4) is recovered from f Notation 1. For such a distribution we write X ParII( a , b ).
+
+Remark 2 (iv) In reliability theory, the hazard or failure rate function is defined as h  X  x  X  X  left at x = 1. Thus if we denote this truncated version by T then Alternatively we could just shift the distribution by defining S = X + 1 so that define:
+W SParII( a , b ). Its tail distribution function is given by (6) and its pdf is ab Note. In terms of the original standard Pareto distribution we have W = X +1= b ( Y 1) + 1 = b Y +(1 b ). Hence the scale parameter.
+ values. For the tail distribution function we have only given the graph in the case a = 1 since log U standard Pareto distribution in the same fashion, each set of graphs would consist of a single straight line! institutions.
+ function. For ParII( a , b ) we have from (5) that p  X  U  X  x  X  X  b is just shifted up by one.) Penache, and Penache (1997) .
+ Important features of any distribution are given by the moment sequence, in which case we report:
+Proposition 2. If X ParII( a , b ) then moments up to order n exist for n &lt; a and E  X  X denotes the integer part of a , i.e. the largest integer 6 a
+In particular, (i) The mean is (i) The variance is (iii) The coefficient of variation is Proof. See Appendix A . h Note. The coefficient of variation is, of course, independent of the (scale) parameter b . Remark 4. The moment sequence for SParII( a , b ) can be derived similarly. In particular its mean is just l variance is the same as that of X . 3. Estimation of parameters
+In much informetric work, formal statistical estimation procedures are not used. In particular, where the Lotka/Pareto power-law distribution is assumed, even though there is only one parameter to be estimated, ad hoc methods are often imations when applied to discrete data.
+
+In general, if we have a set of data (observed productivities) x applied to the parameters of the ParII( a , b ) distribution. (a) Method of moments
+The idea is that we use the observed sample moments of the distribution as good estimates of the corresponding (theo-two parameters so that the first two moments suffice. As usual we define the sample mean as x  X  1 sample variance as s 2  X  1 n 1 P n j  X  1 x j x 2 for estimates of the population values l and r
+Proposition 3. For the ParII( a , b ) distribution, the method of moments estimates are given by
+Proof. This follows by solving (7) and (8) for a and b , then replacing l and r (b) Maximum likelihood estimates
+Although they are intuitively reasonable, are usually easy to apply and have some good theoretical properties, moments Appendix for the interested reader.
+
+Proposition 4. For the ParII( a , b ) distribution, the maximum likelihood estimates are given by where ^ b is the solution of Proof. See Appendix B . h
+Note that in practice we must resort to numerical methods to first determine first need the following simple results.
+ Lemma 1. If X ParII( a , b ), then a log X  X  b b EXP  X  1  X  , i.e. an exponential distribution with mean 1. Proof with mean one, as required. h Lemma 2. If X 1 ,X 2 , ... ,X n are observations from a ParII( a , b ) distribution then 2 a with 2n degrees of freedom.
+ on probability and statistics. h
+Proposition 5. An approximate two-sided 100(1 a )% confidence interval for a is given by where v 2 a  X  m  X  denotes the upper 100 a % cut-off point of the chi-square distribution with m degrees of freedom.
+Proof. From (9) ,if b is known, the MLE for a is such that n  X  2 a then follows, with the approximation resulting from the replacement of the (unknown) b by its MLE. h In terms of a general parameter k , the result is:
+Theorem 1. If ^ k is the MLE of k , then for n large, ffiffiffi denotes the Normal/Gaussian distribution with mean l , variance r Proof. This is a standard result for MLEs, see e.g. Bain and Englehardt (1992, p. 316) and DeGroot (1986, p. 428) . h Its application to the construction of confidence intervals comes through the following:
+Corollary 1. For large n, an approximate 100(1 a )% confidence interval for k is given by where z a denotes the upper 100 a % cut-off point of the standard Normal distribution. In order to use this for the scale parameter b , we first need to determine the Fisher information.
+Proposition 6. If X ParII( a , b ), then the Fisher information on b in a single observation on X is given by Proof. See Appendix C . h
+Proposition 7. For large n, an approximate two-sided 100(1 a )% confidence interval for b is given by where z a denotes the upper 100 a % cut-off point of the standard Normal distribution. fying the expression. h the one for b makes use of a large sample approximation via the Central Limit Theorem. subtract 1 form each data value then treat them as data from a ParII( a , b ) distribution and use the above results. 4. Concentration aspects 4.1. Graphical representation: the classical Lorenz/Leimkuhler approach the cumulative proportion of sources.
+ distribution function of X which is The Leimkuhler curve is then given by W = W X ( x )= L ( U )= L ( U horizontal, plotted via the implicit variable x . Because X is continuous, as x varies ( U L -curve (for X). In the case of interest, where X ParII( a , b ) then, although we already have that U find tence of the mean which in the case of ParII( a , b ) requires a &gt;1.
+ Hence using the standard approach does not lead to a simple closed form for the equation of the Leimkuhler curve. curve due to Gastwirth (1971) .
+ Theorem 2. The Leimkuhler curve can be written as where U 1 (u) = inf {x: U (x) P u }.
+ Proof. See Gastwirth (1971) h of the tail distribution function hence we claim no originality for the result. tail distribution function, U 1 is, as noted earlier, usually referred to as the quantile function. Proposition 8. If X ParII( a , b ), then the Leimkuhler curve of X is given by L( U )= aU ( a 1)/ a ( a 1) U for 0 6 U 6 1.
+
+Proof. u  X  U  X  x  X  X  b b  X  x a , which is strictly decreasing and hence it is easy to determine From (6) we have E  X  X  X  b a 1 and hence applying Gastwirth X  X  Theorem we find meter and the L -curve is invariant under changes of scale. (ii) It is important to note that neither the standard construction of the L -curve as described, nor the Gastwirth (2006a, 2007) as well as Rousseau (2007) .
+ Examples of the L -curve for the Pareto type II distribution are given in Fig. 4 . Remark 8. The corresponding construction in the case of SParII( a , b ) leads to putting b = 1 to give L ( U )= U ( a 1)/ a for 0 6 U 6 1.
+
+See also Burrell (1992) , Kleiber and Kotz (2003, p. 77) . 4.2. Numerical representation: the Gini index
+The Gini index or coefficient is one of the standard measures of concentration of productivity within a population of
+Proposition 9. If X is a continuous, non-negative random variable then the Gini index is given by metrics. Application of this leads to the very simple expression given in: Proposition 10. If Y ParII( a , b ), then the Gini index is given by c Proof. To apply Proposition 8 we only need to calculate Substitution into (11) and simplification gives the result. h
+Remark 9. (i) Again as expected, the Gini index does not depend upon the scale parameter b . for instance, Burrell (1991, 2005b, 2006b) for examples. 5. Further aspects 5.1. A possible genesis? If we further assume that K follows a gamma distribution then we find by the theorem of total probability that
+In particular, if K C ( m , h ) so that f K  X  k  X  X  h m C  X  m  X  Thus X ParII( m , h ) in our earlier notation.
+
+Harris (1968) . the following Proposition and is illustrated in Fig. 5 for various values of m and h =1.
+Proposition 11. If K C ( m , h ) and W = 1/ K then the pdf of W is given by Proof. This is a straightforward exercise in determining the distribution of a transformed random variable. h
+Corollary 2. If W is as in Proposition 10 then l W  X  h m 1 mode at h /( m + 1).
+ Proof. These are routine exercises. h rics, it is often called the Vinci distribution after Vinci (1921) who applied it to income distributions. 5.2. A relationship with the exponential distribution
+In the previous section we have shown that if the number of items produced by an individual source can be viewed as an Type II form.
+ We also have the following interesting limit result.
+ distribution of parameter k .
+ Proof. If X ParII( a , b ) then, for any x &gt;0, which is the tail distribution function of an exponential distribution with parameter k . Hence the result follows. h convergence in distribution in the probability literature. increasing both parameters simultaneously is exerting opposing influences on the overall form of the distribution. The behaved  X  indeed, a familiar!  X  limit distribution. (iii) Theorem 3 suggests that a ParII( a , b ) distribution with both parameters large can be well approximated by an exponential distribution. In which case, one might ask what is meant by  X  X  X arge X . We illustrate the closeness of the approximation in Fig. 6 . 6. Time dependence? the tail of the productivity distribution remains the same, i.e. the parameter a remains unchanged throughout.
+On the former point, the problem of the unobserved non-producers subsequently becoming among the observed (posi-ductive sources.
+ as well as the influential papers of Bookstein (1990a, 1990b, 1997, 2001) , but see also Burrell (2001) .
+But by assuming that a remains fixed, this means that the time dependence must come through the scale parameter b .If t is given by X t ParII( a , b t ).
+ tion of individuals producing very few items should decrease; the proportion producing more items should gradually in-can be confirmed by consideration of the tail distribution function for ParII( a , b t ) using (5) . since we have no empirical evidence to support the model. Furthermore, the model is purely deterministic  X  there is no explanatory element  X  and hence we would not expect it to have useful predictive properties. 7. Truncated versions the same cannot be done for a truncated version of the ParII( a , b ) and SParII( a , b ) distributions.
+Definition 3. We say that X has a ParII( a , b ) distribution right truncated at m &gt; 1 if its pdf is given by f
+X  X  x  X  X  c ab a  X  x  X  b  X  a  X  1 for 0 &lt; x &lt; m , where c  X  c  X  a ; b ; m  X  X 
+Most of what we have done previously can now be done for this right truncated version although the calculations are somewhat more tedious and some of the algebraic expressions are less elegant. We do not include them here. 8. Concluding remarks model having no explanatory features. However, as Barry Arnold remarked: tribution.  X  Arnold (1985) , quoted in Johnson, Kotz, and Balakrishnan (1994, p. 608) .
+A similar sentiment undoubtedly justifies the study of Lotkaian informetrics in the sense of Egghe. We have shown that to others.
+ Appendix A Proof of Proposition 2. By definition E  X  X n  X 
+Substituting y = x / b in the integral gives E  X  X n  X  ab
+The integrand we recognise as being proportional to the pdf of a Beta distribution of the second kind with parameters B ( n +1, a n ) so that E [ X n ]= ab n B ( n +1, a n ) where B  X  p ; q  X  X  simplification yield the result.
+ The particular case n = 1 gives the expression for the mean; the variance follows from r 2 variation is r X / l X .
+ Appendix B Proof of Proposition 4. Based on the n observations, the log-likelihood function for ( a , b ) is given by hood function  X  we just take the two partial derivatives and set them to zero.
+If we first set (B2) equal to zero and solve for a , this gives the MLE as satisfying
+Now setting (B1) equal to zero and substituting for a we find, after rearranging, that the MLE for b satisfies Appendix C
+Proof of Proposition 6. By definition, i  X  b  X  X  E o ln f  X  X j b  X 
+Firstly, ln f ( X  X  b )=ln a + a ln b ( a + 1)ln ( X + b ) so that and then To determine this we need to find E [( X + b ) r ] for r =1,2.
+ Now Substituting the special cases for r = 1, 2 into (C1) and then some simplification leads to the result. References

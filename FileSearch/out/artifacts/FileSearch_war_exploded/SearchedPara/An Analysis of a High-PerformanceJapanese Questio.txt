@@ -1,0 +1,161 @@
+ HIDEKI ISOZAKI NTT Communication Science Laboratories, NTT Corporation 1. INTRODUCTION
+Question answering systems provide answers to such natural language ques-tions as  X  X here was Kennedy assassinated? X  Question Answering Challenge (QAC) is an evaluation workshop held by the NTCIR (NII-NACSIS Test Col-lection for Information Retrieval Systems) Project to encourage research on Japanese question answering systems. Twenty-five systems participated in QAC2 subtask 1, a standard factoid QA task.
+
+In subtask 1, each system outputs at most five answers for each question and its performance for a question is indicated by Reciprocal Rank,  X  X R. X  If no correct answer is contained in the output, RR is zero. Otherwise, the best rank of the correct answers is denoted by r and RR is given by 1 / r . The QAC2 organizers provided 200 questions, but five questions were excluded. As a result, the MRR (Mean Reciprocal Rank = the average of RR i for 195 questions was used to measure each system X  X  performance. Participating systems were requested to find answers from Mainichi Newspaper 1998 X 1999 and Yomiuri Newspaper 1998 X 1999. The number of articles was 612,644.
+
+Our question answering system, SAIQA-QAC2 (System for Advanced Inter-active Question Answering), achieved the best performance of MRR the subtask. SAIQA-QAC2 is an improvement of our previous system SAIQA-Ii that achieved MRR = 0.46 for QAC1 subtask 1 [Sasaki et al. 2002].
+
+Figure 1 is a rough sketch of the entire system. The mainstream of the system is composed of four modules: Question Analysis, Document Retrieval, Answer-
+Extraction, and Answer Evaluation. The Answer-Extraction Module has sev-eral submodules such as IREXNE90 , NUMEXP , WSENSE , and REJECT . (In this paper, submodule names are written in san serif font.) For QAC2, we mainly improved its answer-type determination module ANSTYPE and the document retrieval module.
+ IREXNE90 is an efficient SVM-based named entity recognizer that achieved
+F = 90% [Isozaki and Kazawa 2002] for IREX general task [Sekine and Eriguchi 2000]. The same recognizer trained only by a publicly available corpus (CRL NE data 1 ) achieved F = 85%. We call this version IREXNE85 . The CRL NE corpus contains about 300,000 words, while the additional in-house training corpus contains about 750,000 words. IREXNE90 detects named entities and classifies them into eight classes: ORGANIZATION , PERSON , LOCATION , ARTIFACT , DATE , TIME , MONEY , and PERCENT . (In this paper, answer types are written in typewriter font.)
+In general, a fine-grained answer taxonomy improves MRR [Ichimura et al. 2004]. We introduced 189 answer types. Figure 2 shows a part of the tax-onomy. However, it is difficult to implement a fine-grained answer extrac-tion module. Our experience suggests that it is very difficult to build a hand-crafted recognizer comparable to IREXNE85 . On the other hand, Ma-chine Learning methods require a large training corpus for the fine-grained taxonomy.
+
+Our idea is to use IREXNE90 as an accurate candidate generator for a fine-grained taxonomy. Since IREXNE90 gives only a coarse-grained classification, we write a set of hand-crafted rules that rejects inappropriate candidates for each fine-grained answer type. This set of hand-crafted rules is called REJECT . However, IREXNE90 cannot generate answer candidates for some answer types.
+They are extracted by other submodules, such as NUMEXP and WSENSE .We describe them in the next section.
+
+Although SAIQA-QAC2 has more functions, we turned them off for simplicity because they contributed very little to system performance.
+
+Each module is described in detail in Section 2. In Section 3, we show how each module contributed to the performance. 2. DESCRIPTION OF EACH MODULE 2.1 Question Analysis
+The Question-Analysis Module normalizes questions and determines expected answer types. Question normalization is used to simplify  X  X nswer-type determi-nation rules. X  For instance, some questions end with oshiete (Tell me) or shiritai (I want to know), which are of no use in the subsequent processes. Such useless expressions are removed from the questions. Quantities are often asked about by expressions such as dore kurai , dore gurai , dono kurai , and dono gurai ( how much/many). They have the same meaning and we can normalize them into one expression.
+
+After the normalization, we apply ALTJAWS, a morphological analyzer based on a Japanese lexicon  X  X ihongo Goi-taikei X  [Ikehara et al. 1997], to segment a given question into words, because interword spaces are not used in Japanese.
+ALTJAWS also provides part-of-speech tags, word senses, bunsetsu chunks, and normal forms. Nihongo Goi-taikei classifies 300,000 words into about 3000 categories (word senses). Bunsetsu is a basic unit of Japanese grammar, which consists of one or more content words optionally followed by a sequence of function words.
+
+The analyzer then detects a  X  X uestion word X  (e.g., dare = and itsu = when) and a  X  X ocus word, X  which is useful for more detailed answer-type classification. In Japanese, focus words are often followed with a topic marker wa .
+ In the next example, the system can easily determine its answer type as
+PERSON because it has a question word dare .
+The next question does not contain dare , but the system can determine its answer type as FEMALE (a subclass of PERSON ) from the focus word  X  okusan  X ( wife) because okusan has a word sense  X  X emale X  according to Goi-taikei.
+In this way, the Question-Analysis Module determines answer types by con-sidering both the question word and the focus word. However, Goi-taikei X  X  tax-onomy is not always suitable for our QA system. For instance, Goi-taikei has more than three hundred classes that correspond to people, occupations, and ti-tles such as shachou ( = president). However, we do not need such a fine-grained taxonomy because our QA system does not distinguish between answer types of the following two questions.
+ However, we sometimes want to distinguish male names from female names. Therefore, we prepared a mapping table that converts Goi-taikei X  X  word sense IDs to answer types. The left table of Figure 3 shows part of the mapping table.
+For instance, word sense ID 51 is  X  X nfant, X  52 is  X  X ale infant, X  53 is  X  X emale infant, X  54 is  X  X hild, X  55 is  X  X oy, X  and 56 is  X  X irl. X  This table maps 51 and 54 to PERSON , 52 and 55 to MALE , and 53 and 56 to FEMALE .
+
+However, Goi-taikei is too coarse for some answer types. For instance, nagasa (length) and omosa (weight) have the same word sense ID: 2591 (weights and measures). Byoumei (name of sickness) and chimei (name of location) have the same word sense ID: 1068 (miscellaneous titles). The right table shows correc-tions for these words. The table contains about 270 words. Most word entries were added after QAC1. By using these tables, ANSTYPE function (Figure 1) attaches answer types to each word.
+
+The addition of a new answer type is often easy because we rarely need to write new answer extraction rules. First, we consider which submodule can generate answer candidates of the new answer type. If we can use WSENSE to detect candidates, we simply add a new entry to the mapping table. The Ques-tion Analysis Module and the Answer-Extraction Module then automatically cover the new answer type because they are based on ANSTYPE . If the new answer type is a subclass of an answer type covered by IREXNE90 or NUMEXP , we can copy candidates from the superclass. Second, we consider how inappro-priate candidates can be rejected. If there is a simple rule, we add the rule to
+REJECT . We provide an example in Section 2.3. 2.2 Document Retrieval
+Since QA systems have to find answers in a limited time, only a small number of documents can be examined. Therefore, the retrieval module is important.
+It is well known that a dense distribution of query terms is a good hint for finding answers. Query terms are extracted from the given question. However, typical question words such as dare (who) and oshiete (tell me) degrade retrieval performance. Functional words such as particles ( joshi , e.g., ga ) and auxiliary verbs ( jodoushi ) do not appear to be informative in this module. Therefore, we did not use these words as query terms.
+
+For query terms, we use their normal forms provided by ALTJAWS. For in-stance, megane (eyeglasses) can be written in kanji (Chinese characters), hira-gana (phonetic characters), and katakana (another set of phonetic characters). These variants are normalized to kanji megane . Both girisha and girishia mean
+Greece. ALTJAWS normalizes them into girishia . (with regards to QAC2, we could not find questions for which this normalization was useful.) Henceforth, the set of query terms for a question is denoted Q .
+
+In SAIQA-Ii, we used a TF-IDF-based paragraph retrieval method. However, we abandoned that method because paragraphs were often too short to cover all query terms. Many QA systems employ passage retrieval modules that split documents into fixed-size passages of 300 words or three sentences. For exam-ple, Akiba et al. [2004] uses a variant of this method. However, it has a similar problem: if the passage is too short, some distant query terms are not covered. If the passage is too long, passage scores will not reflect the density distribution.
+Recent studies [Nomoto et al. 2004; Sakai et al. 2004] also report that passage retrieval is not significantly better than document retrieval. Clarke and Terra [2003] showed that full-document retrieval gives better scores than passage retrieval.
+
+We developed a new proximity-based document-ranking method that consid-ers all passages of different lengths. With our method, document D  X  X  score is defined as the best score of all passages in D .
+
+Here, p 1 p 2 means that a passage p 1 is contained in another passage p
+The document D is also regarded as a passage. In this paper, passage p is represented by a pair of integers [ l , r ] where l is the location of p  X  X  first word and r is the location of p  X  X  last word. The location of a word equals the number of words before the word.
+ The passage score is given by the following definition.
+ where idf [ q ] = log( N / df [ q ]) is IDF (Inverse Document Frequency) of query term q . df [ q ] is the number of documents that contains q and N is the total number of documents. Q ([ l , r ]) is the set of query terms that appear in the passage [ l , r ].  X   X  0isa decay factor .If  X  is large, the scoring function becomes nearsighted. Long passages do not produce good scores. If function becomes farsighted. Therefore, we call this method DIDF (Decayed
+IDF). We used an efficient algorithm for the document ranking. The algorithm is described in the appendix. DIDF(0) is equivalent to an IDF-based document scoring function:
+By using 2000 in-house questions and about 1000 QAC1 questions, we found that  X   X  X  optimal value lies somewhere between 0.005 and 0.0001, but we did not have enough time to tune the value before the formal run of QAC2. We used  X  = 0 . 005 for the formal run.
+ Figure 4 shows the output of the search engine for a question:
+Each line corresponds to a document. The first element of a line is the document score ( DS ). The second element is the document X  X  name. The third element is the location of the best passage [ l , r ]. The remaining part gives detailed data These data are used in the Answer Ranking Module.
+
+In Section 3.2, we compare DIDF with other methods, namely IDF, BM25, and MultiText. BM25 [Jones et al. 2000] is a standard document retrieval method and some QA systems (e.g., [Sakai et al. 2004]) use BM25 or its variants. Its document scoring function is defined by the following formula: where w (1) [ q ] is the Robertson/Spark Jones weight of query term q , dl ( D )isthe length of document D , and avdl is the average document length. tf [ q ] is the frequency of q in D and qtf [ q ] is the frequency of q in the given query. b , k and k 3 are parameters whose typical values are b = 0 . 75, k
+Clarke et al. [2001] introduced MultiText for QA. MultiText X  X  passage scoring function is defined by the following formula: and M is the total number of words ( q f [ q ]) in the corpus. D  X  X  document score can be defined as the best passage score.
+ 2.3 Answer Extraction
+Here, we describe submodules of the Answer-Extraction Module. As mentioned above, IREXNE90 generates answer candidates and REJECT submodule re-moves inappropriate candidates of a certain fine-grained answer type. For example, school names and hospital names are recognized by IREXNE90 as
+LOCATION or ORGANIZATION , depending on the context. Therefore, candidates of SCHOOL and HOSPITAL are copied from IREXNE90  X  X  output for LOCATION and
+ORGANIZATION . We then use a suffix of an answer candidate to restrict its possi-ble answer types. If a candidate ends with koukou ( = high school), it belongs to
+SCHOOL . If it ends with byouin ( = hospital), it belongs to HOSPITAL . However, we cannot say whether juntendo is a school or a hospital. (Juntendo University is a medical school). Therefore, juntendo belongs to both SCHOOL and HOSPITAL . This kind of rule is called a suffix constraint . The REJECT submodule has about 200 suffix constraints.
+
+In addition, REJECT has dozens of heuristic rules that examine surrounding texts. For instance, some documents contain their authors X  names, which is uninteresting for most readers. Therefore, one of the heuristic rules removes authors X  names from answer candidates.
+
+For numerical expressions, we wrote 300 + rules. Most numerical expres-sions are given in the form  X  number + unit , X  and such units can be automati-cally extracted from the corpus. Therefore, it is easy to write down hundreds of rules. This numerical expression recognizer is denoted  X  NUMEXP . X  In addition, the extraction module has the following submodules: SUFFIX , WSENSE , and DEFINE . Some questions contain a question word nani-X or nan-
+X ( = what X). For instance, you can ask a religion name with nani-kyo ( religion). Its answer candidates can be detected by the specified suffix  X  kyo , X  e.g., Christianity is kirisuto-kyo . Therefore, we introduced a module that finds a noun phrase that has a specified suffix. Numerical expressions that are not supported by NUMEXP are sometimes covered by this module, which is denoted  X  SUFFIX . X  WSENSE is a submodule that extracts answer candidates by using the
+ANSTYPE function. For example, ANSTYPE knows gan ( = cancer) and kekkaku ( = tuberculosis) belong to DISEASE . We also accept their compound noun phrases, such as suizou gan ( = pancreatic cancer) as DISEASE . In the next ex-ample, ANSTYPE attaches answer type MOVIE to the word  X  film . X  Therefore, WSENSE can extract  X  X oman Holiday X  as a movie name.
+
+Sometimes, unknown words are good answer candidates for some answer types. Since  X  X arfalle X  is an unknown word, it is accepted as an answer candidate by some answer types such as FOOD .
+ The DEFINE submodule extracts a definition or a short description of a term.
+It detects typical patterns such as:
+Thus, we can use these submodules for answer extraction. However, some submodules are detrimental for a certain answer type. For example, COMPANY is an answer type for company names. If we use WSENSE submodule for COMPANY , it generates useless candidates such as kanren gaisha ( = and tsuushin gaisha ( = telecommunication company). They are not company names. Therefore, we selected only useful submodules for each answer type. As for COMPANY , we used only IREXNE90 to generate candidates. Since COMPANY is a subclass of ORGANIZATION , its candidates are copied from IREXNE90  X  X  output for
+ORGANZIATION . Then, the REJECT submodule removes non-COMPANY candidates such as committees and labor unions.
+
+Each answer candidate in a document is then represented by four compo-nents: an answer string, its full name, its document ID, and its location inside the document. If an answer candidate for PERSON is too short, it must be a sur-name or a first name. In order to disambiguate the candidate, the extraction module searches for its full name in the document. The full name is used when the system outputs the best answers. The location information is used in the
+Answer-Evaluation Module. 2.4 Answer Evaluation
+In an early stage of the development, we tried to find a good answer evaluation function by trial and error. Since answer evaluation is difficult, the function became very complicated. (QAC2 X  X  second best system [Murata et al. 2004] used 45 heuristic rules for the candidate evaluation.) Since heuristic evaluation rules are hard to maintain, we also tried a Machine Learning method [Suzuki et al. 2002]. However, these complicated evaluation functions made the QA system incomprehensible. Therefore, we now use a simple scoring function.
+Candidate c in a document D is evaluated by a weighted Hanning window function [Hirao et al. 2001] defined as follows: where DS ( D )is D  X  X  document score, d ( c , q ) is the distance between c , and the nearest position of a query term q , and
+SAIQA-QAC2 has two distance measures: word distance and bunsetsu dis-tance . Word distance is the number of words between c and q . Since words in
+Japanese sentences are not separated by interword spaces, word boundaries are often unclear. Therefore, word distance seems unreliable; it depends on morphological analyzers and their dictionaries. On the other hand, bunsetsu is clearer. Bunsetsu distance is the number of bunsetsu s between c and q . We used bunsetsu distance in the formal run submission, but we did not have enough time to determine which distance measure to use. Mori [2004] also uses bun-setsu distance.
+
+Since the Hanning window function covers only 2 W + 1 words, DS ( D )is multiplied here to promote candidates in a better context. (However, our recent experiments showed that this multiplication improved the system performance very little.)
+Then, the system sorts answer candidates by their scores in descreasing or-der and prints out the top five candidates. The candidate list often contains duplicated elements from different contexts. For instance, the name of the cur-rent Japanese prime minister appears in a lot of documents. Although some researchers (e.g., [Murata et al. 2004]) take the number of duplications into account, we simply removed the duplicated elements. 3. CONTRIBUTION OF EACH COMPONENT
+Here, we analyze how much each component contributed to the performance. 3.1 Contribution of Answer-Extraction Submodules Table I shows the degree to which each submodule of the Answer-Extraction
+Module contributed to the performance of the entire QA system. We used the top 20 documents given by DIDF(0.005) and we tried two window sizes: 30 bunsetsus and 60 words. Top5 is the number of questions for which the sys-tem returned at least one correct answer. According to this table, IREXNE90 , NUMEXP , and WSENSE were main contributors to the system performance.
+This result for 30 bunsetsus was slightly different from NCQAL, our formal run result. This is caused by two reasons. First, we used the top 100 documents for NCQAL instead of 20 documents. Second, we turned off certain functions that contributed very little to the system performance.
+
+For 30 bunsetsus, we also tried a coarse-grained taxonomy. This coarse-grained taxonomy does not distinguish subclasses of IREX NE classes. As shown in the table, even the coarse-grained version worked well except for the REJECT submodule that was designed for the fine-grained version.
+
+Figure 5 compares the results graphically with QAC2 participants. According to this figure, IREXNE90 + NUMEXP + SUFFIX is better than the fourth best system although we used only the Hanning window function for the answer evaluation. As mentioned above, the implementation of NUMEXP and SUFFIX is relatively easy. IREXNE90 requires an extra corpus, but we can prepare it by rewriting IREXNE85  X  X  output. We do not have to define new NE classes for the corpus but simply follow CRL NE data. Another major improvement was given by WSENSE , which requires Goi-taikei or a similar dictionary.
+
+The REJECT module does not generate any candidates, but removes only a small number of inappropriate candidates. Therefore, its contribution is very limited although it has hundreds of heuristic rules. 3.2 Contribution of the Proximity-Based Document Retrieval Module
+Here, we compare DIDF with baseline methods: IDF, BM25, and MultiText. As mentioned above, we used DIDF(0.005) for the formal run by considering the results of in-house QA data and QAC1 data, but we did not know whether it was the optimal value or not. For BM25, we used typical values of b k = 1 . 2, and k
+Table II compares the precision of DIDF with that of baseline methods. The precision at rank R is the ratio of relevant documents in the top R documents.
+We assume that a relevant document is a document that contains a correct answer. That is, we use a lenient evaluation; we are unconcerned whether the document has sufficient information to judge the correctness of the answer. As shown in the table, BM25 ( k 1 = 1 . 2) was worse than DIDF(0.005) and
+MultiText. Therefore, we tuned k 1 . According to our experiments, k the best results. This small k 1 value implies that term frequency is detrimental to the document retrieval for QA. Although k 1 = 0 is worse than k believe this is because term frequency is slightly correlated to the proximity of query terms.
+ According to McNemar X  X  test, BM25 ( k 1 = 0 . 1) was significantly better than
+DIDF(0.005) at R = 50 with p &lt; 5%. Therefore, we also tried different
+We then found that DIDF(0.001) was better than BM25 ( k 1 their difference was not statistically significant.
+
+We also compared DIDF with MultiText. DIDF(0.001) was significantly bet-ter than MultiText at rank 20, 30, 40, and 50 with p &lt; significantly better than MultiText at rank 30, 40, and 50 with p
+Although DIDF showed good performance in terms of precision, only one question might have contributed to that performance. Therefore, we compared DIDF with baseline methods in terms of the ratio of answerable questions.
+Here, we use the lenient evaluation again. That is, we assume that a question is answerable at rank R if a correct answer appears in the top R documents. Figure 6 compares the ratios of answerable questions. From this point of view,
+DIDF(0.005) gives better results than DIDF(0.001) for R  X  shows relatively poor performance again.
+
+Now, we investigate the way in which DIDF contributed to the entire QA system. We used a word-distance Hanning window function with W this experiment. Table III compares MRRs given by different retrieval systems.
+We used top 20 documents. According to this table, DIDF gives better scores than MultiText, BM25, or IDF. However, even the difference between BM25 ( k RRs.
+
+Here, we use another measure to show the difference because MRR does not indicate a system X  X  robustness. Suppose two systems (A and B) obtained RR for a certain question. This means that their first answers are correct. It does not tell us whether or not their second answers were correct. Moreover, RR does not tell us how robust the systems are. Suppose System A found the answer in five different documents while System B found it in only one document. In this case, System A is more robust than System B. However, we cannot know the robustness of our system from its normal output because it removes duplicated answer candidates extracted from different documents.
+ In order to reveal the robustness, we distinguish answer A1 from document
+D1 and answer A1 from document D2. We then counted correct answers in the top 10 answers for each question.
+
+First, we compare DIDF with IDF. According to our experiments, IDF found more correct answers than DIDF(0.001) for 22 questions, while DIDF(0.001) found more correct answers than IDF for 45 questions. According to McNemar X  X  test, this difference is statistically significant with p ( k = 0 . 1) found more correct answers than DIDF(0.001) for 24 questions, while
+DIDF(0.001) found more correct answers than BM25 ( k 1 = 0 This difference is statistically significant with p &lt; 5%.
+
+In short, DIDF is more robust than IDF or BM25. However, there was no significant difference between DIDF and MultiText.
+
+Even DIDF(0.005) provides better MRR than BM25 ( k 1 = 0 . seems contradictory to BM25 ( k 1 = 0 . 1) X  X  superiority to DIDF(0.005) for pre-cision at rank 20. DIDF(0.005) ranks documents by the proximity of query terms. Therefore, correct answers in their top documents often obtain high scores because most query terms appear in a short passage and correct an-swers are usually near the passage. On the other hand, BM25 does not con-sider the proximity. As a result, even when there is a correct answer in one of top documents, some query terms are far from other query terms, and our simple answer evaluation function gives only a mediocre score to the an-swer. For the next question, BM25 X  X  third best document contained a correct answer.
+
+However,  X  X lone X  and  X  X heep X  are far from the correct answer. On the other hand, DIDF ranks a document that contains  X  X he cloned sheep Dolly was born in 1996 X  as one of the best documents. This answer obtains a very good score. 3.3 Failure Analysis
+Table IV shows a failure analysis of the submitted version, NCQAL. Un-supported type requires improvement of both question analysis and answer extraction. The next question has neither a meaningful question word nor a focus word.
+
+We will have to use dependency analysis and/or case frames to extract the answer.
+
+Common noun means that these questions usually ask for proper nouns, but their correct answers were common nouns. Query term means that the system removed an important query term or failed to remove an irrelevant query term.
+Query term errors affect document scores and answer candidate scores. Others include a word segmentation error and a part-of-speech tag error.
+
+In the formal run, we used top 100 documents to obtain better results. As a result, the Document-Retrieval Module failed only once. However, interactive
+QA systems can examine only a small number of documents. If our QA system examines only ten documents, it fails to find relevant documents for at least 11 questions (Figure 6).
+ This table shows that we still have to improve the Question-Analysis Module.
+However, question analysis is just the first phase of the system and the system may fail in subsequent steps.
+ We did not show how the window size affects the QA performance of NCQAL.
+Figure 7 shows the effect of the window size. According to this graph, word dis-tance gives better MRR scores while bunsetsu distance gives better Top5 scores. 4. DISCUSSION
+SAIQA-QAC2 is based on a standard proximity-based approach. In QAC1, we also tried another QA system based on parsing and abduction [Sasaki 2003]. However, its performance was not very good. (Abduction was also used by
+Harabagiu et al. [2000].) We also tried SVM-based answer evaluation [Suzuki et al. 2002], but it made the system incomprehensible. Therefore, we returned to the proximity-based approach. For comprehensibility, we used a simple win-dow function. In spite of the simplicity of the evaluation function, our system obtained good results.
+
+The new proximity-based document retrieval engine supported the proximity-based QA system. Although BM25 with a small k 1 tained good precision as a document-retrieval module, BM25 X  X  output was not always suitable to the proximity-based answer-evaluation function.
+If we had a better answer-evaluation function, BM25 would have provided a better MRR. It is an open question whether or not the proposed retrieval method is also useful for other QA systems.
+
+However, as far as we know, almost all conventional QA systems tend to select answer candidates close to query terms. In order to give good scores to distant candidates, we will have to resolve anaphors. Anaphora resolution will improve MRR when the number of available documents is limited. In Japanese documents, most anaphors are invisible, i.e., zero pronouns . Zero pronoun res-olution is an important research topic.
+ However, when the system can access a large set of documents such as WWW,
+QA systems will find other relevant documents that contain correct answers close to query terms. As a result, anaphor resolution will not improve MRR very much.
+
+In our experiments, we used only newspaper articles. We will need additional experiments to show the generality of our scoring function. For instance, we do not know how well our scoring function works for other documents, such as scientific papers that is usually longer than newspaper articles. Languages and the number of documents may influence the performance.
+
+Currently, many QA systems use Internet search engines to obtain good answer candidates. The latest version of SAIQA can also retrieve Web docu-ments. Ravichandran and Hovy [2002] used an Internet search engine to learn answer-extraction patterns automatically. Some researchers regard question answering as statistical machine translation [Soricut and Brill 2003]. We want to try these methods for the next version of SAIQA. 5. CONCLUSIONS
+Our Japanese QA system achieved the best performance in NTCIR QAC2 sub-task 1. Our system employed a fine-grained taxonomy, but the answer extrac-tion module was based on a coarse-grained named entity recognizer because it is difficult to implement a fine-grained named entity recognizer. In this paper, we analyzed how each module contributed to the performance. In the Answer-
+Extraction Module, submodules for coarse-grained named entity recognition, numerical expression recognition, and word sense-based answer extraction were main contributors to the performance. In the document retrieval mod-ule, we used a new proximity-based ranking method  X  X IDF. X  In terms of QA performance, DIDF was more robust than BM25 and IDF, and was comparable to MultiText. In terms of retrieval precision, DIDF was better than MultiText. APPENDIX Here, we describe an efficient algorithm with which to obtain DS use the following monotonicity.
+
+Passage p is Q -minimal if, and only if, there is no passage p that satisfies p p and Q ( p ) = Q ( p ). Our algorithm finds Q -minimal passages in [1, stands for the h -th position of q in D .
+
+The algorithm scans from left to right. The initial state of the scanner is given by the list of the leftmost positions of all query terms that appear in the document D . Suppose D has k different query terms.
+ The scanner then moves right. Table A.I shows an example. In this example, age of the scanner is indicated by  X ( ) X  in Step 0. In Step 1, the leftmost element  X  X  X  is removed and the next position  X  X  X  is employed instead. In Step 2, the leftmost element  X  X  X  is removed, and the next position  X  X  X  is employed. In this way, the scanner moves right until it reaches the end of the document.
+Each location of the scanner covers different passages. However, we consid-ered only prefix passages that are prefixes of the coverage of the scanner, as shown in Table A.II. Nonprefix passages are beyond the scope of the current consideration and will be covered later. The number of Q -minimal prefix pas-sages is, at most, k for each scanner location.
+
+Accordingly, each Q -minimal prefix passage for a certain location of the scan-ner can be identified by its last element, a fact we can use for efficient updates.
+Figure A.1 shows a proximity-based scoring algorithm whose time complexity to process D is O ( kn ), where n is the total frequency of the query terms in
+D . This algorithm was incorporated in LISTA, an XML-based search engine [Hayashi et al. 2000].
+

@@ -1,0 +1,81 @@
+ 1. Introduction services the Racer system was integrated.
+
+Rule compliance is of great importance in the path towards recovery from the current economic crisis [5 among business entities.
+ followed by a discussion in Section 6 . Section 7 browses other compliance approaches and relates NTL technologies and Section 8 concludes. 2. Technical requirements for HACCP-based systems 2.1. HACCP-based systems confidence between suppliers and customers.
+ all procedures and records appropriate to the application of these principles. 2.2. Identifying technical requirements for HACCP-based systems 2.2.1. Domain knowledge business entity (food industry); and engineering. 2.2.2. Critical limits violation
+The main conclusion is that even if the spread of the HACCP systems in industry is ubiquitous,
+HACCP implementation, which our approach tries to overcome. 3. Normative temporal logic over ALC concepts which the path quantifier A (  X  on all paths  X  ) is replaced with the indexed deontic operator O (obligation) and E ( replaced by the deontic operator P (permission). The resulted ALC
+The semantics is defined based on an interpretation I =(  X  I the interpretation function  X  I maps each concept name C to a set of individuals C
+The last column of Table 1 illustrates the extension of  X  I
+De fi nition 1. A concept C is satisfied if there exists an interpretation I such that C ( C  X  D )if C I p D I for all interpretations I .
+
+De fi finite set of terminological axioms of the forms C  X  D or C
+Example 1. Consider the domain  X  ={ sh , metabisulfite }, the terminology TBox ={ ProcessedShrimp the role treatedWith from sh towards metabisulfite .
+ within all domains  X  I ( s ) ,where s represents a state in the given Kripke structure.
+De fi nition 3. An interpretation for the state s is a pair I ( s )=( that assigns to every concept name A aset A I ( s ) p  X  I ( s )
+De fi nition 4. Semantic Kripke structure
+A semantic Kripke structure over domain  X  is a quad K X h S ( S a  X   X  X  (rigid individual names).
+
+Given the TBox  X  , each local interpretation I ( s ) associates an atomic concept A each atomic role r  X   X  with a set of pairs r Is  X  X   X   X  Is  X  X   X  Is from  X  which are satisfied in that state based on the individuals enumerated in designated in a state, it will not change its name over time. Note that the rigid concept assumption The rationality behind this is illustrated by example 2.
+
+Fig. 2 ). The business process states that the received shrimps can be processed directly ( r processing ( r  X  s ), and they can be delivered to the retailer as frozen raw shrimps at
+The processed shrimp may be frozen if the delivery does not occur immediately ( p delivered ( f  X  d ). The corresponding Kripke structure K X h r data in each state represents the domain of interpretation for that particular state. For instance and reject, where the first one is an instance of the PH concept, and the second one an instance of the CM concept. Two observations follow: Firstly, note that the concepts PH and CM are not rigid ( PH of each successor state s  X  , given by  X  Is  X  X   X  Is  X   X  X  , where s is the ancestor of s The syntax of NTL  X  ALC is defined by the following grammar.
+
+The semantics is given with respect to the satisfaction relation  X  [ u ] the state indexed by u in the path  X  .  X  ( s ) is the set of all paths starting from the state s . K Kripke structure, s a state in K , I an interpretation over K and A an atomic concept in
+The semantics of the  X  sometime in the future operator  X   X  Informally, the concept A is satisfied in the state s if there exists a sub-concept B according to not the empty set in state s . The proposed semantics for O ( which satisfies the interpretation I of the concept C (or of a sub-concept D following rules: where  X  stands for a temporal operator in {  X  ,  X  ,  X  }.
+ as Stream Cooking) as long as that method is found in the domain knowledge grilled ( BoilCook  X  Cook , SteamCook  X  Cook , GrillCook  X  the low level, specific business process: O (  X   X Preservatives ) in Fig. 2 is illustrated in example 3.
+ or to refrigerate the item in some future step for future processing: O ( state the items were not steam cooked (  X   X SteamCooked ) and that there is no obligation to cook the shrimps (  X O ( given by O (  X  SteamCook  X  X  X  Refrigerate )  X  X  X   X SteamCooked 4. Normative systems members of the chain.
+
+De fi nition 5. Given a business process K and the TBox  X  , a norm C
+The meaning of the pair ( s , s  X  )  X   X  h C , D i is that the transition ( s , s
+C is satisfiable in state s and D is satisfied in s  X  the transition ( s , s knowledge  X  .
+
+Example 4. Consider the norm  X  1  X  NotFrozen , Delivery  X  knowledge  X  ={ Delivery  X  X  X  shipment . Time , NotFrozen  X  X  X 
+Delivery holds only for state d , given by Delivery I ( d ) temperature less than zero: NotFrozen I ( s ) =  X  and NotFrozen is ( p , d ). Formally  X  1  X  NotFrozen , Delivery  X  ={( p , d )}.
+ requirements or complaints.
+
+De fi nition 6. A normative system  X  is a collection of norms { norms  X  i , where I :  X   X  2 R is the interpretation function of the norm If  X   X   X   X  , then  X  places fewer constraints on a system than a product should be simultaneously conformant with two norms obey the more restrictive normative system  X   X  ={  X  1 ,  X  imposed by  X  1 and  X  2 , we say that the normative system NTL  X  ALC to express these ideas: Ax9:  X   X   X   X   X  O  X  A  X  O
+De fi nition 7. An integrated normative system of a business process is a tuple the business process K and  X  is the set of normative systems active for the same business process. the Kripke semantic structure K for the running business process; iii) applying the active normative systems workflow R ; iv) checking the compliance based on conformance patterns formalized in NTL Algorithm 1. HACCP compliance checking Algorithm 1 details the steps above. The input consists of the ontology standard, the ontology  X   X  X  formalizing the business domain and the ontology
+Usually, the normative system  X  represents the internal quality control, while the f formalized in the NTL the external auditor. The output represents the set of business steps where the formula f is breached.
+In the first step, the Kripke structure is generated from the workflow description. Thus, for each individual i processing step, a state in the Kripke structure is generated. The set S For labeling each state, the algorithm considers all individuals in the current domain of interpretation individual i , the state s is labeled with all the concepts C in the quality standard T instance. Next, the internal control eliminates the transition ( s , s the concept A is satisfied in s , while B is satisfied in s
+ X   X  X  X  business workflow, checks that formula f holds in the state s . If not, the state s is added to the breached states. 5. Integration of the normative systems normative system. 5.1. Ontologies for HACCP views to a corrective action in the case that the critical limit is violated (line 8).  X  control measure to keep it within the critical limits (given by (line 14).
+ potential hazard a control measure, such as the instance washHands , should be specified. Additionally to the HACCP ontology, we also need the domain knowledge ingredients and additive effects on the processing steps. A short example is illustrated in Fig. 7 , line 31.
+Secondly, the agents should have knowledge related to possible food-generated diseases, pathogen taxonomies, possible risk like asthmatics and salicylate sensitivity persons (line 35).
+ specified in line 46.
+ is treated with bisulfite which is of type Sulfites , and thus a preservative too. 5.2. Semantic Kripke structure 5.2.1. Running scenario bags the correct quantity in pre-labeled bagging material. 5.2.2. Converting the business process remainder of the figure enumerates the individuals and measured values in each state, representing the domain of interpretation  X  I ( s ) for that state.
+ The state r 1 models the lot sh 1 of mantis shrimps MantisShrimp axiom 52, comes frozen from the international source Thailand InternationalSource cert 1, and there exists the possibility to be contaminated with bisulfites Sulfites using separate states for the shrimps having the temperatures the Frozen concept is satisfied. Both states r 3 and r 4 model the shrimps received from the same domestic source state r 3 , justified by axiom 51, but satisfying the concept NotFresh in r
+The frozen shrimp from international sources (states r 1 and r units ( s 2 ) or it may go directly to the thawing steps t
+Denmark value 3 should belong to the closed interval [7.0,8.5]. Thus, the concept CleanWater is satisfied in t water ontology.
+ cooking step c 1 , because adequate cooking conditions are used, while the fast cooking of only 0.8 min in c of pathogen survival. The InadequateCookingTime concept being satisfied in c according to line 81 in Fig. 7 . If the drying is not executed properly in the state d bacteria growth, while contamination with staphylococcus from the packing material can occur in the state pa .
+MantisShrimp  X  Shrimp  X  Frozen or Sulfites  X  Preservatives 5.3. Enacting the norms
+In the third step the norms are applied to the business process. Three norms are exemplified in Fig. 12 . The norm  X 
+Only fresh shrimps can be stored  X  . The concept NotFresh is satisfied in r states where the Storage concept is satisfied ( s 1 , s 2 by a dotted line in Fig. 11 .
+
+The norm  X  For shrimps from international sources a certification should attest that they do not contain any sulfites by  X  satisfying this norm based on the subsumption Sulfites  X  Preservatives with the following subsumption.
+Because no certificate regarding sulfites or more general additives exists in state r step are removed. In this case s 1 is a storage step, where Storage
+The norm  X  4 H ,  X  Frozen stored shrimps should be thawed in clean water is satisfied based on the line 67 in Fig. 7 . The CleanWater concept is not satisfied in t R . Now assume that the more restrictive norm n 4 H  X   X  1 food should be potable.  X 
+The subsumption between the two norms is based on the following inference chain: and from the definition in line 45, it follows that  X PotableWater 5.4. Verifying regulatory compliance Four compliance patterns ( CPs ) are formalized in NTL  X  ALC , where the index H stands for the HACCP standard.
+CP 1. According to the current requirements about traceability provenance  X  , expressed by the following norm.
+
+In Table 3 , the concept InternationalSource is satisfied in the states r should be applied in the very next state.
+
+Because InadequateCookingTime  X  CriticalLimitViolation , the deviation from a critical limit has occurred in state c Table 3 ), meaning that in the next state one has to activate a specific control measure. Two such control measures are defined in the domain ontology as specified in line 83 of Fig. 7 . According to the labels in Table 3 assigned to the only next state d not satisfied. Thus, the compliance pattern CP 2 is violated.
+ delivery to the retailer.
+
+Assume that sulfites, a particular class of preservatives given by Sulfites spot formation. As Table 3 bears out, the Label concept, acting as a control measure in the HAACP plan ( Label satisfied in no state of the Kripke structure.
+ CP 4. The product shall be kept frozen so as to maintain the quality during delivery. included in the Kripke model and in the HACCP documentation, to guarantee the CP 4 property. 6. Discussion binary decision diagrams to prove formulas. 6.1. Handling the complexity
+From the theoretical point of view, the CTL model checking problem K the model, but rather by the number of regulatory obligations that a particular process should comply with. relatively stable, part of the computation can be executed offline. For instance the chain MantisShrimp increased: for each piece of data all the corresponding concepts are stored. 6.1.1. Segmentation experience, guidelines, and statistical methods for the audited domain. Consequently, only a small percentage of the monitoreddataisrequestedandusedtofeedthe NTL  X  ALC machinery. In the corresponding reduction method of model ontology and the size of the formula | f |.
+ advantage here consists in the expressiveness of the NTL  X  instance, the s 1 state can be referred by its name, but it is also used in the CP 4or n conditions only. 6.1.2. Abstraction to keep it at  X  20  X C, for instance. Problems occur when all the members of the supply chain follow this legitimated by the crisp way of specifying norms.
+ logic when modeling such fuzzy concepts. 6.2. Approachability HACCP system returns more than two dollars in failure savings [24] .
+ knowledge encapsulated in the domain ontologies, knowledge that usually auditors do not have. 7. Related work We discuss previous work in normative systems and examples of other HACCP systems in this section. handled by model checking is significantly larger than the 10 abstract level of normative specifications and the low level of sensed raw data of a business process. reduction are targeted at reducing the size of the model [21] , the axioms of NTL permissions and obligations from the abstract normative specifications.
+
+Symbolic abstraction has been combined with modular verification for checking the correctness of inter-organizational
+LTL transition system [27] . point in time), and non-persistent obligations (whenever they arise, they should immediately be satisfied). The compliance.
+ Therefore, the complexity is also limited by applying model checking on abstract view-based workflows. privacy.
+ prohibitions on some actors.
+ standard has specific tags used to specify the records related to the HACCP implementation.
+Various research groups have been concerned with aspects of business process modeling [34 interplay between processes, we consider our contribution complementary to the results in these articles. 8. Conclusions
+We have introduced the NTL  X  ALC logic aiming at checking norm compliance in business processes. Combining domain provides therefore a generic framework to close the gap between abstract norms and concrete business processes. importing new ones, the framework can be applied to various normative systems. particular process should comply with. Techniques like abstraction and segmentation can be applied simply by using an complex scenarios.
+ dominant logic [37] .
+ Acknowledgments The authors are very grateful for the help provided by two anonymous referees in improving the paper significantly.
+References

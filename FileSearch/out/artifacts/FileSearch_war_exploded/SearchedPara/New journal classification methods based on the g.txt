@@ -1,0 +1,47 @@
+ 1. Introduction from rank 4 (the highest quality) to rank 1 (the lowest quality).  X  nals for the given year . X  X  whose citations are greater than or equal to the h-index.
+ Rousseau, 2009 ). Thus an h-core consists of exactly h elements if using this kind of definitions. discussed in details in the follows.
+ comparing the Gh-index with the h-index. A discussion and conclusion are given in the final section. 2. Introduction of the Gh-index global set and undertake the comparisons between the global h core and the original h core. In particular, we define the Gh-index as follows: h-core (i.e., the GH-index and GH-core) are calculated in the usual way. The Gh-index of unit i (i.e., Gh i X  X  items included in the GH-core .
+ Taking individual researchers as an example, we can formally write the formula of the Gh-index as follows:
+We assume { p i } is the publication set of researcher i ; { c ( p i )} is the citation set of { p i }; h i is the h-index of researcher i ; h i -core is the h-core of researcher i ; GH is the h-index of the global unit (i.e., [ i  X  1 f p i g ); GH-core is the h-core of the global unit.
+ Therefore, the Gh i -core and Gh i -index are defined as follows: where n is the total number of publications of researcher i . 2.1. Some observations Fig. 1 .
+ examination of how to calculate the individual Gh-indexes. order of the h-index.
+ in the publication number by rescaling it. We can then introduce a modified Gh-index: the Gh index as follows:
+Similarly, we can then define the GH adj -core and the individual Gh increase of the publication number and therefore leads to a larger Gh-index (the Gh issue concerning what value to give this parameter and our suggestion is to adjust the a so that the GH
+Medalists case, we increase the number of papers until the corresponding GH to 18, see Table 1 .
+ of the researchers now have a different value of the Gh adj as to be seen below. 2.2. Theoretical analysis erties which are useful for our journal classification.
+
+Property 1. For any two journals i and j ,ifGh j &lt;h j ,h
+We will prove it by contradiction. We provide the proof for the Gh-index below; it also works for the Gh Proof.
+
+If Gh i &gt;h i ) h i -core [f p h i  X  1 g GH-core  X  1  X 
+According to the definition the h-index 8 p i 2 h i -core ) c  X  p i  X  P h i 8 p j 2 h j -core ) c  X  p j  X  P h j
+Note that h i &lt;h j .Ifh i = min c  X  p i  X 
+Then min c  X  p j  X 
+According to (1) and (2) h j -core 2 GH-core ) Gh j P h j , and this is a contradiction
+If h i &lt; min c  X  p i  X  This and (1) imply h j -core 2 GH-core This is in conflict with the assumption
+End of Proof.
+Property 2. For any two journals i and j ,ifGh j adj &gt;h Proof.
+
+According to the definition of h-index 8 p j 2 h j -core ) c  X  p j  X  P h j 8 p i 2 h i -core ) c  X  p i  X  P h i
+Note that h i &gt;h j .Ifh j  X  min c  X  p j  X 
+Then c  X  p i  X  ) h j -core 2 GH adj -core  X  2  X 
+According to (1) and (2) we have h i -core 2 GH adj -core, ) Gh adj i P h i
+If h j &lt; min c  X  p j  X 
+Then c  X  p i  X  Thus we have h i -core 2 GH adj -core End of Proof.
+
+The above proof shows the monotonic property of the Gh-index (Gh classification. 3. The Gh adj -index and journal classification 3.1. The Global h-index for journal ranking data such as total publications ( N ), total citations (TC), the 5-year journal impact factor (JIF of the JIF 5 , currently one of the commonly used indicators for journal evaluation.
+The Appendix A shows that the JIF 5 -based rank and the Gh-index (Gh have over 1000 publications. Some journals are ranked considerably lower according to the Gh known bibliometric indicators in Table 2 .
+ than the others. We next compared the values of the h-index and the Gh shown in Table 3 , ranked in descending order of the h-index.
+In terms of discriminatory power, we can see that the Gh adj index begins to yield tied values from approximately rank 12 onwards, while the Gh around rank 33 where the values approach zero.
+ ing the Gh adj -index with the h-index, it is interesting to observe that the Gh papers than the others. Thus, it should to possible to classify journals by the difference between their Gh h-indices; this will be discussed in detail below.
+ 3.2. The introduction of X j journal classification
+Our idea for journal classification is to explore the relationship between the h-and Gh
+GH likely that its Gh adj -index will be larger than its h-index. That is to say, its Gh Table 4 .
+ Property 1, the same is true for the journals in Class 2.
+
+We can apply this approach to the same sample of journals for a new journal classification (denoted the X 2011 ). The 4 classes in the ABS2010 Journal Quality Guide are shown in Table 5 . The COPIOR ranking result (noted as COPIOR Class ) is included below for comparison purposes. that ranked highly in the ABS Class are also in the top of the X either irrelevant to the business field or not as important as the others, are all ranked lower in the X correlations. 3.3. The introduction of L j journal classification classification (noted as L j Class ) below.
+ Class results, as shown in Table 8 below.
+ of the two classes is 0.88. Furthermore, Class 3 in the L practical. 4. Conclusion the future.
+ Acknowledgment This work is funded by the National Natural Science Foundation of China (Grant No: 71201159). Appendix A Major indicators of OR/MS journals in a five-year evaluation window
+No. Abbreviated 10 OPER RES 2.285 10 455 16 1429 14 16 10 20 12 0 15 17 13 11 EUR J OPER RES 2.277 11 3329 1 11,999 1 34 1 45 1 18 1 138 1 12 PROD OPER MANAG 2.259 12 218 39 996 21 15 12 21 11 1 8 18 11 13 MATH PROGRAM 2.182 13 416 20 1861 10 16 10 26 7 3 6 21 10 14 RELIAB ENG SYST SAFE 2.170 14 614 10 1658 11 14 16 18 16 0 15 12 16 15 TRANSPORT RES E-LOG 2.126 15 220 38 564 27 10 23 14 27 0 15 3 30 16 TRANSPORT SCI 2.107 16 169 46 693 24 12 21 19 14 1 8 12 16 17 COMPUT OPER RES 1.984 17 1135 5 4221 3 21 5 28 6 2 7 56 4 18 J QUAL TECHNOL 1.860 18 136 51 404 37 10 23 15 23 0 15 7 22 19 SYST CONTROL LETT 1.718 19 582 12 2311 8 20 6 31 4 6 2 32 7 20 OR SPECTRUM 1.706 20 169 46 383 41 8 37 11 35 0 15 1 41 21 NETW SPAT ECON 1.658 21 107 58 175 53 6 52 8 48 0 15 1 41 22 SAFETY SCI 1.578 22 336 23 484 33 8 37 11 35 0 15 2 33 23 J SCHEDULING 1.497 23 162 48 403 38 10 23 14 27 0 15 5 27 24 IIE TRANS 1.469 24 434 18 1055 20 12 21 16 22 0 15 9 21 25 COMPUT OPTIM APPL 1.432 25 268 29 578 26 10 23 15 23 0 15 6 25 26 MATH OPER RES 1.398 26 276 28 599 25 10 23 12 31 0 15 2 33 27 J GLOBAL OPTIM 1.391 27 552 13 1326 16 14 16 19 14 0 15 10 20 28 INT J PROD RES 1.367 28 1462 3 2573 7 15 12 18 16 0 15 17 13 29 J OPER RES SOC 1.350 29 784 6 1465 13 13 18 17 20 0 15 12 16 30 NAV RES LOG 1.278 30 309 24 527 28 8 37 10 40 0 15 1 41 31 INFORMS J COMPUT 1.260 31 231 37 498 31 9 31 13 30 0 15 4 28 32 INT J SYST SCI 1.257 32 484 15 715 23 10 23 15 23 0 15 7 22 33 J OPTIMIZ THEORY APP 1.200 33 688 9 1274 17 13 18 18 16 0 15 11 19 34 INT J COMPUT INTEG M 1.113 34 342 22 431 35 8 37 10 40 0 15 1 41 35 ANN OPER RES 1.101 35 597 11 1143 19 13 18 17 20 1 8 7 22 36 ENG OPTIMIZ 1.077 36 280 27 510 29 10 23 14 27 0 15 6 25 37 TOP 1.067 37 64 63 53 60 4 57 5 60 0 15 0 50 38 INTERFACES 1.048 38 191 44 286 46 7 44 9 45 0 15 2 33 39 NETWORKS 1.022 39 263 31 448 34 9 31 12 31 0 15 4 28 40 OPTIM ENG 1.008 40 116 55 228 49 9 31 12 31 0 15 2 33 41 QUEUEING SYST 0.983 41 202 41 506 30 9 31 15 23 1 8 3 30 42 DISCRETE EVENT DYN S 0.979 42 91 60 166 55 6 52 8 48 0 15 0 50 43 J MANUF SYST 0.928 43 116 55 45 62 3 61 4 61 0 15 0 50 44 OPTIM LETT 0.908 44 134 52 107 58 4 57 6 57 0 15 0 50 45 OPTIM CONTR APPL MET 0.891 45 116 55 177 52 7 44 10 40 0 15 2 33 46 QUAL RELIAB ENG INT 0.842 46 263 31 487 32 8 37 12 31 0 15 3 30 47 PROD PLAN CONTROL 0.841 47 255 33 342 43 7 44 8 48 0 15 1 41 48 OPER RES LETT 0.821 48 537 14 849 22 10 23 11 35 0 15 2 33 49 J IND MANAG OPTIM 0.749 49 242 35 428 36 8 37 10 40 0 15 1 41 50 OPTIM METHOD SOFTW 0.744 50 265 30 399 39 8 37 9 45 0 15 0 50 51 APPL STOCH MODEL BUS 0.736 51 192 43 220 50 6 52 9 45 0 15 1 41 52 CONCURRENT ENG-RES A 0.710 52 128 54 212 51 7 44 8 48 0 15 0 50 53 INT J TECHNOL MANAGE 0.702 53 439 17 362 42 7 44 8 48 0 15 0 50 Appendix A ( continued )
+No. Abbreviated 54 DISCRETE OPTIM 0.696 54 156 49 122 56 5 56 6 57 0 15 0 50 55 MATH METHOD OPER RES 0.684 55 298 25 335 44 7 44 8 48 0 15 0 50 56 OPTIMIZATION 0.677 56 237 36 262 48 7 44 8 48 0 15 0 50 57 PROBAB ENG INFORM SC 0.627 57 176 45 283 47 7 44 10 40 0 15 2 33 58 INFOR 0.596 58 104 59 113 57 4 57 6 57 0 15 0 50 59 ASIA PAC J OPER RES 0.427 59 199 42 174 54 6 52 8 48 0 15 0 50 60 MIL OPER RES 0.314 60 84 61 31 63 3 61 4 61 0 15 0 50 61 RAIRO-OPER RES 0.278 61 73 62 25 64 2 64 2 64 0 15 0 50 62 INT J FLEX MANUF SYS na na 59 64 86 59 4 57 7 56 0 15 1 41 63 J OPER RES SOC JPN na na 130 53 50 61 3 61 3 63 0 15 0 50 64 INT J INF TECH DECIS na na 204 40 395 40 9 31 11 35 0 15 2 33 Note: na here indicates that this journal are not included in the Journal Citation Report in the year. The bold values identify the top 5 when journals are ranked in different indicators. References

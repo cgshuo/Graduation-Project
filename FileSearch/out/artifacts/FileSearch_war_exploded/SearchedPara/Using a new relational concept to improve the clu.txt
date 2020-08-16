@@ -1,0 +1,48 @@
+ Lin-Chih Chen * 1. Introduction
+Document clustering is an important technology that can automatically discover groups of similar web documents in a Cios, Pedrycz, Swiniarski, &amp; Kurgan, 2007 ).
+
+Hierarchical methods yield an entire sequence of nested partitions, and these methods can be either agglomerative or divisive. Agglomerative methods yield a sequence of nested partitions starting with one-document clusters recursively 1986 ), STC ( Zamir &amp; Etzioni, 1998 ), and DIVCLUS-T ( Chavent, Lechevallier, &amp; Briant, 2007 ). cluster similarity. Many clustering algorithms belong to partitional methods, such as K-means ( MacQueen, 1967 ), SRE clustering results generated on the fly and fitted into search engines.
+ the paper. 2. Related work a short description of Search engine Vector Voting (SVV). 2.1. Different concepts of the document clustering
+Document clustering is an important data exploration technique that groups similar documents into a cluster. How-problem.
+
+Some researchers have used the fuzzy concept to solve the clustering problem. Tjhi and Chen (2007) combined the pos-ments. The similarity measure is estimated based on these feature vectors.
+
+Other researchers have used the domain concept to solve the clustering problem. Kerne, Koh, Sundaram, and Mistrot for generating semantic clustering is based on a quantitative model that represents mutual information between each an out-of-domain.
+
+Further researchers have used the query concept to solve the clustering problem. Chang, Kim, and Raghavan (2006) con-documents in all document sets. 2.2. Online document clustering systems process. But none of these systems are available on the Internet.
+ clusters. 2.3. Search engine vector voting web documents, as shown in the following equation: of b = 0.2 ( Fig. 1 ).
+ Next, the weight of all the relevant web documents can be derived from UBF, as shown in the following equation: ranking of wp i,m when the user query is i returned from s ; and b is a control parameter. according to performance evaluation results. 3. On-The-fly Document Clustering between the clusters, but also the relation is a semantic one.
+ relation, respectively.
+ R ( X  X  X 2p X , X  X  X eer-to-peer X ) is 100% and T is 0.801).
+ show how OTFDC is implemented by the connectivity relation HSR .
+ successful peer-to-peer applications is bittorrent  X  relations.
+
+The pseudo code of OTFDC is listed as follows: 1 Algorithm OTFDC ( Cluster i as String) 2{ 3( Cluster t , R ( Cluster i , Cluster t )) = Call OTFDC_Core ( Cluster i ); 4 Foreach ( Cluster t ) 5{ 6 Append Cluster t into FinalClusterSet ; 7 Append R ( Cluster i , Cluster t ) into FinalCorCoefSet ; 8( FinalClusterSet , FinalCorCoefSet ) = Call OTFDC ( Cluster t ); 9 } End of Foreach; 11 Return ( FinalClusterSet , FinalCorCoefSet ); 12 } End of Algorithm; main assumption of OTFDC_Core is if many important clusters link to an important web document, then OTFDC_Core can  X  X  X ecentralized p2p X  clusters.
+
+The pseudo code of OTFDC_Core is listed as follows: 1 Algorithm OTFDC_Core ( Cluster i as String) 2{ 5 Normalize the weight w wp 6( CandidateCluster t ) = Use the reverse links of an important web document wp i,m to find out all the candidate 7 Foreach ( CandidateCluster t ) 8{ 9( wp t,m , w wp t ; m ; t ) = Call SVV ( CandidateCluster t ); 12 Continue; 13 Normalize the weight w wp t ; m ; t ; 14 Compute the correlation coefficient; 15 If ( R ( Cluster i , CandidateCluster t ) P T and CandidateCluster t R FinalClusterSet ) 16 { 17 Append CandidateCluster t into FinalClusterSet ; 18 Append R ( Cluster i , CandidateCluster t ) into FinalCorCoefSet ; 19 } End of If; 20 } End of Foreach; 22 Return ( FinalClusterSet , FinalCorCoefSet ); 23 } End of Algorithm; Then, we use the following example to illustrate how to use OTFDC_Core to solve the single-pass clustering problem.
+Example 1. OTFDC_Core refers to our previous project which developed the search engine vector voting (SVV) method engines when the user query is  X  X  X 2p X  (Lines 3 and 9). In order to calculate w wp two random numbers are generated respectively from their own range, as shown in Table 2 . Then, the weight of  X  X  X n.wikipedia.org/wiki/Peer-to-peer X  is 3.62054 (0.92241 1 0.43501 + 0.86957 1 0.43501 + 0.93472 1 0.43501 + 0.89384 1 where Norm i is the normalized weight of wp i,m .
+ Table 4 shows the partial candidate clusters ( CandidateCluster t ) of  X  X  X n.wikipedia.org/wiki/Peer-to-peer X .
+In OTFDC_Core analysis, we also assumed the candidate clusters derived from an important web document were more coefficient between any two clusters (Line 14).
+ and all the partial candidate clusters CandidateCluster t .
+ shown in the following equation.
+ Core considers all the partial candidate clusters as  X  X  X eer-to-peer X  and  X  X  X ecentralized p2p X . OTFDC_Core is  X  X  X 2p X .
+ the source cluster and the target cluster is greater than or equal to a threshold T value (Line 15 in OTFDC_Core).
+A sample procedure of OTFDC has been conducted to produce a number of candidate clusters with the correlation coef-their corresponding correlation coefficient ( R ). For example, R is 100% for  X  X  X eer-to-peer X . web documents. Fig. 5 is the clustering results of  X  X  X lb X  derived from the source OTFDC of Chinese web documents. 4. Experimental results Three types of performance were performed using various clustering algorithms. First, 12 students were selected from
+OTFDC applied to Google, Yahoo, and Vivisimo in order to verify whether OTFDC can improve the clustering performance of any search engines or not. 4.1. User study
+In this experiment, we pay attention to how the users rate OTFDC compared with other online systems. We designed an online questionnaire to ask 10 undergraduate and two graduate students from National Dong Hwa University to compare on Google ( Google, 2007 ), Yahoo ( Saremi, 2007 ) and Lycos ( Lycos, 2007 ), respectively.
+The questionnaire was been manually answered by 12 students who judged the relevance of the results with respect to the 39 queries. 2 queries generated by each system. Precision at top N is defined as puted by each system.
+ uated queries for the 12 students.
+ score, Credo, for all analyses since its results are not always in sentence form. Cats, Highlight, and Vivisimo. We used the statistical methodology, Analysis of Variance (ANOVA) analysis to show
+F there is a significant difference in the performance of the online systems on the user study. light, and Vivisimo. 4.2. Determine a suitable threshold value sure the average distance of TK i and any one of the ECKs j , shown as the following equation: TK 1 = 3 j X  =  X  2 = 3  X  X  1.
+ DIST j is the rank of WPs .
+ shown in the following equation: number of TKi is not 1 , as shown in the following equation:
+Fig. 6 shows a MMDIST curve based on different T values when OTFDC randomly generated 50 { TK }s. 4 We find the min-
+Moreover, we also apply OTFDC using different { TK }s from 50 to 1000. Table 7 shows the optimal MMDIST values and their corresponding T values. For example, we can find the optimal MMDIST value is 3.271 and its corresponding T is a final T parameter of OTFDC. 4.3. Applying OTFDC to several search engines search engines has a term-document matrix, it can apply OTFDC to improve the clustering performance. We fetch the web Yahoo, and Vivisimo in order to form a term-document matrix.
+
+For the comparison sample, Google and Yahoo are derived from Google AdWords ( Google, 2008 ) and Yahoo Search Mar-keting ( Yahoo, 2008 ) keyword suggestion tools. The comparison sample of OTFDC-like, Google-OTFDC, Yahoo-OTFDC, and Vivisimo-OTFDC, are the clustering labels which are generated from OTFDC applied to its origin term-document matrix.
+In this simulation, we also use MMDIST to judge the clustering performance. Table 8 shows the MMDIST achieved by Goo-studies. Obviously, Google-OTFDC, Yahoo-OTFDC, and Vivisimo-OTFDC outperform their respective origins, Google, Yahoo, the original SR feature. 5. Conclusions plied to multilingual web documents. We have provided English and Chinese clustering search engines to illustrate how OTFDC can be applied to multilingual web documents.
+
+Second, we simulate the combined search engines:  X  X  X oogle-OTFDC X ,  X  X  X ahoo-OTFDC X , and  X  X  X ivisimo-OTFDC X , to verify whether or not OTFDC can improve the clustering performance of any search engines. OTFDC is a post-processing algorithm. Moreover, OTFDC performs unsupervised learning to automatically identify poten-tion of the search results returned from search engines.
+ value cannot become a source of OTFDC for the next recursive call.
+ Acknowledgements part by National Science Council, Taiwan under Grant NSC 97-2221-E-259-026.
+ References

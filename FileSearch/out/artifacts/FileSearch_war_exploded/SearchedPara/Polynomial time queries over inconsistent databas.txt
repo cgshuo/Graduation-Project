@@ -1,0 +1,81 @@
+ 1. Introduction works have investigated the issue of repairing inconsistent databases by means of tuple updates [6,26] . the following example. Example 1. Consider the following database:
+Suppose to have the following set of constraints (functional dependencies and foreign key constraints): fd 1 : Name ! Manager defined over Project , fd 2 : Name ! Phone defined over Employee , fk : Project  X  Manager # Employee  X  Name .
+ database is as follows: where # 1 is an unknown value whose domain is f john ; bob g isfy the functional dependency fd 1 we introduced the unknown value # base w.r.t. fk is restored by inserting the manager carl into the employee relation.
+In the example above, observe that a labeled null value is introduced for the phone number of is missing. More specifically, we do not know whether if the telephone number of incomplete information, even though unknown values are  X  X  X ore informative than X  null values. sistent database are the certain answers in the repaired database.
+
+Example 2. Consider the database of Example 1 . The consistent answer to the query asking for the manager of number of p2  X  X  manager is ? 1 , that means that we have no information about it. polynomial time.
+
+Section 5 contains some concluding remarks and related work. 2. Preliminaries 2.1. Relational databases
+Dom  X  A  X  . The database domain is denoted by Dom .A relation schema is of the form r  X  A and the A i  X  X  are attribute symbols (we denote the previous relation schema also as r  X  U  X  , where U  X f A instance (or simply relation ) R over r  X  U  X  is a subset of Dom  X  A schemata. A database instance (or simply database ) DB over DS is a set f R r  X  U to the instance of the relation r in a database DB as DB  X  r .
+ the set of free variables of Q . The result of applying Q over a database DB is denoted by Q  X  DB  X  . 2.2. OR-databases can be derived from every possible world.
+ schemata): attribute ) those attributes on which OR-objects may occur (resp. cannot occur).  X  type I , which does not allow an OR-object to occur more than once,  X  type III , which allows unrestricted repetitions.
+ single notation by using predicates with adornments. For instance, a relation p  X  A fore presenting a class of tractable (proper conjunctive) queries, we introduce some definitions. h x ; x 1 ; ... ; x n i s.t. x n  X  y and
+Q ), and 2. if n &gt; 0 then Q contains an atom (possibly equal to a ) which contains both x from the occurrence of x 0 used to satisfy condition 1, and 3. x i  X  x 0 for i  X  1 ; ... ; n , and 4. for all i  X  1 ; ... ; n 1 there exists an atom in Q containing both variables x there exists a marking path from a to some variable of a 0 .
+ A query is cyclic if it has distinct atoms a 1 and a 2 which mark each other. Otherwise it is acyclic . Example 3. Consider the query no distinct atoms marking each other, the query is acyclic.
+ second and the third ones, while the second atom marks the first and the third ones. Therefore, the query Q
+Given a query Q and an atom a  X  p T 1 ; ... ; T m  X  x 1 ; ... ; x and each adornment T i is either A or O , we define split  X  a  X  X 9 up
+If Q is the query 9 Y  X  a 1 ^^ a k , then we define the split of Q as follows split  X  Q  X  X 9 Y  X  split  X  a time on type II OR-databases.
+ the certain answers to Q on type II OR-databases can be computed in polynomial time.
+Definition 2 ( Strong marking [20] ). A marking path h x 0 path from a to x n if 1. x 0 has a unique occurrence in a , and 2. for all i  X  1 ; ... ; n the variable x i does not occur in a .
+
+If such a marking path exists then we say that the variable x distinct atom a if a strongly marks some variable of a 0 .
+ A query is strongly cyclic if it contains distinct atoms a and a 0 which strongly mark each other.
+Example 4. Consider the query definition. The second atom is strongly marked by the first one because the latter strongly marks x . time on type I OR-databases.
+ the certain answers to Q on type I OR-databases can be computed in polynomial time. 2.3. Integrity constraints straints. The notation used hereafter is introduced below.
+ r  X  U  X  satisfies fd , denoted as R fd ,if 8 t 1 ; t 2 2 Rt tions R and S over r  X  U  X  and s  X  V  X  , respectively, satisfy fk if for each tuple t also say that R and S are consistent w.r.t. fk ).
+ 3. Repairing inconsistent databases which are introduced in the following definition. 1 dependency Y ! B 2 FD such that A \ Y  X  ; .
+ FD .
+ straint r  X  X  X  # s  X  Y  X  , Y is the primary key of s .
+ when repairing w.r.t. foreign key constraints and functional dependencies, respectively. known values and then propose a repair strategy. 3.1. Semantics of constraint satisfaction domains D #  X f # 1 ; ... ; # m ; ... g and D ?  X f? 1 ; ... ; ? and the null values D ? , i.e. Dom # ; ?  X  Dom [ D # [ D ?
+Likewise, given an attribute A i , its domain is Dom # ; ? the attribute A i . A relation R over a schema r  X  A 1 ; ... ; A value # j appearing in R in correspondence to an attribute A (we call dom  X  # j  X  the domain of # j ). We also assume that dom  X  leads to consistent databases possibly containing null and unknown values. canonical sets of functional dependencies, see Definition 3 ).
+ foreign key constraint of the form r  X  X  X  # s  X  Y  X  is satisfied by R and S if C ground  X  R  X  X  X  # S  X  Y . A database DB satisfies a set FK of foreign key constraints if it satisfies every foreign key constraint in FK . foreign key constraint satisfaction.
+ Example 5. Consider the database schema of Example 1 and the following database. the project relation, since the manager of p2 could possibly be is inconsistent.
+ appearing on the left-hand side of some functional dependency.
+ relation schema r  X  U  X  , R satisfies fd if for every pair t dependencies.
+ then omitted) Project where dom  X  # 1  X  X f john ; bob g . Tuples in the above relation are pairwise violating fd same information on Name but different information on Manager . 3.2. Repairing show that the repairing process is polynomial time.
+ Let us first introduce two Boolean functions which check whether a constraint is violated:
+FD -Violation  X  t 1 ; t 2 ; X ! A  X  X 9 t 0 1 2 ground  X  t FK -Violation  X  t ; r  X  X  X  # s  X  Y  X  X   X  C ground  X  t  X  X  X  S  X  Y .
+In the function FD-Violation it is assumed that t 1 ; t 2 Violation it is assumed that t is a tuple of an instance of r and S is an instance of s . For each pair of tuples  X  t 1 ; t 2  X  violating a functional dependency X ! A the following action is performed:
+FD -Repair  X  t 1 ; t 2 ; X ! A  X  { (1) if there exists a null value ? i 2f t 1  X  A ; t 2  X  A g then (2) else // neither t 1  X  A nor t 2  X  A is a null value } (equivalently, t 2  X  X ) should be associated with a unique A -value. When this is not the case, that is t cifically, two cases may occur:
+At least one of the two values t 1  X  A and t 2  X  A is null. If both t ministically) replaces every occurrence of the other. If only one of the values t values. by a new unknown value whose domain is equal to the union of the domains associated with the old values. one.
+ As regards the repair strategy for tuples violating a foreign key constraint, the following action is performed:
+FK -Repair  X  t R ; r  X  X  X  # s  X  Y  X  X  { }
+Therefore, when a foreign key constraint is violated, the missing information is simply inserted into the data-base. By inserting a new tuple into the database, it may be the case that some information about the new tuple as shown in Example 1 , this interpretation allows us to model every kind of missing information. violations. The algorithm is shown in Fig. 1 .
+ dencies and, since we consider canonical sets of functional dependencies, unknown values never appear on key attributes.
+ values, but for some other substitutions they do not lead to a violation of fd (i.e. t ; t 00 1 2 ground  X  t 1  X  X  X  and t 0 2 ; t 00 2 2 ground  X  t paper. 3.3. Examples In this section, we present some examples of applications of the proposed repair strategy.
+Thus, we have inserted bob into the employee relation as it could be empty and then omitted), where dom  X  # 1  X  X f john ; bob g on the right, where dom  X  # 2  X  X f john ; bob ; carl g .
+ Example 9. Consider the database below.
+
+Suppose there are the following constraints: fd 1 : Name ! Dept ; City defined over Employee , fd 2 : Name ! Manager defined over Department , fk : Employee  X  Dept ; City # Department  X  Name ; City .
+ obtain the following database.
+ ing information. By applying FD-Repair , the following consistent database is obtained. 3.4. Results database, called repaired database , which is unique up to the renaming of unknown and null values. of FD-Repair and FK-Repair does not contain unknown or null values on key attributes. attributes, since the original database is complete, and both FK-Repair and FD-Repair preserve this property: FK-Repair inserts new tuples which have only constants on key attributes. attributes do not belong to any key, every value on a key attribute is not modified by FD-Repair . h Proof. We show that the rules FK-Repair and FD-Repair are applied a finite number of times. Thus, the number of applications of FD-Repair is finite as well. h rem 3 entails that a repaired database always exists.
+ database for DB w.r.t. FD and FK.
+ Proof. Straightforward from Theorem 3 . h and c DB be a repaired database of DB w.r.t. FD [ FK . Let R and schema r  X  U  X  in DS with key K # U . We define the following sets: is naturally extended to c DB .
+
+A mapping h # (resp. h ? ) is a bijective function from D h ; DB h denotes the database obtained by applying h to DB , that is by replacing every unknown or null value
+Clearly, for any database DB and pair of mappings h # and h distinct sets.
+
+Two databases DB 1 and DB 2 are isomorphic if there are two mappings h unknown value # i occurring in DB 1 ; dom  X  # i  X  X  dom  X  h
+The following theorem states that for two repaired databases DB
+Theorem 4. Let DB be a complete database defined over  X  DS ; FD ; FK  X  ; DB
+DB M is equal to DB 2 M up to the renaming of unknown and null values.
+
+Proof. First of all, observe that DB 1 M and DB 2 M do not contain null values. Let R , R respectively, over the same relation schema r  X  U  X  whose key is K . Consider an unknown value # i in R
+T  X  t 1 1 ; ... ; t 1 n be the tuples in R 1 M containing # i and T  X f t of tuples in T 1 . It is easy to see that dom  X  # i  X  X f t tuples in R 2 M containing the unknown value # j on the attribute A , there is a set of tuples in R attribute A such that dom  X  # j  X  # dom  X  # i  X  . h FK (up to the renaming of unknown and null values).
+ Proof. Straightforward from Theorem 4 . h w.r.t. FD and FK . As stated in the following theorem, the proposed repair strategy is in polynomial time. computed in polynomial time (data complexity).
+ (equal to the number of times the FK-Repair rule can be applied) is bounded by the value KV  X  O is the active domain of DB and key  X  r  X  is the (primary) key of r . set of attributes not belonging to the key of r , the number of values in the non-key attributes is bounded by value of V decreases by one. Therefore, the global number of times FD-Repair can be applied is bounded by NKV . the database domain D , the complexity of computing the repaired database is polynomial time. h 4. Query answering classes of conjunctive queries (identified in [20]) can be computed in polynomial time. fixed.
+ 6 below). Given an OR-database DB , we denote by pw  X  DB  X  the set of possible worlds of DB . DB w.r.t. IC is: also the database instance.
+ d FD on the attributes of DS as follows: for each r i  X  U i otherwise it is an ATOMIC-attribute.
+Definition 8. Let DB be a complete database defined over  X  DS ; FD ; FK  X  and
+A 2 U i , A is an OR-attribute if R i  X  A \ D #  X  ; , where R Clearly, every attribute labeled as OR-attribute by the function d Example 7 . The function d DB labels only Manager as OR-attribute.
+ the function d DB labels every attribute as ATOMIC.
+ butes those which actually contain OR-objects in the repaired database, whereas the more restrictive function d OR-objects in the repaired database.
+ even though the characterization is carried out by considering the function d terms of d DB , a characterization which considers the more restrictive function d repaired  X  DB ; FD [ FK  X  is an OR-database of type II conforming to the typing function d inition of d DB . h ence of canonical sets of functional dependencies and foreign key constraints (see Corollary 3). following set of proper conjunctive queries: where the marking of a query is determined w.r.t. d DB .
+ It is worth noting that foreign key constraints do not play a role in the previous definition. query Q in Q II DB can be computed in polynomial time.
+
+Proof. From Definition 6 the consistent answers to Q over DB w.r.t. FD and FK are the certain answers to Q on time as well. h Then, repaired  X  DB ; FD [ FK  X  is an OR-database of type I conforming to the typing function d t come from, say them t 0 1 and t 0 2 , were violating a functional dependency X ! A , where X is key. Since t 0 t and t 2 have the same key too, which is a contradiction. h tion. We define the following set of proper conjunctive queries: where the marking of a query is determined w.r.t. d DB .
+ Observe that, given a canonical set FD of functional dependencies, then Q II in polynomial time.
+ Proof. The claim can be proved in a way similar to the proof of Corollary 3. h obviously, valid also in the case where d FD is considered instead of d can be determined at compile time, as it depends on the functional dependencies only. On the other hand, when d take polynomial time can be identified. 5. Discussion 5.1. Summary of results time. 5.2. Related work cepts of consistent query answering is [11], whereas surveys on this topic are [5,4]. functional and inclusion dependencies is studied. No repair strategy is provided. database.
+ is proposed.
+
+References

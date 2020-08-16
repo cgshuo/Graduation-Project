@@ -1,0 +1,113 @@
+ 1. Introduction
+The major drawback for optimal control is the need to solve the particularly well-suited ( Anderson and Moore, 1990 ). inverse optimal control, which was proposed originally by the HJB equation ( Freeman and Kokotovic  X  , 1995 ). meaningful cost functional is determined a posteriori once the Freeman and Kokotovic  X  (1995) , Moylan and Anderson (1973) , Willems and Voorde (1977) , Magni and Sepulchre (1997) ,and continuous-time is presented in Ricalde and Sanchez (2008) .
+The discrete-time inverse optimal control has been treated in the frequency domain for linear systems in Anderson and Moore (1990) and Willems and Voorde (1978) based on the return difference function fulfillment. Although, there already exist many important results on inverse optimal control for contin-uous-time nonlinear systems, the discrete-time case is seldom not guaranteed that a continuous-time control scheme could preserve its properties when implemented in real time; even worse, it is known that continuous-time schemes could become unstable after sampling ( Nesic et al., 1999 ).
+ perform as desired, due to internal and external disturbances, uncertain parameters, or unmodeled dynamics ( Gourdeau, 1997 ). be controlled ( Rovithakis and Christodoulou, 2000 ). A RHONN use the recurrent neural networks to synthesize discrete-time
+The best-known training approach for recurrent neural net-works (RNN) is the back propagation through time learning method and hence its learning speed is very slow. Recently, extended Kalman filter (EKF) based algorithms have been intro-duced to neural networks training ( Singhal and Wu, 1989 ; Wang Wu, 1989 ; Williams and Zipser, 1989 ).
+
+In this paper, a robust inverse optimal neural controller for controllerisbasedontheknowl edge of a CLF, which depends on a performed on-line through an extended Kalman filter (EKF). The illustrated by trajectory track ing of a synchronous generator. proposed control law is established. Section 4 presents the SG method by trajectory tracking of a synchronous generators. 2. Mathematical preliminaries
+This section includes important mathematical preliminaries required for the rest of the paper. 2.1. Optimal control
+We briefly discuss the optimal control methodology and their limitations.
+
+Let us consider the discrete-time affine nonlinear system x k  X  1  X  f  X  x k  X  X  g  X  x k  X  u k , x 0  X  x  X  0  X  X  1  X  with the associated meaningful cost functional V  X  x k  X  X  where x k A R n is the state of the system at time k A Z  X  f 0 , 1 , 2 , ... g ; u A R m is the input, f : R n -R n smooth mappings; f  X  0  X  X  0, and g  X  x k  X  a 0forall x k a l : R n -R  X  is a positive semidefinite 1 function and R : R of R can be functions of the system state in order to vary the state x k is available.
+ Eq. (2) can be rewritten as
+V  X  x  X  X  l  X  x k  X  X  u T k Ru k  X   X  l  X  x k  X  X  u T k Ru k  X  V  X  x k  X  1  X  X  3  X  becomes a Lyapunov function.
+
+From the optimality principle of Bellman Al-Tamimi and Lewis discrete-time Bellman equation ( Basar and Olsder, 1995 )
+V  X  x
+ X  X  min u where V  X  x k  X  1  X  depends on both x k and u k by means of x and Syrmos, 1995 ).
+
+The optimal control law u k is obtained by calculating the gradient of (4) right-hand side with respect to u k ( Al-Tamimi and Lewis, 2008 ) 0  X  2 Ru k  X  @ V  X  x k  X  1  X  which results in 0  X  2 Ru k  X  g T  X  x k  X  @ V  X  x k  X  1  X 
+Therefore, the optimal control law is formulated as :  X  u k  X  that u k is optimal.
+
+Substituting (5) in (4), it results in the discrete-time HJB equation ( Al-Tamimi and Lewis, 2008 ) described by
+V  X  x
+ X  X  l  X  x k  X  X   X  l  X  x k  X  X  V  X  x k  X  1  X  X  which can be rewritten as l  X  x
+ X  X  V  X  x k  X  1  X  V  X  x k  X  X 
+The problem of solving the HJB partial X  X ifferential equation disadvantages in discrete-time optimal control for nonlinear systems. To overcome this problem, we propose to solve the inverse optimal control. 2.2. Lyapunov stability tion V  X  x k  X  satisfying the condition V  X  x k  X  -1 as J be radially unbounded.
+
+V  X  0  X  X  0. If for any x k A R n , there exist real values u
+D V  X  x k , u k  X  o 0 time control Lyapunov function X  X  (CLF) for system (1). function . 2.3. Inverse optimal control law to be inverse optimal if: (ii) it minimizes a meaningful cost functional defined by (2).
+V  X  x k  X  , we propose a control Lyapunov function V c  X  x
+V c  X  x k  X  X  1 2 x T k P k x k , P k  X  P T k 4 0  X  8  X  optimizes a meaningful cost functional of the form (2). control law (7) takes the following form: u n k  X  1 2 R  X  1 2 g T  X  x k  X  P k g  X  x k  X  ensured.
+ of system (1) with (9), we will use the speed-gradient (SG) algorithm. 2.4. Speed-gradient algorithm
+Fradkov and Pogromsky (1998) , is to determine a parameter p , which ensures the following goal:
+Q  X  p  X  r D for k Z k n  X  10  X  where Q is a positive definite goal function, D is a positive at which the goal is achieved. 3. Speed-gradient algorithm for the inverse optimal control
+Control law (9) at every time step depends on the matrix P Let define the matrix P k at every time step k as
+P  X  p k P 0 parameter to be adjusted by the SG algorithm. Then, (9) is transformed into  X 
+The SG algorithm is now reformulated for the inverse optimal control.
+ meter p k A R  X  for all k . A nonnegative C 1 function Q : R as
+Q  X  x k , p k  X  X  V sg  X  x k  X  1  X  X  12  X  referred to as SG goal function for system (1). We define Q  X  Q  X  x k , p k  X  .
+
+The SG goal function is defined as in (12) in such a way that that Q k  X  p n  X  r E n ( Fradkov and Pogromsky, 1998 ). Definition 5 ( SG control goal ). Consider a constant p n
+Q  X  p  X  r D  X  x k  X  for k Z k n  X  13  X  where p k is the value such that (13) is fulfilled, with
+D  X  x k  X  X  V sg  X  x k  X  1 p
+V step at which the SG control goal is achieved.
+
+Remark 1. Solution p k must guarantees that V sg  X  x k  X  4 order to obtain a positive definite function D  X  x k  X  . achieve the SG control goal defined above.
+ a SG goal function as defined in (12), and denoted by Q k A 1. There exist p n and E n such that Q k  X  p n  X  r E n 5 D  X  x k  X  X  15  X 
+A2. Due to convexity of the SG Goal Function (12) for p k  X  p n p k  X  T r p Q k  X  p  X  r E n D  X  x k  X  o 0  X  16  X 
+Hence , for any initial condition p 0 4 0, there exists a k dynamic variation of parameter p k : p with and d  X  algorithm is completed .
+ ensures the requirement V sg  X  x k  X  4 1 p have a positive definite function D  X  x k  X  .
+
+When SG control goal (13) is achieved, then p k  X  p for k Z k optimal control law:  X  x k  X  :  X  u n k 4. SG inverse optimal control
+Once the control law (19) has been established, we demon-strate that it ensures stability and optimality for (1) without solving the HJB equation (6), as the following theorem. J  X  where l  X  x k  X  :  X  V  X  21  X  with V defined as V  X  V  X  x k  X  1  X  V  X  x k  X  X  a T  X  x k  X  R a  X  x k  X 
+We can establish the main conceptual differences between optimal control and inverse optimal control as: given a priori . Then, they are used to calculate u  X  x k by means of discrete-time HJB equation solution.
+ For inverse optimal control, the control Lyapunov function functions are used to compute u  X  x k  X  and l  X  x k  X  . 5. Neural identification
+For realistic situations, a control law derived from a plant model could not perform as desired due to internal and external disturbances, uncertain parameters, and/or unmodeled dynamics on recurrent high order neural network (RHONN) ( Rovithakis and
+Christodoulou, 2000 ) in order to identify the dynamics of the plant.
+
+We analyze a general class of nonlinear systems which are
+Toledo et al. (2008) . 5.1. Nonlinear systems
+Let us consider the following discrete-time uncertain non-linear system: x  X  f  X  x k  X  X  g  X  x k  X  u k  X  G k  X  22  X  to be modeled by means of a neural identifier, where G k A unknown and bounded disturbance term representing modeling errors, uncertain parameters and unmodeled dynamics. It is very paper we simplify this condition by proposing to identify (22) 5.2. Discrete-time recurrent high order neural network
+The use of multilayer neural networks is well known for network (NN) is trained to learn an input X  X utput map. Theore-
+NN can uniformly approximate any continuous function over a compact domain, provided that the NN has a sufficient number of synaptic connections ( Haykin, 2001 ).
+
+For control tasks, extensions of the first-order Hopfield model Parthasarathy (1990) and Rovithakis and Christodoulou (2000) .
+Additionally, the RHONN model is very flexible and allows to incorporate to the neural model a priori information about the system structure.
+
+Let us consider the following discrete-time RHONN: b x i , k  X  1  X  w T i z i  X  b x k , u k  X  , i  X  1 , ... , n  X  23  X  and z i  X  x  X  k  X  , u  X  k  X  X  is given by z  X  x , u k  X  X 
+L is the respective number of high-order connections, f I 1 state dimension, m is the number of external inputs, with d nonnegative integers, and x i defined as follows: x  X  2 6 6 6 6 6 6 6 6 6 4 where S  X  X  is defined by
+S  X  B  X  X  1 1  X  exp  X  b B  X  , b 4 0  X  26  X  and B is any real value variable.
+
+Remark 3. It is worth to notice that (23) does not consider the including disturbances effects.
+ discrete-time RHONN series-parallel representation ( Rovithakis and Christodoulou, 2000 ) error, which can be reduced by increasing the number of the that there exists an ideal weights vector w n i such that and Christodoulou, 2000 ). In general, it is assumed that this vector exists and is constant but unknown. Let us define its estimated as w i and the estimation error as 5.2.1. The EKF training algorithm networks (RNN) is the back propagation through time learning descent method and hence its learning speed could be very slow based algorithms have been introduced to train neural networks algorithm, the learning convergence is improved ( Leunga and for many applications over the past 10 years ( Feldkamp et al., 2003 ).
+ and Hwang, 1992 ; Song and Grizzle, 1995 ). For KF-based neural network training, the network weights become the states to be estimated. In this case, the error between the neural network output and the measured plant output can be considered as additive white noise. Due to the fact that the neural network 2001 and references therein).
+
+The training goal is to find the optimal weight values which minimize the prediction error. The EKF-based training algorithm is described by Grover and Hwang (1992) :
+K w
+P with
+M e b x 0 r Z i r 1, K i A R L i m is the Kalman gain matrix, Q i A surement noise associated covariance matrix, H i A R L i m weight, w ij , as follows:
+H i  X  1 , ... , n and j  X  1 , ... , L i  X  34  X  these entries are a matter of trial and error such that a good swarm optimization (PSO) ( Gazi and Passino, 2011 ) in order to improve the training convergence.
+ uniformly ultimately bounded ; moreover , the RHONN weights remain bounded . 5.3. SG inverse optimal neural control
+The proposed SG inverse optimal control (19) is applied to the neural model (29) as follows: ity holds :
+J y d y J r J b y y J  X  J y d b y J nonlinear identifier .
+
+It is possible to establish Proposition 2 due to the separation principle for discrete-time nonlinear systems ( Lin and Byrnes, into two parts: line EKF-learning algorithm (31) for the neural identifier (29) as established in Theorem 3 . is developed for the neural model (29). This minimization is obtained by synthesizing the control law (19), as stated in Theorem 2 .
+
+Hence, the combination of the proposed SG inverse optimal optimal neural control scheme. A general control scheme is shown in Fig. 1 . 6. Synchronous generator control
+In this section, we apply the previous control technique to a The goal of power system stabilization is to produce stable, the mechanical and electrical components as well as dangerous
+We consider a synchronous generator connected through purely reactive transmission lines to the rest of the network of the synchronous generator is given by Leon-Morales et al. (2003) x x x with f f  X  x 2 k  X  X  x 2 , k  X  t  X  m 1  X  X  m 2 E 0 n q  X  m 3 cos  X  ~ x f and ~ x 1  X  x 1 , k  X  d n , m 1  X  T m = M , m 2  X  V = MX 0 d 1 = X q  X  , m 4  X  X d =  X  T 0 do  X  X 0 d , m 5  X  X  X  X 0 d ,with x :  X  D d  X  d d n x :  X  D o  X  o o n x :  X  D E 0 q  X  E 0 q E 0 n q  X  36  X  called power angle), o is the rotor angular speed and E 0 the direct axis reactance and x L is the line reactance, X 0 P and the stator equivalent voltage E fd are given as P  X 
+E  X  p R is the synchronous speed. As in Leon-Morales et al. (2003) ,we are neglected.
+
+Through this work, the analysis and design are done around an (2003) , for which d n  X  0 : 870204, o n  X  1, and E 0 n q sampling time is selected as t  X  0 : 01.
+
+The parameters of the plant model used for simulation (MATLAB 3 ) are given in the Table 1 . 6.1. Neural identification for the synchronous generator
+In order to identify the discrete-time synchronous generator model (35), we propose a RHONN as follows: b x b x b x order to ensure the controllability of the neural identifier ( Ornelas-Tellez et al., 2010 ), which is selected as w 34
+System (38) can be rewritten as x  X  f  X  x k  X  X  g  X  x k  X  u k with f  X  x
+ X  X  and g  X  x
+ X  X  random way as well as the weights vectors. It is important to remark that the initial conditions of the plant are completely matrices are initialized as diagonals, and the nonzero elements  X  0  X  X  10000, respectively.
+ o 6.2. Control design respectively, the proposed inverse optimal control law (9), is formulated as u n k  X  1 2 R  X  1 2 g T  X  x k  X  P k g  X  x k  X  symmetric and positive definite matrix selected as
+P 0  X  6.2.1. Simulation results plant model are portrayed. Fig. 2 displays the solutions of simulation stages are indicated as follows:
+Stage 1: Nominal parameters, as the given in Table 1 , are used at the beginning of the simulation.
+ to change the augmented reactance X d from X d  X  0.9 to X Stage 3: The short circuit fault is removed at 1.6 s.
+Stage 4: A disturbance for the mechanical power is carried out by changing T m from T m  X  1to T m  X  1.2 at 3.5 s. Stage 5: The disturbance is removed at 3.6 s.
+
+Fig. 3 includes the applied inverse optimal control law, the time evolution for parameter p k and the cost functional evaluation.
+
+Finally, the application of the proposed inverse optimal neural controller based on the neural identifier is presented. Fig. 4 with the initial conditions given as  X  0 : 77 , 0 : 10 , 0 : 85 controller, same simulation stages, as explained above, were carried out for this neural scheme. Fig. 5 includes the applied meter p k and the cost functional evaluation. Time(s)
+Time(s) Time(s) illustrated by the simulations. It is worth to mention that a similar approach can be used for trajectory tracking (servo control) as presented in Leon et al. (2012) . 6.3. Comparison
+In order to compare the proposed control scheme with respect which is described as follows: the controllers used in this theory ( Ornelas et al., 2010b ), and (4) the proposed speed-gradient inverse optimal neural controller (SG-IONC). the exact plant model (structure and parameters) for the con-Tellez et al., 2011 ). 7. Conclusions
+This paper has established a robust inverse optimal neural control for discrete-time uncertain nonlinear systems. To avoid the solution of the Hamilton X  X acobi X  X ellman equation, we pro-pose a discrete-time control Lyapunov function (CLF) in a quad-ratic form adjusted by means of the speed-gradient algorithm. synchronous generators illustrate that the proposed controller ensures trajectory tracking and that it minimizes a meaningful better performance.
+ Acknowledgment
+Authors would like to thank the anonymous reviewers for their useful comments and suggestions, which helped to improve this paper.
+ References

@@ -1,0 +1,3 @@
+
+Semi-Supervised Learning with Graph Laplacian Regula rization:
+With #labeled fixed, as #unlabeled  X  X  X  , we would hope things get better...  X  Theoretical analysis + empirical examples demonstr ating the phenomenon  X  In 1D (and only in 1D): Things are OK, and at the limit we get RKHS regularization with sensible density-dependent kern el  X  Also: What about related Laplacian Eigenmaps method? Does it also break down when #unlabeled  X  X  X  ? What is it doing? (Answers at poster)

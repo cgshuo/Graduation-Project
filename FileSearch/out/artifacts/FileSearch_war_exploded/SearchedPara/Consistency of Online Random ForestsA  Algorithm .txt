@@ -1,0 +1,27 @@
+ Candidate split dimension A dimension along which a split may be made. Candidate split point One of the first m structure points to arrive in a leaf. N Algorithm 1 BuildTree Require: Initially the tree has exactly one leaf (TreeRoot) which covers the whole space Require: The dimensionality of the input, D . Parameters  X  , m and  X  .
+SelectCandidateSplitDimensions(TreeRoot, min(1 + Poisson(  X  ) ,D )) for t = 1 ... do end for Algorithm 2 Split Require: A leaf A Require: At least one valid candidate split for exists for A S  X  BestSplit( A ) A 0  X  LeftChild( A ) SelectCandidateSplitDimensions( A 0 , min(1 + Poisson(  X  ) ,D )) A 00  X  RightChild( A ) SelectCandidateSplitDimensions( A 00 , min(1 +
+Poisson(  X  ) ,D )) return A 0 , A 00 Algorithm 3 CanSplit Require: A leaf A d  X  Depth( A ) for all S  X  CandidateSplits( A ) do end for return false Algorithm 4 SplitIsValid Require: A leaf A Require: A split S d  X  Depth( A ) A 0  X  LeftChild( S )
+A 00  X  RightChild( S ) return N e ( A 0 )  X   X  ( d ) and N e ( A 00 )  X   X  ( d ) B.1. A note on notation is restricted to the lifetime of A t ( x ).
+ appropriately decorated A .
+ time we count over is understood to be the lifetime of the cell A t ( x ). B.2. Preliminaries { 1 ,...,c } with fixed probability p k , meaning that Then with probability 1, N k a,b  X  X  X  for all k  X  X  1 ,...,c } as b  X  a  X  X  X  . are similar.
+  X  ( A ) &gt; 0 and let { I t } be a fixed partitioning sequence. Then the random variable is Binomial with parameters N k a,b and  X  ( A ) . In particular, Hoeffding X  X  inequality we have that Setting = 1 B.3. Proof of Proposition 2 P tency of { g t } means that for  X  -almost all x , Define the following two sets of indices Then
+P ( g t ( X,Z ) 6 = Y | X = x ) = X denote M (possibly dependent) copies of Z , for all k  X  B we have By Markov X  X  inequality, B.4. Proof of Proposition 3 L We can write By assumption  X  ( I c ) = 0, so we have the integral and the limit, and by assumption the conditional risk converges to the Bayes risk for all I  X  X  , so which proves the claim.
+ B.5. Proof of Proposition 4 Proof. By definition, the rule g ( x ) has the same probability of error as the Bayes classifier. classes, by making t large we can satisfy since  X  k t is consistent. Thus So with probability at least 1  X   X  we have B.6. Proof of Theorem 1 The proof of Theorem 1 is built in several pieces.
+ g sufficiently large.
+ 2. The number of estimation points in A is at least  X  ( d ), the following sequence of events to occur: 1. A structure point must arrive in A to create a candidate split point. 2. The above two conditions must be satisfied. 3. Another structure point must arrive in A to force a split. t  X  t 1  X  t 2  X  t 3 = t we have We can rewrite the first and last term in more friendly notation as large enough that and so make sufficiently large.
+ often in probability. i.e all K &gt; 0 and any x in the support of X , as t  X  X  X  .
+ 1). Now define the following sequence: allows us to conclude that P ( E k  X  t )  X  1 as t  X  X  X  for all k as required. sequence) containing the point X . Then diam( A t ( X ))  X  0 in probability as t  X  X  X  . support of X .
+ Let X 1 ,...,X m 0  X   X  | A distinct dimensions uniformly at random to be candidates. Define the following events: Then using V 0 to denote the size of the first dimension of the child cell, x is upper bounded by probability.
+ t  X  X  X  as required.
+ pieces.
+ consistency of the multiclass tree.
+ B.7. Extension to a Fixed Size Fringe occurred in the tree, K . The following two lemmas provide the control we need. then for all M &gt; 0 in probability as t  X  X  X  .
+ | L for all t there are exactly | F | leafs in the fringe.
+ Suppose a leaf A 1  X  F t Now fix a time t 0 and  X  &gt; 0. For each leaf A i  X  F t then the union bound gives sufficiently large t for any &gt; 0.
+ then for any t 0 &gt; 0 , K/N e t Proof. First note that N e t the notation.
+ of a tree is found by summing the cost of each split required to build the tree. the tree is full except possibly in the last level.
+ on level d  X  1). Filling the first d levels incurs a cost of at least we have that for all N and d , where C ( d ) is given by From this we have arbitrary  X  &gt; 0 which proves the claim.
+ point will be added to the fringe in finite time.
+ probability.
+ a child of A then we know that if { U i } Dm i =1 are iid on [0 , 1] then is any leaf created by K splits of A then Notice that since we have conditioned on the tree at t 0 so, We can bound  X  p ( A K ) with Hoeffding X  X  inequality, on  X  s ( A 0 ): and t to make that K/ X  ( K )  X  0, which we require.
+ The third term goes to 0 if K/ | A 0 | X  0. Recall that | A 0 | = N e t

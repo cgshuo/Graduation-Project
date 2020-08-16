@@ -1,0 +1,81 @@
+ 1. Introduction give an example NDGH algorithm, CNDGH.
+ of a classifier trained on the k -anonymous dataset does not directly correlate with metrics). 2. Preliminary column c on D and D [  X  ][ r ] refers to selection of row r on D .
+Definition 1 ( Quasi-identifier [22] ). Given a population U , a person specific table D ( A f : D ! U 0 , where U U 0 . A quasi-identifier of D , written Q where $ p i 2 U such that f g  X  f c  X  p i  X  X  Q D  X  X  p i .
+ identify a given tuple in D (e.g., age, sex, and country of residence in Table 1 ).
+Definition 2 ( k -Anonymity [22] ). Let D  X  A 1 ; ... ; A it. D * is said to satisfy k -anonymity if and only if each sequence of values in D  X  Q D  X  Q D .
+ From now on, we will assume all input datasets consist of quasi-identifiers only. identical quasi-identifiers to t .
+ The equivalence class of row 1 in CBG anonymized dataset of Table 1 is the set {row 1, row 2}. [13] .
+ (SDG).
+ We now define the k -anonymity algorithm without any restrictions. the generalizations made by such an algorithm are cell-based generalizations (CBG).
+A SDA is also a CBA. The key difference is that in SDA, if D  X  c  X  r  X  D  X  c  X  r tive definitions.
+ ring to specific data values {a, b} is more precise than {a, b, c}).
+Definition 6 ( LM 0 ). Let D ( A 1 , ... , A n ) be a table, D * ( A [value range +1] in a given categorical [continuous] attribute of D . Assuming g ( D general loss metric of D * , written LM 0 ( D * ), based on generalization and suppression is cost of data cell with value  X  X  X . America X  X , according to DGH structure in Fig. 1 ,is cost of the first tuple of the CBG-anonymization is 1 3  X  0  X  1 to read, we will (without loss of generality) not normalize the LM LM , defined as
+Note that for two anonymizations D 1 , D 2 of the same dataset D ; LM tuples that are indistinguishable from t .
+ and pen D  X  t  X  is 1 if class  X  t  X  6  X  majority  X  G D  X  t  X  X  , 0 otherwise. Then the majority class values.
+ Definition 8 ( DM ). Let G D  X  t  X  be the set of tuples in D * indistinguishable from t . Then input tuples that a generalized tuple stands for.
+ Definition 9 ( AM ). AM is defined as 3. Clustering-based anonymity tion algorithm.
+There are three key disadvantages of using SDG instead of CBG: (1) limitations on minimizing certain loss metrics, (2) limitations on the effectiveness of certain applications, and (3) sensitivity to outliers.
+ dataset D as alg ( D ).) 3.1.1. Limitations on minimizing a loss metric LM  X  OPT SDG  X  D  X  X  &gt; LM  X  OPT CBG  X  D  X  X  input given in Fig. 1 and anonymity requirement k =2.
+ Dc 1 c 2 cn c  X  n  X  1  X  Row 1 xx xy Row 2 xx xx Row 3 zz zx
+Row 4 zz zz Then the following lemma holds:
+Lemma 2. Any algorithm that tries to anonymize dataset D to create D indistinguishable.
+
+Proof. Suppose this is not the case and we have some other k -anonymized D row 3 or 4, and row 2 is paired with row 4 or 3 and LM  X  D data in the first n column. Given this, we can conclude
+However, in D 0 the first n columns will remain the same, producing 0 LM. Given LM  X  D have This gives a contradiction. Lemma 2 must hold. h Proof ( of Theorem 1 , by example ). Given Lemma 2 , without proof, we state that OPT following table: OPT CBG c 1 c 2 cn c ( n +1) Row 1 xx xP 1 Row 2 xx xP 1 Row 3 zz zP 2 Row 4 zz zP 2 generalized into both P 1 and P 2 but most generalized of all P state that OPT SDG  X  D  X  will look like the following table: OPT SDG c 1 c 2 cn c ( n +1) Row 1 xx xP 2 Row 2 xx xP 2 Row 3 zz zP 2 Row 4 zz zP 2 It is clear that the last column values in row 3 and row 4 are more precise in the OPT
+OPT SDG  X  D  X  table ( LM  X  OPT CBG  X  D  X  X  X  3, LM  X  OPT SDG Theorem 3. For any input dataset D, LM  X  OPT SDG  X  D  X  X  P LM  X  OPT Proof. Suppose this is not the case, there exists a dataset D such that LM  X  OPT of D than OPT CBG  X  D  X  . Then OPT CBG is not optimal. We have contradiction. h achieving optimality for each generalizations may not be the same. 3.1.2. Limitations on the effectiveness of certain applications suppose we want to mine association rules out of OPT SDG  X  D  X  for some input data D . Let l R s ; c is the set of rules in D with minimum support s and confidence c. Then
+Proof. Suppose this is not the case. Let  X  a ! Y  X 2 R D s 0 ; c 0 probabilistic adversary Adv  X  O 0  X  that when given anonymized dataset O granularity of minimum support s 0 and confidence c 0 such that where 0 &lt; p 6 1. Now generate input dataset D 0 such that any adversary Adv(O 0 ), Adv  X  OPT SDG  X  D  X  X  X  Adv  X  OPT SDG
+Then Adv has no probabilistic advantage in guessing finer granularity rules since for D algorithm. 3.1.3. Outlier sensitivity itive definition is as follows: metric COST if the following holds: where O * is the suppression of tuples is O .
+
+LM 0 cost 0.33. When tP o is included in the anonymization, optimal SDA outputs D mal CBA outputs D 4 with LM 0 cost 0.36.
+ metric. Let A SDG be an SDG algorithm, let t o be an outlier in some dataset D  X  A ized version of t o in A SDG  X  D  X  where l i  X  t o  X  i  X  X  t 0 have been affected is the set S SDG  X f A SDG  X  D  X  X  c  X  r j A be S CBG  X f A CBG  X  D  X  X  c  X  r j A CBG  X  D  X  X  i  X  r  X  t 0 with t 0 o . For most cases, the size of S SDG is much larger than the size of S
+SDA S SDA contains all of the tuples in D 1 whereas S CBA changes that may occur in the internal states of the algorithms when we suppress the outliers. cannot be more than k 1.
+ COST  X  OPT CBG  X  D  X  X  &gt; COST  X  OPT CBG  X  D O  X [ O  X  . By the definition of OPT contradiction. h sional anonymization. 3.2. CDGH algorithm overcome the difficulty of running applications on the heterogeneous output of CDGH. 3.2.1. Cluster formation and anonymization defined as follows; and PM is the given cost metric.
+ other with a similar logic. Tuples in any unmatched cluster are suppressed. Algorithm 1 ( CDGH(D , k))
+Require : Private Table D ; quasi-identifier QI  X  X  A 1 ; ; A tuples. We begin with an empty set of clusters C . T c
+Ensure : Output is a generalization of D [ QI ] with respect to k 10: end if 11: T c 12: if the number of elements in c i becomes more than k then 13: Generalize elements in c i w.r.t. each other 14: C  X  C c i (Remove c i ) 15: end if 16: end for 17: for all cluster c i left in C do 18: Find j such that d i  X  diff  X  T c 19: Generalize elements in c i and c j w.r.t. each other. 20: T c 21: C  X  C c j (Remove c j ) 22: if the number of elements in c i becomes more than k then 23: C  X  C c i (Remove c i ) 24: else 25: go to 18 to find another suitable j . 26: end if 27: end for 28: Suppress the remaining tuples in C . 3.2.2. Data reconstruction heterogeneous (multi-level) CDGH output to homogeneous (leaf-level) output. returns the set of leaf siblings of v in dgh 0 . Then reconstruction function REC(D) ! D some multi-level anonymized data set D  X  A 1 ; ... ; A n  X  with associated DGH structures dgh creates a dataset of the same size D 0  X  A 1 ; ... ; A n  X  such that probabilistically. The final output will be composed of atomic values. 4. Natural domain generalization hierarchies
+Finally we will look at an example NDGH-based algorithm; CNDGH. 4.1. NDGH  X  definitions The NDGH for a set U can be defined formally as u ; v 2 V ;  X  u ; v  X 2 E if and only if u v .
+ ization paths defined over the lattice of some set U of values (see Fig. 2 ).
+Definition 13. We say a dataset D 0  X  A 1 ; ... ; A n is in NDGH( D  X  A and " row indices r on D , either D  X  A i  X  r  X  D 0  X  A i
+Definition 14 ( NDGH Algorithm ). An NDGH algorithm is an algorithm that given a dataset D  X  A an integer k as an input, generates a k -anonymous dataset D
+D algorithms. 4.2. Limitations of DGH-based generalizations
+The reasons behind using NDGH-based algorithms instead of DGH-based algorithms can be listed as below.
+ 4.2.1. Semantic discrepancy valuable. 4.2.2. Lack of semantics construction of a meaningful DGH difficult or impossible. 4.2.3. Precision NDGH model. The following theorem shows this fact for LM precision.
+O  X  A 1 ; ... A n with LM cost P 0 where P 0 6 P.
+ put OPT NDGH will be a valid instance for a NDGH algorithm.
+ OPT NDGH c 1 c 2 cn c  X  n  X  1  X  Row 1 xx x { x , y } Row 2 xx x { x , y } Row 3 zz z { x , z } Row 4 zz z { x , z } enables similar action would look like Fig. 1 . The resulting table OPT OPT CBG  X  D  X  of Theorem 1 . OPT NDGH  X  D  X  is less costly than OPT Since every DGH algorithm is an NDGH algorithm, there is no dataset D for which OPT costly than OPT NDGH  X  D  X  . 4.2.4. Order vs. hierarchy for numeric values are more effective, as demonstrated in [9,4] . 4.3. Complexity analysis of NDGH problem with respect to LM cost metric.
+ We can formalize the NDGH problem in terms of providing k -anonymity as follows:
+Definition 15 ( NDGH Problem ). Given a dataset D  X  A 1 ; A dataset D 0  X  A 1 ; A 2 ... A n in NDGH( D ) with LM cost at most  X  1 p  X  n j D at least p )? tion below can also be used to show the NP-Hardness of the previously mentioned problems.) Theorem 6. The NDGH problem is NP-hard.
+
+For any instance of Clique (G( V , E ),  X  ) where V  X f v 1 since the problem is trivial for the other states.) Construct dataset D with 3 j V j X  1 attributes and 2 j E j rows as follows: set D associated with the graph in Fig. 3 and  X  = 3 looks like r 1 11000 bb b r 2 10100 bb b r 3 01001 bb b r 4 01010 bb b r 5 00011 bb b r 6 00000 aa a r 7 11111 aa a r 8 11111 aa a r 9 00000 bb b r 1000000 bb b part PT [ right ].
+
+Claim. G(V, E) contains a  X  clique if and only if there exists a j E j -anonymous dataset D NDGH(D) with LM cost at most  X  3 j V j X  1  X j E j X   X  j E j .
+
+Before proving the claim, let us look at some properties of dataset D following are some facts about the compartments and D 0 .
+ Lemma 7. All type A tuples go into the same compartment.
+ with the minimum LM cost. In this case, every data cell value in D are only two distinct values, all individual data cells in D precision). Taking into account that we have 2 j E j (2 j V j + 1) data cells in D LM  X  D 0  X  right  X  X  4 j E k V j X  2 j E j . From this, it follows that
+However, if we put all type A tuples into the same compartment to produce D one of the compartments (e.g., C 1[ right ]) will return 1 and the other compartment
+C 2[ right ]) will return 0 as LM cost. Since LM  X  D 00  X  left  X 
+So D 00 has less LM cost then D 0 , this contradicts our assumption that D So all type A tuples go into the same compartment. h Lemma 8. Let the compartment where the type A tuples reside (in generalized form) be C1. Then LM  X  C 1  X  left  X  X j V jj E j .
+
+Proof. Let t aj be the j th type A tuple, then by the construction, t t  X  i  X f 0 ; 1 g where t 0 aj is the corresponding generalized type A tuple in C 1 (or in D will have to be the same, then for 1 6 i 6 j V j and 1 6 j 6 j E j , we have From this, it follows that In other words, C 1[ left ] is suppressed and has 0 precision. h minimum, j E j -anonymous dataset D 0 where all the type B tuples go into compartment C2.
+Proof. Suppose this is not the case: we do not have such a D in generalized forms. (The number of such S may or may not be 1.) Let T and let T X be a subset of type X tuples in C 2 S with j T compartment C 1 S 0 and C 2 S 0 where C 1 S 0  X  C 1 S T B LM  X  S 0  X  6 LM  X  S  X  .
+ The reason is as follows: By Lemma 8 , we know that no matter what we put into C 1 T , with one type X tuple t X in T X . First of all, if C 2 in C 2 S . Again, we will consider two cases:
+Case 2 : There is no integer i such that C 2 S  X  i  X  j  X  1 for every 1
+Taking into account the above lemmas, we can conclude that there exists at least one D with generalized compartments C 1 and C 2 where for 1 6 i 6 j V j and 1 6 j 6 j E j : and for  X j V j X  1  X  6 i 6  X  3 j V j X  1  X  and 1 6 j 6 j E j : So until this point, we conclude that to C 2. The optimal algorithm will have to minimize LM  X  C 2  X  left  X  to minimize LM  X  D vious example, ungeneralized C 1 and C 2 will look like:
+C 1 c 1 c 2 c 3 c 4 c 5 c 6 c 7 c 16 r 1 00000 aa a r 2 11111 aa a r 3 11111 aa a r 4??????? ? r 5??????? ?
+C 2 c 1 c 2 c 3 c 4 c 5 c 6 c 7 c 16 r 1 00000 bb b r 2 00000 bb b r 3??????? ? r 4??????? ? r 5??????? ? We can now prove the above claim. h
+Claim 1. If there exists an j E j -anonymous dataset D 0  X  A  X  3 j V j X  1  X j E j X   X  j E j , then G(V,E) contains a  X  clique.
+Claim 2. If G(V, E) contains an  X  clique then there exists a j E j -anonymous dataset D NDGH(D) with LM cost at most  X  3 j V j X  1  X j E j X   X  j E j .
+ for C [ left ]. From this, we conclude LM  X  D 0  X  X  X  3 j V j X  1  X j E j X   X  j E j . The ungeneralized compartments for D 0 corresponding to Fig. 3 will look like
+C 1 c 1 c 2 c 3 c 4 c 5 c 6 c 7 c 16 r 1 00000 aa a r 2 11111 aa a r 3 11111 aa a r 4 11000 bb b r 5 10100 bb b
+C 2 c 1 c 2 c 3 c 4 c 5 c 6 c 7 c 16 r 1 00000 bb b r 2 00000 bb b r 3 01001 bb b r 4 01010 bb b r 5 00011 bb b This gives the generalized D 0 shown in Table 3 . h 4.4. Algorithm CNDGH not require DGH structures as input and redefines the GEN function: returns the set of values v stands for. Then reconstruction function DREC  X  D  X ! D some multi-level anonymized dataset D  X  A 1 ; ... ; A n  X  with associated DGH structures dgh creates a dataset of the same size D 0  X  A 1 ; ... ; A n ) such that 5. Experiments they only affected few equivalence classes of CDGH output.
+ use three algorithm families; the CBG X  X GH algorithm CDGH, CBG X  X DGH algorithm CNDGH, and Iyen-results reported by Iyengar for comparison.
+ notation alg m to refer to algorithm alg optimizing metric m . We will now try to understand the behavior of LM metric for three algorithms CDGH metric for the algorithms. CNDGH LM has the best (lowest) LM and CDGH metric.
+ solve the problem but may produce better results.
+ Fig. 7 shows the DM cost metrics for the four algorithms. AM optimization reduced the cost for found. possible precision. This is substantial for k = 250 and k = 500.) Table 5 shows the summary of the findings from the experiments. Fig. 12 .
+ ever, the results still do not correlate well with the results in Fig. 12 . 6. Conclusions racy. We also introduce NDGH generalizations, which have advantages in many application such as nymity notion. 6.1. What X  X  a good anonymization? can we trust metrics in our comparisons? will fail to explain the behavior of the application.
+ direct privacy-preserving method such as multi-party secure computation? 6.2. What is a good metric? and we have infinitely many of them, the practicality of such an approach remains questionable. 6.3. What is a good algorithm? tion of what a good input is.
+ section along with possible enhancements on the new algorithms remain open problems. 7. Related work class values relative to their original distribution in the original dataset. in [18] extended the privacy definitions of k -anonymity for multi relational databases. Acknowledgement
+This material is based upon work supported by the National Science Foundation under Grant No. 0428168.
+
+References

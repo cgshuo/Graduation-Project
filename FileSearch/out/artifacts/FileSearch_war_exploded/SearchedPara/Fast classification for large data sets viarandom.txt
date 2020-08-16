@@ -1,0 +1,56 @@
+
+Departamento de Computacion, Cinvestav-Ipn, Mexico City, Mexico Departamento de Control Automatico, Cinvestav-Ipn, Mexico City, Mexico 1. Introduction
+With the development of software and hardware, enormous quantities of high dimensional data are sion tree, support vector machine (SVM), ensemble methods, etc. Among these techniques, SVM is one an intensive computational complexity.
+ Chunking was the fi rst decomposition method used, a standard projected conjugate gradient (PCG) Minimal Optimization (SMO) is a fast method to train SVM [8,28]. SMO breaks the large QP problem simplify the training process [16].
+ based SVM (CB-SVM) scale well for large data sets and gives accuracies comparable to other SVM implementations. However, these CB-SVMs are dependent of the dimension of the input data set and densities of the data points can be modeled by mixture models. In [32] the clustering based second order cone programming (CB-SOCP) method is applied for large data sets and the accuracy is better and testing data were different, the training process of SVM via CB-SOCP becomes worse [41]. [18] authors developed a approach by K Means Clustering in order to selecting and combining a given this algorithm are comparable to other SVM implementations. However this method works only with small and medium size data sets.
+ support vectors, 4) the second-stage SVM classi fi cation.
+ The main contribution of this paper is we propose a new approach to solve the trade-off problem of 2. Random selection clustering around this approximate hyperplane to train SVM again to obtain a better hyperplane. random form. 2) The fi rst-stage SVM is used to fi nd an approximate hyperplane. input data set.
+ at a level comparable to other SVM implementations.
+ be precise enough. However, at least it gives us a reference on data distribution. compensate the information lost in this step.
+ that ( X,Y ) be the training patterns set, where X = { x 1 ,x 2 ,...,x represented by a vector of p dimension, i.e., x label y needs to be prede fi ned and suitable to be training data size for normal SVM algorithms. label Y + and Y  X  respectively. i.e., Thus, the original input data set is the union of X + and X  X  , i.e., X = X +  X  X  X  . proportional to n, q, m .If n 1 &gt;l or n 1 l then l = n 1 and q 1 = l/ 2 . second sample c 2 is selected from the remaining data then it is exchanged with the second last data x + ( q  X  1) (or x  X  ( m  X  1) ), i.e., X + and m samples from X  X  if the labels are not distributed evenly.
+ selection can be realized by the following algorithm.
+
+Obtain X + choose l where l n if n 1 &gt;l or n 1 l For i := n to n  X  l +1 Do Return x [ n  X  l +1] ,...,x [ n ] Remark 1 Unlike fuzzy C-meaning [27] and K-nearest neighbor (KNN) method [21], where they used iswhyweuseSVMtwice. 3. SVM classi fi cation obtains an approximated hyperplane.
+ Let ( X,Y ) be the training patterns set, hyperplane or to solve the following quadratic programming problem (primal problem), where  X  from x the Mercer condition [10] is K ( x quadratic programming problem which is a dual problem with the Lagrangian multipliers  X  Many solutions of Eq. (3) are zero, i.e. ,  X  over the non-zero  X  index set of support vectors, then the optimal hyperplane is The resulting classi fi er is where b is determined by Kuhn-Tucker conditions.
+ QP problems [28]. These small QP problems can be solved analytically, which avoids using a time-consuming numerical QP optimization as an inner loop. The memory required by SMO is linear in the can be optimized at each step is two. At each step SMO chooses two elements  X  in memory, and it is fairly easy to implement [28].
+
+In the fi rst stage classi fi cation, we use SVM with SMO algorithm to get the decision hyperplane with training data set C +  X  C  X   X   X  show the results of the fi rst-stage SVM classi fi cation. 4. Re-classi fi cation
+Now we remove the data which are not support vectors from the original data set. For the support draw out.
+ 4.1. Data recovery support vectors, and use the recovered data to train the second-stage SVM. recover the data near support vectors using the principle of minimal enclosing ball (MEB) [5]. the training data set size suitable for the SVM algorithm we are using.
+First we select the support vectors c portant parameter in MEB clustering. The maxima margin of the fi rst-stage SVM is 2 w fi cation. The recovered data set is  X  data, a possible way is to select the radius r as the maxima margin, if will be lost.
+
+In this practice, we use the following equation where l is the number of the balls, n random number in (0 , 1) , c max =max( c algorithm, we use the same r for all balls because we only care about the center of the balls.
+ the experience relation proposed in [4], l = 2 3 n ity locations problems, shape fi tting problems. The MEB is de fi ned as follows. De fi nition 1: The ball with center c and radius r is denoted as B ( c, r ) .
+De fi nition 2 : Given a set of points S = { x 1 ,...x of De fi nition 1 The ball with center c and radius r is denoted as B ( c, r ) . process via random selection.
+ are used ef fi ciently in the second-stage SVM.
+ Finally, we summarize the recovery algorithm as INPUT: support vectors and w obtained in the fi rst stage of SVM classi fi cation
+OUTPUT: most important data points from the entire input data set (all data points near support vectors) Step 1: select the ball radius r as Eq. (5)
+Step 2: For each support vector c
+Step 3: For a data point x and the minimum distance  X  ( x  X  If  X  ( x  X  If  X  ( x  X  if i&gt;n ,then gotoStep6 ;  X  otherwise, goto Step 3 .
+  X  if j&gt;k ,then gotoStep6 ;  X  otherwise, goto Step 2.
+
+Step 6: Complete the recovering and output the obtained clusters B [ c 4.2. SVM Re-classi fi cation rithm to get the fi nal decision hyperplane plane Eq. (3) is close to the hyperplane Eq. (8).
+
+In the second-stage SVM, the training data set is  X  the second stage classi fi cation results via random selection.
+ accuracy we have to used enough data to train SVM. The smallest data set for our algorithm is that vectors as the fi rst-stage SVM. Now our algorithm becomes the one-stage standard SVM. 5. Performance analysis n input data. 5.1. Memory space matrix be put into the memory simultaneously. vectors.
+
+In the second-stage SVM classi fi cation, the training data size is 4 l number of the elements near support vectors.
+
+The total storage space of our algorithm is
+When n is large (large data sets), n much smaller than 4( n  X  p ) 2 which is needed by a normal SVM classi fi cation. 5.2. Algorithm complexity complexity of the two SVM training is O l 3 + O l stage classi fi cation via FCM is where l is the total number of cluster, n hence, and will converge more slowly.
+ classi fi cation via MEB is where k is the number of support vectors obtained in the fi rst SVM X  X  stage.
+Obviously, Eq. (10) is much smaller than the complexity of a normal SVM O ( n 3 ) . 5.3. Training time be constant. In this case we consider the time of to fi nd a small data set insigni fi cant. The training time of to fi nd data points near support vectors is where l is number of balls, c
+Let n support vectors at time t is F ( t ) which satis fi es support vectors (or decreasing rate of the number of non-support vectors) is Since the growth rate is constant h ( t )=  X  , the solution of the following ODE with F (0) = 0 is The support vector number of the fi rst-stage SVM at time t is n bility theory [13].
+
+The support vector number of the second-stage SVM at time t is n where
+We de fi ne the fi nal support vector number in each cluster in the fi rst-stage SVM is h From Eq. (12) we know h cost is 4( l + m ) c 1 . The cost of the optimization in the fi rst stage classi fi cation is In the second stage classi fi cation, it is element of K .Inthe fi rst stage is The total time for the approach proposed is the training time of a classic SVM is For a large data set, c 1 c longer than our approach. 6. Experimental results
+We use some examples to compare our algorithms with some other SVM classi fi cation methods. In and compare our approach with two SVMs implementations, SMO [28] and simple SVM [10]. Example two-stage SVM via random selection (abbreviated as RS two-stage ) with LIBSVM [6], simple SVM. Example 4 is a RNA sequence data set. SVM has been proposed to detect RNA sequences [25,38]. or continuously.
+ 6.1. Example 1: Checkerboard considerably, however the fi nal data set contains the most important data points. data, our classi fi er needs 39 seconds, while LIBSVM and Simple SVM needs about 2719 and 128 sec-onds, while LIBSVM, and Simple SVM use a very long time.
+
+The original data set is reduced considerably. The input data set of one hundred thousand data is reduced to 23963 data only. 6.2. Example 2: Random data set in [41].
+ 1029 seconds, while LIBSVM, and Simple SVM use a very long time. 6.3. Example 3: IJCNN2001 data 37 , 500 and 49 , 990 .
+ support vectors obtained in the second-stage SVM.
+ cation and some other SVM algorithms including SMO, simple SVM and LIBSVM. For example, to Simple SVM and SMO have no better accuracy than the others, but their training time is very large. Comparing to our two approaches, LIBSVM takes almost double training time of MEB two-stage, and the other algorithm can in a very short training time. 6.4. Example 4: RNA data #top .
+ 10 , 000 and 23 , 605 in our experiments.
+
+Experiments were done using MEB two-stage, RS two-stage, SMO, LIBSVM and simple SVM. Ta-data size is large. 7. Conclusions and discussions experiments, we conclude the following conclusions: 5) Since clustering is unsupervised, some useful information of original data set may be lost. New References

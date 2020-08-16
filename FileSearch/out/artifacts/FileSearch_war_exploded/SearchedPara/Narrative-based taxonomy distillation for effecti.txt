@@ -1,0 +1,77 @@
+ 1. Introduction
+While there are many strategies for organizing text documents, hierarchical categorization tents. For example, many on-line news aggregators, such as Google News, text of a given set of text documents that have to be represented and indexed by it. 1.1. Taxonomy adaptation the collection, it may make sense to move the concept  X  entropy text. Therefore, a contextually relevant adaptation of the initial taxonomy needs to discover the in the considered context. 1.2. Desiderata to identify a new taxonomy, H  X  ( N  X  , E  X  ), where | N  X  erata are best satisfied. 1.2.1. Desideratum 1: coverage possible with the nodes of the taxonomy.
+ 1.2.2. Desideratum 2: redundancy nization of the documents in the corpus. 1.2.3. Desideratum 3: speci fi city bels to the user is more desirable. 1.3. Contributions of this paper
+In this paper, we propose  X  A Narrative Interpretation for Taxonomy Adaptation (ANITA), this example, most children of  X  chemistry  X  , except for essary within the context of the NSF data set (described in Section 3.3.2 ). In contrast, the four children of guished from each other.
+
+The specific contributions of this paper are as follows:  X  straints expressed by the hierarchy.  X  cantly drifts from one concept-topic to another ( Section 3.2 ).  X  linking each concept-segment to others that are structurally related to it ( Section 3.3 ). sets and (b) results from user studies. 2. Related work ganization, summarization, and presentation to the users through extracted hierarchical categorizations. streams.
+  X  this pattern taxonomy to solve the problem of overload during real-time filtering of document streams. 2.1. Automatic extraction of hierarchies
+In the literature, many authors tried to automatically extract hierarchical categorizations from text corpora. the ontology (this phase is called lexicalisation).
+ to the concepts.
+ extracted by Flickr to induce an ontology by using a subsumption-based model. archy nodes in a given domain. 2.2. Faceted search and navigation used for exploratory purposes [26] .
+ ical meta-data structure. 2.3. Evaluation of taxonomies as well as subjective user studies to evaluate our distillation approach. 3. Narrative-driven taxonomy adaptation process
+Given an input taxonomy H ( C , E ) (also called hierarchy in the paper) defined as a directed tree, where C ={ c
+ISA relationship between two nodes in C ), our goal is to create an adapted taxonomy H by a corpus, D , of text documents.
+
+A (linear) narrative, N ( S ), where S ={ s 1 , ... , s m s context. 3.1. Step I: narrative view of a taxonomy 3.1.1. Step Ia: concept-sentences vectors commonly used in representing documents in IR systems.
+ text corpus. Thus, for each concept c i in the considered hierarchy, we associate a sentence-vector s where v represents the total number of considered terms (the corpus vocabulary and labels in the taxonomy), and w the data set.
+ tural context (imposed by the taxonomy) and the documents content (imposed by the corpus). 3.1.2. Step Ib: sentence ordering and (b) sibling concept pairs in C . 3.1.2.1. Ancestor  X  descendant ordering. In this paper we consider three alternative ancestor pre-order, parenthetical and post-order constraints.  X   X  ing the most specific concepts, their super-concept is narrated can be seen as summarizing the description of its sub-concepts.  X  the conclusion to the argument that the children specialize. the siblings in the hierarchy are to be included in the narrative.
+Let us consider a node c 0 with m children { c 1 , c 2  X  c reflects the similarities  X  or dissimilarities  X  among these m siblings (as well as their parent c example, in Fig. 4  X  biology  X  has two children,  X  toxicology than  X  toxicology  X  , we would like to order the narrative in such a way to preserve this information. (the parent and the m children) 4 : where d i , j is the actual distance between two objects o the stress minimization process in a way that forces the position of c  X  spect to the parent ( Table 2 (b)): first  X  medicine  X  is included in the narrative and, then,
+Fig. 5 (a), (b), and (c) show the three distance preserving ordering approaches. 3.2. Step II: segmentation of the narrative covers all the topics addressed by the taxonomy, according to the knowledge expressed by the contents.
+In this paper, in order to partition the narrative s tions with similar high internal coherence (defined in terms of the total amount of topic drift). s  X   X  i  X  1 (1  X  i  X  n  X  1) by computing their distance : when the degree of change between its starting and ending points is above a given threshold. If Seg the vector s if it holds that drift i , j b  X  max , where  X  max  X  drift
+At the end of the process, we obtain a set of segments, or partitions, P ={ P the revised taxonomy. 5  X  nuclear  X  might be more rigorously related to the concept of awarded abstracts,  X  nuclear  X  has been connected to  X  physics the content better. 3.3. Step III: taxonomy distillation from the partitions will describe the concepts in the partition. 3.3.1. Step IIIa: partition linking
+The adapted taxonomy, H  X  ( C  X  , E  X  ) with C  X  ={ c  X  1 original structure of H ( C , E ) as much as possible. Thus,  X  the root of H  X  is c root (1  X  root  X  k ) such that the corresponding partition P  X  be connected is based on the following analysis. Let E i , j
+Similarly, let E j , i be the set of edges in E linking any concept in P the adapted taxonomy which maximally preserves such constraints.
+
+Let e =  X  c a , c b  X  be an edge in H that connects two different partitions P constraint e , strength(e) , (i.e., the strength of the structural constraints induced by e )is1+ d dants of c b in H that also belong to P j . Based on this, the decision of having the corresponding c by the strength of the structural constraints associated to the edges in E preserving such constraints as follows: 1. create a complete weighted directed graph, G P ( V P , E  X  V P = P ,  X  E P is the set of edges between all pairs of partitions, and  X  w P (  X  P i , P j  X  )=  X  e  X  E 2. find a maximum spanning tree of G P rooted at the partition P the taxonomy) may imply that the partition containing the concept (containing the node  X  science  X  ) or the partition 2 (containing the concept trieved in Fig. 6 is shown.
+ picks as root the partition containing the root node (  X  science analyzing the constraints given by the structural original edges. 3.3.2. Step IIIb: Partition Labeling inal structure. In order to pick a label for the node c  X  archy H among the nodes in P i . If there is a concept c l a descendant of c l ), then the label of c l is selected as the label for c nodes whose least common ancestor in the original hierarchy H does not belong to P Fig. 7 shows an example.
+
+Note that the time complexity of identifying the maximal subtrees in P and r is the number of disjoint subtrees in P i . 4. Evaluation (  X  (  X  50 K article abstracts describing NSF awards for basic research, with over
+For each data set, we used a corresponding domain taxonomy extracted from the DMOZ categorization ture can sensibly alter the hierarchy and provide different cases to consider. 4.1. Effectiveness measures the considered hierarchy, we obtain a set of associated documents A concrete basis, we quantify the quality of the adapted taxonomies using the following three measures:  X  some classification process. Let A c measure as expressed by the considered corpus.  X  would not result in a desirable taxonomy. Therefore, we also define a redundancy measure helping search and access text documents.  X  the adapted taxonomy fragment in Fig. 3 (b), the composite concept adapted version H  X  ( C  X  , E  X  ), length ( label c  X  form the label of c  X  i in H  X  . Then, the label term-length is defined as 4.2. Impact of the narrative orders of the original number of concepts, with 10+ increments).
+ will always appear next to each other.
+ 4.3. Comparison wrt. the original taxonomy original taxonomies, referring to the NSF and NY Times data sets.
+Fig. 8 shows that, for both data sets, the relative domain coverage is very close to 1.0 for adaptations with 4.4. Impact of document context in taxonomy adaptation a selected subset, D  X   X  D . We expect that having ignored D of the resulting taxonomy in indexing D .
+ we compare the full corpus informed adaptations, H  X  (obtained using the entire NSF data set, D ), against H as follows:  X 
+Each H  X   X bio is a taxonomy uninformed about the documents concerning sidering the set, D bio , of documents containing the term  X 
+Similarly, each H  X   X astr is a taxonomy uninformed about the documents concerning without considering the set, D astr , of documents containing the term
+Fig. 9 compares the effectiveness of H  X  (referred to as  X  as  X  uninformed  X  ). tends to provide lower label-length (with an average gain of informed approach reports better results. 4.5. ANITA vs. concept clustering methods (described in Section 3.3 ) are used to stitch the taxonomy back.
+ANITA provides lower redundancy, with an average gain of  X  obtained when ANITA reports better results.
+ terms of label term-length (a reduction up to 6%). 4.6. Execution time and complexity articles). The adaptation process itself takes less than 0.1 seconds. by the segmentation step described in Section 3.2 , which 1. (a) fixes a starting point (dictated by the ordering process, Section 3.1.2 ); 2. (b) sequentially scans the narrative until the drift value is beyond the coherence threshold value; the elements in the narrative have been considered.
+ times is a more critical factor than the execution time itself. We study this next through user studies. 4.7. User study not computer scientists or domain experts).
+ omies, we presented the 3 taxonomies to the user in a random order. 4.7.1. Experiment 1: search time and interaction counts retrieval operations.
+ 4.7.2. Experiment 2: classi fi cation effectiveness cepts in each taxonomy. Let d i be an article and t j be a taxonomy and the set U relying on t j . Let also A t j ( d i ) be the set of concepts selected by the automated system for d in t . We then define the precision -based and recall -based effectiveness of t respectively.
+ (i.e., recall is 67.7%), while the precision of the process had an average value of 60.7%. to 76.8%.
+
+Means) can cause a significant increase in terms of confusion and disorganization. 4.7.3. Experiment 3: subjective questionnaire measures
+After the study, each user also completed a brief questionnaire which included two questions ( and
+As shown in Table 8 , the users reported that the ANITA adapted taxonomy was as dropped almost 80 % , the users commented that, in terms of providing the  X  sufficiency  X  (only 2.6) and results in taxonomies that the users find harder to use (3.3 in terms of 4.7.4. Statistical signi fi cance from each other. The results are shown in Table 9 .
+ 0.046, respectively). Here statistically significant means that the p -value is sults than k -Means based taxonomies ( p =0.0009).
+ than k -Means based taxonomies ( p =0.029).
+ k -Means based taxonomies are not due to chance. 5. Conclusions the user studies also validated the approach from a user point of view. tions to improve the understanding of the keywords considered in the process. Appendix A. Sentence vector construction Appendix A.1. Taxonomy vectorization in the given hierarchy, the initial concept-vector of this node is where the only non-zero weight is associated with the i-th dimension related to the node c equal to the number of the nodes in H ( C , E ).
+ propagation degree is computed in a way that reflects the local structure of the taxonomy [43] . iterations to inform all the concept about the entire structure [43] . Appendix A.2. Text document vectorization each keyword is computed using augmented normalized term frequency [44] .
+In short, given a corpus document d i , we define the related document-vector as where v is the size of the considered vocabulary, and w i , j document, calculated as where tf i max returns the highest term frequency value of the i th document. Appendix A.3. Analysis of concepts describing a given document than the average similarity of the documents that best match that concept.
+More in detail, the steps of this discovery process are as follows [34] : For each document d 1. consider the document-vector d 2. compute its similarity wrt. all the concept-vectors describing the given taxonomy. 3. sort the concept-vectors in decreasing order of similarity wrt. d this cut-off as follows: it (a) first ranks the concepts in descending order of match to d (b) computes the maximum drop in match and identifies the corresponding drop point; At the end of this phase, each document in D has a non-empty set of concepts associated to it. Appendix A.4. Finding keywords that relate strongly to a given concept cepts in the taxonomy.
+
+Let c
+D sponding sets, D desc , of associated documents are empty.
+
+At this step, given a concept c i and the set, D words corresponding to this concept.
+ ated documents by treating  X  the set of documents in D c  X   X  word within the given context, and  X  relationship.
+
+Recognizing this, given a concept c i and a corresponding set of associated documents, D sentence vector is considered as a  X  query  X  and the document associated to the concept is treated as a  X  ative  X  feedback  X  : where r i , j is the number of documents in D the keyword k j , R i is the number of documents in D weights.
+
+Appendix A.3 ) to this set in order to select those keywords with the highest weights. Given concept c their weights are collected in a so-called extension -vector , l Appendix A.5. Merging concept-and extension-vectors
+At this point, for each concept c i , we have two vectors: (a) the original concept-vector, c relationships in the corresponding taxonomy and (b) the extension-vector, l sentence-vector, we need to first establish the relative impacts (i.e.  X  c knowledge.
+
+As defined previously in Appendix A.4 , let D c  X   X 
+Also, given concept, c i , let  X 
+A  X  c i be the set of documents resulting from querying the database using the concept-vector, c  X 
+A  X  c i be the set of documents obtained by querying the database using the extension-vector, l
+We quantify the relative impacts,  X  c  X 
+C  X 
+L then we expect that
+If the concept and extension-vectors are normalized to 1, then we can rewrite this as
+Also, if we further constrain that the combined-vector c  X  then, solving these equations for  X  c
+Thus, given a concept, c i , we can compute the corresponding sentence-vector as Appendix B. Measuring semantic similarities In our work, we need to measure similarity of a pair of concepts or a concept to a document. The sentence-vectors associated to concepts provide a convenient representation for this purpose.
+Similarity of two concepts approach to measure the semantic similarity of a pair of concepts using the corresponding sentence-vectors. Similarity of a concept and a document Appendix C. Sentence-vector based classi fi cation of documents sentence-and document vectors ( Appendix A.5 ).
+ with similarity higher than a threshold value (calculated adaptively as described in Appendix A.3 ).
+References

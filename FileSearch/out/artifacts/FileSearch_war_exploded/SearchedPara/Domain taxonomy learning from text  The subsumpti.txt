@@ -1,0 +1,103 @@
+ 1. Introduction
+In the past, data were stored physically, not digitally, and were often structured manually so that the desired information be performed by automatically generating a concept taxonomy from a document corpus [1] .
+ create taxonomies that approach the quality of manually created taxonomies. Moreover, although automatic construction still must be built manually for each new domain. Examples of applications which could benefit from an automatic development of contributing as a first step to the development of domain ontologies for improved application inter-operability, etc.
+Researchers have defined methods that handle these difficulties [7 and synonymy are not defined.
+ to form taxonomic relations between concepts. The properties we consider are mainly co-occurrences of concepts in documents, which makes this method data-driven.
+
+In our current work, we present a framework for automatically constructing a domain taxonomy from text corpora. We call this framework Automatic Domain Taxonomy Construction from Text (ADTCT). This framework extracts concepts from text and arranges alternatives, i.e., therelatively heavy-weightsemantics-based approaches,whichare generallytimeconsumingwhen disambiguating and reasoning.
+
+We have implemented our approach in economics and management, a domain that has been rarely targeted for automatic taxonomy construction. We extracted thousands of abstracts and titles from RePub publications from the Erasmus University Rotterdam, and RePEc is a collection of economic articles maintained by a group of documents belonging to economics and management, including all RePEc documents and those RePub documents classified as belonging to economics and management. The contrastive set contains all RePub documents that do not belong to economics and management (e.g., medicine, sociology, or psychology).
+
+First, we compare the hierarchical clustering algorithm and the concept subsumption method in taxonomy extraction from text corpora. Second, we optimize the parameters for these methods. Third, we elaborate an implementation of this approach in economics and management. Although taxonomy construction has been applied to many domains, including finance and tourism choosing the proper method for taxonomy extraction based on a trade-off between taxonomy quality and depth. Last, we refine the existing state-of-the-art subsumption algorithm by considering the position of the ancestors of the current node when constructing the taxonomy, and show that this delivers a superior performance with respect to the taxonomic F -measure.
+The remainder of the paper is structured as follows. First, Section 2 reviews related work in the area of automatic taxonomy construction from text. Sections 3 and 4 introduce the ADTCT framework and its implementation. Then, Section 5 evaluates the taxonomy built using our ADTCT implementation. Finally, we summarize our research and provide future work directions in automatic taxonomy construction in Section 6 . 2. Related work
+In this section, we discuss the current body of literature in automatic taxonomy construction. Three taxonomy construction aspects are addressed. First, methods that extract  X  and possibly filter evaluation. 2.1. Term extraction and fi ltering techniques In this paper, we distinguish among linguistic, statistical, and hybrid methods.
+
+However, linguistic methods cannot define the importance of a word well. Linguistic methods use natural language processing thus no longer a pure statistical method.
+
+Hybrid methods combine linguistic and statistical techniques to overcome flaws in both methods. This section discusses in the eventual term set.
+
+Another method is the  X  2 method [15] . In this method, named entities are extracted using a linguistic processor, and domain or contrastive corpus. Based on this table, the  X  2 certain threshold value.
+ selected term. These context words provide additional information about the selected term. 2.2. Creation of Hierarchical Relations can be alleviated [17,18] .
+
+Hierarchical clustering methods employ several distances. Distances can be measured using similarity in a semantic lexicon [4,19] or in a term co-occurrence analysis [4] . One co-occurrence similarity is co-occurrence of terms in a document. The window-based co-occurrence measure, which analyzes the co-occurrences of words in windows of words, can also be used [20] .
+Sanderson and Croft [5] proposed the subsumption method to derive a term hierarchy from a set of documents. In the fuzzy domain [22] ; however, the position of the ancestors with respect to a concept is not considered during the taxonomy a parent node can enable us to produce more accurate taxonomic relations. 2.3. Classi fi cation Methods
+Classification methods can also be used to create taxonomic relations. By combining a domain corpus, a general corpus, and a dictionary that provide more information, e.g., synonyms, homonyms, etc. [3] . A tree-descending algorithm adds terms to a set.
+  X 
+Portfolio management  X  appears with the named entity  X  Markowitz, because it appears with the noun phrase. 2.4. Evaluation Methods
+Previous studies have discussed several evaluation methods [1,5,25 then averaged [5] . 3. ADTCT Framework In this section, we discuss our framework for automatically c onstructing a taxonomy for a specific domain. Our framework -using either the subsumption method or the hierarchical clustering algorithm.
+
+Fig. 1 depicts the ADTCT framework architecture. As input, we have a document set. Terms are extracted from the documents in aTaxonomy. 3.1. Term Extraction sequence) with one meaning. 3.2. Term Filtering cohesion. We then determine a domain score, which is based on domain pertinence, domain consensus, and structural relevance. The terms with the highest scores are selected as concepts.
+ for the target domain. It is defined as a function of term t : where D j is a contrastive corpus and freq ( t / D i ) is the number of times term t appears in domain D contrastive corpus. Terms with high DP values are thus likely to be more important in the target domain. To emphasize the importance of this filter and accelerate the computing time, we remove the bottom 30% of term DP values. It is defined as a function of term t : where n is the number of words in compound term t , freq ( t / D remove the 30% compound terms with the lowest values for LC .
+
+The domain consensus DC , first introduced in [29] , is used to determine term importance by analyzing term frequencies in documents. This measure, which is a function of term t , is defined thus: where norm _ freq ( t , d k ) is the normalized frequency of term t in document d
+Normalization occurs by dividing the calculated frequency by the maximum frequency of term tt in any document in the domain corpus. This procedure is defined thus: information. We thus add a constant value k to terms that appear in the title for the domain score.
+After calculating all filter values, we combine these values to compute a final domain score: where  X  and  X  are weights that emphasize DP D i t  X  X  or DC values for domain pertinence and consensus in domain corpus D appear in a title receive a value of k added to their score. The 3.3. Concept hierarchy creation
+In our framework, we distinguish two methods to determine hierarchical relations between concepts. First we discuss the subsumption method [5,21] , and then we discuss the hierarchical clustering algorithm [16] . node. The subsumption algorithm is based on concept co-occurrences. The co-occurrences for this method are based on document co-occurrence, which means that we analyze concept co-occurrences in different documents. For each concept, potential parent concepts or subsumers are determined. Concept x potentially subsumes concept y if: potential parent. The score is defined thus: the co-occurrence probability of ancestor a given concept x . In this equation, the weight is defined thus: as the parent of node x .
+ 1. Start with n clusters (each term is a cluster). 2. Compute the distances between clusters. finished.
+
+We implemented several measures to define the distances between clusters: minimum distance/single linkage, maximum concepts in clusters A and B .
+
+To calculate the distances between the clusters, the distances between individual concepts must be calculated. We have defined two distance measures for this purpose: document co-occurrence similarity and window-based similarity. The document defined thus: where df ( c 1 , c 2 )isthetotalnumberofdocumentsinwhich c which concept c 1 appears and df ( c 2 ) is the total number of documents in which concept c in documents thus have higher values for this similarity.
+ in user-specified word windows instead of examining co-occurrences in documents [4] . This similarity is defined thus: where wf ( c 1 , c 2 ) is the total number of times that c appears in windows, and wf ( c 2 ) is the number of times that concept c thus have higher values for this similarity.
+
+The windows are created for each document based on window size. Suppose that we have a document with four concepts:  X  {Cees, Dirk}, and {Dirk}.
+ label because this cluster does not have a center. 4. ADCTC Implementation
+We implemented theADTCT framework asa Java application.We chose Java because manyJava libraries are available that support RDF files with an SKOS vocabulary.
+
+Fig. 2 presents a screen shot of our program implementation. This screen shows the output of a computed taxonomy created using the hierarchical clustering algorithm. 4.1. Term Extraction
+In this step, terms are extracted from the domain corpus. This corpus contains RePEc documents and RePub documents that belong to the economics and management domain. The contrastive corpus contains documents from other domains, including law the contrastive domain.
+ parser is slower than a part-of-speech tagger, but the results are more accurate, especially for compound nouns [32] . 4.2. Term Filtering
+The most relevant terms are stored as concepts. the terms' domain pertinence values.
+
+The lexical cohesion filter assigns a lexical cohesion value to all compound terms (terms represented by noun phrases). This 30% of the compound terms with the lowest value for lexical cohesion are removed from the list of potential terms.
+The domain consensus filter assigns a domain consensus value to all of the remaining potential terms. The domain consensus value is used only to calculate the final score.
+ potential terms that appear in the title.
+ structure relevance, as explained in the framework.
+
+To find the optimal domain score, we evaluated the taxonomy for values of values, using a discretization step of 0.05, for  X  ,  X  ,and k to be 0.95, 0.05, and 0.5, respectively. 4.3. Concept Hierarchy Creation
+We implemented two methods to create a concept hierarchy: the subsumption and hierarchical clustering methods. With the executed as explained in our framework.
+
+Let us consider the concept  X  Technology adaptation  X  with three potential parents: as in Fig. 3 . Scores can be calculated using threshold t , which equals 0.4 in this example. Because we calculate P ( p | x ) using (6), yielding 0.4. For the ancestors of calculate P ( p | x ), which is 0.4. Subsequently, we calculate P ( a | x ) for both parents, yielding 0.2 and 0.05 for  X  calculated. The parent of  X  Technological adaptation  X  is hierarchy we can compute the score: 0 : 6  X  1 2 0 : 35  X  1
+Based on these scores,  X  Adaptation  X  is chosen as the parent of taxonomy depends on the value of threshold t . A higher threshold means that the results are more reliable but the taxonomy is shallower. We have evaluated the subsumption algorithm for t -values ranging from 0.2 to 0.8 with incremental steps of 0.05. Based on these evaluations, we find that t =0.75 has the best results according to the taxonomic F -value but the generated taxonomy has a low average depth. A t -value of 0.25 has a deeper taxonomy, and the results are only 3.2% worse than t =0.75 in the taxonomic F -value. We must make a trade-off between tree quality and depth. More information about this subsumption method.
+
+The agglomerative hierarchical clustering algorithm is another method used to create taxonomic relations. This method is clusters. The distances between these concepts are calculated using the document co-occurrence or window co-occurrence similarities.
+
+Suppose that we have two concepts,  X  System  X  and  X  Process, found that  X  System  X  appears in documents {1,3,6,8} and windows {1,5,10,14,18,20,28}; and windows {1,5,12,14,18,25,30}. Both terms thus co-occur three times in documents and four times in windows. Hence, we can
+After calculating the distances between concepts, we can compute the distances between the clusters. Suppose that we have similarities:
+We merge the clusters that are closest to each other. For minimum linkage, these are distance matrix. For average linkage, we use  X  (Return, Trader) the lowest distance in this distance matrix.
+
+The newly created cluster must be labeled. Suppose that we have used complete linkage, and  X 
+Organization.  X  Table 3 shows the distances between these concepts. The average distance from as the cluster label.
+
+After two clusters have been merged, the algorithm continues to merge clusters until one cluster remains. We evaluated this 5. Evaluation
+In this section, we evaluate the taxonomy for the economics and management domain built based on the settings used in the previously discussed implementation of our ADTCT framework. We first describe the framework of our evaluation approach and report and discuss the evaluation results. 5.1. Experimental setup we defined our evaluation framework. In this framework, we compare our automatically created taxonomy with a taxonomy created by experts in economics and management. The golden taxonomy used for this purpose is a pre-processed version of the concepts were translated from German into English. This detailed taxonomy contains approximately 4,000 concepts.
+First, we define a measurement that analyzes the relevance of found terms. The measurement used is the lexical precision, defined thus: where O C is the core ontology, our computed taxonomy, and O in the intersection of concepts in both taxonomies by the number of concepts in the core ontology. This measure gives a good unsuitable for our purposes because our golden taxonomy is much larger than our computed taxonomy. only the super-and sub-concepts that appear in both in taxonomies: where O 1 and O 2 are two ontologies, c is the concept being analyzed, c type relationships in ontology O 1 .
+ precision:
+This measurement uses the intersection of the two common semantic cotopies in which the input ontologies are swapped. This
+Using this local measurement definition, we can define a global measurement, for which we use the taxonomic precision and recall, formulated as: where O C is the core ontology, our computed taxonomy, and O considered; we use a measure for the overall quality of the relations in the taxonomy, the taxonomic F -measure ( TF ): values indicate that the relations between common concepts in the taxonomies are more similar. 5.2. Experimental results
+We evaluated the parameters of the term filtering algorithm using a brute force approach by incrementing step size of 0.05 in the range between 0 and 1 on a set of 20,000 domain and 5000 contrastive documents. We extracted 2000 concepts, which we placed in the taxonomy. Table 4 shows a selection of the results.
+
+Table 4 gives the optimal setting for term extraction forthe considered discretization step size and range. The weights are by the importance of domain pertinence. Domain pertinence considers the appearance of terms in domain documents relative to appear in term titles.
+ subsumption algorithm that does not consider the position of the ancestors with respect to the current node. The results are algorithm.
+
+Table 5 demonstrates that the improved subsumption algorithm has the same or better TF results for all t -values. This is especially true for a low t because this value generates more potential parents and our method improves the parent selection decision mathematically as: where TF(t) is the TF measure depending on threshold t , Depth(t) is the average depth depending on threshold t , and required taxonomy depth.
+
+Suppose that we want to develop a taxonomy with a minimal average depth of 3 and a minimal quality of 0.60. Only t =0.20, t =0.25, and t =0.30 obey these constraints. Then, suppose that we place more emphasis on depth, so that t -value.
+ differ depending on the algorithm parameters and input.
+
+We evaluated the cluster linkages on a set of 5000 domain and 2500 contrastive documents with 1000 extracted concepts. The some clusters might be the same. In our evaluation framework, we considered every label as a separate concept. For hierarchical clustering, we can use two distancemeasures: the documentco-occurrenceor window co-occurrence similarities.
+We evaluated both distance measures on a set of 2500 domain and 2500 contrastive documents with complete linkage and 1000 extracted terms. Table 8 summarizes the results, based on which we can conclude that the window co-occurrence similarity outperforms the document co-occurrence similarity and the optimal window size is 11.
+
+To compare the hierarchical clustering and subsumption algorithms, we evaluated two document subsets, containing 2500 the previous experiments were used. Table 9 presents the results, indicating that the subsumption algorithm outperforms the
+The taxonomic relations formed in the subsumption algorithm are more accurate for higher thresholds than those formed in the better for shallower taxonomies.
+ leaf nodes because these nodes are most similar to each other and there are few repeated labels at this level. 6. Conclusions and future work In this paper, we have presented a framework to automatically extract a taxonomy from text corpora. In our framework,
+Automatic Domain Taxonomy Construction from Text (ADTCT), we extract terms from the text corpora employing a part-of-speech relevance. After filtering these terms, only the most important terms remain, which we consider domain concepts.
+In our framework, concepts (taxonomy terms) are hierarchically arranged using two methods: the subsumption method and a taxonomy, although the relation qualities in this taxonomy are usually worse than those of a shallower taxonomy. and input.
+
+We used several evaluation methods for our framework. To determine the relevance of the found concepts, we used the lexical taxonomy, we used the taxonomic F -measure ( TF ), which is based on the taxonomic recall and precision.
+We found that the optimized settings in the term extraction step require that the domain pertinence filter has a higher weight than the other filters. The optimized settings for the subsumption method depend on the user's preferences regarding the depth and quality of the relations in the taxonomy. A taxonomy with greater depth has more information about the taxonomic relations, but these taxonomic relations are less re liable. We have defined a decision-support criterion based on taxonomy quality and average depth that considers the user-preferred settings. For hierarchical clustering, complete linkage provides better results than single and average linkage. The best-performing distance measure is the window co-occurrence similarity with a window size of 11. We compared the subsumption method to the hierarchical clustering algorithm. Users who value. Users interested in a deep taxonomy should apply the hierarchical clustering algorithm with the previously determined optimized settings.
+ meanings, to be equal. This limitationcan be addressed by employinga word sense disambiguationstepin thetaxonomyconstruction process.
+ word sense disambiguation procedure needs to be performed.
+ overview of the advantages and disadvantages of methods that can be applied to create taxonomic relations from text corpora. other domains such as law, physics, and chemistry.
+
+References

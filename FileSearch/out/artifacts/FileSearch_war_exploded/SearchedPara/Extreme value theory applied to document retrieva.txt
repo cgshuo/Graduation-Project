@@ -1,0 +1,77 @@
+ David Madigan  X  Yehuda Vardi  X  Ishay Weissman are relevant, is a popular measure of retrieval effectiveness. and describe its properties.
+ nomenon is not universal. That is, the asymptotic behavior of P collection.
+ Keywords very large corpus IR . extreme value theory . precision at K 1. Introduction This paper presents an analysis of this phenomenon.
+ phenomenon. X  In what follows we will: analysis.
+ amongst the top L relevant documents and describe some of its properties. In particular, key finding include the following:
+For certain score distributions, closed form expressions exist for P
+C
+If the two score distributions are  X  X ail equivalent X  (see Section 4.1), P either 0 or 1, while the limit of C ( L ) is either 0 or infinity. We provide a general analytic approximation for C ( L ) . observed at TREC. 2. Mathematical framework and key results density functions. We assume that the application assigns scores X documents drawn randomly from F , and scores Y ={ Y 1 ,... , randomly from G . We assume independence of scores across all documents. sample and the full collection will provide high quality idf estimates.
+Let Z 1 &gt;  X  X  X  &gt; Z M + N be the ordered pooled scores X be an indicator variable: pooled sample. We assume K &lt; min( M , N ). Then, T K = K T / K . We denote the expected value of T K / K by P ( K ) :
+As in the case of P ( K ) , we denote its expected value by C In what follows, we use the following order statistics notation: and transform a random variable to a new random variable taking values in [0 2002, p.161).
+
+C invariant, there is no loss of generality in assuming: (Alternatively, we could assume X 1 ,... , X M  X  U [0 , 1] and Y the analysis would proceed in a similar fashion.) 2.1. A general expression for P ( K )
+Proposition 2.1 below, provides an explicit expression for P Proposition 2.1. Fo r k = 1 ,... , K, P { T K = k } is given by : where H ( t ) = F ( G  X  1 ( t )) ,  X  H = 1  X  H, h ( t ) =
+Proof: For 1  X  K  X  min( M , N ), an integer, and k = 0 , 1 then either the lowest scoring irrelevant document amongst the K (i.e., K
+K  X   X  and considering them separately simplifies the analysis. Note that A K = B 0 = X  .
+ and Hinkley, 1974, p.111), for k  X  1, we have where
+Now, and Substituting (1 X 3) into (1), we get Turning now to P { B k } ,wehave
+P { B k }= P X Let t =  X  H ( y ) so that H ( t ) = y and dt =  X  h ( y ) dy . Therefore, and the result follows. 2.2. A general expression for C ( L ) the L -th largest relevant score. Denote by S ( u ) the number of X which are greater than or equal to u . Let B n , p parameters n and p .Wehave where for 0  X  t  X  1, and Therefore, 2.3. Type I versus Type II censoring dent binomial random variables, T ( u )  X  B ( N ,  X  G ( u )) and S ( u ) at u is then T ( u ) / ( T ( u ) + S ( u )), provided T ( u ) expectation j being positive, that is, With this notation,
+C ( u ) = E [ S ( u )] = M  X  F ( u ) (note, C ( L ) = ES ( Y 3. Specific examples
+For certain probability distributions, the integral in the expression for P in a closed form yielding, in turn, explicit expressions for P ( x ) is the gamma function, namely and B (  X  1 , X  2 ) stands for the beta distribution with positive parameters
+Proposition 3.1. If F is the exponential distribution with parameter nential distribution with parameter  X  , then for  X  =  X / X  : (  X  1) j and
+Proof: First note that H ( t ) = F ( G  X  1 ( t )) = 1  X  (1 H is Beta(1 , X  ).
+ From (4) we have
+P { A k }= Similarly,
+P {
+B }= ( N Thus, To compute C ( L ) , we use the first expression of (7): and the desired result follows.
+
+Proposition 3.2. If F ( t ) = t  X  and G ( t ) = t  X  , 0  X  one.
+ scores of the entire collection have a distribution function F
+G = F n 4. Asymptotics
+In this section, we study the asymptotic behavior of P ( K ) here. Let be the right end-points. For every fixed K (equivalently, L ), Y
+N  X  X  X  , M  X  X  X  , respectively). Hence, if x  X  nontrivial results, we assume throughout that 4.1. Tail-equivalence
+We say that G and F are tail-equivalent (TE) if for some 0 &lt; c &lt;  X  . Under TE, we have the following asymptotic result. such that Then, and
+Proof: For an arbitrary  X  1 &gt; 0, let u N =  X  G  X  T ( u ) and S ( u N ) are independent binomial, T ( u N
+B ( M ,  X  F ( u N )). Since M  X  F ( u N )  X   X  as N  X  X  X  , where J 1 , J 2 are independent Poisson with parameters  X  convergence in distribution.
+ event J 1 + J 2 = K , J 1  X  B ( K ,  X  1  X 
+Note that this limit does not depend on the choice of u N
+S ( Z and this is also the unconditional expectation, namely, and (11) follows.
+ For the limit of C ( L ) , we know that
+But  X  G ( Y ( L ) ) D = 1  X  U ( L ) with expected value L of (14) is and (12) is proved.
+
+As one would expect, the product bc determines P ( K ) and C the latter decreasing with bc .
+ threshold u N such that N  X  G ( u N )  X   X  1 , M  X  F ( u before, we have Poisson convergence and we get of P ( K ) . We can, however, give some approximations for C Section 4.3).
+ Example x  X  x  X  . 1. Exponential-exponential 2. Pareto-Pareto 3. Normal-normal 4. Beta-Beta 4.2. A mixture model sample scores Z 1 , Z 2 ,... , Z n arise now from the distribution
+We still assume the TE condition (9). Here, N and M
+B ( n , p ). For each n , T ( u )  X  B ( n , p  X  G ( u )), S ( u ) However, asymptotically, they are independent:
+Lemma 4.1. Suppose u n =  X  G  X  1 (  X / n ) for some  X &gt; where J 1 , J 2 are independent Poisson with parameters  X  Proof:
+In particular, N / M = N / ( n  X  N )  X  p / q (w.p.1), thus p the following result.
+ Proposition 4.2. Under (9) and (15), as n  X  X  X  , 4.3. Results in terms of H = FG  X  1 treme value distribution (EVD) . That is, for some norming constants a n  X  X  X  ,
+Since the right end-points of H is 1, i.e., finite, can be either for some positive constant  X  ,or
+The case H  X  DM A (  X  ). This is equivalent to H  X  ( y ) = ing with index  X  . That is,
+In this case, a n = H  X  1  X  (1 / n ), b n = 0 and as n  X  X  X  page 59).
+ Proposition 4.3. Under condition (17), for large N , we have (Erlang( L , 1)). Thus, for large N , Examples
+The  X  -TE pair . Suppose that for some positive, finite constants
+When this condition holds, we say that G and F are  X  -tail-equivalent (  X  -TE condition becomes TE. The  X  -TE condition implies that Hence, with a N = ( c / N ) 1 / X  and large N ,
+Indeed, the exponential-exponential case of Proposition 3.1 is and Thus, (19) becomes here
+More generally, the Beta-Beta pair of Section 4.1 is  X  -TE with exponential-exponential case with location parameters X  X lso belongs here: if then (19) holds with  X  =  X / X  and c = exp {  X  (  X  1  X   X  2 ) the conditions are on M and N that yield nontrivial limits. we may assume that Y i  X  N (  X , X  2 ) and X i  X  N (0 , 1), namely G ( x )
+F ( x ) = ( x ). It follows that H ( y ) = G  X  1 ( y ) = (  X  +  X   X  1  X   X  1 (1  X  y )) (0  X  y  X  1). Considering the ratio H  X  ( ty ) where x =  X  +  X  (  X  2 log t ) 1 / 2  X  (  X / 2) { log(  X  log t ) y )( page 71). Since 2 / 2  X  0 and  X  x  X   X  2 log y , we conclude that which is condition (17) with  X  =  X  2 . Hence, the approximation for C by (18) with  X  =  X  2 and a N = H  X  1  X  (1 / N ) =  X  ((  X  (18) for this case becomes where is a constant and L ( N )isa slowly varying function given by
+It is still true that no matter how small the mean relevant score large, C ( L ) becomes small.
+
+The case H  X  DM A ( ). This is equivalent to where b n =  X  H  X  1 (1 / n ) and a n = b ne  X  b n .
+ Proposition 4.4. Suppose condition (21) holds. Then for large N we have Proof: Example
+Pareto-exponential . Let G ( x ) = 1  X  1 / (1 + x ) and F ( x ) calculation shows that
+With a N = (1 + log N )  X  2 and b N = 1  X  (1 + log N )  X  1
+Exponential-normal . Let  X  G ( x ) = e  X  x ( x &gt; 0) and F
+FG 1 ( y ) = (  X  log(1  X  y )) for (0  X  y &lt; 1) and h ( y ) treme value theory, if the Von-Mises condition let a show that (Resnick(1987), page 71). Thus, approximation (22) becomes here 5. Numerical illustrations
+In this section we illustrate the behavior of P ( K ) and C Monte Carlo simulations for large document collections.
+G  X  in Section 4.3 leads to the following approximate expression for C retrieved documents increases.
+
+Beta(2,1) and G  X  Beta (5,1). The asymptotics of Section 4.1 with c documents, P (20) = 0 . 2171 and C (20) = 72 . 39.
+
+Gaussian G :
+P distributions.
+
+P gives C (20)  X  2 . 03. 6. Discussion we have pursued: documents among those retrieved. X  ranked documents increases.
+ issues.
+ References

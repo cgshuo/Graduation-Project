@@ -1,0 +1,3 @@
+
+This issue is dedicated to the memory of Karen Spa  X  rck Jones who passed away on April 4, 2007. Her life was devoted to research in information retrieval and natural language processing, with over 200 papers and nine books published in these areas. One of her particular interests was that of text summarization, and her paper in this issue, possibly the last she completed, illustrates both the deep insight and meticulous scholarship that characterize all her work. She was a special friend to summarization research and a major inspiration to the Document Understanding Conference (DUC)  X  she will be sorely missed.
+

@@ -1,0 +1,88 @@
+ 1. Introduction several patterns using the cluster methods. Outlier mining refers to eliminated when necessary. The goal is to reduce their negative in
+For the cluster-based pattern recognition, outliers are usually regarded as reported.
+ clustering approach. The core idea of this novel approach is the nature of each data point in the data set is the data weighted fuzzy clustering approach. A set of exponent impact factors and an in mining outliers, particularly when they are done simultaneously.
+ equations are reasoned. Second, a conventional fuzzy clustering algorithm, Gustafson 2. Related work
+Symbols and abbreviations c The number of clusters d ij Distance between x j and v i k The number of outliers in the data set m Fuzzy exponent for u ij n The number of data points q The number of features s In fl uence exponent t j Weight of x j under data weighted approach t ij Typicality value u ij Fuzzy membership degree v i The i th prototype w Weights x j The j th data E Exponent impact factor vector J Objective function T Typicality matrix U Membership degree matrix V Prototype matrix X Data set CMP Compactness of fuzzy partition SPT Separation of fuzzy partition EVA CMP/SPT EIF ( j ) Exponent impact factor of x j LOF ( x j ) Local outlying degree under the LOF
+O DWF ( x j ) Outlying degree under DWG-K  X  Convergence values  X  Lagrange multiplier operator  X  Fuzzy exponent for t ij clustering models. Fuzzy clustering is meant to provide a richer means for representing data structure. 2.1. FCM, PCM, PFCM and FPCM 2.1.1. FCM FCM is to obtain a fuzzy C -partition for the given data set by minimizing the objective function J The constraints related to the fuzzy membership degree are given too, as expressed in Eq. (2). which is given at the beginning of this paper.
+ distance.
+
+Moreover, the algorithms have considerable trouble in noisy environments. 2.1.2. PCM follows:
+In Eq. (5), a set of new parameters  X  i are presented, one corresponds to one cluster. By means of commonly 1. to the additional parameters needed by the PCM. 2.1.3. FPCM Eq. (8).
+ u has the same meaning of membership degree as that in the FCM and t 2.1.4. PFCM model or PFCM for short. The PFCM model is given as follows,
+Here, u ij has the same meaning of membership degree as that of the FCM and FPCM, and t as that of the PCM and FPCM. The updated equations are given as follows. In Eq. (11), a, b and  X  i are user de fi ned constants. The additional conditions are: a typicalities in X; and a set of c point prototypes V that compactly represent the cluster in X . and how these constants are de fi ned poses a new problem.
+ weighted fuzzy clustering approach proposed in this paper. However, these models do not answer the problem 2.2. Weighted FCMs
+In particular, in the new development of fuzzy clustering methods, a lot of literature discusses the that these weighting approaches are mainly based around prototype [8,9] , feature [10 weights is equal to the number of features.
+
+It is necessary to point out that this paper also proposes a completely different meaning from all  X  weights  X  listed in Table 1 . In this paper, the concept of proposes a new form of the objective function by introducing the weights. The prototypes matrix is also modi much better clustering quality.
+ reported the image treatment by the fuzzy clustering method.
+ the objective function of the FCM. It can be rewritten as Eq. (12): From Eq. (12), it can be shown that the objective function J the outliers also play the same roles in clustering.
+ words, for the FCM, the only way to re fi ne the fi nal results is through the variable m . approach considers the differences in the data points. The new approach has two goals simultaneously mining (not only detecting) the outliers, particularly with large scale or dynamic data sets. 2.3. Outliers mining methods
+Mining outliers in a large scale data set is a major data mining task, aimed at normal events.
+
+The task of outlier mining can generally be described by the and the expected number of outliers, k , one or several methods are chosen to anomalies or inconsistencies. A basic problem with outlier mining is the de assign a  X  degree of outlier  X  to each data point. For example, the existence of outliers. Bruno et al. [22] studied the outlier mining under the temporal condition. de many applications, outliers contain important information and their correct identi for these kinds of applications. Since the main objective of the current clustering method is to detection criteria are implicit and cannot be easily deduced from the clustering procedure. mine is probably not suf fi cient, for example, if an outlier is only detected as an within the outlier cannot be mined. Second, the physical meaning of the outliers is sometimes dif unsuitable.
+ particularly with addressing their issues simultaneously. 3. Novel fuzzy clustering model based on the data weighted approach 3.1. Data weighted approach for fuzzy clustering equations. 3.1.1. The data weighted objective function The data weighed objective function is de fi ned as follows (Eq. (13)):
+Here, J DWF is the data weighted objective function. A new set of parameters e for short. t j is the weight factor of x j . Clearly, whatever the value of t to a data object. The other symbols in Eq. (13) have the same meaning as those in Eq. (1) and u membership degree as that in Eq. (2).
+ Looking at Eq. (13), n new variables are introduced to the J
+In order to be able to solve the optimal value of the J DWF constraint of the fuzzy membership degree in Eq. (1), this paper de equal to 1. That is to say, Just like the conventional FCMs, the optimal value of the J the introduced EIF ( j ) is also updated, and it is necessary to give the expression of EIF ( j ). written as follows based on Eqs. ((2), (12) and (14)), as seen in Eq. (15): membership degrees.
+ new constraint, (Eq. (16)), whereby the sum of all weight factors t is completely equivalent to Eq. (14): Therefore, Eq. (15) can be rewritten as:
+The t j and u ij are partially differentiated respectively, they are:
+Let two partial derivatives be 0. The expressions of the two operators, (20), respectively. 3.1.2. Exponent impact factor updated equation
+Eq. (19) is further transformed, and the expression for the EIF ( j ) can be written as follows.
+By multiplying the EIFs of all data points together, the resulting Eq. (22) can be formed:
+The left side of Eq. (22) is 1 according to Eq. (14). So the expression of (24):
+The EIF ( j ) is updated in the process of optimization by following Eq. (24). 3.1.3. Fuzzy membership degree updated equation
+The expression of u ij can be obtained by transforming Eq. (20), and subsequently Eq. (25) is formed:
+For the data x j , u ij expresses the fuzzy relationship between x
+Eq. (25),
+The expression of u ij can be obtained based on Eqs. (25) and (27), see Eq. (28).
+Eqs. (28) and (3). This shows that the data weighted fuzzy clustering approach does not change the de membership degree. 3.1.4. Cluster prototypes updated equation
+The exponent impact factor EIF ( j ) and the fuzzy membership degree u cluster prototype is given directly as follows. Here  X   X  i
+Where  X  ij is called the data weighted fuzzy membership degree and its calculating equation is as follows,
+It is important to note here, a new constant s is introduced to Eq. (30). This s(s goal is to obtain possible different cluster prototypes. Section 5.2 will discuss s in more depth. (23),
+It can be shown that the cluster prototypes are functions of u clustering results. 3.2. Outlier mining based on data weighted fuzzy clustering models
+In the study of outlier mining techniques, the kinds of points that are de weighted fuzzy clustering is used to mine the outliers, the de prototypes is used to de fi ne the outliers under the data weighted clustering approach.
+Note that in Eq. (24),  X  fuzzy distance relationship between x j and all cluster prototypes. The greater the FSDS ( x k values are detected to be the outliers.
+ Furthermore, by transforming Eq. (24), Eq. (33) is obtained as follows:
+When J DWF is converged to its optimum value, the right side of Eq. (33) becomes a con know the real value of this constant. It can be shown that, for the data x de fi ned as follows.
+ O DWF  X  (0, 1] is called the outlying degree of x j . The bigger O de fi nition of the outlying degree of x j expresses the global relationship between x in the fi rst frame. All n outlying degree values are computed on the basis of the 3.3. Main features of the data weighted approach 3.3.1. The data weighted approach considers the internal connectivity of all data points process. In order to clarify the differences of the FCM and the data weighted FCM, the objective functions J referred to in Eqs. (13) and (32) respectively.
+
+In the case of the J FCM , as per Eq. (13), each data point has the same contributing weight of from one another. This shows that the data weighted fuzzy clustering holds more 3.3.2. The data weighted clustering approach adds up a new channel ( E ,s) parameters were introduced: the fuzzy membership degree u fuzzy membership degree u ij is given and a constant m is introduced to adjust the in However, the HCM and FCM do not consider the constraints of all data points. are introduced to the data weighted clustering approach  X 
+FCM. Even in the data weighted clustering approach, fuzzy membership degree u and possible. 3.3.3. The data weighted clustering approach is suitable for both clustering and mining outliers when the two tasks are done simultaneously. 3.4. G-K and DWG-K
+Mahalanobis distance as shown in the following Eq. (35):
+ X  is known as the fuzzy covariance matrix of the v i , its de covariance matrices.
+ vector E of X and a set of c cluster prototypes V that compactly represent the cluster in X . 4. Numerical experiments from one of the authors' actual projects. In addition, the computational ef the LOF respectively.
+
+Both data sets are used in group one, but only FL4C is used in group two. This is because IRIS is seen as a whereas FL4C is sampled from a real industrial process, therefore it inevitably contains outliers. 4.1. Two data sets width, respectively.
+ strategy is applied. One of the tasks is to recognize the patterns in the real-time measurement of strip into a concise data set by the 4-order Legendre polynomial obtained. The four features correspond to the four polynomial coef data sets. 4.2. Experiment group one: clustering analysis made to yield the best result needs to be determined. Lastly, the problem of computational ef heavily time consuming, even if it can yield good partition, it is still not deemed to be a good method. under different combinations of the parameters. The clustering quality problem mainly concerns the suitable for these two algorithms. The problem of clustering computational ef by recording the time taken, or the total iteration times.
+
+The clustering quality problem and the computational ef fi to analyze their computational ef fi ciencies. 4.2.1. Clustering quality evaluation functions as the FL4C data set.
+ their de fi nitions given in Eqs. (38) and (39) respectively.
+
+When the data set is divided into c clusters, the CMP re fl cluster are as similar as possible. The SPT re fl ects the separation two items, EVA , is a more reasonable means to evaluate the clustering quality. index is used to determine the most ideal number of clusters in one algorithm. The Xie in this application has been given as a parameter. In order to avoid confusion, the X reason, CMP , SPT and EVA values are used to evaluate clustering. 4.2.2. Analysis of clustering results how s gets its value.
+
+In addition, the in fl uence exponent s that the DWG-K needs is also given in Table 3 . that DWG-K gets is better.
+
+In brief, for two data sets, DWG-K can get much better clustering qualities than G-K. 4.2.3. Comparison of the computational ef fi ciency under DWG-K and G-K unchanged, but because the time consumption is most likely different, all experiments are repeated DWG-K needs more time, when c =8, 11, 12, 13, 14, 15 or 16, the G-K needs more time. time consumption properties  X  this is the idea that we want to present. 4.3. Experiment group two outlier mining analysis 4.3.1. Outlier mining based on the LOF calculation process is given as follows: Here, the equations of the Lrd and the LOF ( x j ) are given as follows: The parameter l in Eqs. ((40), (41)) is the label numbers for the data points inside the K -neighbor. outlier, the value of the LOF ( x j ) is close to 1. The greater the LOF ( x data points corresponding to the largest k values of the LOF are detected to be the outliers. 4.3.2. Outlier mining results analysis is used to cluster this data set, some parameters are given as follows: c =12, m =2 and s = outliers and below the line are normal points. The largest 115 O points are deemed to be outliers. The vertical coordinate of the separation line is equal to no. 116 of the O sequence is rearranged from maximum to minimum after calculating the O regarding cluster-properties.
+ data points are deemed to be outliers.
+
+There is a certain amount of difference and these are mainly caused by the different de and the outliers detected by the LOF are local.
+ outliers, for example, the relationship between one data point and the whole data set 4.3.3. The comparison of computational ef fi ciency under the DWG-K and the LOF
+The other part to the second group of experiments concerns the computational ef average values.
+
+Table 8 shows that the DWG-K holds considerable advantage over the G-K in computational ef obvious when dealing with large-scale or dynamic data sets. 5. Discussion of exponent impact factor and in fl uence index 5.1. Exponent impact factor data point differently in the process of clustering.
+ seen in Table 1 , also take the sum of constraints.
+
+Eq. (2), the number of features q , as seen in [15,16] , and the number of data points n , as seen in t in 1997, because the FPCM met dif fi culties when dealing with a large data set problems, it is advisable to take another constraining form
+As an example, the DWG-K is used to cluster the FL4C, the main input parameters being c =2, m =2, and s = emphasize the weight factor t j . In the implementation of the algorithm, the role of the weight factors t 5.2. In fl uence exponent
+For the data weighted fuzzy clustering approach, the in fl value according to the given criterion.
+ these respective in fl uence exponents.
+
+From Fig. 5 , it can be seen that, for c =2 the best s is 1.5, and for c =4 and 3, the best s is values are selected in the numerical experiments related to the IRIS in Subsection 4.2 . exponents.
+
+From Fig. 6 , it can be seen that whatever the value of c , s = in the experiments related to FL4C in Subsection 4.2 .
+ 6. Conclusions corresponding to the data x j ( j =1 ... n ), and an in fl fuzzy clustering model.
+ data weighted fuzzy clustering model presents a constraint to solve the problem in that factors in the sum are too small.
+ by choosing the available s ; s is also used to adjust the iterative speed. The latter is signi scale or dynamic data sets.
+ DWG-K shows its unique advantage by simultaneously achieving the above three outputs. ef fi ciency over the well-known density-based LOF.
+ weighting functions. In particular, concerning the selection method of the in in future research
+References

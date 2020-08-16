@@ -1,0 +1,51 @@
+ 1. Introduction
+The increasing number of the different products and services offered by e-commerce Web sites requires recommender technologies have been developed to support customers to find quickly the most appropriate products. putation of the recommendations with a growing number of users and items which results in scalability problems. the accuracy and performance of the filtering as compared to some baseline schemes. scalability of the proposed fractal-based algorithm for collaborative filtering. 2. Related work 2.1. Collaborative filtering algorithms can not be performed efficiently.
+ prediction generation step.
+
+Recommendation technologies applied in different area and examples of recommendation systems used in e-commerce are detailedly overviewed in [10,28,32] .
+ mance of the process of generating predictions, without decreasing their accuracy. 2.2. Error-correcting functional dependencies execution of different database operations.
+ in comparison with the size of the functional dependency.
+
+Algorithms have been proposed for discovering the error-correcting functional dependencies with known [3] and un-known [4] original dependencies by using the fractal dimension.
+ 2.3. Fractal dimension attributes for a given dataset [30,33] , and to characterize the Web workload [20] . and the fractal dimension of the dataset is proved and experimentally verified. tionships between items. 3. Using the error-correcting dependencies for collaborative filtering which we have to choose.
+ uates the approximation, can be calculated. The most common distortion measures are the Hamming distance and the squared-error measure.
+ that a representative point has to average all elements in the dataset that are replaced with it. set, are replaced with a representative point averaging their values. 3.1. Discovery of the error-correcting functional dependencies any two tuples s , t 2 M we have: if s ( a i )= t ( a i ) for each attribute a and t are two such tuples, i.e. h ( s , t )= j { a i : s ( a h ( s , s * ) 6 e , h ( t , t * ) 6 e, if s ( A )= t ( A ) then s * ( b )= t * ( b ). [11] . Let us consider the set C  X  c a attribute b, and grouped according to the values of the attributes in A . Each S x 2 S i , then c i is its approximation, i.e. Q ( x i )= c i
+For example, when the functional dependency A ? b is valid, then the equation j d  X  p
+S = { x : h(x,c i ) 6 h(x,c j ) " j=1, ... ,k } ,i=1, ... ,k.
+
+Proof. If x 2 S i , then x and c i can differ only in attribute b, thus h ( x , c since x and c j differ in at least one of the attributes of A . h
+Proposition 2. For the squared error measure (x, Q(x)) = (x X  X  (x)) Proof. It follows from the definition of the set C . h following equation is valid [15] : and D is the fractal dimension of the dataset.
+ E ( k ) is determined by the fractal dimension D .
+
+Let us consider the dataset p a , b ( M ), we denote its fractal dimension by D ( p dency a ? { e } b , by obtaining the attribute a , satisfying condition (1) Algorithm 1 (1) for each b 2 X do 3.1.1. Analysis of the attributes n , is linear. Thus ( n 2 ) is obtained for all attributes. quired, or is not possible. 3.2. Using the found error-correcting dependencies for collaborative filtering represents a user rating for a specified item.
+
+A relation, which contains the users X  ratings for the items, has the following scheme: Ratings ( Value ). The grouping operator is applied in relational algebra M = c 1. userID : the grouping attribute; 2.
+
+MAX(CASE itemID WHEN 1 THEN ratingValue ELSE NULL END) ? item1: ings of the users for item with value 1 of itemID and named ( Structured Query Language )); ... n +1. MAX(CASE itemID WHEN n THEN ratingValue ELSE NULL END) ? itemn: ratings of the users for item with value n of itemID and named items ( Fig. 1 ). Let a ? { e } b be a found dependency. Then, the rating r average rating for item b of all users, who have given rating r For instance, let us assume that the user ratings shown in Table 1 are given.
+On the basis of the user ratings in Table 1 , we compute the fractal dimensions of the respective datasets p average is computed: 5.2. This is the final result of the computed rating of User04 for Item2. Algorithm 2 (3) if predictedRating IS NULL then value of the item b ratings of these users who have provided a rating r predicted rating p u , b of user u for item b . Having been found that no other users have given the same rating r the ratings for item b based on the users X  ratings between r be retrieved.
+ queries when generating predictions.
+ calculations constitute an integral part of the model, and they are performed in advance when the system is idle. 4. Experiments The experiments and measurements are carried out on a 2.40 GHz Celeron computer with 2GB RAM under Windows XP. bility. We test our algorithm for FolkloreDB, MovieLens, and Netflix datasets: pation), movies (title, year of release, genre).
+ value between 1 and 5. This dataset is distributed along with a probe dataset upon which algorithms can be tested. 4.1. Fractal dimension of user rating datasets
+N fractal dimension of the set M is D 0 , where
+For a set M with a finite number of points, the Hausdorff fractal dimension D tion. The slope a of the line y = ax + b is defined as the best approximation of y the size r . Then  X  a is the Hausdorff fractal dimension D
+Correlation fractal dimension D 2 and the information fractal dimension D and S 1  X  r  X  X  P i C r ; i log C r ; i (for D 1 ) is computed. Finally, the fractal dimension D slope a of the line y = ax + b , that is the best approximation of y accurate and is based on a data structure, which allows its application to high-dimensional datasets. tistically self-similar.
+ ratings of a particular item.
+  X  X  X edknobs and Broomsticks (1971) X ; and  X  X  X gt. Bilko (1996) X   X  by  X  X  X own Periscope (1996) X . 4.2. Accuracy evaluating measures defined in the following way: as j P u j is the number of computed ratings in the test dataset for user u ; p the real rating given by user u for item b ; P u is a set of items, for which the ratings of user u are assessed. dataset and every time the hidden rating is predicted.
+
+The result more clearly indicates the existence of larger deviations (errors). 4.3. Methods provided by a given user u : as M u is the set of items rated by the user u .
+
+Item Average computes the rating of a given item b as the average of all ratings for this item: as M b is the set of users, who rated item b .
+ mean for the given item: weighted sum of the ratings of the rest of the users: as w ( u , v ) is the similarity measure, defined on the basis of the Pearson X  X  correlation:
+We employ Case amplification [5] ,as w ( u , v )= corr u , v based measure: as M b , a is the set of users, who rated items b and a .
+
+The prediction is obtained as a weighted sum of the respective measures:
+The Weighted Slope One algorithm [16] computes the average deviation of item b in relation to item a :
+The prediction is computed as follows: due to reasonable compromising between accuracy, performance and simplicity of realization. 4.4. Results fractal-based method for collaborative filtering.
+ calculate their average values for each dataset. The results from those experiments are summarized in Table 3 . through our method are comparable with the other baseline schemes.
+ yielded results, the highest accuracy improvement has been achieved in the densest dataset  X  FolkloreDB. by at least 5.56%, the memory-based Pearson scheme by at least 7.12%, and the Bias From Mean by at least 7.63%. memory-based Pearson scheme by at least 7.01%. fractal-based method and the other two methods are statistically significant at a significance level 0.05. has been established to determine the ratings for a given item b to the largest extent. is performed much faster by means of the fractal-based method.
+ tal-based method for collaborative filtering, in comparison with the other two methods. 5. Conclusion results from the experiments carried out on three different datasets.
+ increasing.
+ filtering, and to develop an algorithm, which improves accuracy and performance. Acknowledgements
+The work was supported partially by the Bulgarian National Science Fund under Grants IO-03-02/2006 and KIN-1009/ 2006.
+
+References

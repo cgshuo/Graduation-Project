@@ -1,0 +1,401 @@
+ 1. Introduction
+Modern control approaches already heavily rely in networking for the synchronization of production processes. With the perva-siveness and availability of affordable tiny computing devices it is anticipated that the overall complexity of industrial networks will increase quite substantially in incoming years.
+
+Companies are not obviously introducing ad-hoc and purpose-less complexity in their automation solutions. With a significant pressure towards achieving a more sustainable production envir-onment it is fundamental to tight the system X  X  regulatory mechanisms in order to avoid premature disposal of materials and other sources of energy waste.
+
+The disposal of equipment, mostly motivated by the introduc-tion of changes at shop floor level, is a significant threat to sustainability. The adoption of open automation architectures, as envisioned by a series of emerging production paradigms: Bionic
+Manufacturing Systems (BMS) ( Ueda, 1992 ), Holonic Manufactur-ing Systems (HMS) ( Babiceanu and Chen, 2006 ), Reconfigurable Manufacturing Systems (RMS) ( Koren et al., 1999 ), Evolvable Assembly Systems (EAS) ( Onori, 2002 ) and Evolvable Production
+Systems (EPS) ( Barata et al., 2007a ); while not relaxing the complexity issue provides an opportunity to tackle pressing complexity related events (failures, fault propagation, tracking, etc.) in an integrated and holistic approach.
+
+This integrated approach is also interesting from a business point of view for module providers that could potentially add significant value to their modular systems by embedding part of the control solution.
+ Emergent control approaches have developed towards the Lego metaphor where self-contained and function-specific auton-omous blocks are combined to implement a specific process. The metaphor itself has evolved starting with the notion of Flexibility whereby one of these constructs is able to perform many func-tions and can simultaneously take part in many processes mostly associated with the production of a specific product line. Becom-ing agile was the next paradigmatic step in competitiveness. Agility is different from Flexibility. The latter often refers to the ability of producing a range of products (typically predeter-mined). It is also different from being Lean (producing without waste). Agility implies understanding change as a normal process and incorporating the ability to adapt and profit from it. Agility covers different areas, from management to shop floor control and regulation aspects. It is a top down enterprise wide effort. The agile company needs to integrate design, engineering, and man-ufacturing with marketing and sales, which can only be achieved with the proper IT infrastructure ( Kidd, 1994 ; Goldman et al., 1995 ; Goranson, 1999 ; Christopher, 2000 ; Christopher and Towill, 2001 ; Barata, 2003 ; Ribeiro et al., 2009 ). Sustainability is there-fore the next step for agile companies which can be attained as these increasingly modular systems become adopted by industry.
+The notion of Evolvable Production System (EPS) is consolidat-ing in this context and can be envisioned as a broader umbrella for a wide range of design, architectural and technical considera-tions firstly explored under the framework of Evolvable Assembly Systems (EAS). The initial EAS concept dating from 2002 ( Onori, 2002 ) was further developed under the FP6 EUPASS project. Current research includes the developments in the scope of the FP7 IDEAS project where the application of EPS concepts in networks of embedded tiny controllers is being pursuit. The essence of EAS/EPS resides not only in the ability of the system X  X  components to adapt to the changing conditions of operation, but also to assist in its overall evolution in time so that processes become more robust.
+
+In this context a system is a highly dynamic entity whose structure and processes evolve. From a diagnostic point of view it is somehow difficult to characterize and model such a system using conventional approaches as these have either been applied within the scope of specific devices or to entire installations with constraining degrees of freedom regarding evolution or adapta-tion. To a certain extent, diagnostic systems are one of a kind (tailored accordingly to the installation X  X  peculiarities ( Thybo and Izadi-Zamanabadi, 2004 )).
+
+Preserving the decoupled nature of modules is crucial for the robustness and prompt response of an EPS-based system. It is also the key to support system X  X  evolution and adaptive response on the imminence of change. Hence, it is required a diagnostic system that captures the evolving nature of faults (exploring the network dimension of the system and complementing local/ specific diagnostic methods) while ensuring that the system X  X  components remain autonomous and decoupled units.
+
+The self-organizing nature of EPS implies that the convergence of the system to macro-states and the events at module level are of probabilistic nature. In the proposed diagnostic approach self-organization and a local and probabilistic diagnostic model based on a Hidden Markov Model (HMM), which was designed to capture fault propagation events, are combined so that a global and consistent diagnostic consensus emerges. It is important to stress that the considered diagnostic approach envisions the subject of diagnosis from a systemic perspective essentially and evaluates how the system components, which may be other systems themselves, affect each other. The purpose of this paper is therefore twofold:
+To show that it is significant to consider this network/systemic dimension of the diagnostic problem detailing a fault simula-tion model that considers agent-based mechatronic networks of different complexity and whose components are more or less prone to fault propagation events while clarifying how small changes in parts of the system may influence the propagation of afault.
+
+To demonstrate one solution to perform diagnosis at this level that consumes local network connectivity information as well as harmonized agent X  X  sensorial data.
+
+The decoupled, distributed and self-organizing nature of the diagnostic response is analysed for different operating conditions to shed light of the potential and limitations of this approach.
+Hence, the proposed approach does not perform diagnosis at component level, it concentrates on explaining how one of these component specific events may be abstracted and interpreted from a network perspective and used to diagnose pervasive failure scenarios.
+
+This rationale reflects in the subsequent details that are organized as follows: Section 2 briefly presents the related litera-ture, Section 3 depicts the system architecture, Section 4 presents the testing set-up and briefly addresses some implementation details, Section 5 details the main results, Section 6 discusses the main conclusions and points future research directions. 2. Related literature 2.1. Traditional diagnostic approaches
+Fault diagnosis activities are fundamental to ensure the sustainability of systems and have taken many different forms and approaches throughout the years while accompanying the main technological and socio-economic challenges and opportunities.
+
+One can relate the emergence of diagnosis practices with the beginning of machine instrumentation in the early industrial revolution whereby human operators were assigned the task of checking operational limits and performing minor maintenance tasks such as lubrication and part replacement.
+
+In this period, essential dominated by breakdown maintenance, a process whereby assets are run until the eminence of failure or the failure event itself, labour costs were not a significant issue nor was the investment in spare parts. These maintenance practices were replaced by preventive maintenance approaches, still sup-ported by human observation, whereby assets where maintained according to their failure tendency over time. Typically, the bath tub curve was considered to characterize the high failure tendency in early and later stages of the equipment X  X  useful life.
+Modern diagnostic approaches can be traced back to the advent of the microcomputer in the 1970s and they have opened the door to consider the maintenance of systems based in their operational conditions and wear given rise to the notions of condition based maintenance (CBM) ( Jardine et al., 2006 ) and Predictive Maintenance (PM) ( Mobley, 2002 ).
+
+Majority voting with sensor redundancy was considered the most reliable approach then and CBM had inherently high costs due to the novelty and price of early electronic equipment.
+Early efforts for improving the fault detection method X  X  relia-bility are reported in the following surveys ( Willsky, 1976 ;
+Isermann, 1984 ). Common techniques cited until the early 1980s include: parity relations and state-observer based methods.
+While the mathematics supporting the formulation of quantita-tive models of processes and systems are well established, it is obviously impossible to devise a ma thematical representation of the system whose behaviour is an exact replica of the original system ( Patton and Chen, 1997 ). The complexity of the system, unperceived interactions and data of distinct nature (continuous vs. discrete) create uncertainty and nonlinearities that undermine the robustness of some quantitative approaches . This has led researchers to the development of new methods to handle such systems ( Edwards and
+Tan, 2006 ; Wang et al., 2007 ). One fundamental aspect to be addressed are changes in the dynamics of both processes and systems which introduce uncertainty and require adaptation to different operational and wear conditions as presented by Fink et al. (2000) where local controllers support supervised adaptation.
+These quantitative approaches have been applied to a wide range of processes and devices including: an approach for fault identification on robot manipulators based on an observer and the dynamic mathematical model of n -degree-of-freedom manipula-tors ( McIntyre et al., 2005 ); tackling the problem of diagnosis in legacy equipment with interoperability constrains ( Fantuzzi et al., 2003 ); to track faults in cooperative manipulators ( Tino  X  s and
+Terra, 2002 ); diagnosis of electrical motors ( Drif and Cardoso, 2007 ; Eltabach and Antoni, 2007 ) and diagnosis of rotary machines ( Zhang et al., 2004 ).
+
+The advances in computing have enabled other diagnostic approaches targeting systems for which it is extraordinarily difficult or cost impractical to devise a quantitative model.
+Initial attempts to design these models can be traced back to the early expert systems as detailed in Buchanan and Smith (1988) .
+Expert systems have the advantage of formalizing tacit knowledge about the system X  X  behaviour. The initial implementations suffered from the following issues ( Buchanan and Smith, 1988 ):
+Impossibility of representing time and spatial varying phenomena.
+
+Impossibility of the verification of consistency and gaps in the knowledge base.
+ Reliable acquisition and coding of tacit knowledge.
+
+No learning mechanism from previous experience (namely errors).
+
+Qualitative physics (QP) emerged in the early eighties as an attempt to circumvent the somehow shallow and rigid approach to knowledge representation of initial expert systems. QP repre-sents numerical variables qualitatively and uses a specific algebra, with well defined operations, to track changes in processes by analysing the signs of their derivatives. The most notable quanti-tative physics algorithm QSIM ( Kuipers, 1986 ) dates from 1986 and has been used in the development of several physics compilers ( Adam, 1994 ; Hossain and Ray, 1997 ).
+
+Attempts to capture causal relationships also include the use of signed directed graphs (SDG). An SDG is typically represented by a graph whose nodes are system variables and whose links denote the relationship between the cause variable and the effect variable. SDG X  X  are very popular in the process industry ( Iri et al., 1979 ;
+Ram Maurya et al., 2004 ; Ahn et al., 2008 ; Chen and Chang, 2009 ), namely in chemical plants. First diagnostic applications have been reported in the early eighties ( Iri et al., 1979 ). Recent research in SDG is attempting to handle their drawbacks: The choice of the relevant observable variables.
+
+The definition of twice the number of variables threshold values (for typical three state models) without relevant pro-cess history data.
+
+The static nature of the thresholds leads, in some cases, to an abnormal rate of false alarms.
+
+Fault Tree Analysis is an alternative method to the formaliza-tion of cause X  X ffect relationships. Each tree may comprise several layers of nodes and attempts to answer the questions  X  X  X hat could cause a top level event? X  X . The nodes are linked using logical relations. Its use relates to the concept of Reliability Centred
+Maintenance (RCM) whose practices are known to be in use since the 1930s in power systems ( Billinton, 1972 ).
+
+Qualitative diagnostic approaches greatly benefitted from the advances in computing in the 1990s. Noticeable qualitative reasoning engines include: the General Diagnostic Engine (GDE) ( Kleer and Williams, 1987 ; Fijany et al., 2003 ; Struss and Dressler, 1992 ) that enabled symbolic abductive reasoning over composite devices. In this context, GDE allowed diagnosing from multiple symptoms by reducing hypothesis using the principle of minimal set of violated assumptions; the Livingstone engine ( Williams and
+Nayak, 1996 ) uses component-based declarative models and was designed to achieve a compromise between the conventional first-order logic approaches (used in other engines) and the reactive concurrent approaches ( Brooks, 1990 ) that emerged in the AI community. Additionally, Livingstone was designed to integrate, in a single model, fundamental tasks of system design and operation such as ( Williams and Nayak, 1996 ): monitoring, goal activation, confirming hardware modes, reconfiguring hardware, detecting anomalies, isolating faults, diagnosis, fault recovery and fault avoidance. A similar approach inspired by
+Livingstone is detailed in Chung and Barrett (2003) with an improvement in respect to computational performance. This improvement was supported by the modification of the diagnos-tic engine that, according to the authors, ensures hard-real time diagnosis in its most recent version.
+
+Qualitative logic based reasoning has been widely applied in industrial environments for the purpose of diagnosis. Typical applications in industrial contexts include robotized arms ( Olsson et al., 2004 ; Liu and Coghill, 2005 ) and power transfor-mers ( Huang et al., 2002 ).
+
+Recently the ACORDA engine ( Lopes and Pereira, 2006 ) sup-porting prospective logic programming based in abductive rea-soning was experimentally used in the diagnosis of intelligent shop floor components such as grippers and robots ( Ribeiro, 2007 ).
+
+Qualitative reasoning is often combined with learning as a mean to induce the model from existing system data.
+
+Neural networks and other connectionist models have been fairly successful in capturing the dynamics of complex processes or systems. Although they have missed the initial objective of imitating human reasoning they perform well in capturing the dynamics of human judgement having retained the ability to generalize from data and not requiring data elements to be linearly separable in order to categorize them ( Bernard et al., 1994 ; Zhang and Morris, 1994 ; Kennedy et al., 2001 ). Neural networks are not accepted in some application domains due to impossibility of explaining the internal reasoning processes that led the network a particular result.
+
+Statistical based learning approaches are often derived from conditional probabilistic inference using Bayesian analysis. The name of this type of inference is due to the reverend Thomas
+Bayes who in 1764 set the solution of the problem of inverse probability which would later be the basis of the Bayes theorem ( Russel and Norvig, 2003 ).
+ There have been several successful applications of Bayesian
+Belief Networks (BBN) with learning. However, constructing the network dynamically is a computing intensive task ( Wai and Segre, 2002 ). In the area of condition monitoring several applications have been considered given the statistical learning ability of Bayesian Networks and their formal framework ( Gilabert and Arnaiz, 2006 ). The probabilistic nature of BBN models is particularly interesting in exploring uncertainty as denoted in Mehranbod et al. (2003) , Alanyali et al. (2004) ,and Mengshoel et al. (2008) where a BBN model was used to diagnose a system under sensor fault conditions and distinct observations of a given phenomenon. One of the main constraints/characteristics that often limits the use of such models is that there must exist some preliminary stochastic knowledge (or alternatively be estimated) to initialize the model as detailed in Rodrigues et al. (2000) where BBNs were applied to diagnose and study processes in a manufacturing line. A proposal to track fault propagation using a BBN-like structure is presented in Son et al. (2000) wherethedomainknowledgeismodelledaswellasthe interactions between components in the system to track fault propagation.
+
+An interesting derivation of the Bayesian analysis with several applications in diagnosis is the Hidden Markov Model (HMM) ( Lawrence, 1990 ).
+
+Typical application scenario is as expressed in Daidone et al. (2006) where the hidden states detail the failure condition of the component and a set of observables is defined to condition the transitions between hidden states. In Bunks et al. (2000) HMM X  X  have been applied in condition monitoring of helicopters gear-boxes where probabilistic inference was additionally explored in the implementation of prognosis. As most diagnostic approaches using statistical learning the application scope is the whole system (full modelling) rendering any reconfiguration hard. In Barigozzi et al. (2004) system X  X  components and monitoring tests were modelled as stochastic finite state machines (FSM) allowing the creation of a library of FSM that can quickly be combined and applied to several situations. However, this approach assumes that there are no simultaneous faults which may be problematic under complex failure scenarios. HMM X  X  can also be used as pattern recognition tools. In Zhou et al. (2004) they were applied in diagnosis of chemical processes to detect failure patterns. In Ge et al. (2008) HMMs are used to model manufacturing operations and detect faults. 2.2. Emerging diagnostic approaches
+The introduction of TCP based networks in automation has open the door for the development of a wide range of AI supported production paradigms that rely in interacting intelli-gent entities. These entities are often designated as agents. While there is not a consensual definition for agent nor for what is its role and structure on an automation environment it is somehow agreed that any automation entity with some degree of autonomy is an agent. From an implementation point of view this promotes a significant set of concepts, namely objects and services to the status of agent. While this is a controversial discussion for which the reader can find better support in specific literature namely: Wooldridge and Jennings (1994 , 1995 ), Camarinha-Matos and Vieira (1999) , Christensen et al. (2001) , Russel and Norvig (2003) , purpose of this text the authors will retain autonomy as the characterizing feature of an agent.
+ Interaction is another fundamental aspect to account for. Agent-based systems imply some degree of distribution, logical and physical, where communication between peers plays major role. From a diagnostic point of view this leads to the emergence of a pluggable/reconfigurable network of agents that must be monitored and diagnosed.
+
+This raises quite substantially the question of what to monitor, diagnose and how to explore the interactions between the components of the system.
+
+A common approach to this problem relies on a specialized central node to process geographically distributed informa-tion normally using a service-oriented approach ( Feldmann and
+G  X  ohringer, 2001 ; Wu et al., 2006 ; Barata et al., 2007b ; Ribeiro, 2007 ). This sort of service oriented approach has gained a considerable attention from industry and as lead to the imple-mentation of several web service stacks ( Jammes and Smit, 2005 ) that clearly target the integration of automation components and higher level business tools.
+
+Other researchers have developed generic diagnostic approaches that explore the distributed nature of agents, as a network of problem solvers, which together cooperate towards devising a diagnosis for the system. In Fries and Graham (2003) and Fries (2007) a MAS-based diagnostic solution that reasons on the structural model of the system is presented. The approach attempts to mimic human reasoning which, according to the authors,  X  X  attempts to determine the approximate location in the system at which the fault has manifested itself and work backward from there. Humans then utilize memories of past experiences with characteristics similar to the current situation.  X  X  To implement this concept different classes of agents were designed to capture, structure, match against previous experiences and diagnose the faults.
+ A fundamentally different principle was used in Klein and
+Tichy (2006) where agents form the basis of fault tolerant systems relying in self-organization. Selfish agents, following their own agenda, are deployed in the environment and their action is guided by interaction norms. Their goal is to maximize their individual score while obeying system rules and balancing rewards and penalizations. The study of such systems has shown the consistent emergence of fault tolerance in response to disturbances as the interaction is naturally mediated by percep-tions picked from the environment. The focus is on the emergence of collective (swarm) intelligence and stigmergy as observed in insects ( Bonabeau et al., 1999 ). A similar principle was followed in Ribeiro et al. (2008a , 2008b ), where to overcome the loss of a functionality, agents combine their basic function to reset, with a different arrangement, the lost functionality.
+
+Examples of more engineering-grounded approaches are reported in Lesecq et al. (2003) , Luo et al. (2005) , Desforges and Archim ede (2006) and Mendes et al. (2009) .
+
+In Luo et al. (2005) a MAS was applied to vehicle diagnostics to circumvent the high communication requirements of centralized approaches. The concept is to process as much information as possible in local processing nodes and balance the network load to ensure real time response.
+ In Lesecq et al. (2003) the diagnostic agents of the MAGIC
+European project are presented. This system uses two types of agents. The signal-based diagnostic agent implements classical signal based detection techniques. The causal based diagnostic agent attempts to mimic the human operator diagnostic reason-ing by using the causal dynamic model of the system. The focus of the MAS is however architectural since the diagnostic methods where not explicitly defined and the effort was in the plug ability and customization provided by the agent metaphor.
+
+In Desforges and Archim ede (2006) the focus is on active monitoring and control of intelligent machine tools. The agents ensure the survival of the machine tools during operation and support seamless transition when interchangeable modules are replaced to accommodate a new process. The work has a strong system integration component and is presented as an extension of the smart-sensor X  X ctuator concept by adding an extra intelligent decision level and all the required interfacing.
+In Mendes et al. (2009) the focus is on approaching the multiagent problem solving capability and the traditional fault detection and identification approach.
+
+A central problem in diagnosis is handling sensor errors or value fluctuations. The distributed and decoupled nature of MAS can be interestingly explored to enhance the survivability of the system and make better diagnostic judgements as detailed in Long et al. (2003) .
+
+Agent-based diagnosis must therefore be supported by a specific architecture whereby distinct agents play specific roles towards producing a coherent diagnosis. This architectural/sys-temic view of the diagnostic system renders it scalable, pluggable and relatively independent of the application domain at the cost of losing specificity of diagnosis (i.e. there is always an abstraction level, typically close to the specificities of a given hardware component where the architecture is not directly applicable).
+Having acknowledged this, researchers have recently turned their attention to other domains (e.g. power grids, power electro-nics, and building automation) that are benefiting from the introduction of communication networks, as well, for the purpose of controlling large scale and complex system ( McArthur, 2004 ;
+McArthur et al., 2007a , 2007b ). 3. Diagnostic system architecture 3.1. The interaction metaphor
+One of the fundamental character istics that render natural sys-tems rich is their ability evolve and adapt encompassing small changes that gradually build up. As far as can be observed natural systems interconnect. This interco nnection happens at an outstand-ing number of levels and interfaces not always perceived or understood.
+
+In the context of this work industrial set-ups are perceived in this perspective: a pool of interactive entities (modules, systems and subsystems) in many-to-many interaction patterns.
+One of the main premises of this approach is that these entities influence each other, in a continuous fashion, from a control perspective (as conceptualized by the EPS paradigm) but also from a malfunctioning point of view.
+
+As in nature this influence may be contained by the system tolerance to fluctuations (while in a critical state) or may accumulate until the system cannot longer contain the sum-ming-up effect and disrupts in a catastrophic scenario.
+Arguably these effects are not possible to model in their full extent however the present work proposes that if some known or anticipated interactions are mapped then it may be possible to explain a more complex expression of the system emergent and self-organizing response in such a pervasive failure scenario.
+The notion of interaction is therefore a central topic for the present work. In this context it is generically described as follows:
+An interaction I is any relation between two entities in a production context that is characterized by a direction d and a nature n :
+I  X  X  D , N  X  d
+A f I b , O b , B g n
+A f domain specific g
+The direction of the interaction identifies the flow of the interference between the components inside a system and can take the following values:
+Inbound  X  Defines a dependency relation whereby the module receiving the connection either consumes information from the other module or is dependent from a physical point of view.
+
+Outbound  X  Defines a dependency relation whereby a module provides information to another module or hosts the other module in some physical way.
+
+Both  X  The modules are mutually dependent and information or physical binding happens in both ways.
+
+The nature of an interaction provides some semantics to the network. It is a context and domain specific set that enables the mapping of any existing sensors to the abstraction layer considered in this work. It mostly allows the user of the system or any other cognitive entity to make some semantic sense of the fault or failure interference patterns. In a produ ction context one may say that one module provides electrical power to another one, that some mod-ules are responsible for some material flow, that modules exchange process information on a peer to peer basis, etc. ( Fig. 1 ). These are examples of known relations that can be easily mapped during the system set-up and later explored in runtime.
+
+Fig. 1 clearly highlights that even for apparently conventional systems the interaction perspective uncovers unperceived inter-ferences. The main issue, even for traditional systems, is that they are put together by several teams, focused on very specific sub problems of building the system and, lacking a global perspective on the potential impact of introducing a new component in the infrastructure. In other words, each team has its own view on the problem at hand that is often poorly harmonized with the view of other teams. The notion of interaction supports the establishment of this holistic perspective.
+
+If one component is likely, or is suspected, to affect another entity (component, system or subsystem) then there is an inter-action between the two that has to be monitored somehow.
+Under these conditions it is possible to devise a directed network of anticipated interactions. Rather than a static entity the interaction network reflects the structural changes that take place in a system. In this context, it is important to highlight the two main phases considered in the construction of the graph:
+The initial configuration phase  X  which happens at system X  X  instan-tiation phase, when the system is being composed out of several available modules and the system designer has to establish the initial interactions between the existing modules manually.
+Runtime phase  X  in runtime, the system may undergo structural changes induced by the executing processes or re-configuration actions resulting from adaptive or evolutionary processes where the interactions may be changed by the system.
+
+Once the network is established some sense has to be made out of it for the purpose of diagnosis. 3.2. A self-organizing response towards an emergent diagnostic effect
+The fact that events propagate in networks is a natural notion for human beings.
+
+Watts has shown in Watts (2002) that in random networks, global cascades (i.e. catastrophic propagation of events) can occur if the network denotes some vulnerabilities (i.e. nodes that are more sensible to the event) strategically placed. The initial evolution of the event is fundamental in the determination of whether or not the cascade is to occur. In the paper terminology there must be a region of  X  X  X arly adopters X  X  that then cause the event to spread significantly. Watts X  model implies an undirected network and the adoption of the event by a node when the majority of the neighbours are affected.
+
+It is plausible to assume that a fault may develop into a failure in a similar fashion. Pervasive failures are unlikely to occur however, when they do, there is a significant paralysing effect and it is fundamental to understand all the mechanisms involved to prevent future occurrences.
+
+In the present work a similar fault propagation pattern is assumed as a test bench for the architecture later detailed. In this context, the main assumptions behind the considered propaga-tion model are:
+A.1  X  A fault is initiated by one shop floor module (node) which spreads it over all interactions.
+
+A.2  X  All the receiving modules (the ones for which the initiator X  X  outbound connections are inbound) have a given probability P ( F ) of being affected by the fault and further propagate it.
+
+A.3  X  The probability that a node is affected, that is P ( F  X  true), varies in respect to how vulnerable is the node P ( F ) is higher (typically above 80%) for vulnerable nodes and lower for the remaining nodes (typically below 5%).
+
+A.4  X  There is a given probability that, despite present, the fault remains Undetected (i.e. P ( U  X  true)) by the node X  X  sensorial equipment.
+
+There are some evident consequences of these propagation assumptions:
+A.1 ensures that a fault will affect all the possible entities (according to the interaction direction) to which a node is connected. This is likely in realistic scenarios otherwise an interaction would not have been established.
+
+A.2 ensures that not all the nodes are affected equally and that affected nodes further disrupt the system.
+
+A.3 captures the notion that shop floor modules may be in different conditions of operation and wear which may cause a few to promote the effect of a fault turning it into a failure and others to contains the fault due to some recovery mechanisms that need to be breached first.
+
+A.4 reflects the fact that being affected by a fault does not mean that a fault can be locally detected.
+
+These are the main fault/failure conditions addressed by the present work.
+
+If the interaction network perspective provides an interesting metaphor to analyse pervasive failure events, the computational power required to process it in due time can be overwhelming.
+In addition, there is a favourable convergence of factors that render the utilization of distributed computation economically interesting.
+
+The purpose of this work is therefore to explore these distributed computational units and ensure the interaction net-work analysis. One direct consequence is that each agent should not make use of global information which is dependent on the size of the network. If one focus on a single node the available information sources are limited and can therefore be processed in due time.
+
+The available local information sources are other neighbours, with which the agent interacts, and the environment upon which the agent may be able to perform observations using some sensors.
+
+The nature of the information collected has a dramatic impact on the performance and usefulness of the proposed diagnostic system.
+
+If the granularity of the information is too fine a combinatorial explosion of cases has to be addressed locally. Self-organization in nature seems to rely in some level of ignorance privileging, on average, numbers over brains ( Johnson, 2001 ).
+
+A set of architectural principles can be extrapolated from these premises:
+Architectural Principle 1  X  Information needs to be compressed to an abstraction level where it can be easily processed (in the same sense that one does not need to be an proficient mechanic to drive a car, nor a computer scientist to use a computer but driving cars and using computers facilitates some human dynamics).
+
+Architectural Principle 2  X  Even if the entities are heterogeneous in nature, at the considered abstraction level (principle 1), they should produce a homogenous response at network level to promote  X  X  X xpectable X  X  emergence.
+
+Architectural Principle 3  X  Although diagnosis happens in a continuous, so that the system reacts to any change in state, it must denote periods of stability corresponding to the stabilization of a fault event or the recovery of the normal operation conditions (i.e. agents must converge, in time, in the reasoning process).
+
+In the present work the first architectural principle results in a finite set of possible observation symbols that capture and compress the state of the agent in respect to its direct neighbours and the environment. Each observation encapsulates the follow-ing boolean variables:
+Own Fault  X  the sensorial equipment of the agent has detected a fault that affects a specific interaction.
+
+Inbound Minority  X  a minority of neighbours from which the agent receives inbound interactions is in fault.
+
+Inbound Majority  X  a majority of neighbours from which the agent receives inbound interactions is in fault.
+
+Outbound Minority  X  a minority of neighbours to which the agent develops outbound interactions is in fault.
+
+Outbound Majority  X  a majority of neighbours to which the agent develops outbound interactions is in fault.
+
+These five variables would yield a total of 32 states however some are not valid. An agent cannot simultaneously be in Out-bound Majority and Outbound Minority consequently there are only 18 possible observations symbols.
+
+The second architectural principle determines that for the purpose of diagnosing, at network level, the state of the Agent can take only one of the following five values which reflect different stages of fault propagation: OK  X  the module abstracted by the agent is working normally NOK  X  the module has a self-contained fault
+PFO  X  the module is propagating a fault, that it has generated, through its outbound connections;
+PFOther  X  the module is affected by a propagating fault on its inbound connections. This state denotes a point beyond which there is no more fault propagation.
+
+PFOPFOther  X  the module is being affected by a fault that is propagating through its inbound connections and that it is propagating over its outbound connections.
+
+The third architectural principle determines that an agent should not exchange its state information at all times. In parti-cular from the five diagnostic states specified four denote faults.
+In this sense the agent should only send its state information whenever it changes from OK to any fault state or otherwise. In doing so, constant diagnostic update cascades are prevented and the convergence of the system as a whole is facilitated.
+What is expected to emerge as a result of these update dynamics is, during the development of a fault, a constant coherence of agent states that necessarily changes as the failure progresses in the system. Fig. 2 illustrates this self-organizing response. The system is composed by three agents that denote interactions as depicted by the connecting arrows. In the nominal state all agents diagnose an OK state. Suddenly, all the three agents detect a fault and diagnosis takes place. After devising the observation symbols each agent will individually conclude on its diagnostic state. In a first step, and given the interaction informa-tion, the agent on the left will assume that it is the source of the fault and that it is propagating it through the outbound interac-tions. Conversely the agent on the middle will assume to be used as a propagation path and the agent on the right will acknowledge that it is being affected by a fault and yet there is no further propagation.
+
+The PFOPFOther state may raise some confusion of whether the propagated fault is from an inbound neighbour and is transmitting to outbound neighbours or is the summed effect of this interaction with a self-generated fault however the relevant aspect to consider is the propagation itself.
+
+Once the origin of the fault is eliminated the agent will exhibit a state that is either OK or PFO accordingly to the fault X  X  context and disambiguate the previous occurrence as depicted in Fig. 2 .It can be noticed that after the agent on the left is back to the OK state (either by concluding that it is the current state or being forced by a system expert) the remaining agents will adjust their own judgement on their diagnostic states.
+
+Fig. 2 is a simplified example of the complex self-organizing diagnostic state update process that occurs whenever the system to be diagnosed scales up to higher connectivity levels. The diagnosis is self-organizing since there is no global controller or access to global information influencing the judgement of each agent. Using these local interactions (the state exchange with only the direct neighbours) each agent is able to adopt a state that is coherent with the overall state of the system. The expected outcome is the emergence of a consistent set of states adopted by all the agents in the system that explain how a fault originating in one agent has propagated and influenced other agents.
+The specific fault that triggered the failure scenario is not identified by the system. Rather its manifestation is harmonized to the interaction metaphor and the propagation is explained and diagnosed placing diagnosis in an abstract systemic level rather than at a device specific level. 3.3. Considering majorities and minorities probabilistically (using an HMM)
+With the sets of states and observations fixed there is a need for establishing a relation between them (i.e. to define how an observation affects a transition from one state to another). When one establishes a set of interactions between components what is the degree of trust that should be assigned to each specific observation symbol ( Fig. 3 )?
+In the scenarios portrayed above how should the agent decide? In the first case (top left) all the outbound connections denote a fault, both sensorial information and inbound neighbours are operating normally. In the second case (top right) a majority of inbound neighbours report that they are affected, a minority of outbound neighbours are affected and the agent sensors do not report anything unusual. In the third scenario (bottom left) all the outbound connec-tions are in fault, the inbound interactions have reported being normal and the agent does not have any sensors. Finally, in the last case (bottom right), everything appears to be normal with the neighbours however the agent X  X  sensor has detected a fault.
+The agent has now to decide which its internal state is. The fact is that the agent can be in the same state in all situations or even take different states for the considered situations.
+The operational context plays a fundamental role in disambig-uating the presented cases. When the system is being build, or changed, and new interactions are established it is fundamental to tell each agent how to rate the observations it makes. If the agent has access to highly accurate sensorial equipment then its sensor data should be considered instead of the neighbour X  X  data and otherwise if the agent has no sensors at all.
+
+The next step is to weigh majorities and minorities. Maybe if a minority of inbound agents is reporting a fault but the agent perceives through its sensors that it is in normal operating conditions it should conclude that it is a correct assumption.
+If however the minority becomes majority and the outbound interactions become affected there is a chance that its sensor is malfunctioning. This sort of information cannot be judged on a  X  X  X rue or false X  X  binary fashion as distinct degrees of belief can be attributed to different agents under different operational conditions.
+
+An alternative is to probabilistically assign a belief value that certain observations happen given that a system is in a specific state. A natural way of capturing this sort of information is using a Hidden Markov Model (HMM).
+
+An HMM ( Lawrence, 1990 ) is the following tuple: l  X  X  A , B , p  X  where A is a N N matrix ( N is the number of states in the model) denoting the state transition probabilities:
+P  X  q
+In the present case the A matrix stores the transition prob-abilities between the five hidden states earlier specified.
+B is a N M matrix ( M is the number of observation symbols) that encloses the observation probabilities:
+P  X  O t  X  k 9 q t  X  S i  X  X  b i  X  k  X  (i.e. the probability that the observation k happens given the state S p represents the starting state probabilities which in the present case force the system to start in the OK state.
+The proposed combination of symbols and observations results in an eighteen by five matrix which means that ninety degrees of belief have to be assigned.
+
+These ninety values reflect the available expert knowledge and can be extracted as an answer to the following questions: Q.1  X  How frequently does this device starts a fault? Q.2  X  How trustworthy are this device X  X  sensors?
+Q.3  X  Does this device interact with others that have reliable sensors using inbound connections?
+Q.4  X  Does this device interact with others that have reliable sensors using outbound connections?
+Q.5  X  Does this device and its inbound neighbours are tightly coupled by the specified interaction?
+Q.6  X  Does this device and its outbound neighbours are tightly coupled by the specified interaction?
+The answer to these questions is in principle sufficient to assign values to the B matrix allowing each individual agent to perform a diagnosis that promotes the emergent effect detailed before.
+
+Although the diagnostic system is designed to operate within each agent it is also designed to explore controlled information cascading effects. Hence the focus of the HMM is in evaluat-ing interactions. The result of the diagnostic process has to be considered from a macro-perspective (even if each individual
+HMM runs locally and uses local information only). The HMM is in this case part of the local diagnostic algorithm that determines each agent X  X  state and may cause it to propagate it leading other agents to update their diagnostic state as well. 4. Implementation discussion 4.1. Preliminary notes on the Mechatronic Agent framework From an IT perspective EAS/EPS are built upon the Mechatronic
+Agent construct. A Mechatronic Agent (MA) is an agent-based entity that encapsulates all the necessary mechatronic control and regulatory (monitoring, diagnosis, recovery and mainte-nance) aspects of a system or a process oriented module harmo-nizing the physical characteristics and functions of the module with the Multiagent System runtime environment.
+
+One of the cornerstones of EPS is the integration of legacy equipment. It should be expected that the module vendor provides embedded diagnostic capabilities in their products. This assumption holds reasonable once vendors have an in depth knowledge of their systems and know best how to diagnose them. In this context, as expressed in Fig. 4 , the EPS diagnostic approach should foresee the harmonization of the native diag-nostic functionalities with the IT infrastructure acting as a complement to existing diagnostic practices and extending the capabilities of the system to include the self-organizing network perspective.
+
+Fig. 4 also summarizes the IT Architectural approach harmo-nized in an EPS context. A module is abstracted as a Mechatronic
+Agent. The MA inherits and harmonizes any existing control logic, extending it through adaptors. Similarly to what is considered for control purposes, where native control methods are translated into module X  X  skills in the multi-agent domain, the diagnostic information is harmonized through EPS sensors.
+
+In this context, an EPS sensor is nothing more than a hardware or software adaptor that translates native diagnostic signals and measurements to the interaction vocabulary earlier introduced.
+The architectural principles that have been set forth induce some constraints on the supporting MAS/IT Architecture.
+There have been recently several instantiations of the EAS/EPS concept. As an evolving paradigm the reference EAS/EPS module/ agent architecture is still stabilizing as new control/regulatory challenges emerge. Existing instantiations include ( Barata et al., 2006 ) where the first agent-based implementation of the EAS/EPS paradigm was attempted. The system followed the COBASA architecture ( Barata, 2003 ) whereby a Broker Agent (BA) supports the formation of coalitions of agents that cooperate towards the support of a specific function. These functions in the COBASA architecture are named skills as they represent services that an agent provides to another agent. The system designer uses the BA to derive new skills out of the existing skills by putting agents together under the same coalition that is coordinated by a Coalition Leader Agent (CLA). These skills can be either simple or complex if they are supported by an agent natively or they are the result of a coalition. The considered implementation was later extended to the NOVAFLEX cell as reported in Barata et al. (2008) . In both cases the system information is stored in a global ontology that gathers the main functional and operational con-cepts, including the rules that guide the establishment of coalitions.
+
+TheEUPASS( EUPASS-Consortium, 2008 ) project introduced the concepts of evolution and adaptation that had not been extensively explored in the referred works. The first instantiation of these concepts was attempted in Ribeiro et al. (2008a , 2008b )wherethe COBASA architecture was extended so that the formation of coali-tions could be automated and performed on runtime. Rather than being the BA the creator of the Coalition Leader Agent it is the agent requesting the execution of a specific skill that automatically instantiates a Coalition Leader when none of the exiting agents can fulfil the request. This enabled seamless runtime response and constant adaptation to the operational conditions.
+
+In the several instantiations of EAS/EPS architecture there are some repeating patterns in respect to the MA architecture. For the purpose of the present work, and building upon these previous implementations the main logical blocks considered at MA level are as follows:
+Agent Instantiator block  X  is responsible for the start-up phase of the agent and the customization process which is defined in an XML description.
+
+Neighbourhood Management block  X  is the core block support-ing the emergent diagnosis. It updates all the agents X  interac-tions as the agent relates with other agents (adding, removing, and changing).
+
+Skill Orchestrator block  X  is responsible for the instantiation, management and execution of skills. These tasks include the validation of pre-conditions, the dynamic allocation of other agents to fulfil subtasks of a given skill as well as the coordination with the neighbourhood management block to ensure a consistent state.
+
+Skill Manager block  X  is responsible for the instantiation of new behaviours on runtime.
+
+Fault Management block  X  handles all the fault information including monitoring and diagnostic data and supports the diagnostic algorithm proposed in this document.
+
+The MA can become a Coalition Leader at any time depending on the interactions established with its neighbours. Under a coalition each agent monitors its own state and abandons the coalition in case a fault is detected. A new coalition leader can be re-negotiated if the affected agent was playing this role. The Broker Agent is involved in this process.
+
+The Broker Agent serves the purpose of informing the MA X  X , upon request, of the new executable skills when new interactions are established.
+
+To support the integration with legacy equipment a third type of agent is considered.
+
+The Agent to Machine Interface (AMI) works as a harmonizing layer between dedicated hardware configurations and the MAs when the existing hardware does not support from a computa-tional point of view the MA or the technical integration drama-tically reduces the equipment X  X  performance.
+
+This mechatronic architecture has been implemented in the pilot assembly cell detailed next. The diagnostic architecture and the corresponding HMM are embedded in each agent running the environment. 4.2. Experimental set-up
+The NOVAFLEX assembly cell comprises a conveyor network, two industrial manipulators and several pallets carrying distinct components.
+
+All the equipment present in the cell is legacy and was not designed with any specific modularity concerns. There was some preliminary integration effort to harmonize the existing equip-ment with the framework of the MA X  X . This process included the development of two AMI agents to interface the JADE-based
+Mechatronic Agent platform with the legacy hardware ( Figs. 5 and 6 ).
+ Fig. 5 illustrates the preliminary integration to render the
+SCARA manipulator in the NOVAFLEX compatible with the agent logic. The SCARA Controller AMI ensures that whenever the MA abstracting the robot receives a request for the execution of a specific skill that information is conveniently parsed. In this case the specific skill is converted to an instruction and sent over a 20 Ma current loop connector connected to an RS232 interface.
+The instruction is then processed by the Robot Controller where a specifically designed programme, using the native BAPS language, continuously pools the connection for new commands.
+
+The AMI for the conveyor system uses a fairly different technology as depicted in Fig. 6 .
+
+In this case the agent is interfaced by a PLC that directly provides a JAVA integration library and is reachable using stan-dard Ethernet. Each skill is directly mapped to the activation and reading of specific PLC ports.
+
+To create the EPS agent-based infrastructure in the NOVAFLEX scenario each generic MA is instantiated using specific configura-tion data. This process is facilitated by the use of the MA interface depicted in Fig. 7 .
+
+After the instantiation process the expert user creating the system can choose any agent in the platform and establish an interaction between the MA being created and the existing agents. The IT platform ensures that both agents acknowledge the addition, removal or change regarding a specific interaction.
+By defining the interactions between the agents the user is creating the network of agents that is considered for diagnostic purposes.
+
+The overall number of agents considered in this scenario is as depicted in Table 1 .
+
+The typical operational scenario is as follows: the MA, instan-tiated as Pallet will orchestrate the remaining agents in order to travel over the eight conveyors and stop at the robot station where, the MA instantiated as the SCARA manipulator will per-form a pick and place operation orchestrating the manipulator and a gripper for that purpose ( Fig. 8 ).
+
+This simple process entails a considerable number of interac-tions. Fig. 8 immediately uncovers the communication interac-tions. Excluding the AGREE and INFORM messages, that serve the purpose of regulating the communication patterns between agents implementing the FIPA REQUEST ( FIPA, 2002 ) protocol (and therefore only affect communication interactions), the request messages trigger all sort of physical interactions that need to be accounted for namely:
+Mechanical  X  resulting from mechanical connectivity between the SCARA manipulator and the Grippers that are physically connected.
+
+Electrical and pneumatic  X  between the manipulator that pro-vides electrical power and compressed air to the gripper without which the latter cannot perform any action.
+
+Each interaction is monitored by the agent that, as detailed, consumes FAILURE messages to trigger diagnostic activities.
+While in the NOVAFLEX case there is a concrete system to be created, to study the diagnostic approach in broader and more generic contexts where the agents take a more complex config-uration it becomes impractical to generate the entire network by configuring the individual interactions. To circumvent this issue a simulation tool has been developed to speed the process of network creation and allow the exploration of broader failure scenarios. 4.3. The network simulation tool
+The network simulation tool allows the creation of several network fault scenarios that enable testing the proposed approach under distinct and controlled situations. Following the
+Multiagent approach this tool is composed of three agents that handle, respectively, the set-up of the JADE environment and the
+MA creation, the creation of the network (establishment of the links) according to some criteria, injection of faults, and finally the visualization of the simulation. These agents interact with the MA agents detailed before.
+
+The Container Manager (CM) implements the fundamental functions for controlling the JADE framework from a JAVA application. In particular it allows to seamlessly instantiate MAs in different machines.
+
+After creating the containers, the user can start launching agents on the system. Since the MAs are generic until they are instantiated the user is offered two options. In the first case every agent can be started individually and the user must specify a configuration file for instantiation purposes. In the second case the user specifies the amount of desired agents and the interac-tions considered. The tool then ensures that these agents are properly created and deployed.
+ All the agents created in the platform are represented in the Graph Diagnostic Designer Agent (GDDA) later detailed. The Network Generator Agent (NGA) supports the creation of
+Random Networks by establishing the links between the MAs created by the CM. The user specifies the degree of the network and the NGA ensures that the interactions are established accordingly.
+
+The GDDA is informed of newly established interactions and ensures proper visualization making use of the MAs X  behaviours that control the interaction establishment.
+
+There is a master system Reset that can be executed by pressing the Reset Diagnostic button which using the same mechanism involved in the establishment of the interactions resets all MAs to their default diagnostic state.
+
+Finally the NGA allows the parameterization of the percentage of vulnerable agents in the network and the corresponding fault acceptance thresholds (later detailed).
+
+The Graph Diagnostic Designer Agent (GDDA) ( Fig. 9 ), was implemented through the Jung Java library (Java Universal Net-work/Graph Framework), and allows the graphical representation of an MA networks.
+
+The main purpose of the GDDA is to provide visualization functionalities as well as gathering the results of individual diagnosis at agent level and the synthetic ground truth data for posterior statistical analysis. 4.4. HMM set-up
+As previously detailed the proposed hypothesis was imple-mented at the cost of a Hidden Markov Model.
+
+Table 2 details all the possible observations using the vocabu-lary defined in Section 2 .
+
+An agent can perform one out of eighteen possible observa-tions. Each symbol encapsulates the perception that the agent gets from the environment which is constituted by its direct neighbours and any sensorial equipment that might be present. The data collected from the native devices sensors must be harmonized so as to specify if an interaction being monitored is affected by a fault or not.
+
+For instance, if an agent is monitoring the air pressure in a pneumatic gripper (i.e. the Mechat ronic Agent abstracting the whole gripper  X  controller  X  sensor) and the sensor detects a pressure drop that is abnormal the agent will parse that information and set the Own fault variable to one. If no further stimuli is processed the observation symbol OF is produced and fed to the diagnostic model. The MA can collect information from direct neighbours as well.
+In this context, if a majority of neighbours related to a specific MA by inbound interactions denote a fault the observation symbol
+IMaj will be produced. A similar mechanism will be triggered for outbound interactions OMaj and the simultaneous occurrence of both effects IMaj_OMaj .
+ Complex observations such as OF_IMin_OMaj (Own Fault,
+Inbound Minority and Outbound Majority variables set to one) denote the simultaneous emergence of a fault detected by the
+MA X  X  sensor, a minority of inbound interactions affected as well as a majority of outbound interactions in fault.
+
+The B matrix allows an expert to tune the response of the diagnostic algorithm according to the operational context of a specific Mechatronic Agent. As an example, consider the following B matrix parameterization:
+In the present configuration the B matrix was designed to give preference to sensor information (i.e. the agents tend to trust more their sensorial information then the information they collect from other neighbours). The parameterization of this matrix should be guided by the answers to the question detailed in Section 3 which are reproduced here for convenience.
+Q.1  X  How frequently does this device starts a fault?  X  a device that fails often will, in principle, be responsible for being the starting point of fault events rather than being in the propaga-tion path. Therefore, this device has a higher likelihood of observing OF and associated events while being in the states PFO and PFOPFother.
+
+Q.2  X  How trustworthy are this device X  X  sensors?  X  A device with highly accurate sensors has a high probability of being affected by a fault and detecting it while disregarding neigh-bour information. This is the case depicted in Fig. 10 where the
+B  X  2 6 6 6 6 6 6 4 Matrix 1 F An example of the parameterization of the B matrix : probability of the OF observation given that the device is in the
+NOK state was set to 90%. Conversely if a device has no sensors this value should be set to 0% and all the diagnostic reasoning will be based on neighbour information.
+
+Q.3  X  Does this device interact with others that have reliable sensors using inbound connections?  X  With this question it is possible to parameterize how sensitive is the diagnostic process of a specific agent in respect to its neighbours to which inbound interactions are maintained.
+
+Q.4  X  Does this device interact with others that have reliable sensors using outbound connections?  X  As detailed in Fig. 10 this question behaves similarly to Q3.
+
+Q.5  X  Does this device and its inbound neighbours are tightly coupled by the specified interaction?  X  The purpose of answer-ing this question is to rate majorities and minorities in respect to existing interactions. Tightly coupled devices should be more sensitive to minorities while loosely coupled devices must requires a majority of affected neighbours so that a stronger evidence of a propagating event can be considered for diagnosis. In Fig. 10 the rating associated with majorities and minorities has been set low to reflect the fact that the interactions between the agent and its neighbours are weak and that it should mainly consider sensor information.
+Q.6  X  Does this device and its outbound neighbours are tightly coupled by the specified interaction?  X  this question affects the diagnostic system behaviour in a similar way of Q.5.
+Fig. 10 depicts the main areas of the B matrix affected by these questions.
+
+It is important to stress that the areas associated with each question in Fig. 10 are not compulsive in the sense that ultimately all the questions affect the matrix, and subsequently the diag-nostic process as an whole, however the highlighted are strong guidelines to easily parameterize the diagnostic behaviour of each device.
+
+The parameterization of the A matrix is fixed in the present case as detailed in Fig. 11 . 5. Testing and results 5.1. Validation of the fault propagation model
+The fault propagation model (working assumptions and condi-tions detailed in Section 3.1 ) was introduced as a mean to evaluate the performance of the proposed diagnostic approach and its response to significant network m easurements such as complexity and node vulnerability. The behaviour of the proposed model is statistically characterized to justify the working points and networks later considered when assessing the diagnostic approach. The follow-ing are the control variables of the propagation model validation test:
+Number of agents in the network  X  25, 50 and 75 agents were considered during the tests. The number of agents was selected to address systems of different sizes and nature. In this context, 25 agents represent installations with a reduced number of interactions (typically mini factories and lab automation scenarios), 50 and 75 agents are typical values for middle-sized assembly cells where a coarser or finer granularity levels are considered. The focus of the test is not on the number of agents itself as it is in the complexity of the interactions established between them that affect the perfor-mance of the system much more significantly.
+
+Average degree  X  the following values were considered 1, 2, 3, 6, 9, and 12. These degree values cover in a fairly way realistic connectivity aspects in assembly installations. Lower values are normally found in mechanical and physical interactions where the interference patters are essentially one to one.
+Higher levels of connectivity are found in Multiagent commu-nication patterns whereby an agent can reasonably interact simultaneously with other 6, 9, 12 y agents for the purpose of controlling a specific process or skill.
+
+Percentage of vulnerable nodes in the network  X  from 0% of the network to 100% with steps of 5%. These values reflect the fact that installations may be in distinct wear and stress conditions.
+ The following variables where kept constant during the tests:
+Fault acceptance for vulnerable and normal agents of ( 4 95%) and ( o 20%), respectively, to reflect that vulnerable nodes are highly prone to magnify a fault and non-vulnerable nodes can act as propagation barriers.
+
+Agent sensor failure percentage of 10%. One of the main aspects of diagnostic systems is to handle uncertain informa-tion. A sensor failure percentage of 10% is relatively high in comparison with the mean time between failures values in most manufacturers X  catalogues. However practice shows that very often sensors provide misreadings due to incorrect operation conditions or fault propagation effects.
+
+Number of trials per Vulnerability: 100. This value ensures a considerable level of statistical confidence is the results.
+The tests in the simulation have not shown a relevant variation in performance of the diagnostic system (as a whole) in respect to the number of agents in the environment when compared to the performance degradation resulting from a more complex and vulnerable network. For the sake of brevity and to render the simulation results comparable with the NOVAFLEX scenario ear-lier portrayed only the statistics for 25 agents will be detailed in Charts 1 and 2 .
+
+The statistical analysis of the results confirms what is intui-tively anticipated in systems with such characteristics. The increase in the connectivity causes the response of the network, in respect to the number of affected nodes, to shift for approxi-mately exponential (very low values of connectivity), to approxi-mately logarithmic. The standard deviation tends to zero for higher connectivity values as a great majority of the nodes is systematically affected due to the intricate network structure that dramatically reduces the size of the average shortest path promoting the fault cascading effect.
+
+For low connectivity values the system is more sensible to the distribution of vulnerable nodes and the standard deviation grows between 40% and 70% of vulnerable nodes. This deviation is due to the presence of clusters of vulnerable nodes in some networks that in some cases favours the emergence of cascades while under different circumstances the fault may not propagate into a failure due to the presence of  X  X  X trategically X  X  positioned non-vulnerable nodes that act as barriers to fault propagation. 5.2. Assessing the performance of the proposed approach
+To validate the behaviour of the proposed diagnostic method in respect to performance several tests were considered. In all tests the metric considered was the percentage of correct diag-noses which is computed as follows.
+ Correct  X  %  X  X  where the sum of A (Correct State) is the number of agents that having been affected by the fault correctly inferred their state and the sum of A (Affected) is the total number of Agents being affected.
+
+The tests were executed under the same conditions as detailed for the validation of the fault propagation model. The results are detailed in Charts 3 and 4 .
+
+As in the fault propagation model tests, the number of agents considered does not seem to be relevant in the performance of the diagnostic method when compared with the complexity of the network.
+
+There is a clear degradation of performance with the increase in the network complexity however, even in highly connected networks (average degree  X  12), the accuracy of the system does not drop below 60% of correct diagnoses.
+
+This is a clear indication that it is necessary to better under-stand the impact of network X  X  complexity in the performance of the algorithm.
+
+Two tests were considered for this matter. In the first test, for networks of 25, 50 and 75 agents, the impact of the connectivity on the overall performance was tested considering a low number of vulnerable agents in the network (10% of the network) and on the second test, under the same conditions, the number of vulnerable agents was increased to 70% of the network. The results are as follows ( Charts 5 and 6 ).
+ The confidence interval considered in the tests is 95%.
+Again the performance does not seem to be affected by the number of agents in the network. However the results uncover some interesting propagation effects due to the presence of vulnerable nodes. Generally, in less vulnerable networks there appears to be a less accentuated performance drop for lower vulnerabilities and then a performance plunge towards increasing complexity.
+
+It has been showed that the diagnostic system is sensitive to the network complexity. The vulnerability factor acts as an accelerator of the propagation. In poorly connected networks if the initiating node is surrounded by non-vulnerable nodes chances are that the fault will not spread significantly. The number of affected agents is relatively low and the probability that the agents correctly perform their diagnoses is high. The increase in complexity implies that there are more propagation paths that can be explored and more vulnerable nodes are reachable which motivates the performance drop.
+
+Although real networks may fall into a particular case of the battery of tests, very often, the tests in a real installation complete the proof of concept and highlight some weaknesses not detect-able in the synthetic environment. For this purpose the system was tested in the NOVAFLEX cell earlier presented. The cell has a low degree of connectivity (average degree of approximately 2 (Matrix 2)) and a reduced number of agents (ranging from 16 to 26 depending on the number of pallets in the system).
+A  X  2 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 4
+Matrix 2 F Adjacency Matrix for the NOVAFLEX cell where the Average Degree is 2 : 3 :
+A total of 100 faults were injected in the system. Since it is not possible, in a safe way, to induce the faults in the system the agents controlling it are forced to simulate faults (overriding the system readings). These arbitrary faults include: forcing the grippers X  opening closing sensor to faulty states, shutting off the air compressor, inducing positioning errors in the SCARA manipulator, placing pallets out of order, etc. The response of the affected agents is to suspend their running behaviour upon the occurrence of a fault. The overall results are detailed in Table 3 .
+The average of the test is consistent with the data previewed in the simulation test ( Chart 5 ) where for connectivity 2 the expected values are between 94.2% and 97% with a confidence interval of 95%. In this context the value for NOVAFLEX is close to the lower limit. 6. Conclusions and future research directions
+The results attained suggest that it is in fact possible to explore local interactions and information to promote a self-organizing diagnostic response in an EPS system or any other system constituted by decoupled interacting entities for this matter.
+There are however some limits that ought to be considered prior to the instantiation of such an approach. While the number of agents in the network does not seem to significantly affect the performance of the diagnostic algorithm, the complexity of the network, in particular the average degree, and the presence and absence of vulnerable nodes cannot be ignored. In fact it was verified that the best performance results were attained at lower connectivity values. To some extent this is a result of the performance metric used. Lower connectivity implies less fault propagation and a reduced number of affected agents therefore there is a higher probability that all the agents get their diagnoses correct. This situation is also clarified by the standard deviation that is higher for these low connectivity values (when the agents fail a higher percentage of the network is misdiagnosing). The results are more significant for highly connected networks where the standard deviation is relatively reduced and the agents consistently exhibit coherent diagnostic states. The amount of vulnerable nodes accounts for these results as well directly influencing the number of agents in fault.
+
+Scalability is a major concern in centralized approaches that must be considered when addressing a diagnostic system for EPS.
+The computational power required and the complexity of the reasoning process are directly related to size and complexity of the network.
+
+Existing diagnostic methods are not to be replaced by the proposed approach. The traditional diagnostic approach remains a fundamental pillar of system-wise diagnosis. However, their application has to be moved to finer granularity levels (component level) to prevent a global diagnostic to corrupt the dynamic and reconfigurable nature of the emerging control approaches like EPS.
+Diagnosis at this broader level definitely requires a new approach for which the system proposed and tested may have important contributions. The interaction metaphor introduced proved to be suitable as a specification for the inputs of the diagnostic algo-rithm and promoted a self-organized diagnostic response One of the key self-organizing principles was that the number of states and the variety of the information were kept reduced. As in natural systems this enabled a convergent response that meets the purpose of the having a meaningful synchronization of the agents X  states avoiding an explosion of cases.
+
+As technology evolves it is only natural that better implemen-tation solutions can be found for tackling the problem of dis-tributed/network based diagnosis. In this spirit the architecture was significantly isolated from any specific technology although
+IT integration is discussed for the purpose of contextualizing the approach on time and set it in a realistic frame. It is the authors X  belief, however, that the main architectural principles are general, technology agnostic and that its application is not limited to the EPS domain.
+ References

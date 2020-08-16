@@ -1,0 +1,131 @@
+ 1. Introduction tween schemas.
+ emerged is that of nested mappings [18] , which extends previous formalisms for relational and nested data.
+Model management [3,5,27] is also a widely known approach which establishes a conceptual framework for handling (object management group) to specify transformations between models (i.e., schemas). be found in the literature X  X ee [13,33,36] for a survey.
+ mapping. However, to date very little work has focused directly on the effective validation of schema mappings. adequately matches the intended needs and requirements.
+ mapping losslessness.
+ first one.
+ rived predicate is lively if the schema admits at least one fact about it. the classes of queries and integrity constraints that appear in the database schema. cussed in Section 4 .
+ mapping formulas in a similar way to what occurs in the GLAV approach. Summarizing, the main contributions of the paper are the following: to check liveliness.
+ in the literature [24] : mapping inference and query answerability. (strong and weak) X  X o capture validation information that is not covered by the other two properties. try to obtain useful validation information when query answerability does not hold.
+We show how our CQC method [16] can be used to check the four mapping properties. The CQC method is able to deal with schemas that have integrity constraints, safe-negated EDB and IDB literals, and comparisons. Although the problem is semidecidable for the general case, we show a pragmatic solution that ensures the CQC method X  X  termination.
+ and suggestions for further research.
+ 2. Schemas and mappings mas and on binary mappings, i.e., mappings between two schemas.
+ [14] and GLAV [17] ). This section introduces the basic concepts.
+ the form and a constraint takes one of the following two forms: variables. Each C i is a built-in literal in the form of t
+Atom p  X  X  X  is the head of the rule, and r i  X  X i  X  ; : r
+Every rule and constraint must be safe , that is, every variable that occurs in X , Y in Z i is either from V i or from some X j . Variables in X (EDB) predicates. They correspond to tables.
+ that are inferred from an instance D , i.e., the fix-point model of DR [ D .
+An instance D violates a constraint L 1 ^^ L n ? L n +1 __ L IC .
+ A query is a finite set of deductive rules that define the same n -ary predicate. AQ  X  D  X  X f q  X  a  X j q  X  a  X 2 X  Q [ DR  X  X  D  X g .
+ A mapping M between schemas A =( DR A , IC A ) and B =( DR { f , ... , f n }. Each formula f i either takes the form Q A ments. We will assume that the deductive rules for these predicates are in either DR tion over the database.
+ that a formula Q A i  X  Q B i is true if the tuples in the answer to Q Q  X  a  X 2 AQ A i  X  D A  X  implies q B i  X  a  X 2 AQ B i  X  D B  X  .
+ framework, mapping formulas have the form e 1 op e 2 , where e operator op is well defined with respect to the output types of e and TGDs [14] . GLAV mappings consist in formulas that have the form Q Note that, with respect to GLAV and TGDs, we allow the use of a more expressive class of queries. implication constraints, is used in [41] .
+ formalized as follows:
+Schema A =( DR A , IC A ), where constraints IC A ={ deductive rules DR A ={
+Schema B =( DR B , IC B ), where constraints IC B ={ deductive rules DR B ={ Mapping M is formalized as follows: The deductive rules for the queries in F are those defined in the schemas. responding department.
+ a value for column salary greater or equal than 2500.
+
+The mapping formula states that all the employee s on schema A assigned to a department with a maximum salary no greater than 1000 must be also emp s on schema B .
+ Consider the following instances of schemas A and B : D instances.
+ However, instances D A , D B are not consistent under mapping M . The answer to Q Q over D B , i.e., In fact, no pair of instances of schemas A and B exists, such that query Q ary 6 1000) are in conflict with constraint salary P 2500 on schema B . The designer could find out the problem with our approach and, then, she could refine the mapping to solve it.
+For the sake of an example, let us suppose that the designer realizes condition W cides to replace it with condition W &gt; 3000. Consider now the following instances: They do not violate the integrity constraints, and they are consistent under the new mapping, i.e., 3. Checking desirable properties of mappings property should be expressed in terms of predicate liveliness.
+ renamed.
+ ing new constraints to make the relationship stated by the mapping explicit. Formally, this is defined as where IC M is the set of additional constraints that enforces the mapping formulas. For each mapping formula of the form Q A i  X  Q B i , the following two constraints are needed in IC These constraints state that the two queries in the formula must give the same answer, that is, both Q must be true.
+
+For the formulas of the form Q A i Q B i , only the first constraint is required: only if the property holds.
+
+Below, we describe each property in detail and its specific reformulation in terms of predicate liveliness. 3.1. Mapping satisfiability the global schema and the mapping are satisfied.
+ formed, and this is precisely the aim of this property.
+ that they are consistent with schemas A and B , respectively, and are also consistent under M . Note that the above definition explicitly avoids the trivial case in which D mulas in F can still be satisfied trivially. We say that a formula Q are empty sets. A formula Q A i Q B i is satisfied trivially when AQ ping, we may ask if all its mapping formulas can be satisfied non-trivially, or at least one of them. weakly satisfiable if at least one formula in F is satisfied non-trivially. is the following:
+Schema A =( DR A , IC A ), where constraints IC A ={ deductive rules DR A ={
+Schema B =( DR B , IC B ), where constraints IC B ={ deductive rules DR B ={ The formalization of the mapping is as follows: The deductive rules for the queries in F are those defined in the schemas. a constraint on salaries, which may not exceed 100.
+ Mapping M links those instances of A and B , say D A and D than 10 are the same as the happy-emp sin D B , and the employee sin D D .
+ We can see that the first formula, i.e., Q A 1  X  Q Q 2  X  Q B 2 (where q A 2  X  E ; S  X  employee  X  E ; C ; H  X ^ category  X  C ; S  X  and q the same salary in both sides of the mapping.
+ employee sin A with a happiness degree of 10 or lower, and emp sin B that are not happy-emp s. mapping would be strongly satisfiable. For the sake of an example, instances are consistent and satisfy the first mapping formula.
+ example of how the satisfiability of a mapping formula may be affected by the rest of formulas in the mapping. follows.
+ First, we build the schema that groups schemas A , B and mapping M : such that they are also consistent under M .
+ satisfiability X  X trong and weak X  X e need to define a predicate for either case. follows: where the terms in X 1 ; ... ; X n are distinct variables, and q A Q i query in the mapping must have a non-empty answer in order to satisfy this predicate. The same applies to Q because of the constraints in IC M that enforce the mapping formulas.
+Similarly, in the case of weak satisfiability, we would define the derived predicate weak _ sat as follows: ing deductive rules: satisfiable.
+ defines the distinguished predicate strong _ sat has been added to the resulting schema S . 3.2. Mapping inference ond, and vice versa.
+ (see Section 2 ).
+ all pair of instances of A and B that is consistent under M also satisfies formula f . Example 3.6. Consider again the schemas from Example 3.3 , but without the salary constraints:
+Schema A =( DR A , IC A ), where constraints IC A ={ deductive rules DR A ={
+Schema B =( DR B , IC B ), where constraints IC B ={ deductive rules DR B ={ Consider a new mapping: and queries Q B 2 , Q A 2 are those already defined in the schemas.
+Let f 1 be the mapping formula Q 1 Q 2 , where Q 1 and Q 2 fore, mapping M 2 entails formula f 1 .
+
+Now, let f 2 be the formula Q 3 Q 4 , where Q 3 and Q 4 are defined as follows: degree, we can build a counterexample to show that the entailment of f of a pair of instances, say D A and D B , that would satisfy the mapping formula in M instance, the following EDBs:
+It is not difficult to prove that the formula in mapping M However, f 2 does not hold: mula f is not inferred from a mapping M =( F , A , B ) if there are two schema instances D we define the derived predicate map _ inf with the following two deductive rules:
+Otherwise, when f has the form Q a Q b , only the first deductive rule is needed: by considering additional constraints to enforce the mapping formulas. Formally, which map _ inf is true. It follows that there are two consistent instances D to the answer to Q a but that does not belong to the answer to Q
+Q . Therefore, this pair of instances does not satisfy f .
+ In contrast, let us assume that there are two consistent instances D
+Q map _ inf is lively over S .
+ The proof for the case in which f takes the form Q a Q b can be directly obtained from this. h from formula f 1 ( Q 1 and Q 2 ) and the rule that defines the distinguished predicate map _ inf . 3.3. Query answerability for which it has been designed.
+ previous case, we consider a broader class of queries and the presence of constraints in the schemas. for query Q , and D A , D B are two instances consistent under M , we may compute the exact answer to Q over D the tuples in D B .
+ consistent instance D B of schema B , AQ  X  D A  X  X  AQ  X  D 0 consistent under M with D B .
+ Example 3.9. Consider again the schemas from the previous example:
+Schema A =( DR A , IC A ), where constraints IC A ={ deductive rules DR A ={
+Schema B =( DR B , IC B ), where constraints IC B ={ deductive rules DR B ={ Consider also the mapping M from Example 3.3 : and a query Q defined over schema A : sistent instances: one instance D B of schema B and two instances D mapping M with D B , but the answer to Q will not be the same in both instances, i.e., AQ  X  D isfied, for instance, by the following EDBs: We can easily state that this is indeed a counterexample because but follows: where A 0  X  X  DR 0 A ; IC 0 A  X  is a copy of schema A =( DR schema S the two instances of A that are necessary for building the counterexample. there is a fact q  X  a  X  that is true on one instance but not on the other. Q.
+ true. It follows that there is an instance D B of B , an instance D there is a ground fact q  X  a  X  , such that q  X  a  X 2 AQ  X  D can conclude that for each instance of schema A 0 there is an identical one in schema A . Thus, D A , in such a way that if it was previously consistent with D schema A such that AQ  X  D A  X  6 AQ  X  D 0 A  X  and are both consistent under mapping M with a given instance D thus conclude that M does not enable query answering of Q .
+ The other direction can easily be proved by inverting this line of reasoning. h corresponding to queries Q , Q 0 have been added to DR A and DR 3.4. Mapping losslessness needed.
+
+In fact, when a mapping contains formulas of the form Q A the designer with useful information. Let us illustrate this with an example. Example 3.11. Consider the schemas used in the previous two examples:
+Schema A =( DR A , IC A ), where constraints IC A ={ deductive rules DR A ={
+Schema B =( DR B , IC B ), where constraints IC B ={ deductive rules DR B ={
+Consider also the following query Q : It is not difficult to see that the mapping M from Example 3.3 enables query answering of Q . mined as well as the answer to Q .
+ Consider now the following mapping: In fact, it can be any subset of the emp s in the given instance of B . For example, let D and let D A and D 0 A be two instances of schema A such that
+We have come up with a counterexample and may thus conclude that mapping M The above example shows that when the mapping contains formulas of the form Q just one possible answer for each query Q B 1 ; ... ; Q B ability holds when we are able to compute the exact answer for Q over an instance D tuples are also in D A just by looking at D B , and we are therefore unable to compute an exact answer. they have a counterpart in schema B . In other words, if D property holds for query Q , an answer to Q may be computed using the tuples in D answer we would obtain evaluating Q directly over D A .
+ all pair of consistent instances D A , D 0 A of schema A , both the existence of an instance D with D 0 A and the fact that AQ A i  X  D A  X  X  AQ A i  X  D 0
+Example 3.13. Consider once again the schemas A and B used in the previous examples, and the mapping M Q from Example 3.11 :
+Schema A =( DR A , IC A ), where constraints IC A ={ deductive rules DR A ={
+Schema B =( DR B , IC B ), where constraints IC B ={ deductive rules DR B ={
+Mapping M 3 =( F 3 , A , B ), where mapping formulas F 3  X f Q A 1 Q B 1 , Q A 2 Q B 2 }.
+ Query Q ={ q ( E ) employee ( E , C , H )}.
+
+We saw that the query answerability property does not hold for mapping M property.
+
+Let us assume that we have two consistent instances D A , D consistent under M with both instances of A . Let us also assume that the answers to Q and D 0 A . Let us now suppose that Q obtains q (0) over D contains at least one employee tuple, say employee (0, 0, 12), which D tion of Q A 2 , the answer q A 2  X  0 ; 20  X  would be obtained over D Mapping M 3 is thus lossless with respect to Q .
+ as we did for query answerability: where schema A 0  X  X  DR 0 A ; IC 0 A  X  is a copy of schema A =( DR straints that enforce the formulas in mapping M =( F , A , B ). We use IC share the same answers for the Q A i queries in the mapping: define the derived predicate map _ loss as follows: have the same answers for the Q A i queries (because of IC checking thus for the existence of a counterexample.
+ Q.
+ schema A , an instance D 0 A for schema A 0 , and an instance D different predicate names, and that queries Q and Q 0 are the same query, we can conclude that D schema A , and that query Q evaluated over D A returns a tuple that is not returned when it is evaluated over D the definition of mapping losslessness, M is not lossless with respect to Q . The other direction can be proved by inverting the line of reasoning. h Fig. 6 shows the reformulation of Example 3.13 in terms of predicate liveliness. ness checks whether the set of queries V  X f Q A 1 ; ... ; Q under the mapping with them. It can be seen that in the cases in which all the formulas in the mapping take the form Q query answerability (Section 3.3 ) are equivalent properties.
+
+Proposition 3.15. Let Q be a query over schema A, and let M= (F,A,B) be a mapping where F = { f 1 6 i 6 n. Mapping M is lossless with respect to Q if and only if M enables query answering of Q. enable query answering of Q . By the negation of query answerability, there is an instance D D , D 0 A of schema A such that D A and D 0 A are both consistent under M with D formulas are like Q A i  X  Q B i , AQ A i  X  D A  X  X  AQ A i  X  D mapping losslessness and a contradiction is thus reached.
+ with respect to Q . By the negation of losslessness, there are two instances D 1 6 again reached. h 4. Decidability and complexity issues proach useful in practice.
+ [16] , it is proved that the CQC method is sound and complete in the following terms: icates, then the tested query is lively. when queries contain no recursively-defined derived predicates. derived predicates are not considered or recursion and negation occurs together in a strict-stratified manner. terminates.
+ tested query is lively.
+ al X  database is supposed to store an infinite number of tuples.
+ the desirable properties of mappings in terms of predicate liveliness does not increase their complexity. contradiction.
+
+Similar reductions can be made from predicate liveliness to query answerability, mapping inference, and mapping satisfiability. 5. Experimental evaluation tests in different situations.
+ ment on the results. 5.1. CQC method and SVT the method does not find any solution, no solution is possible.
+ may fall between two previously used constants.
+ using the constant 0 again, or using a fresh constant, e.g., the constant 1. fiable or there is a finite consistent instance that satisfies the goal. language:  X  Primary key, foreign key, Boolean check constraints.  X  SPJ views, negation, subselects (exists, in), union.  X  Data types: integer, real, string.
+ aggregates or arithmetic functions.
+ tracking is required in these cases.
+ Example 5.2. Let us assume that we are executing the SVT with the following goal: is no solution.
+ we defined in Section 3 for each property. 5.2. Experiments RAM. Each experiment was repeated three times and we report the average of these three trials. with a similar number and class of constraints), as well as the queries on each side of the mapping. two schemas varies from experiment to experiment, but mapping formulas always take the form Q require one of them. Thus, we are considering the most general setting. it means that they hold, while for the other three properties it means that they do not. domly selected from schema A and R B is its counterpart in schema B .
+The two variants of mapping satisfiability X  X trong and weak X  X an be checked without any changes in the mapping be-cause both already hold.
+ formula: Q 1 = Q 2 . Queries Q 1 and Q 2 are defined as follows: q
+X 2 X , K 1 and K 2 are different constants, and R A is one of the tables that appear in the definition of the Q than mapping inference. This is expected, given the difference in the size of schema S between the two cases. icate is not lively.
+ were forced to select those tuples that violated the check constraints. case of mapping losslessness, one of the Q A i queries in the mapping as a parameter query. tinue to search until all the formulas have been considered.
+ iments, the mapping has 14 formulas and its Q A i queries follow the pattern q A n tables randomly selected from schema A , and each query Q Q .
+ lessness held in Fig. 10 , we used one of the formulas/queries in the mapping as parameter formula/query. (only weak satisfiability is shown in the graphic).
+ vided by the VIPs, e.g., q  X  a  X  r 1  X  a 1  X ^ ... ^ r n  X  a found, only the literals that have been instantiated so far must be reconsidered. which the distinguished predicate is lively and the number of positive relational atoms in each query varies. To perform the experiment shown in Fig. 11 , we added a conjunction of s negated literals : T sponding query Q A i , and each variable in Y i appears in a positive atom of Q computing time.
+ experiment) to each query in the mapping.
+ column of one of the tables in the query X  X  definition, and K is a constant. scenarios. 6. Related work pose that target instance contains a tuple t 2 . A route for this tuple might be that t explore and understand a given schema mapping.
+ and integrity constraints more expressive than TGDs or EGDs (see Section 2 ). designer to figure out why the checked property does not hold. The following example illustrates this. dependencies (TGDs) between two relational schemas. Fig. 13 shows a graphical representation of the scenario. The source schema contains the tables Cards ( cardNo , limit , ssn , name , maidenName , salary , location ) and
+SupplementaryCards ( accNo , ssn , name , address ), with a referential constraint (TGD) from SupplementaryCards . accNo to Cards . cardNo . The target schema has two tables: Accounts ( accNo , limit , accHolder ) and Clients ( ssn , name , maidenName , income , address ),
+The mapping has the following TGDs: instances:
+We select the tuples in the target instance ( t 1 and t 2
+D source and for the case in which it is D 0 source . We get the routes s m 1 is generating the same output for two different source tuples. As s
+Cards . maidenName has been incorrectly mapped to Clients . name . We correct m stances as counterexample:
+The routes for t 1 , t 2 are as in the previous case: s 1 that is, Cards . location is disregarded by m 1 . The corrected version of the TGD would be: list of mappings, suggesting which ones are believed to better reproduce the target. of the mapping.
+ available.
+ Section 3 .
+ uments. Compared with our mappings, these mapping schemes would be mappings between models (the XML model and an XML-to-relational mapping scheme that is both lossless and validating. a simple fragment of XQuery or XSLT.
+ incomplete, and so, not query preserving.
+
+Other related work regarding the validation properties has already been described in the corresponding sections. 7. Conclusions and future work and introduced a new one: mapping losslessness.
+ rived predicate in a new schema that integrates the two mapped schemas and the mapping. mappings we consider. This solution ensures the termination of the CQC method. method for validating the four properties in different scenarios.
+ ented, etc.).
+
+References

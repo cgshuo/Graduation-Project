@@ -1,0 +1,165 @@
+ 1. Introduction the full KB.
+ where the symbol  X  not  X  denotes negation as failure (NAF).
+
+If the access rights for all the four rules are granted, the answer set will be {w will be {w 2 , p}. In the former case, the answer to query used for decision making. Other cases for the incorrectness may be: a positive/negative consequence w/
+KB, but its complement  X  w/ w is a consequence of the full KB. 1.1. Correctness de fi nition of our approach and some motivations in two cases: one answer set of the corresponding KB. The above idea for de de cautious consequence of the full-KB. This paper is mainly concerned with credulous reasoning. credulous consequences belonging to the same answer set of the full KB. Our de correction de fi nition. In the following sections,  X  a credulous consequence
+Next is the reason for not using the more obvious alternative correctness de
+KB is not necessarily reasonable and therefore not quali fi
+Consider the following situation, where 1. {A 1 , ... ,A m , ... } is an answer set of a sub-KB Sub ; 2. {A 1 , ... ,A i }( i b m ) is a subset of an answer set Ans 3. {A i +1 , ... ,A m } is a subset of another answer set Ans
+By 2) and 3), both {A 1 , ... ,A i } and {A i +1 , ... ,A reasonable set of consequences since {A 1 , ... ,A m , ... 1.2. Outlines of our approach
+NAF form of literal l . If these constraints are not satis de fi satis denoted by access( r ).
+ predicate in a KB can be viewed as corresponding to a table; and a rule that de used in salary management, where the predicate Salary(X, Y) is de de fi ning the salary information for the persons in group one, and de fi ning the salary information about his/her group.
+ answering queries from a user with a set G of rights can be accomplished by proposed in [56] , G can be generated automatically.
+
+The above idea can be illustrated as follows. Given an IDB consisting of two rules r r :
+It will be translated into a new KB {r 1 ',r 2 ', r 3 '}:
+If two sets of rights, {access(r 1 ), access(r 3 )} and {access(r {r ', r 2 ', r 3 ', access(r 1 ), access(r 3 )} and {r 1 ', r access(r 3 )}, respectively. Thus the answer to query p from the answering the query. In fact when the total set {access(r (r ), access(r 3 )} is the unique answer set of the full KB. By our de by user one and user two, respectively, are correct with respect to the full KB. fi nally, conclusions and future work are given in Section 10 . 2. Answer set programming (ASP)
+This section brie fl y introduces ASP. In this paper, a knowledge base is de and B , A\B is de fi ned as: A\B= { a|a  X  A, a  X  B }.
+ A normal logic program P is a set of rules, and each rule r is of the form: where n  X  m  X  0, each L i is a positive literal, and not is NAF. body(r)= { L 1 , ... ,L m , not L m+ 1 , ... , not L n } is the body of r, pos(r) ={ L semantics, a rule r is written as  X  head(r) :-body(r)  X  when it is convenient. It is also de
+In particular, a rule r with body(r)=  X  is called a fact . A rule r is negation free if neg ( r ) =
+L m+ 1 , ... ,L n positively / negatively and directly , and in both cases L generalized as follows.
+
+Let L 1 and L 2 be two literals, L 1 ( positively) depends on L  X  There exists a rule of P in which L 1 depends on L 2 (positively and) directly; or  X  There exists a literal L 3 such that L 1 depends on L 3
+For any set X of literals, dep(X) and pos_dep(X) are de fi
+Example . Given a program P 1 : follows. For each rule L 0 : -L 1 , ... ,L m , not L m+ 1
+L
+A rule r contributes to the de fi nition of a literal L if L depends on head(r) , i.e. head(r) of L , the application of r may affect the truth of L .
+
+Given a KB P , the following notations are de fi ned:  X  Def P (X)={r | head(r)  X  X} for any set X of literals.  X  COM P (X)={r | r  X  Def P ({l})  X  Def P (dep({l})) and l  X  COM P (r)={r}  X  COM P (pos(r)  X  neg(r)) for any rule r  X  Clearly, Def P (X) is the set of rules of P that de fi ne a literal of X ; and COM de fi nition of a literal L  X  X . When X ={ l }, we write Def P of P that de fi ne a literal below l on the atom dependency graph of P .Byde
+Next is the de fi nition of answer sets of normal logic programs without NAF. Let
+LIT be the set of ground literals in the language of  X  . An answer set of pos ( r ) p S, then head ( r )  X  S .
+
+It is known that the answer set of a normal logic program without not is unique. This de be the KB obtained from  X  as follows
+In the literature  X  S is usually called the reduct of  X  relative to S . Clearly already de fi ned. If S=ANS, S is an answer set of  X  .
+
+Example . the ASP knowledge base P 2 with three rules: has two answer sets {w, p} and {w, q}.
+ It has been shown that any normal logic program without odd loops must have an answer set [38,43] . answer set.
+ of P , then P  X  has at least one answer set.
+
+Bin P  X  . Since the removal of edges would not produce any loop, the atom dependency graph of P by Theorem 2.1 , P  X  must have an answer set. 2.1. Splitting set theorem [36]
+A splitting set for anASP program P isany set U ofliterals suchthat,for everyrule r of P ,if head(r) see that if U is a splitting set for P , then for each rule r of P , head(r)
+Given two sets of literals U, X and a program P , for each rule r de fi ned by The program consisting of all the rules r' obtained in this way will be denoted by e
+Let U be a splitting set for a program P . A solution to P (with respect to U ) is a pair 1) X is an answer set of b U (P) ; 2) Y is an answer set of e U (P\ b U (P), X) ; and 3) X  X  Y is consistent.
+ Here X can be viewed as background knowledge, and e U (P\b a normal logic program, and the answer sets X and Y exist with respect to a splitting set U , X Theorem 2.3 . Splitting set theorem solution b X, Y N to P with respect to U .
+
+Example . Consider the following program P 3 :
+Let U ={p, q}, then the bottom b U (P 3 ) of P 3 relative to U is: The bottom b U (P 3 ) has two answer sets: {p} and {q}.
+
+Let X ={p}, we have:
+The only answer set of e U (P 3 \b U (P 3 ), X) is Y ={w}, and X By the de fi nition of COM P ( l ), the following proposition holds obviously. splitting set for P . 3. Model description decides its privileges to use the KB; KB entity is the component that holds and KB engine is the component that executes the validated requests from users. standard knowledge base SKB can be de fi ned as a pair: convention. A knowledge base P in our model is de fi ned as a pair:
+A knowledge base P =( EDB , IDB ) can be constructed from an original knowledge base P model components can be described as follows: 1. Access Control Requirement is a set of rules in some speci of a system depends on users' membership in a group, or on a digitally signed credential that certi request to the RW engine.
+ one whereby a request is always granted unless explicitly denied. requirements. If the set of rights is correct, the ASP engine computes the answer sets of GR 4. Right propositions We de fi ne the set of KB access rights as the set of right atoms.
+For example, the following rule r: will be rewritten as: not be unique in the KB. For example, in the following rule r: right proposition is associated with the rule, it is associated with each instance of the rule.
+For example, given a rule r whose body includes NAF  X  not q constraints are satis fi ed, it can obtain knowledge about p based on the absence of q.
+An undesired situation is where a user has only partial access to the de correctness of our approach will be further discussed in Section 7 . instances of p(X, Y), i.e. p(x 1 ,Y), ... , p(x m ,Y).
+ In our approach, any KB P is associated with a fi nite set S latter kind of CWA rights serves as an assistant for de fi retrieval rights. Please see Section 6 for details.
+ policy is adopted, the set D of access rights that are denied has to be explicitly speci Next is the concept of completeness of a set of rights in a KB.
+De fi nition 4.1 . Complete set of granted rights
+Let P be a KB and G be a set of rights. G is complete in P if for each atom p de following conditions hold: 1) access( r)  X  G for each r  X  COM P (p); 2) CWA(l)  X  G for each l  X  neg(COM P ( p )) ; and 3) CWA(L)  X  G for each L  X  pos_dep(l) and l  X  neg ( COM P full KB.
+
+Example . In the following KB: answer set of {r 1 ,r 2 }, the truth of  X  a  X  is affected by the application of rule r set (i.e. {b}) of {r 1 ,r 2 ,r 3 }.
+ into a set of rules tagged by right propositions.
+ Algorithm DB_production Input: a KB P=(EDB, IDB), and an initially empty IDB and EDB.
+ Output: an updated IDB and EDB.
+ Method:
+Step 2 . For each rule r of IDB , let IDB :=IDB [ {head(r):-access(r), body(r).}. the number of rules or facts in the resulting KB.
+ 5. An example has been punished by university authority in the last 3 years, and FS(X, N) denoting X will get a receive any punishment in 3 years, else he will get 75% support. other rules are kept under control. Then by de fi nition the set S where
+V r is the set of rule retrieval right propositions
+V and
+V c is the set of CWA right propositions
+V c {CWA(punished), CWA(praised), CWA(FS), CWA(professor), CWA(lecturer), CWA(teacher)}. algorithm DB_production .
+ rights is granted, the answer set of EDB  X  IDB  X  S FS is as follows: (zhao,100), FS(yang,50), FS(li,75), FS(wang,50)}.
+
+If deleting from the answer set all right literals and omitting facts in the EDB of FS , we get: FS(dong,100), FS(zhang,100), FS(zhao,100), FS(yang,50), FS(li,75), FS(wang,50)}. In the following sections the facts of KB FS are always omitted while presenting answer sets.
+By denying the rule retrieval rights for the rules that de following set G of rights will be obtained:
+Then the answer set of EDB  X  IDB  X  G will be: cannot be included in G , otherwise incorrectness will occur. Please see Section 6 and 7 for details. 6. Right dependency Based on the concept the correctness of our approach will be discussed in Section 7 . The concept of dependency rules can be formalized as follows.
+
+De fi nition 6.1 . Dependency rule
+An expression of the form L 1  X  L 2 is called a dependency rule , where L implication of fi rst order logic.
+
+De fi nition 6.2 . Holds, Closed under
+Given a set R of dependency rules and a set G of granted rights, if L is closed under R .
+ incomplete information about the literal is available.
+
+Under the following set of rights: {access(rule 0 ), CWA(p), access(rule unique standard answer set is {q(a), q(b ), p(a), p(b)}. By the correctness de section, the sub-KB is not correct. This indicates an incorrect use of NAF natural to consider the relationship between NAF  X  not l  X 
+Regulation rule 1 . Let P be a KB, p be a literal, and CWA(p)
+CWA(p) should be obeyed: 1) type-0 dependency rules : CWA(p)  X  access(r) for r  X  Def 2) type-1 dependency rules : CWA(p)  X  CWA( l ) for r  X  Def de fi ne the literal should also be granted. This requirement is quite intuitive. associated with CWA( l ), the complete information that contributes to the de rule 1 .
+ Type-0 dependency rules include: Type-1 dependency rules include: Next is the regulation rule describing another way in which CWA rights are introduced. constraints should be obeyed:
+Type-2 dependency rules say that if a user is going to use a rule r whose body includes a NAF must be explicitly granted to allow the use of complete information about L . dependency rules derived from the KB FS in Section 5 are as follows: DR ={ 6.1. Deciding whether a set of rights is closed in a KB Now the concept for a set of rights being closed in a KB can be introduced.
+De fi nition 6.3 . Closed in, Closed with respect to 1) G is said to be closed in P , or simply closed when the context is clear, if G is closed under R . 2) G is said to be closed with respect to a set  X  of rules if G obtained from the sub-KB COM P (  X  ). It is clear that if G is closed in P then G is closed with respect to P Section 5 ,if G ={access(r1), access(r2), access(r8), access(r10)}, we have:
+De fi nition 6.4 . Right dependency graph of a KB represented as a graph ( V , E ) as follows: 1) each right proposition of S P is represented by an element of V ; 2) if L 1  X  L 2  X  R , then there is an edge b L 1 , L 2 N  X  The graph ( V , E )de fi ned in this way is called the right dependency graph of knowledge base P .
+De fi nition 6.5 . Image of a set of rights is de fi ned as follows: By de fi nition  X  ( G ) is the set of the images of the rights of G in graph ( V , E ).
+Then G is closed in P if and only if G is a pre-fi xed point of
+Proof . G is closed in P  X  G is closed under R , where R is the set of dependency rules derived from P ;  X  For any L 1  X  L 2  X  R ,if L 1  X  G then L 2  X  G ;  X  For any edge ( L 1 , L 2 )  X  E ,if L 1  X  G then L 2  X  G ; (by remark and the de  X  For any L 1  X  G the image L 2 of L 1 is in G ;  X   X  ( G ) p G . (by the de fi nition of  X  ( G ))  X  right dependency graph of a KB, then the complexity to compute
+Take Fig. 4 as an example. Let G= (V r \{access(r1), access(r2)}) (r2)}  X  G .
+ include the rule retrieval rights for the rules r1 and r2 that de
+If G is the set of granted rights, the following answer set will be obtained: FS(li,75), FS(dong,50), FS(zhang,50), FS(wang,50)}.
+ 6.2. Computation of the minimal closed set of rights many ways for such an expansion. But we are more interested in the minimal one.
+De fi nition 6.7 . Minimal closed set of rights that: 1) Min_Closed ( G ) is closed in P, and G p Min_Closed ( G ); and 2) If G p G ' and G ' is closed in P , then Min_Closed ( G ) each dependency rule  X  L 1  X  L 2  X  R  X  can be viewed as an ordinary rule rule and G , respectively. Then the set I R  X  G of rights determined by the set (R Recall that the operator T R  X  G determined by the set R  X 
+Then the set I R  X  G of rights determined by the set of rules (R where N is the set of natural numbers and T R  X  G n (  X  )isde
+By de fi nition we have T R  X  G n  X  1 (  X  ) T R  X  G n (  X  the minimum set closed under (R  X  G) .
+ Proposition 6.8 . The least fi xpoint lfp ( T R  X  G )of T Given a fi nite set G of rights and a fi nite set R of dependency rules, lfp ( T dependency rules. Therefore, (| R |+| G |) is the maximum number of rights in lfp ( T T (  X  )= G , the number of steps can be further reduced to (| R |+1). minimal closed set of rights expanded from G .
+Proof . Firstly, by Proposition 6.8 , lfp ( T R  X  G ) is closed under (R in P. Since G is the set of axioms of the set (R  X  G) of rules, we must have GT in P , then G ' is closed under R  X  G. Since lfp ( T R  X  G a minimal set Min_Closed ( G ) of rights that is closed in P by computing the least Section 5 as an example. Given a set G of rights the fi xpoint of T R  X  G is computed as follows: At this point the least fi xpoint is reached. So we have Min_Closed ( G )= T By De fi nition 4.1 , if a set of rights is complete in P , it is also closed. So we have:
+Proof . It is enough to show that all three types of dependency rules hold in G , which is easy by de details.  X  7. Correctness of a set of rights will be presented, which will serve as the guidelines for granting a set of access rights in an ASP KB.
+In this section, we assume that all considered KBs are free of odd loops if not otherwise speci is guaranteed to have at least one consistent answer sets by Theorem 2.1 . consider the ordinary literals of an answer set when talking about the correctness requirement.
+De fi nition 7.1 . Ordinary answer set Let P =( EDB, IDB ) be a KB with a set S of right propositions, G be a set of rights, and ANS then ANS G \S is called an ordinary answer set of EDB  X  IDB de fi nition of the correctness of a set of rights in a KB.
+
+De fi nition 7.2 . Correctness of a set of rights EDB  X  IDB  X  X ,where X is a set of rights. If for any ANS correct in P .
+
+By the de fi nition of right_free(P) , any ordinary answer set ANS for EDB Note that if ANS G p ANS S is satis fi ed, any assertion that is true/false in ANS an assertion not known previously to be fi xed. 7.1. Results on the correctness of a set of rights in a KB rights is closed in P and contains no CWA right, then G is correct in P . unique answer set, which is a subset of any answer set of right_free(P) . See Appendix for details. Example . Take the KB of Section 5 as an example. Let a set G of rights be as follows: have to be dealt with.
+ Next is our main result on the correctness of a set of right in a KB. set of rules of P . If the following three conditions C 1 r  X  R }: Proof . See Appendix.  X 
+Example . Consider the following ASP KB:
+Fig. 5 . An edge from G 1 to G 2 with a label C denotes that the correctness of G is a set of CWA rights.
+ corresponding set of rules.
+ shows that Theorem 7.4 is more powerful than Proposition 7.5 . By De fi nition 6.3 ,if G is closed in a KB P , G is closed with respect to P is closed in P , then G is correct in P .
+ Proposition 7.6 .
+ complete in P , then G is correct in P . 7.2. Examples illustrating the application of the correctness results
+Example . Let the KB  X  be as follows: Then the total set S of rights is: So the set Ans (S) of standard answer sets is The set R of dependency rules derived from  X  is as follows:  X  Let G ={access(r 0 ), access(r 1 ), CWA(p), CWA(q)}, then by de  X  Let G ={access(r 0 ), access(r 1 ), access(r 2 ), CWA(p), CWA(q)}, then G is not complete in  X  Let G ={access(r 0 ), access(r 1 ), access(r 2 ), access(r
+An example for using Corollary 7.7 . Let G be the set of rights de 3 years. In the KB FS, they are used to de fi ne another predicate FS(). An example for using Proposition 7.6 . Let G be de fi ned as:
+FS , because it does not contain complete access rights for the rules de about the fi nancial support for professors. To be speci fi information:
+CWA(praised),CWA(FS)}.Thentheupdatedset G ofrightsisnotclosedin P ,becauseCWA(FS) about the fi nancial support for professors.
+
+By Theorem 7.4 ,if  X  = {access(r12), access(r13)} is added to G , the resulting set G'=G of G' cannot be proved by Corollary 7.7 , but can be proved by Proposition 7.5 or Proposition 7.6 . 8. Discussions administrator can use them to guide the process of granting KB access rights. This section
+Right_Grant_guide for granting a closed set G of rights to KB users, and then brie related to our approach.
+ The algorithm Right_Grant_guide can be described as follows.
+ can freely choose to grant access right for any rule that de for L .
+
+Proposition 8.1 . Let P =( EDB , IDB ) be a KB and G 0 be a set of rights. Take P and G rise to a set G of rights that is closed in P .
+ if P is free of odd loops, G is correct in P by Proposition 7.6 .
+Example . Take the example KB FS in Section 5 again. It is clear that the rules de After the fi rst iteration : where S 1 p {access(r3), access(r4), access(r5)}, S 2 ={CWA(praised), CWA(punished)} and S (r8)}; and our choice is: S 1 ={access(r3), access(r4)}, and S After the second iteration : Algorithm Right_Grant_guide Input: a KB P and an initial set G 0 of positive rights; Output: a set G of rights.
+ Method: G:= G 0 ; Repeat Step 1 and Step 2 until G does not change.
+
+Step 1 : For each CWA(l) a G,
+Step 2 : For each rule r such that access(r) a G, After the third iteration : G 3 =G 2 .
+ Then Obviously, G is closed in FS . Then by Proposition 7.6 , G is correct in FS . rights and use Theorem 7.4 to judge the correctness of the resulting sets.
+For example, knowing that G in the above is correct in FS , then ( G access(r9), access(r10)}. The reason is that G is closed with respect to {r1, r9, r10}, and head( r1 ) (head(r)) and head( r10 )  X  dep(head(r)) for any r  X  right_free(FS 8.1. Ef fi ciency of our approach
+Next the splitting set theorem will be used to show the ef knowledge base P .
+ answer set Ans =( X G  X  Y G ) of EDB  X  IDB  X  G into two steps: Step 1: Compute an answer set X G for b S ( EDB  X  IDB  X  G )= G ; Step 2: Compute the answer set Y G for e S ( EDB  X  IDB , X process is applicable to any set of rights, compared with the natural procedure, the ef Forexample,giventheknowledgebase FS in Section 5 andthetotalset S=S (FS) is simplythe program in Fig. 2 . Thenan answerset of EDB set of the program in Fig. 2 . 8.2. De fi ning access rights for predicates predicate to a user, the user naturally has the rights to access all the rules de convenient if we can grant a right for retrieving all the rules de can be introduced. A predicate retrieval right proposition is associated with a predicate de 8.3. Discussion on another correctness de fi nition de fi nition can be further weakened by requiring that: consistent answer sets. speci fi c, we have: the correctness.
+ ANS=X  X  Y is consistent, where X is an answer set of the bottom right_free ( P (P ), X) . Since X p ANS , G is correct in P .  X 
+But under the conditions of the above proposition, G is not correct in P if the correctness de mainreason isthat forany answerset X of right_free ( P G ), e
+Example . Given the following KB with an odd loop: the unique standard answer set is {b}. Then {access(r 1 ), access(r Proposition 8.3 .
+ Generally, we have the following theorem: be a set of rules of P . If the following three conditions C of the correctness, where  X  ={access( r )| r  X  R }: C1: G is correct in P ; C2:  X  r  X  right_free(P G ) .  X  r  X   X  R .( head(r  X  )  X  dep(head(r))) ; and C3: G is closed with respect to R .
+
+Proof . similar to the proof for Theorem 7.4 . Here we neglect the details. notations originally proposed for NLP should be adjusted accordingly. Recall that in an ELP each rule has the following form: should be adjusted as follows. (1) COM P ( X )={ r|r  X  Def P ({l,  X  l})  X  Def P (dep ({ l, (2) The set S P of positive rights associated with a KB P is de (3) The type-0 and type-1 dependency rules obtained from a KB P should be updated as: Next is an example to illustrate the application of the extension correctness theorem for ELP.
+Example . Consider the following KB P : By de fi nition we have:
+The set of dependency rules associated with P is:
+This KB has two standard answer sets {b} and {a, c}. It can be easily veri be derived from the extension correctness theorem for ELP. 8.4. Alternative approach for query answering accessible to the user.
+ a user, the answer given by the above alternative approach contains the following information about draw any consequences. Then the following set G of access rights will be granted to the user:
+The resulting answer set corresponding to G will contain the following information about
+Compared with the results given by the alternative approach, the consequences missing. The reason is that they depend on the applications of rules r6 and r7 de 9. Related work on access control models, semantics of ASP programs, and knowledge base partitioning. 9.1. Access control models proposed in the literature control [3,51,54] . According to their applications, Bertina et al. classi systems [11,12,57] .
+ programming security policies in distributed systems. logic and answer set programming [27] , the access control requirements can easily be speci approach easily adapted to fi t in our approach [41] . 9.2. Correctness requirement in access control models control policy, one has to consider how to restrict the use of services to suitably quali
+Although so many access control models have been proposed, most of them focus on de user is certi fi ed, those models do not even doubt the  X  address the problem. 9.3. The research on the semantics of ASP programs which any answer set is reasonable relative to P , are accessible to users.
+Lifschitz and Turner suggested that in many cases a program can be properly divided into a computing the answer sets of the whole program, the answer sets of bottom part can be evaluated 9.4. Knowledge base partitioning correctness of a sub-distributed-KB that supports non-monotonic reasoning. satis fi ed [18] . The same methodology has also been applied in the debugging of ASP programs [13] . 10. Conclusions and future work
+KB is used with user authorization. To our knowledge, this is the retrieving a KB in our model is largely preserved. Main contributions of this paper are as follows: for automatically constructing a KB in our model from an original ASP KB; under a set of dependency rules obtained from the KB; and several suf fi cient conditions for the correctness. The more challenging question is to for the correctness of a set of rights in a KB. This will be one of our future research directions. [14,18,42,50] . It is interesting to discuss how to de fi Acknowledgments Appendix This appendix includes the proofs for Proposition 7.3 and Theorem 7.4 . rights is closed in P and contains no CWA right, then G is correct in P . coincides with the unique least model of right_free(P G ) . right_free(P literals, the reduct of right_free(P) with respect to A is denoted by redu right_free(P G ) is negation free, it must be a subset of redu monotonicity of negation free logic programs, the least model ANS must be a subset of every answer set of right_free(P) . Hence we have the proposition. of rules of P . If the following three conditions C 1 ,C 2 C1: G is correct in P ;
+C2:  X  r  X  right_free(P G ) .  X  r  X   X  R .( head(r  X  )  X  dep(head(r))) ; and C3: G is closed with respect to R .
+ Proof . We need to prove that  X  for each consistent answer set ANS right_free(P) such that ANS G  X  p ANS S .
+ By condition C 1 , for each consistent answer set ANS G for right_free(P such that ANS G p ANS S .
+
+For conveniences, we de fi ne Head(  X  ) as Head (  X  )={ head(r) | r proposition, we only have to prove the following sub-propositions: 1) for each answer set ANS G  X  for right_free(P G  X  ) , there exists an answer set ANS 2) if head(r)  X  ANS G  X  \ ANS G for some r  X  R , then pos(r) ANS
+By sub-proposition 1), if H is empty, then ANS G  X  = ANS G neg(r)  X  ANS S =  X  and neg(r)  X  ANS G =  X  by sub-proposition 2). Then we easily have head(r) Therefore ANS G  X  p ANS S holds.
+ Next we show that those sub-propositions really hold.
+ Proof of sub-proposition .1):Let  X  be an answer set of right_free(P relative to  X  is: Next we show that a subset of  X  is an answer set of right_free(P a)  X   X  Head ( right_free(R)) =  X  . In this case the set ( right_free(R)) b)  X   X  Head ( right_free(R) )  X  X  X  . Let  X  =  X  '  X  H'  X  H'', where
+We consider two cases: b1) H'=  X  . Then in the answer set  X  =  X  '  X  H'',  X  ' is the minimal model of (right_free(P b2) H'  X  X  X  . The reduct of right_free(P G  X  ) relative to  X 
+Proof of sub-proposition . 2): By the proof of sub-proposition 1), it can be seen that if head(r) derived using the rules from right_free(R) and facts from ANS (r)  X  ANS G =  X  ) does not hold, it is impossible for head(r) to be included in ANS (r) literal whose de fi nition is included in the reduct (right_free(P\P time the complement of l will not be present in ANS S since its de
+So any answer set ANS S = X  X  Y for right_free(P) can be computed by to show neg(r)  X  ANS S =  X  for any r  X  R , it suf fi ces to prove that neg(r) Consider the computation of the answer set of right_free(P). The reasoning is as follows:  X  X is a subset of the minimal model of (right_free(P)  X  = (right_free(P  X  X is a subset of the minimal model of (right_free(P G )) Let  X  ' = ANS G . Since ANS G ANS S =  X  , we have (right_free(P (right_free(P G ))  X  ' , i.e. X ANS G . Finally by neg(r)
+References

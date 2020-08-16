@@ -1,0 +1,1 @@
+ 3. In expression (18), E  X  W  X  should be corrected as follows: E  X  W  X  X  because E  X  W  X  X  E  X  max f 0 , W g X  X  So the correct mathematical model is as follows: EC  X  X  X  X  H where X  X  X  X 1 , 2 , ... , X i , 2 , ... , X N 2 , 2  X  : Reference

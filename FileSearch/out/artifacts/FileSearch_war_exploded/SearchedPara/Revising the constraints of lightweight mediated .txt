@@ -1,0 +1,158 @@
+ 1. Introduction de then at least one bookseller must so allow; and so on.
+ hierarchy of I 0 .
+ the mediation environment at will.
+ to I remain correct.
+ 2. Related work describe a semantic technique based on probing the databases. that may also be used to circumvent interoperability problems. fi de GAV approach.
+ systems [9]. Picsel [22] is an example of a LAV system.
+ certain desirable properties.
+ databases.
+ offer decision support for specifying Boolean and multivalued dependencies. the subsumption problem is hard [30].
+ on the notion of Herbrand interpretation for DL, de fi ned in Section 4.3. 3. Mediation environment extralite schemas and mediation environments. 3.1. A brief review of concepts from description logics
+The set of role descriptions of L is inductively de fi ned as  X 
+An atomic role, and the universal and bottom roles are role descriptions  X  p  X  (the inverse of p ) p  X  q (the composition of p and q ) p  X  q (the union of p and q )
+The set of concept descriptions of L is inductively de fi ned as  X 
+An atomic concept, and the universal and bottom concepts are concept descriptions  X 
+If a 1 ,..., a n are constants, then { a 1 ,..., a n } is a concept description  X   X  e (negation) e  X  f (intersection) e  X  f (union)  X  p (existential quanti fi cation)  X  p . e (full existential quanti fi cation)  X  p . e (value restriction) (  X  np ) (at most restriction) (  X  np ) (at least restriction) will be kept to a minimum.
+ interpretation function , also denoted s , where:  X  s (  X  )=  X  , when  X  denotes the bottom concept or the bottom role  X  s (  X  )=  X  s , when  X  denotes the universal concept  X  s (  X  )=  X  s  X   X  s , when  X  denotes the universal role  X  s ( A ) p  X  s , for each atomic concept A of L  X  s ( P ) p  X  s  X   X  s , for each atomic role P of L  X  s
+The function s is extended to role and concept descriptions of L as follows:  X  s ( p  X  )= s ( p )  X  (the inverse of s ( p ))  X  s ( p  X  q )= s ( p ) X  s ( q ) (the composition of s ( p ) with s ( q ))  X  s ( p  X  q )= s ( p )  X  s ( q ) (the union of s ( p ) with s ( q ))  X  s  X  s ( X  e )=  X  s  X  s ( e ) (the complement of s ( e ) w.r.t.  X  s )  X  s ( e  X  f )= s ( e )  X  s ( f ) (the intersection of s ( e ) and s ( f ))  X  s ( e  X  f )= s ( e )  X  s ( f ) (the union of s ( e ) and s ( f ))  X  s (  X  s (  X  s (  X  p . e )={ I  X   X  s /(  X  J  X   X  s )(( I , J )  X  s ( p )  X  J  X  s ( e )}  X  s (  X  s (  X  s  X   X  indicates that s satis fi es  X   X   X  is satis fi able iff there is a model of  X   X  A  X  3.2. Extralite schemas
+Formally, an extralite schema is a pair S = ( A , C ) such that respectively  X 
+C is a set of formulas, called the constraints of S , which must be of one the forms  X  Domain Constraint:  X  P  X  D (property P has class D as domain)  X  Range Constraint:  X  P  X   X  R (property P has class R as range)  X  minCardinality constraint: C  X  (  X  kP )or C  X  (  X  kP  X  )  X  maxCardinality constraint: C  X  (  X  kP )or C  X  (  X  kP  X  )  X  Subset Constraint : E  X  F (class E is a subclass of class F )  X  Disjointness Constraint : E | F (classes E and F are disjoint).
+We also admit constraints of one of the forms:  X  C  X  X  X  (class C is always empty)  X  e:  X  to refer to their vocabularies, respectively.
+ subset and disjointness constraints.
+
+For example, the fi rst column of Fig. 2 (b) indicates that:  X   X  a:pub is a property with domain a:Book and range a:Publ
+The second column of Fig. 2 (b) shows the cardinalities of the Amazon schema:  X  all properties have maxCardinality equal to 1, except a:author , a:pub and a:city  X  has no maxCardinality constraint)  X  a:pub has minCardinality equal to 2  X  a:city has minCardinality equal to 3 are disjoint classes. have maxCardinality equal to 1, except e:place .  X  3.3. Components of a mediation environment import schema I k and a local mapping  X  k .
+ schemas as follows: E . We restrict  X  k as follows: (2) C i k  X   X  i k (3) P j k  X   X  j k any individual to P j k .
+ of E k ,  X  k  X  s  X  = r iff  X  r ( C i k ) = s (  X  i k ), if C i k  X   X  i k is the de fi nition for class C i k in  X  k  X  r family of concept and role expressions.
+ We illustrate the concepts just introduced with the help of an example. both the range of a:pub and the domain of a:city .
+  X  schema.
+ mediated mapping  X  as follows:  X  for each i=1,...,u , the mapping  X  contains a de fi nition of the form (4) C i  X  C i 1  X  ...  X  C i n  X  for each j=1,...,v , the mapping  X  contains a de fi nition of the form (5) P j  X  P j 1  X  ...  X  P j n E  X  r  X  r Example 3. A complete description of a mediation environment would be as follows:  X  for the mediated schema sales  X  the vocabulary listed in Fig. 4 (a)  X  the mediated mapping shown in Fig. 4 (c)  X  for the Amazon database fragment  X  the export schema shown in Fig. 2 (a) and (b)  X  the local mapping shown in Fig. 3 (c)  X  for the eBay database fragment:  X  the export schema shown in Fig. 2 (c) and (d)  X  the local mapping shown in Fig. 3 (f).  X  4. Construction of the mediated schema constraints 4.1. Basic steps of the constraint revision process 1. ( Concept revision step ) vocabulary. 2. ( Mapping revision step ) 2.1. De fi ne the local mapping  X  0 between I 0 and E 0 . 2.3. De fi ne the mediated mapping  X  r as in Eq (4) and (5) on pages 7 and 8. 3. ( Constraint revision step ) 3.1. De fi ne the set IC 0 of constraints of I 0 by inspecting EC 0 and  X  0 . are quite simple, but raise a few points that we address in what follows. the new classes and properties in MV + are C i and P j , which match C i r and P j r the new de fi nitions in  X  + are C i  X   X  and P j  X   X  the new constraints in MC + are C i  X  X  X  ,  X  P j  X  X  X  and  X  ( P j )  X   X  X  X  constraints saying that both the domain and the range of P j are always empty. can then be written as follows: which will be used in what follows.
+ constraints.
+
+Let L 1 and L 2 be two languages with alphabets A 1 and A 2 , respectively.  X   X   X  (  X  )=  X  and  X  (  X  ) =  X   X  if s is an atomic role of A 1 and  X  ( s ) =e then e is a role expression of L 2  X 
+A 1 by  X  ( A ).  X  formula in  X  to L 2 via  X  .
+  X   X  X  0 de fi nition for B in  X  r  X   X  X   X  de fi nition for B in  X  r  X   X  X 
+MV r to IV 0  X  MV + using  X  X  r as  X  [ MV r  X  IV 0  X  MV + ].
+ constraints MC + [ MV +  X  MV r ].
+ consistency preservation.
+
+Theorem 1. Let MC r = IC 0 [ IV 0  X  MV r ]  X  MC + [ MV +  X  MV r ]. Suppose that: (1)  X   X  Th ( IC 0 [ IV 0  X  MV r ]) (2)  X   X  Th ( MC + [ MV +  X  MV r ])
+But, by de fi nition of the canonical translation functions, we have: (3)  X   X  Th ( IC 0 [ IV 0  X  MV r ]) iff  X  [ MV r  X  IV 0 ]  X  Th ( IC 0 ) (4)  X   X  Th ( MC + [ MV +  X  MV r ]) iff  X  [ MV r  X  MV + ]  X  Th ( MC + ) respect to MC + .
+
+Therefore, we have (5) s 0  X   X  [ MV r  X  IV 0 ] (6) s  X   X  [ MV r  X  MV + ] assumption, we can prove that: (7) s  X  t 0  X   X  [ MV r  X  MV +  X  IV 0 ]
+Now, by de fi nition by de fi nition of  X  r , from (7), we fi nally have: (8)  X  r ( s , t 0 )  X   X  constraints of a mediated schema can be de fi ned.
+ import schema. de fi ned in Fig. 3 (a) and (b), and the local mapping introduced in Fig. 3 (c). de fi ned in Fig. 3 (d) and (e), and the local mapping introduced in Fig. 3 (f). (Constraint revision step) Consider the following sets of constraints: translation is simply a process that replaces ai:Product by s:Product ,etc. schema). Since constraints of the Sales mediated schema.
+ the following minCardinality constraints for city in  X  A and  X  E : (1) ai:Book  X  (  X  3 ai:city) (in  X  A ) (2) ei:Product  X  (  X  1 ei:city) (in  X  E )
+We also have the following subset constraint in  X  E : (3) ei:Book  X  ei:Product (in  X  E ) (4) s:Book  X  (  X  3 s:city) (in  X  A ) (5) s:Product  X  (  X  1 s:city) (in  X  E ) (6) s:Book  X  s:Product (in  X  E ) (7) s:Book  X  (  X  1 s:city ) (in  X  A  X   X  E )
+Indeed, we have that:  X  (5) and (6) imply (7)
+By a simpler argument, we also have: (8) s:Product  X  (  X  1 s:title ) (in  X  A  X   X  E ) intersection of  X  A and  X  E .
+ and (e), we have the following domain constraints in  X  A and  X  E : (9)  X  ai:city  X  ai:Book (in  X  A ) (10)  X  ei:city  X  ei:Product (in  X  E )
+We also have the following subset constraints in  X  A : (11) ai:Book  X  ai:Product (in  X  A ) (11) become: (12)  X  s:city  X  s:Book (in  X  A ) (13)  X  s:city  X  s:Product (in  X  E ) (14) s:Book  X  s:Product (in  X  A ) (15)  X  s:city  X  s:Product (in  X  A  X   X  E ) schemas, after proper translation. steps:  X  de fi mediated mapping of the Sales/BN mediation environment. observations apply to  X  bi:city  X   X  X  X  .
+ bi:Book by sr:Book , etc. This results in the set of constraints  X  B ,where (16)  X  sr:title  X  sr:Product (in  X  B ) (17)  X  sr:title  X   X  string (in  X  B ) (18)  X  sr:city  X  X  X  (in  X  B ) (19)  X  sr:city  X   X  X  X  (in  X  B ) (20) sr:Book  X  sr:Product (in  X  B ) (21) sr:Music  X  sr:Product (in  X  B ) (22)  X  sr:city  X  sr:Book (in Th (  X  B )) (23)  X  sr:city  X   X  string (in Th (  X  B )) (24)  X  sr:city  X  (  X  1 sr:title ) (in Th (  X  B )) mediated schema, obtaining the set of constraints  X  S , where (25)  X  sr:title  X  sr:Product (in  X  S ) (26)  X  sr:title  X  X  X  string (in  X  S ) (27)  X  sr:city  X  sr:Product (in  X  S ) (28)  X  sr:city  X   X  string (in  X  S ) (29) sr:Product  X  (  X  1 sr:title ) (in  X  S ) (30) sr:Book  X  (  X  1 sr:city ) (in  X  S ) (31) sr:Book  X  sr:Product (in  X  S ) (32) sr:Music  X  sr:Product (in  X  S ) (33) sr:Book | sr:Music (in  X  S )
+Observe that, by (27) and (29), Th (  X  S ) contains the following constraint: (34)  X  sr:city  X  (  X  1 sr:title )  X  the domain and range constraints for sr:title , by (16), (17), (25) and (26)  X  the domain and range constraints for sr:city , by (22), (23), (27) and (28)  X  the subset constraints for sr:Product , by (20), (21), (31) and (32)  X  a single cardinality constraint, of a rather unanticipated nature, by (24) and (34)  X  city | C or of the form  X  sr:city  X  |C , where C is any expression.  X  the procedures introduced.
+  X   X 
+P  X  D (property P has domain D )  X   X 
+P  X   X  R (property P has range R )  X   X   X 
+C  X  D (class C is a subclass of class D )  X  C | D (classes C and D are disjoint)
+We also admit constraints of one of the forms:  X 
+C  X  X  X  (class C is always empty)  X   X 
+We normalize a set of constraints by rewriting:  X   X 
+P  X  D as (  X  1 P )  X  D  X   X 
+P  X   X  R as (  X  1 P  X  )  X  R  X 
+C  X  (  X  kP )as C  X   X (  X  k+1 P )  X 
+C  X  (  X  kP  X  )as C  X   X (  X  k+1 P  X  )  X 
+C | D as C  X   X  D (or, equivalently, D  X   X  C )  X   X 
+P  X  X  X  as (  X  1 P )  X  X  X   X   X  P  X   X  X  X  as (  X  1 P  X  )  X  X  X  side of the constraints.
+ interact in unanticipated ways, as the following simple example illustrates. implies that A will always be empty, that is,  X   X  A  X  X  X  .
+ disjoint sets, and A is a subset of both constraints, we again have that  X   X  A  X  X  X  . how we compute  X   X   X  , where  X  is a second set of constraints.  X  hand sides of a normalized constraint.
+
+Let  X  be a set of normalized constraints and  X  be a set of constraint expressions.
+De fi follows: (vii) These are the only nodes and arcs of g (  X  ).  X 
+De fi de fi
+De fi level n , for a non-negative integer n , iff one of the following conditions holds: (i) K is is a  X  -node with level 0 iff (ii) K is is a  X  -node with level n+1 iff (  X 
+De fi (iii) K is a  X  -node iff K is a  X  -node. (iv) K sati s fi es the consistency check iff K is not a  X  -node. (v) K satis fi es the dual of the consistency check iff K is not a  X  -node.
+G (  X  ,  X  ) satis fi es the following properties (see Proposition 1 in Section 4.3):  X  f to a node labeled with  X  .  X  individuals.  X   X   X 
+IMPLIES (  X  , e  X  f ) input: a set  X  of normalized constraints and a normalized constraint e  X  f output:  X  YES  X   X  logically implies e  X  f  X  begin Construct G(  X  , {e , f}) ; end soundness and completeness of IMPLIES .
+ (1)  X  t  X  P normalized as: (  X  1 t )  X  P (2)  X  t  X   X  S normalized as: (  X  1 t  X  )  X  S (3)  X  c  X  P normalized as: (  X  1 c )  X  P (4)  X  c  X   X  S normalized as: (  X  1 c  X  )  X  S (5) P  X  (  X  1 t ) normalized as: P  X   X (  X  2 t ) (6) B  X  (  X  1 c ) (7) B  X  P (8) M  X  P (9) B | M normalized as: B  X   X  M graph representing  X  . By inspecting G (  X  ), note that:  X  (10)  X   X  (  X  1 c )  X   X (  X  2 t )  X  with level 0, which implies that (11)  X   X  (  X  2 t )  X  X  X  constraints: (12)  X  t  X  P normalized as: (  X  1 t )  X  P (13)  X  t  X   X  S normalized as: (  X  1 t  X  )  X  S (14)  X  c  X  X  X  normalized as: (  X  1 c )  X  X  X  (15)  X  c  X   X  X  X  normalized as: (  X  1 c  X  )  X  X  X  (16) B  X  P (17) M  X  P simple in this case.  X  of the g.l.b. of two theories induced by sets of normalized constraints as follows:
+GLB (  X  1 ,  X  2 ;  X  ) input: two sets  X  1 and  X  2 of normalized constraints begin A constraint e  X  f is in  X  iff there are i , j  X  { 1,2 }, with i  X  j , end
+Sales/BN mediated schema informally derived in Step (C) of Example 4. (1)  X  t  X  P normalized as: (  X  1 t )  X  P (2)  X  t  X   X  S normalized as: (  X  1 t  X  )  X  S (3)  X  c  X  P normalized as: (  X  1 c )  X  P (4)  X  c  X   X  S normalized as: (  X  1 c  X  )  X  S (5)  X  c  X  (  X  1 t ) normalized as: (  X  1 c )  X   X (  X  2 t ) (6) B  X  P (7) M  X  P
+In this speci fi c example, Table 1 (c) induces  X  as follows: (10) Lines 8 and 11 correspond to Case (b) of the GLB procedure. (11) Lines 3, 4, 6 and 10 correspond to Case (d) of the GLB procedure. constraint (  X  1 t  X  )  X  S .
+ 4.3 . Correctness of the procedures
+Proposition 1. (i) G (  X  ,  X  ) is acyclic. (ii) For any pair of nodes M and N , we have that M  X  N iff N  X  M . (iv) For any node K of G (  X  ,  X  ),
+De fi are called individuals .  X 
+De fi nition 6.
+De fi restrictions, for each node K of G (  X  ,  X  ): [38].
+ De as follows: (i)  X  [  X  ] is the domain of s . (i) Let N be a node of G (  X  ,  X  ).
+ Case 1. N is not a  X  -node or a  X  -node.
+ Case 1.1. e is an atomic concept C .
+ By De fi nition 8 (ii), s  X  ( N )= s ( C ).
+ Case 1.2. e is of the form (  X  nP ).
+ Then, since N P is not a role  X  -node, De fi nition 7 (ii) applies to s  X  ( N P ). (1) a  X  s  X  ( N ) implies that a  X  s ((  X  nP )).
+ choice of k . Therefore, a  X  s ((  X  nP )).
+
+We now prove that (2) a  X  s ((  X  nP )) implies that a  X  s  X  ( N ). since s ( P ) =s  X  ( N P ), by De fi nition 8 (iii).
+ there are nodes L 0 ,L 1 , ... L v such that We are now ready to show that a  X  s  X  ( N ).
+ Case 1.2.1. n=1 .
+ Case 1.2.1.1. a is of the form g i0 [ L 0 ,P ]( u ).
+ ( N ).
+ Case 1.2.1.2. a is not of the form g i0 [ L 0 ,P ]( u ).
+ alternative. Therefore, a  X  s  X  ( N ) as desired, since a  X  s  X  ( L 1 ). Case 1.2.2. n N 1 .
+ ( a,b a  X  s de fi Case 1.3. e is of the form (  X  nP  X  ).
+ The proof of this case is entirely similar to that of Case 1.2. Case 2. N is a  X  -node.
+ Then, there are two cases to consider.
+ Case 2.1. e is a non-negated atomic concept C .
+ Then, we trivially have, by De fi nition 8 (ii), that s ( C )=  X  . We prove that s ((  X  np ))=  X  , using an argument similar to that in Case 1.2.
+Let N P be the node labeled with P . Case 2.2.1. N P is a role  X  -node.
+ Case 2.2.2. N P is not a role  X  -node.
+ Then, De fi nition 7 (ii) applies to s  X  ( N P ).
+ n
+N ( L l
+N Hence, we conclude that s ((  X  np ))=  X  .
+ Case 3. N is a  X  -node.
+ concept  X  . Therefore, trivially, s ( e )=  X  [  X  ].
+
+Therefore, we established in all three cases that Lemma 1(i) holds. (ii) Let N be a node of G (  X  ,  X  ).
+ Case 1. N is not a  X  -node or a  X  -node.
+ ( M )  X  s  X  ( N ).
+ de t  X  s  X  ( K ).
+ Case 2. N is a  X  -node.
+ Case 3. N is a  X  -node.
+ Thus, s ( X  e )=  X  [  X  ], which trivially implies that s  X  ( N ) p s ( X  e ).
+Therefore, we established that, in all three cases, Lemma 1 (ii) holds.  X  (i) s is a model of  X  . and (i) We prove that s satis fi es all constraints in  X  .
+ Therefore, there are two cases to consider.
+ Case 1. e and f are both non-negated.
+ Case 2. e is non-negated and f is negated.
+ Case 1. N is a  X  -node.
+ Then, we trivially have that s ( e )= s  X  ( N )=  X  [  X  ]  X  X  X  . Case 2. N is not a  X  -node.
+
+Hence, trivially, s ( e )  X  X  X  . We are now ready to prove that the IMPLIES procedure is sound and complete.
+ X  and  X  . Then,  X   X  e  X  f iff one of the following conditions holds: (a) The node labeled with e is a  X  -node; or (b) The node labeled with f is a  X  -node; or
+ X  respectively. (  X  ) We show that  X   X  e  X  f . There are three cases to consider: Case 1. M is a  X  -node.
+
+Then, by Proposition 1 (vii),  X   X  e  X  X  X  , which trivially implies that  X   X  e  X  f. Case 2. N is a  X  -node.
+ Then, by Proposition 1 (viii),  X   X  X  X  X  f , which trivially implies that  X   X  e  X  f. Case 3. There is a path in G (  X  ,  X  ) from M to N .
+
+Then, by Proposition 1 (v) and (vi), we have that  X   X  e  X  f . (  X  ) We prove that, if the conditions of the theorem do not hold, then  X   X  e  X  f . Since e  X  f is a constraint, we have:
+Assume that the conditions of the theorem do not hold, that is: (3) The node M labeled with e is not a  X  -node; and (4) The node N labeled with f is not a  X  -node; and (5) There is no path in G (  X  ,  X  ) from M to N .
+ that t  X  r ( e ) and t  X  r ( f ) or, equivalently, t  X  r ( X  f ). labeled with f , and e  X  f to indicate that no such path exists. Case 1. e and f are both non-negated.
+ show that s  X  e  X  f .
+ Case 1.1. N is a  X  -node.
+ trivially have that s  X  e  X  f .
+ Case 1.2. N is not a  X  -node.
+  X  -node, we have (6) s  X  ( M )= s ( e ) and there is a seed term c [ M ]  X  s  X  ( M )
+By de fi nition of canonical instance labeling function, we have: (8) c [ M ]  X  s  X  ( N )
+Since f is positive, by Lemma 1(i), s  X  ( N )= s ( f ). Hence, we have (9) c [ M ]  X  s ( f ) Therefore, by (6) and (9), s ( e )  X  s ( f ), that is, s  X  e  X  f , as desired. Case 2. e is non-negated and f is negated.
+ Case 2.1. e  X  g .
+ show that s  X  e  X  f .
+ Case 2.2. e  X  g .
+
+Construct  X  as follows: show that r  X  e  X  f .
+
+We fi rst observe that (11) There is no expression h such that e  X  h and g  X   X  h are paths in G (  X  ,  X  ) (11) follows.
+
+We now prove that Case 2.2.1. H  X  e  X  h and H  X  g  X   X  h are paths in G (  X  ,  X  ). Then, e  X  h and g  X   X  h must be paths in G (  X  ,  X  ), which contradicts (11). Case 2.2.2. H  X  e  X   X  h and H  X  g  X  h are paths in G (  X  ,  X  ). contradicts (5), recalling that f is  X  g.
+ Case 2.2.3. H  X  e  X  h and H  X  e  X   X  h are paths in G (  X  ,  X  ). Case 2.2.4. H  X  g  X  h and H  X  g  X   X  h are paths in G (  X  ,  X  ). Hence, we established (12).
+ (13) r ( H )  X  X  X 
+Since H  X  e and H  X  g are in  X  , and since r is a model of  X  , we also have: (14) r ( H ) p r ( e ) and r ( H ) p r ( g )
+Therefore, by (13) and (14) and since f = X  g  X  and  X  , and G (  X  ) be the graph that represents  X  . Suppose that  X   X  e  X  f . Then: 5. Conclusions Acknowledgements 2008, and CAPES/PROCAD NF 21/2009.
+ References

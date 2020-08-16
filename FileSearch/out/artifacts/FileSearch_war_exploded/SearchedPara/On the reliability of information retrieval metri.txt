@@ -1,0 +1,91 @@
+ 1. Introduction
+After a decade of TREC evaluations based on binary relevance, the importance of information retrieval (AveP) at present. For example, even though the NTCIR CLIR track series ( Chen et al., 2003 ) have graded relevance (S, A and B in decreasing order of relevance), two versions of AveP are used for ranking the par-
+AveP which treats only S-and A-relevant documents as  X  X  X elevant X  X . swap method proposed by Voorhees and Buckley (2002) and Kendall X  X  rank correlation, with three data sets comprising test collections and submitted runs from NTCIR. We test 14 graded-relevance metrics plus 10 bin-show that (Average) Normalised Discounted Cumulative Gain at document cut-off l , proposed by Ja  X  rvelin method, the swap method and Kendall X  X  rank correlation, and Section 4 discusses our experimental results.
+Section 5 discusses related work, and Section 6 concludes this paper. 2. Effectiveness metrics 2.1. Metrics based on binary relevance Let R denote the number of relevant documents for a topic, and let L denote the size of a ranked output.
+Following the TREC/NTCIR traditions, we let L 6 L 0 = 1000 throughout this study. Let count ( r ) denote the
+Precision (AveP), R-Precision (R-Prec) and Precision at Document cut-off l (PDoc one for topics such that R &lt; l . This paper examines PDoc list and one that has the same number of relevant documents at the bottom of the list. On the other hand,
+PDoc l with small l means that the systems are evaluated based on a small number of observations (i.e., doc-2000; Voorhees &amp; Buckley, 2002 ).
+
+Both AveP and R-Prec average well as they are recall-based metrics, and they are highly correlated with
+AveP as it cannot distinguish between a relevant document at Rank 1 and one at Rank R , and ignores all doc-uments below Rank R .
+
+Since NTCIR officially uses two separate binary relevance assessment files, one including B-relevant docu-2.2. Metrics based on graded relevance the sliding ratio proposed back in the 1960s ( Korfhage, 1997 ). Let R ( X ) denote the number of X -relevant documents, so that NTCIR data. Let cg  X  r  X  X  ranked output, such that isrel ( r ) = 1 for 1 6 r 6 R and g ( r ) 6 g ( r 1) for r &gt; 1, and let cg cumulative gain at Rank r . For the NTCIR data, an ideal ranked output lists up all S-, A-and B-relevant documents exhaustively in this order.
+ For convenience, we first define weighted precision at Rank r as WP ( r )= cg ( r )/ cg
+However, any metric that is based on weighted precision cannot properly penalise  X  X  X ate arrival X  X  of relevant documents, as an ideal ranked output runs out of relevant documents at Rank R ( Sakai, 2004 ). There are at least two approaches to solving this problem.
+ The first approach is to use discounted cumulative gain dcg  X  r  X  X  dcg I ( r ), then we can use discounted weighted precision DWP ( r )= dcg ( r )/ dcg (2002) , can be expressed as
+However, nDCG l with a large logarithm base a inherits the defect of nCG
+Rank 3 or at Rank 10. For this reason, we let a = 2 throughout this paper. As (A)n(D)CG metrics, we consider l = 10,100,1000 as with PDoc l . We do not consider the unnormalised (discounted) cumu-large values for topics with many relevant documents and are not suitable for averaging across topics. The second approach to penalising late arrival of relevant documents is to use the blended ratio the deviation of the system output from the ideal output, but is free from the problem of WP ( r ) because it includes r in the denominator. That is, late arrival of a relevant document is always penalised. The blended BR ( r )= P ( r ) holds iff r 6 R and BR ( r )&gt; P ( r ) holds iff r &gt; R .
+ Using the blended ratio, Sakai (2004) defined Q-measure and R-measure , which are exactly like AveP and R-Prec, respectively, except for their graded-relevance capability: The following are some properties of Q-measure and R-measure: Q-measure is equal to one iff a system output is an ideal one.
+ tell the difference between an ideal ranked output and (say) an output that has all B-relevant documents at the very top, followed by all A-relevant ones, followed by all S-relevant ones.
+ In a binary relevance environment, Q -measure = AveP holds iff there is no relevant document below Rank R , and Q -measure &gt; AveP holds otherwise.
+ In a binary relevance environment, R -measure = R-Prec.
+ With small gain values, Q-measure behaves like AveP.
+ With small gain values, R-measure behaves like R-prec.
+
+Q-measure and R-measure are recall-based, while (A)n(D)CG that rank-based metrics better model user behaviour, the choice of l for (A)n(D)CG can affect the system ranking considerably, as we shall see later in this paper. This is somewhat similar to the case of PDoc l ( Buckley &amp; Voorhees, 2000 ). 3. Methods for comparing IR metrics
+This section describes three methods we use for comparing IR metrics very briefly, due to the page limit announced by the Special Issue Editors.
+
+The first method is the stability method proposed by Buckley and Voorhees (2000) . For a given IR metric and a constant c , this method generates 1000 topic sets Q rithm we used can be found in Sakai (2005b) .
+
+The second method is the swap method proposed by Voorhees and Buckley (2002) , which can be used to examine the sensitivity of IR metrics. This method generates 1000 pairs of topic subsets Q required to guarantee that the swap rate , the chance of obtaining a discrepancy between two topic sets as to whether a system is better than another, does not exceed a given threshold. Moreover, we can check how often system pairs actually satisfy this difference requirement among all comparisons performed during be found in Sakai (2005b) .
+ sured in our study, since our goal is to compare different metrics under the same condition.
+It should be noted that the above two methods sample topics without replacement. Sanderson and Zobel without-replacement results only: the corresponding with-replacement results can be found in Sakai (2005a) .
+The third method we use is to examine Kendall X  X  rank correlation between two system rankings according to respectively (two-tailed test). 4. Experiments 4.1. Data
+We used three sets of test collections and submitted runs from the NTCIR-3 CLIR task ( Chen et al., 2003 ), namely, the Chinese, Japanese and English data sets whose statistics are shown in Table 1 . For example, for the Chinese data, the entire topic set Q and the 45 runs were used for rank correlation computation. Whereas, measured by Relaxed-AveP were used. Note that the English data set is relatively small in terms of topic set size, the number of relevant documents and the number of runs. Therefore, our English results may be less reliable than others. 4.2. Buckley/Voorhees stability results
+Figs. 1 X 6 show the MR-PT curves of 10 binary-relevance and 14 graded-relevance metrics for the three sets of data, respectively. Note that good IR metrics should have small MR and small PT values. Our main obser-vations are: In Figs. 1 and 3 , Rigid-AveP, Relaxed-AveP and Relaxed-R-Prec are the most stable. Whereas, in Fig. 5 ,
+Rigid-AveP and Relaxed-AveP are clearly the most stable. In summary, AveP (with Rigid or Relaxed relevance data) is the most consistently stable binary-relevance metric . Note also that PDoc unstable, especially when l is large.
+
+In Fig. 2 , (A)nDCG 1000 , (A)nDCG 100 , Q-measure and AnCG and 6 , (A)nDCG 1000 , Q-measure and AnDCG 100 are the most stable, although some other metrics also do well. In summary, Q-measure and (A)nDCG l with large l are the most consistently stable graded-relevance metrics .
+
+By comparing the curves of the graded-relevance metrics with those of the binary-relevance ones, it can be observed that the best graded-relevance metrics (Q-measure and (A)nDCG metrics are in fact more stable than AveP.
+ the NTCIR-3 English test collection, as Table 1 shows. Recall also that our English results are less reliable than our Chinese and Japanese ones due to the limited scale of the experiment. 4.3. Voorhees/Buckley swap results Based on the swap method, Tables 2 X 4 show the sensitivity of metrics at swap rate 6 5% for the Chinese, ing the 30 Chinese runs with Relaxed-AveP, swap rate 6 5% (Column (i)).
+
+Among the 2000 Mean Relaxed-AveP values observed (1000 trials, each with two topic sets Q highest was 0.5392 (Column (ii)).
+
+The absolute difference translates to a relative difference of 0.11/0.5392 = 20% (Column (iii)).
+Of the 435,000 comparisons (30 * 29/2 = 435 system pairs, each with 1000 trials), 24% actually satisfied the absolute difference requirement (Column (iv)). The metrics have been sorted by Column (iv), i.e., sensitivity. Our main observations are:
+In all three tables, Relaxed-AveP is the most sensitive among the binary-relevance metrics . Rigid-AveP also does well consistently.
+
+Among the graded-relevance metrics, Q-measure, (A)nDCG 1000 Thus, Q-measure and (A)nDCG l (with large l) are the most sensitive graded-relevance metrics . binary-relevance metric, namely (Relaxed-)AveP .
+
+Metrics such as nCG 1000 and PDoc 1000 are not useful for system discrimination: For example, in Table 2 (b), nCG 1000 failed to guarantee 5% swap rate or less for all systems pairs; Table 4 (a) shows a similar case for
+Rigid-PDoc 1000 . These results support our arguments in Section 2 . 4.4. Rank correlation results
+Tables 5 and 6 compare binary-relevance metrics with graded-relevance metrics in terms of Kendall X  X  rank correlation: the former focusses on AveP and R-Prec, while the latter focusses on PDoc data sets. For example, Table 5 shows that the correlation between Relaxed-AveP and Q-measure is .9798 for venience ( Voorhees, 2001 ). Our main findings from these two tables are:
+Q-measure is more highly correlated with Relaxed-AveP than any other metric . It is also consistently highly correlated with Relaxed-R-Prec.
+ correlated with Relaxed-AveP and with Rigid-R-Prec.
+
+Tables 7 X 11 compare pairs of graded-relevance metrics in terms of Kendall X  X  rank correlation. Again, all findings from these five tables are:
+Q-measure, R-measure and nDCG 1000 are consistently highly correlated with one another . Q-measure is also consistently highly correlated with AnDCG 1000 ( Table 7 ).
+
+For (A)n(D)CG l , the choice of l affects the system ranking considerably . For example, the correlation between AnDCG 10 and AnDCG 1000 for the Chinese data is only .8404 ( Table 8 ), and that between nCG 10 and nCG 1000 for the English data is only .6449 ( Table 11 ).
+
+For each given value of l , nDCG l and AnDCG l are consistently highly correlated with each other. That is, the effect of averaging across document ranks is small ( Table 8 ). Compare Eqs. (6) and (7) .
+Fig. 7 visualises how the ranking of the 45 Chinese runs changes when Relaxed-AveP is replaced with another metric. The runs were numbered after sorting by Relaxed-AveP, and hence each increase in a curve represents a discrepancy with Relaxed-AveP. While the Q-measure is a smooth blend of the Relaxed-and
+Rigid-AveP curves as noted earlier by Sakai (2004) , (A)nDCG ranks. For example, nDCG 1000 declares that System 4 outperforms System 3, disagreeing with all other metrics in this figure. This reflects the fact that (A)nDCG recall-based. 4.5. Changing gain values this section examines the effect of using different gain values with the graded-relevance metrics, using the documents. Further details can be found in ( Sakai, 2003, 2005b ).
+
+Figs. 8 and 9 show the MR-PT curves for Q-measure and nDCG gain values, respectively, where, for example, Q-measure with flat gain value assignment is denoted by gain value assignments do not affect it significantly.
+
+Table 12 shows the sensivitity of graded-relevance metrics with different gain value assignments at swap rate 6 5%. The  X  X  X efault X  X  column has been duplicated from Table 2 (b). Values higher than 20% are shown in bold for convenience. The table shows that Q-measure and AnDCG value assignment.
+
+Table 13 compares the system rankings according to the flat, steep and adjusted gain value assignments with the default assignment for each graded-relevance metric in terms of Kendall X  X  rank correlation. It can be observed that Q-measure, R-measure and (A)n(D)CG 1000 are robust to the choice of gain values in terms of system ranking.
+ in fact small. To sum up, our main findings on graded-relevance metrics are:
+According to the stability and the swap methods, Q-measure and (A)nDCG These metrics are at least as stable and sensitive as AveP.
+
+Q-measure is more highly correlated with AveP than any other metric. Q-measure, R-measure, (A)nDCG (with large l ) are highly correlated with one another.
+ sensitivity and rank correlation. 4.6. Correlation with significance tests
+The stability and the swap methods that we have used are based entirely on the mean over a given topic set, related to significance testing?
+We address the above question as follows. A two-tailed sign test was conducted for each of the 435 pairs of normality and symmetry assumptions ( Hull, 1993 ). Then, we created two more sorted lists of the 435 pairs, one sorted based on the minority rate computation and the other sorted based on the swap rate computation. significance test, which uses the entire topic set Q and counts the number of topics with which System x out-method, which uses 1000 topic subsets for comparing x and y . The third list represents that in terms of the can also be compared using Kendall X  X  rank correlation. Since we have as many as 435 run pairs, the rank cor-relation is statistically significant at a = 0.01 if it is over 0.09 (two-tailed test). Table 14 shows the Kendall X  X  rank correlations among the sign test, the stability and the swap methods for
+However, while the correlations between the stability and the swap methods are moderately high, those between the sign test and the other two methods are not as high. Moreover, the correlations between the sign test and the stability method are lower than those between the sign test and the swap method. It appears that the stability and the swap methods themselves require further studies ( Sakai, 2005a, 2006a; Sanderson &amp; Zobel, 2005 ).
+ 5. Related work
+Sakai (2006c, 2006b) conducted experiments similar to the ones reported in this paper, but focussed on IR metrics for the task of retrieving one (highly) relevant document only, as opposed to the traditional task of finding as many relevant documents as possible. Other studies that used the stability and the swap method tion 3 , Sanderson and Zobel (2005) and Sakai (2005a) explored a few variations of the swap method.
+More recently, Sakai (2006a) proposed a method for comparing the sensitivity of IR metrics based on Boot-strap Hypothesis Tests. Unlike the swap method, the new method has a theoretical foundation, and is directly related to significance testing. However, he also showed that the Bootstrap-based method and the swap method generally yield similar results.
+
+Keka  X  la  X  inen (2005) investigated the rank correlations among (n)(D)CG their own graded relevance assessments. Sakai (2004) investigated the rank correlations among AveP, R-Prec,
+Q-measure and R-measure using NTCIR data. This paper extends these studies in that (a) It covers more met-rics. (b) It examines the stability and sensitivity of metrics in addition to resemblance among metrics.
+Vu and Gallinari (2005) generalised AveP for handling graded relevance and compared it with Q-measure
+Moreover, their metric cannot control how severely late arrival of a relevant document should be penalised: Sakai (2004) . Vu and Gallinari (2005) did not use the stability and the swap methods.
+Della Mea and Mizzaro (2004) proposed the Average Distance Measure (ADM) for evaluation with con-tinuous relevance as opposed to graded relevance. However, we argue that ADM is not suitable for traditional document ranking tasks, as it simply accumulates the absolute differences between User Relevance Scores (URSs) and System Relevance Scores (SRSs). For example, suppose that the URSs for documents A, B and C are 0.3, 0.2 and 0.1 for a topic, and the SRSs for these documents are 0.5, 0.4 and 0.2 acccording to
+System x , and 0.1, 0.2 and 0.3 according to System y . In terms of document ranking, Systems x is perfect, while System y is not. However, in terms of ADM, System y (sum of differences: 0.2 + 0 + 0.2 = 0.4) outper-forms System x (sum of differences: 0.2 + 0.2 + 0.1 = 0.5). 6. Conclusions
+This paper compared 14 metrics designed for IR evaluation with graded relevance, together with 10 tradi-using three different data sets from NTCIR. Our results suggest that AnDCG based graded-relevance metric that is highly correlated with Average Precision, then Q-measure is the best choice. These best graded-relevance metrics are at least as stable and sensitive as Average Precision, and are fairly robust to the choice of gain values. However, it should be remembered that nDCG lem of nCG l if a large logarithm base is used.
+ Some may say,  X  X  X f graded-relevance metrics are very highly correlated with Average Precision, then just use graded-relevance metrics, this enables them to build IR systems that can return highly relevant documents on and Average Precision may decline.
+ References

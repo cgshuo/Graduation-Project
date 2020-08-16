@@ -1,0 +1,112 @@
+ Ching-Huei Huang, Chun-Liang Lin n 1. Introduction attracted increasing attention. Two-layer robot controller and motion control of a two-axle using evolutionary algorithm were presented ( Abdessemed and Benmahammed, 2001 ; Minor et al., was implemented. Another application in robot control with the cross-coupling problem was discussed in Feng et al. (1993) .For the major objective is minimization of the cross coupling error more advanced design methods resorting to the evolutionary algorithms (EAs) have been proposed for seeking potential solu-nonlinear systems was considered and genetic algorithms (GAs) been incorporated with EAs according to Fang and Xi (1997) and (PID) control scheme for unknown nonlinear dynamic systems has been implemented using evolution strategy (ES) ( Park and Choi, motors using an EA with varying search space was proposed ( Kim which the control law was planned on-line for multi-objective of cellular automata neural systems using the DNA coding method was developed ( Lee and Sim, 1999 ; Lee et al., 2000 ).
+An artificial neural network (ANN) is an adaptive system that changes its connecting weights for the purposes of system Karpuz et al., 2010 ).
+
+Taking advantages of DNA computing algorithms, a coding method based on the biological DNA encoding scheme is pro-posed here. DNA coding method ( Chen et al., 1999 ; Yomohiro et al., 1996 ; Wu and Lindsay, 1996 ) possesses has many advan-tages. For example it is suitable to have good performance when the chromosome is long enough.
+
+We replace the above dual-axes system cross-coupling control with an artificial neural network (ANN) compensator using a DNA computing algorithm (DNACA). Numerical integration based on evolution strategy method was solved ( Wang et al., 2007 ; Zhou et al., 2008 ) and optimization of DNA encodings based on the 2005 ).
+
+The purpose of this paper is on the design and implementation of a DNACA coded neural network-based positioning cross-cou-dual-axes machine tool. We deal with motion control of the system consisting of an ANN and two PID controllers for a cross-coupled position servomechanism, in which the ANN serves as a decoupling compensator to improve the contour tracking accuracy. An EA processing the universal seeking capability is objective EA is developed to determine parameters and connect-ing weights of the PID controllers and ANN, respectively. The optimal solutions searching strategy, which imitates the simple natural selection in the living environment of the organisms, the proposed design under a variety of operating conditions. 2. Architecture of dual-axes system with cross-coupling control
+The principle of cross-coupling control is to treat the multi-for one servomechanism by taking into consideration of the contour errors of all axes. 2.1. Description of cross-coupling control
+The dual-axes motion control system consisting of a linear DC and e yn are the position errors on the X and Y axes, respectively.
+Generally, the error sources of a dual-axes system can be nonlinear trajectories.
+
+The principle of cross-coupling control is to treat the multi-one servomechanism by taking into account the contour errors of all axes. 2.2. Cross-coupling contour error
+P  X  X  P dxn , P dyn  X  of the individual axis are e yn  X  P dyn e
+P
+P
+P and P an . The contour error is defined as 9
+P n P an  X  e xn sin y e yn cos y  X  1  X  where y is the angle of the linear contour with respect to the X -axis.
+ Nomenclatures EA evolutionary algorithm MIMO multiple-input multiple-output GA genetic algorithm PID proportional integral derivative RMSE root mean square error ES evolution strategy ANN artificial neural network DNACA DNA computing algorithm LBDCM linear brushless DC motor PWM pulse-width modulation G px model of the linear motor G py model of the rotary motor G cx PID controller of the linear motor
+G cy PID controller of the rotary motor e xn position error on X -axis e yn position error on Y -axis
+C c decoupling controller k px , k ix , k dx PID controller gain of X -axis k py , k iy , k dy PID controller gain of Y -axis P dn desired position
+P an actual position
+P n position on the reference trajectory n contour error w weighting vector/matrix j weighting factor g generation number o number of parent generation l number of offspring
+O  X  k  X  cost function
+Err j steady-state error
+Tr j rise time
+Os j maximum overshoot
+P f A , G , T , C g DNA chromosome set
+P c crossover rate c tp two-point crossover operation c mp multi-point crossover operation c un uniform crossover operation
+P m mutation rate c vp recognition codons of virus operation c ep recognition codons of enzyme operation
+C xy cross-covariance between two coupled outputs t f final time e  X  xn  X  e xn sin 2 y e yn sin y cos y  X  2  X  e  X  yn  X  e xn sin y cos y e yn cos 2 y  X  3  X  and for the case of negative angles: e xn  X  e xn sin 2 y  X  e yn sin y cos y  X  5  X  e yn  X  e xn sin y cos y e yn cos 2 y  X  6  X 
+By substituting the contour error into P ax and P ay with the responses can be expressed as Finally, the position responses can be obtained as
+P
+P where ky  X  G py G cy  X  G py C 2 y C c  X  12  X 
+The transfer function matrix of the cross coupling control system can be augmented as follows:
+P
+P "# where
+T
+T with W  X  X  1  X  kx  X  X  1  X  ky  X  X  G px G py C 2 x C 2 y C 2 c 2.3. Neural decoupling compensator structure
+Traditionally, the two conventional PID controllers G cx and G are determined with respect to the individual motion control system before consideration of the whole system with cross-coupling situation.
+ the hidden layer and n  X  1 , ... , N , j  X  1 , ... , J ;In inputs vector and M 1 outputs vector, respectively; the weight between the former and latter hidden layers; the weight vector w output. For the ANN, training or learning process should be conducted to determine the optimal connecting weights. 3. Selection of optimal parameters 3.1. Stability conditions
+The purpose of this subsection is to characterize the admis-be written as follows: ~ C where k px , k ix , k dx are PID control gains of X -axis, and The gain k c is chosen so that the coupled signal d  X  f  X  e C
+C c  X  C x e x  X  C y e y  X  satisfies : f  X  e x , e y  X  k c e x : 2 r g x : e x : 2  X  g y : e y : where : f  X  t  X  : 2  X 
+In this characterization, e y is treated as a bounded external disturbance to the X -axis control system; e x is the bounded square error (RMSE) is used to quantify the tracking error. The and ANN X  X  connecting weights can be derived as follows: g g g  X  where : A  X  j o  X  : 1  X  sup singular value. 3.2. Evolutionary strategy (ES)
+The ES is used here to determine the PID control gains and neural connecting weights in this dual-axes system cross-cou-with zero mean and standard deviation.
+
+In ES, the search starts by generating o parents in each k where j m is a number of neuron per layer and g is the index of as in Fig. 5 . 3.3. Cost function design
+For practical control, it is common to consider the time domain performance indices such as steady-state errors, rise time and maximum overshoot. Evaluation of the transient response can be executed via an effective method of directly relating to the tracking performance, opposed to the conventional method of global tracking performance:
+O  X  k  X  X  weigh the relative importance of the three transient response maximum overshoot with respect to the two axes, respectively. motion control system. 3.4. Variable weights Seeking for the optimal connecting weights of the ANN and objectives would attain the consistent optimality. First, the fied at each generation  X  argmax  X  argmin where g is the generation number of the evolution process, O
+Given a threshold of the weight adjustment e Z 0, if  X  D O updates are performed: z  X  z g k  X  Z , 0 o Z o 1 w parents function before performing the previous weight updates to emphasize their related importance. 4. DNA coded neural networks to deal with parameter optimization and structure optimization problem in the current problem. The primary factors related to of DNACA. The framework of implementation of DNACA was realized via a NN with the simplest structure. A meaningful fitness function and the reasonable generation number to tune the primary parameters in this system will be defined later. 4.1. DNA coding method (2006) , Tsuboi et al. (2005) .
+ and, after competition, the best ones should survive and create new offspring. The coding architecture design of the neural network of DNA sequence in Fig. 6 is given as follows: DNA chromosomes f A , G , T , C g ).
+
+Step3 : Perform DNA computing (the coded DNA chromosomes are made to neural networks connected with crossover, mutation, enzyme and virus operations).
+ the neural networks system).
+
+Step5 : Store the results (storing and saving the best neural networks weighting values).
+
+Step6 : Repeat. 4.2. Crossover operation with DNA sequence
+The crossover operation is caused by recombination and information exchange of the DNA sequence in a probabilistic way. Two DNA sequences are chosen from the current population and partial genes are swapped with each other. The variety of crossover algorithms, depending on the crossover rate ( P the number of crossover points. Three applicable crossover 1995 ; Tsai et al., 2009 ).
+ defined as where X k  X  X  x 1 x 2 x 3  X  , x i A f A , G , T , C g and 1
+The DNA sequence is divided into three sub-DNA sequence by these two points and crossed over to each other by swapping the first and third sub-DNA sequence. The two-point crossover operation is a process of exchanging the DNA information. The middle sub-DNA sequence of the two crossover points is exchanged. By this method, depending on the crossover points, DNA sequence can be drastically changed.
+
+The second crossover strategy is multi-point crossover, c population p t ; the definition is as follows: () where 0 r r k , r mp r 1 , 0 r r r 1 and the threshold, r
+The third crossover strategy is uniform crossover, c un , that defined as ma  X [ L j  X  1 f X  X  1 , if r j Z r ma  X  3  X  X  0 , if r j o r
+The uniform crossover is defined as ()
+Similar to the multi-point crossover strategy, the process of uniform crossover is performed bit by bit in a pair of DNA multi-point crossover strategy, each pair of DNA sequence is crossed over at different points because no predefined mask is used. 4.3. Mutation operation with DNA sequence
+A sequence can be changed when the randomly generated operation is to change DNA sequence in a probabilistic way. It injects new information into the generation that may be impor-tant but not contained in the initial population or lost in the
+Mutation operation capable of spontaneously generating new strand provides a mechanism to maintain the population diver-sity. The operation of mutation, m , produces an intermediate  X  m  X  a t i  X  , 8 i A f 1 , 2 , ... , l g  X  ( A
+X k , and a t i A X k , a i , k A X k  X  28  X  where 1 r p o L . 4.4. Virus operation with DNA sequence
+From a biological viewpoint, one of the major causes of disease insertion mutation. The recognition codons of virus c vp that tion p t in the t th generation is defined as f a g X  c vp f a t i g8 i A f 1 , 2 , 3 , ... , l g f a , a c
+In short, a part of DNA sequence from other DNA chromosome moves into the chromosome by inserting codons of virus. Appli-cation of the operation in ANN is illustrated as in Fig. 7 . 4.5. Enzyme operation with DNA sequence
+The enzyme operation works as a bit deletion mutation, the reacting molecules go through chemical changes rapidly. The newly formed molecules break away from the doped position.
+The recognition codons of enzyme, c ep ; the start code, a t defined as f a 0 t i g X  c ep f a t i g8 i A f 1 , 2 , 3 , ... , l g 8 j A f 2 , 3 , ... , l 1 g , and 1 r r 1 o r j o r 2 r L 4.6. Fitness function of DNACA prescribes the optimality of a solution in a neural network system. An ideal fitness function correlates closely with the algorithm X  X  goal, and yet may be computed quickly ( Ma and Su, the DNA codon sequences that represent solve the given problem. dual-axes system by neural network with 6 PID control gains and a certain amount of connecting weights. The weights are evolved by a DNACA-base NN to ensure the root mean square error (RMSE) of fitness function minimized. And, computing speed of generations for the best solution.
+
+ X  in (20). Combination of the neural network X  X  weights and PID control gains forms an individual of the ES. A large amount of individuals form a population. The ES of DNA computing algo-the full operating range of this dual-axes system.
+
+The following fitness function reflecting the performance measure is first defined as domain performance indices: steady-state error, rise time and maximum overshoot with respect to the two axes, respectively; n and m are, respectively, the total numbers of neurons and connecting links of hidden layer, which may influence the pre-diction accuracy of the neural network and computational time;
+C xy denotes the cross-covariance between the two coupled out-puts
+C where t f is the total operating time. More hidden layers mean higher complexity of the neural network, which usually leads to significant computational burden. The framework of DNACA-based neural network for coupled error suppression is implemen-control with a simpler neural networking structure accompanied
+DNACA-based NN network structure with two neurons in the the output layer is less than 18 s per iteration in MATLAB simulations by personal PC with Intel Pentium 1.6 GHz and DDR memory of 512 M. The generation number is set to 25 to get higher accuracy and less computational time in this proposed computation algorithm.
+
+The penalty function is considered to connect the optimization problem of DNACA with the constraint conditions. The stability constraints obtained above are g  X  U  X  r 1 , j  X  1 , ... , 3  X  33  X 
+Applying the penalty function makes infeasible solutions the following penalty function is applied:
+S  X  k i  X  X  1 where e s is an adjective constant and its value 0 o e s 5 1,
+D b tion connecting optimization problems and constraint conditions can be modified as O  X  k i  X  X  O  X  k i  X  S  X  k i  X  . 4.7. DNA decoding scheme mapping of the amino acids, the DNA sequence decoding from each amino acids have each probability. Every nucleotide has a specific number to process the numerical computation. As in the biological DNA, a gene starts with the codon ATG and ends with the codon TAA, TAG or TGA. Instead of the identification code X the decoded control parameters are calculated by r  X  X  DNA 1 4 2  X  DNA 2 4 1  X  DNA 3 4 0  X  100 M et al., 2006 ; Huang et al., 2009 ).
+ 5. Numerical simulations and experimental results
+To check the efficiency and accuracy of each method, the issue. The ANN serves as a decoupling compensator to improve the contour tracking accuracy in this dual-axes cross-coupling control system. The conventional PID control, ANN and DNACA-based NN all without cross-covariance decoupling error compen-and then methods with cross-covariance decoupling compensa-tion were major considered in case studies. Each method was the performance requirement.
+
+Performance of the propose method scheme was examined by platform is actuated by a linear brushless DC motor (LBDCM) and a rotary DC servomotor. The design requirements were character-(20) of ANN and in (31) of DNACA-based NN, constrained by the requirement of robust stability.
+
+The pulse-width modulation (PWM) inverter was employed to drive the motor. The driver with LBDCM was considered as a subsystem and its model was experimentally identified as y  X  s  X  u  X  s  X   X 
+The driver with rotary DC motor was considered as a sub-system and its model was identified by G py  X  s  X  X 
+For the PID controller, the system response to unit step has K the 2% criterion), the maximum overshoot less than 5% and zero (1 mm) of this computation system to achieve the satisfactory RMSE for suppression of coupling influence; whereas, the numer-path length.
+
+The ANN is a 3-layered neural network. There are 2 neurons in input layer, 3 neurons in hidden layer and 1 neuron in output were 6 PID control gains and 10 connecting weights were determined. The former PID control gains, i.e. K d  X  0 : 0021,
+K the consistent optimality. The PID control parameters and ANN connecting weights were selected through the application of ES were conducted on MATLAB to evaluate performance of the resulting control design.
+
+First, comparing the step responses of X Y axis for the dual-covariance decoupling compensation, we found that the latter X  X  results were better than the former. Second, comparing the
+PID control, ANN and DNACA-based NN method were all without cross-covariance decoupling compensation at single point 1.6 mm, in ANN it is 0.2 mm and in DNACA-based NN method it is 0.08 mm, as shown in Fig. 10 . Third, according to the above results, the desired path of the X Y planar motion with cross-covariance decoupling compensation depends on the angle, which varies continuously. Results of the numerical experiment are discussed below. 5.1. Case 1: cross-coupled system without/with neural net-based compensation
+For the cases of the angles being 15 1 and 145 1 , the control gains converged after 25 generations and the results are summarized in Table 1 . As one can see that the depicted specifications have been achieved. The discrimination between the two axes is because of the different characteristics of two motors. We proceed to check the contour error in the absence of the ANN. Following the same setting, the control system with an
+DNA without decoupling compensator ANN without decoupling compensator PID without decoupling compensator
+Desired Path
+ANN with cross-covariance decoupling compensation was added to eliminate the cross-coupled error. After 25 generations, the and steady-state error between the ANN with cross-covariance case and without cross-coupled method is smaller in the same rise time (less than 1.2 s) during a single angle tracking. The performance of the current control system is better than the system without the ANN and it shows the high efficiency to reduce the system overshoot (approach to 0).
+ 1 to 90 1 . The maximal position error of the conventional PID control without cross-covariance decoupling compensation is 1.465 mm, ANN with cross-covariance decoupling compensation is 30 m m and that of the DNACA-based NN design with cross-proposed DNACA-based NN method is the best than others. This shows the effect of cross-covariance decoupling compensation with refined mechanism in suppression tracking error due to cross coupling effect in dual-axes motion.
+ control and ANN with cross-covariance decoupling compensation are shown in Fig. 12 (a); and these comparing with the DNACA-based NN are shown in Fig. 12 (b). The desired path of the X Y iance decoupling compensation is 12.5 m m, ANN with cross-covariance decoupling compensation is 3 m m and that of the ANN design.
+
+Our proposed fitness function in (31) has simultaneously considered effective network structure and reached the best respectively, tracking performance and network structure. 5.2. Case 2: cross-coupled system with DNA neural network compensation We finally considered the cross-coupled control system in a
+DNACA-based NN with cross-covari ance decoupling compensation and DNACA-based NN, which were all with cross-covariance error decoupling compensation is shown in Fig. 13 . The maximal curve shows the efficiency of error compensation in DNA-based neural network with cross-covariance decoupling compensation either in positive or in negative operational angles.
+
+Three different network architectures, the conventional PID control, ANN and DNACA-based NN without/with cross-covar-iance decoupling compensation, were studied in step by step.
+It was demonstrated in proposed DNACA method to achieve the best results sufficient to meet the requirements with higher 180 190 200 210 220 230 240 250 260 270 280 Y-axis displacement (mm) accuracy and less operational time. From above numerical simu-lations, it has been well explained to prove the convergence of 6. Conclusions that integrates the multiple obj ectives PID control design and motion control system has been established. The DNACA involving optimization of the neural networks based on the real-coding/ decoding mechanism strengthens the searching efficiency in the dual-axes motion system in indus try. Simulation/experimental results show that our design approach works effectively. References -100 -80 -60 -40 -20 0 20 40 60 80 100 Y-axis displacement (mm) Y-axis displacement (mm) 180 190 200 210 220 230 240 250 260 270 280 180 190 200 210 220 230 240 250 260 270 280
+Y-axis displacement (mm) Y-axis displacement (mm)

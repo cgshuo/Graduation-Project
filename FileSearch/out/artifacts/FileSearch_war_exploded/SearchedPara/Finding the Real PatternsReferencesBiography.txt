@@ -1,0 +1,3 @@
+ Webb, G.I.: Discovering significant rules. In Ungar, L., Craven, M., Gunopulos, D.,
+Eliassi-Rad, T., eds.: Proceedings of the Twelfth ACM SIGKDD International Con-ference on Knowledge Discovery and Data Mining, KDD-2006, New York, The As-sociation for Computing Machinery (2006) 434  X  443.
+ Webb, G.I.: Discovering significant patterns. Machine Learning (in-press).

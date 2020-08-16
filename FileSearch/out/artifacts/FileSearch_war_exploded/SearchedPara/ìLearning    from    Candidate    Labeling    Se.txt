@@ -1,0 +1,2 @@
+  X  X  Learning from mul&gt;ple annotators  X  X  Clustering with constraints null: not shown in the cap&gt;on Every instance x and solve the problem using the (CCCP) descent algorithm based on the framework (
+Yahoo! News dataset [Berg, et.al . NIPS04] 65 

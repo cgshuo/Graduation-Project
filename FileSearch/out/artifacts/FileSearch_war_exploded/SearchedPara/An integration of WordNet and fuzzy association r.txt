@@ -1,0 +1,49 @@
+ 1. Introduction irrelevant Web pages.
+ are still challenges in improving the clustering quality, which we list as follows:  X   X 
+To improve the scalability : many document clustering algorithms work document sets ef fi ciently.  X  input parameter, i.e., the number of clusters, may lead to poor clustering accuracy [6] .  X  do not provide labels for clusters.  X  would appear in multiple clusters (i.e., overlapping clusters).  X  the conceptual similarity of terms that do not co-occur actually [5,7] . fi Yahoo! Directory.
+ onto the same document to enhance their practical applicability. re fl results. Jing et al. [15] presented another application of WordNet, which described how to the reasons of utilizing hypernyms from WordNet are two-fold: (1) We intend to obtain more general and conceptual labels for derived clusters. buy product X also buy product Y for satisfying some prede each itemset has an associated measure of statistical signi minimum support value . The con fi dence value of an association rule, denoted conf( X often items in Y appear in transactions which also contain X . Finally, a rule X larger than or equal to the prede fi ned minimum con fi dence value or not.
+Considering the above two issues, we will propose an approach which stems from prior studies [18 set concept [21] and association rule mining to provide signi like ( term 1 . Low , term 2 . High )or( term 1 . Low , term contract with our previous study, this paper illustrates how to utilize the solve the overlapping clusters problem. The advantages of FMDC approach are listed as follows: document without using training data or standard clustering techniques; frequent itemsets as the candidate clusters; 3. It provides an accurate measure of con fi dence, and adopts the target cluster. Given a fuzzy set A in the universe of discourse X ={ x  X  A are greater than or equal to the speci fi ed value of number of clusters as an input parameter. 2. Related work we describe as follows. 1. Supervised and Unsupervised (Clustering): in supervised document classi language and Information Retrieval  X  should be assigned to both of the clusters
+Method with Arithmetic Mean (UPGMA) [4] . Besides, a new category of document clustering, namely clustering,  X  has been extensively developed, including FIHC [6] , HFTC [8] , TDC [11] , and F to these extracted frequent itemsets. These methods reduce the dimensionality of term features ef or a hierarchical tree of clusters.
+ other in fl uential document clustering algorithms. 3. The framework of FMDC approach 3.1. Document analysis module the source document set: 1. Key Term Extraction : the whole extraction process is as follows: for the document set. A term will be discarded if its weight is less than a measurement of t fi df ij for the importance of a term t j max de fi ne them in De fi nitions 3.1  X  3.4 .
+
+De fi nition 3.1 (Document). A document , denoted d i ={( t 1 by a set of key terms t j together with their corresponding frequency f
+De fi nition 3.2 (Document Set). A document set , denoted D ={ d documents, where n is the total number of documents in D .
+
+De fi nition 3.3 (Term Set). The term set of a document set D ={ d terms appeared in D , where s is the total number of terms and t
+De fi nition 3.4 (Key Term Set). The key term set of a document set D ={ d subset of the term set T D , including only meaningful key terms, which do not appear in a well-de prede fi ned minimum threshold of the tf  X  idf method. 3.2. TermOnto construction module given document set. As the relationships of relevant terms have been prede hypernyms provided by WordNet as useful features for document clustering.
+De fi of a key term t j  X  W , together with their reference function H :2 hypernyms up to fi ve levels in W . We denote h 1  X  h 2 , when h
+De fi nition 3.6 (Term Forest). A term forest of a set of key terms { t term trees, where m is the total number of key terms in D .
+ clustering quality [5,16] . For example, a document talking about clustering algorithm, if there are only  X  sale  X  and  X  trade documents, their semantic relationship can be revealed.
+
+Hence, we enriched the representation of each document with hypernyms based on WordNet to h , extended into d i ={( t 1 , f i 1 ), ( t 2 , f i 2 ), ... 3.3. Candidate clusters extraction module 3.3.1. The membership functions
+Each pair ( t j , f ij ) of a document d i can be transformed into a fuzzy set F fuzzy value w ij r has a corresponding membership function, denoted w range [0, 2], where r can be Low , Mid , and High , and the corresponding membership functions w (3.3), and (3.4) , respectively. The derived membership functions are shown in Fig. 4 . and avg ( f ij )= 3.3.2. The fuzzy association rule mining algorithm for texts
+To generate the target cluster set C D = c 1 1 ; c 1 2 ; ... ;  X  c 1 ; ... ;  X  c no each c i q as a target cluster in the following. A candidate cluster includes those documents which contain all the key terms in the number of key terms contained in  X  . In fact,  X  is a fuzzy frequent itemset for describing  X  c  X  X  or the term  X  trade  X  appeared in documents d 2 and d 3 .
+Algorithm 2 shown in Fig. 5 generates fuzzy frequent itemsets based on prede  X  that the itemset contributes to the document set.
+ of the fuzzy frequent q -itemsets. We take the candidate cluster sale= Low, thentrade= Mid  X  and  X  Iftrade= Mid, thensale= Low put in the candidate cluster set  X  C D . Finally, the candidate cluster set 3.4. Overlapping clusters generation module
+The objective of the last module is to assign each document to multiple clusters c documents to the target clusters, each candidate cluster  X 
+De fi nition 3.7 (Document-Term Matrix, DTM). A Document-Term Matrix ( DTM ), denoted W = w t
+De fi nition 3.8 (Term-Cluster Matrix, TCM). A Term-Cluster Matrix ( TCM ) for a document set D= { d such that 1  X  j  X  p ,1  X  l  X  k ,de fi ned as G = g max  X  R
+A formal illustration of TCM can be found in Fig. 7 . Each entry g candidate cluster  X  c q l .
+
+De fi n  X  k matrix V = v il  X  de fi ned by the inner product of its DTM and TCM, where A formal illustration of DCM can be found in Fig. 8 .
+ candidate cluster with the other candidate clusters. Hence, we de follows.
+
+De fi nition 3.10 (Multiple Clusters Matrix, MCM). A Multiple Clusters Matrix ( MCM ), denoted M =[ m that m ig = min { m il , m ij } is the membership degree of document d ... , k }, l  X  j , and q =1. A formal illustration of MDM can be found in Fig. 9 . the restrictive condition, and it can appropriately provide
+Then, based on the obtained DCM, an unassigned document d
+Formula (3.7) . clusters is de fi ned by Formula (3.8) .
+ where v ix and v iy stand for two entries, such that d i  X  threshold  X  to decide whether two target clusters should be merged.
+Algorithm 3 shown in Fig. 10 is used to assign each document to the for output. 3.5. An illustrative example
+Suppose we have a document set D ={ d 1 , d 2 , ... , d 5 entry denotes the frequency of a key term (the column heading) in a document d newly-added hypernyms. In this example, the key term  X  sale and  X  marketing  X  have the same parent node  X  commerce  X  .
+
+Consider the representation of all documents generated from Fig. 11 , the membership functions de in Fig. 12 .
+ 0.5. Fig. 13 illustrates the process of Algorithm 3, together with the 4. Experimental evaluation means, Bisecting k -means, and UPGMA algorithms. We make use of the FIHC 1.0 tool
+Steinbach et al. [2] compared the performance of some in fl
+Bisecting k -means are the most accurate clustering algorithms. Therefore, the CLUTO-2.1.2a the results of k -means, 4 , 5 Bisecting k -means, 6 and UPGMA. 4.1. Datasets datasets is described as follows:  X  system papers, and 1033 MEDLINE documents from medical journals.  X  includes 1504 documents with 13 classes.  X  single topic and includes 7674 documents with 8 most frequent classes.  X  the four most popular entity-representing categories: course, faculty, project, and student. 4.2. The evaluation metric performance of clustering algorithms. de fi in the document set D ;| c i | be the number of documents inthe cluster c number of documents both in a cluster c i and a class l j 4.2.1. Overall F-measure measure is called the overall F -measure of C, denoted F ( C ), which is de the other compared algorithms. 4.3. Parameters selection value. Therefore, the fi nal result of these three algorithms is an average from use Formula (3.1) to obtain the key terms with weights higher than the prede
+Frequency) vectors, and unimportant terms were discarded. This process implies a signi loss of clustering performance.
+ optional, and is denoted KCluster, which represents the number of clusters. 4.4. Experimental results 4.4.1. Comparison of FMDC with other algorithms long average length, there is no experimental result generated on the WebKB dataset. 4.4.2. The effect of the enriched document representation algorithms are tested by the baseline method and the addition of hypernyms of various levels. and WebKB datasets are shown in Table 7 .In Tables 6 and 7 , the addition of direct hypernyms;  X  h 2  X  stands for the addition of hypernyms of add more noise to the clustering process and decrease the clustering accuracy.  X  commerce  X  produced by FMDC with WordNet is a more general concept than the labels without WordNet.
+ 4.4.3. Ef fi ciency and scalability 5. Conclusion and future work clusters are merged.
+ such as the Yahoo! directory.
+ and UPGMA methods based on the comparison on four datasets. Our primary
+Our future work will focus on the following two aspects: Acknowledgements MY3 and No. NSC 98-2221-E-009-145.
+
+References

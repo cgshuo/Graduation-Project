@@ -1,0 +1,48 @@
+ 1. Introduction prescribed attenuation level.
+ H N tracking-based AFC approaches.
+ parameterized formulas.
+ fedbackintoits H N compensator. Thus, the approaches of further introduced as a delayless output filter. in Section 5. Concluding remarks are drawn in Section 6. 2. Problem formulation ( Chen et al., 1996 ): x  X  n  X   X  f  X  x  X  X  g  X  x  X  u  X  d  X  t  X  y  X  x  X  rand  X  t  X  ( E  X  t  X  X  e  X  t  X  Z  X  t  X  X  2  X  make E small enough at the onset of the motion t  X  0 and suggested Z is given in the following exponential form: l A performance: Z condition V L (0)  X  0, (4) can be rewritten to where : E : 2 Q  X  from w to E is equal to or less than r .
+ 3. Fuzzy approximator description 3.1. Interval type-2 fuzzy logic systems
+U tively. Let F i  X f ~ F l i i g  X  l
+R membership fumction (MF) m ~ FS with the MF m ~ obtained as follows:
+F  X  x  X  X  X  f l  X  x  X  , f l  X  x  X   X  6  X  where f f 8 &gt; &lt; &gt; : expressed as  X  y  X  X  weighted-average form is obtained as Y  X  x  X  X  output of the IT2 FLS is obtained as follows: y  X  X  y l  X  x  X  X  y r  X  x  X  X  = 2  X  8  X  3.2. Fired-rule-based average defuzzifier combinations, which can be enumerated as
+Y  X  x  X  X  obtained as y  X  imate error.
+ 2
+FS ~ F y of fired sets with respect to x i .
+ F by the pseudo-code in Table 2 .
+
+FLS is obtained as y  X  where
+Y  X  x  X  X 
+By defining the L ( l )th fuzzy basic function as x  X  x  X  X  (11) can be expressed as y  X  ^ f  X  x 9 h  X  X  h T n  X  x  X  X  12  X  ( l  X  1, y , N ) are included in n ( x ).
+ sup m F makes the average defuzzifier practical. 4. Controller design procedure 4.1. Direct adaptive control scheme controller: Substitution of (13) into (1) leads to n  X   X  k 1 E  X  n 1  X   X  ...  X  k n E  X  0  X  14  X  (13) cannot be realized.
+ m m w u  X  u n u f  X  x 9 h n  X  X  15  X  where h n is an optimal parameter vector defined as 9 argmin h designed as follows: u  X  u f  X  x 9 h  X  X  u h  X  E  X  X  16  X  dynamic equation: n  X   X  k T E  X  g  X  x  X  X  u n u f  X  x 9 h  X  u h  X  E  X  X  d or equivalently  X  E where
+A  X  Let ~ h  X  h h n . Noting (12) and (15), (17) becomes  X  E w  X  w u d = g  X  ~ h T n  X  x  X  X  g 0 = g 1  X  X  19  X  following lemma.
+ 8 x w 4.2. Derivation of the control law
+Choose the H N compensator u h as u  X  E T P b = 2 r 2  X  20  X  PA  X  A T P  X  Q  X  21  X  Choose the following Lyapunov function candidate: V  X  E T P E = 2  X  ~ h T ~ h = 2 g  X  22  X  adaptive law is designed as  X  y  X  where w is a new lumped uncertainty defined as w  X  ing (22) along (18) and (23) and using (21) yield  X  V Noting g u  X  g g 0 and (19), (24) becomes  X  V  X  E T Q E = 2  X  E T P b gw L E T P b gu h  X  25  X  Substituting (20) into (25) leads to  X  V  X  E T Q E = 2  X  g  X  E T P b w L  X  E T P b  X  2 = 2 r 2  X  r E T Q E = 2  X  g r 2 w 2 L = 2 Noting w  X   X  V r E T Q E = 2  X  r 2 w 2 = 2  X  26  X  in Chang (2001) .
+
+From Lemma 2, (26) becomes  X  V r E T Q E = 2  X  r 2 g w 2 L = 2
+Using the same proof in Phan and Gale (2007) , one gets  X  V
+Q , l constant. Therefore, one obtains V  X  t  X  r V L  X  0  X  X  V r , 8 t Z 0 i.e., V Integrating (26) from t  X  0to T yields V  X  T  X  V L  X  0  X  r written into (4).
+ z -domain transfer function ( Valiviita et al., 1999 ):
+H  X  z  X  X  expressed as S  X  z  X  X  relaxed to a certain extent. 5. An illustrative example 5.1. Plant dynamic model
+Consider a single-link robot manipulator governed by the
+Seng et al., 1998 ):  X  x  X  x 2  X  x y  X  x 1  X  rand  X  t  X  8 &gt; &lt; &gt; : and the viscous friction, which can be expressed as dynamic friction coefficient.
+ d 5.2. Controller parameters design in the following steps.
+ 2000) , one can make  X  0  X  X  a 0  X  y d  X  0  X  x 1  X  0  X   X  Z  X  0  X  X  7 a 0  X  a 1  X   X  y d  X  0  X  x 2  X  0  X  gets a 0  X  p /3 and a 1  X  ( p 2 /2 7 p /3).
+ antecedents of u f , the MFs are designed as  X  x  X  X  exp  X  X  x i p  X  l i 2  X  X  2 = 2  X  s l i i  X  2 y e Choose c  X  0.3, M R  X  1, N  X  60 and p  X  1.
+ m =300, d  X  0.2, g 0  X  1.6 and g  X  800. 5.3. Simulation studies Select the tracking indices J  X  ITAE  X  X  : e  X  t  X  : d t , and the control energy E c  X  and regulation problems. Angular velocity (rad/s) Angular velocity (rad/s) Angular velocity (rad/s) state variables are depicted in Fig. 5 .
+ -6 -4 -2 0 2 4 6 8
+Angular velocity (rad/s) -6 -4 -2 0 2 4 6 8
+Angular velocity (rad/s) -200 -100 0 100 200 300 400 500 average defuzzifier.
+
+With the modified tracking error E in (2), Controllers 3 measurement noise.
+ -8 -6 -4 -2 10 Angular velocity (rad/s) -5 10 15
+Angular velocity (rad/s) with the regulation problem. 6. Conclusions and future works ment noise.
+ -8 -6 -4 -2 0 2 4
+Angular velocity (rad/s) -8 -6 -4 -2 0 2 4
+Angular velocity (rad/s) -8 -6 -4 -2 0 2 4
+Angular velocity (rad/s) measurement noise.
+ Acknowledgment kind suggestion on the IT2 FLS study. -8 -6 -4 -2
+Angular velocity (rad/s) -8 -6 -4 -2
+Angular velocity (rad/s) -400 -300 -200 -100 100 200 u References -8 -6 -4 -2 0 2 4 Angular velocity (rad/s) -7 -6 -5 -4 -3 -2 -1 0 1 2
+Angular velocity (rad/s)

@@ -1,0 +1,23 @@
+ 1. Introduction reuse, to transform to other domains or languages and to integrate with other ontologies. verbalized to natural language format? the usability.
+ concludes with an outlook on future work in Section 6. 2. OWL concepts relevant for labeling properties or cardinality constraints.
+ labeling problem. Mainly we go into the specification of OWL property labels and the related problems. 2.1. The OWL way of defining classes and individuals root classes are defined by simply declaring a named class. In the well-known wine-example-ontology
+Winery , Region and ConsumableThing , which are defined in the following way: &lt; owl:Class rdf:ID= X  X  X inery  X /&gt; &lt; owl:Class rdf:ID= X  X  X egion  X /&gt; &lt; owl:Class rdf:ID= X  X  X onsumableThing  X /&gt; ing patterns, as can be seen in Table 1 [17] : would be an individual of the class WineGrape . This relationship is defined in the following way: &lt; WineGrape rdf:ID= X  X  X abernetSauvignonGrape  X /&gt; follows: &lt; Region rdf:ID= X  X  X entralCoastRegion  X /&gt; &lt; owl:Thing rdf:ID= X  X  X entralCoastRegion  X /&gt;
+Another way of defining this information is the following one: &lt; owl:Thing rdf:about= X  X #CentralCoastRegion  X &gt; &lt;/ owl:Thing &gt; and the sub-terms is not discussed any further. 2.2. The OWL way of defining relational object properties definition of object properties we again make use of the wine ontology: &lt; owl:ObjectProperty rdf:ID= X  X  X adeFromGrape  X &gt; &lt;/ owl:ObjectProperty &gt; has domain Wine and a range WineGrape  X  .
+ class definitions include multiple subparts that are implicitly conjoined. &lt; owl:Class rdf:ID= X  X  X ine  X &gt; &lt;/ owl:Class &gt; Table 2 contains parts of a list of property labels that are provided by the community [17]. 3. Related work we will describe in Sections 4 and 5.
+ stead of verbalizing them.
+ tion. The Attempto approach uses its own grammar rules for constructing simple sentences
+OWL-wine-ontology &lt; owl:ObjectProperty rdf:ID= X  X  X adeFromGrape  X &gt; &lt; rdfs:domain rdf:resource= X  X #Wine  X /&gt; and its usage with min cardinalities between the domain  X  X  X ine X  and the range  X  X  X ineGrape X  &lt; rdfs:subClassOf &gt; -&lt; owl:Restriction &gt; results in the following ACE translation: Every Wine madeFromGrapes at least 1 things.
+ set of expansion rules for the linguistic patterns. See for example [6]: (has) NP  X  Examples: email, hasColor  X  Expansions: X has a color Y  X  Alternate (if Y is an AdjP): X has Y color rently non-existing ontology guidelines.
+ our approach in detail. 4. A linguistic way of solving the OWL labeling problem 4.1. Naming guidelines for OWL labels restricted at all in OWL.
+ and also help optimizing the further processing steps.
+ were in the past.
+ 4.2. Levels of linguistically based OWL label evaluation incrementally evaluating labels: (1) ensure that the guidelines A1 X  X 7 are adhered to by the labels, (2) assignment of linguistic categories to used labeling segments, (3) mapping of the used labeling segments to possible labeling types, (4) checking the mapping result against the respective OWL concept type (Class, Object Property). 6. Labels 10 X 14 fail our passing criteria however.
+ individual and property labels are compatible to our guidelines, besides examples 7, 8 and 9. be derived. The result can be seen in Table 7 .
+ lowing rule: in its context, e.g.  X  X  X ourse  X  or  X  X  X egion  X  , then it should be combined with  X  X  X as  X  as a property label. internal OWL label type is possible as will be shown in the next section. be applied. 5. Verbalization of guideline based OWL labels guage words. Relationships between class labels and property labels are transformed to simple sentences. guidelines.
+
+The concept fragments underneath &lt; rdfs:subClassOf &gt; &lt; owl:Class rdf:about= X  X #WhiteLoire  X &gt; structure: tionships to a linguistically determined linearization frame of label-internal terms. interpretation.
+
+Below see the OWL concept fragment for this example: &lt; rdfs:domain rdf:resource= X  X #Meal  X /&gt; &lt; rdfs:range rdf:resource= X  X #MealCourse  X /&gt; &lt;/ owl:ObjectProperty &gt; ... -&lt; owl:Restriction &gt; &lt; owl:onProperty rdf:resource= X  X #course  X /&gt; &lt;/ owl:Restriction &gt;
+The bracketing structure underneath is the result the application of the parsing rules (see Fig. 3 ). 6. Conclusion and future work allow automatic transformation and splitting of OWL labels into natural language patterns. contents and the evaluated labels.
+ Acknowledgment The authors also would like to thank all the students involved for their substantial implementation work.
+References

@@ -1,0 +1,58 @@
+ 1. Introduction
+Geographical information is recorded in a wide variety of media and document types. Over the past few decades, infor-mation technology for accessing geographical information has focused on the combination of digital maps and databases McCurley, 2001).
+ on access to unstructured documents (Jones &amp; Purves, 2008).
+ tering of relevant documents.
+
+Because a GIR system can be seen as an IR system from a functional point of view, GIR systems can work with the same document collections as IR systems, accepting that the queries usually include location entities (something that has a space around us). For instance,  X  X  X ine regions around rivers in Europe. X   X  X  X ities within 100 km of Frankfurt. X   X  X  X hisky making in the Scottish Islands. X   X  X  X vents at St. Paul X  X  Cathedral. X 
+Evaluation campaigns such as the Cross Language Evaluation Forum LEF (Perea-Ortega, Cumbreras, Vega, &amp; Lpez, 2007, 2008; Vega, Cumbreras, Lpez, &amp; Perea-Ortega, 2006).
+There are several approaches to solve the GIR task, including simple IR systems that do not use geographical terms or bases  X  (thesauri, gazetteers),  X  X  query expansion  X  methods and  X  X  geographical disambiguation  X .
+Most of the systems presented in GeoCLEF, for the English monolingual task between 2005 and 2008, preprocess the col-stemmer (Porter, 1980 ) (to extract the stem of each non-stop-word ).
+
+They also use a Named Entity Recognizer (NER), a module that detects and recognizes named entities. Some groups have tilingual queries.
+
+The paper is organized as follows: Section 2 describes the complete system and the operations; Section 3 presents the resources used in this empirical comparison and the experimental results; and in Section 4 the conclusions of this work are written. 2. System overview we have added a Query Expansion subsystem. In addition, we make use of the Geonames base for the whole system, and Lemur 5 as IR index-search engine.
+ recovered by the IR subsystem are filtered and re-ranked by means of the Filtering and Re-ranking subsystem, making use of all geo-information extracted from document collection and queries. 2.1. System design and operations As we can see in the Fig. 1 , the main modules of our system are:
+Translator subsystem . We have developed and used the SINTRAM in order to combine various translations of the same query. A comprehensive evaluation showed that Systran for German and Portuguese ( Vega et al., 2006 ).
+
+Entity Extraction subsystem . GATE 8 is an infrastructure for developing and deploying software components that process human language. It includes a NER module to detect and to recognize entities. queries: Information Retrieval subsystem . We have used Lemur as IR index-search engine.
+ establishing what of them are valid, depending on the locations and the spatial relationships detected in the query. of the document in the ranking. This process is explained in more detail in the next section. 2.2. Relevant documents filtering ing. This validation uses two important indexes:
+Documents Index . It stores the preprocessed information of documents collection. We have preprocessed the collection ing the original entities. We have used Lemur to build the documents index.
+ typified as LOC (location) by the NER are checked using the GeoNames gazetteer. Organizations are not included.
+On the other hand, before the filtering process, the Geo-Information Extraction subsystem determines the type of each location detected in the query. We have considered four main types of locations:  X  Continent . GeoNames uses the CONT code for the continent type. It recognizes seven entities as continents: Europe,  X  Country . We have considered administrative divisions of a country as country type. GeoNames uses several codes in  X  Place . It is any entity that has not been considered as some type before.
+ Fig. 2 describes the basic architecture for the filtering process.
+ tering process did not make a re-ranking with the valid documents. They are included with the score assigned by the IR system.
+ In the last experiments carried out in 2008, the filtering process includes new heuristics and a re-ranking process. are filtered and re-ranked. Some examples of these filtering rules are: mate the mid-latitude of a country, the system subtracts the maximum and minimal latitudes. Any location which is above Reinbacher, 2004).
+ near to another when their distance is less than 50 km. This value has been determined based on experiments carried out tions, we have used the Great-Circle formula Sinnott (1984) : where system will accept the document wether it has at least one location that belongs to that continent or country. After the filtering process, in order to make the final ranking, the system handles two documents lists: the filtering rules.
+ The list of invalid documents. This list includes the documents which have not satisfied any filtering rule. the filtering rules which comply and the position of the document in the ranking: optimized and established empirically using the framework proposed in this work. 2.3. Query expansion
+We have developed a Query Expansion architecture in order to carry out the query expansion approach. The aim is to ex-cities, but also to synonyms, terms from the thesauri collections and any word in the same semantic domain. The Query Expansion subsystem is made up of three main modules:
+Named Entity Recognition . It detects and recognizes the location entities in the queries in order to expand the topics with geographical data. Examples of location terms are: towns, cities, capitals, countries and even continents.
+Geographical Information . The purpose of this module is to expand the locations detected in the previous module, using query.
+
+Thesaurus Expansion . This module has its own thesauri collection, generated from the GeoCLEF training corpus according adds them to the query. All terms are considered, including the geographic entities.
+
+Fig. 3 describes the architecture for the query expansion. 3. Experiments and results
+In this section the experiments carried out during the years 2006 X 2008 are described. We have used the evaluation queries in several languages in order to test each GIR system:  X  The document collection . It consists in 169,477 documents, composed of stories and newswires from the British news-3.1. Experimental method
+The experiment framework has been set as follows: (1) The document collection and the queries are preprocessed using the English stop-words and the Porter stemmer algo-(2) The non-English queries are translated by means of the Translator subsystem. (4) For the query expansion experiments, we have used the GeoNames gazetteer in order to expand with geographic cision (MAP) (Harman, 1994) and the R-Precision. The MAP measure computes the average precision over all queries. The relevant document is retrieved.
+
+Table 1 shows all results per experiment using the GeoCLEF 2006 topics. Table 2 shows the same experiments but using labels (TDN). The results obtained using TD labels are worse in general. 3.2. Experiments with query expansion use any expansion method. We compared two types of query expansion:
+Using geographic data . We have used several heuristics or manual rules in order to expand locations using geographic included in the query have been detected. Examples of these heuristics are:
+Using thesaurus . We have generated an own thesaurus from the GeoCLEF document collection, attending to a very high word co-location rate. We have used all the preprocessed words from queries, including the geographic terms. We expand the queries with the synonyms that have a similarity higher than a predefined threshold. The best results were obtained with a threshold value of 0.7. An example of query expansion using thesaurus is showed in the Fig. 5 .
+The analysis of results using the GeoCLEF 2006 topics shows that the use of geographical and thesaurus information does not improve the retrieval. The expansion method obtained poor results compared to the simple model in which we only use consider the text from one or two topic labels. The query expansion with words from the thesaurus included noise but, obtained with the expansion of topics: queries because the expansion heuristics were not correct.
+
+Sometimes, the NER module did not work well. For several queries the NER did not recognize some compound entities and query expansion using geographical information.
+
+This query expansion method has also been tested using the 2007 GeoCLEF topics. For these experiments we have ex-6 and 7 show a graphic comparison of these experiments based on MAP and R-Precision measurements respectively. 3.3. Experiments with relevant documents filtering
+In this section we study the impact of the relevant documents filtering. In 2007, we completely changed the approach of our system, because previous experiments demonstrate that the query expansion heuristics applied do not improve the isfy certain filtering rules. Some of these manual rules have been explained in the Section 2.2.
+For the filtering experiments we used all topic labels in the retrieval process. As baseline experiment we considered a (TF IDF, Okapi and PRF), but in Tables 1 and 2 we only show the best results, using Okapi + PRF . tering is important.
+ better results than query expansion, except using 2007 German topics, where the Translator subsystem did not work very well.
+
+In some filtering experiments, the mean average precisions obtained with this approach and the baseline experiments are allow a more optimal re-ranking process for each relevant document. 4. Conclusions and future work
+In this work we present a comparison between two approaches applied to the Geographic Information Retrieval task: use of a filtering module is an important method for GIR systems.
+
+However, the query expansion is an interesting method for some geographic queries. For instance, for those topics that depending on the query type.
+
+In order to improve the final results, we think that GIR systems require the combination between relevant documents query expansion, produces better results. In this case, an improvement could be the use of a higher number of documents higher.
+
+On the other hand, the application of Pseudo-Relevant Feedback (PRF) and the traditional Okapi weighting method works well and good results are obtained by the IR subsystem.
+
+Our future work will include an improvement of the filtering and re-ranking process when the relevant documents ob-interested in the development of a new module that validates the final relevant documents using the Web. References

@@ -1,0 +1,113 @@
+ 1. Introduction
+Nowadays, huge masses of people X  X  data are available, thanks to the wide use of Information Systems, which represent to guarantee the believability of the overall knowledge process,  X  G X ntzer, and Grimmer (2001), Haug, Zachariassen, and Van Liempd (2011), Dasu (2013) . large-scale diffusion.
+
+Within this work we support the idea that model-based verification approaches (model checking for instance) can sup-port the Data Quality task of the KDD process in real-life situations by:
+In this regard, here we present the Multidimensional Robust Data Quality Analysis, a novel technique we defined to
+Italian Labour Market Domain, then providing a (smaller) database and the experimental results to the community. 2. Motivation and contribution by Holzinger (2012, 2011), Wong, Xu, and Holzinger (2011), Lovaglio and Mezzanzanica (2013) . Among the time-related &amp; Van den Poel, 2011 ).
+ should help in clarifying the matter. 2.1. Motivating example phone. The Timestamp value reports the call start time or the message/data packet send time. sivity has been recently revisited and improved, see Bravo, Fan, Geerts, and Ma (2008) . and measuring such  X  X  X oodness X  X  can strengthen the believability of the overall knowledge discovery process.
+First, we present and formalise the Multidimensional Robust Data Quality Analysis (MRDQA for short), a domain-inde-
+Then, a visualisation technique is used to facilitate the understanding and assessment of the MRDQA results, namely the parallel-coordinates;
+Second, we express the task of evaluating weakly structured data quality as a model checking problem, then we imple-mented the MRDQA using the UPMurphi tool ( Della Penna, Intrigila, Magazzeni, &amp; Mercorio, 2009 ); the community.
+ 3. Related work involve statisticians, mathematicians and computer scientists, working in close cooperation with application domain experts, each one focusing on its own perspective ( Abello, Pardalos, &amp; Resende, 2002; Fisher et al., 2012 ). Chomicki &amp; Marcinkowski, 2005b; Hipp et al., 2001; Yu, Wang, &amp; Lai, 2006 ). dirty data. The cleansing procedures can be implemented in SQL or in other tool specific languages. 2002; Dovier &amp; Quintarelli, 2009 ).
+
+FDs (Functional Dependencies), multivalued dependencies, join dependencies, and inclusion dependencies. However, as of guiding one in correcting the errors.
+
+They seem to be very promising approaches, even though their effectiveness have not been evaluated on real-world domains.
+ merge the most used cleansing solutions by both academy and industry. It provides a programming interface that would actions for a particular data quality context.
+ formality in addressing domain independent problems, as the case of several ETL tools. maintain, as discussed by Rahm and Do (2000) . 4. Background verification through model checking. 4.1. Data quality at a glance and planning. Data are fit for use if they are free of defects and possess desired features X  X . 4.2. Explicit model checking how the system can move from a state to the next one as a consequence of a given input action. checker returns the error-trace , describing how the system reached the error. x ; x 2 ; ... ; x n . If each variable x i ranges over a (nonempty) set D also called reachability analysis .
+ Edelkamp &amp; Jabbar, 2006 ).
+
+For the sake of clarity, we formalise an FSS as follows. state s can reach state s 0 via action a . Hence, we define: a trajectory as a sequence p  X  s 0 a 0 s 1 a 1 s 2 a 2 ; ... ; a we write p s  X  k  X  (resp. p a  X  k  X  ) to denote the state s Reach(S) as the set of all states reachable from the initial ones.
+ Clarke, Strichman, and Zhu (2003) .
+ More formally we can define the following.
+ following) is a triple P X  X S ; u ; T  X  where u is the invariant condition and T is the finite horizon. Then a feasible solution for P is a reachable trajectory p in Reach  X  S  X  s.t.: 9 s 4.2.1. The UPMurphi tool The high formalisation and computational power of model checking has been applied to several contexts away from the enumeration.
+
+Note that, even though UPMurphi is a planner, it exploits the well-known planning-via-model-checking paradigm the search when a goal state is found.
+ our purposes: sources, since restrictions on accessing and duplicating archives are frequently enforced due to non-disclosure and secrecy agreements; of huge graphs. inconsistencies affecting the data, as described in detail in Section 7.3 . 4.3. Data consistency verification as model checking problem
+Finite State Systems have been widely applied in the literature, also dealing with event-driven systems by mapping while an ordered set of records represents an event sequence .
+ To this aim we introduce the following.
+ Definition 3. Let R X  X  R 1 ; ... ; R n  X  be a schema of a database relation.
+An event e  X  X  r 1 ; ... ; r m  X  is a record of the projection  X  R
+An event sequence is a -ordered sequence of events  X  e 1 ; ... ; e such that e 1 e 2 ... e n ;
+Database (FSEDB) is a database S whose content is S  X  S k In the following we denote by i a subsequence of from the first event to the one in position i . refer to a subset while the overall dataset will be called FSEDB.
+ Intuitively, the application of model checking techniques to data quality problems (as introduced in ( Mezzanzanica, a solution for the latter (if any) is an inconsistent set of records for the former. through the model checking tool language.
+ solution (if any) represents an inconsistency affecting the dataset S
+Step 3 (Iteration) Repeat step 2 for each S i 2 S . 4.3.1. Working example lected about a single mobile phone is an FSED S i , while the information of several of them is the FSEDB S .
+An event e i is composed of the attributes MS-ID , Event Type , Cell-ID , and Timestamp , namely e over the event X  X  attribute Timestamp , hence 8 e i ; e j 2 E ; e horizon can be set to the maximum dataset cardinality, namely T  X  max for each different S i (i.e., for each different FSED) the model checker generates a different FSS modelling the S To clarify this aspect, it is worth to describe a different domain where a similar approach is used. tance in the least possible time by incrementing or decrementing its current acceleration.
+Discretise and Validate approach of ( Fox et al., 2012 ). Similarly, in our model, data (i.e., a S generalizability. The following example should help in clarifying this concept. 4.3.2. Working example of two mobile phones: Mob 1  X  X  cell in ; 03290  X  ;  X  cell out ; 03291  X  and Mob although finite) with an abstract domain composed by a set of symbols. We can make an abstraction of the domain D by using only a reduced set of symbols, namely D abstract to generalise data inconsistency.
+ We formalise this concept as follows.
+
+Definition 4 ( Data Abstraction ). Let s be an FSS state and e be an event with respectively s  X  x e  X  X  r 1 ; ... ; r m  X  event attributes. Let D be a finite (although very large) attribute domain where f x f r ; ... ; r m 0 g # f r 1 ; ... ; r m g are instances of D , i.e., f x
+An event e happening in the state s requires the evaluation of x n 0  X  m 0 different values of D . Then, we define the Abstract Domain of D as a set of different symbols d
+Abstract Data , required to represent the values of D in the consistency model, i.e. D
+Some conditions should be met to apply such data abstraction: the analysis); (p2) No condition should compare a symbol to a non-abstract value (e.g., C 5. The Multidimensional Robust Data Quality Analysis mensional Robust Data Quality Analysis, which identifies, extracts, and classifies data inconsistencies. 5.1. The RDQA erate a cleansed (and consistent) version C i of a source dataset S regardless of its implementation and can be deemed as a black-box working as follows.
+S .
+ cleansed dataset? intervention, providing knowledge to evaluate the entire cleansing process.
+Function 2 ( ccheck ). Let K i be a FSED. Let be a total order relation such that 2 K defined in Definition 3 .
+ Then ccheck : FSED !f 0 ; 1 g is a function that returns 1 if is inconsistent, 0 otherwise. Section 4.3 .
+ model-based reasoning is only as good as the model is).
+ set by comparing the source and cleansed instances (i.e, S
+S and C i are found, 1 otherwise.
+ cleansed instance C . The cleansed version C was generated executing the cleansing function clr on each S a given set S i ( C i ) we define a function returning the representative element of the set S
+Function 4 ( rep ). Let K be an FSEDB and let R be the set of all the representative elements of K . For all K a function which returns the representative element r i 2 R .
+ the results of functions ccheck ; equals , and clr and computing statistics on the resulting S RDQA iteration.
+ domain.
+ making the process more robust with respect to data consistency. 5.2. The multidimensional RDQA tion about the inconsistency characteristics.
+
+Procedure 1. RDQA 1. S  X  get_database_content(); 2. D  X   X ; ; D  X ; ; 3. F  X  S  X ; ; F S  X ; ; 4. F  X  C  X ; ; F C  X ; ; 5. for all S i # S do 6. C i  X  clr  X  S i  X  ; 7. equals aux  X  S i ; C i  X  ; 8. ccheck aux  X  S i  X  ; 9. ccheck aux  X  C i  X  ; 10. end for 11. compute_ DCM  X  X  ;// Table 2 (a) 12. display_DCM();
+Input: S i ; C i 1. if  X  equals  X  S i ; C i  X  X  1  X  then 2. D  X   X  D  X  [ rep  X  S i  X  ; 3. else 4. D  X  D [ rep  X  S i  X  ; 5. end if
+Input: X i //It can be S i or C i 1. if  X  ccheck  X  X i  X  X  1  X  then 2. F  X  X  X  F  X  X [ rep  X  X i  X  ; 3. else 4. F X  X  F X [ rep  X  X i  X  ; 5. end if the latter, the  X  X  X ell X  X  domain has been mapped on an abstract data set D &lt;state values;event values&gt; leading to an inconsistency.
+ FSS.
+
+Definition 5 ( Error-Code on FSED ). Let S i be an FSED and let  X  e
+Moreover, let i be the index of a minimal consistent subsequence, that is a sequence inconsistent while 8 j : j 6 i 6 n 1 ; j is consistent.
+
+An error-code err for is a number k 2 N  X  such that k  X  0if inconsistency affecting the sequence i  X  1 .
+ Clearly, to compute error-codes on a FSED, we need to improve the ccheck function as follows.
+Function 5 ( ccheck ec ). Let K i be a FSED. Let be a total order relation such that 2 K defined in Definition 3 .
+ inconsistency with error-code err has been found on ; 0 otherwise.
+
+Also in this case, we used model-checking to implement the ccheck tified as follows.
+ the finite horizon. Moreover, let P be the set of all the inconsistent trajectories p 2 P , i.e. p  X  s j p j 6 T and s i  X  1 2 E . We introduce: the error-code function h : Reach  X  S  X  A ! N  X  that, for a given pair  X  s used to denote a no error condition; a Universal Checker K as a map where each pair  X  s i ; a i
+Note that, the h function has been implemented by using the STL hash object class, since UPMurphi allows the use of external C/C++ libraries. can be used to enhance a DCM cluster with error-code data as follows.
+
+Each DCM cluster is enriched with a square matrix having n  X  1 rows and columns, where n is the number of distinct error-codes detected (i.e., jKj ) according to Definition 6 , as shown in Eq. (1) . 6. Experimental phase: A real-life application on the labour market domain problem has been described as a model checking one.
+ by Cipollini, Ferretti, Ganugi, and Mezzanzanica (2013), Lovaglio and Mezzanzanica (2013) . improve the data cleansing process performed on the mandatory communications of an Italian region inhabitants. 6.1. Domain constraints
+For each worker, a mandatory notification (an event in our context) is decomposed into the following attributes: in this context), and the FSEDs union composes the FSEDB.
+ law, from the domain knowledge, and from the common practice. Some domain constraints are briefly reported: c1: an employee can have no more than one full-time contract in force at any given time; c3: an unlimited term contract cannot be extended; c5: a conversion requires either the c type or the c flag to be changed (or both). for which she/he does not work, an event cannot be recorded twice, etc. 6.2. Domain modelling tract with company 12.
+ part-time, and then reactivating the latter again (i.e., unemp ; emp For the sake of completeness, in Fig. A.7 and A.8 we provide the UPMurphi model for our application domain. states and events of the automaton of Fig. 4 . The empr _ id attribute domain has been mapped on a set of 3 symbols by abstract data since their domains are already bounded.
+ value with a non abstract one. 7. Experimental results
+In this section we describe some experimental results obtained on the Labour Market Domain presented in the previous
+Section 7.4 while Section 7.5 reports details about the online dataset. 7.1. Experimental settings
+We performed an extensive experimental evaluation of our approach on an administrative archive of an Italian Region composed by 21,805,653 mandatory communications. The source archive ( S from now on) contains data on the careers of 2,498,615 people observed starting from 1st January 2004 to 31st December 2011. For each career a subset S (where i 2 X  1 ... 2 ; 498 ; 615 ). In these settings, S i of the UPMurphi model used.
+ data quality process. 7.2. Results: The RDQA
+Table 4 shows the double check matrix (DCM) computed by the RDQA. Each DCM line shows the number of FSEDs (i.e. the from the reference one. Those events are therefore outside the scope of the analysis. Each DCM row shown in Table 4 can be shortly commented as follows, by focusing on the columns DCM clusters and Careers Data : that domain experts should address.
+
+In the next section we show how the MRDQA, as introduced in Section 7.3 , has been applied to obtain fine-grained information on how improve the cleansing function. 7.3. Results: The multidimensional RDQA been used to generate a Universal Cleanser.
+ percentage among the DCM clusters.
+
+The Multidimensional DCM represents a fine-grained analysis of both the source dataset and the cleansing procedures, process.
+ We have identified, among the others, the following action points.
+ unlimited term contract flag. This information proves, as expected, that a huge number of closing contract ing with such cases.
+
+Focusing only on clusters where the clr always failed the cleansing process, the error codes 93, 115, and 184 can be frequent error-codes affecting Cluster 8 to identify bugs on cleansing routines. be widely analysed. 7.4. Result comments
+Thanks to the DCM and the further analysis on the error set generation we can summarise our results by computing the following indicators: data for decision making purposes.
+ how the clr process could be improved and refined.
+
+The quality improvement (Cluster 7 Cluster 4) achieved by the cleansing intervention accounts for 55.86% of the In other words, the results obtained can be considered a measure of the clr effectiveness. relevance by analysing the DCM and the error codes distribution, and subsequently refining the cleansing routines, comparing previous and further versions, making more robust the data quality process. 7.5. The online dataset
+A source archive containing 1,248,814 mandatory communications describing 214 ; 429 careers extracted from the data-set presented in Section 7 has been made publicly available for download. verification as detailed in the paper. The dataset is composed by the following tables: The Worker Careers. It is a table composed by 7 columns, whose semantics has been detailed in Section 6.1 . 7.5.1. Experimental results on online dataset k -coord see Inselberg (1985) ).
+
+Informally speaking, k -coord allow one to represent an n -dimensional datum  X  x x For these reasons, the plot file has been made publicly available for downloading.
+Finally, the Multidimensional RDQA outcomes and the k -coord sheets have been made publicly available for download and demonstration, so that the results we present can be assessed, shared, and used by the community. 8. Conclusions and expected achievements
+Then, we presented the Multidimensional Robust Data Quality Analysis, an iterative and domain-independent technique the cleansing procedures by identifying the issues to be addressed. We implemented the consistency check through the
+UPMurphi tool (whose model is provided in Appendix A ) and we applied the MRDQA to a real-world governmental appli-order to provide a dataset for KDD tasks to the community.
+ well.
+
+More specifically, in our experience at the CRISP Research Centre, ing functions realised by means of an ETL tool.
+ achieve a better comprehension of data characteristics and dynamics.
+ 2014a ).
+ Acknowledgement
+The authors would like to thank the anonymous reviewers for their valuable comments and suggestions for improving this work.
+ Appendix A
+For the sake of completeness, in Figs. A.7 and A.8 we provide an extraction of the UPMurphi code for our application function nextEvent() .
+ References

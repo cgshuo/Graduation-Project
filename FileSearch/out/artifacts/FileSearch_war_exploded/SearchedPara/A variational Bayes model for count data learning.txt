@@ -1,0 +1,90 @@
+ 1. Introduction
+Count data appear in many domains (e.g. data mining, computer
+Bayes assumption, through the consideration of the multinomial training bias, the need for the as sumption of independence for features and failure to model text well, were observed with the
+Madsen et al. (2005) and Bouguila and Ziou (2007a) .Themostwidely the Dirichlet distribution has some shortcomings, also. The main mean values must have absolutely the same variance which is not from the Dirichlet assumption to better modeling assumptions transitionaswell,wheretheultimategoalistohavemoreaccurate data modeling.
+
+One of the immediate applications of proper data modeling is classi aregenerallycomposedofahugenumberofminuteobjects.The textual documents modeling using mainly singular value decomposi-a hierarchical extension of PLSI was proposed in Vinokourov and
+Hoffman et al. (2010) , and the discriminative supervised version have ignored an important aspect of LDA namely the fact that it ( Caballero et al., 2012 ). Their model however is based on Gibbs sampling and Markov chain Monte Carlo (MCMC) method ( Robert require much more computation time than deterministic methods Recently, the second author has shown that the generalized
+Dirichlet is a good alternative to the Dirichlet when using model. Moreover, the generalized Dirichlet has a more versatile maintain consistency with the LDA model we call our model, latent
+Bayes estimation approach inspired from the one proposed in Blei capabilities. In the experimental results we shall elaborate the conjunctions between the two models further. We shall compare the scene classi fi cation.
+
+The rest of the paper is organized as follows. In Section 2 ,we introduce the LGDA model and give the detailed derivations to learn its parameters. Section 3 is devoted to the presentation of the results of applying both LDA and LGDA. The applications the strengths and weaknesses of both models. Finally, conclusion and some thoughts about future directions follow in Section 4 . 2. Latent generalized Dirichlet allocation 2.1. The model
+Like LDA, LGDA is a fully generative probabilistic model over a denoted by M  X  X  w 1 ; w 2 ; ... ; w M  X  . And each document sheer convenience, we drop the index m wherever we are not referring to a speci fi c document. The word w n  X  X  w 1 n considered as a binary vector drawn from a vocabulary of V words, the document (or the image) through the following steps: 1. Choose N p Poisson  X   X   X  . 2. Choose  X   X  1 ; ... ;  X  d  X  p GenDir  X   X  3. For each of the N words w n : (b) choose a word w n from p  X  w n j z n ;  X  w  X  .
+ In above z n is a d  X  1 dimensional binary vector of topics de de fi ne  X  !  X  X   X  1 ; ... ;  X  d  X  1  X  , where  X  d  X  1  X  1  X  d matrix  X  w so that a chosen topic is attributed to a multinomial w over the vocabulary of words so that from which every word is randomly drawn. p  X  w n j z n ;  X  draw multinomial probability conditioned on z n and GenDir  X  ! p  X  Dirichlet distribution ( Bouguila and Ziou, 2007b ). We de ! elements are as follows ( Bouguila and Ziou, 2007b ): E  X  Var  X   X  i  X  X  E  X   X  i  X  and the covariance between  X  i and  X  j is given by Cov  X   X  i ;  X  j  X  X  E  X   X  j  X  correlated. Also unlike Dirichlet two elements with the same mean distributions (see Appendix A ). This means that the generalized following for the learning of our model. It turns out also that multinomial distribution. This implies that if  X   X  1 ; ... ; generalized Dirichlet distribution with parameters  X   X  n ; ... ; n d  X  1  X  follows a multinomial with parameter  X  ! posterior distribution p  X   X   X   X  i  X  n i  X  5  X   X  0
+Having our generalized Dirichlet prior in hand, we proceed with de fi ning the  X  d  X  1  X  V word-topic probability matrix  X  w which element  X  w we proceed with assuming a non-generated  X  w matrix, but we will be revoked without bringing harm to the entire model. By assuming deduce the following joint distribution: p  X  ! ; z ; w j  X  ! ;  X  w  X  X  p  X   X  ! j  X  !  X  p  X  w j z ;  X  w  X  p  X  where z is the set of latent topics. Integrating over the and the topic space gives  X 
+In the previous equation,  X  that are selected once per each document in the corpus.  X  document level parameter and is chosen once per document. follows: p  X 
+D j ! ;  X  is shown in Fig. 1 . 2.2. LGDA inference
+The main inference problem of LGDA is estimating the poster-ior of the hidden variables,  X  p  X  ! ; z j w ;  X  ! ;  X  w  X  X  p  X  The above equation is known to be intractable. As proposed in this intractable posterior is to use the variational Bayes (VB) inference. VB inference offers a solution to the intractability problem by determining a lower bound on the log likelihood of the observed data which is mainly based on considering a set of 1999; Watanabe and Watanabe, 2006; Fan et al., 2012 ): q  X  ! ; z j w ;  X  q ! ;  X  w  X  X  q  X   X  ! j  X  q !  X   X  N
+In the above q  X   X 
+Dirichlet distribution, calculated once per document, q  X  z single word inside the document, and  X  w  X f  X  1 ;  X  2 ; ... ; log p  X  w j  X 
+Assigning L  X   X  q side and the right-hand side of the equation is the KL divergence probability, thus we have log p  X  the right-hand side one can proceed with maximizing L  X   X  ! ; w  X  . Up to here the formulation basically follows the LDA model. the generalized Dirichlet distribution as the parameter generator breakdown of L  X   X  q
+Using variational inference to maximize the lower bound L  X  ; ! ;  X  equations for the variational multinomial (see Appendix B.1 )  X  weighing constant e  X  n 1 is given by e
+Maximizing the lower bound L with respect to the variational generalized Dirichlet parameter gives the following updating equations (see Appendix B.1 ):  X  l  X   X   X  l  X   X 
+Comparing the above equations with Eqs. (5) and (6) shows that the variational generalized Dirichlet for each document acts as a posterior in the presence of the variational multinomial para-generalized Dirichlet and the multinomial distribution. 2.3. Parameters estimation
+The goal of this subsection is to fi nd the model's parameters estimates based on the variational parameters derived in the last subsection. One needs to consider that the LGDA parameters are corpus parameters and therefore they are estimated by consider-
+L  X  m  X  1 L m as the lower bound corresponding to all the corpus, where L m is the lower bound corresponding to each document m .
+Maximizing the corpus lower bound L with respect to  X  w  X  lj  X  delivers the following updating equation (see Appendix B.3 ): p  X  M
+The model's parameters are the last ones to be derived. Following in order to derive LDA parameters it was feasible to use the
+Newton  X  Raphson algorithm for parameters estimation. It was also it is possible to exchange the computationally demanding problem of inverting the Hessian matrix of the Lower bound with a linear operator and therefore reducing the model complexity.
+The Hessian matrix of the generalized Dirichlet distribution offers the same useful, albeit in a different way, simpli characteristic was analyzed in Bouguila and Ziou (2007b) . The block-diagonal matrix is another block-diagonal matrix consisting problem of inverting the 2 d 2 d Hessian matrix is reduced to computing the inverse of 2 2 matrix for d instances. The complete derivation of the model parameters is brought in Appendix B.4 .
+
+The last formulation that we need to derive to prepare our randomly chosen word w n inside the document: p  X  w n j  X  Combining Eq. (2) with Eq. (20) delivers the formulation for the word likelihood as follows: p  X  w n j  X  The log likelihood of a document w m is derived as the sum of the log likelihoods of the words present inside the document and therefore we have log p  X  w m j  X  where for each document w m , cnt mv is the number of times the v gives the highest likelihood is chosen as the class the document belongs. 3. Experimental results
+In this section, we bring the results of applying the LGDA model on two distinct challenging applications namely text and visual scene classi fi cation. The main goal of both applications is to compare the LGDA and LDA performances. 3.1. Text classi fi cation
+In text classi fi cation, the problem at hand is deciding which distinctive class to assign a given document to Sebastiani (2002) used for different purposes such as retrieval, recommenda-
+This problem has been the topic of extensive research in the past (see, for instance, Sebastiani, 2002; Ruiz and Srinivasan, 2002; from two distinct but related ways. Assuming that the number of classes is known, from a fi rst perspective text classi fi viewed a binary categorization problem where the main task is to decide to which class we should assign the text given two distinctively chosen classes. The other way to look upon the problem is to decide how accurately can the model assign the proceed with giving results for each of the two mentioned scenarios in the following.
+
+For our simulations, we chose the Reuters-21578 dataset 1 ( Joachims, 1998 ). This dataset consists of 21 578 documents and in total there are more than 20 000 words present inside it. Independent works have, either manually or automatically, though there are many extracted categories thus obtained, not all of them contain enough documents to be suitable for training and extracted from the dataset. They, in total, comprise more than 9000 documents of the original dataset and nearly all the words present in the unabridged dataset. Table 1 describes the consid-ered classes.
+
+To examine the classi fi cation accuracy of the models, in the step we choose a certain number of the documents in each of the in Fig. 2 . From each class 100 documents are randomly chosen for can be deduced from this fi gure. The Reuters dataset consists of relatively short documents that are presented as extremely sparse countvectorsovertheentirevocabularyset.BothLDAandLGDAuse vectors,thetwomodelsroughlyofferthesamesuccessrate.Thiscan offer better classi fi cation. An instance of related classes is  X  comparable or improved results as compared to LDA. That again models.Weneedtoemphasizethedifferencebetween Figs. 2 and 4 . Fig. 4 we limited the number of documents in each class to 1000.
+Tables 2 and 3 show the confusion matrices of the LGDA and LDA maximum rates in Fig. 4 ). 3.2. Visual scenes classi fi cation 3.2.1. Methodology
+In this set of experiments, we apply our LGDA model to the images recommendation ( Boutemedjet et al., 2007 ). The main goal is to compare the LGDA to the LDA which was considered for the adaptations to the original LDA were proposed in Fei-Fei and Perona (2005) , and the reader is then referred to this paper for very same adaptations were included in the LGDA without a need based on the description of scenes using visual words ( Csurka et al., 2004 ). This approach has emerged over the past few years and received strong interest that is mainly motivated by the fact that many of the techniques previously proposed for text classi-fi cation can be adopted for images categorization ( Csurka et al., set of training images. In our case, we use the scale invariant features are then quantized through clustering (the K-Means algorithm in our case) and the obtained d clusters centroids are considered as our visual words. Having the visual vocabulary in hand, each image can be represented as a d -dimensional vector experiment we take 7 classes from the natural scenes dataset introduced in Oliva and Torralba (2001) and we combine it with one indoor scenes class from Fei-Fei and Perona (2005) . The 7 classes chosen from the data set described in Oliva and 329, 261, 309, 411, 293, and 356 images, respectively. The class chosen from the data set proposed in Fei-Fei and Perona (2005) is the bedroom category which contains 217 images. Examples of 3.2.2. Results
+From each category, in the considered data set, we randomly chose 100 images for model training. Unlike text classi fi which usually leads to sparse training matrices, the abundance of extracted visual keywords, as compared to the textual vocabulary, compare the success rates of the LGDA and LDA models, when categorization results are obtained when adopting LGDA. Fig. 7 shows examples of per class comparisons between the success rates obtained by both models. It is obvious that due to the less sparse nature of the count data vectors extracted in the case of scenes classi fi cation task (as compared to the text classi ities of the LGDA become more evident. Tables 4 and 5 show the optimal confusion matrices of the LGDA and LDA models. It should be noted that in few instances it happens that the likelihood of two or more classes become equal. This happens when the drop the scene altogether. According to these tables it is clear again that the LGDA gives signi fi cantly a better classi accuracy (65.69%) than the LDA (62.49%). 3.3. Comparison of the computational requirements of the LGDA versus the LDA
+An essential concern when proposing new models as replacements offers and what it requires in return. LGDA in general is a more computationally demanding model than LDA. Indeed, in dimension d 2 d parameters. Thus, comparing to the Dirichlet, the generalized Dirichlet has d 1 extra parameters which is a very important advantage. Indeed, as the Dirichlet has d  X  1 parameters, when fi twice the number needed for LDA. The other parameters remain the same. One concern is the computational requirements of the model number of generalized Dirichlet parameters. To show the computa-
+The result of these experiments is shown in Fig. 8 .Fromthis can see that although in general LGDA is a more computationally extracted topics clearly follows a linear curve. 4. Conclusion
+In this work, an elegant generalized version of the LDA model to the extension of the LDA model (e.g. to online or hierarchical to the generalized Dirichlet distribution. The recourse to the model has the chief advantage of containing the LDA model as a basic LDA model. We tested our proposed model on two challen-ging applications namely text and visual scenes classi fi obtained results demonstrate superior performance of the LGDA.
+The fl exibility and generalization capabilities of our model offer
+LDA model has been previously applied. Promising future works could be devoted to the extension of our model to handle hierarchical topic models as well as its adaptation for online learning settings. The potential of the LGDA model is overwhelm-applications and learning techniques.
+ Acknowledgment
+The completion of this research was made possible thanks to the Natural Sciences and Engineering Research Council of Canada (NSERC). The complete source code of this work is available upon request.
+
+Appendix A. Exponential form of the generalized Dirichlet distribution Here, we present the exponential form of the generalized
+Dirichlet distribution. The exponential form delivers us certain ence that we shall adopt. It is straightforward to show the generalized Dirichlet can be written in the following exponential form ( Bouguila, 2012 ): p  X  ! j ! In above we have
+Z  X  !
+ X  X   X  d
+G  X  !  X  X   X  l ; l  X  1 ; ... ; d
+G  X  !
+G  X  !
+T  X  !  X  X  log  X   X  l  X  ; l  X  1 ; ... ; d
+T  X  !
+ X  X  log 1  X  l d
+In the above Z  X   X  ... ;
+G
+T  X  ! exponential family of distributions, we know that the derivative Therefore, we have
+E  X  log  X   X  l  X  X   X   X   X  l  X   X  l  X   X   X   X  l  X   X   X   X  l  X  ; l  X  1
+E log 1  X  l
+Appendix B. Breakdown of L  X   X  q
+By factorizing L  X   X  q
+L  X  ! ;
+We proceed with deriving each of the fi ve factors of the above equation in the following:
+E  X  log p  X   X  (see Appendix B.2 )
+E  X  log p  X  z j  X 
+E  X  log p  X  w j z ;  X  w  X  X   X  N where  X  w  X  lj  X   X  p  X  w j n  X  1 j z l  X  1  X 
+E  X  log q  X   X 
+E  X  log q  X  z  X  X   X  N
+Having the above formulas we proceed with fi nding the para-meters estimates.
+ B.1. Variational multinomial th word is generated by the l -th hidden topic, we proceed with terms in Eq. (26) containing  X  nl :
+L  X  and
+L  X  and therefore we have  X 
+L  X  and  X  L  X 
+Setting the above equation to zero leads to have e B.2. Variational generalized Dirichlet To fi nd the updating equations for the variational generalized
+Dirichlet we again proceed with separating the terms in Eq. (26) containing the variational generalized Dirichlet parameters:
+L  X  !
+Setting the derivative of the above equation to zero leads to the following updating equations: B.3. Topic based multinomial
+In this appendix we derive the updating equations necessary for estimating  X  w . Maximizing Eq. (26) with respect to  X  the same equation as in the LDA case: L  X  w  X   X  gives B.4. Generalized Dirichlet parameters We choose the terms of Eq. (26) containing the generalized Dirichlet parameters  X  L  X  ! The derivative of the above with respect to the generalized Dirichlet parameters gives  X 
+L  X   X  !  X  and  X 
+L  X   X  !  X  values, but also on each other. To solve the optimization problem we use the Newton  X  Raphson method. Thus, we need to compute form:
+L  X   X   X 
+L  X   X   X   X  2
+L  X   X   X 
+L  X   X   X  previous four equations the Hessian matrix has a block diagonal on the diagonal which can be easily computed.
+ References

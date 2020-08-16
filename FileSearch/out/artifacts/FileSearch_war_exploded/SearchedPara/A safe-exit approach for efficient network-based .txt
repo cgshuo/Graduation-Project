@@ -1,0 +1,109 @@
+ 1. Introduction [1,2,9,18,23,25,30,31] , they all focus on the Euclidean space but not on road networks. a more practical situation where the moving speed and direction of the client are arbitrary.
+In the example of Fig. 1 b, ES  X  X  consists of only two exits x again to recompute the query result set R and the safe exits ES  X  X  . the result set R but also the non-result-set D  X  R . In the example of Fig. 1 b, exit x 4 km from q and (ii) going beyond x 1 would immediately include p i.e., D  X  R . The number of points in the D  X  R (e.g., p 2 2. A set of effective techniques that minimize the computational overhead of safe exits.
+We present the experimental study in Section 6 , followed by a conclusion in Section 7 . 2. Related work query points and objects-of-interest, as well as their motion models. All of them adopt the client query point, and Q be the set of all queries. 2.1. Static queries on road networks networks efficiently. However, they still focus on static queries but not moving queries. 2.2. Moving queries on moving objects space but the query set and the object set are disjoint (i.e., D allow each mobile client to be both a query object and a data object (i.e., D = Q ). updates from mobile clients. client deviates from its latest reported location by an error threshold moving query client (when it deviates from its last location by 2.3. Moving queries on static objects POIs.
+ respectively, for a client with given travel path. pute the client's future nearest neighbors.
+ ficult question in practice.
+ underlying road network.
+ definition of safe exits and also illustrate them in detail. 3. Architecture and problem setting present the definition of safe exits on road networks. 3.1. Architecture result and its safe exits.
+  X 
+Minimize the computation time (i.e., CPU time) of the server;  X 
+Minimize the communication cost (i.e., number of points sent) between the server and the client;  X  Minimize the computation overhead of the client.
+ do not exploit any pre-computed distance bounds or road network indices.
+For easy referencing, we summarize the notations used in the paper in Table 2 . 3.2. Preliminary background on road network returns the weight of each edge. We assume that edges are undirected. We use the pair ( n n
+A point is represented by a triple ( n i , n j ,  X  ), where distance  X  from n i along the edge. A (partial) segment is denoted by a quadruple ( n set of all possible locations on any edge of G .
+
+Given two nodes n s and n t , the shortest path distance dist ( n two points p =( n a
+Fig. 3 illustrates an example road network where each node n shown as a number. For instance, edge ( n 3 , n 5 ) has its weight as 3 and point p between n 3 and p 2 is denoted by the quadruple ( n 3 , n ple ( n 3 , n 5 , 2, 3). We compute the shortest path distance between points q and p ( n , p 2 )=1+3+2=6.
+
+De fi nition 1. Range query p 3.3. Safe exits on road network based safe region.
+ First, we give the definition of range , which is a building block for the subsequent definitions.
+De fi nition 2. Range, and range exits Given a point p and a (road-network) distancethreshold r , we define therange other words, the distance of any exit x from p is exactly r .
+ p . Suppose that the distance threshold r =4.Therange  X  ( p n , 0, 1). The border of a range can be described by range exits. For example, the range ( n , n 7 ,1).
+ mains unchanged:
+De fi nition 3. Safe region The safe region S ( q , r ) of a range query result set R ( q , r ) is defined as: points. In the figure, the dataset D contains three data points, p any location in the range of the p +  X  R would still treat p point p +  X  R would be the location(s) that always regard p of the location of q . In this case, the safe region would be the domain space U .  X   X  ( p 2 , r ).
+ interests D ={ p 1 , p 2 , p 3 } and a range query ( q , 4). The result set of q is R ={ p By Eq. (3) , the safe region for the result R can be expressed as S ( q , r )=
+Recall that the range  X  ( p i , r ) of each data point p i in the result set and intersecting their range  X  ( p 1 ,4) ( e , 0, 2), where the former segment belongs to  X  ( p 1 , r ) and the latter segment belongs to contains the segment ( e 2 , 1, 3). Thus, the current safe region (on the edge e ( n , n 6 , 0, 2) denote the final safe region.
+ munication cost. As such, we propose to physically represent a safe region by its safe exits.
+De fi nition 4. Safe exits
+Let R be the result set of the range query, point p +  X  R be any result, and point p
+X =  X  p  X  D E (  X  ( p , r )) as the union set of range exits for each p
+Furthermore, an exit x  X  E X S X  q ; r  X  X  is said to be an inclusive exit if dist ( p if dist ( p  X  , x )= r for some p  X   X  R.
+
+Continuing with the example in Fig. 3 , the range query ( q , 4) has the result set R ={ p x and x 3 b are reported as safe exits; however, their semantics are slightly different. x safe region, i.e., its range does not contain any non-result (e.g., p the safe region S ( q , r ), i.e., its range barely contains a non-result (e.g., p when it passes through a safe exit. 4. Safe exit computation tance bounds (e.g., landmarks [6,15] , LLR [16,22] ) or road network indices [8,10,11,21] . 4.1. The proposed algorithmic skeleton relevant points that could contribute to the safe region (see Lines 1 the retrieved points (see Lines 4  X  16).
+ Algorithm 1. Computing range query and safe region (skeleton) 4.1.1. Phase 1: Retrieving useful points p whose distance from q is beyond 3r cannot influence the safe region S ( q , r ). Lemma 1. Filtering irrelevant points
+If a point p -satisfies dist ( q , p  X  )&gt;3 r , then we have: S ( q , r ) Proof. Let p + be any point of the result set R .ByEq. (3) , we obtain: S ( q , r ) this sake, we assume that S ( q , r )  X   X  ( p  X  , r )  X  X  X  . Thus, we have: z p ) Lemma 2. Triangle inequality (from Ref. [12,19] ) a, b, c on the road network.
+ from q with a distance threshold 3r on the dataset D (see Line 1). The set of retrieved points D tains points p 1 and p 2 , whereas the non-result set NR contains points p are not shown). 4.1.2. Phase 2: Computing the safe region by utilizing the points in the sets R and NR . We denote the current safe region by S and initialized to the graph domain space U . The loop (Lines 5 Section 5.3 .
+ located very close to q , then its range  X  ( p + , r ) could contain the entire S Similarly, if p is a non-result point ( p +  X  R ) that is located very far from q , then its range Section 5.2 .
+
+When a point p is possible to further refine the current safe region S
+ X  ( p , r ) that are within distance r from point p .If p is a result point, we shall update S
+ X  operation.
+ 4.2. Computations of range segment set, segment intersection and difference
+ X  pute the intersection and the set difference between two sets of segments (for Lines 12 and 14). 4.2.1. Computing the range segment set  X  (p, r) p tively. Their derivation will be elaborated later on. With the values of dist range set  X  ( p , r ) contains a segment of edge e , and (ii) whether the range exit set E ( are summarized in Table 4 .
+ also present the necessary adaptations for deriving the set of range segments order of their distances from p . Initially, we enheap the nodes that are on the edge of p . we set n i as visited and enheap each of its unvisited adjacent node n adjacent node n j has not been visited, we guarantee that dist not contain any range segment nor range exit. Thus, we avoid expanding such adjacent node n 13), we have the distances dist ( p , n i ) and dist ( p , n respectively.
+ responding exits E .
+ Algorithm 2. ComputeSegments algorithm
+It remains to clarify a few subtle issues: (i) how do we derive dist exits on an edge.
+ Derivation of dist min ( p , e ) and dist max ( p , e ).
+
+Let e =( n i , n j ) be an edge on the road network. Formally, we define dist edge weight W ( n i , n j ) and the distances dist ( p , n
+First, we express the distance dist ( p , z ) in Lemma 3 in terms of W ( n Lemma 3. Distances from point p
+Let p be a point and ( n i , n j ) be an edge such that p does not fall on ( n
+Proof. Since p is not on the edge, we have: dist E ( p , z )= ( p , n )+ W ( n i , n j )  X   X  }.  X 
+Based on the above expression, we present two lemmas for computing dist Lemma 4. Minimum and maximum distances from point p
+The minimum distance from p to any location on the edge, denoted by dist
+The maximum distance from p to any location on the edge, denoted by dist z ), where z is any location on the edge. In this case, we obtain: dist
+When p is on the edge, the furthest location from p is located at either node ( n its value is maximized when the condition below is satisfied: dist ( p , n  X   X  dist p ; n i  X  X   X  dist p ; n j  X  Wn i ; n j
+We now illustrate how to compute the minimum and maximum distances. Consider point p pose that we have computed the distances: dist ( p 1 , n 4 edge ( n 4 , n 7 ). We then compute: dist min ( p 1 ,( n 4 4.2.1.1. Finding range exits on edge e. When an edge e satisfies dist  X  Case (1): p is on the edge.
+
+We obtain the exit(s) by moving the location of p toward n  X  Case (2): p is not on the edge.
+
+In the proof of the maximum distance expression in Lemma 4 , the location z imum distance dist max ( p ,( n i , n j )) from p , when  X  location of z  X  toward n i or n j by the distance dist max  X 
+For edge ( n 4 , n 7 ), we have: dist min ( p 1 ,( n 4 , n  X 
+For edge ( n 1 , n 2 ), we have: dist max ( p 1 ,( n 1 , n  X 
+For edge ( n 6 , n 7 ), we have: dist min ( p 1 ,( n 6 , n edge. First, we compute the value  X   X  Wn 6 contributes to the maximum distance dist max ( p 1 ,( n 6  X  r =3, in order to obtain the exit ( n 6 , n 7 , 1). 4.2.2. Computing the intersection of segment sets
+In Algorithm 1 (Lines 11  X  12), we refine S cur to the intersection of S study how to implement this intersection operation efficiently.
+Let  X  be a set of segments. Given an edge e , we define  X  case  X  contains no segment on e , then  X  [ e ] is empty.
+Given two segments  X  [ e ] and  X  [ e ], we compute their intersection as follows: based on the relative positions of  X  [ e ] and  X  [ e ].
+
+Regarding the implementation issue, the intersection between two sets of segments using a hash table HT . First, we insert each segment of  X  two segments. The above procedure takes exactly O (|  X  |+| call that the result set R contains points p 1 and p 2 . Suppose that we first process p
+Algorithm 2 ) and then obtain the range segment set  X  ( p The current safe region S cur is set to  X  ( p 1 , r ). Next, we compute
+ X  ( p 2 , r ) (with five segments) and the range exit set E (  X  r ). Table 5 depicts the steps for computing the intersection between S ( n , n 2 , 0, 3), ( n 1 , n 6 , 0, 3). Note that ( n 1 , n 6 they fall into the region S cur . 4.2.3. Computing the set difference of segment sets
+In Algorithm 1 (Lines 13  X  14), we refine S cur to the set difference between S p  X   X  NR ). We study how to implement this set difference operation efficiently.
+Recall that the notation  X  [ e ] represents the segment of tween two segments  X  [ e ] and  X  [ e ] as follows:
+Regarding the implementation issue, the set difference between two sets of segments using a hash table HT . This task takes exactly O (|  X  |+|
+Continuing with the example of Fig. 5 , the current safe region S segments) and the range exit set E (  X  ( p 5 , r ))={ x 5 and  X  ( p 5 , r ). The set difference contains the segments ( n
+The current set of safe exits  X  contains x 2 c and x 5 a , where x non-result). 5. Optimizations on safe exit computation some heuristics for choosing a point in PickPoint. 5.1. Avoiding expansion of irrelevant nodes during computation of not every segment in  X  ( p , r ) can refine S cur . Thus, there is no need to obtain the entire z  X  S cur , then we can stop the expansion at node n as such a path cannot reach the safe region S words, such a path cannot lead to the shrinking of S cur .
+
+Although powerful, this idea requires knowledge of the distance dist ( n , z ) for each possible z of possible locations in S cur .
+ Since the search range is 3r , the collected set of node-distance pairs is: node n .
+ node n can be stopped. When the condition dist ( p , n )+ dist ( q , n ) &gt; r holds for all z  X  S cur .
+ Lemma 5. Restricting traversal by using  X 
+Let p be a data point and n be the node being examined. If dist ( p , n )+ dist ( q , n )
+Since  X   X  dist ( z , q ) (by Definition 5 ), we then derive: dist ( q , n ) ( q , n i )  X   X  &gt; r . If so, then we skip further processing on n hash table M q for free. This checking takes only O (1) time. 5.2. Pruning useless retrieved data points can be pruned, we save the cost of computing the range segment set crease at least by f times. For each point p (in R or NR ), we compute its range set with respect to f .
+ designed in such a way that:  X 
+They are effective. A useless retrieved data point can be pruned away with high probability.  X 
+De fi nition 5. Furthest safe region distance use  X  instead of  X  ( q , S cur ). that the value  X  can be computed efficiently by using the hash table M  X   X  )of S cur and compute its maximum distance dist max ( q ,( e , need to invoke expensive graph traversal operations for computing the data point p when it is a result (i.e., p +  X  R ); otherwise, we use p and p  X  , respectively. Algorithm 3. PrunePoint algorithm
+For the case of a result p + , we apply Lemma 6 to check whether p  X  that are used in the lemma.
+ Lemma 6. Pruning a result by using  X 
+Given a result p +  X  R ,if dist ( q , p + )+  X   X  r , then p p ). Since  X   X  dist ( z , q ) (by Definition 5 ), we then derive: dist ( z , p +  X   X  r , we obtain: dist ( z , p + )  X  r . Thus, z  X   X  ( p
+For the case of a non-result p  X  , we utilize Lemma 7 to determine whether p r ) also cannot help shrink S cur . Fig. 7 b depicts this situation. Observe that dist ( q , p quickly.
+ Lemma 7. Pruning a non-result by using  X 
+Given a non-result p  X   X  NR ,if dist ( q , p  X  )  X   X  &gt; r , then p q ). Since  X   X  dist ( z , q ) (by Definition 5 ), we then derive: dist ( p p )  X  dist ( q , p  X  )  X   X  . By using the given condition dist ( q , p that S cur does not intersect  X  ( p  X  , r ). Thus, p  X  cannot contribute to S 5.3. Ordering of the retrieved point sets
+However, different orderings lead to different rates of refining the current safe region S abling more irrelevant data points to be discarded, thus reducing their processing cost. chosen set (at Line 2). Finally, we return p to the caller for processing. Algorithm 4. PickPoint algorithm 5.3.1. Ordering of sets R and NR respectively. We propose two intuitive orderings for choosing a set to be considered next.  X  Process all result points before any non-result point their ranges cannot help shrink S cur much.  X  Round robin result point that was processed, then S cur can be shrunk to a small region. process p 1 and then p 3 . The current safe region S cur is the intersection between point to be processed is p 2 . Subsequent points (e.g., p
+We then examine the round robin ordering. Suppose that we examine the points in the order p cess result point p 1 and then non-result point p 4 . The current safe region S which is small. Next, we process result point p 3 and then non-result point p result, the subsequent point (e.g., p 6 ) can be pruned easily. 5.3.2. Ordering of points within R and NR one could choose a pair of result points that are far apart (e.g., p
+Alternatively, one could choose a pair of result point and non-result point (e.g., p
+S sive network expansions to obtain such distances for all pairs of points. and NR ). Specifically, our proposed orderings exploit certain for picking the next result p +  X  R :  X  In ascending order of distance dist ( q , p + ) result point. It is because all non-result points are located away from q by at least distance r .  X  In descending order of distance dist ( q , p + ) point. Thus, the set difference of their ranges leads to a small S
+Consider the example of Fig. 8 . Suppose we first process result point p next non-result point to be processed can be p 4 , p 5 or p region will be big. On the contrary, if we first process result point p retrieved point can be pruned.
+
+Similarly, we propose two orderings for picking the next non-result p  X 
+In ascending order of distance dist ( q , p  X  )  X  In descending order of distance dist ( q , p  X  ) chosen the result point p 2 and compute the current safe region S point, then S cur can only be shrunk slightly. In contrast, if we choose point p rapidly. 6. Performance study other parameters to their default values as listed in Table 7 .
+We evaluate the performance of our solution using the following measures:  X   X   X 
+The total server CPU time; and  X  The total client CPU time.
+ obtained from Phase 1 ). ranges ( Section 6.4 ), and different data densities ( Section 6.5 ). 6.1. Effectiveness of pruning rules pruning rules are not in place (comparing cases 5 and 8).
+ server CPU time (see cases 6 and 8).
+ rule is not as substantial as the pruning of points. 6.2. Effect of different ordering heuristics to q first. Overall, the winners above are the chosen heuristics in our proposed algorithm ADV. 6.3. Effect of speed ment/platform factors. 6.4. Effect of query range 100000
+CPU time. 6.5. Effect of data density time. 7. Conclusion 100000 100000 achieving high throughput.
+ need to design efficient processing techniques for them.
+ Acknowledgment
+References 10000 100000 1e+06 1e+07

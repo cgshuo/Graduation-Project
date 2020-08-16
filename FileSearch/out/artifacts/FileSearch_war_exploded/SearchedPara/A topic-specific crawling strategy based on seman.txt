@@ -1,0 +1,69 @@
+ 1. Introduction
+The search engine is an important tool when searching for information on the web. To satisfy the search requirements of in URLs, it is impossible to cover the entire web. Google, for example, only covered 30 as follows:  X  interests [2].  X  dynamic changes of the web pages [3].
+
+To address these issues, focused search engines have been developed and have increasingly become popular. In contrast to pages are vectored into two vectors by using the term frequency of the TF user topic. Furthermore, we merge the semantic relations among terms into a semantic ranking for an unvisited web page.
+Our research has its foundations in previous studies [3  X  constructing the SCCG .
+
+A brief summary of the contributions of this paper is as follows: (1) We propose a novel method for focused crawling with a Concept Context Graph ( CCG ). The context graphs are used as 2. Related work
+In this section, we divide the focused crawler into topic-induced and history context-induced focused crawler from the analysis (FCA), we recall some researches about FCA. 2.1. Topic-induced focused crawler
+The focused web search engine appears along with the search engine. Based on the matching web page's content with the  X  the target web pages to predict the ranking of the web pages.
+ crawling that chooses a URL from the queue of URLs for the next crawling phase by using a breath-first algorithm and the the web pages and user queries are vectored into vectors by using TF i !  X  w i 1 ;  X  ; w in  X  X  , and user query j can be vectored into j similarity evaluates the importance of a web page.
+ website model is constructed for providing a semantic level solution for an information agent. 2.2. History context-induced focused crawler URLs are adopted for computing the scores.
+ supervision web crawler by learning and getting regular patterns of implicit searching paths. focused web crawling system.  X 
+In the learning phase, a link context graph and a classifier of web pages in a seed set should be built for the users.  X  information, the classifier will start the focused web crawling.
+ ( Fig. 1 (B)). They assign each layer an invariable similarity value, and the similarity value of layer i is to be 0-layer, and its similarity value is 1, by analogy from the inside to the outside. Additionally, the value course, the nearest will be visited first. The context graph is formed before the web crawler starts to crawl the web. 2.3. Formal concept analysis about document and rule mining, and text ranking for information retrieve. They discussed the features for constructing each web pages of the search result. Koester B. [30] focused on how FooCA (an application approach) access web pages and
+In summary, these researches mainly focused on the search results and recommending strategy, etc. We rarely found the contextgraph based on FCA to guide to do web crawler retrieving the related web pages from the web. 3. Preliminary issues  X  Formal concept analysis In this section, we give some relevant definitions as the following:
+De fi nition 1. Let ( URLs , Items , I ) be a formal user knowledge context, where URLs ={ URL the URLs stem from the Top-N of web pages of Google after submitting a user query, where URL
+Items ={ Item 1 , Item 2 ,  X  , Item m } is an item set, where Item ( URL ) I ( Item ).
+
+In the formal user knowledge context ( URLs , Items , I ), for an object set X operations f ( X ) and g ( Y ) are defined, respectively, by: Where f ( X ) is all common attributes of the object set X ; g ( Y ) is all common objects of the attribute set Y .
+De
+De ( X 1 , Y 1 )  X  ( X 2 , Y 2 ), if and only if X 1 p X 2 (or equivalently Y super-concept of ( X 1 , Y 1 ). The relation  X  is called the hierarchical order of concepts.
+De
+If for any formal concept ( X  X  , Y  X  )of( URLs , Items , I ), ( X is called the son-concept, the ( X 2 , Y 2 ) is the father-concept.
+
+All formal concepts of ( URLs , Items , I ) and the hierarchical order
+Items , I ), where the Least Upper Bound ( LUB ) and the Greatest Lower Bound ( GLB ) [27] are described as follows:
+Example 1. Users search the topic  X  artificial intelligence, machine learning, knowledge discovery context shown in Table 1 . Its concept lattice is shown in Fig. 2 . 4. Topic-speci fi c crawling strategy based on the concept context graph topic web page and the visited web page is calculated by the concept semantic distance to construct the crawling layers. 4.1. Concept semantic similarity we analyze the paths how the noncore concepts connect to the core concept and locate the non-core concept accurately to
+Formica A. [46,47] first applied a domain ontology to construct a similarity graph, and proposed an algorithm computing simplify the computing, we improve the algorithm.
+
+De fi domain.
+
+In this paper, we take on all word units from the wordnet DB for computing the semantic similarity Sim ( C concepts C 1 =( X 1 , Y 1 ) and C 2 =( X 2 , Y 2 ) by Eq. (2) .
+ where | Y 1  X  Y 2 | is the number of word units of Y 1 and Y and Sim C 1 ; C 2  X  X  X  2 5  X 0 : 5  X  2 3  X 0 : 5  X  0 : 53.
+ 4.2. Concept context graph and focused web crawling
+In this section, we will discuss constructing CCG and selecting the URL during web crawling. The steps are as follows:  X  topic that the user is interested in to compile knowledge context. When the user submits the query terms to the focused satisfying web pages during browsing as the user knowledge context. Then, the user submits the marked web pages to the crawling system.  X 
+First, we extract key terms from the marked web pages and weighted statistics for the key terms by the TF
+Frequency  X  Inverse Document Frequency) method [48] . The TF we rank the key terms in descending order of their weight values for each marked web page. The top-N (N is an experience concept lattice by using a fast constructing lattice algorithm [38] .  X  compute the similarity between the core concept and non-core concepts by the Eq. (2) . Second, the mining core concept with the least similarity are considered in the outer layer except for the 0-layer and 1-layer. are located in the 1-layer of the concept context graph.
+ Continuing in this manner, we can construct the concept context graph.
+ are all located in the 2-layer of the concept context graph.
+ lattice into a corresponding layer in the concept context graph.  X  queue of the focused crawler. First, the URL is considered to be in an object set, and the keywords of the web page that similarity as the semantic ranking of the URL.  X  Incrementally update CCG for focused web crawling. As time goes on, the web pages in the Internet change continuously.
+Some new web pages that are found during crawling are related to user topics. We consider them to be a part of the user knowledge context. Thus, they should be added into a formal context about user query topics. At the same time, some formal context about user interest topics. As a result, CCG should be updated in a timely fashion. The algorithm
+AddUpdating CCG for adding a new concept and the algorithm DeleteUpdating CCG for deleting an old concept are discussed in Section 7 . 5. Constructing the concept context graph express will be and the more URLs will be collected. For example in Fig. 2 , we show the distance and father Every node in the concept context graph is a concept of the concept lattice, not the web page or URL.
+De fi
+L( URLs, Items, I ), and T is the item set of the user query,
+Example 5. The item set of the user query is  X  artificial intelligence, machine learning, knowledge discovery concept (36, abc) in Fig. 2 is the core concept in the concept lattice.
+
+Algorithm 1. Mining the core concept  X  o  X  means that  X  an element on the left-hand side has the value of the element on the right-hand side find the GLB and LUB in all concepts of the concept lattices, respectively. Steps 004 max concept in these concepts lies at its top. Steps 019  X  In the following discussion, we only consider the max one of these core concepts to construct CCG . Algorithm 2. Constructing CCG the concept and core-concept.
+ Example 6. We turn the concept lattice marked with the core concept (shown in Fig. 2 ) into CCG (shown in Fig. 3 ). 6. Find a proper concept in the CCG for the visiting URL its key terms. steps to confirm the position of a virtual concept on CCG are as follows:  X  this case, go to step 2.  X 
+Then, go to Step3.  X  partial match of attributes.
+ Algorithm 3. Finding an appropriate position for a virtual concept in
+The algorithm for finding the appropriate position is to search for the position of the virtual concept's position. The matching degree that the attribute set of the virtual concept includes the attribute set of the (1 considered to be the core concept of CCG . Steps 052  X  062 match the virtual concept with (1 for which the attributes of the virtual concept include the attributes of concepts in the (1 (1  X  N)-layer's concepts of CCG .
+
+The similarity determines whether the web page corresponding to the visiting URL will be downloaded, and these URLs between the concept and the core concept to be the URL's rank value for continually crawling. 7. Incrementally updating CCG for focused web crawling
+Over time, the web pages on the Internet change continuously. Some new web pages that are found during crawling are updated in a timely fashion. In this section, we discuss some algorithms updating CCG .
+De fi nition 7. Let O new be the URL that corresponds to a new web page, and let D  X 
+If  X  ( X , Y )  X  CCG , Y  X  D new  X   X  and f ( X  X  { O new })  X   X 
+If  X  ( X , Y )  X  CCG , Y  X  D new  X   X  and f ( X  X  { O new }) = Y , then ( X Algorithm 4. AddUpdating CCG of ( O new , D new )in CCG . Steps 071  X  073 construct a temporary concept ( T
+LayerNO ( j th-layer) that ResultConcept locates in CCG . Steps 075
+If the concept T c is the direct son-concept of ResultConcept , then step 077 adds the concept T son-concepts of T c in the ( j  X  1 )th-layer of CCG . Steps 079 father-concepts of T c in the ( j + 1)th-layer of CCG . Steps 083 is an updating concept by Definition 7 or not. Step 089 updates directly the object set of ResultConcept .
+De fi nition 8. Let O old be the URL that corresponds to an out-of-date web page, and let D web page. If  X  ( X , Y )  X  CCG , Y  X  D old  X   X  and f ( X  X  Algorithm 5. DeleteUpdating CCG concept for ( O old , D old )in CCG . Steps 093  X  095 construct a concept T a deleting concept by Definition 7 or not. Step 099 finds son-concepts of T father-concepts of T c in the ( j + 1)th-layer of CCG . Steps 101 and delete the concept T c from CCG . 8. System architecture and experiment settings proposed focused crawling, and compare the crawling efficiency of CCG with BFC , CosFC , LCG and RCG . 8.1. Constituting the focused crawling system focused crawling. The system architecture is shown in Fig. 4 . 8.1.1. Collect topic data
+F -Measure of BFC , CosFC , LCG , RCG ,andour CCG . The relevant web pages were marked by thirty volunteers in our lab. 8.1.2. Topic model 8.1.3. Focused crawling have been downloaded. These URLs included in the downloaded web pages should be continuously visited during crawling. 8.2. Evaluation indices A general calculation method for these two indices is shown as follows: discover relevant web pages during web crawling. Its calculation formula is:
+Here, N c is the number of relevant links obtained, and N system by adopting a unified measurement formula (5) ; the formula is as follows: performance of the system. With respect to the F -Measure , there is no bias between P and R . 8.3. Experiment settings 9. Experiment result, analysis and evaluation for the 14 topics also provides the same conclusion.
+ than 1700, H = 0.37). Overall, our web crawling strategy performs better than the others. The precision the other four crawling strategies. We also chose the topic and precision  X  recall rate relationship ( Fig. 8 ). The results are the same as the topic more suitable for crawling focused web pages than the other web crawling strategies. For this conclusion, the precision relationship for all of the 14 sport topics is the same for all of the topics.
+In summary, CCGCrawler makes full use of the semantic meanings of web pages, in which all of the concepts reflect user (they cannot use the semantic meanings of web pages), and thus, LCGCrawler and BFCCrawler cannot perform better than linkage of web pages and the semantic meanings of web pages, and it cannot outperform CCGCrawler . recall rate. The average F-Measure is defined as  X  n i  X  1 topics. It causes the performance of CCGCrawler to be superior to the others. the user knowledge context when some new web pages related to the user query topic are found and some outdated web pages not related to the user query topic are found. 10. Conclusions and future work
+To maintain a high recall rate, precision and average harvest rate during the crawling process, it is important to apply the experiment results, we prove that our approach improves the efficiency of focused crawling.
+In the future, we plan to focus on the following directions for future research.  X   X 
+Although the nodes of the concept context graph replace web pages in the context graph and relevancy context graph, the natural language and allow our proposed web crawler to traverse the more and more relevant web pages. Acknowledgments
+This work is one of the projects supported by the National Nature Science Foundation (grant nos. 61271413, 60872089, and 61103168) and the Chunhui Plan of the Education Department of China (grant no. z2011086).
+References

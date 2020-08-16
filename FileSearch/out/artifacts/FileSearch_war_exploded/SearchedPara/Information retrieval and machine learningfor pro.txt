@@ -1,0 +1,69 @@
+ 1. Introduction involves five steps: (1) selecting relevant information sources; (2) rewriting the user query w.r.t. the local schemas, using the mapping rules; (3) retrieving documents from the local sources using the rewritten query; other schemas. Mapping rules , such as (informally) can be mapped into the booktitle attribute of the standard schema with probability 0.98. mapping.
+ look over future works. 2. Schema mapping details):
+Informally, the above rule dictates that the attribute S i bute S i , x is also the value of attribute T j with probability a
+BIBDB has attributes &lt; volume &gt; , &lt; number &gt; , &lt; pages &gt; , &lt; year &gt; and the target schema standard has attributes &lt; document id &gt; , &lt; author &gt; , &lt; year &gt; , &lt; type &gt; , &lt; title &gt; &lt; booktitle &gt; , &lt; misc &gt; , &lt; pages &gt; then a rule such as (the formal counterpart of the mapping (1) ) rules automatically. 2.1. Probabilistic datalog we will not deal with negation in this paper.
+
+Here, A denotes an atom (in the rule head), and B 1 , ... , B as a A .
+ of that document:
+The facts uncertain) imply
+Another example is where we have the rules: probability 60%) of document d1 , i.e. the facts assumption (as there are two alternatives to infer the same information). co _ author , respectively) program P , with H ( P ) we indicate the ground instantiation of P . not have any variables. Then, the deterministic part of P is the set P weight a = 1. In our example, P D contains two rules The indeterministic part of P is the set P I of instantiated rules determined by P example, The set of deterministic programs of P , denoted D ( P ) is defined as D ( P )={ P where the programs P 1 , ... , P 4 are have a minimal model w i : the models w 1 , ... , w 4 are w 1 is a model of P 1 as no fact is known in P 1 . w 2 is a model of P to hold as well (due to the rule a b ). The cases of w 3 and w W  X f w 1 ; w 2 ; w 3 ; w 4 g .
+ and a possible world can be defined recursively:
+In our example, consider the interpretation I  X  X  I ; w 2  X  , with I  X  X  W ; l  X  , W  X f w tribution l
+Then, it can be verified that
+Note that  X  I ; w 2  X  0 : 7 b , as the set of worlds satisfying b is { w
+Similarly,  X  I ; w 2  X  0 : 92 a , as the set of worlds satisfying a is { w 0.32 + 0.22 + 0.38 = 0.92.
+ and rule in P : that the fact a is true, i.e a = l ( w 2 )+ l ( w 3 )+ l ( w is true at least with probability 0.88.
+ as a pDatalog program.
+ instantiation of A w.r.t. the interpretation I ) we indicate the set of ground facts a A  X  c i.e. under I , A  X  c 1 ; ... ; c n  X  holds with probability a . 2.2. Data types and schemas ment identifiers.
+ sive languages like XML. Examples of our schema model are BibTeX or Dublin Core. sponding to attributes of a document). Each relation symbol R attribute R j is then a set of probabilistic ground facts: &lt; ?xml version= 00 1.0 00 encoding= 00 ISO-8859-1 00 ? &lt; document id= 00 BIBDB.r0/1 00 &gt; &lt; doctype &gt; article &lt; /doctype &gt; &lt; author &gt; Imielinski, T. &lt; /author &gt; &lt; title &gt; Incomplete deductive databases &lt; /title &gt; &lt; journal &gt; Annals of Mathematics and Artificial Intelligence &lt; /journal &gt; &lt; volume &gt; 3 &lt; /volume &gt; &lt; number &gt; 2-4 &lt; /number &gt; &lt; pages &gt; 259 X 294 &lt; /pages &gt; &lt; year &gt; 1991 &lt; /year &gt; &lt; /document &gt; and will be encoded as the pDatalog program made out by the following facts ( a = 1, always) doctype(BIBDB.r0/1, 00 article 00 ) author(BIBDB.r0/1, 00 Imielinski, T. 00 ) title(BIBDB.r0/1, 00 Incomplete deductive databases 00 ) journal(BIBDB.r0/1, 00 Annals o Mathematics and Artificial Intelligence 00 ) volume(BIBDB.r0/1, 00 3 00 ) number(BIBDB.r0/1, 00 2-4 00 ) pages(BIBDB.r0/1, 00 259-294 00 ) year(BIBDB.r0/1, 00 1991 00 ) author I .
+
+For simplicity, we use R j for both the schema attribute R schema and the corresponding schema instance .
+ 2.3. Schema mappings
+Let us assume a source schema S =  X  S 1 , ... , S s  X  , a target schema T =  X  T paper, probabilistic Datalog rules of the form are employed, such as (2) , denoting that content from a source schema attribute S attribute T j with a probability of a j , i .
+ schemas.
+ onto the source instance S yields an instance over the target attribute T we explicitly mention it as c T j R and b T R , respectively. target of many source attributes, i.e. we may have complex mappings. For example, attribute.
+ author and editor, are: stances author and editor define the resulting target instance with:
+For the other direction, i.e. T = B and S = A , possible rules are:
+Possible instances are then: 2.4. Queries and query transformation
+A query q is a set Q of pDatalog rules with common head which define a unary predicate q with q the query: answers are the same (modulo different relations): for a given source instance S , a set R of mapping rules, and the mapping result are interested in correct (i.e. sound) reformulations: property allows for handling cases in which no exact query transformation is possible. to a relation in T have to be replaced by the bodies of the mapping rules. ping rules R from above, and the query target schema T can be reformulated into two queries over the source schema S : that alternative queries may be: correct reformulation (as q3  X  S  X  X ; ), while q4 is not a correct reformulation:
+For the other direction, the query can be unfolded into the perfect reformulation 3. Learning schema mappings (4) Finally, we compute probabilities a j , i = Pr ( T j j S
+We are going to illustrate these steps in detail. 3.1. Estimating the quality of a mapping
+Consider a target schema T =  X  T 1 , ... , T t  X  and a source schema S =  X  S and S , for the schemas and their instances, respectively.
+ weights (for the document and query transformation processes) in a later step.
+Essentially, we may see R I i as the set of all values t of attribute R quality estimation step.
+
+T In our example setting with we have to consider single sets e.g.
+
+Then for all j , we have to consider all subsets R j of R didate rule sets: (where R 2 is obviously wrong).
+ ability that it is a tuple in b T and vice-versa.
+
+As mentioned above, R can be partitioned into t sets R 1 , ... , R dently on different target attributes:
+Now, Pr ( R j , T , S ) is estimated as the probability that a tuple in Pr ( R j , T , S ) can be computed as
+For s source attributes and a fixed j , there are also s possible sets R nations (unions) of them, forming all possible non-trivial sets R that S i considered in isolation, and we have c T j  X  c T j R j  X  _
+Thus, instead of c T j , we consider c T j R j ; i k  X  S i them up (due to the disjointness assumption): will address in the next section.
+ In our example with R = R 1 [ R 2 , we have to compute: 3.2. Estimating the probability of a rule
+Computing the quality of a mapping is equivalent to estimating the probability Pr ( S classifier CL k outputs a conditional probability Pr ( S i final probability Pr ( S i j T j ) is computed by combining the classifier predictions Pr ( S which results from the Total Probability Theorem: The probabilities Pr ( CL k ) are described below.
+
+The classifier predictions are computed in several steps: (1) First, a classifier CL k computes a weight w ( S i , T Step 1, computing the weights w ( S i , T j , CL k ), is explained in Sections 3.3 and 3.4 . scale. In step 2a, we employ different normalization functions:
+The functions f id , f sum and the logistic function f log cases it might be useful to bring the classifier weights into the same range (using f normalization function with parameters (e.g. the logistic function).
+For the final probability Pr ( S i j T j , CL k ), we have the constraint
+Thus, the normalized value (which is in [0,1]) is multiplied with min( j S (step 2b).
+ probability that CL k is the best classifier. With the mean error the probability can be computed as 3.3. Schema-based classifiers described in Section 3.4 ). 3.3.1. Same attribute names otherwise: 3.3.2. Same attribute name stems 3.3.3. Same data type 0 otherwise. ated , date , CL D ) = 1 as both have the same data type Date . 3.4. Content-based classifiers specified word w : of the frequencies of all words in v . 3.4.1. Correct literals tuple in S i :
+This directly corresponds to the conditional probability Pr ( S cise information. 3.4.2. kNN classifier
+A popular classifier for text and factual data is kNN ( Sebastiani, 2002 ). For CL a category, and training sets are formed from the instances of S the schema attribute S i : category and the set of journal names is the training set for the classifier. schema, the k -nearest neighbours TOP k have to be found by ranking the values ( S 3.4.3. Naive Bayes text classifier probability estimations, see above). For each T j ( d , v ) 2 T mapped onto S i is computed. In a second step, these probabilities are combined by
+With Pr ( S i ) we denote the probability that a randomly chosen value in  X 
+Pr ( w j S i )= Pr ( w j v ( S i )) is defined as for kNN, where v  X  S
+Together, the final formula is
+In the case that a word does not appear in the content for any object in S value to avoid a product of zero. 3.4.4. KL-distance another distribution q , and is defined as
+S  X  d ; v  X 2 S i g and T 0 j  X f v j9 d : T j  X  d ; v  X 2 T j
+The KL-distance distance KL  X  S 0 i jj T 0 j  X 2 X  0 ; 1 is converted into a prediction by: 3.5. Estimating the weight of a rule approaches are described in this section. 3.5.1. Rule (ST)  X  transforming the probability Pr(S i j T This probability can be easily transformed in the rule weight:
+As the final normalization step in Section 3.2 ensures that Pr ( S ing value Pr ( T j j S i ) is always in [0,1]. 3.5.2. Rule(TS)  X  Estimating the probability Pr(T j j S i
+The probability Pr ( T j j S i ) can be learned just as the probability Pr ( S above, swapping S i and T j . 3.6. Additional constraints constraints: 4. Experiments 4.1. Evaluation setup example entries) There are 9 target attributes for which there is at least one mapping. one mapping.
+
+The collections BIBDB, NGA and WebArt are created by the MIND project, vested within the Cyclades project. 7 used alone. In addition, the combination of the schema-based classifiers CL the combination of the content-oriented classifiers CL kNN nation) are used for this collection. 4.2. Measures algorithm, and R A the set of rules (again without weights), which are the actual ones. Then: when we only consider the target classes for which we can be successful. 4.3. Results (1) Find the best schema mapping (2) Estimate the weights Pr ( T j j S i ) for the learned rules by converting Pr ( S (3) Compute the precision and recall as described above. 4.3.1. Quality of the classifiers with Pr(CL k ) = 1/n For the BIBDB collection, precision of 1.0 is obtained by CL and restricted precision performs about the same as traditional precision. Optimum precision of 1.0 is obtained for NGA by CL N and CL directly followed by the combination of all content-oriented classifiers and kNN (5% worse). sifiers, the combination of all content-oriented classifiers and CL by KL-distance (17% worse). F-measure, again is optimized by CL yields the best quality (0.2927, showing the difficulty of this collection), and CL and CL L also maximize the F-measure, while KL-distance performs poor. restricted precision is 0.5186.
+ 4.3.2. Quality of the normalization functions with Pr(CL k 0.4074, while is it about twice as high for the other normalization functions.
+There is no consistent best normalization function. Considering precision, f
+Finally, f log f sum and f sum yield the highest F-measure. 4.3.3. Runs with learned Pr(CL k ) also conducted experiments where the combination weights Pr ( CL recall and F-measure are higher for the run with learned probabilities. 4.3.4. Runs with constraints when using any constraint; the same holds for F-measure. 4.3.5. Conclusion not lead to increased quality. 5. Related work embedded.
+ 2005 ) the estimate is the  X  X ost X  of a bipartite weighted matching. all aspects of logical reasoning, considered as important, can be plugged into our model. 6. Conclusion and outlook Instead, queries and documents have to be transformed on-the-fly during runtime. mechanism.
+ results between data types (and, potentially, different operators). extend Pr ( R , T , S ) by combining these methods: Each method M is the method X  X  initial approximation of Pr ( R , T , S ). This weight w ( R , S , T , M and transformed into a probability Pr ( R , T , S j M u )= f ( w ( R , S , T , M All the estimations Pr ( R , T , S j M u ) will then be combined together as where Pr ( M u ) is a measure indicating the effectiveness of the method M this paper may be just one of the methods M 1 , ... , M m est quality, will then be performed  X  X lobally X .
+ Acknowledgements ISTI-CNR (project  X  X  X istributed Search in the Semantic Web X  X ). References

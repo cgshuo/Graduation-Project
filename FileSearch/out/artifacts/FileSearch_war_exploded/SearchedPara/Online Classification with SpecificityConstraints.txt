@@ -1,0 +1,8 @@
+ Andrey Bernstein Shie Mannor Nahum Shimkin Binary classification problem, each input is classified into + 1 or  X  1.
+ Typical goal: Maximize true positive rate under false positive rate constraints.
+ Online classification problem, no training set is given in advance.
+ We are given m classifiers, which at each stage n = 1 , 2 ,... map the input instance to the probability of the instance to belong to the positive class.
+ An online classification unifying algorithm combines the outputs of the m classifiers in order to attain a given goal. Design a no-regret unifying algorithm that asymptotically: (i) Has average true positive rate not worse than the true positive rate of the best convex combination of the m given classifiers (in hindsight), for any possible sequence of classifiers X  outputs and input labels.
+This is a special case of the regret minimization problem with Formulate the online classification problem as a special case of the regret minimization problem with constraints. Review known results on this problem. In particular, it is known that the above strict goal is not attainable, and thus some relaxation is needed.
+ Propose a relaxed goal, and devise a computationally efficient online unifying algorithm that attains this goal.
+To the best of our knowledge, this is the first polynomial algorithm for the regret minimization problem with constraints.

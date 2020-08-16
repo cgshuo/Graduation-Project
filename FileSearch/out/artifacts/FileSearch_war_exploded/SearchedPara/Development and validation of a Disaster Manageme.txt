@@ -1,0 +1,73 @@
+ Article history: Received 9 March 2012
+Received in revised form 11 September 2013 Accepted 4 November 2013 Available online 5 December 2013 Keywords: Knowledge sharing Metamodelling Disaster management
+Model validation 0306-4573/$ -see front matter  X  2013 Elsevier Ltd. All rights reserved. http://dx.doi.org/10.1016/j.ipm.2013.11.001 Corresponding author. Tel.: +61 2942214037.
+ 236 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 Table 1
+Set I (to be used to develop the initial DMM) 10 A Comprehensive Conceptual Model for Disaster Management ( Asghar 11 Simplifying Disasters: Developing a Model for Complex Non-Linear Events 12 The Expand-Contract Model ( Ahmed, 2008 ) 10 2008 X X X X 13 An Integrated Approach to Natural Disaster Management, Public Project 14 Knowledge Management for Tourism Crises and Disasters ( Mistilis &amp; 15 Information, Education and Communication for Urban Risk Reduction 16 GIS And Disaster Management Cycle, South Asian Disaster Network ( The 17 The Role Of Local Institutions in Reducing Vulnerability to Recurrent
+Set V1 (to be used for first validation) 10 Cyclone Warning Markup Language, CWML ( Sun et al., 2006 ) 15 2006 X
+SET V2 (to be used for second validation) 238 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 Table 2 Candidate concepts from 17 DM models from Set I.
+
+Source Derived candidate concepts Total Manitoba Health Disaster
+Modoc County Disaster Council Ahmed (2008) Mitigation; Preparedness; Response; Disaster; Recovery 5 Table 3 Concepts from Step 4 designated into four phases.
+ Phase Reconciled concepts 240 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 242 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 Table 4 Relationships among concepts in DMM.
+ Concept 1 Relationship Concept 2 Phase/in Figure EmergencyManagementTeam Association  X   X  Requires  X  Coordination Response/ 7 Disaster Association  X   X  AffectWellness  X  Exposure Response/ 7 PreparednessTeam Association  X   X  Creates  X  Training Preparedness/ 6 PublicEducation Association  X   X  Supports  X  PublicAwareness Preparedness/ 6 Evacuation Association  X   X  Follows  X  PreparednessPlan Preparedness/ 6 NeedsPlanning Association  X   X  Creates  X  RiskReduction Mitigation/ 5 Aid Aggregation  X   X  isAGroupOf  X  ResponseOrganization Response/ 7 Legislation Aggregation  X   X  isAGroupOf  X  StructuralMitigation Mitigation/ 5 NaturalSite Specialization  X   X  isAKindOf  X  Exposure Mitigation/ 5 Demobilization Specialization  X   X  isAKindOf  X  Resource Recovery/ 8 244 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 Table 5 Concepts Set Information MassCasualty Economic Financial Mental-Health 246 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 Table 6 List of relationships modifications between concepts in DMM.
+
+Phase: MITIGATION 1 Insurance Non-Structural Mitigation Add (Aggregation)  X   X  isAGroupOf  X 
+Phase: PREPAREDNESS 1 Reconstruction Resilience Change relationship  X  Determines  X  X o X  Supports  X  2 Monitoring Warning Add (Association)  X  X  SendsObservationInfoTo  X  3 Event Monitoring Add (Association)  X  Monitors  X  4 AidAgency MutualAidAgreement Add (Association)  X   X  SignedBetween  X 
+Phase: RESPONSE 1 Coordination Incident Add (Association)  X   X  ControlSituationOf  X  2 FoodAid Aid Add (Specialization)  X  isAKindOf 3 MedicalAid Aid Add (Specialization)  X  isAKindOf 4 RefugeeShelter Aid Add (Specialization)  X  isAKindOf 5 MassCasualtyManagement Rescue Add (Specialization)  X  isAKindOf
+Phase: RECOVERY 1 MentalHealthRecovery Reconstruction Add (Specialization)  X  isAKindOf 2 FinancialAssistance Reconstruction Add (Specialization)  X  isAKindOf 3 EconomicRestoration Reconstruction Add (Specialization)  X  isAKindOf 4 AidDistribution RecoveryOrganization Add (Aggregation)  X  isAGroupOf Table 7 Frequency result of Mitigation and Preparedness-phase concepts.
+Mitigation concepts 10 Lifeline ppp 3 11 NaturalSite p 1 12 HazardAssessment pppppppp 8 13 RiskAnalysis ppppppppp 9 14 StructuralMitigation pp 2 15 Non-StructuralMitigation pp 2 16 Vulnerability pppp 4 17 DisasterRisk pppppp 6 18 StrategicPlanning Organization pppppp 6 19 BuildingCodes 0 20 Legislation pp 2 21 Land-UsePlanning 0 22 Insurance p 1
+Preparedness concepts 10 DecisionMaking ppp 3 11 Administration ppp 3 12 EmergencyPublicInformation ppppppp 7 13 Pre-Position pppp 4 14 DisasterFactor ppppp 5 15 Training pppppp 6 16 Media pppppp 6 17 MutualAidAgreement pp 2 18 PublicEducation pppp 4 19 PublicAwareness ppppp 5 20 Resource pppppp 6 21 Monitoring pppppp 6 22 AidAgency ppp 3 248 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 Table 8 Frequency result of Response and Recovery-phase concepts.
+
+Response concept 1 EmergencyPlan pppppppppp 10 2 ResponseOrganization pppppppppp 10 3 ResponseTask pppppp 6 4 Deployment pppp 4 5 SituationalAwareness pp 2 6 ResponseGoal ppppp 5 7 Rescue pppp 4 8 Disaster pppp 4 9 SituationAnalysis pppp 4 10 Incident p 1 11 Coordination ppppp 5 12 Command pp 2 13 Communication pppp 4 14 StandardOperatingProcedure pp 2 15 Victim p 0 16 EmergencyManagementTeam ppppppp 7 17 EmergencyOperationCentre pp 2 19 Aid pppp 4 20 InformationManagement ppppp 5 22 RefugeeShelter pp 2 23 MassCasualtyManagement pp 2 24 FoodAid pppp 4 25 MedicalAid pppppp 6
+Recovery concepts 1 RecoveryPlan pppppppp 8 2 RecoveryOrganization ppppppppp 9 3 RecoveryTask ppppppp 7 4 Demobilization pppp 4 5 LongTermPlanning ppp 3 6 RecoveryGoal ppppp 5 7 Reconstruction ppppppppp 9 8 After-Disaster ppppp 5 9 DamageAssessment ppppppp 7 10 TaskReview pppp 4 11 Resilience ppppppp 7 12 Effect ppp 3 13 EconomicRestoration pppppp 6 14 FinancialAssistance pppppp 6 15 MentalHealthRecovery ppppppp 7 16 AidDistribution ppp 3 17 Exposure ppp 3 Table 9
+Degree of Confidence for DMM concepts after FBS. 100 X 70% 69 X 50% 49 X 30% 29 X 11% 10 X 0% (Very Strong) (Strong) (Moderate) (Mild) (Very Mild) Percentage DEGREE (Degree of Confidence)
+MitigationPlan, MitigationGoal NeedsPlanning StructuralMitigation Property ( RiskReduction PreparednessTask Lifeline Insurance Land-UsePlanning (x) HazardAssessment Warning Vulnerability MutualAid-Agreement RiskAnalysis PreparednessGoal SuppliesRegistry SituationAwareness PreparednessPlan Evacuation Event Incident Preparedness-Organization BeforeDisaster DecisionMaking Command EmergencyPlan Training Pre-Position Victim ResponseOrganization Media PublicEducation Emergency-OperationCentre EmergencyManagementTeam PublicAwareness AidAgency RefugeeShelter (modify) RecoveryPlan Resource Deployment MassCasualty-Management RecoveryOrganization Monitoring Rescue RecoveryTask ResponseTask Disaster Reconstruction ResponseGoal SituationAnalysis DamageAssessment Coordination Communication Resilience Information-Management Aid MentalHealthRecovery MedicalAid (modify) FoodAid (modify)
+Legend : (modify) = modification is made to the concept, ( 250 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 252 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 Table A1 Validation summary against Model Set V1.
+ Set V1 Model (A) Support (B) Not support (C) Modify
+Set V1(2): SDI  X  Policies (all-phasePlan)  X  Environment preparation
+Set V1(4): SHFM  X  Pre-Event Stage 254 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 Table A1 ( continued ) Set V1 Model (A) Support (B) Not support (C) Modify Set V1(5):
+Set V1(7): DOM  X  Constructions of emergency Set V1(9): Table A1 ( continued ) Set V1 Model (A) Support (B) Not support (C) Modify Set V1(10): Table B1 Initial set of Mitigation-phase concepts.
+
+No Concept Definition 11 NaturalSite A part of elements at risk which are not man-made 15 Non-Structural 256 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 Table B2 Examples of the initial set of Preparedness-phase concepts.
+
+No Concept Definition Table B1 ( continued )
+No Concept Definition 18 Strategic Planning 20 Legislation A law enacted by a legislative body Table B3 Initially set of Response-phase concepts.
+
+No Concept Definition 14 Standard Operating 15 Victim A person adversely affected by an incident 16 Emergency 17 Emergency Table B4 Examples of the initial set of Recovery-phase concepts.
+
+No Concept Definition 258 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 Table B4 ( continued )
+No Concept Definition 12 Victim A person adversely affected by an incident 13 Emergency 260 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 262 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 264 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 266 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 268 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 livelihoods development . Vietnam, Pathumthani, Thailand.
+ International Journal of Internet and Enterprise Management, 5 (3), 212 . computing , Dijon, France.
+ 1992. ICSI X 92 , June 1992 (pp. 104 X 113).
+ Berlin: Springer-Verlag .
+ of Systems and Software, 84 (12), 2363 X 2373 .
+ Transactions on Software Engineering, 35 (6), 841 X 863 .
+ Technology, 51 (5), 832 X 845 .
+ Intelligent Control and Systems, 11 (4), 284 X 295 .
+ American Planning Association.
+ Hazards, 37 (1), 209 X 223 .
+ Global Environmental Change, 18 (4), 598 X 606 .
+ default.htm &gt; Accessed 18.03.10.
+ Systems, 29 (1), 237 X 248 .
+ 69 X 76 .
+ Multidisciplinary Optimization, 23 (1), 1 X 13 .
+ Springer-Verlag.
+ 37 (2), 99 X 114 .
+ Emergency Management, 5 (1 X 2), 25 X 56 .
+ Geosciences, 32 (3), 303 X 315 .
+ Disaster Prevention and Management, 15 (3), 396 X 413 .
+ 13 (2), 37 X 48 .
+ University .
+ OMG (2003). Model driven architecture (MDA) guide .
+ information systems (ACIS X 2010) proceeding, paper 97 , Brisbane, Australia. Berlin, Daegu, Korea: Springer-Verlag .
+ Information Systems, 27 (1), 115 X 140 .
+ Information Systems, 5 (9), 356 X 391 .
+ Engineering, 12 (3), 145 X 162 .
+ 311 X 331 .
+ Australia (NICTA).
+ of Computer Systems Science and Engineering, 21 (2), 117 X 132 . Technology, 13 (1) .
+
+United States. 270 S.H. Othman et al./Information Processing and Management 50 (2014) 235 X 271 #ack &gt; Accessed November 2009.
+ emergency_preparedness_eng.pdf &gt; Accessed 20.06.09.
+ 473 X 490 .
+

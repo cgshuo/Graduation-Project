@@ -1,0 +1,211 @@
+ 1. Introduction research topic in data mining and machine learning [20,23,36] . MDS mining can be bene frauds by detecting abnormal operations, and bridging rule mining for especially in the fi eld of distributed systems.
+ reality, the data from different data sources may be inconsistent or con patterns 1 in data sources can be inconsistent or produce con smoe data sources from four branches of an organization as given as follows: B where  X  and  X  are items or itemsets. There are certainly inconsistencies, or con MDS discovery objective.
+ from MDS by resolving the inconsistency or con fl ict, where local patterns are identi consistent manner.
+ associated with a given support. Accordingly, three ordering relationships are de
+Section 2 . The measures of inconsistency between MDS and identi
+Experiments are showed in Section 4 . Finally, we conclude this paper in Section 5 . 2. Preliminaries 2.1. Related work data mining projects. The data mining techniques will enable ef fi rst. It selects the relevant data sources based on the speci
+Local pattern analysis based global pattern discovery has become an ef measures of consistency in one knowledge base.
+ can produce contradictory results. For example, K 1 ={ a }, K interesting knowledge from the integration of such sources.
+The degree of con fl ict to measure the extent to which two knowledge bases are in con has showed, when con fi rming such con fl ict relationships, both information in con taken into account. Unlike the isolated consideration of pure con 2.2. Logical theory
+Classical Logic has been widely used for reasoning with clear requirements speci  X  and  X  represent formulae. A model of a formula  X  is a possible set of atoms where operators  X  ,  X  ,  X  and  X  denote the connectives. A knowledge base KB is a was presented to manage inconsistent requirements speci fi { X   X  belief semilattice ( BSL ), such as t ( true ), f ( false ), as ( l : r ). Unfortunately, they do not take into account the con of their levels of certainty. It isolates consistent subsets of suf inference becomes non-trivial in the presence of inconsistency. true.  X  (  X  ), the degree of possibility represents to what extent the formula formula  X  i is at least to the degree of  X  i , namely N ( of  X  i =1, i =1, ... , n , KB is viewed as a classical knowledge base, namely KB ={( consistent if and only if its classical base is consistent.
+Let x be a variable and S be a set of its values. A possibility distribution value of x . This value is unknown but supposed to be unique. least one value s . It satis fi es the following conventions [9] : (1)  X  x ( s )=0 means that x = s is impossible; (2)  X  x ( s )=1 means that x = s is completely allowed; (3)  X  x ( s ) N  X  x ( s  X  ) means that x = s is preferred to x = s assignment  X  :  X   X  [0, 1] where  X  represents the set of interpretations. For any w interpretation w with available evidences. From the possibility distribution and  X  , can be determined. The former is de fi ned as  X  (  X  )= max { latter is de fi ned as N (  X  )= min {  X  ( w )| w  X   X  }, which satis 2.3. Semantic and syntactic de fi nition
+In this paper, we say KB consistently supports a formula  X 
+Suppose D 1 , ... , D n are the mined data sources, and  X  when conducting data mining.
+
+A formula  X  in a knowledge base KB has a support denoted as ( of knowledge base to the formula  X  .A model of a propositional formula usual sense, namely w  X   X  . The set of all models of  X  is recorded as models (
+A knowledge base KB is said to be consistent if there is no formula extract interesting knowledge. For example, as to D 1 ={  X  between D 1 and D 2 , and  X   X  is viewed as uncertain (vague) information between D
+De fi nition 2.1. Let  X   X  A be an atom.  X  is the complementation operator de an object language but a meta language, and will be used to make de
+Example 2.1. Suppose data-source D i knows  X  The price of a TV is four thousand pounds hundred pounds  X  . Let  X  =  X  four thousand pounds  X  , then
+De
+We call any X p O a QC interpretation. +  X   X  X represents that X provides a reason for
+De fi nition 2.3 . Let  X  s support be a satis fi ability relation, let atoms. For a model X of data source D ,  X  s is de fi ned as  X 
+X  X  s  X  iff+  X   X  X  X 
+X  X  s  X   X  iff  X   X   X  X  X 
+X  X  s  X   X   X  iff X  X  s  X  and X  X  s  X   X 
+X  X  s  X  1  X  ...  X   X  n iff ( X  X  s  X  1 or ... or X  X  s  X  1
+In the similar manner, a possibilistic satis fi ability relation details can be seen in the next section.
+
+Example 2.2 .Let D ={ X   X   X   X   X   X   X  , X   X   X   X   X  , X   X  }, where
+Consequently, X  X  s  X   X   X   X   X  ,and X  X  s  X   X   X   X  .So X  X  s between a set of data sources, in terms of the computed reliability consistency and uncertainty of KB .
+ Uncertainty ( KB , I ). The details can be seen in Section 3 . con needs to validate that his/her knowledge and told information are true or false . 3. Measuring inconsistent knowledge from multiple data-sources 3.1. Possibilistic data sources according to the possibilistic logic introduced in [9] . should be. The derived weight of data sources is used to measure the degrees of con combination with the necessity degree of formulae.
+ possibilistic knowledge base.
+ generating interesting knowledge.
+ entailed by {  X   X   X  , X   X  } in QC logic. Thus, the model contains only {  X   X  . Thus, they are all critical to correctly measure the support and con {(+  X  , 0.4), (  X   X  , 0.6)} and {(+  X  , 0.4), (  X   X  , 0.6)} from {( s and data sources. Thus,  X   X   X  X  X  ,if s 1 + s 2 =1, namely Pr (+ possibilistic logic. For example, let PKB={ D 1 , D 2 }, and let D removed from PMM( D 1 ) (possibilistic minimal model), an underestimated weight of
+De
+X  X  s  X  holds for all  X  in D i  X  . Hence, the set of models of D where D i  X  denotes a classical base associated with data source D
+X  X  s  X  or X  X  s  X   X  represents that D i  X  believes  X  is false or invalid.
+Example 3.1. Let D i  X  ={  X  , X   X  ,  X  ,  X   X   X  } where  X  , X 
+Hence, X  X  s  X  due to X  X  s  X  , X  X  s  X   X  and X  X  s  X   X   X  knowledge base.
+
+Proposition 1. (Model equivalence) For  X  i, j  X  1, i  X  j, D
+Proof. Assume that the contrary is true, in that model ( D
+Let +  X   X  X be an atom that can be inferred from D i  X  , namely D
+According to the above assumption, X  X  s D j  X  , it is possible that to draw the conclusion D i  X   X  D j  X  . This contradicts the fact that D described below.
+
+This de fi nition is consistent with the methods in [14] because the classical base D possibilistic knowledge bases. To include the support of formulae, we need to de
+De
+We call any X p p O p a QP (quasi-possibilistic) interpretation. Thus, X
+As for (+  X  , n )  X  X , the weight n of formulae represents the con n )  X  X represents that X p provides a reason for  X   X  with con
+De we de fi ne  X  sp as follows. Suppose  X  1 , ... ,  X  n and  X  formulae that are composed of the literals  X  ,  X  and  X  .  X  X
+P  X  sp ( X ( X   X  ), s 1 ) iff X P  X  sp (  X  , s 1 )  X  X P  X  sp (  X  , s 1 )  X  (  X  , s 2 ) iff X P  X  sp (  X  , s 1 ) and X  X  X
+P  X  sp (  X   X   X  , s 1 )  X  (  X  , s 2 ) iff X P  X  sp (  X  , s  X  X
+P  X  sp (  X   X   X  , s 1 )  X  (  X  , s 2 ) iff X P  X  sp (  X  , s  X  X
+P  X  sp ( X (  X   X   X  ), s 1 ) iff X P  X  sp ( X   X   X   X   X  , s 1 )  X  X
+P  X  sp ( X (  X   X   X  ), s 1 ) iff X P  X  sp ( X   X   X   X   X  , s 1 )  X  X
+P  X  sp (  X   X   X  ), s 1 ) iff X P  X  sp ( X   X   X   X  , s 1 )  X  X
+P  X  sp ( X (  X   X   X  ), s 1 ) iff X P  X  sp (  X   X   X   X  , s 1 ) these speci fi ed operations or some variant of them. As to an atom max {(  X  ( X p )| X p  X  sp  X  }.
+
+Example 3.2. Let D ={(  X  , 0.5), (  X   X   X  , 0.6), ( X   X   X   X  of  X  is max(0.5, 0.6)=0.6 in the next two entailments of D , including X is equal to 0.5 in X 3 ={(+  X  , 0.5), (+  X  , 0.6), (  X   X  , 0.4)} and X
+De fi (1  X  i  X  n ), in which  X  j and s j denote formulae and supports, respectively. For X follows: possibility measure [30] .
+
+Suppose Atoms ( D ) is a function that returns the set of atom symbols of D minimal models).
+
+De fi models for D i . Then 0.5), (  X   X  y , 0.8)}, D 2 ={(  X   X   X  , 0.6), ( X  y , 0.8)}, D (  X   X   X y, 0.1)}. As a result, PMM ( D 1 )={{(+  X  , 0.2), (+
+D  X  sp  X   X   X   X  D 2  X  sp  X  and D 2  X  sp  X  , D 2  X  sp  X   X  , so we can infer PMM ( D de fi nition; due to D 3  X  sp  X   X   X   X  D 3  X  sp  X   X   X   X  , we have PMM ( D (+  X  , 0.3), (  X   X  , 0.5)}}; in the same way, we have PMM ( D 0.1)}, {(+  X  , 0.6), (  X   X  , 0.1)}}.
+
+Proposition 2. ( Possibilistic model equivalence) For all i, j formulae with weight 1. If D i  X  D j we have
+Due to D i  X  D j , we have model ( D i  X  )  X  model ( D j  X  ( D ) and De fi nition 3.4 .  X 
+In particular,  X   X  D denotes that the support on  X  from D is uncertain. By De prime implicant )of D in PKB. This is also coherent with the methods in [30] . de fi possibility value to all atoms in the knowledge bases. For example, let {+ respectively. Using the methods in [7] , we cannot get a conclusion that D uncertain information in knowledge bases.
+ three-value semantics in [10] with X :  X  BV
+X (  X  )= true if X  X  sp  X  ,  X  BV
+X (  X  )= false if X  X  sp  X   X  ,  X  BV
+X (  X  )= uncertain otherwise.
+In the above example, {+  X  ,+  X  } and {  X   X  } are the only PMM of D this case. This may lead to a weak agreement regarding  X  between D and D 2 . As a result, we can conclude that the quantities of con coherent with the analysis in [30] .
+
+This result holds for literal only. For example, let K ={ K weight. Although K 2 and K 3 support  X  a  X   X  b , K does not imply  X  a literals only. 3.2. Measuring con fl ict, agreement and uncertainty inconsistency of PKB. We fi rstly show how to measure the con the measures between MDS below.
+
+De fi nition 3.6. Let D be a data source of PKB, X D be a PMM model of D , and regarding X D is de fi ned below.
+ In the similar way, the degree of agreement of  X  regarding X more than one PMM model, so it is ignored here.
+
+Example 3.4. Let D ={(  X  , 0.4), (  X   X   X  , 0.6), ( X   X  , 0.7)}. Thus X 0.6), (  X   X  , 0.7)} are two PMMs of D . The con fl ict of regarding X 2 D is D C ( X 2 D ,  X  )=min (0.4)=0.4. The agreements of respectively, and the agreement of  X   X  regarding X 1 D and X Whenalltheweightsof  X  1 , ... ,  X  k are1, D C ( X D 1 , X
+De fi nition 3.7. Let D 1 and D 2 be two data sources of PKB. The degree of con de fi ned as Example 3.5. (Continue Example 3.3) By Eq. (1), we have D D
+De fi nition 3.8. Let PKB={ D 1 , ... , D n } be data sources. The degree of con multiple atoms is de fi ned as
+If D C ( D 1 , ... , D n ,(  X  1 , ... ,  X  l ))=0, we can say D D ( D 1 , ... , D n ,  X  )= D C ( D 1 , ... , D n , X   X  ) in case of a single atom. Example 3.6. (Continue Example 3.3). By Eq. (2), it is easy to compute that D (  X  ,  X  ,  X  ))=min(0.5, 0.7, 0.5, 0.7)=0.5 and D C ( D 2 , D 3  X  ,  X  ))= D C ( D 1 , D 2 ,(  X  ,  X  ,  X  ))+ D C ( D 1 , D 3 ,(
+As a consequence, the entire degree of con fl ict between MDS is de The theorem below is directly cited from the proposal by Qi et al. [30] . Theorem 3.1. (Con fl ict) Let D i and D j be the only two data sources of PKB, let X be the quantity of con fl ict between D i and D j de fi ned in [ 30 ], namely Q
+Proof. Let X D i  X  sp D i and X D j  X  sp D j . Let w be an interpretation, and (  X  (  X  )) |  X   X  X D i  X  ,0  X   X  (  X  )  X  1} and X D j ={(  X  ,  X  (
+Let  X   X  be weighted implicant [9] . For any  X  and  X  ,if D X
+According to the de fi nition in [30] , Q Con ( D i , D j D D ( D i , D j )= Q Con ( D i , D j ).  X  the quantity of con fl ict because it can not only measure the degree of con con fl ict between multiple data sources.
+ unknown to the other, as well as the information in con fl uncertainty of PKB.
+
+De fi atoms is de fi ned as When all the weights of  X  1 , ... ,  X  k are 1, D A ( X D 1 , X particular, if D A ( X D 1 , X D 2 ,(  X  1 , ... ,  X  k ))=0, it is said that ( (  X  , ... ,  X  k ) and vice versa. Unlike the degree of con fl supported by the data sources.
+
+Similarly, the degree of agreement between D 1 and D 2 regarding multiple atoms is de
+De fi
+If D A ( D 1 , ... , D n ,(  X  1 , ... ,  X  k ))=0, it means that D
+In the similar manner, the entire degree of agreement between MDS is de Example 3.7. (Continue Example3.3) By Eqs.(6) and(8),wehave D D ( D 1 , D 3 ,(  X  ,  X  ,  X  ))+ D A ( D 2 , D 3 ,(  X  ,  X  ,  X  by one side but not the other side.
+
+De collection of atoms is de fi ned as where m and n represents the possibility degree of atoms that pertain to either X D ( X D 1 , X D 2 ,(  X  1 , ... ,  X  k )) is the number of the atoms that are in either X uncertainty between two data sources D 1 and D 2 .
+
+De is de fi ned below
+As a result, the entire degree of uncertainty between MDS is de such as (+  X  , 0.2) and (  X   X  , 0.8) if Pr (+  X  | X )+ Pr ( ( WPI ) [30] .
+
+From the above de fi nitions, we can deduce the following relationships between D  X 
+D 1 , ... , D n are totally in con fl ict with respect to
+D n ,(  X  1 , ... ,  X  k ))=0.  X 
+D 1 , ... , D n are totally in agreement with respect to  X 
+D C ( D 1 , ... , D n ,(  X  1 , ... ,  X  k ))=0.  X 
+D 1 , ... , D n are partially in agreement with respect to ... , D n ,(  X  1 , ... ,  X  k )) N 0.  X 
+D 1 , ... , D n are partially in con fl ict with respect to D n ,(  X  1 , ... ,  X  k )) N 0.
+ knowledge from MDS by computationally weighting. 3.3. Determining the weights of data sources fi
+D higher support (0.8) on the proposition Melbourne ( windy )by D formulae it includes the higher weight it should have. Consequently, it is critical to by which we are able to compute the weight of data sources.
+Let X D 1 , ... , X D n be PMMs of data sources D 1 , ... de fi ned as where | D| denotes the size of the PKB, and if  X   X  X D i  X 
+Example 3.8. (Continue Example 3.3) By Eq. (14), we have  X   X   X  one combination of PMMs of data sources. Nevertheless, the function Suppose v
+Proposition 3 . (Voting) Let v(  X  ) and v(  X  ) be the total vote of respectively. If v(  X  )  X  v(  X  ), then  X   X  (X D 1 , ... ,X weight of a data source D i regarding a subset of PMMs is de computation of the weight of data sources.
+
+Example 3.9 . (Continued Example 3.8) By Eq. (15), we have  X 
+X  X 
+Proposition 4 . (Information dependent weight) Let X D 1 , then set of PMMs { X D 1 , ... , X D n }, the denominator  X  D  X  Proposition 5 . (Voting dependent weight) Suppose X D i and X ... ,  X  k } and X D j  X  ={  X  1 , ... ,  X  k }. If  X   X 
+Proof . The proof is not presented here because it is similar to Proposition 5 . the other data sources.
+
+As described above, each data source may have more than one weights. We de data source.
+
+De fi nition 3.13. Let X D 1 , ... , X D n be the set of PMMs of data sources D as
+Example 3.10. (Continued Example 3.9) By Eq. (16), we have the weight of data source D 0.3)=0.29,  X  D
+Theorem 3.2. ( Weight) Let X D 1 , ... ,X D n be a set of PMMs of data sources D given two data sources D i and D j . For any X D i  X  PMM ( D X n )by Proposition 4 . Thus, we deduce that min ({  X  D i ( X consequence, we have  X  D 3.4. Degrees of consistency inconsistency.
+
+Let I ={  X  1 , ... ,  X  k }beasetofforumlasofPKBandPKB={ D and (2) need to be extended. Let X D i and X D j be PMMS of D X
+Thus, we can de fi ne the weighted degree of con fl ict of I between D respectively.
+
+Based on the Eq. (2), the reliability of con fl ict of I can be de
+Based on the Eq. (7), we can de fi ne the reliability of agreement of I .
+Based on the Eq. (11), the reliability of uncertainty of I is de
+The above reliability functions represent the belief in the degree of con uncertainty of PKB, which are written as reliability C (PKB,
+Example 3.11. (Continued Example 3.3 and Example 3.10) By Eqs. (17) 0.18=0.36, reliability A ( D 1 , D 2 , D 3 ,  X  )=0.21+0.54+0.34=1.09, and reliability inconsistency.
+
+De fi as where 0 b  X   X  1 is a parameter that is used to decrease the in
+De fi as
+De fi below.
+
+Example 3.12. ( Continued Example 3.11) By Eqs. (20)  X  (22), we have Inconsistency ( D
+D uncertainty.
+ functions reliability C (PKB, I ,  X  ), reliability A (PKB, I , 3.5. Support and con fi dence of itemsets
+To identify the knowledge of interest, we need to compute the support and con knowledge by logic calculi, two quantities of support and con Let PKB={ D 1 , ... , D n } be a set of data sources, and X support on I by X ={ X D 1 , ... , X D n }isde fi ned as where | D| denotes the size of the possibilistic knowledge base.
+Example 3.13. (Continued Example 3.3) Let PKB={ D 1 , D 2 { X supp ( X 1 , I 2 )=0.8/3=0.27, supp ( X 2 , I 1 )=1.3/3=0.43, supp ( X supp ( X 4 , I 1 )=1.3/3=0.37, supp ( X 4 , I 2 )=0. support.
+
+De support of I is de fi ned as
+Example 3.14. (Continued Example 3.13) By Eq. (24), we have supp ( D , I
+I ))=min(0.43, 0.43, 0.43, 0.43)=0.43 and supp ( D , I 2 )=min( supp ( X 0, 0)=0.
+ need to calculate the con fi dence of implication in terms of support-con Y , in which X and Y represent the set of formulae of data-sources.
+De fi nition 3.18. Let PKB={ D 1 , ... , D n }. Suppose X p Atom (PKB) and Y a rule. Then the con fi dence of X  X  Y is de fi ned as rule that represents the frequencies of occurring patterns, the con
+Example 3.15. (Continued Example 3.14) Suppose I 1 ={  X  , calculate that supp (PKB, I 3 )=min( supp ( X 1 ,  X  ), supp ( X (PKB, I 4 )=min( supp ( X 1 ,  X  ), supp ( X 2 ,  X  ), supp ( X 0.43 and supp (PKB,  X  ,  X  )=0 from Example 3.14, we have conf (PKB, 0.47=0.91 by Eq. (25).
+ can be regulated in terms of different requirements. Based on the consistency, X with the support-con fi dence framework [1] if (1) supp (PKB, X  X  Y )  X  minsupp , (2) conf (PKB, X  X  Y ) minconf and (3) Consistency (PKB, { X , Y })  X  minc .
+  X 
+Compute the integrated weight for data sources.  X 
+Measure the degrees of inconsistency, consistency and uncertainty of PKB.  X   X 
+Compute the con fi dence of rules and extract the interesting knowledge from the PKB. 3.6. In fl uence of consistency, inconsistency and uncertainty relations and identi fi cation operators. 3.6.1. Relationships between knowledge bases
+D ,  X  }  X  I 2 , iff  X  { D formulae I is minimal regarding  X  { D 1 , ... , D n ,  X  } if for agreement with knowledge base KB than I  X  . Thus, we say I with a minimal consistency.
+ degree of inconsistency and consistency, respectively.
+
+De fi nition 3.19. Let PKB 1 ={ D 1 , ... , D n } and PKB 2 ={ C support relation  X  I C with respect to con fl ict is de fi from PKB 1 than PKB 2 .
+
+Example 3.16. Let  X  =0.5, I ={  X  ,  X  }andPKB 1 ={ D 1 , D 0.3)}}, PKB 2 ={ D 3 , D 4 }={{(  X  ,0.6),( X   X  ,0.6),(  X   X   X  =min(3/7, 3/7)=3/7,  X  D have reliability C (PKB 1 ,I ,  X  )=0.17, reliability C (PKB (PKB 2 , I ,  X  )=max(3.3/7, 1.8/7)=3.3/7=0.47, reliability (0.23 +0.47+0.5*0.51)=0.24. Due to Inconsistency (PKB 1 ,I)
+De fi nition 3.20. Let PKB 1 ={ D 1 , ... , D n } and PKB 2 ={ C respect to agreement is de fi ned as
+The possibilistic knowledge base PKB 2 has more agreement with itemset I than PKB
+PKB 1 . If PKB 1  X  I A PKB 2 , then PKB 2 is viewed as being more reliable than PKB
+Example 3.17. (Continued Example 3.16) By Eq. (21), we have Consistency (PKB
+Consistency (PKB 2 , I )=0.47/(0.23+0.47+0.5*0.51)=0.49. Due to Consistency (PKB
+De fi nition 3.20 . 3.6.2. Knowledge extraction base. For example, let D 1 ={  X   X   X   X  } and D 2 ={  X   X   X   X   X 
+Let PKB 1 ={ D 1 , ... , D n } and PKB 2 ={ C 1 , ... , C de fi nitions of the operator are  X   X  (PKB 1 , I )  X   X  (PKB 2 , I ) if PKB 2  X  I C PKB 1  X   X  (PKB 1 , I )  X   X  (PKB 2 , I ) if PKB 1  X  I A PKB 1 .
+The operator aims to extract the interesting I from the PKB that has less con
+Example 3.18. (ContinuedExample3.17)Dueto Consistency (PKB
+PKB 1  X  I C PKB 2 . Thus, we deduce  X  (PKB 2 , I )  X   X  (PKB PKB 1 rather than PKB 2 .
+ sets of formulae from PKB.  X   X  (PKB 1 , X  X  Y 1 )  X   X  (PKB 2 , X  X  Y 2 )if supp (PKB, X
+Example 3.19. (Continued Example 3.15) Let X ={  X  }, Y 1 ={ {  X  conf (PKB, {  X  }  X  { X   X  })=0.3/0.43=0.7. Due to supp (PKB, { become a valid rule than {  X  }  X  { X   X  }. 4. Experiments 4.1. Algorithm design begin
+Input : PKB={ D 1 ,  X  , D n }: possibilistic knowledge base ; I : an itemset ; minimum con fi dence ; minc : minimum consistency (1) let possibilistic model X j D i  X   X  ; supp ( X , I )  X  (2) forall D i  X  PKB do (3) forall X i do (4) if supp (PKB, I )  X  minsupp then { (4.2.2) forall D i  X  PKB do } end In step 1, an empty set is assigned to the variable of X j reliability A (PKB, I ,  X  ) and reliability U (PKB, I ,  X 
+Step 3 is to compute the support of a set of formulae from PKB. We need to models of data sources, and then select their minimum as its support. con 4.2. Identi fi cation of interesting patterns from PKB 4.2.1. Weather forecast data
+Let PKB={ D 1 , D 2 , D 3 } be the weather forecast of a city. Suppose and  X   X  =  X  wet  X  . Let D 1 ={(  X  , 0.9), (  X  , 0.7), (  X   X   X  0.5)}. Let  X  =0.5, minc =0.4, minsupp =0.2 and minconf =0.4.
+Then the PMMs of D 1 , D 2 and D 3 can be obtained by De fi (+  X  , 0.7), (+  X  , 0.9)}}, PMM( D 2 )={(+  X  , 0.8), (+  X  , 0.7), ( {(+  X  , 0.7), (+  X  , 0.7), (+  X  , 0.5)}}.
+
+By Eq. (14), we have  X   X  =(1, 1, 1, 1),  X   X   X  =(1/3, 1/3, 0, 0), 1/3),  X   X  =(0, 1/3, 0, 1/3) and  X   X   X  =(1/3, 1/3, 1/3, 1/3).
+By Eqs. (15) and (16), we compute that  X  D  X  =min(7/22, 1/3, 1/3, 6/19)=6/19.
+ By Eqs. (17)  X  (19), it is easy to compute that reliability sources and Eq. (21), we have Consistency (PKB)=1.52/(0.16+1.52+0.5 * 1.14)=0.68 secondary evidence for measuring inconsistency.
+ {  X  })=0.59 N minconf . As mentioned above, the consistency of { 22=0.44. Consistency (PKB, {  X  ,  X  })=1.36/(1.36+0+0.5 * 0.44)=0.86 interest, namely  X  cloudy  X   X   X  gusty  X  in terms of the satisfaction conditions. 4.2.2. Lung cancer data
+Let PKB={ D 1 , D 2 , D 3 } be a lung cancer data set. Suppose cancer  X  . Let D 1 ={(  X  , 0.3), (  X  , 0.9), (  X   X   X  , 0.7), (  X  =0.5, minc =0.4, minsupp =0.2 and minconf =0.3.
+
+By De fi nition 3.5 , we obtain PMM( D 1 )={{(+  X  , 0.3), (+ 0.3)}, {(+  X  , 0.3), (+  X  , 0.9), (+  X  , 0.7), (  X   X  , 0.3)}, {(+ (  X   X  , 0.3)} and PMM( D 3 )={{(+  X  , 0.6), (+  X  , 0.7), (+
+By Eq. (14), we work out  X   X  =(1, 1, 1, 1),  X   X   X  =(1/3, 1/3, 0, 0), 3, 2/3) and  X   X   X  =(2/3, 1/3, 2/3, 1/3).
+
+By Eqs. (15) and (16), we have  X  D 24=0.29 and  X  D By Eqs. (17)  X  (19), we have reliability C (PKB,  X  )=3.5/19+2.1/24+0=0.27, reliability inconsistency and contains some uncertain information.
+ supp (PKB, {  X  })=0.38 N minconf . Moreover, we have reliability  X  },  X  )=2.1/24+0.18+5/19=0.53, and reliability U (PKB, {  X  ,  X  In the same way, supp (PKB, {  X  ,  X  })=min(0.4, 0.5, 0.4, 0.5)=0.4 +0.5 * 0.41)=0.76 N minc . Thus,  X  smoker  X   X   X  XRay is positive  X 
+XRay is positive  X  cannot be identi fi ed as a valid rule due to supp (PKB, { correctness and ef fi ciency of our method are discussed in Section 4.3 . 4.2.3. Protein kinase regulation data model within a reasonable time.
+ corresponding to 6080001, 6080002 and 6080003 are obtained.  X 
+C 0.71),(  X  1 e  X  Diabetes , 1),(  X  2 e  X   X  1 e , 1),(  X  2 e
+Diabetes , 1),(  X  3 e  X   X  2 e , 1),(  X  3 e  X   X  1 e , 0.64),( Glycogen  X 
+C  X   X   X  2 a , 1),(  X  1 e  X   X  2 e , 1),(  X  1 e  X   X  3 e , 1),(  X  ( Training  X   X  1 e , 1),( Nicotinicacid  X  Diabetes , 1)}  X 
+C 3 ={(  X  1 a  X   X  1e , 1), (  X  1 a  X   X  2 p , 1), (  X  1e  X   X  (  X   X  2 e , 1), ( Glycogen  X   X  2 p , 1), ( Diabetes  X   X  2 e and  X  1 e .  X 
+D 1 ={(  X  2 e , 0.29), (  X  1 e , 0.24), (  X  1 e , 0.2), (  X   X 
+D 2 ={(  X  2 e , 0.29), (  X  1 e , 0.24), (  X  1 e , 0.2), (  X   X 
+D 3 ={(  X  2 e , 0.29), (  X  1 e , 0.24), (  X  1 e , 0.2), (  X 
+Thus, we obtain a collection of possibilistic minimal models, including PMM( D weight of data sources, there are 8 * 6 * 3 possible situations needed to consider.  X 
+PMM( D 1 )={{(+  X  2e , 0.29), (  X   X  2e , 0.71), (+  X  1e , 0.2)}, {(+ {(+  X  2e , 0.29), (+  X  1e , 0.24), (+  X  1e , 1)}, {(+  X  2e {(+  X  2e , 1), (+  X  1e , 0.24), (+  X  1e , 1)}}.  X 
+PMM( D 2 )={{(+  X  1e , 0.24)}, {(+  X  1e , 1)}, {(+  X  2e , 0.29), (+ 1)}, {(+  X  2e , 1), (+  X  1e , 1), (+  X  1e , 0.2)}}  X 
+PMM( D 3 )={{(+  X  2e , 0.29)}, {(+  X  2e , 1), (+  X  1e , 0.24)}, {(+
+According to Eqs. (14)  X  (16), we obtain  X  D D ( D 1 , D 2 , D 3 )=0, D A ( D 1 , D 2 , D 3 )=0.78, D U ( D
+Suppose X ={  X  2 e }and Y ={  X  1 e }. Thus, we have supp ({ conf (  X  1 e  X   X  2 e )=1, D C ( D 1 , D 2 , D 3 ,{  X  2 e ,  X  })=0.46 N minc . Although the strength of implications ( con frequency ( support )islowduetooppositeimplicationin D 1 and D determine the threshold. Nevertheless, this is not the key point of this paper. 4.3. Performance evaluation 4.3.1. Comparison with existing methods derived. 4.3.2. Analysis of correctness provides a concise way of describing the degree of con fl between two knowledge bases in terms of the quantities of con information source ordering. In WPI-based model , the degrees of con con fl icting literals including (+  X  , s 1 ) and (  X   X  , s 2 {(+  X  , s 3 )} and {(+  X  , s 4 )}. According to WPI-based model ,(+ correctness in identifying knowledge from PKB than the other methods. support and con fi dence are usuallyconsistent between data sources. 4.3.3. Analysis of ef fi ciency
+Because the decomposition of PKB is a general process, we focus on discussing the ef between our method and existing data mining algorithms. To assess the ef case, it is unnecessary to calculate the support and the con reduced. Suppose three sets of formulae including I 1 , I shows the ef fi ciency evaluation by using the pruning space. is important to take this issue into account and fi nd solutions in our future work. 5. Conclusions
+The topic of mining distributed multiple data sources has been a critical issue in the
+The weights were then used to de fi ne three reliability functions: con extracting interesting knowledge from multiple data sources. with logical theories.
+ Acknowledgements project N_HKUST624/09.
+
+References
+Further reading

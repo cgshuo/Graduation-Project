@@ -1,0 +1,43 @@
+ 1. Introduction dimensionality reduction, and has a wide range of applications throughout science and engineering [1 to the so called principle components (PCs). Denote the data matrix as X solution to the following optimization model:
+Recently, the research on the sparse PCA problem has attracted much attention [4 [10], and financial asset trading [5].
+
+The sparse PCA model can be directly formulated by supplementing the l enforce sparsity of the derived PCs. The corresponding optimization model is: extensions.
+ constraint to a weaker but convex l 1 constraint, as expressed in the following: [8], EMPCA [10], ALSPCA [11], PMD [13], sPCA-rSVD [14], RSPCA [15], etc. an appropriate parameter k / t of the l 0 / l 1 constraint for the L for the classification or regression problem, to judge whether a sparse PC vector is
+They include the LARS for lasso [17], the SVMPath for L 1 linear models [20], the path algorithm for multiple kernel learning [21], etc. finish with conclusion in Section 4 . 2. The coordinate-pairwise algorithm for sparse PCA
+Denote the input data matrix as X =[ x 1 ,  X  , x d ] T  X  R 2.1. Reformulation of the L 1 (t) model
+The proposed path-following algorithm is constructed on an equivalent reformulation of the L following: where c is a pre-specified constant. constraint w T w  X  1, while varying the l 1 constraint  X  w constraint  X  w  X  1  X  c , while changing the l 2 constraint w intuitively understood by virtue of Fig. 1 . For the L 1 ( t ) model, the optimal solution w the vertex of the constraint area of L 1 ( t ), i.e., along the nonlinear sub-manifold of w panel of Fig. 1 ). While for the reformulated L 2, c ( s ) model, the corresponding optimal w solution path of the new model with respect to s tends to be more easily followed than that of the L of sparse PCA by virtue of the L 2, c ( s ) model.
+
+A natural question is what the relationship between L 1 ( t ) and its reformulation L intrinsic equivalence between the two models.
+
+Theorem 1. For the optimal solutions w l 1 t  X  X  and w l 2 w respect to t can be equivalently achieved by searching the entire solution path of L the fundamental of the to-be-constructed path-following algorithm for sparse PCA. 2.2. The core idea of our method
+Inspired by the forward stagewise regression strategy (FS path for sparse PCA by iteratively generating the solution of L pairwise coordinates so selected.
+
+We first consider the aforementioned problem (ii). Denote the solution of L optimally move the i -th and j -th coefficients of w o along this direction to approach the solution w as: where V ( w i , w j ) corresponds to the portion of V( w ) with respect to w the model L 2, c ( s +  X  ) with respect to the pairwise variables w holds along the generated solution path). Under this assumption, it is easy to deduce that s c  X  X  X  be largely increased in the feasible region of L 2, c ( i , j ) reasonability of this assumption in Section 2.4 ):
+Since  X  V ( w )=2 XX T w , the gradient direction  X  V =( v and v  X  =( sign ( w i o ), sign ( w j o )) T , it holds that
+It can then be deduced that the largest increase of the cost function V (w
+L ( i , j ) ( s +  X  ) is to be attained along the direction v =( sign ( w area  X  c ={( w i , w j ) T || w i |+| w j |  X  | w i o |+| w
+For small stepsize  X  , the optimum w  X  =( w 1  X  , w 2  X  , where the stepsize  X  from w o to w  X  can easily be computed by
+By updating w o to w  X  as aforementioned, it is easy to see that the assumptions w aforementioned can be easily understood by observing the graphical illustration of Fig. 2 . calculated as follows: of the pairwise coordinates to be updated. It should be noted that the zero element of w updating the pairwise coordinates (see Eq. (8)) along which the maximum of Ji point w o can be appropriately set as the optimal solution w the solution to L 2,c ( s ) where c =  X  w pca  X  1 and s =1. 2.3. The coordinate-pairwise algorithm for sparse PCA Algorithm 1.
+
+It should be noted that when j w t j  X  j b  X  , step 2.4 is activated to amend the stepsize goes out of the feasible region of L 2, c ( s +  X  ). In specific, let
+Step 2.4 of the proposed algorithm easily resolves this problem by shortening the stepsize see that as long as this step is activated, w t  X  1 j  X  attains 0 and the corresponding label j generated. It can thus be deduced that this step is to be activated no more than d -1 times.
+The remainder problem is the proper specification of the stepsize coordinate-pairwise updating iterations. When we initiate w generated, the l 2 constraint parameter s monotonically increases from 1 (correspondingto w (0) = w brings  X  increase to w ( t ) T w (t) . Thus, the stepsize algorithm, and the stepsize  X  is then implied to be w pca terminated after IterNum iterations, and the entire solution path of the L attains the pre-specified value. 2.4. Computational complexity are involved in the coordinate-pairwise updating process (i.e., steps 2.3 algorithm is mainly costed on sorting the d ( d -1)/2 elements of following.
+
+Based on Eq. (10), by omitting the o (  X  ) element of J i This naturally implies the following fact: Instead of sorting the d ( d -1)/2 elements of
+J input data.
+
+As compared with the computational complexities of the current sparse PCA methods, such as O ( nd
+O ( nd 4 log d ) X  IterNum of DSPCA, O ( nd log d ) X  IterNum of EMPCA, O ( nd proposed algorithm is expected to perform consistently well to get the entire solutions to the problem. 2.5. Discussion on the reasonability of the KKT assumption solution path generated by the COP-PCA method is capable of effectively tracking the exact path of L implemented experiments. This empirically validates that the KKT conditions (6) of L sparse PCs of the data at the following four-fold aspects: (i) model L 2,c ( s ), as substantiated in the following experiments. 3. Experiments 3.1. Hastie data evaluation of sparse PCA. The data set contains a collection of 10-D data points ( x processes: firstly three hidden factors were created: where  X  ~ N (0,1), and V 1 , V 2 and  X  are independent; afterwards, 10 observed variables were generated as
+The first PC vector should recover the factor V 2 only using ( x x x 3.2. Pitprop data 76.99% of SPCA, 79.71% of DSPCA, 80.28% of PathSPCA, 80.68% of EMPCA, 80.95% of GPower l intrinsically reflecting their different significance on capturing data variance. 3.3. Colon cancer data cardinality specifications is 0.003382%, 0.003191%, and  X  classical PCA, COP-PCA, EMPCA, Gpower l 1 , and Gpower l 0
+Besides the above results, we also depict in Fig. 5 the tendency curves of the l  X  w ( t )  X  1 keeps to be a constant, the l 2 constraint w ( t )
+Section 2 , and thus further substantiate the intrinsic effectiveness mechanism of the proposed method. 3.4. Computation complexity evaluation where  X   X  N (0,1), and V 1 , V 2 and  X  are independent; and then generate d observed variables as:
+The first PC vector tends to recover the factor V 2 only using (0.4 d + 1,0.4 d +2,
+GPower l
+GPower l
+GPower l to the other competing sparse PCA methods (a little higher than GPower 4. Conclusion the intrinsic effect of the sparse PCA model. Acknowledgment
+This research was supported by the National Grand Fundamental Research 973 Program of China under Grant No. and Ph.D. Programs Foundation of the Ministry of Education of China 20090201120056. Appendix A. Proof of Theorem 1
+Theorem 1. For the optimal solutions w l 1 t  X  X  and w l 2 w
+Proof. (1)w l 2 ; c c 2 t 2 can be attained through the optimization model L
+As a comparison, c t w l 1 t  X  X  can be obtained through solving the following optimization: which is equivalent to the following model:
+Evidently, the two optimization models (16) and (18) are intrinsically equivalent, and thus w (2)By substituting s  X  c 2 t 2 into (17), we have i.e., The proof is then completed.  X 
+References

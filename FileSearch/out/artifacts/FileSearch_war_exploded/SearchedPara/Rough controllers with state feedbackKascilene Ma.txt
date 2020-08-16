@@ -1,0 +1,115 @@
+ 1. Introduction more complex controllers.
+ a function of the controller.
+ the models and provide mechanisms to link their information 2007 ).
+ using concepts of rough sets is proposed. The methodology the establishment of stable conditions and suitable dynamic computer simulations and real applications are shown.
+There are no many papers about rough sets related to the modeling of dynamic systems which use continuous or sampled application examples, and fi nal conclusions. 2. Continuous and discrete models the corresponding model.
+ valve determining an output fl ow ( q o ).
+ a fi rst order differential equation with coef fi cients k 3 dh  X  t  X  = dt  X  k 1 dh  X  t  X  = dt  X  k 3 h  X  t  X  X  k 4 u  X  t  X  X  2  X  of this paper: h  X  k  X  X  a 1 h  X  k 1  X  X  b 1 u  X  k 1  X  X  3  X  de fi ned: I  X  k  X  X  a 1 I  X  k 1  X  X  b 1 u  X  k 1  X  X  4  X 
+Measurements ( Fig. 3 ) that will be used in the modeling procedures and control loop design were performed in the level plant.
+
+Applying the least-squares procedure ( Ljung, 1998 ) on the measurements, we obtain model (4) with coef fi cients a 1 and b meters  X  1 ,  X  2 , etc.
+
+I  X  k  X  X   X  1 I  X  k 1  X  X   X  2 I  X  k 2  X  X   X  3 u  X  k 2  X  With the least-squares' procedure, the parameters of the together with the information of the measurements. Compared presented better accuracy in the modeling.
+ lers is composed of rule-based models in representations IF a signi fi cant feature in real-time applications. ping of control functions in the form of rough rules. 3. State feedback control response of the control loop will be faster.
+ and a linear control law with state feedback.
+ parameters a 1  X  0.9952 and b 1  X  0.0189.
+ follows: action of the control law ( Phillips and Nagle, 1995 ): ^ A  X  j zI ^ A  X  ^ B ^ K j X  X  z p 1  X  X  z p 2  X  :  X  7  X  K this process.
+ responses of the conventional control system are shown in Appendix B of this paper.
+ on rough sets and rough models. 4. Rough sets
+An information system ( IS ) or a decision table is de fi ( o decision tables ( Pawlak and Skowron, 2007 ).
+ nominal data. Some approaches may be utilized to minimize ... where B is a set of attributes ( a 1 , ... , a n ), i  X  1, IND  X  B  X  X f X  o i ; o j  X  A U 2 j8 a k A B ; f  X  o i ; a k de imprecise, rough or approximated: B  X  O  X  X f o A U j U = IND  X  B  X  D O g ; B  X  O  X  X f o A U j U = IND  X  B  X \ O a 0 g :  X  9  X  M m  X  i ; j  X  X f a k A B j f  X  o i ; a k  X  a f  X  o j ; a k  X g X  11  X  composition of values of the discernibility matrix, where  X  3  X  tively:
+F  X  B  X  X  4 f 3 m D  X  i ; j  X g ; m  X  i ; j  X  X f a k j a k A m D  X  i ; j  X g :  X  12  X  reducts themselves.
+
+To transform a reduct into decision rule, the values of the conditional attributes (from the class which the reduct was information in the data:
+IF a  X  f  X  o 1 ; a 1  X  AND ... AND a k  X  f  X  o m ; a k  X  THEN d  X  f  X  o 1 ; d 1  X  OR ... OR d i  X  f  X  o m ; d k  X  X  13  X  the following section.
+
+Example 2. Table 2 denotes an information system with two
+For this IS ,wehave U / IND ( B )  X  {{ o 1 }, { o 2 }, { o { o , o 2 , o 3 }, B  X  { a 1 , a 2 } and B n ( O )  X  {{ o 1 }, { o ibility function is as follows: F  X  B  X  X  a 2 4 a 1 4  X  a 1 3 a 2  X  X  a 1 4 a 2 : are as follows:
+IF a 1  X  p AND a 2  X  p THEN d  X  s 1 ;
+IF a  X  p AND a 2  X  q THEN d  X  s 2 ;
+IF a  X  q AND a 2  X  p THEN d  X  s 3 :  X  14  X  5. Rough models decision attribute and y ( k ) are its real values. x N  X  x N ( m ) we have y  X  y ( m ) de fi ned by s m . s k generic sentences in the table: , y ( m ) ] (considering that y ( k ) o y ( m ) )arecrispsets be implemented in common programming languages.
+ some established techniques. The reducts that determine the will employ Rosetta (  X hrn and Komorowski, 1997 ), a freely accessed software (http//www.idi.ntnu.no/ aleks/rosetta/). nonlinear function y ( x 1 )  X  x 1 2 , where x 1 A [0, 1].
+The rule-based model will be represented in form (17) . The (from the nonlinear function in question): s 1  X  [0, 1/9], a linear interpolation is used (19) : r : IF x 1  X  X  0 ; 1 = 3 THEN y 1  X  X  0 ; 1 = 9 ; r : IF x 1  X  X  1 = 3 ; 2 = 3 THEN y 2  X  X  1 = 9 ; 4 = 9 ; r : IF x 1  X  X  2 = 3 ; 1 THEN y 3  X  X  4 = 9 ; 1 :  X  18  X  y
+Exemplifying, for x 1  X  0.85 we have y 3  X  4/9  X  (1 4/9) function (0.85 2  X  0.7225) is around 3.8%.
+ c r : IF x 1  X   X  i THEN y i  X  c 1 = i x 1  X  c 0 = i  X  20  X 
+Therefore r : IF x 1  X  X  0 ; 1 = 3 THEN y 1  X  x 1 = 3 ; r : IF x 1  X  X  1 = 3 ; 2 = 3 THEN y 2  X  x 1 2 = 9 ; r : IF x 1  X  X  2 = 3 ; 1 THEN y 3  X  5 x 1 = 3 2 = 3 : nonlinear function using the corresponding rules.
+And the rules are as follows: r : IF x 1  X  X  0 ; 1 = 4 THEN y 1  X  x 1 = 4 ; r : IF x 1  X  X  1 = 4 ; 2 = 4 THEN y 2  X  3 x 1 = 4 1 = 8 ; r : IF x 1  X  X  2 = 4 ; 3 = 4 THEN y 3  X  5 x 1 = 4 3 = 8 ; r : IF x 1  X  X  3 = 4 ; 1 THEN y 4  X  7 x 1 = 4 3 = 4 :
+Exemplifying, for x 1  X  0.85, we have y 4  X  7 0.85/4 represent a linear approximation of the nonlinear function.
+The following example uses a linear function with two inde-pendent variables.
+ example, we can write the rule IF x 1  X  X  0 ; 1 = 2 AND x 2  X  X  1 = 2 ; 0 THEN y  X  X   X  1 = 2 et al., 2010 ): y the form: IF x 1  X  X  0 ; 1 = 2 AND x 2  X  X  1 = 2 ; 0 THEN y  X  c 1 x 1 ( x (( y Therefore IF x 1  X  X  0 ; 1 = 2 AND x 2  X  X  1 = 2 ; 0 THEN y  X  x 1  X  x using (22) , we have the following: r : IF x 1  X   X  i AND x 2  X   X  i AND ... AND x n  X   X  i THEN y  X   X  N and  X  rough model are given by the following equations: c  X  1 N : y c level plant.
+ The data were imported into the environment with the use of system: x 1  X  X  1
+OR y  X  6 : 29  X  OR y  X  6 : 32  X  OR y  X  6 : 38  X  OR y  X  6 :
+OR y  X  6 : 57  X  OR y  X  6 : 60  X  OR y  X  6 : 48  X  OR y  X  6 :
+OR y  X  6 : 79  X  OR y  X  6 : 70  X  OR y  X  6 : 63  X  OR y  X  6 :
+OR y  X  6 : 92  X  OR y  X  7 : 39  X  OR y  X  7 : 27  X  OR y  X  7 :
+OR y  X  7 : 05  X  OR y  X  7 : 24  X  OR y  X  7 : 52  X  OR y  X  7 :
+OR y  X  7 : 71  X  OR y  X  7 : 43  X  OR y  X  7 : 49  X  OR y  X  7 :
+OR y  X  7 : 93  X  OR y  X  7 : 96  X  OR y  X  8 : 00  X  OR y  X  7 :
+OR y  X  7 : 81  X  OR y  X  7 : 90  X  OR y  X  8 : 19  X  OR y  X  8 :
+OR y  X  8 : 38  X  OR y  X  8 : 31  X  OR y  X  8 : 12  X  OR y  X  8 :
+OR y  X  7 : 74  X  OR y  X  7 : 36  X  OR y  X  8 : 03  X  OR y  X  8 :
+OR y  X  8 : 50  X  OR y  X  8 : 53  X  OR y  X  8 : 28  X  OR y  X  8 :
+OR y  X  8 : 63  X  OR y  X  8 : 69  X  OR y  X  8 : 72  X  OR y  X  8 :
+OR y  X  8 : 57  X  OR y  X  8 : 95  X  OR y  X  9 : 01  X  OR y  X  9 :
+OR y  X  8 : 82  X  OR y  X  8 : 91  X  OR y  X  8 : 85  X  OR y  X  9 :
+OR y  X  8 : 66  X  OR y  X  9 : 10  X  OR y  X  8 : 98  X  OR y  X  8 : x 1  X  X  3 : 44 ; n  X  X  AND x 2  X  X  n ; 9 : 06  X  X ) y  X  6 : 35  X  OR y  X  6
+OR y  X  6 : 10  X  OR y  X  6 : 25  X  OR y  X  6 : 22  X  OR y  X  6 :
+OR y  X  6 : 48  X  OR y  X  6 : 57  X  OR y  X  6 : 54  X  OR y  X  6 :
+OR y  X  6 : 38  X  OR y  X  6 : 41  X  OR y  X  6 : 60  X  OR y  X  6 : x 1  X  X  3 : 44 ; n  X  X  AND x 2  X  X  9 : 06 ; 11 : 03  X  X ) y  X  9 x 1  X  X  n ; 1 : 55  X  X  AND x 2  X  X  9 : 06 ; 11 : 03  X  X ) y  X  10
+OR y  X  8 : 47  X  OR y  X  8 : 25  X  OR y  X  8 : 22  X  OR y  X  7 :
+OR y  X  7 : 36  X  OR y  X  6 : 95  X  OR y  X  6 : 86  X  OR y  X  6 :
+OR y  X  8 : 34  X  OR y  X  7 : 87  X  OR y  X  7 : 71  X  OR y  X  7 :
+OR y  X  8 : 82  X  OR y  X  9 : 10  X  OR y  X  8 : 53  X  OR y  X  8 : x 1  X  X  1 : 55 ; 3 : 44  X  X  AND x 2  X  X  11 : 03 ; n  X  X ) y  X  11
+OR y  X  11 : 77  X  OR y  X  11 : 67  X  OR y  X  11 : 83  X 
+OR y  X  12 : 49  X  OR y  X  11 : 04  X  OR y  X  10 : 88  X  X  26  X  r : IF  X  1 : 55 r x 1 r 3 : 44  X  AND  X  6 : 1 r x 2 r 9 : 06  X 
+THEN  X  6 : 22 r y r 9 : 2  X  ; r : IF  X  3 : 44 r x 1 r 5 : 0  X  AND  X  6 : 1 r x 2 r 9 : 06  X 
+THEN  X  6 : 10 r y r 9 : 2  X  ; r
+THEN  X  9 : 07 r y r 11 : 26  X  ; r
+THEN  X  8 : 82 r y r 10 : 34  X  ; r : IF  X  0 r x 1 r 1 : 55  X  AND  X  9 : 06 r x 2 r 11 : 03  X 
+THEN  X  8 : 79 r y r 11 : 04  X  ; r : IF  X  0 r x 1 r 1 : 55  X  AND  X  6 : 1 r x 2 r 9 : 06  X 
+THEN  X  6 : 35 r y r 9 : 23  X  ; r
+THEN  X  10 : 94 r y r 12 : 18  X  ; r : IF  X  1 : 55 r x 1 r 3 : 44  X  AND  X  11 : 03 r x 2 r 12 :
+THEN  X  11 : 45 r y r 12 : 75  X  ; r : IF  X  0 r x 1 r 1 : 55  X  AND  X  11 : 03 r x 2 r 12 : 75  X  THEN  X  10 : 94 r y r 12 : 75  X  :  X  27  X 
+Similar to Example 4 , we have in (28) the rough model (a r y  X  6 : 22  X  9  X  0 : 787 x 1  X  0 : 503 x 2  X  1 : 933 r y  X  6 : 10  X  9  X  0 : 994 x 1  X  0 : 525 x 2  X  0 : 522 ; r y  X  9 : 07  X  11  X  0 : 702 x 1  X  0 : 556 x 2  X  1 : 620 r y  X  8 : 82  X  10  X  0 : 402 x 1  X  0 : 386 x 2  X  4 : 704 ; r y  X  8 : 79  X  11  X  0 : 726 x 1  X  0 : 397 x 2  X  5 : 335 ; r : IF  X  0 r x 1 r 1 : 55  X  AND  X  6 : 1 r x 2 r 9 : 06  X  THEN y  X  6 : 35  X  9  X  0 : 929 x 1  X  0 : 486 x 2  X  3 : 383 ; r y  X  10 : 94  X  12  X  0 : 397 x 1  X  0 : 360 x 2  X  5 : 598 ; r : IF  X  1 : 55 r x 1 r 3 : 44  X  AND  X  11 : 03 r x 2 r 12 : y  X  11 : 45  X  12  X  0 : 344 x 1  X  0 : 378 x 2  X  6 : 749 ; r y  X  10 : 94  X  12  X  0 : 583 x 1  X  0 : 525 x 2  X  5 : 144  X  28  X 
+To test the model obtained, another set of measurements was The rules (28) have the basic shape of (23), as the rule of are discarded in the modeling of dynamic systems. The new coef fi the decision variable in the rough model are given by (30): r :
+IF x 1  X   X  i AND x 2  X   X  i AND ... AND x n  X   X  i THEN y  X   X  N ~ c linear model of this process. In this example there are two coef fi cients associated with each rule of the model: c c
+Each coef fi cient is associated with a rule ( r 1 , r 2 , have: c 1/i  X  [0 : 787 0 : 994 0 : 702 0 : 402 0 : 726 0 0 : 583]; c 2/i  X  [0 : 503 0 : 525 0 : 556 0 : 386 0 : 397 0 0 : 525]. The average values of the coef fi cients are c 1 = i c ~ c geneous model are ~ c ~ c
+Thus, the new rule-based model is as follows: r : y  X  1 : 0946 x 2  X  0 : 0228 x 1 ; r : y  X  1 : 1424 x 2  X  0 : 0288 x 1 ; r : y  X  1 : 2099 x 2  X  0 : 0204 x 1 ; r : y 4  X  0 : 8400 x 2  X  0 : 0117 x 1 ; y 5  X  0 : 8639 x 2  X  0 : 0211 x 1 ; y 6  X  1 : 0576 x 2  X  0 : 0269 x 1 ; r 7 : IF  X  3 : 44 r x 1 r 5 : 0  X  AND  X  11 : 03 r x 2 r 12 y 7  X  0 : 7834 x 2  X  0 : 0115 x 1 ; r 8 : IF  X  1 : 55 r x 1 r 3 : 44  X  AND  X  11 : 03 r x 2 r 12 y 8  X  0 : 8226 x 2  X  0 : 0100 x 1 ; y 9  X  1 : 1424 x 2  X  0 : 0169 x 1 :  X  31  X  ( k 1) and x 2  X  I ( k 1), with (31) we have
+I  X  k  X  X  1 : 0946 I  X  k 1  X  X  0 : 0228 u  X  k 1  X  ;
+I  X  k  X  X  1 : 1424 I  X  k 1  X  X  0 : 0288 u  X  k 1  X  ; r
+I  X  k  X  X  1 : 2099 I  X  k 1  X  X  0 : 0204 u  X  k 1  X  ; r
+I  X  k  X  X  0 : 8400 I  X  k 1  X  X  0 : 0117 u  X  k 1  X  ; r : IF  X  0 r u  X  k 1  X  r 1 : 55  X  AND  X  9 : 06 r I  X  k 1  X  r
+I  X  k  X  X  0 : 8639 I  X  k 1  X  X  0 : 0211 u  X  k 1  X  ; r : IF  X  0 r u  X  k 1  X  r 1 : 55  X  AND  X  6 : 1 r I  X  k 1  X  r
+I  X  k  X  X  1 : 0576 I  X  k 1  X  X  0 : 0269 u  X  k 1  X  ; r
+I  X  k  X  X  0 : 7834 I  X  k 1  X  X  0 : 0115 u  X  k 1  X  ; r
+I  X  k  X  X  0 : 8226 I  X  k 1  X  X  0 : 0100 u  X  k 1  X  ; r : IF  X  0 r u  X  k 1  X  r 1 : 55  X  AND  X  11 : 03 r I  X  k 1  X  I  X  k  X  X  1 : 1424 I  X  k 1  X  X  0 : 01691 u  X  k 1  X  :  X  32  X  (in red).
+ 6. Rough controllers with state feedback fuzzy systems use functional models in the form: r : IF x 1  X   X  i AND x 2  X   X  i AND ... AND x m  X   X  i AND u  X  k 1  X  X   X  i AND u  X  k 2  X  X   X  i AND ... AND u  X  k m  X  X   X  u ( k 2), ... , u ( k m ) are input samples of the system, design fuzzy controllers that have the form: r : IF x 1  X   X  i AND x 2  X   X  i AND ... AND x m  X   X  i AND u  X  k 1  X  X   X  i AND u  X  k 2  X  X   X  i AND ... AND u  X  k m  X  X   X  THEN u i  X  k  X  X  K i x :  X  33  X  control law de fi ned by u i ( k )  X  K i x . Each rule ( r af Lyapunov functions.
+ A the rough controller, which has the form (33), where  X  i , and  X  i ,  X  i , ... ,  X  i are crisp sets.
+
+The advantage of the fuzzy rules is the better capacity of applications. 7. Application example correspondents ^ A i , ^ B i , and with the poles speci fi control),wehavethegains ^ K i  X  [ K 1/i K I/i ]:
+K  X  21 : 6930 18 : 8333 29 : 8971 20 : 5128 12 : 5071 17 K  X  17 : 5439 13 : 8889 19 : 6078 34 : 1880 18 : 9573 14
+I ( k 1) de fi nes the state variable of the level process: r :
+IF 1 : 55 r uk 1  X  X  r 3 : 44  X  X  AND 6 : 1 r Ik 1  X  X  r 9 : uk  X  X  X  17 : 5439 IE k 1  X  X  21 : 6930 Ik 1  X  X  ; r :
+IF 3 : 44 r uk 1  X  X  r 5 : 0  X  X  AND  X  6 : 1 r Ik 1  X  X  r 9 : uk  X  X  X  13 : 8889 IE k 1  X  X  18 : 8333 Ik 1  X  X  ; r :
+IF 3 : 44 r uk 1  X  X  r 5 : 0  X  X  AND 9 : 06 r Ik 1  X  X  r 11 : uk  X  X  X  19 : 6078 IE k 1  X  X  29 : 8971 Ik 1  X  X  ; r :
+IF  X  1 : 55 r uk 1  X  X  r 3 : 44  X  AND 9 : 06 r Ik 1  X  X  r 11 uk  X  X  X  34 : 1880 IE k 1  X  X  20 : 5128 Ik 1  X  X  ; r : uk  X  X  X  18 : 9573 IE k 1  X  X  12 : 5071 Ik 1  X  X  ; r : uk  X  X  X  14 : 8699 IE k 1  X  X  17 : 0112 Ik 1  X  X  ; r :
+IF  X  3 : 44 r uk 1  X  X  r 5 : 0  X  AND 11 : 03 r Ik 1  X  X  r 12 uk  X  X  X  34 : 7826 IE k 1  X  X  15 : 9478 Ik 1  X  X  ; r :
+IF  X  1 : 55 r uk 1  X  X  r 3 : 44  X  AND 11 : 03 r Ik 1  X  X  r 12 uk  X  X  X  40 : 00 IE k 1  X  X  22 : 26 Ik 1  X  X  ; r : uk  X  X  X  23 : 6686 IE k 1  X  X  32 : 0947 Ik 1  X  X  ;  X  35  X  F in Fig. 1 ), whose resulting action is now global. ( Feng, 2006 ) and piecewise controllers ( Sontag, 1981 ). posed matrix)  X  ^
+A ^
+B I/r matrix, for example: control system in question:
+P  X  rough controller with state feedback.
+ the nonlinear process. 8. Experiments state feedback.
+ was also reduced. 9. Conclusion proposed. Simulations indicated a better performance of the the process.
+ compensate nonlinear process compared with a conventional control law via state feedback.
+ I/r and systems more complex, including processes with multiple inputs and outputs.
+ Appendix A. Continuous and discrete models
+Continuous or discrete models are employed in the process matrices A , B and C express the parameters of the model: x  X  f  X  x  X  t  X  ; u  X  t  X  X  ; y  X  t  X  X  h  X  x  X  t  X  ; u  X  t  X  X  x  X  Ax  X  Bu ; y  X  t  X  X  Cx :  X  40  X  sing of the equations with its coef fi cients ( a 1 , ... model is known as ARMA (Auto Regressive Moving Average): x  X  k  X  X  Ax  X  k 1  X  X  Bu  X  k 1  X  ; y  X  k 1  X  X  Cx  X  k 1  X  : y  X  k  X  X  a 1 y  X  k 1  X  X   X   X  a m y  X  k m  X  between (41) and (42) is given by A  X  :
+Through experimental measurements of the inputs and outputs squares method is applied.
+ x  X  x  X  y  X  I(k 1 )).
+ Appendix B. Conventional control
+Considering the linear model of the level plant and the the system has (ideally) a response time around 20 s and no action (a nonlinear behavior).
+
+Now, considering the nonlinear model of the level plant and considering a sample time of 0.1 s).
+ condition of the process.
+ system with the conventional control.
+ References

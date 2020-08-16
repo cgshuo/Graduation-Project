@@ -1,0 +1,18 @@
+ Adam Kilgarriff Abstract The verb google is intriguing for the study of morphology, loanwords, languages from nine language families.
+ Keywords Multilingual morphology  X  Loanwords  X  Assimilation  X  Neologism 1 The case research.  X  It exists in many languages, with the same core meaning. (For most words it does  X  Unlike invented words, it is common and can be explored using corpus methods  X  Most new words are nouns, but verbs tend to show more morphological and  X  For English, google is phonetically and orthographically an unexceptional word  X  As a search term, google works well and is easily searched for, in all of its
+In our corpus query tool, the Sketch Engine, we have general, recent web corpora forms of the verb, and compute their frequencies-per-million, so, where we had a 2 The data 2.1 Germanic languages
+Dutch and German show a large number of spelling variants. Amongst other things, in Dutch and German spelling the le ending is not standard. Some authors and couple of authors have covered all bases, with an l in both possible places: googleln . Frequencies for Dutch and English cannot be compared with others because of syncretism between the verb and the much more common noun. The high frequency (per million) in the Swedish corpus, which was collected explicitly to explore informal language, is noteworthy, though based on low numbers.
+
+We have included German ergooglen , a derived verb where the prefix means  X  X reative process X . This was a common variant on the base verb with an aspectual meaning contrast: see also notes on Slav languages and Chinese below. Other prefixed forms are not included in the table: the second most frequent was rumgooglen , a contraction of herumgooglen meaning  X  X oogle around X , which always occurred in collocation with a quantity expression, usually ein bisschen rumgooglen ,  X  X oogle around a bit X .
+ 2.2 Romance languages
+In Spanish and many other languages, pronouns are sometimes written attached to 2.3 Slav languages
+Amongst the Slav languages we have included verb forms with prefixes relating conveyed by inflectional and other grammatical means in other languages so they have been included here.
+
+We are struck by the very low frequencies for Czech: we wonder if this is because this particular corpus includes more formal data than some others (compare the Swedish, which is informal by design), or because Ceznam, not Google, is the Czech is not a language that forms verbs so readily.
+ 2.4 Celtic languages
+The Welsh derived forms included gwglbomio ,  X  X ooglebombing X . 2.5 Greek 2.6 Asian languages
+The Asian languages covered raise a number of additional issues. Both Persian and Telugu are languages which make extensive and systematic use of light verb verb do google .
+
+Chinese has no inflectional morphology and a weaker noun/verb distinction than many languages. It has a writing system without spaces between words and a correspondingly weaker distinction between words and multi-word units. It also presents challenges when one wishes to write a word that one has not seen written
+In many languages there is an unresolved tension between English-like and localised orthography, applying to, inter alia , the choice of character set (in Chinese, Greek) and in the orthographic realisation of the vowel group (with u , in Welsh it is w ). 3 Conclusion We present a data set for the verb google across many languages. It presents an interesting testing-ground for a range of ideas on morphology, loanwords, assimilation, language contrast and neologisms. We hope it will stimulate further thinking in these areas.
+ References

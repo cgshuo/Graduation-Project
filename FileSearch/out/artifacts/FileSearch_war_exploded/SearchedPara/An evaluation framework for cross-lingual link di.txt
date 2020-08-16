@@ -1,0 +1,88 @@
+ 1. Introduction
+Wikipedia is an online multilingual encyclopaedia containing a very large number of articles written in most modern poses a problem to a multi-lingual knowledge-seeking user for several reasons: only to related English articles; links to related Chinese, Japanese, and Korean articles are not present.
+Second, a user may wish to understand colloquialisms from an acquired second language. As an example, dollar note from which it can be seen that adding cross-lingual links would enhance the article.
+Third, a user may simply require a translation. As an example,  X  X  X rema pasticcera X  might appear on a menu and a user g., the Chinese article  X  X   X   X   X  (custard) is linked to the Italian  X  X  X udino X  (pudding) article). one anchor to multiple targets  X  each of which might be in a different language. links discovery.
+ source document that point to topically related content in documents in a second or subsequent language .
+Several English mono-lingual link discovery tools exist (e.g. Wikipedia Miner minary examination was presented at EVIA 2011 ( Tang, Itakura, et al., 2011 ). effectiveness of CLLD methods is discussed in Section 7 . We conclude in Section 8 . 2. Related work
+Hypertext differs from text by the existence of navigational links between documents. Many methods of automatically 2001; Sotomayor, 1998 ).
+ ically linking documents based on information retrieval techniques.
+
+TACHIR implements term/document links through indexing, document/document links through citation graphs and statis-
+To build a hypertext for a specific knowledge domain, Kurohashi, Nagao, Sato, and Murakami (1992) examine a method and Latin words to dictionary entries, which gained enormous popularity among students of the languages.  X  X  X ood X  or  X  X  X ad X  approaches.
+
+More recently, Jihong and Bloniarz (2004) present a key-word based approach to generating intra-document and inter-tively weak making it hard to compare their method with those previously proposed. evych (2011) provide a comprehensive analysis of state-of-the-art mono-lingual link discovery approaches. articles on the same topic. Yeung, Duh, and Nagata (2011) propose a framework for assisting cross-lingual editing in Wikipedia.
+ 2009 ). The Link-the-Wiki track of INEX 2010 focused on linking the Te Ara 2011 ), an encyclopaedia of people X  X  stories rather than entities. Te Ara proved difficult to automatically link. ( Tang, Geva, et al., 2011 ). 3. The framework 3.1. The evaluation methodology
+The effectiveness and the efficiency of various CLLD approaches can only be measured in rigorously designed experi-therefore efficiency is less important.
+ there are four parts: Inputs , Systems , Outputs , and Evaluation .
+ learning.
+ systems were produced by different research groups who implemented different algorithms of their own design. topic, and for each topic the run consists of a set of ranked anchors and links for that topic. are pooled and assessed by a human judge in the manner of the Cranfield methodology. Our framework includes several precision for link discovery. 3.2. Toolkits in the framework for submission pooling, link assessment, and system evaluation.
+ the test collection.
+
+The tool set developed for the CLLD framework discussed in this paper (including validation tool, assessment tool, and evaluation tool) is a multi-lingual adaptation of the tools previously used in the INEX Link-the-Wiki track at NTCIR-9. 4. The cross-lingual link discovery task
+Evaluating cross-lingual link discovery methods is awkward because of the number of degrees of freedom in judging systems. 4.1. Links in the Wikipedia powerful elements for information navigation. Links are followed by a simple click. mono-lingual article-to-article ( X  X  X ee also X ) links; mono-lingual anchor-to-article links; cross-lingual article-to-article ( X  X  X anguage X ) links; cross-lingual anchor-to-article links.
+ pages as  X  X  X anguages X  links), cross-lingual links from anchor to article are rare. to display them  X  neither of which is available in quantity.
+ (one-to-many linking) is an essential addition to Wikipedia. 4.2. Link assessment
+For automatic assessment of CLLD the ground-truth assessment set is derived from links already present in Wikipedia article.
+ CLLD systems.
+ be true in the multi-lingual case and is tested for the framework herein.
+
+An alternative approach to automatic assessment is manual assessment following the Cranfield paradigm used at TREC target might be relevant to the anchor, but the anchor not relevant from the user perspective (or vice versa ). reading both documents because the assessor must thoroughly comprehend both. 4.3. Task definition 4.4. Link evaluation 4.4.1. Evaluation types rated in the new setting of the cross-lingual link discover task.
+ appropriate anchors cannot necessarily be extracted from the corpus, whereas appropriate target articles can. assessment is necessary for anchor-to-file evaluation, but the assessments can subsequently be used for file-to-file evaluation.
+ evaluation are not considered. 4.4.2. Link precision and recall
+Precision and recall are the two underlying key metrics used to measure system performance in Information Retrieval the other for anchor-to-file evaluation. 4.4.2.1. File-to-file evaluation. Precision at some point in the results list is defined in the usual way: as is recall: file run, precision and recall are computed at each anchor and then plugged into a system metric. are further extended. Considering initially the anchor (similarly to INEX 2009 ( Huang et al., 2010 )): of 0.
+ wise it scores 0: anchor multiple-target link. For a specific anchor anchor , its precision is defined as:
+That is; the precision of the link for anchor , Precision sults lists is given by: And likewise for recall when there are M known relevant anchors 4.4.2.3. Example. Consider an article, A topic , which must be linked, and consider a results list, L articles, d j , in the target collection:
+Consider an article A topic which contains 12 anchors denoted as a 32 target documents denoted as d 1 , ... , d 32 , the results list of the links, L
+L a a a a a a a a 8 ? ( d 3 ), a a a a } shown below:
+S a a a a 8 ? ( d 3 ), a a a } target), so under file-to-file evaluation the precision (Eq. (2) ) and recall (Eq. (3) ) are: Under anchor-to-file evaluation, the precision (Eq. (8) ) and recall (Eq. (9) ) are: 4.4.3. System evaluation metrics link discovery.
+ R-Prec is defined as: where n is the number of topics (articles used in evaluation); and p in the results list.
+ Link Mean Average Precision (LMAP) is defined as: anchors for article-to-file evaluation); and p kt is the precision of the top K items for topic t .
+LMAP is analogous to mean average precision (MAP) used for measuring the performance in document retrieval, but uses results list, each target is considered to take one slot place in the results list, for example, is equivalent to: list from a search engine it is not unusual to use interpolated precision. The same technique can be used in CLLD. The interpolated link precision, Interp-P with r recall points is defined as: where R is the number of predefined equally spaced recall points and r is one of those recall points, p range.
+ to-file systems when the appropriate version of precision is used. 5. The framework tool set 5.1. Validation tool ument ID can be used as target. The specification of the anchor, however, is different. leads to a counting problem. Counting in bytes is impractical because many documents are encoded using more than one is encoded in a mark-up language (e.g. XML) because positions within the mark-up itself could be specified. ation. Consequently, the framework includes a run validation tool.
+ right pane. By clicking in that pane the target document is loaded into the top-right pane (in this case the also immediately obvious.
+ producers of those runs had not used the validation tool. 5.2. Assessment tool the target document.
+ English, Chinese, Japanese, and Korean.
+ 2009 ). However, Section 6.5 cursorily presents rough assessment times. 5.3. Evaluation tool ment. This section discusses a tool for visualising performance.
+ polated at 20 points: 0.05, 0.10, 0.15, 0.20, ... , 1.00.
+ 6. Application of the framework task. 6.1. Document collection
+Wikipedia is an excellent collection for CLLD because it exists in several languages and is a (mostly) closed hyper-minimal.
+ system had already been used at INEX, but for NTCIR it was adapted to support new languages. language links in this collection  X  the task is, therefore, to add more. 6.2. Topics number of pre-existing links useful for the purpose of automatic evaluation.
+ For example, topic 8 is the English Wikipedia article  X  X  X ource code X  with doc ID 27661. 6.3. Run specification per target language.
+ 6.4. Link pooling were English-to-Japanese, and English-to-Korean.
+ problems.
+ there were no valid unassessed links in any runs. 6.5. Human assessors movie tickets.
+ umn 3 their positions. For example, the 1 assessor for the English to Japanese task was a Postdoc researcher at QUT. i.e. in QUT, three of the topics were assessed by two participating teams of the English-to-Chinese subtask. personal reasons leaving only one assess (an author of this paper).
+
+Finding assessors for the Korean-to-English task was not problematic. Bilingual English/Korean speakers were readily available in Brisbane in the form of undergraduate students.
+ this is left for future work). Some assessors assessed more than one topic. 6.6. Links found in manual assessment 6.7. The validity of automatic assessment
+It is reasonable to ask whether manual assessment or automatic assessment results in the most robust evaluation out-correlate.
+
+To validate this hypothesis the automatically extracted assessments were manually assessed. One assessor was chosen these assessments and so the assessment was for file-to-file ( X  X  X ee also X ) relevance. context) making assessment difficult. Further investigation is required.
+ exact performance score (which changes from topic set to topic set). 7. Effectiveness of cross-lingual link discovery
+The framework presented herein was used to assess runs submitted to the NTCIR-9 Crosslink task. As discussed in Sec-2011 ).
+
+File-to-file evaluation was performed using both the automatic and manual assessment sets. Anchor-to-file evaluation sults using the other metrics presented in Section 4.4.3 are given for completeness. 7.1. Results different runs and the different evaluation methods.
+ matic to manual assessment; however some groups consistently performed well including HITS who consistently outper-formed other groups at identifying links like those already in the Wikipedia (i.e. automatic assessment).
+It is reasonable to conclude that manual assessment is a more rigorous evaluation method because the LMAP scores are to the number of topics that can reasonably be assessed in the available time. 7.2. Statistical analysis nificance test results for the English-to-Chinese task.
+ with either LMAP or R-PREC team UKP X  X  system is significantly better than the others. icantdifferencesintheanchor-to-filemanualevaluation,outofthetotal21pairedruns.Forexample,itisshownthatinmanual with LMAP.
+
+The tests also show that when measured with P@5, no team performed better than any other! 7.3. Comparison of CLLD algorithms 7.3.1. The top performing CLLD algorithms referred to the works of each respective group for further information.
+ statistical significant difference.
+ dumps from different dates, different language corpora, etc.).
+ anchor selection, anchor probability for anchor ranking, and Wikipedia page triangulation for translation. number of unique relevant links to the pool ( Tang, Geva, et al., 2011 ).
+ Machine (SVM).
+ tion. QUT did not disambiguate possible targets; for translation of the anchors they used triangulation. HITS performed disambiguation.
+
+Many of the algorithms used at NTCIR-9 CrossLink built on prior work in mono-lingual link discovery. There the link 2007; Milne &amp; Witten, 2008 ). The most successful approaches at INEX were base on the simple approach: chor as anchor text pointing to d , and df a is the number of documents containing anchor text a . 7.3.2. Cross-language agreement performance of the same algorithm across three different languages.
+
+The performance of the 3 runs from HITS and the 5 runs from UKP measured under manual file-to-file assessment is improvements in Chinese.
+ for Chinese of Korean. 7.4. Unique relevant links automatically extracted assessment set.
+ pedia. Without manual assessment no knowledge of the relevance of these links would have been revealed.
+Table 11 suggests that the assessments may not be exhaustive and we leave for further work determining the number of of NTCIR-9 CrossLink, but we leave for further work the determination of the error of such an approach. responsible for undoing any damage caused by such a bot. 8. Conclusions and future work framework presented herein was instantiated as part of NTCIR-9.
+
+Both automatic evaluation and manual evaluation were examined. For automatic evaluation the ground-truth assess-that automatic assessment may be an inadequate method of measuring the performance of CLLD systems and that manual assessment may be necessary.
+ diversification in their result sets.
+
+Wikipedia. However Wikipedia does not currently support multiple targets per anchor and so changes to the code-base also leave for further work the analysis of user behaviour and log files.
+ pedia and form Wikipedia to sources external to Wikipedia.
+ opportunity to enhance Wikipedia cross language linking and we look forward to reporting on that work in the future. Acknowledgements subtask References

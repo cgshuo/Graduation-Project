@@ -1,0 +1,123 @@
+ 1. Introduction association more speci fi cally in a particular context. We focus on those association rede some additional participation and cardinality constraints. may be junior or senior and projects may be short, medium or long term projects. the minimum for the rest of employees is one).
+ the result of fi ltering very large models as in [6].
+ [10], SDM [11] and OMT [12] among others, facilitate the speci
+Oliv X 's terminology [13], we refer to as association re fi used by many authors and modelling languages [7  X  18]. Most of those works de
+Less work has been done on explaining and clarifying the semantics of UML rede single level [23]. Therefore, in this paper we do not deal with UML re
+Although UML association rede fi nitions may seem to de fi relevant in the system domain and the designer may prefer to avoid its de expressed by means of UML rede fi nitions.
+
+Moreover, in this paper, we propose to enhance the semantics of UML association rede incorporate all the constraints that can be expressed by association re results on validation of association re fi nements into the pro
+The improvement of the semantics of association rede fi nitions by means of a UML pro constraints speci fi ed by the re fi nements. In particular, our pro implementation.
+ re fi nement and Section 3 compares the expressiveness of both concepts. Section 4 de re fi
+Knowledge of UML and OCL is assumed in the paper. See [2] and [24] for their standard de be found in [23] and [25], respectively. 2. UML association rede fi nitions and association re fi nements
+In this section, we review the concepts of association rede modelling languages. We adopt the formalization of rede fi schema using the association rede fi nition (or association re de between the conceptual schema and the modeller's interpretation of it [30]. 2.1. UML association rede fi nition
+In UML, rede fi nitions can be speci fi ed for association ends. Their purpose is to de particular context [2]. We focus on the rede fi nition of binary associations. rede fi ned end. In Fig. 2.1 example, the end jeProject rede end jeProject is connected to the same class as the end project . associationinstead. It hassigni fi cant effects ontherede association that connect instances of the class at the end opposite the rede of the rede fi nition. In Fig. 2.1 , the affected instances of the jeProject rede features of the rede fi nition. According to this, we say that rede 2.1.1. Type rede fi nition must also be an instance of B 1 . 2.1.2. Multiplicity rede fi nition instances of the rede fi nition. In Fig. 2.1 ,the jeProject rede the association R to a number minb 1 of instances at least and to a number maxb 2.2. Association re fi nement over the association. We focus on the re fi nement of binary associations.
+There are different types of re fi nements, although we focus on the best known: re cardinality constraints. We use a graphical notation to express association re 2.2.1. Re fi nement of participants
+It is necessary to explicitly de fi ne the direction of the re
+NonCritical (destination class) classes. This direction indicates that the re de fi ned over Works .
+ class B , it holds that if the instance of A is also instance of all the subclasses A an instance of some of the subclasses B 1 , ... , B m (destination classes).
+OCL the logical expression de fi ned in [13] for re fi nements of participants. 2.2.2. Re fi nement of cardinality constraints employee may work in other types of projects.
+
+Note that, unlike for re fi nement of participants, there is no need to de the restricted multiplicity in the schema indicates it.
+ must be connected to at least min and at most max instances of the subclass B
+Fig. 2.10 shows the translation of a cardinality constraint re obtained by translating into OCL the logical expressions de
+As mentioned previously, Fig. 2.9 shows a graphical notation for cardinality constraint re are two more cases: 1. Destination class is the class B (instead of the subclass B 2. Source class is the class A (instead of the subclasses A number of instances of B i that may be related with an instance of A . 3. Comparing UML association rede fi nition and association re
+UML association rede fi nition is a concept that is closely related with the re participants is similar to type rede fi nition and the re spite of this, we will see that there are some cases of re expressed using UML association rede fi nitions.
+
+The goal of this section is to draw a comparison between both constructs. Speci associations. 3.1. Re fi nement of participants
+As mentioned in the previous section, the speci fi cation of a re using the rede fi nition of associations.
+ end is also connected to a single class. Therefore, they can only be de (1)).
+ of association rede fi nitions. In that particular case, re the following, we demonstrate this statement intuitively. type rede fi nition, we consider the scenarios shown in Fig. 3.1.
+The demonstration consists on translating both the re fi nement and the rede
+Both of them express that an instance of subclass A 1 is only connected to instances of B have the same semantics when there is a single source and destination class.
+Consider, for example, the re fi nement of participants shown in Fig. 2.5 . If we rede the same, i.e. to ensure that junior employees can only work in non-critical projects. 3.2. Re fi nement of cardinality constraints re fi ned association, namely B , or one of its descendants, B an association rede fi nition.
+
+As mentioned above, the UML metamodel establishes that in a rede the destination class is B i , are not expressible through association rede multiplicity over the original association.
+ the source class is also A i but the destination class is B constraints have the same semantics as a multiplicity rede rede fi nition. 3.2.1. Re fi nement of cardinality constraints versus multiplicity rede class is B) (1) shown in Table 2 , we consider its scenarios depicted in Fig. 3.3. re fi nements of cardinality constraints and multiplicity rede fi 3.2.2. Re fi nement of cardinality constraints versus type and multiplicity rede the destination class is B i ) rede translation.
+ but they cannot be connected to instances of other subclasses of B .Inthecaseofre cardinality constraints and type and multiplicity rede fi Fig. 3.7 shows an example.
+ and that he can only work in non-critical projects. On the other hand, the re can work in other projects which are not critical. 4. Incorporating association re fi nements to UML this section is to extend the UML to incorporate the complete semantics of re semantics, it is time-consuming and error prone and OCL expressions may be dif
+Therefore, we propose to extend the UML language by using a UML pro constraints are represented as a set of stereotypes. Our proposal consists on de re fi nement. Fig. 4.1 shows them.
+
+Our proposal consists on de fi ning a new abstract stereotype Re
+Re fi example from the healthcare domain. 4.1. Re fi nement
+The Re fi nement stereotype is an abstract stereotype of Prede re fi where the re fi nement is applied.
+ 1. Its constrainedElement must be an element of type Property related to an association. 4.2. Re fi nement of participants
+An instance of the Re fi nementOfParticipants stereotype speci participation of an employee in the association. More speci medium term projects.
+ expressions): 4.3. Re fi nement of cardinality constraints
+Cardinality constraints may be expressed through the Re fi short and long term projects.
+ expressions): 1. The number of sourceClasses must be greater than 0. this class. constrainedElement or a descendant of this class. opposite the constrainedElement .
+ connected to the c onstrainedElement . constrainedElement . 4.4. HL7 example
+The Health Level 7 International (HL7) is a not-for-pro fi active working groups (Structured Documents, Clinical Decision Support, Clinical Genomics information architecture of health systems [6].
+ Scheduling and Medical Records.
+
+D-MIM models extend the RIM by de fi ning subclasses of the RIM classes and by rede while they could be speci fi ed by means of our pro fi le. with several destination classes which is not expressible by UML rede
+Performer ). This is a re fi nement of cardinality not expressible by UML rede be speci fi ed by means of the proposed pro fi le as depicted in Fig. 4.5. 5. Validating re fi nements and generating code
+Two of the main bene fi ts of the proposed pro fi le are as follows: instances of its stereotypes and, second, the automatic code generation for the re two tasks can be easily performed by means of the proposed pro semantics of each re fi nement.
+
+Section 5.1 shows how the ability to reason about the re fi a relational technology platform. 5.1. Validating re fi nements
+There exist some previous results on the validation of sets of re could be incorporated in a similar way. 5.1.1. Validity rules
+To de fi ne the validity rules we need the notion of valid con con fi gurations of an object. A con fi guration is valid if it satis disjoint constraint that involves temporary and permanent employees whereas the con
+De fi nition 5.1. Valid con fi guration
+A set of classes is a valid con fi guration if it satis fi 1. If A i  X  VC and there is a generalization where A i is the speci 2. If A  X  VC and there is a disjoint generalization set such that A is the general classi then there is at most one A i such that A i  X  VC ,(i=1, ... 3. If A  X  VC and there is a complete generalization set such that A is the general classi classi fi ers then there is at least one A i such that A i establishes the conditions that the destinations of the re Rule 5.1. Validity rule for re fi nements of participants
+Consider an association R and n re fi nements of participants of R with sources S
+S p VC then there must exist a valid con fi guration VC  X  such that:
+According to the rule, in this situation, there must be a valid con belongs to it.
+
+Now, consider an association R that relates classes A and B and two re included in a single valid con fi guration. Both re fi nements have to be satis
+If both have as destination class B , then for being simultaneously satis following validity rule captures this case.
+
+Let R be an association that relates classes A and B . Consider two re the same destination {B} , they have as sources the sets of classes S there exists a valid con fi guration VC , such that S 1 p 5.1.2. Integrating validity rules into our pro fi le
+The validity rules presented in Section 5.1.1 can be integrated into our pro its stereotypes. Speci fi cally, the validity rule for re of the Re fi nementOfParticipants stereotype and the validity rule for re formedness rule of the Re fi nementOfCardinality stereotype. The transformed rule 5.1 is the following: Rule 5.1 transformed. Validity rule for re fi nements of participants iii) There exists a valid con fi guration VCD such that for each destination D Appendix A .
+
+Likewise, we must transform rule 5.2 in order to apply it to a particular re constrained by ref i) For all re fi nements of cardinality r with S as source such that: ii) The cardinalities of ref and r must have a non-empty intersection. integration of the possible future research results in re 5.2. Generating code automatically stereotypes.
+
+As we have seen, each stereotype states precise semantics for the type of re technology.
+ constraints speci fi ed by our stereotypes.
+ re fi key.
+
+A table is required for each class (i.e.: A , B ) and subclass (i.e.: A additional table is required for the association to re fi by our stereotypes over the tables. Consider the general re (re fi ned association), 2) insertions on one of the tables A 1 , (destination classes).
+ de fi nition of this trigger is the following: CREATE TRIGGER t1 /* to deal with insertions in table R*/ BEFORE INSERT ON R REFERENCING NEW ROW AS nr FOR EACH ROW WHEN EXISTS (SELECT * FROM A1 WHERE A1.idA = nr.idA) AND ... AND BEGIN ATOMIC END;
+Therefore, at this point we have provided a precise de fi of participants. In Appendix B , it can be found the generic de re fi nements. 6. Prototype tool
+We have developed a prototype tool that permits us to incorporate the re we have implemented two functionalities to translate these re
+SQL standard triggers to enforce the constraints speci fi programmed in Java.
+
+Our implementation consists in extending the plug-in called Prede
+Re fi nementOfParticipants and Re fi nementOfCardinality .
+ re fi nement. Fig. 6.2 shows the result of the re fi nement de fi triggers. In both cases, the designer must select the end of the association re the Triggers button. Figs. 6.3 and 6.4 show both translations of the Fig. 4.2 example. 7. Related work associations by means of association rede fi nitions (or association re and ORM [37].
+ class connected to the rede fi ning property. Therefore, TAXIS only permits re
+KL-ONE [8] is a system for representing knowledge in arti re fi value and number restrictions. This means that KL-ONE allows one to de constraints.
+
+Telos [9], a language intended to support the development of information systems, de classes, attributes and ISA hierarchies and only allows the de connected withanother class (representinganassociation)may rede
+OMT [12], one of the precursors of UML, permits one to rede roles of associations.
+ with the same name and role name as the supertype. Concretely, an association may be re or to change both the associated types to be subtypes. In the former case the range speci subtypes of the original source and destination types.
+
+Martin and Odell propose in [16] participation and cardinality re re fi nements limit the cardinality constraints de fi ned in the subtype relationship types.
+In [15], the development of object-oriented software systems is discussed. Concretely, the the analysis phase may de fi ne re fi nements of participants (or narrowed domains) and re narrowed multiplicity).
+
+In [14] , the authors present a model for explicit relations and single and multiple re consider different ways of re fi ning a relation type to a subrelation type. Role re subtypes of the original type and cardinality re fi nements permit to rede re re re belong to a subtype of their corresponding entity type. Moreover, these types of re participating in the relationship type.
+ constructs and has allowed us to identify the scenarios that may be modelled by re allows the modellers to express all the semantics of the association re
+UML rede fi nitions. Concretely, we extend UML to deal with re subtypes that arenot covered byUML rede fi nitions (see Section 3.2 ).And 8. Conclusions and future work
+In this paper, we have reviewed the concepts of association rede conceptual modelling languages and the precise semantics of both.
+We have compared UML association rede fi nition and association re
+We have presented how to integrate existing results on validation of association re could be incorporated to UML and de fi ne new extensions of our pro Acknowledgments for his help to obtain information about the application of rede 00444 project, Grupo Consolidado.
+ Appendix A
+Well-formedness rules of the Re fi nement stereotype: 1. Its constrainedElement must be an element of type Property related to an association. context Re fi nement inv ConstrainedElementsMustBeProperties: self.constrainedElement-N size() = 1 and (Property).association-N size() = 1 context Re fi nement inv SourceClassesAreNotDisjoint:
+GeneralizationSet.allInstances()-N forAll(gs | gs.generalization.speci fi c-N select(s |sourceClasses-N -N size N 1 implies gs.isDisjoint= false) source classes of a re fi nement are not disjoint. refers to the class at the end opposite the end that is re expressions. context Re fi nement lect(m | m bN constrainedElement.oclAsType(Property)).type.oclAsType(Class) def: connectedClass: Set(Class) = constrainedElement.oclAsType(Property).type.oclAsType(Class)
+Well-formedness rules of the Re fi nementOfParticipants stereotype: context Re fi nementOfParticipants inv SourceMustBeDescOfOppClass: Class.allInstances()-N select(c | sourceClasses-N includes (c.name))-includesAll(oppositeClass)) context Re fi nementOfParticipants inv DestMustBeDescOfConClass:
+Class.allInstances()-N select(c | destinationClasses-N includes(c.name)) -N forAll(s | s.allParents()-N includesAll(connectedClass)) classes in connectedClass . 3. Rule 5.1: validity rule for re fi nements of participants context Re fi nement def: allSubsets( setOfRef:Set(Re fi nement)):Set(Set(Re fi if setOfRef-N size b =2 then Set{setOfRef} else Set{setOfRef}-endif used in the following OCL expression that corresponds to validity rule 5.1. context Re fi nementOfParticipants inv Rule 5.1: let refOfR: Set(Re fi nementOfParticipants) = in (r| vc-N includesAll(r.sourceClasses)) implies where validCon fi guration():Set(Set(Class)) returns the set of valid con for a re fi nement of participants ( self ), for all valid con
+Well-formedness rules of the Re fi nementOfCardinality stereotype: 1. The number of sourceClasses must be greater than 0. context Re fi nementOfCardinality inv NotEmptySourceClasses: sourceClasses-N size() N 0 this class. context Re fi nementOfCardinality inv OnlyOneDestinationClass: destinationClasses-N size() = 1 and connectedClass-N collect(name)-or connectedClass-N forAll(s| s.allParents()-N collect(name)-constrainedElement or a descendant of this class. context Re fi nementOfCardinality inv OnlyOneSourceClass: sourceClasses-N size() = 1 implies oppositeClass-N collect(name)-siteClass-N forAll(s| s.allParents()-N collect(name)-N includesAll(sourceClasses)) oppositeClass or one of its descendants. opposite the constrainedElement . context Re fi nementOfCardinality inv MoreThanOneSourceClass: sourceClasses-N size() N 1 implies oppositeClass-N forAll(s| s.allParents()-sAll(sourceClasses)) of the classes in oppositeClass . connected to the c onstrainedElement . context Re fi nementOfCardinality inv NotVali dCombination: oppositeClass-N collect(name)-N includesAll(sourceClasses) implies connectedClass -N excludesAll(destinationClasses)
+This constraint uses the variables connectedClass and oppositeClass to check the condition. constrainedElement . context Re fi nementOfCardinality inv ValidCardinalities: oclAsType(Property).upperBound()) context Re fi nementOfCardinality inv Rule 5.2: let refOfR: Set(Re fi nementOfCardinality) = in intersection, otherwise it returns false.
+ Appendix B. Re fi nements of cardinality subclasses A 1 , ... , A n and the destination class is subclass B the source classes are subclasses A 1 , ... , A n and the destination class is class B . a) Source classes A 1 , ... ,A n and destination class B i Consider the general de fi nition of this case depicted in Fig. A2 : re fi nement. A re fi nement of cardinality with source classes A
+Consequently, we de fi ne fi ve types of triggers that deal with the 1) Insertions on table R in case max  X  * and max b maxb CREATE TRIGGER t4 AFTER INSERT ON R REFERENCING NEW ROW AS nr FOR EACH ROW WHEN EXISTS (SELECT * FROM A1 WHERE A1.idA = nr.idA) AND ...
+BEGIN ATOMIC SIGNAL cardinality_error; END; 2) Deletions from table R in case min N minb CREATE TRIGGER t5 AFTER DELETE ON R REFERENCING OLD ROW AS or FOR EACH ROW WHEN EXISTS (SELECT * FROM A1 WHERE A1.idA = or.idA) AND ...
+BEGIN ATOMIC SIGNAL cardinality_error; END; 3) Insertions on one of the tables A 1 , ... , A n , namely A CREATE TRIGGER t6 BEFORE INSERT ON Ai REFERENCING NEW ROW AS nr FOR EACH ROW WHEN EXISTS (SELECT * FROM A1 WHERE A1.idA = nr.idA) AND ... not hold the second disjunctand is omitted */ BEGIN ATOMIC SIGNAL cardinality_error; END; 4) Insertions on table B i in case max  X  * and max b maxb 5) Deletions from table B i in case min N minb b) Source class A and destination class B i Consider the general de fi nition of this case depicted in Fig. A3 : re fi nement. A re fi nement of cardinality with source class A and destination B from table B i .
+
+Consequently, we de fi ne fi ve types of triggers that deal with the 1) Insertions on table R in case max  X  * and max b maxb 2) Deletions from table R in case min N minb 3) Insertions on table A in case max  X  * and max b maxb or in case min CREATE TRIGGER t11 BEFORE INSERT ON A REFERENCING NEW ROW AS nr FOR EACH ROW
+WHEN (SELECT COUNT(*) FROM R, Bi WHERE R.idA = nr.idA AND R.idB = Bi.idB) not hold the second disjunctand is omitted */
+BEGIN ATOMIC SIGNAL cardinality_error; END; 4) Insertions on table B i in case max  X  * and max b maxb CREATE TRIGGER t12 AFTER INSERT ON Bi REFERENCING NEW ROW AS nr FOR EACH ROW
+WHEN EXISTS (SELECT * FROM R, A WHERE R.idB = nr.idB AND R.idA = A.idA AND
+BEGIN ATOMIC SIGNAL cardinality_error; END; 5) Deletions from table B i in case min N minb CREATE TRIGGER t13 AFTER DELETE ON Bi REFERENCING OLD ROW AS or FOR EACH ROW
+WHEN EXISTS (SELECT * FROM R, A WHERE R.idB = or.idB AND R.idA = A.idA AND
+BEGIN ATOMIC SIGNAL cardinality_error; END; c) Source classes A 1 , ... ,A n and destination class B Consider the general de fi nition of this case depicted in Fig. A4 : re fi nement. A re fi nement of cardinality with source classes A table B and 5) deletions from table B .
+
+Consequently, we de fi ne fi ve types of triggers that deal with the 1) Insertions on table R in case max  X  * and max b maxb CREATE TRIGGER t14 AFTER INSERT ON R REFERENCING NEW ROW AS nr FOR EACH ROW WHEN EXISTS (SELECT * FROM A1 WHERE A1.idA = nr.idA) AND ... BEGIN ATOMIC SIGNAL cardinality_error; END; 2) Deletions from table R in case min N minb 3) Insertions on one of the tables A 1 , ... , A n , namely A fi rst disjunctand is omitted */ 4) Insertions on table B in case max  X  * and max b maxb 5) Deletions from table B in case min N minb
+References

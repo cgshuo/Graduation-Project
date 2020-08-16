@@ -1,0 +1,68 @@
+ 1. Introduction uation is constrained in order to preserve such semantics.
+ A query plan that can gain correct results is called a safe plan.
+ emerging technologies, the practical value of this research topic has been gradually realized. transformation rules cannot realize this goal.
+ The main contributions are as follows: imental results. Section 7 discusses related work. Section 8 concludes and outlines future research. 2. Probabilistic database theory dependencies with other events. Managing such events is the goal of probabilistic databases [12,18,31] . 2.1. Probabilistic database model operators ^ , _ , and : a complex event. We denote a probability function on event e as Pr  X  e  X ! X  0 ; 1 . of belonging to the database.
+ t ). In this paper, we do not consider self join involving a probabilistic table. sive probabilistic events. If a x -tuple has only one alternative, then it has an independent event. relation.
+ 2.2. Query evaluation on probabilistic databases [12], while the other does them separately [5,32] . We will focus on the former. which satisfies the FD R p : E ! Attr  X  R  X  is called extensional. Otherwise, it is called intensional. t the same answer from the possible worlds view and q rank  X  D p  X  .
+ ities [12] is impractical.
+ is given in [12] as follows.
+ schema.
+ Example 1. Let us consider the database D p described in Fig. 1 and the query q shown below. and f D 1 g is a key for the relation S  X  D 1  X  . Consider the query plan P  X  P e A  X  S ffl e D  X  D probability of the answer being { X  a  X  X  is 0.27 + 0.18 + 0.03 = 0.48, while that of the answer ; is 0.52. is correct while its probability is wrong. The reason is that the two tuples in S ffl e D  X  D J This time both the data item and its probability are correct.
+ plans for the conjunctive queries. If a query has no safe plan, please refer to the techniques used in [12]. 2.3. Probabilistic query example ries on the probabilistic databases where the probability values of data have been prepared. relations. The query results are ranked by probability. This can be illustrated by the example from DBLP [19]. obtained by dropping the similarity predicates from the original SQL query: 3. Simple and complex projections in extensional query evaluation ment. This will allow us to focus and simplify our solution.
+ borrow from [12].
+ Let q be a conjunctive query. We define the induced functional dependencies C p  X  q  X  on Attr  X  q  X  as [12]: Every FD in C p is also in C p  X  q  X  .
+ For every join predicate R i : A  X  R j : B , both R i : A ! R j : B and R j : B ! R i : A are in C p  X  q  X  . probabilistic databases. Theorem 2 is essential to prove that a query plan is safe. conjunctive queries that do not share any relation name. Then 1. r e c is always safe in r c  X  q  X  . P are safe.
+ We start from the following definitions and corollary.
+ query be q  X  P e A \ With Definition 3 , we can use Theorem 1 more flexibly.
+ Corollary 1. Consider a database where all probabilistic relations are tuple-independent. Then, 1. If the query q only includes r e c , e or simple projections, it is safe. 2. If j Rels  X  q  X j P 2 , then q  X  P e A Proof 1. Follows trivially from Theorem 1 . 2. Using Theorem 1 , q  X  P e A is a stop condition of the proposed algorithm in the next section.
+
+Example 2. Continuing Example 1 , suppose the query plan is q  X  P e A  X  S ffl e D  X  D
+J ollary 1 , the plan P e A  X  S ffl e D  X  D safe. From the query plan, we can compute the correct probability. 4. The novel safe plan generation algorithm safe plans for queries. 4.1. The preprocessing algorithm relation is many to one mapping, thus it does not cause any error in computing probabilities either. As a result, query.
+ association attribution set of query q is denoted by A 2 S  X  q  X  . It includes the following attributes:
+A 2 S  X  R p
+A 2 S  X  R p by A 2 S  X  R S  X  and A 2 S  X  R S  X  X  JAS  X  R S  X [ X  Head  X  q  X \ Attr  X  R S  X  X  . is shown in Algorithm 1, which includes the following two steps. Algorithm 1. Preprocessing algorithm( q ) 1: push down selection predicate R p i A h c and projection predicate P A  X  R p j  X  ; 2: get A 2 S  X  q  X  from q ; 3: for (each relation R p i (or R j )) do 4: A 2 S  X  R p i  X  X  Attr  X  R p i  X \ A 2 S  X  q  X  ; 5: if  X  A 2 S  X  R p i  X  + Key  X  R p i  X  X  then 7: end if ; 8: end if ; We explain the preprocessing algorithm with the example below.
+ the association attribute sets of the relations are as follows: follows: 4.2. The Multiway-Split algorithm algorithm for generating a safe plan, we need some terminologies.
+ query be q  X  P e A denoted by MCS  X  q  X  .
+ Assuming j MCS  X  q  X j X  n , there are the following two cases: one relation of MCS  X  q  X  , whereas the last relation set includes all relations in MCS  X  q  X  . split of the algorithm.
+ q  X  P e C and is given in the Appendix .
+ then: 2. If m is equal to n, then P e Head  X  q  X   X  R p 1 ffl e R p 2 ffl e R p m  X  is safe. a stop condition for the proposed algorithm. The proof is also given in the Appendix . query has no safe plan. This proves the corollary. h
+Algorithm 2 is our Multiway-Split algorithm, which includes the following steps:
+Algorithm 2. Multiway-Split( q ) 1. If there is no complex projection in q , return q . If there is only one ffl in q , return q .
+Algorithm 3. Split( q )
+Safe-Plan algorithm SPlan. We explain the Multiway-Split algorithm with the example below. Example 4. Continuing Example 1 . After the pre-processing, we have By the second item in Theorem 4 , q  X  P e A  X  S ffl e D  X  D that the algorithm is also complete, i.e., if the query is safe, the algorithm finds a safe plan for it. Theorem 5. The Multiway-Split algorithm is sound, that is, any plan it returns is safe. Proof. We will prove the theorem by induction. The algorithm returns a safe plan in the following three cases: This proves the theorem. h Theorem 6. The Multiway-Split algorithm is complete.
+ Proof. We prove the theorem in the following cases: Case 1. If the query has no complex projection, our algorithm can return a safe plan for it.
+Case 3. After the preprocessing, the query becomes q  X  P e A Subcase 2. The query has a complex projection but has more than one join operation. q  X  P e A returns an error.
+ Hence if the query is safe, our algorithm can find a safe plan for it. h Before discussion of the properties of the proposed algorithm, we need some terminology. unnecessary probabilistic cartesian-product; otherwise, we call it a necessary probabilistic cartesian-product. essary probabilistic cartesian-products. Their proofs are given in the Appendix . Theorem 7. The Multiway-Split algorithm can avoid unnecessary probabilistic cartesian-products in the safe plans. P Split algorithm.
+ 5. Query optimization Rule 1 ( Join commutativity ). Extensional joins are commutative Rule 2 ( Join associativity ). Extensional joins are associative the attributes retained by the last projection join: where A 1 and A 2 are the attributes in R and S retained by the projection. applied only when the top P e operator in the resulting plan satisfies Eq. (2) of Theorem 1 in this paper: from any other safe plan using these transformation rules.
+ Theorem 9 [12]. Let P 1 and P 2 be two safe plans for a query q. Then, P 1 () P 2 .
+Example 5. Consider the following query: P
+P transformation rules as follows:
+Theorem 10. Consider two plans P 1  X  P e C  X  q 3 ffl e D
+P 1. The two plans have the same data results; 2. If P 1 is a safe plan, then P 2 is a safe plan; 3. If P 2 is a safe plan, then P 1 is a safe plan. the Appendix .
+ and B contains all the attributes used in the join between q 1 and q 2 : We show the application of Rule 6 with the example below.
+  X f B ; U g[f B ; U 1 g X \ Head  X  q 1  X  X f B ; U ; U 1 g\f U ; U 1 g X f U ; U 1 g .By Rule 6 , P 1 () P 2 . Theorem 11. Consider two plans P 1  X  P e A  X  q 1 ffl e C includes deterministic tables and A  X  # B  X  : 1. The two plans have the same data results; 2. If P 1 is a safe plan, then P 2 is a safe plan; 3. If P 2 is a safe plan, then P 1 is a safe plan.
+ each other in probabilistic databases. The proof is given in the Appendix . Based on the proposed new rules, we have the following corollary: tiway-Split algorithm, then P 1 () P 2 .
+ Proof. For each recursive step of the two algorithms, there are the following two cases: algorithm. Using Rule 6 , P 1 () P 2 . After the algorithms terminate, P 1 () P 2 . 2. If a sub-query q 1 only includes deterministic tables, then P 1  X  P e A  X  q 1 ffl e C 7, P 1 () P 2 . After the algorithms terminate, P 1 () P 2 .
+ Thus the corollary is proved. h 6. Experiments 6.1. The prototype aggregates; and (3) it can be directly executed by any engine to return the tuples along with probabilities. system bus. 6.2. Probabilistic query plan example probabilistic relations.
+ Authors .
+ lowing safe plan for the query:
+BAGG(A) POWER(10, SUM(LOG(A))). From the example, we find we must perform aggregate on the probability and group consuming in probabilistic databases than in traditional databases.
+ 6.3. Performance Carlo simulation algorithm [12] to deal with the queries which have no safe plans. 300 ms, which is about the same as the Safe-Plan algorithm.
+ little room for further optimization.
+ P
+Head  X  Q 2  X   X  P e A  X  P B  X  supplier ffl partsupp ffl nation ffl tmp  X ffl e region partsupp ffl orders ffl nation  X  X  , whose L-tree is shown in Fig. 6 a. The SPlan is P e Head  X  Q required for projections is much higher in probabilistic databases than in conventional databases. predicates and has less opportunity to optimize the plan.
+ sidering the time required for uncertain predicates.
+ Second, the query executor has more opportunities to select a better execution plan. 7. Related work for querying uncertain data, integrating inconsistent data sources [21] and bridging IR and DB fields [22]. ence problem in an appropriately constructed probabilistic graphic model.
+ Our work is along this line.
+ cient extensional operators may be used instead of the intensional operators. maximally joining probabilistic relational data.
+ rithm to efficiently process queries with unordered fuzzy predicates in multimedia databases. 8. Conclusions and future works
+Managing uncertain information using probabilistic databases has become a new trend for supporting a number of be transformed by each other.
+ ference, groupby-aggregate). We will also extend these techniques to richer probabilistic models. Acknowledgments Science Foundation of China under Grant No. 60503038.
+ Appendix. Proof of selected theorems Proof of Theorem 3 an association attribute, it should be one of the following two cases: 2. If R p i : D 2f R p i : A ; T p j : B g , then we can infer as follows: Corollary 1, P C 1 ; ... ; C m  X  R p i ffl A  X  B T p j  X  is safe. Therefore, the theorem is proved. h Lemma 1. Suppose q  X  P A 1 ; ... ; A n  X  q i  X  , then Attr  X  MCS  X  q  X  X   X  # InfAttr  X  q  X  . two cases: Proof of Theorem 4
+Proof. We prove the theorem as follows: Proof of Theorem 7 following two cases: posed algorithm, the safe plan is P 1  X  P e B cartesian-product between a deterministic table and a probabilistic table.
+Case 2. Suppose the safe plan P  X  P e B plan P is safe, Key  X  R p j  X  # Head  X  q 2  X  . For any T p i 2 PRels  X  q i  X  , we can infer as follows: algorithm,if j &lt; k ,the safe planis P 1  X  P e B unnecessary cartesian-product between probabilistic tables. If j is equal to k , the safe plan is P 2  X  P e B  X  q either.
+ Therefore, the proposed algorithm can avoid unnecessary probabilistic cartesian-products. h Proof of Theorem 8 probabilistic projections. If n &gt; m , we have the following three cases: probabilistic projections. This proves the theorem. h Proof of Theorem 10 Proof. Because Head  X  q 1  X [ Head  X  q 2  X  X  A  X  ,  X  Key  X  q 1  X [ Key  X  q 2  X  X  #  X  A [ B  X  .
+Thus the two plans have the same data results. follows: R p 2 PRels  X  q 1  X  , using Theorem 1 we can infer as follows:
+P A  X  q 1 ffl e q 2  X  is safe. Furthermore, for each R p 2 PRels  X  q 1  X  , using Theorem 1 we can infer as follows: is a safe plan. h Proof of Theorem 11
+Proof 3. Because P 2 is safe, q 2 is safe. For each R p : E 2 PRels  X  q 2  X  , using Theorem 1 we can infer as follows:
+References

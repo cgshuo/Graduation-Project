@@ -1,0 +1,150 @@
+ 1. Introduction
+Automatic theorem proving is the mechanization of mathema-tical inference by means of logical system and inference rules, rather than computation among numbers. In 1965, Robinson (1965) introduced the resolution principle, which is just a simple inference rule for automated reasoning, but is effective, sound and complete in classical first-order logic. Even though resolution principle provides a vast improvement in the efficiency of proof procedures, it is still plagued by an exponential explosion in the number of clauses it generates, this explosion is unmanageable on complex problems. Many researchers proposed strategies that restrict this growth and reduce the number of resolvents while still preserving the completeness of resolution ( Boyer, 1971 ; Lee, 1972 ; Liu, 1994 ; Chang and Lee, 1997 ; Kim et al., 2000 ; Ma et al., 2007 ).
+Lock resolution method ( Boyer, 1971 ) is one of the restrictions of resolution that does significantly reduce the number of resol-vents generated. It is also a simple and effective strategy where are the lowest indexed literals in each clause, and the complete-ness can also be kept in classical logic. Therefore, it has been an efficient proof searching method in machine realization.
+As we know, the mental activities of humans are often involved in uncertain information processing, and it is difficult to depict and reason this kind of phenomena of real world in classical logic 2000 ; Odintsov and Wansing, 2008 ). To deal with uncertainty especially for incomparability in the intelligent information processing from a symbolism point of view, Xu et al. (2003) extended the classical logic in many ways such as the truth-valued field, the implication connective and language, and proposed lattice implication algebra (LIA) ( Xu, 1993 ), lattice-valued logic based on LIA, uncertainty reasoning and automated reasoning ( Xu them in some areas, such as rule bases system, decision making, 2007 ; Pei et al., 2009 ; Lai and Xu, 2010 ), etc. For the automated reasoning aspect, Xu et al. (2003) developed a -resolution principle truth-values in LIA, provided the soundness and weak completeness of a -resolution deduction, respectiv ely, and its automated reasoning schemes are investigated and reported in Xu et al. (2003 , 2011) , Pei et al. (2009) ,and He et al. (2010) . a -Resolution principle in lattice-valued logic LP( X ) and LF( X )is a great extension of Robinson X  X  resolution principle. For example, it can be proceeded at different truth-valued levels a chosen from the truth-valued field  X  LIA (allows also for the incomparability among some truth-values), hence it can validate a -unsatisfiability of logical formulae in lattice-valued logic based on LIA. Since the language of lattice-valued logic includes truth constants, the truth-values of logical formulae can be taken in a lattice-ordered structure, not only {0, 1} in classical logic, hence the expressive power is much enhanced compared with classical logic in terms of syntax and semantics. Furthermore, in order to avoid the production of excessive redundant generalized clauses during the a -resolution process and improve the efficiency of a -resolution in a lattice-valued logic, a -lock resolution method tentatively in He et al. (2010) , and systematized in He et al. (2011) , where different occurrences of the same generalized literal can be assigned different indices, the same generalized literals with larger indices are deleted, the generalized literals resolved upon have the minimal index in their respective general-ized clauses, and the generalized literals of the resolvent inherit the indices they had in the parents. It is shown that this method is sound and complete for L n P ( X ). However, the truth-valued field of
+L all elements in L n are completely comparable. So the work is limited in propositional logic and finite chain-type truth-valued field. Following up the work in He et al. (2010 , 2011) , in this paper, a -lock resolution method is extended from the specific
+LF( X ), which can be used to deal with propositions with quanti-fiers, and its truth-valued domain is more general (i.e., lattice structure including comparable and incomparable elements).
+Therefore, it provides a more effective automated reasoning scheme and logic foundation for handling imprecise and incom-parable information.
+
+More specifically, this paper discusses a -lock resolution method and its reasoning algorithm for lattice-valued proposi-including the concepts, properties, soundness and weak comple-teness, and the reasoning algorithm. The remaining part of this paper is organized as follows. After a brief overview about a -resolution principle in lattice-valued logic based on LIA in
+Section 2 , the concepts of a -lock resolution and a -lock resolution deduction in lattice-valued propositional logic LP( X ) are intro-duced in Section 3 , followed by the soundness and weak com-pleteness of this resolution method. By using Lifting Lemma, all results are extended into lattice-valued first-order logic LF( X )in
+Section 4 . Section 5 provides the a -lock resolution-based auto-mated algorithm for the implementation purpose. The paper is concluded in Section 6 . 2. Preliminaries
+In this section, we only recall some elementary definitions and properties needed in the following discussions, more detailed notations and results about lattice-valued logics based on LIA and a -resolution principle can be seen in the related references 2003 ). 2.1. a -Resolution principle in lattice-valued logic based on LIA bounded lattice with an order-reversing involution  X  X  0  X  X , I and O the greatest and the smallest element of L , respectively, and : cation algebra (LIA) if the following conditions hold for any x , y , z A L :  X  I
+ X  x - X  y -z  X  X  y - X  x -z  X  ,  X  I
+ X  x -x  X  I ,  X  I
+ X  x -y  X  y 0 -x 0 ,  X  I
+ X  x -y  X  y -x  X  I implies x  X  y ,  X  I 5  X  X  x -y  X  -y  X  X  y -x  X  -x ,  X  L 1  X  X  x 3 y  X  -z  X  X  x -z  X  4  X  y -z  X  ,  X  L 2  X  X  x 4 y  X  -z  X  X  x -z  X  3  X  y -z  X  .
+ that L is a complete lattice.
+
+Definition 2 ( Xu, 1993 ; Xu et al., 2003 ,  X  ukasiewicz implication algebra on a finite chain L n ). Let L n be a finite chain, L f a i 9 1 r i r n g and a 1 o a 2 o o a n , define for any a comparable.
+ Definition 3 ( Xu, 1993 ; Xu et al., 2003 ). Let L be a lattice, x any y , z A L .
+
+Definition 4 ( Xu et al., 2000a , 2003 ). Let X be a set of proposi-tional variables, T  X  L [f 0 , -g be a type with ar( 0 ) 2 and ar( a )  X  0 for every a A L . The propositional algebra of the lattice-valued propositional calculus on the set X of propositional variables is the free T algebra on X and is denoted by LP( X ).
+Remark 1. Specially, when L  X  L n , LP  X  X  X  is denoted as L
+Theorem 1 ( Xu et al., 2000a , 2003 ). LP ( X ) is the minimal set Y which satisfies : (1) X [ L D Y ; (2) If p , q A Y , then p 0 , p -q A Y .
+ where T  X  L [f 0 , -g .
+
+Definition 5 ( Xu et al., 2000a , 2003 ). A valuation of LP( X )isa propositional algebra homomorphism g : LP  X  X  X ! L .
+ a logical formula in LP( X ) based on LIA.
+ Definition 6 ( Xu et al., 2000a , 2003 ). Let F A LP( X ), a a truth-value level a , in short, a -satisfiable. If g  X  F  X  by the truth-value level a , in short, a -false.
+ and implication connectives, which are more general and not reducible to other classical connectives unlike Kleene implication.
+This irreducibility, though semantically justifiable, compli-cates the calculus. Accordingly, the following definitions about generalized literals are provided for the extended resolution purpose.
+
+Definition 7 ( Xu et al., 2000a , 2003 ). F A LP( X ) is called an extremely simple form, in short ESF, if F n A LP( X ) obtained by deleting any constant or literal or implication term appearing in F is not equivalent to F .
+
+Definition 8 ( Xu et al., 2000a , 2003 ). F A LP( X ) is called an indecomposable extremely simple form, in short IESF, if (1) F is an ESF containing connectives -and 0 at most. connectives -and 0 at most, where LP  X  X  X  X  X  LP  X  X  X  =  X  - X  is an LIA, LP  X  X  X  = q  X  p -q .
+
+Definition 9 ( Xu et al., 2000a , 2003 ). All the constants, literals and IESFs in LP( X ) are called generalized literals. exist propositional variables x , y or constant a a I such that F
+Z x -y or F Z a -x .
+
+A disjunction of finite generalized literals is called a general-ized clause. A generalized clause F is regular if all nonconstant
+IESFs in F are regular. A conjunction of finite (regular) generalized clauses is called a (regular) generalized conjunctive normal form. Definition 11 ( Xu et al., 2000a , 2003 , a -Resolution). Let a and G 2 be two generalized clauses in LP( X ) of the forms
+G  X  g 1 3 3 g i 3 3 g m and G 2  X  h 1 3 3 h j 3 3 h n , respec-tively. If g i 4 h j r a , then
+G  X  g is called an a -resolvent of G 1 and G 2 ,denotedby G  X  R and h tion of an a -resolvent from two generalized clauses, called
+Definition 12 ( Xu et al., 2000a , 2003 ). Suppose a generalized conjunctive normal form S  X  G 1 4 G 2 4 4 G n in LP( X ), a the generalized clause D m ,if (1) D i A f G 1 , G 2 , ... , G n g or (2) there exist j , k o i , such that D i  X  R a  X  D j , D
+If there exists an a -resolution deduction from S to the empty noted that &amp; is a standard expression in resolution-based auto-mated reasoning for logics, and it stands for a result of refutation, denoted as a -&amp; , i.e., stands for an a -unsatisfiable formula or a -false formula.
+
+Theorem 2 ( Xu et al., 2000a , 2003 ). Suppose S is a generalized conjunctive normal form in LP ( X ), f D 1 , D 2 , ... , D deduction from S to generalized clause D m , a A L . If D
+Theorem 3 ( Xu et al., 2000a , 2003 ). Let S be a regular generalized conjunctive normal form in LP ( X ), a A L , a a dual numerator , and
+W  X  a 4 a 0  X  r a o I . Suppose there exists b A L such that b 4  X  b -b 0  X   X  a . Then there exists an a -refutation of S .
+The truth-value domain of lattice-valued first-order logic LF( X ) is a LIA. This logic system can be used to deal with propositions with quantifiers ( Xu et al., 2003 ).
+
+Definition 13 ( Xu et al., 2001 ). Suppose V and F are the set of variable symbols and that of functional symbols in LF( X ), respec-tively, the set of terms of LF( X ) is defined as the minimal set J satisfying the following conditions: (1) V
+D J . (2) For any n A N [f 0 g ,if f  X  n  X  A F , then f  X  n  X   X  t t , t 1 , ... , t n A J .
+
+Definition 14 ( Xu et al., 2001 ). Suppose P is the predicate symbol A t satisfying the following conditions: For any n A N [f 0 g ,if P  X  n  X  A P , then P  X  n  X   X  t 0 , t 1 , ... , t n  X  A A t Definition 15 ( Xu et al., 2001 ). The set of logical formulae of LF( X ) is defined as the smallest set F satisfying the following conditions: (1) A t D F . (2) If p , q A F , then p -q A F . (3) If p A F , x is a free variable in p , then  X 8 x  X  p ,  X  Definition 16 ( Xu et al., 2001 ). A logical formula G in LF( X )isa g-literal, if (1) G is a literal, or (2) G is constructed only by some literals and some implication
+A disjunction of finite g-literals is called a g-clause. A conjunc-tion of finite g-clauses is called a g-conjunctive normal form. Theorem 4 ( Xu et al., 2001 ). Let G and G n be logical formulae in only if G n is a -false .
+ Theorem 5 ( Xu et al., 2001 ). Suppose G n is a regular g-Skolem standard form of a logical formula G in LF ( X ), 9 L 9 o 2.2. a -Lock resolution method in L n P(X) Definition 17 ( He et al., 2011 ). Let G be a generalized clause in L
+P ( X ), each occurrence of a generalized literal in G is assigned a positive integer in the lower left corner (different occurrences of the same generalized literal may be labeled different positive integers), this specific generalized clause G is called a locked generalized clause, and the positive integer in the generalized literal is called a lock index.
+ Definition 18 ( He et al., 2011 ). Let G be a locked generalized clause in L n P ( X ). Suppose G contains generalized literals which have the same name with different indices, then delete the generalized literals with larger indices. This process is called an amalgamation.
+ Definition 19 ( He et al., 2011 ). Let G 1 and G 2 be two locked generalized clauses in L n P ( X ), a A L . G  X  R a L  X  G a -lock resolvent of G 1 and G 2 if it satisfies the following conditions: (1) G is the a -resolvent of G 1 and G 2 . (2) The a -resolved generalized literals in G 1 and G 2 have the Definition 20 ( He et al., 2011 ). Let S be a locked generalized a lock index. An a -resolution deduction from S is called an a -lock resolution deduction if each a -resolution in the resolution deduction process is an a -lock resolution. An a -lock resolution deduction from S to a -&amp; is called an a -lock refutation of S . 3. a -Lock resolution method in LP( X )
+Basing on the a -lock resolution method in L n P ( X ), we can further discuss the a -lock resolution method in LP( X ), i.e., the truth-valued field of logic system is extended from a finite chain to a general lattice of LIA.
+ Definition 21. Let G 1 and G 2 be two locked generalized clauses in
+G and G 2 , respectively, a A L .If g 1 4 h 1 r a , then
+R  X  X  G 1 f g 1 g X  3  X  G 2 f h 1 g X  is called an a -lock resolvent of G 1 and G 2 , denoted by R  X 
+R  X  G 1 , G 2  X  .
+
+Remark 2. If a generalized literal g in R a L is a member of both  X  G 1 f g 1 g X  and  X  G 2 f h 1 g X  , then the index of g in R a L indices of the index of g in  X  G 1 f g 1 g X  and the index of g in  X  G 2 f h 1 g X  . Otherwise, the index of a generalized literal in R same as it is in  X  G 1 f g 1 g X  or  X  G 2 f h 1 g X  .
+ Definition 22. Suppose S is a set of locked generalized clauses in
+LP( X ), a A L . w  X f D 1 , D 2 , ... , D m g is called an deduction from S to the generalized clause D m ,if (1) D i A S ,or (2) there exist j , r o i , such that R a L  X  D j , D r  X  X  D
+Remark 3. Concretely, suppose S is a set of locked generalized resolvent of members of R a L  X  S , i  X  ,i.e., R a L  X  S , w  X  X  generalized clause D in R a L  X  S , n  X  such that either (1) D n and D are identical and have the same locking , or
+Proof. Without loss of generality, let S  X  S 1 4 G  X  S 1 4  X  S  X  S n  X  r g  X  S  X  r a , i.e., if S r a , then S n r a .
+If n  X  0, Theorem 6 holds obviously. Suppose this theorem holds for a non-negative integer j . For each generalized clause D n in
+R
+R holds obviously. Otherwise, D n may be an a -lock resolvent of two
+Suppose D n is the a -lock resolvent of g n 1 and g n 2 in G n , respectively. Since k is the largest index in S , g is not a member of D A R a L  X  S , j  X  1  X  .
+
+Furthermore, for each D in R a L  X  S , n  X  and D n in R a L follow.
+
+Case 1: If G 1 and G n 1 are identical and have the same locking, G and G n 2 are identical and have the same locking, then D and D n are identical and have the same locking.
+
+Case 2: If G n 1  X  G 1 f g g , g has index k in D and each generalized literal of G 1 has the same index in G n 1 and G 1 , and G n has index k in G 2 and each generalized literal of G n 2 has the same and each generalized literal of D n has the same index in D n and D . has the same index in G n 2 and G 2 , then (1) D n and D are identical and have the same locking if and only if identical and have the same locking, then similar to Case 3, D and D n also have these properties. &amp;
+Theorem 7 ( Soundness of ground a -lock resolution ). Let S be a set of locked generalized clauses in LP ( X ), f D 1 , D 2 , ... , D resolution deduction from S to the generalized clause D m then S r a .
+ Proof. It follows immediately by Theorem 2 . &amp;
+Theorem 8 ( Weak completeness of ground a -lock resolution ). Let S be a set of locked generalized clauses in LP  X  X ), W a A a dual numerator , 9 L 9 o  X 1 . Suppose there exists b A L such that b 4  X  b -b 0  X   X  a . Then there exists an a -lock refutation of S .
+Proof. Let K ( S ) denote the differences of the number of general-ized literals which are locked minus the number of generalized clauses in S .
+ unit, in this case, the indices play no role in a -resolution deduc-tion. Therefore, by Theorem 3 , S has an a -resolution refutation, which is just a ground a -lock refutation.
+ least one generalized clause in S which is not a unit generalized S 1  X  X  S G  X [ G n , S 2  X  X  S G  X [f g g :
+By Theorem 6 , it follows from S r a that S 1 r a and S 2 refutation of S .If D n 1 includes G n , then transform D n to G n as a disjunct. Since D n 1 is an a -lock refutation of S the largest index in G , k g cannot be resolved upon in any step of the a -lock resolution deduction. Thus we obtain an a -lock resolution deduction of D 1 from S to k g . Now that k g can be derived from S , we claim that the a -lock refutation D n refutation of S . &amp;
+Example 1. Let L 9  X f a i j 1 r i r 9 g be a  X  ukasiewicz implication algebra, x , y propositional variables in L 9 P  X  X  X  , S  X f x ,  X  x  X  a 7 -x  X  0 ,  X  y -x  X  0 3  X  x -y  X  3  X  x -a 2  X  ,  X  a we take truth-valued level a  X  a 6 , then S r a . We assign an index to each generalized literal and get an a -lock resolution deduction as follows. (1) 1 x (2) 2  X  x -a 2  X  3 3  X  a 7 -x  X  0 (3)  X  y -x  X  0 3 5  X  x -y  X  3 6  X  x -a 2  X  (4)  X  a 3 -x  X  0 3 8  X  x -y  X  0 (5)  X  x -y  X  -a 2  X  X  X  X  X  X  X  X  X  X  (6)  X  a 7 -x  X  0 (7)  X  x -y  X  3 6  X  x -a 2  X  (8)  X  x -y  X  0  X  X  X  X  X  X  X  X  X  X  (9) a -&amp;
+In the first round of a -lock resolution deduction, there are only three resolvents, but seven possible matches for the a -resolution.
+In this case, a -lock resolution method can improve the efficiency of a -resolution for LP( X ). 4. a -Lock resolution method in LF( X ) 4.1. a -Lock resolution for LF(X)
+Definition 23. Let S be a set of g-clauses in LF( X ). S is said to be locked if and only if for each g-clause G and for each g-literal g in specific g-clause G is called a locked g-clause.
+
+Obviously, the locked generalized clause in LP( X ) is the ground form of locked g-clause in LF( X ) here.
+
+Definition 24. Let G be a locked g-clause in LF( X ). If G includes g-literals whose different occurrences of the same name with different indices, then delete the g-literals with larger indices. This process is called an amalgamation.
+
+Definition 25. Let G be a locked g-clause in LF( X ). If more than two g-literals in G have a unifier s , then we get a new g-clause G by amalgamations, and G s is called a locked factor of G .
+Definition 26. Let G be a locked g-clause in LF( X ) and l a substitution. Then delete the same g-literals with larger indices
+G . Specially, if l is a ground substitution, then G 0 is called a ground locked instance of G .
+
+Definition 27. Let G 1 and G 2 be two locked g-clauses in LF( X ), G a locked factor of G 1 for g-literals g 1 , g 2 , ... , g
+G with lowest indices in G 1 and G 2 , respectively, a A L .If g then
+R  X  X  G s 1 f g 1 g s  X  3  X  G t 2 f h 1 g t  X  is called an a -lock resolvent of G 1 and G 2 , denoted by
+R  X  R a L  X  G 1 , G 2  X  .
+
+Remark 4. Similar to a -lock resolution in LP  X  X ), if there exist g in  X  G 1 f g 1 g X  and h in  X  G 2 f h 1 g X  such that g s definition of amalgamation, the index of g s (or h t )in R lower indices of the index of g in  X  G 1 f g 1 g X  and h in  X  G respectively. Otherwise, if g is a g-literal in  X  G 1 f g then the index of g s (or g t )in R a L is the index of g in  X  G  X  G f h 1 g X  .
+
+Definition 28. Suppose S is a set of locked g-clauses in LF( X ), A from S to the g-clause D m ,if (1) D i A S ,or (2) there exist j , r o i , such that R a L  X  D j , D r  X  X  D 4.2. The soundness and completeness of a -lock resolution in LF(X) LF ( X ), G 0 1 and G 0 2 be two instances of g-clauses G Suppose t is a substitution , the index of g-literal g t in G in G i  X  i  X  1 , 2  X  . If R 0 is a ground a -lock resolvent of G 0 (1) R l  X  R 0 . (2) If g A R , then the index of g l in R 0 is the index of g in R . Proof. Since any two g-clauses G 1 and G 2 can always become two g-clauses without common variable by a substitution of rename, we assume that G 1 and G 2 have no common variables.
+
+Since G 0 1 and G 0 2 are two instances of g-clauses G 1 and G respectively, then there exists a substitution e , such that G 0  X  G e 2 . Let G 0 s 1 and G 0 t 2 be two factors of G 0 1 where s is the most general unifier g e i most general unifier p e j index in G 0 1 and G 0 2 , respectively. Hence g e s i p  X  G general unifier m 1 , such that g m 1 i such that p m 2 j such that e t  X  m 2 l 2 . From the hypothesis that G 1 and G no common variables, it follows that m 1 and m 2 have no common variables, l 1 and l 2 have no common variables. Let m  X  m , l  X  l 1 [ l 2 , by the properties of substitution, m l  X  X  m  X  2 l 2  X  . Therefore, g In this case, g m i  X  G Moreover, R  X  R a L  X  G 0 1 , G 0 2  X  X  X  G e s 1 f g i 1 g e s  X  3  X  G  X  X  G 1 f g i 1 g X  e s 3  X  G 2 f p j 1 g X  e t  X  X  G 1 f g i  X  X  X  G 1 f g i 1 g X  m 3  X  G 2 f p j 1 g X  m  X  l  X  X  X  G m 1 f g  X  R l :
+Furthermore, R is the a -lock resolvent of G 1 and G 2 , that is, g g , g e i tively, hence g i 1 has the lowest index in g i 1 , g i 2 index in G 1 , and the index of h is lower than g i 1 . Since g lowest index in G 0 1 , and h e A G 0 1 , h e  X  g e i hypothesis, e s unifies g i 1 , g i 2 , ... , g i r in G 1 h
+A f g i 1 , g i 2 , ... , g i r g , it is a contradiction that g Similarly, we can prove that p j 1 has the lowest index in G
+Finally, we show that if g A R , then the index of g l in R index of g in R . Two cases exist as follows.
+
+Case 1: If there exist g in  X  G 1 f g i 1 g X  and h in  X  G g index of g in  X  G 1 f g i 1 g X  and the index of h in  X  G 2 in  X  G 1 f g i 1 g X  and the index of h m l in  X  G 2 f p j then the index of g l in R 0 is the index of g in R .
+Case 2: If g is a g-literal in  X  G 1 f g i 1 g X  or  X  G 2 f p of g m (or g l )in R is the index of g in  X  G 1 f g i 1 g X  or  X  G to Case 1, the index of g l in R 0 is the index of g in R . &amp; g-clause G of S and a substitution l such that G l  X  G n . If the
+Proof. Let S 1 be a g-Skolem standard form of S , hence S
+S r a and Theorem 4 . From Theorem 5 , there exists a finite and ground instance set S n of S 1 such that S n r a . We only need to assign the indices to generalized literals in the generalized clauses of S n , that is, for each generalized clause G n of S n , let G be a g-clause in S and a substitution l such that G l  X  G n . Furthermore, if g A G , then g has the same index in G as g l in G n . &amp; Theorem 11. If R n A R a L  X  S n , n  X  X  n A Z  X   X  , then there exist R
+Proof. If n  X  0, Theorem 11 is trivial by Theorem 10 . Suppose this theorem holds for n and R n A R a L  X  S n , n  X  1  X  .If R clause of R a L  X  S n , n  X  1  X  , then two cases exist. If R n theorem holds obviously.
+
+On the other hand, R n may be a ground a -lock resolvent of two and l 2 such that G l 1 1  X  G n 1 , G l 2 2  X  G n 2 .If g
+G is the index of g l 1 in G n 1 , and similarly if g A G 2 have no common variables by a substitution of rename, there exists a substitution l  X  l 1 [ l 2 , such that G l 1  X  G n
+Lifting Lemma ( Theorem 9 ), there exist an a -lock resolvent R of G and G 2 and a substitution l such that R l  X  R n . Furthermore,
+Theorem 12 ( Soundness of a -lock resolution ). Let S be a set of locked g-clauses in LF ( X ). f D 1 , D 2 , ... , D m g is an deduction from S to the g-clause D m . If D m r a , then S r a .
+Proof. It is obvious from the soundness theorem of a -resolution principle ( Xu et al., 2001 ) in LF( X ). &amp;
+Theorem 13 ( Weak completeness of a -lock resolution ). Let S be a numerator , 9 L 9 o  X 1 . Suppose there exists b A L such that b 4  X  b -b 0  X   X  a . Then there exists an a -lock refutation of S .
+Proof. Let S 1 be a g-Skolem standard form of S , hence S
+S r a and Theorem 4 .From Theorem 5 , there exists a finite and ground instances set S n of S 1 such that S n r a .By Theorem 8 ,there
+Example 2. Let L 9  X f a i j 1 r i r 9 g be a  X  ukasiewicz implication
+S r a . We assign an index to each g-literal and get an a -lock resolution deduction as follows. (1) 1 P  X  a , f  X  a  X  , f  X  b  X  X  (2) 2 Q  X  a  X  (3) 3 P  X  x , x , f  X  x  X  X  (10) 9 P  X  y , z , w  X  3 10 R  X  a , w  X  3 11 R  X  a , y  X  3 (11) 5 P  X  a , x , f  X  x  X  X  (12) 7 R  X  x , f  X  x  X  X  (32) a -&amp; .
+ five resolvents, but 11 possible matches for the a -resolution. In this case, it is shown that a -lock resolution method can improve the efficiency of a -resolution for LF( X ). 5. An algorithm for a -lock resolution in lattice-valued logic lution, S r a if and only if there exists an a -lock resolution deduction from S to a -&amp; , so we can contrive a corresponding algorithm.
+ connective and language in lattice-valued logic, judging whether two g-literals are a -resolvent should be in both semantic and syntax ways, it is a relatively complex process. Hence we give this judgment as a function in the following algorithm.
+ g j are a -resolvent. Otherwise, it returns false, where g given g-literals.
+ Algorithm 1.
+
+Step 8. For any k , j , Resolution  X  g k l , g j l , a  X  , where g
+Remark 5. In Algorithm 1 , N 0 should be chosen by the complex-ity of the algorithm and logical formula S .
+
+Theorem 14 ( Soundness ). If Algorithm 1 terminates , then the a -unsatisfiability of logical formulae can be judged .
+Proof. From this algorithm, if it terminates and satisfies the conditions of completeness of a -lock resolution, then only two possible cases exist. One is in Step 5, if there exist some a -lock resolution, we have S r a .Otherwise,ifno a -lock resolvents exists, then S is a -satisfiable. Another is in Step 8, the only difference is that the chosen criterion of a -resolvents is changed, that is from the S c 1 and R , respectively. Therefore, the a -unsatisfiability of logical formulae can be judged if it terminates. &amp; Theorem 15 ( Completeness ). If S r a , then Algorithm 1 terminates .
+Proof. By this algorithm, if S r a , and a satisfies the conditions of completeness of a -lock resolution in LF( X ), then it terminates in
+Step 5 or 8. &amp; 6. Conclusion
+In this paper, aiming to improve the efficiency of a -resolution in a lattice-valued logic based on LIA, a -lock resolution method was investigated. The concepts of a -lock resolution and a -lock resolution deduction were introduced, and its soundness and weak completeness were shown in LP( X ) and LF( X ), respectively.
+A general a -lock resolution automated reasoning algorithm was also proposed. The further research will be concentrated on the implementation of this automated reasoning algorithm and the complexity issue of this general algorithm. Moreover, a good way to assign appropriate indices for different kinds of generalized clause set can improve the efficiency of a -lock resolution further, so if we incorporate the human experiences into lock indices assignment or proof searching, it should further improve the efficiency. It can also be an interesting topic for ongoing research.
+The proposed work aimed at handling imprecise and incom-parable information, especially when the truth-valued field can be taken as a lattice-ordered linguistic valued structure, i.e., the truth-value is assigned as linguistic term (e.g., possibly true, approximately true, more or less true, etc.) instead of using numerical values in [0, 1] ( Pei et al., 2009 ; Xu et al., 2006a , 2011 ). Hence this will lead to an application in qualitative reasoning and qualitative linguistic valued decision making.
+Hence the present work can directly focus on reasoning based on lattice-ordered linguistic values, e.g., modeling the term-domain of linguistic variables by a lattice structure and imple-menting the reasoning based on lattice-valued logic, i.e., reason-ing with words ( Pei et al., 2009 ; Xu et al., 2006a , 2011 ).
+The proposed automated reasoning algorithm placed a foundation for linguistic-valued based qualitative reasoning and decision making. It offers a natural qualitative framework for handling uncertain information. It attempts to enhance the quantitative theory of decision science with qualitative, algebraic and logic-oriented approaches to reasoning with words.
+ Acknowledgments The authors wish to thank to the Editor-in-Chief of the journal Professor B. Grabot, Professor Matilde Santos Pen  X  as and the anonymous reviewers for their valuable comments and sugges-tions that greatly enhanced the quality of this paper. This work is partially supported by the National Natural Science Foundation of China (Grant no. 60875034) and the research project TIN-2006-02121 and P08-TIC-3548.
+ References

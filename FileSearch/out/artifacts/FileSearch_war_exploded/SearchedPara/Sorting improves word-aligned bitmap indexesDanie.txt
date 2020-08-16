@@ -1,0 +1,117 @@
+ 1. Introduction pared to LZ77 [4] and Byte-Aligned Bitmap Compression (BBC) [5], WAH indexes can be ten times faster [6]. effective.
+ PC. Our data sets are 1 million times larger.
+ meaningfully address the index construction time. Secondary contributions include guidelines about when  X  X  X nary X  bitmap encoding is preferred (Section 8); with hundreds of millions of rows and millions of attribute values (see Algorithm 1); an algorithm to compute important Boolean operations over many bitmaps in time O the total size of the bitmaps (see Algorithm 3); twice as large (see Section 7.12).
+ The last two contributions are extensions of the conference version of this paper [11]. encoding. Finally, Section 7 reports on several experiments. 2. Bitmap indexes indexes become competitive against specialized multidimensional index structures such as R-trees [15]. attribute a ; the bitmap represents the predicate a = v . Hence, the list attribute has n i possible values, we have L  X  P c i  X  1 n collection of n items with N distinct values, the item of rank k 2f 1 ; ... ; N g occurs with frequency item has frequency n = N s P N
+N 6 number of rows n .
+ microprocessors can do 32 or 64 bitwise operations in a single machine instruction. Long (hence compressible) runs of 0 X  X  are expected.
+ encoding allows L bitmaps to represent L k distinct values; conversely, using L  X d kn n
+For example, we have that N &gt; N 2 &gt; N 3 &gt; N 4 for N limited to k 2f 1 ; 2 g , and any column with less than 85 distinct values is limited to k 2f 1 ; 2 ; 3 g . number of attribute values n  X  X r a number slightly exceeding it X  X s n  X  n i 2f 0 ; 1 ; ... ; n 1 g can be written uniquely in a mixed-radix form as i  X  r r nent encoding may generate more bitmaps.
+ indexing.
+ Proof. Consider a q 1 ; q 2 ; ... ; q j -component index. It supports up to n  X 
+For n  X  Q j i  X  1 q i fixed, we have that P j i  X  1 q i is minimized when q
+N j P  X  N = j  X  at least n distinct values using k -of-N encoding  X  k  X  j ; N  X d j lett use hierarchical binning [22]. 3. Compression and repeat the value twice whenever a counter is upcoming: e.g., 1011110000 becomes 10114004. dirty words following the clean words. EWAH bitmaps begin with a marker word. 3.1. Comparing WAH and EWAH dirty words, on which EWAH is 3% more efficient than WAH. 2 this compression penalty is less relevant when using 64-bit words instead of 32-bit words. lengths, whereas no word needs to be accessed more than twice with WAH. 3.2. Constructing a bitmap index bitmap in constant time.
+ [26] and preceded by an array of 4-byte integers containing the location of each bitmap within the block.
+Construct: B 1 ; ... ; B L , L compressed bitmaps length  X  B i  X  is current (uncompressed) length (in bits) of bitmap B w is word length in bits, a power of 2 (e.g., w = 32) c 1 {row counter}
+N ; { N records the dirtied bitmaps} for each table row do for i in {1,2, ... ,L} 3.3. Faster operations over compressed bitmaps pressed bitmaps B 1 ; ... ; B L of sizes j B i j , Algorithm 2 computes ^ L which is bounded by the sum of the compressed sizes of the bitmaps Algorithm 2 will be in O  X  L log n  X  , and a weaker result is true: the computation is in time OL fixed-length RLE.
+
+I i iterator over the runs of identical bits of B i
+C representing the aggregate of B 1 ; ... ; B L (initially empty) while some iterator has not reached the end append run  X  a 0 ; a to C with value determined by c  X  I 1 metric except that specified inputs are inverted (e.g., Horn clauses). length counters, multiply the complexity by log n .)
+Lemma 2. Given L RLE-compressed bitmaps of sizes j B 1 j ; j B the aggregation of the bitmaps is in time O  X  P L i  X  1 j B time O  X  P L i  X  1 j B i j log L  X  .
+
+I i iterator over the runs of identical bits of B i
+C representing the aggregate of B 1 ; ... ; B L (initially empty) c be the bit value determined by c  X  I i ; ... ; I L  X 
+H 0 is an L -element max-heap storing starting values of the runs (one per bitmap)
+H is an L -element min-heap storing ending values of the runs and an indicator of which bitmap a table T mapping each bitmap to its entry in H 0 while some iterator has not reached the end for iterator I i with a run ending at a (selected from H ) Corollary 1. This result is also true for word-aligned (BBC, WAH or EWAH) compression.
+See Fig. 2 , where we show the XOR of L bitmaps. This situation depicted has just had I then be the end of the I 1 run. Table T will then allow us to find and increase the key of B a + 1 and likely be promoted toward the top of H 0 .
+ map index size multiplied by log n .
+ From Algorithm 3, we have that j^ i 2 S B i j 6 j P i 2 S
+Hence, for example, when computing B 1 ^ B 2 ^ B 3 ^ X ^ B L
+O  X j B 1 j X j B 2 j X  time. The bitmap B 1 ; 2 is of size at most j B the total running time is in O P L i  X  1  X  L i  X  1  X j B i operations: heaps. It works for a wide range of queries, not only simple queries such as
+We aggregate two bitmaps at a time starting with B 1 and B maps are created. To minimize processing time, the input bitmaps can be sorted in increasing size. of the two bitmaps. This approach runs in time O P L i  X  1 place the uncompressed bitmap in main memory.
+ not limited to simple queries such as W L i  X  1 B i .
+ 4. Finding the best reordering is NP-Hard NP-Hard by reduction from the Hamiltonian path problem.
+ lemma shows that the problem would not be NP-hard: 3 an (impractical) linear-time solution is possible. Lemma 3. For any constant number of bitmaps L, the row-reordering problem requires only O(n) time. b and c , placing it instead with any other occurrence of a  X  X ithout increasing total cost, an optimal solution with all identical rows clustered.
+ proof. h or 1 11) costs w bits whereas the the cost of any other word is w bits. to the row-ordering problem, which is known to be NP-hard. h 5. Sorting to improve compression 5.1. Sorting rows elements, we can sort almost M 2 elements in two passes.
+ Several types of ordering can be used for ordering rows.
+
+In lexicographic order, a sequence a 1 ; a 2 ; ... is smaller than another sequence b a ORDER BY.
+ tering fails to cluster the values within columns. sorting is not competitive.
+ Gray-code (GC) sorting, examined next.
+ Gray-code order as follows.
+
+Definition 1. The sequence a 1 ; a 2 ; ... is smaller than b a  X  a 1 a 2 ... a j 1 ; b j  X  a j , and a i  X  b i for i &lt; j .
+
+We denote this ordering by &lt; gc , as opposed to the normal lexicographic ordering, &lt; 6 gc and 6 lex , respectively.
+ v and v 2 in time O  X  min  X j v 1 j ; j v 2 j X  where j v i j is the number of true value in bit vector v sort command.
+ Algorithm 4. Gray-code less comparator between sparse bit vectors f true m min  X  length  X  a  X  ; length  X  b  X  X  for p in 1 ; 2 ; ... ; m do return : f if length  X  a  X  &gt; length  X  b  X  , f if length  X  b  X  &gt; length  X  a  X  , and For RLE, the best ordering of the rows of a bitmap index minimizes the sum of the Hamming distances: where r i is the i th row, for h  X  x ; y  X  X jf i j x i  X  y ming distance is 4.
+ Proposition 1. We can enumerate, in GC order, all k-of-N codes in time O k Hamming distance between successive codes is minimal (=2).
+ from 1 to N k  X  1. Within this loop, vary the value a 2 from N k  X  2 down to a order. To see that the Hamming distance between successive codes is 2, consider what happens when a
+Suppose that i is odd and greater than 1, then a i had value N k  X  i and it will take value a tion, a i  X  1 (if it exists) remains at value N k  X  i  X  1 whereas a similar if i is even. h and 1111). 5.2. Sorting bitmap codes cate bitmaps well when the table is sorted, rather than randomly ordered. proof of Proposition 1 ).
+ togram-oblivious X  X hey ignore the frequencies of attribute values.
+ and Gray-Lex order runs of identical values irrespective of the frequency: the sequence quency sorts the table rows as follows. Let f  X  a i  X  be the frequency of attribute a a ; a 2 ; ... ; a d , we lexicographically sort the extended rows f  X  a ically.) The frequencies f  X  a i  X  are discarded prior to indexing. 5.2.1. No optimal ordering when k &gt; 1 No allocation scheme is optimal for all tables, even if we consider only lexicographically sorted tables. is worse than some other ordering C 0 . The first column of the table is for attribute A second column is for attribute A 2 . Choose any two attribute values v in the first column, and the second column alternates between v will be d bitmaps that are entirely dirty for the second column. identical clean words.
+
+Now consider C 0 , some allocation that assigns v 1 and v only 2 dirty words in the bitmaps for A 2 . This is fewer dirty words than C produced. have that allocation C 0 will compress the second column better. This concludes the proof. h 5.2.2. Gray-Lex allocation and GC-ordered indexes indexes (including those where most of the possible rows appear), or for typical sets of data. allocation.
+ pressed index, GC sorting, and then compressing the index.
+
+Let c i be the invertible mapping from attribute i to the k of monotonicity: for a and a 0 belonging to the i th attribute, A r  X  X  a 1 ; a 2 ; ... ; a c  X  is obtained by applying each c where a i 2f 0 ; 1 g for all i .
+ First, let us assume that we use only k -of-N codes, for k even. Then, the following proposition holds.
+Proposition 3. Given two table rows r and r 0 , using Gray-Lex k-of-N codes for k even, we have r values of k and N can vary from column to column.
+
+Proof. We write r  X  X  a 1 ; ... ; a c  X  and r 0  X  X  a 0 1 ; ... ; a erality, we assume C  X  r  X  6 gc C  X  r 0  X  . First, if C  X  r  X  X  C  X  r 0  X  , then r  X  r 0 since each c where they first differ; at position t , we have that a t with bitmap t . In other words, N 1  X  N 2  X  X  N ^ t 1 &lt; t 6 N attribute ^ t ; i.e., t 0  X  N 1  X  N 2  X  X  N ^ t 1  X  1.
+ columns. Define the alternating Gray-Lex allocation to be such that it has the Gray-Lex monotonicity  X  a when P i 1 j  X  1 k j is even, and is reversed  X  a 6 a 0 ) c Construct the bitmap index and sort bit vector rows using GC order. Sort the table lexicographically and then construct the index.
+ The values of k and N can vary from column to column.
+ the same number of runs whether sorted in GC order or binary order [8]. 5.2.3. Other Gray codes from our standard ( X  X  X eflected X ) Gray code.
+ sents many results for such codes.
+
+For us, three properties are important: 1. Whether successive k -of-N codewords have a Hamming distance of 2. of-N codewords are at Hamming distance 2. lective Hamming distance X . (Count 1 for every bit position where at least two codes disagree.) The first property is important if we are assigning k -of-N codes to attribute values. the largest, again and again.
+ of approximately length L , we might prefer a few very long runs (at the cost of many short ones). successive k -of-N codes have Hamming distance 2 X  X ust like the common/reflected Gray codes. indicate the code is due to Goddyn and Grozdjak [37].
+ support many sufficiently long runs to get compression benefits.
+ when we index a table. sion for k &gt;1. 5.3. Choosing the column order indexes than others. that the storage cost of a sorted column is bounded by 5 n
+Proposition 4. Using GC-sorted consecutive k-of-L codes, a sorted column with n words, and the storage cost is no more than 4 n i  X d kn 1 = k
+Proof. Using d kn 1 = k i e bitmaps is sufficient to represent n at most two dirty words. There are n i transitions, and thus at most 2 n length ( w  X  32). Hence, we have an approximate storage cost of 2 d  X  r ; L ; n  X  X d kn maximum is reached and then it decreases. The maximum gain is reached at  X  n  X  w 1  X  = 2  X  cardinality n i .
+
+Lexicographic sort divides the i th column into at most n to largest; whereas the opposite is true for k &gt;1.
+
+A sensible heuristic might be to sort columns by increasing density  X  n decreasing order with respect to min  X  n 1 = k i ;  X  1 n 1 = k heuristic further in Section 7.7. 5.4. Avoiding column order compare these two strategies experimentally in Section 7.9.
+ which columns they come from. For example, consider the following table: cat blue cat red dog green cat green &lt;
+FC first compares  X  f  X  a 1  X  ; a 1  X  with  X  f  X  a 2  X  ; a ponent in r 2 f  X  a i  X  is the frequency of the component a dog green cat blue cat red cat green inally found. In our example, the table becomes (1,dog,1) (2,green,2) (1,blue,2) (3,cat,1) (1,red,2) (3,cat,1) (2,green,2) (3,cat,1) (by removing f ( a ) and storing a as component pos( a )). 6. Picking the right k -of-N
+Choosing k and N are important decisions. We choose a single k value for all dimensions, struction time/speed tradeoff. 6.1. Larger k makes queries slower
+We can bound the additional cost of queries. Write L i k  X  n most kn i = L i unary bitmaps by the following proposition.
+ attribute values.
+ to bitmaps has k N k edges. There are N bitmaps, hence k N
+Moreover, n i  X  L i k 6  X  e L i = k  X  k by a standard inequality, so that L kn
+Because j W i B i j 6 P i j B i j , the expected size of such a k -of-L entire ANDing operation can be done (see the end of Section 3)by k 1 pairwise ANDs that produce intermediate plexity of an equality query on a dimension of size n i is no more than 3  X  2 k 1  X  n 2 k 1 factor.)  X  2 1 = k  X  n 1 = k i . Relative to the cost for k = 1, which is proportional to 1 = n are  X  2 1 = k  X  n  X  k 1  X  = k i times more expensive than on a simple bitmap index. are at k = 2, the incremental cost of going to k =3 or k = 4 is low: whereas the ratio k  X  2 : k  X  1 goes as k  X  3 : k  X  2 goes as n 1 = 6 i . We investigate this issue experimentally in Section 7.10. 6.2. When does a larger k make the index smaller?
+Consider the effect of a length 100 run of values v 1 , followed by 100 repetitions of v assignment of bitmap codes to values.
+ and maybe less if we have sorted the data (see Fig. 6 ). 6.3. Choosing N small.
+
+Nevertheless, the main advantage of k &gt; 1 is fewer bitmaps. We choose N as small as possible. 7. Experimental results 7.1. Platform larger, depending on the data set. 7.2. Data sets used stemmed words with three or fewer letters. Occurrence of row w and randomized the order of its rows using Unix commands such as All files were initially randomly shuffled.
+ per hour  X  d 2  X  , dividends from stocks  X  d 3  X  and a numerical value numbered by increasing size: column 1 has fewest distinct values. 7.3. Overview of experiments
+Using our test environment, our experiments assessed whether a partial (block-wise) sort could save enough time to justify lower quality indexes (Section 7.4); the effect that sorting has on index construction time (Section 7.5); the merits of various code assignments (Section 7.6); whether column ordering (as discussed in Section 5.3) has a significant effect on index size (Section 7.7); whether the index size grows linearly as the data set grows (Section 7.8); whether bitmap reordering is preferable to our column reordering (Section 7.9); 7.10); whether word length has a significant effect on the performance of EWAH (Section 7.11); whether 64-bit indexes are faster than 32-bit index when aggregating many bitmaps (Section 7.12). compress clean words. When there are runs with many more than 2 we have not seen any overrun. 7.4. Sorting disjoint blocks useful.
+ in X  X  n 2  X  is probably irrelevant. 7.5. Index construction time index is faster (approximately 10,000 s or 30% less), but the index is about 9 times larger (see Table 6 ). 20%. This effect is so significant over DBGEN that it is faster to first sort prior to indexing. 7.6. Sorting smallest ( X  X 4321 X ) except for Census-Income where we used the ordering  X  X 3214 X . 1-of-N .
+ sus-Income, DBGEN, Netflix), and goes up to 90% for KJV-4grams.
+ togram-oblivious X  X nd therefore Gray-Lex is recommended.
+ dexes 5 X 50% larger. (For instance, on Netflix ( k = 4) the index size was 1 : 52 10 7.7. Column effects and DBGEN onto 10 dimensions d 1 ; ... ; d 10 with n 1 &lt;; ... ;&lt; n the dimensions d 1 ; ... ; d 4 discussed earlier.) We see that if we sort from the largest column  X  d benefit from the sort, whereas 5 or more columns benefit when sorting from the smallest column  X  d suggest that table-column reordering has a significant effect (40%). k = 2 for legibility.
+
+Census-Income X  X  largest dimension is very large  X  n 4 n = 2  X  ; DBGEN also has a large dimension  X  n umns in decreasing order with respect to min  X  n 1 = k i ;  X  1 n may be too simple, and it may be necessary to know the histogram skews. 7.8. Index size growth as the data sets grow.
+ 7.9. Bitmap reordering effect on the final index sizes. from each of these two data sets, forming Netflix20M and KJV20M.
+ of permutations would be prohibitively large  X  100 ! 10 158 number of 1-bits over the total number of bits ( n ): are first [10]. bitmap variant of the column reordering heuristic we evaluate experimentally in Section 7.7. 3.  X  X  X parse first X  (SF): order by increasing D .
+ ings were worse, sometimes by large factors (30%).
+ 7.10. Queries includes the extraction of the row IDs X  X he location of the 1-bits X  X rom the bitmap form of the result. etc.). The results are shown in Fig. 12 .
+ 2: their speed is mostly oblivious to k .
+
+For k &gt; 1, it appears that the portion of the index for the first attribute (which is 7MB for k = 1, the portion of the index was 100 MB 11 and could not be cached.
+In Section 6, we predicted that the query time would grow with k as  X  2 1 = k  X  n access times.
+ times most for larger values of k : for Netflix, sorting improved the query times by at most 2 for k =1, at most 50 for k =2, and at most 120 for k =3.
+ almost 3300 times faster ( k = 3).
+ query, we must still produce the set of row IDs. 7.11. Effect of the word length
+Tree storing maps from attribute values to bitmaps. We make the following observations: 16-bit indexes can be 10 times larger than 32-bit indexes. 64-bit indexes are nearly twice as large as 32-bit indexes.
+ Sorting benefits 32-bit and 64-bit indexes equally; 16-bit indexes do not benefit from sorting. indexes is within 5%. Hence, index construction is not bound by disk I/O performance. 7.12. Range queries aggregation of many bitmaps.
+
+We implemented range queries using the following simple algorithm:  X  X  B 1 et al. [27,3] for a detailed comparison of pair-at-a-time versus in-place processing.) 2. We compute the logical AND of all the dimensional bitmaps X  X esulting from the previous step. to its poor compression rate.
+
+Wegeneratedasetofuniformlyrandomlydistributed4-drangequeriesusingnomorethan100bitmapsperdimension.We for about 1% of the total time.
+ unsorted indexes. 8. Guidelines for k Algorithm 1.
+ quency rather than Gray-Lex.
+
+Perhaps the data set resembles KJV-4grams. Besides yielding faster queries, the k = 1 index may be smaller. 9. Conclusion and future work umn-oriented databases [47,48] by allowing various types of indexes. Acknowledgements This work is supported by NSERC Grants 155967, 261437 and by FQRNT Grant 112381.
+References

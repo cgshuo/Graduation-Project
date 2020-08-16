@@ -1,0 +1,67 @@
+ 1. Introduction interface. The size of these searchable data sources can re attracting advertisements from which many web sites live upon. data have been harvested. Without the knowledge of the data source size, it is dif and how to evaluate the performance of the data extractors.
+ the traditional capture  X  recapture method [1,13,14] that was estimation [10,22,30] .
+ to underestimate a data collection size [1] .
+ ranking bias that are fi rst introduced by Bharat and Broder [8] . probability of being matched by a query because it contains more words or queries. though there are more than k matches. Queries that match more than k documents are called over each document has an equal probability of being matched and returned [4 applied to such random sample data. We call this the sampling based approach . Lee's coverage method [13] , and Otis' Jackknife method [1] .
+ sampling process.
+ the return limit of a data source are not considered. 2. Capture recapture method 2.1. Basic concepts of capture recapture method set of matched documents from a data source.
+
+We summarize the statistics that are used in our estimation methods as below:  X 
+N : the actual number of documents in a data source;  X  t : the number of queries that are sent to a data source;  X  m : the number of matched documents for query j .1  X  j  X  t . n = documents in the estimation process;  X  u : the number of new documents retrieved by query j .1  X  j that are retrieved before query i . Note that M 1 =0, and M that are retrieved by all the queries in the estimation process;  X  d : the number of duplicate documents retrieved by query i . d  X  k : the maximal number of returns from a ranked data source, even if there are m  X   X  size. [26] that can be applied only to two capture occasions: m 2 and M 2 are not large enough. According to the birthday paradox, in general m query [10] .
+ estimations. i.e., When weight w i = d i , it is the classical Schnabel estimator [26] for multiple captures: When weight w i = d i M i , it is the Schumacher estimator [31] : there are more words in those documents.
+ dif be only applied to small population with hundreds of individuals, and require large sample size. 2.2. Application of capture recapture methods in data source size estimation traditional Petersen estimator (Eq. (1)) that can be applied to two capture occasions only. equal probability of being captured, Shokouhi noticed that N smaller than the actual value N . Furthermore, they observe that there is a to establish such a relation.
+ query in the document.
+ the bias. By using medium frequency words, the possibility of having over method. Because the query pool is rather large, it is impractical to multiplying the average weight by the query pool size. 3. Our approach 3.1. Models
+While models M 0 and M h are commonin capture  X  recapturestudies [1] ,models M Hence the estimator for M 0 is An estimator for this model is derived in Section 4 .
+ data sources. Its simpli fi ed version is Model M hr is the heterogeneous and ranked model that will be discussed in Section 5 .
+The relationships between the models can be depicted in Fig. 1 . Model M understand the estimation problem.
+ 3.2. Method process of our proposed estimation method is similar to most of the capture algorithm gives the estimations for models M h and M hr only.
+ Algorithm 1 . Outline of estimation algorithm.
+ Input : Dictionary , t , k , DataSource
+Output :N  X  , the estimation of the size of DataSource i = n = M = T =0; while i b t do end OR =n/M; OF = T / n ; N  X  = OF  X  M/ (1  X  OR  X  1.1 ) sampled documents, T the total number of matched documents.
+
+This algorithm applies to both models M h and M hr although only the estimator for M reduced to the estimator for M h .
+ posting, are also used. We fi nd the results obtained by different dictionaries are similar. because in this case each query returns more documents than smaller data sources.
+Next we will derive the estimator, starting from a simpli 4. Ranking bias: model M 0 r 4.1. Derivation A simple model M 0 r of ranked data source can be described as below:
+Given N number of ranked documents labeled d 1 , d 2 , ... the same probability of being matched. That is why we call the model M probability.
+
+Let p i ,1  X  i  X  N , denote the probability that the document d since it will be among the top k documents. Overall, there are of N , among them there are N
+N  X  1 m  X  1 = k
+When i N k , d i is among the top k matched documents only when there are at most k
+Thus the combinations when d i is selected and among the top k elements are
+Note that  X  j =1 N p i =1, and Eq. (7) cannot be simpli fi
+Fig. 2 draws the probability density function (PDF) and cumulative probability function (CDF) of p m and k , where N =1000, and 1  X  i  X  N . Fig. 2 (A) shows that p value, p i drops at a faster rate when k becomes larger.
+
+For example, in both the combinations ( k =10, m =20) and ( k =100, m =200), p
+However, the solid line, the combination ( k =100, m =200), drops almost vertically to near 0. Sub p , shows that when i is around ( k / m ) N , the cumulative probability is close to one. large. The remaining (1  X  k / m ) N documents are highly improbable of being sampled.
+The solid line in Fig. 2 (A) prompts us that model M 0 r corresponds to a simpler model M the probability m /( kN ) of being captured, while the remaining (1
+In order to quantify the relationship between M s and M 0 r which is de fi ned as
+Note that for the simple model M s its  X  s 2 is
+To compare with the CV in M s , we calculate the CV of M 0 r that while CV varies with different values of N , m , k , contains the top ( k / m ) N documents only. Thus the estimator for model M
+Eq. (10) can be also explained using binomial distribution. N documented are strati ( k / m ) N documents, while the bottom layer contains the remaining (1 binomial distribution X  X  B ( m , k / m ). Its mean is m ( k / m )= k and the variance is k (1
+In another word, when selecting m documents, in average k of them are from the top layer. Around documents can be from outside the top layer of the data source, i.e., a fraction bottom layer.
+
+Table 3 tabulates the Relative Standard Deviations when k is not very small, although it is positively biased.
+ When k is small, we suggest the use of the following adjusted estimator: 4.2. Simulation the method.
+ of N  X  , denoted as E (N  X  ), represents the mean of i estimations, i.e., Relative Bias is de fi ned as
+When different data sources are involved, we use Relative Standard Deviation RSD=SD/ E (N
+We carried out a simulation study that involves 30 combinations of similar results are observed.
+
+Overall, the simulation con fi rms that N  X  0 r is a good estimator when k is not very small. 5. Model M hr will have higher probabilities being matched by queries.
+
+We use Fig. 4 to explain the evolution of models from M 0 duplicates, that are retrieved in a particular model. There are 1000 documents, ordered by document with ID 1 is the largest fi le.
+ are uniformly distributed.
+ so often, but they are still possible being captured.
+ returned out of the 20 matches. As the fi gure shows, the the top 10 documents are returned. Unlike M 0 r , the documents in M their ID's are small. The histogram in Fig. 4 (F) clearly shows the distinction between M 5.1. Model M h that there is also a fi xed relation between P and OR in real data sources, with a modi or
+Here the R square is 0.875, which means that the regression and the estimator 5.2. Model M hr expose only the top ( k / m ) N number of documents, the estimator for M each matches with m i number of documents, where 1  X  i  X  t .Wede Then the estimator we use is 5.3. Experiment 5.3.1. Data
+Newsgroups, which are summarized in Table 5 . We also produce the log 25 million documents. We used two subsets of the data for ef newsgroups. Reuters is a TREC data set that contains 806,790 news stories in English. actual size is unknown, hence the evaluation of the methods will not be accurate. 5.3.2. Experiment
+We conduct experiments on 30 combinations of fi ve corpora and six over is in the range of 39 to 146 as shown in Table 6 .
+ for all combinations are very small. The bias for various over it works well, and can be explained by the fi le size distributions depicted in Fig. 5 drifts farther away from model M 0 . This is why Gov2 exhibits a larger negative bias. sample size, i.e., the total number of documents retrieved. It is dependent on the value of k is the estimator developed in [30] and will be compared in the next section. is a while the true value is 1.4 M. By using the over fl ow rate, N 5.4. Comparison obtain an equation between the initial estimation and the actual size using non-linear regression.
+In the last column of Table 7 , we list the estimation by N introduces very large bias when k varies. For example, for Wiki corpus, N estimations. What different is the next step. N  X  sReg is solely dependent on N of the matching probability. In contrast, our method adjusts N accounted for. Next, it is extended to N  X  hr to accommodate the strati
+Compared with the sampling based approach, our method has the following advantages: documents, thousands of documents may need to be downloaded and analyzed [33] . queries do not match any documents, thereby add more estimation cost. 6. Conclusions unique in the area of data source size estimation.
+
+In order to derive the estimator for ranked data sources, we start from an over simpli the same probability of being retrieved. From M 0 , we develop model M matched, but only top k documents will be returned. For model M distributions of the corpora.
+
+In addition to the accuracy of the estimator, our method is very ef needs to fi re 5000 queries [30] .
+ popular queries will induce higher over fl ow rate when the return limit k is
+According to the results in this paper, the queries should be selected so that over Acknowledgements
+References

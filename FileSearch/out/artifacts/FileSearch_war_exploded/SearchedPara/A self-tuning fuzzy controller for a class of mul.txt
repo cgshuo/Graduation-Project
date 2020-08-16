@@ -1,0 +1,34 @@
+ 1. Introduction system inputs.
+ stability of the closed-loop control system. improve the overall system performance.
+ parameters, disturbances and/or sensor noises. last section. input X  X utput format as y u y and Mendel, 1992 ) membership function. For any given crisp input vector the system output y j ( k ) can be obtained as  X  u 1  X  k t 1  X  X   X  u  X  k t 1  X  X  where  X  u 1  X  k t 1  X  X  X  exp  X  u p  X  k t p  X  X  X  exp  X  y j  X  k t y  X  X  X  exp individually calculated as ( Xu and Shin, 2007 ) g  X  g  X  1 where The steady-state gain array is obtained as
+G  X  0  X  X  X  g jr  X  calculated as
+K  X  G  X  0  X  X  G  X  0  X  1  X  T  X  4a  X  operations. For a non-square system, it is obtained as K  X  G  X  0  X  X  G  X  0  X   X   X  T  X  4b  X  and 3.2.
+ of a MIMO nonlinear system. 3. Multivariable fuzzy controller design the time-varying parameter s or system uncertainties. @ u r  X  k t r  X   X   X  x
+ X  ... ...
+ @ y j  X  k t y  X   X   X  x
+ X 
+V 3.1. Horizontal fuzzy control engine FLC controller are in the form of
+R g table will have the negative value of that in Table 1 .
+Mamdani X  X  min fuzzy implication is adopted and the fuzzy relations are aggregated as R  X  [ l compositional rule of inferencing:
+V  X  X  e 1 e 2  X  3 R  X  X  e 1 e 2  X  3 [ l min composition operator between two fuzzy relations.
+R c updecisiontableas Table2 ,whichcanbeviewedasahumanexpert
+V  X  e operation between two fuzzy sets:  X  e for general nonlinear time-varying systems. 3.2. Perpendicular fuzzy control engine
+D U control action V 1 r , V 2 r , ... , V qr as
+D U  X  [ q the u control action D u r as
+D u  X 
+D u  X  u  X  k  X  X  u r  X  k 1  X  X  D u r  X  k  X  X  13  X  control actions are expressed in a vector form as u  X  k  X  X  u  X  k 1  X  X  D u  X  k  X  X  14  X  4. Stability proof remains stable in continuous time domain.
+ individual storage functions of the two subsystems . Eq. (10) as
+D U r  X  [ considered in the perpendicular fuzzy control engine. 5. Simulation examples 5.1. Distillation column ginally studied by Doukas and Luyben (1978 ): y y y y 2 6 6 6 6 4 y u column is shown in Fig. 2 .
+ y y y y u u u matrix is calculated as
+G  X  0  X  X  The system RGA is obtained based on Eq. (4b) as
+K  X  G  X  0  X  X  G  X  0  X   X   X  T  X  where the output vector Y ( s ) is expressed as Y  X  s  X  X  C  X  s  X  G  X  s  X  Y d  X  s  X  X  22  X 
+The closed-loop error is then calculated as e  X  s  X  X  X  I C  X  s  X  G  X  s  X  X  Y d  X  s  X  X  23  X  square perfect controller requires C  X  s  X  X  X  G T  X  0  X  G  X  0  X  1 G T  X  0  X  X  G  X   X  0  X  X  24  X  are calculated as U  X  s  X  X  C  X  s  X  Y d  X  s  X  X  25  X  -0.5 y y -0.5 y -0.5 y -0.1 -0.05 0.05 u -1.5 -0.5 u -0.1 u -0.5 y y -0.5 y -0.5 y -0.1 -0.05 0.05 u -1.5 -0.5 u -0.1 u 5.1.1. Case 1. Normal operating condition y lines are those from the multivariable fuzzy controller. 5.1.2. Case 2. Model variations on input X  X utput gains y y y y 2 6 6 6 6 4 y transfer function is described as y y y y 2 6 6 6 6 4 as y y is around 1.2. 5.2. Chemical pressure tank system rate V o . The system equations are identified as _
+P  X  _
+V The model parameters are given in Table 3 .
+
+K state gain matrix is calculated as
+G  X  0  X  X  The system RGA is obtained based on Eq. (4b) as
+K  X  G  X  0  X  X  G  X  0  X   X   X  T  X  parameter changes. The control actions are obtained as l l "#  X  G 1 K 1 with G  X  2 6 6 6 4 where
+K  X  "# 10 11 12 13 14 15 pressure 0 20 40 60 flowrate desired output 0 2 4 6 8 10 inlet (%) 0 2 4 6 8 10 outlet (%) parameters as _ ^ _ ^ _ ^ _ ^ 2 6 6 6 6 6 4
+K Generic Model Control algorithm (GMC) are determined as K  X  controllers. 5.2.1. Case 1. Normal operating condition pressure flowrate desired output inlet (%) outlet (%) pressure flowrate desired output inlet (%) outlet (%) system response in real time. 5.2.2. Case 2. Load disturbance rejection d  X  t  X  X  0 : 01 sin  X  0 : 02 p t  X  d  X  t  X  X  0 : 07 sin  X  0 : 06 p t  X  X  33  X  under the existence of unknown exterior disturbances. 5.2.3. Case 3. Sensor noise elimination added to the system outputs as the feedback signal as s  X  t  X  X  0 : 1  X  2 rand 1  X  s  X  t  X  X  0 : 1  X  2 rand 1  X  X  34  X  10 11 12 13 14 15 pressure 20 40 60 flowrate desired output 10 inlet (%) 10 12 outlet (%) 10 11 12 13 14 15 pressure 0 20 40 60 flowrate desired output 0 2 4 6 8 10 inlet (%) 0 2 4 6 8 10 outlet (%) 6. Conclusion under various operating conditions.
+ References pressure flowrate desired output inlet (%) outlet (%)

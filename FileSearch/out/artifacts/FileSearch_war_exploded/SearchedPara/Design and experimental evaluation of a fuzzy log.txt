@@ -1,0 +1,60 @@
+ 1. Introduction in different aircraft; since it deals with local controllers and, system X  X  weight of the aircraft.
+ be fulfilled by the fuzzy controller: low sensitivity to possible disturbances and changes of easier to adapt for use in different aircraft. the already developed models of the A310 and A320 braking was implemented in a fuzzy inference board which was card.
+ even redesign a new one.
+ 2. The braking system model brake units mounted on a truck assembly providing a wide distribution of the load.
+ brake cylinders.
+ number of hydraulic cylinders.
+
+Each component is modeled on a circuit theory basis. The hydraulic variables. The state variables are: the cylinder pressure P c , the input flow to the brakes Q b , the input line flow Q L and, the pressure in the line P L .
+ 2.1. Hydraulic cylinders to the no brake position when the pressure decreases. represented by dv dt  X  dy dt  X  v c F  X  and F vc is a dissipation force on the contact given by F  X  r V Piston 
+P pressure at the input of the cylinder. 2.2. Brake system brake flow as
+Q  X  Using the global variables
+Q  X  N c q d ; F Gb  X  N c  X  F yc  X  F vc  X  ;  X  6  X  and parameters R  X  V  X  N c V c ; C Gc  X  N c C c ;  X  7  X  given by r V dQ b dt  X  2.3. The line The fluid dynamics into the line is represented by L r C dQ L dt  X  R L Q L valve. 2.4. The servo valve positions of the piston. 3. Design of the fuzzy logic pressure controller
+We show in this section the design of the fuzzy pressure requirements are expected to be satisfied: brake parameters and; -60 -40 -20 0 20 40 60 0 20 40 60 80 100 120 140 160 180 200 x
+P simplified tuning considering its adaptability for use in different aircraft.
+ P
+The fuzzy controller relates the pressure error signal e  X  P ref P sv  X  10  X  and the pressure error derivative D e
+D t  X  Psv [bar] Degree of membership 0.2 0.4 0.6 0.8 Degree of membership  X  i the reference current i s to the servo valve.
+
+For implementation of the fuzzy controller, it is more the maximal and minimal values of the hydraulic pressure situated in the interval [ e p min ; e p max ] where e e K  X  206 bars, the normalization factor K D e p stays K  X 
+The current step D i s is also normalized by the maximum specifications by: K  X  0 : 018A  X  16  X  Increase_a_Little ,and ZE  X  Maintained .
+ signal commands the servo valve overture and thus the
+Table 1 result thus in the non-linear control surface D i between the input X  X utput variables shown in Fig. 14 . The rules in Table 1 can be summarized in the following: have a response with a fast rise-time.
+
+The rules associated with small pressure errors result in the pressure signal is rapidly approaching the pressure pressure signal is slower.
+
+When the servo valve pressure is at a level around its region, the controller works in the direction of increase approaching (deviating) from the reference. 4. Simulation study
+The simulation study used the model parameters obtained A320 and A310.
+
+The sampling time fixed to the pressure controller was 0.74 ms. This time was measured as corresponding to the pressure values: 80, 120, 15 and 200 bars. Based on these 4.1. System operating specifications
+The functioning requirements of the braking system demand 10.5 Hz.
+ inside the maximal limit values.
+  X 1  X 0.5 0.5 Current step
+Servovalve current [A]  X 120  X 100  X 80  X 60  X 40  X 20
+Servovalve overture [x10 m] Time [s]  X  10  X  15 Gain dB  X  30  X  60  X  90 Phase deg  X  120  X  150 4.2. Robustness 4.2.1. Test one different K D i
+Fig. 17 . 4.2.2. Test two 50 100 150 200 250 Ref, Psv, Pc [bar] 50 100 150 200 250
+Ref, Psv, Pc [bar] 0 50 100 150 200 250 50 100 150 200 250 Ref, Psv, Pc [bar] 0 50 100 150 200 250 shows for the A320 the good performance of the fuzzy for the A310. 5. Experimental results
+The feasibility of the fuzzy controller was tested by its hosted by a 486 microcomputer. The board was connected in the computer bus together with an A/D X  X /A card. This card Fig. 19 .
+ membership functions in an already compiled format. captured by the A/D X  X /A card and sent to the CPU, these servo valve.
+
+Two transducers measure the pressure at the output of the verify the performance of the pressure controller. 5.1. Fuzzy inference board
+The computational time spent by the fuzzy controller to the fuzzy chip FP-3000 shown in Fig. 20 .
+ membership functions obtained during the simulation study are: performed in the chip.
+
+Triangular membership functions are assigned to the ante-cedent variables.
+ type.
+
+The fuzzy inference method is based on MAX X  X IN logical product.
+  X  2.7 m Line Measurement
+ X  5.2. Test 1: nominal pressure step (15 X 206 bars) to the maximum pressure of 206 bars. These results were tively.
+ nominal pressure step. The results show that such a gain fast and stable.
+This experiment considered a full step pressure command divided into three stages as shown in the figure. Stage 1 corresponds to the time delay mentioned before. Stage 2 by the pressure in the cylinders.
+
+When the cylinders reach the brake disks, the 26th rule are commanded by the servo valve pressure. 5.4. Test 3: pressure step (80 X 120 bars) derivative gain K D e p is decreased to 0.5 as in test 1. servo valve pressure now reaches the reference value in 206 bars 15 bars 206 bars 15 bars non-incremental fuzzy pressure controller. 5.5. Test 4: triangular pressure reference
+Fig. 27 shows the response of the braking system for a incremental action of the fuzzy controller. 6. Discussion sion. They are: braking system?
+Examining both pressures, a significant delay appeared in order to be able to make some adjustments in the fuzzy 7. Conclusion tions required.
+ using experimental identified models of the A320 and A310 braking systems.
+ out using an A320 braking system prototype and showed a during the simulation study.
+ Acknowledgment
+The authors wish to thank SABCA and Messier-Bugatti project.
+ References 120 bars 100 bars 80 bars 120 bars 80 bars 120 bars

@@ -1,0 +1,69 @@
+ 1. Introduction cessing costs.
+ ginal queries.
+ in the cache.
+ the content of a cache described by an XPath expression XP2 .
+ to and querying a remote data source and thus reduces network load.
+The contributions of this paper are:  X  A rule set for logical simplification of any XPath expression, which can be used  X  The general form of the reverse pattern E 1 of an XPath pattern E . The application of E context node returns a non-empty result if the current context node matches E .  X  XPath 1.0 [30] is closed under complementation and first order complete. in most cases a little bit faster and in few cases a little bit slower. conclusions in Section 8 . 2. Reverse pattern tern E 1 of E as a filter expression of an XML node stored in the variable $ d , i.e. $ d[E empty result if the XML node stored in the variable $ d matches E . complete XPath, which is supported by our approach.
+ reverse expressions of an XPath axis.
+ the middle column of Fig. 1 .
+ expression of the ancestor , ancestor-or-self or parent axis (see Fig. 1 ). tant nodes of the axes given in Fig. 1 .
+ used in the definition of the reverse pattern.
+ all possible context nodes.
+
+Definition 4 ( inversion operator 1 * applied to a location step ). The inversion operator last() in the predicates F 1 , ... ,F n , is computed as follows: (axis::test[F 1 ] ... [F n ]) 1* = self::test [F 1 ] ... [F empty expression, if there is no additional test of axis .
+ does not contain any intersect and except operators, i.e. D l and D /l 1 / ... /l m ,if D is an absolute XPath pattern, where l XPath pattern D 1 * is defined to be l 1 m = ... = l 1 1 .
+ pattern, which is equivalent to the one retrieved by the inversion operator axis 1 ::test 1 [F 11 ] ... [F 1n any intersect and except operators, has the form /axis 1 ::test 1 [F 11 ] ... [F 1n where axis i are XPath axes, test i are node tests and F ij after applying the inversion operator 1 * to D relative and to D containing the self axis with previous location steps is self::test m [F m1 ] ... [F mn where raxis i1 ... raxis ip
+T i is the empty expression, if there is no additional test of axis paper.
+ expression of the disjunctions separately, i.e. let E D 1 disjunctions outside the scope of filter expressions, then E
+Definition 7 ( reverse pattern of an XPath pattern ). The reverse pattern E sect and except operators, is computed as follows: As long as there are disjunctions ( X  X  sions, then E 1 D 1 1 j ... j D 1 n . We reverse each D i where T root is [self::node() is root()] for D i being an absolute XPath pattern and T
+Example 1 ( reverse pattern ). : The reverse pattern of child::object is self::object[self instance of element() * ]/parent::node() [self::node() is $ c] , the reverse pattern of / is self::node()[self::node() is root()] , and the reverse pattern of /child::contains/child::object[text()= X  X ntryXY X  X  j ancestor::object[attribute::name= X  X ockpit X  X  is self::object[text()= X  X ntryXY X  X [self instance of element() * ] /parent::contains[self instance of element() * ] /parent::node()[self::node is root()] j self::object[attribute::name= X  X ockpit X  X  [self instance of element() * ] /(descendant::node() j
+XPath pattern E if $ d[E 1 ] can be evaluated to a non-empty set, where E axes and of the node tests. h
+In the following, we prove further properties of the inversion operator patterns.
+
+Lemma 1 ( double inversion of location steps ). Let l be a location step, then (l location step. h not contain any applications of the functions position() and last() , then (D
+Proof of Lemma 2. D l 1 / ... /l m , where l 1 , ... ,l m and Lemma 1 ). h and last() , then (E 1 * ) 1 * E .
+
+E 3. Intersect operator are contained in XP1 and in XP2 .
+
+Proposition 3 (intersection without intersect operator). XP1 intersect XP2 XP1[XP2 XP1 and XP2 are XPath patterns and XP2 1 is the reverse pattern of XP2 . which are contained in XP1 and in XP2 , XP1[XP2 1 ] is equivalent to XP1 intersect XP2 . h intersect operators accordingly, until we have eliminated all intersect operators. 4. Except operator are contained in XP1 , but which are not contained in XP2 .
+
+Proposition 4 (difference without except operator). XP1 except XP2 XP1[not(XP2 and XP2 are XPath patterns and XP2 1 is the reverse pattern of XP2 . cannot be applied in a filter after XP1 , i.e. XP1[ not (XP2 equivalent to XP1 except XP2 . h until we have eliminated all except and intersect operators.
+ Definition 8 ( complement of an XPath query ). The complement C application of Q , for all possible input XML documents, i.e. " XML documents D : C " XML nodes n 2 D : n 2 C Q (D) [ Q(D) .
+ using the XPath query language version 1.0.
+ We need following lemma for the proof of Proposition 5 .
+ Lemma 3 (Most general XPath query). The most general XPath query
+G all :  X  /descendant-or-self::node() j returns all XML nodes of an XML document.
+
+Proof of Lemma 3. /descendant-or-self::node() describes the document node of an XML document or-self::node()/namespace::node() . There are no other XML nodes than these in an XML document. h
+Proof of Proposition 5. The complement of an XPath query Q is G node by [count(self::node() j root()) &lt; count(self::node())+count(root())] , which is equivalent to [self::node() is root()] , or is the context node by [count(self::node() j $ the additional tests can be also expressed by using XPath 1.0: [self instance of element() be also expressed by [count(self::node() j ../child::node()) &lt; count(self::node())+ count(../child::node())] , [self instance of attribute() * ] can be also expressed by [count(self::node() j ../attribute::node()) &lt; count(self::node())+count(../attri-bute::node())] , and [ not ( self instance of element() * ) and not ( self instance of attribute() * ) ] can be also expressed by [count(self::node() (self::node())+count(../namespace::node())] .
+
+The complement of the XPath query / is (descendant-or-self::node() j descendant-or-self::node()/attribute::node() j descendant-or-self::node()/namespace::node()) except / , tities, the complement of the XPath query / is (descendant-or-self::node() j descendant-or-self::node()/attribute::node() j descendant-or-self::node()/namespace::node()) [ not (self::node()[count(self::node() j root()) &lt; subset does not support the count function.
+ definable set of paths [20] . Thus, XPath 1.0 is first order complete (see Proposition 5 ). 5. Simplification XPath query logically.
+
+The goals to achieve are that  X  the XPath evaluator does not first determine all XML nodes of as early as possible.
+
+Therefore, the goals of our heuristic method are that  X  sub-expressions are reduced to the empty path, wherever possible.  X  our approach eliminates the not ( ... ) operator, wherever possible. location steps. 5.1. Supported subset of XPath operator within all XPath expressions.
+ Fig. 2 , do not cause an error, but these sub-expressions are only partially simplified. 5.2. Used rule set bute() , text() , comment() , document-node() , processing-instruction() } are more restrictive than node() .
+ Proof of Proposition 6. We can conclude Proposition 6 from [31] . h processing-instruction() } and t1 5 t2 ,if t1= * or t1 is the name test and t2 ment() , document-node() , processing-instruction() }, if t2= * or t2 is the name test and t1 2 { text() , comment() , document-node() , processing-instruction() }, if t1 , t2 2 { attribute() , element() } and t1 5 t2 ,orif t1 and t2 are name tests and t1 5 t2 . and t2 is the name node test.
+
+We use the approach of [25] (and in more detail the rule set RuleSet of the proposed rule set.
+ be an expression, which is the empty expression ? or a predicate. p[p1] with p self::node()[p1] .
+ empty expression ? : (1) p1/ ? /p2 ? (2) ?j p p (3) p j? p (4) a1 :: t1  X  self :: t2 F (5) a1 :: t1 = self :: t2 F (6) p = a1 :: t1  X  self instance of element  X  X  (7) p/self::t1[self::node() is root()] p[self::node() is root()]/self:t1 (8) p/self::t1[ not (self::node() is root())] p[ not (self::node() is root())]/ (9) /self::node()/p /p (10) p/a1::t1[self::node() is root()] ? if a1 5 self (11) /self::t1[self::node() is root()] /self::t1 (12) p = a1 :: t1  X  self instance of attribute  X  X  (13) not (p1/p2) not (p1[p2]) (14) not (p1[q2]) not (p1) or not (p1[q2]) (15) not (p1 j p2) not (p1) and not (p2) (16) not (q1 or q2) not (q1) and not (q2) (17) not (q1 and q2) not (q1) or not (q2) (18) not ( not (q1)) q1 (19) p[q1][ not (q1)] ? (20) p[q1[q2]][ not (q1)] ? (21) not(self::node()[q1] ... [qn]) not(q1 and ... and qn) (22) p1[p2 or p3] p1[p2] j p1[p3] (23) p1[p2 j p3] p1[p2] j p1[p3] (24) p1[q2 and q3] p1[q2][q3] (25) p j p p (26) p1/(p2 j p3) p1/p2 j p1/p3 (27) (p1 j p2)/p3 p1/p3 j p2/p3 (28) p1[q1][q1] p1[q1] (29) p1[p2][p2[q1]] p1[p2[q1]] (30) p1[p2]/p2 p1/p2 (31) p1[not(p2)]/p2 ? (32) p[ ? ] ? (33) p[descendant::t][child::t] p[child::t] (34) p[ancestor::t][parent::t] p[parent::t] (35) p[descendant::t] j p[child::t] p[descendant::t] (36) p[ancestor::t] j p[parent::t] p[ancestor::t] (37) p[following::t][following-sibling::t] p[following-sibling::t] (38) p[preceding::t][preceding-sibling::t] p[preceding-sibling::t] (39) p[following::t] j p[following-sibling::t] p[following::t] (40) p[preceding::t] j p[preceding-sibling::t] p[preceding::t] (41) p1 and p1[q2] p1[q2] (42) p1 and p1/p2 p1/p2 (43) q1 and (q2 or q3) (q1 and q2) or (q1 and q3) (44) (q1 or q2) and q3 (q1 and q3) or (q2 and q3) (45) q1 or q1 q1 (46) p/a1::t1[ not (parent::t2[q])] p[ not (self::t2[q])]/a1::t1 (47) p = a1 :: t1  X  not  X  self :: t2  X  q  X  (48) p/descendant::t1[ not (parent::t2[q])] (49) p/following-sibling::t1[ not (a2::t2[q])] (50) p/a1::t1[ not (self::node() is root())] p/a1::t1 if a1 5 self (51) p/a1::t1[ not (self::node()[self::node() is root()][q])] p/a1::t1 if a1 5 self (52) p/a1::t1[ not (ancestor::t2[q])] (53) /self::node()[ not (ancestor::t2[q])]/p /p (54) p[ not (self::node()[q])] p[ not (q)] (55) p[not(descendant::t2)]/child::t2 ? (56) /self::t1[ not (self::node() is root())] ? (either a number or a string literal). (57) p1[a1::t1=c1][a1::t2=c2] ? if a1 2 { attribute , self , parent } and c1 5 c2 and op2 are comparison operators, i.e. op , op1 , op2 2 { = ,&lt;, 6 ,&gt;, P , != }. (58) p1  X  a1 :: t1 op c1  X  a1 :: t1 op c2 (59) p1[p2 op1 c1 or p2 op1 c2] (60) not (p1/a1::t1 op c) not (p1) or not (p1/a1::t1 op c) (61) not (a1::t1 op c) not (a1::t1) or not (a1::t1/self::node() op c) if 1 5 self which are listed in Fig. 3 . (63) p1 op1 c1 or p1 op2 c1 p1 if op1=comp(op2) (64) not (self::t1 op c) self::t1 comp(op) c (65) p1  X  a1 :: t1 op1 c1  X  a1 :: t1 op2 c2 (66) p1  X  a1 :: t1 op1 c1 or a1 :: t1 op2 c2 as possible in order to combine common sub-expressions of the XPath expression again: (67) p1/p2 j p1/p3 p1/(p2 j p3) (68) p1/p2 j p3/p2 (p1 j p3)/p2.
+
+Then XP1 intersect XP2 /child::a/child::b[self::b[child::c][self instance of element() * ]/parent::a[self instance of element() * ]/parent::node()[self::node() is child::b[child::c] using our proposed rule set.
+
+Example 4 ( intersect ). Let XP1=/child::node()/self::a/child::node()/self::b , let XP2=/ descendant-or-self::c/ancestor-or-self::b . Then XP1 intersect XP2 /child:: node()/self::a/child::node()/self::b[self::b/descendant-or-self::c/ancestor-or-simplified query /child::a/child::b[descendant::c] using our proposed rule set.
+XP1 except XP2 /child::a/child::b[ not (self::b[child::c][self instance of element() * ]/parent::a[self instance of element() * ]/parent::node()[self::node() is b[ not (child::c)] according to our proposed rule set.
+
+Example 6 ( except ). Let XP1=/child::node()/self::a/child::node()/self::b , let XP2=/ descendant-or-self::c/ancestor-or-self::b . Then XP1 except XP2 /child::node()/ self::a/child::node()/self::b[not(self::b/descendant-or-self::c/ancestor-or-self:: query /child::a/child::b[not(descendant::c)] using our proposed rule set. 6. Performance analysis show the optimization potential of this extended rule set. 6.1. Experimental environments Pentium 4 processor 2.00 GHz, 1 GB RAM, Windows XP and Java VM build version 1.5.
+XPath expressions for all experiments. 6.2. First data set  X  synthetic data of the input, by varying the number of h c i and h d i elements. do not achieve high speed-up factors for the simplified XPath expressions. factors of the queries of Example 4 in Fig. 6 for the Qizx evaluator. ries of Example 4 in Fig. 9 for the Saxon evaluator.
+ still achieve speed-up factors of up to 30%.
+ 6.3. Second data set  X  data of the XPathMark benchmark iments. Additionally, we use the query Pi=//keyword(/parent::node()/child::keyword) to show speed-up factors after eliminating XPath reverse axes, where A tion of the simplified queries is on average 900% faster, when using Qizx. 6.4. Third data set  X  real data the digital library is 705 KB.
+ (in comparison to the rule set proposed in [17] ).
+ all simplified queries in comparison to the non-simplified queries of Fig. 19 is 18.5%. 7. Further related work a given XPath query.
+ according to a DTD is coNP-hard [29] . stylesheets. presence of schemas [5] .
+ pattern queries and the optimizations of these queries. modify the XPath expressions embedded in the XQuery queries or XSLT stylesheets. by a heuristic method.
+ mization potential of the additional rules. 8. Summary and conclusions optimize its evaluation time.
+ intersect and except elimination, and can be applied in general. and in few cases a little bit slower.
+ how our simplification approach can be extended to the XQuery language.
+References

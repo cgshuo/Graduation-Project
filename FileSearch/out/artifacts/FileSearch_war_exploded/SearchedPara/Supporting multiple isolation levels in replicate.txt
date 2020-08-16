@@ -1,0 +1,124 @@
+ 1. Introduction system components or external applications.
+ 1.1. Bene fi ts of supporting multiple isolation levels situation is defined as non-repeatable or fuzzy read phenomenon in [4] . If transaction T strong isolation restrictions. For example, a transaction T check if there is enough money to withdraw. Meanwhile if another transaction T application may take incorrect decisions since the account balance changed when T would never be produced by T 2 . Therefore, transaction T which serialisable, SI and RC transactions need to be executed concurrently. abortion rate with RC isolation was 26 times lower than with SI. be extended to support different isolation levels. 1.2. Related work replicated system behaves as a centralised DBMS providing SI. tries to fill this void.
+ their proposals.
+ can be used to prove the correctness of these protocols and all their variations. replicated systems.
+ isolation levels.
+ integrated without problems.
+ may be allowed with specific concurrency control mechanisms. 1.3. Roadmap 2. Background 2.1. Model failures is given. 2.2. Databases and transactions transaction )oranabort a i ( aborted transaction ). The commit persists all of T w ( x ) we denote T i 's read and write operations for a data item x . r present a formal definition of a transaction:
+De fi nition 1. Transaction
+A transaction T i for a set of operations o i is a total order  X  c i  X  T i iff a i  X  T i  X 
+If c i  X  T i ,  X  o i  X  c i  X  T i , o i b c i  X 
+If a i  X  T i ,  X  o i  X  a i  X  T i , o i b a i  X  Given o 1 , o 2  X  T i , o 1 b o 2  X  o 2 b o 1 .
+ in the same way. For example, r i a ( x j ) represents transaction T performed by transaction T j on node N a . 2.3. Execution of transactions
+Transaction executions are represented by their histories [7] . Relation o More formally:
+De fi nition 2. History
+A history H over a set of transactions T X  T 1 ; ... ; T n  X 
+For every T i  X  T and every o k  X  T i : o k  X  H .  X 
+For every T i  X  T and every o 1 , o 2  X  T i :if o 1 b o 2  X  If r i ( x j )  X  H , then w j ( x j )  X  H  X  w j ( x j ) b  X  For any two conflicting operations o i ( x ), o j ( x )  X 
+For the sake of simplicity and readability we use b instead of o b H o j  X  H .
+ of transactions T , T a is the subset of T executed in node N
+De fi nition 3. Replicated history  X 
+For every T a i  X  T a and every o k a  X  T i a : o k a  X  H  X 
+For every T a i  X  T and every o 1 a , o 2 a  X  T i a :if o  X 
+If r i a ( x j )  X  H r then there exists w j a ( x j )  X  H  X 
+For any two conflicting o i a ( x ), o j a ( x )  X  H r : o
+For the sake of readability we use o i a b o j a  X  H r instead of o node where operations execute in a different order (i.e., show that any two conflicting operations o i  X  T i and o j
+De fi nition 4. ROWA transaction
+Given a transaction T i and a node N a , we define T i a as:  X 
+T a is a subset of T i .  X 
+If T i a  X  X  X  and c i  X  T i , then c i a  X  T i a .  X 
+If T i a  X  X  X  and a i  X  T i , then a i a  X  T i a .  X 
+If r i ( x )  X  T i , then r i a ( x )  X  T i a iff T i is local to N  X 
+If o 1 b o 2  X  T i , and o 1 a , o 2 a  X  T i a , then o 1  X 
+If c i  X  T i , then  X  w i ( x )  X  T i : w i a ( x )  X  T i 3. Stand-alone systems 3.1. Concurrency control mechanisms phenomena forbidden by this test. 3.2. Isolation levels study is based on directed graphs that represent dependencies between transactions completeness, we discuss DSGs in the following section. 3.2.1. Direct serialisation graphs (DSG)
+De fi nition 5. DSG one of the following dependencies occurs 2 :  X 
+Direct read-dependency: T j directly read-depends on T i , denoted by T  X 
+Direct write-dependency: T j directly write-depends on T i w k ( x k )  X  H : w i ( x i ) b H w k ( x k ) b H w j ( x j  X 
+Direct anti-dependency: T j directly anti-depends on T i , denoted by T w k ( x k )  X  H : r i ( x m ) b H w k ( x k ) b H w j ( x j
+T j depends on T i if T j either directly read-depends or directly write-depends on T
+T directly anti-depends on T i . As an example, consider the following history: The conditions demanded by these basic isolation levels are summarised below:
+De fi nition 6. Basic isolation levels
+Given a history H :  X  PL-2 : A history is PL-2 if: (b) For every r i ( x j . l )  X  H ,if T j commits in H there is no w (c) DSG(H) does not have any cycle composed by dependency edges.  X  SI : A history is SI if: (a) H is PL-2 . (b) If T j  X  ww T i  X  DSG H  X  X   X  T j  X  wr T i  X  DSG H  X  X  , then c (c) If T j  X  rw T i  X  DSG H  X  X  , then s j b c i .
+ understood as the starting point of T k .  X  PL-3 : A history is PL-3 if: (a) H is PL-2 . (b) H does not have any cycle containing anti-dependency edges. 3.3. Extended mixed serialisation graph (EMSG)
+The DSG in Fig. 2 depicts the dependencies between transactions T with SI transactions:
+De fi nition 7. EMSG 4 e  X  DSG ( H ) from T i to T j is an obligatory edge in EMSG(H) if either:  X  e is a direct write-dependency edge, or  X  e is a direct read-dependency edge and T j is executed under PL-2 , PL-3 or SI ,or  X  e is a direct anti-dependency edge and T i is executed under PL-3 .
+De fi nition 8. Valid history
+A history H is valid if: (a) PL-2 , PL-3 or SI transactions do not read aborted or intermediate values. (b) EMSG(H) does not contain any cycle. (c) If r i ( x k ) b w j ( x j )  X  H and T i is SI , then s (d) If T j  X  ww T i  X  EMSG H  X  X  or T j  X  wr T i  X  EMSG H  X  X  and T (e) If T i  X  ww T j  X  EMSG H r  X  X  and T i is SI , then c i definition, these edges are not obligatory for SI transactions in Definition 7 .
+Thus, the execution history presented in Fig. 2 is valid if transaction T under PL-2. The history is also invalid if T i requested PL-2 and T conditions suitable for replicated environments. 4. Extending EMSG to replicated environments 4.1. Extending EMSG to replicated systems execution history of the whole replicated system. For example, assume two transactions T depicted in Fig. 4 .
+
+We extended EMSG by combining local EMSGs into a single graph [7] used a similar approach to define 1-copy-serialisability.
+De fi nition 9. Replicated mixed serialisation graph (RMSG)  X 
+Every committed transaction in T is a vertex in RMSG ( H r  X 
+For every local history H a  X  H ,if T a i  X  ww T a j  X  EMSG H
+T a i  X  rw T a j  X  EMSG H a ), then T i  X  wr T j  X  RMSG H 4.2. Equivalence between replicated and stand-alone histories  X  may be served in different orders in different replicas),  X   X  The above concepts are formalised as follows:
+De fi nition 10. Equivalence de fi nition
+Given a replicated history H r and a stand-alone history H , H
+C1: H and H r execute the same set of transactions T and commit the same subset T
+C2: For any committed transaction T i  X  T c , r i ( x j )
+C3: For every two transactions T i ; T j  X  T c , w i ( x )
+C4: For every transaction T i  X  T c executed under SI and any other transaction T (a) If WS j  X  WS i  X  X  X  then c j b s i  X  H iff c j b s i  X  H (b) If WS j  X  WS i  X  X  X  then c i b c j  X  H iff c i b c j  X  H (c) If WS j  X  RS i  X  X  X  then c j b s i  X  H iff c j b s i  X  H
+An index k , in a replicated environment s k , represents the starting point of T executed in its local node. For example, if N a is the local node of T then s k = o 1 a . Thus, c i b s k  X  H r means that c i a b snapshot-read and snapshot-write SI restrictions [1] in the same way. 4.3. Replication protocol correctness
+De fi nition 11. Valid replicated history
+A replicated history H r is considered valid if the following conditions hold: (b) RMSG ( H r ) does not contain any cycle. (c) If r i ( x k ) b w j ( x j )  X  H r and T i execute under SI , then s (d) If T j  X  ww T i  X  RMSG H r  X  X  or T j  X  wr T i  X  RMSG H (e) If T i  X  ww T j  X  RMSG H r  X  X  and T i execute under SI, then c Definition 12 states when a valid replicated history H r should be considered correct.
+De fi nition 12. Correct replicated history A valid replicated history H r is correct if there is an equivalent valid history H . Theorem 1 says that all valid replicated histories are correct. Theorem 1. Correctness
+A correctness proof and a set of interesting properties can be found in the appendices. 5. Supporting multiple isolation levels in replication protocols solutions can be extended to support different isolation levels. 5.1. Protocol classi fi cation levels is not a trivial task.
+ 5.2. Protocol implementation choices [3,28,19,29,22] ;manyofwhichsharethe same characteristics:  X   X  each transaction, i.e., when the transaction requests a commit locally.  X  replicas see the same sequence of updates, i.e., the same sequence of transactions.  X  5.3. A generic scheme to provide multiple isolation levels in replication transaction termination approach (i.e., voting and certification). 1. Start : when a local node N i receives a transaction T broadcast is needed and it can commit immediately. concurrently and is already committed. 4. Termination : if a conflict is detected, transaction T follows: a) The start step is extended to request the appropriate isolation level from the DBMS.
+This last topic deserves further explanation and is discussed in the following section. 6. Con fl ict resolution
+Multiple isolation level scheme or MLS: 1. Start : when a replica N i receives a transaction T i from a client C  X 
+The number of committed update transactions is taken as T  X 
+T i is started at the underlying DBMS with the requested isolation level.  X 
+T i 's operations are executed until commit is requested. 2. Broadcast : when C i requests to commit T i :  X   X 
+If WS i =  X  , T i is committed.  X 
+If WS i  X  X  X  , WS i , RS i (only for PL-3 transactions), T i 3. Validation : when WS i is delivered at a replica N a :  X 
+The number of committed update transactions is taken as T  X 
+If T i is PL-3, WS i is discarded if there is a T j , that has already been validated, RS  X 
+If T i is SI, WS i is discarded if there is a T j , that has already been validated, WS  X 
+If there are any other PL-3 T j transaction that is local to node N item read by T j , then T j is aborted and the respective client C 4. Termination :if T i terminates the validation step in N  X  control mechanisms ensure such a restriction. The result is sent to C  X  aborted by the replica's DBMS.
+ example, the abort of correct transactions). are satisfied.
+ Lemma 1. MLS applies write-sets in the same order
+Given a replicated history H r over a set of transactions T and a set of nodes N .  X  for any two replicas N a ; N b  X  N that apply WS i and WS  X  if a replica N a  X  N applies WS i then every other replica N and this fact proves the first part of Lemma 1 .
+
+We prove the second part of the Lemma by induction. Assume WS previously delivered and committed, T i validates and commits at N transactions has committed previously at N a and N b .If T st b ct j ; but this does not happen at N b . Since T j commits before T applied also at N b , from the first part of the Lemma, T can be in how ct j and st i are ordered.
+Thus, if st i and ct j have the same value at N a and N b
+Therefore, T i never obtains a different validation result at N Theorem 2. MLS protocol correctness Any possible history H r that can be produced by the MLS protocol is correct.
+Proof. To begin with, we prove each condition of Definition 11 separately:  X   X 
+Condition (b). This condition forbids cycles in RMSG ( H r for every two committed transactions T i , T j  X  H r and an edge e contradiction.
+
+To define f we use transaction event ordering. Thus, given a transaction T commit event). We should prove that for any edge e  X  RMSG ( H
+Given a committed transaction T i and an edge e involving T -e is T j  X  ww T i . -e is T j  X  wr T i and T i is PL-2, PL-3 or SI. -e is T i  X  rw T j and T i is PL-3.
+
+If e  X  T i  X  wr T j then T j has read a value written by T that WS j is delivered after WS i at all nodes and so c i
+If e  X  T i  X  rw T j then T i is PL-3. Hence, r i ( x k ) b validated at this replica after T j then PL-3 validation step aborts T be validated and applied before T j , which means ct i  X  ct number of committed update transactions when the transaction commits and T
+To sum up, for any edge e  X  RMSG ( H r ), if e connects T  X 
+Condition (c). This condition is held if for every SI transaction T for which c j b s i  X  H b ( Section 2.3 ). Assume N a as T the same sequence of write-sets is observed in them. Hence, if st the entire system, and this also implies that s i b c j .  X 
+Condition (d). In this condition, if T j  X  ww T i  X  RMSG H
+Since N a 's local DBMS ensures SI for T i , c j a b s i a c a b s i a  X  N i ,then c j b s i for the entire system.  X 
+Condition (e). In this condition, if T i  X  ww T j and T i valid replicated history is correct.  X  6.1. MLS and weak-voting 1. Broadcast : when C i requests to commit T i :  X 
+T 's writes are gathered into WS i .  X 
+If WS i  X  X  X  , WS i , T i isolation level and st i are atomically broadcast to all replicas. 2. Validation : when WS i is delivered at a replica N a :  X  propagated.  X 
+If T i is PL-3 and N a  X  N i , wait for the N a validation result. 7. Example that read-set propagation is used only for PL-3 transactions (lines 8
+CBR validates transactions depending on their isolation level (lines 31 the original protocol. 8. Conclusions transactions that can be executed in a relaxed isolation level. protocols, each being able to support a different isolation level. Appendix A A.1. Properties of valid replicated histories pair of conflicting operations o i , o j ,if  X  N a for which o Lemma 2. Global order of con fl icting operations
+T ;
+T j  X  T , o i b o j  X  H r  X  o j b o i  X  H r .
+Proof. Recall that o i b o j  X  H r if  X  N a for which o i otherwise there would be a cycle in the RMSG . As an example, assume w are always obligatory edges, so, T i  X  ww T j  X  EMSG H a and T obtain T i  X  ww T j  X  RMSG H r  X  X  and from H b we obtain T valid H r .  X  Another interesting property says that transactions are ordered due to their writes. Lemma 3. Write  X  write order of transactions
+Given a valid replicated history H r over a set of transactions T , w ( y )  X  H r .
+
+We also show that WS i b WS j  X  H r ( WS i represents the set of writes performed by T
+Proof. The correctness proof is similar to theone in Lemma 2 .If w w cycles are forbidden in H r .  X  Lemma 4. SI transaction write  X  write ordering
+Given a valid replicated history H r over a set of transactions T ,
+WS j b WS i  X  H r then c j b s i  X  H r .
+ Lemma 5. Read  X  write order of SI transactions
+Given a valid replicated history H r over a set of transactions T ,
+We also show that as RS i b WS j  X  H r if r i ( x k ) b w
+Proof. From r i ( x k ) b w j ( x j ) and Definition 11 condition (c) we obtain that s (d) we obtain that c j b s i and it is impossible to have both at the same time. definition [1] .
+ A.2. Correctness proof of Theorem 1
+Hereafter, we prove the correctness of Theorem 1 ; i.e. if H
+De fi nition 13. Replicated history projection 1. If operation o  X  H r then o  X  H . 2.  X  T i  X  T and  X  o 1 , o 2  X  T i ,if o 1 b o 2  X  T i then o 3.  X  o i , o j  X  H r ,if o i b o j  X  H r then o i b o j  X  H . 4. If w j ( x ) b w i ( x )  X  H r , T i and T j commit and T 5. If w i ( x ) b w j ( x )  X  H r , T i and T j commit and T 6. If r i ( x j )  X  H r , T i , T j commit and T i is SI then c 7. If r i ( x k ) b w j ( x j )  X  H r , T i , T j commit and T which the operation is executed.
+ Lemma 6. A replicated history and its projection are equivalent Proof. This can be proven by showing that all equivalence conditions are held. C4(a) If WS i  X  WS j  X  X  X  then, from Lemma 3 , either WS i b
+C4(b) From C4(a) proof, if WS i  X  WS j  X  X  X  then either c i C4(c) If WS j  X  RS i  X  X  X  then, from Lemma 5 , either WS j b Lemma 7. A replicated history projection is valid
+Proof. It is valid if the conditions (a), (b), (c), (d) and (e) of Definition 8 are held:  X  hence, reads never obtain aborted or intermediate values.  X 
+Condition (b): the form in which H is constructed ensures that it contains all H
+RMSG ( H r ) edges. However, is it possible for H to show dependencies not present in H operations, if o i , o j conflict in H then both also conflict in H
+RMSG ( H r ) then there are no cycles in EMSG(H) .  X 
+Conditions (c), (d) and (e): we have proven for condition (b) that H and H valid then H must also be valid. alone history H . As a result, H r is correct and Theorem 1 is proven.
+References

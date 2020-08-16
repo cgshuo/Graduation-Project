@@ -1,0 +1,26 @@
+ Given two sequences X and Y , the longest common subsequence (LCS) prob-common subsequences of the two given sequences.
+ For some biological applications some constraints must be applied to the constrained LCS problem, the generalized constrained LCS (GC-LCS) problem a subsequence or a substring, respectively. programming algorithm for solving this problem.
+ algorithm for the STR-IC-STR-IC-LCS problem.
+ IC-STR-IC-LCS problem is discussed. In Sect. 3 we give a new dynamic pro-gramming solution for the STR-IC-STR-IC-LCS problem with time complexity further improved to O ( nms ). Some concluding remarks are in Sect. 5 . of X and its characters are successive within X .
+ denoted as x i  X  for any i =1 ,  X  X  X  ,n . X [ i : j ]= x i the substring of X from position i to j . The substring X [ i : j ]= x X , respectively.
+ i ,i 2 ,  X  X  X  ,i n such that i 1 = j ,and X = y i 1 ,y i 2 , A match for sequences X and Y is a pair ( i, j ) such that x number of matches for X and Y is denoted by  X  .Itisobviousthat  X  suffix of S that is also a prefix of P , and therefore  X  ( P, S )=3. n and m , respectively, and two constrained sequences P = p q constrained LCS of X and Y including both P and Q as its substrings. n, 1 denoted as f ( i, j, k, r ) .
+ such that for each v  X  V ( i, j, r ) ,  X  ( P, v )= r ,where 1 r  X  s . The length of an LCS in V ( i, j, r ) is denoted as h ( i, j, r ) . Definition 3. For each character x  X  and any 1  X  i  X  n, 1 k  X  s , 0  X  r  X  t ,let where,  X  ( P, i, k )= { c | 0  X  c  X  s,  X  ( P, P [1 : c ]  X  d  X  t,  X  ( Q, Q [1 : d ]  X  x i )= r } .
+ The indices of c, 0  X  c  X  s and d, 0  X  d  X  t , achieving the maximum are of an LCS in Z ( i, j, k, r ), for any 1  X  i  X  n, 1  X  j  X  holds: computed by the following recursive formula ( 3 ) . f ( i, j, k, r )= The boundary conditions of this recursive formula are f ( i, 0 , 0 ,r )= f (0 ,j, 0 ,r ) = 0 for any 0  X  i  X  n, 0 and f ( i, 0 ,k,r )= f (0 ,j,k,r )=  X  X  X  for any 0  X  i  X  n, 0  X  0  X  r  X  t .
+ 2. In the case of k&gt; 0, x i = y j and x i = p k ,if x The proof is completed.
+ as its suffixes. If we extend the strings P = p 1 p 2  X  X  X  generalize strings P = p 1 p 2  X  X  X  p s p s +1 and Q = q 1 both P and Q as its substrings must be a standard dynamic programming algorithm which can be implemented as the following Algorithm 1 .
+ Algorithm 1. DP compte  X  ( P, i, k )and  X  ( Q, i, r )foreach x i , 1  X  i  X  0  X  r  X  t + 1 efficiently.
+ k ]  X  of P has to be shortened to the largest r&lt;k such that p and x i = p r +1 . Therefore, in this case,  X  ( P [1 : k ] in KMP algorithm for solving the string matching problem [ 3 , 7 ]. computed in O ( t ) time as follows.
+ for each character ch  X  and 1  X  k  X  s can be described as follows. Algorithm 2. Prefix Function character ch  X  and 1  X  k  X  s , then we can speed up the computation of  X  ( P, i, k ).
+ Algorithm 3.  X  ( P, k, ch ) each character ch  X  and 1  X  k  X  s can be computed readily in O (1) time. similar.
+ paths from ( i, j, k, r )to(0 , 0 , 0 , 0). of our dynamic programming algorithm for solving the STR-IC-STR-IC-LCS problem. The improved algorithm is also based on dynamic programming with structural properties of the problem. Algorithm 4.  X  P (1 : s, ch  X   X  ) Algorithm 5.  X  ( i, j, k, r ) both P and Q as its substring. Let also I =( i 1 ,j 1 ) , ( i sequence of indices of X and Y such that Z [1 : l ]= x i 1 Theorem 2. Let i d = i d and for all e  X  [1 ,s  X  1] , i d + e indices an increasing sequence, since i d = i d ,and i d + t  X  i x u = y j u . Therefore, I defines the same constrained LCS as Z [1 : l ]. STR-IC-STR-IC-LCS problem, instead of checking any common subsequences appearances of P in X and Y will be denoted by  X  x and  X  y position only for some matches.
+ first character p 1 of P in X , the index j of the last character p to the sequence Y .
+ character p s of a compact appearance of P .
+ k = 0 in the formula ( 3 ). Algorithm 6. Prep Algorithm 7. left ( X, n, i ) LCS which is a prefix of X and Y ending at positions i  X  1and j Algorithm 8. modif y Algorithm 9.  X  (1 : r ) LCS which is a suffix of X and Y starting at positions lx that z = u P v including Q [1 : r ] as its suffix.
+ matrix h ( i, j, r ) computed in stage 2 in these ends ( lx h ( i  X  1 ,j  X  1 ,r )+ s .
+ With these modified values as boundary values, a dynamic programming part of the value h ( n, m, r )= f ( n, m, s +1 ,r ).
+ puted in stage 2 to our purpose.
+ Then a dynamic programming algorithm for the STR-IC-LCS problem is and space. In the algorithm modif y , the values of  X  ( d ) for all 0 pre-computed as follows.
+ also O ( nmt ).
+ are both O ( nm ( s + t )).
+ Finally we can conclude that our improved algorithm for solving the STR-in the worst case. We have suggested a new dynamic programming solution for the new general-ized constrained longest common subsequence problem STR-IC-STR-IC-LCS. We will investigate these problems further.
+

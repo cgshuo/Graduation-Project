@@ -1,0 +1,66 @@
+ 1. Introduction in the fact that the ANN can be implemented by means of this approach easy to implement.
+ remarks are given in Section 5. 2. Preliminaries paper are presented in this section.
+
+Axiom. Consider two real scalars a and b , such that  X  a b  X  2 Z 0 a 2 2 a b  X  b 2 Z 0 a b r 1 2 a 2  X  1 2 b 2  X  1  X  The equality holds if and only if a  X  b .
+ ( Se  X  roul, 2000 ).
+
+A A R n n , whose characteristic polynomial is given by p A  X  s  X  X j sI A j X  2  X  p A  X  s  X  X  b 0 s n  X  b 1 s n 1  X  X  b n 1 s  X  b n  X  3  X  minors defined by j i M j X  are positive definite , i.e. , j i M j 4 0 , i  X  1 , 2 , ... , n ;  X  5  X  have a negative real part .
+ characteristic polynomial is s 2  X  b 1 s  X  b 2  X  0  X  6  X 
+It yields that j 1 M j X  b 1 4 0 , j 2 M j X  tions: b 1 4 0 and b 2 4 0. dI dt L RI v emf  X  v in  X  0  X  8  X 
+J d 2 y dt 2 shaft.
+ following criterion: d y dt b power function k b  X  d y = dt  X  2 .
+ finite and positive, i.e., 0 o f k y , k b , k t , k emf , R , L g X  11  X  dx dt  X  y  X  X  0 k y 0 x 8 &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; : Consider the following change of variables: ~ x  X  This yields _ y d  X  0 and in consequence _ ~ x  X  _ e  X  _ y  X  k y x 3 d ~ x dt  X  positive.
+ the neuro-control law is chosen as ( see Fig .2 ) u  X  v 2  X  tanh  X  o e  X  X  tanh  X  o  X  e  X  e  X  X   X  15  X  u  X  v F  X  o , e , e  X  X  16  X  where v 4 e o min k b L positive synaptic weight o , lim where m  X  o  X  is a function given by  X  o  X  X  Lyapunov function:
+V  X  1  X  x 1  X  e  X  2  X  1 2 x 2 3  X  21  X  yields dV dt  X  X  x 1  X  e  X   X  X  x 1  X  e  X  bounded, then Eq. (22) can be expressed as follows: dV dt r ~ x T yields dV dt r ~ x T
+Consider the second term of the last inequality, v
+L  X  x 1  X  e  X  F  X  o , e , e  X  X   X  quotient ffiffiffi v
+L r x 1 1 ffiffiffiffiffi then
+By substituting Eq. (27) into Eq. (24), it yields dV dt given by 2 6 6 6 6 6 6 6 4 reason, Eq. (28) can be expressed as dV dt matrix A . As a result, considering Eq. (2): p A  X  s  X  X  s  X  s 2  X  sb 1  X  b 2  X  b 1  X  k b J  X  R L v 4 e L b 2  X  R L v 4 e L k b J  X  k emf L k y  X  k t J  X  31  X  non-positive real part, are (ii) v = 4 e o  X  k emf = k b  X  X  k y J  X  k t  X  X  R . semidefinite, i.e., ~ x T
+Therefore, dV dt construct an upper bound.
+ accomplished as follows: e F  X  o , e , e  X  r e 1 m
+Returning to Eq. (33): dV dt r v r 2 v
+After some algebraic manipulations: j e j r 2 m  X  o  X  e L absolute value of the error from t  X  0to t  X  T : 1 T r 2 m  X  o  X  e r 2 m  X  o  X  e L i.e., 1 T
+Calculating the limit when T -1 , lim This ends the proof. &amp; Eq. (39).
+ the input synaptic weights o .
+ nents.
+ they can be estimated inside an interval value, i.e.,
+L 4 L , R 4 R , k emf 4 k emf k 4 k y , k t 4 k t , J o J o J  X  40  X  rewritten as v 4 e o min k b L are exhibited.
+ of the closed loop is improved and becomes lim 1 T 4. Simulation and hardware implementation results 4.1. Simulation results controller.
+ one for the synaptic weights v  X  5 and o  X  800. In both radians, as shown in Figs. 6 and 7.
+ J  X  0.03Nms 2 /rad.
+ b ( x
+Assumption 1. Replacing these values in Eq. (18) gives 1 : 25 o min f 6 : 91 , 8 : 1188 g X  6 : 91  X  42  X  the desired value and the actual angular position e  X  lim e ss r lim remains bounded as follows: 8 &gt; &gt; &gt; &lt; &gt; &gt; &gt; : bounded between 5 and +5V (see Remark 2).
+ threshold e .
+ PI controller.
+
+Taking into account that the proposed neuro-control is bounded, let us make the comparison with a saturated PI controller, whose control law is expressed as u  X  c k p e  X  t  X  X  k i where c  X  a  X  X  defined by the value of the synaptic weight v . The mean absolute value of the error e  X  y y d , i.e., J  X  e  X  t  X  X  X  1 120 J  X  u  X  t  X  X  X  1 120 and J  X  u
+PI  X  t  X  X  X  lower effort than the neuro-controller.
+ less chattering than the PI control ( Fig. 9 ). better error performance index than the PI control. 4.2. Hardware implementation stages are described in what follows. 4.2.1. The voltage comparator stage
+Fig. 13 . The output voltage v s can be computed by v s  X  X  v a v b  X  G calculate the output voltage is simplified to v s  X  sigmoid function as follows: v ot  X  v cc 2  X  1  X  tanh  X  G  X  v a v b  X  X   X  50  X  v s  X  value of the single-cell battery v B , as follows: 0 r v e r v B comparator given by Eq. (51) can be approximated by v st  X  v cc 2  X  1  X  tanh  X  G  X  v f v g v e  X  X   X  52  X  4.2.2. H-bridge power output stage
+B
+Q motor.
+ v
+B  X  + v cc .
+
+The angular position y of the shaft is measured with a v can be modified by the adjustment of the corresponding potentiometer.
+ and B 1 in Fig. 12 are
+B  X 
+B  X  given by u  X  B 0 B 1  X  X  B 1 B 0  X  X  55  X 
+Substituting Eqs. (53) and (54) in Eq. (55):  X   X  law given in Eq. (15).
+ the following inequality:  X  k sens G 4 4 satisfied. 4.3. Experimental results according with Eq. (41). 5. Conclusions control laws imposed to DC motors are more complicated. of the closed loop system.
+ of the DC motor friction as described in Eq. (10).
+The application proposed in this paper is focused on a to a wide class of electromechanical systems. Appendix A A.1. The construction of the function m  X  o  X  the function m  X  o  X  .
+ A.1.1. The neural control profile seen in Fig. 3 , where 1 o F  X  e , o , e  X  o 1 lim
+F  X  e , o , e  X  X  1 lim 1 C
+F  X  e , o , e  X j e r 4 = o e o 1  X  57  X  1 o F  X  e , o , e  X j e 4 4 = o C 1  X  58  X 
+F  X  e , o , e  X  X  A.1.2. The upper bound of F  X  e , o , e  X  e e
+C f F  X  e , o , e  X  e gj e r 4 = o e o e e 4 f F  X  e , o , e  X  e gj e 4 4 = o C e at this point it can be concluded that j e j
+C F  X  e , o , e  X  e 8 e : 4 Now from Eq. (59):
+F  X  e , o , e  X  e  X  bounds of F  X  e , o , e  X  e are 0 o F  X  e , o , e  X  e o e 8 e : e 2 o e o 0  X  61  X  the error lim t -1  X  1 = t  X  quantity expressed in radians.
+ construct an upper bound of F  X  e , o , e  X  e . next candidate bound is obtained. The above inequality can be rewritten as where m  X  o  X  X  seminorm given in Eq. (19).
+ A.2. Off-line training algorithm neuro-control are: parameters (uncertainty case) go to step (iii). g  X  X  k emf = k b  X  X  k y J  X  k t  X  X  R . Go to step (iv).  X  X  k emf = k b  X  X  k y J  X  k t  X  X  R .
+ Step (iv): Compute b  X  min f a , g g .
+ the synaptic weight v . Go to step (vii).
+ supply).
+ v = 4 b o e .
+ value of e is not small enough, return to step (vi). Step (ix): Select a positive synaptic weight o . References

@@ -1,0 +1,16 @@
+ 1. Introduction and Zhang and Chau (2009) .
+ 2. Arbitrary shape object detection (ASOD) algorithm v  X  df  X  v detected automatically and correctly by ASOD. Algorithm 1. Arbitrary Shape Object Detection (ASOD) Input : O : A set of objects
+Output : Clustering  X  each object as a cluster 1 Decompose O into data points D ; 2 Initialize an empty queue Q ; 3 clusterId  X  1; 4 Construct distance graph DG  X  X  D , E  X  using D ; 6 while there are unmarked objects do 8 while Q is not empty do 9 v  X  remove first element from Q ; 10 Add v to cluster clusterId ; 11 Mark v ; 12 foreach  X  w , v  X  A E do 13 If w is marked then 14 continue; 15 else 16 lghtWeight  X  weight  X  w , v  X  ; 17 isMin  X  true ; 18 foreach  X  z , w  X  A E do 19 if lghtWeight  X  weight  X  z , w  X  then 20 isMin  X  false ; 21 break; 22 if isMin then 23 Add w to Q ; 24 clusterId  X  X  ; 2.1. Relaxation the characteristics of the input data set. 2.2. Improvements of ASOD over COMUSA
+Although ASOD is based on COMUSA, ASOD and COMUSA the data set itself  X  as its input.
+ accumulated in the collection of input clusterings. 3. Experimental evaluations experimental data sets, and test results. represents a clusterings of the D (our findings): u i  X  D  X  and u and i a j .
+ ARI can be formulated as follows:
+P
+P the external criteria.
+  X 0.03  X 0.02  X 0.01 0.01 0.02 0.03 0.04  X 0.04  X 0.03  X 0.02  X 0.01 0.01 0.02 0.03 0.04 2 3 4 5 6 7 8 9 10 11 2 3 4 5 6 7 8  X 3  X 2.5  X 2  X 1.5  X 1  X 0.5 0.5 1.5  X 3  X 2  X 1 0 1 2 3  X 2.5  X 2  X 1.5  X 1  X 0.5 0.5 1.5 2.5 3.2. Test results tion language is Java.
+ having tens of thousands data points.
+ relaxation or with very small relaxation values. 11% relaxation rate.
+ as well.
+ 3  X 3  X 2.5  X 2  X 1.5  X 1  X 0.5 0 0.5 1 0.8 0 0.2 0.4 0.6 0.8 1 z sets k-means has speed advantage.
+
+Number of objects found by ASOD is compared with the the test data sets. 4. Conclusions and future work execution times.
+ References

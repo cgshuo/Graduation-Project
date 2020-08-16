@@ -1,0 +1,38 @@
+ 1. Introduction sensibility with respect to the fouling dynamics.
+The aim of this paper is to show how fuzzy Takagi X  X ugeno good performances.
+ proposed method.
+ 2. Modeling of the heat exchanger illustrated in Fig. 1 .
+ tion of energy principle. This procedure has been used by consider the following model description: _ _ _ _ , instead of h .
+ formula:
+UA h  X  ( Cengel, 2002 ).
+
+U  X  K U  X  _ m c _ m h  X  parameter K U .
+ be rewritten in the state-space representation: _ x  X  A  X  m , y  X  x  X  B  X  m , y  X  T in y  X  Cx ( where: m  X  X  _ m h , _ m c  X  T is the vector of mass flow rates; y  X  X  a b  X  T .
+ Matrices A , B and C have for expressions:
+A  X  m , y  X  X 
+Bm , y  X  X  X  time estimation of these two parameters. 3. TS fuzzy observers 3.1. Takagi X  X ugeno models continuous model affine in the control: _ x  X  t  X  X  f 1  X  z  X  t  X  X  x  X  t  X  X  f 2  X  z  X  t  X  X  u  X  t  X  y  X  t  X  X  f 3  X  z  X  t  X  X  x  X  t  X  ( input vector, y  X  t  X  A R y the output vector and z  X  t  X  nl compact set: nl  X  U  X  X  nl i U w i 0  X  U  X  X  nl i U w i 1  X  U  X  with nonlinear functions h i ( U ) for i A {1, y ,2 k }by h i  X 1. It is then easy to show the following properties:  X  An exact representation of (4) in the compact set C R z 3.2. Convergence of the estimation error for TS observers form: _ ^ x  X  t  X  X  ^ y  X  t  X  X  8 &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; : case, therefore, the observer writes: _ ^ y  X  t  X  X  C z ^ x  X  t  X  ( 2001 ; Yoneyama et al., 2001 ) _ e  X  t  X  X  X  A z K z C z  X  e  X  t  X  X  10  X  use a classical quadratic Lyapunov function V ( t )  X  e T i
+A {1, y , r } such that: A ( Lendek et al., 2010a ).
+ with a restricted class of TS model and observer, i.e.: C i
+A {1, the following single sum: h  X  z  X  X  A T i P C T M T i  X  PA i M i C  X  o 0  X  12  X  Thus, sufficient conditions are: A
+P C T M T i  X  PA i M i C o 0 , i A f 1 , ... , r g X  13  X  with the gains computed again as: K i  X  P 1 M i . 3.3. Unknown inputs under consideration writes with d  X  t  X  A R m : _ x  X  t  X  X  A z x  X  t  X  X  B z u  X  t  X  X  D z d  X  t  X  y  X  t  X  X  C z x  X  t  X  ( _ ^ x _ ^ d  X  t  X  X  f  X  ^ d  X  t  X  , ^ x  X  t  X  , y  X  t  X  X  ^ y  X  t  X  X  C z ^ x  X  t  X  8 &gt; &gt; &lt; &gt; &gt; : d  X  t  X  X  and define the extended vector: x  X  t  X  X  (14) can be written as ( design. 3.4. Introducing performances X  X  X T and Y using: D  X f z A C : X  X  z : Y  X  z : Y T o 0 g : only if there exists P  X  P T 4 0 such that:
+X P  X  Y AP  X  Y T  X  AP  X  T o 0  X  17  X  where stands for the Kronecker product.
+ are added ( Gahinet et al., 1994 ): basic feasibility solution.
+ vector w ( t ) on the state equation: _ x  X  t  X  X  A z x  X  t  X  X  B z u  X  t  X  X  Ew y  X  t  X  X  C z x  X  t  X  X  18  X 
+Z e T edt o g 2 inequality holds: _
+V  X  e T e g 2 w T w o 0 ,  X  20  X  of linear measurements, the LMI constraints are P 4 0 and
+A "# 4. Applications to fouling detection 4.1. Assumptions and observer synthesis these parameters during the lifetime can be written as: b  X  b 0  X  D b :  X  22  X 
+Model (3) can then be rewritten as: _ x  X  A  X  u , y 0  X  x  X  B  X  u , y 0  X  T in  X  v  X  t  X  y  X  Cx ( sion: v  X  t  X  X  with a sufficiently long heat exchanger T c ,2 E T h , in _ x  X  A  X  m , y 0  X  x  X  B  X  m , y 0  X  T in  X  Dd  X  t  X  y  X  Cx ( with D  X  rank ( D )  X  2 which is obviously the case.
+
+Following the sector nonlinearity approach, we transform model (25) in the Takagi X  X ugeno representation: y  X  t  X  X  Cx  X  t  X  ( previous section is followed.
+ (that is, p  X  3in (16) ).
+ the representation of the disturbances dynamics. f 1  X  ^ x , u  X  D ^ a  X  ^ d 1 f 2  X  ^ x , u  X  D ^ a  X  ^ d 1 g 1  X  ^ x , u  X  D ^ b  X  ^ d 2 g 2  X  ^ x , u  X  D ^ b  X  ^ d 2 8 &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; : that is
+D ^ a  X  f 1  X  ^ x , u  X  X  f 2  X  ^ x , u  X 
+Applying Theorem 2 with pole placement in the D region 8 ones:
+K  X  2 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 4 4.2. Simulation results decrease of the inner tube thermal conductivity. For the sizing of heat exchanger, the Tubular Exchanger time.
+ of 2.5 1 C to all the inlet and outlet temperatures. scheme.
+ the following cumulative sums is computed: S h  X  i  X  X  max  X  0 , S h  X  i 1  X  X  a i a k a s a  X 
+S l  X  i  X  X  max  X  0 , S l  X  i 1  X  a i  X  a k a s a  X  important, effects on estimated parameters of measurement time: as usual, a trade-off has to be found.
+ E  X  I leads to comparable results (see Appendix ).
+Outlet temperatures ( C/100) 1 = ^ considered parameter F f . 5. Conclusion exchanger networks ( Mathisen et al., 1994 ).
+ Appendix. Results with H N approach than for the pole placement approach:
+K  X  are plotted in the following figures ( Fig. A1 ). References Sh

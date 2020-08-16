@@ -1,0 +1,85 @@
+ 1. Introduction of time can prove to be crucial in supporting the decision making. offered product (service, promotion sale, etc.) has attracted at most c mum number of new customers.
+ values when conducting database reverse engineering.
+ approximate dependencies.
+ neering [1,18] .
+ bute is proposed. Realization of the proposed algorithm by using a data cube is described. of an arbitrary relation.
+ some results from the execution of the algorithm are presented. 2. Related work pend  X  1 6 p 6 q , integers) on sets of attributes A .
+ branching dependencies between A and b and to create an efficient algorithm. fractional dependencies is considerably simplified. 3. Functional and branching dependencies a B ! b does not hold in R for any B A .
+ the relation-multiset.
+
+For example, in the relation R , shown in Table 1 ,if A  X f a set I  X f 1 ; 2 ; 3 ; 4 ; 5 ; 7 ; 8 g are 7, they have two different values in each attribute a max fj d  X  p a 1  X  r id 2 I  X  R  X  X  X j ; j d  X  p a 2  X  r id 2 I
+It is easy to ascertain that for q &lt; j d  X  p b  X  R  X  X j : 1. if the branching dependency A !  X  p ; q  X  b holds, then the branching dependency A ! 2. if the branching dependency A !  X  p ; q  X  b holds, then the branching dependency A !
+Furthermore, if q  X j d  X  p b  X  R  X  X j , then A !  X  p ; q  X  branching dependency.
+
+Definition 1. We say that the branching dependency A !  X  p ; q  X 
+A !  X  p ; q 1  X  b does not hold for each q
+For example, in the relation shown in Table 1 the dependencies A ! former two are minimal.
+ branching dependencies between A and b .
+
+Proposition 1. If p  X  q and j d  X  p b  X  R  X  X j &gt; q, then the branching dependency A ! A ! b is valid.
+ tuples r and s , such that r  X  a k  X  X  s  X  a k  X  for all a assume that r i are these tuples where i  X  1 ; ... ; p 1. Consequently, r , s , f r branching dependency A !  X  p ; p  X  b holds. Hence, we can conclude that if r  X  a the FD A ! b is valid.
+ attribute b . h
+Proposition 2. If the branching dependency A !  X  p ; q  X  b does not hold and j d  X  p ues in the attribute b, then the branching dependency A !
+Proof. From the assumption that the branching dependency A ! 1 bute b . Consequently, the branching dependency A !  X  p  X  1 ; q  X  1  X 
+Corollary 2.1. If the branching dependency A !  X  1 ; q  X  b does not hold and j d  X  p in the attribute b, then the branching dependency A !  X  2 ; q  X  1  X 
+If we first obtain the minimal branching dependency for p  X  1, i.e. A ! does not hold, from Corollary 2.1 it follows that the branching dependency A ! should be testing the validity of the branching dependency A ! dependencies discovered approximate ( functional ) dependency if e  X  A ! b  X  is at most e .
+Let r be the selection operator in relational algebra and v  X  X  v error can be calculated by the following equation:
+If for an arbitrary element v 2 d  X  p a 1 ; ... ; a l  X  R  X  X  the corresponding value b of the values satisfying the condition b is considered as exception.
+
+When an approximate dependency A ! b where e  X  A ! b  X  6 e mation may be used to choose one of the following two approaches to correction of the error: 2. addition of a minimal number of attributes in A to obtain the set of attributes A an algorithm for finding such enlargement A 0 is proposed).
+This case corresponds to a minimal branching dependency A ! 5. An algorithm for finding the minimal branching dependencies hold it computes the error.
+ Algorithm 1
+Input : relation R with a set of attributes X ; A X , A  X f a
+Output : all minimal branching dependencies between A and b 3. Else this way it finds the minimal branching dependency A !  X  1 ; q  X  j d  X  p b  X  R  X  X j 6 q , then the branching dependency A ! which are less than j d  X  p b  X  R  X  X j and for q  X j d  X  p b 6. Realization of the algorithm for finding the minimal branching dependencies in databases to reveal some characteristics of the local structure ( Fig. 1b ). of a relational table-based structure that requires multiple scans of the data. following number of values are compared: where 2 &lt; p &lt; q 6 j d  X  p b  X  R  X  X j , consequently at most j d  X  p 7. Fractional and fractional branching dependencies
+Let ./ be the natural join operator in relational algebra, v d  X j d  X  p a 1 ; ... ; a l  X  R  X  X j , d b  X j d  X  p b  X  R  X  X j .IfFD A ! b is valid, each v d  X  p a 1 ; ... ; a l  X  R  X  X  . We consider the following example: conclude one or more tasks. The total number of the subtasks is d Each subtask can be used to conclude exactly one task.
+ dependency and the functional dependency b ! A holds.
+ c each k  X  1 ; ... ; d A 1 . If the value c k is obtained for the values  X  v in the following way: R 1  X  R, R k  X  1  X  R k n X  R k ./ p b
+A ! between A and b.
+ have to prove that for p  X  k  X  1 the branching dependency A ! dency. For this purpose, first we assume that it is not valid, i.e. there exist c k  X  1 different values in the attributes of A and c 1  X  c these tuples by r 1 ; r 2 ; ... ; r c ; r c  X  1 ; ... ; r induction assumption. Then r j ; j 2f c  X  2 ; ... ; c  X  c r ; i 2f 1 ; ... ; c  X  1 g . But the values c 1 ; c 2 ; ... ; c we obtain a contradiction with the selection of some of the values c Hence, it is not a valid fractional branching dependency. h type: SELECT COUNT(DISTINCT b) AS c k
+FROM R GROUP BY a 1 ; ... ; a l ORDER BY c k DESC task is selected such that for its conclusion to remain the maximal number unsolved subtasks. define other types of dependencies.
+
+Definition 3. Let A X , b 2 X , b 6 2 A and 1 6 p &lt; q p bute b and q 1 is the minimal with this property; 2. for 2 &lt; p 6 d A , q p &lt; d b : each q p  X  1 tuples with q with this property; 3. for q p  X  d b : each q p tuples with q p different values in b , that contain q ues in A and q p 1 different values in b , they have at least p different values in A .
+Then we say that  X  p ; q p  X  fractional dependency between A and b holds and denote it by A ! case of an arbitrary relation. 7.1. Case of constraints on the data in the attributes analyzed ferent number of unsolved subtasks.
+
+Proposition 4. We assume that the integers c 1 ; c 2 ; ... ; c k  X  1 ; ... ; d A , are sorted in a descending order, i.e. 1  X  v ; ... ; v kl  X  of the attributes of A, then the relation R
+R c j d  X  p the attributes of A. Then the set B  X f A !  X  1 ; c 1  X  f b, A ! contains all fractional dependencies between A and b.
+ Proof. We use a representation of all tuples of the relation R that is shown in Table 2 .
+The tuples r i 1 ; r i 2 ; ... ; r ic i have the same values in the attributes of A and c
+Table 2 from the first to the p th row, i.e. r ij different rows of Table 2 do not coincide in all attributes of A , i.e. r Table 3 shows the example relation from Table 1 obtained in the way described above. Let us assume that s k  X  c 1  X  c 2  X  X  c k , k  X  1 ; ... ; d different values in the attributes of A . Besides, we can select s different values in the attributes of A , hence, it follows that s fractional dependency A !  X  k ; s k  X  f b is valid for k  X  1 ; ... ; p .
+In the next step of the proof, we assume that there exists a valid fractional dependency A ! there exists a valid fractional dependency A !  X  k ; c 1  X  c
+A !  X  p ; d b  X  f b 2 B is valid, consequently for p &lt; k 7.1.1. First approach: using the relational model and applying Transact-SQL rithm 2.
+ Algorithm 2 b 6 2 A
+Output : all fractional dependencies between A and b 3. p  X  2 5. While R p 6  X ; do 7.1.2. Second approach: using the bipartite undirected multigraph A finite undirected graph G [21] is a pair  X  V ; E  X  , where V  X f v 1 ; v 2 ; ... ; v n G g is a finite set of vertices ;
+E  X f e 1 ; e 2 ; ... ; e m G g is a finite set of edges . Each element e
+If e k  X  X  v i ; v j  X 2 E ; v i ; v j 2 V ,1 6 i , j 6 n G
+V \ V 00  X ; X  , and the edges  X  i ; j  X 2 E are such that i 2 V
+We assume that V 0  X f 1 ; ... ; d A g and V 00  X f 1 ; ... ; d the distinct values in the attributes of A and each vertex of V values in the attributes b . An edge  X  i ; j  X 2 E , i 2 V where i 2 V 0 and j 2 V 00 ; s id b  X  1 is the number of the neighbor vertices of the vertex i 2 V given values in the attributes of A .
+
+The complexity of the procedure for creation of the adjacency matrix is  X  m : log this relation we have d A  X  7, d b  X  8, d  X  p a 1 ; a 2 f 1 ; 2 ; 3 ; 4 ; 5 ; 6 ; 7 ; 8 g . The vertices of the multigraph are V  X f 1 1. p  X  0 2. q  X  0 3. While E 6  X ; do
+On line 4, Algorithm 2 0 finds the maximal degree of the vertices of V vertices j 2 V 00 , that are neighbors of the vertex k .
+  X  p  X  d A  X  log 2 d A  X  X  ,1 6 p 6 d A . 7.1.3. Third approach: using the data cube and applying MDX queries tion with relevant values in the attributes. A data cell in the data cube c  X  v tuples of the initial relation satisfying a 1  X  v i 1 ; 1 c  X  v attributes, and so on, the cells c  X  all ; all ; ... ; all ; v of the measure of the data cube without grouping attributes. total number of the cells in the cube is Q n i  X  1  X j d  X  p speed up query response time, given space storage and maintenance time constraints. We denote by M A ; M Ab ; M b the following sets:
+M A  X f X  v i 1 ; ... ; v il  X  for 8 c  X  v i 1 ; ... ; v il
+M Ab  X f X  v i 1 ; ... ; v il ; v j  X  for 8 c  X  v i 1 ; ... ; v
+M b  X f v j for 8 c  X  v j ; all ; ... ; all &gt; 0, j  X  1 ; ... ; d 1. p  X  1 2. M p  X f v j for 8 c  X  v k 1 ; ... ; v kl ; v j ; all ; ... ; all &gt; 0, v 3. q  X j M p j 6. While M prune 6  X ; do intervals. 7.1.4. Comparison of the three approaches described above with respect to the execution time eliminates vertices from the next considerations.
+
+We represent a comparison of the efficiency: (A) with respect to the number of the distinct values d A the attributes of A [f b g with fixed number of the distinct values d relation m (see Table 5 ); attributes of A and the number of the distinct values d Ab 7.2. General case of an arbitrary relation arbitrary number of unsolved subtasks.
+ for which the value c 1 is obtained, i.e. V  X  1  X   X f v j d  X  p
+We consider the tree T whose nodes can be obtained in the following way ( Fig. 4 ): the node  X  all ; d b  X  is the root of the tree T ;
+For each element v j 2 V  X  1  X  we obtain the relation R j c  X  v j ; c 1  X  .
+
+R k n X  R forming the set V  X  k  X  1  X  j  X f v i  X  X  v i 1 ; ... ; v il
+Then  X  v i ; c j k  X  1  X  , v i 2 V  X  k  X  1  X  j are the child nodes of the node  X  v
+Since at each step some tuples of the relation are deleted, for each j there exists k the tree T can be obtained.
+
+Proposition 5. We assume that c 2  X  max j f c j 2 for 8 v set of the nodes on the second level, that contain this value c c  X  max j f c j 3 for 8 X  v i ; c j 3  X  that is a child node of  X  v  X  v ; c 2  X  ; v j 2 V 2 g , and so on, c p  X  max j f c j p for 8 X  v that is a child node of  X  v j ; c p 1  X  ,v j 2 V p 1 g . Then the set B  X f A ! c  X  c 2  X  X  c p  X  d b g contains all fractional dependencies between A and b. obtained in the way described above A !  X  k ; c 1  X  c 2  X  X  c and they contain  X  c c k  X  -element subset with exactly k 1 different values in A and c c r
+In the next step of the proof, we assume that there exists a valid fractional dependency A ! there exists a valid fractional dependency A !  X  k ; c 1  X  c dependency A !  X  p ; d b  X  f b 2 B is valid, then for p &lt; k 8. An algorithm for finding all fractional dependencies relation R _ tree ; c stores the values c 1 ; c 2 ; ... ; c of the tree.
+ Algorithm 3
+Input : relation R with a set of attributes X ; A X , A  X f a
+Output : all fractional dependencies between A and b 1. R tree  X  Get tree  X  R  X  2. c 1  X  p c  X  r lvl  X  1  X  R tree  X  X  4. p  X  2 5. c p  X  max f p c  X  r lvl  X  p  X  R tree  X  X g 6. q  X  c 1  X  c p 9. While Vtree p 6  X ; do and an increment of 1 for each inserted record.
+
+Function Get tree  X  R  X  1. R tree  X ; 2. V  X f X  a 1  X  NULL ; ... ; a l  X  NULL ; c  X  d b ; lvl  X  0 ; Parent  X  NULL  X g 3. k  X  0 4. R j k  X  R 5. While k P 0 do 17. Return R _ tree
+Analysis . If the degree of each node of the tree is less than or equal to e  X  1 d  X  e p :  X  d Ab  X  log 2 d Ab  X  X  ,1 6 p 6 d A .
+ Since we apply sorting that in the common case has a complexity  X  d building the tree structure is  X  p : d A : log 2 d A  X  ,1 9. Conclusion described.
+ attributes and their local structure.
+ proaches to solving this problem with some constraints on the data in the analyzed attributes. discovering all branching and fractional dependencies in a database relation.
+References

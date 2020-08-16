@@ -1,0 +1,97 @@
+ 1. Introduction
+Using the Internet to provide products, services and information to customers necessitates companies X  important for the company to anticipate visitors X  questions and concerns and provide relevant information
+CRM) is a collection of concepts, tools, and processes that allows an organization to obtain the maximum value from their e-business investment. e-CRM helps companies improve the effectiveness of their interaction with customers while at the same time making the interaction intimate through individualization. To succeed with e-CRM, companies need ing good customers.
+
+The sheer volume of customer information and increasingly complex interactions with customers has pro-ers, and identify customers about to leave.
+ tion of the process.
+
+Compared to supervise clustering, where pre-specified categories are known, in the absence of information organizing documents based solely on patterns learned from the collection itself.
+This paper proposes a dynamic Web document clustering algorithm for electronic customer relationship management (e-CRM) using neuro-fuzzy approach. A fuzzy clustering CRM prototype is also developed and presented. 2. CRM and document clustering in an integrated way across a range of communication channels. Various approaches have been suggested to behavioral and cognitive responses through the development of an intimate relationship [8] .
+One special type of CRM, analytical CRM aims to manage customer relationships through the use of var-analytical e-CRM. The four stages of the process are (1) collecting and integrating online customer data, interactions.
+
+The effectiveness of customer interaction provides a conceptual basis to CRM performance. A typical per-formance metric used in CRM applications is the life time value (LTV) of a customer. Designing and imple-menting strategies for a proactive customer interaction aims at drawing maximal life-time profit from customers. In this vein, substantial amount of work has been done on modeling various aspects of LTV [3,11,15,33] .
+
+Customer analysis in analytical e-CRM includes two major procedures: (1) preprocessing data, and (2) ing studies explored different variations of heuristic methods employed for analyzing click-stream data collected from websites.
+
+The widespread use of Internet and the diffusion of portal architecture heightened the importance of e-CRM approaches. Internet and its applications have dramatically increased the amount and the diversity of knowledge sources. The provision of easy and common interface to vastly different types of documents was the key to this explosive diffusion. Clustering of documents plays one central role in the management of information [51] . Effective taxonomy has a special importance in the Web, where vast amounts of docu-in Web service solutions, which can then be further incorporated into CRM approaches. tomer-centric CRM one has to continuously learn about the evolving needs and preferences of an individual customer and respond to the changing needs. As customers X  active involvement and experiences accrue, future CRM system is in consistency with our approach to develop an automatically evolving engine for e-CRM, which we believe of increased importance as the volume of digitized documents increases.
+New paradigms emerge in the behavior of consumers, online or offline. In this regard, Bose and Sugumaran
+Due to advances in technology, huge amount of data is transferred, processed, and maintained. The major have been used [40] .
+
+Recognizing the importance of document classification and clustering, several models and techniques have fiers [19] and objects dissimilarity matrix [50] .
+ Several commercial clustering engines were recently introduced in the market. Well known examples are posed. The algorithm called dynamic SVD clustering finds an optimal number of singular values to be used for clustering [27] .
+ titioned or a hierarchical one [2,22] .
+
+Classification of documents provides a basis for document search by grouping similar documents. Recently, episodes. Finally fuzzy inference is adopted to obtain additional ontological learning.
+As for the use of ontology, Widyantoro and Yen [43] presented a fuzzy ontology based on a narrow-term pared various clustering techniques useful for text documents with the help of ontology. customers through the dynamic clustering of Web documents.
+ 3. Customer analysis in e-CRM tomer demographics data. 3.1. Preprocessing click-stream data
+The most popular method uses session-level properties to aggregate user clicks [36,39] . For example, a radically different conclusions from the same data [5,30,41,49] .
+ keywords used and the time spent to a given page.
+
+Research opportunities for the optimization community should include the formulation of session optimi-can help managers produce better and accurate data mining results. 3.2. Needs for a new approach to customer profiling tance in many CRM applications such as customized recommendation, one-to-one marketing, and the person-[31] . Adomavicius and Tuzhilin [1] describe how data mining methods can be used to learn the rules to be incorporated into customer profiles.
+ quality customer profiling.
+ Nevertheless, existing optimization approaches to CRM do not incorporate the multi-stage evolution of
+CRM that allows adaptive learning. For this reason, we suggest a dynamic Web document clustering approach adaptable to changing keyword sets and documents. 4. Dynamic Web document clustering 4.1. Document clustering problem and e-CRM
+The clustering of documents plays an important role in the management of taxonomies on the Web for knowledge learning loop for e-CRM as it allows users to browse, create, and manage knowledge and provides both users and managers with guidelines for authoring and publishing contents and taxonomy [2] . methods: K -means, multi-level METIS, and the recently developed normalized-cut method, which combines algorithms, the flocking-based algorithm does not require a base partition as an initial condition. In practice, Khan and Khor [20] uses a hybrid neural network approach for an automatic clustering of tion requested by users.
+
+Sinka and Corne [35] investigate issues in unsupervised document clustering. They analyze how the perfor-but stemming is not always recommended to be applied to distant categories. 4.2. Web document classification: neuro-fuzzy modeling
+The neuro-fuzzy approach offers a data preprocessing module that helps users to prepare data for high-review of existing approaches, we suggest the use of a model described in this section.
+The notations of variables and concepts to be used in the rest of the paper are as follows: m number of keywords n number of documents nc number of Category-keyword sets k index for category ( k =1,2, ... , nc ) n k number of documents to the category k m k number of keywords to the category k w i i th keyword w ki i th attribute to the category k for i =1,2, ... , e ( k ) d j j th document f ij number of occurrence of keyword w i in the document d j f ijk number of occurrence of keyword w i in the document d a ij fuzzy membership value of keyword w i and document d j a ijk fuzzy membership value of keyword w i and document d j M =[ f ij ] m n keyword-document incidence matrix ( KDIM ) MF =[ a ij ] m n fuzzy KDIM matrix MB =[ b ij ] m n binary matrix
+TD j =[ f ijk ] 1 m test document matrix TDB j =[ b ijk ] 1 m binary test document matrix
+Given an initial training set of Web documents denoted as D maximum m existing keywords. We can count the frequency of occurrences of each keyword throughout the document set. We then use the keyword-document incidence matrix KDIM as the input data to produce the category-keyword sets CK . KDIM matrix is represented as M =[ f is the number of documents, and f ij is the frequency of occurrence of keyword w
+We define matrix MF =[ a ij ] m n as a fuzzy KDIM matrix where a ship [0,1] corresponding to f ij as defined in Eq. (1) . relativistic value of document d j in keyword w i .
+
+The value a ij is a relativistic value of the incidence of keyword w
+This relativistic value shows the membership of f ij and it represents the probability that a document d fidently interpret that document d j possesses keyword w i appreciate the sufficiency of the evidence that document d
+In the next section we will introduce the Dynamic Web Document Clustering ( DWDC ) algorithm. This neuro-the algorithm are described in the next section step by step. 4.3. Dynamic Web document clustering algorithm
+Step 2. Use Graph-Neural Algorithm (GNA) to obtain unsupervised clustering of keywords. This algorithm Step 3. From time T i to T i +1 , set j = 1 (classify all test documents).
+
+Step 4. Use Eq. (3) to create the threshold vector h k =[ h Step 6. If Step 8. Set i = i +1;( i here is the time stamp).
+
+Step 9. Move to the new training set of documents and perform clustering for planning time period T Step 10. Update the KDIM matrix, and then obtain MF matrix.
+ Step 11. Set C = 0, then Go to step1 (for continuous and endless evolution).
+Keywords have limited life. If a specific keyword was not used over certain period in test documents (say at time T i and used for clustering. 4.4. Dynamic clustering through graph-neural network approach
+Learning in neural networks can take the form of supervised, unsupervised, or combined learning. In the unsupervised learning is more realistic.
+
+In graph-neural network, information is derived from the MB matrix. This matrix is converted into a mult-corresponding keywords. The multigraph matrix is symmetric and square with size equal to the number of keywords. The entries of the matrix are the number of documents with each respective keyword. This matrix categories will increase automatically according to the rule of learning.
+
+MG =[ g ij ] m m is the multigraph matrix derived from MB matrix such that g the value of b ik in matrix MB is 1, x ik = 1, and otherwise x ument index in MB matrix). The details of the Graph-Neural Algorithm ( GNA ) procedure are as follows: Step 1. Convert the MB matrix into the matrix of a multigraph, MG .
+ Step 2. Create one category for the output layer, i.e. k =1.
+ Step 3. Calculate the sum of entries by rows in the matrix of the multigraph. Step 4. Select the row in the matrix with the highest sum (break ties arbitrarily).
+Step 6. If the first entry is g ij (corresponding to the i th row and j th column), then the keywords w
+Step 7. If the second non-zero entry of the i th row is g Step 9. Construct a new matrix of multigraph for the remaining keywords and create a new category.
+Step 10. k = k + 1 and go to step 3. 5. Implementation and experiments
+To validate the proposed method, the algorithm was coded and applied to a real world problem. The pro-totype system and results of the case study is summarized below. 5.1. The prototype system A website on a local network was designed around customers X  response to automobiles. A prototype e-
+CRM was developed using a SQL-Server, Hypertext Markup Language (HTML), and Java Server Pages (JSP). First, information was collected using HTML-based user interface. Customers X  proposals were stored in the database on SQL-Server platform. Data processing was performed by JSP where the DWDC algorithm Fig. 2 .
+
+In the customer satisfaction user interface, customers were supposed to enter such information as name, once Body and decorations was selected, a new pop-up window allow customers to enter values (ranging
+The designed software which we called FC-CRM is shown in Fig. 3 . FC-CRM has the capability to perform clustering , user profiling , statistical analysis , attributes diagramming , and so on.
+The operator of the FC-CRM can easily and immediately cluster the collected information. The clustering automatically reconstruct clusters real time as time passes. 5.2. Case analysis Under e-CRM context, we consider information from and about each customer as one complete document. and thus each individual customer is considered as one document under e-CRM context. proposed algorithm are summarized in Table 3 .
+
+All new test documents to be clustered by existing category keyword sets were analyzed. For example, for the eighteen existing keywords we converted the matrix TD 46,99,145,121,4] into a fuzzy text document FTD using Eq. (4) . The resultant FTD would be FTD = 0.1132,0.045734,0.150154, 0.24032,0.19684,0.00452].
+ convert FTD into the binary test document matrix TDB as shown in Table 4 . The membership value l 1 k = [0.457143,0.428571,0.114286] of a new customer (document) to existing cluster was obtained using ing clusters, then the number of unspecified test documents are increased by one, or C = C +1.
+For the second test document vector, TD 2 = [18,98,10,105,4,12,20,68,7,11,89,8,36,16,72,40,9,36], the fuzzy test document matrix computed by Eq. (4) came out as FTD = [0.030645,0.150154, 0.016129,0.172582,0.00452,0.02976,0.03225,0.09862,0.01141,0.02976,0.12015,0.012903,0.03483,0.02429, 0.1232,0.04413,0.01395, 0.03468]. Using the same threshold vector h
+FTD was converted into a binary test document matrix TDB as shown in Table 5 . TD assigned to existing clusters, and thus the value of C is modified to C =0+1. 6. Discussion
+We introduced the keyword-document incidence matrix M =[ f dence matrix into a fuzzy matrix MF =[ a ij ], which indicated the probability of a document d keyword w i . Using the concept of threshold value as the degree of acceptable reliability, the MF Matrix was further converted into a binary matrix represented as MB =[ b is greater than or equal to the threshold value, otherwise it would take the value of zero. This matrix was used as an input matrix in clustering keywords using the graph-neural network approach.
+Then following the graph-neural procedure we produce the multi-graph matrix MG , which is a symmetric matrix with size equal to the number of keywords.
+ The DWDC algorithm was coded and the validated capability was summarized in the Sections 4 and 5 . can make a roadmap plan for their products.
+
+Customer satisfaction is crucial to customer relationship managers, so managers of a company should understand customers better and improve satisfaction of their customers systematically.
+For example, we could identify a problem captured from the data of a case study. By analyzing the average this attribute can increase as shown in Fig. 4 .
+
+Recently one problem around the level of customer satisfaction was pinpointed by obtaining a broad revealing the aspects for improvements.
+ reduce costs and initiate a new research to increase the power of the engine.
+In addition, managers can benefit from the major advantage of the proposed method, the real-time auto-matically updated informing system. Manager can continuously receive reports about customer interaction and make a best decision for the company and their customers.
+
+To summarize and highlight the advantage of the proposed approach, we dedicate eight major dimensions of analysis as follows: 1. Similarity between customers. 2. The priority of attributes and major requests from the customers. 3. The deviation of the average value of attributes. 4. Category of customers by their needs. 5. Support to the needs of customers. 6. Information retrieval and the management of taxonomy. 7. Capacity to browse, recognize, and manage customer X  X  requirements. 8. Knowledge of customer needs and the provision the products and services. 7. Conclusions
+The increased importance of building and maintaining a loyal relationship with their customers has been frequently emphasized. As companies increasingly rely on online presence to interact with customers, e-CRM will continue to grow in its importance. In this paper, we proposed a neuro-fuzzy approach to auto-lutionary and  X  X cale-free X  keyword and document network is proposed. The approach aims to facilitate preprocessing of click-stream data in e-CRM that incorporates dynamic changes in Web documents.
+This paper provides a novel approach on Web document clustering. There is no predefined category or text of World Wide Web. It allows one to dynamically change and update the category-keyword sets for doc-of Web contents.
+
+CRM problems. Many e-CRM applications require concise profiles that contain the most important set of information about customers. The prototype of a system which employ our new approach has been developed to show the experimental results of Web document clustering and validate practical value of the approach.
+Senge [54] suggested that the rate at which organizations learn may become the only sustainable source of uments supported by dynamic evolutionary process has a paradigmatic importance, which has already been recognized by several researchers [32] .
+
+The main contributions of this paper can be summarized as follows: 1. The new Dynamic Web Document Clustering ( DWDC ) algorithm was developed and suggested under the context of e-CRM. 2. The algorithm is dynamically adding or removing necessary or unnecessary attributes. not pre-specified). 4. The pre-processing of click-stream data in e-CRM is facilitated. 5. Building costumer profiles through dynamic Web document clustering has become realized based on the continuous updates in category-keyword sets for dynamic classification. completely unstructured. 7. The automation of learning and double-loop learning is modeled. 8. The opportunity to the new generation of content delivery service is envisioned.
+This research approached the document classification issue from the perspective of document managers and providers. Under such context, no pre-specified goals or intention of the use of document is assumed. the provider and user perspectives.
+ Acknowledgements
+We appreciate the insightful comments from the four anonymous reviewers. Their comments were very helpful for us to improve the paper. We also express our thanks to Mazandaran University of Science and
+Technology, Iran and Hanyang University, Korea for their support in performing this research the authors acknowledge Mr. Babak Ahmari for his valuable assistance in this manuscript.
+References

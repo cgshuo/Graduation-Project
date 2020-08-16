@@ -1,0 +1,4 @@
+  X  The fi rst half of this research was presented at the IET International Conference on Frontier Computing, Theory, Technologies and Applications (conference paper title: A novel histogram equalization for image contrast enhancement with mean brightness preservation). As such, it represents a truncated version of the research work, the extension version of which has been published in Engineering Applications of Arti fi cial Intelligence (paper title: Image contrast enhancement for preserving mean brightness without losing image features).
+ Prof. Shih-Chia Huang and Dr. Chien-Hui Yeh are responsible for the planning, design, and execution the journal version. Prof. Shih-Chia Huang, Dr. Chien-Hui Yeh, Dr. Fan-Chieh Cheng and Dr. Pei-Chen Wu are responsible for the planning, design, and execution the conference version  X  .
+ The authors would like to apologise for any inconvenience caused.
+

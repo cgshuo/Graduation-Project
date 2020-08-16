@@ -1,0 +1,147 @@
+ 1. Introduction linguistics, cognitive science, and conceptual modeling [1 extracting occurrences of the part  X  whole relations from texts [5 (open-domain, general-purpose) text collections, such as the assurance [4]. More importantly, the information expressed by part corporate activities, such as Enterprise Intelligence. For example, the relation between the part  X  set-top box  X  , established by the pattern found in ,asin and diagnose causes of product failures.
+ unavailability of labeled domain-specific data for training supervised algorithms [6 alleviate the need for labeled training data. They are initialized with instance pairs (e.g. investigated.
+ knowledge-base, we acquire a set of patterns that reliably express part at improving product quality using relevant information extracted from corporate data sources.
+Our core contributions in this paper are as follows:  X  We show that despite their broad-coverage, readily available resources like  X  We demonstrate that substantial performance gains are achieved by leveraging upon resources like knowledge for domain-specific part  X  whole relation extraction.  X  techniques by relying on the Latent Relation Hypothesis [14].  X  part  X  whole relations.  X  using sophisticated lexico-syntactic information.
+ addition, we empirically demonstrate the gains in performance by relying upon
+Espresso algorithm [9] in the extraction of domain-specific part
+This paper is organized as follows. In Section 2 , we describe related work on part conclude and discuss areas of future work in Section 5 . 2. Related work
+In this section, we motivate the need for domain-specific part 2.1. Semantic relations their locations [19]. A complete overview of semantic relations is given in [20]. 2.2. Part  X  whole relations
+In this paper, we focus on the relations between parts and wholes. A part  X  consists of  X  , which connects a pair of related (part  X  whole) instances, e.g. e.g. b pattern=consists of, part=engine, whole=car&gt; .
+ part  X  whole relations.
+
+Pribbenow [2], and Odell [3]. These taxonomies are derived from the linguistic usage of part fail to provide an accurate classification. 2.2.1. Formal taxonomies of part  X  whole relations
+Keet and Artale [4] developed a formal taxonomy to clarify the semantics of part different types of part  X  whole relations mentioned in other taxonomies [1
+For example, in Keet's taxonomy, the sub-quantity-of part
+AMOUNT-OF-MATTER in the DOLCE ontology, such as the pair  X 
+Based on these considerations, Keet and Artale identified eight types of part are: 1) involved-in , between a phase and a process, e.g. part-of , between integrals and their functional components, e.g. physical object (or role) and an aggregation, e.g.  X  player-team of matter, e.g.  X  clay-statue  X  ,3) sub-quantity-of , between amounts of matter or units, e.g. 4) participates-in , between an entity and a process, e.g. 2.3. Extracting part  X  whole relations from texts supervised or minimally-supervised. 2.3.1. Supervised approaches
+In the approach of Girju et al. [6,7], patterns expressing part extracted from sentences of the L.A. TIMES and the SEMCOR recall of 75.91% in identifying part  X  whole relations in previously unseen texts. Van Hage et al. [8] acquire 503 part  X  whole pairs from dedicated thesauri, e.g. part  X  whole relations. They substitute the patterns'  X  part  X  corresponding  X  whole  X  entities were then discovered with a precision of 74%. 2.3.2. Minimally-supervised approaches seeds, which denote part  X  whole relations, e.g.  X  engine-car whole relations, and in turn, employ the patterns to extract other instance pairs.
+Berland and Charniak [5] rely on manually-crafted patterns and on initial seeds denoting harvest the corresponding  X  part  X  instances, e.g.  X  room achieve an accuracy of 70% over the top-20 results.
+ connect these seeds. The patterns are bootstrapped and used to infer other part part  X  whole relations from the ACQUAINT corpus (TREC-9) of 6 million words. 2.4. Motivation from learning domain-speci fi c part  X  whole relations
+Existing Information Extraction ( IE ) algorithms have predominantly focused on discovering part broad-coverage (general-purpose) corpora, such as the L.A. TIMES
+We use three sample texts, S1 , S2 , and S3 , to illustrate the relevance of part Enterprise Intelligence.
+ Example 1. S1 =  X  leaking tube found in radiator  X  .
+
+In S1 , the part  X  whole relation between  X  leaking tube  X  in  X  failures to be efficiently determined.
+
+Example 2. S2 =  X  brightness option not available on menu console
+In S2 , the part  X  whole relation between  X  brightness option  X  available on  X  . This relation expresses a customer's dissatisfaction at the  X  dissatisfaction causes that are implicitly expressed with subtle patterns, e.g. as
+Example 3. S3 =  X  calibration was performed as part of the upgrade
+S3 relates the phase (part)  X  calibration  X  to its encompassing process (whole), phase and the process is established by the pattern  X  (performed) as part of 2.5. Challenges in extracting domain-speci fi c part  X  whole relations
+They are discussed next. 2.5.1. Challenge 1: Lack of Annotated Data
+In most specialized disciplines, domain-specific texts annotated with examples of the part acquisition (KA) bottleneck [11].
+ 2.5.2. Challenge 2: data-sparsity sparse texts are less likely to contain the wide variety of patterns that realize a relation [27]. 2.5.3. Challenge 3: seed selection
+Selecting seeds to initialize a minimally-supervised algorithm for extracting part corpora, e.g. SEMCOR , which facilitate seed selection by offering an abundance of archetypal part 2.5.4. Challenge 4: lack of domain-speci fi c knowledge-bases with the exception of the bio-medical domain, which offers resources such as algorithms also suffer from a number of weaknesses, which we next discuss as Challenges 5 and 6. 2.5.5. Challenge 5: surface pattern representations three sentences, S4 , S5, S6 that express a part  X  whole relation between the pair  X 
+S4 =  X  a car consists of at least two doors  X  .  X 
+S5 =  X  all cars consist of doors  X  .  X  S6 =  X  a car consists of a number of doors  X  .
+
+Traditional algorithms will extract three distinct surface patterns, namely, between  X  door  X  and  X  car  X  can be adequately expressed using the single pattern, and redundant patterns, which have to be manually aggregated.
+ patterns that do not appear at adjacent positions in surface texts. One such example is the part instances  X  poem  X  and  X  stanza  X  , established by the pattern  X 
+S7=  X  a poem is a literary piece of work, usually consisting of one or more stanzas 2.5.6. Challenge 6: semantic-drift significantly drift away from the target relation defined by the initializing seeds. 2.6. Knowledge-bases in information extraction sources employed to support IE algorithms are broad-coverage, such as formal ontologies like dictionaries like WORDNET [ 24] , and annotated text collections like the ACE [34] and 2.6.1. Wikipedia as a knowledge-base interest can be attributed to the attractive features/characteristics of has been exploited for building large ontologies, such as YAGO [36] and
+WIKIPEDIA in Natural Language Processing and Artificial Intelligence can be found in [38]. 2.7. Proposed approach for extracting part  X  whole relations bottleneck. 2.7.1. Broad-coverage resources for domain-speci fi c applications
+On the other hand, broad-coverage resources, for e.g. WIKIPEDIA and wholes are not explicitly documented in large resources, such as
+Leveraging upon large, broad-coverage knowledge resources for extracting part 2.7.2. Research questions 1. Our first research question addresses whether large and broad-coverage resources, such as effectively exploited as knowledge-bases for domain-specific part broad-coverage knowledge-base for domain-specific part  X  whole relation extraction. minimally-supervised algorithms. classify domain-specific part  X  whole relations.
+ relations from sparse, domain-specific texts by leveraging upon the broad-coverage
+Our proposed approach is discussed in the next section. 3. Extracting part  X  whole relations from domain-speci fi
+In this section, we elaborate on our proposed approach for extracting part phases. 3.1. Architecture overview serves as a knowledge-base, and in our framework, we use the whole relations are not explicitly available from WIKIPEDIA unstructured texts.
+
+Our problem is now one of extracting patterns that express part follows. During the Pattern Induction and Formalization phase ( Section 3.3), we convert each until a suitable number of patterns is collected.
+ Since the part  X  whole patterns acquired from the much larger smaller and sparse target corpus, we extract as domain-specific part
+Solid arrows represent results output, while dotted ones represent the inputs to our system. 3.2. WIKIPEDIA as a knowledge-base domain-specific knowledge-bases that can be exploited to support our task of part Lexico-semantic dictionaries, e.g. WORDNET [ 24] , and labeled corpora, e.g. patterns (e.g.  X  consist of  X  ) that relate them in part  X  Other candidate resources, which can be leveraged upon, include the
+Both of these resources exhibit certain desirable features, namely:  X  would be involved had resources of similar scale been manually constructed from scratch [11].  X  express part  X  whole relations.
+ knowledge-base to support our task of minimally-supervised part texts. These desiderata include:  X  provides a more explicit description of relations between real-world entities than BNC. improves the recall (  X  coverage  X  ) of our approach. Second, it abounds in prototypical part to initialize our minimally-supervised algorithm.  X 
+Larger size: Related to the broader coverage of WIKIPEDIA ample redundancy, whereby the same information (e.g. part precision in detecting part  X  whole relations. Thus, by virtue of its larger size, study of Mihalcea and Csomai [54], the performance achieved in word sense disambiguation when knowledge-base was much higher than the performance with BNC.  X  application scope for multi-lingual IE. For example, simply switching the English or Dutch version, enables us to investigate manifestations of the part them with their corresponding occurrences in English. A detailed study on part
+Dutch WIKIPEDIA can be found in [21].  X   X  WIKIPEDIA is indeed more suitable as a knowledge-base than BNC.
+A possible downside of relying on WIKIPEDIA for learning part in
+Sections 3.3 to 3.6. 3.3. Pattern induction and formalization In Pattern Induction and Formalization, we transform the sentences in our identification of relations.
+ 3.3.1. Linguistic pre-processing and term identi fi cation We start by determining the Part-of-Speech (POS) of the tokens (e.g. words) contained in which automatically annotates (tags) each token in a sentence with its corresponding POS. represents (common) nouns, and  X  DT  X  determiners.
+ texts [57,58] . Other filters, such as [42], can also be used. 3.3.2. Pattern formalization After detecting occurrences of instances in the sentences of and redundant patterns. Also, they are unable to capture long range dependencies. naves  X  is shown in Fig. 3 .
+ dependency trees are generated from sentences using the Stanford syntactic parser [46]. (For better readability, we use the patterns' surface form, e.g. Lexico-syntactic patterns are shown our illustrations).
+ or morphological variations. For example, we derive the single, most general pattern, with long range dependencies. For example, we are able to accurately capture the relation between  X  church  X  in S10 , despite their not appearing in adjacent positions in surface texts.
+At this juncture, two important points deserve further elaboration:  X  semantic relations. For example, the triple  X  hiv cause of aids causation relation between the instance pair  X  hiv  X  and  X  pattern  X  consist of  X  , inferred from sentence S9 , encodes a part  X  namely, the triple  X  car consist of door  X  , involving the part involving the invalid part  X  whole pair  X  number-car  X  .
+
+To identify which of the instance pairs (e.g.  X  door-car  X  of  X  , patterns. For example, in a large corpus like WIKIPEDIA , the pairs (i.e. co-occur) with part  X  whole patterns, such as  X  contain whole pairs. Conversely, pairs like  X  number-car  X  ( S6 ) and patterns. Consequently, they will not be selected as valid part example, the pattern  X  consist of  X  ( S9 , S10 ) is likely to be strongly associated with part  X  grape-wine  X  . It will therefore be considered as a reliable indicator of a part to Espresso, the novel features in our technique are as follows:  X  issue posed by domain-specific texts.  X   X  techniques.
+
+Our technique is described in Sections 3.4 to 3.6 . 3.4. Seed selection initializing seeds.
+ In our work, we adopt a principled approach to seed selection. We search our taxonomy. For each pattern, we automatically convert the instance pairs that it connects in the pair  X  actor-cast  X  are converted to the SOCIAL OBJECT whole relation that each pair instantiates according to Keet's taxonomy. In our example, the pair part  X  whole relation, which exists between two entities of the semantic class (e.g.  X  actor-cast  X  ) that define the relation.
+ 3.5. Pattern selection reliably encode part  X  whole relations.
+ until a suitable number of patterns are collected.
+ computes the reliability of a pattern, p , in expressing a part an instance pair, i=x-y (e.g. i=  X  engine-car  X  ), and a pattern p (e.g. p =
+The  X  *  X  symbol is a wildcard representing any pattern or any instance pair.
+The reliability measure of Eq. (1) assigns higher scores to unambiguous patterns, e.g. indicate that they are reliable expressions of part  X  whole relations. inputs them to its Instance Selection phase. The value of k is determined experimentally. 3.6. Instance selection patterns, we must ensure that only the valid and most reliable part 3.6.1. Pair  X  pattern association estimates its average strength of association with part  X  3.6.2. Instance_Pair_Purity
+In the ideal case, if all the patterns, p , are unambiguous indicators of part association strength (Eq. (3)) is an accurate estimate of the instance reliability. However, part wide variety of unambiguous (e.g.  X  consist of  X  ,  X  contains the instance pairs connected by these patterns do not always participate in a part
+These invalid part  X  whole pairs, which are connected by ambiguous part and S12 , as shown below.  X 
+S11 =  X  lyrics found in song  X   X  S12 =  X  building is in use  X 
+Both of them contain an ambiguous part  X  whole pattern, namely p pattern p 11 establishes a valid part  X  whole relation between the instance pair i corresponds to a valid part  X  whole pair. Conversely, in S12 , the pattern p the instance pair i 12 =  X  building-use  X  . That is, i 12 types of invalid part  X  whole pairs tend to co-occur with many other ambiguous part invalid patterns, to be selected. For example, the invalid pair i for  X  ,asin  X  building converted for use  X  , which does not express a part the pattern  X  convert for  X  will lead to the selection of the invalid part performance of minimally-supervised algorithms [10,21] .
+ genuinely instantiates a valid part  X  whole relation, i.e. the patterns, instantiate the same semantic relations.
+ a large corpus as WIKIPEDIA , it is reasonable to expect that pairs like i whole patterns like p unambiguous ,asin  X  song consist of lyrics
+On the other hand, it is highly improbable for pairs like i part  X  whole patterns, such as p unambiguous , which also connect our seeds. For example building  X  are incoherent constructs, and will not occur in a standard corpus like and our seeds are not connected by the same patterns, they do not instantiate valid part  X  building-use  X  are not considered as valid part  X  whole pairs. then, the purity of i , purity(i) =0.63.
+ we employ two unambiguous patterns, namely p unambiguous1 relations [6,7,21,39] . For example, it was shown in [21] that p and its containment as semantic roles.
+ i , and its co-occurrence frequencies with p unambiguous1 patterns, it is unlikely that it instantiates a valid part 6  X  7. Else, we return as purity score the value (n1+n2)/n , which is computed in lines 8
+Procedure instance_pair_purity (instance-pair i) 3. n=total frequency i 4. n1=co-occurrence frequency of i and p unambiguous1 5. n2=co-occurrence frequency of i and p unambiguous2 6. If (n1 and n2) == 0 7. Return 0 8. Else 9. Return (n1+n2)/n
+End 3.6.3. Instance reliability
+Eq. (4) . patterns (and pairs) in subsequent iterations. On the other hand, valid part
+Selection phase. These valid pairs promote the extraction of other accurate part the performance of our algorithm improves.
+ been extracted. The value of the parameters m and t are defined experimentally. 3.7. Extracting domain-speci fi c part  X  whole relations 3.7.1. Data cleaning, linguistic pre-processing and term extraction unlikely to be content-bearing. Examples include undesirable symbols (e.g. strings deemed redundant by domain-experts (e.g.  X  external remarks our corpus are the same as those employed for the knowledge-base, as described in Section 3.3. 3.7.2. Domain-adaptation for relation extraction contrasting contents (general-purpose vs. specialized) and size (large vs. limited and sparse). To identify domain-specific part  X  whole relations, we use the patterns acquired from the the instance pairs they connect in the target corpus. The extracted domain-specific part
+As illustrated in Fig. 8 , each triple is made up of a pattern, and a part 4. Experimental evaluation
+In this section, we evaluate the performance of our proposed framework for extracting part Sections 4.2-4.6 , addresses our first research question. We show that taxonomies, such as that of Keet and Artale [4], are not complete enough to classify part domain-specific texts. These results address our last research question. 4.1. Corpora 4.1.1. Knowledge-base Section 4.3.
+
+The patterns were employed to extract domain-specific part 4.1.2. Target corpus
+The corpus that we targeted for the extraction of domain-specific part customer-call centers and engineers' repair notes. The texts were expressed in English.
+Statistics on our two corpora are presented in Table 1 . 4.2. Pattern Induction
+We linguistically processed the sentences of the WIKIPEDIA parsing of a 15 GB corpus can consume anywhere between 56 days to 10.2 years on a Pentium 4 clearly inefficient. To overcome the difficulty in linguistically processing our relatively large advantage of parallel computing techniques. Specifically, we and executed these jobs concurrently on a high performance computing cluster. days.
+ An alternative solution could have been to use a subset, say 10%, of our current precision in extracting part  X  whole relations will deteriorate.
+After linguistically processing the sentences of WIKIPEDIA patterns that appeared less than ten times in WIKIPEDIA .
+  X  co-occurrence frequency in WIKIPEDIA .
+ a set of seeds, and it iterated between its Pattern Selection and Instance Selection phases. 4.3. Seed selection
+Initially, we attempted to select seeds from WORDNET [24]. However, we found out that part e.g.  X  acinos-mother of thyme  X  , hardly co-occurred with reasonable frequencies in our adopted the following seed selection strategy. We searched the express part  X  whole relations, e.g.  X  consist of  X  and  X  classes of the instance pairs connected by the patterns. In our experiments, we used the [48].
+
+Using these semantic classes, we determined the type of part
+Table 3 shows sample seeds that we used for five of the eight types of part argument, whereas we focused only on patterns connecting nominals.
+The 1st column of the table gives the type of the part  X  whole relations. Sample seeds (part 2nd column. The 3rd column indicates the frequency with which the seeds are found in WIKIPEDIA and BNC. This enables us to highlight the statistical differences between our selected BNC alternative.
+ words, we would have expected a part  X  whole pair to be at most 5 times more probable in be seen from the relative frequency values presented in Table 3 , part For example,  X  engine-car  X  is around 10 times more frequent in characteristics of our domain-specific texts, and to improve our accuracy in extracting part relation extraction from sparse, domain-specific texts. 4.4. Pattern and instance selection bootstrapped the top-k patterns that most reliably expresses a part
+The top-m most reliable pairs were in turn bootstrapped to acquire new part
+WIKIPEDIA . These ten patterns were bootstrapped to induce 100 part part reliable patterns.
+
+WIKIPEDIA knowledge-base. Also depicted are the patterns' (linguistic) interpretations. We use and whole instances, e.g.  X  engine  X  and  X  car  X  ,or  X  song part [21]. 4.5. Extracting domain-speci fi c part  X  whole relations corpus. These pair-pattern combinations yielded a total of 13,592 domain-specific part shown in Table 5 .
+ part  X  whole relations are marked with  X  *  X  . 4.5.1. Discussion of results relations between visual and intangible instances. Examples are on  X  as in  X  brightness control (not) available on menu console dissatisfaction.
+  X  include in  X  as in  X  corrective action includes calibration and repair procedures in servicing faulty products.
+
+Patterns that expressed the relations between  X  parts  X  and their 55-59% of all the extracted triples. Examples are  X  locate in/on/at  X  and enable them to efficiently detect causes of product failures. However, some patterns like the extraction of invalid part  X  whole relations, such as
+Rarer patterns were those that appeared in 18-25% of the extracted triples. Examples are x-ray tube  X  , and  X  make with  X  as in  X  contrast fluid made with iodine ambiguous, and extracted invalid part  X  whole relations, such as  X  software released in processor  X  , and  X  incorporate in  X  The remaining 48 (out of the 102) patterns harvested from the  X  collection of  X  ,  X  recorded in/on  X  ,  X  added to  X  ,  X  featured in 4.6. Performance measures
+We evaluated the performance of our approach in extracting part corpus by measuring its precision, recall and F1-scores [49].
+ 4.6.1. Precision omitted relations that contained patterns in the last (5th) group, e.g. very precise. They could positively bias our evaluation results. if they denoted valid part  X  whole relations or  X  incorrect facilitate their decision. Triples deemed  X  correct  X  (i.e. valid part  X  respectively 2332, 605 and 63.
+
+The precision, R, of our approach was then estimated using Eq. (5) as 79.4%. 4.6.2. Recall in our gold-standard.
+ estimated the recall, R, of our approach as 79.6%.
+
+WIKIPEDIA knowledge-base since they were not found to reliably express part
+Examples of such patterns included:  X 
+Those that indicated the absence of a part from its whole, such as the pattern cabinet (whole)  X  .  X 
+Those that connected a part to its whole in a temporal or motional relation, such as the pattern activated while the backplane(whole) rotates  X  .
+ 4.6.3. F1 measure minimally-supervised algorithm with the information contained in the While these scores are promising, they do not indicate whether our strategy of leveraging upon W which we discuss in the next section. 4.7. Comparison against espresso baseline applied for mining semantic relations other than part  X  whole, such as hypernymy ( by our technique ( Section 4.5) in the target corpus.
+ whole pairs, and participated in a host of other semantic relations. For example, the seed causation relations as in  X  (dead) pixels caused (blurred) image console  X  were often related by the pattern  X  disabled in second row.
+
+The scores reported in Table 6 reveal that our approach for extracting domain-specific part minimally-supervised algorithm enables substantial performance gains. 4.8. Reducing semantic-drift with Instance_Pair_Purity contribution in mitigating the negative impact of semantic-drift. applied to the WIKIPEDIA knowledge-base for harvesting part three observations.
+
+First, we found out that many invalid part  X  whole pairs, e.g. a larger number of ambiguous part  X  whole patterns. The invalid pair as  X  is in  X  (  X  building is in use  X  ),  X  of  X  (  X  use of building were awarded high instance reliability scores.
+ extraction of other incorrect patterns that did not encode part extraction of patterns like  X  remain in  X  (  X  building remained in use giving rise to the issue of semantic-drift.
+ original approach detected were missed by Implementation_A.
+ Section 4.7.
+ instance_pair_purity measure led to a drop in our performance in extracting domain-specific part 4.9. Classi fi cation of domain-speci fi c part  X  whole relations
+In this experiment, we investigate whether the domain-specific part semantic classes of their instances. For example, both instances b pattern=make with, part=iodine, whole=contrast fluid&gt; ( class in the DOLCE ontology. According to Keet's taxonomy, such a part sub-quantity-of .
+ Relations with instance pairs that were not mentioned in the  X  c-arm  X  nor  X  table base  X  in the triple. b pattern=part of, part=c-arm whole=table base&gt; (  X  c-arm is part of table base both instances are discrete, physical structures, the part Keet's taxonomy.
+ column).
+ part  X  whole relations are provided in Table 9 .
+ with the claim of Keet [51] that the taxonomy in [4] is  X  5. Conclusion and future work
+Existing Information Extraction (IE) algorithms have predominantly focused on extracting part need for domain-specific IE applications more pressing.
+
+In this paper, we have presented an approach for automatically and accurately extracting part domain-specific texts. The novelty in our approach compared with previous ones lies in our use of However, part  X  whole relations are not straightforwardly available from mined from its large amount of unstructured texts.
+ of patterns have been harvested from the WIKIPEDIA knowledge-base.
+The patterns are then used to extract (domain-specific) part documents. A relation is a triple consisting of a pattern (acquired from source ( WIKIPEDIA ) nor from the target domains (domain-specific texts).
+The main contributions of our approach are as follows:  X 
+We present an automatic, minimally-supervised approach for accurately extracting part sparse texts.  X  We show that despite their general-purpose contents, resources like part  X  whole relations.  X  We demonstrate the gains in performance possible by exploiting relation extraction.  X  performance.  X  surface patterns.  X  from domain-specific texts.
+
+As future work, we intend to pursue research along the following topics.  X  extraction. This can be achieved, for example, by using cause-effect seeds (e.g. patterns (e.g.  X  is the cause of  X  ) from the WIKIPEDIA knowledge-base.  X  support multi-lingual relation extraction.
+ Acknowledgements program.
+
+References

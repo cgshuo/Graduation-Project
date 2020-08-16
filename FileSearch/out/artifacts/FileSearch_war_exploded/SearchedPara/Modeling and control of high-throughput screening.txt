@@ -1,0 +1,98 @@
+ 1. Introduction
+Until the early 1990s the search for new pharmaceutical ingre-dients was performed manually. Th is was an extremely time-con-develop systems that are able to automatically screen thousands analyzing biochemical compoundsiscalled high-throughput screening (HTS). Nowadays HTS systems play an important role in the pharma-and chemistry.
+
+A batch in HTS subsumes all worksteps that are necessary to to convey reagents or waste material. The plates are automati-scheduling problem. An overview on cyclic scheduling can be found in, e.g., Hanen (1994) and Hanen and Munier (1995) .
+A method to determine the globally optimal schedules for cyclic systems, such as HTS systems, has been introduced by Mayer and
+Raisch (2004) . This approach is based on discrete-event systems modeling, i.e., the system is characterized by the occurrence of discretechangesorevents.Morespecifically,themodelisgivenasa time window precedence network. Using standard graph reduction methods, the complexity of this network can then be reduced.
+The procedure ensures that the globally optimal solution of the scheduling system is not cut off. Another important step in the proposed method is the transformation of the resulting mixed integer non-linear program (MINLP) into a mixed integer linear deviations from the predetermined cyclic scheme occur during runtime ( Murray and Anderson, 1996 ).
+
+To handle such deviations, we propose a supervisory control scheme using a max-plus algebraic model of the HTS system. The of a deviation from the cyclic scheme, the supervisor generates the HTS plant and thus ensures continuous operation.
+This paper is structured as follows. Section 2 summarizes the necessary concepts from graph theory and max-plus algebra. The different constraints for high-th roughput screening systems are into a max-plus algebraic model of the optimal HTS operation. In systemsby Lietal.(2007) isadaptedforHTSsystems.Conclusionsand suggestions for future work are given in Section 5. 2. Graph theory and max-plus algebra 2.1. Graph theory (the weight) w ji A R assigned to each arc  X  v i , v j  X  A represented by a matrix W A R n n max ,with R max  X  R [f1g and n
+W represent the weights of arcs. If no arc exists from node v weights w ji A R max represent times, the co rresponding weighted digraphwillalsobereferredtoasatimewindowprecedencenetwork.
+Then, nodes represent events and arcs represent minimum time offsets between the occurrence of events. 2.2. Max-plus algebra
+Max-plus algebra (e.g., Baccelli et al., 2001; Heidergott et al., class of discrete-event systems and provides a compact represen-tation of such systems. It consists of two operations, and on the set R max  X  R [f1g . The operations are defined by: 8 a , b a b  X  max  X  a , b  X  , a b  X  a  X  b :
+The operation is called addition of the max-plus algebra, the operation is called multiplication of the max-plus algebra. The neutral element of max-plus addition is 1 , also denoted as e . The neutral element of multiplication is 0, also denoted as e .
+For matrices A , B A R n m max max-plus addition is defined by  X  A B ji  X  X  A ji  X  B ji : The matrix product A B for matrices A A R n l max and B A defined by  X  A B ji  X  " l associativityandcommutativityfor and ,anddistributivityof over , hold for the max-plus algebra.
+ precedence graph are determined by linear equations in the max-output) and internal events, x  X  A 0 x B u , y  X  C x , the occurrence of the internal, the input and output events, controller. The elements of matrix A 0 represent the minimum time offsets between the internal events. If the corresponding graph case the matrix A 0  X  I A 0 A 2 0 can be determined as
+A  X  I A 0 A 2 0 A n 1 0 , where I is the identity matrix with respect to max-plus algebra. For acyclic system matrices A implicitrepresentationof the systemcan be rewrittenin an explicit form: x  X  A 0 B u , y  X  C x :
+For cyclically repeated systems, the max-plus model has to be extended such that dependencies of events belonging to different such systems can formally be written as x  X  k  X  X  " y  X  k  X  X  C x  X  k  X  , explicit form if the matrix A 0 is acyclic: x  X  k  X  X  " y  X  k  X  X  C x  X  k  X  , with k A Z and q A N . 2.3. Min-plus algebra
+As mentioned in the previous section, max-plus algebra can be used to determine the earliest possible time instants for the occurrences of events in a timed precedence graph. However, it may not always be desirable that an event occurs as early as eventsoccurjustintime,i.e.,theoccurrenceofsomeeventsshallbe delayed as much as possible without interfering with the through-determined with min-plus algebra. Similar to max-plus algebra, min-plus algebra consists of two operations, u and u defined on the set R min  X  R [f X 1g , 8 a , b A R min : a u b  X  min  X  a , b  X  , a u b  X  a  X  b : The operations are called addition and multiplication of the min-plus algebra. The neutral element of min-plus addition is e and the neutral element of multiplication is e u  X  0.
+The standard properties of max-plus algebra, e.g., associativity and commutativity, also hold for min-plus algebra. The matrix operations for min-plus algebra can be directly derived form max-3. Max-plus model of HTS systems
+An HTS plant is assumed to consist of m resources. According to is executed. During the execution of activity i the respective may overlap in time. Thus, a microplate may occupy two resources at the same time, e.g., during the transfer from one resource to another one. However, we assume all resources to have capacity occupied by another activity.
+
+One possibility to model temporal dependencies between events within a batch is through a time window precedence the transfer of a batch between two resources. A transfer event always occurs simultaneously with a corresponding transfer event associated with another resource. In the corresponding graph, events are represented by nodes. Weighted arcs represent the temporal interdependencies and the weight denotes the minimum time which has to elapse between the events connected by the arc.
+In general, dependencies between activities belonging to a single batch are called conjunctiveconstraints, whiledependencies between activities (also within different batches) on each single disjunctiveconstraintsalsoensurethatnoactivityisstartedas long as the corresponding resource is occupied by another activity. 3.1. Conjunctive constraints
+As mentioned before, the single batch time scheme is defined by theoperationtheuserwantstorun.Itincludesspecificationsonthe minimal time needed for or between activities.
+
+To illustrate the modeling of HTS systems, we will introduce a batch are executed on resource 1. Time window precedence networks tion, the number of nodes will be reduced using standard graph activity, i.e., x  X  X  o 1 , r 1 , o 2 , r 2 , o 3 , r 3 , o reduced graph will be used, while keeping in mind that transfer the corresponding minimal t ime offsets is denoted by A c example,
+A  X  0 B B B B B B B B B B B B
+B @
+In max-plus algebra, the conjunctive constraints can then be con-veniently represented by x  X  k  X  X  A c x  X  k  X  ,  X  1  X  occurrenceofeachactivity X  X startandreleaseevents.Bydefinition,the is acyclic. 3.2. Disjunctive constraints each resource. They can be modeled as disjunctive graphs G ... , m , where m represents the total number of resources in the system. Note that disjunctive gr aphs are sometimes also called dependencies between activities which do not belong to the same marked arcs are added to the conventional notation of precedence graphs.Anarcmarkedwithasingle X  X / X  X  X ssaidtobeoffirstorder.Afirst dencies between the two events be longing to subsequent batches. x order arcs may also be necessary to represent the sequence of activities. Additionally, since some activities of a batch may be connecting node i to j , can be described by  X  j , i  X   X  q  X  expression of this arc results in x j  X  k  X  X  x i  X  k q  X  X  w
+In general, the disjunctive graphs of systems containing only singlecapacityresources,i.e.,resourcesthatcanhandleoneactivity corresponding arcs.
+ order arcs.
+ the corresponding events in the max-plus framework. E.g., for the events in Fig. 5 the dependencies are x  X  k  X  X  0 x 8  X  k 2  X  , x  X  k  X  X  9 x 1  X  k  X  , x  X  k  X  X  0 x 2  X  k  X  1  X  , x  X  k  X  X  13 x 7  X  k  X  :
+Similarly, the disjunctive grap hs and dependencies for resource algebraic representation can be written as x  X  k  X  X  " q denotes the order of arcs. Thus, the matrix A d k  X  q  X  q -th order within the disjunctive graph of resource k . 3.3. Complete model
+The overall HTS system operated in a predetermined time-optimal cyclic way can then be described by merging the con-junctive and all disjunctive graphs into one extended precedence In max-plus algebra, this can then be written as x  X  k  X  X  A c " m x  X  k  X  X  " a8 4 max-plus matrix containing only e -and e -elements: B  X 
+In general, Eq. (4) contains disjunctive dependencies of negative This can be done using the g transform ( Baccelli et al., 2001 ). Formally, the g transform of x is defined as
+X  X  g  X  X  " powers of g by g a g b  X  g a  X  b and g a g a  X  g 0  X  e for a , b A Z , where the exponents are added using conventional algebra. Applying (5) to (4) provides
+X  X  g  X  X  A  X  g  X  X  X  g  X  B U  X  g  X  ,  X  6  X  with A  X  g  X  X  " and U  X  g  X  X  "
+The elements of the matrix A  X  g  X  can therefore be determined as max-plus polynomials  X  A  X 
+ X 
+Since HTS models, by definition, do not contain multiple arcs between two nodes this equation can also be written as  X  A  X 
+ X 
+After transforming the system into the g domain, another trans-
+Suchdependenciesarerepresentedby g entries withnegativepowers results in ~
+The goal is to find a set of transformation matrices T x and T powers.
+
+Note that inversion of matrices in max-plus algebra is not always possible unless the matrices are diagonal. Therefore, we choose diagonal transformation matrices T x and T u , where the diagonal elements are powers of g , i.e.,
+T  X  0 B B B B B
+B @
+T  X  0 B B B B B
+B @
+Obviously,  X  T  X 
+Therefore,  X  ~
+A
+Substituting (8) into (11) results in  X  ~
+A
+Thus, to ensure that the matrix ~ A is devoid of elements with negative powers, we have to choose the non-negative integers , i  X  1 , ... , n , such that i Z q  X  13  X  for every element  X  A ji a e .
+
+Similarly, the elements of matrix ~ B  X  g  X  X  T x  X  g  X  B T determined as  X  ~
+B
+Of course, we have to ensure that no negative order elements are generated in ~ B , i.e., we have to choose non-negative exponents x , i  X  1 , ... , m , such that x
+Z 0 ,  X  14  X  for all elements b ji a e .
+
+It can be argued, that conditions (13) and (14) can be satisfied simultaneously if the extended precedence graph G sys does not true for implementable specifications.
+ This procedure does not yield unique transformation matrices
+T x and T u . Therefore, ~
+A  X  g  X  X  " and ~
+B  X  g  X  X  " are also non-unique. However, any set of transformation matrices obtained that way provides the desired result.
+ schedule of the HTS system ~ x  X  k  X  X  " with k A Z .Obviously,wehave ~ x  X  k  X  X  x i  X  k p i  X  , ~ u  X  k  X  X  u i  X  k x i  X  :  X  18  X  necessarily belong to the same batch. Hence, the transformation T scheme. Eq. (17) can be rewritten in explicit form as ~ A ~ x  X  k  X  X  "
+Returning to our example, there are 14 arcs in the graph G illustrated in Fig. 7 , i.e., there are 14 non-e elements in the corresponding matrix A  X  g  X  :
+A  X  g  X  X 
+Thus, a total of 14 constraints have to hold for a valid trans-formation matrix T x :
+One possible solution meeting all constraints is p 1  X  p 2 has the form:
+T  X  g  X  X  In a similar fashion one can determine a possible transformation matrix T u . One solution T u  X  g  X  X  diag f g x i g , with i  X  1, x  X  x 3  X  0 , x 4  X  1.
+
+Applying these transformations results in the following system without negative order dependencies: ~ X  X  g  X  X  The corresponding timed precedence network is shown in Fig. 8 . recurrence relation for the example HTS system can be written as ~ x  X  k  X  X  ~ A  X  0  X  ~ x  X  k  X  ~ A  X  1  X  ~ x  X  k 1  X  ~ B  X  0  X  which can then be modified to give an explicit equation: ~ x  X  k  X  X  ~ A  X  0  X  ~ A  X  1  X  |fflfflfflffl{zfflfflfflffl}
+In general, higher order arcs will also be present in ~ G form (20).
+
+In this explicit form, it is now possible to analyze the system et al., 2001; Heidergott et al., 2006 ). In max-plus algebra, the sents the minimal time interval between the occurrence of the same events in subsequent batches. Thus, the eigenvalue is the minimal cycle time T . For the max-plus representations of HTS systems, there is one unique eigenvalue, however, in general, a max-plus system may have more than one eigenvalue.
+
+Note thatthemax-plus model is a result ofan off-line optimization each resource. The max-plus model is a compact representation of described max-plus model can be conveniently used for on-line make the predetermined optimal policy impossible. 4. Control of HTS systems
+For the control of high-throughput screening systems we propose considerdisturbanceswhich correspondtofinite-timedelays.Usually permanent breakdowns of single r esources cannot be compensated general result in a stop of the complete operation of the system. resolvedinareasonabletime,suchabreakdownmaybeconsideredas ~ x  X  k  X  X  ~ A ~ x  X  k 1  X  ~ B ~ u  X  k  X  Sd  X  k  X  :  X  21  X 
+Inthefollowing,weadoptthecontrolschemesproposedin Li et al.
+Lhommeau et al. (2002) for disturbance decoupling to max-plus determines the input signal ~ u  X  ~ u  X  k , t j  X  A R m max depend on the current update time t j , i.e., ~ x  X  k , t  X  X  ~ A ~ x  X  k 1  X  ~ B ~ u  X  k , t j  X  Sd  X  k  X  :  X  22  X 
+In this way the earliest possible event time instances can be determined. However, as mentioned before it may not be desirable x  X  k , t
+ X  X  X  ~ A  X  0  X   X  T u x R  X  k , t j  X  ,  X  23  X  where  X  x  X  k , t j  X  X  throughput of the system is not changed.
+ the following way:
+For a start event that has already occurred in cycle k , the occurrence. For a start event which is next to occur on a resource, the time of its occurrence is estimated by ~ u  X  k , t j  X  X  ~ B T  X  0  X   X  ~ x  X  k , t j  X  x  X  k , t j  X  X  respectively.
+ will be ~ u  X  k , t j  X  X  e , evolution of the system.
+ The overall structure of the controlled HTS system is shown in unexpected deviations from the predetermined cyclic schedule of the occurrences of events in the k -th cycle, and it is used to newly determined (updated) information on the time instants of future events can then be used to control the plant.
+Generally speaking, after the occurrence of a delay the max-plus controller postpones every future event by the minimal amount of time needed to make the schedule feasible. Doing so every ensures continuous operation of the HTS plant and guarantees the earliest possible finishing of subsequent batches. 4.1. Simulation For the simulation we consider the complete system shown in
+In the uncontrolled system, every activity starts as soon as the a controller improves the operation of the system by reducing the length of allocation intervals of resources.
+
+Furthermore, the controller improves the behavior in case of unexpected deviations from the cyclic scheme. In the following we consider a delay of known duration in the post-processing time of predetermined cyclic regime. During the transition phase start for the controlled system, while two batches are affected in the uncontrolled system. This is an advantage, because data obtained from batches which were disturbed cannot be considered for of batch r is removed in the controlled system. 5. Conclusion and future work
+This contribution proposes a max-plus algebraic model with negative order arcs for high-throughput screening systems oper-ated in a predetermined time-optimal cyclic mode. It is shown how max-plus model, deviations of the predetermined cyclic schedule, such as delay of events can be handled.
+
+First results show that the proposed model can easily be extended 2009 ).GivenaHTSsystemwithmulti -capacity resources, further deviations from the predetermined cyclic scheme, such as partial break down of multi-capacity r esources, can be considered.
+Another possible modification is the way the latest necessary 2001; Lhommeau et al., 2002 ) and with some modifications these approaches could be used for high-t hroughput-screening systems. References

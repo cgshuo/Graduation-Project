@@ -1,0 +1,3 @@
+ Important dates  X  Submissions of articles: September 30, 2007  X  Notification to authors: December 1, 2007  X  Final version of accepted papers: February 15th, 2008 Introduction effectively distinguish between different search goals and searcher preferences. approaches.
+ Submissions search and not be under consideration in any other forum. formation Processing and Management.
+ process. criteria and appropriateness to the special topic issue.  X  Context sensitive retrieval  X  Personalization systems  X  Adaptive retrieval models  X  Implicit feedback systems  X  Test collection building for interactive evaluation  X  Interactive and adaptive multimedia retrieval  X  Simulated evaluation methodology Contact

@@ -1,0 +1,51 @@
+ 1. Introduction 1.1. Document structuring selves introduce other structural layers (such as the temporal dimension of an audio track).  X  provide multiple concurrent structures. Poem 1 is an example of two stanzas from a poem by Lewis Carroll speeches, and syntactic elements producing overlapping concurrent structures. 1.2. Construction of multi-structured documents 1.2.1. Introduction their coherence? ... In order to tackle these important issues, we need an adequate encoding for multi-structured documents.
+ tunity to motivate the key choices behind our proposition. 1.2.2. Context
+We studied how multi-structured documents are constructed in a multi-users context composed of philologists. Our tations. Thus, we proposed a methodology promoting the emergence of multiple structures in a multi-users context. 1.2.3. Scenario lections, etc.
+ tion of multi-structured documents. 1.2.4. Methodology Fig. 2 ).
+ re-organize the structures. The result of this operation might me similar to the one illustrated by Fig. 3 . 1.2.5. Conclusion problem by introducing a new structure.
+ structures. 1.3. Agenda breaking interdependency. This kind of solution introduces significant document management problems. tax, is based on the MSDM model.
+
+MultiX formalism. Section 5 will be dedicated to the multi-structured document querying issue. 2. Related works 2.1. Introduction choose to consider XML-compatibility as one of the dimensions against which the models will be studied. 2.2. Dimensions retained for the analysis We analyze each solution against six dimensions: for their management, we will consider the performance issue of the existing implementations. 2.3. Synoptic view of the solutions
+The Table 1 is a summary of the works being evaluated in the following parts of this survey section. 2.4. Historical works 2.4.1. CONCUR above).
+ its use. 2.4.2. TEI more like recipes than well-defined models.
+ schemes, and no generic parsing tools implement XInclude with support for such schemes ( Ban  X  ski, 2010 ). the content in elementary fragments and no master structure is as such required. provided to ease the updating process.
+ seem to follow these recommendations for the representation of multi-structured documents when overlapping occurs ony rarely. 2.5. Formal models 2.5.1. TexMECS
+McQueen, 2003 ) is a follow-up of MECS, where complex structures can be defined with elements having many parents (see Listing 2 for an illustration of a TexMECS encoding of the manuscript example introduced above). update them. Finally, a TexMECS well-formed-ness checker has been implemented. 2.5.2. LMNL tated with new text layers that themselves can have ranges ... .
+
+XSLT stylesheets have been developed to deal with the XML representation of a LMNL document. 2.5.3. MuLaX example.
+
+Eclipse plugin for the creation of MuLaX documents. 2.5.4. Annotations Graph ented edges identify elements of annotation within a specific structure (for example  X  X 2:w X ). mentation called Annotation Graph Toolkit (AGTK). 5 2.5.5. RDFTef online. 6 2.5.6. EARMARK an OWL ontology (see Fig. 5 for an excerpt of the ontology).
+ standard XML tools can X  X  be used directly with an EARMARK document. Being a graph model, EARMARK doesn X  X  make any with any standard OWL engine. 2.5.7. GODDAG ple: textual fragments). All nodes have at least one common ancestor: the document root.
+DOM tree for the representation of multi hierarchical XML documents. 2.5.8. MCT the physical structure of lines.
+ be adapted. Finally, the model has been implemented as an extension to the Timber 2.5.9. Delay nodes by an XQuery query, of some of the descendant of one of its ancestors as shown in Fig. 8 . After the XDM model has been modified by the addition of delay nodes, no XPath nor XQuery extensions are needed. we should modify the queries of the delay nodes at a syntactical level. Finally, in ( Le Ma X  2.5.10. MSXD fications of structures and data remain impossible. Finally, a prototype implementation is available online
+MSXD model and the new XQuery functions. 2.5.11. MonetDB/XQuery tion of the MonetDB stand-off extension syntax.
+ and open-source DBMS. 10 However, the development of MonetDB/XQuery has been frozen in March 2011 will not be ported to MonetDB version 5. 2.6. Conclusion solutions. tainly interesting but came with no tools for dealing with multi-structured documents.
+MuLaX transposed the CONCUR idea to the XML world but, since there is no convenient way for querying MuLaX docu-ment, this solution can X  X  be retained.
+
+TexMECS and LMNL chose to develop new models, grammars and syntaxes to answer the needs of multi-structured doc-uments management; however with their current limitations they cannot be considered as generic solutions.
+Annotation Graphs, RDFTef and then EARMARK avoid the problems caused by the tree model of XML by considering for-such as the TEI or Encoded Archival Description (EAD), 12 management system.
+
+MonetDB and MSXD are based on the GODDAG stand-off markup solution but none of them can easily manage the mod-
+Thus, we now propose our own model: MSDM, a Multi-Structured Document Model. It is based on a stand-off markup to a specialized parser. This model will now be described in full details. 3. MSDM: Multi-Structured Document Model notions: Fig. 9 illustrates these notions on the previous example of a manuscript transcription. content inside BS. 3.1. Formalization the concept of multi-structured document and then we describe formally all the necessary notions. where: 3.1.1. Basic structure Notations: will later illustrate our model with an example, where a specific use of fragment compositions will appear. 3.1.2. Documentary structures content. Formally, a documentary structure is a tree defined by: DS = h E , A , L , l the correspondences. 3.1.3. Correspondences can be linked by correspondence relationships.
+ linking mechanism and don X  X  per se belong to the MSDM model.
+ structures. 4. MULTIX: XML application based on MSDM model and the correspondences. A MultiX document must have the skeleton depicted in Fig. 10 . 4.1. Encoding the basic structure basic structure X  X  fragments would be encoded in the following way: &lt; msd:BS &gt; fragments later associated to documentary structures through correspondences. will be encoded as follows: available and provides a single space character.
+ documentary structures content. 4.2. Encoding of documentary structures and correspondences
+A MultiX document may have several documentary structures encoded inside  X  X sd:DS X  elements. A documentary struc- X  X S ? BS X  correspondences pointing to composition nodes.
+ ture, where the composed content should be placed.
+ source is located by the  X  X sd:anchor X  element inserted at the desired position in the documentary structure. spondences by inserting anchors in appropriate positions:
+We then create the  X  X sd:clink X  elements as follows: &lt; msd:correspondences &gt; &lt; /msd:correspondences &gt; the required correspondences X  updates after the modification of the documentary structures. 5. Querying MultiX documents
+There are several XML query languages that may be used to query MultiX documents. However, when using these lan-this language to MultiX, we have implemented a library of XQuery functions (MXQ  X  X ebuild X .
+ &lt;!DOCTYPE S1 SYSTEM  X  X tds/physical.dtd X &gt; &lt;!DOCTYPE S2 SYSTEM  X  X tds/syntaxical.dtd X &gt; &lt;(S1)Lines&gt; &lt;(S2)Words&gt; &lt;/(S2)Words&gt; &lt;/(S1)Lines&gt; 5.1. Documentary structure reconstitution ent way thanks to the  X  X ebuild X  function. This function has the following signature: reproduce the tree structure, transforming the DS ? BS correspondences into their calculated content. classic XML documents. 5.2. Querying MultiX documents with XQuery be very helpful and always depends on the semantic of the document X  X  domain.
+
+Apart from the  X  X  X ebuild X  X  function introduced above, the MXQ library includes the following functions: 1. Functions handling DS ? BS correspondences: 2. Functions handling relations between documentary structures: We now illustrate the use of these functions on our manuscript example.
+
+Q1 : Find all damaged words that only contain damaged characters.
+Result:
+Q2 : Find all the words that overlap two physical lines. We use the fact that a word that splits on two lines only shares parts of its fragments with each line.
+Result:
+Result: the MXQ functions. 6. Conclusions tures with shared content.
+ order to provide many points of view on the same raw content.
+ XML structures encoded separately.
+
+Finally, we have introduced the non-trivial problem of multi-structured documents construction. Although the XML that has to be validated by a community of users. Thanks to the MSDM model, we have been able to address this new problem.
+ References

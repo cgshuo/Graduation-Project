@@ -1,0 +1,38 @@
+ 1. Introduction tions.
+ transformable to a polynomial triangular form. aggregate nonlinear TS model ( Tanaka and Wang, 2001). dynamics in closed form of a continuous time system, we a discrete time linear system of the TS model.
+Consider a linear time invariant system described by _ x  X  A c x  X  B c u ;  X  1  X  x  X  A d x k  X  B d u k where x  X  x  X  k d  X  d  X  ; x k  X  x  X  k d  X  ; u k  X  u  X  k d  X  ;
+A or undesired behavior.
+
+However, some cases of discretization in closed form of consider the nonlinear system _ x  X  f  X  x ; u  X  :
+Expanding its solutions x  X  t  X  around t  X  0 we get x  X  t  X  X  x  X  t  X  0 !  X  x  X  0  X  X  f  X  x  X  0  X  ; u  X  0  X  X  t  X   X  x  X  0  X  X   X  x ; u  X  X  f  X  x ; u  X  ;  X  x ; u ; ... ; u  X  i 1  X   X  X  @ f  X   X  @ f  X  i 1  X   X  x ; u ; _ u ; ... ; u  X  i 1  X   X   X  @ f  X  i 1  X   X  x ; u ; _ u ; ... ; u  X  i 1  X   X  solution as x L 3. The Takagi X  X ugeno fuzzy model _ x  X  f  X  x ; u  X  ;  X  4  X  aregion D (Tanaka and Wang, 2001 ).
+ follows: Plant rule i : IF z j is F ji ; j  X  1 ; ... ; p about some point of interest.
+ ( CFM ) described by _ x  X  such that m i  X  z  X  Z 0, and given by x k  X  1  X  f  X  x k ; u k  X  :  X  6  X  defined as Plant rule i : IF z j ; k is F ji ; j  X  1 ; ... ; p ( DFM ), described by by the following ( Tanaka and Wang, 2001 ): definite matrix P such that
+P  X  A i  X  B i K i  X  X  X  A i  X  B i K i  X  T P o 0  X  8  X  for i  X  1 ; 2 ; ... ; r ; and G
+P  X  PG ij o 0  X  9  X  positive definite matrix P such that  X  A for i  X  1 ; 2 ; ... ; r , and  X  G ij  X  T PG d ij P o 0  X  11  X  controller u  X  u  X  stabilizes the fuzzy system (7).
+ the following section. 4. The fuzzy discrete stabilization problem closed form ( Monaco and Normand-Cyrot, 2001 ) follows.
+ function x k as input.
+ (7) and a piece-wise constant controller u  X  t  X  X  system _ x  X  fx ; satisfies lim t -1 x  X  t  X  X  0.
+ existence of a solution to the GDSP.
+
+Theorem 2. Assume the following assumptions hold : stabilizes the system lim by continuity, it follows that lim solution of a linear system can be written as x  X  k d  X  y  X  X  e A y x k  X  t
+A x  X  k d  X  y  X  X  e A y  X  affine in the input, namely f  X  x ; u  X  X  f 0  X  x  X  X  g  X  x  X  u
+Lyapunov function among other choices. systems described by _ x  X  f 1  X  x 2 ; x 3 ; ... ; x n ; u  X  ; _ x  X  f 2  X  x 3 ; x 4 ; ... ; x n ; u  X  ; ^ _ x  X  f n 1  X  x n ; u  X  ; _ x  X  f n  X  u  X  ;  X  16  X 
+More in general, a special class of systems for which nonlinear system ( Monaco et al., 1996 ) _ x
+R (Monaco and Normand-Cyrot, 1985; Monaco et al., 1996 ) x R x assumption.  X  H 3  X  There exist a feedback can be thus derived.
+ GDEP is solved .
+ controller, given by u  X  t  X  X  a  X  x  X  X  b  X  x  X  calculated for the transformed system (20). 5. Illustrative examples 5.1. A simple system
+Let us consider the system given by _ x  X  x 2  X  x 2 3 ; _ x  X  x 3 ; _ x  X  u ; is x nonlinearity approach and rewrite this system as x x z and z 2 are chosen as z are obtained as in Tanaka and Wang (2001) , namely
+M  X  z 1  X  X 
+N  X  z 2  X  X   X  x k  X  X  M 1 N 1 ; m 2  X  x k  X  X  M 2 N 1 ;  X  x k  X  X  M 1 N 2 ; m 1  X  x k  X  X  M 2 N 2 :
+The exact aggregate model is thus written as x where
+A  X  A d 3  X  stabilizer (13), with 5.2. Synchronous motor di d dt  X  di q dt  X  s i _ x  X  f  X  x ; w ; u  X  X  Ax  X  Bu  X  Dd  X  j  X  x ; w  X  with x  X  X  i d i q o  X  T , u  X  X  v d v q  X  T , d  X  C l A  X  0 B B B B B B B
+B @ and
+D  X  0 B B
+B @ considering first the continuous feedback v  X  pL q o i q  X  u d ; v  X  pL d o i d  X  k m o  X  u q ; which puts (21) in the form di dt  X  di dt  X  _ o  X  i i l d  X  2 10 4 s and considering that u C works out i i s and after tedious calculations s s i  X  c where a s s a a a a c  X  p c  X  p c  X  p d  X  d the following:
+R  X  0 : 6 O ; F  X  0 : 0014 N m s ; J  X  0 : 0011 kg m 2 ; L d  X  0 : 0014 H ;
+L  X  0 : 0011 H ; p  X  4 ; k  X  0 : 48 Wb : z  X  i q ; k A  X  0 ; 40  X  ; z 2  X  u q ; k A  X  0 ; 90  X  and z  X  min z 1  X  0 ; z  X  1  X  max z 1  X  40 ; z  X  min z 2  X  0 ; z  X  2  X  max z 2  X  90 : The membership functions for each fuzzy set are
+M  X  z 1  X  X 
+N  X  z 2  X  X  while the membership functions for each subsystem are  X  z  X  X  M 1  X  z 1  X  N 1  X  z 2  X  - X  A d 1 ; B d 1  X  ;  X  z  X  X  M 1  X  z 1  X  N 2  X  z 2  X  - X  A d 2 ; B d 2  X  ;  X  z  X  X  M 2  X  z 1  X  N 1  X  z 2  X  - X  A d 3 ; B d 3  X  ;  X  z  X  X  M 2  X  z 1  X  N 2  X  z 2  X  - X  A d 4 ; B d 4  X  : Hence, one may take
+A  X  and The gains are obtained as indeed stabilizes the continuous model.
+ digital linear system of the TS model. 6. Conclusions systems whose model can be transformed by feedback to a control scheme.
+ References

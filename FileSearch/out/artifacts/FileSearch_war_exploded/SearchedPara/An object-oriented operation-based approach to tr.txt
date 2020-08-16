@@ -1,0 +1,51 @@
+ 1. Introduction paper, we propose a new solution to this problem.
+ S fined, which makes the general translation between two of their instances very difficult. [2]: MIDST represents schemas and metaschemas as instances of the relational metaschema. level of metaschemas.
+ schema. Three similar approaches are [9,18,8] , which use the HDM, GER and ULD languages, respectively. In this paper, we describe a new approach to schema translation that differs from previous work in two ways: MOF, and almost all metaschemas can be defined as instances of it. guage [27]. and metaschemas in this paper and executed all the OCL expressions in the USE tool [15]. a new language, although it includes the OCL, which is extended with procedural constructs. ples given in this paper, we have used the procedural language included in USE [16]. metaschemas. Finally, Section 5 summarizes the conclusions and suggests further research. the translation to ER of the large osCommerce 1 relational database. 2. Basic concepts
+We also introduce the example that is used throughout the paper. 2.1. Schema and mapping 1a and 2 a show, in UML, the fragments of the ER and relational metaschemas that will be used as examples. stance of S 1 , s 2 is an instance of S 2 and the pair s 1 , s 2 satisfies all the constraints R [13]. In this paper, we are concerned with mappings between metaschemas; therefore, our mappings take the form MS based on the concept of a schema unit as defined below. 2.2. Schema units knowledge expressed by S is the set of knowledge components expressed by its schema units u 1 , ... , u n . schema are three schema units (concept type, constraint and derivation rule, respectively).
+Syntactically, a schema unit u is a set of schema elements such that: if the participant entity types are already part of S .
+ tinguishes about 30 kinds in the ORM  X  Description Logics mapping). distinguish between different kinds of schema units. 2.2.1. Application to the ER metaschema represented differently in different metaschemas. In UML, they may be represented as shown in Fig. 1 a: Note that we group an entity type and all its key attributes into a single schema unit. do not take into account the cardinalities of the participants: we assume that they are unconstrained. instance k of DataType and (2) the instance of attribute name of k whose value is d. or RelationshipType and (4) the instance of its relationship with the corresponding data type. of Fig. 3 b. 2.2.2. Application to the relational metaschema sented differently in different metaschemas. In UML, they may be represented as shown in Fig. 2 a: columns into a single schema unit.
+ are: (1) an instance k of RelationalDataType ; and (2) the instance of attribute name of k whose value is d. corresponding instance of RelationalDataType .
+ the table referenced by the columns of fk .
+ of Fig. 3 b. 2.3. Equivalence mappings between schema units maps each schema unit of S 1 to its equivalent units in S 2 , and the other way around. of the two following conditions hold (see Fig. 3 ): mapping between u 1, i and { u 2,1 , ... , u 2, k }.
+Formally and u 1, i for all i =1, ... , k .
+ u from the populations of u 2,1 , ... , u 2, k at that time, and the other way round. The instances of the relationship type Marriage can be obtained from the population of table Marriage . ential integrity constraints of relationship Marriage . 2.4. Translation mapping translation mapping expressions that is based on the concept of a schema unit. A translation mapping M =( MS 1 , MS 2 , R ) may be [22]:
+Bijective : if it is total, surjective, functional, and injective.
+MS 3. Defining the schema units of MOF schemas respectively.
+ tional metaschemas. 3.1. isSchemaUnit S S isSchemaUnit . 3.1.1. Application to the ER metaschema
+In the ER metaschema in Fig. 4 , we define 2 : context ErElement::isSchemaUnit():Boolean follows: context Attribute::isSchemaUnit():Boolean instances of RelationEnd are not schema units: context RelationEnd::isSchemaUnit():Boolean 3.1.2 Application to the relational metaschema
+Similarly, for the relational metaschema in Fig. 5 , we define: context RelationalElement::isSchemaUnit():Boolean above operation as follows: context Column::isSchemaUnit():Boolean 3.2. Predecessors the translation process, as we will see in Section 4.6. context S i Element::predecessors():Set( S i Element) sense) only in schema units. 3.2.1. Application to the ER metaschema
+In the ER metaschema in Fig. 4 we define: context ErElement::predecessors():Set(ErElement) redefine the operation for it.
+
+For EntityType we have: context EntityType::predecessors():Set(DataType) tionship type are its participant entity types: context RelationshipType::predecessors():Set(EntityType)
+Finally, the predecessors of a non-key attribute are its entity or relationship type and its data type: context Attribute::predecessors():Set(ErElement) 3.2.2. Application to the relational metaschema
+In the relational metaschema in Fig. 5 we define: context RelationalElement::predecessors():Set(RelationalElement) no need to redefine the operation for it. For Table we have: context Table::predecessors():Set(RelationalDataType) and its data type: context Column::predecessors():Set(RelationalElement)
+Finally, the predecessors of a foreign key are its non-key columns and the source and target tables: context ForeignKey::predecessors():Set(RelationalElement) u = ta _ Person } (see Fig 3 b, right).
+ 3.3. Characterization objects ization object of u 2, k and its schema elements.
+ terization object, if it exists.
+ of the participant entity types.
+ S
+ElementCh : context SjElementCh::createUnit() their application to the ER and relational metaschemas. 3.3.1. Application to the ER metaschema operation in each case. 3.3.2. Application to the relational metaschema maUnit operation in each case.
+ 4. Translation mapping expressions development [24] in the schema translation problem.
+ constraints. 4.1. s j MappingKind ues are: more schema units of S j . The mapping kind of u j ,1 , ... , u j , k must be IsIncluded . must be HasEquivalents .
+ ily specify the schema units that cannot be translated in a given mapping. and several examples in Fig. 3 b.
+ which in general we can state as: context S i Element:: S j MappingKind() 4.1.1. Application to the ER X  X elational translation mapping: ER side
+In the ER metaschema example in Fig. 4 , we define: context ErElement::relationalMappingKind():MappingKind there is no need to redefine the operation in any subtype of ErElement . 4.1.2. Application to the ER X  X elational translation mapping: relational side
+Similarly, in the relational metaschema example in Fig. 5 , we may define: context RelationalElement::erMappingKind():MappingKind ping, and that those instances that are not schema units have an undefined value for the operation. In the relational metaschema example in Fig. 5 , most schema units may be defined using an inclusion mapping. exceptions.
+
+The mappingKind of Table is: context Table::erMappingKind():MappingKind where translatableIntoEntityType or translatableIntoRelationshipType are helper attributes defined as: context Table:
+All instances of Column that are schema units and whose tables are translatable have an inclusion mapping: context Column::erMappingKind():MappingKind erence tables are translatable into an entity type: context ForeignKey::erMappingKind():MappingKind where sourceTable is an auxiliary attribute defined as: context ForeignKey: of a foreign key must belong to the same table. This could be enforced by the invariant: context ForeignKey inv allColumnsOfForeignKeyHaveSameTable: 4.2. s j Equivalents u nature and precondition of the operation in OCL is: context S i Element:: s j Equivalents():Set( S j ElementCh) straints defined in the metaschema. 4.2.1. Application to the ER X  X elational translation mapping: ER side
+The adaptation of the above operation to the ER metaschema in Fig. 4 gives: context ErElement::relationalEquivalents():Set(RelationalElementCh) alents in each case, as shown in Fig. 10 . 4.2.2. Application to the ER X  X elational translation mapping: relational side
+The adaptation of the above operation to the relational metaschema in Fig. 5 gives: context RelationalElement::erEquivalents():Set(ErElementCh) HasEquivalents mapping. 4.3. includedInS j invoked on u i , k .
+
+The operation is hosted in S i Element and its formal definition in OCL is: context S i Element::includedIn S j (): S j ElementCh integrity constraints defined in the metaschema. 4.3.1. Application to the ER X  X elational translation mapping: ER side mapping. 4.3.2. Application to the ER X  X elational translation mapping: relational side
+Fig. 11 shows the specification of the above operation for the relational metaschema in Fig. 5 . 4.4. mappedToS j turns a True value if it is satisfied and a False value otherwise.
+The formal specification in OCL is: context S i Element::mappedTo S j ():Boolean which is shown in Fig. 12 . 4.5. Translation mapping constraints plete and consistent mapping to S 1 .
+
+In UML, these constraints can be formally defined by the following OCL invariants: context S 1 Element inv completeAndConsistentMappingTo S 2 : context S 2 Element inv completeAndConsistentMappingTo S 1 : ified mapping.
+
+The adaptation of the two constraints to the ER X  X elational mapping (see Figs. 4 and 5 ) is straightforward: context ErElement inv completeMappingToRelational: context RelationalElement inv completeMappingToEr: 4.6. Translating schemas We now describe the use of the operations defined in the previous sections in the translation of schemas. Let S tation of the predecessors is mapping-independent and straightforward. the specification of the pre-and postconditions of the operation in OCL. lowing formal specification: context S i Element::translateTo S j () the operations createUnit (Section 3.3), s j Equivalents (Section 4.2) and isIncludedInS j (Section 4.3). in a research environment using a prototype tool.
+ of translation approaches. 5. Conclusions our approach.
+ are translations of each other.
+ Acknowledgments TIN2005-06053.
+
+References

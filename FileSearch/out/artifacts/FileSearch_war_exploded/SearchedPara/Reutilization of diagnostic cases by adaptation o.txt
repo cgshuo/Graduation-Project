@@ -1,0 +1,250 @@
+ 1. Introduction
+European project SMAC. The goal of this project was to develop a distributed cooperative knowledge oriented platform that pro-poses a set of maintenance services ( Karray et al., 2009 ). their daily tasks. The platform is composed of several modules like the equipment model for instance, and a functional analysis and resource management unit that is interconnected by domain ontology ( Karray et al., 2011 ) to ensure an intelligent maintenance policy within a company. The knowledge models are used in this platform to solve practical problems such as fault detection, fault diagnosis, etc. in industrial applications.
+ case based reasoning system that is dedicated to industrial diagnostic and repair in the context of maintenance services. (CBR) is the most appropriate technology to implement a knowledge based system. Moreover, CBR is frequently proposed as a methodol-ogy for knowledge management applications, in particular in experi-ence based system technologies. It presents the expert knowledge as past and real experiences that are easily understandable by human users. It is a problem solving and learning method that uses similar past problems formalization to solve new ones by adapting them to the context. This method is suitable for diagnostic applications, because fault diagnostic is a dom ain based on the experience of human experts, where problems are recurrent and can be reused. In addition, diagnostic by case-base d reasoning is one of the methods preferred by the industrials. Indee d, reasoning in this method, and unlike machine learning methods where the learning phase has a
+Therefore designing a diagnostic knowledge oriented system requires time and availability of experts to explicit their practice.
+However, the cost of this service is very high, and thus this phase needs to be optimized. Indeed, the challenge in knowledge management is the knowledge gathering. Jacobson and Prusak (1996) studied the knowledge management in organizations, their prediction on the knowledge cost for the year 2010 was  X  2.6 billion. Their statistical study involved more than 200 knowl-edge workers of different organizations. Fig. 1 shows that 37.7% of the time of knowledge workers is dedicated to the elicitation phase and 45.9% to the knowledge adaptation phase.
+
+Our problem is to develop a knowledge based diagnostic system for SISTRE a supervisor industrial system of pallet transfer (see Appendix A ) while minimizing development costs, this can be achieved thanks to the use of an existing method. To reuse an adequate method, we brie fl y review some of the CBR industrial diagnosis system.
+
+Industrial systems developed in the CBR diagnosis, can vary from a car studied in a diagnostic technique system named CREEK ( Aamodt, 2004 ) to a locomotive de fi ned for remote diagnostics ( Varma, 1999 ), to aircrafts (such as Boeing 747 aircraft developed in CaseLine ( Watson and Marir, 1994 ) and used as a demonstrator by British Airways or Boeing 737 in CASSIOPEE ( Bergmann et al., 2003 ) owned by CFM International). There are also industrial printers studied by Domino UK Ltd in CHEKMATE and presented in Grant et al. (1996) , gas turbines studied in a fault system of General Electric Energy in Atlanta ( Devaney and Cheetham, 2005 ) and complex machine like Patdex ( Richter and Wess, 1991 ) and Nodal CBR ( Cunningham and Smyth, 1994 ). There is a wide variety of methods ranging from classi fi cation problems when there is just a weak domain theory, to knowledge based systems. More knowledge-oriented systems such as Gas Turbine, Creek, Cassio-pee, Pad ' im, NodalCBR, Patdex, use models of knowledge different from each other. In most systems, a case characterizes a diagnostic experience.
+
+We note that there is no common method for building a CBR system. The construction depends crucially on the representation of cases and knowledge models of the application domain. That is phases of CBR cycle. Actually, authors provide us just with the cases representation of the system and without any associated methodology.
+
+Very few authors de fi ned the design methodology in the case based diagnosis system. Lamontagne and Lapalme (2002) repre-sent a generic model of case based reasoning system in which they combine the CBR online cycle composed of 4 phases (elaborate, retrieve, reuse, retain) with knowledge container de fi ned by Richter ( 1995 ) (vocabulary; case base; similarity metrics; adapta-tion knowledge) making it possible to preserve and exploit the past experiences.
+ In the same way our team ( Rasovska et al., 2008 ) combines the CBR reasoning  X  capitalize  X  and  X  actualize  X  phases with the knowl-edge  X  detection  X  and  X  preservation  X  in the knowledge capitaliza-de fi ned by interviews with experts but by a methodology based on engineering safety tools, and reliability concepts such as FMECA and failure history ( Rasovska et al., 2008 ). The creation of knowl-edge models is carried out by the analysis of the equipment and its decomposition (approach modeled on the practice ground of Cegelec company).
+
+The idea developed in this paper is similar to Rasovka ' s methodology, where a CBR system is built from knowledge models used by maintenance experts like functional and dysfunctional equipment models that are accessible on all equipments and easy to build when not available ( Rasovska et al., 2008 ). This choice minimizes the cost of experts.
+
+To elaborate an oriented knowledge CBR system , we must conceive fi rst the different knowledge containers of CBR and secondly the CBR reasoning phase. (i) In the knowledge elicitation, our proposal is to build a. An appropriate case base (a case formalization based on the b. Similarity measures taking into account missing values and (ii) In the reasoning process, our proposal is to develop a reason-ing process suitable for this model. The reasoning process is dedicated to retrieve the similar case and adapt it to solve problems in other contexts. This adaptation phase is complex and is usually designed for a speci fi c application. a. The fi rst challenge in this reasoning phase is to propose an b. The second challenge is to minimize the adaptation cost in
+Our objective in this work is to minimize the cost of designing the knowledge diagnostic system. To evaluate the design cost of our diagnostic method we de fi ne in Section 6.4.2 three indicators; the adaptability of the method, the reuse cost and the creation effort.
+
+The paper is organized as follows. We fi rst describe the principle of the elicitation approach which de fi nes the knowledge containers of CBR system. In Section 3 , we focus on the retrieve step of the reasoning phase. One might think that the most similar case is always the best candidate. However, the literature reviews of the retrieve phase show that this is not always the case ( Smyth and Keane, 1993, 1995 , 1998 ; Cordier et al., 2006 ). Consequently, we propose an adaptation-guided retrieval method applied to the industrial diagnostic based on two measures: the fi rst one is similarity and the second one is adaptation. Section 4 deals with the adaptation phase, which is applied to the best adaptable retrieved case.
+
+To de fi ne a general adaptation method on symbolic data in the fi eld of industrial diagnostic, we are interested in the adaptation approaches in all applications of CBR.
+
+Some studies of the  X  memory-based reasoning  X  ( Kasif et al., 1995 ) avoid this step because the wealth of the case-base can compensate for the adaptation phase ( Stan fi ll and Waltz, 1986 ).
+However, other authors, like us, develop this phase to enrich the case-base. In this context the adaptation step is the core of CBR ( Chebel-Morello et al., 2011 ; Lieber, 2007 ). Furthermore, prior works on adaptation were dedicated to a given application. To avoid this speci fi city, three axes have been explored: (i) Adaptation
+Knowledge Acquisition (AKA) aims to de fi ne general principles of clari fi cation in the studied fi eld. A complete state of the art concerning these methods can be found in Lieber (2007) . (ii)
+Catalogs of adaptation strategies are applied in several domains and are given in Riesbeck and Schank (1989) . (iii) Unifying approaches are studied in order to fi nd a general adaptation model as proposed by Fuchs et al. (2000) . These authors propose a general adaptation algorithm independent of the application scope. It is applied to digital data as an interval that can be extrapolated. Therefore, we were inspired by the unifying approaches of Fuchs et al. (2000) .
+
+We propose a method based on the dependencies between the problem and the solution of a solved case and uses two knowledge models. Three relations of dependencies are de fi ned and exploited to adapt a retrieved case within an adaptation algorithm described in the same section. The matching carried out at the time of the retrieval, combined with dependency relations between the pro-blems and solutions, can adapt the solution to the target problem.
+CBR diagnosis system with the other industrial diagnosis systems. 2. Elicitation knowledge approach 2.1. Introduction
+European Standard de fi nition that speci fi es diagnostic as actions carried out to detect breakdowns, localize them and identify the cause ( Maintenance Terminology, 2001 )NFEN 13306 of diagnostic  X  . In order to build this system of help of diagnostic, we decompose the equipment into zones that include components. A zone will be characterized by the descriptors d d 3 (these descriptors are necessary to de fi ne the existing zones). this function is not ful fi lled, it will induce dysfunctions that are revealed by some symptoms and characterized by the state of the component and its functioning mode. Fig. 9 gives you the internal functional analysis of an assembly station in SISTRE. compared with the expected state in functional context and identi fi ed to the normal (nor) or abnormal (abn) mode.
+Three parameters are de fi ned by: name, measure de fi ning its state and functional mode d i  X  X  d value i ; d state i ; d FM i descriptors that include zone ' s descriptors, descriptors in relation to the functions and/or dysfunctions associated to the zone where the failure is taking place.
+ components in a hierarchy of components (family of sensors, pneumatic actuators). This will be used by the reasoning phases, mainly, the phase of identi fi cation of the failing component. done thank at a conceptual graph (see Fig. 3 a and b) where the node isthevalueofthezonedescriptorandthesolutionisthefailedzone. Failed zones are composed of the components potentially failing. problem is solved. A retrieval phase will fi nd the cases the most similar to the case to be solved by using similarity measures. An adaptation measure will select the most easily adaptable case among the most similar cases. An adaptation method will be applied if no identical cases are found in the case base. The method is based on the relations of dependence between the variations of the problem and the variation of the solution. It includes 3 classes of adaptation that will identify the cause of the failure in function of the context of the breakdown. 2.2. Diagnostic case representation the dysfunctional mode of component to the cause of this fault, and the repair action. Indeed, we propose the following representation. A case is composed of a Problem and a Solution part:
+Case  X  ( d 1 , d 2 , d i ... , D 1 , D 2 , D 3 , D 4 ) (i) The problem space of the case contains descriptors relative to (ii) In the solution space of case, descriptors retain information
+A case is formalized by two kinds of problem descriptors: the localization descriptor and the symptom descriptor, and by 4 solu-the repair action, D 4 : the zone of failure.
+
+The existing class is de fi ned in the components taxonomy model.
+
+To simplify the notation of the source case descriptors we note d  X 
+S l  X  X  ds i and the target case descriptors d i  X  T  X  X  dt d  X  d  X 
+The solution part is composed of four descriptors, the fi relative to the class of the fault component, the second is dedicated to the component causing the failure, the next one describes the repair actions, and the last one de fi nes the zone of the failure.
+The notion de fi ned in this paper will be illustrated by the application SISTRE.
+
+For example: let us consider the puller, a speci fi ccomponentin equipment. This component can have two states linked to its position: [front, back] and can have two functional modes [nor, abn].
+The descriptor associated to the puller in a diagnosis case can be written as illustrated in Table 1 .
+
+We can see in Table 1 a case containing in the supervisor descriptor the fi rst symptom relative to the pusher ds 3 ds
+The localization of this equipment is the entry of internal Ring ( ds 1 and ds 2 ) and so on. The solution is composed of a class of failure
+Ds 1  X  the electrical actuator and the cause of failure Ds 2 blocked. Ds 3 is the repair action and Ds 4 the Failure zone. 2.3. Knowledge models associated with the case
+Moreover, the knowledge representation is based on two models associated with the case-base, namely: the context model and the components taxonomy model. 2.3.1. The components taxonomy model
+A case has a formalization object and de fi nes a hierarchy of descriptors containing both problem and solution ( Haouchine et al., 2008 ).
+
+The model is determined from the functional components analysis of the industrial plant. Every group of components (in the source case or observed case) is regrouped by functional classes, and constitutes a component ' s hierarchy which is common hierarchical model of components is described in Fig. 2 2.3.2. Context model
+The context model is a contextual graph allowing the localiza-tion of components comprising a failure and selection of con-cerned components compared to the set. Therefore, the context model enables to inform the  X  localization  X  descriptors in order to determine the failure zone and the components potentially failing. The course of a pallet will be followed. Using a contextual graph, as shown in Fig. 3 a, components likely to be failing will be localized. An example of a context model concerning the descriptor  X  is shown in Fig. 3 b.
+
+The context allows the localization of components problems and the selection of the right descriptors compared to all others. Therefore, these present components constitute the context in which the failing component is identi fi ed. A dependency relation is associated with these components. The descriptors of the localization part are exploited by a context model in two phases of the CBR. In the phase of elaboration of the target case, the user is asked a dynamic tree of questions, and retrieval phase selects the correct element to be substituted in adaptation phase. 2.4. The diagnostic case base
+A set of 125 cases is considered in the SISTRE case base which corresponds to a part of the component malfunction. The cost to realize the exhaustive case base becomes too large in complex equipments, and to get to this industrial condition, we do not exhaustively list malfunctions of all components. The case problem part is composed of seven descriptors. The fi rst two determined by  X  ds 1 : zone  X  ,  X  ds 2 : pallet site  X  .
+Let us consider the example of case S1 (Source 1 or observed case 1) in Table 2 .
+ This case represents a problem in the detector  X  D 1  X  .
+The localization part indicates that there is a failure on the entry of the  X  principal  X  internal ring. Then, the supervisor part provides the components state involved at the failure zone. The
+STP1 stopper is in  X  top  X  position which has a normal functional must enter the working area so that it can be treated by a robot.
+Finally, the D1 detector does not detect the presence of the pallet which is in abnormal mode (  X  abn  X  ).
+
+The solution part is made up of, the class descriptor of the failing component, a descriptor identifying the failing component, the repair action and the failure zone. 3. Reasoning process: retrieval phase
+In this work, three phases, elaboration retrieve and reuse compose the reasoning process ( Mille and Chiron, 1999 ). Case descriptors of the localization part are exploited by a context model (see Fig. 3 a) in (i) The elaboration phase. The user answers a dynamic tree of questions in order to build a target case (case to solve). (ii) The adaptation phase. The correct element is selected to be substituted in the adaptation algorithm.
+
+In this section, the retrieval phase is broached. 3.1. Retrieval phase
+The main dif fi culty in the retrieval phase is the choice of the right selection criterion for cases to be retrieved ( Althoff and Bartsch-Sp X rl, 1996 ). Most of the traditional approaches use D9 D1 ...
+ simple similarity measures, while others involve the organization of the case-base to improve the retrieval quality ( Cordier, 2008 ).
+Thus, the retrieval phase can be described by two categories: the fi rst is  X  simple retrieval  X  and the second is  X  combination retrieval/ adaptation  X  . The current study is focused on the second type.
+Before the Nineties, the two phases of retrieval and adaptation were used in a completely independent way until Veloso ( 1992 ) brought new life and suggested the combination of these two steps. Smyth and Keane (1998) also point out the synergy between plan adaptation and retrieval. In our work, we take into account this synergy and we combine the similarity measure with other criteria to retrieve the most adaptable case.
+
+According to Lopez de Mantaras et al. ( 2005 ), six types of retrieval related to the adaptation are identi fi ed: Diversity-Conscious Retrieval ( Smyth and McClave, 2001 ; McSherry, 2002 ;
+McGinty and Smyth, 2003 ), Compromise-Driven Retrieval ( McSherry, 2003 , 2004 ), Order-Based Retrieval ( Althoff and
+Bartsch-Sp X rl, 1996 ; Bridge and Ferguson, 2002 ) Explanation-oriented retrieval ( Cunningham et al., 2003 ; Doyle et al., 2004 ), Optimization-Based Retrieval ( Mougouie and Bergmann, 2002 ; Tartakovski et al., 2004 ) and adaptation-guided retrieval (AGR).
+This present work is based on AGR. 3.2. Adaptation-guided retrieval phase.
+
+The AGR assumes that the source cases most similar to the target case are not always the easiest to adapt, particularly when the similarity measure is based on surface characteristics. Retrieval therefore must not only search for similar cases but above all easily adaptable cases. Indeed, the authors explain how this retrieval which is guided by adaptation binds speci fi cations and solutions spaces by using the knowledge adaptation. The work of
+Leake et al. ( 1997 ) addresses the adaptation effort concept and the impact of traditional semantic similarity measures on adaptation.
+Sometimes, the retrieved cases are  X  similar  X  to target problem but dif fi cult or impossible to adapt. This generates an inability for the system to solve a problem or give a wrong answer squarely.
+Therefore, Leake takes into account the adaptation effort at the time of the retrieval step in order to facilitate the adaptation step.
+This consideration is concretized by inserting the  X  adaptation cost in the similarity measure. Leake proposes two steps: fi rst, a classic similarity measure is made by comparing case descriptors, then the most similar cases retrieved at the end of the fi rst step are prioritized according to their adaptability.
+
+To retrieve the best similar case for the adaptation in this work, two measures are implemented:
+The fi rst one is a similarity measure (RM) taking into account all the descriptors informed. The retrieve phase associates the
+RM measure with a kNN algorithm in order to choose the set of the most similar cases to the target case.
+
+The second one, is an  X  adaptation measure  X  (AM). It emphasizes on the components which exhibit an abnormal functional mode. The AM measure selects the most adaptable retrieved source case (observed case) from the similar cases selected by the RM measure. 3.2.1. Retrieval measure
+To retrieve the best similar case for the adaptation, fi rst one needs to evaluate the similarity between descriptors and between the attributes of each descriptor. Indeed, for the localization part, the problem descriptors of the target case and source cases will be compared. Then, concerning the functional part, it will be the attributes of descriptors which will be compared. Four local similarity measures are exploited.
+
+In the fi rst one, the hierarchical relation between the values of the descriptors is taken into account.
+
+For the value of d value i which belongs to the hierarchical model of descriptors, let S l be an expected state (source ds value T a component observed (target case). sim  X  d value i ; d value i  X  is developed by sim  X  di value  X  S l  X  ; d value i  X  T  X  X  X  sim  X  ds value sim  X  di value  X  S l  X  ; d value i  X  T  X  X  X  sim  X  ds value when level  X  ds value i  X  X  level  X  dt value i  X  sim  X  di value  X  S l  X  ; d value i  X  T  X  X  X  sim  X  ds value when 1 different level  X  ds value i ; dt value i  X  For example: When the descriptor values are on the same level. sim  X  ds value i ; dt value i  X  X  0 : 8if ds value i  X  D 1 and dt When descriptor ' s values have parents with the same level. sim  X  ds value i ; dt value i  X  X  0 : 6if ds value i  X  D 1 and d see Fig. 4 .
+
+For the descriptor value ds state i and ds MF i sim  X  ds MF i ; dt MF i  X  X  1if ds MF i  X  dt MF i The similarity metric depends on the formalization of the case. Note that not all descriptors are fi lled. In order to compare cases in which the descriptors are not all fi lled, a similarity measure of the presence is de fi ned. It will re fl ect the presence of descriptors in the case.
+
+To take into account the presence and/or the absence of information in descriptors, a local similarity is developed.
+If information is present both in S l and T if an information is not present in one descriptor
+The global similarity measure (1) is obtained by aggregation of these functions on the whole set of descriptors. From this measure, a set of cases can be selected. 3.2.2. Adaptation measure
+To determine the most adaptable case, an adaptation measure is established to take into account the functional modes associated to components involved in the case of diagnostic. Indeed, during a fault diagnostic, experts are particularly interested in cases with abnormal operating conditions. Therefore, the adaptation measure preferred descriptors associated with the functional mode and gives priority to abnormal functional modes.
+
+The adaptation measure  X  AM  X  (2) takes into account the source cases supervisor descriptors (expected state) which are different from case target (observed component) and will be only linked to the class and to the functional mode compared to the solution descriptors. The adaptation measure is conditioned by the func-tional mode value. Indeed, a strong weight is affected to the dysfunctional mode related to the failure.
+ A  X 
+S ; T  X  X  where p represents the number of localization descriptor. m represents the number of supervisor descriptors  X  i is the asso-ciated weight according to the functional mode. if ds MF i  X  dt MF i  X  nor - X  i  X  2 0 ds MF i  X  dt MF i  X  ab - X  i  X  2 2 FM  X  normal - X  i  X  2 0  X 
+A weight is associated to the functional mode because the latter is considered as being important in the determination of the failing component. The number of different descriptors is deter-mined by the denominator in Eq. (2) . The retrieved source case having the greatest adaptation measure value among the retrieval source cases will be the candidate chosen for the adaptation step.  X  Adaptation measure calculation
+The second step consists of applying the adaptation measure-ment (AM) by taking the weight  X  i  X  {2 0 ,2 1 ,2 2 }. This value R  X  S l ; T  X  X  ; ;  X 
+Similarity measure calculation
+ X  X  X  1 1 1 1  X 
+ X  X  X  0 : 8 1 1 1  X  X  X  1 1 1 1  X  the case which will be selected for the adaptation phase. We observe by at the same time that the source cases 4 and 9 are the same measures of similarity. 4. Adaptation phase focused particularly on a unifying method. These methods have as objectives to propose general models from different angles (principles, algorithms, etc.). Hanney and Keane ( 1996 ) build adaptation rules from differences between attributes of cases pairs. Fuchs et al. ( 2000 )de fi nes the adaptation rules for interval calculations on dependent descriptors (The dependence of descriptors are determined by an expert.) Our adaptation method is inspired by Fuchs work which de fi nes the dependency relations between problem and solution.
+ we relied on the de fi nition of the relevance between problem descriptor and specially the class descriptor.
+ variation of D j , we qualify the relation as high since d relevant with respect to D j . A problem descriptor ds i is strongly relevant compared to a solution descriptor Ds j when the value of ds i descriptor is crucial in the determination of Ds j value. The change of ds i value is directly re fl ected on Ds j value. have a weakly relevant with respect to Dj .
+ existence of weakly relevant or strongly relevant features, this will select the kind of adaptation. Therefore three types of relationships are de fi ned: [high, low, no relation]. by using two models: on the context model, dependency relations between various problem and solution descriptors and descriptors hierarchical model. If the solution class of the best chosen source case is similar to the problem class then the algorithm uses the hier-archical model. If the class is different, then the algorithm uses the contextual model to localize a set of potentially failing compo-nents and then uses the hierarchical model. 4.1. Dependency relations (DR) 4.1.1. De fi nition descriptors  X  Ds  X  is expressed by a dependency relation. A depen-dency relation is a triplet ( ds i , Ds j , DR ij ). DR ij relationship between the problem and the solution to a given case.
+The relationship DR ij takes its value in the set DR ij  X  relation, Low, High).
+
+DR ij  X  High: there is a high dependency relation between ds and Ds j descriptors. Indeed, ds i descriptor is strongly relevant compared to Ds j descriptor.
+
+DR ij  X  Low: there is a low dependency relation, i.e., the descrip-tors are connected thanks to the context which will be characterized by a contextual model.
+
+DR ij  X  No relation: there is independency between ds i and Ds
+These relations are based on the de fi nition of relevance between descriptor problem and class of solution problem: The strong relevance, the low relevance and the non-relevance. The relevance notion is well known in the fi eld of feature selection.
+A feature d k is strongly relevant to sample N if there exist examples A and B in N that differ only in their assignment to d and have different labels (class) (or have different distributions of labels if they appear in N multiple times). Similarly, d strongly relevant to target D class and distribution D if there exist examples A and B having non-zero probability over D that differ only in their assignment to d k and satisfy D class ( B )( Blum and Langley, 1997 de fi nition ' s pages 248  X 
+A feature d k is weakly relevant to sample N (or to target D and distribution D ) if it is possible to remove a subset of the features (so that d k becomes strongly relevant) ( Blum and Langley, 1997 de fi nition ' s pages 248  X  249).
+
+Remark. The measures AM and RM select the most adaptable case among the cases the most similar to the problem to be solved, while DR serves to qualify the type of the existing relations between the problem and the solution of the most adaptable case.
+This is done to select the category of adaptation. 4.1.2. Identi fi cation of DR
+There are three way to determine the relationship between the problem and the class. 1. The expert determines this relation. 2. The relevant descriptors leading to a class of failure can be identi fi ed thanks to the causal model and by the use of a fault tree which de fi nes the relation between the symptom and the cause. The causal model is easily built by using the tools recommended by Rasovska ' s methodology. 3. The learning algorithm: to identify this type of relationship, we can apply a variables fi ltering algorithm such as Reporting Strong Algorithm for Subset Selection (STRASS) ( Senoussi and
+Chebel-Morello, 2008 ), which selects descriptors with high relevance and low relevance descriptors on a set of examples. 4.2. Adaptation algorithm
+The algorithm ( Algorithm 1 ) relies on the context model, the descriptors hierarchical model and the dependency relations. This algorithm checks descriptors one by one. The substitution tation, by generalization and by specialization, will be taken into account in the algorithm.
+ Three possible scenarios are treated differently by the algorithm: DR  X  high and same class of problem and solution descriptors.
+DR  X  high and different class of problem and solution descriptors DR  X  Low
+This algorithm deals with the adaptation of one descriptor at a time. It is conditioned by the solution descriptor class found at retrieval step. After the retrieval phase which makes it possible to measures, the adaptation phase is launched. The initialization step creates a list of couples having a relation either high or low. According to the nature of the relation, the treatment differs. Consequently, the second step will depend on the DR values and the classes of the descriptors.
+ Algorithm 1. Adaptation algorithm 1. If by browsing through the list, a value of  X  DR  X  high then the couple is selected and classes of  X  Ds ret j  X  and compared. If they have the same parent class, the in fl uence of this substitution will be considered in  X  Ds ret j  X  and the algorithm will assign this new value to Dt ret j ,otherwise,thealgorithmlooksat the context list descriptors and selects the  X  dt i  X  descriptor which denoted  X  dt n  X  . Then, the value of the reminders will be deter-mined and will be thereafter affected to  X  Dtj  X  . 2. If in the list there is only DR  X  low then the algorithm selects the parent class of Ds ret j descriptor. Then, it identi fi descriptor belonging to the same parent class as Ds ret j will change status ( dt i -dt n ). After that, the relationship dt will in fl uence the transformation of the Ds ret j solution which will be affected thereafter to  X  Dtj  X  . 3. Finally, when all DR values are equal to  X  no relation is no adaptation. 5. Retrieval and adaptation illustration
+The diagnostic cases modeling took a speci fi c form, described in Table 3 . The three kind of adaptation which will be approached are illustrated in this Section.
+ Kind 1: DR  X  High and same functional class
+Suppose a failure occurred in the D9 detector. The retrieved source cases closest to this target case 1 (noted  X  T 1  X  two sources cases: the source case 4 S 4 and the source case 9 S (see Table 3 ).
+ The applied similarity threshold is 60%.
+
+Similarity measure RM and adaptation measure calculation AM are shown in Table 4 .
+ We observe at the same time that the similar source cases are
+S4 and S9 and they have the similar value of RM, but differ in the AM value
+It is important to note that the DR value of the pair ( Ds  X 
+DR  X  high  X  and that the D8 detector which is shifted of the Ds descriptor as well as the D9 detector of the descriptor dt 3 belong to the same class  X  presence sensor  X  ( Table 4a ). Consequently: By applying the adaptation algorithm the solution is as follows:
+The failed component is: the detector D 9 , which is located in the entry of the external ring .
+ The repair action is: Replacement of the failed component . Kind 2: DR  X  High and different functional class
+Suppose a failure occurred in the  X  post zone  X  and represented by target case 2, denoted  X  T2  X  in Table 5 . The results of the calculation of retrieval and adaptation measures are the follow-ing:
+According to the results of the adaptation measure(s), the selected source case for the adaptation phase is case 6, S6. The DRs values of the source case 6 are as follows: ( Table 5a ).
+Ds 4: Indexer of the post zone  X  Ft ( ds 1 : post zone, ds Ds 2: Balogh1 (strong magnetic fi elds)  X  Ft (d s 5 : STP4; DR 52  X  high, ds 6 : D 6; DR 62  X  low).
+ We note that the DR value of pair ( Ds 2 , ds 6 )is  X  DR  X   X 
+D 6  X  and  X  Balogh1  X  components do not belong to the same family. This con fi rms that we are in the scenario of:  X  and different functional classes  X  .
+ By applying the adaptation algorithm, we obtain: The class of source solution descriptor  X  ds ret 2  X  is  X  detector  X  .
+
+The  X  STP4  X  component of the target descriptor  X  dc 5  X  (which corresponds to the descriptor  X  ds 5  X  which is in abnormal mode) is in the context of the  X  Indexer of the post zone  X  . However, in this zone there are other components:  X  D 1, pusher, D 5 and Bal 0  X  .
+
+The  X  Bal 0  X  component belongs to the same class of Ds ret is  X  Magnetic detector  X  .
+
+Substitute the  X  Bal 1  X  value of the  X  ds ret 2  X  descriptor by the value of  X  dc 7  X  . Thus, ds ret 2  X  Bal 0 (strong magnetic
+Assign this value to  X  Dc 2  X  : Dc 2  X  Bal 0 (strong magnetic The solution is as follows: By applying the adaptation algorithm the solution is as follows:
+The failed component is: The Balogh: Bal0, belonging to the  X 
+Magnetic detector  X  class, which is located at the indexer of the post zone .
+ The repair action is: Clean the Balogh: Bal0 .
+ Kind 3: DR  X  Low
+Suppose a failure occurred in the  X  external ring  X  and repre-sented by target case 3, denoted by T3 in Table 6 . The results of the calculation of retrieval and adaptation measures are the following: The DRs values of the source case 7 are as follows ( Table 6a ).
+Ds 4 : External conveyor of exit external ring  X  Ft ( ds 1 : exit of external ring, ds 2 : external conveyor).
+
+Ds 2 : Blocked puller  X  Ft ( ds 3 : Bal 1; DR 32  X  low, ds
+DR 52  X  low, ds 6 : D 7; DR 62  X  low, ds 7 : Bal 1; DR 72
+We note that all couples ( Ds 2 , ds 3 ), ( Ds 2 , ds 5 ), ( Ds ds 7 ) have values of  X  DR  X  Low  X 
+By applying the adaptation algorithm, we obtain the following steps:
+The solution descriptor  X  Ds ret 2  X  is from  X  pneumatic actuator  X  class.
+ The context of the target case components  X  D4, STP3, D5 and Bal 1  X  is located at the external conveyor of the secondary ring.
+In this context, the component pertaining to the same context and which belongs to the same class of Ds ret 2 (pneumatic actuator) is the component:  X  pusher  X  .
+
+Substitution of the  X  puller  X  value by  X  pusher  X  value in the descriptor Ds ret 2 , Ds ret 2  X  blocked pusher.
+ Assign this new value to the  X  Dc 2  X  descriptor.
+ By applying the adaptation algorithm the solution is as follows:
+The failed component is: The pusher in the external conveyor of the exit external ring .
+ The repair action is: Unblock the pusher .
+
+Furthermore, we have found through these three examples that the source case which is the most similar to the target is not necessarily the case chosen for the adaptation phase.
+We applied this method for a car system with a diesel motor 1.5dCi K9K 105ch of from Renault ( Chebel-Morello et al., 2009 ).
+In order to validate the results obtained by using our method and to compare it with a traditional one that uses simple retrieval and adaptation phases, we will conduct a validation method. This method will be described in the next section. 6. Validation and discussion
+In this section we present three experiments concerning our case based reasoning system:
+The fi rst one concerns the need for the adaptation phase in our system. Accuracy of the diagnostics system with and without adaptation phases is compared.
+
+The second one evaluates the computational speed of diagnosis reasoning (retrieve + reuse phases) and compares it in the adapta-tion guided retrieval AGR phase with the classical retrieval phase.
+And the third one studies the performance of the adaptation algorithm.
+
+The main goal of these experiments is to prove the feasibility of the proposed method of diagnostics composed of a case base, knowledge model, AGR and adaptation method. We used a leave-one-out cross-validation method for the fi rst two parts to assess
+SISTRE ' s ability to accurately adapt retrieved cases for a case base containing 125 cases. 6.1. Accuracy of the adaptation phase
+In this part, the accuracy rate with and without adaptation will be calculated. The results show that the proposed method with the adaptation selects the cases which are the best adaptable ones and thus it gives an accuracy rate of 88% (see Figs. 5 and 6 ). If the adaptation algorithm is powerful, one can get a good performance concerning the CBR system applied to a limited number of cases.
+However, we fi nd bad results without the adaptation, an accuracy rate of only 58.1% with the retrieval step. These results show that the case base is not complete and gives without adaptation a bad recognition rate. The adaptation phase and models of knowledge on which it relies are essential. Our diag-nostic system gives a good recognition rate.
+ 6.2. AGR method which use knowledge model and to compare it to the help diagnostics system with two types of the retrieval phase. retrieval method. Initially, we apply the adaptation algorithm after a retrieval step exploiting the two RM and AM measures. Then we apply the algorithm after a retrieval stage exploiting only the similarity measure RM.
+ tional speed of the adaptation algorithm in 10  X  3 s. The adaptation algorithm is executed on a computer with a microprocessor Intel (R) Core (TM)2 Duo CPU  X  2.66 GHz  X  .
+ edge of the system SISTRE through the models of knowledge, reacts differently depending on the AGR principle.
+ ms, we note that the adaptation effort is less important when the
+AM adaptation measure is employed (in the AGR case). In fact, the larger the case base it, the more important the variation of the adaptation effort is. Consequently, the adaptation measure which is resulting from the AGR principle decreases considerably the adaptation effort. Moreover, this principle allows selecting the good case that will lead easily and correctly to the given solution according to the equipment knowledge context. More-over, retrieval using only the similarity measure without adapta-tion does not select the cases which are the best adaptable ones (in particular concerning their classes). These results also show that the most adaptable is not necessarily the most similar. 6.3. Adaptation phase
+This experiment is designed to study the accuracy of the help diagnostics system; overall accuracy, and more precisely the accuracy of only retrieval cases. The results of this study are shown in Table 7
+We note that the accuracy rate 88% re fl ects that 110 cases were adapted correctly to the set of 125 cases. This accuracy is computed using  X  Ds 2  X  as the component responsible for the failure.
+By analyzing the results, one can fi nd that there are 5 retrieval failure cases. These cases are considered as generic cases that are covered by no other case of the case-base. Thus, their adaptation is impossible.
+
+To evaluate the performance of the adaptation algorithm, these 5 cases are not considered in the accuracy calculation. For this subset of cases the accuracy rate is 91.66%. These algorithms can be applied to any type of discrete event systems (transfer systems). To prove the genericity of this method on any type of industrial plant, we applied these algorithms to another type of equipment, a diesel engine, but on a limited number of cases ( Haouchine, 2009 ). 6.4. Comparison with other in industrial diagnosis system 6.4.1. State of art in industrial diagnostic
+Concerning the reasoning process in the industrial diagnosis system, Gas Turbine, IRACUS and NodalCBR systems do not use systems are not effective because the retrieved case is not necessarily the chosen case for adaptation. As for Cassiopee, Pad ' im ( Mille and
+Chiron, 1999 ) and Patdex systems, they propose simple adaptation rules and cannot ensure an accurate solutions ' result of the adapted cases. FormTool ( Cheetham and Graf, 1997 ) exploits the relation between the retrieval and the adaptation phases. However, even if
+FormTool relies on this relation, the technique used is strictly dedicated to the treatment of plastic colors following a speci function. Consequently, it is not easily exploitable in other cannot adapt other cases outside the characteristics of plastic colors.
+Finally,theCreeksystemisthemosteffectiveamongthembecause it proposes an explanation oriented retrieval and it exploits more complex and more complete relations in its adaptation phase thanks to models. In the retrieval step, the Creek system uses a similarity measure combined with measures related to the computation path in a semantic network. Concerning the adaptation step, it does not give any algorithm and it does not show how this step is carried out. The non-identical explanation characteristics of each case. Lastly, the case corresponding to the request and by copying or modifying the solution of this case. The adaptation phase is complex and is usually designed for a speci fi c application. 6.4.2. Comparison methodology
+To compare our diagnostic method to other CBR diagnostic method, we de fi ne three indicators linked to the elicitation and reusing knowledge in the new application.
+
+CBR systems differ from each other in the development tool, the formalization of the case, the use of knowledge models, the different phases of the CBR cycle and the different algorithms and methods used in each step. Table 8 summarizes these points associated with the effort of creating the knowledge models the cost of adaptation and the cost of re-use. 1. The effort of creating the knowledge models can be quanti-fi ed by a development cost.
+
+To use development systems one needs to buy the system, to understand it and develop models. This requires expert avail-ability. We will identify a cost of 8 on a scale of 0  X  10. However, representing expert knowledge from scratch will cost 10.
+The creation of the knowledge model without the development system relies on the analysis of functional and dysfunctional models like Creek and our method requires less effort to model the creation. We can estimates the cost of this complex model to be 3. 2. To estimate the capacity to reuse the cases in the retrieval phase, we de fi ne the easiness of the adaptation by a cost of adaptation .
+
+Adaptation guided retrieval method takes into accounts the cost of adaptation to select the most suitable course. The adaptation cost will be minimized (  X  0) in this case. When there is an adaptation in the CBR system, the cost of adaptation is equal to 5.
+
+When there is no adaptation in the CBR system, the cost of adaptation is equal to 10.
+
+Creek system is the most effective among the other diagnostic methods because it proposes an explanation oriented retrieval and it exploits more complex and more complete relations in its adaptation phase thanks to models. 3. For the re-use of the program of adaptation in the new application, the cost of re-use will depend on the generality of adaptation methods.
+
+If there is no algorithm of adaptation or there is a speci algorithm of adaptation the cost is maximal because a new algorithm must be developed. The cost of re-use is maximal, it is equal to 10.
+
+If the application takes support on speci fi c rules or models of knowledge the cost can be averaged, and it is equal to 5.
+When a method is independent of the application, as it is the case for our method, the cost is minimal and it is equal to 0. Applying these criteria to the methods we obtain Table 8 .
+We can see that our method was implemented to minimize the cost of designing a knowledge system and therefore it gives better results than other methods. 7. Conclusion
+A knowledge oriented diagnostics system integrated in the e-maintenance platform is proposed in this paper. The case based reasoning system is well adapted to solve fault diagnostics issues because problems are recurrent and cases can be reused. A state of the art in the frame of case based reasoning for technical diagnostics highlighted that there is no common method to build a diagnostic support system. To conceive this system, we have followed the method of Rasovska which is to develop the two processes of Lamontagne model (of fl ine and online processes): 1. Firstly we developed the following knowledge containers:
+The elaboration of this expert knowledge has a cost, but this cost is minimized because the fi rst model which is the component taxonomy model is well known by the mainte-nance users. However, the second model requires a minimum of work. This modeling has in fl uenced the proposed similarity measure as well as the adaptation measure. The latter is directly related to the functional mode of the supervised components (an attribute speci fi c to the descriptor). 2. Secondly, concerning the reasoning process, an adaptation-guided retrieval method has been proposed.
+
+The retrieval phase is related to the adaptation phase using the conjunction of similarity and adaptation measures. This con-junction makes it possible to select among the retrieved cases the most adaptable. The adaptation phase will exploit the dependency relations between the problem and the solution.
+These dependency relations will be given either by the selec-tion of a relevant descriptor or by the use of a context model between the various failures which can appear in an industrial plant. And the results depend on this relation. One dif fi overcome in this method is to de fi ne these relationships in the case base.
+
+The adaptation algorithm detects three scenarios and pro-poses associated actions to each case. We detailed one scenario where the most similar case is not necessarily the one selected for the adaptation.
+
+Our previous studies have enabled us to formalize the case of a supervised industrial system of pallets transfer (SISTRE) in this paper and in a diesel engine, but on a limited number of cases. The proposed adaptation-guided retrieval and adaptation methods for a diagnostic application have been validated on a set of 125 cases resulting from the study carried out on SISTRE.
+
+We have proved the feasibility of this diagnostic support system. To build it in any type of industrial equipment, two knowledge models need to be elaborated. To avoid the cost of the development of knowledge models, we are currently working on the use these algorithms with models (functional events and components models) developed in a web-maintenance platform. This model is de fi ned in the domain ontology of maintenance, in the context of semantic-maintenance and life cycle (SMAC) Project.
+
+This method needs to be applied on a large scale that would attest its applicability for any type of equipment. We will apply this method to more complex equipments, where we select different levels of granularity in the equipment, and this will affect the formalization of the case.
+ Acknowledgments
+This work was carried out and funded in the framework of SMAC Project (Semantic-maintenance and life cycle), supported by European Program Interreg IV between France and Switzerland.
+
+Appendix A. The supervised industrial system for pallet to diagnostic
+To illustrate each notion of this study, the industrial application to be developed is described in this section. This application is a supervised industrial system for pallets transfer (SISTRE). A description of the system is given in Fig. 8 a and b.
+The latter represents a fl exible production system, composed of fi ve robotized working stations which are served by a transfer system of pallets organized into double rings (internal and external).
+
+As shown in Fig. 8 b, each station is equipped with pneumatic actuators (pushers, pullers and indexers) and electric actuators (stopper) as well as a certain number of inductive sensors (proximity sensors). An inductive read/write module allows to identify and locate each pallet and to provide information relative to the required operation in a concrete station. The motion of the pallets is ensured by the friction on belts that are powered by electric motors. Each pallet has a magnetic label that is used like an embedded memory. This memory can be read in each working station thanks to magnetic read/write modules (Balogh) and allows the memorization of the product assembly sequence. These labels thus enable to track the pallet path through the system. The feasibility of our approach was studied in Section 6 through 125 generic cases q .
+
+Functional analysis of the system has identi fi ed main, addi-tional (compelmentary) and secondary functions. Main functions are as follows: transfer assembly parts between stations; Identify pallet and product lines; store product information; transform content of the pallet. Secondary functions secure the transfer system; provide pneumatic energy and electrical energy. Second-ary functions are concerned with adding/removing pieces of pallets, and managing assembly lines.
+
+The studied case base is in relation with the internal functional analysis of level 2 relative to the working station that is repre-sented in Fig. 9 .
+ FP1 FP7 References

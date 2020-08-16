@@ -1,0 +1,1 @@
+ Training in presence of hidden variables Use EM? Problem: local maxima objective depends on hidden variable values directly relation matrices: M ij

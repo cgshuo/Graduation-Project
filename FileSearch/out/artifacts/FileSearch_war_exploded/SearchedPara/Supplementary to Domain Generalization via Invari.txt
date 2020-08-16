@@ -1,0 +1,18 @@
+ The most fundamental assumption in machine learning is that the observations are independent domain generalization, we briefly discuss how it relates to s ome of these approaches. Transfer learning (see e.g., Pan and Yang [2010] and referen ces therein). Transfer learn-Table 1: Comparison of domain generalization with other wel l-known frameworks. Note that classifier will be applied without retraining the classifier . Framework Distribution Mismatch Multiple Sources Target D omain Standard Setup  X   X   X  Transfer Learning  X   X   X  Multi-task Learning  X   X   X  Domain Adaptation  X   X   X 
+Domain Generalization  X   X   X  during training.
+ Multitask learning (see e.g., Caruana [1997] and reference s therein). The goal of multi-Domain adaptation (see e.g., Bickel et al. [2009] and refere nces therein). Domain adap-does not.
+ V H ( P ) = 1 N Proof. Let  X  P be the probability distribution defined as (1 /N ) It follows from the linearity of the expectation that  X   X  P = (1 /N ) note h X  ,  X i H by h X  ,  X i . Then, expanding (3) gives which completes the proof.
+ P and Q [Sriperumbudur et al., 2010]. By Lemma 6, V H ( P ) = 1 N  X  V H ( P ) = 1 N is a consistent estimator of V H ( P ) .
+ Proof. Recall that where V
+H ( P ). covariance operators. Let H and F be the RKHSes of X and Y endowed with reproducing kernels denoted by  X  xx | y , as equals the expected conditional variance of  X  ( X ) given Y .
+ Y , then  X  xx | y = E [ V (  X  ( X ) | Y )] .
+ conditional covariance operators as follow: can be expressed as b  X  respectively. We have fact that ( X  y  X   X  y + n X  I ) X  y =  X  y ( X   X  y  X  y + n X I n ). and as desired. Observe that optimization is invariant to rescaling B 7 X   X   X  B . Optimization (5) is therefore equivalent to which yields Lagrangian variable on X .
+ f : P X  X  X  X  Y under loss function  X  : Y  X  Y  X  R + .
+ such that n = Theorem 5. Assumes the conditions above hold. Then with probability at least 1  X   X  largely unchanged are omitted.
+ Note that k  X  P (  X  ( P )) k 2  X  L P  X  k  X  P k 2  X  L P U P . Therefore, By the proof of Theorem 1 and since  X   X  x B = KB , we have orem 5.1. Assume n i = n j for all i, j and recall n = inequality holds Applying the union bound obtains Combining the three inequalities above concludes the proof . accuracies than other approaches. Accuracy(%) Accuracy(%) tional setting.
+ duality. In Proc. of Conf. on Learning Theory (COLT) , 2006. Machine Learning Research , 10:2137 X 2155, Dec. 2009. ISSN 1532-4435. unlabeled sample. In Advances in Neural Information Processing Systems 24 , pages 2178 X 2186, 2011.
+ R. Caruana. Multitask learning. Machine Learning , 28:41 X 75, 1997. reproducing kernel hilbert spaces. Journal of Machine Learning Research , 5:73 X 99, 2004. Engineering , 22:1345 X 1359, 2010.
+ Learning . MIT Press, 2009.
+ space embeddings and metrics on probability measures. Journal of Machine Learning Research , 99:1517 X 1561, 2010.
+
+Learning , 23:69 X 101, 1996.

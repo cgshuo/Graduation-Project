@@ -1,0 +1,94 @@
+ 1. Introduction properties of a conceptual schema are correctness (i.e. the knowledge de relevant knowledge is de fi ned) [2] .
+ consisting of the reverse engineering of a large real-world conceptual schema. maintained; (2) no code goes into production unless it has associated tests; (3) tests are written and (3) Refactors both new and old codes to make them well structured. degree [4,9,10] . Then, a question naturally arises: can we test conceptual schemas?
+In [11] we have shown that conceptual schemas can be tested. We have identi automatically executed as many times as needed.
+ and correctness of conceptual schemas by developing them using the TDD approach? development methodologies. As far as we know, this is the paradigms and they include artifacts to specify the conceptual schema. the conceptual schemas that we want to develop. Section 3 brie sketch how to integrate TDCM into four popular methods: the Uni
+Section 7 summarizes the conclusions we have reached and points out future research directions. 2. Basic concepts and notation of the conceptual schemas
+In this section, we review the main concepts and notation we use to de conceptual modeling languages [19] .
+ derivation rule in OCL that de fi nes their population in terms of the population of other types. operations is straightforward [15,22] .
+ event may occur in the state S of the IB if S satis fi es all constraints and the event satis an operation called effect () that gives the effect of an event occurrence. We adopt the speci design-by-contract method [23] and we declaratively de fi event constraints and the postcondition in OCL. 1 without side-effects. These expressions are evaluated over the IB and their evaluation cannot change the IB.
+Given that we want to deal with executable conceptual schemas, we also need a procedural speci effect () operation. An execution of an effect () operation can change the IB. A method is correctly speci
+In the work reported here, we write the methods of the effect () operations using a subset of the CSTL [11] . 3. Testing conceptual schemas
+Conceptual schemas of information systems can be tested. We adopt here the precise and concise de failures  X  [25] . In conceptual modeling, the faults we try to uncover are incomplete or incorrect knowledge. conceptual schema, and a testing environment in which test programs are executed. In the following, we brie language and the testing environment we use in this paper. 3.1. CSTL conceptual schemas.
+
+A test set of a conceptual schema is a set of one or more CSTL programs. A CSTL program consists of a IB state.
+ or the test case is ill-formed and Fail when an assertion speci the execution of the fi xture.
+ assert occurrence eventId;
+The verdict of this assertion is Fail if (1) the event constraints are not satis (2) the IB state is inconsistent; or (3) the postconditions are not satis assert non-occurrence eventId; 3.2. The testing environment prototype testing environment. This prototype deals with schemas de CSTL (Section 3.1). We have used it while applying TDCM in the example reported here.
+Fail , the test processor provides information about the error or the failure to help the modeler to the information processor to initialize or update the IB states involved in test cases. case study of the osCommerce system [26] is detailed in [27] . 4. Test-Driven Conceptual Modeling an iterative method aimed to drive the elicitation and the de uses test cases to drive the conceptual modeling activity. In TDCM, conceptual schemas are incrementally de continuously validated.
+ TDCM into four well-known RE methods.
+ includes the general knowledge to meet these user expectations.
+ source for the next activities speci fi ed by the general method. 4.1. TDCM cycle the overall verdict of the current test set is Pass.
+ these tasks in the following. 4.1.1. Write a test case iterations are sometimes convenient to increase the con fi test cases.
+ 4.1.2. Change the schema the schema is fi xing this error or failure.
+ and checking if the verdict of the new test case becomes Pass is the main activity to make progress in TDCM.
+If the verdict of the new test case is Error, then the required knowledge is not de according to the user needs expressed in test cases.
+ (CSUD).
+ helps to fi nd out the changes to be done in the schema in order to
+If the verdict of the previous test set becomes Fail , then two cases are possible:  X  conceptual schema needs to be changed to fi x the failure.  X  cases may be changed, if needed, to re fl ect updated expectations.
+If the verdict of a previous test case becomes Error , then two cases are possible:  X   X  In Section 4.4, two guidelines are proposed to minimize this case.
+ the verdict of the new test case provide more failing/error information to guide the de continuous re fl ection about the knowledge of the schema and its alignment with user expectations. proceed to the next task.
+ 4.1.3. Refactor the schema
+Refactoring aims to improve the quality of the conceptual schema without changing the knowledge speci the current test set .
+ a new iteration . 4.2. Example of them are graphically shown in Fig. 4 ). Their effect is informally described in the following:  X   X  instance of ConstraintsSet.  X  UserCreation : A new User is created with his/her name and eMail .
+
+MeetingRequest : context MeetingRequest::effect() method MeetingRequest::effect(){ } make progress in the elicitation and the de fi nition of the conceptual schema fragment of Fig. 4 . 4.2.1. First iteration example: invalid meeting scheduling
+Consider the following informal requirement: below. Note that the fi xture creates two users that will appear in the test case. testprogram MeetingScheduling{ } event does not exist in the conceptual schema. In order to characteristics ( Fig. 5 , a ). For the moment, we need to de nothing prevents the occurrence of the event mrs as expected by the assertion
+MeetingScheduling::doesNotScheduleTheMeetingOnACon fl ictingDate in order to describes that the scheduled date should not be a con fl icting date, but the knowledge about con in the schema. Therefore, the verdict of the new test case is now Error . In order to con fl ictingDate and its derivation rule ( Fig. 5 , c ).
+ participants of the meeting.
+ initiated. 4.2.2. Second iteration example: valid meeting scheduling the following new test case, aimed to ensure that a meeting can be scheduled: test validMeetingScheduling{ } method of the domain event MeetingRequest to re fl ect this: context MeetingRequest::effect() method MeetingRequest::effect(){ } the effect postcondition and the method of the MeetingScheduling event: context MeetingScheduling::effect() method MeetingScheduling::effect(){ }
+The last task of the iteration is refactoring (if it is applicable). [33] presents the refactoring smell expressions (a domain rule is speci fi ed in the postcondition or the constraint of an event).
+The modi fi ed postcondition of the event MeetingRequest shown above includes the static domain rule knowledge are detected. The iteration fi nishes. 4.3. The osTicket case study are reported in [35] .
+ based on the principles of design science research, which state that solution are achieved in the building and application of the designed artifact schema and two sets of informally de fi ned requirements: 1) a set of expected valid con its documentation. The set of stories were ordered following a previously de stories and their dependencies.
+ set that validates it.
+ what extent the main TDD features are applicable to conceptual modeling. approaches its completion.
+ derivation rules). We identi fi ed and categorized the errors and failures and their associated system. This categorization may help in the application of TDCM. The time spent on postcondition of the effect of the event.
+ schema. These iterations process test cases about the basics and con is trivial: to add them to the conceptual schema. However, once the main structural schema elements were speci failures and errors that drove the schema evolution changed signi amount of structural knowledge was required to be added or re de fi ned test cases. In general, it is not possible to achieve such con not test them. 4.4. Guidelines at avoiding the need to fi x previous test cases due to this reason.
+ 4.4.1. Guideline: De fi ne constraints as soon as they are noticed minimized if constraints are added to the schema as soon as they are noticed.
+Every time that in a new test case we de fi ne a new entity or relationship type, we should also de of the previous test set.
+ necessary to change previous test cases. 4.4.2. Guideline: Use default values when adding properties to an existing type (because the property was not speci fi ed when the previous test cases were written). be avoided by specifying a default value for the added property.
+
+MeetingScheduling . test assistantInitiatesAMeeting{ } participants of the meeting. Although the user sarah speci schedules the meeting, it is expected that the meeting will be successfully scheduled due to its urgency. to the value of MeetingRequest::urgent .
+ to the existing initial integrity constraint MeetingScheduling::doesNotScheduleTheMeetingOnACon
+Date. We change this constraint in order to allow urgent meetings to be scheduled on con context MeetingScheduling inv doesNotScheduleTheMeetingOnACon
+The reason is that the attribute MeetingRequest::urgent:Boolean [1] is mandatory and it is not speci its default value to false . 5. Integrating TDCM into existing software methods on iterative paradigms and they include artifacts to specify conceptual schemas. conceptual schemas.
+
+In this section, we present an integration approach of TDCM into the Uni
+Table 4 summarizes the integration points for each method discussed in the following. 5.1. Uni fi ed process phases (inception, elaboration, construction and transition). In each phase, artifacts are started or re that selects a subset of the proposed artifacts and the convenient practices used to develop them.
+UP encourages including new practices from other iterative methods. Larman [15] explains that artifacts that addresses its particular problems and needs class diagram in the design model. System events are speci schema speci fi ed in the structural design model and the formal speci obtain a test set that validates the schema.
+
+The source artifacts for TDCM application are:  X  if not empty, can be used as the initial schema to be evolved by applying TDCM.  X  speci fi cations of the representative system-actors interactions for each use case.  X 
+System Sequence Diagrams (SSD): UP considers that a use case is often too complex to be de to drive the de fi nition of the conceptual schema by applying TDCM.
+ case scenarios have been considered.
+
+Additionally, we obtain the event methods (a procedural speci 5.2. MDD approaches Independent Models (PIM) to Platform-Speci fi c Models (PSM).
+
+The Object Management Group (OMG) adopted the Model-Driven Architecture (MDA) [16,17] to support MDD. MDA prescribes certain kinds of models to be used in MDD and speci
+In MDD approaches, conceptual schemas are speci fi ed as PIMs. [10] suggests de used to incrementally de fi ne and evolve these models (target artifacts) ( Fig. 10 ). as sequence diagrams.
+
+The source artifacts for applying TDCM are:  X  model. This model, if not empty, can be used as the initial schema to be evolved by applying TDCM.  X  speci fi cations of the representative system-actors interactions for each use case.  X  Scenario models: They are PIMs that specify representative use case scenarios as sequence diagrams. ends once all use case scenarios have been considered.
+ scenarios speci fi ed as test cases. The resulting test set validates these quality properties. automated by model compilers. In contexts in which the conceptual schema is suf 5.3. Storytest-driven agile methods requirements into executable tests. He also summarizes that storytest-driven development is about
+Some authors argue that agile methods are a reaction to  X  that program tests  X  even a million of them, are instances; they miss the abstraction that only a speci  X  respond to changes  X  , and models can contribute to agility by providing a base to ef development. Class diagram sketches are promoted to  X  think before you act in one or more artifacts (target artifacts), then TDCM can be used to de stories have been formalized as test cases and all test cases have been processed.
+By applying TDCM, contradictions between stories (i.e. requirement con is reduced as the result of satisfying the other one.
+
+Moreover, TDCM can reveal the necessity of describing new stories. If the set of de process user stories according to this prioritization.
+ 5.4. Goal and scenario-oriented methods (active system components playing a speci fi c role in goal satisfaction) [14] .
+Several approaches to identify goals and re fi ne them have been proposed. Goal re agent are requirements.
+  X 
+Goal model: It speci fi es the system's goals in terms of individual features, such as their speci priority, potential con fl icts, etc.  X  de fi ned in the goal model. It is a goal-form of a risk analysis.  X  goals.  X 
+Agent model: It models the responsibility view of the system. It speci  X 
+Operation model: It models the functional view of the system. It speci that operationalize each goal.  X  model (behavioral conceptual schema).
+ model (target artifacts) according to the goal model , the preliminary de description (CSTL allows de fi ning IB states with speci fi are derived from goal-based models).
+ goals model). In general, the use of TDCM may suggest changes (additions, updates) to the goals model. in deciding the processing order of test cases while applying TDCM. 6. Related work
+TDCM is a TDD-based conceptual modeling method in which a conceptual schema is incrementally de characterized by continuous validation of the schema while it is being developed. In the following, we which they apply to TDCM (Section 6.2). 6.1. Conceptual schema validation a thorough survey on the state of the art regardi ng the many relationships between formal speci relationship, whichhas attracted a lot of work, is thatspeci of some intermediate artifact. A pioneer work was the SCENT [45] method in which requirements are purpose of requirements validation.
+
+Much effort has also been spent on systematically mapping textual scenarios to conceptual schemas. In [55] we transformed to a dynamic conceptual model applying mapping heuristics. schemas (conceptual schema validation).
+ that include any kind of OCL constraint or derivation rule and, if there is not an in reasoning procedures when they are applicable. As has been observed in the general reasoning procedures are complementary and can be used in conjunction to enhance validation. operation executability.
+
+Domain analysts are able to correctly use concepts of a conceptual schema but have dif
+Similar techniques in this respect are the inspections and reviews of requirement speci Explanation generation is another kind of approach to contribute to the validation of conceptual schemas. may include graphical model views in addition to the textual descriptions [71,72] . a recent approach speci fi cally aimed at assisting the elicitation and validation of model constraints [73] . validation techniques. In general, animation facilities allow users to execute operations of the speci parameters, thereby calculating the value of the output parameters and the new system state [75] . and [78] , with the PPP and TROLL light language and environment, respectively.
+The most recent work, and the one most closely related to our approach is the USE tool [79 the schema. [82] is a similar approach focused on behavior, that allows simulation of scenarios (speci structural and behavioral schema elements described in Section 2. 6.2. Test-Driven Development (2) no code goes into production unless it has associated tests; (3) tests are written needs to be written [8] .
+ waterfall process model was conceived as a sequential development process consisting of an agile process based on very short development iterations. XP is described in the Agile manifesto [7] . [85] . Most popular development methodologies, like the Uni phase at the last stages of development. TDD is a test-fi NET), XMLUnit, E-Tester (for Eiffel), etc. xUnit testing frameworks support the application of TDD. (ATDD), Storytest-Driven Development or Customer Test-Driven Development. fi 7. Conclusions
+TDCM into four well-known requirements engineering methods: the Uni approaches, the storytest-driven agile methods and the goal and scenario-oriented methods. to be done. We mention three research directions here. The
+TDCM may "inherit" several advantages and drawbacks but they must be con
+Development approach when the transformation from Platform-Independent Models to Platform-Speci they provide useful advice to the conceptual modeler in at least the most common situations. Acknowledgments
+References

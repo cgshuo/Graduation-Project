@@ -1,0 +1,3 @@
+
+Poster ID: T21
+Common practice when dealing with novelty is to identify it by rejection . Thus, an event is novel if it does not fit our model of the world. Observing that there are different types of novel/unexpected events, we focus on a specific type of novel events, namely: Incongruent events . We present a general framework based on the notion of partial types of labeled hierarchies such as part-membership and class-membership are captured by this framework. Contrary to common practice we first look for a level of description where the novel event is highly probable. We demonstrate two different algorithmic implementations of this framework for two different types of novelty, new subclass detection (vision), Out Of Vocabulary detection (speech). 

@@ -1,0 +1,130 @@
+ Badam-Osor Khaltar, Atsushi Fujii * 1. Introduction golia, the Mongolian alphabet is mainly used in the Inner Mongolian Autonomous Region of China. Depending on the alpha-bet used, the writing system is also different in Mongolian.
+
+In the Mongolian writing system for the Cyrillic alphabet, each sentence is segmented on a phrase-by-phrase basis. A Mongolian alphabet, each sentence is segmented on a word-by-word basis and content words are not inflected.
+Cyrillic alphabet system, identifying the original forms of content words is more complex than in the Mongolian alphabet on the Mongolian language that uses the Cyrillic alphabet, which will simply be termed  X  X  X ongolian X  hereafter.
+In information retrieval, normalizing index terms can involve either lemmatization or stemming. Lemmatization identi-fies the original form of an inflected word, whereas stemming identifies a stem, which is not necessarily a word.
+Currently, Web pages in Mongolian that include only inflected forms of a query term cannot be retrieved. This implies that existing search engines do not perform lemmatization or stemming when indexing Mongolian Web pages.
+In this paper, we propose a lemmatization method for Mongolian and apply our method to indexing for information re-the limitations of manual compilation, new words are often out-of-dictionary words. New words are often nouns, and we therefore propose a lemmatization method that does not rely on noun dictionaries. 2. Inflection types in Mongolian phrases
+In Mongolian, nouns, adjectives, numerals, and verbs can be concatenated with suffixes. Nouns and adjectives are usually suffixes, participle suffixes, and mood suffixes.
+
+Fig. 1 shows the inflection types for content words in Mongolian phrases. In (a), there is no inflection in the content word  X  X  y o v (book) X , concatenated with the suffix  X  X  sy (b), either a consonant or a vowel can be inserted. In (c), the character  X  X  vowel is eliminated.
+
+Loanwords, which can be nouns, adjectives, or verbs in Mongolian, can also be concatenated with suffixes. Because most the four ablative case suffixes (i.e., aap, oop, '' p, and p) according to Mongolian grammar. However, because  X  X  (computer) X  is a loanword, the ablative case  X  X  '' p X  is selected instead of  X  X  X op X , resulting in the noun phrase  X  X  (by computer) X . In addition, the inflection (d) of Fig. 1 never occurs for noun and adjective loanwords. 3. Related work
+Ehara, Hayata, and Kimura(2004) Jaimai, Zundui, Chagnaa, and Ock (2005) independently proposed a morphological anal-ysis method for Mongolian that uses manually produced dictionaries and rules.
+ Sanduijav, Utsuro, and Sato (2005) proposed a morphological analysis method for noun and verb phrases in Mongolian.
+They manually produced inflection rules and concatenation rules for nouns and verbs. Then, they automatically produced a this dictionary.
+
+Because these three lemmatization methods rely on predefined dictionaries, they cannot lemmatize out-of-dictionary a phrase dictionary.
+ Arguably, lemmatization and stemming are effective for indexing in information retrieval (Hull, 1996; Porter, 1980).
+Stemming methods have been proposed for a number of agglutinative languages, including Malay ( Tai, Ong, &amp; Abdullah, Lynch, &amp; Willett, 1996 ).
+
+Xu and Croft (1998) and Melucci and Orio (2003) independently proposed a language-independent method for stemming, for natural language applications where word occurrences must be standardized in terms of their original form.
+To date, no attempt has been made to apply lemmatization or stemming to information retrieval for Mongolian. Our re-search is the first significant effort to address this problem.
+ 4. Methodology 4.1. Overview
+Fig. 2 shows an overview of our lemmatization method for Mongolian. Our method consists of two segments, identified by the dashed boxes in Fig. 2 , namely  X  X  X emmatization for verb phrases X  and  X  X  X emmatization for noun phrases X .
+A problem arises when we target both noun and verb phrases. There are suffixes that can concatenate with either verbs or incorrectly lemmatized as noun phrases, and vice versa.
+
+Because new verbs are created less frequently than nouns, we use a verb dictionary, but not a noun dictionary. We first content word is not defined in the verb dictionary, we lemmatize the input phrase as a noun phrase.
+The suffixes concatenated with adjectives are the same as those with nouns, and the suffixes concatenated with numerals numeral phrases without any modifications. We use the term  X  X  X emmatization for noun phrases X  to refer to the lemmatiza-tions for noun, adjective, and numeral phrases.
+
+We briefly explain our lemmatization process using Fig. 2 . We consult a  X  X  X erb suffix dictionary X  and perform backward segmentation rule X  to remove the suffix and extract the content word. We use a  X  X  X owel insertion rule X  to check whether defined in a  X  X  X erb dictionary X , we output the content word as a verb and terminate the lemmatization process.
+The following (1) X (9) are example processes for the input verb phrase  X  X  X  (1)  X  X  X a l  X  at the end of  X  X  X  dx xaa l  X  is detected as a suffix. (2) The suffix  X  X  X a l  X  is removed and  X  X  X  dx x X  is extracted. (3) The eliminated vowel  X  X  b  X  is inserted and  X  X  X  dx x X  becomes  X  X  X  (4)  X  X  xb x X  at the end of  X  X  X  dxb x X  is detected as a suffix.
+ (5) The suffix  X  X  xb x X  is removed and  X  X  X  d  X  is extracted. (6) No vowel is inserted into  X  X  X  d  X . (7) No suffix is detected in  X  X  X  d  X . (8)  X  X  X  d (take) X  is found in the verb dictionary. (9) Output  X  X  X  d  X  as the original form of a verb.
+
+If the content word is not defined in the verb dictionary, we return to the input phrase and perform lemmatization for noun phrases. We consult a  X  X  X oun suffix dictionary X  to determine if one or more suffixes are concatenated at the end of the target phrase.
+ segmentation rules to extract the loanword.
+ phrases. However, as explained in Section 2, vowel elimination never occurs in noun loanwords. Therefore, if the input phrase includes a loanword, we do not use the vowel insertion rule.
+ catenated, and we output the phrase as is.
+ rule. The inflection type (d) of Fig. 1 is processed by the vowel insertion rule.
+
+We elaborate on the above dictionaries and rules in Sections 4.2 X 4.8 . 4.2. Verb suffix dictionary We produced a verb suffix dictionary, which contains 126 orthographic forms of suffixes that can concatenate with verbs. suffixes. 4.3. Verb suffix segmentation rule
+For the verb suffix segmentation rule, we produced 179 rules. There are one or more segmentation rules for each of the 126 verb suffixes mentioned in Section 4.2.
+
+Fig. 4 shows a fragment of the verb suffix segmentation rule for the suffix  X  X  refers to any string.  X  X  X 9 X  refers to any of the nine consonants ( X  X  to any of the seven consonants ( X  X  v  X ,  X  X  y  X ,  X  X  u  X ,  X  X  and the preceding vowel  X  X  '  X  to extract  X  X  iby'xk  X . 4.4. Vowel insertion rule ine the last two characters of the content word. If both of these are consonants, we determine that a vowel has been eliminated.
+ However, a number of content words inherently end with two consonants, and therefore we referred to a textbook on
+Mongolian grammar (Ts, 2002 ) to produce four rules that determine when to insert a vowel. If the last two characters of  X  X  X 7 X  and  X  X  X 9 X  are the same sets as those defined in Section 4.3. Second, to determine which vowel should be inserted, we use the Mongolian vowel harmony rule. According to this rule, the vowels after the first syllable in a content word in the content word and insert the appropriate vowel.
+
+Fig. 5 shows the vowels to be inserted by the vowel insertion rule. The position of the inserted vowel is always between the last two consonants of a content word. For example, if  X  X  X  X ,  X  X  X  X ,  X  X   X  X   X ,  X  X   X  y X ,  X  X   X  Y  X ,  X  X  z y X ,  X  X  X  X  X ,  X  X  X  Y  X , and  X  X  b y X . If one of the long vowels  X  X  X y X ,  X  X  inserted, irrespective of the vowel in the first syllable of the word. If one of the long vowels  X  X  vowel  X  X  '  X  is inserted, irrespective of the vowel in the first syllable of the word.
+In addition, if the last two characters of a word are any of  X  X  wel  X  X  b  X  is inserted between the characters. For example, because the last two characters of  X  X 
+Section 4.3, are  X  X  x + Consonant X , we insert the vowel  X  X  (renew) X .
+ 4.5. Verb dictionary
+Sanduijav et al. (2005) extracted 1254 verbs from a Japanese X  X ongolian bilingual dictionary containing 7500 entries and the verb dictionary. 4.6. Noun suffix dictionary parentheses, which are also counted as an individual suffix in the 35 suffixes. 4.7. Loanword identification rule We produced the following three classes of rules for identifying loanwords in Mongolian text.
+The first class of rules identifies those loanwords that follow the standard loanword grammar in Mongolian. A word including any of the consonants  X  X  r  X ,  X  X  g  X ,  X  X  a  X , or  X  X  out foreign words.
+ The second class of rules identifies the following words that violate the standard Mongolian grammar as loanwords.
+A word violating the Mongolian vowel harmony rule. (Because of the vowel harmony rule, a word that includes both feminine and masculine vowels, and which is not based on the Mongolian phonetic system, is probably a loanword).
+
+A word beginning with two consonants. (A conventional Mongolian word does not begin with two consonants).
+
+A word ending with two particular consonants. (A word having as its penultimate character one of  X  X  g  X ,  X  X  violates Mongolian grammar, and is probably a loanword).
+ The third class of rules is based on heuristics that identify the following words as loanwords. A word beginning with the consonant  X  X  d  X .
+ (In one Modern Mongolian dictionary (Ozawa, 2000 ), there are 54 words beginning with  X  X  Therefore, a word beginning with  X  X  d  X  is probably a loanword).
+
+A word beginning with the consonant  X  X  X  X . (In this Modern Mongolian dictionary, there are 49 words beginning with  X  X  X  X , of which 45 are loanwords. Therefore, a word beginning with  X  X  X  X  is probably a loanword).
+ using the above rules were 92.7% and 84.2%, respectively. Although supervised machine-learning methods have been pro-these methods to Mongolian for future work. 4.8. Noun suffix segmentation rule
+The noun suffix segmentation rule comprises 196 rules, of which 173 are produced for both conventional Mongolian words and loanwords. The remaining 23 rules are exceptional rules that are produced only for loanwords.
+Fig. 8 shows a fragment of the noun suffix segmentation rule for the locative X  X ative case suffixes  X  X   X  X   X ,  X  X  X 9 X , and  X  X  X 7 X  are the same as those of Fig. 4 .  X  X  X 4 X  refers to any of the four consonants:  X  X  is satisfied, we perform the corresponding action. For example, because the noun phrase  X  X  X  satisfies the last condition for the suffix  X  X  l  X , we remove the suffix  X  X 
+However, the 173 segmentation rules often incorrectly lemmatize loanwords that have different endings from conven-end with  X  X -a wb  X ,  X  X -zwb  X , or  X  X -o k o ub  X  were incorrectly lemmatized. For example, if the phrases  X  X   X  X  content words will be  X  X  'r o k o u  X ,  X  X  by T e u pa w  X , and  X  X   X  X  e u pa wb (integration) X , and  X  X  byakzwb (inflation) X , respectively.
+
+Therefore, we produced 23 exceptional suffix segmentation rules for loanwords that end with  X  X -a
+Fig. 9 shows a fragment of these exceptional rules. For example, for the loanword phrase  X  X 
+Fig. 9 suggests that we use the segmentation rule for suffix  X  X  and add  X  X  b  X  to the end of the noun. As a result, the noun  X  X  5. Experiments 5.1. Evaluation method
+We evaluated our lemmatization method using two different corpora in Mongolian, newspaper articles, and technical ab-stracts. Newspaper articles mainly contain general words, whereas technical abstracts frequently include loanwords and technical terms. We collected 183 newspaper articles from the  X  X  X lloo X . types in the 183 newspaper articles. We collected 1102 technical abstracts from the  X  X  X ongolian IT Park X . accuracy of our lemmatization method (Section 5.2) and its effectiveness for information retrieval (Section 5.3). 5.2. Evaluating lemmatization
+Two Mongolian graduate students acted as assessors. Neither of the assessors was an author of this paper. The assessors provided correct answers for lemmatization. The assessors also tagged each word with its part of speech.
+Each assessor performed the same tasks independently. Differences can occur between assessors on a task. We measured 1.
+
+P is the probability of the observed agreement between the two assessors with respect to performing lemmatization or tag-each tag type i , we calculate the probability that the tag annotated by each assessor at random is i . P probabilities for all tag types.
+
+For the newspaper articles, the Kappa coefficients for performing lemmatization and tagging parts of speech were 0.95
+Phrases related to other parts of speech were not targeted. Our experiment is the largest evaluation of Mongolian lemma-tization in the literature.
+
+We were able to use the noun and verb dictionaries of Sanduijav et al. (2005) . However, we were not able to use their system. They reported that phrases having content words in their dictionaries could be lemmatized correctly. Therefore, lemmatization result given by the assessors.
+ od, namely  X  X  X he method without loanword identification (WOLWI) X  and  X  X  X he method with loanword identification (WLWI) X . lemmatized by the method under evaluation to the total number of target phrase types.
+ bles 1 and 2 show higher accuracy for WOLWI and WLWI than for Sanduijav et al., except for verbs. Because WOLWI, WLWI, verbs was low because many target verbs were omitted from the verb dictionary and were therefore mistakenly lemmatized as noun phrases. This problem will be solved in the future by enhancing the verb dictionary. Overall, however, WOLWI and
+WLWI had higher accuracy than Sanduijav et al. In addition, the accuracy of WLWI was higher than that of WOLWI. There-fore, the loanword identification rule was effective in the lemmatization.
+
+Fig. 10 shows our analysis of the errors produced by WLWI.  X  X  X ews X  and  X  X  X ech X  denote the newspaper articles and the and the correct answer, respectively.
+
+Error (a) occurred with nouns, adjectives, and numerals, in which the ending of a content word was mistakenly recog-tionary. Therefore, a number of nouns and adjectives were incorrectly lemmatized as verbs. words can be used as features for determining the part of speech of a target word in a context.
+For example, the multiple parts of speech word  X  X  X  Y p ''k'y verb  X  X  X  Y p ''k + y (to surround + suffix) X , as in the following sentences.  X  X ' , o k a y x ys a vm T ys x Y p ''k'y  X  X  .(This is the first zoological park .)
+X Y ybq Y qk a ;bkk a u aa ys y kv aac ,blybqu x Y p ''k'y , (Because of human activities, the environment and atmosphere that surround us have been changed.)
+In the first sentence  X  X  X  Y p ''k'y  X  is used with the word  X  X  X  together, the probability that  X  X  X  Y p ''k'y  X  is used as a noun is high. In the second sentence, there are  X  X  which is an auxiliary verb in Mongolian, often occurs immediately after verbs. Therefore, the possibility that  X  X  X  used as a verb is high.
+ extra verb or noun dictionaries are not required to resolve Error (e). This issue should be explored in future. 5.3. Evaluating the effectiveness of lemmatization in information retrieval We evaluated the effectiveness of our lemmatization methods in information retrieval by performing two experiments.
+In the first experiment, we evaluated the methods in terms of retrieval accuracy, using the mean average precision (MAP) each relevant document is retrieved. MAP is the average of the average precision values for all test queries.
+Technology X  in English. Each technical abstract contains one or more keywords. In Fig. 11 , the keywords include  X  X  bqkl' c (blood serum) X  and  X  X  ' x ' c (placenta) X .
+ sidered an abstract that was annotated with the query keyword in the keyword field to be a relevant document. For an LQ, we considered an abstract that was annotated with all query keywords in the keyword field to be a relevant document. In this way, we were able to avoid relevance judgments. There were 4485 and 1075 queries for KQ and LQ, respectively. The average numbers of relevant documents were 1.50 and 1.00 for KQ and LQ, respectively.
+
+The target documents were the 1102 technical abstracts, from which we extracted content words in the title, abstract, purposes. We used a variation of Okapi BM25 Robertson, Walker, Hancock-Beaulieu, and Gatford, 1995 as the retrieval mod-quency (IDF) factor used in Okapi BM25, which takes a negative value when n number of documents in a corpus and n t denotes the number of documents containing term t . dl
+We also performed pseudo-relevance feedback (PRF) (Manning et al., 2008 ) for query expansion purposes, in which top documents were collected in the initial retrieval and from those documents highly ranked terms are added to the original tors in Eq. (2). Details of these values will be explained later.
+
+In the first experiment, queries were limited to the keywords annotated in the documents. In addition, because newspa-per articles do not contain keywords, we cannot perform the first experiment on the newspaper articles.
+Therefore, to complement the first experiment, we performed the second experiment. If a query exists in a document in inflected form, the document cannot be retrieved without lemmatization. In the second experiment, we used  X  X  X uery Cov-ments. The value of QC, which ranges from 0 to 1, increases as the accuracy of the lemmatization improves. We used the 183 newspaper articles and the 1102 technical abstracts as two corpora.
+
+Table 3 shows the MAP results of the first experiment for the different lemmatization methods.  X  X  X OPRF X  and  X  X  X RF X  de-results of the PRF experiment. The parameter values for PRF were optimized for no lemmatization. While we changed the We used these parameter values for all methods.
+ et al. B X  are based on correct lemmatizations A and B, respectively.
+
+Comparing no lemmatization with other methods, any lemmatization method improved the MAP for all cases, irrespec-tive of the query type (KQ or LQ) and whether PRF was used (NOPRF or PRF). Comparing WOLWI and WLWI with Sanduijav et al. (A and B), WOLWI and WLWI had an improved MAP for all cases. Comparing WOLWI with WLWI, WLWI had an im-for the combination of LQ and NOPRF.
+ two results was not significant.
+
+In Table 4 , the MAP differences between no lemmatization and both correct lemmatizations were statistically significant was effective for information retrieval in Mongolian. The MAP differences between no lemmatization and WOLWI or WLWI ijav et al. (A and B).
+ The MAP differences between WOLWI and WLWI were significant for all cases, except for the combination of LQ and PRF.
+Therefore, we can state that applying the loanword identification rule to a lemmatization was effective in information retrieval.
+
+The MAP differences between WOLWI and the correct lemmatizations were statistically significant for KQ combined with for LQ combined with either NOPRF or PRF. While the MAP difference between WOLWI and the correct lemmatization B was in information retrieval.
+
+Tables 5 and 6 show the results of the second experiment, giving the QC values for the newspaper articles and technical two types of correct answers, namely the correct answer from assessor A (Correct answer A) and the correct answer from assessor B (Correct answer B). The average numbers of content word types in the newspaper articles using Correct answers A and B were 207.39 and 205.56, respectively. The average numbers of content word types in the technical abstracts using Correct answers A and B were 101.32 and 103.89, respectively.
+
+The tendency in Tables 5 and 6 was the same for both Correct answers A and B. When using any lemmatization method, the QC values were higher than those for no lemmatization. The QC values for WOLWI and WLWI were higher than those for Sanduijav et al., and the QC values for WLWI were higher than those for WOLWI. According to Tables 5 and 6 , and using document.
+
+In summary, as for the first experiment, the second experiment verified the effectiveness of our lemmatization in infor-6. Conclusion In Mongolian, two different alphabets are used, Cyrillic and Mongolian. In this paper, we focus solely on the use of the Cyrillic alphabet, and the language is simply termed  X  X  X ongolian X .
+
+In Mongolian, each sentence is segmented on a phrase-by-phrase basis. A phrase consists of a content word, such as a concatenated with suffixes.
+
+The process of identifying the original form of content words in Mongolian text, termed  X  X  X emmatization X , is crucial for natural language processing and information retrieval.
+
+In this paper, we have proposed a lemmatization method for Mongolian, in which we targeted nouns, verbs, adjectives, and numerals. Loanwords, which can be nouns, adjectives, or verbs can also be concatenated with suffixes. Because loan-for conventional Mongolian words. Therefore, exceptional lemmatization rules are required for loanwords.
+Our lemmatization method does not rely on noun dictionaries, enabling us to lemmatize out-of-dictionary words. Instead rule. We have also produced loanword identification rules to identify loanwords. For loanwords, we have produced excep-tional suffix segmentation rules.
+
+We used newspaper articles and technical abstracts to evaluate our lemmatization method by experiment. The accuracy and demonstrated that retrieval accuracy and query coverage were improved by our method. Our research is the first sig-nificant effort in applying lemmatization to information retrieval in Mongolian.
+
+Future work will include improvements to loanword identification and tagging parts of speech to improve the lemmati-in future.
+ References

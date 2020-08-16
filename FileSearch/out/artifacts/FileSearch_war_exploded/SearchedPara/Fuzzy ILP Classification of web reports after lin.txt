@@ -1,0 +1,41 @@
+ 1. Introduction our previous work on web information extraction and fuzzy inductive logic programming (fuzzy ILP). ness in such a message.
+ ILP Classifier X ).
+ both of these places.  X  syntactic (tectogrammatical) trees built from sentences of the processed text. tion; so only the approach is fuzzy in the present demonstration.
+ ILP Classifier.
+ and compare the methods with other well-known classifiers. Section 7 concludes the paper. 2. Related work chapter  X  X  X pinion Mining X  X  in the book of Liu (2007) .
+ proaches addressing the classification problems with the monotonicity constraint. ner elements of a node with an appropriate class label to the existing data whenever necessary. ming boosting in the cited paper) is applied.
+
+Baets, &amp; Cao-Van, 2008 ) and rough sets ( Bioch &amp; Popova, 2000 ). 3. Design of the system cation of ILP and fuzzy stands for the fuzzy method (subject of the paper), see in the next sections. 3.1. Linguistic analysis tectogrammatical dependency trees ( Mikulov X  et al., 2006 ) built up from the text. 3.2. Web information extraction tion process requires human assistance when annotating the training data. 4. The case study  X  accident seriousness classification classification. The whole dataset can be downloaded from our Fuzzy ILP Classifier X  X  web page. ahead. 4.1. Features of accidents and keep the values unknown in the knowledge base. A brief explanation of each attribute follows: size is length of text of a particular report. damage is an amount (in CZK  X  Czech Crowns) of summarized damage arisen during a reported accident. dur _ minutes is time taken to handle an accident. fatalities and injuries are numbers of deaths and wound people sustained in an accident. cars is the number of vehicles damaged during an accident (mostly during car accidents). pipes is a number of used fire hoses. lather , aqualung and fan (ventilator) indicates whether these devices were used.
+A majority of accidents are of the type fire (52%) and car logical disasters, chemical accidents, etc. 4.2. Seriousness ranking and these groups determine the target class attribute of the classification task. 5. ILP models and methods
+To make the paper easier to read, we present a short description of the ILP techniques below. 5.1. Classical ILP In our presentation of ILP we follow Dzeroski and Lavrac (2001) and Muggleton and de Raedt (1994) . background knowledge denoted by B are given. The task of ILP is to find a hypothesis H such that and main advantage of ILP is its multirelational character, namely, B can reside in several relational tables. 5.2. Fuzzy and GAP induction k u k The satisfaction f is defined by given. The task of fuzzy ILP is to find a fuzzy hypothesis H : H ! X  0 ; 1 such that we have That is, it cannot happen that or rephrased: if E is rating e 1 higher than e 2 , then it cannot happen that e tion of fuzzy ILP we refer to the paper ( Horv X th &amp; Vojt X  X , 2007 )). restriction of) generalized annotated programs. 5.3. Translation of fuzzy ILP task to several classical ILP tasks T # [0, 1].
+ We construct two classical background knowledge sets B raw The first ( B raw T ) is a direct coding of a fuzzy value by an additional attribute: If B  X  p  X  x  X  X  X  t ; t 2 T , then we add p ( x , t )to B raw The second ( B mon T ) is obtained by a process called monotonization:
+If B  X  p  X  x  X  X  X  t ; t 2 T , then for all t 0 2 T , t 0 6 t .
+ Additionally, example sets are constructed in two ways.
+ classical sets of examples E t and E P t as follows: E t = P t [ N t , where e 2 P t if f E  X  e  X  X  t and N t is the rest of E .
+E P t = P P t [ N P t , where e 2 P P t if f E  X  e  X  P t and N one ( mon ) can be understood as (and translated back to) fuzzy ILP.
+
+The raw ILP task is given by B raw T and E t for each t 2 T . As a result, it produces a set of hypotheses H The mon ILP task is given by B mon T and E P t for each t 2 T . As a result, it produces a set of hypotheses H ples of a degree of at least t .
+ predicate; hence, there are no variable boundings on the truth value attribute in H value attribute to the predicates in E .
+ Now we sketch the translation of the mon ILP task to GAP (fuzzy ILP) rules. target predicate in the domain of E and for each t 2 T, H according to the definitions introduced above. We define H consisting of one GAP rule: here B 1 :x 1 &amp; &amp; B m :x m is the enumeration of all predicates in B. each rule in H P t (C P t is the monotonized target predicate) we give a constraint in the definition of u as follows:
+Note that all x i and y are variables, t i and t are constants and x tone X  X  completion of the rules.
+ rule is a correct solution of the fuzzy ILP task given by E and B , for all R 2 H In our case serious(Accident _ ID) is the fuzzy or GAP target predicate C . Let for example t = 3 and H
+Fig. 9 (the last two rows correspond with H P 3 ). Then serious C and B 1 , B 2 and u are realized as follows: lowing restrictions hold true: for t =3: and similar restrictions for t =1,2.
+ be equivalent, see in Krajci et al. (2004) . 5.4. Implementation have used  X  X  A Learning Engine for Proposing Hypotheses  X  X  (Aleph v5 Prolog) in its background.
+ edge bases and example sets.
+
+In construction of a crisp example set E t , the target predicate is denoted as seriousness degree. We use multiple unary predicates serious between the multiple ILP tasks is then clearer.
+ In construction of a fuzzy (or monotonized) example set E examples in Fig. 5 .
+ predicates and fill them with actual values. It is illustrated in ( Fig. 6 ). In construction of a monotonized background knowledge B mon onization rules. An example for predicate damage is shown in Fig. 7 . The first rule deals with does the monotonization.
+ Negations used in Figs. 7 and 8 are the standard Prolog negations as failure . criterion does not exist for the crisp hypothesis, so we simply use the first applicable rule. data, but the monotonized approach does not suffer from this shortage. We can always select the bottom value.
+Another advantage of the monotonized approach is that the set of positive training examples is extended by monotonization. 6. Results
+Fig. 9 summarizes obtained hypotheses learned from our data: a crisp hypothesis learned from E t and B raw T and a monotonized hypothesis learned from E P t and B mon T .
+ the monotonized hypothesis uses only the monotonized predicates. 6.1. Evaluation ( Manolescu et al., 2008 ).
+ sifiers were compared with five additional classifiers: Multilayer Perceptron ( Bishop, 1996 ).
+ Support Vector Machine classifier SMO ( Keerthi, Shevade, Bhattacharyya, &amp; Murthy, 2001 ). J48 decision tree ( Quinlan, 1993 ).
+ JRip rules ( Cohen, 1995 ) and Additive logistic regression LogitBoost ( Friedman, Hastie, &amp; Tibshirani, 2000 ).
+LogitBoost. 6.1.1. UCI datasets (UCI) ( Frank &amp; Asuncion, 2010 ) and evaluated all the methods against them. datasets (see in the legend of Table 3 ).
+ others.
+ ting of learning parameters. 7. Conclusion inductive logic programming.
+ domain and it utilizes the fact that the domain is or can be monotonically ordered. cation, but it was many times slower than all the methods in terms of time complexity. Acknowledgments
+This work was partially supported by Czech Projects: GACR P202/10/0761, GACR-201/09/H057, GAUK 31009, MSM-0021620838 and SVV-2010-261312.
+ References

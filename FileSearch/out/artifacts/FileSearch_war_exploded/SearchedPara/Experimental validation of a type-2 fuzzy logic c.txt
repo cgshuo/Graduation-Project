@@ -1,0 +1,101 @@
+ 1. Introduction
+One of the effects of the globalization is that people travel more covering longer distances, live far from their work place and consume goods from all around the world. Therefore, it is no coincidence that the transport of people and goods represents more than 25% of the energy consumption worldwide. Several efforts must be done to reduce the oil dependence, the energy consumption and the environmental impact of transport systems.
+In this perspective, the French Army (DGA) has support the design and construction of the Electrical Chain Components Evaluation vehicle (ECCE). It is a mobile laboratory to evaluate under real conditions the components of hybrid electrical vehicles that reduce the energy consumption and the pollution emission of conventional vehicles. The principal objective of the research presented in this paper is to present experimental validation results of the type-2 fuzzy logic based energy management supervision system implemented in ECCE and presented in Solano Mart X   X  nez et al. (2011) .
+
+Recent researches have shown the interest of using type-2 fuzzy logic systems in different engineering applications such as traffic management ( Balaji and Srinivasan, 2011 ), control of and Wan Tan, 2006 ). The controller considered in this paper is designed using knowledge engineering as proposed in Mendel (2001) and presented in Solano Mart X   X  nez et al. (2012b) .
+This paper is structured in the following sections: Section 2 presents the ECCE test bench; Section 3 introduces the energy management strategy as well as the design of the fuzzy logic controller used to define the output of the fuel cell system.
+Section 4 presents experimental results and Section 5 presents the conclusions and outlooks of the research. 2. ECCE test bed HEV
+The Electrical Chain Components Evaluation (ECCE) vehicle is a mobile laboratory used for researches under real conditions on technological solutions for Hybrid Electrical Vehicles (HEVs). The ECCE mobile laboratory, which was driven for the first time on 2003, is presented in Fig. 1 .
+
+ECCE is designed for real-world evaluation of electrical com-ponents such as electrical machines, power converters or energy sources. Its traction chain is composed by four independently controlled electrical machines. ECCE mobile laboratory can be equipped with various energy sources such as fuel cell systems (FCS), internal combustion engines (ICE), ultracapacitors (UCS), batteries and/or Flywheel Systems (FWS).
+
+Phase I of ECCE project (1997 X 2005) was devoted to design, construction and evaluation of the vehicle. It focused on a configuration based on batteries and ICEs, the study of energy management ( Pusca et al., 2002 ) and the study of the batteries and electrical machines ( Espanet et al., 2006 ). Phase II of ECCE project (2008 X 2012) focuses on the integration, control and management of different energy sources available for transport the French Army (DGA) and managed by the University of Franche-Comte and the FEMTO-ST laborator y. It counts with the participa-tion of Panhard General Defense and Helion Hydrogen Power.
+The hybrid source retained in this paper, integrates a fuel cell system (fuel cell and power converter), an ultracapacitor bank (and its power converter) and a batteries bank which imposes the voltage to a 540 V DC bus. The energetic configuration of the vehicle is illustrated in Fig. 2 . 3. Energy management strategy
+The objective of the energy management strategy in ECCE, is to find the UCS, FCS and batteries power references to supply the vehicle power consumption (motor drives and ancillaries) as defined by Eq. (1) . However, as the batteries are directly con-nected to the DC bus (see Fig. 2 ), the power flow of this source to finding the UCS and FCS power references
+P 3.1. Global EMS objectives, inputs and outputs
+The proposed Energy Management Strategy (EMS), only considers priority source to supply the power. A fuzzy logic controller is selected to perform the local energy management of the FCS.
+The first step to design the EMS is to define a global EMS regarding the characteristics and constraints of both the vehicle and the hybrid source. The second control level of the EMS is defined without considering the energy sources separately. The global objectives of the EMS are defined as
+To guarantee the general power balance and to recover the maximal amount of braking energy (Eq. (1) changes if mechanical braking is applied.)
+In steady state, the power is totally provided by the fuel cell system (fast and easy to recharge). It is also the only real  X  X nergy X  source on the vehicle.
+
+The UCS ensures the dynamic answer and guarantees enough energy to accelerate the vehicle and enough capacity to recover energy.
+
+To minimize the battery (DC bus) voltage variation and to minimize the use of this source because it is less efficient and presents a lower durability than the UCS.
+
+Currents, states-of-charge, powers and/or voltages (and change
+The EMS enables degraded operation (i.e. failure of any of the power sources).
+
+The EMS is realized without knowledge of future driving conditions. It only uses real-time information to compute the output power references
+Reference power: the propel power (to drive the motors) depends on the actual speed of the vehicle and on the accelerator and brake pedals positions. The auxiliary power depends on the ancillary implemented on-board (as for exam-ple compressors or pumps).
+
+Fuel cell power: the value of the output power of the FCS (measured after power electronics, because this is the net contribution of the FCS to the power sharing).
+ Batteries SOC: estimated batteries state-of-charge.
+ UC SOC: estimated ultracapacitor state-of-charge.
+
+UC voltage: measured voltage at the ultracapacitor bank (before power electronics).
+ DC bus voltage: measured voltage of batteries.
+ Vehicle speed: measured vehicle speed.
+ The EMS has the following two outputs:
+UCS output reference power: the power (or the current) supplied by the UCS.
+
+FCS output reference power: the power (or the current) supplied by the FCS. 3.2. Local energy management strategies
+As the control of the sources is independently realized, the sources with the global EMS objectives as presented in Table 1 .
+Using Table 1 it can be defined that: the UCS supplies the dynamic power required by the load and is considered to perform recovery braking. The FCS ensures the autonomy of the vehicle, and regulates the state of charge of the storage sources. The battery power flows are minimized to reduce the voltage varia-tions on the DC bus and also to increase the durability of the (2011) . 3.3. Fuzzy logic controller
+As previous knowledge of the driving cycles is not considered, human expertise is used to design the Fuzzy Logic Controller (FLC) which controls the FCS. An energy management survey was performed among experts in energy management of HEV. Type-2 fuzzy logic MFs (T2-FLC) are retained because they consider the uncertainty in the answers and the fact that different experts think different and define different rules. This survey-based FLC has been presented in Solano Mart X   X  nez et al. (2012b) .Anon-
+The first input of the fuzzy system is the difference between the power consumption of the vehicle and the power supplied by reference and the estimated value of the UCS state-of-charge ( D SOC). The inputs are represented by seven linguistic labels: Negative High (NH), Negative Medium (NM), Negative Low (NL), Zero (Z), Positive Low (PL), Positive Medium (PM) and Positive power supplied by the fuel cell system ( D P FCS ). This output is represented by seven linguistic labels: High Decrease (DH), Medium Decrease (DM), Low Decrease (DL), Hold (H), Low
+Increase (IL), Medium Increase (IM) and High Increase (IH). The input MFs have been selected to be triangular for the labels NM, NL, Z, PL and PM and trapezoidal for the labels NH and PH. The
+MFs are selected to be symmetrical around the zero axes. The MFs that represent D P and D SOC are, respectively, presented in Figs. 3 and 4 .
+
+The experts were asked to define the 49 (7 7) rules of the fuzzy logic system using the specified linguistic labels. These answers are used to define the rules of the fuzzy system. The processed rules are summarized in Table 2 .
+
+To avoid real-time calculation issues, the type-2 fuzzy logic controller is mapped off-line. The control surface is presented in Fig. 5 .
+ -1 0.48 1 0 1 -1 0.179 0.6958 1 0 1 -1 -0.121 0.1691 0 1 -1 -0.6958 -0.179 1 0 1 -0.8275 -0.4275 -0.0869 -1 -0.48 1 0 1 -1 0.0509 0.3403 1 0 1 -1 -0.3403 -0.0509 1 0 1 4. Experimental validation
+The energy management system (software and hardware) is implemented using a dSPACE AutoBox programmable controller. This system generates current references for the UCS and FCS as required by their control systems. The experimental validation moving the vehicle) and secondly, driving validation. 4.1. Static validation
+Static evaluation presents very interesting characteristics to evaluate the EMS: the experimentation is easy to control (and to stop if any problem occurs) and the load power consumption can be easily imposed and controlled. A variable resistive load (adjustable power resistor) is directly connected to the DC bus .
+The nominal value of the load is 100 kW @ 500 V (in steps of 5 kW). The EMS is implemented using the parameters given in
+Table 3 . As the dynamic control of the UC SOC based on the speed is not possible, the reference value for the UC SOC control is imposed by the software. Batteries SOC control is not considered.
+The first evaluation performed consists into imposing different variations of the charge and analyzing the global power distribu-tion between the different sources. The principal interest of performing this test is the fact than the load can change from zero to the nominal value much faster than in driving conditions. increasing or decreasing in variable steps (from 5 [kW] to 75 [kW]). The figure presents the power distribution between the different sources, the current in FCS and UCS and the DC bus voltage.
+
+The FCS power regulates the UC state-of-charge and has relatively low frequencies.
+
+Maximum and minimum limitation values of FCS current are validated as well as the maximum value of the UCS current. The output currents of the sources follow their references.
+The UCS supplies the transient power to the load (high dynamics) and enables energy recovery (in this case from the FCS).
+
+The power contribution as well as the voltage variation of the batteries is highly minimized. The batteries reinforces the UCS when required (e.g. from time 345 to 355 [s] or from 425 to 438 [s] when a high load is applied and the UCS current reaches its maximum value.
+
+The second evaluation performed consists into verifying the operation of the overcharge and discharge limits in the UC and verifying the operation of the UC SOC control by the FCS. 0 1 0 1 0 1 0 1 limitation for the UCS. To evaluate this limitation two different tests are performed.
+
+First, the load resistor power was selected to be higher than the maximal output power of the FCS, then, the UCS power reference is always positive. It can be observed (from time 170 to 210 [s]) that the UC SOC remains in the predetermined limits (discharge protection validation). As a consequence, the batteries discharge while supplying power to the resistor. Second, the load resistor is switched off; the FCS is manually operated in order to supply a maximal power. It can be observed (from time 600 to 800 [s]) that the UC SOC remains in the predetermined limits (overcharge protection). The batteries charge in this operation conditions. Fig. 7 (b) illustrates the evaluation of the UC SOC control. The dynamic reference is temporarily modified to study how the UC SOC follows the reference. It is important to highlight that the speed of the UC SOC controller can vary drastically regarding the operating conditions.
+
+The UC can be relatively fast discharged when the requested load power is high or relatively fast charged when the requested load power is low.
+
+If the requested load power is low or null, the UC discharge is only possible by charging the batteries. This is however limited by the EMS (limits in DC bus voltage, FCS minimal current and battery power). This is illustrated in Fig. 7 (b).
+
+If the load power is high (higher than the FCS nominal power), the charge is only possible using the batteries. This operation is also very limited by the EMS.
+
+The third evaluation consists into verifying the operation of the limits in maximal current rate change of the FCS as defined in
+Table 3 . The evaluation consists into applying a high load when the FCS power is low and the UC relatively discharged. The FCS
+EMS then imposes a maximal variation of the reference power (to supply the power and to recharge the UC). Fig. 8 shows that when the power load is applied, the FCS power increases at a maximum rate until the FCS reaches the limit in maximal power. 4.2. Driving validation Driving validation is performed on a drive circuit located in
+PANHARD. The evaluation of the EMS is performed to analyze its operation in the vehicle under real-world situations. The EMS is uploaded into the dSPACE Autobox using the parameters given in Table 4 .
+ Figs. 9 and 10 present nominal operation conditions with
+UCS X  X CS and batteries experimental results. They are satisfactory and in agreement with the simulation results presented in Solano
+Section 3.1 are fulfilled. Fig. 9 presents the power distribution between the energy sources. Fig. 10 additionally presents the speed, the UC and battery SOC and the DC bus voltage.
+Reference power: the amount of available braking energy was lower than expected because the driving circuit was very constrained in terms of slope and curves. Moreover, when driving in negative slopes (where the energy is expected to be recovered) the circuit is very curved and the energy is used to supply the power steering.
+ Battery power: it remains almost constant, except when the UC are relatively discharged and the battery reinforces it.
+Ultracapacitor system power: the UCS supplies most of the dynamic power solicitations.
+
+Fuel cell system power: the FCS supplies the mean energy and controls the UC and batteries SOC. The output power remains into determined limits.
+
+DC bus voltage: it varies with the battery output power, but stays in assigned limits.
+
+Battery state-of-charge: the battery SOC control is verified: a contribution of 5 kW is observed almost all the time because the SOC is higher than the reference.
+
+Ultracapacitor state-of-charge: the UC SOC control is verified: at low speeds the UC is charged by the FCS, at high speeds the UC discharges.
+
+To emulate the UCS fail, the output of this element is imposed to be zero. In this degraded operation the batteries supply the dynamic response and the output voltage is not stable as in the configuration including the UCS. The batteries SOC is never-theless controlled by the FCS. Experimental results are presented in Fig. 11 .
+
+To emulate the FCS fail, the output of this element is imposed to be zero. In this configuration the UCS supplies the dynamic response and the output voltage variation is much lower than in the degraded configuration without UCS (this element minimizes the DC bus voltage variation). The batteries control the UC SOC, however, the batteries SOC cannot be controlled and then a progressive decrease in the batteries voltage can obviously be noticed. Experimental results are presented in Fig. 12 . 5. Conclusion and further work
+Experimental validation of a type-2 fuzzy logic based energy management system is performed using a mobile laboratory. be observed an energy management system which fulfills the control objectives. These experimental results can be seen as evidence that T2-FLCs are well adapted for use in energy management of hybrid electrical vehicles. However, as the research presented in this paper does not consider optimization of the FLC, it does not present enough evidence to affirm that type-2-FLC are better performing than type-1 FLC. Nevertheless, thanks to the proposed survey and the use of type-2 FLC, the knowledge of different experts among the world can easily be integrated into one single fuzzy controller.
+
+As perspectives of research, regarding the energy manage-ment, it could be interesting to redefine the dynamical references of the state-of-charge of the UC and the batteries by considering the road slope and/or forecasting of the traffic (e.g. using GPS information). It could be also interesting to consider energy management of hybrid sources where the load profile can be partially known in advance (such as in stationary applications or val T2-FL membership functions were retained in this research. Further researches are currently considering the implementation of general type-2 membership functions. It could be also interesting to study the optimization of the type-2 fuzzy logic controllers.
+ References

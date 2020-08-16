@@ -1,0 +1,5 @@
+ 540 M. Huang and X. Zhu a kernel function for any non-negative  X  . 542 M. Huang and X. Zhu 544 M. Huang and X. Zhu Kernel Precision (%) Recall (%) F 1 score (%) 
+EPK (Edge-based Path Kernel) 77.84 29.75 43.05 respectively ). 
+Weight Precision (%) Recall (%) F 1 score (%)  X   X   X   X   X   X   X 
+Weight Precision (%) Recall (%) F 1 score (%)  X   X   X   X   X  where LIN = 0.5*K 1 +0.5*K 2 and POL = K 1 +K 2 +0.25*(K 1 +K 2 ) 2 Kernel Combination type Precision (%) Recall (%) F 1 score (%) =SK K =SK K =NPK POL 69.98 48.25 57.12 =NPK K =EPK POL 70.81 45.63 55.50 Kernel Precision (%) Recall (%) F 1 score (%) Linear Kernel 62.11 44.25 51.68 RBF kernel 75.42 21.72 33.73 Polynomial Kernel 70.65 34.88 46.70 Sigmoid Kernel 55.66 46.50 50.67 SK+NPK 69.98 48.25 57.12 
+NPK+EPK 70.81 45.63 55.50 546 M. Huang and X. Zhu 

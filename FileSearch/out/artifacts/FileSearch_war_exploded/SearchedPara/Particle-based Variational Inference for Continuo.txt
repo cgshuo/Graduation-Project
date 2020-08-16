@@ -1,0 +1,7 @@
+
+Methods within this framework can provide:
+Guarantees of convergence.
+More accurate marginal estimation.
+Upper and lower bounds on the partition function.
+ (1) Draw weighted particles from each variable's domain. (2) Run importance -reweighted message passing over (3) Use the new messages to adjust the sampling (4) Repeat.
+

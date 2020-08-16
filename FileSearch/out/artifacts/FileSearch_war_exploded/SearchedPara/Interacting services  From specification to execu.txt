@@ -1,0 +1,227 @@
+ 1. Introduction performance, and sometimes even lead to new business opportunities. On the other hand, electronic communication also quired. To this end, service choreographies serve as contract that the companies have to conform to. in business processes promises quick adaption of software systems to changing business requirements [33].
+These scenarios involve multiple interactions and the complex dependencies between them must be addressed. agreed upon in the choreography. Violations could lead to exceptions in operations and might have legal consequences. a choreography and be able to suspend the sender of a message causing the violation.
+ tween different companies of a particular domain. However, due to a lack of suitable choreography modeling languages
+The Web Service Choreography Description Language (WS-CDL, [28]) is a prominent language in the field of service cho-of the used services.
+
+The Web Services Business Process Execution Language (WS-BPEL [51], BPEL for short) is the de facto language for ser-can be used to implement web services that show complex interaction behavior with their environment. Both external cutable business processes. BPEL processes themselves are offered as web services to the environment once they are de-ployed in a BPEL engine. Therefore, BPEL is well suited as implementation language for the runtime of web services. represented appropriately [36].
+
+In this article we present a requirements framework for service choreography languages, which is largely based on the to existing languages have to be introduced or a new language needs to be designed.
+ have already been presented in [17]. We show that BPEL4Chor is indeed suited to express choreographies. Furthermore, we investigate the integration of BPEL4Chor choreographies and executable BPEL processes. More specifically, we show how BPEL processes can be generated out of BPEL4Chor choreographies.
+ phies and introduces a choreography example. Section 3 presents the requirements framework, points to related work and with executable BPEL. Section 7 concludes the paper and points to directions of future work. 2. Service choreographies
+A motivating example illustrates the main concepts in service choreographies. Fig. 1 presents a sample choreography sues bids, based on pre-defined rules (which are not in the scope of this work).
+
+An auction works as follows. First, the seller service sends an auction creation request to the broker service, who acknowledges it with a confirmation message. As soon as the auction begins, bidder services can place bids that are in service acknowledges this.
+ sage exchanges between the services. Human involvement is not documented in this example, although it might be present. ticated algorithms and extensive financial data sets.
+
+While choreographies in general show how participant of different types interact with each other, we focus on service choreographies where all interactions are realized as electronic message exchanges.
+
+The Business Process Modeling Notation (BPMN [48]), used to express the example, is a popular language to model choreographies. The service types are represented by pools (big rectangles in the background). Message flows (dashed arrows) indicate which messages might be sent from a service of one type to a service of another type. Message events (circles containing a letter icon) represent message receipt activities while the rounded rectangles with outgoing mes-sage flow represent message send activities. Additionally you find timer events (circles containing a clock icon) and a number of control-flow constructs defining the behavioral dependencies between the different message exchange activities.
+
+While the BPMN diagram provides an appropriate overview by representing participant types and interactions, the dia-other aspects are only poorly supported and require further refinement in a service choreography. 3. Motivation of the approach
+The example in the previous section showed that choreographies easily go beyond simple sequences of message ex-changes between two services. What happens to the bidder service that has not placed the highest bid? What happens if a choreography must answer.
+ In this section, requirements are developed that can be used to identify shortcomings of choreography languages. benchmark modeling languages or systems regarding their support for typical use cases. While the workflow patterns [2] concentrate on control flow structures within service implementations, they do not capture scenarios where two or more pects that only apply to choreographies.
+ action patterns and (4) routing patterns.
+
+Through the analysis of these patterns, we extracted key requirements of service choreographies. At least following requirements must be fulfilled by a choreography language: multiple services are involved. Therefore, a choreography language must support multi-lateral interactions. ple our auctioning scenario includes a set of bidder services. A choreography language must support a (potentially unknown) number of services of the same type.
+ know where to send the payment details to.
+ important for the suitability of a service choreography language: cess the messages they receive. Often the message formats simply do not match. Initiatives such as RosettaNet show that it is possible and fundamental to agree on the message formats exchanged. Therefore, a choreography language has to natively support the definition of message formats.
+ choreographies is the limited reusability of the choreography.
+ formats, usually using XML Schema, as well as the information needed to interact with a physically deployed service X  needed, because their use would force the choreography adopters to follow these technical realizations. whether a service is realized using one port type or two port types or whether two messages are exchanged in a synchro-nous request/response cycle or asynchronously, should not require major changes in the choreography. Sometimes it is
+There should at least be an extension point to plug in corresponding configurations. A choreography language must sup-port interchangeability of technical configurations.
+
+R7. Time constraints . Time is an important aspect of choreographies. It must be agreed upon how long a certain message must be waited for and for how long certain messages are allowed. In our auctioning example, bids are not accepted once the auction is over. Therefore, a choreography language must support the definition of time constraints. conversation might be necessary. Therefore, a choreography language must allow the definition of exception handling. be possible to distinguish different conversations and to relate an incoming message to the messages previously sent or message such information can be found and who is responsible to generate which identifier. By checking the equality of an id included in a message and an expected id, correlation is carried out. A choreography language must support the definition of such correlation configurations.
+
+R10. Integration with service orchestration languages . BPEL is the de-facto standard to implement business processes based on web services. Therefore, choreography languages must allow an integration with BPEL, including easy generation of BPEL processes out of choreographies and extracting choreographies out of existing interacting BPEL processes. prominent choreography languages and workflow languages using the ten requirements listed above. A summary is given in
+Section 3.12. 3.1. Related work
+Different viewpoints for service-oriented design have been proposed in [23]; the differences between choreographies, [60] are used as synonyms for provider behavior.
+ identified, also allowing for a detailed analysis of choreography languages.
+
+In general, we can distinguish between two different modeling approaches in the choreography space: interaction models chronization messages would be necessary to turn such a locally unenforceable interaction model into an enforceable one fication (cf. [38]). It has not yet been investigated which approach is more suitable for the human modeler.
+Most academic work in the area of choreographies mainly focuses on formal verification of properties such as compati-will show a communication behavior as specified [21].
+
+A choreography definition can be used to enable proper message routing in an enterprise service-bus. In general, a ser-not standardized or further investigated [32].
+
+We presented an overview over BPEL4Chor in [17]. Decker et al. [19] show a mapping of selected concepts of BPEL4Chor checks the absence of deadlocks in choreographies. 3.2. Assessment of BPEL
+BPEL centers around message send and receive activities, defining if and when messages are sent or received by the BPEL covering sequences, parallelism, alternatives, repetitions and even multiple-instances where the number of parallel in-stances does not need to be known at design-time. Furthermore, BPEL covers exception handling and compensation, corre-lation and data flow.
+ out the need to implement the described services using BPEL.
+ cesses with matching port types does not guarantee that these BPEL processes are actually interconnected. The lack of a topology and the lack of interconnection between different communication activities make BPEL miss Requirement R2 .
+Services endpoints can be described by endpoint references, which in turn can be stored in BPEL variables. This storage endpoint reference. In addition, endpoint reference sets can be handled through corresponding XML schema types. In com-bination with the parallel forEach construct in BPEL, the  X  X  X ne-to-many send/receive X  pattern [7] is supported by BPEL. erence sets is cumbersome. Hence, we conclude that BPEL only partially supports Requirement R3 . clude that there is only partial support for Requirement R4 .
+ BPEL is tightly integrated with WSDL, where message formats are specified and thus make BPEL supporting Requirement link types are configured with WSDL port types and BPEL X  X  communication activities depend on WSDL operations. This in the BPEL process.
+ activities can be compensated if necessary.
+
+In BPEL, correlation sets are used to define which process instance an incoming message should be routed to. These cor-conformance checking lie outside the scope of the BPEL specification, it is defined what elements must be used and what from abstract BPEL to executable BPEL, we conclude that Requirement R10 is supported. 3.3. Assessment of BPEL light
+BPEL light [44] has been introduced as extension of BPEL to decouple BPEL and its technical details. BPEL each interaction activity is assigned to a conversation . To enable the usage of BPEL ment, the concept of  X  X  X ssignment X  is introduced. There, each is assigned to a WSDL operation. This makes BPEL light fulfill requirement R6 .
+
+In Ref. [45] the concept of a BPEL light partner element is extended to cover multiple partners of the same type. BPEL describe the interconnection of activities, which makes it still missing Requirement R2 .
+BPEL light supports a set of services. The declaration of a erenced partner set. If the partner is not contained in the set, the partner is added to the set. All in all, BPEL tinguish between a single participant and a set of participants and thus BPEL
+As in BPEL, reference passing is fully supported in BPEL light structure. As with BPEL, we conclude that there is partial support for Requirement R4 .
+Since BPEL light not change anything else in BPEL, the assessment for the other requirements R1, R5, R7 X  X 10 remains un-changed in comparison to the assessment of BPEL. 3.4. Assessment of WSFL
+WSFL [34] is a predecessor of BPEL, where control flow is modeled as graph. WSFL distinguishes between a  X  X  X low Model X  by the Global Model ( R3 ). Message formats are specified using XML Schema ( R5 ).
+
+The semantics of WSFL control flow is similar to that of BPEL X  X  specification mentions correlation, but not specify how correlation works ( R9 ). 3.5. Assessment of WS-CDL
+The Web Services Choreography Interface (WSCI [3]) and the Web Service Conversation Language (WSCL [4]) are the pre-decessors of the Web Services Choreography Description Language (WS-CDL [28]). WS-CDL is an interaction modeling lan-guages for web service choreographies. Being a candidate recommendation by the W3C since 2005, WS-CDL is mostly prominent example of a language following the interaction modeling style.
+
+The basic building blocks of WS-CDL are interactions. They are bi-lateral (between two web services) and involve either types. Role types define what behaviors (WSDL interfaces in the default case) have to be implemented by a corresponding ing 1 shows how the auction creation request and the response by the broker service can be described in WS-CDL.
+Listing 1. Sample interaction in WS-CDL &lt; interaction name="auctionCreation" &lt; /interaction &gt; &lt; exceptionBlock name="handleTimeoutException" &gt; &lt; /exceptionBlock &gt;
+A more detailed overview of WS-CDL can be found in [6] and an assessment of WS-CDL regarding its support for the workflow patterns and the service interaction patterns in [20].
+
+WS-CDL directly supports scenarios where multiple services are involved in one choreography (Requirement R1 ). This is Therefore, we opt for partial support for Requirement R2 .
+ only be known at runtime. This results in the fact that the workflow pattern  X  X  X ultiple-instances with a priori runtime second one is not. Therefore, we conclude that this service interaction pattern is only partially supported. clude that there is only partial support for Requirement R4 .
+
+While WS-CDL focuses on the behavioral aspects of a choreography, it relies on WSDL for the specification of message WS-CDL does not support Requirement R6 .
+ er message transmission exceptions, security failures and application failures (Support of R8 ). the correlation information is placed. This is an example of how tightly WS-CDL is linked to WSDL. Whenever the message the choreography definition is not desired.
+
+There have been proposals to generate abstract BPEL processes out of WS-CDL choreographies [41]. However, it remains unclear how constructs like blocking work units can be realized in BPEL. WS-CDL also allows the specification of mixed when trying to properly translate them to interacting BPEL processes. Here, sophisticated synchronization mechanisms
+BPEL includes a forEach construct which does not have a correspondence in WS-CDL. Therefore, we conclude that Require-ment R10 is not supported. 3.6. Assessment of Let X  X  Dance vice references.
+ comes with a behavioral view of choreographies, which allows to express the behavioral constraints between interactions tion of reference passing is present in Let X  X  Dance, service selection relationships cannot be modeled ( R4 ).
+No integration with WSDL or any other language for describing message formats has been done ( R5 ). Therefore, inter-the language ( R6 ).
+ addressed, either ( R9 ).
+ The generation of abstract BPEL processes was shown in [60]. While most control-flow constructs introduced in Let X  X 
+Dance are mapped to constructs in BPEL, the mapping does not cover a number of aspects present in Let X  X  Dance. As exam-
+R10 is at most partially supported. 3.7. Assessment of BPMN
+The Business Process Modeling Notation (BPMN [48]) is a graphical modeling language for intra-or inter-organizational
+BPMN allows to model interconnected participant behavior descriptions. However, BPMN lacks formal semantics and thus Our work of [18] shows how BPMN can be used in conjunction with BPEL4Chor to model service choreographies. exception handling via error events ( R8 ). Correlation configurations cannot be set in BPMN ( R9 ). An integration with existing service orchestration languages is given through the extensive work on mapping BPMN to
+BPEL. While mapping in both directions is possible for a large number of constructs, different coverage of concepts and conclude that there is only partial support for Requirement R10 . 3.8. Assessment of iBPMN iBPMN [15] is an extension to BPMN allowing for interaction modeling. While most of BPMN X  X  control-flow constructs are pools, indicating who own the choice or who can observe the events.
+
+In terms of support for the different requirements, there is no difference between BPMN and iBPMN regarding R1 and R3 possible.
+R10 is not supported in iBPMN as the interaction model cannot directly be mapped to orchestrations and a transformation of iBPMN to interface behavior descriptions (e.g. given in BPMN) is largely missing. 3.9. Assessment of BPSS/UMM
+The ebXML initiative (http://ebxml.org/ ) proposed the Business Process Schema Specification (BPSS [13]) to describe choreographies.
+
+BPSS is closely related to the UN/CEFACT Modeling Methodology (UMM [25]) which mainly describes the different steps to specify choreographies in a technology-independent manner. UMM also provides a meta-model for choreographies, nally specifies the services and operations (or messages) participants must support in order to implement a role. R3 ). Service selection and reference passing are not covered, either ( R4 ).
+
+While BPSS is technology-independent, WSDL files can be referenced in the Collaboration Profile Agreement ( R5 ). Time-not given ( R6 , R9 ).
+
+There has been a mapping of business transactions to executable BPEL code [26]. However, as business collaborations are not covered, we conclude that there is at most partial support for an integration with orchestration languages ( R10 ). 3.10. Assessment of SCA
+The Service Component Architecture (SCA) provides a model for building applications based on SOA [24,49] . Implemen-guages ( R10 ). If BPEL is taken as implementation language, SCA also supports all of the requirements BPEL supports. concrete interface, technical configurations cannot be interchanged ( R6 ). 3.11. Other choreography approaches
+Several industry initiatives have worked towards domain-specific choreography models in order to enable an easier inte-gration between different companies of that domain. Examples for such initiatives are RosettaNet ( http://www.rosetta-net.org/ ) for the supply chain domain, SWIFTNet (Society for Worldwide Interbank Financial Transfer, http:// proprietary notations to BPEL by making heavy assumptions about the concrete semantics. Such a mapping is currently available for RosettaNet only and presented in [29].
+
+WSDL 2.0 Message Exchange Patterns [46] offer means to specify the order of messages an operation expects and sends ited to one operation and thus does not cover a whole choreography which may span over multiple operations.
+Most languages mentioned above are procedural languages, where the approach is to explicitly enumerate all inter-declarative style of modeling. Declarative in this context means that all constraints are enumerated that apply for a set of interactions. That way, an  X  X  X mpty X  choreography would mean that all interaction sequences are allowed, while adding constraints limits the number of allowed sequences. In procedural languages, an  X  X  X mpty X  choreography would mean that no interaction is allowed and adding constructs enlarges the set of possible interaction sequences. The goal of declarative languages is to avoid overspecification, a common phenomenon that can be observed whenever procedural languages are used. An overview of declarative workflow models is given in [53]. Let X  X  Dance can be seen as a hybrid of also contains an  X  X  X nhibits X  relationship, where an interaction is no longer allowed once another interaction has happened.
+ 3.12. Summary of the assessments
+Table 1 gives an overview of the assessment of the different languages. As drawbacks of WS-CDL we see that service sets supported in WS-CDL decreases the suitability of WS-CDL to represent complex choreographies. Furthermore, WS-CDL is too with BPEL, which leaves service choreographies and service implementation disconnected. broker and not vice versa. BPEL is equally inflexible regarding changing technical configurations as WS-CDL is. BPEL ready resolves this problem. However, the main reason why BPEL and BPEL guages is that they do not provide a global view on interacting services.
+
+The other languages have far less support for the requirements. WSFL does not support advanced control-flow constructs fundamental concepts such as multi-lateral choreographies are not supported.
+
+The comparison of these languages shows that BPEL, BPEL light requirements. However, they are not satisfying with respect to our framework. Introducing a completely new language to are two possible solutions: (i) Enhance WS-CDL with service set capabilities, including a parallel (ii) Introduce choreography extensions for BPEL/BPEL light cution platforms, as well as the well-established processes to define and standardize extensions to BPEL. To gain interchangeability of technical configurations, BPEL light is not the only way to make BPEL WSDL independent, we introduce BPEL4Chor as new choreography language on top of
+BPEL. 4. BPEL4Chor ity of the choreography models is achieved.
+
+Modeling a choreography using BPEL4Chor mainly follows the modeling approach presented in [5]. (2) Specify the message links between the participants. This specifies the business documents that are exchanged (3) Specify the behavioral dependencies and data flow between message exchanges by defining each participant X  X  behav-other type. (3) A Participant grounding defines the actual technical configuration of the choreography. Here, the choreography mation can be run. This transformation transforms each participant behavior description into a BPEL process, where the details of the transformation itself are described in Section 6.
+ the example given in Section 2. 4.1. Participant topology at runtime. Imagine a large number of bidders involved in our sample scenario.
+ unsuccessful bidders.
+ participant set declared for a given type, then the number of participants is not defined at design-time.
+Listing 2. Participants in the participant topology &lt; topology name="topology" &lt; /topology &gt;
+A participant set for the bidders is also given. The participant reference same applies to sets, which may overlap in terms of referenced participants.
+
+In Listing 2, the declaration of the seller declares a selects does not exclude the case that every seller has exactly one broker service she always goes to.
+The attribute forEach on the set of unsuccessful bidders denotes that the
+UnsuccesfulBidders at the auctioning service should iterate over that set. The attribute pant currentBidder denotes that this participant reference should store the current value of the iterator. A may only iterate on one set. Thus, we require that for each participant reference pointing to it. ipantcanpotentiallycommunicatewithwhichotherparticipants.However,thetopologydoesnotincludeanyconstraintabout
+Some of the message links in Listing 3 also contain the attribute to another. E.g. consider the message link completion -NotificationLink
+Reference passing must also happen whenever the attribute ticipantRefs , where a reference to a third participant is passed, must include a reference to herself in the message. As knowledge about participants is local, the usage of required even in those scenarios where only one participant of a type is involved. Take seller sends a reference pointing to herself, enabling the auctioning service to reply later on.
+Listing 3. Message links in the participant topology &lt; topology name="topology" ... &lt; /topology &gt; referenced participant should be bound to a different participant reference, the attribute must be added to the set upon binding, provided that a reference to that participant is not yet contained in the set.
+The listing also shows that either the attribute sender or ticipant reference applies, senders is used if any participant out of a set can be the sender.
+Topologies by themselves only describe the basic structural aspects of a choreography. However, the typical usage for participant behavior descriptions in the topology. These attributes are explained in the next section. 4.2. Participant behavior descriptions
+Participant behavior descriptions (PBDs) cover the behavioral aspects of a choreography. Control flow dependencies be-tween communication activities are defined per participant type. These dependencies determine the ordering sequences of data relates to data previously exchanged.
+ lows us to add, e.g. opaque activities into a PBD, which is useful for documentation purposes.
+Communication activities . Message send and receive activities are at the center of attention in choreographies. BPEL introduces invoke and reply as send activities and receive used in BPEL4Chor.
+
+The usage of partnerLink , portType and operation attributes at the communication activities of BPEL link the BPEL partnerLink , portType and operation at communication activities.
+ Listing 4. Constraints of the  X  X  X bstract Process Profile for Participant Behavior Descriptions X  on the invoke activity
+In the topology, a message link references two communication activities. To enable proper referencing, we need an iden-tifier for each communication activity in a participant behavior description. Since bute name , we introduce the attribute wsu:id having the type onMessage branches. To simplify reading, the wsu:id attribute defaults to the attribute
+BPEL directly adopts some of the WSDL interaction styles. BPEL distinguishes between one-way interaction and request/ e.g. a request/response activity into two activities in the BPEL code. In this context, we force the attribute to be present in order to relate pairs of receive and reply pairs can no longer be determined by matching portType and
+Control flow . BPEL comes with a rich set of control-flow constructs, which are used unchanged in BPEL4Chor. This en-ables the reuse of existing BPEL tools to model choreographies. As examples to model branching structures and concurrency.
+
+Timing constraints play an important role in choreographies. Offers might only be valid for a certain timespan. In our constraints, namely wait and event handlers with onAlarm , are also reused unchanged.
+ contrast to this, data sets are not natively supported in BPEL. Special XSD types have to be used for this purpose.
+As a realization for the iteration on participant sets, the attribute spawned and the participant reference is used as iterator.
+
+Data flow . It should be specified in a choreography what contents can be expected by the receiver of a message. As an example the quantity of ordered products in an order message and the quantity in an order acknowledgment message must to provide further details when the goods offered have a certain value.
+ the first activity and input variable of the other, provided that no other activity overwrites the variable in between. can only be formulated as plain text.
+
+For documentation purposes it is sometimes useful to add hints about dependencies between data values. E.g. it could be activities with opaque from or to parts can be used in this context.
+
+Listing 5. Participant behavior description for the auctioning service &lt; process name="auctioningService" &lt; sequence &gt; &lt; /sequence &gt; &lt; /process &gt;
+Message correlation . BPEL comes with a built-in handling of message correlation. Since BPEL4Chor choreographies de-pend on BPEL and should not introduce any implementation dependencies, the correlation mechanism of BPEL is used un-changed: correlation may be specified in the participant behavior description. We allow the usage of the attribute left untyped and are not bound to WSDL. Actual typing will happen in the participant grounding.
+The abstract BPEL profile for participant behavior descriptions is referenced. 4.3. Participant grounding participant grounding introduces the mapping to web-service-specific configurations. So far, port types and operations semantic-based execution of each participant.
+
+After a process is grounded, the participant behavior descriptions can be transformed to abstract BPEL processes, where ticipant references and properties have to be assigned to WSDL artifacts in a participant grounding.
+Message links are targeted at one or more receive activities. A message link models the sending and consumption of one message and does not model multicast. Therefore, one message link is grounded to one WSDL operation. This allows for realizing one participant through different port types. The attributes link passing mobility in BPEL4Chor choreographies. In the case of executable BPEL, end service references are passed in messages. The mapping of participant references to concrete service references is done by grounding a participant ref-erence to a WSDL property. A WSDL property states where a certain element is located in different message types. Using that property, a BPEL process can extract the concrete service reference out of an incoming message regardless of the ferent messages. For correlation, we allowed untyped correlation sets. With the participant grounding, these sets get typed.
+ operation and each participant reference is grounded to a WSDL property. 4.4. Consistency between BPEL4Chor artifacts
+This section will introduce a number of constraints. These constraints are used to ensure consistency between BPEL4Chor artifacts.
+
+Participant references and message links . If there are several senders in a message link and the attribute
+ParticipantRefsTo is set, the list must match the participantRefs cardinality.
+
+Listing 6. Participant grounding &lt; grounding topology="auc:topology" &lt; /grounding &gt;
+A participant set having an attribute forEach must contain exactly one participant with a matching attribute for every forEach listed.
+Message links and communication activities . For every invoke activities given in a message link must be invoke or reply messageExchange , bindSenderTo has to be specified in the link l .
+
+Synchronism issues . If the output variable is specified for an a message link. The synchronous call must be matched on the receiving side by reply activities. On the other hand, each pair of receive activity.
+
+Completeness of participant grounding . All passed participant references, used message properties and message links the two attributes participantRefs and bindSenderTo .
+
+Conflicting groundings of message links can occur especially in choreographies with synchronous interactions. The cor-responding message links must be grounded in one WSDL request X  X esponse operation.
+
+Further consistency issues . The consistency constraints mentioned above can be detected easily in a BPEL4Chor cho-other participants. Such deadlocks are typically be detected in compatibility checking techniques [21]. An approach for checking the absence of deadlocks and proper termination was presented by Lohmann et al. [37], where the participant the topology. However, this approach abstracts from data flow and data-based decisions are treated as non-deterministic choices.
+ tion information was properly set. However, a mapping from BPEL4Chor to m -nets, an extension for Petri nets used in instance isolation analysis, is not available yet.
+
+When multiple participants of the same type are involved, it may frequently occur that some of the combinations of com-munication activities and participant references are not used in message links. For example, the receive activity UnsuccessfulBid is contained in the participant behavior description for the participant type participants for this type are bidder , successfulBidder and is only one message link targeting receiveUnsuccessfulBid
+Thus, the activity receiveUnsuccessfulBid of the participants are beyond the scope of this article.
+
+These constraints have to be ensured directly by a BPEL4Chor modeling tool or by a dedicated tool to check BPEL4Chor choreographies. Currently, BPEL2oWFN [37] implements an analysis of a subset of the presented constraints. 5. Assessment of BPEL4Chor BPEL4Chor is with regard to complex interaction scenarios. The examples provided further illustrate the capabilities of sented in Section 5.5. 5.1. Single-transmission bi-lateral interaction patterns geting sendRequest.
+
+Listing 7. Participant topology for the Send/receive pattern &lt; participants &gt; &lt; /participants &gt; &lt; messageLinks &gt; &lt; /messageLinks &gt; 5.2. Single-transmission multi-lateral interaction patterns In the case of the Racing incoming messages pattern, a party expects to receive one message among a set of messages. 10 lists the PBD for the receiver.
+
+Listing 8. Participant behavior description for participant type Requestor in the Send/receive pattern &lt; sequence &gt; &lt; /sequence &gt;
+Listing 9. Participant topology for the Racing incoming messages pattern &lt; participants &gt; &lt; /participants &gt; &lt; messageLinks &gt; &lt; /messageLinks &gt;
+Listing 10. Participant behavior description for participant type Receiver in the Racing incoming messages pattern &lt; pick &gt; &lt; /pick &gt;
+In the case of the One-to-many send pattern a party sends messages to several parties. Solution: in BPEL4Chor this pat-
+PBD for the sender.
+Listing 11. Participant topology for the One-to-many send pattern &lt; participants &gt; &lt; /participants &gt; &lt; messageLinks &gt; &lt; /messageLinks &gt;
+Listing 12. Participant behavior description for participant type Sender in the One-to-many send pattern &lt; forEach name="fe1" parallel="yes" &gt;&lt; scope &gt; &lt; /scope &gt;&lt; /forEach &gt; the PBD for the receiver.
+
+Listing 13. Participant topology for the One-from-many receive pattern &lt; participants &gt; &lt; /participants &gt; &lt; messageLinks &gt; &lt; /messageLinks &gt;
+Listing 14. Participant behavior description for participant type Receiver in the One-from-many receive pattern &lt; while &gt;&lt; condition/ &gt; &lt; /while &gt;
+Responses are expected within a given timeframe. The interaction may complete successfully or not, depending on the wise, the implementation in BPEL4Chor looks similar to the one for One-to-many-send .
+ 5.3. Multi-transmission interaction patterns
+In the case of Multi-responses a party X sends a request to another party Y. Subsequently, X receives any number of re-structures.
+ topology and Listing 16 lists the PBD for the requestor.
+ imum number. There is no direct support for this pattern in BPEL4Chor. As a workaround we could use a similar implemen-tation like the one used for One-to-many send/receive .
+
+Listing 15. Participant topology for the Contingent requests pattern &lt; /participants &gt; &lt; messageLinks &gt; &lt; /messageLinks &gt;
+Listing 16. Participant behavior description for participant type Requestor in the Contingent requests pattern &lt; forEach name="fe1" &gt;&lt; scope &gt; &lt; /scope &gt;&lt; /forEach &gt; 5.4. Routing patterns Listing 17 lists the topology and Listing 18 lists the PBD for the party B.
+ tion: by using a &lt;flow&gt; structure, the responses will be sent to A and to B.
+Listing 17. Participant topology for the Request with referral pattern &lt; participants &gt; &lt; /participants &gt; &lt; messageLinks &gt; &lt; /messageLinks &gt;
+Listing 18. Participant behavior description for participant type B in the Request with referral pattern &lt; sequence &gt; &lt; /sequence &gt; 5.5. Summary
+BPEL4Chor covers multi-lateral choreographies and introduces a topology. Service selection and reference passing are therefore supports Requirement R3 .
+
+Concrete message formats can be defined in the participant behavior descriptions and in the participant grounding bilities of BPEL. The integration of BPEL4Chor and executable BPEL ( R10 ) is discussed in the following section. Table 2 summarizes which service interaction patterns are supported in BPEL4Chor. In analogy to the assessments of WS-CDL in [20] we assign a  X  X + X  for direct support of a pattern,  X  X +/ X  X  for partial support and  X  X  X  X  for lack of support.
+When comparing BPEL4Chor with WS-CDL the following main differences can be identified: (1) Unknown numbers of participants are natively supported in BPEL4Chor through the notion of participant sets (cf. S5 (2) While a WS-CDL choreography is tightly coupled to WSDL files, web-service-specific details only appear in BPEL4-(3) As BPEL4Chor is based on BPEL, a seamless integration between choreographies and orchestrations is possible. While
+BPEL4Chor compares to BPEL/BPEL light as follows: (3) Service selection is natively supported in BPEL4Chor, which was not the case for BPEL/BPEL 6. From BPEL4Chor to executable BPEL
+While choreographies serve as interaction contract between business partners, they are not meant to be executed by themselves. However, they can serve as blueprint for actual business process implementation for the different partners. the definition of abstract BPEL processes and executable BPEL processes. Executable BPEL are processes which can be de-Section 3.2 that the BPEL specification defines a profile for process templates and a profile for observable behavior.
+The profile for observable behavior ensures that the interactions between the participants will not be changed during and describes constraints on the manual actions taken to advance from an abstract BPEL process to an executable BPEL process.
+
+When advancing from BPEL4Chor to executable BPEL two typical scenarios can be distinguished. (i) A BPEL4Chor chore-ticipant grounding and directly fed into an execution engine.
+
+In both scenarios there is a transformation step, where X  X ombined with the topology and participant grounding X  X  par-servable BPEL for short). The transformation from a participant behavior description to observable BPEL processes is an automatic step and described in detail in [56]. While most aspects are copied unchanged from the participant behavior description to the observable BPEL process, four challenges are to be tackled:
+Generation of partner link types and partner links. Partner links are excluded in BPEL4Chor, but required in the obser-pendant for participant references are service references in observable BPEL. Thus, participant references have to be mapped to service references.
+ not aware of a set of service references, we have to introduce them.
+ to be put into communication constructs, such as invoke or 6.1. Generation of partner link types and partner links participant grounding.
+ targeting at the bidder.
+ message link is grounded to the same port type. The grounded port type is set to the port type is put as partnerRole if the message link is outbound. 6.2. Realization of BPEL4Chor binding semantics to ensure that the correlation sets are properly used. The last moment when this may happen is when an executable com-pletion of the abstract BPEL process is made.
+ tioning service, which in turn uses this service reference to communicate with the seller. The message link the concrete point, where a service can be reached.
+
+The participant reference of the successful bidder is passed to the seller in the message link
+Link using the attribute participantRefs . Similar to a reference being passed using (cf. Section 6.3). 6.3. Realization of participant sets references. Therefore, we define sref:service-references to be a
+The forEach of BPEL may only iterate over numbers. Therefore, mapped to forEach activities iterating over a number and a nested to a partner link. 6.4. Inclusion of participant grounding details
+In the participant behavior description, communication activities have no partner link and no operation assigned. With for each communication activity. Thus, the attributes partnerLink activity. 7. Conclusion ness partners. Service choreographies describe the electronic messages exchanged and the dependencies between these ex-the shortcomings of using BPEL, WS-CDL and languages used in the context of choreography modeling.
+As main contribution, this paper introduced a choreography layer on top of abstract BPEL, namely BPEL4Chor. The differ-provided. The paper presented the modeling approach and presented how to get from a choreography model to executable
+BPEL processes, where all details necessary for execution are contained. By using abstract BPEL during the choreography modeling, the modeler is free to leave out process internal details and focus on the interaction behavior.
+Regarding the participant groundings, we demanded the variable types of a investigate other possibilities such as semantical grounding.
+
+As mentioned earlier, BPEL4Chor assumes a closed world. It is not possible to model message exchanges with an environ-can serve as a workaround at the moment. Furthermore, there is currently no possibility to compose different BPEL4Chor are a promising basis for solving this issue. However, BPEL for subprocesses has not been released yet.
+An infrastructure to monitor a BPEL4Chor choreography does not yet exist. Currently, violations of a choreography can
+This enables a proper reaction to violations, such as not delivering wrong messages and suspending senders of wrong messages.
+ Acknowledgment
+This work was partially supported by the German Federal Ministry of Education and Research (Tools4BPEL, project num-ber 01ISE08B).
+
+References

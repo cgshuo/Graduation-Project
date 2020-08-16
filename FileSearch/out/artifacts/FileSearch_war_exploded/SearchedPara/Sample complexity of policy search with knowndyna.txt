@@ -1,0 +1,19 @@
+ Divison of Computer Science and Department of Statistics  X  worse than the true optimal policy.
+ process implied by the simulator.
+ combinatorial dimensions.
+ spaces of dimensionality d state s where  X  Define the value V For a class  X  of policies, define The regret of a policy  X  0 relative to an MDP M and a policy class  X  is defined as nodes be at most 1.
+ of the input-output map and halting time, we refer the reader to [3, Chap. 2]. steps in our model of computation.
+ that  X  ( s ;  X  ) , P (  X | s, a ) and r ( s ) are ( X  ,  X  ) -computable. Let M machines that compute them.
+ illustrate this for the state-transition dynamics. the value of any policy by more than . To obtain sample rewards, given initial state s  X   X  =  X  (  X  ;  X  ) by  X  to generate the rewards  X  empirical estimates are computed as follows. Suppose, for 1  X  i  X  n , ( s ( i ) policy  X  by of  X 
+V to be a policy  X  0 such that a finite set X = { x there exists g  X  G such that for all i , b F such that for all i , b b Assumption A holds. Then ensures that E Reg log 1 / X  (2 R/ ( (1  X   X  ))) is the / 2 horizon time.
+ gives the bound on expected regret.
+ S the trajectory as follows. Recall that  X  The rewards are then computed by The H -step discounted reward sum is computed as Define the function class R = { ( s shown the dependence of  X  the pseudodimension of R can be written as we get the following bound by [2, Thm. 8.4], S | V H (  X  )  X  V (  X  ) | X  / 2 . Therefore, book [8]). Using a weak form of these results, we get Using the bound (5) on Pdim( R ) , we get that provided S them immediately follows by setting  X  = (1  X   X  ) /R .
+ . Since  X  Thus, for all  X   X   X  , V (  X  )  X   X  V H (  X  fact that  X  V H (  X  Denoting the event { Reg where we used the fact that regret is bounded above by R/ (1  X   X  ) . combinatorial dimensions.
+ The first example is a policy class F a class F is considerably less contrived than the second one.
+ Example 1 Let M [  X  1 , +1] , A = [  X  2 , +2] , Figure 1: Plot of the function f For a function f : [  X  1 , +1] 7 X  [  X  1 , +1] , let  X   X 
+F = {  X  f : f  X  X } We now describe a specific function class F (0 , 1) . Let  X  ( x ) = (1  X  X  x | ) + be the  X  X riangular spike X  function. Let Since  X  1 and 0 are fixed points of F Also, f n functions in F 11]). Moreover, f 0 prove the following lower bound.
+ Theorem 2. Let g on S . Then, empirical estimates  X  V .
+ Let us see how maximization of empirical estimates behaves i n this case. Since fat This means that the 1-step reward function family is just F regret of the  X  V maximizer  X  where e accompanying the paper.
+ Lemma 1. Fix an interval ( a, b ) and let T be the set of all its finite subsets. Let g obviously, implies the theorem.
+ Since, for all f  X  X  For all f sub-expressions above without changing the value by more th an 2  X  From (8), we know that f 2 restricting D to probability measures on (0 , 1) and applying Lemma 1, we get To finish the proof, we note that  X  &lt; 1 and, by definition, Example 2 nals) 0 .b irrational h ( T )  X  (0 , It is easy to check that with this definition, f 2 { f
+T : T  X  (0 , 1) , | T | &lt;  X  X  identity mix( x, y ) = stretch( x ) + stretch( y ) / 2 , every function f f Let H = {  X  f fixed function f and zero elsewhere, we cannot shatter even two points using H . Thus, Pdim( H ) = 1 . Theorem 3. Let g on S . Then, Sketch. Let us only check that the properties of F Theorem 2 are also satisfied by F f only for x  X  (0 , 1) . For such an x , | f Acknowledgments We acknowledge the support of DARPA under grants HR0011-04-1-0014 and FA8750-05-2-0249. References

@@ -1,0 +1,102 @@
+ 1. Introduction area) between different schemata. A powerful means to discover matches is the understanding of the to a label w.r.t. a thesaurus (WordNet [3] in our case) is a key tool.  X  company address  X  ), abbreviations (e.g.  X  QTY  X  ) and acronyms (e.g. WSD schemata. For this reason, a method to expand abbreviations and to semantically will refer to this method as schema label normalization . Schema label normalization helps in the identi between labels coming from different data sources, thus improving schema mapping accuracy.
+The rest of the article is organized as follows. In Section 2 ,wede
+Section 9 , we make some concluding remarks and illustrate our future work. 2. Problem de fi nition by comparing their meanings.
+
+De fi semantic relationships de fi ned in WN between their meanings.
+
+De fi nition 2 . Let S and T be two heterogeneous schemata, and E and T . A lexical relationship is de fi ned as the triple and t j . The lexical relationships are:  X   X 
+BT (Broader Term): de fi ned between two labels where the
+Narrower Term; it corresponds to a WN hypernym/hyponym relationship);  X  holonym relationship).
+
+De fi concept, and can be interpreted based on the meanings of its constituents.
+De fi word or phrase.
+ In the following we will refer to both abbreviations and acronyms with the term abbreviations .  X 
+CustomerName  X  ), acronyms (e.g.  X  PO  X  ) and abbreviations (e.g. thus they need to be manually or automatically processed in order to be normalization we mean the processes of abbreviation expansion and CN interpretation.
+De fi a CN.
+
+De fi negative relationships .
+
+De fi related by R to the concept denoted by the label t j .
+
+For example, let us consider the two schema labels  X  CustomerName  X 
+PurchaseOrder  X  and  X  PO  X  respectively ( Fig. 1 ). If we annotate separately the terms  X 
+ADDRESS  X  , then we will discover a SYN relationship between them, because the terms
+WN meaning. In this way, a false positive relationship is discovered because these two CNs represent schema elements.
+ the highest their similarity. Let us consider three schema elements, shown in ( Fig. 1 ): relationships between these CNs: one between  X  CustomerOrderID  X 
+CLIENT  X  and  X  Customer  X  , andthe term  X  ID  X  ; andone between for the terms  X  ORDER  X  and  X  Order  X  , and for the term  X  relationships will be assignedthe samesimilarityvalue.However, therelationshipbetween false positive relationship.
+
+De
+Let us consider two corresponding schema labels:  X  amount  X  between the elements  X  amount  X  and  X  QTY  X  . 3. Overview of the schema label normalization method abbreviation expansion and (3) CN interpretation.
+ method on the schema element  X  DeliveryCO  X  belonging to the 3.1. Schema label preprocessing shown in Fig. 2 ): WN terms (i.e. labels having an entry in WN which do not need normalization, e.g. (e.g.  X  QTY  X  ), CNs (e.g.  X  PurchaseOrder  X  ), and CNs with abbreviations (e.g.  X 
+DeliveryCO  X  is selected for normalization, thus it is tokenized in two single words a CN that contains the abbreviation  X  CO  X  . 3.2. Abbreviation expansion
+The input of abbreviation expansion is the schema labels classi the schemata and abbreviation dictionaries (for details see Section 5 ). For instance, the abbreviation is expanded as  X  Company  X  . 3.3. CN interpretation
+The input of CN interpretation are the schema labels classi
+Section 6 ). For instance, for the CN  X  Delivery Company  X  meaning for the CN is created and inserted in WN.
+
+In conclusion, the output of the normalization method applied on the schema label  X 
+Delivery Company  X  with its interpretation (  X  Company MAKE Delivery 4. Schema label preprocessing three main sub-steps (as shown in Fig. 2 ): (1) identi fi 4.1. Step 1: Identi fi cation
+CNs (e.g.  X  company name  X  ) and abbreviations (e.g.  X  GDP have an entry in WN are mostly used as abbreviations in the context of schemata (e.g. and automatically identi fi ed for normalization.
+
+De fi in WN.
+ 4.2. Step 2: Tokenization based on camel case and punctuation; the greedy approach hands also multi-word labels without clearly de then for each non-dictionary word iteratively looks for the biggest pre words, and GT/Ispell, that makes use of the English word list in Ispell. 4.3. Step 3: Classi fi cation  X 
+Company  X  ) or CNs (e.g.  X  CO  X  as  X  Company Order  X  ). Because of this, the classi expansion in order to identify non-dictionary CNs. 2
+For instance, let us assume we are preprocessing the  X  DeliveryCO  X 
+Delivery  X  and  X  CO  X  words. The classi fi cation identi fi 5. Abbreviation expansion domain concepts ( domain standard abbreviations ), e.g.  X  belong to any speci fi c domain ( schema standard abbreviations ), e.g. limitation) [11,12] . 5.1. Expansion resources (CS), (3) an online abbreviation dictionary (OD), and (4) a user-de complementary schemata resources, let us suppose sf to be a short form identi (for instance, the  X  SHIPMENT  X  class in Fig. 1 contains the attributes
+XML schema ( Fig. 1 b) can be expanded with long form  X  Unit Of Measure possible expansions and covered domains.
+ guidelines for the OTA standard. Since real-world schemata in companies often use company-speci will not appear in any public dictionary, the designer may enrich the user-de 5.2. Abbreviation expansion algorithm 5.2.1. Step 1: Searching candidate long forms from expansion resources
+Only the fi rst matching candidate in the text is considered. Moreover, the algorithm tries to
+Let us focus on the expansion of the  X  CO  X  abbreviation contained in the following expansions: (a) {  X  Company  X  ,  X  Colorado  X  , and a single list: {  X  Company  X  ,  X  Colorado  X  ,  X  Check Out 5.2.2. Step 2: Scoring the candidate long forms
+For the user-de fi ned dictionary, the local context and the complementary schemata the score of lf resource; otherwise, the score is 0.
+ integrated and (b) its  X  popularity  X  in these domains. 6 relevance can be found in online dictionaries like Abbreviations.com. which it appears with the associated popularity p ( b lf i identify the main domains of the schemata to be integrated. We use WordNet Domains (WN Domains), domains associated with these synsets. Next, it returns the top m prevalent domains.
+We de fi ne the score of a long form candidate, sc OD ( lf of domains associated by the online dictionary to the long form lf sum of the popularity of all the long form candidates for the short form sf : domains of a long form into WN Domains, we have manually de
+For example,  X  Commerce  X  ,  X  Sociology  X  , and  X  Metrology abbreviation  X  CO  X  the online dictionary returns the following expansions:  X 
+Check Out  X  (Medical). However, among these three entries only the  X  Commerce  X  domain of WN Domains (one of the schema domains); we obtain sc 5.2.3. Step 3: Selecting the most appropriate long form
+During this step, for each previously identi fi ed long form lf preserved. Hence, the score sc ( lf i ) is computed by combining scores from the individual resources: the context is the second relevant resource as it uses a vocabulary that closely re following as default weights of decreasing value 9 :  X  UD modi fi ed by the designer.
+
+For example, the score for the long form candidate  X  Company 6. Compound noun interpretation
+In the NLP (Natural Language Processing) literature different CN classi use the classi fi cation introduced in [14] , where CNs are classi appositional .
+ which restrict the meaning of the head. An endocentric CN exhibits a modi about their constituents. Based on this property, endocentric CNs can be also de inferred from the meaning of its constituents (e.g.  X  pickpocket  X  white-collar  X  is neither a kind of collar nor a white thing, but a particular socioeconomic status.
+Copulative compounds are CNs which have two semantic heads (e.g.
+Finally, appositional compounds refer to CNs that have two (contrary) attributes (e.g.
+The constituents of endocentric compounds are noun  X  noun or adjective  X 
+Asian food  X  , where the adjective  X  Asian  X  derives from the noun words and then interpreting each pair. In the following, we will refer to endocentric CNs simply as CNs. 6.1. Step 1: CN constituent disambiguation
+In this step, the WN synset of each constituent is chosen in two moves: syntactic category of its head and modi fi er. We use the Stanford part of speech tagger [18] . endocentric syntactic structure (noun  X  noun or adjective example, the constituents of the CN  X  Delivery Company  X  both belong to the noun syntactic category; and WND tries to disambiguate the terms using domain information supplied by WN Domains. We agree with [19] that WSD can signi fi cantly improve the accuracy of CN interpretation.
+For example, as shown in Fig. 3 a, for the schema elements obtain the two constituents annotated with the correspondent WN meanings (i.e. 6.2. Step 2: Redundant constituent identi fi cation and pruning During this step, we control whether a CN constituent is a redundant word .
+De from the schema or from the lexical resource.
+ attribute of the  X  SHIPMENT  X  class ( Fig. 1 ). The  X  SHIPADDRESS  X  hyponym of the other, e.g. the CN  X  mammal animal  X  where the meaning associated by CWSD to the head the meaning associated to the modi fi er  X  mammal  X  . The information that can be directly derived from the WN hierarchy. 6.3. Step 3: CN interpretation via semantic relationships meanings of a head and a modi fi er.
+
+In the literature, several sets of semantic relationships have been proposed. Levi de relationships seem appropriate [24] .
+ following.
+ derived from the one that hold between their top level WN nouns in the WN noun hierarchy. related to other synsets through hyponym relationships (e.g. in Fig. 3 b the unique beginner relationship for all the possible pairs of noun  X  noun (and adjective suitable to interpret the relevant pair of WN unique beginners: on this hierarchy level, it is dif integration. Moreover, as shown in Table 3 , each Levi's relationship is associated with a de meaning of the pair. For example, for the unique beginner pair
+MAKE act  X  ), which can be expressed as  X  a group that performs an act label  X  Delivery Company  X  with the MAKE relationship, because of  X  act  X  .
+ meanings. 6.4. Step 4: Creation of a new WN meaning for a CN the discovered relationship. We distinguish the following two steps:
+Fig. 3 c, the glosses of the constituents  X  Company  X  and distributing something  X  been previously inserted in WN. For example, if we need to insert in WN a new meaning for the CN  X  person  X  and  X  student  X  . In this case, we insert the new meaning for the CN
+CN  X  person name  X  . However, the insertion of these two relationships is not suf declare the type of relationship (e.g. hyponymy or meronymy any. Fig. 3 d illustrates this step with and example. 7. Experimental evaluation phase, each schema element of a local source is semi-automatically annotated by the CWSD algorithm. 7.1. Experimental setup
+We tested the effectiveness of our method in several real integration scenarios. 7.1.1. Data sets standard schema). Each data set consists of two schemata that need to be integrated. These data sets formats: XML schema, DTD, and XDR). 7.1.2. Experimental methodology results obtained in each experiment were compared w.r.t. the corresponding gold standard. 7.1.3. External resources dictionary as external sources. 7.1.4. Experimental measures
+To evaluate the performance of our method we used the quality measures de following quality measures were computed:  X 
+Precision =  X 
+Recall =  X  F Measure =2 Precision Recall Precision + Recall and NLP studies. 7.2. Evaluating normalization evaluated the performance of each phase fi rst separately and then as a whole. 7.2.1. Schema label preprocessing evaluation classi fi cation together, as they are based on the same heuristics (see Section 4 ). 7.2.1.1. Evaluating tokenization. We evaluated three tokenization methods: (1) ST
+WN contains many short abbreviations (e.g.  X  auth  X  is tokenized to: accurate and more stable (6% standard deviation in F-Measure in contrast with 26% for the ST method). 7.2.1.2. Evaluating identi fi cation and classi fi cation. If a label is not identi classi fi cation is we tested those steps separately. Identi they are also dictionary words in WN. Amalgam and TCP-H schemata contain such dif  X 
+Record Identi fi er  X  , which is also a synonym of the verb caused by the presence of stop words (e.g.  X  to  X  ) in schema labels that do not have an entry in WN. 7.3. Evaluating abbreviation expansion the default relevance weights for expansion resources described in Section 5.2 ( default relevance weights lead to the selection of a relevant expansion in most cases. less correct in providing expansions, but their combination is a good strategy: it leads to signi baseline.
+ revealed the poor quality of the chosen online abbreviation dictionary. For instance, the short form expansion in Abbreviations.com, but we found the correct expansion form candidates. However, there are de fi ciencies on which a user integrating schema may not have in 7.3.1. Evaluating CN interpretation interpretations contained in the gold standard but not returned by our method. the schemata of non-endocentric CNs (such as  X  ManualPublished 2  X  of digits in schema labels needs to be treated in a different way.
+
+The poorest performance was obtained for the GeneX data set. There are two main reasons for this: several complex CNs composed by three or four constituents (e.g.  X 
+AM_FACTORVALUE  X  ,expandedas  X  array measurement factor value contains several complex CNs. The pruning step (see Section 6 (e.g. the attribute label  X  ORDERCHANGE_ITEM_LIST  X  of the class  X 
+ITEM_LIST  X  ). 7.3.2. Evaluating the whole schema normalization method (the average precision is 63% and the average recall is 72%). 7.4. Evaluating the impact of normalization on lexical annotation annotated or not annotated at all.
+ schemata. The application of our method increases recall while preserving a good precision. 7.5. Evaluating the impact of normalization on lexical relationships
+During this evaluation, we decided to consider only  X  synonymy creation of the gold standard including RT relationships becomes dif between the schema labels that share some words. Instead, with our method we are able to signi precision (and F-Measure).
+ sets, the labels  X  mfgr  X  and  X  ph  X  (abbreviations for  X  not connected to any element in the complementary schemata. The same holds true for the labels schema elements  X  Schema1.array.image_an_params  X  and  X  Schema2.ARRAYMEASUREMENT.IMAGE_AN_PARAMS the lexical relationship discovery process. 8. Related work matching and fi nally the use of WN in schema matching. 8.1. Linguistic normalization interpretation were originally conceived as fundamental tasks in the veri fi ed in textual sources. For example, words in text documents have clearly de tokenization process is trivial. Some approaches suppose that abbreviations are words employing a speci form)  X  [32,33] . However, these assumptions are not satis the corresponding approaches cannot be successfully applied in our context. More speci de fi forms or long forms. Finally, alternative strategies need to be applied to the expansion  X  Number  X  for the schema element  X  ItemNbr complementary schema). Our solution addresses all those limitations. several resources (online abbreviation dictionaries, generic and domain-speci generally suitable for expanding standard abbreviations as they provide content that has been veri intervention to collect training data. In [21] the authors extracted several CNs (3966 couples of noun [26] , in order to collect training data, 2169 pairs of noun remaining 50% of the CNs. Our method required to manually annotate a smaller number of pairs of noun noun  X  noun unique beginners, see Section 6 ).
+ required not only to manually annotated the right relationship for CNs, but also to select and corpora.
+ prepare training data on the basis of the domain under consideration. 8.2. Normalization techniques in schema matching systems quality of schema element matching and requires additional techniques to be dealt with [35] . the table of abbreviations.
+
+Some works have tried to address the limitations of the user-de and suf fi xes of literals and are thus able to detect a match between, for instance, elements such as cannot detect a match between synonyms like  X  QTY  X  (short form of automatically select the top-scoring one.
+
+The problem of ambiguous abbreviations occurring in the user-de domain-dependent transformation rules, e.g.  X  SSN  X   X   X  Social Security Number de fi manually executed.
+
+The S-Match [2,39] and CtxMatch [40] algorithms discover semantic matching by analyzing the meaning codi method, they do not make distinctions between head and modi matching results (as shown in the example in Section 2 ).
+ ambiguous abbreviation (for instance, if the column name is authorizations [44] . 8.3. The use of WN in schema matching systems provide a network of semantic relationships among meanings like WN does. techniques of abbreviation expansion and/or CN interpretation and thus re (e.g. some of these matchers are CtxMatch [40] , S-Match [39] , H-Match [41] , and OLA [47] ).
+At the structure level, it exploits description logic reasoners to compute the
+CtxMatch is not able to deal with abbreviations, it could take advantage of our method to 9. Conclusion and future work CNs and abbreviations without compromising recall.
+ address the problem of the presence of speci fi c domain term in schemata (e.g. the biomedical term information provided by data instances (when available) as discussed in Section 8 . Acknowledgments
+This work was partially funded by the  X  Searching for a needle in mountains of data! MIUR FIRB Network Peer for Business project ( http://www.dbgroup.unimo.it/nep4b ).
+References

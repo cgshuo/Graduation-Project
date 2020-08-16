@@ -1,0 +1,34 @@
+ Jason J. Jung * 1. Introduction the partial answer results may be located in is ever-increasing.
+ these sources are assumed to be fully cooperative with each other.
+ sources X  X f x 1 ; ... ; x K g , it consists of the following steps: 1. Choosing an initial query term f i , 2. executing a one-term query Q  X h f i ; X i X  to K candidate information sources, 3. retrieving a set of the top N documents D i returned by the information sources f D 4. updating the resource description R based on the characteristics of the retrieved documents. sources. For instance, suppose that in Fig. 1 , TDB 1 and TDB is indicating a sport car X  X  brand, the query should have been sent only to TDB
+TDB 3 in Fig. 1 ) from the federated sources.
+ the user context can be changed over time during browsing the sources. and up-to-date query terms), the crawler can contextualize a query into q respectively. Moreover, for the federated sources, TDB 3 can transform q referring to these four resource descriptions.
+ and applied to deal with the scalability problem of the semantic mediation model.
+Finally, Section 7 draws a conclusion of this paper. 2. Brief description of ontological mediation ontologies by matching their current ontology with semantic structures of information sources. The whole process posed of (i) two tasks by personal crawler, and (ii) four tasks by mediator crawler.
+Picking P  X h f k a ; rel ; f X b i f k the matching ratio q  X  i is over the threshold value s P . This information has to be sent to the mediator crawler.
+Querying Q  X h f k b ; X i f k about the information source X .
+ picking and querying.
+ Musen, 2000). Here, the mediation tasks can be classified;
+Knitting K  X  O X ; h f k a ; rel ; f X b i X  The information received from the agents A make the semantic structure of the corresponding local ontology O Merging M  X  O X ; O Y  X  The local ontologies of two information sources X and Y can be aligned to be merged.
+Translating T  X h f k a ; rel ; f k b ; X i f k dences f a which is associated with f b by the relations rel
+Comparing C  X  FU i ; O X  X  The mediator can measure the semantic similarity between the intention model user u information source X .
+ sponding searching context. Instead of directly sending queries Q  X h f k are indicating the hyperlinks between information sources. 3. Contextualized query sampling been accessing to. At time t ,a k th user X  X  context is denotes as accesses to the resources related to the f i are getting more frequent, w mation relevant to f i at the moment.
+
+Contextualized query-based sampling is to recommend the focused crawler by collecting and analyzing the results re-a decision which information source is more relevant out of x built by aggregating the initial stage of user browsing.
+
+When a focused crawler is facing with unknown resource r  X  t  X  ), contextualized query Q at time t is represented as a single concept chosen by where w i is the weighting factor of f i . Of cause, the concept f ogy O A for unambiguous interpretation.
+ ipating others by using a certain transformation facility (e.g., a set of matched concept pairs). conduct two main processes: contextual relevance to the query, and semantic subsumption between information sources. 3.1. Measuring contextual relevance
+We firstly have to measure contextual relevance CxtRel of each information source. For an information source x query Q  X  t  X  , it can be computed by sources can extract several kinds of term features from document sets d cused crawler can choose the best candidate information sources (i.e., max CxtRel  X  x Sim superclass and subclasses) and a document d a , as follows: where f 0 i 2 SuperClass  X  f i  X  , f 00 i 2 SubClass  X  f i two term features  X  X  X aguar X , and  X  X  X onvertible X  from document d the measured contextual relevance, the query terms can be either specified or generalized. 3.2. Discovering semantic subsumption exactly, the chance that they are related to each other with a semantic subsumption. collections of the Sim C measured in previous step. Given two document collections R  X  x hence, the crawler can recognize that x a contains more general resources than x whether the differences are less than a threshold s . 4. Example of the interactions with mediator is expected to be reduced.
+
+Here, we want to show a simple example in Fig. 2 . Three information sources x erate a query Q  X  t  X   X  \ Car " . This query can be sent to sources x mobile:Jaguar  X  might be modified into  X  X  Four-wheel:Jaguar  X , and propagated to x
+R  X  x 1 ; \ Car "  X  , R  X  x 2 ; \ Car "  X  , and R  X  x 3 ; \ Car "  X  are obtained directly from x ing context relevance CtxRel in Eq. (3), we can find out that x it is finally discovered that x 2 w x 3 . 5. Experimental results
+In order to prove the proposed method, we conduct several experimentations. For testing bed, we chose twenty news-across 20 different newsgroups (i.e., information sources from s
+F ). The specification of this testing bed is shown in Table 2. 5.1. Performance on information source selection
+From a weblog stream dataset (Jung, 2005), 10 different contexts (i.e., ctx specific concepts make the queries less to be generated and CtxRel increased. In case of ctx semantically ambiguous concept.
+ semantic resource descriptions.
+ mation sources. Precision of discovering relation  X  X  @  X  is slightly higher than that of relation  X  X  mation sources in the testing dataset are very unique with each other. We also detected several conflicts in F and five queries, respectively. All these are caused by context ctx 5.2. Improvement on scalability of contextual mediation malls. We measured the length of whole paths to be accesses to until 80% of resource descriptions were discovered. when the number of information sources are more than seven. As the number of the information sources is increasing, evant information sources at their current contexts. 6. Related work and discussion with cohesive relationships between peers, the proposed approach can build semantic transformers between candidate should set a sequence of queries, in advance.
+ crawlers can collaboratively extract hidden semantics. 7. Concluding remark and future work
+In this paper, we have dealt with two main problem on traditional query-sampling method; (i) semantic heterogeneity and (ii) dynamics of information sources.
+ mance of the proposed scheme has been improved.
+ We want to use a much larger collection to make this approach far more convincing. In the practical aspect, SPARQL 4 and RDQL 5 will be applied to build semantic web platform. Acknowledgements ported by the Korean Science and Engineering Foundations (KOSEF) grant funded by the Korean government (MEST) (No. R01-2008-000-10196-0).
+ References

@@ -1,0 +1,84 @@
+ 1. Introduction (or probability of relevance) to the user X  X  interests expressed by the query. retrieval status value).  X  to the single relevance assessments and to their interplay in the definition of the overall relevance assessment.
+Among the aggregation operators, traditional non-compensatory operators, such as the min operator and the max oper-of such operators is that a large part of scores is ignored or plays a minor role in the aggregation process. about Information Retrieval (criterion C 1 ) which have been possibly written after 1958 (criterion C interests.
+ were presented, based on a different approach with respect to the one presented in this paper. user ( Liu, Yu, &amp; Meng, 2002; Chirita, Firan, &amp; Nejdl, 2007; Teevan, Dumais, &amp; Horvitz, 2005 ). to any set of relevance dimensions.
+ over the four considered dimensions.
+ onstrate the effectiveness of the proposed approach. Finally, Section 6 concludes the paper. 2. From topical to multidimensional relevance: related work els ). However, relevance is, in its very nature, the result of several components or dimensions.
+In the Information Retrieval literature there are many terms considered as synonymous but having sometimes different corresponds to the topical area required by the information need as perceived. said topically relevant.
+ of users satisfied by D .
+ example picture images X  X  he pointed out.
+
+The above mentioned works consider aboutness as the unique dimension of relevance. The multidimensional nature of relevance is not considered.
+ considers that topical relevance is just one of the dimensions of relevance. sible esthetic factors, that can be considered when assessing relevance. relevance has to be considered as a dynamic and multidimensional concept. Another pioneering and informal work defining relevance as a multidimensional concept is the one by Schamber and less systematic and measurable X  X .
+
+Another work which discusses the advantages of defining relevance as a multidimensional concept is that by Barry base their evaluations on factors beyond the topical appropriateness of documents X  X . tion need). A further judgment is made according to the: topic, task, or context, at a particular point in time. jective relevance types.
+
+The work proposed by Farah and Vanderpooten (2006) is aimed at dealing with imprecision underlying criteria design a document should get a better ranking than another.
+ that users consistently identify relevance criteria beyond topical relevance. mensional relevance modeling. The simplest way to obtain a unique ranking score based on the computation of several for MCDM multi-criteria decision making and the OWA operator method.
+
+The concept of dimension we use is somehow different from that used by Mizzaro and Saracevic. They defined several dimensions as explained in the following section. 3. Prioritized multi-criteria aggregation decision making problem in a real life situation.
+ possible, inexpensive. We can consider two situations. of the safety criterion.
+ given at the end of Section 3.3 , after the presentation of the two aggregation models. and the possible alternatives are constituted by the documents.
+ priority criteria. 3.1. Problem representation
+The presented multi-criteria decision making approaches have the following components: the set C of the n considered criteria: C ={ C 1 , ... , C uating the i th criterion; the collection of documents D ; an aggregation function F to calculate for each document d 2 D a score F ( C uation scores of the considered criteria.
+ criterion, which is taken into account in the RSV computation.
+
+Let us assume that the C 1 , C 2 , ... , C n considered criteria have been ordered by the user in the sequence C
+C j 1 (except the case of criterion C 0 1 , to which the importance weight 1 is assigned).
+We denote by k i 2 [0,1] the importance weight associated with criterion C importance weights for the same document for different users.
+ criteria we denote by C 1 the most preferred criterion, by C list), and we assume that C i is preferred to C j ( C i C
+The above intuition may be formalized as follows: for each document d , the weight of the most important criterion C the weights of the other criteria C i , i 2 [2, n ], are calculated as follows: where C i 1 ( d ) is the degree of satisfaction of criterion C 3.2. The prioritized scoring model
+Operator F s is defined as follow: F s :[0,1] n ? [0, n ] and it is such that, for a given document d , The RSV s of the document d is then given by: where C i  X  X  represent the considered relevance dimensions.
+
+Let us come back to the introductory example. C 1 = Safety and C degree of 0.6 and an  X  X  X nexpensiveness X  X  degree of 0 would have an RSV
+RSV
+RSV s of (1 0) + (0 1) = 0.
+
+Let us consider two further simple examples with four criteria (i.e., n = 4): C tant criterion and C 4 is the less important criterion. If document d
+C ( d i ) = 1, we have: k 1 =1; k 2 = k 1 C 1 ( d i ) = 0.6; k 3 = k 2 C 2 ( d i ) = 0.48; k 4 = k 3 C 3 ( d i ) = 0.432; and the RSV s is then:
+Instead, if we exchange the satisfaction degrees of C 2 and C k 1 =1; k 2 = k 1 C 1 ( d i ) = 0.6; k 3 = k 2 C 2 ( d i ) = 0.54; k 4 = k 3 C 3 ( d i ) = 0.432; and the RSV s is then: ond more important criterion is in the first example. 3.2.1. Properties of the prioritized  X  X  X coring X  X  operator
+Here, we present some mathematical properties of the prioritized  X  X  X coring X  X  operator. 3.2.1.1. Continuity. The proposed aggregation is a polynomial; therefore, the property of continuity holds. 3.2.1.2. Boundary conditions. The  X  X  X coring X  X  operator satisfies: if " iC i ( d ) = 0 then P n i  X  1 k i C i  X  d  X  X  0; if " iC i ( d ) = 1 then P n i  X  1 k i C i  X  d  X  X  n ; " i 2 {1, ... , n } we have 0 6 and let us consider the two sets of criteria { C 1 ( d ), C C 0 i  X  d  X  X  C i  X  d  X  , " i  X  j , C 0 j  X  d  X  P C j  X  d  X  .
+ We have than k 0 j  X  C 0 1  X  d  X  C 0 2  X  d  X  ... C 0 j 1  X  k j (see Eq. (1) ), and C 8 k &gt; j k 0 k P k k (by construction, see Eq. (1) ) and then k 3.2.1.4. Absorbing element. The  X  X  X coring X  X  operator has an absorbing element : C with k i = C 1 ( d ) C 2 ( d ) ... C i 1 ( d )=0, " i &gt;2.
+ all, i.e., C k ( d ) = 0, then we have 3.3. The prioritized  X  X  X nd X  X  operator also the least important one, the overall satisfaction degree will be greater than C isfaction degree.
+
+The aggregation operator F a is defined as follows. F a : [0,1]
+The RSV a of the document d is then given by: RSV a ( d )= F where the C i  X  X  represent the satisfaction degrees of the considered relevance dimensions.
+Let us come back again to the introductory example. C 1 = safety and C a  X  X  X afety X  X  degree of 1 and a  X  X  X nexpensiveness X  X  degree of 0 would have an RSV RSV a of min (0.9 1 ,0.8 0.9 ) = 0.818.
+
+Let us consider two further examples with four criteria C
+C is the less important criterion. If document d i is such that C k 1 =1; k 2 = k 1 C 1 ( d i ) = 0.9; k 3 = k 2 C 2 ( d i ) = 0.63; k 4 = k 3 C 3 ( d i ) = 0.567; and the overall score would then be: Instead, if
+C 2 ( d i ) = 0.9, C 3 ( d i ) = 0.7, we would have: k 1 =1; k 2 = k 1 C 1 ( d i ) = 0.9; k 3 = k 2 C 2 ( d i ) = 0.81; k 4 = k 3 C 3 ( d i ) = 0.567; and the overall score case than the second more important criterion in the former case. 3.3.1. Properties of the prioritized  X  X  X nd X  X  aggregation operator
+Here, we present some mathematical properties of the prioritized  X  X  X nd X  X  operator. 3.3.1.1. Continuity. The proposed aggregation is a polynomial, as it can be written as which is continuous, because, 8 x ; y 2 R ; min  X  x ; y  X  X  3.3.1.2. Boundary conditions. The proposed  X  X  X nd X  X  operator satisfies: if " iC i ( d ) = 0, then min n i  X  1 k i C i  X  d  X  X  0; if " iC i ( d ) = 1, then min n i  X  1 k i C i  X  d  X  X  1; " i 2 {1, ... , n }, we have 0 6 min n i  X  1 k i C i  X  d  X  increases, the overall final aggregation value can decrease.
+
+For example, if we have C 1 ( d ) = 0.7, C 2 ( d ) = 0.1, C we replace C 1 ( d ) by a greater value C 0 1  X  d  X  X  0 : 9, we obtain that min (0.9 ous value. 3.3.1.4. Absorbing element. The proposed operator has an absorbing element , C
+C ( d ) = 0, we have and to the fact that lim k ? 0 x k =1. 3.3.1.5. Neutral element. The proposed operator has a neutral element , C
+C ( d ) = 1, we have x 2 [0,1], we have If k 2 [0,1], we have x 6 x k 6 1 for all x 2 [0,1].
+ aggregation oprators produces distinct and intuitive results.
+
+Let us suppose that C 1 ( d ) = 0.9 and C 2 ( d ) = 0.2, with C ness X  X  criterion. The different scores associated with John 1 and John 2 are computed as follows. k John 1: RSV s = k 1 C 1 ( d )+ k 2 C 2 ( d ) = 0.9 + 0.18 = 1.08; John 2: RSV a = min (0.9 1 ,0.18 0.9 ) = 0.213.
+
+The value of RSV s is better (greater than the midpoint of the definition interval X  X ndeed, RSV
+RSV the case (not so evident anyway) for John 2. 4. A case study: prioritized aggregation operators in a personalized IR setting can produce distinct rankings of the retrieved documents.
+ the personal user context.
+ In this section we present a description and a formal definition for each of these relevance dimensions.
+We assume that the user interests are represented by a user profile, formally expressed as a vector of terms
+See Teevan et al. (2005) for further details. 4.1. The four considered criteria 4.1.1. Aboutness are represented by vectors of terms; in our experiments we adopt a system based on this model.
+Formally, we have d =[ w 1 d , ... , w j T j d ] and q =[ w ilarity Salton and McGill (1984) : 4.1.2. Coverage sidered document respectively: be fully included in d , the index term weights of c must be smaller than the index term weights of d . 4.1.3. Appropriateness vector of document d and the vector of interest c , can be formally defined as follows: interest, and j T j is the size of the term considered vocabulary.
+ is more specific than coverage. 4.1.4. Reliability consequence, the reliability degree of a document d for user i , noted T which the user trusts the source from which the document d comes, i.e., where s ( d ) represents the source of document d , and T we do not consider the properties of the documents for determining their reliability. 5. Evaluation of the proposed approach scribed in Section 4 .
+ ment scores, depending on the adopted prioritized scheme, which is user-dependent. We propose then a user-centered evaluation, as it will be explained in Section 5.1 . the rank produced by the average operator.
+ considered to the aim of the evaluation.
+ egory we associate the following priority order over the four considered relevance dimensions: CA p AR : coverage appropriateness aboutness reliability .
+ with the other two users X  categories specified in the following.
+ the following priority order over the four considered relevance dimensions: A p ACR : appropriateness aboutness coverage reliability ; ity criterion than to the other criteria.
+ With this user category we associate the following priority order over the four considered relevance dimensions: RAA p C : reliability aboutness appropriateness coverage ; decrease w.r.t. the ranking produced by applying the classical average operator. formed evaluation. 5.1. Experimental settings The four relevance criteria as well as the considered aggregation schemes have been implemented on top of the Apache Lucene open-source API. 2 that does not have queries nor relevance judgments, but has one or more subject codes associated with each document. 5.1.1. Document collection documents. 5.1.2. Users X  profiles tors belonging to the considered subset. An example of user X  X  profile is shown in the first column of Table 2 . user profiles are listed in Table 1 , where also the associated user X  X  category is specified. ument score. 5.1.3. Users X  queries 2 the user X  X  queries associated with the profile reported in the first column are listed. the context of another user profile.
+
+A total number of 10 30 = 300 queries has then been generated. 5.1.4. Evaluation metrics 5.2. Discussion of the results taken into account.
+ the related user X  X  category, thus producing for each query three different rankings:  X  averaged: the score of each document is computed by averaging the satisfaction degrees of each criterion; criterion by using Eq. (2) . terion by using Eq. (4) .
+ profile, and to evaluate the rankings based on the search intent of their associated user X  X  category. generally users only look at the first 10 X 20 documents in the ranked results list. ker users, the cautious users, and by considering all users. In Figs. 5 X 8 we show the corresponding nDCG graphs. the curve related to the application of the baseline operator, i.e., the average aggregation operator. forms the  X  X  X coring X  X  one (see Figs. 2 and 6 ).
+ priority criterion.
+ documents that are strongly related to the user profile appear in the top positions of the ranking increases. curves related to the prioritized aggregation operators with respect to the baseline curve. around 0.4.
+ respect to the baseline operator.
+
+In Table 3 we have the t -Test to analyze the performance of our operator by comparing the values of the MAP@15. The results show that the improvement obtained by the presented operators with respect to the baseline are statistically significant.
+ pends also on the importance degree of the least satisfied criterion, the gap with the baseline can be higher. 6. Conclusions for multiple relevance assessments.
+ the documents is similar to the ranking obtaining by using the average operator. lates an interest-related query, otherwise this operator is not suitable. without requiring any learning method.
+ References

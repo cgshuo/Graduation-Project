@@ -1,0 +1,78 @@
+ 1. Introduction Tegegne, Kanagwa, &amp; Weide, 2010 ) for a more detailed description). and making a prioritization of the possible treatments.
+ environmental information.  X  training, to query diseases and treatments based on patients profile, symptoms and contexts. can help to maximize cure and to minimize adverse effects, cost, and waiting time. query the woman might not have any knowledge about all the constraints resulting from her condition. upon entering the query (request).
+ queries in the context of healthcare application. This leads to the following sub-questions: R-2 How is preferential matching defined in this model? 2. Related work sidering the user context.
+ systems the expansion terms are added by the search engine or system itself (automatic query expansion). involve the user intervention.
+ (2010) and Kie X ling (2002) .
+ to reformulate the user query ( Bai &amp; Nie, 2008 ).
+
+Stumme (2009) . preferences to enrich the query. Contextual information, however is not used. terms from the user request that have strong term-category correlation to medical categories. detail with the matchmaking process. 2.1. Personalization accommodate the differences between individuals.
+ 2009 ). 2.1.1. User profile and characteristics of an individual user.
+ recommendations to groups of users rather than to individual users. from the user X  X  behavior (user X  X  browsing history, browsing activity, search logs, etc.). 2.1.2. User context A user context is the description of (relevant) aspects of the current situation of the user. (3) task context, (4) social context and (5) spatial X  X emporal context. satellites. The user mental context can be particularly extracted from the user X  X  conversation. 2.1.3. Elicitation questions.
+ plete, and unambiguous way ( Frederiks &amp; Weide, 2009 ).
+ languages that coincide with (or are at least close to) a subset of a particular natural language . an open questions into this controlled language format.
+ 2.2. Matchmaking Hadjiefthymiades, 2007, chap. XI ).
+ edge and a services repository.
+ Boolean result, i.e. the information or service object is either relevant or not ( Grimm, 2007 ). based measurement.
+ notion but it reverse the plug-in and subsumption presentation.
+ algorithm. 2.3. Comparison with related systems mation about user X  X  situation and preferences.
+ context.
+ knowledge in the process of query enrichment. 3. Overall architecture The overall architecture of our system is displayed in Fig. 1 .
+ been split into the following three main sub-systems: interact in a service-oriented manner. 3.1. The dialogue system interpreter uses elicitation techniques during this interview. The resulting request s tecture of Fig. 3 be fed into the query interpreter Q I and will also be stored in the user profile. essential for the quality of the response that will be given by the system. 3.2. The query interpreter
+The query interpreter ( Q I , see Fig. 3 ) interprets the user query s
+Context Repository. After completion, the Q I forwards the enriched query q 3.3. The match maker the required medicines.
+ 4. Preference expressions discuss how this is involved in the matching process.
+ ing is a total order on a set of outcomes O , where o 1 o above o 1 . The outcome o 2 is strictly more preferred than o but o 1 o 2 or o 1 o 2 , when o 1 o 2 ^ o 2 o 1 . The decision maker is indifferent to o o 1 o 2 ^ o 2 o 1 or o 1 o 2 ^ o 2 o 1 . In this paper we will choose as the base order relation. 4.1. The relational model all possible mappings from attributes onto adequate values: A relational model R  X h A ; Dom ; T ; R i of an application domain consists of: A set A of attributes, and a function Dom assigning elementary domains to these attributes. base table consists of a unique name and a relational schema.
+ tional algebra.
+ table T : Pop  X  T  X  # Dom  X  R  X  . 4.2. Preferences more formal way. Preferences will be defined in the context of a relational model
+Therefore we will use  X  P rather than the table-dependent notation  X  P ; T . 4.3. Conditional preference condition D (or: Pop  X  T  X  D ) according to the preference expressed in P . 4.4. Preference formalism
+A strict partial order is a binary relation that is irreflexive and transitive: 1. Irreflexive: : x  X  P x 2. Transitive: x  X  P y ^ y  X  P z ) x  X  P z x  X  P y when neither preference holds:
+We also introduce the following non-strict partial order: where f  X  A is the restriction of function f to domain A . This defines a partial order. defined on domain B Attrs  X  P  X  , then join operator to denote this combination: x  X  A ffl x  X  B A  X  x . 4.5. Base preference constructors
+Attrs  X ; R  X  X  R ) the following strict partial order on Dom  X  R  X  : rather than ; R when R is obvious from the context.
+ Let A be an attribute, then the following expressions are (atomic) preferences with attribute set A fg : as rail diagram, see Wirth (1973) ): erence relation is defined by: Minimal value: LOWEST  X  A ;&lt;  X  .
+ larger value: We will omit the ordering relation when it is obvious from the context, and write LOWEST  X  A  X  . Utility based: Util  X  A ; u  X  .
+ expressing that tuples are preferred according to their utility value. 4.6. Combining preferences attribute set: Attrs  X  REV  X  P  X  X   X  Attrs  X  P  X  .
+
+Preferences P 1 and P 2 may be combined by intersection aggregation or its weaker variant as follows.
+P and P 2 agree on their preference.
+Algorithm 1. Intersection aggregation 1: if x  X  P 1 y then 2: return x  X  P 2 y ; 3: end if 2. Weak intersection aggregation: P 1 . P 2 , defined as: Attrs  X  P 2  X  .
+
+Algorithm 2. Weak intersection 1: if x  X  P 1 y then 2: return x P 1 2 y ; 3: end if
+It is also possible to make a prioritization between preferences P 3. Predilection: P 1 &amp; P 2 , defined as: where a Y b has outcome true if either a is true or a is undefined and b . In this case preference P ence P 2 . Only when P 1 does not express a preference for values x and y , preference P
+Algorithm 3. Predilection 1: if x  X  P 1 y then 2: return true; 3: else if : y  X  P 1 x then 4: return x  X  P 2 y ; 5: end if
+For convenience we will introduce a case distinction mechanism: 4. Case distinction: D P 1 j P 2 , defined as:
+The preferences P 1 ffl P 2 ; P 1 . P 2 ; P 1 &amp; P 2 and D P that in all cases the resulting relation is a strict partial order on Attrs  X  P 4.7. Properties and derived operators Preferences P 1 and P 2 are equivalent when they induce the same ordering over their attribute domain:
+Some obvious properties are: 1. ffl is idempotent, symmetric and associative. 2. . is idempotent and associative. 3. ffl and &amp; are distributive.
+ Some other operators defined by Kie X ling (2002) can be derived from the other operators: pressure medicine X . The patient responds best on therapy T ing elementary preferences: expression: 4.8. Displaying preferences as CP-nets node V is annotated with a set CPT  X  V  X  of conditional preferences of the form / P where. 1. / is a condition over the attributes [ Parents  X  V  X  from the parents of node V . 2. P is a preference with attribute set V .
+ different preferences for the color of the pants ( P ) and the color of the jacket ( J ). probably make my outfit too flashy, thus I prefer a white shirt .
+ preference B can be expressed using conditional preferences as follows: ciated the following conditional preference set: bute set.
+
+This is represented graphically in Fig. 5 , where we use the notation A an attribute value. 5. The preferential similarity model 5.1. Preference and SQL another tuple from the initial result. Formally: where x  X  P A abbreviates 9 y 2 A  X  x  X  A y . Later we will also use A  X  P B to denote 8 In the case of Fig. 6 only tuples x 3 and x 5 are retrieved, so Tops 5.2. Fuzzy matching have associated their relevancy score.
+ A with preference relation P as follows: The set C i of best candidates in each layer is obtained as: So for the example of Fig. 7 we have: Note that Lemma 1. L i  X  P L i 1 for i &gt; 0.
+ The series L i and G i are converging. This is expressed by the following property: Lemma 2. G i  X  ;) G i  X  1 " G i
+Let k  X  argmax i G i  X  ; , then we have the layers L 0 ; ... ; L layer are Cand P L 1 . The result of Cand P A is the set C
+Algorithm 4. Finding top elements fun Tops (Pref P, Set X): Set endfun
+Algorithm 5. Finding next layer fun NextLevel (Pref P, Set G): Set endfun
+Algorithm 6. Finding best candidates fun Cand (Pref P, Set A): Set endfun 5.3. Choosing among the candidates lation P . For each service Sim  X  q ; S  X  will express how relevant service S is for query q . Let Sim the set of candidate services Cand P Sim h  X  q ; S  X  .
+ table shows the dilemma of the situation: Preferred Yes High quality! Nice but useless simply be ordered according to their utility score.
+ preference is the service with the highest relevancy but the lowest cost. Then this is expressed as: expressed as: 2. Use a data mining system for learning the best preference expression.
+In our situation the most obvious choice is the first (at least for the time being). 6. Applying in the e-Health case 6.1. Symptoms and diseases with the disease.
+
+As a first step, the symptoms from q are matched with the characteristics describing the diseases. 1. A most simple comparison is counting the commonality between symptoms q and d : Sim where x y  X  P s 2 S x  X  s  X  y  X  s  X  is the inner vector product and k x k X 
+We will use Sim  X  q ; d  X  as a generic denotation for the similarity function. 6.2. Treatments and risks CP-net in Fig. 8 describes the conditional preferences of risks for each treatment.
+As an example, we assume each variable has 2 values, f S 1
+Util  X  S  X  X  Match  X  q ; S  X  . We assume that in this example, the resulting preference relation is S
+So, in this preference network, S 1 is preferred above S 2 ment T 1 is preferred above T 2 . Similarly in case of treatment T for that treatment.
+ are ranked using a preferential ordering relation. 7. A case study follows (see Fig. 11 ): 7.1. The interaction with the dialogue system considering the user preferences and contexts mentioned in the query. Based on Martha X  X  request, the system recommends the following combination of medicines: hepatitis B . 7.2. The knowledge and service repository Table 1 for an overview.
+ Symptoms, treatments and risks are categorized as follows: of risk. For example, in case of symptoms S 1 , treatment T preference for T 2 ; T 3 or T 4 . Similar rules hold for the other symptom groups. This leads to: The likelihood of risks associated with a treatment also is described as a preferential expression: shows the preference ordering of S 1 from the least preferred combination S expressions are based on WHO (2013) . 1. Preg NRTI ffl X  ZDV 3TC  X  &amp; NNRTI ffl NVP 2. PfR Chl  X  AP . NNRTI . NRTI  X  3. True Qui ffl X  Lop . EFV . NVP  X 
+In the next subsections we will show how this preferential expression led to the advice given to Martha. 7.3. The enriched query 1. Martha is HIV-infected and she is on antiretroviral regimen; so both HIV and ART are set to true. 2. Martha is pregnant, so Preg is set to true. 3. Martha is diagnosed malaria positive, so Mal is true.
+ Summarizing, we have the following request q for Martha: q  X  HIV ^ Preg ^ ART ^ Mal . 7.4. Explaining the sample session generality of the query and symptom group. For example, the commonality between q and S equals 7 since there are 7 symptoms involved (considering Preg and Preg uated as 3 : 5 = 7  X  0 : 5 Consequently Martha will be matched to the symptoms classes as follows: Class Description Score S 1 HIV ^ PfR ^: X  Anm ^ Hep  X ^ Preg 1 0.50 S 2 HIV ^ PfR ^: X  Anm ^ Hep  X ^ Preg 2 0.50 S 3 HIV ^ PfR ^ Anm ^ Hep ^ Preg 1 0.21 S 4 HIV ^ PfR ^ Anm ^ Hep ^ Preg 2 0.21
+Each symptom group has its preferential list for treatments. For example, group S ments: EXPL  X  T ; h X  T 2 ; T 3 ; T 4  X  ; T 1 i X  .
+ hepatitis B.
+ Martha is not anemic and there is no suspect of hepatitis B.
+
+Using the classification of previous Section 7.2 and the preference relation, we come to the following: 2. Martha is living in a P.falcipuram resistent area. So PfR is set to true. 3. Coartem is not given in first trimester, so Coa is false in the first trimester of pregnancy. The resulting query thus is: extended with the preferences: medicines are found to be relevant: 1. f ZDV ^ 3TC ^ NVP ^ Qui g 2. f TDF ^ FTC ^ NVP ^ Qui g 3. f d4T ^ 3TC ^ NVP ^ Qui g
+We identify symptoms, treatments and risks from Martha X  X  query. According to Martha X  X  request S ferred treatment and has low risk for the symptoms S 1 .
+ potential risks or adverse effects is presented in Table 1 .
+ ZDV ^ 3TC ^ NVP ^ Qui is recommended for Martha X  X  case is: 8. A prototype user their ID and the symptoms (as presented in Fig. 16 ) that describes their situation. matchmaker.
+ checks whether the candidate disease is common in the given location and if it is seasonal. ing tasks: erence and risk scores are listed (see Fig. 17 ). 8.1. Evaluation data, thus the result of the study will be published in the future. 9. Conclusions and future research our approach.
+ that the decision results from the system are compatible with health expert decisions. References

@@ -1,0 +1,129 @@
+
+Knowledge can be represented in many forms such as rules, decisi on trees, artificial neural networks and Bayesian belief net works. Knowledge discovery, machine learn-ing or data mining often involve large databases. However, the databases are usually built for purposes other than knowledge discovery, and there are often many redun-dant attributes in the databases. This increases the complexity of knowledge discov-ery and decreases the quality of the discovered knowledge. Conventional knowledge discovery requires the following steps:  X 
+Preprocessing by discretization of continuous attributes, optimizing the values of attributes, and elimina ting useless attributes.
+  X  Finding a good reduct (sometimes called feature selection) from attributes of  X  Extracting knowledge from a decision system. Many methods for this can be  X  Testing the rules and applying them to make decisions.
+
+In this paper, we are not going to follow this conventional approach to find a good reduct. Because this knowledge is only extract ed by using one reduct, it is impossible find multiple reducts, to create multiknowledge and combine it with the well-known the training set to support decision-making by using multiple reducts than by using a single reduct.
+ na X ve Bayes classifier, it is easy to cope with inconsistent instances in a training set and to make decisions for instances with missing attribute values. range of unseen instances and then using the new knowledge to make a decision for unseen instances and (2) using s tatistical approaches and oth er prediction approaches.
+Unfortunately, in many cases, unseen instances cannot be used to update the know-ledge in method (1) because the result decisions for unseen instances are unknown. accurate knowledge and cope better with unseen instances than a single body of knowledge. A higher accuracy of decision-ma king for unseen instances is obtained by combining multiknowledge and the na X ve Bayes classifier.
+ ledge and the na X ve Bayes classifier and give a definition of multiknowledge .In order to find significant multiple reducts for creating multiknowledge, the WADF (worst-attribute-drop-first) algorithm is proposed following the introduction of basic represent multiknowledge and an algorithm is given to combine the na X ve Bayes classifier and uncertain rules in multiknowledge for decision-making. In Sect. 5, we suitable to apply the proposed algorithms. Section 6 gives our conclusions and raises issues for further study.
+Following Pawlak (1991) and Polkowski et al. (2000), let I a decision system ,where U ={ u 1 , u 2 ,..., u i ,..., u an instance space or universe, where u i is called an instance in U and n is a number of instances. A ={ a 1 , a 2 , a 3 ,..., a i ,..., a m } attributes of the instances, where m is a number of attributes. a a given instance. D is a nonempty set of decision attributes and A
+For every a  X  A , there is a domain, represented by V a ( u ) : U  X  V of instance u .Itisavalueinset V a .
+ For a decision system, the domain of decision attribute is denoted by
+The condition vector space , which is generated from attribute domain V by and the size of the condition vector space is | V  X  A
+The decision vector space , which is generated from decision domain V by and the size of the decision vector space is | V  X  D
+A conjunction of attribute values for an instance corresponds to a condition vector in the condition vector space is donated by
+A (
+U ) represents a set of condition vectors that exist in the decision system, world, training sets for decision-making or classification are rarely complete-instance Mitchell (1997).
+ From Eq. (1), we have
+The rest may be deduced by analogy.
+There are only 14 instances in the decision system. So 22 possible conjunctions a complete-instance system. The knowledge extracted from the training set will meet 22 unseen instances.
+
+In general, knowledge representation and reasoning can be tackled by means of mapping ( V  X  A  X  V  X  D ) between the condition vector space and the decision vec-tor space . Most current research focuses only on a single-decision attribute system. Only one decision attribute is considered in decision systems or decision tables. at the same time. If deceases are regarded as d ecision attributes in the patient infor-mation system, the system has multiple decision attributes. Following the mapping ( V decision attribute systems. For simplicity and comparison of conventional approaches, the single-decision attribute systems are applied, and V d of V  X  D inEq.(4).A classifier or a single body of knowledge is defined as a mapping from the condition vector space to the decision space.
+In fact, the mapping can be represented by m any forms such as rules, decision trees, neural networks or other methods.
+
+V  X  B is called a subspace of V  X  A . All the vectors in V
+V  X  B . The conventional approach in machine learning or data mining is to select a best subset B and get a mapping  X  B based on the subset B .  X 
+B then replaces be obtained because the training set is an inco mplete-instance system. For example, information entropy (Mitchell 1997). According to this decision tree, a decision can condition space. This decision tr ee is based on only one subset B of attributes {Out-look, Humidity, Wind}. The decision can be made without the temperature value.
+However, there are two problems with this single body of knowledge: 1. Does temperature not affect playing tennis? missing? value is not in the set {Sunny, Hot, Strong}. To answer this question, another single body of knowledge  X  B based on the attribute subset B Wind} is obtained in Fig. 2.
+ According to this knowledge  X  B , the answer is no for the question with {Sunny, Hot, Strong}.
+
+B and B are two attribute subsets or reducts (a formal definition of reduct and
+Ta b l e 1 .  X  ={  X  B , X  B } is called multiknowledge . Clearly, multiknowledge can retain knowledge.
+ Definition: Given a decision system I = U , A  X  D . Multiknowledge as follows: for the training set.
+ definition and our algorithm for finding indispensable attributes is presented in
+Sect. 3.4), it is difficult to make decisions by means of multiknowledge  X 
+B if the outlook attribute value or the wind attribute value is missing. In this situ-the decision system are conditionally independent. According to the Bayes classifier, the most probable decision can be expressed as follows:
+This expression can be rewritten by means of the Bayesian theorem as
+Unseen instances cannot be classified by rules based on Eq. (11) because condition vector A for an unseen instance did not a ppear in the training set and thus P assumed that attribute values are conditiona lly independent given the decision value, i.e.
+
+And so the na X ve Bayes classifier is obtained as where Bel ( d i ) = is called the belief for the decision d i .
+Consider the condition vector A = ( ? , Hot , High , We a k attribute values by using Eq. (14).
+ so d This is a reasonable result. However, consider the sixth instance in Table 1. solve this problem, we propose an approach in which multiknowledge from multiple reducts of a training set is combined with the na  X  ve Bayes classifier.
+In order to introduce our algorithm for findi ng multiple reducts, some relevant prop-erties of a decision system are defined by means of rough set theory (Polkowski et al. 2000; Yao et al. 1997; Skowron et al. 1992; Pawlak 1991, 1982).
+Following Pawlak (1991), let I = U , A  X  D represent a decision system and de-fine an object relation R = U  X  U .An indiscernibility relation is represented by
+IND ( A ) ={ ( u with respect to a set of attributes A in the system. The indiscernibility relation parti-tions U into equivalence classes U / IND ( A ) , each element in U of objects that are indiscernible with respect to A will be used instead of U / IND ( A ) .
+
+If  X ( B ) is equal to 1, every object can be identified by attribute subset B
+This is a property of a single attribute in a decision system. The larger more useful the attribute is for classification.
+
+This depends on attribute subset B . The minimal indiscernibility for an information system is  X ( A ) .Inotherwords,  X ( A ) is the maximal identifiable degree for the infor-mation system. For Table 1, if we do not consider the decision attribute, we can have an information system H = U , A ,where A ={ Outlook , Temp
+U includes 14 objects shown in Table 1. if attribute outlook is taken away from A in information system H , a subset B {
+Temp , Humid , Wind } is obtained.
+The indiscernibility  X ( B ) is larger than  X ( A ) .
+Consider decision system I = U , A  X  D , B  X  A and X  X  U .The B -lower approx-imation set of X is defined as follows: The B-upper approximation is defined as follows: B -lower approximation set for the decision space.
+ where APR  X  B ( X ) denotes the lower approximation of the set X with respect to equiv-alence classes U / B .
+ system is an inconsistent system. For an inconsistent system, some instances have the same condition vector, but give different decisions. The decision accuracy cannot reach 100%. The certainty-accuracy for a decision system is defined as follows:  X (
+A and all instances in the system can certain ly be assigned to a decision space by means of condition attributes of an instance. If 1 &gt; X ( A )  X  words, the instances give uncertain decisions. The value of certainly be assigned to a decision space.
+Let B  X  A .Ifthereisa B that satisfies  X ( B ) =  X ( A ) and b  X 
+B ,i.e.
+B is called a reduct for the decision system. Here means satisfy. In other words, a reduct is an attribute subset that has the same certainty-accuracy as attribute set A . Usually, there are many reducts in a decision system. Let 2 attribute subsets {{ a 1 } ,... , { a | A | } , { a 1 , a set of reducts.
+
+However, it is an NP-hard problem to find all the reducts. In a decision system with larger numbers of attributes and instan ces, it would be exceedi ngly time consuming to find all reducts. Fortunately, multiple reducts can be found by different approaches drop-first algorithm in Sect. 3.5.
+If there is B  X  A that satisfies  X ( A  X  X  b } )&lt; X ( A then B is called a set of indispensable attributes for the decision system. Indis-pensable attributes can be found from the discernibility matrix (Pawlak 1991) of set, i.e. all reducts contain the attributes. If any subset of attributes does not contain indispensable attributes, its certainty-accura cy will decrease.
+ Guan 1998; Guan and Bell 1998) is defined as to find the set of indispensable attributes.
+
+A3.1 Algorithm for finding indispensable attributes (Bell and Guan 1998; Guan and Bell 1998)
+Zhong and Dong 2001, Bell and Wang 2000; Wr  X  obleski 1998; Tanaka and Maeda 1998; Nguyen et al. 1997; Wr  X  obleski 1995; Kohavi and Frasca 1994; Pawlak 1991) can be divided into two types: the filter approach and the wrapper approach. In con-ventional approaches, only one best reduct is selected (Zhong and Dong 2001; Bell and Wang 2000; Tanaka and Maeda 1998; Kohavi and Frasca 1994; Pawlak 1991).
+Depending on the application domain, different approaches have been proposed to find multiple reducts (Bao and Ishii 2002; Wr  X  obleski 1998; Nguyen 1997). A short this paper, we propose a novel approach that combines the importance-degree rank-ing list and the WADF (worst-attribute-drop-first) algorithm. A set of attributes with high importance-degree is regarded as a good reduct. The approach includes three steps as follows:  X  Finding indispensable attributes  X  Ranking dispensable attributes by importance-degree  X  Dropping superfluous attributes by means of the WADF algorithm order of importance-degree .
+Importance-degree g ( a ) is defined as follows: degree of attribute a . The importance-degree is the sum of dependency and identifi-able-degree of attribute a .
+
+Let B = A  X  INDISP ( A ) ,where A is the attribute set of an instance and INDISP sorted from set B by importance-degree g ( b i ) in ascending order. The worst at-tributes are in front of the sequence. The attribute sequence A followed by INDISP ( A ) . A good reduct can be found by dropping nonsignificant attributes from the sequence B  X  one by one. The worst attribute is dropped first. So this algorithm is called the WADF (worst-attribute-drop-first) algorithm. The formal algorithm is as follows:
+A3.2 WADF algorithm for finding a good reduct 1 Calculate INDISP ( A ) . 2 //Start to sort the attributes. 3 B = A  X  INDISP ( A ) . 4 B  X  = Sorted B in the order of ascending g ( b ) . 5 A  X  = B  X  + INDISP ( A ) . 6 //End of sorting the attributes. 7 //Start to find a reduct. 8For i = 1to | B  X  | , 9 SIG b i =  X ( A  X  )  X   X ( A  X   X  X  b i } ) . 10 If SIG b i = 0then A  X  = A  X   X  X  b i } . 11 End for 12 RED ( A ) = A  X  . 13 //End of finding a reduct.
+
+The time complexity for computing a significance is O plexity for this algorithm is O ( | A | ) + O ( | B | ) =
+A reduct for given requirements can be obtained from WADF by determining the form of importance-degree g ( a ) according to the requirements. For example, in which the attributes have high identifiable-degree and high dependency on the decision attribute.
+ sequence A  X  . In order to find many reducts, a strategy can be applied to change the guaranteed to get a new reduct that is dif ferent from the known reducts. We propose to take away a dispensable attribute of a known reduct from A the known reduct.
+ Let RED ( A ) be a known reduct. K = RED ( A )  X  INDISP ( is a dispensable attribute in the known reduct. If k is taken away from A reduct can be obtained using algorithm WADF. By taking away the elements of K from
+A in turn, new reducts can be found one by one. The formal algorithm is as follows:
+A3.3 WADF algorithm for finding multiple reducts 10 A  X  = A  X  +{ k i } . 11 End for 12 Output: Reducts RED ={ RED 1 , RED 2 ... RED N } . 13 Output: Number of reducts =| RED | .
+ complexity for this algorithm is therefore O ( | A | ) + away from the sequence A  X  . The strategy can be designed in many ways for different away and then the remaining attributes in the sequence A next reduct. Step 7 above is then changed to  X  X ake last attribute of RED is changed to  X  X or i = 1to | B  X  | . X  By means of this strategy, the number of reducts indispensable attributes, B  X  = A  X  .Atmost | A  X  | (i.e. one run of the algorithm (e.g. the benchmark data sets Promoter and Lung-cancer the GA algorithm, in which a large space of possible reducts has to be searched by means of evaluating a fitness function. ing this value conjunction to classification or decision-making implies that relation-ships between attributes are considered in the classification or decision-making. For lationships between attributes are not considered in the decision. Therefore, we use multiple reducts to create a multiknowledge rule group and combine the rule group Sect. 2.
+ decision space instead of a given value. The b elief distribution is denoted by a vector and B  X  V  X  B . The format of an uncertain rule is defined as follows: where m i = is a belief distribution. If a decision system is an inconsistent system, m is a real number. For example, suppose that there are only two attributes {Outlook,
+Temp} in Table 1; the decision system becomes an inconsistent system. Consider One instance supports decision no. Two instances support yes.
+
+Following Eq. (28), the rule is represented by
+This is an uncertain rule . Knowledge for inconsistent systems can be represented by such rules. This is different from certain rules in the multiknowledge mentioned in
+Hu et al. (1997). For example, the data set (Tic 2000) for the data mining competition in KDD 2000 is an inconsistent system. The uncertain rules can be applied in such asystem.
+
+A group of uncertain rules based on reduct B , which is represented by be generated by using instances in the training set. By using multiple reducts, multi-knowledge can be obtained, i.e.  X  ={  X  B | B  X  RED } . Note that one reduct generates the union of multiple reducts (Bao and Ishii 2002). If attribute values of an instance match a condition in the rule groups, a belief distribution M for decisions can be ob-tained from multiknowledge  X  . If there are two or more rules matching an instance, a compound belief distribution is applied.
+
+Definition. Let M = ( m 1 , m 2 ,... , m n ) and M = ( m 1 belief distributions. The compound belief distribution W where  X  is a prior probability. Typically,  X  = 0 . 01. Note that zero probability problem is raised in some cases if about whole zero probability problems can be found in Wu and Bell (2001). Table 1, two reducts are found by Algorithm A3.3.
+
+According to the format of the rule in Eq. (28), the rule group for RED as follows: arbitrary values in the attribute domain. The rule group for RED by analogy.
+
+Multiknowledge is obtained by merging the two groups of rules and removing the repeat rules such as G2r5 that is a duplication of G1r3. For the na X ve Bayes classifier problem of the sixth instance in Table 1, attribute values for RED
+Strong). According to rule G1r5 in rule group of RED 1 ,wehave m rule group of RED 2 ,wehave m no = 1, m yes = 0 .
+From Sect. 2, we have Bel ( No ) = 0 . 177, Bel ( Ye s means of the combination of both beliefs, i.e.
+So we have This result is consistent with the true value in Table 1.
+
+Why is the product combination applied in Eqs. (30) and (31)? In fact, belief distribution in uncertain rule is based on Bayesian statistics shown in Eq. (29). Prod-reducts and is different from the belief distribution Bel
+Bayes classifier, we propose a formula to calculate P where | U | is total number of instances in the decision system and of values in the domain of attribute a . Typically,  X  = 0 decision accuracy for the na X ve Bayes cla ssifier can be obtained. Now two constants,  X  and  X  , can be tuned.  X  can be used to balance the effects between multiknowledge versa.
+
+The formal algorithm for the combination of the na X ve Bayes classifier and multi-knowledge is as follows:
+A4.1 Decision algorithm based on multiknowledge and Bayes classifier 1 Input training set. 2 Find multiple reducts RED . 3 Create multiknowledge  X  ={  X  B | B  X  RED } 4 Create probability distribution P ( d ) and P ( a | d ) 5 Input an unseen instance u . 6If B ( u ) is in rule groups, 7 Search multiknowledge  X  and compose W with M . 8 d MP = arg max 9Else 10 d MP = arg max 11 End if.
+ The time complexity for finding multiple reducts is O ( |
+O ( | R | ) ,where | R | is the number of rules in the groups.
+
+In general, normal unseen instances can be covered by the multiknowledge rule group. So the accuracy can be improved. If so me indispensable attribute values are missing in an unseen instance, the instance cannot be covered by multiknowledge.
+The na X ve Bayes classifier can still give reasonable decisions, such as for the situation mentioned in Sect. 2.3.
+In order to test the algorithms, 36 benchmark data sets from the UCI Machine Learn-to reach high decision accuracy for Promote r-gene-sequences-data and Lung-cancer-data. So far, we have not found any approach that can reach as high an accuracy as the algorithms proposed in this paper. For comparison, we have calculated the deci-sion accuracy for 36 data sets by means of the C5.0 tree in the commercial software
+Clementine 5.2, which is widely applied i n the machine learning and data-mining domain. The decision accuracy for the C5.0 and our algorithm are calculated using The names with  X  indicate that some attribute values are missing in the data set. numbers with * are confirmed by exhaustive searching of the reducts. The column of
+INDISP shows the numbers of indispensable attributes that are found by A3.1. The last three columns are decision accuracies in percentage, Bayes for the na X ve Bayes classifier, MK for combination of multiknowledge and the na X ve Bayes classifier, and
+C 5 . 0 for the C5.0 tree in Clementine 5.2. Here we provide comparison results only for the C5.0 tree. The comparison results for other approaches such as k-NN, C4.5, etc. can be found in Bao et al. (2003).
+Theoretically, the more reducts the database has, the more suitable the proposed algo-rithm is for the database. For some databases, such as Breast-cancer, Crx_data, Heart and Iris_data, as shown by marking the number of reducts with * in Table 2, exact numbers of reducts can be confirmed by exhaustive searching the reducts. However, it is very difficult to confirm the exact numbers of reducts for some databases such as Promoter and Lung-cancer because there are too many attributes in the databases. sets. The good reducts were applied to create multiknowledge in Algorithm A4.1 racy. For example, the decision accuracy reaches above 96% for Promoter data and 96.7% for Lung-cancer-data, and these are much higher than the C5.0 at 20% and indispensable attributes.
+Algorithm A4.1 shows that decisions for unseen instances are made by the combi-the instances are covered by multiknowledge. Theoretically, the more reducts used to create multiknowledge, the more the accurate knowledge remained in the multi-knowledge representation and the higher t he accuracy reached in decision-making.
+In order to demonstrate how multiknowledge improves decision accuracy, Lung-cancer_data in UCI is taken as an example. The original data is published in Hong 62.5%, KNN 53.1%, Opt. Dis c. Plane 59.4%. The accuracy for the na X ve Bayes classifier is 57.50 % in ten-fold-cross validation.
+ By using Algorithm A3.3, a sequence of 56 reducts for the data set was obtained.
+By using different numbers of reducts from the sequence, different multiknowledge can be obtained to make decisions. Applying different numbers of reducts to Algo-rithm A4.1, different decisi on accuracies are obtained.
+
+Figure 3 shows that that the accuracy varies with the number of reducts that have been applied in the multiknowledge in Algorithm A4.1.
+ decision accuracy obtained. Some attribut es make a special contribution to accuracy improvement. The salient points are recorded in Table 3.
+ reducts to create multiknowledge. The deci sion accuracy reached 96.67 %, the same as the accuracy obtained from the multi knowledge created by 56 reducts. By using this approach, the redundant rules in the multiknowledge can be removed. Please note that this set of six reducts is not a uni que combination for reaching the highest accuracy. They are not the shortest six re ducts among the sequence of reducts. How to find a minimal set of good reducts is an open issue that can be studied in further work. The reducts found by approaches in Bao and Ishii (2002), Wr  X  oblewski (1998) improvement can be obtained for a further study. Experimental results show that the fewer the repeat attributes are among the combination reducts, the better the results. to create multiknowledge.
+Algorithm 3.3 sorts the attributes in ascending order of importance-degree and then
+A3.3. In the case of Lung-cancer-data, the average importance-degree of a reduct
+The results show that the first reduc t reaches the highest accuracy among the reducts with high average of importance-degree give high accuracy. So importance-degree will be experimented with in another form in a further study.
+The na X ve Bayes classifier (Rish 2001; Mitchell 1997) is a highly practical machine learning method. In some domains, its performance has been shown to be compa-high decision accuracy for Breast-cancer an d Shuttle-landing-control. However, the na X ve Bayes classifier is based on the assumption that the attribute values are condi-tionally independent for the given decision value. If this assumption is not satisfied, many data sets, as shown in Table 2. For data sets with a large number of attributes, the accuracy can be much higher than with other approaches. An analysis of ex-changing the strategy for A3.3 and reforming importance-degree Eq. (27). Potential improvement may be obtained.
+
+The concepts of multiknowledge and uncertain rules have been applied to repre-sent knowledge. Therefore, a decision can be made in cases where there are missing proach, different artificial intelligence algorithms can be combined into a knowledge representation system.
+ tation. Following this idea, we can have multiple classifiers, multiple decision trees, multiple neural networks, and multiple suppor t vector machines. These are issues for further study.
+

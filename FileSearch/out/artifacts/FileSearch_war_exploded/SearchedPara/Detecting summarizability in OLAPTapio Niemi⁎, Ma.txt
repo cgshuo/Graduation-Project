@@ -1,0 +1,148 @@
+ 1. Introduction sold, distance travelled) that appear in the cube.
+
+In the past, there have been two main sets of ideas about categorising measures: researchers.
+ synthesis of the two earlier categorisations.
+
+When a user's query extracts information from a multidimensional database ( summary form. The user's query specifies: (a) The aggregation operation (e.g. a summation, a mean or a count), (b) The measure which is to be aggregated, and (c) Either an aggregation level or a member for each dimension.
+
+The query can only produce meaningful results if: 1. The aggregation operation is appropriate for the measure and 2. The measure is appropriate for the aggregation levels in the cube's dimensions.
+When both of the above conditions are true, we say that the selected data is over a number of points in time.
+ detectingsummarizability is such a hard research problem can be gleaned from our use of the word conditions. In particular, for the second of the above pair of conditions, what is our model is that we can provide provably-correct conditions for determining additivity. future work are given in Section 10 . 2. Motivation 1. disjointness of attribute groups, 2. completeness of grouping, and Washington D.C. being without a state.
+ to divide dimensions into temporal and non-temporal ones and summary attributes (  X   X 
+Stock,  X  state at specific point at time  X  , a simple unit such as Euro, meter, kilogramme, e.g. inventory.  X  Value-per-unit, x/y units such as price/item, e.g. item price or exchange rate. point in time, and the value-per-unit type a fraction or rate that can be used to convert units. temporal and non-temporal dimensions.
+
+Kimball and Ross [12] categorise measures as follows:  X 
+Additive  X  Measures that can be added across any dimensions.  X 
+Non Additive  X  Measures that cannot be added across any dimension.  X  Semi Additive  X  Measures that can be added across some dimensions.
+
+We find it useful to identify the following two special cases of the  X 
+Temporally Additive: the measure can only be aggregated across the time dimension.  X  more of the other dimensions) [8].
+ Table 1 combines these categories.
+ sense to sum monthly inventories of cars (at the end of each month) into years. paper, we raise several issues with the categorisation, which we summarise as follows. 1. There is a presumption that the data has been pre-aggregated for some time period, such as a day. into any of their categories. 4. The categorisation it is not precisely defined and thus it can be ambiguous. nothing to prevent two records containing exactly the same timestamp. additive measure.
+ demonstrates that such a measure might be semi-additive.
+ categorisation .
+ Example 1 establishes that we cannot categorise a measure just by reference to its unit of measurement.
+Our third issue is that Lenz and Shoshani's categorisation is not exhaustive. Their notion of a operator in any dimension other than the temporal one. An example of such a measure is as follows. gauges on a particular day in order to make an assertion about the total rainfall in Tampere and Geneva . dimension. These are not captured by Lenz and Shoshani's categorisation. filled each minute .
+ We have the following table with four columns: Into which of Lenz and Shoshani's categories should we put the measures Meter A and Meter B? records a state at a specific point in time, so it could also be classified as a stock. period.
+ technologies for measuring what is called  X  flow  X  in everyday parlance.  X  value-per-unit  X  .
+ hence it is the same class of measurement as the wind speed.
+ 3. Related work the system can  X  guess  X  it based on meta information.
+ identity of instances is not known anymore.
+ multidimensional normal forms.
+ use of aggregation functions.
+ functional dependencies in detecting summarizability.
+ measure type of the attribute is [13]. We follow Kimball and Ross' recommendation in the present paper. discussed in Section 10 . 2. X There is no work combining measure units and statistical scales of summary attributes. dimension can be used in a similar way in some applications. types such as the last item. The existing research does not include this. of these new measures is not included in existing research. 6. O There is no proof that any of the various categorisations of summary types is complete or minimal. 4. Running example
+The inventory table has two measure columns and a row for each warehouse transaction: date dimension.
+ cube with six measure attributes is illustrated in Table 5 :  X 
+Inventory, the total value of products in the inventory.  X 
+Sold items, the number of sold items.  X 
+Sales in Euro, the total sales.  X  Temperature, precipitation, and snow level indicate the weather on the given day. The OLAP dimensions in the example are the date and the country.
+ country. These values can be summarised along the time or country by using the sum function. measure similar to account balance. It is not additive along the time dimension. is correct, for example, to calculate the average price of the products sold in different countries. 5. Relational OLAP model model. This model is only used as an abstract model and it is not specific to any OLAP implementations. be loaded into an OLAP cube in order to perform complex data calculations [13]. aggregation technique with the fact.
+ Our model can be seen as a denormalised star schema having both facts and dimensions in the same table. Malvestudo et al. [20].
+
+De fi nition 1 (OLAP cube schema and instance). The OLAP cube and its instance are de 1. A dimension schema D i (1  X  i  X  n) and a measure set M are disjoint sets of attributes. 2. An OLAP cube schema C = D 1  X  D 2  X  ...  X  D n  X  M, where D with their units and statistical scales, m 1 ,m 1u ,m 1s , ordering. 4. An OLAP cube instance c is a relation over the OLAP cub eschemaCandarelationdoverDiscalledadimension instance. 5. It is assumed that the measure set M is not empty and the cube has at least one dimension. we highlight the roles of the measure unit, m u and statistical scale of the measure m currency depends on the country.
+ We do not generally assume that dimensions are domain-complete.
+ dimension. For example, the currency of the sales value can depend on the country.
+De fi nition 2. The measure unit m u depends on the dimension schema D bought it.
+ with exactly one member on the higher level.
+ example, instead of daily data, we want to analyse monthly data.
+
+Slicing in some dimension, D i , means taking a single member of some level in D only compatible values, such as values in the same currency.
+ up as much as is required, in several dimensions.
+ We define the aggregation operation in the style of relational algebra.
+De fi nition 3 (Aggregation). Let c be an OLAP cube over C and D
+A  X  D i is eliminated by aggregation. This is marked by  X  D (D 1  X  ...  X  D i  X  1  X  (D i  X  A)  X  ...  X  D n  X  M) such that c d'i means a tuple over (D i  X  A), and for each t  X   X  c  X  , it holds that 1. there exists some t  X  c such that t[D 1  X  ...  X  (D i  X  2. m iu  X  = m iu , u =1, ... , p , 3. m is  X  = m is , u =1, ... , p , and 4. t  X  [ m i  X  ]=  X  ( t [ m i ])|  X  t  X  c such that t [ D 1  X  ...  X  attribute remain the same after the aggregation function has been applied. Example 5. Suppose an OLAP cube c over a schema (day group product value): After applying an aggregation c  X  =  X  Product (c) them first. Identifying such problems will be discussed in detail in the next sections. 6. Measure types
+In statistics the scales of variables can be classified as the 0 point is artificial and there is no point in saying that 10 is twice as warm as 5. 6.1. Cube and dimension terminology definitions.
+
+De fi nition 4 (Interval scale ordering dimension). A dimension is an interval scale ordering dimension ( short) if, for each level in the dimension, the set of all members on that level forms a linear order. relating to the same earthquake event can be aggregated.
+ most one ordering dimension.
+
+De fi measure values come from tables called fact tables.
+ store.
+ to aggregate.
+
+De an aggregation operation.
+ day: pre-aggregated cube c  X  as follows: separate records with the details. Obviously, each sales order can involve many products. separate sales orders.
+ during a particular day.
+ refers to the time interval, rather than a point in time.
+ measures in an aggregated ordered cube. 6.2. Tally measure supplementary measures separately.
+
+De fi and let m be a simple event measure. Let A  X  D i be the lowest level of the hierarchy in D aggregated ordered OLAP cube over a schema C  X  =C  X  Aandm ordering dimension D i .
+
+Ifb  X   X   X  D j b  X  X  is a pre-aggregated ordered cube with an ordering dimension D is a pre-aggregated ordered cube and q  X   X  b  X  X  is a semi-tally measure over ordering dimension D preserve a semi-tally measure in the cube) .
+ independent, that is, the value of a measurement does not depend on the previous value. but not domain-complete.
+
+De fi measure. 6.3. Reckoning measure using various units just as the number of items, monetary value, volume, weight etc. Before giving the definition of the reckoning measure, we give the following definition:
+De fi nition 9 (Ordering self-closure). Let r be a cube over a schema C, and let D
+D , and m a measure in C. An ordering self-closure of r with respect to D schema, in practice we would still rename m  X  into m.
+
+De fi and a measure m. Then, c  X   X   X  D i c  X  D i ; m  X  X   X  X  is a cube with a reckoning measure m Example 8. Suppose the following relation r:
+Now the ordering self-closure of r with respect to A and m (r
+And after applying an aggregation operation  X  A  X  r  X   X  X  , we get a reckoning measure m identical and hence both are referred to as a reckoning.
+ defined as a sum of tally measures. For example, daily profit = evening =  X  (revenue from sales events in a day) + balance in the morning. 6.4. Snapshot measure data (e.g. the temperature represents movements of molecules or the speed distances and times). non-pre-aggregated and pre-aggregated cube. We define the snapshot measure as follows:
+De currencies using exchange rates. In some cases the required modifications can be done in the ETL (Extraction processbutsometimesthisisnotpossible  X  or it is more practical to operate with the original values. 7. Additivity aggregation functions is discussed in Section 8 . Horner et al. [8] define additivity as follows: when the sum operation cannot be applied.
+
+Based on literature (e.g. [22]), we can identify five possible main problems in additivity: 1. The measure does not depend on all dimensions. Example: in the sport company realm, having a measure like times. hierarchies. Example: a product belongs to two different product groups. values over the time dimension. measure units, and the final one to statistical scales of measures.
+ 7.1. Requirements for additivity this section, depends on the dimension and the measure.
+
+We define an aggregation operation in an OLAP cube to be correct if: 2. The measure unit of each value of the measure attribute participating in the aggregation is the same. 3. The statistical scale of the measure attribute is the ratio scale. zip codes.
+
+We can assume that for any pre-aggregated cube, c , there exists a non-pre-aggregated cube, say c to a unique set of tuples in c  X  and we obtain the pre-aggregated cube c from c needed when calculating the measure values in aggregation, as defined in Definition 3 .
+De fi
+L et c  X  be a cube, obtained by aggregation  X  D ( c ). Then assume the function f ( c that are used to calculate t [ m ]  X  c  X  .
+
+We say that the measure m is additive in c for dimension D if 1. c is either a non pre-aggregated cube or a cube produced from a cube c 2. for each tuple t  X  c  X  , t [ m ]=  X  ( f ( c  X  , D , t , m )), 3. the measure units of the measure value returned by f ( c 4. the scale of each measure value returned by f ( c  X  , D , t , m ) is the ratio scale . an ordering closure of c i nstead of c .
+ total amount. Amount is a tally measure and the total amount is a snapshot measure. Non-pre-aggregated cube c (micro-data): Pre-aggregated cube c , c  X  =  X  Time ( c ): first row of c  X  ,above.Thenf(c  X  ,Time,t 1 ,Amount) = {10,20,10} dimension.
+
+Instead, the reckoning measure total amount is not additive over the time dimension. Let t
+Time,t 2 ,TotalAmount) = 10, 20, 10, 5  X   X  = 45 but in c  X  additive over the time dimension .
+Theorem 13 (Measure types and additivity). Based on the de measure types have the following properties: Both semi-tally and reckoning are additive over a domain-complete non-ordering dimension.
+Proof. Let c be an OLAP cube over a schema C , D 1  X  C an ordering dimension, D dimensions. 2. Next, assume that m is a semi-tally measure. First of all, if D m is additive over D 2 .As m is a semi-tally measure, D 2 if m is additive over a non-ordering dimension. counted several times. Based on Definition 10 the reckoning measure is constructed by a maximum value of t  X  [ D 1 ]. Thus, the tuple t is joined at least to itself and t an aggregation thereby violating additivity. The situation with D the temporal dimension of theirs is only a sub-class of our ordering dimension. 7.2. Additive OLAP cube To conclude the requirements of additivity, we give the following corollary:
+Corollary 14 (Additive OLAP cube). Let c be a valid OLAP cube over a schema D dimension attributes, M is the set of measure attributes, M dimension and measure combination if: 1. There are no snapshot type measures in c . 3. If there are any semi-tally measures, then the only dimension in c is the ordering dimension. 4. For each measure , m , in c , all of the values for m share an identical measure unit. 5. The scales of all measures are ratio scales.
+
+Proof. The proof follows from Definition 12 and Theorem 13 . 8. Detecting summarizability aggregation functions. 8.1. Detecting measure types applied ETL processes.
+ We can give the following classification to help the designer to determine the correct measure types:
+Tally measure:  X 
+Non-pre-aggregated cube:  X  independent events measured in a particular point in time (e.g. the value of the sold item).  X 
+Pre-aggregated cube:  X  a value measured in a period of time (e.g. daily sales), or  X  a change in a fixed period (e.g. daily changes in inventory).  X  In our running example sold items and sales belong to this group.
+
+Semi-tally measure:  X 
+Similar to the tally measure but clearly not additive over some non-ordering dimensions such as geography.  X  In our running example daily precipitation belongs to this group.
+
+Reckoning measure:  X 
+Non-pre-aggregated cube:  X  an observed value of the same phenomenon at a particular point in time (e.g. daily inventory values),  X 
+Pre-aggregated cube:  X  a cumulative sum of changes (e.g. inventory level).  X  In our running example inventory belongs to this group.
+
+Snapshot measure:  X  indirect measurements [8] (e.g. temperature, and speed).  X  In our running example temperature belongs to this group.
+
+Conversion factor measure:  X  a conversion factor is the quotient of two measures (e.g. 1.28 USD/EUR)  X 
+In our running example currency exchange rates belongs to this group. 8.1.1. Tally versus semi-tally measures support our argument that this form of precipitation measurement is an example of a semi-tally. order to compare the total leakage from day to day, we must add the two heights. for each zone are added together to find an estimate for the total precipitation in the catchment area. nothing other than itself. Hence the height is not a tally, whereas the volume is a tally. 8.1.2. Snapshot versus reckoning measures
+The following example is intended to illustrate the differences between reckoning and snapshot measures. averaged over 24 h. As a measure it is a snapshot measure.
+ sunspots on the surfaces of the two stars.
+ 8.2. Aggregations in OLAP queries calculation in query evaluation. Generally, there are two ways in which aggregations can occur: 1. an aggregation removes a dimension or 2. an aggregation removes a hierarchy layer in a dimension, i.e. rolls-up a dimension. not included, aggregation computing is needed along this dimension.
+ the following form:
+SELECT [ b axis_specification N
+FROM [ b cube_specification N ] [WHERE [ b slicer_specification N ]] products from year 2010:
+SELECT FROM Sales WHERE [Date].[2010] included into the result. schema: the set of selection dimensions, i.e. the dimensions mentioned in the SELECT clause, D some dimension in the set of all dimensions D of the OLAP cube schema. The measures are then simply A 8.3. Checking summarizability of aggregation operations 8.3.1. Additivity Algorithm 1 . The algorithm is based on the definition of additivity ( Section 7.1). query is not additive.
+ Algorithm 1. Additivity of the OLAP query D = the set of aggregation dimensions.
+
+M = the set of measures. for all m  X  M do end for Return True.
+ 8.3.2. Conversion factors and summarizability and snapshot measures.
+ expression at which the conversion factor must be applied. The following examples illustrate this property. Gross Sales Revenue by VAT rate before the aggregation .
+ have to multiply gross sales revenue by sales tax rate before the aggregation. before the aggregation if the aggregation includes transactions from more than one day . 8.3.3. Period and scope rules for snapshot measures handled when aggregation operations are performed on the cube. We refer these rules as the be specified by the cube designer.
+ the measure value must be obtained by a suitable aggregation function, such as min, max or mean.
+For non-ordering dimensions, the cube designer must specify the valid to include this snapshot measure in the cube.
+ measure cannot be included in the cube, even in aggregated form.
+ makes the scope the highest level in the aggregation hierarchy for that dimension. 8.3.4. Other aggregation functions in different currencies.
+ necessarily a sufficient condition as illustrated by the following example. 9. Evaluation analytical method [7] . Furthermore, limitations of our method are stated in Section 10 . some key observations. Table 6 gives an overview of measure categories. categories to ours as follows.
+
+Flow vs. Tally: Lenz and Shoshani define flow as follows: periods.  X  This measure type is quite similar to our tally measure. We, however, recognise a measure over the temporal dimension.
+
+Stock vs. Reckoning: Lenz and Shoshani:  X  stocks are measured at particular points of time. additive.
+ between these units (e.g. knots vs. km/h).
+ Ross's and Lenz and Shoshani's categorisations cannot recognise these. summarizability of the query. 10. Conclusions and future work summarization.
+
+We now briefly assess the questions of summarizability that we felt were left open by the earlier research. 1. The summary attribute types do not have formal definitions.  X  This has been covered by our definitions in Section 6 , Definitions 7 2. There is no work combining measure units and statistical scale of summary attributes. 3. The temporal dimension plays a special role in most of the existing work but it is not necessary so. such as the last item. research. 6. There is no proof that the set of our summary types is complete or minimal.  X  This question mostly remains open. We identified a new measure type and to be actually useful it should be integrated with an OLAP design tool.
+In our future work, we shall  X   X  appear as the operands.  X   X  different summarization behaviour.
+
+References

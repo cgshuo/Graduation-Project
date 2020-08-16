@@ -1,0 +1,72 @@
+ 1. Introduction will be the only case studied in this article.
+ Fig. 1 illustrates these different approaches.
+ revealing new good properties of these important measures.
+ 2. Lorenz similarity curves refer to D = {r , s } as a duo, a word that has no  X  X  X ank X  X  connotations. 2.1. Construction of Lorenz curves for duo similarity arrays will also be called keyword arrays) and let ( a i ) equal to one. Formally with T r equal to
+Next, the components of the difference array d =( d i ) i =1, ... , N smallest.
+
+Finally, putting
+E =(1,0) as examples of Lorenz similarity curves.
+ use the array d 0 with components ( b j a j ) j instead of d with components ( a the reader to Egghe &amp; Rousseau (2001) .)
+The second point is that many duos lead to the same Lorenz similarity curve. We will hence consider which are reflections with respect to the line x =1/2. The duos {r {r alent duos will be given when the notion of replication invariance is introduced.
+Notation. The similarity Lorenz curve of ( r , s ) X  X  X n this order X  X  X ill be denoted by L
+Lorenz curve of ( s , r ) is denoted as L s , r .As L s , r denoted as L r , s ( x )or L D ( x ). 3. The partial order derived from Lorenz similarity curves For D = {r , s } and D 0 = {r 0 , s 0 } we will say that the Lorenz similarity curve L
+Lorenz similarity curve L D 0 ( x ) if for every x 2 [0,1] either L one point (and hence in infinitely many), or L s , r ( x ) 6 L
+Note that by the previous observation L r , s ( x ) 6 L r 0 , s 0 We are now in a position to define a partial order derived from Lorenz similarity curves.
+Definition (Lorenz similarity). Let D = {r , s }and D 0 = {r intrinsically larger than the Lorenz similarity between r situated below the Lorenz similarity curve of D 0 , L D 0 and s 0 , this relation is denoted using the symbol &gt;.
+
+Comments 2. In general, we do not require the length of r (= the length of s ) to be equal to the length of r come comparable. Within our framework intrinsic comparability based on Lorenz curve is the ond order type of comparison. 4. General properties of Lorenz similarity tant, basic, ones for the notion of Lorenz similarity.
+D = { (1,0,1),(1,1,0)} is transformed to D 0 = { (1,1,0,0,1,1),(1,1,1,1,0,0)} ( for f =2), or to D which Lorenz curves are constructed, is omitted.
+ has no influence on Lorenz similarity.
+ the value j r j 1 , c times the value ( j r j 1 j s j 1 ), and ( j s j c ) times the value j s j points with co-ordinates (0,0), j r j c the Lorenz similarity curve connects (0,0), j s j c the Lorenz curve is situated at the point with ordinate j s j c sub-top and will be denoted by S . Its ordinate is always equal to 1 c
+T  X  q N ; 1 ;if c = q , then S coincides with O , and T  X  c = q = r , then S = O and T = E , and we obtain the equality line. the co-ordinates of sub-top and top are with N = r + q c .
+ case that the sub-top precedes the top.
+ Proposition Its proof can be found in Appendix A .
+ and R(L r 0 ,s 0 ) are intrinsically incomparable.
+ considering a reflected curve will not make them comparable.
+
+Proof of the theorem. We have to show that if L r , s and L
+This statement is by contraposition equivalent with: if L
+L
+L r , s P R ( L r 0 , s 0 ), then (immediately by the previous proposition) L
+Note. It is still possible that L r , s &gt; L r 0 , s 0 (strictly) while L Indeed, consider the following example:
+Then the co-ordinates of S , T , S 0 , T 0 , S 00 and T 00 4.1. Considerations related to smallest and largest similarity The equality line connecting the origin O =(0,0) with the point E =(1,0) is situated under all other to N 1 different (but pairwise equivalent) and intersecting curves. Consequently there is no minimum intrinsic similarity curve, even when N is fixed (unless N =2), and certainly not for variable N .
+The following theorem shows that Lorenz similarity curves behave as one expects for a notion that is supposed to reflect similarity.
+ that the corresponding keyword is present, strictly increases similarity. element to the intersection makes a duo more similar. 5. Lorenz similarity functions that, if In the case the function f only satisfies the requirement then we say that f is a weak Lorenz similarity function.
+ (2002) . 5.1. The Gini similarity measure article we define the Gini similarity measure, denoted as G p. 240 ) is nothing but the Jaccard index applied to presence X  X bsence citation data. Theorem. The Gini similarity measure for absence  X  presence data is equal to the Jaccard index, J. and one trapezoid. Using Eqs. (5) and (6) this area is equal to: Consequently, the Gini similarity measure is the overlap measures O 1 and O 2 ( Egghe &amp; Michel, 2002 ).
+ Theorem. The overlap measures O 2  X  c r and O 1  X  c q are weak Lorenz similarity measures. The proof of this theorem is based on the following lemma.
+
+Lemma. If sub-top precedes top then the following two statements are true: (a) If the tops of two Lorenz similarity curves coincide then their sub-tops also coincide. A .
+ is situated strictly above R ( L 0 ), the reflection of L
+If the ordinate of T (the top of the D -curve) is strictly larger than the ordinate of the top of D
+D = { (1,1,1,1,0,0),(0,0,1,1,1,1)} and D 0 = { (1,1,1,0,0,0), (1,1,1,1,1,1)}. D that O 2 is only a weak Lorenz similarity measure. h the theorem proved above the case that L is situated above R ( L lute value of the slope of TE is N / r , while the absolute value of the slope of T cause L is situated above L 0 ), and consequently q 0 c 0 because L is situated above L 0 , this implies that the ordinate( S and abscissa of S 0 6 abscissa( S ) then automatically S 0 coincide, unless S 0 = S = O . If ordinate( S 0 ) is not equal to ordinate( S ), then ordinate( S hence O 0 1 &gt; O 1 . So, in general we can only say that D measure O 1 is a weak Lorenz similarity measure. 6. The relation between retrieval and overlap measures, and Lorenz similarity value do not co-occur for O 1 and O 2 .
+
+Proposition (using the same notation as above). Assume that D
+O &gt; O 2 .
+
+Proof. We know already that under this assumption O 0 1 P O proposition were not correct then O 0 1  X  O 1 and O 0 2  X  O that N c  X  N 0 c 0 . Now three cases are possible
+D that it is impossible that O 0 1  X  O 1 and O 0 2  X  O 2 . This proves the proposition. h As we consider this proposition to be an important result, we provide a second proof. cide). Hence the ordinate of S 0 is strictly smaller than that of S ,or O that D 0 &gt; D , if follows that S must be situated to the left of S uated strictly above T 0 ,or O 0 2 &gt; O 2 .
+
+Corollary. Any average of the overlap measures O 1 and O measure.
+
+Taking the harmonic mean leads to the well-known Dice coefficient. Indeed, the harmonic mean of O and O 2 is in common.
+
+The geometric mean of O 1 and O 2 is Salton X  X  cosine measure ures O 1 and O 2 , but they are all weak similarity measures in our sense. Another example of an acceptable similarity measure is squared coefficient of variation, hence the notation V 2 S in an information retrieval setting it can be interpreted as the number of unique keywords (keywords that are either unique to r or unique to s ) divided by the product of the number of keywords in r and the number of keywords in s . In this form the adapted Simpson index has the drawback that if r = s the similarity value becomes + 1 . The similarity of minimal Lorenz curves tends to zero as N increases.
+ sense the latter are more sensitive. 7. Conclusion relation cannot be underestimated.
+ Appendix A In this appendix we provide a number of technical proofs.
+ Proposition
+Recall that L r , s and L r 0 , s 0 are drawn with the sub-top before the top. Their co-ordinates are The proof is divided into several steps.
+ Step 1 . Abscissa( S 0 ) 6 abscissa( S ) equal to the absolute value of the slope of S 00 E . This means that As q 6 r and q 0 6 r 0 we conclude that
+If r = c then c = q = r and L r , s is the equality line, which is in contradiction with L case cannot occur. The case c 0 = q 0 will be studied in step 5 of the proof.
+Now, abscissa( S 0 ) 6 abscissa( S ) holds if: The last inequality is true by (A.1) . This proves this first step. Step 2 . The slope of the line OS 0 is smaller than or equal to the slope of OS . The slope of the line OS 0 is equal to N 0 q 0 , while the slope of OS is from (A.1) .
+ Steps 1 and 2 put together show that the point S 0 is situated below or on the line segment OS . Step 3 . The abscissa of T 0 is larger than or equal to the abscissa of T . We have to show that: q 0 N 0 P q N . This follows immediately from (A.1) . Step 4 . The absolute value of the slope of T 0 E is smaller than or equal to the slope of TE .
+We have to prove that: r follows from (A.1) . We already noticed that the case r = c cannot occur. Steps 3 and 4 together show that T 0 is situated under or on the line segment TE .
+This proves that in general L 0 is situated strictly under L (note that it is impossible that S = S Step 5. Exceptions
+We now have a look at the exceptional cases. If q 0 = c 0 proposition holds (unless may be if r 0 = c 0 ). Yet, if r inequality of the proposition holds strictly. This ends the proof of this proposition. that the corresponding keyword is present, strictly increases similarity. times the value (( j r j +1) 1 ( j s j +1) 1 ), and ( j s j c ) times the value ( j s j +1) matically) represents the transformation. This is: we will show that the curve O  X  S the curve O X  X  X  X   X  E .
+ The co-ordinates of point S are q c tion (i.e. adding ones to each array) we obtain the following points: S situated below the line OS . Further, the abscissa of T 0 and we are dealing with the equality line, a case that has been excluded.
+Lemma. If sub-top precedes top then the following two statements are true: (c) If the tops of two Lorenz similarity curves coincide then their sub-tops also coincide. Proof. Clearly
+We first show that if the tops coincide, this is then also the sub-tops coincide. For this to hold we have to show that From equality (*) we see that q (right-hand side, if c 0  X  0) yields coincide. Finally, the ordinate of T =1.As T = T 0 this implies that c 0 =0, and hence also S
+Similarly, if c 0 =0, then from T 0 = T , we see that c =0 too, and thus S = T .If r = c and r c 6 q 6 r , and c 0 6 q 0 6 r 0 we conclude that r = q = c and r curve in both cases.
+
+If the sub-tops coincide, this is then, in order to prove that also the tops coincide, we again have to show that Now from the equality q c if c 0  X  0) yields and hence, again by (**) : r
+We will now consider the exceptional cases. If c =0, then S = T and the ordinate of T =1.As S = S implies that c 0 =0, and hence also S 0 = T 0 and the two curves coincide. Similarly, if c c =0 and thus S = T .If q = c , then S = O , hence also S
+T and T 0 are different. An example of this situation is D = {r =(1,1,1,0), s =(1,1,1,1)} and D {r 0 =(1,1,0,0), s 0 =(1,1,1,1)}. Here S = S 0 = O , but T =(3/4,1/4), while T This proves the lemma. h References

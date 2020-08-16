@@ -1,0 +1,66 @@
+ 1. Introduction
+With the incredibly fast paced advances being made in information technology, computers have emerged into the main-marked by increased familiarity with new concepts and more complete connections between their learning experience and prior knowledge.
+Many users feel anxious when dealing with information systems, especially when initially interacting with them. In sociological and psychological aspects of human information behavior, computer anxiety is one of the most important subjects that has been commonly recognized by researchers and largely documented in the literature. Computer anxiety evidence for a relationship between computer anxiety and computer performance (e.g. Chou, 2001; Smith &amp; Caputi, 1989).
+ puting, especially for human perception measuring.
+ on-line learning characteristics of the specific user population. 2. The proposed method 2.1. Grey system theory and grey relational analysis (GRA) GRA will not lead to a result that conflicts with quantitative analysis ( Liu &amp; Hong, 1997 ). the function x 0 ( k ) denotes the reference sequence, and x geometric proximity, the similarity between x 0 ( k ) and x tional degree between x 0 ( k ) and x 1 ( k ) is higher while that between x between x 0 ( k ) and x 2 ( k ) is more significant than that between x
+The mathematics of GRA is derived from space theory. Let X be a factor set of grey relation, x x e X represents the reference sequence, and x i =( x i (1), x x ( k ) and x i ( k ) represent the respective numerals at point k for x number, then it can be defined as (Deng, 1989 ): The average value of c ( x 0 ( k ), x i ( k )) must satisfy the following four axioms:
+Axiom 1. Norm interval: 0 &lt; c  X  x 0  X  k  X  ; x i x 0  X  k  X  ; x i  X  k  X 2;
+Axiom 2. Duality symmetry: c  X  x 0  X  k  X  ; x i  X  k  X  X  X  c  X  x
+Axiom 3. Wholeness: c  X  x i  X  k  X  ; x j  X  k  X  X   X  c  X  x j  X  k  X  ; x
+Axiom 4. Approachability: c ( x 0 ( k ), x i ( k )) decreases when | x
+If the four axioms are satisfied, c ( x 0 , x i ) is then designated as the grey relational grade in x c ( x 0 ( k ), x i ( k )) represents the grey relational coefficient between x i = 1,2,..., m ; k = 1,2,..., n .
+ der is c ( x 0 , x j ) c ( x 0 , x i ), then the compared sequence x the compared sequence x i does. 2.2. Grey entropy ity (i.e. the distribution of the grey relational coefficient, c ( x information comprised in a given amount of signals. When drawing an analogy between human perception and a commu-associated to a given relative abundance vector p is measured by the quantity H
+Let X be a sequence of grey relation, X  X  X  x 1 ; x 2 ; ... ; x fined as: where x j is characterized by attributive information.
+
+The grey entropy possesses all axiomatic properties of Shannon entropy such as non-negativity, continuity, symmetry, utive information. The maximum of grey entropy can be obtained as: 2.3. Grey relation entropy (GRE) To combine the grey entropy with the GRA, the operation of grey relational coefficient must be modified as below: where R r represents the distribution of the grey relational coefficient; P value, representing the distribution density of the grey relational coefficient. Based on Eqs. (3) and (5), the GRE can be expressed as:
+The GRE grade in x i corresponding to x 0 is then defined as:
+The GRE can detect data regularity and characterize its asymptotic behavior. As shown in Fig. 2 , R point in the grey relational space. The grey relational order is c  X  x However, the grey relation entropy order is e  X  x 0 ; x 3
+GRE method is more reasonable and reliable than traditional GRA. 2.4. Interrelated grade of the grey relation entropy
+According to the axiom of wholeness, the GRE grades between any interrelated pair of sequences are unequal (i.e. e  X  x of GRE as the average GRE grade between any interrelated pair of sequences. It can be expressed as: ship between the corresponding pair of elements within a closed system. If the value of e (x
+It is based on the concept of comparative magnitude for the correlation analysis. 3. Methodology 3.1. Subjects rience before the experiment. The demographic data of the experiment were classified as shown in Table 1 . 3.2. Experimental design and materials 3.2.1. The elementary computer-training program and on-line learning system
+In order to conduct this experimental research, an asynchronous learning course was provided for the subjects who
+Employment and Vocational Training (BEVT), Council of Labor Affairs, Taiwan. ance and assistance of learning in the program (120 min).
+ graphics, animation, audio, and video elements. It was installed in the on-line learning website of the BEVT.
+The overall learning time and process were controlled and recorded by the system automatically. 3.2.2. On-line tests
+The passing mark was 60 points and the testing time was restricted to 10 min for each unit test. 3.2.3. Computer anxiety scales
+Beckers and Schmidt (2001) once proposed a six-factor model of computer anxiety. Based on their proposed model, we of 9 positive and 6 negative items. In addition to the six factors acceptable to me X .
+
+To make the computer anxiety data available, we define the composite anxiety score (CAS) as the quotient obtained by the numerical value the more anxious a subject was in the perceived situation. It can be expressed as below: sents the positively-framed question item; q is a scale coefficient, q = 7.5. 3.2.4. Questionnaire survey five-point Likert scales ranging from  X  X  X ntirely disagree X  (score = 1) to  X  X  X ntirely agree X  (score = 5). 3.3. Procedure The empirical study used a post-test design and was implemented under a life-long learning project supported by the in Fig. 3 . 3.4. Data analysis responding classified group; for example, sequence x G  X  male  X 
+Taking advantage of the GRE operation, we could obtain the corresponding GRE grades. These GRE grades were converted tive correlations among different classified groups. 4. Results 4.1. On-line learning achievements three groups: high-performance (scored more than 80), medium-performance (scored between 70 and 79), and low-perfor-group.
+
+With respect to individual differences in learning achievements, the mean scores of the on-line tests were 72.72 72.43 (SD = 6.87) for young adult subjects aged under 44, 71.91 (SD = 8.35) for middle-aged subjects aged between 45 jects, and 74.13 (SD = 7.49) for the high-education subjects (see Table 2 ). 4.2. The accessibility inquiry of on-line learning acteristics among the different classified groups.
+ ( x ( k relationships between any two sequences. For example, e  X  x x LC corresponding to x lated grades of GRE were 0.7619 between male and female groups, 0.6324 among the three different age groups, 0.5342 related grade order was e  X  x Gender LC  X  e  X  x Age LC  X  e  X  x Performance shown in Fig. 4 . The differences between the middle-aged group and elderly group ( e  X  x ( e  X  x grade was e  X  x Gender LC Ix Performance LC  X  X  0 : 7134, and the lowest grade was e  X  x Education 4.3. Computer anxiety measure tion, or medium learning performance were found to be more anxious toward computer use. The low-education subjects classified groups.
+
+Taking advantage of the means of the computer anxiety measurement results, we constructed 11 sets of sequences ( x in Table 7 .
+ was e  X  x Performance CA  X  e  X  x Age CA  X  e  X  x Education tween the middle-aged and elderly groups ( e  X  x A  X  45 54  X  e  X  x Education 5. Discussion sample from which it was computed. However, the assumption and sample requirement seem to be unreasonable to deal observation phenomenon. The significance of our proposed method is based on the concept of comparative magnitude for the correlation analysis.
+ correlation between gender groups was relatively significant in terms of the on-line learning characteristics ments. There was little difference in learning achievements between middle-aged (aged 45 X 54) and elderly (aged over were relatively significant in terms of the on-line learning characteristics ( e  X  x tem without any hesitation. When an error message appeared on the system, 35.3% of the elderly respondents wanted to reboot the system, yet 65.8% of the middle-aged respondents wanted to request experienced help. 94.1% of the elderly was moderate in terms of the subjects X  on-line learning characteristics ( e  X  x ( e  X  x Age CA  X  X  0 : 7741), respectively.
+ learning achievements, whereas the low-education subjects did the worst, especially in the word processing unit. The low-education group experienced the highest measure of computer anxiety, while the middle-education group was found tween low-education and middle-education subjects ( e  X  x messages appeared, 77.3% of the low-education respondents wanted to request experienced help, whereas 37% of the acteristics ( e  X  x Education LC  X  X  0 : 5342 # ).
+
+With respect to learning performance differences, the medium-performance subjects were perceived to be more anxious learning performance groups was relatively significant in terms of the computer anxiety scales ( e  X  x Performance achievements. The high-education group had the best on-line learning achievements, whereas the low-education group did the worst. The low-education group perceived the highest measure of computer anxiety while the low-performance of the accessibility of on-line learning ( e  X  x Gender LC formance effect was relatively similar in terms of the subjects X  computer anxiety scales ( e  X  x Gender relatively different in terms of the accessibility of on-line learning ( e  X  x Gender group effect were also relatively similar in computer anxiety perception ( e  X  x Gender 6. Conclusion relation to on-line learning performance and computer anxiety. The proposed method integrates Shannon entropy into a mental variables.
+ effect relationship. However, we can derive some behavioral phenomena through the explanations of the correlative magnitude.
+ should focus on analyzing unemployed adult novices X  attitudes toward on-line learning. Acknowledgements
+This study was supported by the National Science Council of Taiwan under Grant NSC 96-2221-E-268-002. The authors also gratefully acknowledge the subjects who participated in the experimental study voluntarily. Appendix A. List of the questionnaire Part 1. Demographic questions
+Question 1-1. What is your gender? ___Male ___Female
+Question 1-2. What is your age range? ___Under 44 years old ___45 X 54 years old ___Over 55 years old
+Question 1-3. What is your educational level? ___Junior high school or below the level ___Senior high school ___Junior college or above the level Part 2. Accessibility inquiry of on-line learning
+Question 2-1. What is your initial impression on a computer before attending this one-line learning program? b. It is an applied tool that people have to possess the skills.
+Question 2-2. What do you think about  X  X  X n-line learning X ?
+Question 2-3. What is your experience in using the on-line learning system for the first time?
+Question 2-4. What is your outlook on the  X  X  X n-line learning X  mode?
+Question 2-5. What is the greatest advantage of using the on-line learning system?
+Question 2-6. What is the greatest disadvantage of using the on-line learning system?
+Question 2-7. What is the most difficult-to-do thing while using the on-line learning system?
+Question 2-8. Supposing the system displays an error message, what will you do then?
+Question 2-9. Which function should be enhanced the most for the on-line learning system?
+Question 2-10. What do you gain the most from finishing this on-line learning program?
+Part 3. Computer anxiety measure ( A 5-point Likert scale ranging from  X  X  X ntirely disagree  X  to  X  X  X ntirely agree  X ) Question 3-1. I am able to use a computer mouse with ease.
+ Question 3-2. I am able to use keyboard with a computer correctly.
+ Question 3-3. Reading from computer screens is acceptable to me.
+ Question 3-4. I can well comprehend the information presented on a computer screen. Question 3-5. I find it difficult to understand the technical aspects of a computer. Question 3-6. Nowadays, everyone can learn to use a computer.
+ Question 3-7. I am confident that I can learn computer skills.
+ Question 3-8. The computer has simplified my life.
+ Question 3-9. I think the computer inaccessible.
+ Question 3-10. I feel like I am short of breath when I am in front of the computer. Question 3-11. I have sweaty hand palms when I work with the computer.
+
+Question 3-12. Computers make people become isolated. Question 3-13. Computers destroy human creativity.
+ Question 3-14. Computers bridge the information gap between rich and poor countries. References

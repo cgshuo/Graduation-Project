@@ -1,0 +1,54 @@
+ 1. Introduction querying these relationships, represented by the RDF triples, have attracted increasing research interests. update operation is required to load the newly extracted triples into the existing knowledge base. incremental update in their system but performance is not reported. gStore [10] and RDF-3X [11 feature in their system and their incremental update performance has also been evaluated. Due to our new index architecture, new query execution engine is developed for fast access of our index.
+We summarize the contributions of our work as follows:  X  to address the dynamic nature of knowledge bases.  X  also achieves high query efficiency.  X  efficiency is very competitive.
+ conclude the paper in Section 8 . 2. Preliminaries people follow such model, it is much easier for sharing information among multiple applications. concept of property . A resource can have multiple properties, and properties have values. Take the fact 23th June, 1912  X  for example. In order to represent the relationship define a property  X  b bornOnDate N  X  and such relationship can be represented by ( resource. Literal is not a resource; it is a string value (e.g.,
+Following are some triples related to Alan Turing 1 : ( b Alan_Turing N , b bornInLocation N , b London N ) ( b Alan_Turing N , b bornOnDate N ,  X  1912-06-23  X  ) ( b Alan_Turing N , b diedInLocation N , b Wilmslow N ) ( b Alan_Turing N , b diedOnDate N ,  X  1954-06-07  X  ) ( b Alan_Turing N , b hasWebsite N , b http://www.alanturing.net ( b Alan_Turing N , b isCalled N ,  X  Alan M. Turing  X  ). instance, the following SAP can be used to query all the resources who were born in London: ( ?p , conjunction of one or more SAPs. For example: ?p b bornInLocation Nb London N . ?p b diedInLocation Nb Wilmslow N .
+ the data graph. If we rewrite the above query with SPARQL, it will be:
+SELECT ?p WHERE { 3. String-ID mapping approach proposed String-ID mapping approach of AWETO.
+
+String-ID mapping of an RDF storage system provides the following two functionalities:  X  mapping to test if the string has already been assigned an ID.  X  atoms into their string representation.
+ Typically, two kinds of string-ID mapping approaches are adopted in the current RDF storage systems. mapping table, which causes performance degradation.
+ Before we introduce our string-ID mapping approach, we first define conflict string :
+De fi nition 1. Con fl ict string string s  X   X  s that has already been assigned the ID h ( s ).
+ in both initial bulk load and incremental update. 3.1. String-ID mapping in initial bulk load proposed algorithm for resolving string-ID mapping in initial bulk load is depicted in Algorithm 1. of AWETO, we use one hash function h ( x )= x mod m , where m is the length of the bit array in the Bloom filter . ( b Alan_Turing N , b type N , b Person N ) ( b Alan_Turing N , b isCalled N ,  X  Alan M. Turing  X  ) ( b Alan_Turing N , b isCalled N ,  X  Alanus Mathison Turing ( b Alan_Turing N , b isCalled N ,  X  Alan Turing  X  ) ( b Alan_Turing N , b hasGivenName N ,  X  Alan  X  ) ( b Alan_Turing N , b hasFamilyName N ,  X  Turing  X  ) ( b Alan_Turing N , b graduatedFrom N , b Princeton_University ( b Alan_Turing N , b hasAcademicAdvisor N , b Alonzo_Church ( b Princeton_University N , b type N , b Universitiy ) ( b Princeton_University N , b isCalled N ,  X  Princeton-universiteit ( b Princeton_University N , b isCalled N ,  X  Univer sitas Princeton ( b Alonzo_Church N , b type N , b Person N ) ( b Alonzo_Church N , b hasGivenName N ,  X  Alonzo  X  ) ( b Alonzo_Church N , b hasFamilyName N ,  X  Church  X  ) ( b Alonzo_Church N , b isCalled N ,  X  Alonzo Church  X  )
+Then, we generate a temporary file containing the following information: 325139335 Princeton-universiteit 620828401 Alanus Mathison Turing 795117782 type 922484582 Church 922484582 Alonzo_Church 975184447 graduatedFrom 1019901428 Princeton_University 1065738113 Universitas Princeton 1124849173 hasAcademicAdvisor 1273271076 Alan Turing 1330155065 Universitiy 1402263080 Alonzo Church 1439869607 Alan 1439869607 Alonzo 1801982372 Alan_Turing 1887385039 hasGivenName 1918674024 Person 1959756650 hasFamilyName 2040294948 Alan M. Turing 2108943609 isCalled 2138869059 Turing table and the conflict map are shown in Fig. 1 .
+
+In conclusion, two tasks are done during Algorithm 1: 1. All the ID-to-string mappings are written to the ID-to-string mapping table in disk. that h ( s ) is the ID representation of s , otherwise, we know that s does not exist in the string-ID mapping. 3.2. String-ID mapping in incremental update because the string has already been assigned h ( string ) as ID, otherwise, in lines 7 ID-based triples can be very fast.
+ deleted. It will cause heavy maintenance burden if deletion is considered in string-ID mapping. that the triple is not in the knowledge base. Therefore, we can ignore the triple and continue to the next one. 4. Triple index incremental update of triple index in Section 4.2. 4.1. Overview of triple index tuples associated with the FA pair are stored in BT index .
+ file, and length is the length of the indexed data measured in block . the triples are converted into ID representation and we sort the triples by SPO order: ( 953038171 , 795117782 , 1918674024 ) ( 953038171 , 1887385039 , 1651651253 ) ( 953038171 , 1959756650 , 922484582 ) ( 953038171 , 2108943609 , 1402263080 ) ( 1019901428 , 795117782 , 1330155065 ) ( 1019901428 , 2108943609 , 325139335 ) ( 1019901428 , 2108943609 , 1065738113 ) ( 1801982372 , 795117782 , 1918674024 ) ( 1801982372 , 975184447 , 1019901428 ) ( 1801982372 , 1124849173 , 953038171 ) ( 1801982372 , 1887385039 , 1439869607 ) ( 1801982372 , 1959756650 , 2138869059 ) ( 1801982372 , 2108943609 , 620828401 ) ( 1801982372 , 2108943609 , 1273271076 ) ( 1801982372 , 2108943609 , 2040294948 ).
+ (1887385039, 1651651253), (1959756650, 922484582), (2108943609, 1402263080) into BT index beginning with offset 0. this, the structure of the two-tier triple index is shown in Fig. 2 . traditional triple index structure, our two-tier triple index gains better performance. with operating system page as the basic unit.
+ when we put the blocks together, they represent all the associated binary tuples for p . segment benefits both the data compression and U-SIP pruning.
+ the decompressor on how to decompress the four binary tuples .
+
+LUBM respectively. Thus, by introducing compression into AWETO, lots of I/O time can be saved. 4.2. Incremental update of triple index
+In each of the ID-based RDF triples to be inserted or deleted, we add a flag f. f equaling to the binary tuples bt old which have the same role and atom with bt merge bt old and bt new . While performing the merge operation, all the triples with f =
+Now we analyze the cost of the incremental update operation. Suppose the numbers of triples in bt operation is O (4 nlog ( n )+ m + n ).
+ triple index in a batch manner.
+ and we also take SPO order for example. Assume the following two triples need to be inserted: (1019901428, 854315478, 315487547) (1019901428, 2108943609, 457865481).
+ namely 854315478, 315487547, 2108943609, 457865481. After the merging, we get 795117782, 1330155065, 854315478, 315487547, 2108943609, 325139335, 2108943609, 457865481, 2108943609, 1065738113. Two blocks are not enough to store the triple index after the insertion. 5. Query execution got from the value field of the AP index, the bindings for ? p and ? o can be naturally retrieved. do not need to be filtered because we know all the binary tuples must satisfy ? p =2. Then for each binding of ? s , the operation is the same as ( s ,? p ,? o ). safely pruned thus improving the performance by decreasing disk I/O time, decompression time and join time. object. atomFilter object deals with the SAPs ( a 1 , a 2 object is responsible for getting the next value described above. For SAPs ( a (line 12). If the next value is larger than the maximum value of ? v join thus we continue to the next segment (lines 13 and 14). The other condition is for the SAP ( a cannot be used for the segment . After the filtering and pruning of useless segment , in lines 20 6. Experimental evaluation 6.1. General setup set to 32 for YAGO2 and 512 for LUBM.
+ our system with a commercial RDF storage system, OWLIM-SE [36]. 6.2. Query evaluation YAGO2 dataset. All the queries are shown in Appendix A.1 .
+ string-ID mapping strategy is adopted. The mapped IDs uniformly distribute in the range from 1 to 2 we only show the experimental results and the time for query results conversion is not excluded. queries. All the queries are shown in Appendix A.2 .
+ caches. 6.3. Incremental update evaluation string-ID mapping and the triple index, respectively.
+ implementation, to four in our implementation. This makes RDF-3X have the same number of indices with our system. update with large amount of triples.
+ 1 million triples per batch for YAGO2, and 2 million triples for LUBM.  X  approach and the triple index are optimized for incremental update and more time-efficient than RDF-3X. our system using LUBM dataset.
+ efficiency compared with the other three state-of-the-art open source RDF storage systems. 7. Related work
+The second category of RDF storage systems relies on their own index architectures [48,49,35,32,33,50
+GRIN [52] introduces an index format based on binary tree and hash tables by grouping information around selected matrix to support efficient querying of RDF data.
+ maintenance overhead is low. The strategy to maintain the in-disk adjacency list is not reported in their paper. 8. Conclusion
+In this paper, we propose a new RDF storage system AWETO which considers both the performance of querying and incremental update in a parallel way.
+ Acknowledgment Key Basic Research Program of China (973 Program) under Grant No. 2014CB340505, and an HP Labs Innovation Research Program award.
+ Appendix A. Queries for evaluation A.1. YAGO2
+Q1 : select ?name ?state ?m1 ?m2 where {
+Q2 : select ?name ?b ?c where {
+Q3 : select ?name ?m1 ?i1 ?m2 ?i2 where {
+Q4 : select ?name ?city ?l where {
+Q5 : select distinct ?name1 ?name2 where {
+Q6 : select ?p ?GivenName ?FamilyName ?GivenName2 ?FamilyName2 where {
+Q7 : select ?g1 ?f1 where { A.2. LUBM
+Q1 : select ?X where {
+Q2 : select ?X where {
+Q3 : select ?X ?Y1 ?Y2 ?Y3 where {
+Q4 : select ?X where {
+Q5 : select ?X ?Y where {
+Q6 : select ?X ?Y ?Z where {
+Q7 : select ?X ?Y where {
+References

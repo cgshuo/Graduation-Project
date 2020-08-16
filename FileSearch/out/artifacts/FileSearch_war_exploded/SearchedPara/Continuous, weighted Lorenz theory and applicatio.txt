@@ -1,0 +1,98 @@
+ 1. Introduction can be defined as problem. For this see e.g. Egghe and Rousseau (1996a, 1996b) or Rousseau (1988) . (i) The limitation to 2 years in IF(2).
+ Rousseau, 1988 ; Ingwersen, Larsen, Rousseau, &amp; Russell, 2001 ): where c ( i ) and p ( i ) are as above (but now i ranges in the set {1,2, ... , t }). et al., 2001 ).
+ to the diachronous ones.
+ where relatively older work is still very much used.
+ data of the CSCD (Chinese Science Citation Database).
+ that IF( t ) X  X f it attains a maximum X  X t will be in a value t function attains its maximum.
+ that and be adapted as follows: for every t 2 R  X  define completeness.
+
+The condition Egghe &amp; Rousseau, 2000 ).
+ time t 0 at which IF( t ) reaches its maximum. This is illustrated in Fig. 1 . line (fixed t ) measures the  X  X  X ight X  X  IF( t ) for both fields or journals and using IF( t that is present in IF: the fact that IF is not normalized with respect to P and C . (ii) The not-normalized nature of all IF( t )-values.
+ way in the sequel). Then define the relative impact factor where denotes the average number of citations per publication.
+
+Examples values than 2 are equally possible). Hence IF i  X  C i factor RIF i (see e.g. Egghe &amp; Rousseau, 2003 ) is then where is the average number of citations per publication in the whole field. besides the two-year impact factors IF i (2) of each journal i in a field, also the RIF of each IF i by P
+Category Listing. and with respect to all articles in this journal 1,2,3, ... years ago we can hence define Using formula (6) this is discussed above, as the following heuristic argument shows. theory, we should have at our disposal all IF( t ) s (or rather RIF( t ) s ) for all t 2 R only need RIF( t ) as numbers but the curve cations in this journal. So, instead of (14) we could look for a curve of Lorenz theories.
+ proved.
+ period.
+ are given. 2. Weighted Lorenz curves of a continuous variable refer the reader to Egghe (2002, 2004, 2005) , Egghe and Rousseau (1990) for more details. 2.1. Lorenz curves of a discrete variable zero) and that we have ordered the vector X decreasingly. For each i =1, ... , N , x onal curve connecting (0,0) consecutively with the points where this construction. We obtain a concave curve since the x i 2.2. Lorenz curves of a continuous variable denoted L ( h ), of such a situation is given by the points a concavely increasing function connecting (0,0) with (1,1). Fig. 3 illustrates this.
+In other words, putting hence the Lorenz curve of the function h is the function L ( h ), where 2.3. Weighted Lorenz curves of a discrete variable tor W =( w 1 , ... , w N ), where w i P 0 for each i =1, ... , N and where
+The weighted Lorenz curve of a vector X =( x 1 , ... , x N constructed as follows. We first rearrange X so that We then connect (0,0) with the consecutive points curve of X (w.r.t. W ) and denoted as L X , W . Fig. 4 illustrates this. 2.4. Weighted Lorenz curves of a continuous variable of the form, for x 2 [ a , b ]and v P 0 integrable on [ a , b ]: (hence L ( h , v ) is the curve where g is the normalized form of h :
+Here, as in Section 2.3 (23) , we suppose that the function proved now. as independent variable and as dependent variable. Hence the function L ( h , v ) is continuous. We have by (30) and for the function y = u ( x )asin (29) . Hence using (29) . Hence, putting (32) in (31) we have, as a variable of x :
+Since (33) is positive, L ( h , v ) increases and since a  X  h cavely increasing function of y (i.e. the same graph as in Fig. 3 ). h 2.5. Application of weighted Lorenz curves of a continuous variable: Impact Lorenz curves t (again t refers to the past). This means that, for every t denotes the number of articles in this journal in the time period [ t t = time here) times (cf. Egghe &amp; Rousseau, 2000 ).
+ What is the use of the impact Lorenz curve L ( c , p )? a = 0 and b =+ 1 and the notation x = t . We have, denoting that with using (29) and (30) . Using (33) gives as function of time t (relation (38) ).
+
+So we have that (using that t  X  0 () y  X  0 and t  X  X 1() y  X  1) and that and (38)
+So we have that, by (13) , and (ii) of impact factors discussed in Section 1.
+ dependent on y , for all y 2 [0,1]. We can denote these as RIF[ y ]. journal has 100 y % of its publications. As said above, y and t are related by (38) . We have the easy proposition:
+Proposition 2.5.3 Proof. Let t 2 [0,+ 1 ]. Then with y the unique value determined by (38) . Since obviously y 2 [0,1] we have proved that
+For the other inclusion, let y 2 [0,1]. Since the function valid. Hence, for this value of t ,by (43) , Fig. 5 , a vertical line at abscissa y and then calculate tg b as indicated. on L ( c , p ).
+
+In the same way as above this determines an abscissa, being L
+Fig. 6 . We have now in the following sense.
+ has received 100 g % of its citations. As said above, g and t are related as in (37) . We again have the following easy proposition.
+
+Proposition 2.5.5 Proof. Let t 2 [0,+ 1 ]. Then with g the unique value determined by (37) :
+Since obviously g 2 [0,1], we have proved that
+For the other inclusion, let g 2 [0,1]. Since valid. Hence, by (37) and (43) we have that received 50% of its citations. In other words, they defined the non-normalized impact factor Lorenz curves.
+ pose we have two journals with impact Lorenz curves L 1 , respectively L proposition.
+
+Proposition 2.5.6. The following assertions are equivalent: (i) L 1 &lt; L 2 ( meaning L 1 6 L 2 and L 1 6  X  L 2 except in (0,0) and (1,1)). (ii) RIF 1 [ y ] &lt; RIF 2 [ y ], " y 2 ]0,1[. (iii) RIF 1 { g } &lt; RIF 2 { g }, " g 2 ]0,1[.
+ The same is true when &lt; is replaced by = .
+
+Proof. This is clear by graphical inspection of Fig. 7 a and b. h (for publications) that a in (34) must decrease we hence suppose that c &lt; p . 3.1. Impact Lorenz curves and properties
+Based on formulae (35) X (38) , we obtain the following formulae Hence or, in a form that is easier to interpret:
+This important formula shows that L ( c , p ) is only dependent on one parameter, namely ing this explicitely.
+
+Theorem 3.1.1. For any two situations, where we have p 1 ,c aging parameters in the second case, we have (denoting by L situation 1 and 2). Proof. By (55) it is clear that only (i) needs to be proved. Now, by (55) since 1 y 2 ]0,1[. h
+Corollary 3.1.2. Let us have two situations as above. (i) Suppose there exists an y 0 2 ]0,1[ such that RIF 1 [ y (ii) Suppose there exists an g 0 2 ]0,1[ such that RIF 1 { g
+RIF 2 [ y 0 ] for a certain y 0 2 ]0,1[ then L 1 k L 2 by Proposition 2.5.6 and obviously L possible: L 1 &lt; L 2 which implies, by Proposition 2.5.6 that RIF goes for (ii). h have that the inequality (concentration) between the values is smaller than the inequality (concentration) between the values
+Proof. This follows immediately from the fact that L 1 &lt; L false for RIFs calculated with fixed times t instead of using fixed values of y or of g . such that and
+For two such situations (with parameters p 1 , c 1 and p 2 is the key function for which we must find examples such that f ( t (61) ).
+Note first that (use de l  X  Ho  X  spital  X  s rule) and that
+L words, using Theorem 3.1.1 and Proposition 2.5.6 we have the following result.
+Proposition 3.1.4.1 (i) f (0) = 0 iff (ii) f (0) &gt; 0 iff and similarly for f (0) &lt; 0.
+ understood the case (i): f (0) = 0. Hence this means that, by (64) and that all RIF 1 [ y ] = RIF 2 [ y ] and that all RIF 1
+Now equality (65) is valid if and only if there exists a k 6  X  0 such that
+Then f in (63) has the form function
+This function decreases in t as follows from the proof in Appendix A , noting that and that ln c ln p &gt; 0. An alternative proof is given by the fact that using (51) and (52) and by the fact that the function L ( c , p ) is concave (using that 0&lt; c &lt; p &lt; 1).
+ examples: (i) c 1 = 0.5 &lt; p 1 &lt; 0.7, k = 2. Then c 2  X  c k 1  X  0.25 &lt; p (ii) c 1 = 0.5 &lt; p 1 &lt; 0.7, k  X  1 2 . Then c 2  X  ( L 1 = L 2 ) but where or IF 1 ( t )&lt;IF 2 ( t ) for all t &gt;0,orIF fractional impact factors in the second case. Let L 1 &lt; L (61) become possible.
+ Fig. 9 illustrates this reasoning.
+
+The choice of the parameters 0 &lt; c 1 &lt; p 1 &lt; 1 and 0 &lt; c valid we have, for a certain e &gt;0
+Hence, we can choose k 6  X  0 freely so that hence the case (65) ). Let us give two pertinent examples.
+
+Examples 3.1.4.2 (i) c 1 = 0.5 &lt; p 1 = 0.7, k =2, e = 0.01. Then we have the values but we can have f ( t ) &gt; 0 but only for very small values of t ! pact factors RIF 1 ( t ) are larger than RIF 2 ( t ) (since f ( t ) = RIF
+Let us give a last example where the order between RIF 1 (1), RIF (ii) c 1 = 0.5 &lt; p 1 = 0.7, k =2, e = 1. Now
+We have and Hence and fractional relative impact factors in the second case! 3.2. Explicite formulae for RIF[y] and RIF{ g } for all y, g 2 ]0,1[ as will be seen now.
+ By formula (43) and Definition 2.5.2 we have, for every y 2 ]0,1[:
+Let now
+Then using (55) . Hence This yields in (76) : 3.3. Calculation of the impact Gini index and the impact coefficient of variation of variation: if L ( y ) denotes a Lorenz curve we define the Gini index G as and the square of the coefficient of variation, V 2 ,as Hence we have, using (55) (note that ln c ln p &gt; 1 since 0 &lt; c &lt; p &lt; 1). Alternatively we have For V 2 we have, since that Alternatively we have and RIF{ g } for all y , g 2 ]0,1[. The estimation of ln c 4. Estimation of ln c ln p in theory and practice these models on a theoretical as well as on a practical example. 4.1.1. Brookes X  method c ( t )= c 0 c t (formula (50) ) but it works as well on the function p ( t )= p
+For any t 0 2 R  X  (we will specify this later on), define
+Then
+Hence
+In practice (see the next subsection) it is best to calculate this for t c ( t ) (cf. Section 1); taking t 0 too large gives too few data for the part [ t
+Of course, the same method gives for that required. 4.1.2. Second method
+Using (51) and (52) we derive: for every t &gt;0.So we have practical data (hence for discrete t =1,2, ... ):
+As said above, the disadvantage of the method is that we need to know C and (especially) P . 4.1.3. Quick and dirty method
+By (49) and (50) we have a one year score c ( t ) and p ( t ). This yields values of ln c might result (for practical data) in heavily fluctuating results. 4.1.4. Method using IF(2), IF(4) and IF(8) given by
+Hence (96) we have
+This can be put in (97) yielding the equation in the fourth degree: positive square root since c &gt;0.
+ IF(4) and IF(8) can be determined using the JCR.
+
+We will now test these 4 methods on a theoretical set of data and on a practical one. 4.2.1. Theoretical example
+We will calculate theoretical citation and publication data based on the formulae vious section. (i) Brookes method (we want to combine at least 2 years, for reasons of stability). Now (ii) Second method again close to the theoretical 2.289. (iii) Quick and Dirty method (iv) Method using IF(2), IF(4) and IF(8) we find that
+This gives the following equation of degree 4 (based on (99) ) which has the solution p = 0.781 (close to the theoretical 0.8). Then (98) yields close to the theoretical 0.6. We find close to the theoretical 2.289. 4.2.2. Practical example cation) of p .
+ JCR of 2003. The data are as in Table 2 .
+ year 1993 since this represents volume 1 of this journal.
+
+We have P = 304, C = 359. For Brookes  X  method we have P 2 p ): t 0  X  5, k * = 304 153 = 151 using (89) and (for the determination of c ): since C 2  X  179.5 we take t (86)
+Note that c &lt; p and we have
+The second method yields, based on Table 2 (and taking t not too small, e.g. t =5)and (91) close to the value obtained with the first method.
+ Eq. (99) .
+ 5. Conclusions where g  X  1 implying that for any two such Lorenz curves L 1 and L 2 we have L apart from (0,0) and (1,1), these curves do not intersect if L on time t .
+ this parameter, given practical data. Examples are presented. Acknowledgement Spectroscopy X  X .
+ Appendix A Proposition Egghe (1988) .
+ Let IF(t) be as in ( 6 ) :
+Then IF 0 (t) has the same sign as Proof which has the same sign as hence the same sign as by (103) . h
+Corollary. IF (t) strictly decreases if
+This is e.g. satisfied if c  X  t  X  decreases strictly in t then it is clear that References

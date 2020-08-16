@@ -1,0 +1,97 @@
+ USA 1. Introduction
+Combining multiple scores is a key problem in many data mining tasks. For example, in consensus to weigh and combine the resultant candidate clustering.
+ one distance function is de fi ned over color, another distance function is de fi ned over shape. quali fi ed objects, or fi ltering unquali fi ed objects.
+
+This paper studies the combining method, also known as  X  X core rule X  or  X  X anking rule X . Roughly problems encountered by their method for the data mining tasks.
+
+Below we summarize our main contributions in this paper.  X  Finally, we provide a comprehensive comparison between Fagin X  X  method and our linear transform 1.1. Overview Section 7, we conclude the work. 2. Problem formulation A scoring rule is normally a mathematical function which uses an object X  X  scores as arguments.
+Let the values of scores associated with an object X be denoted as ( x generality, we can assume that  X  0 x i 1, for all i = 1, ... , n , where 1 represents a perfect match;  X  the higher the overall score is, the higher the rank is.
+ Below we illustrate some popular scoring rules.
+
+One class uses geometric distance functions of the following form: where  X  =1 , 2 ,...,  X  . In particular, we have  X  the sum rule: when  X  = 1, f ( x  X  the Euclidean distance: when  X  = 2, f ( x
+Another class computes the mean value of the scores. It includes  X  the average rule: f ( x  X  the median rule: f ( x
+In the presence of noise, trimmed mean is more robust than arithmetic mean in estimation of mean the middle score is left after deletion with p = ( n  X  1) / 2 /n .
+ be computed according to  X  the product/parallel rule: f ( x  X  the series rule: f ( x fail in order to make the entire system fails.
+Often used in multimedia database retrieval and information retrieval, the minimum and maximum semantics [41].  X  the minimum rule:  X  the maximum rule:
+Other forms of scoring rules can be found in many other areas, suc h as multi-criterion decision-competition [5].
+ alternative solutions. 3. Fagin and Wimmers X  solution
+We now describe the solution of Fagin and Wimmers. More details can be found in [18]. Given an unweighted rule f ( x with respect to the score x i . Assume that  X  loss of generality,  X  referred to as  X  X W formula X  in this paper. By augmenting weights as  X  =(  X 
+An intuitive explanation of the FW formula is that x other x i s, so we fi rst compute this excessive score for x the formula. Similarly, both x compute this excessive score for x way, we fi nally get the last term of the formula.
+
+Note that the FW formula implicitly assumes that for the unweighted rule f ( x other n  X  1 functions f ( x via generalization. Otherwise, it is not clear how to apply the FW formula. 3.1. Desirable properties the FW formula has the following desirable properties [18]:  X  D  X  D  X  D
+The weighted rule f  X  obtained from the FW formula inherits many properties of the underlying unweighted rule f . For example, one important such property is monotonicity de fi ned below. for each i . We say an unweighted rule f is monotonic if f ( X ) f ( X ) whenever X X .Also, f is strictly monotonic if f ( X ) &gt;f ( X ) whenever X&gt;X .
+ mention a few more properties. 3.2. Drawbacks
+Unfortunately, there are some serious drawbacks with the FW formula. 3.2.1. Equivalence property is not preserved and vice versa.
+
+For example, among the popular scoring rules introduced previously, the function sum and the function average are equivalent. The Euclidean function is equivalent to sum of squares into sum via the  X  X og-product X  rule:
+Obviously, the functions product and log-product are also equivalent. are still equivalent.
+ For example, Table 1 shows the weighted rules with weights (  X  weighted log-product. 3.2.2. Lack of natural generalization and variation
+For a given unweighted rule, the FW formula generates only one corresponding weighted rule. Also, only 2-score case and  X  variation that a weighted Euclidean distance can have. For example, both f  X  ( x )=  X  f ( x )=  X  2 them is equivalent to the above function. 3.2.3. Aggregation anomaly type of weights in Table 2, usually we can evaluate the overall score in the following two ways. score is obtained by f  X w ( X )= f 1-dimensional case. We call it joint weighted rule .
+ score is obtained by f  X w ( X )= f We name it aggregate weighted rule .
+ column fi rst.
+
+More details of multi-dimensional weights will be introduced in Section 5 . Here we illustrate an example of aggregation anomaly by the FW formula in Table 3.
+
+Assume ( w With the joint weighted rule, the overall score for object X is However, if we compute by row fi rst and then followed by column, for the 1st row, we get for the 2nd row, we get andthenbycolumnwegettheoverallscore Similarly, for object X , we get the overall scores 2.392 and 2.264, respectively. equivalent weighted rules. 3.2.4. Computational ef fi ciency evaluating techniques are needed to evaluate such complex queries ef fi ciently [7]. 3.2.5. Embedding into search methods performance. Further discussion on this particular issue is beyond our scope here. 3.3. Explanation weighted rules unnatural and lack of versatility.
+ n  X  1 terms, and only the last term uses the full set of { x The weighted rule according to the FW formula not only has to evaluate f ( X ) when X is over the full set I = { x I is caused by the property of compatibility: f 4. The linear transform scheme the rank will be.
+ our method is based on transformation. The simplest form of our method is linear transform. 4.1. Basic form De fi nition 5. Suppose the underlying unweighted rule is f ( x (  X  1 ,..., X  n ) the overall score of X under linear transform is
+If the unweighted function f ( x form is a reasonable choice for the weighted rule. For example, if f ( x where  X  e 1 , the linear transform method will generate the corresponding weighted rule f  X  ( x (  X  Our method preserves the equivalence property.
+ Theorem 1. If f and g are equivalent in the unweighted case, then they are also equivalent in the weighted case under the linear transform.
+ f g (  X  1 x 1 ,..., X  n x n ) &lt;g (  X  1 y 1 ,..., X  n y n ) .Sowehavealso g  X  ( X ) &lt;g  X  ( Y ) . It is obvious that our method also preserves the monotonic and strictly monotonic property. property D  X  D The above change does not compromise the signi fi cance of the property.
+Since our method is more tightly coupled with the underlying function, when we check whether a to examine the underlying function itself.
+The property D constant c (technically we can restrict c&lt; 1).
+ f ( cX )= cf ( X ) when c is some constant. Thus, they all satisfy property D 1 .
+Property D character.
+
+Property D have the overall score within a range [0 , 1] with maximum and minimum achieved by A + and A  X  , respectively.
+
+The following lemma shows a weighted rule obtained by our method can always be converted into a standard format.
+ 4.2. Other transforms
+Besides linear transform, other types of transforms might be useful and meaningful. For example, in Euclidean distance, a linear transform x i  X   X  i x i gives the weighted rule n i root transform x i  X  not equivalent.
+ form of product, e.g. f ( X )= x log-linear combination n i weighted min rule. 4.3. Weighted min rules application of the linear transform to the minimum function gives the weighted rule min {  X  attribute-2, so Y should be even worse than X .
+
+As explained at the beginning of this section, we can take the minimum from the point of view of either A  X  or A + .Itistruethat reasonable weighted rule.
+
+Applying the linear transform, the point A + is transformed to (  X  transform method, the weighted min rule is formulated as Using Lemma 1, we convert the above into a standard format of the weighted min rule as follows: 4.4. A comparison of weighted min rules
+We now compare our weighted min rule with the one obtained by the FW formula. It is instructive Prade [14] which has been used in fuzzy set theory: where M =max {  X  two are.
+
+Figure 1 is a 2-dimensional visualization of the three rules, with weights (  X   X  All three rules have min = x  X  Dubois and Prade fl s formula gives min =1  X   X  2  X   X  When x  X  Under linear transform, there is exactly one, either x 5. Other related problems 5.1. Multi-dimens ional weights weight). We gave an example of aggregation anomaly by the FW formula previously and will discuss for the joint weighted rule , f  X w ( X )= f f
+There are three reasons that we want the joint method and the aggregate method to be equivalent: The two rules in fact, under the linear transform method, are the same for many cases, including over all i and j . In the following we show the other two cases.
+ geometric distance function in Eq. ( 1 ) under linear transform.
+ Proof . For the geometric distance function in Eq. (1), we have Thus, the aggregate rule is which is just the joint rule.
+ weighted min de fi ned in Eq. ( 8 ) .
+ Proof . For the min rule in Eq. (8), we have Thus, the aggregate min rule is It is not hard to verify that the above is equal to the joint min rule for the case of the weighted min rule. Assume ( w not equivalent under the FW formula. 5.2. Partial set ranking professional knowledge.
+ can have the following two ways of argument.
+
+Argument 1 :The fi rst view is that all scores are absolutely positive and only cumulative. When comparing X and Y , since they both get 10 from E1, we think they are equally good at this point. scores.
+
+Argument 2 : However, if we take a viewpoint of relative scores, we may argue that the additional score of 6 for X is relatively negative, as compared to the score of 10 from E1. Since E2 is more average.
+ implicitly used for treating missing scores and their weights.
+
+Assumption 1: Because E2 has a higher weight than E3, E2 X  X  standard is higher, which means a that S E corresponding weight is retained. That is, with the weighting system ( W E X Hence, X is better than Y .
+
+Assumption 2 : When we compute the weighted average, actually we are using anotherassumption that three judges ( W E Y  X  X  score is (10  X  5+0  X  5+6  X  4) / (5 + 0  X  5+4) . In other words, for X , we used the weighting system for only two judges ( W E two judges ( W E we expected.
+
+In fact, here we are discussing another kind of compatibility in the presence of missing scores. Unlike the compatibility property enjoy ed by the FW formula, it is very doubtful that f fair manner, remains to be seen. 6. Outlier detection: A case study score. Naturally we would hope that those object s with top overall scores are true outliers. 6.1. Experimental setup neighbor [29]. We choose this method because it is easy to implement and is widely used by many authors for comparison purposes. This method is global in that the raw distance is compared over k or similarity, that gives the approach its ability to handle data sets with varying densities. datasets generated from a mixture of two distributions, Gaussian and uniform. Syn1 is composed of as outlier. For all datasets, Euclidean distance is employed.
+ 1. 6.2. Single outlier detection on KNN , for which the histogram gets more spiky. 6.3. Outlier detection ensemble As suggested by the authors of KNN and LOF , we try different values of k for both KNN and LOF . For Syn1, Syn2, Let1 and Let2, we choose k = 10, 30. For Can1, Can2, Svm1 and Svm 2, we choose to transform these scores into a common domain, prior to combining them. We employ the min-max function in a comparative study in the context of a multi-modal biometric system [23]. For the unweighted combination, we experiment with eight rules: sum, average, median, product, log-product, max, min weighted combination, we compute the ratio of the four AUC values as weights:
+The AUC values of unweighted, FW and linear methods are shown in Table 9 with best results in the weights of Syn1 are for KNN ( k = 10), KNN ( k = 30), LOF ( k = 10), and LOF ( k = 30). Some observations are in order.
+ outlier score.
+ AUC become different.
+ rules.
+ rule with skewed weights. While the FW formula improves the results of the unweighted combination the unweighted from 0.61 to 0.91 on Let1, and from 0.53 to 0.97 on Can2. 6.4. Impact of score size
+The previous comparison is carried out with four scores. A natural question arises how they will the AUC values over four rules: sum, product, max and min. As in previous experiments, the linear sizes over sum, max and min. FW performs better on product. In general, the difference on sum and even more signi fi cant.
+ 6.5. Comparison with other methods
+In this experiment, we compare the two weighting methods, FW and linear, with other types of methods.
+ the highest and lowest 100 p % values.
+ 1-nearest-neighbor classi fi er.
+ m class labels and report the results of the remaining test subset.
+
+The following observations can be made. from the data center. On the contrary, the outlier assumptions of KNN and LOF are more universal. practice.
+ globally. 7. Conclusions including multi-dimensional weights and partial set ranking.
+
+So far, most of work focuses on the desirable properties and how well they are preserved in the formula over the min rule.
+
+For the future work, we plan to study why the gap between our method and the FW formula over the applications.
+ Acknowledgements
+We would like to thank the editor and reviewers for their valuable comments. They have helped to improve this paper in a number of ways. This work was partially supported by NSFC(No. 61100136), NSFD(No. 2010ZQ19) and CSLD(No. 2010-38-41-003).
+ References

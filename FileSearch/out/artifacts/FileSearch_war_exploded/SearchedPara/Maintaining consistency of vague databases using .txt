@@ -1,0 +1,148 @@
+ 1. Introduction set.
+ 0 6 u derived from the evidence for (or against) u .
+
+In order to compare two vague values, we define the median membership , M all evidence contained in a vague value, and the imprecision membership , M  X  a ; 1 b , and a mi -pair vague value, denoted by h M m in terms of a comparison of values according to value-precision rather than set containment. with respect to F [ N .
+ is an important means to guarantee the quality of vague data in practical use. butes S and T share the common universe of discourse, U  X f 0 ; 1 ; ... ; 10 g . A vague relation r relations based on this notion of similarity. Suppose that the FD S ! sensor S reads the same temperature T in a  X  X  X ague sense X .
+ any given time the information may be inconsistent. It can be verified that r a vague tuple was inserted into r 1 , we have the vague relation r S ! the values of T do not have a common object and thus do not mi -overlap. The vague relation r less O -precise relation r 3 , shown in Table 3 . It can be verified that r (one tuple) is in fact the most O -precise approximation of r cedure introduced later.
+ The main contributions of this paper are as follows: tion and to maintain consistency of vague data.
+ alence class.
+ show that Casanova et al. X  X  axiom system is sound and complete for INDs being satisfied in vague databases. (that is, only F ).
+ offer our concluding remarks. 2. Related work on.
+ needed in the probabilistic data model.
+ hedge algebra is used in linguistic reasoning that handles linguistic terms directly [18]. the  X  X  X qually likely objects X  assumption used in [36].
+ sistency in fuzzy databases.
+ involved in applications. 3. mi -Memberships and vague databases 3.1. Vague sets an element of U is denoted by u .
+ a false membership function, b V , as follows: a V : U ! X  0 ; 1 ; b bound on the grade of membership of u derived from the evidence for u , and b membership of the negation of u derived from the evidence against u .
+V  X  P n i  X  1  X  a  X  u i  X  ; 1 b  X  u i  X  = u i , where 0 6 This approach bounds the grade of membership of u to a subinterval  X  a grade of membership l V  X  u  X  of u may be unknown, but is bounded by a set 0 : 8 = u (the membership of u is 0.8) can be presented as the vague set  X  0 : 8 ; 0 : 8 = u . 3.2. Median memberships, imprecision memberships and mi-pair vague sets In order to compare vague values, we need to introduce two important derived memberships. vague value and is illustrated in Fig. 2 .
+
+It can be verified that 0 6 M m 6 1. In addition, the vague value [1,1] has the highest M object totally belongs to V (that is, a crisp value). The vague value [0,0] has the lowest M corresponding object does not  X  X  X otally X  belong to V (that is, the empty vague value). The higher the M of existence the vague value represents.
+
+The second one is called the imprecision membership , M i value and is illustrated in Fig. 3 .
+
+It can be verified that 0 6 M i 6 1. In addition, the vague value  X  a ; a  X  a 2 X  0 ; 1  X  has the lowest M the M i is, the more imprecision the vague value represents. 0 6 Proof. It follows directly from Definitions 3.2 and 3.3 after simple computations. h relationship between true and false memberships in Definition 3.1 ).
+Definition 3.4 ( mi-Pair vague set ). A mi -pair VS vague set in U  X f u function, M V m , and an imprecision membership function, M V  X  P n i  X  1 h M V m  X  u i  X  ; M V i  X  u i  X i = u i . h X  M value of the object u i .
+
+It is worth mentioning that a mi -pair vague value h M m ; M defined.
+ h M
+Definition 3.5 ( Vague relation and vague database ). Let Dom  X  A
+Dom  X  A i  X  X f V j V is a VS in U g . A vague tuple t  X  X  a
+D  X  Dom  X  A 1  X  Dom  X  A 2  X  Dom  X  A m  X  .A vague relation r over R is a subset of Dom  X  A vague database d over R  X f R 1 ; ... ; R n g is a set of relations r (crisp) object having membership h 1 ; 0 i .
+ Here is an example of a vague relation.
+ monitored by a sensor and L stands for a location area ID. A sensor vague relation r having four tuples f t membership is less than or equal to 1.
+ we formally define a special VS called boundary VSs as follows.
+Definition 3.6 ( Boundary VS ). A boundary VS, denoted as v , is a VS in which for all u 2 U ; M Intuitively, v represents the minimal VS as an attribute value in vague relations. 3.3. Existence and overlap of vague sets ues satisfy the predefined mi -thresholds: C as a crisp threshold  X  0  X  0 6 I 6 1  X  .
+ Definition 3.7 ( mi-Existing ). Given V and the mi -thresholds C and I ,if 9 u 2 U , such that M and I .
+
+Definition 3.8 ( mi-Overlap ). Given two vague sets V 1 and V and M V 2 i  X  u  X  6 I , then V 1 and V 2 mi -overlap under mi -thresholds C and I , denoted by V existing object of V 1 and V 2 under C and I . Otherwise, V We may skip the specification of C and I if they are known from the context. C and I .
+
+Example 2. Given C  X  0 : 2 and I  X  0 : 9, it can be verified that t
+However, if C  X  0 : 2 and I  X  0 : 5, we find that t 1  X  L and t intersection.
+
+V
+Let u 2 U : (1) If u is a mi -existing object in both V 1 and V 2 , (2) If u is a mi -existing object in V 1 but not in V 2 , (3) If u is not a mi -existing object in both V 1 and V 2
+Notably, the third case of Definition 3.9 adopts the vague value from either V non-mi -existing.
+ cases: (1) If u is a mi -existing object in both V 1 and V 2 , (2) If u is a mi -existing object in V 1 but not in V 2 , (3) If u is not a mi -existing object in both V 1 and V 2 value, whose corresponding interval vague value [0,0.4] is valid. The following proposition indicates that the boundary VS, v , shares the properties of the usual empty set. Proposition 3.2. Given a VS V ; v _ V  X  V and v ^ V  X  v .
+
+Proof. It follows directly from Definitions 3.6, 3.9 and 3.10 . h 4. Merge operation of vague relations notation used in relational databases [5] such as the projection of a tuple t  X  A .
+The semantics of a vague set, t  X  A i , where t 2 r and A t  X  A sistent database, since it deals with those significantly vague elements only.
+Definition 4.1 ( mi-Active domain ). The mi -active domain of r with respect to A and v 2 W f t  X  A i j t 2 r gg .
+ The concept of a mi -active domain is naturally extended to relations and databases as follows. A  X  r  X  X  A  X  d  X  X  median membership and the lowest imprecision membership.
+ all attribute values with respect to the same reflexive and transitive closure under mi -overlap.
+V  X  p A  X  r  X  . An edge ( t 1  X  A ; t 2  X  A )isin E if and only if t for all A 2 R .
+ We let MERGE  X  R  X  be a collection of all merged relations over R under C and I . example, since t 1  X  L mi t 2  X  L  X  0 : 2 ; 0 : 9  X  and t  X  t tuples ( t 0 1 and t 0 2 ) are not merged.
+ precision (or V -precision for simplicity).
+ order to tuples and relations in MERGE  X  R  X  .
+ simplicity) between two vague sets V 1 and V 2 as follows:
+V 1 v O V 2 if the set of mi -existing objects in V 1 is a superset of the set of those in V
+We extend v O in r as follows. Let t 1 ; t 2 2 r . t 1 v O
+Finally, we extend v O in MERGE  X  R  X  as follows: Let r 1 that r 1 is less O -precise than r 2 .
+
+We define an object-equivalence (or O -equivalence for short) between V
+V v O V 2 and V 2 v O V 1 . Similar definitions of O -equivalence are extended to tuples and relations. regarded as an empty set of mi -existing tuples.
+ one vague relation has a one-to-one correspondence in another vague relation. extend this partial order to tuples and relations.
+ simplicity), between V 1 and V 2 as follows: M i P M than b and denote this fact by a v V b .
+ than that of the same object in V 2 . We simply say that V
+For any two tuples t 1 and t 2 in vague relations r and s over R  X f A We further extend v V between r and s (or their projected relations) as follows. r v say that r is less V -precise than s and denote this fact by r v
+We define a value-equivalence, denoted as V 1  X  : V V 2 , if and only if V tuples and relations.
+ existing objects. In other words, we ignore those non-mi -existing objects in the V -precision comparison. the same object in r.
+ Proof. It follows directly from Definitions 3.9, 4.2 and 4.4 .
+
+For example, the vague value h 0 : 8 ; 0 : 1 i of the mi -existing object 0 in t 0 ing vague value h 0 : 7 ; 0 : 4 i of the same object 0 in t According to Definition 4.4 , we define V -join, [ , and V -meet, \ , under v h M m ; M on, we restrict our discussion to the V -meet that gives rise to valid vague values as a result. do not have their greatest lower bound.
+ attribute) which are O -equivalent to each other. For instance, r r  X  :
+O r 2 . Similarly, we have r 3  X  tuple  X h 0 : 5 ; 0 : 5 i = 0  X h 0 : 5 ; 0 : 5 i = 1  X  , and the vague value of each object is h C ; I i . thresholds C and I as follows: t 1  X  X mi t 2  X  X  X  C ; I  X  ,if 8 A 2 X ; t
+Example 5. We can verify that t 1 mi t 2  X  0 : 2 ; 0 : 9  X  but t 5. Functional dependencies and vague chase r as a means of maintaining consistency of r with respect to a given set of FDs. 5.1. Functional dependencies in vague relations
+X ! Y is satisfied in a relation r , denoted by r X ! Y ,if 8 t are not mi -existing.
+ respect to F (or simply r is consistent if F is understood from context); otherwise if r satisfied in a relation.
+ in Example 1 . We can verify that r S ! 0 : 2 ; 0 : 9 TL but that r
+F  X f S ! 0 : 2 ; 0 : 5 TL ; L ! 0 : 2 ; 0 : 5 S g be a set of FDs over R . We can verify that r merge  X  r  X  R SAT  X  F  X  .
+
+Proposition 5.1. The following statements are true: (1) If r 2 MERGE  X  R  X  , then r X ! Y, if and only if, 8 t (2) r X ! Y if and only if merge  X  r  X  X ! Y. Proof. Part 1. It follows directly from Definitions 4.3 and 5.1 . family of O -equivalent VSs over p A  X  merge  X  r  X  X  . Then by Definition 5.1 , the result follows. h also holds.
+ tions r as follows: (1) Reflexivity :If r Y # X , then r X ! Y holds. (2) Augmentation :If r X ! Y holds, then r XZ ! YZ also holds. (3) Union :If r X ! Y and r X ! Z hold, then r X ! YZ holds. (4) Decomposition :If r X ! YZ holds, then r X ! Y and r X ! Z hold. number of inference rules from Lien X  X  and Atzeni X  X  axiom system [5], we write F  X  X ! Y . system is complete if F X ! Y implies F  X  X ! Y .
+
+F 0 X ! Y but F 2 X ! Y .
+
+F 0
+X ! Y , then F 2 X ! Y , where F is a set of FDs over schema R . Assume F exhibit a vague relation r over R , such that 8 W ! Z 2 F ; r W ! Z but r that r 2 W ! Z . From r , we see that W # X and 9 A 2 Z \ X  R X
+F  X  X ! ZX , and by decomposition we have F  X  X ! A , which follows that A 2 X we show that r 2 X ! Y . Suppose r X ! Y . Since Y # X  X  . By the definition of X 8 A 2 Y ; F  X  X ! A holds and by union, F  X  X ! Y holds, which is contradictory to our assumption. h 5.2. Vague chase convenience, we may also use VChase  X  r ; F  X  to represent the output relation.
+Algorithm 1. VChase  X  r ; F  X  rent state of VChase  X  r ; F  X  .
+
+VChase  X  r ; F  X  X  VChase  X  merge  X  r  X  ; F  X  , where merge  X  r  X  is shown in Table 5 .If F  X f S ! merge  X  r  X  is shown in Table 6 .
+ corresponding values of L in the first tuple).
+ the sizes of r and F .
+
+Lemma 5.3. The following statements are true: (1) VChase  X  r ; F  X v O merge  X  r  X  . (2) VChase  X  r ; F  X  is unique. (3) VChase  X  r ; F  X  terminates in polynomial time in the sizes of r and F.
+VChase  X  r ; F  X  , asserting that merge  X  s  X v O merge  X  r  X  after k VChase steps. (Basis): If k  X  0, then the result is immediate by Line 9 in Algorithm 1 , since merge  X  s  X  X  then prove that the result holds when the minimal number of VChase steps to compute s is k  X  1. Let t t for i  X  1 ; 2 ; t i v O t 0 i and thus also merge  X f t i g X v hypothesis merge  X  r 0  X v O merge  X  r  X  . The result that VChase  X  r ; F  X v of the following conditions holds: (1) t 1  X  A mi t 2  X  A ,or (2) for some FD X ! Y 2 F , with A 2 X  Y X  X  ; t 1  X  X mi t (3) for some A -value, t 3  X  A , with t 3 2 r , both t 1  X  A and t (4) for some FD X ! Y 2 F , we have that 8 A 2 X , t 1  X  A and t t  X  A are equatable in r if and only if either t 1  X  A mi t current states of t 1 and t 2 , respectively. Let f c 1 ; c VChase steps, s  X  A  X  S i 2 I c i , where s is the current state of t in VChase  X  r ; F  X  . 8 A 2 X  Y X  X  ; t 1  X  A ; t 2  X  A @ O t 1  X  A _ t 2  X  A , since t A -values of tuples in r is strictly monotonically increasing with respect to v 8 A 2 R ; A  X  r ; A  X  is finite.
+ polynomial time in the size of r .
+ operation. These results justify the chase and the merge operation.
+Theorem 5.4. The following two statements are true: (1) VChase  X  r ; F  X  F. (That is, VChase  X  r ; F  X  is consistent.) (2) VChase  X  r ; F  X  X  VChase  X  merge  X  r  X  ; F  X  .
+
+Proof. Part 1. Let s  X  VChase  X  r ; F  X  . Assume that for some X ! Y 2 F ; s t the  X  X  X f X  statement of Line 5 in Algorithm 1 is true.
+ of A -values, since two A -values t 1  X  A and t 2  X  A , with t equatable in merge  X  r  X  . h time in the sizes of r and F . 6. The most O -precise approximation of a vague relation is also consistent to F .
+
+Definition 6.1 ( Join operation ). The join of two vague relations, r r 1 t r 2  X f t j9 t 1 2 r 1 ; 9 t 2 2 r 2 such that 8 A 2 R ; t
+It can be verified that the O -equivalence class that consists of r alence classes of r 1 and r 2 in MERGE  X  R  X  . From now on we assume that r The next theorem shows that if two relations are consistent then their join is also consistent. Theorem 6.1. Let r 1 ; r 2 2 SAT  X  F  X  . Then r 1 t r 2 2 SAT  X  F  X  .
+A 2 Y ; r 2 X ! A . Thus, 9 u 1 ; u 2 2 r such that u 1 u  X  A ^ u 2  X  A  X  : O ; O . It follows by Definition 6.1 that 9 t f u 2 g X f t 0 1 gtf t 0 2 g . Thus, u 1  X  X v O t 1  X  X ; t 2
+Therefore, since r 1 ; r 2 2 MERGE  X  R  X  we have that t 1 r ; r 2 2 SAT  X  F  X  . It follows that  X  t 1  X  A ^ t 2  X  A  X  X  assumption. h that s is a merged relation that is less O -precise than r .
+ denoted by approx  X  r ; F  X  , is given by F f s j s v O merge  X  r  X  and s 2 SAT  X  F  X g . The next lemma shows some desirable properties of the approximation.
+Lemma 6.2. The following statements are true: (1) approx  X  r ; F  X  is consistent. (2) approx  X  r ; F  X v O merge  X  r  X  . (3) approx  X  r ; F  X  X  : O merge  X  r  X  if and only if r is consistent. relations.
+ bound due to the commutativity and associativity of the join.
+ relations. h F , where r is the relation shown in Table 4 and F is the set of FDs specified in Example 6 . Theorem 6.3. VChase  X  r ; F  X  X  : O approx  X  r ; F  X  .
+ Proof. We establish the proof by showing VChase  X  r ; F  X v  X  VChase  X  r ; F  X v O approx  X  r ; F  X  X  :By Lemma 5.3 Part 2, VChase  X  r ; F  X v 1, VChase  X  r ; F  X 2 SAT  X  F  X  . Thus, by Definition 6.2 , VChase  X  r ; F  X v operation in MERGE  X  R  X  . state s of VChase  X  r ; F  X  , asserting that approx  X  r ; F  X v
+VChase  X  r ; F  X  X  : O merge  X  r  X  . current state of VChase  X  r ; F  X  prior to the application of the  X  k  X  1  X  th VChase step. VChase  X  r ; F  X v O merge  X  r 0  X  and if for some s 0 v O result follows, since by Lemma 6.2 Part 2, approx  X  r ; F  X 2 SAT  X  F  X  . h 7. Inclusion dependencies and vague chase order, v V as given in Definition 4.4 . We assume C &gt; 0or I &lt; 1 and define INDs in a vague database as follows. statement of the form R  X  X # C ; I S  X  Y . An IND R  X  X # semantics.
+
+Suppose a vague database d contains two vague relations, r
+Tables 10 and 11 , respectively. Here S f represents the sensors of a particular floor of a building and S of the whole building as the central control. Let the mi -thresholds be C  X  0 : 5 and I  X  0 : 5.
+It can be verified that t 4  X  S f ; T 6v V t 5  X  S b ; T and t t  X  S 6v V t 6  X  S b .) Thus, d is inconsistent, since it does not satisfy the IND, R
+Suppose later a vague tuple t 7 is added into r 5 , we have the vague relation r database containing r 4 and r 6 satisfies R 4  X  S f ; T # R in vague V -precision in r 5  X  L in order to form t 7 .
+ et al. X  X  axiom system [6,7] for crisp database d as follows: (1) Reflexivity :If X # schema  X  R  X  , then d R  X  X # R  X  X holds. (2) Projection and permutation :If d R 1  X  X # R 2  X  Y holds, where X  X h A (3) Transitivity :If d R 1  X  X # R 2  X  Y and d R 2  X  Y # R lish the soundness and completeness of INDs in vague databases. Theorem 7.1. Casanova et al. X  X  axiom system is sound and complete for INDs in vague databases.
+We prove completeness by showing that if N 0 I 1 , then N d 2 VDB  X  R  X  such that fying Eq. (1). Since CRISPDB  X  R  X  # VDB  X  R  X  , the result follows. h rule is the same as in Line 5 of Algorithm 1 .
+
+FD chase rule :if X ! C ; I Y 2 F ; 9 t 1 ; t 2 2 Result such that t t  X  Y  X  mi t 2  X  Y  X  C ; I  X  , then 8 A 2 X  Y X  X  , change t
+IND chase rule :if R  X  X # C ; I S  X  Y 2 N and 9 t 1 2 r such that 9 = t isfying t 2  X  X  X  t 1  X  Y and 8 A 2 X  S Y  X  ; t 2  X  A  X  v .
+ merge  X  d  X  X f merge  X  r  X j r 2 d g .
+
+Algorithm 2. VChase  X  d ; R  X  for FDs.
+
+Example 9. Suppose d containing two vague relations r 8 over R 14. Let C  X  0 : 5 and I  X  0 : 5 ; F  X f R 9 : S ! T g and N  X f R apply the FD chase rule first and then the IND chase rule, r unchanged. However, r 10 does not satisfy F . Therefore, the database containing r
+IND chase rule first and then the FD chase rule, r 9 is changed to r and the final merge operation, as shown in Table 16 . It can be checked that the database containing r consistent. That is, VChase  X  VChase  X  d ; N  X  ; F  X  is consistent. respect to a mixed set of FDs and INDs.
+ (1) VChase  X  d ; R  X  R . (2) VChase  X  d ; R  X  X  VChase  X  VChase  X  d ; N  X  ; F  X  .
+ Theorem 5.4 .
+ merge  X  r  X  . h long as possible and then the FD rule for as long as possible.
+ maintaining consistency with respect to R is exponential in time complexity. Theorem 7.3. The time complexity of VChase  X  d ; R  X  is exponential in the sizes of d and R .
+Proof. Assume without loss of generality, we let R  X f R 1 d  X h r 1 ; ... ; r n i (a list of n relations), where r 1 that 8 i 2f 2 ; ... ; n g ; r i 2; O . We consider the chase arising from this particular tuple in r
+Let j VChase  X  d ; N  X j  X  P n i  X  1 j r i j , where r i 2 VChase  X  d ; N  X  is the relation over R such that j N j X  2  X  n 1  X  and j VChase  X  d ; N  X j  X  2 n 1. Let a
+IND, R i  X  A 1 ; ... ; A i  X  1 ; A i ; ... ; A n # R i  X  1 tuples from R i into R i  X  1 and b i swaps the i th attribute with the  X  i  X  1  X  th attribute in R
+I  X f a i g[f b i g .
+
+We obtain the result by induction on i 2f 1 ; ... ; n g . For all i , the cardinality of the relation r 2 . We need to establish the following claim:
+Claim( * ): j VChase  X  d ; N  X j  X  2 n 1. (Basis). If i  X  1 ; j r 1 j X  1. The result holds. hypothesis j r i j X  2 i 1. By the definition of I i ; p A tuples as r i due to I i  X  1 . It follows that Claim(*) is established.
+We let q  X j A  X  d  X j and k denote the maximal cardinality for all R is exponential. h minimum.
+
+We now define the notions of D V  X  r ; r 0  X  and D V  X  d ; d follows: (1) Given two VSs V 1 and V 2 ; D  X  V 1 ; V 2  X  X   X  D m  X  D i  X  (2) D V  X  r ; r 0  X  X  P A (3) D V  X  d ; d 0  X  X  P r memberships.
+ Theorem 7.4. Given d and N ; D  X  d ; VChase  X  d ; N  X  X  is minimum.
+Proof. Let R  X  X # S  X  Y be the IND involved in the last step of the VChase procedure, where X  X h A
+Y  X h B 1 ; ... ; B m i . There are two scenarios for applying the IND chase rule arising from t 2 r . (1) There is no mi -existing object that is the same as a mi -existing object of r  X  A (2) There are some mi -existing objects that are the same as a mi -existing object of r  X  A It follows that D  X  d ; VChase  X  d ; N  X  X  is minimum according to the two scenarios mentioned above. h
+O -precise approximation and the minimum change in V -precision. 8. Conclusions ing object which induces a complete semi-lattice.
+ sistency of d with respect to F and N .
+ effective and efficient evaluation of SQL over vague relations [3] as future work.
+References

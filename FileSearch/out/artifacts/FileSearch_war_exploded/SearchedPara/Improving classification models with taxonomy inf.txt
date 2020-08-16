@@ -1,0 +1,108 @@
+ 1. Introduction
+Classification is a pervasive data mining problem that encompasses a wide range of application contexts, among which are the classification task [1]. For instance, in some contexts, data is preprocessed to address privacy issues [7,8]. high level associations among data as well as their temporal changes [9 (iii) performing social data disambiguation and analysis [14 information in data used for classifier training has never been investigated so far.
+ presents a general-purpose strategy to improve structured data classifier accuracy by enriching data with semantics-based between spatial/temporal data features and the class should be considered.
+
+Training data may be supplied with taxonomies, which may aggregate, for instance, the GPS coordinates of the location from which the user submitted the request in the corresponding city and nation, while submission dates may be generalized as the taxonomy information may be easily derived from geographical and temporal databases.
+ may remain hidden in large datasets (e.g., between a class and a specific couple of GPS coordinates) may come out at higher from different viewpoints.
+ (e.g., the WordNet Lexical Database [18] ).
+
+To demonstrate the benefit obtained from utilizing taxonomies for contemporary classification methods, we also presented a generalized version of a state-of-the-art associative classifier [19], namely the G
+Classification rules are association rules [21] representing implications in the form A
+Considering again the previous example, to classify user request r submitted at 10.30 p.m. rule (date, 2011 accurate class predictions.
+
+Experiments, conducted on UCI benchmark datasets [22] with different characteristics, show the effectiveness of the proposed approach in improving accuracy of state-of-art classifiers, associative and not. Despite taxonomy integration yielding data dimensionality increase, for all the evaluated classifiers the computational time remains acceptable even when coping rather complex datasets.
+
+This paper is organized as follows. Section 2 formally states the classification problem addressed by the paper. Section 3 presents the proposed approach to integrate taxonomy information in classification models. Section 4 thoroughly describes the
+G compares our work with previous approaches, while Section 7 draws conclusions and discusses future work. 2. The classi fi cation problem This section formally introduces the problem of classifying structured data supplied with taxonomies. attribute_name is the description of a data feature, value is the collected information. More formal definitions of item and structured dataset follow.
+
+De fi nition 1. Item Let t i be a label, called attribute, which describes a data feature. Let where value i  X   X  i , is an item.
+ positive integers. To allow multiple discretizations over the same continuous attribute, each discretization corresponds to a distinct data attribute.
+
+De fi nition 2. Structured dataset Let T X  t 1 ; t 2 ; ... ; t n fg be a set of attributes and of records, where each record r is a set of items and contains at most one item for each attribute in T . To accomplish the classification task, a given attribute is selected as target class label (i.e., the class attribute).
+De fi nition 3. Labeled structured dataset
+Let D be a structured dataset and T X  t 1 ; t 2 ; ... ; t n domain. For each dataset record r i such that r i  X  D , let c
+A record r  X  D for which the class label is known is called training ( labeled ) record . Oppositely, a record r class is unknown is called test ( unlabeled ) record . about the user request submissions to an application system. The dataset is composed of the following four attributes: date , set.
+ To represent multiple-level (i.e., generalized) and multi-faceted knowledge, we exploit the concept of multiple-taxonomy. A hierarchy of aggregations built over an attribute domain will be denoted as an aggregation tree .
+De fi nition 4. Aggregation tree
+Let t i be an attribute and  X  i the corresponding domain. The aggregation tree AT is-a relationships between node couples. AT i 's root node aggregates all values in
+Couples ( attribute_name , aggregation_value ), where aggregation_value is a non-leaf node in the aggregation tree AT include one or more aggregation trees per dataset attribute, is called multiple-taxonomy .
+De fi nition 5. Multiple-taxonomy Let T X  t 1 ; ... ; t n fg be a set of attributes. A multiple-taxonomy domains of attributes in T .
+
+Note that considering multiple aggregation trees per attribute allows considering different facets relative to the same data feature.
+ Fig. 1 reports some examples of aggregation trees relative to the non-class attributes of the example dataset reported in
+Table 1 . For instance, the aggregation tree relative to the location attribute domain generalizes the GPS coordinate couples of multiple-taxonomy built on the dataset in Table 1 . 2.1. Problem statement Given a labeled structured dataset D with class attribute C supplied with a multiple-taxonomy addressed by the paper entails assigning to unlabeled test records r 3. Integrating taxonomy information in classi fi cation models
+This section presents a general-purpose strategy to improve structured data classification accuracy by enriching data with semantics-based knowledge provided by a multiple-taxonomy built over data items.
+
+Classification of structured data is commonly performed as a three-step process. Firstly, training data coming from rules included in the classification model.
+
+In the presence of taxonomies built on the analyzed data, generalized item correlations may be also considered in classifier abstraction levels. Note that, in general, more complex semantics-based models (e.g., ontologies) may also contain knowledge classifier robustness.
+
+To enable classification of data supplied with taxonomies, in this section we present a general-purpose strategy to integrate taxonomy information into data prior to classifier learning. The proposed approach has the great advantage to be independent the benefit obtained from utilizing taxonomies for contemporary classification methods we deepen our analysis into a more level) rules [9] instead of traditional ones [21].
+
+To allow traditional classifiers to deal with structured data supplied with multiple-taxonomies (cf. Definitions 3 and 5 )an taxonomy information in improving the accuracy of many state-of-the-art classifiers. For most of the performed experiments, terms of training and classification time. 4. The G  X  L 3 classi fi er
+The G  X  L 3 classifier extends the state-of-the-art associative classifier L classifiers in terms of average accuracy [19]. To avoid generating redundant generalized rules, the G adopts a novel pruning strategy driven by the input taxonomy.
+
+This section is organized as follows. Section 4.1 introduces preliminary concepts and notations relative to generalized association rule mining. Section 4.2 thoroughly describes G 4.1. Generalized association rule mining is an implication X  X  Y ,where X and Y are disjoint itemsets, i.e., sets of items in D (cf. Definition 1 )suchthat X running example dataset D reported in Table 1 . X ={( Date , 2011 i.e., itemset of length 2, while {( Date ,2011  X  01  X  30)} Entrepreneur ), and a generalized item, i.e., (Location , Italy) .
+
+A generalized itemset X matches a dataset record r if all its (possibly generalized) items x
+Entrepreneur )} matches both the first and the second records in D , its support is 2
+A generalized association rule is an implication A  X  B , where A and B are disjoint generalized itemsets, i.e., generalized itemsets having no attribute in common. A more formal definition follows.
+
+De fi nition 6. Generalized association rule
+Let A and B be two generalized itemsets such that attr ( A )
+X . A generalized association rule is an implication in the form A consequent corresponds to a class attribute item.
+
+Generalized association rule extraction is commonly driven by rule support and confidence quality indexes. The support is defined as the support of A  X  B , while the confidence of a rule A 50% of the dataset records and holds in all cases. 4.2. G  X  L 3 classi fi er training minimum support threshold min_sup , a minimum confidence threshold min_conf , and a multiple-taxonomy algorithm adopted by G  X  L 3 extracts all generalized classification rules characterized by a support equal to or higher than min_sup and a confidence equal to or higher than min_conf (see Algorithm 1 ). To accomplish this task, an extended training line 3). The adopted FP-tree indexing structure is analogous to the one presented in the L [19], which, in turn, is an extension of the traditional FP-tree structure adopted by the FP-Growth itemset mining algorithm (Algorithm 2 ).
+
+To avoid generating rules that contain both an item and any of its ancestors, G
+FP-tree pruning step with respect to FP-Growth. In particular, when the algorithm generates a FP-tree T  X  (see Algorithm 2 at lines 8  X  16), all ancestors of items in generate redundant, hence useless, generalized rules. Thanks to the recursive nature of the FP-Growth itemset extraction algorithm, removing all ancestors of the least frequent item i included in pattern sufficient to avoid generating redundant rules. In fact, by construction, ancestors of items in already been pruned during the previous recursive algorithm steps.
+
+Considering an example training dataset with two class labels, i.e., c prevents the generation of classification rules like { d , D }
+Classification rules are then compactly represented, ranked, and stored by exploiting an approach analogous to the one previously adopted in L 3 [19]. More specifically, the G  X  highest support, length, and, finally, lexicographical order are orderly considered. Secondly, to perform rule pruning a rule matching function is defined. In particular, a generalized classification rule r : X pertinence to the training data and generality.
+ Algorithm 1. The G  X  L 3 algorithm
+The two-level associative classification model is used to classify new test records, as described in the following. 4.3. G  X  L 3 class prediction considered first. r t is labeled with the class associated with the consequent of the top-ranked rule r in Level I matching r model sets match r t , the default class label (i.e., the most frequent class label in the training dataset) is assigned to r 5. Experimental results
+We performed a large suite of experiments to evaluate the effectiveness of the proposed approach. More specifically, we have been performed in terms of (i) classification accuracy, (ii) training time, and (iii) classification time. Algorithm 2. Procedure mineClassi fi cationRules is an ad-hoc extension of the state-of-the-art associative classifier L All the experiments were performed on a Dual-Core 2.2 GHz Pentium IV system with 4 GB RAM, running Ubuntu 8.04. The
+G  X  L 3 classifier was implemented in the C programming language. 5.1. Evaluated datasets and taxonomies
+We ran experiments on benchmark datasets coming from UCI Machine Learning Repository [22]. Table 2 shows the main data items.
+ To evaluate the impact of taxonomy information on classification performance, we generated taxonomies over each dataset.
+While aggregation trees on continuous attributes have been generated by applying discretization procedures, aggregation trees applied multiple-taxonomies follows. 5.1.1. Discretization on continuous attributes (i) the equal-depth discretization approach [2] and (ii) the entropy-based Kononenko discretization approach [30].
+To generate aggregation trees of arbitrary height, we applied several data discretization steps of finer granularities on continuous attributes. The finest discretized values are considered as data item values and, thus, are used to generate the taxonomy leaves. Instead, the coarser discretization values are exploited to generate generalized items, which may aggregate 5.1.2. Data aggregations on nominal attributes
+Aggregation hierarchies over nominal data attributes are analyst-provided. If no meaningful aggregation is available, data report a more detailed description of a multiple-taxonomy built on a representative UCI dataset, i.e., Census. predict person annual income. Each Census record represents one person and is characterized by 15 attributes (14 predictive attributes plus the class attribute). The main Census dataset characteristics are reported in Table 2 .
+We defined the following aggregation trees for the nominal attributes education, marital-status, and native-country.  X 
+Education (1st grade, ... , 12th grade, Bachelors, Masters, Doctorate, Preschool)  X 
+Marital-status (Divorced, Civil married, Church married, Separated, Widowed)  X  Native-country  X  Europe/America/Asia/Oceania/ ... /South-Africa no aggregation is defined (i.e., taxonomy leaves are directly aggregated into the root node). 5.2. Accuracy comparison per-dataset accuracy has been computed by using a stratified 10-fold Cross Validation (CV) test.
+We analyzed the impact of taxonomy integration on five non-associative classifiers, each one representative of a different in Section 5.1.
+ exclusively generated from the raw data (i.e., the original dataset), and an extended version, which also integrates taxonomy information (i.e., the training model is based on the original dataset and the taxonomy) by following the procedure described comparison between the average accuracies achieved by G  X  exploit generalized rules 1 (i.e., L 3 is the baseline version of G achieved with entropy-based and uniform discretizations are reported in separate columns. Note that, for both G taxonomy.
+ allows achieving the highest average accuracy over all tested datasets. In particular, for both G configuration, the minimum support threshold to 1% and the minimum confidence threshold to 50%. Best configuration settings very dense datasets (i.e., Satimage and Soybean-l), both L constraint to succeed. Hence, the mining process is stopped as soon as all patterns of length L or lower are discovered. The adopted value of L is reported in Table 5 next to the dataset name. For the sake of brevity, we will denote the above G parameter setting as standard configuration throughout the paper.
+
+To have an estimate of the displacement between the global and per-fold average accuracy achieved for each dataset, for every average accuracy value. Furthermore, the accuracy of the classifier (baseline or extended) that achieves the highest accuracy (i.e., the extended classifier version) yields an accuracy higher/equal/lower compared to its baseline version.
+Results reported in Tables 3, 4, and 5 show that, on average, taxonomy integration improves associative and non-associative classifier accuracy for most of the evaluated datasets (e.g., average improvement of +1.6% for LibSVM Extended against its general, enriching training data with multiple-level knowledge yields accuracy improvements, especially when classifying (unreliable) Naive independence assumption, which assumes the statistical conditional independence among attributes given the class. Although the Naive assumption is partially relaxed by recent Bayesian network approaches (e.g., FBN [27]), extending datasets with taxonomy information makes the remaining attribute independence assumptions even more unreliable. Therefore, taxonomy integration turns out to be less appealing for Bayesian classification.
+
+To study the impact of taxonomies on different associative classifiers, we also compared the performance of the extended and classification model, which yields fairly worse accuracy results compared to L baseline CBA in terms of average accuracy and the performance improvements are similar to the ones achieved by G
+L .
+
+Table 6 summarizes the results of the comparison between the extended and the baseline classifiers (including the associative 5.2.1. Statistical validation subset. We may briefly summarize the Friedman test steps as follows. 1. The accuracy of each classifier on a certain issue is determined on each evaluated dataset. 2. The classifiers are ranked on each dataset according to the results. classifiers on multiple datasets. 4. The observed differences between the average rankings are compared with the critical difference CD which establishes whether the differences are statistically significant: CD  X  q classifiers,  X  is the significance level, q  X  is the critical value for a experiments, we set the significance level  X  to 95%. Hence, the corresponding critical value q
+Tables 7 and 8 summarize the results of the Friedman test applied for the previous classifier comparisons with entropy-based and uniform discretization, respectively.
+ reported in Table 7 it comes out that G  X  L 3 significantly outperforms its baseline ( L considering entropy-based discretization (see Table 7 ), G second, has a mean rank of 7.368 and the value of CD is equal to 0.249, then the observed differences between G competitors are statistically significant. 5.2.2. Impact of the minimum support threshold of G  X  L 3
+The minimum support threshold may affect the characteristics of the G section we thoroughly analyzed its impact on G  X  L 3 accuracy.
+
+Results reported in Section 5.2 show that G  X  L 3 yields, on average, the highest accuracy values by setting the standard configuration, i.e., minimum support threshold equal to 1% and minimum confidence threshold equal to 50%. However, tuning the
+G dataset (Census), a fairly sparse (Pima), and an averagely dense dataset (Nursery).
+
+For most of the considered datasets with low or average data sparseness the highest accuracy values were achieved by setting relatively low support threshold values, e.g., around 1% for Census and Nursery (see Fig. 3 (a) especially when dealing with relatively small datasets (e.g., Pima) whose records are unevenly distributed among classes. 5.3. Execution time
+In the previous sections we analyzed the benefits from integrating taxonomies in structured data classification in terms of may augment the complexity of the classification task as well.
+
+To evaluate the impact of taxonomy integration on the complexity of the classification problem, we thoroughly analyzed and model.
+ Level-II rules (i.e., the classification model size) for both classifiers.
+
+Both training and classification times are shown to be affected by taxonomy integration. Due to the combinatorial growth of the number of generated rules, the more complex the provided taxonomies is, the heavier the computational task becomes. In comparison between Tables 9 and 10 , it comes out that the computational complexity increase becomes significant when the G model contains a significantly higher number of selected Level-I and Level-II rules compared to L the analyzed data and taxonomy distributions. However, for all performed experiments both training and prediction times high-dimensional ones (e.g., training time around 1,700 s for Letter Recognition). 6. Related work
+Taxonomies are is-a hierarchies of concepts, topics, or keywords. Since they represent ontology specializations, they may be used to provide meaningful knowledge representations and, thus, support users in understanding the semantic meaning of a resource and the related domain.
+
+Several efforts to integrate taxonomies in the Data mining and Knowledge Discovery (KDD) process have been done. For instance, taxonomies have already been exploited to (i) discover high level correlations among data [9 data analysis and summarization [14,15,35,36] , (iii) improve user browsing by looking into the results of Web search engines knowledge into classifier construction.
+ associations among data items. In [9] generalized association rule extraction is driven by an analyst-provided taxonomy by considering, for each item set, all the possible ancestor combinations. More recently, several improvements (e.g., [10 focus on avoiding exhaustive taxonomy evaluation by pruning uninteresting patterns early. Generalized association rule been exploited to improve classifier accuracy.
+ they focus on modeling correlations among multiple data attributes in accurate and readable rule-based models. In particular, most of the proposed associative classifiers (e.g., CBA [6], DeEPs [43], CMAR [26], iCAEP [44], ACRI [45], CE-EP [46], and L is commonly driven by support and confidence thresholds [21], additional mining constraints, based on statistical measures that perform best on the training data. For instance, CBA [6] selects a use majority voting to discriminate between classes covering the same test record. Similarly, L also proposes an extension of the L 3 classifier, namely G above-mentioned approaches are different from the one proposed in this work. 7. Conclusions and future work
+This paper investigates the integration of multiple-level and multi-faceted knowledge provided by a taxonomy into classifier of a state-of-the-art associative classifier which also exploits generalized rules beyond traditional ones is presented.
+Experimental results achieved on benchmark UCI datasets with different characteristics show the effectiveness of the shown to yield significant accuracy improvements, while keeping the computational effort manageable for most of the tested classifiers and datasets.
+ and (iii) the development of more efficient non-associative classification algorithms which integrate taxonomy information in classifier training.
+
+References

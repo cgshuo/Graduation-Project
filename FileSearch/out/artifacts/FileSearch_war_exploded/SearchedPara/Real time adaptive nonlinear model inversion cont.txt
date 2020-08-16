@@ -1,0 +1,31 @@
+ 1. Introduction design and control methodologies have been proposed and some of them is moderate.
+
+Among various control concepts that exist today, dynamic assumptions may have to be adopted. Among those are fixed 1993 ).
+ neural networks using a nominal mathematical model, which robot arm.
+ of the feedback control system. For example, to achieve a corresponding moments must be determined very accurately augmented to robustify the command augmentation systems methodology was made to consider the effects of actuator control problem ( Hovakimyan et al., 1999 ).
+ should be explored.
+ 2. TRMS
+The TRMS is a laboratory platform designed for control corresponding equations. The TRMS possesses two permanent Nomenclature B mr Rotor damping coefficient of the main motor E av Electromotive force of the main motor F v Aerodynamic force produced by the main rotor i av Armature current of the main motor J mr Rotor moment of inertia of the main motor J v Moment of inertia about horizontal axis k , k tv Constants k fvp , k fvn Positive constants L av Armature inductance of the main motor l b Length of the counter-weight beam l cb Distance between the counterweight and the joint l m Length of the main part of the beam l t Length of the tail part of the beam m b Mass of the counter-weight beam m cb Mass of the counter-weight m m Mass of the main part of the beam m mr Mass of the main motor m ms Mass of the main shield m t Mass of the tail part of the beam m tr Mass of the tail motor m ts Mass of the tail shield
+R av Armature resistance of the main motor
+T ev Electromagnetic torque of the main motor
+T fric , v Friction torque in vertical plane T Lv Load torque of the main motor
+V v Voltage control input of the vertical channel v Pitch angle of the TRMS beam v Magnetic flux of the main motor v Rotational velocity of the main rotor
+O v Angular velocity of the TRMS beam in vertical plane 2008 ), as shown in Fig. 2 , is presented in: di dt  X  E d o dt  X  T T R load torque, J mr is the rotor moment of inertia and B mr damping coefficient all of the main motor.
+ term d O dt  X  where A  X  m t 2  X  m tr  X  m ts l t B  X  m m 2  X  m mr  X  m ms l m C  X  m b 2 l b  X  m cb l cb F  X  d a dt  X  O v  X  8  X  m k fvp and k fvn are two positive constants.
+ nonlinear. For more details on the one degree of freedom have been obtained see ( Rahideh et al., 2008 ). Tail rotor 3. Methodology
+The proposed control methodology comprises three steps: compensator. 3.1. Model inversion motor is given by
+F  X  v  X  X  _
+O  X 
+The speed of the motor is then found to be  X  8 &gt; &gt; &gt; &lt; &gt; &gt; &gt; : system, which consists of four subsystems: TRMS dynamics inversion. 3.2. Open loop model inversion control pitch angle, a v . 3.3. Closed loop model inversion control with a NN based compensator
+Fig. 8 shows the complete block diagram of the developed of the PD controller and the output of adaptive NN based compensator.
+
+Among various neural network architectures, single hidden  X 2.5  X 2  X 1.5  X 1  X 0.5 0.5 1.5 2.5
+V Motor Inversion ( t 1), and pitch angle of the beam at two sample before, a pure linear activation function is used.
+
+The relationship between the inputs and output can be expressed as v functions can be defined as X  X  x  X  a v  X  t i  X  1  X  i  X  1 , 2 , 3  X  14  X  W  X  V  X  f  X  z j  X  X  z F  X  _ W  X  X  X  F F 0 V T X  X  r T  X  k : e : W G W  X  20  X  _ V  X  G V  X  Xr T W T F 0  X  k : e : V  X  21  X  weights are uniformly bounded e  X  F 0  X  r  X  X  e T P B  X  T  X  24  X  A
+P  X  PA  X  Q  X  0  X  25  X  dynamics matrices B  X  A  X  4. Results
+The responses of the 1DOF inverse model and the proposed 4.1. Model validation
+The 1DOF dynamic model of the TRMS has been tested with real TRMS. 4.2. Controller response 10 10 10 10 10 10 10 Magnitude 0 0.5 1 1.5 2 2.5 10 10 10 10 10 10 10 10 0 10 1 Magnitude Magnitude Magnitude Magnitude
+Pitch angle (rad) 10 10 10 10 10 10 10 10
+Pitch angle (rad) 0 0.5 1 1.5 2 2.5 10 10 10 10 10 10 10 10
+Pitch angle (rad) 10 10 10 10 10 10 10 10 aerial vehicles with desired agility and manoeuvrability. 5. Conclusion control approach has been developed and implemented on a TRMS in terms of 1DOF. An accurate dynamic model has been to the control system. Results show that the model based References

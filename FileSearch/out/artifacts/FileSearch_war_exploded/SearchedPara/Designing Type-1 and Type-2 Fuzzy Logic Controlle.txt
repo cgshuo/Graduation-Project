@@ -1,0 +1,89 @@
+ 1. Introduction
+A major problem in control engineering is a robust feedback Isidori (2000) .
+ least two stages: design of the rule-base and design of the Membership Functions (MFs).
+ There has been some publications in the design of Type-1 parameters of a T1FLS.
+
+Type-2 Fuzzy Logic Systems (T2FLSs) ( Mendel, 2001 ) are a from the academic and industry sectors. In Hagras (2007) ,an and in Sepulveda et al. (2007) a comparison between Type-1 nal disturbances is presented in Lin et al. (2009) . T2FLSs allow us to deal with uncertainty, modeled in form of in some other properties like performance.
+ assumed to be the only information available for feedback.
+This problem was first reported in Aguilar et al. (2007) , where the problem of controlling nonminimum phase systems optimization process and GA design. In Cazarez-Castro et al. optimization is not provided.
+
+Fuzzy Lyapunov Synthesis ( Margaliot and Langholz, 1998 ), a concept that is based on the computing with words ( Mendel, for the design of stable FLCs.
+ The contributions of this paper are as follows: We propose a systematic methodology to design Type-1 and forward in the research of a general method for designing Type-2 Fuzzy Systems.
+ With the proposed methodology we obtain Type-1 and Type-2
+We solve the output regulation problem for an electrical actuator operating under uncertainty conditions in the pre-sence of nonlinear backlash effects.
+ that they can deal with the proposed problem.
+
+We show that Type-1 and Type-2 FLCs solve the nonmini-mum-phase problem.
+
+The paper is organized as follows. The dynamic model of the nonminimum phase servomechanism with nonlinear backlash addresses fuzzy sets and systems theory. The design of Fuzzy 2. Nonsmooth mechanical systems: a servomechanism with nonlinear backlash 2.1. Dynamic model motor and the q o ( t ) of the load are given according to
+J
+N 1  X  q 0  X  f 0 N 1 _ q 0  X  T  X  w 0 ,
+J  X  q  X  f i _ q i  X  T  X  t m  X  w i  X  1  X  and backlash.
+
+The transmitted torque T through a backlash with an ampli-et al., 2001 ,p.7)
+T  X  D q  X  X  with
+D q  X  q i Nq 0 ,  X  3  X  depicted in Fig. 1 . Provided the servomotor position q i only available measurement on the system, the above model bria  X  q i , q 0  X  with q i  X  0 and q 0 A  X  j , j .
+To avoid dealing with a nonminimum phase system, we
+T  X  K D q K Z  X  D q  X  ,  X  4  X  where  X  2 j
+The present backlash approximation is inspired from Merzouki position measurements, it is subsequently shown to continue a minimum phase approximation of the underlying servomotor, 2.2. Problem statement
+To formally state the problem, let us introduce the state deviation vector x  X  X  x 1 , x 2 , x 3 , x 4 T with x  X  q 0 q d , x  X  _ q 0 , x  X  q i Nq d , x  X  _ q i , specified in such a way to guarantee that D q  X  D x , where D x  X  x 3 Nx 1 :
+Then, system (1) X (5), represented in terms of the deviation vector x , takes the form _ x  X  x 2 , _ x  X  J 1 0  X  KNx 3 KN 2 x 1 f 0 x 2  X  KN Z  X  D q  X  X  w o , _ x  X  x 4 , _ x
+The zero dynamics _ x  X  x 2 , _ x  X  J 1 0  X  KN 2 x 1 f 0 x 2  X  KN Z  X  Nx 1  X   X  7  X  of the undisturbed version of system (6) with respect to the output y  X  x 3  X  8  X  error system (6) and (8) is globally minimum phase. (7) is globally asymptotically stable .
+ form V  X  x 1 , x 2  X  X  1 2 x 2 2  X  1 2 KN 2 J 1 0 x 2 1  X  2 j 2 Since appears to be positive definite.
+
+Then, let us compute the time derivative of the Lyapunov function on the trajectories of (7) _ V  X  J 1 0 KN 2 x 1  X  f 0 X 2  X  2 jKN e Nx 1 = j 1 e Nx
+Now let us observe that the zero-dynamics system (7) has no due to (7) Nx j  X  2 suffices to represent (12) in terms of n  X  Nx 1 = j  X  2 function of n because its derivative is positive definite by inspection 1 4 e for all n a 0.
+ Krasovski invariance principle to the system in question.
+The objective of the Fuzzy Control output regulation of the in which all these trajectories are bounded and the output q and w 0  X  t  X  . &amp; 3. Fuzzy Sets and Systems 3.1. Type-1 Fuzzy Sets and Systems A Type-1 Fuzzy Set (T1FS), denoted A is characterized by a variable, i.e.
+ A  X f X  z , m  X  z  X  X  9 8 z A Z g ,  X  15  X  The T1MF maps each element of Z to a membership grade (or membership value) between 0 and 1.
+ Inference Systems (T1FIS)  X  are both intuitive and numerical pretations, such as R : IF y is A l 1 AND _ y is A l 2 THEN u is B l 1 ,  X  16  X  mapping from input space U  X  U 1 U 2 U n to output space is denoted by t m .
+ defuzzifier maps the T1FSs produced by the Type -1 inference engine into crisp numbers.
+ defuzzifier . The COA is defined as follows: 3.2. Type-2 Fuzzy Sets and Systems
+As the T1FS, the concept of Type-2 Fuzzy Set (T2FS) was introduced by Zadeh (1975a X  X ) as an extension of the concept of an ordinary Fuzzy Set (T1FS).
+ A T2FS, denoted ~ A is characterized by a Type-2 Membership and m A J z D  X  0 ; 1 , i.e. ~ ( Mendel and John, 2002 ): ~ A  X 
+Z where J z D  X  0 ; 1 and  X  z  X  ( Mendel and John, 2002 ).
+
+J
+An Interval Type-2 Fuzzy Set (IT2FS) ~ A is to date the most considered in this paper. It is defined as ~ A  X 
+Z ship of z , m  X  z  X  is the secondary variable , and secondary Membership Function at z . Note that (20) means ~
+A : Z  X  FOU  X  ~ A  X  , i.e.
+
+FOU  X  ~
+A  X  X 
+Note that an IT2FS can also be represented as ~
+A  X  1 = FOU  X  ~ A  X  X  22  X  with the understanding that this means putting a secondary grade with value of one at all points of FOU( ~ A ).
+Logic Systems  X  also called Type-2 Fuzzy Inference Systems determine an exact measurement of uncertainties ( Mendel, 2001 ).
+
+It is known that T2FSs let us to model and to minimize the is not widespread yet.
+ of the Type-2 form, that is
+R in Fig. 3 .
+
+Note that for both T1FIS and T2FIS in the rule -base we are (1975) and Mamdani (1976) type of fuzzy rules.
+  X 
+Z 4. Design of the Fuzzy Logic Controllers
+To apply the Fuzzy Lyapunov Synthesis, we assume the following: to as x 1 and x 2 , respectively. Hence by (6), _ x 1  X  x 2. The states x 1 and x 2 are the only measurable variables. 3. The exact Eqs. (1) X (5) are not necessarily known. t m increases (decreases) _ x 2 increases (decreases). 5. The initial conditions x  X  0  X  X  X  x 1  X  0  X  , x 2  X  0  X  X 
+The control objective is to design the rule-base as a fuzzy
+Theorem 2 that follows establish conditions that help in the proof can be found in Khalil (2002) .
+ derivatives such that
+V ( x ) is positive definite. V  X  x  X  is negative definite .
+ duce the Lyapunov function candidate V  X  x 1 , x 2  X  X  1 2  X  x 2 1  X  x 2 2  X  ,  X  25  X  time derivative of V  X  x 1 , x 2  X  results in _ V  X  x 1 , x 2  X  X  x 1 _ x 1  X  x 2 _ x 2  X  x 1 x 2  X  x 2 _ x we wish to have x x 2  X  x 2 _ x 2 r 0 :  X  27  X  _ x _ x 4 x 1 .
+
+We can translate these conditions into the following fuzzy rules: for the stabilizing controller: the following rules: This fuzzy rule-base can be represented as in Table 1 .
+It is interesting to note that the fuzzy partitions for x follow elegantly from expression (26). Because _ V  X  x 2  X  x _ x regardless of what comes first, we see that Fuzzy Lyapunov words ( Zadeh, 1996 ; Mendel, 2007 ).
+
+To complete the controller X  X  design, we must model the following the Fuzzy Lyapunov Synthesis. We are applying an extension of 0.1 to most parameters.
+ For the implementation of the T2FLS, we are using the Type-2 To implement a T2TMF (Type-2 Triangular Membership Function) represent the end of support. 5. Results loop systems for both, the T1 and the T2FLSs.
+
+To perform experiments, we use the dynamical model (1) X (5), 0.3 rad, and K  X  5 N m/rad.
+
+The experimental setup involves a DC motor linked to a actuators and load.
+ zero zero 5.1. Type-1 FLC results With the fuzzy rule-base of Table 1 and the MFs depicted in Fig. 4 , we obtain the Control Surface of Fig. 7 .
+Applying this T1FLC to the proposed problem, we obtain the that is, q 0 -q d while x 1 -0. 5.2. Type-2 FLC results With the fuzzy rule-base of Table 1 and the MFs depicted in Fig. 5 , we obtain the Control Surface of Fig. 11 .
+Applying this T2FLC to the proposed problem, we obtain the like in Type-1 q 0 -q d while x 1 -0. 5.3. Comparison
+A qualitative comparison from the approaches considered in time multiply absolute error (ITAE), which are defined as: ISE  X  IAE  X  ITSE  X  and ITAE  X 
+Table 3 concentrates metrics (28) X (31) for all the cases presented in this section. Numerical data in Table 3 can be depends on performance requirements, and with respect to the proposed approaches present the best mean performance.  X 1 0 1 2 3 4 5 6 7 position [rad] reference motor j=0.1 N=3  X 2 0 2 4 6 8 10 12 14 position [rad]  X 5 0 5 10 15 20 25 position [rad] 6. Conclusion
+The main goal of this paper was to propose a systematic tion problem of a servomechanism with nonlinear backlash.
+The proposed design strategy results in two controllers that performance from the Type-1 or Type-2 strategy.
+
+The regulation problem was solved as was predicted, this affirmation is supported with experiments where both the T1 and T2FLC designed by following the Fuzzy Lyapunov Synthesis achieve to solve the regulation problem.
+ References

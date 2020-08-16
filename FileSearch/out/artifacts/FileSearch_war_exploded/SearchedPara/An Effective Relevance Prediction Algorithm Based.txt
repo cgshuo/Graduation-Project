@@ -1,0 +1,3 @@
+ 614 Z. Chen et al. Input: T KW , T ODP
+Output: MTP 1 for every keyword kw j in T KW do map kw j to T ODP ; 2 for every matched topic path P k do 4 { P k , wt k }  X  MTP ;} 5 return MTP ; 616 Z. Chen et al. 
+Output: PS (crawled Pages Set) 1 if Topic is T NLT then translate it to T KW ; 3 url seed .depth = D ; url seed  X  UL ; // UL is URLs priority List 4 while UL is not empty and PS .size &lt; N 6 for each uncrawled outgoing hyperlink url c in p p do 8 12 return PS ; precision _ rate T sum_ of_ info T 618 Z. Chen et al. 4. TREC, http://trec.nist.gov/pubs/trec12/papers/WEB.OVERVIEW.pdf 

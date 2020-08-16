@@ -1,0 +1,224 @@
+ 1. Introduction tion (time-tables, schedules).
+ process control to office automation and planning.
+ uses it . X 
+Moreover, even commonly used periodicities have sometimes quite complex definitions. Consider, for the Paschal full moon, which is the first full moon after 21st March.  X 
+Therefore, the design of formal languages supporting the definition of user-defined periodicities is an granularity [4 X 8] and calendric systems [2] (see, e.g., the survey in [9] ). guages (e.g. [17 X 22] ).
+
+In this paper, we focus only on symbolic languages. In symbolic approaches, a bottom periodicity is the periodicities  X  X ay X ,  X  X eek X , and  X  X onth X  have been predefined): steps: (1) First,  X  X onday X  is defined as the first day of the week: (2) Then, the  X  X irst Monday of each month X  is defined exactly taking the first of Mondays in each month: only periodicities. The advantages derived from adopting a symbolic language have been widely discussed, poral [21,18] and active [25] databases to access control models [26] and temporal reasoning [27] . 1.1. Contributions of this paper
+In this paper we propose a modular framework aimed at systematizing, cleaning and extending symbolic Example 2. The following expression is legal in the language of [17] : contains arbitrarily long sequences of Tuesdays.
+ instance the tail-sharing phenomenon described in Theorem 25 , Item (3)c.)
+We maintain that a systematic semantic analysis justifying the design choices for the language operators a contrasting methodology in which the process of defining language operators is driven by a preliminary we propose both a general methodology and a specific instantiation, based on the following intuitions: 1.1.1. Methodology to add a single property, working independently of the others.
+ way to obtain the language fitting best the application domain.
+
+Moreover, the modularity of our approach can be exploited by language designers and implementers, since operators. In [28] and [29] , a semantics in terms of Presburger Arithmetic is given; interpreters/compilers for each one of the languages can be built in a modular way. 1.1.2. Instantiation of the methodology goals: modularity: in order to obtain mutually independent operators that correspond biunivocally to properties (see Issues (2) and (3) above), the latter must be orthogonal ; ing side-effect such as those shown in Example 2 and in Theorem 25 , Item (3)c. our choices.
+ with the fundamental constraints outlined above, but may be based on different criteria. 1.1.3. Contents
+In detail, in this paper, approach is depicted in Fig. 1 ; the identification of the properties corresponds to Fig. 1 (2); responds to Fig. 1 (3) and (4); sion, define a lattice ( Proposition 50 ); has enough expressive power in order to define exactly the homologous node in the latter ( Theorem 52 ). (In [28] and [29] , we have also provided a formal mathematical semantics based on Presburger Arithmetic poral patterns denoted by user-defined periodicities, Fig. 1 (6).)
+Our approach is located within the mainstream of symbolic approaches to user-defined periodicity. We tion, could suffice); however, this is outside the aims of our current work. effects (cf., again, Example 2 and Theorem 25 , Item (3)c).
+
+We do not provide in this paper many examples of the expressivity of our languages. This would be redun-symbolic approaches can find application in situations in which leap-seconds can be disregarded.
+Finally, we do not address here computational aspects. We envisage as a future work the study of our ciency issues. This domain requires a totally new and extensive experimental work. 1.2. Structure of the paper
+Section 6 we compare our approach with related work, and in Section 7 we draw conclusions and discuss future work. The appendix, containing some definitions and proofs, has been included for the sake of completeness. 2. Preliminaries
+Any approach to temporal representation that has practical applications must necessarily be confined to repeats identical to itself ( period ).
+
+Extending the notion of periodic pattern, we introduce the class of eventually periodic patterns a degeneration as well.
+ terns. Items (4) and (5) illustrate eventually periodic patterns with empty left periodic part.
+Example 3 ( Eventually periodic patterns ) (0)  X  X  X ours  X  ,  X  X  X ays  X  ,  X  X  X onths  X  (1)  X  X  X ondays from 8 to 18  X  (2)  X  X  X orking hours on Mondays, from 8 to 12 and from 14 to 18  X  (3)  X  X  X om X  X  and Mary X  X  working hours on Mondays  X  , with Tom and Mary sharing the same work shift on (4)  X  X  X unday January 2, 2005 plus Tom X  X  and Mary X  X  working hours on Mondays (defined as in Item (3)), (5) The pattern of Item (4), structured grouping the working hours in each month. seem to be of interest in real-life applications.
+ pattern and periodical structure , respectively.
+ described in Example 3 (3)). We also assume that intervals can be either convex or gap intervals. collections. An order-0 collection is a (convex or gap) time interval. (In the following, set notation indicates multisets , unless otherwise specified.) sake of completeness, the formal definitions are given below: order-( n 1) collections S i , i 2 I Z , such that C ={ S ( n P 1) is an order-1 collection defined recursively on the order of the collection C , as follows: if n = 1, then UIP ( C )= C ; if n &gt; 1, then UIP ( C ) is the multiset of intervals multiset containing all intervals in UIP ( S i ), for all order-( n 1) subcollections S indicate intervals contained in UIP ( C ).) ity, purely periodic interval patterns are first defined: empty) multiset of intervals RP ( repeating pattern ) and a positive integer p ( period ) such that:
+RP ={ I 1 , ... , I n } where I j  X  X  s j ; 1 ; e j ; 1 [[ X  s h j P 1); and S is the multiset of intervals I j +( k p ), for all I
+I Then, eventually periodic interval patterns can be defined as follows: (possibly empty) periodic interval patterns S l and S r , integers B intervals AP (the aperiodic part ), such that S contains all intervals of S l that have ending point smaller than B all intervals of AP ; all intervals of S r that have starting point larger than B of a right infinite set, via the isomorphism of integers and natural numbers as additive groups.
+Finite and bounded interval patterns (as well as purely periodic ones) can be viewed as degenerations of eventually periodic ones: pattern with empty S l and S r . with empty aperiodic part, B 1 = B 2 and such that S l and S period.) of extent is instrumental to introduce periodical grouping (and other concepts, later): endpoints are the minimum and maximum points belonging to C , if those points exist. Otherwise, if the collection is left (resp. right) infinite, its extent is left (resp. right) infinite. that two subcollections S i and S j of a collection C are consecutive if E ( S collection S k of C such that E ( S i )&lt; E ( S k )&lt; E ( S follows: 1&lt; k 6 n 1, it is possible to determine a periodic sequence of timepoints consecutive pair of order-k subcollections, in the following sense:
+For each pair S l and S m of consecutive subcollections of order-k ( E ( S
+Q 2 Sep k such that Q &gt; max{ P j P 2 E ( S l )} and Q 6 min{ P j P 2 E ( S E ( S ).
+ lections.They are called periodicities : interval pattern is eventually periodic. (The notions of repeating pattern, aperiodic part and period of a periodicity, and of finite and bounded
+So, the temporal patterns from Example 3 can be visualized as periodicities, as follows. (Here hours has been chosen as the basic time unit, and the hour 0 is the one from 0 to 1 a.m. of January 1st, 2005.)
+Example 13 ( Collection-based semantics ) (1)  X  X  X ondays from 8 to 18  X  : f ... ;  X  112 ; 103 ;  X  56 ; 65 ;  X  224 ; 233 ;  X  392 ; 401 ; ... g , (2)  X  X  X orking hours on Mondays, from 8 to 12 and from 14 to 18  X  (taking 8 X 18 as a gap interval) (3)  X  X  X om X  X  and Mary X  X  working hours on Mondays  X  (assuming that Tom and Mary work the same hours (4)  X  X  X unday January 2, 2005 plus Tom X  X  and Mary X  X  working hours on Mondays (defined as in Item (3)), (5) the periodicity of Item (4), structured considering the hours in each month. 3. Properties ularly repeating pattern of adjacent intervals [17] .
+ empty periodicity.
+ picture of a calendar. (The time axis is drawn as a continuum; the reader may assume that the resolution of the pictures is too low to show the detail of single time units.) through our demand for orthogonality and neatness. 3.1. Non-adjacency (basic version: in absence of overlaps)
+The interval pattern of many periodicities (representing, e.g., class schedules, train timetables, work captures the above intuition in the absence of overlaps (see also Sections 3.3 and 3.4 ). its extent is not equal to the union of the extents of its intervals: 18  X  . (See Fig. 3 .) 3.2. Gaps takes place on Monday, without the need to specify whether in the morning or afternoon. Definition 16 ( Property G ). A periodicity P has Gaps if it contains gap intervals.
+Notice that the property of having gaps is orthogonal with respect to non-adjacency, since the former is 3 (2)) has both the NA and the G property, while ( Example 3 (1)) has only NA, and  X  X  X ach day, with the lunch-break gap (from 12 to 14)  X  has only G . 3.3. Overlaps facturing line) to singing a canon. 4 Here there are multiple occurrences of the same intervals ( Fig. 6 ). definition on the notion of extent ( Definition 10 ): empty intersection.
+ laps (of intervals that share points) and interleavings of gap intervals (with no points in common).
+So, O is a property of interval extents, and therefore totally independent from G . 3.4. Non-adjacency (full version) and to keep O and NA orthogonal:
+UIP ( P ) in order-1 periodicities P 1 , ... , P k such that: ( minimality ) the periodicities in the partition are mutually overlapping, i.e. E ( P i , j 2 {1, ... , k }, there exists at least one periodicity P i such that E  X  P be partitioned into Periodicities (b) and (c) as shown in the figure. also with bounded periodicities with nonempty aperiodic part.) 3.5. Eventual periodicity
+Other approaches pointed out the importance of dealing with bounded periodicities (consider, e.g. seen as a degenerate eventually periodic one with one empty periodic part). degenerate eventually periodic periodicity, or a bounded (or finite) one.
+The property EP implies the presence of a finite aperiodic portion possibly preceded and/or followed by in Example 3 (3)), starting from January 3, 2005  X  (see Fig. 8 ).
+ erate eventually periodic one with an empty periodic part.
+ may have overlaps or not. 3.6. Structure each month ( Example 3 (5)). Nested groupings (e.g., into months and years) are also allowed. account.
+ periodical: users will want to group data according to some calendar. Definition 20 ( Property S ). A periodicity has Structure if it is an order-n collection , with n &gt;1.
+S is orthogonal to NA , G , O and EP , since it operates at a different level. 3.7. Some alternatives properties might be considered. For instance, as mentioned earlier, Property O can be refined.
+Analogously, Property EP could be decomposed to explicitly cope with boundedness. In particular, one may distinguish three orthogonal subproperties: (1) having a non-empty aperiodic part, (2) having an infinite left-bounded periodic part, and (3) having an infinite right-bounded periodic part.
+ contribute these properties. 3.8. The lattice of properties Based on the five properties above, richer classes can be built over Cal ( Definition 14 ):
+Definition 21 ( Classes of periodicity ). Cal p 1 ; ... ; p in { p 1 , ... , p k }, including the empty periodicity. ordered with respect to set inclusion: respect to set inclusion is a lattice.
+ that we consider, i.e. Cal NA , G , O , EP , S . The lattice is sketched in Fig. 9 . smallest class containing P is Cal NA .
+ smallest classes containing each one of the periodicities is shown:
+Example 23 ( Periodicities and classes ) (2)  X  X  X orking hours on Mondays, from 8 to 12 and from 14 to 18  X  in addition to NA has gap intervals. It (3)  X  X  X om X  X  and Mary X  X  working hours on Mondays  X  has non adjacent gap intervals that overlap. However (4)  X  X  X unday January 2, 2005 plus Tom X  X  and Mary X  X  working hours on Mondays (defined as in Example siveness of our languages with that of the languages analyzed. 4. Classification of related approaches on the lattice
+In this section, four of the main symbolic approaches to user-defined periodicities from the AI and TDB
+Also, infinite periodicities with a non empty aperiodic part cannot be defined. 4.1. Collections formalism multisets . In this section the original notion is referred to.
+
+Calendars are used as the basis of the construction. A new calendar C union of intervals as C 0 = hh C ; s 0 , ... , s n 1 ii . Intuitively, s ate on collections.
+ there is more than one), or a set of numbers n 1 , ... , n (i.e., of the weeks containing the first day of each month).
+
+Collection expressions can be arbitrarily built by using a combination of these operators. 4.1.1. Position in the lattice et al. X  X  language in the literature.
+ Definition 24 ( Ordering on order-n collections ). The partial ordering &lt; including intervals) is defined inductively as follows:
+Intervals are ordered in increasing order of their end-points: I for any pair of collections C and C 0 of order n &gt; 0, let D (resp. D C (resp. C 0 ), with respect to the ordering on collections of order n 1; C &lt; C is strictly contained in C 0 .
+ The following theorem defines the expressiveness of the language of Leban et al.
+Theorem 25. The collections of order n, defined in [17] , have the following properties: (1) NA property: Gaps between intervals are supported. (2) G property: Gaps within intervals are not supported. (3) O property: Overlaps are partially supported. (4) EP property: Eventually periodic periodicities are partially supported. (5) S property: Structure is supported.
+ The proof is in Appendix A , where Leban et al. X  X  language is also described in more detail. collections must be the first ones of C .
+ rable subcollections of order n ).
+ To summarize, Corollary 26 classifies Leban et al. X  X  language with respect to our lattice of properties. definable in [17 ] (but not all forms of O and EP are definable in Leban et al. X  X  formalism). 4.2. Slices formalism generation of intervals has to start).
+ if each interval of Y can be exactly covered by intervals of X .
+ vals and the common duration D of the intervals. It is denoted by S = P . D . The set of starting points is defined recursively as follows: If R is a set of starting points, O and C are as above, then S = R + O C is a slice. The relation that holds between the intervals of S and those of R is during .
+A duration is defined as D = N C d , specifying the number N of successive intervals of the calendar C defined by S = all. months +3. days +4. hours . 3. hours .
+ underlying generalized database (and temporal algebra), and which are part of the language. Although not explicitly stated, we understand that (set-theoretic) union is defined on the slices. The language in [18] defines periodicities with the following properties:
+Theorem 27. The slices defined in [18 ] have the following properties: (1) NA property: Gaps between intervals are supported. (2) G property: Gaps within intervals are not supported. (3) O property: No repetitions are allowed, but  X  X  X eriodically uniform  X  overlaps are possible. (5) S property: No structure is allowed.
+ The proof of Theorem 27 is sketched in Appendix A .
+ definable in [18 ] (but not all forms of O and EP are definable in Niezette and Stevenne X  X  formalism). 4.3. Gap-collection formalism sequence of gap intervals each made of a Monday, a Wednesday and a Saturday: each interval is obtained from the periodicity Days (second argument) combining every 7 days (third argument) day 1, day 3 and ators in order to consider non-convex intervals.
+
+Corollary 29 (Gap-collections in the lattice). Cal NA,G,O,EP,S with non-empty aperiodic part are definable).
+ all periodicities that contain gap intervals. h 4.4. Unstructured-collection formalism endar interpretation). Moreover, also the set-theoretic operators of union, intersection, difference and complement are introduced, as well as an explicit operator to introduce (upper and/or lower) bounds . Periods operator. h
+Fig. 10 summarizes the results of this section. 5. Orthogonal operators
+This section is the core of the paper, describing the modular family of new symbolic languages, and ana-bottom class of the lattice of periodicities. 5.1. The basic operators and the bottom class Cal_Def is used to build new calendars grouping intervals of a calendar given in the input. Definition 31 ( Chronon_Cal and Cal_Def ) Chronon _ Cal(): Cal _ Def ( C , p , h n 1 , ... , n k i ):  X  let J i , i 2 Z , be the intervals of C ordered in lexicographical order and let J  X  let start ( i ) (resp. end ( i )) be the starting point (resp. ending point) of J  X  let l  X  j  X  X 
+Then, Cal _ Def ( C , p , h n 1 , ... , n k i ) outputs the calendar C calendars are
+Example 32 ( Calendars ) days  X  Cal Def  X  hours ; 0 ; h 24 i X  ; ignore leap years); process is illustrated.
+ exactly the bottom class of the lattice, Cal : Lemma 33. The language L ?  X f Chronon Cal ; Cal Def g defines exactly Cal. pattern. Then C = Cal _ Def ( Chronon _ Cal (), ap , h w 1 It remains to show that only calendars can be defined in this language.
+Chronon_Cal simply partitions the timeline into no-gap adjacent intervals (with no overlaps, no no gaps within nor between intervals), it cannot produce intervals with gaps. Since it merely groups introduce EP. h 5.2. Property-based operators In the following, two relational operators on intervals are referred to:
+Definition 34 ( NSDur , SDur ). Let E ( J ), E ( J 0 ) be the extents of intervals J , J
+NSDur J 0 )if E ( J 0 ) contains E ( J ); J is strictly during J E ( J ) are both different from the endpoints of E ( J 0 ).
+
+Now the five operators, paired with the five orthogonal properties, can be introduced. Constraints are placed on the inputs that each operator can take, based on the following remarks:
+Remark 35 ( Philosophy behind the operators ) (2) Operators must either modify intervals or treat them as black boxes, for orthogonality. 5.2.1. Non adjacency total order on intervals: Definition 36 ( Total order on intervals ) The order on convex intervals is the lexicographic order on their endpoints. Given gap-intervals G 1 = I 1  X  E ( G 1 )&lt; E ( G 2 );  X  or, else, if there is h such that for all j &lt; h , I j occurrences are indistinguishable for the purposes of this study.
+ maximum of I , if it exists), where 6 is the ordering on intervals defined above. The Select operator is then defined as follows:
+Definition 38 ( Select, for NA ). Syntax: Select( h n 1 , ... , n
+Input: h n 1 , ... , n k i ( n i 2 N , n i 6  X  n j for i 6  X  j ), order-1 collections C
+Output: Let C 2  X f J h g h 2 U Z . Then, with the following notation: otherwise, for each h 2 U and i =1, ... , k , I h , i = n th({ I 2 C intervals and J h 2 C 2 ,
+Select( h n 1 , ... , n k i , C 1 , C 2 ) is the order-1 collection C follows: 5.2.2. Gaps intervals of a periodicity.
+
+Definition 40 ( Drop, for G ). Syntax: Drop( h n 1 , ... , n
+Input: h n 1 ; ... ; n k i X  n i 2 N  X  , order-1 collections C
+Output: Let C 1  X f I h g h 2 U Z . With the following notation: for each h 2 U and i =1, ... , k , H h , i = n th({ J 2 C (notice that { J 2 C 2 j J SDur I h } is a multiset of intervals), for each h 2 U ; I 0 h I h is the interval I h n ( H h ,1
+Drop( h n 1 , ... , n k i , C 1 , C 2 ) is the order-1 collection f I
+For instance, Drop can be used to define the periodicity (2) in Example 3 ,  X  X  X orking hours on Mondays, from 8 to 12 and from 14 to 18  X  : Example 41 ( WH ). WH = Drop( h 4,5 i , Mon 8 X 18, hours) (see Fig. 13 ). be dropped. Thus Drop can only introduce proper gaps, i.e. gaps internal to intervals. 5.2.3. Overlaps Overlaps are introduced by an operator that works on infinite periodicities as a multiset union:
+Definition 42 ( Concur, for O ). Syntax: Concur( C 1 , C 2 Input: two infinite order-1 collections C 1 and C 2 ;
+Output: the order-1 collection containing all intervals of C i.e. multiple occurrences are allowed).
+
+To illustrate the application of Concur, we define the periodicity of Example 3 (3),  X  X  X om X  X  and Mary X  X  working hours on Mondays  X  : Example 43 ( M + T ). M + T = Concur( WH , WH ) (see Fig. 14 ).
+ concurrent timelines. Allowing unions of bounded or partially bounded objects, one would give to Concur
+It would also introduce NA, a task that was assigned to Select. 5.2.4. Eventual periodicity
+Definition 44 ( Replace, for EP ). Syntax: Replace( C 1 , p
+Input: Left and right infinite order-1 collections C 1 , C not C 2 ) and time points p 1 , p 2 such that p 1 &lt; p 2 endpoint, and similarly for p 2 relative to C 2 and C 3 ;
+Output: An order-1 collection containing all intervals of C from p 1 +1to p 2 (included), and all intervals of C 3 from point p
+As an example, consider the definition of Example 3 (4),  X  X  X unday January 2, 2005 plus Tom X  X  and Mary X  X  hour of January 1st, 2005 is taken as anchoring point): no intervals (see Fig. 15 ).
+ argument is constrained to be non empty. 5.2.5. Structure Finally, structure is added by the operator Group-by:
+Definition 46 ( Group-by, for S ). Syntax: Group-by( C 1 , C
+Input: An order-n collection C 1 and a calendar C 2 such that, for each interval i 2 C j 2 C 2 such that i NSDur j ;
+Output: An order-( n + 1) collection obtained grouping subcollections of C necessary, splitting order-k subcollections ( k &gt; 0). Formally:
+Define C j J recursively as follows:  X  C j J ={ S i 2 C , such that S i NSDur J }, if n =1;  X  C j J ={ S i j J , such that S i 2 C }, if n &gt;1; for I h 2 C 2 , let T h  X f S j j I
+Then, Group-by( C 1 , C 2 ) is the order-n collection C 0 With the new operator, Periodicity (5) from Example 3 can be defined as: Example 47. G = Group-by( J 2+ M + T ,months) (see Fig. 16 ).
+  X  X  X ays  X  first by  X  X  X eeks  X  and then by  X  X  X onths  X  , say.
+
+Notice that existing structure leads to differences in grouping. For instance, grouping the periodicity value in applications.
+ finite number of calendars. 5.3. Orthogonality Each operator affects a single property: operator can introduce it. Lemma 33 proves that the basic operators cannot introduce any property.
+NA  X  Consider periodicities C 1 , C 2 and C 3 with adjacent intervals.  X  Drop cannot introduce NA since, being defined based on SDur, it preserves interval endpoints.  X  Concur is constrained to act only on infinite periodicities. Concur( C  X  Replace( C 1 , p 1 , C 2 , p 2 , C 3 ) does not introduce NA by the constraints on p  X  Group-by does not affect, by definition, the underlying sequence of intervals. G  X  only Drop modifies intervals.
+
+O  X  Select and Drop discard or reduce existing intervals, and thus cannot introduce overlaps.  X  Replace does not overlap, by definition, the periodicities it takes in input.  X  Group-by does not affect the underlying sequence of intervals.
+ not produce any irregularity.
+
+S  X  by definition, Select, Drop, Concur and Replace output order-1 collections. Therefore, only Group-by can add structure. h 5.4. Expressiveness of languages. The following notation is convenient to refer to such languages: Definition 49 ( Languages  X  notation )
+For any property p 2 { NA , G , O , EP , S }, we denote by O
+For any subset of properties { p 1 , ... , p k } { NA , G , O , EP , S }, we denote by L So, for instance, O NA is Select and L G ; O ; EP is L ? [f Drop ; Concur ; Replace g . The bottom of the lattice is the language L ? , and the top is the richest language, L guage L p expressiveness of each operator. In Lemma 51 the steps of the induction are proven:
+Lemma 51 (1) The language L NA defines at least Cal NA . (2) If L p (3) If L p (4) If the language L p (5) If the language L p and the remark after Definition 12 ). (1) Let C 2 Cal NA .If C 2 Cal , then the thesis follows from Lemma 33 . cent intervals, and adjacent occurrences of the repeating pattern; C extent of RP ( C 1 ), and p ( C 2 )= p ( C 1 ); C 2 2 Cal .Both C
+Let N = h n 1 , ... , n k i be the positions of the intervals of C in RP ( C periodicity, except for gaps. Thus C 1 2 Cal (resp. Cal NA
+Gaps will be added appropriately one interval at a time in the repeating pattern of C step a suitable periodicity C 2 . C 2 is identical to C 1 sure that if C has adjacent intervals, so has C 2 . N is set to h n all occurrences of I .
+
+Indeed, all other intervals of the repeating pattern of C strictly contained in the latter, that are not affected by Drop.
+
+With a finite number of applications of Drop as above, C is obtained. (After the first application, C have, legitimately, gaps.) (3) Let C be any periodicity in Cal p 1 ; ... ; p k ; O . If it has no overlaps, it can be defined in L
+Concur yield C , as required. (4) Let C 2 Cal p 1 ; ... ; p k ; EP . If it does not have the property EP , it can be defined in L p ) to obtain an unbounded periodical periodicity C 1 ; define C infinite periodicity (defining p 2 as the left bound that has been removed); define C part A to a periodicity with RP ( C 2 )= A and p ( C 2 ) the width of the extent of RP ( C that C 2 is not empty.) These extensions do not introduce G, nor NA, nor O, but simply reproduce them periodically if they appear in C .
+
+C , p 2 , C 3 ). (5) Let C 2 Cal p 1 ; ... ; p k ; S . If it has no structure, it can be defined in L
+So, let C have structure. First assume that it is an order-2 collection. Let C the definition of periodicity, C must have periodical structure. Define C definition of periodical structure ( Definition 11 ). Since neither C
+L C = Group-by( C 1 , C 2 ), the thesis follows.
+
+If C is an order-n collection, the same construction can be applied n 1 times, adding braces from the inside out, to UIP ( C ). h
+Theorem 52. The language L p 1 ; ... ; p k defines exactly the class Cal
+Lemmas 33 and 51 . h 6. Related work
+In this paper, we propose a modular approach to symbolic languages for user-defined periodicity. 6.1. Symbolic approaches approaches are not the only symbolic approaches in the literature.
+
+For example, Ohlbach [22] has proposed a  X  X ixed X  procedural X  X ymbolic approach, in which different oper-while complex phenomena such as leap seconds are modelled in a procedural way.
+Cukierman and Delgrande [33] have pointed out some of the basic elements and relations underlying the of each month in 1995 in Cuckierman X  X  formalism. Moreover, Cukierman and Delgrande also introduced intersection, union and difference and universal and existential quantification. of mining association rules and related time intervals.
+
+In the area of temporal databases, Ning et al. [20] based their approach on the mathematical model of to the human perspective of granularity, and granule-conversion algorithms are also provided. On the other hand, due to the underlying mathematical framework, overlaps and structure are not taken into account.
+ periodicity.
+ framework supports a flexible approach to user-defined symbolic periodicities, in the sense that one may be considered. 6.2. Logical and constraint-based approaches bolic languages.
+ periodic, or eventually periodic (see [30, Theorem 32F] ).
+ the  X  X  X ssence  X  of periodicity, but supports other concepts in addition to periodicity X .
+Chomicki and Imielinski [40] proposed a temporal language that extends Datalog by adding one temporal finitely regular x -languages .
+
+Among recent logical approaches, Montanari has proposed a systematic logical framework for time gran-coped with by any symbolic language modeling periodicity, including those in our family).
+Alternative approaches have been recently proposed to represent and reason about time granularity on the basis of a string-based model [43] , and its corresponding automata-theoretic counterpart [44,45] .
+Kabanza et al. [16] defined a constraint-based formalism based on the concept of linear repeating points endpoints are lrps possibly bound by linear equalities or inequalities ( X linear repeating points if and only if it is definable in Presburger Arithmetics. we propose in this paper.
+ Presburger Arithmetics (and through Kabanza X  X  linear repeating points), but neither in the symbolic a specific set of phenomena. 6.3. Databases and temporal reasoning also in that domain.
+
+Moreover, within the AI community, starting from Ladkin X  X  pioneering work [46] , a lot of attention has ing the early morning, going to work by car takes from 20 to 30 min; During morning rush hours, going to (e.g., in [27] , periodicities can be defined using Leban et al. X  X  language [17] ). 6.4. Approaches to comparisons
+Tuzhilin and Clifford [9] proposed an overview of many approaches to user-defined periodicity, including corresponding extension of temporal relational DB query languages.
+
+Bettini and De Sibi also introduced the symbolic language we discussed in Section 4 .) 7. Conclusions
+The main contribution of our work is two-fold: we propose a neat and modular approach based on a one-to-one correspondence between language oper-ators and orthogonal properties, yielding a family of languages with well-defined expressiveness, among which it is easy to select the language best fitting a given task; approaches in the literature (to the best of our knowledge), while retaining the neatness and modularity features of the methodology, as proven in Section 5 . is left as future work.
+
+We deliberately tailored our symbolic languages so that each operator corresponds to a property. This one of the distinguishing features of our approach.
+
+Moreover, as future work, we also envision the adoption of the family of languages we introduced in this task, enhancing, for instance, the modularity of the manipulation algorithms themselves. research, and adding new material never published before.
+ Acknowledgements We are grateful to the anonymous reviewers for their useful and constructive comments. Appendix A. Proofs of classification theorems A.1. Proof of Theorem 25 formalism is described in more detail.
+ A.1.1. The collection formalism: a detailed description multisets ). The starting point of the construction is a chronon calendar.
+A new calendar C 0 is defined from an existing one C via union of intervals as follows: C
+More formally, let a be the starting (or reference) point of C , let J i ; i 2 Z , be the intervals of C ordered in lexicographical order, and let J point a , let start ( i ) (resp. end ( i )) be the starting point (resp. ending point) of J let l  X  j  X  X  point end ( ap + h l ( n )+ l ( j +1) 1).
+ in this paper for the sake of brevity, and since they add no expressiveness. The basic version of dicing operators, as described in detail in [17] is: Definition 53 ( Dicing operators: basic ) order 1 collection.
+ the definitions) and include the following: Definition 24 .) malize this intuition with a recursive definitions: Definition 54 ( Dicing operators: generalized ) where C is an order-1 collection, R is a relational operator on intervals, T interval. Both C R T n and C : R : T n yield order-( n + 1) collections. The definition of slicing operators is based on the ordering on intervals of Definition 24 . Definition 55 ( Slicing operators ). There are three kinds of slicing operators: them with an interval. f can be n (to select the n th element of C select the only interval in C 0 or if there is more than one).
+ but n elements of C 0 .
+
+The operator [ f 1 , ... , f n ]/ C replaces each order 1 subcollection C and [ f n ]/ C 0 .
+ A.1.2. Proof of parts (2), (3) and (4)b of Theorem 25 Part (3)d: is straightforward, due to the fact that collections are defined as sets . We prove the rest of the claim by induction on the structure of collections. grouping together intervals which cover the whole timeline. no overlapping intervals can be generated.
+ Parts (3)b and (3)c: are emptily verified, since calendars are collections of order 1. allow the introduction of a finite non periodic portion to the calendar. new order-1 collection C 0 : therefore C 0 = C R t C .
+ cannot produce gaps within intervals (Item (2)).
+
+Part (3)a: Since by inductive hypothesis C contains no overlapping intervals, C R t C contains no over-lapping intervals either.
+
+Parts (3)b and (3)c: are emptily verified. Indeed, the basic version of dicing operators define order-1 collections.
+ finite or has no finite aperiodic portion t have no gaps, no gaps within intervals may be generated.
+ overapping intervals, if C does not, which is guaranteed by the induction hypothesis Parts (3)b and (3)c: are emptily verified, as above.
+ Part (4)b: C : R : t can only be finite or empty, because all of its elements are subintervals of t . resulting collections have the same properties proved for the basic cases C R t and C : R : t . Part (2): The same considerations discussed for the basic dicing also hold for generalized dicing. ators have even less chances of producing overlaps.
+ of the intersection of intervals involved in their definitions.
+
+Let us first analyze how sharing is generated. Operators C R T
+Consider two intervals t &lt; C t 0 from an order n collection T between order 1 collections C t and C t 0 generated by t resp. t C overlaps. T n C t and C t 0 can share at most one interval, which is the last one (w.r.t. &lt; first one of C t 0  X  this is so because both in C and in T C contains T n C t most one interval each, since there are no overlapping intervals in C .
+C &lt; I T n C t &lt; C C t 0 and if C t and C t 0 share one interval, then C account the ordering &lt; C ; C t 0 extends C t to the right).
+
+C &gt; I T n C t &lt; C C t 0 and if C t and C t 0 share one interval, then C account the ordering &lt; C , C t extends C t 0 to the left).
+ sharing at the first level was discussed.
+
+Consider now subcollections T k ; T 0 k of order k &gt;1of T such that T k &lt; C T 0 k . Call C T and C T 0 the order n + 1 collections generated by T collections, it must be the last one (w.r.t. &lt; C )of C { ... { {I 1 , ... , I n }}, ... } for some intervals I 1 pairs of curly brackets).
+ This is shown by the following example. Let and (brackets and intervals are numbered for later reference).
+ the brackets in T 4 . The collection derived from interval In of T the form described.
+
+A rigorous proof of the above is very tedious. We outline it briefly but warn the reader that a thorough ized weak dicing.
+ periodicity.
+ order n + 1 collections yield equal order n + 1 collections in two different order n + 2 collections.
+This applies also to strong dicing operators, which might at the same time modify the shared intervals (through intersections) but not the kind of sharing.
+ not introduce them either (within order-1 collections).
+ sharing, since they merely select elements from existing structures and output them (or their union). purely periodic objects.
+ This completes the proof of Parts (2), (3) and (4)b of the Theorem. h A.1.3. Proof of parts (1), (4)a and (5) of Theorem 25 proven by exhibiting constructs that actually yield periodicities with the desired properties. periodicity.
+ objects.
+
+Part (5): Structure can be introduced through weak dicing operators and strong dicing operators, which periodically group the collections in C according to the collections in T This completes the proof of the Theorem 25 . h A.1.4. Periodicity and Structure in Leban et al.
+ The following lemma completes the analysis of the formalism of Leban et al.: calendars, and is carried over to any calendar by the cyclical character of the constructor.
+Periodicity is lifted to the upper level as well as sharing: if order k collections of T the corresponding order k + 1 collections of C . R . T n and C : R : T
+Notice also that either all new subcollections of order 1 are (infinite and) periodic or none is, since periodicity at that level does not depend on the right argument.
+ an order n collection are periodic, or they are all finite. h A.2. Proof of Theorem 27 The language in [18] defines temporal structures with the following properties: Proof. Each item in the statement is proven separately:
+NA  X  Gaps between intervals are supported. The presence of duration in the definition of slices makes it points specified in the first part of the slice.
+ intervals with inner gaps.
+ (if two syntactically different slices define the same temporal object), but not semantically. durations of virtually any size.
+ along the time axis.
+ ones can also be defined.
+ nite ones.
+ S  X  No operator is provided to structure intervals into subsets. h
+References

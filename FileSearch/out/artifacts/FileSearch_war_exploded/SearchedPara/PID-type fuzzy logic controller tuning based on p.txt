@@ -1,0 +1,99 @@
+ 1. Introduction
+The complexity of dynamic system, especially when only qualitative knowledge about the process is available, makes it generally difficult to elaborate an analytic model, which is
+Fuzzy logic control approach has been widely used in many successful industrial applications, which demonstrated high robustness and effectiveness properties.
+ are proposed and extensively studied. The particular structure given in Qiao and Mizumoto (1996) , namely PID-type FLC, is especially established and improved within the practical frame-posed into the equivalent proportional, integral and derivative control components as shown in Qiao and Mizumoto (1996) .In order to improve further the performance of the transient and strategies and methods are proposed to tune the PID-type fuzzy controller parameters.
+
+Indeed, Qiao and Mizumoto (1996) designed a parameter adaptive PID-type FLC based on a peak observer mechanism. This self-tuning mechanism decreases the equivalent integral control component of the fuzzy controller gradually with the system response process time. It allows also increasing the damping of the system when it is about to settle down, meanwhile keeps the proportional control component unchanged so as to guarantee system is strongly reduced and the settling time is shortened considerably. On the other hand, Woo et al. (2000) developed a method to tune the scaling factors related to integral and derivative components of the PID-type FLC structure via two and Mizumoto (1996) , the used self-tuning mechanism decreases the equivalent integral control component and increases the damping of the system via the equivalent derivative component. Eksin et al. (2001) and G  X  uzelkaya et al. (2003) proposed a derivative and integral components of the PID-type FLC, using a fuzzy inference mechanism. This fuzzy inference-based self-tun-ing mechanism has two inputs, namely the system X  X  error and a the system response. This method is more efficient since lesser system parameter or structural changes compared to the other related methods, as shown in G  X  uzelkaya et al. (2003) .
+However, the major drawback of all these PID-type FLC Indeed, the fuzzy controller dynamic behavior depends on this adequate choice. The tuning procedure depends on the control experience and knowledge of the human operator, and it is
+Up to now there is no clear and systematic method to guide such as the complexity of the controlled plant increases. Hence, the these particular PID-type FLC structures is interesting.
+In this paper, a new approach based on the particle swarm optimization (PSO) meta-heuristic technique is proposed for and without self-tuning mechanisms. This work can be consid-ered as an extension of the results given in Qiao and Mizumoto (2000) and Eksin et al. (2001) . The fuzzy control design is formulated as a constrained optimization problem, which is the proposed PSO-tuned PID-type FLC, different optimization control constraints defined in the time-domain framework. The convergence conditions of the proposed and implemented PSO algorithm are analytically guaranteed and verified. The main contribution of this paper consists of proposing a systematic flatness property of linear systems. The proposed approach is based on a robust PID-type fuzzy control method using the PSO technique.
+ the proposed fuzzy PID-type FLC structures, with and without self-tuning scaling factors mechanisms, are presented and dis-cussed within the discrete-time framework. The optimization-based problems of the PID-type FLC scaling factors tuning are formulated in Section 3 . A constrained PSO algorithm, used in simulation results are compared with those obtained by the classical Genetic Algorithms Optimization (GAO)-based approach. real-time framework based on an Advantech PCI-1710 multi-functions board associated with a PC computer and M ATLAB /
+Simulink environment. 2. PID-type fuzzy control design
+In this section, the considered PID-type FLC structures are briefly described within the discrete-time framework based on et al. (2003) , Woo et al. (2000) and Eksin et al. (2001) . 2.1. Discrete-time PID-type FLC of FLC with triangular uniformly distributed membership func-tions for the fuzzy inputs and a crisp output, a product X  X um inference and center of gravity defuzzification methods. and derivative control components of such a PID-type FLC are of this computation is shown with more details in Qiao and Mizumoto (1996) .
+ the discrete-time framework, we can consider the closed-loop control structure for a discrete-time PID-type FLC, as shown in Fig. 1 .
+ 2.2. PID-type FLC with self-tuning mechanisms type FLC structure, various self-tuning mechanisms for scaling factors have been proposed in the literature. Two methods are especially adopted in this paper. 2.2.1. Self-tuning via Empirical Functions Tuner Method (EFTM) integral and derivative components updating are achieved based error as follows: b k  X  b 0 F  X  e k  X 
+K dk  X  K d 0 C  X  e k  X  X  1  X  tively, by F  X  e k  X  X  f 1 e k  X  f 2 C  X  e k  X  X  c 1 1 e k  X  c 2  X  2  X  component decreases as the error decreases while the function constant the proportional effect. Hence, the system may not 2.2.2. Self-tuning via Relative Rate Observer Method (RROM) 2001 ), the PID-type FLC integral and derivative components updating is achieved as follows: b  X  b 0 = K f d k
+K
+K is the output scaling factor for d k and K fd is the additional parameter that affects only the derivative factor of the FLC. The rule-base for d k , as used in Eksin et al. (2001) and fuzzy RRO block has as inputs the absolute values of error the variable r k , defined subsequently.
+ rate X  X  information about the fastness or slowness of the system follows: r  X  so-called acceleration in error given, respectively, by
+D e  X  e k e k 1  X  5  X 
+D  X  D e k  X  X  D e k D e k 1  X  6  X  In Eq. (4), the variable D e n is chosen as follows: D e n  X 
+For this RROM self-tuning approach, triangular uniformly distributed and symmetrical membership functions, as used in 9 e 9 and fuzzy output variable d k . 3. The proposed PSO-based approach
+In this section, the problem of scaling factors tuning, for all defined PID-type FLC structures, is formulated as a constrained optimization problem, which is solved using the proposed PSO-based approach. 3.1. PID-type FLC tuning problem formulation
+The choice of the adequate values for the scaling factors of procedure. This tuning problem becomes difficult and delicate following constrained optimization problem: minimize subject to g  X  x  X  r 0 ; 8 l  X  1 , ... , n con 8 &gt; &gt; &lt; &gt; &gt; : design parameters, and g l : R m -R the problem X  X  constraints.
+The optimization-based tuning problem consists of finding the the defined cost function, chosen as the Maximum Overshoot (MO) and the Integral of Absolute Error (IAE) performance constrained PSO algorithm, under various time-domain control constraints such as overshoot D , steady state error E ss Eqs. (9) X (11).
+
+Hence, in the case of the PID-type FLC structure without self-tuning mechanisms, the scaling factors to be optimized are K subject to 8 &gt; &gt; &gt; &lt; &gt; &gt; &gt; : definesometime-domaintemplates.
+
+In the case of the PID-type FLC structure with the EFTM self-tuning mechanism, the scaling factors to be optimized are f c 1 and c 2 . The formulated optimization problem is defined as follows: subject to 8 &gt; &gt; &gt; &lt; &gt; &gt; &gt; :
+For the PID-type FLC structure with the RROM self-tuning mechanism, the scaling factors to be optimized are K f and K formulated optimization problem is defined as follows: subject to 8 &gt; &gt; &gt; &lt; &gt; &gt; &gt; : 3.2. Particle swarm optimization technique
+In this study, the proposed PSO approach is presented and a constrained PSO algorithm is also developed. The convergence conditions of such an algorithm are analyzed and established. 3.2.1. Overview
+The PSO technique is an evolutionary computation method developed by Eberhart and Kennedy (1995) . This recent meta-behavior of biological populations. The cooperation and the exchange of information between population individuals allow solving various complex optimization problems ( Ruben and Eberhart, 1999 ; Van den Bergh, 2006 ).
+ variety of non-linear, non-convex and non-smooth problems. In is a simple concept, easy to implement and a computationally
+Van den Bergh, 2006 ). The convergence and parameters selection analysis ( Ruben and Kamran, 2007 ; Van den Bergh, 2006 ). Its stochastic behavior allows overcoming the local minima problem.
+Particle swarm optimization has been enormously successful
+Samanta and Nataraj, 2009 ; Liu et al., 2008 ; Venayagamoorthy et al., 2007 ). These applications can be summarized around domains of robotics, image and signal processing, electronic circuits design and communication networks, but more especially (2010a , 2010b , 2011) . 3.2.2. BASIC PSO algorithm
+The basic PSO algorithm uses a swarm consisting of n initial search space, to find an optimal solution x n  X  argmin that represents a potential solution, is characterized by a position and a velocity given by x i k :  X  X  x i , 1 k , x At each algorithm iteration, the i th particle position, x i , evolves based on the following update rules: x v in the entire swarm at the current iteration k .
+
+Hence, the principle of a particle displacement in the swarm is
+In order to improve the exploration and exploitation capacities
+Shi and Eberhart (1999) : w where w max  X  0.9 and w max  X  0.4 represent the maximum and minimum inertia factor values, respectively, and k max is the maximum iteration number.
+
+Similar to other meta-heuristic methods, the PSO algorithm is originally formulated as an unconstrained optimizer. Several techniques have been proposed to deal with constraints. One que is used: j  X  x  X  X  f  X  x  X  X  where l l is a prescribed scaling penalty parameters and n number of problem constraints g l ( x ).
+ by the following steps: 1. Define all PSO algorithm parameters such as swarm size n 3.2.3. The convergence of PSO algorithm analysis the results of Ruben and Kamran (2007) and VandenBergh(2006) .
+Theoretical conditions for convergence algorithm and parameters choice are established.
+ update Eq. (12) to get the following expression: in matrix form as follows: 2 4 ^ y k  X  1  X  M ^ y k  X  N ^ u k  X  19  X 
+N the dynamic and input matrices, respectively, defined as follows: ^ y k  X 
+N  X 
+For a given particle, the convergent behavior can be main-following equilibrium state: ^ y which is true only when x  X  p i k  X  p g k , v  X  0  X  22  X 
+Therefore, we obtain an equilibrium point, for which all by ^ y  X  X  p g k , 0 T  X  23  X 
+So, the dynamic behavior of the i th particle can be analyzed using the eigenvalues derived from the dynamic matrix formula-tions (19) and (20), solutions of the following characteristic polynomial: l  X  1  X  w c 1 r i 1 , k c 2 r i 2 , k  X  l  X  w  X  0  X  24  X 
+The following necessary and sufficient conditions for stability while applying the classical Jury criterion: w jj o 1 , c w  X  1 which guarantee convergence for the PSO algorithm: 0 o c 1  X  c 2 o 4 , c  X  c 2 1 o w o 1  X  26  X 
+While these heuristics provide useful selection parameter bounds, an analysis of the effect of the different parameter settings is achieved and verified by some numerical simulations to determine the effect of such parameters in the PSO algorithm convergence performances.
+
+In order to illustrate the efficiency of the proposed PSO algo-rithm in the resolution of problems (9), (10) and (11), several comparisons with the Genetic Algorithms Optimization GAO-based ered. The next section is dedicated to the application of the proposed PSO-tuned PID-FLC approaches to an electrical DC drive within a developed real-time framework. 4. Real-time control approach application 4.1. Plant model description The considered benchmark is a 250 W electrical DC drive.
+The machine X  X  speed rotation is 3000 rpm at 180 V DC armature voltage. The motor is supplied by an AC X  X C power converter. The
+DC drive) and generates control signal for thyristors of AC X  X C power converter (PWM signal). This is achieved using a data acquisition and control system based on a PC computer and a multi-functions data acquisition PCI-1710 board, which is com-patible with M ATLAB /Simulink.
+
+The considered electrical DC drive can be described by the following model that is used in the design setup: G  X  s  X  X  k m
+The model X  X  parameters are obtained by an experimental 4.2. Simulation results
+For all proposed PSO-tuned PID-type FLC structures, product X  sum inference and center of gravity defuzzification methods are linguistic levels assigned to the input variables e k and D e The view of this rule-base is illustrated in Fig. 3 .
+The swarm size algorithm X  X  choice is generally a problem-dependent in PSO framework. However, Eberhart and Shi (2001) empirically in relation to the dimensionality and perceived t t swarm size values in the range 20 X 50 are quite common. For this purpose, we tested the proposed PSO algorithm with different using a swarm size equal to 30. Henceforth, this value will be adopted for our following works.
+
+In the PSO framework, it is necessary to run the algorithm results and so to validate the proposed approach. We run the proposed algorithm 20 times and feasible solutions are found in are summarized in Tables 3 X 5 . Besides, the fact that the algo-space to explore. The performances comparison of PSO-and GAO-based approaches is achieved in the same conditions. as 30 individuals and the maximum generation number is 50.
+However, the GA parameters, used for M ATLAB simulations, are chosen as the Stochastic Uniform selection and the Gaussian mutation methods. The Elite Count is set as 2 and the Crossover
+Fraction as 0.8. The algorithm stops when the number of genera-tions reaches the specified value for the maximum generation. conclude that the proposed PSO-based approach produces better results in comparison with the standard GAO-based one. Also, while using a Pentium IV, 1.73 GHz and M ATLAB 7.7.0, the CPU computation times are about 325 and 364 s for MO and IAE criteria, respectively, for the considered PID-type FLC without self-tuning mechanisms structure.
+ the proposed PSO and the used GAO algorithm, in term of the proposed PSO-based method, we succeed to obtain the optimal solution within only about 28 iterations. However, the
+GAO-based method finds the same result after 40 iterations. All these observations can show the superiority of the proposed PSO-based method in comparison with the GAO-based one. convergence as well as the simple software implementation is better than those of the GAO-based approach.
+ given in Eq. (15), will be linearly increased at each iteration scaling parameters. In this paper and in order to make the proposed approach simple, great and constant scaling penalty parameters, equal to 10 3 , are used for simulations. Indeed, system performances are weakly degraded and the effects on the tuning parameters are less meaningful. The PSO algorithm con-vergence is faster than the case with linearly variable scaling parameters.
+ meters, is analyzed based on numerical simulations as shown in established domain given by Eq. (26).
+ model uncertainties. According to uncertain bounds on nominal following family of continuous-time transfer functions supposed including the real studied plant: G  X  ^
+G  X  s  X  X  k m  X  t min m , t max m  X  28  X 
+Fig. 6 shows the step responses of a family of 10 random of the uncertain plants, under the above considered uncertainty types, is guaranteed for all designed PID-type FLC structures. Finally, the time-domain perform ances of all proposed PID-type FLC structures are compared for the PSO-and GAO-based design cases as shown in Fig. 7 .
+ Besides, Table 6 shows the superiorities of the self-tuning EFTM and RROM PID-type FLC structures in relation to the one been specified, respectively, as D max  X  20 % , E max ss  X  0, t and t max s  X  0 : 75s.
+ 4.3. Experimental setup and results
+In order to illustrate the efficiency of the proposed PSO-tuned ple of the PID-type FLC without self-tuning mechanisms is considered. The same principle of implementation remains valid for the other PID-type FLC structures.
+
+The controlled process is constituted by the single-phase AC X  X C power converter and the independent excitation DC motor. amultivibrator,isusedtogenerateatriggeringburstofhigh-frequency impulses. A pulse transformer is used to assure the
+The complete electronic circuit diagram of the designed control system is given in Hagg ege et al. (2010 ).
+ achieving measurement and controlling functions. This target is used to create a real-time application to let the implemented controller system run while synchronized to a real-time clock ( Hagg ege et al., 2010 ).
+ and the output device driver (Analog Output) were introduced as shown in Fig. 9 . These device drivers close the feedback loop when moving from simulations to experiments. Device driver X  X  blocks include procedures to access the inputs X  X utputs board.
+The real-time controller is developed through the compilation and linking stage, in a form of a Dynamic Link Library (DLL), which is then loaded in memory and started-up.
+ and applied for the some process benchmark in Hagg ege et al. (2010) . Indeed, let us consider the discrete-time linear model obtained by sampling the continuous-time one, as given by Eq. (27):
+A  X  q  X  y k  X  B  X  q  X  u k  X  29  X  and q is the forward operator.
+
+The partial state of such a dynamic system can be considered input and output signals as the following:
+A  X  q  X  z k  X  u k , B  X  q  X  z k  X  y k  X  30  X 
+In discrete-time framework, the discrete desired trajectory z d is generally obtained by sampling a continuous trajectory z
+Hagg ege et al., 2010 ). Let consider the state vector Z d successive derivatives, and two known constant state vectors
+Z ( t ) and Z d ( t f ):
+Z  X  t  X  X  X  z d  X  t  X  , _ z d  X  t  X  , ... , z d  X  r  X  1  X   X  t  X  X  The expression of Z d can be given as follows:
+Z  X  t  X  X  M 1  X  t t 0  X  c 1  X  M 2  X  t t 0  X  c 2  X  32  X  where M 1 and M 2 are two real matrices defined by M  X  t  X  X  M  X  t  X  X  c 1 and c 2 are constant vectors defined as follows: c  X  Z d  X  t 0  X  , c 2  X  M 1 2  X  t f t 0  X  X  Z d  X  t f  X  M 1  X  t
+After planning a desired flat output trajectory, the output system output signal y k must asymptotically track the desired discrete-time trajectory given by Eq. (35). y  X  B  X  q  X  z d k  X  35  X 
+The practical implementation of the PSO-tuned PID-type FLC obtained results are satisfactory for a simple, systematic and viability and validate the proposed control approach. The mea-proposed control especially in terms of tracking.
+
+On the other hand, Fig. 11 shows the robustness of the disturbance rejection is fast and guaranteed. 5. Conclusion
+In this paper, a new method for tuning PID-type FLC structures, using a PSO-based technique, is proposed and successfully framework. This efficient tool leads to a robust and systematic fuzzy control design approach. The performances comparison, with the standard GAO-based method, shows the efficiency and superiority of the proposed PSO-based approach in terms of the software implementation of its algorithm.
+
+The PID-type FLC structures robustness, under external influ-ences such as the output static disturbances and parametric uncertainties, are proved. The control design methodology is systematic, practical and simple without the need of exact analytic plant model description. The obtained simulation and be applied in industrial motor control field.
+ References

@@ -1,0 +1,84 @@
+ 1. Introduction  X  through the process of data migration.
+ in practice.  X   X   X  terms of desired data semantics and integrity? 1.1. Our contributions formal development of the following ETL processes for data migration.  X  system.  X  validating, cleansing and mapping data.  X  this paper.
+ refined into more concrete models (e.g., M  X  legacykernel corresponding computation segments (e.g., extract  X  , transform 1.2. Outline related work in Section 8 , we conclude the paper in Section 9 . 2. A running example the data sources of two legacy transport applications as RDM sources.
+ Suppose that RDM A is abstracted to the model ER A with the schema S transformations will be presented in Section 5 .
+ data source RDM A into the legacy kernel. seq endseq
+S
+Suppose that we want to reflect a design decision on EXTRACTEDTOCARRIER par endpar P executable. Given the relational model M A of S A in Fig. 6 , the transformation P M as shown in Fig. 7 .  X  enrich insurance data in the legacy kernel of our running example.  X   X 
+Moreover, we add two constraints on S legacy to filter out  X   X  : Each transport must have at least one insurance.  X   X  : Each transport has no more than one insurance in the same category. dirty data corresponding to different constraints. seq  X  Clean up invalid insurances violating  X  1  X  Clean up incorrect insurances violating  X  2  X  Clean up missing insurances violating  X  3  X  Clean up multiple insurances paid for the same transport violating endseq To ensure the desired data quality after this data cleaning task, P executing the kth forall rule must satisfy the condition  X  transformation P B  X  is obtained by replacing CLEANUPINSURANCE  X   X  seq endseq  X 
+Seq endseq  X 
+Seq endseq if status =1 then endif if if status =2 then endif In P B  X  , invalid insurances with respect to  X  1 are deleted from using external insurance data sources, e.g., in the refinement of respect to  X  4 can be cleaned up in the refined CLEANUPINSURANCE 3. Schemata and models the set of free variables in formula  X  . A formula  X  with fr (  X   X 
+F ( L , T ) of the form  X  x 1 , ... , x n .(  X  1  X   X  2 ), where fr (  X 
+Primary key constraints: for relation r ( A 1 , ... , A n  X 
+Foreign key constraints: for relation r 1 ( A 1 , ... , A key on attribute A 1  X  referring to A 1 of r 1 , we have  X  we have  X 
+Functional dependencies: for relation r 1 ( A 1 , ... , A referring to the interpretation of a formula  X  in a model M . A constraint ( T ,  X  ), denoted as M  X   X  ,if[[  X  ]] M is true. A model over schema ( T ,
+ X  models over schema S =( T ,  X  ). Clearly, M ( S ) p M ( T ) for S =( T , Example 3. The schema S A as shown in Fig. 2 has the object types following constraints:  X  1 : the unique constraint on NO of TRUCK :  X  2 : the foreign key constraint on INSURANCE : and  X  2 .  X  4. Levels of abstraction 4.1. Model space notion of reflecting relation.
+
+De fi nition 1. Fix a logic L suitable for expressing queries. Let M ( T ,  X  2 ), respectively. Then M 1 reflects M 2 with respect to L , denoted as M for any query  X  2  X  F ( L , T 2 ) with fr (  X  2 )={ x 1 ,  X 
+Intuitively, if M 2  X  L M 1 , then it means that, regardless of whether or not M necessarily imply M 2  X  L 2 M 1 unless L 1 is strictly expressive than L Example 4. Consider the models M A and M E shown in Figs. 6 and 7 . We have M
+This can be alternatively illustrated by constructing M A  X   X   X   X   X   X  of a specific logic.
+
+De fi nition 2. A model space M is a lattice M ;  X  ;  X  ;  X  ;  X  ;  X   X  a set M of models,  X  a reflecting relation  X  defined on M with respect to a certain logic,  X  a greatest model  X  satisfying M  X   X  and a smallest model  X   X  a least upper bound operation  X  and a greatest lower bound operation M join  X  M satisfying M meet  X   X  M  X  and  X  M  X   X  M join .
+Thus, given a subset M  X  p M , a least upper bound for M  X  4.2. Abstract and concrete models
+Now we consider models that are defined at two different levels of abstraction the conceptual level. models as a Galois connection. Let A  X M A ;  X  A ;  X  ;  X  ;  X  ;  X   X  relation defined over M C . Then there is a Galois connection between  X   X  : M C  X  M A is an abstraction function that translates a concrete model in M  X   X  : M A  X  M C is a concretization function that translates an abstract model in M
+Both  X  and  X  are monotonic; furthermore, M  X  C  X   X   X  ( M ) and precise abstract model in M A whose concretization approximates x , while y at the abstract level ( Fig. 8 ).
+
+Alternatively, the abstraction function  X  and concretization function two sets of schemata associated with the model spaces A and S schema to an abstract schema such that  X  =( S C )=(  X  ( T  X  : S
+A  X  S C translates an abstract schema to a concrete schema such that
+These translations can be further extended to their models, i.e., models and physical models captured by a Galois connection. 5. Migration transformations abstraction.
+
+De fi
+M  X  M and a final model M n  X  M , and a one-step transition function  X  update rule : the value of the object  X  ( t 1 , ... , t n  X  conditional rule :if  X  is true, then execute the rule R ; otherwise do nothing, if  X  then R endif  X  block rule : the rules R 1 , ... , R n are executed in parallel, par R 1 ... R n endpar  X  sequential rule : the rules R 1 , ... , R n are executed sequentially, seq R 1 ... R n endseq  X  forall rule : the rule R is executed in parallel for each x forall x 1 , ... , x n with  X  do R enddo  X  call rule : the rule R is called with parameters t 1 , ...
+A rule declaration is an expression R ( x 1 , ... , x n )= R variables x 1 , ... , x n in R  X  are replaced by the parameters t
+An update is a pair (  X  , b ), where  X  is an object and b is called the value of consistent if it does not contain conflicting updates, i.e., for all (
+Applying a transition rule R over a model M yields a set  X 
+ X  ( R , M ) lead a transformation from the current model M to its successor model
+S +  X  resulting from updating S with  X  :
+A run is a finite sequence M 0 , ... , M n of models with M 5.1. Property-preserving transformations constraints of the initial model.
+ by a formula  X  i where fr (  X  i )={ x 1 , ... , x k }.
+
+De fi nition 4. A property-preserving transformation (PPT) is a transformation ( T  X   X   X  there exists a set  X  p F L ; T n  X  X  of constraints that is equivalent to
+In the above definition, the first condition ensures that data in a model M even when their schemata are different, i.e., M j reflects M imposed on the initial model M 0 to be satisfied by the final model M different schemata, loading a new kernel, etc.
+
+Example 3 are imposed on the initial model of P A , then the following constraint
+S legacy , needs to be satisfied by the final model of P A .
+Note that the constraint corresponding to  X  2 of S A becomes trivial in S models.
+
+De the legacy kernel M K of M  X  is the least upper bound of models in M forming different types of data.
+ transformations. 5.2. Property-enhancing transformations object types. Given two models M 1 and M 2  X  M ( T ), we have  X 
+M  X 
+M  X 
+M  X 
+M
+We say that M 2 is a submodel of M 1 if M 2 p M 1 holds. When imposing a constraint
+M with respect to  X  if M 2 is a submodel of M 1 and M 2  X   X  to  X  if M 2 is the valid submodel of M 1 satisfying the following two conditions:  X 
+M  X   X   X  for every M  X  with M  X  p M 1 and M 2 p M  X  .
+ consider the model M 1 to be divided into two parts: M 1  X 
+M contains all the other objects in M 1 , relating to the violation of the constraint and respectively, M  X  1 the indefinite part of M 1 against set
+ X  of constraints, we use the notations M 1  X  to represent to validate the model M A :
+De fi
+ X   X M ; M 0 ; M n ;  X   X   X   X 
+M in
+ X  .
+ model against  X  ). 6. Migration strategies sequence of PPTs and PETs.
+
+De fi nition 7. Let P 1  X M 1 ; M 0 ; M m ;  X  1  X  X  and P 2  X M transformation P 1  X  P 2  X M 1  X  M 2 ; M 0 ; M n ;  X   X  X  where then  X  ( M )=  X  2 ( M ).
+ 6.1. Big bang approach in which a migration transformation  X  1  X   X  1 starts with
+ X  1 to map data into the new data source. Alternatively, a transformation of  X  dirty  X  data caused by the long data cleansing process. 6.2. Chicken little migration process consisting of a transformation P 1  X   X  1 ; 1  X  X  6.3. Butter fl y read-only legacy data source by  X  1  X   X  (1,1) , and two temporary data stores by constraints in the new system. 7. Re fi nement, abstraction and veri fi cation terms of properties of interest. 7.1. Re fi nement of PPTs transformation and  X  k be the k -fold composition of  X  for k models satisfying the conditions: M k 1  X  M 0 , M k m  X  M number (i.e., m ) of models in the path. The shortest path of a run is the pair Let M and M  X  be two models respectively defined over the schemata S denoted as M  X  (  X  ) M  X  , describes that the model M is similar to M function  X  between abstract and concrete models, i.e.,
+De fi nition 8. Let  X  be a PPT. Then  X   X  is a correct refinement of path M i  X 
+M Definition 8 states that for any model of interest in the run of a refined PPT
+ X  ) to another model over schema ( T n ,  X  n ), and correspondingly, over schema ( T n  X  ,  X  n  X  ). If we describe the mapping from ( T then we have  X  ( f ( T 0 ))= f  X  (  X  ( T 0 )) and  X  ( f (
+M and the corresponding path of our interest in P A  X  is  X  M Because P A and P A  X  are both a PPT, and for any run of P  X 
+M 0 , ... , M 6  X  , P A 7.2. Re fi nement of PETs corresponding models. Let T be a set of object types and  X  invariant between two corresponding models M and M  X  with respect to
+M  X  are semantically similar in the sense that both models satisfy constraints in form. Formally speaking, it is defined as
+De fi nition 9. Let  X  be a set of constraints and  X  be a PET over
+PET and for any run of  X   X  with a path M i n such that, for k =1, ... , n ,  X   X  ( T ,  X  ) to another model over schema ( T ,  X   X   X  ), and correspondingly, model over schema ( T  X  ,  X   X   X   X   X  ) where T  X  =  X  ( T ),
+Example 9. Consider P B and P B  X  for data cleaning in Example 2 ,thepath refinement of P B in terms of the path  X  M 0  X  , M 1  X  , M  X   X   X   X   X  expression, then the refined transformation P C  X  , that is obtained by replacing rules defined in Example 2 ,is not a correct refinement of P 7.3. Simpli fi ed abstraction that have no effect on objects relating to the properties of interest. Let M A be an abstract model over a schema S A =( T A ,  X  M  X  over a schema S A  X  =( T A  X  ,  X  A  X  ) keeps the same set where  X   X  is defined by applying the abstraction function simpler abstraction of M A with respect to  X  , denoted as M abstraction of M A contains equal or less information than M Let P A  X M ; M 0 ; M n ;  X   X  X  be an abstract transformation and path M i 1 ; ... ; M i m of interest, there exists a run of P  X  each model M j where  X  A  X   X   X  F  X   X  X  M i k  X   X  .
+ n steps of M  X  , where M  X M ; M 0 ; M n ;;  X  for M 0  X  over schema ( T transformation, and M  X M ; M 0 ; M n ;  X   X  X  for M 0 over schema ( T do not further address this issue in this paper. 7.4. Generic proof method
+Given two refinements P 1  X  P 1  X  and P 2  X  P 2  X  .If P 1
+P  X   X 
+ X   X   X  1 (resp.  X  2  X   X  2 ) can be refined to  X  1  X   X   X  1  X  (resp. new system. More specifically, to prove that a migration transformation P take the following steps:  X  is the composition of a number of PPTs and PETs;  X  simplify the abstract transformation P into a simpler abstraction P  X   X  prove the transformation P  X  in question to be a correct refinement of P refinement of the corresponding PPT  X  or PET  X  included in P
+Example 10. Suppose that we want to verify the following property should be extracted as objects of CARRIER Snew with CODE = We observe that objects relevant to this property are in TRUCK content is trivial in an abstract transformation. forall x with x  X  TRUCK do enddo We can prove that the property  X  holds on the above transformation P also holds on P A  X  .  X  which is more efficient than verifying the original transformation. 8. Related work  X  data quality control, have been disregarded.
+ database-related problems in [34,37] .
+ translations that take into account concrete data with implicit semantics. abstractions relative to the properties of interests in this paper. 9. Conclusion
+References

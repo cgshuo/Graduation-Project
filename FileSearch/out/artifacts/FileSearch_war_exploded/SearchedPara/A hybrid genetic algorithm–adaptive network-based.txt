@@ -1,0 +1,67 @@
+ 1. Introduction
+Prediction of wave parameters plays an important role in ocean for design of offshore and nearshore structures, sediment methods have been developed for prediction of significant wave parameters such as numerical models working based on the consuming and may not be justified from practical and economic points of view for all projects ( Goda, 2003 ). Therefore many SPM (US Army Corps of Engineers, 1984) and Coastal Engineering
+Manual, CEM (2003) methods. Empirical methods often estimate significant wave parameters based on three main parameters,
+Soft computing-based models have been used recently for prediction of significant wave parameters using the same input used ANNs for predicting wave parameters. Kazeminezhad et al. (2005) used an adaptive network-based fuzzy inference systems superior to empirical models like CEM in terms of prediction accuracy for the case studied. Zanganeh et al. (2006) combined GAs and ANFIS models in the problem of prediction of wave parameters.
+
+An important issue in application of FISs in forecasting problems is to extract the structure and type of fuzzy if X  X hen rules from an input X  X utput data set available ( Angelo and rules are known, ANNs may be used to tune the shape of membership functions of fuzzy variables or other parameters of parameters of the membership functions of fuzzy premise Genetic algorithms (GAs) may also be used for optimizing the tuned by ANNs. In this study, a hybrid GA X  X NFIS model has been presented wherein the parameters of the subtractive clustering method, by which the number of fuzzy rules is controlled, are being varied by a GA model within which ANFIS is called for tuning fuzzy rule base parameters. Then, the model has been employed in prediction of wave parameters in Lake Michigan. 2. Fuzzy inference systems
+FISs may be used as tools for approximating ill-defined knowledge and reasoning processes by data sets without employ-tional components as shown in Fig. 1 : A rule base containing a number of fuzzy if X  X hen rules. A database defining the membership functions of fuzzy sets. A decision-making unit as the inference engine.
+
+A fuzzification interface which transforms crisp inputs to linguistic variables.
+
+A defuzzification interface converting fuzzy outputs to crisp outputs.
+
+TSK fuzzy rule base, whose parameters are tuned by a learning two fuzzy if X  X hen rules as follows:
+Rule 1. If x is A 1 and y is B 1 then f 1  X  p 1 x + q 1 y + r
+Rule 2. If x is A 2 and y is B 2 then f 2  X  p 2 x + q 2 y + r premise variables x and y ; and p 1 , q 1 , r 1 and p 2 , q parameters of the consequent or output variable. The general fixed nodes and circle nodes are adaptive nodes whose parameters are changed during the training process. A hybrid fuzzy rules are optimized using a steepest descent algorithm while the linear parameters of the output variable in the consequent part are optimized using a least-square method. The in terms of the above parameters can be calculated as follows (Jang, 1993 ): f  X  w 1 w  X  w 1  X  p 1 x  X  q 1 y  X  r 1  X  X  w 2  X  p 2 x  X  q 2  X  r 2  X   X  X  w 1 x  X  p 1  X  X  w 1 y  X  q 1  X  X  w 1  X  r 1  X  X  w 2 x  X  p 2 w  X  m A s  X  x  X  m B s  X  y  X  ; i  X  1 ; 2 (2) respectively the membership degrees of x and y in A i and B functions defined for fuzzy sets A i and B i and a i and e sets as S  X  S 1 S 2 , where S is the set of all parameters, S of nonlinear antecedent parameters; S 2 is the set of linear consequent parameters and is the summation operator. A least-square method is used in forward path for optimizing the consequent parameters by minimizing the error function as jj AX B jj 2 , where X is an unknown vector whose elements are and the right-hand side vector whose elements are determined using a training input X  X utput data set. In the second step the antecedent parameters are optimized using a steepest descent method where the parameters are updated by evaluating the derivatives of the following error function with respect to nonlinear antecedent parameters as:
+E  X  1 N
+D a  X  Z @ E the number of training data, a is a nonlinear antecedent parameter and Z is a learning rate expressed as follows:  X  q (6) where n e is the number of training iterations (epochs). More details on the ANFIS model can be found in Jang (1993) . 3. Subtractive clustering
+Building an ANFIS model with a minimum number of fuzzy x x to be a cluster center may be estimated as below:
+PV  X  radius associated with n th dimension of that point and x following equation:
+PV  X  PV k PV 1 exp 4 values to determine the neighboring clusters within which the pair of acceptance and rejection ratios, i.e. and ,aswellasa greater than the acceptance ration ( PV k = PV 1 ) is accepted relative potentials between acceptance and rejection ratios ( PV k = PV 1 ) depends on fulfilling the following condition: d  X  PV k = PV 1 1 (9) center and all the cluster centers already found as follows: d  X  the mean value ( c in ) of the associated Gaussian membership tions are calculated as below: a
+Therefore the cluster centers and squash factors may be viewed ANNs in ANFIS. 4. Genetic algorithms
+GA is a stochastic search and population-based optimization optimization algorithm well-suited for discontinues and multi-types of operators: steps of equal size.
+
+Crossover : combines 2 parents to form new children for the next generation. In this study scattered method has been used other genes are selected from the second one.
+
+Mutation : applies a sudden change to individual parents to algorithm not to trap in local optima.
+ 5. Hybrid GA X  X NFIS model
+The subtractive clustering parameters explained in Section 3, which the number of ANFIS fuzzy rules depends on, are determined usually by a trial and error procedure that may not necessarily result in optimal parameter values. The hybrid
+GA X  X NFIS model proposed in this study is a model in which the clustering parameters are optimized using a GA and ANFIS is called within the GA for evaluating the fitness value of any optimized by GA X  X NFIS model in order to minimize the total the GA optimizer is to minimize the root mean square error ( RMSE ) of predictions made by ANFIS model whose number of rules is controlled by parameters of a subtractive clustering method varying in GA. Therefore, the formulation of GA X  X NFIS model may be stated as follows:
+Min RMSE trn  X 
+Subject to: m  X  1 PV k  X  Numcluster  X  0
+Numrule  X  Numcluster 2 Numrule MaxNumrule q w  X  P w  X 
+P  X 
+P  X 
+RMSE firing strengths to become zero in Eq. (11). MaxNumrule is the maximum number of fuzzy rules, which is determined based on set not used for network training but for monitoring the error take the RMSE check into consideration, the GA X  X NFIS model may used in the network training.
+
+In solving the above optimization problem using the GA X  X NFIS model, the weights w i as well as linear parameters p i , q objective function is a variable that depends on clustering parameters that are varied by GA. Therefore GA, as a global while hybrid learning algorithm used in ANFIS searches for the optimizer. This hybrid methodology may enhance the perfor-mance of the GA X  X NFIS model in terms of exploration and of the GA X  X NFIS model. 6. SPM method
+SPM method can be used to predict the significant wave height and fully developed conditions. This method has been developed based on JONSWAP spectral. SPM method performs several corrections on wind speed data.
+
+According to SPM method, wind speeds are the ones measured at 10m above the mean water level. To adjust the wind speeds measured at different elevations, SPM has recommended the following equation, which is based on the wind profile. U where U 10 is the wind speed at 10m above the mean water level (m/s).
+
+In SPM method, to have a fetch-limited condition, the wind duration must be greater than t min , which is given as: t min  X  68 : 8 which is calculated by the following equation: U
+In fetch-limited condition, the equations for predicting wave parameters are as follows: gH
+U gT U following equations for wave parameters: H  X  2 : 433 10 1 T  X  8 : 134 7. Application and results
+The GA X  X NFIS model has been applied in prediction of wave parameters in Lake Michigan. The wave data is gathered by with a maximum measured peak spectral period of 7.3s. The data set belongs to a period from March to January 2001 and from January to December 2004, with 1-h intervals.
+
+Wind-induced wave characteristics generally depend on wind speed, fetch length and wind duration. In duration-limited speed. Therefore, the wave significant parameters would be a function of wind duration and wind speed ( Bishop, 1983 ). The remaining 50 data points as the checking data to avoid over-in Table 1 . Separate models were developed for predicting the significant wave height (GA X  X NFIS-H) and the peak spectral period (GA X  X NFIS-P). Consequently, the form of fuzzy if-then rules in GA X  X NFIS-H model may be stated as:
+If tr is A i and U 10 is B i then H s  X  p i tr  X  q i U 10 specified for wind duration and wind speed variables, H s above models are given in Table 2 .
+ converting the measured wind speeds to U 10 values and then GA X  X NFIS-H and GA X  X NFIS-P prediction models were employed. GA X  X NFIS-H and GA X  X NFIS-P models against the number of rules and clustering parameters as well as the training and checking RMSE values resulted by the models are presented in
+Table 3 . The optimal clustering parameters in GA X  X NFIS-H were obtained as  X  ra tr ; ra U 10 ; ra H s ; g H optimal membership shapes of the premise variables in
+GA X  X NFIS-H with above-mentioned optimal clustering parameters are illustrated also in Fig. 8 . For the GA X  X NFIS-P model, the optimal clustering parameters were obtained as  X  ra final membership functions of the input variables of the GA-ANFIS-P model. It is seen that the optimal radius of the wind speed variable in GA X  X NFIS-H and GA X  X NFIS-P models is less than the other parameters X  ones indicating that the wind speed may have a more influence on wave height and peak spectral period.
+ 0.0 0.2 0.4 0.6 0.8 1.0
+Degree of membership 0.0 0.2 0.4 0.6 0.8 1.0
+Degree of membership 0.0 0.2 0.4 0.6 0.8 1.0
+Degrree of membership 0.0 0.2 0.4 0.6 0.8 1.0 Degree of membership 0.0 0.2 0.4 0.6 0.8 1.0
+Degree of membership 0.0 0.2 0.4 0.6 0.8 1.0
+Degree of membership 0.0 0.2 0.4 0.6 0.8 1.0
+Degrree of membership 0.0 0.2 0.4 0.6 0.8 1.0 Degree of membership 
+Fig. 10 show that the model X  X  objective function is somehow a
+H with the ones obtained by an ANFIS whose clustering parameters are the best ones in the first generation of GA. In viewed as a representative solution for ANFIS in which the clustering parameters are tuned manually by a trial and error procedure. Such a comparison is useful in evaluating the importance of optimization of clustering parameters, before RMSE (m) RMSE (m)
+RMSE (m) RMSE (m) Predicted significant peak specrtal period (s) model X  X  performance used as a predictor of wave parameters. 8. Assessment of GA X  X NFIS, ANFIS and SPM models
+After developing and training the GA X  X NFIS wave prediction
+GA X  X NFIS models by comparing the observed and predicted caused by overestimating and underestimating the observed value. The second one is the scatter index ( SI ) showing how for observed and predicted values. This index is indeed a
+The indices are calculated as follows: bias  X  1 N
+SI  X  RMSE average observed value 100 (21) the number of testing data pints.
+ The results of wave prediction models have been presented in more accurate than ANFIS models in terms of their forecast bias index resulted indicates that SPM method underestimates significant wave peak spectral period ( bias  X  0.49). 9. Summary and conclusions In this paper a hybrid GA X  X NFIS model was presented in which an FIS by finding the best parameter values of a subtractive clustering method, while ANFIS is used to optimize the FIS constructed based on the clustering parameter values generated by GA. The model was used for predicting wave parameters, i.e. used in prediction of wave parameters. Also, it was found that GA X  X NFIS models are superior to ANFIS models and SPM method. the effective parameters that the wind speed is the most important parameter in duration-limited condition for the case studied herein, i.e. Lake Michigan. The bias index values calculated indicate that SPM method underestimates the sig-spectral period.
+ References

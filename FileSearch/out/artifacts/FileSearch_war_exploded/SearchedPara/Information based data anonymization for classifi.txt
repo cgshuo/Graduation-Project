@@ -1,0 +1,77 @@
+ 1. Introduction 1.1. Data privacy and anonymization achieve k -anonymity is to generalize values within the person identi if the following information,  X  gender=male, age=45, postcode=5011 45 live in the suburb of postcode 5011. These people are potentially identi age=45  X  55, postcode=5009  X  5012  X  , more than k people will have the same person identi most generalized form of a record is the  X  *, *, *  X  . The replacement of values with nothing is published for identity-related attributes.
+ (  X  privacy protection, but are not good for some data mining tasks, such as classi impose an upper bound for classi fi cation accuracies [14] .
+ set from being linked to other patient sensitive information such as DNA sequences. utility [25] capture this information directly. The smaller modi [12,24] methods, have been proposed. These methods reduce uncertainty or distortions of the anonymized data. 1.2. Related work and motivations generalized to overlapping intervals, such as (10  X  14), (11 (which is a generalization of 11th and 12th) of Education attribute, are not good for building classi methods are required for data anonymization for classi fi
+Many previous studies aiming at classi fi cation utility have been done. Iyengar [6] has large data sets. Wang et al. have proposed a bottom up anonymization method for classi categorical values. An improved method, called TDS (Top  X  been proposed [4] . TDS makes use of the single dimensional generalization approach. It is ef classi fi cation capability in the anonymized data. A further improvement of TDS is called TDR [5] (Top taxonomy trees. It also handles data with multiple quasi-identi dimensional suppression approach, called kACTUS, for classi
+InfoGain Mondrian for various utilities including classi fi classi fi cation accuracy than the TDS, and is a benchmark algorithm for classi classi fi cation work has been done on the publishing classi parameters will lead to different models. For example, some users are interested in the speci publishing.
+
+Let us look at three most recent and closely related methods in data publishing for classi (hyper) rectangular regions by attributes in the quasi-identi points fewer than 10. Therefore, the Age attribute is kept at the top level loss. Attribute Gender wins and attribute Gender is re fi contains one node with the test that  X  whether gender=male or not suppressed.
+ privacy requirement. It is true that no other anonymization method is able to improve the classi
+Age and Blood Pressure. In other large data sets, such relationships potentially help classi only a part of all the attributes, and we should not assume that a classi combination of the quasi-identi fi er and other attributes potentially results in a more accurate classi the quasi-identi fi er alone. Furthermore, the assessment of classi models.
+ partition a data set aims to minimize weighted entropy to the classi (male, 60  X  70) contains 10 data points, and region (male, 30 point in region (male, 30  X  40) than to generalize Age 30 suppression is that the Age attribute is relatively complete and it has potential for other classi classi fi cation models by using attributes Age and Blood Pressure.
+ dimensional generalization limit its applications in classi over fi tting to the quasi-identi fi er. For example, regions (male, 21 multi-dimensional generalization. Such partition leads to overlapping intervals 11 causes problems for many classi fi cation methods. Let us assume that given male, it is good for classi the quasi-identi fi er. When multiple attributes are conjunctively generalized within the quasi-identi reduces the chance for an attribute in the quasi-identi fi generalization over fi ts anonymized data to the quasi-identi classi fi cation capability of anonymized data sets.
+
+Based on the above discussions, we propose a new anonymization method for classi achieve data anonymization. The information loss in the suppression can be measured by Kullback InfoGain Mondrian.
+ 2. Problem description 2.1. Problem de fi nition classi fi cation models? 2.2. Revisiting basic concepts of k-anonymization ( k {Gender, Age, Postcode} has at least two occurrences. A view after this generalization is given in Table 2 (b).
+Since various countries use different postcode schemes, in this paper, we adopt a simpli in a record is an ordered list of values corresponding to the attribute set in the record.
+De fi table.
+
+For example, attribute set {Gender, Age, Postcode} in Table 2 (a) is a quasi-identi information of patients. Normally, a quasi-identi fi er is speci
+De fi containing identical values for the attribute set.
+ corresponding values are identical.
+
+De fi nition 3 (k-anonymity property) . A table is k-anonymous with respect to a quasi-identi class with respect to the attribute set is k or more. k -anonymity requires that every tuple occurrence for a given quasi-identi (a) does not satisfy 2-anonymity property since all tuples are unique.
+De fi nition 4 (k-anonymization) . k-anonymization is a process to modify a table to another table that satis property with respect to the quasi-identi fi er.
+ identi fi er {Gender, Age, Postcode} is at least 2.
+ irrelevant tuples. Suppressed values are equivalent to missing values which most classi 2.3. Why k-anonymization? be k -anonymized to prevent such linking attacks. 2.4. Utility of anonymous tables
+Utility is a subjective criterion. It is dif fi cult to give a general data should be as good as a model built on the original data.
+ such as values in Age attribute including 23, 10  X  15, 20 tools require attribute values from one domain. Values in overlapping intervals, such as 11 suppression to keep attribute consistency and to avoid over generalization. 3. Determine the best generalization level 3.1. For single attributes
+Let quasi-identi fi er of a data set be Q ={ A 1 , A 2 , ... taxonomy hierarchies { T 1 , T 2 , ... , T m }, which de fi other attributes that are irrelevant to anonymization and C is a set of class labels ( c varying value speci fi cities. For example, an attribute generalization hierarchy is given in Fig. 1 .
+The question is which generalization level is best for classi purpose.
+ The uncertainty associating with the set of class labels is described as the following:
+In classi fi cation term, entropy H(C) indicates the classi make use of an attribute to do the classi fi cation, the uncertainty reduction for the classi information.
+
+H ( C | A i ( l )) is the conditional entropy of attribute C given attribute A of distinct values of attribute i at level l . H ( C | A i which remains after attribute A i ( l ) is known. The mutual information can be used to indicate the classi attribute. In our problem, we use it to measure classi fi
+Mutual information varies with the number of distinct values in attribute A large mutual information. For example, if every value is distinct in attribute A maximized. However, such an attribute has little predictive power. Let us assume that A attribute, but over-generalization makes the attribute less useful for classi prediction capability.
+ by using the attribute entropy. I N denotes normalized mutual information. where H ( A i ( l ))=  X  X  X  j =1 n i l freq( a ij ( l )) log at level l .
+ mutual information is the best for the classi fi cation.
+ The summary of their entropy, mutual information and normalized mutual information is listed below.
+From the above table, we see that the classi fi cation capability has been maximized at level 2. 3.2. For multiple attributes domain A 12 should contain all value pairs of A 1 and A 2 different attributes at different levels form a generalization lattice. It is possible to that maximizes the normalized mutual information. However, we do not consider such extension for the classi models. Users are more interested in the classi fi cation using attributes from both the quasi-identi example, female with high blood pressure, where Blood Pressure is a non quasi-identi mutual information within the quasi-identi fi er over multiple attributes, a classi much and ignores other attributes. combined attribute value. In classi fi cation terms, the risk for over classi fi cation. 4. Measuring information loss in suppression classi fi cation. Suppression produces missing values, which can be handled by most classi useless. We need other criteria for measuring distributional changes in suppression for k -anonymization. distributions.
+
+Section 3 , we add a prime symbol to A i .( A  X  1 , A  X  2 labels. Let table D  X  X  =( A  X  X  1 , A  X  X  2 , ... , A  X  X  m , O , C ) be a suppressed table of table of D the value distribution in A  X  i to reduce the adverse effect of suppression. Let A values in A  X  i . Similarly, A  X  X  i ={ a  X  X  i 1 , a  X  X  i 2
+A  X  X  includes suppressed values. We assume that suppressed values are also included in A include the same set of domain values with different frequencies. Kullback de fi ned as the following.
+ based on distribution A  X  X  i instead of A  X  i . The smaller Kullback attributes. D N stands for normalized Kullback  X  Leibler divergence.
+ where H ( A  X  i )=  X  j n i freq( a  X  ij ) log 2 (freq( a  X 
+One objective of suppression is to keep D N ( A  X  i || A  X  X  is set as a small positive number. This is to cap the maximum distributional change of suppression.
+In other words, we wish that the classi fi cation capability of an attribute will not be signi positive and negative changes of classi fi cation capability are unfavorable. Positive changes of classi information is a proper measure for such changes.
+
+Another objective of suppression is to keep | I N ( A  X  X  i change allowed in suppression. This is to control the maximum classi In practice, it would be dif fi cult to determine right  X  of maximum values. The maximum mutual information is H(C) and H ( C )/ H ( A information for attribute A  X  i . The maximum normalized Kullback one tuple of every value in A  X  i .
+ 3-anonymity after suppressing one record.
+ example to show how D N ( A  X  i || A  X  X  i ) and I N ( A  X  X 
+We use the following summary to compute D ( A  X  1 || A  X  X  Therefore, we have the following results.
+
+We know that I N ( A  X  1 ; C )=0.56 from Example 1. We use the following summary to compute I ( A
+Note that in the above table, we discard * value. This is because that the classi results for suppression in A  X  X  1 :
+Algorithm 1 . Information based Anonymization for Classi fi 5. Algorithm different criteria. Both algorithms have the same time complexity.
+ equivalence classes whose sizes are less than k .
+ taxonomy.
+ Algorithm 2 . A variant of IACk for given distributional constraints (IACc). tuples. Secondly, values in equivalence classes whose size is less than k are suppressed. Lines 9 normalized mutual information change and Kullback  X  Leibler divergence caused by the suppression.
+The complexity of this algorithm is estimated as the following. Let m be the size of quasi-identi algorithm is in the order of n log ( n ).
+
+Kullback  X  Leibler divergence and normalized mutual information change the largest size. The suppression stops when either normalized Kullback either of the constraints is dissatis fi ed.
+ input data set has been pre-processed by IACk without suppression. Let n generalization by IACk. The sort of equivalence classes by sizes will take O ( n equivalence classes being suppressed. The time used for suppression is O ( m  X  p ). Since m negligible. The complexity of Algorithm 6 is O ( n log ( n )+ n order of n log ( n ), the same as that of Algorithm 5. 6. A proof concept experiment
+The objectives of the experiment are to demonstrate concepts discussed, and to compare the classi
+The adult data set from UCIrvine Machine Learning Repository [2] has become a benchmark data set for comparing k -anonymity methods. The data set has been used in most k -anonymity studies [4,9 unknown values. The resulting data set contains 45,222 tuples. We make use of 8 attributes as the quasi-identi attribute as the class attribute, which are described in Table 5 .
+ demonstrated to be better than other methods to anonymize data for various utilities including classi and InfoGain Mondrian in the comparison.
+ hierarchy. It would cause too much information loss if values in Gender attribute were generalized. unique. Some tuples are to be suppressed to achieve k -anonymity for k normalized mutual information corresponding to various levels of suppression are listed in Fig. 3 . that sizes of equivalence classes are not continuous integers and hence k is not the multiple of two,
+Kullback  X  Leibler divergences of some attributes are signi classes of small size, and hence are more likely removed. This is a reason that normalized Kullback is relatively small with the same number of value suppressions.
+
+WorkClass. The differences between attributes are not as large as those of normalized Kullback both are necessary for measuring the quality of data set after suppression.
+We now assess the quality of models built on anonymized data sets by comparing the classi [11] , which is a benchmark utility-aware anonymization algorithm.
+ of C4.5 [17] in Weka [22] ), logistic regression, LibSVM and naive Bayes. The implementation of the four classi obtained from Weka APIs [22] . The classi fi cation accuracy is obtained by 10 cross-validation based on strati and then mapped to test data set.
+ classi fi cation.
+ faster than Mandrian.
+
+In the previous experiment, the set of other attributes is empty and classi where four attributes, Age, Sex, Race and Native Country, are chosen as quasi-identi attributes that do not need anonymization. Models will be built on both quasi-identi
+Fig. 6 shows the accuracy of various models on k -anonymized data sets of combined quasi-identi of y axis in Fig. 6 is a third of that in Fig. 4 . Current accuracies are signi built on the orginal data set except for Naive Bayes with k attributes are very likely to be used conjunctly with other attributes in model building. 7. Conclusion supports models that are nearly as good as models from the original data. Acknowledgment DP0774450 and DP110103142.
+
+References

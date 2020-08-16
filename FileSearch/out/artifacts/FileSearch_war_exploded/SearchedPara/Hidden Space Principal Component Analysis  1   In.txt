@@ -1,0 +1,2 @@
+ Sch  X  lkopf is a generalization of LPCA [1]. In KPCA, the data in an input space firstly 
+China under grant 2004F1. 802 W. Zhou, L. Zhang, and L. Jiao 804 W. Zhou, L. Zhang, and L. Jiao [3] L. Zhang, W. Zhou, L. Jiao. Hidden space support vector machines. IEEE Trans. NNs.

@@ -1,0 +1,7 @@
+ Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. To copy otherwise, to republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee.
+ KDD X 08, August 24 X 27, 2008, Las Vegas, Nevada, USA.
+ Copyright 2008 ACM 978-1-60558-193-4/08/08...$5.00. ( x x t t ( t =1 ,  X  X  X  ,n ) n X u i i ( i =1 ,  X  X  X  ,m ) m  X  = {  X  i } u i a = { a ij } u i u j b ( v )= { b i ( v ) } v u i P 
+P ! j&gt;i +2 ; 2 
+P = max 7 P =(0 . 5) 3  X  (0 . 25) 2 g m/g 1 g =1 , 2 , 4 ,...,m  X  u
+F
+P = max # 2  X  t  X  n g 1 , 2 , 4 , 8 , 16 e t 1 ,...,m ) t (1  X  t  X  n ) ! $ % S 2 &amp; t =2 % t =3 !  X  := 0 &amp; )) )) *  X  P 0 M best &amp;  X  := P 0 &amp; )) M best &amp; m 2 " 1 !"#$%&amp; m/ 2 i ( i =0 , 1 , 2 ,..., log m ) !"#$%&amp; O ( nm 2 / 4 i )( i =0 , 1 , 2 ,..., log m ) $%&amp; O ( nm 2 ) log m !"#$%&amp; m 2 # m = 100 ' g =64 g =32 g =16 /01 ')) * 2 2 2 ) ) 2 /31 '))+++2 2 2 2 * 2 /&gt;1 2 5 2 ? . /&lt;1 2 6 !2 A 6 ,2 @ 2 * /D1 =2 G 2 @ 2 $ /0:1 $2 F 2 * )-/0E1 2 J2 2 5 ' /331 2 2 !2 J2 2 = 

@@ -1,0 +1,40 @@
+ 1. Introduction rithms can be categorized into partitional, hierarchical and model-based. (Steinbach, Karypis, &amp; Kumar, 2000; Archetti, Campanelli, Fersini, &amp; Messina, 2006 ). based on cohesion in a hierarchical manner in the second phase. nection between them is given by a log-likelihood function.
+ hyperlinks.
+ where each web page d i is independent and described by its terms w by its  X  X  X ag-of-words X  and by a set of  X  X  X inked words X  belonging to the linked documents. hyperlinks.
+ sity to undertake the relational reasoning direction.
+ layer.
+ through the conjunction of the two clustering output.
+ the  X  X  X trength X  of the relationship (in Section 2.1 we will define this value as jumping probability). 2. RED-clustering page.
+ them.
+ 2.1. Jumping probability estimation triggered by links, we consider a relation between two pages as a probabilistic link. surfer chooses to follow during its browsing: a user that observes a web page d the link as an indication that two pages belong to the same cluster with a given probability. among them, a probabilistic link  X  i ; m  X 2 E between d i mated as the degree of textual coherence that origin page d bilistic link and (2) to evaluate its coherence w.r.t. the origin and the destination pages. we can see a web page d i belonging to a document collection Q as:
+H tation as depicted in Fig. 3 , where each document d i is described by its  X  X  X ag-of-words X  w External Coherence we introduce the concept of link-block.
+
+Definition 1 ( Link block ). Given a document d i  X  X  H i ; U there exists a link  X  i ; m  X  from d ik to a destination page d External Coherence, respectively.
+
+Definition 2 ( Internal Coherence ). Given a web page of origin d d , and let W be the set of terms contained into d ik , i.e. W  X f t origin document d i is defined as: where r ik  X  t j  X  represents the number of occurrences of term t between d ik and the rest of the document d i and when d i we set IC  X  d ik ; d i  X  X  1, stating that d ik is coherent to itself and consequently to d assumes values between 0 and 1. In particular, if a subset of terms belongs to a visual block d frequent throughout the remaining part of the document d i and Archetti (2008) for more details.
+
+Definition 3 ( External Coherence ). Given a web page of origin d set of link blocks belonging to d i , and let W be the set of terms contained into d (EC) of d ik w.r.t. the destination page d m is defined as: where d mk  X  t j  X  represents the number of occurrences of term t number of occurrences of the most frequent term in d m out of all the terms in d
+This metric estimates the External Coherence as the relative frequency of terms t likely to be coherent to d m .
+
+Definition 4 ( Jumping Probability ). Given an origin web page d collection Q , let d ik 2 H i be the visual block containing an outgoing hyperlink from d (2) and (3) :
+When the number of link blocks from an origin page d i to a destination page d one.
+ ity is given in Appendix A.1 . 2.2. The clustering process view, since the author of web page d i of topic C t gives a reference validity to the pointed page d egory), i.e.: where Pa  X  d m  X  X  d i means that d i is the parent of d m and d m and we are dealing the element d i , we consider Pa  X  d process.
+ can only estimate the probabilistic evidence that a document d ton and Buckley (1998) , we can compute the probability of d where ~ d denote the vector representation of d as  X  w i 1 ment. More details are given in Section 4.
+ probabilistic evidence of its parents and the link among them.
+
+In this way, given a destination page d m and a set S k of its directly linking parents d ment of d m to a given cluster by using the Bayes X  rule as follows:
+In Eq. (7) P  X  d m  X  represents the prior probability for d probability P  X  d m 2 C t ^ d i 2 C t  X  is computed by (5).
+
+In order to choose the maximum probability cluster assignment for the web pages, we need to evaluate each d each cluster C t and to consider the probabilistic evidences about parents d atively, leading us to deal two possible cases: (1) Agreement probabilistic evidences between d m and its parents : if element d (2) Disagreement probabilistic evidences between d m and its parents: if element d able hypothesis C t , belonging to the hypothesis space H , as follows: between scorpius and apollo .
+ k-Means approach. 3. Dataset and evaluation measure RED-clustering to that obtained by the well known k-Means and Expectation Maximization algorithms. sites listed in five categories of Yahoo! Directories (http://dir.yahoo.com/ ) are downloaded. See Table 1 . based on the Term Frequency Variance index presented in Nicholas, Dhillon, &amp; Kogan (2003) and given by: where n 1 is the number of documents in Q containing t j at least once and f quency Variance index.
+ and Recall for each class label l 2 L with respect to the cluster j as: where n lj is the number of elements belonging to the class label l and located in the cluster j , n cluster j , and n l is the number of web document with class label l . The F-Measure for each class label l 2 L is computed as the harmonic mean of Precision and Recall: the weighted sum of the F-Measure values taken over all the class labels l 2 L : tribution of the objects in each cluster, i.e. for each cluster j we compute p obtained cluster J : fusion matrix established by the clustering algorithms, where the entry n cluster j and class l , the Corrected Rand Coefficient is computed as follows: 4. Experimental results the Weka environment.
+ and apply stemming rules, using Porter X  X  suffix stripping algorithm. Then, Q is mapped into a matrix M  X  X  m row of M represents a document d , following the Vector Space Model presented in Salton et al. (1975) : where j Z j is the number of distinct terms contained in the document set Q and w where TF  X  t j ; d i  X  is the Term Frequency , i.e. the number of occurrences of term t ring in many documents and is defined as where DF  X  t j  X  is the number of documents containing the j th term. interval (confidence level at 95 % ).
+ imization algorithms, both in terms of Entropy, F-Measure and Corrected Rand Coefficient. density and dimension. 5. RED-clustering: beyond the state of the art document clustering domain are given by Taskar et al. (2001) &amp; Takahashi et al. (2005) . on an unified model but it is focused on finding a compromise between two clustering output. smooth the cluster assignment of each element given the degree of relationship with its parent documents. cluded into the clustering process. 6. Conclusions tation Maximization, both in terms of effectiveness, purity and agreement between classes and partitions. Appendix A. Computational complexity A.1. Jumping probability estimation
+Algorithm 1. JP estimation (document collection Q ). 1: for each d i 2 Q do 2: for each n 2 N do 3: vipsAnalysis  X  d i  X  ; 4: for each d ik 2 H i do 5: for each t i 2 d ik do 6: IC  X  d 7: EC  X  d 8: JP  X  i ; m  X  X  1 given block.
+
+DOM tree, H i is the visual block set containing outgoing hyperlinks from d to a hyperlink semantic area d ik .
+ A.2. RED-clustering alternate application of these two steps until convergence.
+ The convergence is obtained when any document switches clusters.
+
+Algorithm 2. RED-clustering (JP matrix R , document collection Q , centroid set C , number of cluster K ). 1: Set h  X  0 ; con v erged  X  false ; C h  X  C ; 2: while  X  con v erged  X  X  false  X  do 3: con v erged  X  true ; 4: for each d m 2 Q do 5: P  X  H ; h 7: for each c h 8: P  X  d m 2 C h 9: P  X  d m 2 C h t  X  X  1; 10: sim  X  d 11: if ( S k  X  ; ) then 12: for each d i 2 S k do 13: if  X  R  X  i  X  k &gt; 0 and d i 2 C h 14: sim  X  d 15: if  X  C h 16: P  X  d 17: if  X  C h 18: P  X  d 19: P  X  d m 2 C h 20: if  X  P  X  d m 2 C h 23: if  X  X  S k  X  X  ; X  or  X 9 = d i 2 S k j d i 2 C h 27: con v erged  X  false 28: h  X  h  X  1; 29: updateCentroids( C h ); O  X j Q j m i  X  .
+ References

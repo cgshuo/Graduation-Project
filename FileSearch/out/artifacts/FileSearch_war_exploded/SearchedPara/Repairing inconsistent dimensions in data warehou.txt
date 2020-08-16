@@ -1,0 +1,136 @@
+ 1. Introduction called hierarchy schema.
+ down by area and year.  X  1.1. Problem statement not more than once.
+ is not connected to any element in Subject_Int.
+ Example 2. Fig. 2 shows four summariesextractedfrom the DWof Fig.1 .Eachsummary S broken down by some category C . The summary S Area can be correctly derived from the summary S constraints when the dimensions are modeled.
+ analysis of inconsistency and repairs of dimension in data warehouses. amount of changes to the original dimension.  X  1.2. Contributions of changes to the original dimension. The contributions include the following:  X   X   X  quality and efficiency.  X  roll-up relations, assigning different weights to changes in different relations, etc.
+Foundations of Data Management [13] . 1.3. Outline The proofs of all the results can be found in Appendix A .
+ 2. Preliminaries 2.1. Dimensions We start by defining the notion of hierarchy schema.
+
+De fi nition 1. Hierarchy schema A hierarchy schema H consists of a pair ( C H ;  X  H ), where ( C denoted by  X  H . The set of categories C H contains a distinguished top category denoted All category in C H and has no outgoing edges, that is, there is no category c
+Sometimes, we will write ca  X  H c b instead of ( c a , c b introduced in several models [30,38,16,36,52,53] .
+ Example 4. The hierarchy schema H =( C H ;  X  H ), depicted in Fig. 1 (a), is as follows: C H ={Article, Journal, Subject_Int, Subject_ACM, Area, All}; All
+De fi nition 2. Dimension A dimension D is a tuple ( H D ; E D ; Cat D ; b D ), where H elements; Cat D : E D  X  C H D is a function that defines to which category each element in E represents the child/parent relations between elements of different categories. We denote by closure of b D . The following conditions hold: (i)all D is the only element in categoryAll b then Cat D a  X  X   X  H Condition (ii) ensures that the child/parent relation ( b Example 5. Let D =( H D ; E D ; Cat D ; b D ) be the dimension given in Fig. 1 . Then H E D ={all, A 1 ,A 2 , TODS, DKE, DB, DM, DT, H2, G2, IS, MC}; all
+Cat D ={all  X  All, A 1  X  Article, A 2  X  Article, TODS  X  Journal, DKE
+H2  X  Subject_ACM, G2  X  Subject_ACM, IS  X  Area, MC  X  Area}; and b (MC,all)}.
+De fi nition 3. Rollup relations is a rollup relation denoted R D (c i ,c j ) that has the following set of pairs a Example 6. Let D be the dimension given in Fig. 1 . The rollup relations R respectively, as follows:
+De fi nition 4. Strict and covering rollup relations
+Let R D (c i ,c j ) be a rollup relation, then: (ii) R D (c i ,c j )is covering if for all elements e  X  E dimensions are called heterogeneous dimensions.
+ the representation of non-covering rollup relations. 2.2. Integrity constraints known as roll-up completeness in the context of summarizability [48] ).
+De fi nition 5. Strictness constraints, covering constraints Let H =( C H ;  X  H ) be a hierarchy schema and let D =( H (i) A strictness constraint over H is an expression of the form c (ii) A covering constraint over H is an expression of the form c hierarchy schema H . We say that a dimension D satisfies a set of constraints say that the dimension D is inconsistent with respect to  X  constraints: {Article  X  Journal, Article  X  Area, Journal  X  In contrast, the dimension given in Fig. 3 is inconsistent with respect to and Journal  X  Area. Indeed, the rollup relations R D (Article, Area) and R algorithm could compute b D , and then for each pair of categories c closure of digraphs, which run in O E D jj 2  X E D jj b D (e.g., [25,50] ), can be used to obtain 3. Dimension repairs the hierarchy schema of D that satisfy  X  .
+ Example 8. Let D be the dimension given in Fig. 3 , and let Subject_Int  X  Area, Subject_ACM  X  Area}. Clearly, D is inconsistent with respect to 3.1. Notion of repair
+D
+De fi nition 6. Distance between two dimensions
+Given two dimensions D =( H D ; E D ; Cat D ; b D ), and D as b D  X  5b D  X  X   X  b D 5b D  X   X  X  jj .  X  we define the notions of repair and minimal repair.
+De fi nition 7. Repair, minimal repair Let D X H D ; E D ; Cat D ; b D  X  X  be a dimension and  X  be a set of integrity constraints over H (i) A repair of D with respect to  X  is a dimension D  X  =( H (ii) A minimal repair of D with respect to  X  is a repair D repairs, that is deletions or additions of new elements are not allowed. which are shown in the following table:
+Since D 1 , D 2 , D 3 , and D 4 , are closer to D , those are the minimal repairs. minimizing the set of insertions or deletions of tuples. For example, repairs D case, as the following example shows.
+ Example 10. Consider the hierarchy schema given in Fig. 5 (a), and the set of constraints inserting (a,c). These alternatives result in the repairs given in Fig. 5 (c) and (d). one element in each category.
+
+Proposition 1. Let D = ( H D ; E D ; Cat D ; b D ), where for each category c
+Then, there always exists a repair of D with respect to  X   X  The next proposition follows directly from the Proof of Proposition 1 . dimension, as the next example shows.
+ Example 11. Consider the dimension given in Fig. 6 and the set of constraints by deleting, for every a i in A, either a i b b 1 or a i b category A.  X  3.2. Complexity of fi nding minimal repairs we study the complexity of the decision problem involved.
+ is NP-complete.  X  deciding whether a dimension is a minimal repair of another dimension. repair of D with respect to  X  is co-NP-complete.  X  dimension.  X  3.2.1. Repair distance causes the inconsistency. Formally, the repair distance of the dimension D with respect to minimal repair of D with respect to  X  .
+ (1) The number of minimal repairs of D with respect to  X  is in O(n (2) The minimal repairs MinRepair( D ,  X  ) can be computed in time O(n 3.3. Alternative repair semantics condition.
+ Even though the modifications are presented separately, they can be combined if desired.
+In a situation where there are several minimal repairs in terms of minimize the changes over b  X  .
+
+De fi nition 8. Ancestor/descendant distance between dimensions
+Let D =( H D ; E D ; Cat D ;&lt; D ), D  X  =( H D  X  ; E D  X  ancestor/descendant distance between D and D  X  is defined as dist  X D Thus, the repairs that also minimize the ancestor/descendant distance are defined as follows.
+De fi nition 9. [ b  X  -minimal Repairs] Given a dimension D and a set of constraints such that D  X   X  MinRepair ( D ,  X  ), and dist  X  ( D , D  X  Example 12. For each of the minimal repairs in MinRepair ( D , dist  X  ( D , D 1 )=|(A2,MC), (A2,IS), (DKE,MC), (DKE,IS)|=4.
+Even though all of them are minimal with respect to dist , repairs D
+Therefore, dimension D 1 is the only b  X  -minimal repair. Theorem 2 .
+ b  X  -minimal repair of D with respect to  X  is co-NP-complete. the DW took the information of the rollup relations R D (Journal, Subject_ACM) and R but designed (her)himself relations R D (Journal, Subject_Int) and R still co-NP-complete since the semantics introduced in the previous section is a special case. 4. Computing repairs implementations for the general case.
+ Theorem 4.14 in [42] ).
+ in this work, provide polynomial algorithms for a special type of dimension hierarchy. can be used to obtain the minimal repairs of a dimension with respect to a set number of violations of weak constraints.
+ deal with general dimensions where no restrictions are imposed over the constraints. 4.1. Repairing to obtain covering and strict dimensions
+For a dimension D inconsistent with respect to  X   X   X  c H D achieve this, we will use the predicates given in Table 1 . constraints.
+
+De fi nition 10. Repair program for obtaining covering and strict dimensions The repair program  X  cs ( D ) for a dimension D =( H D ; E following rules: (i) Ca  X  X  : for every a  X  E D and C  X  Cat a  X  X  (ii) Ra ; b ; c i ; c j : for every a ; b  X  X   X  b D ; with c (iii) R  X  X ; Y ; c i ; c j  X  C i X  X  X  C j Y  X  X  ; choice X (iv) RT  X  X ; Y ; N 1 ; N 2  X  X   X  R  X  X ; Y ; N 1 ; N 2  X  X  (v)  X  RT  X  ( X , Y , N 1 , N 2 ), RT  X  ( X , Z , N 1 , N 2 (vi) Ins X ; Y ; N 1 ; N 2  X  X   X  R (vii) ( H the ones that are at a minimal distance (using rules in (vi) relation is generated for every category c i ,c j such that c repair R  X  a child/parent relation of a with a unique element in each parent category c choice operator [28,29] that generates one model for each c such that Cat( c )=c value to Y in each stable model for each combination ( X , c the stable model semantics by replacing each rule in (iii) by the following rules:
+R  X  ( X , Y , c i , c j )  X  C i ( X ), C j ( Y ), chosen ( X , c chosen ( X , c j , Y )  X  C i ( X ), C j ( Y ), not diffChoice ( X , c diffChoice ( X , c j , Y  X  )  X  chosen ( X , c j , Y ), C j third attribute.
+ rolls-up to an element z , that Cat( y )=Cat( z ) and that y captured in predicate RT  X  , are not strict.
+ a weak constraint is of the form  X   X  [ weight : level ], where checked with the same level of priority, and both insertions and deletions, have the same cost. Note that rules in (iv) to (vii) are independent of the dimension to repair. dimension is not since the strictness constraint Number  X  That is, D Phone is inconsistent with respect to the set of constraints Fig. 8 , and the following rules: R  X  ( X , Y , number, areaCode)  X  Number( X ), AreaCode( Y ), choice(( X , areaCode)( Y )). R  X  ( X , Y , number, city)  X  Number( X ), City( Y ), choice(( X , city)( Y )). R  X  ( X , Y , areaCode, region)  X  AreaCode( X ), Region( Y ), choice(( X , region)( Y )). R  X  ( X , Y , city, region)  X  City( X ), Region( Y ), choice(( X , region)( Y )). R  X  ( X , Y , region, all)  X  Region( X ), All( Y ), choice(( X , all)( Y )). RT  X  ( X , Y , N 1 , N 2 )  X  R  X  ( X , Y , N 1 , N 2 ).
+
+RT  X  ( X , Z , N 1 , N 3 )  X  RT  X  ( X , Y , N 1 , N 2 ) R  X  RT  X  ( X , Y , N 1 , N 2 ), RT  X  ( X , Z , N 1 , N 2 ), Y
+Ins ( X , Y , N 1 , N 2 )  X  R  X  ( X , Y , N 1 , N 2 ), not R ( X , Y , N
+Del ( X , Y , N 1 , N 2 )  X  R ( X , Y , N 1 , N 2 ), not R  X  Ins ( X , Y , N 1 , N 2 )[1 : 1].  X  Del ( X , Y , N 1 , N 2 )[1 : 1].
+ modifications needed to restore consistency.
+ M 3 ={ Ins (N3, TEM, Number, City), Ins (N2, 45, Number, AreaCode), Del (N3, CCP, Number, City)} these models corresponds to the repairs of D Phone with respect to parent in each parent category.
+
+De fi nition 11. Dimension associated to a model Given a dimension D and a model M of a repair program for D with respect to D Theorem 3. Given a dimension D , every dimension D M associated to a optimal model M of respect to  X  c ( H )  X   X  s ( H ). Furthermore, for every minimal repair D of
+ X  cs ( D ) such that D M = D  X  .  X  4.2. Repairing dimensions: general case same predicates as in program  X  cs ( D ).
+ Example 14. Consider the dimension D in Fig. 10 which is inconsistent with respect to
+A  X 
+C}. There are two possible repairs that either delete the child/parent relation (a
+A  X 
+C and insert the relation (a 2 ,d 1 ) to remove the violation of A Fig. 10 (b)  X  (c).  X 
+For a dimension D , an element a  X  E D and a category c j parents in a category for every element in a minimal repair. Proposition 6. Given a dimension D , a set of constraints that Cat(a)  X  H D c j :
+This relationship between parents in D and every repair D following corollary follows directly from Proposition 6 .
+
+Corollary 1. Given a dimension D , a set of constraints  X  relations in the repair, namely | b D  X  |,is in O (| b D |) .
+In order to compute the repairs of a dimension D we will construct a new dimension D be computed only through reclassification of child/parent relations of D
+De fi nition 12. del-dimension
+Given a dimension D and a set of constraints  X  let the del-dimension D Cat
+D a  X  X  Proposition 7. Given a dimension D , a set of constraints that Cat(a)  X  H each child/parent relation (a,b)  X  b D the repairs are obtained from the consistent candidate repairs by removing every del-element. to repairs of D with respect to  X  shown in Fig. 10 (b)  X  (c).
+De fi nition 13. General repair program The repair program for a dimension D X H D ; E D ; Cat D ; b the following rules: (i) C ( a ) for every a  X  E D and C  X  Cat D ( a ) (ii) R ( a , b , c i , c j ) for every ( a , b )  X  b D , with c (iii) C (del). for every c  X  C H D (iv) R ( a , del, c i , c j ) for every a  X  E D and every c (v) R  X  ( X , Y  X  , Z , c j )  X  R ( X , Y , Z , c j ), C j (vi) RT  X  ( X , Y , N 1 , N 2 )  X  R  X  ( X , Y , N 1 , N 2 (vii)  X  RT  X  ( X , Y , c i , c j ), RT  X  ( X , Z , c i , c (viii) For every c i  X  c j in  X  : (ix) Ins ( X , Y , N 1 , N 2 )  X  R  X  ( X , Y , N 1 , N 2 ), not R ( X , Y , N (x)  X  Ins ( X , Y , N 1 , N 2 )[1 : 1]. (xi)  X  chosen ( X , Y , N , Y  X  ), chosen ( X , Y  X  , N , Y ), Y dimension D , and rules in (iii) and (iv) add the extra del-elements and child/parent relations.
+Rules in (v) generate the set of candidate repairs by populating predicate R the choice operator that chooses for each pair ( X , Y ) a different element Z such that Cat the rules in (vii) discard the candidate repairs in which an element in c discard the models that violate a covering constraint. For example, for a constraint c for which there exists a child/parent relation to an element in c are discarded.
+ needed to restore consistency.
+ denotes the dimension associated to M  X  .
+
+There are situations in which two different models M 1 and M needed to ensure correctness and completeness of program  X  duplicate models.
+ Example 16. For the dimension D in Fig. 10 which is inconsistent with respect to repair program  X  ( D ,  X  ) contains the facts in Fig. 12 , and the following rules:
+Program  X  ( D ,  X  ) has two best models M 1 ={ Ins (a 2 ,d
+Theorem 4. Given a dimension D and a set of constraints  X  of D with respect to  X  . Furthermore, for every minimal repair D D  X  = D  X  .  X  on the constraints that apply between them. For example, if the relation between c del-elements. This is the case with the publication dimension. 4.3. Alternative semantics Repairing using ancestor/descendant distance . Program  X  ( D , by adding the following rules: (xii) RT ( X , Y , N 1 , N 2 )  X  R ( X , Y , N 1 , N 2 ), X (xiii) RT ( X , Z , N 1 , N 3 )  X  R ( X , Y , N 1 , N 2 ), RT ( Y , Z , N (xiv) InsT ( x , y , n 1 , n 2 )  X  RT  X  ( x , y , n 1 , n (xv) DelT ( x , y , n 1 , n 2 )  X  RT ( x , y , n 1 , n 2 ), not RT (xvi)  X  InsT ( x , y , n 1 , n 2 ). [1 : 2] (xvii)  X  DelT ( x , y , n 1 , n 2 ). [1 : 2] and after that minimize the changes made to RT .
+ between n 3 and n 4 .  X  Ins ( x , y , n 1 , n 2 ). [3 : 1]  X  Del ( x , y , n 1 , n 2 ). [3 : 1]  X  Ins ( x , y , n 3 , n 4 ). [4 : 1]  X  Del ( x , y , n 3 , n 4 ). [4 : 1] can be specified in the repair program with the following constraints:  X  Ins ( X , Y , c 1 , c 2 ).  X  Del ( X , Y , c 1 , c 2 ).
+ repair program. For instance, if we insert the fact R  X  (a,b,c generated by it.
+ to D 5 in Fig. 4 . 5. Related work 5.1. Inconsistencies in DWs features.
+ or by erroneous or noisy data.
+ 5.2. Inconsistent relational databases inclusion dependencies) has been extensively studied (see [6] for a survey). but not in the relational case. As an illustration, consider the Phone dimension D
+ X  ={Number  X  Region, AreaCode  X  Region, City  X  Region, Number to
+ X 
+Number  X  Region over table Phone enforces the strictness constraint Number situation does not change if we use a snowflake schema as we illustrate below. dimension in Fig. 13 (a):
+The strictness constraint Number  X  Region can be represented with the constraint:
+The following constraints enforce the covering condition:  X  x (AreaCode( x )  X   X  y T 3 ( x , y )) and  X  x (City( x )  X   X  deletions of tuples. 5.3. Data cleaning performing attribute value modifications. 5.4. Repair logic programs repairing and querying inconsistent peer-to-peer systems in [7,17] . 6. Conclusion of data warehouse's dimensions.
+ analysis in this direction is presented in [8] .
+ Acknowledgments Appendix A. Proofs
+Proof of Proposition 1. It is enough to construct a repair D minimal repair). First, for each category c  X  C D we choose a specific element e which element) and let b D  X   X   X  . Then, for all categories c in this way.  X 
+Proof of Theorem 1. Membership in NP is direct. Nondeterministically choose a dimension D dist ( D , D  X  )  X  k .
+
+The input of the set covering problem is a set U ={ u 1 , is whether there is a set covering for U , S of size k or less (a covering for U , S is a set C
+For a set covering problem with U ={ u 1 , ... , u n }, S ={ s Fig. A.14 ) and a set of constraints  X  . The hierarchy schema H C
+H D ={U, T, S, R, All}; All H D =All; and The rest of D is as follows:
+E D ;  X  u 1 ; ... ; u n ; t ; s 1 ; ... ; s m ; r ; r 1 ; ... ;
+Cat D  X  u 1  X  U ; ... ; u n  X  U ; t  X  T ; s 1  X  S ; ... s b D  X  u 1 ; t  X  X  ; ... ; u n ; t  X  X  ; t ; r  X  X  ; s 1 ; r 1
+The set of constraints  X  contains  X  s ( H D )  X   X  c ( H D and a strictness constraint c i  X  c j .
+ Notice that D may be inconsistent with respect to  X  .
+
+ X  covering problem can be straightforwardly solved in polytime).
+The only if part is direct. Assuming (A), let C be the set covering such that | C |
+Initially let b D  X   X  b D . Now, we (i) delete from b D  X  that s i  X  C . Then, we (iii) delete from b D  X  all the pairs (u
+Also, notice that D  X  satisfies the constraints  X  . Therefore, D
+For the if part, assuming (B), let D  X  be the repair of D at distance d
+Now, assume that (t, r)  X  b D  X  .Letr t be the element in R such that (t, r and add (t, r); and (ii) for all pairs (s j ,r t )  X  b D  X  aforementioned updates D  X  is consistent with respect to  X  that (t, r)  X  b D  X  .
+
+Next, we prove that, assuming (B), there is always a repair D construct D  X  X  from D  X  as follows: initially we let b D  X  X  following updates: (i) choose an edge (u i ,s k )  X  b D , then delete (u  X  b
+D  X  X  , that is, there exists an element r p such that (s k to Therefore, d  X  X   X  d  X   X  2 k + q . Notice that D  X  X  is consistent with respect to
+Let C be the set containing every element s j in category S such that there exists an element u that d  X  X   X  2| C |+ q , because the edges (s j , r) do not belong to can be verified that C is a cover for U ; S . Now, assume that | C |&gt; k . Then d
+As an illustration of the reduction given in this proof, suppose we have a set S of sets s that s 1 ={ a , b }, s 2 ={ c }, and s 3 ={ a , c }. The minimal covers are { s for n =3 and m =3.  X 
+Proof of Theorem 2. Consider the complement problem of deciding whether D have that D  X  is not a minimal repair of D with respect to number of elements in the original dimension.  X 
+Proof of Proposition 4. make O ( n 2 k ) choices. Now, for k = r we obtain the result. 2. From (1) it follows that we have to check the consistency of O ( n
+Proof of Theorem 3. Correctness . Rule R  X  ( X , Y , c i , c c . This is direct consequence of the use of the choice operator and its properties [28] .
+Let CandRepair ={ D M | M is a stable model of rules (i)  X  such that D  X   X  CandRepair .
+ model of  X  cs ( D ) is not strict. This implies that there exists c Cat
+D b 1  X  X  X  c j ,andCat D b 2  X  X  X  c j ; and (iii) a b D M b
+R  X  candidate repairs in CandRepair that are not strict.
+ covering and strict. In other words, they are all repairs of D with respect to the program.
+
+Completeness . For a repair D  X   X H D ; E D ; Cat D ; b D  X  stable model M  X  such that D M  X   X D  X  that is optimal. Let M  X  { C ( a )| a  X  E D and C =Cat( a )}  X  { R ( a , b , c i , c j )|( a , b )  X  b D , c i =Cat( a ) and c  X  { R  X  ( a , b , c i , c j )|( a , b )  X  b D  X  , c i =Cat( a ) and c  X  { RT  X  ( a , b , c i , c j )|( a , b )  X  b D  X  , c i =Cat( a ) and c  X  { Ins ( a , b )|( a , b )  X  b D  X  and ( a , b )  X  b D }  X  { Del ( a , b )|( a , b )  X  b D and ( a , b )  X  b D  X  }.
+
+The dimension associated to M  X  is precisely D  X  . Also, M easy to check that M  X  is also an optimal model.  X  Proof of Proposition 6. Sketch . Given a dimension D , a set of constraints every c i , c j with c i  X  H 1. If { c i  X  c j , c i  X  c j }  X  , then | parent ( D  X  ,a, c 2. If { c i  X  c j }  X  , then 0  X  | parent ( D  X  ,a, c j )| 3. If { c i  X  c j }  X  and | parent ( D ,a, c j )|=0, then | parent ( D 4. If { c i  X  c j }  X   X  and | parent ( D ,a, c j )|  X  1, then 1 5. If there are no constraints for c i and c j , and | parent ( D ,a, c 6. If there are no constraints for c i and c j , and |parent( D ,a, c the del-dimension D del of D .
+
+Rule R  X  ( X  X  , Y  X  , Z , c j )  X  R ( X , Y , Z , c j ), C that is, it will generate all the possible stable models in which a child/parent relation X a direct consequence of the use of the choice operator and its properties [28] .
+Let the set of candidate repairs CandRepair ={ D M  X  M j is a stable model of rules (i) and the removal of atoms with del-elements, for every D cand  X  c )|  X  Max {1, | parent ( D ,a, c j )|}. Furthermore, every repair D program rules in (vi) compute the transitive closure of R contradiction that a dimension D M associated to a stable model of there exist elements a , b 1 , b 2  X  E D such that (i) Cat construction of D M , M contains R  X  ( a , b 1 , c i , c j associated with a stable model of  X  ( D ,  X  ) violates a covering constraint c thatCat D ( a )= c i and there does not exist an element b (viii) aux C j a  X  X   X  M and model M violate the denial constraint discard all the candidate repairs in CandRepair that violate a covering constraint. among the stable models of the program.
+
+Completeness . For a repair D  X   X H D ; E D ; Cat D ; b D  X 
+M  X  such that D M  X   X   X D  X  .Let M  X  be the union of the following sets: { C ( a )| a  X  E D and C =Cat( a )} { C ( del )| C  X  C H D } { R ( a , b , c i , c j )|( a , b )  X  b D , c i =Cat( a ) and c { R ( a , del, c i , c j )| a  X  E D ,c i  X  H D c j , Cat D { R  X  ( a , b , c i , c j )|( a , b )  X  b D  X  , c i =Cat( a ) and c { R  X  ( a , del , c i , c j )| a  X  E D ,c i  X  H D c j , Cat { RT  X  ( a , b , c i , c j )|( a , b )  X  b D  X  , c i =Cat( a ) and c { Ins ( a , b )|( a , b )  X  b D  X  and ( a , b )  X  b D } { Del ( a , b )|( a , b )  X  b D and ( a , b )  X  b D  X  }.
+
+The dimension associated to M  X  is precisely D  X  . Also, M easy to check that M  X  is also an optimal model.  X 
+References

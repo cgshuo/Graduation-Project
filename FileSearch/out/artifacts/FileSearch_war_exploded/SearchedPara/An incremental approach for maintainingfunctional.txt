@@ -1,0 +1,36 @@
+ Ghada Gasmi a ,  X  ,Lot fi Lakhal b and Yahya Slimani a Provence, France 1. Introduction dependencies as output. In this paper, we focus on functional dependencies. and data mining [12]. holding on the updated relation with lower costs.
+ on r .Forthat: than re-executing existing algorithm from the scratch.
+ the Section 5. 2. Theoretical background
+In this section, we present the basic concepts used throughout the paper. 2.1. Functional dependencies
+Let A = { a of tuples { t dom ( X ) , such that X  X  X  and t [ X ] denotes the restriction of the tuple t to X . by F r the set of all functional dependencies satis fi ed by r . and E , respectively.
+ ( t and G| = F .
+ { X  X  A | X  X  X  ,A  X  X  ,r | = X  X  A, X  X  A is minimal } .
+ 2.2. Hypergraph theory theory. For more theoretical issues the reader is referred to [4].
+A hypergraph H is an ordered pair H =( V , E ) of a fi nite set V = { V E = { E  X  E j  X  X  such that E j  X  E i } .
+ { AB,BDE,BE,ABCD } . Then, H is not simple since AB  X  ABCD . Min ( H )= { AB, BE } . of H as hyperedges.
+ Lemma 1. Tr ( H )= Tr ( Min ( H )) .
+ Lemma 2. Tr ( E i )= {{ e }|{ e } X  E i } .
+ Lemma 3. Let H =( V , E ) be a hypergraph such that E = { E sequence T T j = Tr ( { E 1 ,...,E j } ) ,j  X  [0 ...m ] . Thus, T m = Tr ( H ) . Example 3. Let H =( V , E ) be a hypergraphsuch that E = { AB, BCD } . T T be of use to mine FDs in evolving databases. 3. Incremental updating of functional dependencies I augmenting it with t : 3.1. Checking whether Cover ( F r )= Cover ( F r  X  t ) checked ( i.e., checked whether they are not violated by ( r  X  t ) ). 3.1.1. Reducing the candidate couples notion of equivalence classes of r with respect to t de fi ned as follows: all equivalence classes of r with respect to t .
+ The equivalence classes of r with respect to t r ( r ( r ( r ( r ( Then, EC ( r ) t the number of candidate couples. As we remark, the couple ( t 3.1.2. Minimizing the number of minimal FDs to check can arise: minimal FDs that have to be updated.
+ 3.1.2.1. A fi rst level of re fi nement based on the agree sets induced by t space of the minimal FDs candidate to be violated.
+ de fi ned in [15] as follows: t t are { Ag ( t, t ) | t  X  r } and they are denoted by Ag ( r ) t . maximal equivalence classes of r with respect to t .
+ MC ( r ) t = Max { r ( A ) t | r ( A ) t  X  EC ( r ) t } Example 5. For the equivalence classes of r with respect to t are: MC ( r ) t from the equivalence classes of r with respect to t .
+ t and we want insert the tuple t Example 5 ) . They are equal to: { t induced by the tuple t Ag ( t 7 ,t 2 )= DE because t 2 belongs to r ( D ) t 7 and r ( E ) t 7 Ag ( t 7 ,t 3 )= AD because t 3 belongs to r ( A ) t 7 and r ( D ) t 7 . Ag ( t 7 ,t 4 )= ADE because t 4 belongs to r ( A ) t 7 ,r ( D ) t 7 and r ( E ) t 7 . Ag ( t 7 ,t 5 )= C because t 5 belongs to r ( C ) t 7 .
+ Consequently, Ag ( r ) t ( r  X  t ).
+ tuples and we will insert tuple t
+After computing the agree sets induced by t FDs by pruning those having D as consequent. 3.1.2.2. A second level of re fi nement based on agree generators induced by t induced by t . Formally, agree generators induced by t are de fi ned as follows. tuples and we will insert tuple t the agree sets induced by t generators induced by t For ACDE, ( ACDE Cover For CDE, ( CDE Cover Consequently, Gen ( r ) t t , we can determine the set of FDs which will be violated after the insertion of t . set of the candidate violated FDs of Cover ( F r ) are:
+According to Example 8, Gen ( r ) t 3.2. Maintaining the set of violated FDs cover. Indeed, Cover ( F r  X  t ) contains:  X  the minimal FDs which replace the violated ones.
+ be of use to comprehend the method used to maintain the violated FDs. X , then, X is not an agree generator induced by t .
+ A ) . Hence, X =( X Cover Thanks to Property 1, we can deduce the following property. r . Then, Ag ( r  X  t )= Ag ( r )  X  Gen ( r ) t . Cover ( F r ) is violated by ( r  X  t ) means that:  X  r | = X  X  A :  X  Y  X  Ag ( r ) such that X  X  YandA  X  Y . conditions. Suppose that Z  X  A is the new FD obtained after maintaining X  X  A : 1. Z should not be included in any agree set of Ag ( r ) that does not contain A . 3. Z  X  A has to be minimal since it belongs to Cover ( F r  X  t ) . computing minimal transversals of a hypergraph.
+ L 1 ,L 2 ,...,L n considered. Then, X  X  A will be replaced by the following minimal FDs: { Z  X  A | Z  X  L n } such that: L MG i : A X  MG i ) .
+ H = ( A , { Ag  X  m ,..., Ag to Proposition 1, Z is a minimal transversal of Min ( H ) = ( A , { MAg  X  m ,..., MAg are the transversal hypergraph obtained when MAg  X  m ,..., MAg considered. It is obvious that X  X  L sets of Ag ( r ) A ) . Hence, in order to update X  X  A , we have to restrict L compute incrementally Tr ( G ) where G = ( A , { MG L tuples and we will insert the tuple t
+After computing the agree sets induced by t identi fi cation of the agree generators induced by t this set, we can deduce FDs which will be violated after the insertion of t C, C  X  D, E  X  DandC  X  E will be violated. Let us maintain C  X  E . The maximal agree generators induced by t L an antecedent obtained by considering maximal agree generators induced by tMG by t . We distinguish two cases:  X  If Y is a minimal transversal of MG i included in Y .
+ Example 11. Let us maintain C  X  E violated after the insertion of tuple t generators induced by t functional dependency CD  X  E . We do not generate the child CE since E belongs to CE . 3.3. Illustrative example the tuple t respect to t r ( r ( r ( r ( r ( Then, EC ( r ) t
+After, we check whether Cover ( F r ) could be the canonical cover of ( r  X  t minimal FDs of Cover ( F r ) are candidate to be violated by ( r  X  t we apply a fi rst re fi nement based on the agree sets induced by t classes of r with respect to t attribute. Indeed, MC ( r ) t to r ( C ) t r ( belongs only to r ( E ) t a consequent included in all agree sets induced by t level of re fi nement does not prune any minimal FD.
+
+After, we apply a second re fi nement based on the agree generators induced by t have fi rst to identify the agree generators induced by t is an agree generator induced by t generator induced by t induced by t generator induced by t cannot be the canonical cover of ( r  X  t 6) . However, we initialize Cover ( F r  X  t minimal FDs of Cover ( F r ) . Thus, Cover ( F r  X  t by t to Cover ( F r  X  t 6 ) and BE  X  BCE . Then, BCE is ignored since BCE A is not minimal.
+After updating the whole set of violated FDs, we obtain the following Cover ( F r  X  t 4. Experimental evaluations 4.1. The FastFDs algorithm using a depth-fi rst search strategy [23]. 4.2. Synthetic databases per attributes.
+ | r 20 attributes.
+
+Through Fig. 3, we can note that:  X  F AST FD S is more sensitive to the variation of the relation size than I NC FD S .  X  The execution time of FastFDs could decrease when the relation size increases. the violated FDs.
+ Through Tables 2 and 3, we can note that: 4.3. Real world databases 5. Conclusion and perspectives possible parallelization of I NC FD S should be investigated. References

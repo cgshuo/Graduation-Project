@@ -1,0 +1,51 @@
+ 1. Introduction basic units (words 1 ) for a given sentence in Chinese. 1.1. Ambiguities and long words
+Chinese character sequences are often ambiguous in their segmentation, and out-of-vocabulary (OOV) words are a major sists of some words which can be separate words on their own; in such cases an automatic segmenter may split the OOV  X  tiple lexicon words.
+ as is illustrated, recognizing long words (without sacrificing the performance on short words) is challenging. 1.2. Existing methods character x i is the start ( Label i = B ), middle or end of a multi-character word ( Label work of Peng, Feng, and McCallum (2004) . In the Second International Chinese Word Segmentation Bakeoff (the second a CRF model ( Asahara et al., 2005; Tseng, Chang, &amp; Andrew, 2005 ).
+ exponentially with the Markov order ( Andrew, 2006 ).
+ ter-based labeling model. For example, on a CRF model, one might use the feature  X  X  X he current character x a semi-CRF, since in that case local features u ( y i , y 1.3. Proposals features to learn long range dependencies in Chinese word segmentation. We use the latent conditional random fields  X  X  X he current character x i is X , Label i = C , and LatentVariable captured by those very simple labels.
+
+Further, we use word-level features to model non-local information. Compared with the traditional character-based different advantages in word segmentation, we use both character-based features and word-based features. present an improved online training method for optimizing LDCRFs. We demonstrate that the improved online training 2. Models 2.1. Conditional random fields modeled as follows ( Lafferty et al., 2001 ): where w is a parameter vector.
+ of labels are chosen to obey the Markov property. This has a computational complexity of O ( NK quence; K is the cardinality of the label set; M is the length of the Markov order used by local features.
+Given a training set consisting of n labeled sequences, ( x mizing the objective function, for reducing overfitting. Since our preliminary experiments suggested that an L prior in the tasks discussed in this paper, we employed an L log-likelihood of each sample, log P ( y i j x i , w ), as  X  ( i , w ). The final objective function is as follows: 2.2. Latent conditional random fields
+Given the training data, the task is to learn a mapping between a sequence of observations x = x
+Y of possible class labels. For each sequence, the model also assumes a sequence of latent variables h = h is unobservable in training examples.
+ The LDCRF model is defined as follows ( Morency et al., 2007 ): set H  X  y  X  of possible latent variables for the class label y , and H  X  y j  X \ H  X  y k  X  X  latent variables; i.e., the union of all H  X  y  X  sets: H  X [ except for only one of y in Y . The disjoint restriction indicates a discrete simplification of P ( y j h , x , w ): where m is the length of the labeling: m = j y j . The formula h 2 H  X  y latent-labeling of the labeling y , which can be more formally defined as follows:
+Since sequences that have any h j R H  X  y j  X  will by definition have P ( y j h The item P ( h j x , w ) is defined by the usual conditional random field formulation: where f ( h , x ) is a global feature vector.
+
+Given a training set consisting of n labeled sequences ( x ing the objective function
+We denote log P ( y i j x i , w ), as  X  ( i , w ) and we used L
+Recent related work on latent conditional models also includes ( Sun, Okazaki, &amp; Tsujii, 2009b ). 2.3. Improved SGD training (I-SGD)
+Training LDCRFs is challenging. Traditional gradient-based batch training methods, such as Limited-memory BFGS dient descent (SGD). 2.3.1. Stochastic gradient descent are updated in such a way: 2.3.2. Modifications gence speed of the SGD training. We tested a simple exponential decay ( Tsuruoka, Tsujii, &amp; Ananiadou, 2009 ): ditional decay (Eq. (8) ), and arrives empirical convergence state faster.
+ convergence.
+
+There is no prior work on convergence analysis for the SGD training with the exponential decaying rate Eq. (9) . We can show that the SGD training with the exponential decaying rate has reasonable convergence proper-ties. That is, the SGD training with the exponential decaying rate Eq. (9) is asymptotically convergent. This con-vergence analysis statement can be derived from the assumptions and convergence analysis discussed in Sun,
+Wang, and Li (2012) . The SGD training with the exponential decaying rate Eq. (9) converges to a fixed point, but different runs of the algorithm may converge to different fixed points if use random shuffling of the order of the training samples.
+ used in the current training sample. To make training faster, we can use a traditional lazy regularization schedule implement and has moderately faster training speed. Hence, we use the simple lazy regularization instead of the traditional lazy regularization. Fig. 2 shows the I-SGD training method with new decaying rate and the simple lazy regularization. 3. Hybrid word and character features
+To better capture non-local information, we employ features based on words and word bigrams. To derive word fea-word unigrams and bigrams are then used as a unigram-dictionary and a bigram-dictionary to generate word-based uni-plates as follows: unigram1 ( x , y i ) [ x j , i , y i ], if the character sequence x unigram2 ( x , y i ) [ x i , k , y i ], if the character sequence x bigram1 ( x , y i ) [ x j , i 1 , x i , k , y i ], if the word bigram candidate [ x aforementioned constraints on j and k . B represents the word bigram dictionary collected from the training data. bigram2 ( x , y i ) [ x j , i , x i +1, k , y i ], if the word bigram candidate [ x aforementioned constraints on j and k .
+ Fig. 3 presents a brief piece of pseudocode for extracting word-based unigram and bigram features. satisfied. For each label at position i , we use the predicate templates as follows: Character unigrams locating at positions i 2, i 1, i , i + 1 and i +2.
+ Character bigrams locating at positions i 2, i 1, i and i +1.
+ Whether x j and x j +1 are identical, for j = i 2, ... , i +1.
+ Whether x j and x j +2 are identical, for j = i 3, ... , i +1.
+ based features can incorporate non-local information naturally.
+ split into AB . We found this simple heuristic on word information moderately improved the performance. 4. Experiments 4.1. Data and metrics
+We used the data provided by the second International Chinese Word Segmentation Bakeoff to test our approaches de-word-based features, we extracted a list of word unigrams and bigrams from the training data. pora and these metrics, refer to Emerson (2005) . 4.2. Experimental settings Since the CRF model is one of the most successful models in Chinese word segmentation, we compare LDCRFs with CRFs.
+We make experimental results comparable between LDCRFs and CRF models, and have therefore employed the same feature set and optimizer. We employ the feature templates defined in Section 3 , taking into account those 3.0 10
+MSR data, 2.6 10 6 features for the CU data, and 1.9 10 6 training methods, as have been introduced in previous sections.
+
+Since the objective function of the LDCRF model is non-convex, we randomly initialized parameters for the training. reduce overfitting, we employed an L 2 Gaussian weight prior ( Chen et al., 1999 ). 4.3. Segmentation quality
+Chinese Word Segmentation Bakeoff on the corresponding data; Andrew X 06 represents the semi-CRF model in Andrew word-based perceptron model in Zhang and Clark (2007) .
+ relation with the number of labels.
+
+On the MSR corpus, the LDCRF model reduced more than 10% error rate over the CRF model using exactly the same fea-ture set. We also compared our LDCRF model with the semi-CRF models in Andrew (2006) and Gao et al. (2007) , and the results suggest that the LDCRF model achieved slightly better performance than the semi-CRF models. Andrew (2006) and Gao et al. (2007) only reported the results on the MSR Corpus.
+ multiple random initialization for weight vectors and choosing a good one, the performance of LDCRF can be further improved.
+
+In summary, tests for the Second International Chinese Word Segmentation Bakeoff showed competitive results for our method compared with the best results in the literature. 4.4. Accelerated training
+Here, we perform experiments on optimizing objective functions of CRFs and LDCRFs on different data sets. We compare the improved SGD (I-SGD) training method with the L-BFGS batch training method and the standard SGD training method.
+For the online training method, we need to set the value of c well for online training.
+
+Most importantly, the I-SGD method converges much faster than the L-BFGS batch training method and the existing SGD training method.
+ segmentation accuracies are similar when we use the I-SGD training instead of the L-BFGS training. 4.5. Effect on long words words (e.g., Length &gt; 10), while the CU and PKU corpus do not contain such extreme cases. improvement on modeling long range dependencies in CWS. 4.6. Error analysis bottom).
+ Among the four types of errors, co-allocated organization names are difficult for segmentation. The example shown in cases. Compared with CRFs, the LDCRF model is more likely to merge co-allocated names. For the human names, they are wrongly segmented because we lack features to capture the information of person names. ated location names. In the future, such errors can be solved via using extra resources. 5. Conclusions, discussion, and future work is competitive with the state-of-the-art methods.
+ tion. We showed that the proposed online training method has significantly accelerated training speed. tion names, human names, and Chinese idioms. Those long words are not compound words because they contain no sub-words. In such cases, modeling non-local information is also meaningful.
+ Acknowledgments ported by National High Technology Research and Development Program of China (863 Program) (No. 2012AA011101) and National Natural Science Foundation of China (Nos. 91024009 and 60973053).
+ References

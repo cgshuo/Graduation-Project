@@ -1,0 +1,20 @@
+ {
+X following assumptions: mance of the estimators.
+ semi-supervised learning by Zhu (2006) contains 163 refere nces. Among our findings are: assumptions M and SSS can be made and exploited to lead to impr oved estimators. i 1 ) = literature.
+ the shape of the data density p .
+ by where the infimum is over all estimators. The global minimax r isk is defined by when D is large.
+ In more detail, let C &gt; 0 and let B be a positive definite matrix, and define mator is given by b m n ( x ) = a 0 where ( a 0 , a 1 ) minimizes P n i x )) , where K is a symmetric kernel and H is a matrix of bandwidths. The asymptotic MSE of the local linear estimator b m ( x ) using the labeled data is bandwidth matrix H and R ( H structure without knowing it. X  variance are optimal rate for data that to lie on a manifold of dimension d . minimizes a local cross-validation score.
+ I in I 0 , and estimate the risk from I 1 by setting b R ( h ) = | I 1 |  X  1 P i finite constant B .
+ d  X  4 . Then we have that The notation e O allows for logarithmic factors in n .
+ 2
+E ( Y b m h ( X )) + b m 2 h ( X ) . Let n 1 =| I 1 | . Then, By conditioning on the data in I 0 and applying Bernstein X  X  inequality, we have for some c &gt; 0. Setting n =  X  C log n / n for suitably large C , we conclude that Let h e O ( n  X  4 /( 4 + d ) ) ; if d &gt; 4 then O ( semi-supervised methods in this case. Similar results appl y to classification. regression function m ( x ) , in which case the unlabeled data are informative. estimator (
+X each point x can be formed independently, given the labeled data. b m (
+Y unlabeled data: where the Laplacian 1 = 1 i j has entries discrete diffusion equations (Smola and Kondor, 2003).
+ estimator is chosen to minimize the regularized empirical r isk functional R  X  ( m ) = standard kernel smoother is obtained. The regularization t erm is m tion is justified by the fact that 1 2 J ( m )  X  R Theorem 2. Suppose that D  X  2 . Let e m H operator defined by Then the asymptotic MSE of e m H where  X  = P ( R i = 1 ) .
+ c leading order in H as the minimum of M .
+ estimator, and thus the unlabeled data have not improved the estimator asymptotically. improved bandwidth selection, and averaging over level set s. 5.1 Semi-Supervised Bias Reduction this SSS assumption, we can improve the rate of convergence b y reducing the bias. where b m n ( x ) is the local linear estimator.
+ Theorem 3. The risk of e m n ( x ) is O n  X  8 /( 8 + D ) .
+ in the bias of the local linear estimator is of order O ( tr ( H ) 4 ) . estimate  X  . This approach is taken in the following section. 5.2 Improved Bandwidth Selection assumptions, (SSS) m 00 ( x ) = G Now let \ m 00 ( x ) = G b R d x / b p ( x ) . n  X  X  X  . If N / n 1 / 4  X  X  X  , then p ( x ) = O ( N  X  2 / 5 ) . Since \ m 00 ( x )  X  m 00 ( x ) = O P ( N  X   X  ) , R ( b H  X  )  X  R ( H  X  ) = o P ( 1 / n ) and the result follows. that we use the multivariate version of Girard X  X  result, nam ely, H This leads to the following result.
+ 5.3 Averaging over Level Sets the unlabeled data; see Rigollet (2006) for details. Let k j = P n i define Theorem 6. The risk of b m ( x ) for x  X  L  X  C j is bounded by where  X  j = sup x is O ( 1 /( n  X  j )) . The mean, given X 1 ,..., X n , is k
+X j  X  x k sup x and increases the bias. Suppose the two terms are balanced at  X  =  X  rate of convergence if  X  j ( X  to clarifying the problem. grant CCF-0625879.
+

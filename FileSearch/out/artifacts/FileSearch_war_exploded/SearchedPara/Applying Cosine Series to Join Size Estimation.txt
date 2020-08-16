@@ -1,0 +1,11 @@
+ This paper provides a general overview of two innovative applications of Cosine series in XML joins and data stream joins.
+ H.2.4 [ Database Management ]: Query processing Algorithms, Management, Performance, Design.
+ XML, Structural join, Query optimization, Data stream, Cosine series.
+XML structural join size estimation is crucial to XML query optimization because from which selectivity of the paths or trees can be derived easily. We present a model that captures and stores the structural information of a predicate by two mathematical functions. Then, to save storage space, we approximate these potentially complex distribution func-tions by Cosine series and show how structural join size can be obtained easily from the approximate distribution func-tions. We also apply this technique to capture the attribute value distributions of data streams and derive join size esti-mation.
+We model the structural information of predicates by defin-ing two types of distribution functions, one describing the coverage of the predicates and the other showing the predi-cates X  start positions, such that the structural join size can be easily computed as their inner products. The coverage function is intended for use when the predicate acts as the ancestor in a structural join and the start-position function is used when the predicate acts as the descendant.
+Definition 1. The coverage function of a predicate p at position pos  X  Dom , denoted as C p ( pos ) , is the number of p nodes whose region codes cover pos .
+ cosine transform is applied to the join attribute value dis-tributions and the data stream join size is estimated in the same manner.
+For structural join size estimation, we compared our Co-sine series method with state-of-the-art method IM-DA-Est [4]. Figure 4 shows the results of both methods on the Xmark [3] dataset while Figure 5 shows the results on the DBLP [1] dataset.
+
+In general, our method consumes much less memory space and is several order faster than IM-DA-Est. As for the esti-mation accuracy, our method is slightly better than or com-parable to IM-DA-Est.
+ Figures 6 and 7 show the experimental results of join size

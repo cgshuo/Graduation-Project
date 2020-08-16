@@ -1,0 +1,206 @@
+ 1. Introduction
+The Semantic Web (SW) constitutes an effort to improve the current Web, by adding metadata to web pages and, thus, agents for example, will be able to  X  X  X nderstand X  the meaning of the information available on the World Wide Web (WWW); variety of distinct Web applications.
+ are already overwhelmed by information overload.
+
+The mature steps towards accomplishing the Semantic Web vision have reached as far as the development of ontologies and OWL , the Web Ontology Language, which is currently the dominant standard in ontology encoding [14] . The upcoming ing the Semantic Web.
+ mation. When compared to mainstream non-monotonic reasoning, the main advantages of defeasible reasoning are en-hanced representational capabilities, coupled with low computational complexity. Defeasible reasoning can represent conflicts among rules.
+ with tons of additional complex semantic relationships among data and metadata of the Semantic Web. To this end, a com-use of them.
+
+In this paper we present VDR-DEVICE , a system designed specifically for the SW environment. It is an integrated devel-consists of a number of sub-components, which, though developed autonomously, are combined efficiently, forming a flex-ible framework. Although early versions of the various VDR-DEVICE visualization sub-components have already been pre-and the interaction between the various sub-components.
+ more thoroughly presented in [11] . The reasoning core imports and processes RDF data and RDF Schema ontologies. the next steps for the improvement of the system are planned to encompass proofs as well [10] .
+During the various development phases of the system, a number of requirements and specifications were being desig-nated. The primary requirement, regarding the reasoning engine, was to support defeasible reasoning. As a consequence, which would prove intuitive and easy to apply. Moreover, a secondary requirement for the rule and RDF Schema ontology editors is to prevent users from syntactic and semantic errors during the development of rule bases and ontologies respectively.
+
+The requirements mentioned above were taken into account during the design and implementation of VDR-DEVICE and performed on two VDR-DEVICE components, while the next section discusses related work paradigms, followed by the con-clusions and ideas for future work. 2. Defeasible logics reasoning in the Semantic Web environment. 2.1. Basic characteristics reasoning approach, designed from its beginning to be realisable.
+ iting the same behaviour.
+ they only arise between rules with conflicting heads, contrary to other more mainstream non-monotonic approaches, such of defeasible logics.
+ mentioned above, but also through: the absence of disjunction; the use of unidirectional rules; from the use of Semantic Web techniques. Thus, it is interesting to study the deployment of defeasible reasoning within the Semantic Web framework, the main theme of this paper. 2.2. Motivation for applying non-monotonic reasoning in the Semantic Web
+As mentioned before, defeasible reasoning is a non-monotonic method for reasoning with incomplete and conflicting information. In this section we outline reasons why this kind of approach is useful in the setting of the Semantic Web. 2.2.1. Reasoning with incomplete information
+Business rules often have to deal with incomplete information [2] : in the absence of certain information some assump-such assumptions must be made, because other players may not be able (e.g. due to communication problems) or willing knowledge representation and reasoning. 2.2.2. Rules with exceptions rules [2] , e-contracting [27] , brokering [7] and agent negotiations [28] . 2.2.3. Default inheritance in ontologies
+Default inheritance is a well-known feature of certain knowledge representation formalisms. Thus, it may play a role in priority information. Thus, non-monotonic rule systems can be utilized in ontology languages. 2.2.4. Ontology merging inconsistencies, by their very nature. Predicate logic-based formalisms, including all current Semantic Web languages, non-monotonic rule systems can support ontology integration. 2.3. Defeasible logic  X  syntax and operational semantics a function-free first-order language.
+ written formally, would become: r 1 : novel(X) ? book(X) .
+ r : book(X) ) hardcover(X) ( X  X  Books are typically hard-covered  X ) and ically not hard-covered  X ).
+ clusions, by producing evidence to the contrary. A defeater example is:  X  X  Cheap books might not be hard-covered  X . This defeater can defeat, for example, rule r and r 3 contradict each other. But, if the superiority relationship indeed conclude that the novel is not hard-covered. In this case rule rule r 0 : book(X), price(X,Y), NOT(book(Z), Z 6  X  X, price(Z,W), W specific example, is considered a failure.
+ whose conditions may or may not be mutually exclusive. All rules have a positive superiority relations among them. In this case, the conflict set is C(offer(x,y))= { : offer(x,y) } [ { offer(x,z) j z 6  X  y } the conclusion of the first one. p: novel(X), price(X,Y), Y 6 15 ) offer(X,15) q: novel(X), price(X,Y), Y 6 15, author(X,  X  X  X simov X  X ) ) offer(X,20) q &gt; p attacked by a stronger rule.
+ we summarize here the main results from previous works: A full proof theory was presented in [4] .
+ The formal properties of the proof theory, including consistency and coherence results, were presented in [4] . Relationships to other logic programming systems were presented in [6,5] .
+ An analysis of computational complexity is found in [39] .
+
+Model-theoretic and argumentation semantics, with associated soundness and completeness results, are found in [38,29] , respectively.
+
+Variations of defeasible logics were discussed in [3] . 3. Visualizing defeasible logic rules can better assist in clarifying the underlying structure of the rule base.
+ adds a variety of extra features that offer expressive power to the graph.
+ Literals ( L ), represented by rectangles, called  X  X  atomic formula boxes  X ; Rules ( R ), represented by circles.
+ results in rules of different types being represented more distinctively.
+ Rule edges connect a rule vertex with a rule conclusion vertex, namely a derived literal: RE={(x,y) j x 2 R ^ y 2 L}
+Each rule vertex must have one and only one rule edge: ( " x), x 2 R ? ( $ y), y 2 L ^ (x,y) 2 RE ( " x)( " y),(x,y) 2 RE ? ( : $ y 0 ),y 0 2 L ^ y 0 6  X  y ^ (x,y 0 ) 2 RE There is only one condition edge type CE that connects a literal vertex with a rule vertex: CE={(x,y) j x 2 L ^ y 2 R}
+The same literal vertex can participate in multiple condition edges, meaning that the same atomic formula can appear in atomic formulas are simultaneously satisfied (logical conjunction).
+ literal vertex or vice versa.
+ rule r 1 (strict rule), Fig. 2 displays rules r 2 and r 3 vertices): These two sets are disjoint.
+
+For example, in Fig. 2 , the head of rule r 2 is positive, while that of rule mula box (upper/lower), on which the arrow commencing from the rule circle  X  X  X ands X . sions and variations of the atomic formula boxes found later in the paper.
+
+Finally, there is one more edge type SE for the superiority relationship. Fig. 4 shows the superiority relationship rule graph.
+ 3.1. Representing conditions if the fragment price(X,Y), Y &gt; 15 appears in a rule condition, it can be represented as in Fig. 5 . 3.2. Visualizing NAF with one rule vertex and is actually considered a condition edge of a special type. Of course, the definition of condition edges, given in Section 3 above, must be extended to handle hyperdges as well. normal edge. To exemplify this, the difference between the two rules below is that for rule is drawn between literal vertex b and rule vertex r 1 , whereas for rule vertex d and rule vertex r 2 . r 1 :a,b ? c r 2 : a, not (d) ? c depends on the rest of the condition edges that it participates.
+ tex/rule circle ( j H( E ) j = 1). 3.3. Representing conflicting literals the same literal type as a conclusion: p: novel(X), price(X,Y), Y 6 15 ) offer(X,15) q: novel(X), price(X,Y), Y 6 15, author(X,  X  X  X simov X  X ) ) offer(X,20) one of the literals must be true and superiority relationships (in the specific example among the rules.
+ subsection: ments of set LB should be of the same type. 3.4. Grouping literal boxes together and zero, one or more condition patterns.
+ scheme dictates that these predicate pattern boxes should be drawn separately because they involve different variable 4. The VDR-DEVICE system
+Schema ontologies and consists of two primary subsystems:
+The following section illustrates the overall system functionality, while subsequent sections describe comprehensively the two subsystems as well as the various modules they encompass. 4.1. VDR-DEVICE functionality
+Fig. 9 displays a sequence diagram, describing the functionality of VDR-DEVICE. The system accepts as input the address ated or loaded with the help of the DRREd rule editor, described in the following sections. ever RDF Schema editor they feel comfortable with.
+
+The rule base is submitted and the designated facts are downloaded by DR-DEVICE [11] , the core reasoning module of the system, and the inference process commences. The rule conclusions are materialized inside DR-DEVICE as objects and the instances of designated derived classes are exported as an RDF document, which includes the RDF Schema definitions for or negatively, either defeasibly or definitely.
+
+The user can access the results through a web browser or through specialized software that can customize the visualiza-definitely nor defeasibly.
+ rule graph with the help of the DL-RuleViz tool, also described in a subsequent subsection. 4.2. DR-DEVICE architecture
+As mentioned earlier, DR-DEVICE [11] comprises the core reasoning system of VDR-DEVICE and consists of two primary directly loaded, improving speed considerably (running a compiled project is up to 10 times faster). Meanwhile, the RDF loader downloads the input RDF documents (facts), including their schemas, parses them, using the semantics of defeasible logic.
+ defeasibly or definitely. 4.2.1. The object-oriented RDF data model
+The DR-DEVICE system employs an object-oriented view of the RDF data model, where properties are treated as normal resulting in increased query performance due to less joins [13] .
+
+For example, Fig. 11 a describes an RDF Schema class ( X  X  novel  X  X  price  X ) and a novel instance ( X  X  novel _ 1  X ). The definition of class  X  X  stance  X  X  novel _ 1  X  X n Fig. 11 a. 4.2.2. The defeasible logic language
+DR-DEVICE supports two types of syntax for defeasible logic rules: a native CLIPS-like syntax and a RuleML-compatible language cannot be expressed by the existing RuleML DTDs and/or XML Schema documents. For this reason a new DTD (v. 0.85 compatible) and new XML Schema documents (up to v. 0.91 compatible) were developed, using the modularization scheme of RuleML, extending the nafneg DTD of RuleML, namely OO-Datalog with strong negation and negation-as-failure. patible DTD.
+ (_ head and _ body elements respectively) as well as a label, encoded in a _ ( ruleID attribute) and its type ( ruletype attribute). The latter can only take three distinct values ( siblerule, defeater ).
+ compatible language of the system.
+ tion-as-failure.
+
+The rel elements of the operator (_ opr ) elements of atoms correspond to class names, since atoms actually represent queries over CLIPS objects. The names of RDF classes are referred to through the r is superior to r 2 ). Negation is represented via a neg element that encloses an
+There also exist comp _ rules elements that declare groups of competing rules, which derive competing positive conclu-sions ( conflicting literals ). For example, rules p and q one offer can be made in an offer case (see Section 2.3 ). The constant peting rules.
+ the rule base ( rulebase element), includes a number of important parameters, implemented as attributes: declares the input RDF file(s), rdf _ export represents the RDF file that contains the exported results and rdf _ export _ classes represents the derived classes, whose instances will be exported in RDF/XML format. An example is shown in Fig. 14 .
+ since the main point of this work is to present the various visual interfaces to DR-DEVICE. 4.3. The graphical front-end produces graph-based representations of defeasible logic rule bases. 4.3.1. DRREd  X  the graphical rule editor and efficiency during the development of VDR-DEVICE RuleML documents.
+
+DTD/XML Schema constraints. Furthermore, the operations allowed on each element depend on the element X  X  meaning can be inserted depend on the chosen attribute.
+
+The rationale behind the XML-tree representation of a rule base is based on the fact that RuleML is an XML application ter allowing users to focus on small or bigger parts of it.
+ The development of a rule base with DRREd is a process that depends heavily on the context, i.e. the node being edited.
+Thus: j The atom element can be either negated or not. The wrapping/unwrapping of an atom element within a neg element is j Since the core reasoning module (DR-DEVICE) features negation-as-failure (NAF), which is typical of non-monotonic
+An important component of the editor is the namespace dialog window (NDW) ( Fig. 16 ), which allows the user to deter-mine which RDF/XML namespaces will be used by the rule base. Namespaces are treated as addresses of input RDF Schema rowing the possibility for errors on behalf of the user.
+
+Namespaces can be manually entered by the user, through the NDW. Firstly, the system shows up in the NDW the name-spaces contained in the input RDF documents (indicated by the space documents contained within this document and repeats the above namespace discovery procedure. When it discovers a new namespace, not already contained in the NDW, it shows it up (unchecked).
+
+Finally, users can examine all the exported results via a browser window, launched by the system. The user can also ( Fig. 17 ).
+
+In the following subsections, we present, in mathematical notation, how the information needed to support the function-ality of DRREd is extracted from the RuleML document and the RDF Schema documents, discovered by DRREd and selected by the user in the NDW. 4.3.1.1. Parsing RDF schema ontologies for classes and properties. The RDF Schema documents contained in the NDW are ported ontologies. This information is used to constrain the user in which class names and properties he/she can use in authoring rules.
+
+The names of the classes found are collected in the base class set ( CS RDF user classes. Therefore, set CS b is constructed as follows:
+CS b ={ c j ( c rdf:type rdfs:Class ) 2 RDFS } [ { rdfs:Resource where ( XYZ ) represents an RDF triple and RDFS is the set of all triples found in the RDF Schema documents.
+Except from the base class set, there also exists the derived class set (CS i.e. the classes which lie at rule heads ( conclusions ). This set is constructed by parsing the RuleML document. CS empty and is dynamically extended every time a new class name appears inside the (or a negated atom). This set is mainly used for loosely suggesting possible values for the not constraining them, since rule heads can either introduce new derived classes or refer to already existing ones. CS d ={ c j c 2 XPATH( //imp/ _ head//atom/ _ opr/rel )}
+Here we assume that the function XPATH( expression ) evaluates an XPath [15] expression and returns the node-set that the equivalent XPath expression would have returned. Therefore, the XPath expression // identical to element regardless of their position in the XML tree, the expression attribute F of the current context node element, while the expression. attributes of the current context node. Finally, the expression
+F1 that is a child of the current context node, and so on so forth. Notice that in some rules the tween them in the above XPath expression.
+
+The union of the above two sets results in CS f , which is the full class set ( CS allowed class names, when editing the contents of the rel
+Furthermore, the RDF Schema documents are also being parsed for property names and their domains. Similarly to the procedure described above, the properties detected are placed in a base property set ( PS built-in RDF properties ( BIP ) whose domain is rdfs:Resource:
+BIP ={ rdf:type, rdfs:label, rdfs:comment, rdfs:seeAlso, rdfs:isDefinedBy, rdf:value PS b ={ P j ( P rdf:type rdf:Property ) 2 RDFS } [ BIP is initially empty and is extended each time a new property name appears inside the _ head: PS d ={ P j P 2 XPATH( //imp/ _ head//atom/ _ slot/@name )}
+Finally, the full property set ( PS f ) is the union of the above two sets: PS 4.3.1.2. Detecting property domains. Each of the properties in the PS
+The domain set of each property is needed, so that, for each class C is selected, the names of the properties that can appear inside the _ either define entirely new classes (and slots) or they completely re-use already defined ones. all the (direct and indirect) superproperties of P (namely SUPP to the RDFS semantics:
+The RDF built-in properties ( BIP ) have rdfs:Resource as their domain: " P 2 BIP , DOM P ={ vrdfs:Resource }
+If a base property does not have a domain, then rdfs:Resource " P 2 { p j p 2 ( PS b -BIP ) ^ ( : $ c ,( p rdfs:domain
+As far as the derived properties are concerned, their domain is the derived class where they appear (in rule heads). " P 2 PS d , DOM P ={ c j c 2 XPATH( //imp[./ _ head//atom/
+Notice that inside the square brackets there is a logical expression that selects only those elements that satisfy the expression.
+ sively traversing upwards the property hierarchy: SUPP P ={ SP j ( P rdfs:subPropertyOf SP ) 2 RDFS } [ { SP 0 j SP 0 2 SUPP The properties that do not have super-properties (including the derived class properties) have an empty SUPP " P 2 PS d , SUPP P = ; " P 2 { p j p 2 PS b ^ ( : $ sp ,( p rdfs:subPropertyOf sp ) 2 RDFS )}, SUPP super-property and domain sets), every class C in the CS f for each class C , five distinct sets have to be defined: superclass set SUPC ited property set INHP C , and subsumed property set SUBP hierarchy: SUPC C ={ SC j ( C rdfs:subClassOf SC ) 2 RDFS } [ { SC 0 j SC 0 2 SUPC
+If a class does not have a superclass, then it is considered to be a subclass of derived classes: " C 2 CS d , SUPC C ={ rdfs:Resource } " C 2 { c j c 2 CS b ^ ( : $ sc ,( c rdfs:subClassOf sc ) 2 RDFS )}, SUPC The SUBC C set can now be easily assembled, by inversing all the subclass relationships (both direct and indirect): SUBC C ={ sbc j C 2 SUPC sbc } erty set: OWNP C ={ p j C 2 DOM p } and indirect), according again to the RDFS semantics: INHP C ={ p j p 2 OWNP SC ^ SC 2 SUPC C }
+Finally, the subsumed property set SUBP C is constructed, by copying the owned properties from all the subclasses (both direct and indirect): SUBP C ={ p j p 2 OWNP SC ^ SC 2 SUBC C } even have property P .
+ The above mentioned three property sets comprise the full property set FPS which is used to restrict the names of properties that can appear inside a _ atom element is C , as it is explained in detail in the following sub-section. nected through a hierarchy: the class novel is a subclass of the
+Some typical properties of these classes are displayed in the  X  X  X wned properties X  row. After the RDF Schema document is parsed, these classes are detected and included in the base class set ( CS final status of the class properties is displayed in Table 1 .
+
+This logic is reflected in the rule editor, as Fig. 15 shows. If, for example, the user wishes to formulate rule then he/she selects the novel class as the value of the href since he/she does not have to worry about which properties can be applied to query class novel , demanding that property pic _ artist satisfies a certain condition; however, only objects of class phic _ novel can possibly satisfy the condition, since direct instances of class clude only objects from class graphic _ novel in the result.
+ 4.3.2. RDFSbuilder  X  object modelling of RDF schema ontologies
+The second module encompassed by the VDR-DEVICE graphical front-end is RDFSbuilder , a visual RDF Schema (RDFS) sentation not only makes the module directly usable by users, that are not accustomed to the particular RDF Schema sign principles followed by the DR-DEVICE reasoning subsystem (see Section 4.2.1 ). that share a super-/subclass relationship, accompanied by the corresponding RDF Schema fragment. comprises the drawing panel, where the user can visually design the ontology model. ontology. The process behind the second option is more extensively described in the following subsection. are considered to be direct subclasses of rdfs:Resource , which represents the class of all resources.
+RDFSbuilder prevents users from fundamental errors like concept hierarchy validity errors or inconsistencies in range ontology inconsistencies. potential errors on behalf of the user.
+
+Thus, importing classes and properties from an existing RDF Schema ontology can be performed by inserting the URL of other ontology merging-related aspects, are, nevertheless included in plans for future work. ply appear in the list, but do not affect the ontology under development).
+
+The feature of locked/unlocked ontologies serves not only management purposes (e.g. include an ontology in the list for ontologies are not contained in the exported RDF Schema file (only a namespace reference is included), while unlocked ontologies are fully copied into the exported file, since the system cannot automatically extend a third-party class.
+When the user selects an ontology to be loaded (either locked or unlocked), the selected ontology is downloaded and that have the specific class as their domain), or to apply an imported property, through the  X  X  X lass Properties X  menu.
+Imported classes that belong to a loaded ontology can then be added to the current model, with their locked/unlocked status indicating whether they can be modified, enhanced or extended. Visually, imported classes are distinguished from the rest by their outline colour, which is red for the locked classes and blue for the unlocked. similarly to NDW in DRREd (Section 4.3.1 ). The system then downloads the namespace documents contained within the spe-cific document and displays them in the namespaces list, accompanied by an  X  X  X nloaded X  flag. can also be exported to Notation 3 and N-Triple formats:
+Notation 3 (N3) [16] comprises a compact and easily readable alternative to RDF X  X  XML syntax, extended to allow greater expressiveness. N3 files typically have the extension  X  .n3 content is typically stored in files with an  X  .nt  X  suffix to distinguish them from N3. 4.3.3. DL-RuleViz  X  visualizing a defeasible logic rule base
+Realizing the need to provide graphical trace and explanation mechanisms for the derived conclusions, VDR-DEVICE is base is bijective , meaning that every visualization implementation is mapped to by exactly one rule base. also some sets defined in sub-section 4.3.1.1 .
+
+Classboxes aresimplycontainersandaretheequivalentof predicateboxes describedpreviously.Theyarepopulatedwithone name.Furthermore,intheVDR-DEVICERuleML-likesyntax,simpleconditionsareencapsulatedinsidetheslotelements;thisis reflected to the visual representation where condition patterns are encapsulated inside the associated slot patterns. ing the third class pattern of the class box in Fig. 21 , written in the RuleML-like syntax of VDR-DEVICE (v. 0.9).
+To construct the class box set CB f , for each class c that belongs to the base and derived full class sets ( CS tively) a class box cb with the same name is constructed and placed inside the corresponding class box set CB the union of the latter.
+ CB b ={ cb j cb 2 CS b } CB d ={ cb j cb 2 CS d } CB f = CB b [ CB d pattern is associated with the rule it appears and its position in the rule (head or body) is noticed.
+CP H ={ h cp , cb , r ij r 2 XPATH( //imp ) ^ cp 2 XPATH( r /_
+CP B ={ h cp , cb , r ij r 2 XPATH( //imp ) ^ cp 2 XPATH( r /_ CP = CP H [ CP B
+S cb ={ cp jh cp , cb , r i2 CP } the class pattern appears in. If the class pattern belongs to the CP head of the rule, whereas if it belongs to the CP B subset, then it appears in the body of the rule. The S patterns for each class box cb .
+
+A class box could remain empty, in case a base class is included in the loaded RDF Schema document(s), but is not being naturally play a limited role.
+
+Similarly to class boxes, class patterns are populated with one or more slot patterns . For each _ atom, a slot pattern is created. Each slot pattern is a tuple h sp , s , V , C i that consists of the _ and value constraints) is being retrieved from the children (direct and indirect) of the _ resentation of the rule base.
+
+SP cp ={ h sp , s , V , C ij cp 2 XPATH( //atom ) ^ sp 2 XPATH( cp /_
+Each slot pattern is associated with the class pattern cp of the relevant atom, through the SP sets of slot patterns is denoted by SP .
+
+Notice that the above expressions detect only the existence of a the actual constraints in the constraint set of the slot (as in Fig. 21 ), further drill-down of the needed. However, such processing is quite a low-level issue, that we do not believe it should be discussed further. connecting the class patterns of rule bodies to the rule circles.
+ circles to arrows and vice versa.
+
+The rule type is equal to the value of the ruletype attribute inside the _ take three distinct values ( strictrule , defeasiblerule , tween the rule r and the corresponding pattern cp of the rule head.
+
+SA ={ h r , cp ij r 2 XPATH( //imp/ _ rlab[@ruletype="strictrule"]/@ruleID
+DA ={ h r , cp ij r 2 XPATH( //imp/ _ rlab[@ruletype="defeasiblerule"]/@ruleID
+FA ={ h r , cp &gt; j r 2 XPATH( //imp/ _ rlab[@ruletype="defeater"]/@ruleID RA = SA [ DA [ FA
+The superiority relationship is represented as an attribute ( of all superiority arrows.
+
+SRA ={ h r , sr ij r 2 XPATH( //imp/ _ rlab[@superior]/@ruleID Finally, the arrows between the class patterns of the rule body and the rule circles are contained in the CA set: arrows, because the same class pattern can be re-used in the body of many rules. trieved from the same set. The set of all rule circles is denoted by RC .
+
+RC ={ h r , In , Out , SupIn , SupOut ij r 2 XPATH( //imp/
+Notice that each one of the In and Out arrows has been assigned a terized according to one of the three rule types. algorithm, as optimization goals. The algorithm is displayed in Fig. 23 .
+ each graph element (rule circle or class box) has to be placed.
+
+During the execution of the algorithm, the following steps can be distinguished: integer MAXINT. the stratum counter by 1. sented with a pop-up window, displaying the rule at full detail, including its premises and conclusion.
+Also, according to the algorithm, only the arcs that connect two consecutive graph elements are drawn by default. When according to the step 2a above.
+ focused rule are displayed.
+
+The unification process is triggered by the insert _ cp _
+VCP patterns (see below) then only one of them is ever inserted in the set either as an RCP or in the ECPs set. terns there. Finally, if nothing of the above holds, then the class pattern is added to the VCP
+Two class patterns are checked for equality with the function checking for equality the corresponding slot patterns (function equal _ slot _ constraints ).
+
+Two class patterns are checked for equivalence or unifiability with the function dix A ), by performing similar controls on the slot patterns (function (function equivalent _ slot _ constraints ). Two patterns are unifiable either when they are equal, or when they have the same name, the same number of component patterns and each component pattern (i.e. slot, variable, constant, con-equivalent _ slot _ constraint ): Unary constraints  X  X  Op Opr  X , where Op is the operator and Binary constraints  X  X  Opr1 Op Opr2  X , where Op is the operator and (either equal to 3 or 4).
+ Functional constraints  X  X ( Fun Ops ) X , where Fun is the function name and rule being focused. above. Suppose that we have the following rule base: r 1 : novel(X) ? book(X) r 2 : novel(X), hardcover(X) ) collectible(X) r 3 : novel(X) ): hardcover(X) r 4 : novel(X),author(X, X  X  X simov X  X ),price(X,Y),Y &gt; 18 ) hardcover(X) r 5 : novel(X),price(X,Y) ,
+NOT(novel(Z),Z 6  X  X,price(Z,W),W &lt; Y) ) cheapest(X) r 6 : book(X) ) hardcover(X) r 4 &gt; r 3
+Some of the rules above were encountered in a previous section, while rule greater than 18  X  are typically hard-covered  X  and rule r with a lower price, then the first book is considered the cheapest  X . Rule
+Also, five classes are needed in the example, as Table 2 illustrates: one base class ( hardcover, collectible and cheapest ). Notice that, although for presentation simplicity sented as predicates in the example, in fact they are slots of the of the underlying system, as it was explained in Section 4.2.1 and is clearly displayed in Fig. 26 and in Fig. 11 . indeed might connect rules that belong to the same stratum.
+ mises and conclusion ( Fig. 26  X  window on the right).
+
+The example features a case of a  X  X  collapsed  X  rule (rule r can be expanded, as seen in Fig. 27 .
+
+The derived graph also depicts the superiority relationship truth boxes for conflicting literals, being currently under development.
+ The two aspects of the rule base (the XML-tree representation, used by DRREd and the directed graph, produced by DL-in the digraph is also selected and the data relevant to it displayed. 5. User evaluation
+Post-graduate students attending the Semantic Web course at our university were asked to participate in assessing two modules of VDR-DEVICE, namely DRREd and DL-RuleViz. More specifically, they were given a defeasible logic rule base and were asked to model it, using the two components. They were also requested to answer one on-line questionnaire for each subsections. 5.1. DRREd user evaluation
+The DRREd on-line evaluation survey was divided in two major parts: the first part focused on the comprehensibility and gree of assistance that this representation schema offers during the development of a rule base. found it difficult to understand and 12% considered it unacceptable.
+ defeasible logic rule base, 60% believed that the system considerably improves productivity (i.e. minimizes development time), 72% considered that the representation gives a better overview of rule dependencies, while only 28% of the users would rather use another tool.
+
+Overall, 76% of the users were satisfied with DRREd and only 20% would prefer more features in the proposed represen-mechanisms was also pointed out. All these weaknesses are planned to be dealt with in future versions of the system. 5.2. DL-RuleViz user evaluation to understand and appreciate the adopted representation methodology. More specifically, 72% of the participants found only 12% found it incomprehensible and unacceptable.
+ and representing conflicting literals. 6. Related work
+There exist several systems specifically designed for the Semantic Web environment, although, to the best of our knowledge, no system exists yet that can adequately cover so many aspects of the SW architecture. ISWIVE [20] is, nev-ertheless, a paradigm of a system that attempts to integrate a variety of SW technologies. The system visualizes SW re-sources, using RDF and topic maps and it also provides an interactive semantic query mechanism. However, contrary to
+VDR-DEVICE presented in this work, ISWIVE cannot support more sophisticated types of reasoning (e.g. defeasible rea-soning) and can, thus, only handle queries of limited expressiveness. VDR-DEVICE, on the other hand, is a more inte-grated solution, since it also offers visualization mechanisms of the rule bases developed as well as the ontologies loaded. d-GRAPHER [46] consists of a visual defeasible graph (d-graph) editor and a prolog-based inference engine. The system
+Although d-GRAPHER is the first system that introduced the visual development of d-graphs, utilizing a representational methodology that comprised the basis of the implementation philosophy behind the rule base drawing module of VDR-DE-express more  X  X  X emanding X  rule bases and is now considered depreciated.
+
+Mandarax [22] is a rule platform, which provides a rule mark-up language (compatible with RuleML) for expressing rules
+VDR-DEVICE (DRREd) lies closer to the XML nature of its rule syntax and follows a more traditional object-oriented view of the RDF data model. Furthermore, VDR-DEVICE supports both negation-as-failure and strong negation, and supports both deductive and defeasible logic rules.
+
+Each of the following subsections outlines systems that are similar to each of the respective VDR-DEVICE sub-components. 6.1. Defeasible reasoning engines variables.
+
+Delores [41] is another implementation, which computes all conclusions from a defeasible theory. It is very efficient, Also, it does not integrate with other Semantic Web languages and systems, and is thus an isolated solution. rules can only express reasoning over ontologies expressed in DAMLRuleML (a DAML-OIL like syntax of RuleML) and not on aggregate rules. Finally, DR-DEVICE can also support conclusions in non-stratified rule programs due to the presence of truth-maintenance rules [10] .
+
+Apart from defeasible reasoning, there also exist other non-monotonic rule systems for the Semantic Web. An example is the way results are returned to the user is differentiated: DR-DEVICE returns the result-objects as an RDF/XML document tant models as output in the form of answer sets, which can be confusing for large rule sets. 6.2. Rule editors
+VISor [42] is a rule editor paradigm, based on the Semantic Web Rule Language (SWRL), implemented as part of the SAWA proves to be rather impractical.
+ guage and SWRL) are XML-based.
+
+A third rule editor example is WAB [9] , an axiom and rule editor, integrated in the WebODE Ontology Editor. It allows bases into a less manageable task. 6.3. RDF schema ontology editors
+There exist several implementations of editors that create or manipulate RDF Schema documents. MR3 [57] is such a tool to use by an unfamiliar user and, thus, comprises a solution, suitable only for experienced users. visually design Semantic Web instance documents, vocabularies, and ontologies and then output them in either RDF/XML or familiar with RDF and RDF Schema, making the software difficult to use.
+ munity, involved with a variety of research and industrial projects. However, Prot X g X  features a modeling environment, not allowing development or modeling of ontologies.
+ search and navigation, although the system functionality is restricted to lightweight ontologies only.
+IsaViz [49] and RDFSViz [54] are two more similar tools. The former represents models as directed graphs using the tra-
+OWLViz mentioned above. 6.4. Rule base visualization tools Besides d-GRAPHER, described earlier, no modern system exists yet that can visually represent defeasible logic rules.
+There exist, however, systems that implement rule representation and visualization. Such an example is Strelka , imple-demands a steeper learning curve.
+ evaluation, performed on the system, has proved that CViz indeed assists users in understanding the relationships among fication rules, falling however short in visualizing rule chaining, something that our module aims at.
+Conceptual Programming Language ( CPL ) [48] constitutes an effort to bridge the gap between Knowledge Representation grams that convey the procedural nature of the knowledge within the representation. Both CPL and the DL-RuleViz soning to the graph. 7. Conclusions and future work
+This paper argued that logic is currently the target of the majority of the upcoming efforts towards the realization of the Semantic Web vision and presented the basic characteristics of defeasible reasoning, which represents a rule-based approach to reasoning with incomplete and conflicting information. Defeasible reasoning is considered a potent tool in many SW-related applications. A system, based on defeasible reasoning and specifically designed for the Semantic Web environment, was also presented in this work. The system is called VDR-DEVICE development environment for developing and deploying defeasible logic rule bases. The system employs a user-friendly graphical shell and a defeasible reasoning system that supports direct import from the Web and processing of RDF data ogy authoring tool (RDFSbuilder).
+
+During the development phases of VDR-DEVICE, a number of requirements and specifications were designated. The pri-requirements are indeed met by the VDR-DEVICE modules.
+
+Currently, we are working on potential improvements of the VDR-DEVICE system, such as: (i) enhancing DL-RuleViz with ontology conflicts, and (iii) enabling DRREd to seamlessly support newer versions of RuleML based on XML Schema. For example, an interesting potential would be to support the user through the visual rule system to take full advantage of the CLIPS capabilities behind the core reasoning module (DR-DEVICE), with e.g. built-in or user-defined functions.
+On the other hand, we are also extending the core reasoning system, DR-DEVICE, to handle proofs, in order to provide trust of users towards the Semantic Web.
+ Acknowledgement
+This work was partially supported by a GSRT Greek-Australian Project  X  X  X efeasible Reasoning for Semantic Web e-Com-merce Applicattions X .
+ Appendix A
+X , and has nothing to do with the universal quantifier of first-order logic. boolean function equal _ class _ patterns(cp1,cp2) boolean function equal _ slot _ patterns( h sp1,s1,V1,C1 i , h sp2,s2,V2,C2 i ) boolean function equal _ slot _ constraints(cs1,cs2) boolean function equivalent _ class _ patterns(cp1,cp2) boolean function equivalent _ slot _ patterns( h sp1,s1,V1,C1 i , h sp2,s2,V2,C2 i ) boolean function equivalent _ slot _ constraints(cs1,cs2) boolean function equivalent _ slot _ constraint(c1,c2) boolean function unifiables(As,Bs) boolean function unifiable(A,B)
+References

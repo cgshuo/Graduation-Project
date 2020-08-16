@@ -1,0 +1,23 @@
+ so it X  X  possible that we could do something like a summary node of some sort that me003 but there is some technology you could try to apply me010 yeah me010 now I don X  X  know that any of these actually apply i n this case me010 uh so if you co-you could ima-and i-me010 mmm me003 there X  X e ways to uh sort of back off on the purity of your bayes-net-edness me010 and me010 uh i-i slipped a paper to bhaskara and about noisy-or X  X  and noisy-maxes which is there are technical ways of doing it me010 uh let me just mention something that i don X  X  want to pursue today me010 there there are a variety of ways of doing it me010 discriminative training. Proc. of EMNLP.
+ Advances in Automatic Text Summarization.
+ Research and Development in Information Retrieval. Portable to Broadcast News? Proc. of ASRU.
+ Artificial Intelligence Research (JAIR).
+ Proc. of EMNLP.
+ meeting summarization. Proceedings of ICASSP. Proc. ACM SIGIR.
+ RANLP.
+ Question Answering. NAACL-HLT.
+ Compaction. Proc. of ICSLP. Coverage and Learning of Document Extracts. Proc. A AAI. Summarization Branches Out. Proc. of NAACL.
+ Proceedings of ASRU.
+ Criteria for Speech Summarization. Proc. of ICASSP. compression? Proc. of ACL.
+ of IEEE SLT.
+ ICASSP.
+ on the impact of disfluencies. Poster at MLMI. Keyword Extraction in Meeting Speech. Proc. of ICAS SP. human models. Proceedings of EMNLP Proc. of HLT-NAACL.
+ Computer Science. Advances in Information Retrieval . summaries help?. Proc. of SIGIR.
+ Proc. HLT-NAACL.
+ Summarization.
+ Summarization. Proc. of ACL-HLT.
+ Multi-Document Summarization. Proc. COLING. Inf. Process. Manage. 43(6).
+ Speech and Language Processing, pages 790-796. learning. Proc. of ACL.
+ Meeting Summarization. Proc. of ASRU.
+ Algorithm. Proc. of Interspeech.
+ Informative Content-Words. Proc. IJCAI 2007. Computational Linguistics. V28, pages 447-485.

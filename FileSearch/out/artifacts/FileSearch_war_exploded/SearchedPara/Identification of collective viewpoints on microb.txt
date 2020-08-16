@@ -1,0 +1,55 @@
+ 1. Introduction
+A microblog is a popular Web 2.0 system, such as Twitter 1 interesting and practical problem.
+ gathered on microblogs for such event in October 2010.
+
+How to represent them? Table 1 shows two sample tweets about viewpoints; furthermore, user viewpoints also may change as time goes by.
+The closest research work is topic summarization, which has been studied extensively in the past [1 sentiment words such as adjectives or adverbs. But viewpoint discovery is not limited to such words. especially for random walk methods. In contrast to existing graph models, our proposed Term time granularity, our approach also avoids creating high-degree nodes. viewpoints is not trivial.
+
+To summarize, our main contributions are as follows:  X  essence.  X  mining microblogs.  X  temporal aspects.  X 
+We propose an IRW method to maintain graph clustering based on RWR incrementally.  X  and efficiency of our proposed approaches.
+ walk in Section 9 . Finally, Section 10 concludes the paper.
+ 2. Preliminaries and background 2.1. k-Partite graph adjacent. Such graph could aid us in modeling heterogeneous datasets. is, there is no edge between pairs of nodes in the same set. (3)  X  : E  X  R  X  .
+
+The k-partite graph G can be used to model various kinds of objects, namely V of objects are denoted by edge set E . Some edges can be also associated with a set of attributes A = P =[ P ij ] | V | X | V | ,|  X  | denotes the element number of a set.
+ 2.2. Random walk with restart between nodes in a graph. Consider a random particle begins from node v
+M where s  X  i is the probability distribution of a random particle starting at node v satisfy the triangle inequality according to distance function definition.
+Hereafter, we refer to the random walk relevance as just  X  2.3. Microblogs background Short nature of tweets facilitates posting quickly, reaching audiences in seconds.
+Fig. 1 indicates that tweet r 0 is spread among three users. The tweet was originally posted by followers  X  Gates  X  and  X  Page  X  in order. Both r 1 and r and context information simultaneously.
+ 3. Problem statement depicted by a few representative terms. Then our problem can be formally defined as follows: Problem 1. Viewpoint discovery.
+ these tweets? gather together in the same cluster. 4. The framework of mining viewpoints elimination, and social networks among users through analyzing retweets. relevance between pairs of terms.
+ represented as varieties of viewpoints, as mentioned in Section 1 . 5. Viewpoint discovery based on RWR 5.1. Pre-processing: representative term selection of unnecessary words are still retained and need to be further pruned. to detect the terms with a frequency burst. The entropy of term t in k days is defined as Entropy ( t )= whose entropy is smaller than a specified threshold will be selected. 5.2. Graph representation types of objects (i.e., nodes): terms, tweets and users, whose sets are denoted as V are also five types of relations between different node sets, which are denoted as directed edge set E respectively, E ={ E tw  X  E wt  X  E wu  X  E uw  X  E uu }. Each edge in E
+E and E uw represents users' posting. And each edge in E uu directed edge going from node v i to node v j .
+
+Additionally, each edge e ij  X  E is assigned a weight function, which is denoted as edge in E uw is also associated with a timestamp attribute t , and t v  X  V u and v j  X  V w . Each edge in E uu is associated with a frequency attribute r , and r between user v i and user v j , v i  X  V u and v j  X  V u .
+ 5.3. Random walk on TWU graph matrix P tw , Tweet  X  Term block matrix P wt , Tweet  X  User block matrix P
+P . In a word, we obtain TWU graph model, whose adjacency matrix is constructed as follows: where r ( e ij ) represents the retweeting number between user v two users should be proportional to the frequency of retweeting interactions.
+For ease of illustration, we present an example in Fig. 5 . User u community graph by means of retweeting for modeling community relations of microblogs. result, the overall computation cost is O (| V t || E |).
+
+Algorithm 1. Node relevance computation by RWR. 5.4. Convergence of RWR on TWU graph distribution of the transition matrix P according to the Perron-Frobenius theorem. 6. Time-Sensitive Random Walk improving the measurement of node relevance by considering temporal aspects. 6.1. Measuring temporal correlation
+Random walk defines transition probabilities P ( v i | v j is defined as: where P ( v i | v j ) depends on weight functions of directed edges and their attributes. Towards edge e probability P ( v i | v j ) mainly depends on its timestamp attribute. the same viewpoint being quite close together in terms of time.
+ starting from node w 1 transmits to other tweet nodes via node u associated edge weight. Therefore, the random particle from node w contribution to e u 1 w 2 than edge e u 1 w 3 , because the timestamp of e following equation where Tweet ( v i )={ v k | e ik  X  E uw , v i  X  V u } is all tweets of user v between timestamp t ij and t ik .
+ between different tweets, time decay functions are used for defining weight functions based on timestamps. exactly satisfies our above assumption about temporal aspects. where  X  can adjust the curve shape of the logistic function, c Considering temporal aspects of tweeting, the effective correlation function is defined as follows: where  X  t =| t ij  X  t ik |,  X  t represents the duration between tweet v 6.2. Time-Sensitive Random Walk on TWU graph
+Owing to considering temporal information and community structure together, the block matrices P
+P uw and P where where  X  is a weighting factor.
+ weights, namely timestamp and community relationship, we set the parameter is to compute a block matrix associated with timestamp. Steps (4 the corresponding timestamp matrix. The computation cost of temporal correlation is O (| E of E . Hence, the overall computation cost of TSRW is still O (| V versions of both algorithms can achieve significant speedup over the single thread version on large graphs. 7. Graph clustering based on RWR 7.1. Graph clustering based on nearest neighbors Algorithm 2. Node relevance computation by TSRW.
+ this section, we use RWR to measure neighborhood similarities between nodes. In Eq. 1,therelevancevector s using RWR corresponds to its local neighborhood in a large graph. We transform the relevance vector s (k-NN) of v i ,namely NN k ( v i )={ u 1 , u 2 , ... , u k 7.2. Incremental Random Walk to its neighbor nodes in dashed lines. NN 5 ( v )={ u 1 , u the local neighborhood of u 3 may change because the new path { u influenced nodes in the local area can allow us to avoid expensive re-computation of the whole large graph.
+Given a graph G ={ V , E } and a set of inserted nodes U  X   X  The pseudo code of IRW is shown in Algorithm 3 .
+ Algorithm 3. Incremental computation of node relevance by IRW.
+ 7.3. Complexity analysis complexity can be expressed as O (| V |+| E |), where | V | is the cardinality of the set of nodes. represented as O (| E |), where | E | is the cardinality of the set of edges in the graph. 8. Experiments
+Finally, we also evaluate the proposed IRW algorithm with synthetic data. 8.1. Experiment settings 8.1.1. Dataset description
+Sina microblog has been developing rapidly and greatly in China. According to Sina adding 10 million new users per month in 2010.
+We collected two real datasets from Sina microblog, namely verify the effectiveness of the proposed TSRW on QQ360 and JE datasets. 8.1.2. Evaluation metric set of clusters C ={ C 1 , C 2 , C 3 , ... , C n }, we measure the cohesion as follows: where  X  i is the weight of C i . Cohesion C i  X  X  X   X  x  X  C of all cluster cohesions.
+ higher cohesion values are better. 8.1.3. Baseline methods improve the effectiveness and how to utilize temporal information effectively. 8.2. Results and analysis 8.2.1. Collective viewpoints
+Table 4 shows three kinds of viewpoints, namely technique, criticism and joke.  X  and 360. Many useful tips arose on microblogs when users encountered such problems.  X   X 
+For JE dataset, Table 5 shows two kinds of viewpoints, namely health and joke.  X   X  jokes.
+ 8.2.2. Comparisons  X  QQ vs. 360  X  war more than twice.
+ As a result, we empirically set the values  X  =1,  X  = 0.5, c 1 = 1 and c 2 = 3 for QQ360 and JE datasets. our proposed algorithm TSRW outperforms BRW and TORW in all cases for both QQ360 dataset and JE dataset. algorithm can discovery extra viewpoint clusters compared with baseline algorithms in our experiments. structure. Thus, TSRW achieves the satisfactory performance in the clustering of short texts. 8.2.3. Impact of temporal granularity experiments on temporal aspects. 8.2.4. Visualization of results which indicate the difference between term proximity of inter-cluster and that of intra-cluster. intra-cluster are much closer than those of inter-cluster.
+ that the TSRW algorithm outperforms the other two algorithms according to the above visualization criteria. space limitation. Unfortunately the quantity of clusters is relatively large in most cases. 8.2.5. Clustering ef fi ciency comparison
+We evaluate both algorithms based on synthetic data. A graph generator incremental approach.
+ increase quickly with the degree of the inserted node. 9. Related work decay function. 9.1. Topic summarization summarization. tweet clustering for lack of reliable knowledge bases like WordNet.
+ applied to mining microblogs due to its characteristics, such as the style of user interaction and posting. 9.2. Random walk preferences are different from the behaviors of user postings.
+ incrementally update the random walk distances given the edge weight increments. present a novel method based upon the analysis of the entire user 9.3. Time decay functions on-line detection of novel events.
+ 10. Conclusions our proposed methods over other existing ones.
+ Acknowledgments under grant number 2012AA011003.
+ Appendix A. A snapshot of collective viewpoints
+References

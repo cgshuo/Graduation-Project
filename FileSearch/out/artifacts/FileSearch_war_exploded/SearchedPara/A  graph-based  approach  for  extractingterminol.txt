@@ -1,0 +1,189 @@
+
+Nowadays, much of the stored electronic data, such as HTML, SGML and XML all data handled by DBMSs consists in having a well-defined structure. On the con-known structure and, even when this is known, it may change frequently over time (Abiteboul 1997; Abiteboul et al. 1997; Abiteboul and Vianu 1997; Buneman 1997; al. 1997; Papakonstantinou et al. 1995; Quass et al. 1995; Suciu 1998; Tresch 1995).
+Structured information sources, such as dat abases, can be considered as a particular can be generalized to the larger context of semistructured data. Obviously, they can be exploited only as guidelines becau se the context is much more general. exploited above all for defining the semantics of involved schemes and, then, for in-tegrating heterogeneous information sources, for designing techniques for converting the context of semistructured data (Suciu 1998).
+ source properties between concepts belonging to both structured and semistructured onymies and homonymies; a synonymy between two concepts, C that they have the same meaning; an homonymy between two concepts, C indicates that they represent different meanings yet have the same name. In order to of the semantic relationships holding between concepts belonging to an information source.
+Our conceptual model is obtained by associating a network, Net Network (Semantic Distance-Relevance Net work), with each information source S .
+Net ( S ) has a node for each concept in S .Arcsin Net arc from x to y , the label l xy consists of a pair semantic distance coefficient between x and y , whereas r relevance coefficient of y w.r.t. x . d xy indicates how much the concept expressed with x . r xy indicates the fraction of insta nces of the concept denoted by x for which by y (see, below, Sect. 2 for more details about these two coefficients).
+The technique for extracting synonymies and homonymies takes a set of semi-structured information sources as input and returns a Synonymy Dictionary, SD ,and an Homonymy Dictionary, HD . Derived properties are fuzzy and are represented as triplets A , B , f ,where A and B are the involved concepts and f is a fuzzy
+Our technique takes some ideas from Palopoli et al. (2003), where we pro-posed to exploit concept neighbourhoods for deriving synonymies and homonymies bourhoods of involved concepts is fundamental in a semantics-guided extraction of neighbourhoods. The influence of the similarity between the neighbourhoods of C noted by nbh ( x , i ) ,asthesetofarcsin Net ( S ) whose target node has a semantic distance from x greater than or equal to i and lesser than i creasing weighting succession { p ( i ) } is associated with neighbourhoods of x so that the farthest neighbourhoods will have the lightest weights.
+
+Intuitively, our approach for the detection of synonymies and homonymies associ-ated with two semistructured information sources S 1 and S steps:  X  account only lexical similarities and the nearest neighbourhoods; they are used as the basis for obtaining the actual properties.  X 
+Computing, for each pair of concepts C l  X  S 1 and C m  X  S with a maximum-weight matching on a suitable bipartite weighted graph defined from concepts of nbh ( C l , i ) and nbh ( C m , i ) .  X 
+Computing the overall similarity degree of C l and C m as a weighted mean of the similarity degrees between the various neighbourhoods of C are the elements of the succession { p ( i ) } described above.  X 
+Obtaining synonymies (respectively, homonymies) from derived similarities by taking those ones having a plausibility coefficient greater than (respectively, lesser than) a certain, dynamically computed, threshold th Syn for deriving intersource properties can be useful in several application contexts such as:  X 
+Information Source Integration . This is the activity of constructing a global rep-resentation of a set of independently de veloped information sources (Batini and
+Lenzerini 1984). Because these last have been produced by designers operating independently on each other, they can pres ent various forms of heterogeneities. As a consequence, their integration requires a common conceptual model and  X  Semantic Query Processing . In this case, the user specifies a query and the sys- X  E-commerce . In this application context, intersource properties could be exploited  X  Data and Web Warehouses . A data or a Web warehouse is a decision-support  X  Advanced Web Searching . Nowadays Web search engines generally are not able user profiles and to define an approach exploiting constructed profiles for filtering information sources returned by the engine, thus providing more precise results (see Palopoli et al. (2001) for all details).
+The plan of the paper is as follows. In Sect. 2, we describe the SDR-Network con-ceptual model. In Sect. 3, the rules for constructing an SDR-Network from an XML document are illustrated. Section 4 illustrate s our approach for extracting synonymies and homonymies. Section 5 describes a complete example of the proposed approach. clusions.
+In this section, we present our SDR-Network conceptual model. Given an information source IS , the associated SDR-Network Net ( IS ) is a rooted labeled graph: identified by the name of the con cept it represents. Nodes in NS in two subsets, namely the set of atomic nodes , NS erwise. Because an SDR-Network node represents a concept, from now on, we use the terms SDR-Network node and concept interchangeably.
+ cepts. More specifically, an arc from S to T , labeled L ST indicates that the concept represented by S is semantically related to the concept de-of the arc.
+ The label L ST is a pair [ d ST , r ST ] , where both d interval [ 0 , 1 ] . d ST is the semantic distance coefficient , whereas r relevance coefficient . d ST indicates how much the concept expressed by T is seman-concept associated with T to characterise the concept associated with S .Asanex-another entity E 1 related to E by a relationship R . Analogously, in an XML docu-ment, a subelement E 1 of an element E is closer to E than another element E which E refers to through an IDREF attribute. r ST indicates the fraction of in-stances of the concept denoted by S of which complete characterisation requires at least one instance of the concept represented by T .
+ An example of an SDR-Network associated with a university is shown in Fig. 1. onto the corresponding white node having the same name x . SDR-Network nodes dents attend at least one exam. In the same way, the arc Student , ID , to introduce some definitions that play a cru cial role in our approach for intersource property extraction. All the definitions we introduce below assume that an informa-tion source IS and the associated SDR-Network Net ( IS given.
+
+Definition 2.1. Define the path semantic distance of a path P in Net path.
+Definition 2.2. Define the path semantic relevance of a path P in Net the path.
+
+Definition 2.3. A D _ Pa th n is defined as a path P in Net ponding path semantic distance is greater than or equal to n and less than n
+Definition 2.4. Define the CD_shortest_path (conditional D_shortest_path) N between two nodes N and N in Net ( IS ) and including an arc A as the path having the minimum path semantic distance among those connecting N and N and includ-ing A . If more than one of these paths exist, one of those having the maximum path semantic relevance is taken as N , N A .
+ Definition 2.5. The i _ th neighbourhood of a node x  X  x to y , including z , y , L zy , which is a D _ path  X  nbh ( x , j ), j &lt; i . Also, note that x might coincide with z .
+Proposition 2.1. Let x be a node of Net ( IS ) . Then, for each i implies that (  X  j &gt; i )( nbh ( x , j ) = X  ) .
+
+Proof. Immediate from the Definitions 2.3 and 2.5 and by noting that the semantic distance coefficient associated with an arc is nonnegative .
+
+Proposition 2.2. Let x be a node of Net ( IS ) and let i such that nbh ( x , i ) = X  .Then 0  X  j  X  ( k  X  1 ) nbh ( such that 0 &lt; k  X  i.
+
+Proof. Immediate from Proposition 2.1 and by noting that an arc belongs to nbh only if it does not belong to nbh ( x , j ) for all j An example will help in illustrating the presented concepts. Example 2.1. Consider the node Student of the SDR-Network reported in Fig. 1.
+The neighbourhoods associated with this node are as follows:
+For instance, the first arc belongs to nbh ( Student , 0 ) is a D _ Pa th 0 and Student = ID . The other arcs of nbh analogously.
+For instance, the arc A = Course , Student _ Number nbh ( Student , 1 ) because Student , Student _ Number A is a D _ Pa th
+Student _ Number . The other arcs of nbh ( Student , 1 cepts and a set of relationships among them. Because SDR-Network nodes and arcs SDR-Network. Rules for obtaining an SDR-Network from an OEM graph or an
+E /
+R scheme have been also defined; however , due to space constraints, they are not available at the address http://www.mat.unical.it/terracina/kais04/
+Appendix.pdf . document. Independently of the specific source format, the construction of the SDR-the SDR-Network arc labels .
+ ponding DTD. This produces a speed up for the construction process; however, it is
+Network can be inferred directly from the XML document with some additional computational costs.
+Recall that the set NS ( D ) of nodes of the SDR-Network Net an information source D , is the union of two sets, NS NS C ( D ) denotes complex nodes, whereas NS A ( D ) indicates atomic nodes.
+NS C ( D ) is obtained from a nonterminal eleme nt of the DTD. Vice versa, each node with the following exceptions: 1. IDREF and IDREFS attributes have no associat ed node because they denote links
+Note that all nodes in NS ( D ) can be obtained by examining the DTD only.
+In this section, we illustrate how the set of arcs AS tively, an attribute) of D and the corresponding node in Net
+AS ( D ) is the union of the sets AS N ( D ) and AS R ( D called nesting arcs , are obtained from nesting relationships. An arc S and IDREFS . Therefore, AS N ( D ) can be obtained by examining the DTD only. Arcs belonging to AS R ( D ) , called reference arcs , are derived from IDREF and
+IDREFS attributes. In particular, given an IDREF or an IDREFS attribute of an erence arc from the SDR-Network node S to the SDR-Network node T . Because IDREF and IDREFS attributes are untyped, only the source nodes of the arcs of AS ( D ) can be derived from the DTD; for determining the target nodes, we clearly need to analyse the data component, that is, the XML document. following, we use the term concept to indicate an element or an attribute defined in a DTD and we call objects the corresponding instances represented in the associated XML document.
+
+Definition 3.1. Let D be an XML document. An object O is a component of an element E and E is a subelement of E or (ii) O is the instance of an element E and O is the instance of an attribute A of E .
+
+The function comp ( O ) can be easily defined, that, given an object O , returns the set of its components.
+
+Definition 3.2. Let D be an XML document and let Net
+SDR-Network. Let N be a node of Net ( D ) .The XML-Assoc-ObjSet of N is the set of instances of the concept from which N has been derived
+Consider now the following sets of nodes:  X 
+NS S denoting the XML-Assoc-ObjSet of S ;  X 
+NS T denoting the XML-Assoc-ObjSet of T ;  X  O  X  NS T , O  X  comp ( O i ) .
+
+The semantic distance coefficient d ST for S and T is defined as: where a consequence, the semantic distance associated with it is 0. A terminal subelement directly defines the concept associated with it; vice versa a nonterminal subelement defines the concept associated with it by means of the set of its subelements. Thus, given an object O (belonging to RNS S , T ), a terminal subelement O (belonging to both NS T and comp ( O )) is semantically closer to O than a non terminal subelement
+O (belonging to both NS T and comp ( O ) ). Moreover, if two or more terminal subele-ments with the same name are components of the same element O , we can conclude whereas they, as a whole, do specify this pr operty. In this case, the semantic distance defined for single-terminal elements and nonterminal ones. IDREF and IDREFS attributes generally represent relationships between elements; thus, the semantic dis-tance between an element O ,havingan IDREF or an IDREFS attribute, and the elements.
+ concept represented by T .
+ property.
+Property 3.1. The semantic relevance coefficient r ST is equal to 1 when either T is a REQUIRED attribute, or T is an attribute having a default value or T is a subele-ment that an operator + is associated with in the DTD.
+
+It is now possible to determine the computational complexity relative to the con-struction of an SDR-Network from an XML document.
+ Property 3.2. The worst-case time complexity for constructing an SDR-Network
+Net ( D ) from an XML document D is quadratic in the number of instances of D . instances of D .
+
+Note that, in order to construct an SDR-Network from an XML document, no based only on the structure of both the DTD and the corresponding XML document; therefore, they can be automa tically executed by a parser.
+ This closes our discussion about the construction of an SDR-Network from an section is presented.
+As pointed out in the Introduction, the specific features of the SDR-Network concep-formats to SDR-Network, the method outlin ed below can be adopted for extracting intersource properties holding for information sources characterised by heterogeneous formats.
+
+The proposed technique for extracting synonymies and homonymies associated cally derived either from a standard thesaurus, such as Wordnet (Miller 1995), or by
+Lexical synonymies are represented as triplets of the form S are concept names and f , belonging to the real interval studying the sensitivity of our approach w.r.t. errors occurring in LSPD plausibility coefficients; the results we have obtained are presented in Sect. 7. sociated with IS 1 and IS 2 , have been constructed and provided in input to our tech-nique. The functions illustrated below have Net ( IS 1 ) , Net parameters.
+ between SDR-Network nodes. Moreover, because both a concept and the corres-ponding SDR-Network node have the same name, we use this latter to refer to them interchangeably.
+ 1. Phase 1: Computation of basic similarities. For each pair of nodes N 2. Phase 2: Computation of refined similarities. For a generic pair of nodes N 3. Phase 3: Derivation of synonymies and homonymies. Synonymies (respectively, This phase receives two SDR-Networks, Net ( IS 1 ) = NS ( = NS ( IS of the form N l , N m , f lm ,where N l and N m are the involved nodes and f basic similarities are stored in a Basic Similarity Dictionary ( BSD ). Before describ-ing how BSD is obtained, we need to introduce the following support functions:  X  AN _ Set ( N ) , which takes an SDR-Network node N as input and returns the set  X 
+C _ AN _ Set ( N l , N m ) , which receives the two nodes N
+Net ( IS 2 ) and returns true only if both the conditions ( AN _ Set ( N
+BSD construction is performed by the function  X  . For each pair of nodes N longing to Net ( IS 1 ) ,and N m , belonging to Net ( IS 2 where g lm is a weighed mean of values returned , respectively, by the function of atomic nodes directly connected to N l and N m . More formally, follows 3 :
+Function  X  pq .  X  pq ( N l , N m ) takes two nodes N l and N used to weigh the results obtained by functions  X  p pends on the presence of a lexical synonymy between the names of N on the existence of atomic nodes directly connected to both N  X  is defined as follows:
+Note that, if either N l or N m are atomic nodes, then the basic similarity associated with N l and N m is a function of the lexical similarity alone.
+Function  X  p .  X  p ( N l , N m ) receives two nodes, N l denoting the plausibility that the lexical synonymy between names of N holds.  X  p is as follows:
+Function  X  q .  X  q ( N l , N m ) takes two nodes N l and N denoting the similarity between AN _ Set ( N l ) and AN _ Set this task,  X  q constructs a weighed bipartite graph G ( N pair ( N each pair of nodes u i  X  U and v j  X  V , we must take into account both the similarity coefficients of u i and v j and the semantic relevance of u (respectively, N m ).  X  q is as follows: Function  X  .  X ( N , Net ( IS )) receives a node N and the corresponding SDR-Network
+Net ( IS ) and returns a set of pairs ( N i , r i ) such that N the semantic relevance coefficien t associated with the arc connecting N to N defined as
+Function  X  .  X ( PS l , PS m ) takes two sets of pairs PS | p fictitious nodes must be meaningless, so that no LSPD tuple can refer to them. function associated with a maximum-weight matching, as explained next. The inputs pairs, PS l ={ ( N l 1 , r l 1 ),... , ( N l p , r l p ) } returned by the function  X  . The output is a value in the real interval  X  U is a set of nodes; the node u  X  V is a set of nodes; the node v  X  E is a set of edges; in particular, there is an edge for each pair each node x  X  ( U  X  V ) , there is exactly one edge of E incident onto x and (for algorithms solving the maximum-weight matching problem, see Galil (1986)). matching, is exactly  X ( E ) .
+ hoods of two nodes N l and N m , the contribution of the similarity degree s
+N i , being the target node of an arc belonging to the neighbourhood of N being the target node of an arc belonging to the neighbourhood of N tation of the similarity degree of N l and N m , is directly proportional to the semantic relevance r ij of the pair of nodes N l i and N m j w.r.t. the pair of nodes N This phase works on two SDR-Networks, Net ( IS 1 ) = NS ( = NS ( IS constructs a Refined Similarity Dictionary, RSD , by refining the basic similarity de-gree associated with each tuple N l , N m , f lm  X  BSD .
+ stored in BSD ,thatis 5 , fixpoint computation  X   X  is defined as
+Now, given an information source IS and the associated SDR-Network Net
+NS ( IS ), AS ( IS ) ;let K ( IS ) be the minimum integer such that K
+NS (
+IS ))( nbh ( x , K ( IS )) = X  ) (by Propositions 2.1 and 2.2, K the following proposition can be stated:
+Proposition 4.1.  X   X  ( T ) =  X  K ( T ) ,where K = max ( K Proof. Immediate .
+
+The base functor  X  of the fixpoint computation  X   X  takes a set T of triplets and an integer i as inputs and returns the modified T . It is encoded as follows:
+N and N m , refined at step i , and is defined as follows: ther neighbourhoods have to influence the similarity of N neighbourhoods.
+
+Function  X  .  X ( T , N l , N m , i ) determines the similarity degree of nbh nbh ( N with the maximum weight matching on a suitable bipartite graph, obtained from the target nodes of the arcs belonging to nbh ( N l , i follows: where functions  X  and  X  are as illustrated in Sect. 4.2.1.
+Function  X  .  X  ( N , i ) is similar to the function  X  an SDR-Network node N and an integer i and returns a set of pairs that N j is the target node of an arc belonging to nbh semantic relevance of N j w.r.t. N , Function . ( P ) takes a path P of an SDR-Network as input and computes the
+Path Semantic Relevance of P (see Definition 2.2). This phase receives two SDR-Networks, Net ( IS 1 ) = NS ( = NS ( IS phase 2; it derives synonymies and homonymies holding for Net synonymy (respectively, the homonymy) of N l and N m (i.e., the synonymy or the homonymy between the concept of IS 1 associated with N associated with N l and N m , with a suitable, dynamically computed, threshold th the Synonymy Dictionary, SD (respectively, Homonymy Dictionary, HD ). out by a function  X  Syn (respectively,  X  Hom ) 6 , where: Here the threshold th Syn ( T ) (respectively, th Hom ( max ( f max  X   X  Syn , th Syn m ) (respectively, th Hom ( T  X  f  X   X 
+We have experimentally set  X  Syn = 0 . 55, th Syn m = 0 0 . 27.
+The section is organised as follows: Subsect. 5.1 is devoted to presenting an example of the construction of an SDR-Network from an XML document. Subsection 5.2 il-lustrates an example of the extraction of synonymies and homonymies from two het-erogeneous information sources; more specifically, the three phases of our extraction 5.2.2 and 5.2.3, respectively. Network from an XML document.
+
+Consider the DTD shown in Fig. 2, describing an XML document about a uni-DTD of Fig. 2 (we call this document U XML in the following).
+The SDR-Network U XML SDR associated with U XML is depicted in Fig. 1. To illus-trate:  X  Elements Professor , Phone , e-mail , Project , Paper , Course , Year , Student_Number , Argument , Student , Address , Thesis , Title ,
+Topic , Exam , Date and Grade are represented by SDR-Network nodes.  X  Attributes ID , Name , Birthdate , Birthplace , Starting_Date ,
+Ending_Date , Type , Volume , Pages and Enrollment_Year are also represented by SDR-Network nodes. Note that two or more attributes having the same name (e.g., ID ) are represented by a unique SDR-Network node.  X 
+There is a nesting arc between Professor and Phone because Phone is a subelement of Professor . Similarly, there is a nesting arc between
+Professor and Name because Name is an attribute of Professor . All the other nesting arcs are obtained analogously.  X 
+The IDREFS attribute Teaches_in generates a reference arc from Professor to Course . Analogous arcs are generated by the other IDREF and IDREFS attributes.  X  The semantic distance coefficient associated with the arc from Professor to
+Phone is 0.38. Indeed, Phone is a terminal subelement of Professor ;the first instance of Professor has only one Phone instance and, consequently, the value of the function  X  xml is 0.25; the second instance of Professor has two Phone instances and, consequently, the value of the function the mean of these values, that is, the sema ntic distance coefficient of the arc from
+Professor to Phone , is 0.38. All the other semantic distance coefficients are obtained analogously.  X 
+The semantic relevance coefficient associated with the arc from Course to Year other semantic relevance coefficients are computed.
+
+In this section, we show an example of our approach for extracting synonymies and homonymies from heterogeneous information sources.
+ in Figs. 2 and 3, and the OEM Graph U OEM , illustrated in Fig. 4. has been illustrated in the previous section. The SDR-Network U U appendix of this paper available at the address http://www.mat.unical.it/ terracina/kais04/Appendix.pdf . Observe that both U XML SDR resent a university. The LSPD associated with them is shown in Table 1. homonymy extraction approach is described in a subsection.
+The BSD relative to U XML SDR and U OEM SDR is constructed by calling city, we show next just how  X () operates on the pair of nodes Professor of U (hereafter Pr [ OEM ] )and Professor of U XML SDR (hereafter Pr moreover, because C _ AN _ Set ( Pr [ OEM ] , Pr [ XML ] ) = 0 . 5.
+Here
+Because the cardinalities of  X ( Pr [ OEM ] , U OEM SDR ) and tion  X  does not add any fictitious node.
+
+Function  X  first constructs a bipartite graph, as explained in Sect. 4.2.1, and then computes the associated maximum wei ght matching. In this case, selected edges are basic similarities associated with U OEM SDR and U XML
+Sect. 4.2.1).
+We illustrate next the construction of the Refined Similarity Dictionary, RSD , asso-ciated with U OEM SDR and U XML SDR . Recall that RSD =  X   X  ( As for nodes Professor of U OEM SDR and Professor of U XML
+Pr  X  ( BSD , Pr [  X  0 . 91. Here and in the following, we choose p ( i ) = 1  X (
+Because the cardinality of  X  ( Pr [ OEM ] , 0 ) is equal to that of  X  adds no fictitious node. Function  X  constructs a suitable bipartite graph and then forming the maximum-weight matching is The fixpoint computation goes on by computing  X  2 ( the considered nodes, we have  X  p ( X  1 ( BSD ), Pr [ OEM  X ( X  1 ( BSD ), Pr [  X ( X  1 ( BSD ), Pr [ where Thus, the computation of  X  returns  X ( X  1 ( BSD ), Pr [ therefore,  X  p ( X  1 ( BSD ), Pr [ OEM ] , Pr [ XML ] , 0 . 0 . 79.
+ for j &gt; 3, whereas nbh ( Pr [ XML ] , j ) = X  for j &gt;  X  ( X  1 ( BSD ), Pr [ with the similarity degree of Professor of U OEM SDR and Professor of U SDR-Networks U OEM SDR and U XML SDR are computed.
+
+We illustrate now the construction of the Synonymy Dictionary, SD , and the Homo-nymy Dictionary, HD , associated with U OEM SDR and U XML
+As far as  X  Syn is concerned, we have
+For this specific pair of SDR-Networks, HD is empty. In this section, we illustrate the computa tional complexity underl ying our approach. number of nodes of the associated SDR-Networks Net ( (respectively, n 2 ) be the number of nodes of Net ( let n = max ( n 1 , n 2 ) .
+
+Recall that our approach consists of three phases, namely (i) basic similarity computation, (ii) refined similarity computation, (iii) synonymy and homonymy der-ivation. In the following theorems, we first give the computational complexity of the three phases and then summarize the overall complexity of the approach. Theorem 6.1. The worst-case time complexity of basic similarity computation is
+O ( n
+Proof. For each possible pair of nodes [ N 1 i , N 2
+N  X  NS ( IS  X 
+A bipartite graph is constructed from the atomic nodes reachable from N
+N 2 j through one arc; the cost of this task is O (  X 
+A maximum-weight matching on the thus constructed bipartite graph is com-puted; this costs O ( n 3 ) .
+
+Because the possible pairs of nodes [ N 1 i , N 2 j ]
+NS ( IS 2 ) is O ( n 2 ) , the overall cost of the computation is O Theorem 6.2. The worst-case time complexity of refined similarity computation is
+O (
+Proof. The computation proceeds as follows: 1. All node neighbourhoods are determined; the worst-case time complexity of this 2. A fixpoint computation  X   X  is carried out; by Proposition 4.1, 3. For each step of  X   X  ,
+Thus, overall, the computation of refined similarities costs O
+Theorem 6.3. The worst-case time complexity of synonymy and homonymy deriva-tion is O ( n 2 ) .
+ Proof. Immediate.
+
+Theorem 6.4. The worst-case time complexity of the overall approach for deriving synonymies and homonymies is O ( n 6 ) .
+
+Proof. Immediate from Theorems 6.1, 6.2 and 6.3.
+LSPD errors. Recall that the plausib ility coefficients associated with LSPD entries are defined with the support of the human expe rt; as a consequence, some possible errors might occur therein. We have consid ered various error scenarios and, for each of them, we have measured some parameters, namely maximum increment , mean variation and maximum decrement in returned plausibility coefficients, changes of dynamically computed and that all coefficients belong to the real interval fraction of differences in the intersource property derivation caused by the presence of errors associated with the scenario in consideration.
+ centage of wrong LSPD coefficient entries equal to (i) 10%, (ii) 30%, (iii) 50% of mates of 40%; (e) half of the wrong entries are underestimates of 20% and half of sidered the following cases: (iv) 10% of entries are underestimates of 20%, 10% of them are underestimates of 40% and 10% of them are underestimates of 60%; (v) 10% of entries are overestimates of 20%, 10% of them are overestimates of 40% and 10% of them are overestimates of 60%; (vi) 30% of entries are underestimates of 60%; (vii) 30% of entries are overestimates of 60%.
+ (iii) ). Table 7 shows results obtained for the last four cases.
+The results of our experiments show that our approach presents good stability that, when some limited errors occur in the LSPD , the consequent differences in de-rived intersource properties are generally quite small. Clearly, when errors in defin-ing plausibility coefficients become more numerous and significant in magnitude, the implied differences in the intersource property extraction become unacceptable.
+A second series of experiments has been carried out for verifying soundness and completeness of our approach. In particular , we have applied it on several information sources; in this case, no LSPD error has been considered. The corresponding results have been compared with those provided by human experts who manually examined occurs, results about both soundness and completeness are particularly satisfying. variations of soundness and completeness caused by the presence of errors in LSPD
+LSPD entries causes a completeness increase but, conversely, a significant soundness decrease. the SDR-Network approach with the other conceptual models already proposed in the literature for representing and handling information sources characterised by het-erogeneous data representation formats. After this, we compare our approach for deriving intersource properties with various related ones proposed in the past. handling information sources characterised by different data representation formats. Most of these models have been conceived mainly for supporting querying activity.
+Only a small number of them have been proposed with the main purpose of support-belongs to this latter group.
+
+An interesting conceptual model capable of handling various information source formats has been introduced in the context of the Lore project (Goldman et al. 1999). representation of instances included i n XML documents whereas the SDR-Network is an intensional model, i.e., it is mainly concerned with concepts represented within information sources and their relationships.
+ In Lore, given an XML document, it is possible to obtain a summary called DataGuide (Goldman and Widom 1997). DataGui des have some analogies with SDR-
+Networks in that they are intensional graph-based models; however, they do not versa, the SDR-Network uses both the semantic distance and the semantic relevance coefficients to summarize some information about instances.
+ formation sources having different formats. This model represents data by using an edge-labeled graph, called graph database ; a scheme is represented by a graph where vides methods for verifying if either a gra ph database or one of its fragments conform to a graph schema as well as for obtaining subsumption and equivalence relationships on graph nodes. The conceptual model of Buneman et al. (1997) and Calvanese et given an information source S , the corresponding SDR-Network is unique and cap-graph schemas can be associated with it because each graph schema is meant to offer multiple hints to a query optimizer.
+
+In Comai et al. (2001) the XML-GDM conceptual model is described. This is a graph-based model allowing representation of either an XML document or the cor-responding DTD. In particular, XML-GDM supplies a graphical construct for repre-XML-GDM is precise and expressive. The re are some differences between XML-
+GDM and the SDR-Network. First, XML-GDM comprises two separate graphs for representing extensions (i.e., XML documents) and concepts (i.e., the corresponding
+DTDs); vice versa, the SDR-Network contemporarily stores both extensional and information in XML-GDM makes it unable to represent some useful information; as an example, it is not capable of handling IDREF and IDREFS attributes in the graph associated with the DTD.
+ pressive power as opposed to the SDR-Network (except that plausibility factors are viewpoint.
+A classic approach for deriving semantic sim ilarities and dissimilarities between con-automatic and semantic .
+ ceived for supporting information source integration and querying; MOMIS follows a semantic approach to intersource property extraction based on both an intensional mon object-oriented data model used for handling involved information sources; (ii) a set of wrappers for translating scheme descriptions in the common data model;
+ARTEMIS (Castano et al. 2001) and ODB-Tools (Beneventano et al. 1997). In order to derive intersource properties, MOMIS constructs a Common Thesaurus playing the role of a shared ontology for them. The constructed structure is exploited to de-between the approach of MOMIS and our own; more specifically, (i) the concep-derivation task in MOMIS is a cluster pr ocedure, whereas we exploit maximum-weight matchings.
+ source properties is presented. It is based on a model, called ODL of both handling information sources having different formats and representing both the SDR-Network, which supports the extraction of intersource properties but does not supply a construct for representing them. Both the technique described in Berga-(Miller 1995), storing lexical similarities. Intersource properties, derived by exploit-plausibility coefficient; this marks an important difference with our approach.
+In Madhavan et al. (2001) Cupid, a system for deriving intersource properties among different information sources, is presented. The approach is mainly based on matchings. The approach underlying Cupid and our own share some characteristics. based techniques for representing source schemes, (iii) derive intersource properties, instances associat ed with each concept.
+
+Haas et al. (1999) describes the system Clio , conceived for supporting the semi-scribing column-level value correspondences. The system then selects enough func-clauses to tie together sources that supply input to the functions. As for differences between Clio and our approach, we observe that the former works at the extensional user to supply initial correspondences, whe reas our approach requires the support of a standard thesaurus.
+
+In Doan et al. (2001), an approach, called LSD (Learning Source Description), for carrying out scheme matching activities is proposed. LSD exploits machine learn-for other differences between LSD and our approach, we observe that  X 
+LSD requires quite a heavy support of the user during the initial phase, for required. Vice versa, our approach requires a minor human intervention during the preprocessing phase but needs a further intervention at the end for validating obtained results.  X 
+LSD operates on XML documents, whereas our approach is capable of repre-senting and handling several information source formats.
+
+In Mitra et al. (1999), the system SKAT is presented. SKAT exploits first-order tionships and then validates generated matches. SKAT approach is similar to our own in that it is semiautomatic, exploits graphs to represent information sources, and looks define term-based matching rules. The ma in differences between the approach imple-
+Web sources consists of one node per Web page, whereas we derive one graph rep-resentation for each Web document; in this way, we are able to obtain more refined representations of involved sources. SKAT exploits first-order logic rules to express derived matchings; this allows it to represent possibly complex relationships between concepts. However, in SKAT, a heavy intervention of human experts is necessary in only for validating automatically derived matchings.
+ among XML documents. An XML document is translated into a set of elements, called x-classes ; this representation allows the derivation of synonymies, homonymies and type conflicts existing among concepts belonging to different sources. The know-ledge of these properties is then exploited for carrying out the integration task. Both the approach described in Castano et al. (2002) and our own are rule based and ob-tain accurate results by considering concep t semantics. However, the two approaches (2002) works only on XML documents, whereas SDR-Networks allow handling sev-Castano et al. (2002) is heavier than that needed in our case. scheme match operation appearing quite close to our intersource property extraction determining the semantic similarity of two concepts.
+ formalism named HDG. Then, obtained HDG graphs are integrated; such a task belonging to different sources; in particular, Lim and Ng (2001) defines the relation-ship , indicating if a concept is a hypernym or an ancestor of another. The global intersource properties they handle, they shar e various similarities; indeed, (i) both of ceptual model; (iii) both of them exploit a lexical dictionary, in particular WordNet; (iv) both of them are almost automatic; (v) both of them handle various information source formats.
+In this paper, we have proposed a semiautomatic technique for extracting synonymies and homonymies between concepts of inform ation sources characterised by different duced a new conceptual model and a related metrics for representing both concepts belonging to semistructured information sources and their semantic relationships.
+We have also determined the computational complexity of our approach, we have performed some experiments for measuring its performances and, finally, we have compared it with the related methods pr eviously proposed in the literature.
+As far as the present and the future work is concerned, our research efforts will to various e-services.
+

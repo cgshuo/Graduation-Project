@@ -1,0 +1,114 @@
+ 1. Introduction first want to look at a short summary (about 50 X 100 words), and then request the full article if interested.
+Radev,Hovy,andMcKeown(2002) definea documentsummaryas  X  X  X textthat isproducedfromoneormore texts,that con- X  input text, which can then be used to extract summary sentences.
+
+The main contributions of this work are: (1) We cast the Wikipedia-based summarization problem into a general sen-problems.
+ evaluation are presented in Section 6 , and the paper is concluded in Section 7 . 2. Related work
+A few recent efforts have leveraged Wikipedia for summarization tasks. dence and also utilize the entire graph structure for ranking sentences. by connecting sentences based on word overlap, and they do not leverage knowledge bases like Wikipedia.
+Thus,weseethattherearetwoparallellinesofwork:onethatleveragesWikipedia,butdoesnotutilizegraph-basedranking 3. Research objective
+Our aim in this work is to consider graph-based summarization in conjunction with Wikipedia. The specific research metric, and also directly by involving the user.
+ improve summary quality.
+
+Let us now start with Wikipedia-based single document summarization. 4. Single document summarization 4.1. Mapping sentences to Wikipedia concepts et al., 2006 )). For this purpose, the entire Wikipedia corpus is indexed using the Lucene engine. query ( X  X  X its X  X  in Lucene terminology). These hits are precisely what are referred to as Wikipedia concepts . effect of such generic concepts, which in turn helps motivate our iterative sentence ranking algorithm. set of nodes representing the Wiki concepts. An edge between a sentence node and a concept node indicates a mapping 2, 3 and 4 in this example map to multiple sentences. 4.2. Sentence ranking look at two natural approaches for this purpose, and see why they are not directly applicable here. which in turn affects the uniqueness of the summary.
+
+Perhaps a moreintuitive approach wouldbetoselect sentencesthat map tothemost X  X  X mportant X  X  X oncepts. However, itisnot their content) would then drastically alter the summary.
+ summary generation.
+ purposes, and is not intended to resemble sentence X  X oncept mappings that are encountered in practice. where z j represent the Wiki concepts, and where each z i 1 ; z i 2 ; ... ; z i m and Z 3  X f z 2 ; z 4 ; z 5 g .
+ where each s j 1 ; s j 2 ; ... ; s j n
+With these preliminaries, it is now natural to view the summarization problem as that of selecting the best U ever, we also require the following incremental summarization property:
+R
+R d  X  1 for each d &lt; n , and the incremental index r d  X  1 More details on our experimental setup are provided in Section 6.4 , along with results from a user study. algorithm 5 based on iterative updates, and study its convergence properties.
+Let G denote the bipartite sentence X  X oncept graph. Our goal now is to rank the sentence nodes s ever, there is no apriori notion of  X  X  X mportance X  X  among the Wiki concepts z to the importance of the sentences themselves: one determines the other in a mutually reinforcing manner.
+We thus proceed to rank sentences using iterative updates on G . Let us associate a score x y with concept z j , corresponding to iteration k . The updates for iteration k  X  1 are as follows: tion, so that P i 2N x  X  k  X  i 2  X  1 for each k . The pseudocode now follows: Input: Sentence X  X oncept mapping G
+Output: Sentence/concept scores and ranks 1: Initialize x  X  0  X  i  X  1 = 2: for k  X  0to K 1 do 6: end for 7: Rank sentences in descending order of scores r  X  arg descend x The number of iterations K can either be fixed, or can be arrived at using a stopping criterion, for e.g.
+P 5 to 10 iterations. In fact, the following result holds under a minor assumption: n m biadjacency matrix corresponding to the sentence X  X oncept mapping.
+ define g ij  X  1 if the i th sentence is mapped to the j th concept, and g sentence X  X oncept mapping. For the example shown in Fig. 2 , we have n  X  3 ; m  X  5, and G  X  proof relies on standard results from linear algebra, and is completed in Appendix A. h x  X  1  X   X  0 : 54550 : 63640 : 5455  X  X  T ; at the end of the second iteration x  X  2  X   X  X  0 : 54210 : 64200 : 5421  X  to the principal eigenvector of GG T , which is  X  0 : 54180 : 64260 : 5418  X  highest.
+ The convergence of concept scores follows similarly: serves to illustrate the sentence X  X oncept coupling through the mutual reinforcements. Proposition 3 below, and Appendix B ) that have significance for Wikipedia-based summarization. optimization problem. The proof is again deferred to Appendix A.
+
+Proposition 3. Let x H be the solution to the following optimization: where k : k denotes the L 2 -norm. Then lim k !1 x  X  k  X   X  x H .
+ maximize the square-sum of concept scores. 7 dominant eigenvector of G T G . The details are given in Appendix B . 4.3. Extracting the summary
+The output of Sentence Ranker 1 is the vector of ordered indices r  X  arg descend x
+R d  X  r 1 ; r 2 ; ... ; r d fg denote the set of d leading indices in r . Then, the d -sentence summary is given by U second requirement is that the incremental index r d  X  1  X R n . This is true under a reasonable assumption that r is precomputed.
+Thus, longer summaries can be generated incrementally by simply adding sentences to shorter summaries. However, in usually set to 50 or 100 words. Let l  X  s i  X  denote the length, in words, of sentence s the word-incremental summarization property as follows:
+Definition 2. Let U d  X f s i : i 2R d g denote the d -word summary, where R incremental summarization property if R d # R d  X  d for every d &gt; 0, d &lt; computable in time independent of d and n .
+ Constructing the d -word summary U d requires solving the following optimization problem: dynamic programming. However, the resulting solution does not satisfy the word-incremental summarization property.
+Hence, we take recourse to the following greedy approximation It can be verified that R d # R d  X  d for every d &gt; 0 ; d &lt; constraint. 4.4. Incorporating concept significance
+Thus far, we have assumed that the sentence X  X oncept mappings are binary, i.e., g tinguish the strength of Wiki concept mappings using real-valued g represent the estimates of conditional probabilities P  X  z
+The question now is how to derive the mappings P  X  z j j s turned Lucene weights can directly act as estimates for P  X  z former approach, but either way, the entries g ij can now be set to the estimated P  X  z
+With this approach, the sentence X  X oncept mappings are no longer undirected. The probabilities P  X  z h the iterative updates take the following form: with the initialization x  X  0  X  i  X  1 = ffiffiffi n p as before. The h ij can be estimated using Bayes X  rule: P  X  s i j z j equally likely to contribute towards the summary), then P  X  s of Theorem 1 and Proposition 3 carry over.
+
+However, the apriori probabilities may not always be equal. For e.g., the concept probabilities P  X  z vector in the direction of  X  HG T  X  k x  X  0  X  . By setting A  X  HG and similarly
+Thus, we find that A is symmetric (i.e., a ij  X  a ji )if P  X  s sentence mappings, respectively, and let A  X  HG T .IfP  X  s x  X  k  X   X  x  X  k  X  1 x  X  k  X  2 ... x  X  k  X  n T converges to the principal eigenvector of A.
+Proposition 5. Let x H be the solution to the following quadratic optimization problem:
+Remark 3. Theorem 4 and Proposition 5 hold even when the entries h to-concept and concept-to-sentence mappings. The only requirement is that A  X  HG required here that G T H be symmetric.
+ the first few sentences typically lead with the headlines and the main story. In such cases, the P  X  s according to the position of sentence s i . The iterative updates evolve as before in (6) , but the matrix A  X  HG verge under a minor restriction. We require the following definition in order to proceed:
+Definition 3. Let A be an n n matrix with non-negative entries a n is referred to Seneta (1981) for the details. sentence mappings, respectively, and let A  X  HG T . If A is primitive, then the sentence score vector x  X  k  X   X  x converges to the principal eigenvector of A.
+ tion maximizing the minimum growth factor over components.
+
+Proposition 7. Let x H be the solution to the following optimization: where x i denotes the ith component of a vector x  X  X  x 1 x The comments of Remark 3 are also applicable here, with the only change that A  X  HG initialization x  X  0  X  i  X  1 = mappings. 4.5. Personalized and query-focused summaries to the summarization itself.
+
+Let P  X f p 1 ; p 2 ; ... ; p t g denote the set of t user interests, with corresponding weight vector w  X  w est p l carries weight w l . The case of user queries is similar, with p only study the personalization aspect. Query-focused summaries can be derived along similar lines. simply the solution to a system of linear equations w  X  G defined in Section 4.4 . For the typical case of m &gt; n , the system of equations is overdetermined, and let that the g ij are non-negative.
+ concepts z j 2Z . We use the Lucene Wiki index as before, but now additionally collect  X  X  X its X  X  where p allows us to estimate the joint distribution P  X  z j ; p l find the least squares solution x H to the equations w  X  B make the standard modeling assumption that S and P are related through Z , i.e., where P  X  z j j s i  X  are obtained as described in Section 4.4 , and P  X  p
+P  X  p and the personalized d -sentence or d -word summary can be formed as described in Section 4.3 . 5. Multi-document summarization lem, and propose a revised sentence ranker that addresses this issue.
+ (see Definition 1 ).
+ Before describing our approach, let us briefly review some of the existing multi-document summarization methods. reader to Das and Martins (2007) for a detailed survey.
+ importance, thus resulting in a mutual reinforcement quite different from the above-mentioned approaches.
+With this in mind, we take the following two-step approach sification objective. The latter step leverages the sentence and concept scores computed in the first step. cific to summarization. We thus have the Sentence Ranker 2 as follows: 1: Initialize x  X  0  X  i  X  1 = 2: for k  X  0to K 1 do 6: end for 7: Initialize r  X  r 1 , where r 1  X  argmax i x  X  K  X  i 8: for j  X  2to n do 9: Update r  X  r r j  X  , 10: end for
+Here, Red  X  s u ; s v  X  denotes the redundancy between sentences s where M u denotes the set of indices corresponding to concepts in Z setting to 0 the scores for those concepts that do not map to sentence s restricted to sentence s v . Then, Red  X  s u ; s v  X  is given by the cosine similarity between vectors y  X  K  X  j
+A cost function c : 2 N ! R is then defined as follows: that concept overlaps across sentences are penalized in proportion to their concept scores.
+Thus, the sentences in multiset S can be rank-ordered using Sentence Ranker 2. Any d -sentence summary can then be ordering. This can be obtained by slightly modifying steps 7 and 9 of Sentence Ranker 2 as follows: level  X  is satisfied by the proposed multi-document summarizer.
+
+Summary coherence can be further imposed, if desired, by following time order and text order (sentences from oldest documents appear first) on the selected sentences. One such method is proposed by Barzilay, Elhadad, and McKeown (2001) , where a combination of chronological and coherence constraints is used to order sentences. 6. Performance evaluation use of incremental summarization can help in better understanding news articles.
+Let us start with some details on the data set and metrics used in our evaluations. 6.1. Data set performed on each of the documents in the data set.
+ that it is focused on news articles, which is our primary use case involving incremental summarization. 6.2. Evaluation metrics
+DUC for automatic summary evaluation. ROUGE relies on counting the number of overlapping word sequences between the summaries as follows: erence summaries, and Count (.) represents the number of N -grams in the set of reference summaries.
+In our experiments, we first used the ROUGE toolkit ROUGE to compute the ROUGE-1 (unigram) and ROUGE-2 (bigram) ison, we then computed the 100-word summaries using the following three techniques: summarization algorithm.
+
+For computing the ROUGE scores, the reference summaries for each article were directly obtained from the DUC 2002
+Next, in our second set of experiments, we computed the precision, recall and F-measure for summarizers that showed summarizers. We now present the detailed results. 6.3. Experimental results
+Table 1 shows the ROUGE-1 and ROUGE-2 scores of our Wikipedia-based single document summarizer along with Leading for ROUGE-1. However, the difference in ROUGE-2 scores is greater.
+ the leading lines in a news article.
+ ranks to extract the summary.
+ tences and Leading sentences ).
+ scores are then averaged over the entire DUC 2002 dataset.
+
+Theresultsof ourevaluationareshownin Table2 forthreecandidatesummarizers: Leading sentences , Wikipedia-based sum-while the MS Word summarizer performs the poorest. A similar behavior is seen in the corresponding ROUGE-2 scores. summarizer and the MS Word summarizer. We found several cases where the summaries were quite different, even though pedia-based summarizer that are not picked up by the MS Word summarizer are shown in bold. MS Word summarizer: liquid water, hypothesizes Stephane Udry, the lead author.
+ Wikipedia-based summarizer: important target of the future space missions dedicated to the search for extraterrestrial life.
+Thedifferenceintheabovesummariesisobvious,thoughtheROUGE-1scoresareidentical,andinfact,only10 % belowtheupper
+ROUGE-2. 6.4. Incremental summarization flow over successive increments/decrements.
+
+With the aim of determining the usefulness of incremental summarization, we conducted a study within a group of 30 the following four questions: age rating of summary quality was 7 out of 10. 6.5. Canonical examples by our Wikipedia-based summarizer.
+ Summary Top concepts
+Astronaut Luca Parmitano rushed to space station after spacesuit leaks ( http://www.newsday.com/news/nation/astronaut-luca-parmitano-rushed-to-space-station-after-spacesuit-leaks-In one of the most harrowing spacewalks in decades, an astronaut had to rush back into the
+Bill Gates: the college lecture is dead but Microsoft Bob isn X  X  ( http://www.pcworld.com/article/2044399/bill-gates-the-college-lecture-is-dead.html )
+The implication is that students will use the Internet to begin learning online from major 7. Conclusion tion to include multiple correlated text inputs.
+ mated summary evaluation presents an interesting avenue for further research. for single and multi-document summarization.
+ Appendix A. Proofs for Section 4.2
+Proof of Theorem 1. Sentence Ranker 1 initializes the sentence scores as x following two steps:
+It is easy to see from (17) and (18) that the iterations evolve as: exists, and to find this limit. To this end, we make an assumption that the largest eigenvalue of GG j k j &gt; j k 2 j P j k 3 j ... P j k n j , where k i denote the eigenvalues of GG tion, q 1 is referred to as the principal eigenvector of GG
+Lemma A.1. If M is an n n symmetric matrix and q 1 is its principal eigenvector, then the L converges to q 1 as k !1 ,if v is not orthogonal to q 1 .
+ Proof. Since M is symmetric, it admits a spectral decomposition
+Also, for any k ; M k has eigenvalues k k i and corresponding orthonormal eigenvectors q space, and thus,
+The L 2 unit vector in the direction of M k v is and letting k !1 .
+ cipal eigenvector of GG T . This follows from the fact that each entry of x  X  0  X  and q sequence of Lemma A.1, in conjunction with the fact that each entry of G (and hence M ) is non-negative. exists, and is a scaled version of the principal eigenvector of G
+Proof of Proposition 3. As before, let q 1 ; q 2 ; ... ; q lim k !1 x  X  k  X   X  q 1 . The proof is now completed upon showing that x H  X  q where (20) follows from the definition of L 2 norm, (21) uses the spectral decomposition of GG the orthonormal property of eigenvectors q i . Equality in (25) is attained when x  X  q Appendix B. Connection with latent topic models Sentence Ranker 1 is based on mutual reinforcement of sentences and concepts through the iterative updates (4) .In Appendix A, the vector of sentence and concept scores were shown to converge to the principal eigenvectors of GG G G , respectively. One important question is why should we take the weights assigned by the principal eigenvector of GG in the same relative order as the dominant eigenvector of G lemma which we will invoke later:
+Lemma B.1. Define
+If a &gt; 1 , then f  X  x ; y  X  is an increasing function in x for fixed y.
+Proof. Follows by noting that:
+Suppose each sentence is made up of b words, and each word is generated according to some topic model. Suppose, for simplicity, that we know the topics themselves. So, for a sentence s z ; z 2 ; ... ; z m be the m topics which appear with probabilities h that the h i  X  X  are ordered. For notational ease, we denote of sentences U X f s i 1 ; s i 2 ; ... ; s i d g , and concept weights p sense that if to sentence s we assign weight w s  X  P z the cut norm.
+ norm or using the iterative updates: the summary generated will be the same with a high probability. Lemma B.2. As the number of sentences n !1 , the probability that the coordinates of the dominant eigenvector of G the same relative ordering as h tends to one.
+
+Proof. For any sentence s ,
+Also, for two distinct topics z i 1 ; z i 2 , we have
+Using Lemma B.1 , we note that for i &lt; j ; p il &gt; p
+Lets take a look at the G T G matrix. Denote by c  X  k  X  ij
+Clearly c  X  1  X  ii Bin  X  n ; p i  X  for all 1 6 i 6 m . Next, note that for i  X  j
+Again, If, E  X  E  X  G T G  X  = n then E ii  X  p i and E ij  X  p ij for i  X  j . For any &gt; 0, by the weak law, where jjjj stands for the Frobenius or the matrix L 2 norm. Suppose x  X  0  X   X  X  1
+For n large enough, with a large probability,
+If we use E as a proxy for G T G = n , then our goal is to show that E equivalently, p .
+
+Assume that we have a vector z so that z i P z j P 0 for all i 6 j . We will show that if ~ z  X  E z then ~ z prove this claim, we first take i  X  1 ; j  X  2. Note that p that
+Next, using p 1 P p 2 and z 1 P z 2 , observe that
+Using (26) and (27) , we have that that as long as i 6 j and hence p i P p j and z i &gt; z j
+Since y  X  0  X  i P y  X  0  X  j for all i 6 j , we have, by induction, that tences with higher x weights is equivalent to maximizing the cut norm.
+ one of the weaknesses of the bag-of-words assumption.
+ References

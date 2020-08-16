@@ -1,0 +1,96 @@
+ 1. Introduction ensure compliance of their reporting and risk management procedures with the Sarbanes is a costly proposition and not dealing with it is not an option.
+
+We are interested in addressing the compliance problem at the requirements level. This means asking the question requirements R to a compliant variation R  X  .
+
+A key issue for the requirements compliance problem concerns the form of evidence provided that indeed a requirements
+Engineering (SE) for dealing with this issue, for example refs. [1 compliance.
+
+In our work, we lower the bar by adopting a conceptual modeling approach whereby laws and requirements are captured through conceptual models. These models capture logical relationships among law fragments and requirements, such as established through automated proof, but rather through argumentation among the stakeholders who state positions, e.g., iteratively transform R=R(0) into revised requirements models R(1), stakeholders agree that a revised model R(N) indeed complies with L.
+
+The contributions of the paper include an extension of the N X mos framework [4] for dealing with compliance. With this extension, we are able to both detect compliance and pinpoint which requirements don't comply and need to be revised. To accomplish this, we integrate into N X mos the modeling and analytical elements of an argumentation framework. Through a the input model that is compliant with the law. This paper extends the work presented at ER2011 [5] by including: a more over a period of 2 months and gave us the opportunity to assess the conceptual adequacy of our proposal. method we have adopted. In Section 3 we describe our framework for supporting a compliance discussion, its metamodel and
+Section 4 together with a running example showing how the steps work in a scenario involving fragments of the HIPAA
+Section 7 concludes the paper and outlines directions for further research. 2. Research baseline 2.1. Requirements models
+Requirements engineering frameworks are grounded on the elicitation and analysis of stakeholder needs. i* [6] is an agent-oriented modeling framework for requirements, where stakeholders are modeled as actors, and goals represent their respective requirements. In addition, actors are interrelated through social relationships, such as models goals within an actor, and the tasks by which these can be fulfilled. compliance. When an actor of the domain is recognized to be a subject of law (e.g., when actors referred to as  X  Doctor  X  in a certain law), the actor is placed in an an actor actually complying with a given normative proposition, the language of law, the N X mos framework introduces a dominance
+NP 1 &gt; NP 2 characterizes the fact that as long as NP 1 holds, NP protect it.
+ the definition of Healthcare assistant, which can be differently interpreted. Similarly, the thesis that the goal accordingly in operational systems.
+ dealing with the problem is beyond the state of the art, so we need alternative ways to establish compliance. 2.1.1. Argumentation acceptability of a given set of requirements.
+ for or against the validity of a given solution, along with logical relationships among them. and edges E ( G ). A proposition is represented as a vertex v the abstract syntax of our argumentation language.
+
+Two important algorithms are also proposed in [8]. The FindDiscussion performing a breadth-first search to retrieve all vertices in favor or against a given vertex. The accepted, rejected or inconclusive. 3. Proposed framework of the ACE language, and its algorithms are used to establish acceptability.
+ argumentation layer and are maintained for both traceability and possible future reuse.
+The metamodel of Fig. 2 shows how we have combined the N X mos modeling language with the metamodel of the ACE
+Ref. [9] offers more details on the metamodel of the framework. The justification framework of ACE, combined with the also other existing components of the N X mos model.
+
+So how do we define compliance in terms of argumentation? Anytime a regulation applies, we can loosely say that its non-conformity, we need to be able to identify which part of the system does not comply and needs to be amended. We have irregularity relations in the model ( affect / violate ) has to be established. 4. Compliance process phases: to be performed by stakeholders, and a set of NPs with possible irregularities highlighted. compliant, the process returns the model, else we move to the next phase. validity of the solution proposed.
+ during revision. When a cycle is completed without introducing modifications in the solution layer process ends and compliance is said to be achieved.
+ assumptions behind them, need to be validated for acceptability by stakeholders through argumentation.
+In the next sections we introduce in detail the five steps of the compliance process and how argumentation supports amendments. We exemplify the proposed process by means of a running example regarding HIPAA. and steps, is provided in Fig. 3 . 4.1. Step 1. Embodiment that legal subject are added in the actor boundary.
+ Algorithm 1. Embodiment step (step 1).
+
+For all legal subject ls i and for all stakeholder s j do:  X  [step 2] In the example of Fig. 4 , we consider the legal subject  X  how the actors of a hospital system are affected by the regulation. When evaluating whether a discussion), statements are made concerning the validity of this embodiment, for example: p services  X  , p 2 =  X  The patient doesn't transmit any information another embodiment is considered. When evaluating the relation point out that p 3 =  X  The Hospital bills for health care another one may reply that p 5 =  X  The Hospital is a health care provider p =  X  The Hospital sends health care information electronically  X 
+Covered Entity" are added to the actor boundary of the Hospital. i* model of requirements law fragment 4.2. Step 2. Find irregularities to the noncompliance of the system.
+ Algorithm 2. Identification of irregularities in a requirements model (step 2).
+
+Forall normative np i and forall element ie j do: a discussion for possible irregularity.
+
+In the example proposed in Fig. 5 , we consider the Hospital and the NP regarding the non disclosure of PHI (NP analyzed as a possible violation of the NP ( t 1  X  G 2  X  violate research  X  ( p 7  X  attack t 1 ) and p 8 =  X  The collection of PHI is allowed for research purposes terminates, thetopic is rejected.When the affect relation is evaluated ( t informed if the purpose of disclosure  X  ( p 9  X  imply t 2 discussion terminates, the acceptability of the topic is established the affect relation is added in the model. 4.3. Step 3. Compliance check input the i* model of the requirements where all the irregularities have been highlighted.
+Algorithm 3. Pseudocode for the compliance check procedure (step 3). if forall np i  X  NP then system is compliant  X  exit else system is not compliant  X  [step 4] realized one [ compliance property ]. met, the process continues with the revision phase and passes the model to the next phase.
+Considering the example of the Hospital, we now have to perform this check on the model returned from the second step (Fig. 5 bottom). As we can see, the check fails the first property as NP this step terminates and passes the model on to the revision phase. 4.4. Step 4. Resolve irregularities then resolved through revisions of the model.
+ Algorithm 4. Addressing irregularities in the requirements model (step 4).
+
+Forall ie i such that ( np j  X  affect ie i or ie i  X  violate  X  [step 5]
+In the example of Fig. 5 (top), we consider the case where we want to solve the irregularity NP hold anymore, and consequently it is deleted from the model.
+ 4.5. Step 5. Find realizations suitable to realize the NP.
+ bottom) and it is searched for elements that realize the NP p =  X  PHI disclosure depends on the way information with PHI is handled after collection  X 
+Collected PHI is not disclosed without authorization  X  . As evidence of this last statement, goals G ( G fg  X  imply p 34 ). As this discussion ends, the algorithm is added to the model ( Fig. 7 , bottom).
+ Algorithm 5. Pseudocode for finding a realization for all NPs (step 5).
+
+Forall np i and forall ie j do:
+Forall np i = =  X  ie j : ie j  X  realize np i
+If  X  new actors  X  step 1
+At the end of this fifth step  X  also the end of the revision phase analysis phase for another check. 5. A pilot case study using the Italian Electronic Health Record (EHR) the proposed framework and process. A case study approach [11] was deemed appropriate because it allows us to draw some
+EHR [12]). 5.0.1. The context
+The context of the study is an Italian organization involved in the design and development of a project called CSS hospitals, family doctors, and other agencies (for social, mental health and other medical services). address the stakeholder needs and tailored to comply with these regulations. 5.1. Design 5.1.1. Research questions RQ1 Are the concepts offered by the proposal appropriate for modeling the problem-at-hand?
+RQ2 Is the proposed process for establishing compliance appropriate for the problem-at-hand? 5.1.2. Measures
+We adopted two measures. The first measure was the uncertainty, by stakeholders, in using the concepts proposed in the framework. This measure was obtained from the session recordings and transcripts (our first source of evidence). We used voiced problems with respect to the logic used in the process.
+ participants were first asked to qualitatively evaluate (0 process, and where they perceived that the process was not supportive enough. 5.1.3. Materials and participants
+We constructed the initial goal-model of the requirements of the CSS project based on the documentation describing the scenarios analysis (see Fig. 8 ).
+ industrial partners with material applicable to the prototype solution they are developing.  X  authorized to receive his/her personal information [12].
+
+The participants in this pilot case study were chosen to reflect the strategic nature of a compliance discussion, where organizations, researchers and auditors are combined. Two domain experts involved with the stakeholders  X  participated in representing stakeholder needs and views. Two technical experts of this paper with good experience in goal-modeling  X  acted as requirement engineers. Two legal experts security and privacy issues, and another expert in data privacy
+Given the lack of tools for the ACE framework, the process of deciding the acceptability of a topic was authors of the paper. 5.2. Execution of the case study
+Our pilot case study was conducted with a series of three 2-hour meetings aimed at reproducing the steps of the process proposed in Section 4 .
+ timeline of the activities of the study, where we can see which steps of the process were performed during each meeting. introduction, we encouraged the participants to use the attack-implication-preference schema while discussing compliance issues. In fact  X  since our goal was not to evaluate the efficiency of the ACE framework and its algorithmic features let participants concentrate on the content of their argument with respect to its type. The framework concepts were also presented to the participants together with an example of usage.
+ transcripts for their analysis.
+
+The compliance check (Step 3) was automatic and did not need the evaluation from the participants. During the second the arguments made in the previous meeting. For example, Fig. 13 shows how the changes applied to the tree branches of G found appropriate to delete the irregularity from the model.
+ relation that was identified for NP 1 ( G 22 ; G 23 fg  X  realize two research questions. 5.3. Results 5.3.1. RQ1. Are the concepts offered by the proposal appropriate for modeling the problem-at-hand? participants preferred to evaluate the presence of an irregularity to use on a case-by-case basis.
+ relation envisaged a single goal to realize an NP.
+
+The results from the interviews are in line with meeting observations (see Table 1 ). Nobody thought that concepts were common concern was in the adaptability of the relations to 5.3.2. RQ2. Is the proposed process for establishing compliance appropriate for the problem-at-hand? evaluating obvious relations such as  X  The patient embodies a data subject cases, few arguments were possible, and probably even fewer would be needed in court to defend these positions. Another the problem.
+ clarifying ambiguities. In fact  X  even though the participants noted some of the optimization issues that the process was extremely appropriate to handle the problem. A common comment was made on the usefulness of the avoiding/limiting the problem. 5.3.3. Threats to validity construct validity threats  X  which refer mainly to possible biases induced by the ways the measurements were conducted
+Concerning the perceived adequacy measure, we used a post-session survey questionnaire, which has been designed using a standard method and scales.
+ was presented to the participants together with examples.
+ results as preliminary evidences about the framework adequacy, which need to be confirmed by further execution of the this domain. 5.4. Lesson learned needed. In fact  X  when revising our high-level goal model according to the irregularities identified the model of CSS did not depend on the type of irregularity (affect/violate), and was always based on the argumentation proposed process, and open various doors towards possible optimizations and strategies to adopt. 6. Related work while our work extends this concept with both a framework and a systematic process for obtaining compliance through the traceability and soundness provided by argumentation.
+ A more targeted approach dealing specifically with privacy law, was investigated by Ghanavanti et al. [2]. They use the properties of the ISO/IEC 15504 standard  X  and that cannot be generalized to all regulations and law legal interpretation and proposed a meta-model where this new concept is modeled as refinement relationship between interpretation into the goal trees as criteria of goal requirements.
+
+Recently, Rose et al. [17] proposed a regulatory framework for new emerging domains net of legal knowledge in the specific field.
+
+Ant X n and Young [3] extract software requirements by analyzing the commitments, privileges, and rights conveyed within documents to obtain software requirements.
+
+Robinson [18] developed the REQMON framework to monitor at runtime software requirements to ensure compliance with regulations. While his approach focused on runtime compliance with system requirements, we aim establishing design-time within the modeling capabilities of N X mos.
+ safety-critical systems where simulation-driven domains can benefit from precise pieces of evidence  X  argumentative evidence  X  to be used as conceptual proof of adequacy. C.B. Haley et al. [22]
+Their argumentation framework is based on the concept of  X  argumentation framework to show how a system meets its security requirements. The richness of their argumentation framework becomes too complicated to tackle the problem we're dealing with. Moreover, the ACE argumentation framework we use [8], was specifically designed for discussions in requirement engineering. Our work improves these approaches as we requirement model. 7. Conclusions
+The present work proposes a goal-oriented, norm-driven requirements modeling framework for modeling law, requirements adopted to establish compliance. Evidence and proof of compliance are provided by the arguments made by the stakeholders discussing models of requirements and law. The systematic process we propose, allows us to amend an initial requirements amounts to evaluating its acceptability.
+
+Preliminary evidence about the conceptual adequacy of the proposed framework and process have been collected through a
+Firstly, our systematic process needs to be refined to offer better guidelines for interpreting concepts such as  X  and remains often subjective when used in concrete situations.
+ provide better strategies during the analysis of the model, and to manage model growth during the argumentation process. number of iterations over normative propositions. In other words, some argumentation points apply to multiple normative propositions, but, of course, they need only be discussed once.
+
+Future work will therefore address the issue of law evolution, where we need to enrich our framework to accommodate the co-evolution of laws and requirements for a given software system.
+ Acknowledgments
+The authors would like to thank Paolo Guarda (University of Trento), Jovan Stevovic (GPI Trento presented in this paper.
+
+This work has been supported by the ERC advanced grant 267856 during the period of April 2011  X  March 2016  X  http://www.lucretius.eu .
+
+References

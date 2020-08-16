@@ -1,0 +1,124 @@
+ 1. Introduction given QTP have to be located.
+
+Consider the query Q 1 : //A[.//B]/C//D. Fig. 1 represents the QTP of Q is sufficient to access the document nodes related to elements occurring in Q by logical operators other than AND . In particular, branches of QTPs may contain the logical operator NOT . 1.1. Related work duced the idea of jumping over non-qualified elements in the indexes to achieve superior performance.
+The main problem with these methods is their expensive merging phase. As an answer to this drawback, Twig to fetch the entire document into main memory in the worst case.
+ NOT operators by converting QTPs into a normalized form.
+
+In this paper, we use the following concepts whose detailed definitions can be found in [13] :  X 
+XTS: is a logical representation of an XML document.  X 
+DeweyID: is a kind of label assigned to XTS nodes. Label of each node contains label of its parent.  X 
+Structural Summary : is a structure summarizing existing paths of an XML document.  X  is shown in Fig. 3 .  X  results in a set of match patterns, called SMP. 1.2. Contribution of this paper
+In [13] , we proposed two methods S 3 and OS 3 for processing AND -QTPs. In this paper, we refer to them as S  X 
+Evaluation Tree as a new structure which is formed based on the given QTP  X  evaluation.  X  and NOT.  X  Grouping of super-patterns to reduce redundant I/O.
+ conclude our work in Section 8 . 2. Preliminaries quick look at some definitions and concepts. Details can be found in [12,13] .
+De fi nition 1. An XML Tree Structure (XTS) X is a tree defined by a tuple (r, N  X  r  X  N X as an auxiliary node is the root of the XML tree.  X  N
+X is a set of XTS nodes.  X 
+E  X  N X  X N X represents relations between nodes (branches of the tree).  X 
+I: N X  X  String is a function returning the unique label of the requested node  X 
+T: N X  X  {  X  root  X  ,  X  element  X  ,  X  attribute",  X  text  X  &lt;X&gt; &lt;c&gt; &lt;d&gt;text1&lt;/d&gt; &lt;/c&gt; &lt;a&gt;&lt;c&gt;text2&lt;/c&gt; &lt;/a&gt; &lt;a&gt; &lt;m&gt; &lt;b&gt;text3&lt;/b&gt;&lt;/m&gt; &lt;m&gt;&lt;c&gt; &lt;d&gt;text4&lt;/d&gt; &lt;/c&gt; &lt;/m&gt; &lt;/a&gt; &lt;a&gt; &lt;m&gt; &lt;b&gt;text5&lt;/b&gt; &lt;/m&gt; &lt;c&gt;&lt;m&gt;&lt;d&gt;text6&lt;/d&gt; &lt;/m&gt; &lt;/c&gt; &lt;/a&gt; &lt;c&gt; &lt;a&gt; &lt;b&gt;text7&lt;/b&gt; &lt;/a&gt; &lt;/c&gt; &lt;a&gt; &lt;m&gt; &lt;b&gt;text8&lt;/b&gt;&lt;/m&gt;&lt;/a&gt; &lt;/X&gt;  X 
+V: N X  X  String is a function which returns the value of a node. ( V(r)=  X  root  X  ).
+
+De fi nition 2. A QTP is a tree structure defined by the tuple ( r  X  r  X  X   X  Q is the root of the QTP.  X 
+Q is a set of query nodes in the QTP defined as follows: Q={x |  X 
+O= {  X  ,  X  , X ,  X  } is a set of logical operator nodes in a QTP. ( respectively. (  X  ) is the unary NOT operator.  X 
+E "  X  (Q  X  O) X (Q  X  O) represents branches of QTP. All leaves of the QTP are query nodes.  X  q .  X  P  X  C  X  shows a parent  X  child (/) relationship, while of the QTP, which has to be satisfied during the matching process over the associated XTS object X .  X 
+V " :Q  X  String returns the value of a node.  X 
+C: Q X N X  X  {true, false} is a Boolean function deciding whether or not a node n node q .
+
+De fi nition 3. The Potential Target Nodes (PTN) of a query node q in QTP (r
+I, T, V) are contained in an ordered list of X nodes (PTN, a) PTN(q)={n| n  X  N X , V (n)= V" ( q )  X  C(q, n)} b)  X  n 1 ,n 2  X  N X :n 1 b n 2 iff n 1 is visited earlier than n 2.1. DeweyID depth of a document node. Furthermore, the relation between two nodes such as ancestor 2.2. QueryGuide Lemma 1. [13] Considering an XML object X and its related Structural Summary S related nodes in S X also have the same relationship. 3. Overview of S 3 .v0 and S 3 .v1 4 overall process of QTP matching in our method. 3.1. Matching process ing CID 11 have to be extracted. A closer look at X 1 indicates that d ( //A/C/D )of Q1 , and d 2 cannot satisfy the D -leg because c matching process, does not discard any potential final match as proved in the following theorem. one MP could be found that has the same sequence of CIDs as the sequence of CIDs of that match. fore, QTP is first executed against the document's Structural Summary in S leaf l i , a stream of sorted DeweyIDs, referenced in the Reference Section by CID of MP ( l related to MP starts by joining the extracted nodes of the first two leaves. Consider two leaves l ( d , d j ). d i satisfies the l i -leg, because MP( l i ) satisfies the l have the same ancestor related to the nearest common ancestor (NCA) of l
+Example 2. Consider Structural Summary S 2 and QTP Q 2 in Fig. 5 . We first execute Q the same N node as their common ancestor. The entire nodes related to G because N 3 is an ancestor for both G 4 and H 5 . N 3 is placed in the third level of S
+Q ( RF(8) ). H 5 and L 8 have E 2 as their common ancestor, which is placed in the second level of S of g. The relevant matching process is depicted in Fig. 6 . 3.2. I/O optimization the resulting SMP. To minimize the repeated I/O accesses, we proposed an enhanced version of S a separate GMP. Inspired by S 3 .v0, for each GMP, a matching process is run, in which, for each leaf l to the GMP( l i ) is assigned. However, in S 3 .v1, GMP( l
+GMP( l i ), a sorted stream of nodes is created. For each CID in GMP( l ing process is done in almost the same way as in S 3 .v0.
+ nodes are different and, for each wrapped MP matched, a separate result is formed.
+Example 3. Consider QTP Q 3 and Structural Summary S 2 in Fig. 5 . Execution of Q
+G , H 5 , K 6 , L 7 ), mp 2 ( E 2 , G 4 , H 9 , K 10 , L 11
+L )}. A quick look over the resulting SMP indicates that G 4 extracts the target nodes of G 4 and the matching process considers them six times. In S
+SGMP only has one GMP {( E 2 , G 4 ,( H 5 , H 9 , H 12 ), ( K
+CID 4) are fetched only once in S 3 .v1 instead of six times done by S leaves K and L is 3 (The join-point level for these leaves is 3 for mp and RF(14)={1.9.3. 5.9.3} . For the above GMP, the joining process in S the leaves of QTP ( G , K , L ) as follows: { m 1 [(4, 1.3.5.3), (6, 1.3.7.1.3), (7, 1.3.7.7.3)], m m join-point level for leaves K and L in mp 1 is 4 (level of H with length 3 and, therefore, they are joined in the joining process. The last output is m 4. Processing QTPs with OR and XOR nodes
+De fi DeweyIDs w.r.t. members of Output(Q) .  X  taining OR nodes by parsing the QTP into some AND -QTPs. We refer to this type of QTP processing as S operations during QTP evaluation are redundant.
+
+Example 4. Consider QTP Q 4 in Fig. 7 a and XML document X seven AND -QTPs shown in Fig. 7 b. Nodes with CID 7 are accessed nine times because of the parsed QTPs P time for P 1 , two times for P 5 and P 6 and four times for P results. For example, (a 2 ,b 1 ) and (a 3 ,b 2 ) are results of P of P 1 because the above results of P 5 cover them. Moreover, the above results of P b ) is one of the P 1 results, which does not have any counterpart in P because of this need.  X 
+An idea to solve this redundancy is to use an approach inspired by one used in S can avoid most of the redundant I/Os. However, the matching process used in S process these GMPs. The wrapped GMPs in this situation, contrary to GMPs in S ent leaves. 4.1. Evaluation Tree nodes related to the first two QTP leaves and continues to cover the entire leaves. In S may be the better solution. For this purpose, we form a processing structure called Evaluation Tree .
+De sociated to join points of Q , and its leaves are associated to leaves of Q . The ancestor duced to a parent  X  child relationship.  X  labels related to UQN( IE ).
+
+Tree of Q 2 is depicted in Fig. 8 . Obviously, the resulting Evaluation Tree has a similar structure as Q points or leaves. Node G reads the target nodes of G 4 . Because UQN( G ) = { N } and N and N . Again sub-results produced in node N have to be enriched. Since UQN( N ) = { E } and E
+S reads the sub-results from node N and L to produce the final results. spreads recursively from the root to the leaves of the Evaluation Tree . We refer to S process. 4.2. Construction of an Evaluation Tree can be simply made based on the kind of relationship between a node and its children.
+When a QTP is given, it is traversed from the root to the first join-point node (lines 43 4.3. Matching Process using an Evaluation Tree as C 1 , ... , C n , if the DeweyIDs of two children C i and C compared. If d i is greater than d i+1 , the output of C i + 1 greater than d i (procedure skip in Fig. 22 ). When C i and C are smaller than d i + 1 . Consequently, the output of each C in Fig. 23 ). The balancing procedure continues until all C
+If C i s get balanced, then we can join d i s, but each C IE (procedure completeToUpperJoinPoint in Fig. 22 ).
+ these DeweyIDs. This results in the order C i1 , ... , C in pay further attention to XOR in the rest of this paper.
+
+Proof. Suppose that the only join point of Q is JP and its leaves are L which ER is responsible to produce proper DeweyIDs (lines 39 are related to the leaves of Q ( L 1 , ... , L n ), respectively.
+ the Evaluation Tree . Then, each leaf (for example EL 1 ) forms a sub-match containing DeweyIDs related to L
+Evaluation Tree node related to the respective join point (here, JP is added to upperNodes lists of EL
+Considering the above situation, the entire sub-matches that EL one of the parsed AND -QTPs and we are able to produce all matches related to each parsed AND -QTP. related matches may be equal, too, and only one of the equal results is considered as output.
+Proof. Consider that ET is the Evaluation Tree constructed based on Q .If LP point between the above nodes and leaves of Q ), then the sub-trees which have LP point (see Definition 5 ). Consider a given match pattern MP . Based on Lemma 2 , using each LP able to produce all required sub-matches related to LP i s . These join points ( LP these groups, which is a de scendant of the join point IP bers of G 1 produce all required DeweyIDs. Since the sub-QTP is bounded to IP quired DeweyIDs, then, based on Lemma 2 , the node of ET , which is associated to IP 4.4. Correlated match patterns and super-patterns
+S is formed for each match pattern. Evaluation Trees, related to match patterns MP document nodes and produce the corresponding results. E 5 anything from the document. E 5 is responsible to join its input results received from E necessary because, while these kinds of results are not joinable with other results, they match Q ( a , b 1 ) and ( a 5 , b 4 ) are results produced by E 1 . E does not have any counterpart produced by E 2 but matches Q1 as a final result. Furthermore, E and E 6 . It is obvious that E 7 only needs two of these inputs and the third one is completely redundant. power of Lemma 3 in the next generation of the S 3 algorithms, called S
+Lemma 3. Consider a given QTP Q, two match patterns MP 1 and MP matches returned by E 2 cover all matches returned by E 1
+Proof. Let LS 1 be leaves of QTP covered in MP 1 and LS 2 these match patterns is related to one of the QTP nodes of Q, then the leaves covered in MP
+MP 2 ( LS 1  X  LS 2 ). Let L 1  X  LS 1 , L 1  X  LS 2 , L 2  X  LS tion results of Q against the Structural Summary of the XML document. As a consequence, both MP
+MP  X  MP 2 , we can conclude that all CIDs associated to L 1 and its ancestors (including JP ) are the same in MP are descendants of JP and JP is satisfied in both MP 1 and MP the join points of each leaf in the set ( LS 2  X  LS 1 ) and all leaves in the set ( LS
+Because MP 1  X  MP 2 , input streams associated to leaves in LS
+E will also be formed by the subset of E 2 which corresponds to members of LS because joining these sub-results with sub-results produced by the subset of E have to be checked in join points having logical OR . Consequently, if sub-results like r alone as a match, because they are the same as outputs of E
+The main difference between S 3 .v3 and S 3 .v4 lies in the optimized selection of match patterns done in S ed (called Super-Patterns ) as candidates to produce the final result. Theorem 3. The algorithm S 3 .v4 computes all possible matches for a given QTP Q against an XML document Doc. pattern. Suppose that m is one of the final results of Q that is not produced by S to match one of the parsed AND -QTPs. MP could not be one of super-patterns selected by S consequence, m is not related to any of the above match patterns which is a contradiction. 5. Processing NOT operators document for elements that do not have a specific pattern among their descendants. For example in Q elements which do not have the pattern ( B[/C]/D ) among their descendants.
+De descendants of N are referred as NOT-Pattern .
+ an XML document, A elements are considered as final results of Q spective B definitely has a C element as its child.
+ needs the execution of two parsed AND -QTPs, which may have redundant I/O and matching processes. erators. This method is also extensible to support logical NOT operators. We refer to this extended method as S as mentioned above and super-patterns are selected in the same manner as done in S uation Tree is almost similar to what is done in S 3 .v4. The main difference is that during QTP traversal children are still accessible as before via the list children . 5.1. Evaluation Tree construction Now consider the following query: 5.2. Matching process
+Case 1: if N is associated to a QTP leaf, its results are directly fetched from the document (lines 36 uation Tree is not necessarily a final result.
+
+Example 7. Consider the QTP Q 8 and Structural Summary S 3 ( A , B 2 ), MP 2 ( A 1 , B 3 )}. Therefore, the Evaluation Trees ET
+However, consider a as a target node of A 1 which has a B element b related to B if we perform the matching process using the above SMP, a is considered as a match for Q target node a is extracted by a virtual child V of node A in ET to node A and node B produces the DeweyID of a based on MP discarded in the A node of ET 1 . On the other hand, a is also extracted in the Evaluation Tree ET not any B element in the target nodes of B 3 as child of a, node A of ET therefore outputs a as a match while it is a false-positive result. erator is involved in a QTP, more investigation is needed.
+ t. Output(Q) . However, there should be at least another match pattern MP
+MP ( q ). Now, it is possible to form a false match f 2 using target nodes related to MP which are not leaves of Q and, in addition, none of them have a descendant that is member of Output(Q) .If f
+Q (as it is our assumption to have f 1 as a false positive), it means that f and therefore does not match Q. Example 7 depicted a sample instance of this situation. Since f
+Tree fed by MP 2 , therefore there is not enough information to omit f access. Note that we did not describe how we dea l with false positives in pseudo codes of S Theorem 4. The algorithm S 3 .v5 computes all possible matches for a given QTP Q against an XML document Doc.
+Proof. If Q does not have a logical NOT operator, S 3 .v5 behaves the same as S
+DeweyID related to a NOT-Point : 1) It has only one child. 2) It is associated with a logical AND operator and has no positive child. 3) It is associated with a logical OR operator.
+
+DeweyIDs related to NOT-Points . Furthermore, we described how we deal with false-positive results. 6. I/O optimization several times due to the separate execution of each match pattern.
+
+However, there are situations that these super-patterns also have common members. Inspired by S grouped match patterns (GMPs) of super-patterns by grouping those patterns having common members. S
+Example 8. As depicted in Fig. 11 , we obtain six match patterns by parsing Q as two super-patterns that are able to produce the final results in S
+MP 6.1. Grouping of super-patterns of the document, and super-patterns are identified using DAGs of correlated plans (lines 15
+LD . The classification continues until all super-patterns are grouped (lines 1 them in a sorted manner (function groupedStream used in Fig. 29 ).
+ dren to produce its related results. The main difference between S ple match pattern in S 3 .v5, but they are associated with a grouped match pattern (GMP) in S
+S of QN( N ) up to UQN( N ), one separate result is formed (function completeToUpperJoinPoint in Fig. 30 ). 6.2. False-positive results
+Note, although the idea of grouping match patterns in S 3 in S 3 .v1 are not formed in S 3 .v6. The following example illustrates this point.
+Example 9. Consider the Structural Summary S 2 and QTP Q 3
+G , H 5 , K 6 , L 7 ), MP 2 ( E 2 , G 4 , H 9 , K 10 , L 11
+L )}. As explained in Example 3 , grouping the above match patterns results in an SGMP having only one GMP {( E ( K , K 10 , K 13 ), ( L 7 , L 11 , L 14 ))}. Therefore, the target nodes of G the following three results { m 1 [(4, 1.3.5.3), (6, 1.3.7.1.3), (7, 1.3.7.7.3)], m (13, 1.9.3.1.5.9.1), (14, 1.9.3.5.9.3)]}.
+ evaluated results do not need more investigation. Consider ET as the Evaluation Tree formed based on Q lated to E 2 . Therefore, the output of node G in ET is: { g
+RF (13). Members of RF (6) only match MP 1 . Members of RF (10) match MP bers of RF (13) match MP 3 , MP 5 , and MP 6 . With respect to H as the ancestor of K , MP put of leaf node K in ET is: { k 1 :(1.3.7.1, 1.3.7.1.3), k manner, the output of node L in ET is: { l 1 :(1.3.7.7, 1.3.7.7.3), l
+DeweyID of H . Therefore, k 1 and l 1 are not joined (1.3.7.1 l
+The above examples illustrated that false-positive results appearing in S
+S .v5 also appear in S 3 .v6.
+
+Example 10. Consider QTP Q 10 and Structural Summary S 5 ( Fig. 12 ). Execution of Q patterns results in the following SMP { MP 1 ( A 2 , B 6 , C over the resulted SMP indicates that it has a match pattern having common members ( B match patterns. The resulted SGMP is { GMP 1 ( A 2 , B 6 ,( C node of A 8 which has a B element b related to B 10 and a C element c related to C
+GMP 2 , both of them produce the DeweyID of a and send it to node A in the Evaluation Tree ET to GMP 3 ( C 9 is in common between GMP 2 and GMP 3 ). Since there is not any B element in target nodes of B B
+Example 11. Consider QTP Q 10 and Structural Summary S 5 again. Output nodes of Q
+Example 10 , MP 4 and MP 5 are equal w.r.t. Output( Q 10 ). Therefore, first MP is grouped with MP 1 , MP 2 , and MP 3 . The final SGMP would be { GMP single Evaluation Tree related to GMP 2 extracts instance nodes of B to B 11 , are omitted and are not considered even as false-positive results. ing false-positive results.
+ consider MP 1 , MP 2  X  GMP and E as a node of ET having at least two children B and C . Also, consider B
+MP , C 1 as output of node C w.r.t. MP 1 , B 2 as output of node B w.r.t. MP
+MP . We have the same story for sub-results of B 2 and C 2 . However, if a sub-result of B be a false positive. If MP 1 (A) does not have any CID in common with MP duced by node C . However, if MP 1 (A) has at least one CID in common with MP
+QN(E) . It is obvious that results like ER, formed by joining sub-results of B
+MP , say MP 3 . Furthermore, ER will be involved in a final result FR in ET .If MP than GMP , say GMP 2 , FR is also produced in the Evaluation Tree ET to G ). However, FR is produced in both ET and ET 2 , and this is a contradiction; therefore, MP ET produced all results related to GMP without producing false positives. false-positive results.
+ members of Output(Q) are grouped into a single grouped match pattern. Consider MP ber p j of P , there exists a QTP node q  X  Output(Q) such that p output nodes of Q, but does not satisfy Q as a whole because of some MP occurs in one of the following situations: 1) NP has only a single child: In this situation, node ET(NP) 3) The associated logical operator of NP is a logical AND and NP has at least one positive child: If, w.r.t MP b) If there exist only NOT-Points like NP L1 in SQ , such that NP 4) The associated logical operator of NP is a logical OR : With respect to MP
+MP i s, then it is not formed in the ET , even by considering all MP put(Q) and these match patterns have to be grouped in GMP w.r.t. to grouping rules of S producing any false positives.  X  Theorem 5. The algorithm S 3 .v6 computes all possible matches for a given QTP Q against an XML document Doc.
+Proof. During the grouping process of match patterns in S we can conclude that S 3 .v6 computes all possible matches for a given QTP Q against an XML document Doc . 7. Experimental results 7.1. Experimental setup
+We did exhaustive experiments in our previous paper [13] to measure the performance of our methods S more memory to reach their optimum performance.
+ for all experiments is as follows: Java 1.6.0_14-b08, Dell X  Latitude
+GHz), 4 GB main memory, 250 GB hard disk, running Windows Vista ically accessed and I/O time is the time spent to perform document access fetching the requested nodes. 7.2. Cross-comparison them leads to repeated access of distinct document nodes, which is in contrast to our optimization goal. S such match patterns into GMPs to avoid such redundant document accesses. S redundant I/Os, S 3 .v4 uses the concept  X  super-pattern  X  provides support of the logical operator NOT . Additionally in S some overlaps are grouped to optimize I/O and execution time of QTP processing.
+AND-QTPs : We chose shallow QTPs in [13] , to compare our methods (S as X 1 , X 2 ,and X 3 in Fig. 15 that the runtime differences of S
+S .v4 to S 3 .v6 have lower I/O cost and better performance. Moreover, D where two of them are selected as super-patterns and, in turn, are grouped into a single GMP in S best performance and lowest I/O cost for D 5 (see Fig. 17 ). QTP X to three AND -QTPs and finally 594 match patterns which are reduced to 486 super-patterns. Using S into 6 GMPs. Our experiments show that S 3 .v6 executes X order of magnitude less I/O cost. The efficiency of grouping used in S improvement for X 10 against the XMark dataset. Experimental results related to S about an order of magnitude.
+ avoided and I/O cost is optimal, because only potential target nodes of QTP leaves are extracted by S as reported in [13] and illustrated in Fig. 13 , our methods S and, as can be seen, our methods have similar performance for AND -QTPs ( Fig. 14 ). 7.3. Scalability analysis a sub-linear growth of the execution time for S 3 .v0 and S cution of X 4 leads to 162 match patterns where most of them overlap. Therefore, only the use of methods S quate, because the resulting match patterns turn into six GMPs.
+
+Fig. 19 clearly shows that our methods (except S 3 .v2) follow sub-linear behavior. Execution of X which turn into 6 GMPs in S 3 .v6. Our experiments for X 9 er intermediate results than S 3 .v0 and S 3 .v1.
+
+To check the memory effect, we have chosen four queries D efficiently when memory size is limited or shared with other transactions in real multi-user environments. 8. Conclusions us perform focused document access.
+QTP into some AND -QTPs efficient and use it as the base of our methods. We initially introduced S
+Using the strength of Evaluation Trees , we support the logical operator NOT in S 2) We reduced a considerable volume of I/O caused by super-patterns having overlaps. methods is linear when document size increases.
+ Appendix A
+In this appendix, we present pseudo codes of our methods S Appendix B ple, consider the QTP Q 11 in Fig. 31 . Children of node A form the logical expression: B a conjunctive clause as a single child and using the following transformation: (B finally parsed into three AND-QTPs, which are shown in Fig. 31 (c).
+ scribed above.
+
+References

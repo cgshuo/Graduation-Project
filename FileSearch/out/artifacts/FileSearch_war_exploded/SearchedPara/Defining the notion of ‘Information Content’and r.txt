@@ -1,0 +1,177 @@
+ Kaibo Xu  X  Junkang Feng  X  Malcolm Crowe Abstract The problem of  X  X nformation content X  of an information system appears elusive. conception of the phenomenon concerning information in databases, especially a properly mation content. In this paper, we suggest a modification of the well known definition of  X  X nformation content X  given by Dretske(Knowledge and the flow of information,1981). We tent, which we call the IIR Rules. Then we explore how these ideas and the rules may be between real world events and database values.
+ Keywords Information content  X  Reasoning  X  Data semantics  X  Semantic information theory  X  Inference rules 1 Introduction tacit business knowledge can then be explicitly expressed and analysed. underpin a database. Then we give a brief comparison between our work and related works 2 The notion of  X  X nformation Content X  us consider the following list: Example 1 That there is smoke carries the information that there is a fire. Example 2 That he is awarded a grade  X  X  X  for his Programming course contains the infor-mation that Jack Brown has gained 70% or above for that course.
+ follows:
+A state of affairs contains information about X to just that extent to which a suitably placed observer could learn something about X by consulting it.
+ the following definition:
+Information Content: A signal r carries the information that s is F = The conditional definition of random event : E  X  X and there is a probability of X , i.e., P ( X ) .
+ with a probability space .
+
+Dretske X  X  definition quoted above sounds plausible. However, there are a few points to an informational one) between two types of random events, namely smoke and fire taking place, and the second a similar informational relation between two particulars of random events, Jack Brown has an  X  X  X  for  X  X rogramming X  and he scores 70% or more for it. We now give a definition to the term particular of a random event below.
+ Definition 3 Let s be a selection process under a set C of conditions, X a random event state ( X i ) ,and X  X  .
+
+The term particular was borrowed from Barwise and Seligman [ 5 , p.27]. It could be mis-leading if being taken to mean something specific. By particular , we mean an individual occurrence of a random event. For example, s could be concerned with data values going Emp_Name column being tony_wu X , which is ; X is the disjunction of two states, namely, and say, =  X  X  value in Emp_Name column being shirley_wu X . Then, X i is a particular of X .
+ Seligman [ 5 , p.26] correctly point out.
+ sort of information can be carried.
+Finally, information, which has to be carried by particulars rather than types as argued shape.
+ of a state of affairs X  by Dretske [ 13 ] be modified as follows.
+ Let r be a random event, and r i a particular of r at time t i and location l i ; time t j and location l j ; s  X  X  being F given r is 1 (and less than 1 given k alone).
+ content of r i .
+
+The notion of Shannon X  X  entropy can be used to measure the amount of information asso-random event as above definitions show. 3  X  X nformation content inclusion X  relation information content of at least one particular of X .
+
+A random event may have an information content inclusion relation (IIR) with more than former has an information content inclusion relation.
+ set of random events with each of which X has an information content inclusion relation. information content of random event X through the particulars of random event Y being in helpful.
+ ically from those that we have already known somehow.  X  X ogically X  here means that we use domain independent inference only and do not use any of what we call  X  X omain dependent knowledge X . One example of domain dependent knowledge is a business rule that  X  X f a sup-rules, which can be called IIR Rules. 3.1 Inference rules for IIR some comments on important steps: the comments are not formally part of the proof. We We will discuss the differences between IIR and functional dependency shortly. identification of IIR.
+ What is meant by  X  X (X)  X  Y X ? the particulars of X.
+
+A sufficient condition for  X  X  ( X )  X  Y  X : 1) Both X and Y are random events, namely they could be contingently true and contin-Inference rule 0  X  X um X  :If Y = X 1  X  X 2  X  X  X  X  X n ,thenI ( X i )  X  Y for i = 1 ,... ,n
+This rule says that if it is the disjunction of a number of random events, then a random above are not distinct.
+ Proof
+Assume X i Assumption 1 (Comment: assume that X i is true for i =1,..., n .) Y = X 1  X  X 2  X  X  X  X  X n Premise 2 Y 1and2 3
+P ( Y | X i ) =1 1and3 4 (Comment: If X i is true, Y is always true. Thus Y  X  X  probability is 1 given X i .)
+P ( Y ) = 1 Premise 5 (Comment: X , Y , W and Z are assumed random events.)
+I ( X i )  X  Y 4and5 (Comment: this is because P ( Y ) = 1andP ( Y | X ) =1.) Example 3 The  X  1 above is a disjunction of a few others including the  X  2 above. Thus according to the rule,  X  1 is in the information content of  X  2 .
+ Inference rule 1  X  X roduct X  :If X = X 1  X  X 2  X  X  X  X  X n , Y = X i for i = 1 ,... , n ,thenI ( X )  X  Y
+This rule says that if a random event X is the conjunction of a number of random events, and Y above are not distinct. Proof
+Assume X Assumption 1 (Comment: Assume that X is true.)
+Y = X i premise 2 (Comment: This is for i = 1 ,... , n as usual.) Y 1and2 3
+P ( Y | X ) = 11and34 (Comment: If X is true, Y is always true. Thus Y  X  X  probability is 1 given X .)
+P ( Y ) = 1 Premise 5 (Comment: X , Y , W and Z are assumed random events.)
+I ( X )  X  Y 4and5 (Comment: this is because P ( Y ) = 1andP ( Y | X ) = 1.) ( X  4 ) a utters the word  X  X he X  while pointing to Jane.
+ rule,  X  4 is in the information content of  X  3 .
+ Inference rule 2 Transitivity :IfI ( X )  X  Y ,I ( Y )  X  Z then I ( X )  X  Z information content of X includes Z .
+ Proof
+I ( X )  X  Y Premise 1 (Comment: Information content of X includes Y , which is given.)
+P ( Y | X ) = 1 Definition and 1 2 (Comment: Y  X  X  probability, under the condition X , is 1 by defini-tion.)
+I ( Y )  X  Z Premise 3 (Comment: Information content of Y includes Z , which is given.)
+P ( Z | Y ) = 1 Definition and 3 4 (Comment: Z  X  X  probability, under the condition Y , is 1 by defini-tion.)
+Assume X Assumption 5 (Comment: Assume that X is true.)
+Y 2and5 6 (Comment: Y is true.)
+Z 4and6 7 (Comment: Z is true.)
+P ( Z | X ) = 15,78 (Comment: If X is true, then Z  X  X  probability is 1.)
+P ( Z ) = 1 premise 9
+I ( X )  X  Z 8and9
+Jane. ( X  5 ) Jane is insane at some moment t . ( X  6 ) Jane X  X  behaviour is odd at t .
+  X  information content of  X  3 . That is to say, by observing  X  3 , one could learn  X  6 . Inference rule 3 Union :IfI ( X )  X  Y ,I ( X )  X  Z then I ( X )  X  Y  X  Z
+This rule says that if the information content of a random event X includes another two random events Y and Z respectively, then the information content of X includes random happens, both event Y and event Z happen.
+ Proof
+I ( X )  X  Y Premise 1
+P ( Y | X ) = 1 Definition and 1 2
+X  X  Y 23 (Comment: This follows probability theory.)
+I ( X )  X  Z Premise 4
+P ( Z | X ) = 1 Definition and 4 5
+X  X  Z 56 (Comment: This follows probability theory.) X  X  Y  X  Z 3and6 7
+P (( Y  X  Z ) | X ) = 178 (Comment: This follows probability theory.) Y  X  Z is a random event Premise 9
+P ( Y  X  Z ) = 1910
+I ( X )  X  Y  X  Z 8 and 10 ( X  4 ) a utters the word  X  X he X  while pointing to Jane. ( X  5 ) Jane is insane at some moment t . to Jane at time t and Jane is insane at t . say, by observing  X  3 , one could learn  X  7 .
+ Inference rule 4 I ( X )  X  Y then I ( W  X  X )  X  Z  X  Y {
+W X includes the random event Z  X  Y formed by the product of Z and Y . Proof Given W Assumption 1 Z is the product of a subset of { W 1 , W 2 ,..., W n } Premise 2
+I ( W )  X  Z Rule 1 3 Given X Assumption 4 W  X  X Assumption 5 W is a factor of W  X  X 56
+I ( W  X  X )  X  W Rule 1 7 (Comment: Information content of W  X  X includes W by Rule 1.)
+I ( W  X  X )  X  Z Rule 2 applied to 7 then 3 8
+I ( X )  X  Y Premise 9 X is a factor of W  X  X 510
+I ( W  X  X )  X  X Rule 1 11
+I ( W  X  X )  X  Y Rule2appliedto11then9 12
+I ( W  X  X )  X  Z  X  Y Rule3appliedto8,12 Example 7 ( X  8 ) Someone a is a PhD student and part time lecturer. ( X  9 ) a is a PhD student. ( X  10 ) a is awarded a grade  X  X  X  for her/his Programming course. ( X  11 ) a gains 70% or above for her/his Programming course. ( X  12 ) the product of above  X  8 and  X  10 . ( X  13 ) the product of above  X  9 and  X  11 .
+ the rule discussed here, by consulting  X  12 , one could learn  X  13 . Inference rule 5 Decomposition :IfI ( X )  X  Y  X  Z then I ( X )  X  Y ,I ( X )  X  Z This rule means that if the information content of random event X includes random event Y  X  Z that is the product of random event Y and random event Z ,then Y and Z , as separate random events, are in the information content of X , respectively. Proof
+I ( X )  X  Y  X  Z Premise 1
+P( ( Y  X  Z ) | X ) = 112 (Comment: By the definition of  X  X nformation content X .)
+X  X  Y  X  Z 23 (Comment: This follows probability theory.) X  X  Y 34 X  X  Z 35
+P ( Y | X ) = 146
+P ( Z | X ) = 157 (Comment: This follows probability theory.)
+Y , Z are random events Premise 8
+P ( Y ) = 189
+P ( Z ) = 1810
+I ( X )  X  Y 6and9
+I ( X )  X  Z 7 and 10 Example 8 ( X  10 ) a is awarded a grade  X  X  X  for her/his Programming course. ( X  11 ) a gains 70% or above for her/his Programming course. ( X  14 ) a attends the Programming course. ( X  15 ) the product of  X  11 and  X  14 above.
+ rule discussed here, by consulting  X  10 , one could learn  X  11 and  X  14 respectively. 3.1.1 Independence of the IIR rules derived from the other three rules. Here is the proof for the Decomposition rule. Proof
+I ( X )  X  Y  X  Z Premise 1 Y  X  Z Assumption 2 Y is a factor of Y  X  Z 23
+I ( Y  X  Z )  X  Y Rule 1 4 Z a factor of Y  X  Z 25
+I ( Y  X  Z )  X  Z Rule 1 6
+I ( X )  X  Y Rule2appliedto1,4
+I ( X )  X  Z Rule2appliedto1,6
+The Union rule can also be proved from other rules: we leave this to the reader. 3.1.2 The completeness of IIR inference rules an IIR, say IIR i , means that whenever F is true IIR i is true.
+ at two different occasions (Table 1 ). X the set of random events in R .
+  X  X  X  for all random events within X + and  X  X  X  for the rest, i.e., U  X  X + . Firstly let us show that all IIR in F are satisfied by r .
+ be examined in turn.  X  If V  X  X + then I ( X )  X  V definition of X + 1 In r  X  If V  X  X + (note that
+W can be either in X + or in U  X  X + ) ,thenin r In r cannot be deduced by the IIR inference rules from F is not logically imply by F .Inother This proves that the IIR inference rules are complete.
+
+Even though we have taken the same approach to proving the completeness of the IIR rules between functional dependencies and IIR as shown in Table 2 . 3.2 IIR underpin a database to flow. We agree with Barwise and Seligman [ 5 ,p.4], X  Once one reflects on the idea of information flowing, it can be seen to flow everywhere X  X ot just in computers and along database. 3.2.1 Types of IIR and their sources A database system is involved with two types of random events: those that are within the of IIR. The following table summaries the types of IIR and their sources (Table 3 ). 3.2.2 How IIR work for a database all the above four types of IIR.
+
+The IIR between real world random events (Row 4 of Table 1 ) is concerned with require-ments analysis and query writing, among others. For example, in a business rule of  X  X f a I (
+X )  X  Y . Furthermore, due to this IIR, we need only embody (carry) X by using data and not Y ,as Y can be derived from X . Consequently to query about Y should be implemented by querying X .
+
+The IIR from a real world random event to a database random event (Row 3 of Table 1 ) real-world objects is captured.
+ there is an IIR from the former to a latter.
+
+Finally, the IIR between database random events indicated by Row 1 of Table 1 appears to therefore there is an IIR: I(  X  1  X   X  2 )  X   X  3 .
+
+We observe that IIR now provides a framework for reasoning about a database in order to s 1) I(  X  1  X   X  2 )  X   X  3 ,I(  X  3 )  X   X  3 , through transitivity, we get  X  3 . of the elusive notion of the information content of a database [ 6 ]. 3.2.3 Meaning versus information content of a data construct data may have, which we observe is the main obstacle that hampers a scientific study of information for databases. We clarify the difference between them in this section. construct.
+ the project X .
+
+Note that the meaning of an instance, such as the individual entities and links between applied to data constructs whereby meanings of them are produced.
+ information content. But this is only accidental, not essential. 4 Exploiting IIR-reasoning in a database setting 4.1 The architecture of a standalone system system, which works with a database and a number of other elements as shown below. The architecture of the prototype is shown in Fig. 2 .
+
+As shown in Fig. 2 , we propose that a reasoning process about IIR consist of two major steps: Clause Conversion and Reasoning. In the Clause Conversion step, we convert the which become either  X  X acts X  or  X  X ules X . These generated Prolog clauses are then reasoned about by the Prolog Inference Engine 3 whereby hidden and nested information is derived.
+IIR-Reasoning provides us with a mechanism exploiting the notion of information content queries by using standard query languages such as SQL.
+ elements and converts the IIR to Prolog predicates. This procedure is guided by ontology and users X  perspective. 4.2 Prolog clauses conversion 4.2.1 Converting ontologies we developed an in-house conversion tool that partially translates the employee ontology forms these two objects have adopted and wherever they exist in the ontology. 4.2.2 Converting databases The database conversion is divided into two parts: automatic conversion and manual con-Prolog reasoner with the database. Firstly, we query the databases by SQL . Secondly, we database according to the user X  X  perspective [ 39 ].
+ The notion of random event in databases can be defined as:
+A random event is a set of outcomes A that denotes the occurrence of a set of values in a certain data construct in a database with the probability P.
+ This is a random event (say) A 0 in the database.
+ The notion of a particular of a database random event can be defined as:
+An individual occurrence of a set of values in a data construct, for which the appear-ance of the set of values in the data construct has been defined as a random event in a database.
+
+For example, that the set of values {  X 001 X ,  X  X  X ,  X  X rogramming X  } happens to appear in a database state , is a particular of the above database random event A 0 . Here is an example of automatic conversion. Suppose we have a table Employee (Emp_no, Emp_name, Emp_age, Emp_gender, Emp_tel), which contains some personnel information (Table 4 ).
+ IIR ( x , y ) as follows: 4.2.3 Converting particulars of  X  X elevant X  database random events using the notion of In the process of manual conversion, someone could generate a fact clause like this: to IIR. For example, a particular of a relevant database random event formulated by IIR (Employee, (Emp_no_is(0001), Emp_name_is(tony_wu), Emp_tel_is(0001, 01087534245))) means that: by offering a framework for the development of context-aware applications [ 12 ]. nodes is positive evidence whereas de-selection is a kind of negative evidence. The user areusedtorepresentthe meet (Greatest Lower Bound) and the join (Least Upper Bound) operations and induce a concept lattice whose elements represent various combinations of intersection and set union operation to vectors, respectively.
+ the ontology.
+ interested in the telephone number starting with  X 010 X  or  X 021 X .
+Then we derive facts according to the context and if needed using additional business rules to derive more information through reasoning. A user may be interested in various nodes in the original ontology such as position, age of an employee. As shown below, an user-deselected concept nodes.
+ x , y in a clause iir ( x , y ) , with  X 010 X  or  X 021 X  are taken from the database and translated into IIR clauses. 4.2.4 Converting business rules world random event  X  A lives in Beijing X , namely: by means of some database random event(s). which can be written as a Prolog rule clause: 4.2.5 Converting inference rules Following the same idea the inference rules can be translated as: Sum Rule: iir(Z, Y) :-sum((X, A), Y), iir(Z, X).
+ Product Rule: iir ( X , Y ) :-product (( A , Y ), X ) .
+ Augmentation Rule: iir Union Rule: iir ( X , S ) :-product (( Y , Z ), S ) , iir ( X , Y ) , iir ( X , Z ) . Decomposition: iir ( X , A ) :-product (( A , B ), S ) , iir ( X , S ) . iir ( X , B ) :-product (( A , B ), S ) , iir ( X , S ) .
+ Transitivity: iir ( X , Z ) :-iir ( X , Y ) , iir ( Y , Z ) . the random event which is formed by the product of W and X .
+ is no difference between using three basic rules and using all six rules.
+Part of the pseudocode for the conversion algorithm is as follows: //  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  Database conversion  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X 
+For each table T in a database iir ( a i , a j ) .
+ End for //  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  Ontologies  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  conversion For each possible pair of objects (i.e., nodes, instances) o i and o j among ontologies
+End for 4.3 Inference engine the standard Prolog syntax and releases the most popular set of predicates. are two employee records e 1 and e 2 whose telephone number starts with  X 010 X . Following the informational relation captured by the above IIR expression, we get: 1 and 2 are two IIR between two particulars of random events, which shows the informa-respectively).
+ that someone X  X  telephone number starts with  X 010 X .
+
+To test our example, we raise a goal (a term in Prolog) of  X  X ho lives in Beijing? X  The converted clauses (including the Transitivity rule) are as follows: 1. iir(telstarts ( A , 010), livesinBJ ( A )) .3 2. iir ( X , Z ) :-iir ( X , Y ) , iir ( Y , Z ) .4 business rule and 4 the IIR Transitivity inference rule.
+ by the inference engine, we have to slightly change them to: startiir ( t ,livesinBJ ( A )) 2 Solutions 4.4 A Prototype based upon C# we can consult them in the engine and derive more information by queries that cannot be a number of real world databases such as a small-scale employee database (Access-based) and a medium-scale finance database (Oracle-based). These real world databases contain inference procedure works as expected.
+ than 60, then the user could execute a SQL query  X  X ELECT Employees.* FROM Employees WHERE 2007 -YEAR(DOB) &gt; = 60 X , which would give the same 315 results. Note that our been captured as a business rule in the system.
+ Another example is as follows:
+If we want to find out who in the Marketing Department has become a VIP member and
+To answer this query, a number of business rules are used, which are: /*  X  X  X  X  X  X  X  Business Rule 1  X  X  X  X  X  X  X  */ /*  X  X  X  X  X  X  X  If a member has a membership number which is greater than 1000 and less than 3000, then this member is a  X  X old member X .  X  X  X  X  X  X  X  */ iir(hasMembership, goldmember(A)) :-iir(hasMembership, membershipnumber_is(A)), A &gt; =1000, A &lt; 3000. /*  X  X  X  X  X  X  X  Business Rule 2  X  X  X  X  X  X  X  */ /*  X  X  X  X  X  X  X  If an employee A is either a  X  X old member X  or a  X  X latinum member X , then A is a  X  X IP member X .  X  X  X  X  X  X  X  */ sum((goldmember(A), platinummember(A)), vipmember(A)). /*  X  X  X  X  X  X  X  Business Rule 3  X  X  X  X  X  X  X  */ /*  X  X  X  X  X  X  X  If an employee A is a VIP member, then A has 200 pounds voucher on her/his training.  X  X  X  X  X  X  X  */ iir(hasMembership, hasvoucher(A,  X 200 pounds X )) :-iir(hasMembership, vipmember(A)). /*  X  X  X  X  X  X  X  Business Rule 4  X  X  X  X  X  X  X  */ /*  X  X  X  X  X  X  X  If a member A has a 200 pounds voucher, then she/he must attend a general training course.  X  X  X  X  X  X  X  */ iir(teachesworkshoprun, mustattend(PAYROLLNUMBER,  X  X eneral X )) :-iir(hasMember-ship, hasvoucher(A,  X 200 pounds X )), iir(hasMembership, payrollnumber_is(A, PAYROLL-NUMBER)). /*  X  X  X  X  X  X  X  Business Rule 5  X  X  X  X  X  X  X  */ /*  X  X  X  X  X  X  X  If her/his identity is recorded in table teachesworkshoprun and in the record course.  X  X  X  X  X  X  X  */ iir(teachesworkshoprun, attended(PAYROLLNUMBER,  X  X eneral X )) :-iir(teacheswork-shoprun, workshopname_is(PAYROLLNUMBER,  X  X eneral X )). /*  X  X  X  X  X  X  X  Business Rule 6  X  X  X  X  X  X  X  */ /*  X  X  X  X  X  X  X  If she/he must attend and has attended a general training course, then an employee wants to keep her/his VIP membership.  X  X  X  X  X  X  X  */ iir(hasMembership, wannakeepVIP(PAYROLLNUMBER)) :-iir(teachesworkshoprun, mustattend(PAYROLLNUMBER,  X  X eneral X )), iir(teachesworkshoprun, attended(PAYROLL-NUMBER,  X  X eneral X )).
+
+Our test shows that the reasoning procedure for the above query is consistent with what monitor of PIE shows the reasoning procedure as follows (we added some comments):
+Query: iir(employee, dept_is(A,  X  X arketing X )), iir(hasmembership, wannakeepvip(A)) ...... /*  X  X  X  X  Match A to check whether iir(employee, dept_is(A,  X  X arketing X )) can be satisfied.  X  X  X  X  */ Trace: &gt;&gt; CALL: iir(employee, dept_is(_,Marketing))
+Trace: &gt;&gt; RETURN: iir(employee, dept_is(110092,Marketing)) /*  X  X  X  X  A = 110092 is found.  X  X  X  X  */ /*  X  X  X  X  Check iir(hasmembership, wannakeepvip(A))  X  X  X  X  */
+Trace: &gt;&gt; CALL: iir(hasmembership, wannakeepvip(110092)) /*  X  X  X  X  Check according to Business Rule 6  X  X  X  X  */
+Trace: &gt;&gt; CALL: iir(teachesworkshoprun, mustattend(110092, general)) /*  X  X  X  X  Check according to Business Rule 4  X  X  X  X  */
+Trace: &gt;&gt; CALL: iir(hasmembership, hasvoucher(_,200 pounds)) /*  X  X  X  X  Check according to Business Rule 3  X  X  X  X  */
+Trace: &gt;&gt; CALL: iir(hasmembership, vipmember(_)) /*  X  X  X  X  Check according to Business Rule 2  X  X  X  X  */ /*  X  X  X  X  Check according to Sum rule iir(Z, Y) :-sum((X, A), Y), iir(Z, X).  X  X  X  X  */ /*  X  X  X  X  Check sum((X, A), Y)  X  X  X  X  */
+Trace: &gt;&gt; CALL: sum(_ , _, vipmember(_)) /*  X  X  X  X  sum((X, A), Y) is matched  X  X  X  X  */
+Trace: &gt;&gt; RETURN: sum(goldmember(_), platinummember(_), vipmember(_)) /*  X  X  X  X  Check iir(Z, X) when X = goldmember(_), Z = hasmembership  X  X  X  X  */ Trace: &gt;&gt; CALL: iir(hasmembership, goldmember(_)) Trace: &gt;&gt; CALL: iir(hasmembership, membershipnumber_is(_)) Trace: &gt;&gt; RETURN: iir(hasmembership, membershipnumber_is(2371)) Trace: &gt;&gt; CALL: 2371 &gt; = 1000 Trace: &gt;&gt; RETURN: 2371 &gt; = 1000 Trace: &gt;&gt; CALL: 2371 &lt; 3000
+Trace: &gt;&gt; RETURN: 2371 &lt; 3000 /*  X  X  X  X  iir(Z, X) is matched  X  X  X  X  */
+Trace: &gt;&gt; RETURN: iir(hasmembership, goldmember(2371)) /*  X  X  X  X  Backtrack  X  X  X  X  */ Trace: &gt;&gt; RETURN: iir(hasmembership, vipmember(2371)) Trace: &gt;&gt; RETURN: iir(hasmembership, hasvoucher(2371,200 pounds)) Trace: &gt;&gt; CALL: iir(hasmembership, payrollnumber_is(2371,110092)) Trace: &gt;&gt; RETURN: iir(hasmembership, payrollnumber_is(2371,110092)) Trace: &gt;&gt; RETURN: iir(teachesworkshoprun, mustattend(110092,general)) Trace: &gt;&gt; CALL: iir(teachesworkshoprun, attended(110092,general)) Trace: &gt;&gt; CALL: iir(teachesworkshoprun, workshopname_is(110092,general)) Trace: &gt;&gt; RETURN: iir(teachesworkshoprun,workshopname_is(110092,general)) Trace: &gt;&gt; RETURN: iir(teachesworkshoprun, attended(110092,general))
+Trace: &gt;&gt; RETURN: iir(hasmembership, wannakeepvip(110092)) /*  X  X  X  X  Got the results  X  X  X  X  */
+A = 110092 ......
+ many types of queries that are otherwise impossible. This is because the system derives revealed.
+
+Through prototyping, we find that the reasoning procedure takes a long time (a few min-clauses. All these will be further investigated in the near future. 4.5 Future work With the development of the Semantic Web ,many RDF -based tools are becoming available. in SWI-Prolog [ 41 ] includes RDF parsers and an interface to SPARQL servers. Our group as Prolog assertions.
+
+The production version of the current work envisages combined use of these tools, to a virtual graph.
+ only as required by the currently executing query.
+
+We treat the IIR as a minimum atomic unit to be used in an inference engine because this understand and use. 5 Comparisons with related work Several approaches concerning the  X  X nformation content X  of databases have been reported dominance and put forward the Schema Intension Graph (SIG) data model. This RIC-or transformation. The limitation of this approach has been discussed in Sect. 1.
+Another approach is based upon Formal Language Theory [ 29 ]. The information content mar, which is defined by Formal Language Theory. This approach is on the data content equivalence of information content.
+
+To tackle other information content problems such as information content measure [ 2 ], notion of entropy to measure how much information we can gain if the value of an assumed of entropy also.
+
+Our notion of  X  X nformation content X  is based upon [ 13 ], which we extended for our pur-event can tell us truly about the existence of another. For example, is the information that a carrier carries about an information source.
+Our focus is on the content of information that is carried by individual messages (indi-vidual data instances), not only the (average) amount of information that many messages  X  X ontent X  of information.  X  Not only the quantity (amount) of information that data carry, but also the content of  X  Above all though, what we are concerned with is ultimately the provision of an account  X  To this end, we look at IIR between data constructs, which may be seen stemming from  X  In order to ground our endeavour on sound theories, not only Shannon X  X  ideas, but also paper, we extend (which we believe is necessary) Dretske X  X  notion of information content which we address in this paper) and  X  X okens X  (one kind of which is particulars of random 6 Conclusions more accurate and more comprehensive than Dretske X  X . Based upon this extended definition such relations.
+
+Then we showed how these ideas and rules might be applied within a database setting struct. We described how reasoning about information content might be exploited with a domain-dependent, the identification of which would require domain knowledge.
+Our main conclusions through this work are: the program of semantic information theory information systems and databases. Based on these sources, our work offers the machinery inexplicit business information in databases.
+ References Author Biographies

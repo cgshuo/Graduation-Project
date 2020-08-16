@@ -1,0 +1,74 @@
+ 1. Introduction
+One of the best illustrations for such a recommender system is the one deployed by the Amazon web site, Links ...  X  X  ( Linden, Smith, &amp; York, 2003; Schafer, Konstan, &amp; Riedl, 2001 ).  X  ferent vacation packages in summer or in winter.
+ used by data warehouses and OLAP applications. More formally, given the dimensions D ommendation space for these dimensions as a Cartesian product D M 0 over the space D 1 D 2 D t , where t &gt;2,as multidimensional algorithm. 1.1. Contributions of the paper As part of this work, we have adapted the categorization of context-aware recommender systems proposed by
+Adomavicius and Tuzhilin (2008) to multidimensional recommendation approaches. We have also formalized our DaVI approach and demonstrated how it can be applied on two different top-N recommendation techniques, Item-based of our approach using these two recommendation techniques.
+
+An important issue is which dimensions should be used by the DaVI approach, given that some dimensions are more to the number of dimensions available in a data set for building a multidimensional model. 1.2. Organization of the paper
+The paper is organized as follows. In Section 2 we review the main multidimensional recommendation approaches ment (Section 6 ). 2. Related work approaches transform the original data taking the values of the dimensions into account. 2.1. Filtering approaches recommendation.
+
+Some pre-filtering approaches have been combined with OLAP. In Adomavicius and Tuzhilin (2001b) and Adomavicius top-N recommendations in a framework for mobile commerce (m-commerce).
+ of neighbors ( Panniello et al., 2009 ). Finally, the probability P approach) the two-dimensional recommendations. 2.2. Algorithmic approaches and a multidimensional recommendation operation language (MROL) to exploit their multidimensional model. items. In the recommendation process, the calculated similarities are used as weights for items to reorder the recommendations. 2.3. Transformational approaches of the active session is considered and can then be used.
+ erate the recommendations. 2.4. Summary information with the additional dimensions. 3. Dimensions as Virtual Items (DaVI) the recommendation model. On the other hand, regular items are used to build the model and they can also be recommended.
+ i , ... , i q }. In addition, we have other dimensions (e.g., contextual or background information), D X f D each dimension D comprehends a set of values, i.e., D ={ d integer values from 1 to 24. Now, let j be the number of historical multidimensional sessions in a web site
+S  X  s 0 1 ; s 0 2 ; ... ; s 0 j
+D # D 1 [ D 2 [[ D t containing all the dimension values associated with the session s 0 , i.e., s 0  X h u ; I item-based dimensions. If a single dimension D is session-based, a session s 0  X h u ; I s 0  X h u ; I s 0 ; D s 0 i X h u ; f i 1 ; ... ; i q g ; f d i , ... , i q in the session s 0 . For example, if the dimension values d
+The DaVI approach consists in converting each multidimensional session s 0  X h u ; I dimensional session s 00  X h u ; I s 00 [ D s 00 i , where the values of the additional dimensions in D
+For example, a multidimensional session s 0  X h u ; I s 0 ; D converted into an extended two-dimensional session s 00  X h u ; I sessions, where S 00 is the set of extended two-dimensional sessions, S 0 is the set of multidimensional sessions and cating which dimension values in S 0 must be converted to virtual items.
+ the DaVI approach in Fig. 1 , where the values of the additional dimension Hour are used as virtual items. tional dimensions (transformed in virtual items by the DaVI approach) from the active user session s 00 follows:
+R I and R \ O =  X  , that are the most relevant/interesting for the user u antee that the model will never recommend virtual items.
+ recommender algorithms: Item-based Collaborative Filtering and Association Rules based. 3.1. Item-Based Collaborative Filtering an accessed item, for example, a web page.
+ apply a metric on the ratings to compute the similarity sim ( i and adjusted cosine angle. In this paper, we use the cosine angle metric, defined as tive item. The value 0 is the opposite.
+
+Once we obtain the recommendation model, we can generate the recommendations. Given an active session s we calculate its similarity to the set O as where K c is a set with the k most similar items (the nearest neighbors) to the candidate item c . values between all the pairs of items.
+
+A representation of a similarity matrix with the additional dimension Hour ={ d are the set of items that are the most similar to its set of observable items O # I tive session is taking place is also used to generate the recommendations. 3.2. Recommender system based on Association Rules sessions that contain X , and can be formulated as association rules is Apriori ( Agrawal &amp; Srikant, 1994 ).
+ Alves, &amp; Azevedo, 2002, 2003 ): highest confidence values.
+ such as which means a person who accesses the items i 1 and i 2 at around 10 tends to access the item i quent, a filter is applied on the rules to guarantee that only regular items are recommended. 3.3. Analysis of complexity the complexity of the CF algorithm for building a recommendation model is O ( q firm that the impact of v is reduced if q and j are much larger than technique is O ( b j 2  X  + t ). Thus, the complexity with respect to the number of dimensions is O (2 and j = 30,000 based on information of our largest data set (Section 5.1 ). 4. DaVI based algorithms simultaneously on all existing dimensions in a data set to build the multidimensional model. 4.1. DaVI -BEST algorithm evaluate it, called the validation set.
+ recommendations.
+ set, the set of recommendations generated R against the singleton set H for that session, as follows: sented in Algorithm 1 .
+ Algorithm 1. DaVI -BEST algorithm
+Input : A set of multidimensional sessions S 0  X  s 0 1 ; s
+Output : M , an object containing the final two-dimensional or multidimensional recommendation model. 1: l F :  X   X  ; {F1 values, for each fold, calculated using the two-dimensional models} 2: l 0 F ; D :  X   X  ; {F1 values, for each fold and dimension, calculated using the multidimensional models} 3: D  X  :  X   X  ; {Set of pairs h dimension , F 1 values i for informative dimensions} 4: F :  X  create -folds  X  S 0 ; n  X  ; 5: for all folds F 2F do 6: M F :  X  A  X F F  X  ; 7: l F :  X  eval ( M F , F ); 8: end for 9: for all dimensions D 2D do 10: for all folds F 2F do 11: M 0 F ; D :  X  A  X  DaVI  X F F ; D  X  X  ; 12: l 0 F ; D :  X  e v al  X  M 0 F ; D ; DaVI  X  F ; D  X  X  ; 13: end for 14: if t -test  X  l 0 F ; D &gt; l F ; a  X  0 : 05  X  then 15: D  X  :  X D  X  [ &lt; D ; l 0 F ; D &gt; ; 16: end if 17: end for 18: if D  X   X   X  then 19: D  X  :  X  argmax D  X  2D  X   X  F 1  X  D  X   X  ; 20: M :  X  A  X  DaVI  X  S 0 ; D  X   X  X  ; 21: else 22: M :  X  A  X  S 0  X  ; 23: end if 24: return M ; Firstly, the algorithm sets to  X  X   X   X  X  (empty set) the variables l multidimensional recommendation models.
+ 14 X 16.
+ level (significance level a = 0.05). In line 15, the dimensions that are informative are stored in the set D F1 values.
+
+D sional recommendation model is returned in line 24 of Algorithm 1 . 4.2. DaVI -FS algorithm plied is a simple greedy search algorithm that starts from an empty set of selected dimensions, the dimension D that results in the greatest improvement for an objective function J  X  ously selected dimensions. The DaVI -FS algorithm is presented in Algorithm 2 . Similarly to the DaVI -BEST algorithm, we use variables l mendation models.
+ Algorithm 2. DaVI -FS algorithm
+Input : A set of sessions S 0  X  s 0 1 ; s 0 2 ; ... ; s 0
+Output : M , an object containing the final two-dimensional or multidimensional recommendation model. 1: l F :  X   X  ; {F1 values, for each fold, calculated using the two-dimensional models} 2: l 0 3: b C :  X   X  ; {A pair h combination of dimensions , F 1 values i which stores the best combination} 4: stop :  X  false; 5: F :  X  create folds  X  S 0 ; n  X  ; 6: for all folds F 2F do 7: M F :  X  A  X F F  X  ; 8: l F :  X  eval ( M F , F ); 9: end for 10: do 11: C  X  :  X   X  ; {Set of pairs h combination of dimensions , F 1 values i for informative combinations} 12: for all dimensions D j D 2D and D R b C do 13: for all folds F 2F do 14: M 0 15: l 0 16: end for 17: if t-test l 0 18: C  X  :  X C  X  [ &lt; b C  X  D ; l 0 19: end if 20: end for 21: C + :  X  argmax C  X  2C  X   X  F 1  X  C  X   X  ; 22: if mean  X  C  X   X  &gt; mean  X  b C  X  then 23: b C :  X  C  X  ; 24: else 25: stop :  X  true; 26: end if 27: while stop = false 28: if b C  X   X  then 29: M :  X  A  X  DaVI  X  S 0 ; b C  X  X  ; 30: else 31: M :  X  A  X  S 0  X  ; 32: end if 33: return M ; models for each combination of dimensions (lines 17 X 19).
+ tive F1 values. In line 21, the function argmax returns the combination C objective function, i.e., F1 value.
+
+As in DaVI -BEST, the algorithm may return a multidimensional or a two-dimensional model (lines 28 X 33). 4.3. DaVI -ALL algorithm is returned in line 6.
+ Algorithm 3. DaVI -ALL algorithm
+Input : A set of sessions S 0  X  s 0 1 ; s 0 2 ; ... ; s 0
+Output : M , an object containing the final two-dimensional or multidimensional recommendation model. 1: if D  X   X  then 2: M :  X  A ( DaVI  X  S 0 ; D X  ); 3: else 4: M :  X  A  X  S 0  X  ; 5: end if 6: return M ; 4.4. Generating top-N recommendations with multidimensional models
+Once we have a multidimensional recommender model in M , we can generate the recommendations. Algorithm 4 gen-Algorithm 4. Algorithm for top-N recommendations with a DaVI multidimensional model
+Input : An object M containing a recommender model; an active session s 0
+Output : R , the top-N recommendations for the active session s 0 1: if M contains a multidimensional model then 2: M 0 :  X  M ; 3: s 00 a :  X  DaVI s 0 a ; D s 0 4: R :  X  filter  X  M 0  X  I s 00 5: else 6: M :  X  M ; 7: R :  X  M  X  I s 0 8: end if 9: return R ; ommendations R for the active session s 0 a . 5. Empirical evaluation research questions: predictive ability than a two-dimensional recommender algorithm? than using the single best dimension ( DaVI -BEST algorithm)? literature? sions available in a data set for building a multidimensional model. 5.1. Data sets very expensive and their scale small.
+ The additional dimensions for both data sets are presented in Table 4 .
+ web site.
+
+Besides the previous two new data sets, the evaluation is also carried out on a third data set, called Entree . which come with the data set. 5.2. Experimental setup and evaluation metrics summarized using mean and standard deviation. To compare two recommendation algorithms, we apply the two-sided ommended by the top-N recommender systems.
+ applies. 5.3. Empirical results F1 values) and discuss them in order to answer each of them.
+ 5.3.1. Evaluating the DaVI -BEST algorithm model were implemented using internal 5-fold cross validation in order to reduce the computational time. dimensions.
+ gains of 26.16%, 13.66% and 4.58%, respectively.
+ technique. Again, DaVI -BEST identifies and exploits informative dimensions. 5.3.2. Evaluating the DaVI -FS and DaVI -ALL algorithms against the DaVI -BEST algorithm of dimensions, respectively, are implemented using internal 5-fold cross validation. BEST algorithm. This can be observed in Table 8 .
+ the experiments.
+ of them are used to generate the recommendations.
+ the DaVI -BEST algorithm (see Table 9 ).
+ and combinations of two dimensions in others 40%.
+ multidimensional model.
+ 5.3.3. Evaluating the DaVI -BEST algorithm against other algorithms proposed in the literature against two other algorithms proposed in the literature. procedures that select the best segments were also implemented using internal 5-fold cross validation. and F1 metric, respectively, but they are all statistically significant.
+ more accurate recommendations.
+ recommendations.
+ mender). In the other two, the performance is equivalent. AR recommendation techniques, and tested them on the three data sets used so far. DaVI -BEST has statistically non-significant losses.
+ and F1 metric.
+ in 5 out of 6 experiments. 5.3.4. Scalability of the DaVI Based Algorithms two dimensions, the first three dimensions and so forth.
+ running the Ubuntu Linux operating system.
+ grows.
+ of values available for all the seven dimensions).
+ shapes in both cases (i.e., CF and AR). 6. Conclusion and future work dimensional recommender algorithms.
+ set at the same time.
+ BEST increases linearly and the increase for DaVI -FS is exponential.
+ mensional algorithms which could be compared with our approach. They have been presented in Section 2 , but new ways for building multidimensional data sets.
+ Acknowledgements project Rank! (PTDC/EIA/81178/2006) and QREN-AdI Palco3.0/3121 PONORTE is gratefully acknowledged. References

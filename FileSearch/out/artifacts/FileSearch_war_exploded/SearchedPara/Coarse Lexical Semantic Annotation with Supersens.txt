@@ -1,0 +1,56 @@
+  X  The Guinness Book of World Records considers the University of Al-Karaouine in Fez, Morocco, established in the year 859 AD, the oldest university in the world. X  Figure 1: A sentence from the article  X  X slamic Golden Age, X  with the supersense tagging from one of two anno-tators. The Arabic is shown left-to-right. noun principal  X  X nd generalize across lexemes on the other X  X .g., principal , teacher , and student can
+O NATURAL OBJECT natural feature or nonliving object in
+L LOCATION any name of a geopolitical entity, as well as other nouns functioning as locations or regions
+P PERSON humans or personified beings; names of social groups (ethnic, political, etc.) that can refer to an individ-
+G GROUP groupings of people or objects, including: orga-nizations/institutions; followers of social movements
+H POSSESSION term for an entity involved in ownership or
+T TIME a temporal point, period, amount, or measurement = RELATION relations between entities or quantities
+Q QUANTITY quantities and units of measure, including
+M MOTIVE an abstract external force that causes someone
+C COMMUNICATION information encoding and transmis-sion, except in the sense of a physical object  X  COGNITION aspects of mind/thought/knowledge/belief/ perception; techniques and abilities; fields of academic study; social or philosophical movements referring to the
+S STATE stable states of affairs; diseases and their symp-@ ATTRIBUTE characteristics of people/objects that can be ! ACT things people do or cause to happen; learned pro-
+E EVENT things that happens at a given place and time
+R PROCESS a sustained phenomenon or one marked by gradual changes through a series of states
+X PHENOMENON a physical force or something that hap-+ SHAPE two and three dimensional shapes D FOOD things used as food or drink
+B BODY human body parts, excluding diseases and their symptoms Y PLANT a plant or fungus N ANIMAL non-human, non-plant life Science chemicals, molecules, atoms, and subatomic particles are tagged as SUBSTANCE Sports championships/tournaments are EVENT s (Information) Technology Software names, kinds, and components are tagged as COMMUNICATION (e.g. kernel, as Arabic conventions Masdar constructions (verbal nouns) are treated as nouns. Anaphora are not tagged. http://www.ark.cs.cmu.edu/ArabicSST/ .
+ We thank Nourhen Feki and Sarah Mustafa for assistance with annotation, as well as Emad Mohamed, CMU ARK members, and anonymous reviewers for their comments. This publication was made possible by grant NPRP-08-485-1-083 from the Qatar National Research Fund (a member of the Qatar Foundation). The statements made herein are solely the responsibility of the authors. Giuseppe Attardi, Stefano Dei Rossi, Giulia Di Pietro, Alessandro Lenci, Simonetta Montemagni, and Maria
+Simi. 2010. A resource and tool for super-sense tagging of Italian texts. In Nicoletta Calzolari, Khalid Choukri, Bente Maegaard, Joseph Mariani, Jan Odijk, Stelios Piperidis, Mike Rosner, and Daniel
+Tapias, editors, Proceedings of the Seventh Interna-tional Conference on Language Resources and Evalu-ation (LREC X 10) , Valletta, Malta, May. European Lan-guage Resources Association (ELRA).
+ Collin F. Baker, Charles J. Fillmore, and John B. Lowe. 1998. The Berkeley FrameNet project. In Proceed-ings of the 36th Annual Meeting of the Association for Computational Linguistics and 17th International Conference on Computational Linguistics (COLING-ACL  X 98) , pages 86 X 90, Montreal, Quebec, Canada, August. Association for Computational Linguistics. D. M. Bikel, R. Schwartz, and R. M. Weischedel. 1999. An algorithm that learns what X  X  in a name. Machine Learning , 34(1).
+ Massimiliano Ciaramita and Yasemin Altun. 2006.
+Broad-coverage sense disambiguation and information extraction with a supersense sequence tagger. In Pro-ceedings of the 2006 Conference on Empirical Meth-ods in Natural Language Processing , pages 594 X 602,
+Sydney, Australia, July. Association for Computa-tional Linguistics.
+ Massimiliano Ciaramita and Mark Johnson. 2003. Su-persense tagging of unknown nouns in WordNet. In Proceedings of the 2003 Conference on Empirical
+Methods in Natural Language Processing , pages 168 X  175, Sapporo, Japan, July.
+ James R. Curran. 2005. Supersense tagging of unknown nouns using semantic similarity. In Proceedings of the 43rd Annual Meeting on Association for Computa-tional Linguistics (ACL X 05) , pages 26 X 33, Ann Arbor, Michigan, June.
+ Bonnie J. Dorr, Rebecca J. Passonneau, David Farwell, Rebecca Green, Nizar Habash, Stephen Helmreich, Eduard Hovy, Lori Levin, Keith J. Miller, Teruko
+Mitamura, Owen Rambow, and Advaith Siddharthan. 2010. Interlingual annotation of parallel text corpora: a new framework for annotation and evaluation. Nat-ural Language Engineering , 16(03):197 X 243.
+ Sabri Elkateb, William Black, Horacio Rodr  X   X guez, Musa Alkhalifa, Piek Vossen, Adam Pease, and Christiane Fellbaum. 2006. Building a WordNet for Arabic.
+In Proceedings of The Fifth International Conference on Language Resources and Evaluation (LREC 2006) , pages 29 X 34, Genoa, Italy.
+ Christiane Fellbaum. 1990. English verbs as a semantic net. International Journal of Lexicography , 3(4):278 X  301, December.
+ Christiane Fellbaum, editor. 1998. WordNet: an elec-tronic lexical database . MIT Press, Cambridge, MA. Eduard Hovy, Mitchell Marcus, Martha Palmer, Lance
+Ramshaw, and Ralph Weischedel. 2006. OntoNotes: the 90% solution. In Proceedings of the Human Lan-guage Technology Conference of the NAACL (HLT-NAACL) , pages 57 X 60, New York City, USA, June. Association for Computational Linguistics.
+ Paul Kingsbury and Martha Palmer. 2002. From Tree-
+Bank to PropBank. In Proceedings of the Third In-ternational Conference on Language Resources and Evaluation (LREC-02) , Las Palmas, Canary Islands, May.
+ Xin Li and Dan Roth. 2002. Learning question classi-fiers. In Proceedings of the 19th International Con-ference on Computational Linguistics (COLING X 02) , pages 1 X 7, Taipei, Taiwan, August. Association for Computational Linguistics.
+ George A. Miller, Claudia Leacock, Randee Tengi, and Ross T. Bunker. 1993. A semantic concordance. In Proceedings of the Workshop on Human Language Technology (HLT  X 93) , HLT  X 93, pages 303 X 308,
+Plainsboro, NJ, USA, March. Association for Compu-tational Linguistics.
+ George A. Miller. 1990. Nouns in WordNet: a lexical inheritance system. International Journal of Lexicog-raphy , 3(4):245 X 264, December.
+ Behrang Mohit, Nathan Schneider, Rishav Bhowmick, Kemal Oflazer, and Noah A. Smith. 2012. Recall-oriented learning of named entities in Arabic
+Wikipedia. In Proceedings of the 13th Conference of the European Chapter of the Association for Computa-tional Linguistics (EACL 2012) , pages 162 X 173, Avi-gnon, France, April. Association for Computational Linguistics.
+ Gerhard Paa X  and Frank Reichartz. 2009. Exploiting semantic constraints for estimating supersenses with CRFs. In Proceedings of the Ninth SIAM International Conference on Data Mining , pages 485 X 496, Sparks, Nevada, USA, May. Society for Industrial and Applied Mathematics.
+ Rebecca J. Passonneau, Ansaf Salleb-Aoussi, Vikas
+Bhardwaj, and Nancy Ide. 2010. Word sense anno-tation of polysemous words by multiple annotators.
+In Nicoletta Calzolari, Khalid Choukri, Bente Mae-gaard, Joseph Mariani, Jan Odijk, Stelios Piperidis,
+Mike Rosner, and Daniel Tapias, editors, Proceed-ings of the Seventh International Conference on Lan-guage Resources and Evaluation (LREC X 10) , Valletta,
+Malta, May. European Language Resources Associa-tion (ELRA). Andrew G. Philpot, Michael Fleischman, and Eduard H.
+Hovy. 2003. Semi-automatic construction of a general purpose ontology. In Proceedings of the International Lisp Conference , New York, NY, USA, October. Davide Picca, Alfio Massimiliano Gliozzo, and Mas-similiano Ciaramita. 2008. Supersense Tagger for Italian. In Nicoletta Calzolari, Khalid Choukri, Bente Maegaard, Joseph Mariani, Jan Odjik, Stelios
+Piperidis, and Daniel Tapias, editors, Proceedings of the Sixth International Language Resources and Eval-uation (LREC X 08) , pages 2386 X 2390, Marrakech, Mo-rocco, May. European Language Resources Associa-tion (ELRA).
+ Davide Picca, Alfio Massimiliano Gliozzo, and Simone
+Campora. 2009. Bridging languages by SuperSense entity tagging. In Proceedings of the 2009 Named
+Entities Workshop: Shared Task on Transliteration (NEWS 2009) , pages 136 X 142, Suntec, Singapore, Au-gust. Association for Computational Linguistics. Likun Qiu, Yunfang Wu, Yanqiu Shao, and Alexander
+Gelbukh. 2011. Combining contextual and struc-tural information for supersense tagging of Chinese unknown words. In Computational Linguistics and In-telligent Text Processing: Proceedings of the 12th In-ternational Conference on Computational Linguistics and Intelligent Text Processing (CICLing X 11) , volume 6608 of Lecture Notes in Computer Science , pages 15 X  28. Springer, Berlin.
+ Satoshi Sekine, Kiyoshi Sudo, and Chikashi Nobata. 2002. Extended named entity hierarchy. In Proceed-ings of the Third International Conference on Lan-guage Resources and Evaluation (LREC-02) , Las Pal-mas, Canary Islands, May.
+ Annie Zaenen, Jean Carletta, Gregory Garretson, Joan Bresnan, Andrew Koontz-Garboden, Tatiana Nikitina,
+M. Catherine O X  X onnor, and Tom Wasow. 2004. An-imacy encoding in English: why and how. In Bon-nie Webber and Donna K. Byron, editors, ACL 2004 Workshop on Discourse Annotation , pages 118 X 125, Barcelona, Spain, July. Association for Computational
+Linguistics.

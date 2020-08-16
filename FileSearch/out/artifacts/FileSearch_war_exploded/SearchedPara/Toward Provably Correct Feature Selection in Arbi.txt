@@ -1,0 +1,3 @@
+ Optimal Feature Selection for X Finding Markov Boundary (min Markov Blanket) of X Many algos for  X  X ormal X  probability distributions GS, IAMB &amp; variants, MMMB etc Don X  X  work for corner cases (e.g., parity functions in discrete domains); these contain higher-order interaction (involving more vars) and are hard to detect We give 2 algorithms and a basic theorem for provably correct , approximate algorithms for such cases as well: 1 deterministic, 1 randomiz ed; parameter called algo X  X   X  margin  X 
+X
+X

@@ -1,0 +1,44 @@
+ 1. Introduction
+Modern human society needs an ever-increasing supply of cally tripped by their relays.
+ multi-machine systems, including output feedback and state machinery identification and control, is mainly limited to ward neural networks for modelling.
+ experimental data. 2. Mathematical model generator is described by the following equations: _ w  X  w 2 , (1) _ w  X  b 1 w 3 sin  X  w 1  X  b 2 w 2  X  P , (2) _ w  X  b 3 cos  X  w 1  X  b 4 w 3  X  E  X  u . (3)
+The state variables of this system are the load angle w 1 quadrature axis internal voltage w 3 . The inputs P  X  o s
+E  X  E coefficients b i , i  X  1 ; ... ; 4, are defined as b 1  X  o b  X  K D = 2 H , b 3  X  X  L d L 0 d  X  E B = T 0 d 0  X  L 0 d  X  X  X  L tance in the d -axis, L l is the leakage inductance and L and Anderson and Fouad (1977) . 3. Neural identifier For the identification task, extensions of the first-order considering all its parameters unknown.
+ the mathematical analysis and the computational burden.
+Let assume that the model (1) X (2) can be expressed as a partial-state RHONN, given by _ w  X  w 2 , (4) _ w  X  a 2 w 2  X  w 21 S  X  w 2  X  X  w 22 S  X  w 1  X  S  X  w 3  X  X  w 23 is constant and unknown, q 2  X  X  S  X  w 2  X  , S  X  w 1  X  S  X  identify the synchronous generator partial model, _ x  X  a 1  X  x 1 w 1  X  X  x 2 , (6) _ x  X  a 2 x 2  X  w 21 S  X  w 2  X  X  w 22 S  X  w 1  X  S  X  w 3  X  X  w 23 w mechanical power estimation, in the neural model context. 3.1. On-line weight update law 1996 ).
+
+Lemma 1. Consider the system _ x  X  f  X  x  X  , (8) entiable such that _
+V  X  @ V @ x bounded for t 0 and 8 x  X  0  X 2 R n , moreover lim W  X  x  X  t  X  X  X  0.
+ Let define the i -th identification error e  X  x i w i ; i  X  1 ; 2, and the parameter error  X  w  X  w 2 w 2 . (9) _ e  X  Ae  X  b  X  w &gt; 2 q 2 , (10) where e  X  X  e 1 , e 2 &gt; , A  X  X  a 1 0 1 a following candidate Lyapunov function:
+V  X  1 equation along the trajectories of (10) yields _ using the adaptive law _ w  X  e 2 C 1 2 q 2 , (13)
+Eq. (12) becomes _ V  X  e &gt; Qe .
+ of e to zero and the boundness of  X  w 2 . 3.2. Robust weight update law the weights are bounded for any time. Hence, the following adaptive law is proposed: _ w where s 2 is given as  X  with integer q 1, and s 20 and M 2 positive constants.
+Lemma 2. Consider system (4), (5), RHONN (6), (7) and the exponentially into a bounded set .
+ (14) is given by _ V  X  e &gt; Qe s 2  X  w &gt; 2 w 2 e 2 n 2  X  v ; u  X  .
+Applying the triangular inequality and defining d 0  X  max  X   X  v ; u  X  X  , the following inequality holds: _
+V l min  X  Q  X k e k 2 s 2  X  w &gt; 2 w 2  X  k e k
+Since  X  w 2  X  w 2 w 2 , then using
+Hence _ _
+V a k e k 2 1 2 s 2 k  X  w 2 k 2  X  1 2 s 2 k w 2 k 2  X  d rewritten as _
+V 2 a V  X  a  X  w &gt; 2 C 2  X  w 2 1 2 s 2 k  X  w 2 k 2  X  20 4 2 a l max  X  C 2  X  , so that _
+V 2 a V  X  1 2 s 20 k w 2 k 2  X  d D  X  X  e &gt; ;  X  w &gt; 2 &gt; : V 1 2 a 1 2 s 20 k w 2 k and the proof is completed. &amp; 4. Neural block control
+For the control structure, the control law is based on the proposed control scheme, which is based on the following proposition.
+ is possible to establish the following inequality: k y
+P y r kk y P y N k X k y N y r k , y proposed on-line identification algorithm .
+The second goal can be achieved by designing a control law discontinuous control law is derived, which combines block surface such that the resulting sliding mode dynamics is described by a desired linear system. 4.1. Control law in a block controllable form _ x  X  a 1  X  x 1 w 1  X  X  x 2 , _ x  X  a 2 x 2  X  w 21 S  X  w 2  X  X  w 22 S  X  w 1  X  S  X  w 3  X  X  w 23 _ w  X  b 3 cos  X  w 1  X  b 4 w 3  X  E  X  u .
+ z  X  x 1 d r . (16) dynamics for z 1 can be obtained from (6) and (16) as _ z  X  a 1 e 1  X  x 2  X  k 1 z 1  X  z 2 ; k 1 4 0, (17) where k 1 z 1  X  z 2 represents the desired dynamics for z new variable z 2 calculated as z  X  k 1 z 1 a 1 e 1  X  x 2 .
+
+Then, the dynamics for z 2 is given by _ z  X  k 1  X  a 1 e 1  X  x 2  X  a 1  X  a 1 e 1  X  x 2  X  a 2 x 2  X  k 2 z 2  X  z 3 ; k 2 4 0, with k 2 z 2  X  z 3 as the desired dynamics for z 2 , and z  X  f 2  X  v ; x  X  X  w 22 S  X  w 1  X  S  X  w 3  X  , w S  X  w 2  X  X  w 23 :
+Therefore, the time derivative of z 3 is expressed by _ z  X  f 3  X  v ; x  X  X  b 5  X  v  X  u , (18) where f  X  v ; x  X  X  @ f 2  X  v ; x  X  continuous control law is defined: u  X  k 3 sign  X  b 5  X  v  X  X  sign  X  z 3  X  . (19) _ z  X  f 3  X  v ; x  X  k 3 j b 5  X  v  X j sign  X  z 3  X  . (20) Using the following Lyapunov function:
+V  X  whose time derivative is _
+V  X  z 3  X  f 3  X  v ; x  X  k 3 j b 5  X  v  X j sign  X  z 3  X  X  , and assuming that the following bounds are satisfied: j f  X  v ; x  X j q 0 ; q 0 4 0, (22) k j b  X  v  X j q 0  X  d 0 and d 0 4 0, (23) then _
+V 3  X  k 3 j b 5  X  v  X j sign  X  z 3  X  z 3  X  f 3  X  v ; x  X  z 3
+Hence, a sliding motion on the nonlinear surface z 3  X  0is by the second-order linear system _ z  X  Kz 1 , where z 1  X  X  z 1 z k 4.2. Stability analysis candidate Lyapunov function: where R is a symmetric positive definite matrix and e  X  X  e (4) X (7), (13) and (20), it yields _ V  X  e &gt; Qe z 1 Sz 1  X  z 3  X  f 3  X  v ; x  X  k 3 j b 5  X  v the time derivative _ V satisfies the following inequality _ V e &gt; Qe z &gt; 1 Sz 1 d 0 j z 3 j . (25)  X  e modeling errors are not zero but bounded. The proof is straightforward (see Lemma 2).
+ adaptive neural parameters. 5. Simulations
+The proposed control scheme is tested by simulations. The are as in Galaz et al. (2001) .
+ Synchronous machine parameters: w parameters are selected as a 1  X  10, a 2  X  10, b  X  1, C 1 identifier angular speed.
+
+The plant dynamics information is codified in the neural
+Now, the response of the close-loop system is analyzed to a short circuit generated by the connection of a small impedance is disconnected after a certain time, called the short-circuit disturbance.
+ w  X  0  X  X  X  20 : 1222 ; 36 : 8929 ; 7 : 9276 &gt; ; a 1 ; a 2 are k yield only slow variations.
+ aforementioned references. 6. Conclusions References

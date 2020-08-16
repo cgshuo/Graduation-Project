@@ -1,0 +1,60 @@
+ 1. Introduction
+The Pathfinder algorithm was developed in cognitive science to determine the most important links in a network ( Schvaneveldt, 1990 ). The resulting pruned networks are known as Pathfinder networks or PFNETs.
+The pruning carried out by this algorithm is based on eliminating those links which violate the triangle the distance between them passing through an intermediate point. This inequality always holds in Euclidean one knows the intersection between sets A and B on the one hand, and between B and C on the other, one can satisfied, neither can one expect the triangle inequality to be.
+ clarifying the subsequent analysis.
+ rithm X  X  parameters, the maximum number of intermediate links that will be considered.
+One also needs a procedure for the calculation of the distance between two nodes along a path that is not lems. The Pathfinder algorithm calculates the said distance using the Minkowski r -metric. For r = 2, this reduces to the Euclidean distance, and for r = 1 to the road-map distance, i.e., the sum of the lengths of nodes. The Minkowski r -metric parameter is the second of the algorithm X  X  parameters. is readily generalizable to networks where each link is weighted by a similarity between its nodes.
+As Dearholt and Schvaneveldt (1990) indicate, this type of network has the capacity to model asymmetric
+Local relationships are represented more precisely than with MDS, which is based on minimizing the overall itively designed or based on qualitative information.
+
+Pathfinder network scaling is a procedural modeling algorithm originally developed by cognitive psychol-
+Pathfinder networks to represent interrelations between concepts or keywords. Other work has extended the Chen &amp; Paul, 2001 ).
+ &amp; Buzydlowski, 2003; White, 2003 ) which uses the Pearson correlation, and MDS, what matters with this which are represented by means of lines ( Buzydlowski, 2002 ).
+ flow rate or bandwidth.
+ With these parameters, some nodes appear linked to only one other node, whereas some are linked to many. trality. In terms of author co-citation, one says that these authors dominate their research speciality. methods to extract the same information (Pearson correlation, MDS, PCA, cluster analysis, etc.). visual noise.
+ discipline.
+
+The computational cost of the algorithm, however, increases rapidly with increasing numbers of nodes and 2. Description of the original algorithm
+Pathfinder is based mainly on two elements: the Minkowski distance, and an extension of the triangle inequality ( Schvaneveldt, 1990; Schvaneveldt et al., 1988 ).
+
+The Minkowski distance is used to calculate the distance between two points along a path through several links. It is defined by means of a parametric equation:
+This equation reduces to the sum of distances for r =1( r is the parameter), to the Euclidean distance for distances.
+ path between the same two points but passing through other intermediate nodes. The distance through these intermediate nodes is determined by means of the Minkowski equation.
+
+The Pathfinder algorithm thus has two parameters r (associated with the Minkowski distance being they have an associated distance which is greater than another path between the same points consisting of with parameter r . The maximum possible value of q is n 1, where n is the number of nodes. In the description of the algorithm, Dearholt and Schvaneveldt (1990) use the following definitions:
+A PFNET has n nodes, denoted N 1 , N 2 , ... , N n (or N a called an arc , and an undirected link is called an edge .
+Links are labelled e ij , for the edge between N i and N j of the link e ij .
+
+The distance from node N i to N j (along the link e ij ) is the weight w matrix form as an n  X  n matrix W .
+
+W i +1 = W H W i is computed as follows: where w jm P 0 and w i mk P 0.
+
+The minimum-distance matrix for paths not exceeding i links is denoted D as follows:
+The procedure for calculating the PFNETs is therefore the following: 1. Compute W 2 , D 2 , W 3 , D 3 , ... , W q , D q ; 2. Comparing elements of D q and W 1 , wherever d ij = w ij
+As is expressed in the algorithm, one has to create q matrices W distances. The resulting space is thus of complexity O( qn parisons, so that the algorithm has time complexity O( qn one can say that in this maximum case the algorithm is of time complexity O( n 3. Binary Pathfinder Our modest contribution will be based on two aspects: erate the rest of the D i .
+
+Similarly to how the W i are calculated, and with the same complexity, the matrices D directly from another two distance matrices, so that D i + j
+The distance matrices would then be calculated in the following form: links. In the original algorithm this is done by calculating all the matrices W the minimum distances using exactly i links, and from them calculates the matrices D from D i and D j , any minimum distance path considered in D any minimum path considered in D i + j : If l 6 i , then that path has to be considered in D i .
+ If l 6 j , then that path has to be considered in D j .
+ be considered in D i and another of length l i which has to be considered in D any of the parts of a path considered as optimal for D i + j i + j links, and therefore of up to j links.
+
+With this, it is shown that the distance matrix D i + j can be calculated from D result as with the method described by Dearholt and Schvaneveldt (1990) .
+One can thus make larger steps. One begins by calculating D expressed as follows: i =1 nq =0 Generate D 1 = W ; D q = 1 If ( q mod2) = 1 nq =1 While ( i * 2) 6 q
+Comparing elements of D q and W 1 , wherever d ij = w ij , then mark e Here, the operator  X  X  X od X  X  means modulus, i.e., the remainder of a division by an integer. matrix D i . The last line is exactly the same as the traditional method.
+One observes that the procedure is similar to that of transforming a number to the binary system, so that the principal loop has a time complexity of O(log( q )) instead of O( q ).
+This means that the algorithm X  X  overall time complexity is O(log( q )  X  n maximum case, the time complexity would be O(log( n )  X  n only a slight difference, as ever larger graphs are dealt with the difference grows immensely.
+The space complexity is also reduced to O( n 2 ). 4. Results similarities.
+ We used q = n 1 and r = 1 for the parameters, since these are the customary choices in this type of study.
+The two algorithms were implemented in the C programming language, and compiled using DJGPP, an acronym for DJ X  X  GNU Programming Platform, a project which brings the GNU development tools to the
+MS-DOS and MS-Windows systems. Its originator and principal maintainer is DJ Delorie, which is where the  X  X  X J X  X  in DJGPP comes from. They were run on two machines under MS-Windows XP, one with a Pen-tium processor at 2.80 GHz, and the other with a Centrino at 2.13 GHz. In defence of the Pentium, we must was especially noticeable in the execution of the first example which should have been the fastest. One can see from Table 1 that the results showed hardly any variation from one machine to the other.
+As was expected, however, the trend of the times of the two algorithms differed markedly. For a small num-rithm was superior. But as the number of nodes increased, the execution time of the original algorithm increased much faster than that of the Binary Pathfinder. Both, of course, yielded the same result.
+The execution time was not monotonously increasing with number of nodes because it also depends on the number of links between the nodes. This explains the result obtained with the file e217.net, for example. 5. Conclusions
+As we noted at the beginning of the work, PFNETs are of great interest in the study of all types of net-frontiers of research, disciplines, and even the profiles of authors, research teams, or institutions.
+This algorithm has also been used in online systems of information retrieval for the display of search results.
+ increase rapidly as the numbers of nodes and of links in the networks grow. The improved performance of the Binary Pathfinder is based on two aspects: matrices being dispensable.
+
+The matrices can be generated additively, thereby reducing the number of times that new matrices need to be generated.
+
+As a result, one succeeds in reducing the space complexity as well as the time complexity, achieving very itations for the pruning procedure.
+ Acknowledgments the Fondo Social Europeo, as part of research project 2PR02A041.
+ References

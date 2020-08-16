@@ -1,0 +1,61 @@
+ 1. Introduction the classifier and to test the efficiency of the classifier.
+ tion system.
+ &amp; Weiss, 1994; Cohen &amp; Singer, 1999 ).
+ tors in order to settle binary classification problems.
+ described as follows:
+Suppose that a set S of labeled training points with associated fuzzy membership ( y where each training point x i 2 R N is given a label y i 2 { 1,1} and a fuzzy membership 0 i =1, ... , l . Since the fuzzy membership s i is the weight of the corresponding point x the parameter e i is a measure of error in the FSVM, the term s
+In the objective function, C is a constant and the smaller s term s i e i is. The Lagrangian multiplier can be exercised to solve the above problem, theorem ( Haykin, 1999 ): where K ( x i , x j ) is kernel function.
+
+Kernel function can be chosen from the following functions: 1. polynomial learning machine kernel, 2. radial-basis function network kernel 3. linear network kernel 4. two-layer perceptions: The Lagrangian multiplier can be applied to make the problem become
+The above a i can be solved by the sequential minimal optimization (SMO) quadratic programming method ( Platt, 1998 ).
+
+The main difference between SVM and FSVM is that the cost C of FSVM is multiplied by fuzzy member-
+Following the idea of soft margin algorithm in Chen and Chen (2002) and Cristianini and Schawe-Taylor negative classes, and proposed an outliers detection method (ODM), which proved that FSVM actually (2003) and Zheng and Jiao (2002) used FSVM Gaussian kernel and applied different input data to make efficiency of classification in practice.
+ lems, the issue becomes more complicated because the outputs could be more than one class and must be in the previous researches yet.
+ are given in Section 6 . 2. The proposed text categorization system detail in the following sections.
+ TF _ IDF weight, which is corresponding to the input data of the classifiers. creating multi-maximum margins hyperplanes which can determine the class the documents belong to. The ses that the documents belong to shall be appointed in. 2.1. Preprocessing the other is stop words elimination process. Some web-news pages are written in SGML format. The SGML
+In specific, 306 words are usually considered as stop words ( Ricardom &amp; Berthier, 1999 ). 2.2. Feature selection redundant with each other. Thus, a dimensionality-reduction mechanism is needed to solve the problem, ICF smaller than its threshold value and Uni larger than its threshold value. degree of a term fitting to a specific category and is defined as follows ( Huang, 1998 ): and p ij is the probability of term i occurs in category j .
+ zero ICF value when it appears only in one category.
+ only concentrates on few documents.
+ Uniformity can be represented by the following formula: where T i indicates term i , d ij the number of documents which term i occurs in category j , and t of term i occurs in category j .
+ threshold of Uni can be set to 0.2. 2.3. Term weighing issues
+N is the total number of documents in the collection and n ber of documents. 2.4. One-against-all (OAA) classifier searching k separating hyperplanes ( Schwenker, 2000 ). Namely, classes are learned by pairs.
+In hypothesis, there is a set S of labeled training data ( y and the k decision functions can be represented by the following equation:
+The class of training data x i can be obtained by as the output. 3. Setting fuzzy membership function for corresponding examples value and the setting of fuzzy membership function. 3.1. The definition of target value expressed by where n is the number of documents and k is the number of classes.
+ The matrix V represents the union of v ij .
+
+For example, in the target values of the two-class classification problem, if v v former adopts multi-class SVM classifier and the latter adopts SVM two-class classifier. examples (labeled 1) for j th column of the matrix V . 3.2. Setting fuzzy membership function belong to class j if the element of column j of V is 1.
+ And one can define S j as the weights of j th column of the matrix V.
+Each column of V contains positive examples and negative examples. We can assign higher weight ( ss ij ) to each positive example ( v ij = 1) and lower weight ( ss as where
+For the empirical study, one can define the symbol OAA-FSVM ( ss tion of OAA-FSVM classifier. fuzzy membership function is decided by its target value. 4. Resampling methods and performance evaluation methods, it is very important to have some performance index. 4.1. Resampling methods and evaluation of correct rate ified 10-fold cross-validation to choose the amount of pruning yield unbiased trees. iments and we hope that the sample numbers of experiments at each category are all above 30. 4.2. Performance evaluation and the micro-average.
+
+Given the contingency table for category C i from the category space { C these indices accordingly. 4.2.1. Recall 2. Micro-average recall and wrongly rejected 3. Macro-average recall egory space. 4.2.2. Precision 1. precision  X  Pr i  X  2. Micro-average precision accept and wrongly accept 3. Macro-average precision the category space: 4.2.3. F performance measure 1. F b  X  where b = 1 is normally used. 2. Micro-average F age recall for all the categories in the category space.
+ 3. Macro-average F
+The overall F of the category space is computed by averaging the Macro-average e precision and Macro-average recall for all the categories in the category space.
+ and compare it with other systems. 5. Numerical experiment formance of OAA-FSVM classifier and that of OAA-SVM classifier will be compared. 5.1. Testing data
+Documents from Reuters 21,578 documents in SGML format are used as the empirical data, including the tags of DATE, MKNOTE, TOPIC, PLACES, PEOPLE, ORGS, EXCHANGES, COMPANIES, UNKNOWN, and BODY. In the experiment, only the contents with tags of TOPIC and BODY are used. (money market) X  X  and  X  X  X rain X  X  categories, with which, the documents will be downsized from 21,578 to 7094.
+ divided into different words. In these words, some are insignificant and need to be screened. 5.2. Processing of the testing data ing steps: 1. Counting the frequencies of the words in each document. 2. Removing numbers and punctuations from each document. 3. Eliminating stop words (306 words). 4. Eliminating the words occurred in the document less than 2. 5. Setting the thresholds of ICF , Uni , and TF _ IDF . 6. Eliminating the words that are ICF &gt; log2, Uni &lt; 0.2, and TF _ IDF &lt; 26.
+After a sequence of keywords selection, 445 keywords in 1797 documents were collected. 5.3. Empirical performance evaluation
+In order to compare the performance of OAA-SVM classifier to that of OAA-FSVM classifier, the kernel function and the parameters of function must be set in advance. The Gaussian kernel ( K ( x , y )= experiment data.
+ shown in Table 2 .
+ OAA-FSVM classifier.
+
+As far as the fuzzy membership function of training data concerned, it is set to 1 if the values of v and the fuzzy membership function of training data is set to h if the values of v OAA-FSVM (1, h ) is equal to OAA-SVM when h =1.
+ 5.4. Results presented in Table 3 . Please note that Table 3 shows only one of the possible data set. training data confusion matrix and its accuracy.
+
+OAA-FSVM. Precision, recall, and F measure are then operated to compare the performance of OAA-SVM with that of OAA-FSVM. The results are shown in Table 5 , with Figs. 2 and 3 .
+Table 5 shows the performances of OAA-FSVM on different fuzzy membership functions setting. And Figs. of OAA-FSVM (1, 0.5) and OAA-FSVM (1, 0.6),which can reach the highest macro-average performance. Besides, OAA-FSVM (1, 0.5), OAA-FSVM (1, 0.6), OAA-FSVM (1, 0.7), OAA-FSVM (1, 0.8), and OAA-FSVM (1, 0.9) perform better than those values in OAA-SVM.
+ shown in Table 6 .
+
+From Table 6 , OAA-FSVM (1, 0.5) and OAA-FSVM (1, 0.6) indicate the best performances. They all have classes may extract the term overlapped with the irrelevant class.
+
+The OAA-FSVM of 4-fold cross validation has higher F measure than 3-fold cross validation. However, correctly. (OAA-SVM) and 2 (OAA-FSVM), the McNemar X  X  test ( Dietterich, 1998; Foody, 2004 ) is used. The null set. The contingency table for algorithms 1 (OAA-SVM) and algorithms 2 (OAA-FSVM) is illustrated in both algorithms.
+ n 10 = n 01. The McNemar X  X  test is based on chi-squared ( v ( Dietterich, 1998 ). The chi-squared is approximated as follows: Z = 1.96. One shall reject the null hypothesis if Z &gt; 1.96 or Z &lt; 1.96.
+From Tables 4 and 5 , one can find that the performances of OAA-FSVM (1, 0.5) and OAA-FSVM (1, 0.6) are better than other combinations. At last, the performances between OAA-FSVM (1, 0.5) and OAA-SVM, and those between OAA-FSVM (1, 0.6) and OAA-SVM are tested by McNemar X  X  test. Accordingly, the sta-tistical significance level is set to 0.05. Table 8 shows the results.
+Table 8 displays the results from the comparisons of the OAA-FSVM (1, 0.6) and OAA-FSVM (1, 0.5) algorithm against the OAA-SVM algorithm. The Z values for OAA-FSVM and OAA-SVM are the average FSVM algorithm is the best for 4-fold cross validation under fixed fuzzy value 0.5 or 0.6. 4-fold cross validation, the most significant result comes to OAA-FSVM (1, 0.6) classifier. 6. Conclusions and suggestions 6.1. Conclusions different categorization systems where the fuzzy data is considered in the classifier module. its class.
+
+OAA-SVM classifier and OAA-FSVM classifier are compared in empirical study by their performances and ferences from OAA-SVM. OAA-FSVM (1, 0.5) and OAA-FSVM (1, 0.6) compared to OAA-SVM are better fitted to the model. 6.2. Suggestions mutually exclusive features, which can be distinguished easier.
+ form in the future.
+ sion function in the future.
+ in the production line.
+ References

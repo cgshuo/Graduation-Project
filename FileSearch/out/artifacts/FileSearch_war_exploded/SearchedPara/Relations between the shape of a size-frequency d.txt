@@ -1,0 +1,47 @@
+ 1. Introduction rank-frequency presentations may look quite different. In this paper, we study this phenomenon. More specifically, we of a generalization of Zipf X  X  law recently proposed by Mansilla, K X ppen, Cocho, and Miramontes (2007) . be found in Chapter 1 in Egghe (2005a) .
+ second example.
+
+Denoting by g 1 the inverse function of g , we have by definition of f and g deed exists.
+
+In the above examples (and in the examples in Chapter 1 in Egghe (2005a) ), n is a positive whole number (a so-called journals and their number of articles and journals and their number of citations) and we divide the number of citations their IFs can be seen as an IPP derived from two other IPPs.) define f as the number of journals with a certain IF. This is because IFs range in Q functions (in the same way as density functions of continuous variables are used in probability theory).
+We now define f to be the size-frequency distribution where for every n e R items, that is, for every m , n e R + , m &lt; n , denotes the number of sources with between m and n items (e.g., the number of journals with an IF between m and n ).
+The corresponding rank-frequency distribution g is defined as g is strictly decreasing and hence that g , the inverse function of g determines f given g , since (3) is equivalent with given that g (0) = 1 .
+ butions tend to be first increasing and then decreasing. 1 more general approach is needed. In this paper, we explore such an approach by studying the relation between size-and rank-frequency distributions without assuming a Lotkaian framework.
+
+The paper is organized as follows. In the next section, we present a mathematical analysis of the relation between the of non-Lotkaian informetric distributions. We mathematically study a generalization of Zipf X  X  law recently proposed by decreasing rank-frequency distribution or an S-shaped rank-frequency distribution. 2. Mathematical analysis
+We first need some lemmas on general injective functions g (i.e., for which g Lemma 2.1. g is strictly decreasing if and only if g 1 is strictly decreasing.
+
+Proof. g is strictly decreasing if and only if, for all values r this is equivalent with g 1  X  n 1  X  &lt; g 1  X  n 2  X ( ) n A similar proof can be given for strictly increasing functions g and with the word  X  X  X trictly X  omitted.
+Lemma 2.2. Let g be decreasing. Then g is convex if and only if g
+Proof. g is convex if and only if, for all values r 1 , r decreasing, we have by Lemma 2.1 that g 1 is decreasing. Hence, the above inequality is equivalent with g 1  X  g  X  k r  X  1 k  X  r 2  X  X  P g 1  X  k g  X  r 1  X  X  X  1 k  X  g  X  r 2  X  X  . Denoting g ( r  X  k n 1  X  X  1 k  X  n 2  X  , which proves that g 1 is convex. The proof of the second assertion is similar. h and convex, then g 1 is concave and, similarly, that if g is increasing and concave, then g
+Lemma 2.3. Let g be decreasing. Then g has an S-shape, first convex and then concave, if and only if g concave and then convex.
+ and then concave. Then there exists a number r 1 e ]0, T [ such that the restriction of g to the interval [0, r convex and such that the restriction of g to the interval [ r vex, we have by Lemma 2.2 that  X  g j  X  0 ; r have by Lemma 2.2 that  X  g j  X  r and then convex. The proof of the reverse assertion is similar. h
+We now prove two theorems on shape relations between the size-frequency distribution f and the rank-frequency distri-bution g .
+ Theorem 2.4. f is decreasing if and only if g is convex.
+
+Proof. From (3) we have and hence
+From (6) it follows that f is decreasing if and only if g g is decreasing. By Lemma 2.2 , g 1 is convex if and only if g is convex. h Theorem 2.5. f is first increasing and then decreasing if and only if g has an S-shape, first convex and then concave.
+Proof. By (6) , f is first increasing and then decreasing if and only if g first convex and then concave. h
+Without making additional assumptions, we cannot say more about the dependence of the shape of the rank-frequency function g can lead to a convex function ln g or to a function ln g that has an S-shape). 3. Empirical illustration
+In this section, we provide an empirical illustration of our mathematical results on shape relations between size-and rank-frequency distributions. We use data from Thomson Reuters X  Journal Citation Reports (JCR) for 2008. We focus on mathematical results.
+ and is scale-invariant as well.) the nine fields listed in Table 1 .
+ increasing and then decreasing in the case of economics and mathematics. Hence, based on Theorems 2.4 and 2.5 , the between rank-frequency distributions that have an S-shape and rank-frequency distributions that do not have an S-shape. distributions and the corresponding rank-frequency distributions for chemistry, economics, and mathematics are shown in used somewhat wider histogram bins, the increasing part of the size-frequency distribution for chemistry would not even and mathematics should all have an S-shape. The rank-frequency distributions for economics and mathematics shown in small, one would expect (based on Theorem 2.4) that the rank-frequency distribution for chemistry is almost completely convex. This is indeed what we see in Fig. 2 . 4. Modeling s-shaped rank-frequency distributions
+In the previous section, we have shown examples of size-frequency distributions that are first increasing and then work that is more flexible than the framework offered by the laws of Lotka and Zipf. rank-frequency distributions of IFs. They propose to use a generalization of Zipf X  X  law given by note that (7) is also used by Campanario (in press, 2010) and Mart X nez-Mekler et al. (2009) .
+Theorem 4.1. Let g(r) denote the function in (7) with domain ]0, N + 1[ and with a &gt; 0, b P 0, and K &gt; 0. Then, (i) g(r) is strictly decreasing; (ii) g(r) has an S-shape, first convex and then concave, if 0&lt; b &lt;1; (iii) g(r) is convex if either b =0 or b P 1.
+ A proof of the theorem is provided in the appendix.
+ vious section.
+ from Theorems 2.5 and 4.1 that f is first increasing and then decreasing if 0 &lt; b &lt;1. 5. Conclusion
+We have mathematically analyzed the dependence of the shape of the rank-frequency distribution g on the shape of the ing and then decreasing.
+
+Most size-frequency distributions in informetric research are monotonically decreasing. In this paper, however, we have very small.
+ rank-frequency distributions of IFs.
+
+A question that remains is why some size-frequency distributions are monotonically decreasing while others are first distribution, it is sometimes suggested that a  X  X  X uccess breeds success X  mechanism or a mechanism based on exponential et al. (2007) . We leave these issues for future research.
+ Appendix A In this appendix, we provide a proof of Theorem 4.1.
+ given by K &gt; 0. This proves part (i) of Theorem 4.1.
+
+The second derivative of g ( r ) is given by where b = a or b = a + 1). T (0) and T ( N + 1) are given by and Hence, T (0) &gt; 0 for all a &gt; 0 and all b . The sign of T ( N + 1) depends on b .
+N + 1[. Let this root be denoted by r 1 . For r e ]0, r 1 4.1.
+
+T ( r ) does not have a root in the interval ]0, N + 1[. To show this, we distinguish the following four cases: (ii) If b &gt; a +1, (A6) yields D &lt; 0. Hence, T ( r ) has no roots at all. (iii) If b =0, (A6) yields D = 0. Hence, T ( r ) has one root. It follows from (A5) that this root is given by r
+Let the other root of T ( r ) be denoted by r 2 . Based on (A7) , it is not difficult to see that r quently also g 00 ( r ) &gt; 0. This means that g ( r ) is convex. This proves part (iii) of Theorem 4.1. References

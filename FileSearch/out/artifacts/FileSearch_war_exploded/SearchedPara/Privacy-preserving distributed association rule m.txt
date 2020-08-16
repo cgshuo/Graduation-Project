@@ -1,0 +1,59 @@
+ 1. Introduction Department of Defense data mining program [2] .
+ paper, we will focus on horizontally partitioned distributed data only. vacy of underlying distributed data.
+ y approach, i.e., iterating f  X  j  X  X  X  a  X  X  1 tribution of X (using the v 2 goodness-of-fit test), where X (= x ... , y n ) is an random variable obeying a uniform distribution between [ u , u ], f function of Y , x i = x i + y i for i =1, 2, ... , n , and f number of samples, f  X  j  X  X can be expected to be very close to the real density function f [18] .
+ x inefficient, especially when large inputs and complex algorithms are involved. algorithm where the training data is distributed between two parties ( P form ( v 1 + v 2 )  X  ln( v 1 + v 2 ), where v i is known only to P H ( T j A ) for every attribute A , that is, parties P 1 and P shares of all these values, it is easy privately to find the attribute with smallest H efficient than generic solutions [20,21] .
+ protocol suggested by Cheung et al. [22] and composed two basic operations as follows: parts y ij , such that x i  X  and broadcasts z i  X  assume any communication channels among data sites and only one communication is needed between the each data site has a Boolean value d i , and the miner wishes to find out how many d each data site to use different individual public keys X i keys X  X  will need extra communication and computation costs.
+ sites from revealing the privacy of any other data site? Kantarcioglu X  X lifton protocol.
+
+Conclusions are drawn in the last section. 2. Backgrounds 2.1. Association rule mining
+The association rule mining can be conceptualized as follows [26,27] : Let I  X f I as: number of transactions in DB . Rules with the support more than a minimum support threshold ( s the confidence more than a minimum confidence threshold ( c s min j DB j . An itemset is frequent if its support count is not less than the minimum support count. ciation rules from the frequent itemsets. 2.2. Apriori algorithm frequent itemset must also be frequent.
+
+Let L i be the set of frequent i -itemsets. Given L k 1 , Apriori algorithm finds L actions as follows: (1) Join: To find L k , a set of candidate k -itemsets, denoted as C 2.3. Paillier encryption algorithm Paillier cryptosystem [28] is a typic homomorphic public key encryption algorithm. Let N = pq , where p and q are large primes, and g be an element of Z of N , then a map is bijective. The N th residuosity class of an integer c (of Z integer x in Z N , such that c = g x y N (mod N 2 ) for an integer y in Z s c b g can be computed with (1) Key generation : Randomly choose two large distinct primes p , q and an element g of Z (2) Encryption : To encrypt a message m where m &lt; N , randomly choose r from Z (3) Decryption : To decrypt the ciphertext c , using the private keys p and q , compute m = s c b for any m 1 , m 2 2 Z N .
+ (typically on the order of 512-1024 bits) [29] . 3. Privacy-preserving distributed association rule mining via a semi-trusted mixer 3.1. Semi-trusted mixer model
+In this paper, we consider a scenario in which n ( n P 3) semi-honest users U rithm on the union DB  X  privacy of their databases.
+ any user, but may attempt independently to learn privacy of databases DB rule mining, but may attempt to learn privacy of another database DB counts of its itemsets, and total number of its transactions as its privacy. the user. This model can be illustrated in Fig. 1 . uted association rule mining protocol preserves privacy if (1) The mixer learns nothing of the privacy of distributed databases DB conferee.
+ the mixer, which is forbidden to collude with any client. 3.2. Our protocol [28] . Only N is known to the mixer.
+ as [34] or [31] .
+ Our protocol runs Apriori algorithm on the union DB  X  generates strong association rules. Given the minimum support s tocol runs as follows. 3.2.1. Finding candidate items If an item (1-itemset) is frequent in DB  X 
+This union, denoted as C 1 , can be used as the set of candidate items for L
+Suppose that the set of locally frequent items in DB i is P item in DB i , i.e., F i  X  a ij  X  P s min j DB i j , where F users privately find C 1  X  (1) To prevent the mixer from learning P i ( i = 1,2, ... , n ) and C (2) After receiving E K  X  P i  X  X  i  X  1 ; 2 ; ... ; n  X  from all users, the mixer cannot decrypt E
+The detailed protocol for n users to find candidate items from the set of all items I  X f I
+Fig. 2 . 3.2.2. Finding frequent itemsets Given the set of frequent ( k 1)-itemsets  X  L k 1 ; k P 2  X  in DB  X  frequent k -itemsets  X  L k  X  in this step.
+
+As described in Section 2 , each user constructs the set of candidate k -itemsets  X  C as follows.
+ (1) Assume that the local support count of the candidate k -itemset A in DB (3) Based on the broadcasted M 2 , each user can decrypt it to obtain finding its global support count.
+ j DB j X 
+If the global support count of a candidate k -itemset is not more than s
+After removing all non-frequent k -itemsets from C k , each user U site. 3.2.3. Construction of association rules
+A strong association rule is one satisfying both minimum support s all globally frequent itemsets along with their global support counts in DB  X  straightforward for each user U i to generate strong association rules as follows. (1) For any globally frequent k -itemset X (where k P 2), each user U (2) For any nonempty subset A of X , U i constructs a rule 4. Security analysis our Protocol 2 (finding global support count of an itemset) meet the two conditions. we formulate the two conditions as follows.
+
+Let view( M , n ) be the view of the mixer and view( U i , n ) be the view of user U distributed databases. Let view( M ,0)= / and view( U i ,0) = view( U be the set of all possible items. For two random variables X and Y , X tinguishers, the probability of distinguishing X and Y is smaller than 1 frequent items, P 1 ; P 2 ; ... ; P n , preserves privacy if (1) Two random variables A  X  1  X  n ; m  X  X  view  X  M ; n  X  ; Since all users are peer, random variables  X  view  X  M ; n  X  ;
+S n m  X  1 P i  X  are essentially same, and  X 
+P  X  are essentially same.
+ the union of frequent items from all data sites.
+ support counts, p 1 , p 2 , ... , p n , of an itemset preserves privacy if (1) Two random variables A  X  2  X  n ; m  X  X  view  X  M ; n  X  ; Since all users are peer, random variables  X  view  X  M ; n  X  ;
+P n m  X  1 p i  X  are essentially same, and  X  are essentially same.
+ port count for an itemset from any other data site and a random number r  X  0 6 r 6 time, where other data site can be any number r  X  0 6 r 6 Next, let us show that our Protocol 1 and 2 preserve privacy according to the above definitions. Theorem 1. Based on Definition 1 , our Protocol 1 (refer to Fig. 2 ) preserves privacy.
+Proof (1) When n = 1, it is obvious that m = 1 and (2) When n = 3, it is obvious that m = 1 and The theorem is proved. h Theorem 2. Based on Definition 2 , our Protocol 2 (refer to Fig. 3 ) preserves privacy.
+Proof. (1) When n = 1, it is obvious that m = 1 and (2) When n = 3, it is obvious that m = 1 and The theorem is proved. h 5. Performance analysis 5.1. Performance of our protocol
+In our Protocol 1, each user has two communications with the mixer: (1) Each user U didate items, i.e., the union of encrypted candidate items from all users.  X  key) decryptions, and the computation cost for the mixer is between each user and the mixer into account, that is, j P
+P i  X  1 j P i j (secret key) decryptions for the mixer.
+
+In our Protocol 2, each user also has two communications with the mixer: (1) Each user U
+For security concern, the modulus N in Paillier cryptosystem is a very large integer, e.g., log of any number involved in the distributed association rule mining. 2 L bits. In this case, the communication cost for each user U modular multiplications.
+ The performance of our Protocols 1 and 2 is summarized in Table 1 . encryption and decryptions, respectively, and M represents modular multiplication.
+From Table 1 , we can see that communication and computation costs are in direct proportion. 5.2. Performance improvement improved by encryption of a series of small numbers in one time as follows. Assume that the total number of transactions in DB  X  by our original Protocol 2 at first) and k is the largest integer such that for any 0 6 a i &lt; X . In fact, k log 2 N log itemsets, whose local support counts in DB i are p i 0 , p encryption broadcasts where By repeating modulo X , each user is able to obtain counts of the k + 1 itemsets.
+ to 51 itemsets. In this way, the performance of our Protocol 2 can be improved dramatically. 5.3. Performance comparison mance. In this section, we focus on comparison of communication performance between our protocol and itemsets.
+ performance between the two protocols in this phase is listed in Table 2 .
+In Table 2 , I is the set of all items, P i is the set of locally frequent items in DB candidate items, L 1 is the set of globally frequent items, l encryption (usually,  X  is either 64 or 128 bits), L = log rity concern), m log 2  X  2 j DB j X  ,and k log 2 N log
+Since L k log 2 j DB j , j I j P j C 1 j P j P i j and L log costs in our protocol is much less than those in Kantarcioglu X  X lifton protocol in the first phase.
+L ison of communication performance between the two protocols in this phase is listed in Table 3 .
+In Table 3 , C k is the set of candidate k -itemset constructed by joining L
+C frequent k -itemsets, l k is the size of an k -itemset.
+ Kantarcioglu X  X lifton protocol in the k th phase.
+
+As discussed in [8] , if only Kantarcioglu X  X lifton Protocol 2 is directly used on C munications are sequential in the Protocol 2.
+ costs. 5.4. Implementation rithm [36] plus the running time of required encryptions and decryptions. nication cost of our Phase 1 is twice of that in the CD algorithm. one decryption, which costs about 0.46 s. When the total times of database scan (s) ranges from 10 running time for the required Paillier encryptions and decryptions is shown in Fig. 4 .
+Given some distributed databases, if the response time of the CD algorithm without encryptions and decryptions is T s, then the execution time of our protocol will be about T + 0.46 s/50 s. k ( k &gt; 1) is twice of that in the CD algorithm. 6. Conclusion tocol for horizontally partitioned distributed data in this paper. implementation.
+ terms of communication costs. Furthermore, (1) Our protocol needs communications between each data site and the mixer, but Kantarcioglu X  X lifton (2) Our protocol can run in parallel, but Kantarcioglu X  X lifton protocol has to run in series.
+References

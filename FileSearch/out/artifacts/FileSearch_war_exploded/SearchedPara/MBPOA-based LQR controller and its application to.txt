@@ -1,0 +1,32 @@
+ 1. Introduction modern control theory. Previous works have shown that LQR
+Algorithm (MBPOA) is proposed and veri fi ed on the double-and implement the desired LQR ef fi ciently and easily.
+The rest of the paper is organized as follows. Section 2 introduces the Pareto-based MBPOA algorithm. The proposed lum system and the control performance is analyzed and dis-cussed. Finally, the conclusions are drawn in Section 5 . 2. Pareto-based Multi-objective Binary Probability
+Optimization Algorithm 2.1. Multi-objective Optimization Problems Most real-world optimization problems are Multi-objective described as follows: min F  X  X  X  X  X  f 1  X  X  X  ; f 2  X  X  X  ;:::; f s  X  X  X  X  s : t : g k  X  x  X  r 0 k  X  1 ; 2 ;:::; m 8 &gt; &gt; &lt; &gt; &gt; : f constrain conditions.
+ follows:
+De r
+A
+De does not exist relationship either X ! Y or Y ! X .
+De such that X 0 ! X n .
+
+De fi nition 4. Pareto optimal set: The Pareto optimal set P de fi ned as:
+P  X f X j X is Pareto optimal g
+De fi nition 5. Pareto front: The Pareto front PF n is de fi
+PF n  X f f  X  X  X j X A P n g used to yield new solutions. (6) and (7) , h  X  8 &gt; &gt; &gt; &lt; &gt; &gt; &gt; : h  X  1
+N maximum and minimum fi tness values of the i-th objective
+The fi degree of solutions can be achieved by Eq. (7) and the best compromise solution, i.e. x best , can be determined. v  X  ( where ro is a random number between 0 and 1. 2.2.2. Crossover operator u u  X  8 &lt; :  X  9  X  searching the global optima. 2.2.3. Selection operator
+Finally, the new candidates and parent individuals are com-archive.
+
+The procedure of MBPOA can be illustrated as Fig. 1 . implemented by solving the Riccati algebraic equation. 3.2. MBPOA-based LQR functions to lead MBPOA to fi nd the optimal Q and R . 3.2.1. Encoding
+For improving the ef fi ciency and reduce the complicity of
+Given R  X  diag  X  R 1 ; R 2 ;:::; R U  X  and Q  X  diag  X  Q 1 sion variable is encoded by L bits, and hence the candidate follows, x which would make MOPBA fail on LQR design. 3.2.2. Fitness functions paper, the integral of absolute error (IAE) and the maximum described as follows: f 1  X  MD f 2  X  IAE ( s : t : MD o MD max the potential instability of control.
+ the classical LQR cost functio ntodesignLQRbuttoselectLQR searchrangesofgainsaswidesearchspaceandmanyinfeasible 4.2. Simulations and experiments
+For the LQR design of the double-parallel inverted pendulum constrains on the R and Q , and therefore a large number of performance of meta-heuristics as algorithms cannot ef fi ef fi 0 ; 0 ;
+Differential Evolution (NSDE) ( Peng et al., 2010 )andNon-2002 )werealsousedtodesignthe Q and R . The population size
+Usually MBPOA achieves satisfactory performance when CR is are given in Table 3 .
+
+As the real Pareto Front of the LQR problem is unknown, the
+NSDE and MBPOA in this work. The NR ( Goh and Tan, 2009 )is de fi ned as Eq. (17) ,
+NR  X  j B \ A d j j B j  X  17  X  to that of the LQR controller designed by solution 2, which demonstrates that the MBPOA-based LQR approach can supply which is predictable according to the found Pareto optimal the expected control performance among these Pareto-optimal troller design.
+ dynamic performance as well as the good stability, the non-IAE Acknowledgments This work was supported by Research Fund for the Doctoral
+Natural Science Foundation of China (Grant nos. 61304031, 61374044 and 61304143), and Innovation Program of Shanghai Municipal Education Commission (14YZ007).
+ References cart position (m) /pendulum cart position (m) /pendulum angle (rad) angle (rad)

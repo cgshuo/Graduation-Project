@@ -1,0 +1,30 @@
+ 1. Introduction again. Various aspects of this well-known phenomenon are examined in scientometrics. The best known result is that of cumulative advantages formulated by Price in 1976 . He shows that a law of probabi-lity X  X ften called the cumulative advantages process X  X xplains these phenomena when we pass to extreme cess ( Egghe, in press ).
+ py within the meaning of Shannon s theory information, and the average amount of effort. This average with the maximum entropy principle ( Yablonsky, 1981 ). 2. Information product process and effort function idate the concept of laws of information. These laws are known under the names of the researchers who ductions in the diagram of Fig. 1 , introduced into informetric systems by Leo Egghe (1990) and called the words in a text.
+
+Any IPP is defined using a production function. As an example, for the best known IPP in informetrics quoted above, we have the following production functions: Authors (sources) produce articles (items) X  X aw of Lotka ( Lotka, 1926 ). Journals (sources) published (produce) articles related to a well determined subject (items) X  X aw of Bradford ( Bradford, 1934 ).
+ Words (sources) produce occurrences of words (items) X  X aw of Zipf ( Zipf, 1949 ). v ( i ) represents the number of sources that have produced i items ( i =1,2, ... , i butions usually fit power distributions: power function.
+ power laws in the information product process.
+
+We henceforth assume that each item produced requires a certain amount of effort. In this article, we is: f ( i ) = Log( i ), will characterize the power distributions that we have just seen. 3. Average information content or entropy 3.1. Definition the more the process produces information. This work extends the theory of Hartley and Wiener, which stipulating that the more an event is unpredictable, the more information it contributes. The average i =1, ... , n denotes n probabilities such as concern for standardization, the information theory uses the function in base 2.)
+In ( Lafouge, 2003 ), we showed all the wealth and omnipresence that the Shannon theory has with the tainty decreasing operation (UDO) probability space. 3.2. Maximum entropy principle and principle of the least effort
+The maximum entropy principle (denoted here MEP) consists of maximizing the average information can say that the MEP consists of choosing the maximum profit solution from among a set of situations informetrics. 4. Exponential informetric process 4.1. Continuous distributions
+When we mathematically formalize informetric processes, two representations are possible: the discrete tions: a density function and an effort function.
+ is verified.
+ which verifies the following condition: we are going do now by defining an exponential informetric process. 4.2. Definition of an exponential informetric process exponential informetric process v ( f , a ) by: v ( f , a )( t )= k  X  a Condition (2) is then written
+The effort f is increasing, not bounded, so we can easily show that v ( f , a )( t )= k  X  a (1) of standardization by this simple model as we see later. 4.3. Exponential informetric process and entropy We shall now show that an exponential process thus defined verifies the two preceding principles, the
+MEP and the PLE, and that we have a simple relationship between amount of effort and information con-formula: H  X 
+Firstly, let us recall the mathematical formula of these two principles for a stochastic process. 4.3.1. Maximum entropy principle (MEP) knowing that 4.3.2. Principle of the least effort (PLE) effort knowing that where H is a given constant (average information content).
+ We then have the following results, which characterize an exponential informetric process.
+Theorem (Exponential informetric process, MEP and PLE). With an exponential informetric process, following properties : (a) v(f,a) is decreasing. (b) The two principles, maximum entropy and least effort are verified simultaneously. Proof. 1 Demonstration of (a) Demonstration of (b) and (c) For the MEP
+Next (3) v ( f , a ) verifies the condition (4) , let us put F =  X  f ( t )  X  k  X  a k is a constant whose value is: k = 1 Log( k ).
+
+We have
+For t fixed, we have write: G ( t , v ) P G ( t , v f ).
+ or Finally, we have the result:  X  ( v Log( v ))d t P  X  ( v f For the PLE To verify the condition (5) of the PLE, let us calculate the value of the entropy H : We have This calculation demonstrates the condition (c) of linearity.
+
+Let us demonstrate that EF reaches its minimum for the function v (c). h 4.4. Examples 2 this simple model.
+ Geometrical model: The effort function is the linear function f ( t )= a ( t 1) a &gt;0, t P 1.
+The exponential informetric corresponding process is then written: v ( f , a )= a  X  e equal to H ( a )=1 Log( a ).
+ exponential informetric corresponding is then written: v ( f , a )= a  X  e eral: v  X  f ; a  X  X  t  X  X  a
+Lotka has been verified. The greater a , the greater the gap between the small number of researchers who publish a lot and the large number of researchers who publish little. Mixed case: j =1,2, ... , t P 0. The exponential informetric process corresponding process is: v  X  t  X  X  a j t The reader will find more details in ( Lafouge &amp; Michel, 2001 ).
+ Another example: where C is the Gamma function: C  X  a ; b  X  X  ance of scale, ( Egghe, in press ) gives Lotkaian informetrics all its force. References

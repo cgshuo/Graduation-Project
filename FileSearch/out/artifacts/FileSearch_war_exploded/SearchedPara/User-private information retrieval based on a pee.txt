@@ -1,0 +1,75 @@
+ 1. Introduction tion scheme [9]. Subsequent developments in PIR are surveyed in [22]. is needed.
+
+We claim that PIR protocols proposed so far have two fundamental shortcomings which hinder their practical deployment: keywords stored in this way would be much more limited than real engines like Google or Yahoo. of queries. 1.1. Contribution and plan of this paper unlike [14], it avoids the overhead of ghost query submission.
+ from each other at the transport level.
+ graphic key management is not new ( e.g. see [18]), but their use in private information retrieval is. agement. Finally, Section 8 sketches conclusions and future work.
+Section 6 (simulation results) and Section 7 (dealer-free extension). 2. Peer-to-peer UPIR and configurations pseudonymity.
+
+WewillnextpresenttwobasicP2PprotocolsforUPIR.Theirshortcomingswillbeanalyzed,whichwillmotivatetheneedfor own queries 1 ; to submit it on behalf of the former); to facilitate this distinction.
+
+Our adversary model considers three types of adversaries to the query privacy of a specific user u  X  The database, who receives in cleartext the queries of all users, including those of u  X  The rest of users in the P2P community, who share one or more symmetric keys with u  X  External intruders, who do not fall into the above categories but want to compromise the privacy of users. 2.1. All-to-all protocol
+Protocol 1 below uses a single memory sector m shared by all b users in the community, who also share a common encryption key x .
+
+Protocol 1 (All-to-all P2P UPIR( q i )) (1) In order to submit a query q i to a database or search engine, user u
+Protocol 1 iterates until u i manages to submit her query q sector from being indefinitely jammed at Step 1c by a specific user u nity, that is, to take a large b .
+
+Once u i has used Protocol 1 to submit her query q i ; u i
+Steps d and e, and causes Step e to free the shared memory sector m ( u Let us now examine the privacy properties of Protocol 1:
+Privacy in front of the database . The protocol performs well, because the query profile of a user u remaining b 1 users.
+ interests of a certain user) could allow linking all queries by the same u tion risk for u i . E.g. a way to link u i  X  X  queries is through her IP address when u answers (an onion routing system like Tor could help to mitigate this risk, though). ers is more likely than if x was only shared by two users. 2.2. One-to-one protocol
+Protocol 2 below uses a different shared memory sector m ij
+Protocol 2 (One-to-one P2P UPIR)  X  q i  X  (1) In order to submit a query q i to a database or search engine, user u (2) u i reads the memory sector m ij corresponding to key x
+Protocol 2 iterates until u i manages to submit her query. For u can be overwritten by u i with her own query.
+ she can collect the answer to q i .
+ If we look at the privacy properties of Protocol 2: among all remaining b 1 users.
+ than u i only sees a fraction 1 =  X  b 1  X  of the queries issued by u with certainty that those queries were issued by u i . Even if u in order to link the successive queries issued by the same user.
+Privacy in front of external intruders . External intruders do not know the encryption keys x submitted by u i . On the other hand, since each key x ij ability of key leakage to external intruders is less than in Protocol 1. requires a high number of shared secret keys, one for each pair of users, that is b  X  b 1  X  = 2 in all.
+A last major drawback of Protocol 2 is its slow performance: after u must wait for u j to read that sector and submit q i . Note that only u happens to read m ij .
+ limited visibility to other users of queries issued by u i protection in front of external intruders (Protocol 2).
+ distributing a number v of keys among b users, with 1 6 v of this paper. 3. ( v ; b ; r ; k )-Configurations: background and construction We first define a combinatorial design and then a configuration as a special type of design. rank k .
+ sufficient condition for the existence of a  X  v ; b ; r ; k  X  -1-design is that intersect in zero or one point.
+ strictly larger than 4. Configurations and their history have largely been studied by Gropp in [10 X 13] . the  X  X  X onnectivity X  between blocks in a configuration.
+
+Proof. Consider a  X  v ; b ; r ; k  X  -configuration  X  X ; A  X  and fix a block A
+Clearly, j B x j X  r 1 for all x 2 A i . On the other hand, the sets B can be computed as sufficient.
+ The following is an example of a configuration: 3.1. A greedy algorithm to find configurations as integers from 1 to v .
+ to indicate which block in A and what position in the block we are attempting to fill: We start with  X  i ; j  X  X  X  1 ; 1  X  , that is, we start by filling the first block at its first position.
+We then proceed by filling the i th block in A at its  X  j  X  1  X  th position while j  X  1  X  i  X  1  X  th block otherwise.
+ requirements of a configuration, namely: recomputing the j 1th assignment of the i th block.
+ configuration exists, the algorithm will end up filling all b blocks appropriately. rithm can only be used to find small configurations. Its pseudocode is given in Algorithm 1. Algorithm 1. Greedy configuration  X  v ; b ; k  X 
+Require : Points to be assigned are labeled from 1 to v ; b blocks with k positions each must be filled; A position of the i th block; cand denotes the candidate point to fill a position.
+Ensure :A  X  v ; b ; r ; k  X  -configuration if one exists. 2: while 0 &lt; i 6 b do 3: cand :  X  4: while cand 6 v k  X  j and assigning point cand to position A 5: cand :  X  cand  X  1 {Keep seeking a right cand } 6: end while 7: if cand  X  v k  X  j  X  1 then 9:  X  i ; j  X  :  X   X  i 1 ; k  X  if j  X  1  X  i ; j 1  X  if j &gt; 1 10: else 12:  X  i ; j  X  :  X   X  i ; j  X  1  X  if j &lt; k  X  i  X  1 ; 1  X  if j  X  k 13: end if 14: end while 15: if i  X  0 then 16: output ; {No configuration found} 17: end if 18: if i  X  b  X  1 then 19: output A {Configuration found} 20: end if 3.2. Building larger configurations from smaller ones ure, the algorithm may take a very long time before it can decide whether the configuration exists or not.
+On the good side, the projective planes over finite fields give us examples of  X  d constructions are helpful to reduce the need for Algorithm 1. 3.2.1. Combining two not necessarily equal configurations
+Suppose we have a  X  v ; b ; r ; k  X  -configuration  X  X  X f x X and Y being two disjoint sets.
+
+Then we can swap one element in one block of A for one element in one block of B to obtain a  X  v  X  v 0 ; b  X  b combined so as to obtain configurations with v and b as large as desired, once r and k are fixed. The next example illustrates this construction: We now can build the following configuration: where we have swapped x 3 in the block f x 2 ; x 3 g of A for y f x swap y 7 in block f y 5 ; y 7 g of C for x 1 in block f x
+The above is not a configuration, because there are two blocks in D which share both of their points: f y 3.2.2. Combining several copies of the same configuration vr 1 whenever x i in the first copy is swapped for the corresponding x 0 way we obtain a  X  2 v ; 2 b ; r ; k  X  -configuration.
+ straightforward to prove that what we obtain is a configuration. The next example illustrates a combination of three copies of the same configuration: with X ; X 0 and X 00 being pairwise disjoint sets. The resulting configuration is 3.2.3. Comparison of the two constructions users in the two original configurations disappears.
+ connected. 4. A peer-to-peer UPIR protocol based on configurations
+Considerapeer-to-peer(P2P)communityconsistingof b users.Assumeadealerwhocreatesakeypoolinthefollowingway: 2a  X  b  X  b 1  X  = 2 ; b ; 2 ; b 1  X  -configuration.
+ blocks of keys to users.
+ among the b users is specified next.
+
+Protocol 3 (Configuration-based P2P UPIR)  X  q i  X  (1) In order to submit a query q i to a database or search engine, user u (2) u i reads the memory sector m ij corresponding to key x 2d is prevented by requiring all users to check their shared memory sectors as discussed below.
+Like for Protocols 1 and 2 above, once user u i has managed to submit her query q protocol with a garbage query and fixed selected user u j u do the following at regular time intervals: scan in a random order the memory sectors m responding answer is recorded in that sector. 5. Performance and privacy and depends on k , r and b according to Eq. (1). 5.1. Performance
+Lemma 2. If r &gt; 2 it holds that: sectors required in the case of a complete graph; stores b 1 keys, so that the overall number of keys stored by the users is b  X  b 1  X  . stored by the users is bk . Now, from Lemma 1 it follows that k  X  r 1  X  block cannot be greater than b 1); thus
+In addition to storage, another performance metric is how long does it take for u swered. Clearly, the greater the number r with whom u i shares the selected key x
+Therefore, performance improves as r increases. 5.2. Privacy information on the queries submitted nor the query answers received by users in f u x to external intruders, they increase with the size r 1of U increases.
+
+Within U i j , the r 1 users do not know in principle to which other user in f u tocol 1 does not provide very good privacy in front of other users nor external intruders. set of users (see proof of Lemma 1), users in U i j only see on average 1 out of k queries issued by u swers received by u i ). Therefore, the risk that a user in U mitted by the k  X  r 1  X  users with whom u i shares keys. In fact, each u fraction 1 =  X  k  X  r 1  X  X  of the queries issued by u i . But u from u i with whom u j shares a key. Therefore the query profile of u a key and confused among the other queries submitted by those users. [25] yields configurations which are optimal in that sense. 6. Simulation results base (with no UPIR).
+ In order to assess this overhead, we have carried out two-hour simulations with a realistic parameter choice: peer users, 34 keys and with each user sharing 6 keys with 6 different users; with 32 different users.
+ between queries.
+ 1200, 900, 600, 300, 120, 90, 60 and 30 s.
+ For each time between queries, two options have been tried:  X  Users do nothing unless they have a query to submit; the larger configuration are shown in Tables 3 and 4, and Fig. 2 . submitted by other users.
+ those sectors.
+ that submitting a new query becomes increasingly difficult.
+ in Figs. 1 and 2 .
+ val that is needed to guarantee that the overhead stays below a target value. 7. A dealer-free extension of the protocol with some cryptographic notions that will be useful for removing the dealer in the proposed UPIR protocol. 7.1. Burmester X  X esmedt group key agreement cient one in communication and computation for more than three group members.
+The Burmester X  X esmedt protocol is a two-round n -party protocol. It assumes a finite cyclic group erator g of prime order p . Here, g and p are system parameters. In the first round, each user U broadcasts z i  X  g d i . In the second round, each user U secret key the shared key K from a random element in the finite cyclic group generated by g . 7.2. Linkable ring signatures trusted manager in ring signatures, the anonymity of ring signatures is perfect and cannot be revoked.
+Linkable ring signatures [19] allow anyone to determine whether two signatures are signed by the same anonymous one offered by conventional ring signatures. 7.3. Basic ideas our extension can be summarized as follows: The set-up process should not require a dealer.
+ The keys should be shared by the group members according to a  X  v ; b ; r ; k  X  -configuration structure. The group members sharing any key are anonymous.
+ to achieve anonymity. 7.4. Extended set-up process without a dealer
+The b users create a key pool in the following way without a dealer: fectly simulates the dealer-based initialization process in Section 4. 7.5. Complexity assessment duced by the cryptographic operations for each user due to the lack of a dealer. much less than that of an exponentiation, the main additional overhead is 2 b anyway even if a dealer is used.
+ natures and verify 2  X  r 1  X  ones, plus 2 more exponentiations needed by the Burmester X  X esmedt protocol [3]. second. Hence, the overhead caused by doing without a trusted dealer is affordable in practice. 8. Conclusion posed protocol and we have described a protocol extension where no dealer is needed. for key and storage management).
+
+References

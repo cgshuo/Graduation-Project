@@ -1,0 +1,81 @@
+ 1. Introduction
+A goal of Scientometric research is to develop and evaluate causal models of scientific productivity. Much we develop measures that accurately capture the content we are exploring.
+
+An example we will now analyze further is the measure defined by Bookstein and Yitzahki (1999, 1999a) community. We wanted to measure the degree of bias toward one X  X  own language in a way that is reasonably free of influence from irrelevant, but possibly confounding, variables.
+ country, pp. 291 X 300) in Moed (2005) .
+ action must somehow be resolved. When constructing a measure of the strength with which one nation prefers to cite papers of a second nation, we must take care that the measure not be distorted by this complexity. ative-choice X  X  measures, and examine them in a follow-up paper ( Bookstein, Moed, &amp; Yitzahki, 2006 ).
+The strategy we adopt below for defining measures will be to construct highly simplified models describing separate them from other, confounding quantities. We are currently testing the various measures proposed here  X  experimental results will be reported in subsequent papers. 2. Structure of problem
+To set the stage, we first discuss the nature of the data with which we are working. We will be referring below to two conceptually distinct types of sets: items. Typically, one or more labels will be assigned to each source item, and we construct sets of source items by means of these labels (for example, a source document might be labelled by the nationality, or
+States X  X ). documents are similarly defined. The universes of source and target documents are conceptually different, and a set of source items may differ from the identically labelled set of target documents. tion of a national-preference measure. Depending on what the researcher is intending to illuminate, he may valid (if, perhaps, not equally wise) for either decision.
+
+Categories other than nationality can also be used to label items. Universities, disciplines, individual as a metaphor for the classes being studied. Similarly, though we may refer, for simplicity, to individual target documents, but the specific responsible institutions of the source documents.
+To develop a measure, we begin with a single document taken from a source set. To guide us in quantifying the averaging process, but we explore some statistical concerns in Appendices B and C .
+By depending on an explicit model, this approach ensures a consistency and coherence among our mea-target set, without further consideration of any underlying structure. 3. Preliminary model
+Our measures will be defined in terms of families of parameters, and we shall describe the notation as needed. (To assist the reader, we summarize the notation for these parameters in Appendix A .) But we are view of this structure.
+ ered, we simplify the notation by reducing the number of subscript values made explicit.
+Following these guidelines, we can now describe our basic model. Suppose we imagine a paper in set s being generated. Further, suppose there are N candidates available for citation, of which the fraction a target class t , and that P s : t denotes the probability set. Then we can estimate the number of papers in t that it cites, call it n since a t N is the total number of papers available for citation that are in t , and P of a paper in source set s for a paper in target set t is P parameter. But its consequences can be measured. Thus, we estimate:
+We first note that in Eq. (1) , n s : t is an expected value, around this value. Thus, the computed value of P s : t will be an approximation. But this estimate for P taken over the set of all papers in s .
+ sure of influence not P s : t itself, but a comparison of P our fundamental model, and its variants. Below, we first define the model in very general terms; we then restrict the model to specific cases that may be of more practical interest. 4. Fundamental model l s by Eq. (2) : would be to compute for each paper in s the ratio of the n -values, and take the average of these over s .
+The distinction between using the ratio of averages and the average of ratios is discussed in Appendix B , and the possibility of using global statistics of cited items explored in Appendix C . 4.1. Alternative forms target classes. Thus we also have, ignored. 3
+But more generally, it may be convenient, or demanded by substantive considerations, that the sets to since it might include some papers with a Dutch author as well, and thus overlap the target set.
+We want to emphasize that nowhere in the above derivation do we require that the targets sets being com-pared be disjoint. But if they do overlap, then we must be aware that the sum of all the a necessary.
+
+Perhaps a numerical example will further illuminate the nature of the problem. Consider a target universe ican scholar; and T by two American scholars. Then we can create nationality sets in two ways: author (denoted, in keeping with the above notation, as B ). With this classification, B ={ R , S }, and B  X f T g ; further, a B  X  2 = 3 ; a B  X  1 = 3; and, of course a a given country. For the example, one class, say B , would include all papers with a British author, and S a member of both classes. Now, a B = 2/3 and also a A = 2/3; thus a multiple sets which claim it as a member (e.g., document S in case 2 above). The group value P average taken over the probabilities of the specific papers in t , with P t set X  X  being cited. This issue is given more attention in Bookstein and Yitzahki (1999, 1999a) . sets t and t 0 , we may want to use in our measure the relative proportions of citations to t and t restrict our citations to only those two sets. That is, we may want to substitute in Eq. (3) , to get, mary target set from the contrast set.
+
+But note that this equivalence, unlike the previous ones, does depend on the assumption that the sum n should the classes overlap (assuming the most straightforward counting rule).
+Here we again will assume non-overlapping classes. We again imagine a paper in s being generated. First we ask, if we restrict this paper X  X  citations to only those items associated with t and t belong to t ? This is given (estimating with expected values) by
+We can now use simple algebra to solve for the measure l s : t j t 0 (3b) . But note that, in the general case allowing overlapping sets, a of citations in the union of t and t 0 labelled sets, since some may appear twice; if such is the case, f not be a genuine fraction. If the sets are constrained to be disjoint, this is not a problem. note in passing that the a parameters are also subject to rewriting, if the sets are disjoint:
+Thus we can use either the raw a values or the proportional values, given the restriction to t or t uating l -values. 5. Special cases quent analyses.
+
+But for many applications, the above measure is likely to be too general, and require that we restrict the class values appearing in the l parameter. These are important enough to deserve individual consideration. 5.1. Direct influence measure a community of nations. This problem introduces nothing new, and reduces to the problem previously con-be used. To be specific, we can define (simplifying the notation since the terminal t and focusing on the target nation t , we assess the influence of t on s by with l t : s to see if s  X  choice of t is requited. 5.2. Own nation bias
+Bookstein and Yitzahki (1999, 1999a) examine the bias towards one X  X  own language. A parallel bias would
+This measure results from a further specialization of l s : t 1999a) . 5.3. Within-group impact measures
+Up to now, we have been concentrating on  X  X  X inary X  X  measures, which quantified the strength with which a acter of this problem.
+
+So we now turn to the task, given a collection of nations and the totality of source documents associated on the research literature of Europe.
+
+We distinguish two types of measures. 5.3.1. Global contrast set We proceed using notation similar to that already used above:
+We continue to denote the fraction of citable items including an author from a specific member nation, erset in this analysis. If the superset is the entire universe of items, of course a by an author in member nation t of the superset, with P  X  0  X  superset. If the superset is the whole universe, then trivially, P paper belonging in set t (or superset 0). Again, if the collectivity is the full universe, f We define n  X  0  X  t and n  X  0  X  0 in accordance with the above pattern.
+
+Then, proceeding as before, given a paper in the superset, we estimate: and,
+We then define our measure of within-group impact of country t ,by l value for a specific paper by class 0 is the entire universe, then a 0 = 1 and n  X  0  X  0 duces to:
+More generally, we can estimate l  X  0  X  t in terms of fractions of citations of a category:
+This measure suggests the so called normalized or relative impact measure, used by Bibliometricians to average over the world X  X  research output. 5.3.2. Alternative contrast sets
+We note that in Eq. (8a) , the size of l  X  0  X  t is constrained by the value of a set. This consequence, which may be disturbing to some people, can be corrected by using alternative, more restrictive, contrast sets.
+
+We first generalize the previous measure to define a relative within-group impact measure, denoted by l sure l 0 X  0  X  t , in terms of Eq. (9) , by,
+Finally, we note that if the superset is the total universe of items, the notation simplifies, since f 5.3.3. Excluding self-citation impact of self-citation is excluded.
+
+In constructing the measure, we may have a specific contrast set, t t themselves. By this restriction on the source set, self-citation is excluded. Such a measure allows us to measure satisfying our demand is defined by l T : t j t 0 other than the whole world as our superset. how often the rest of the world cites t . This is directly measured by l Appendix A. Notation
+The generality of our measures is matched by a corresponding complexity of notation. We here summarize the notation used for reference.
+
+N : Number of items in universe of citable items. set, we will represent s as a superscript. a t : Each citable paper is associated with one (or more) sets, according to national designation(s); a fraction of potentially cited papers classified as being associated with the target set t . t denotes all papers for which that national designation does not apply: t is just the complement of t .On can simplify the notation for special cases: The parameter P resenting the probability that s will cite an item of the same category, is now denoted by P cinctly (since the second s is understood), we will denote this by P predetermined set, we will represent s as a superscript. t , when the choice is restricted to be only of items from nations t or t context. We similarly define f s : t 0 j t , as the fraction of items cited by s that belong to nation t restriction. If the sets t and t 0 are disjoint, then clearly, f script.
+
+Following the precedent of P , we can simplify the notation for special cases. Very often, the most appro-enough to justify the simpler notation, f s : t , suppressing the t in f by s to papers put in class t . The fraction of self-citation, denoted by F in Bookstein and Yitzahki (1999, 1999a) , is now denoted by f s : s , or more simply, by f tion of items cited by s that do not belong to t . of t , when the only options are t or t 0 . Continuing the pattern established above, when t will place it as a superscript.
+ Appendix B. Statistical commentary fine points.
+
+One simplification was to simplify our notation a bit by not distinguishing values for a single paper and population values (more formally, between random variables and expected values). Thus, we wrote n our notation and discussion; we hope that the context allowed us to do this without confusing the reader.
+In this spirit we also did not discuss the effect of taking averages. For example, we evaluated n tent, either can be used for our heuristic measure without producing misleading results.
+We try to justify this by a somewhat more precise analysis that should, at least, make clear the issues involved. Our question is, is there a significant difference between E  X  n we can rewrite the ratio, using a straightforward algebraic identity,
+The denominator can now be expanded as a geometric expansion to yield, of the definition of the expected value), we conclude, compared to the expected values, the error in using n t = n dard deviations, relative to the expected values, do not vary very much from variable to variable.
+This result simplifies if t 0 X  t , for then it is easy to confirms that r the definitions of standard deviation and correlation coefficient, since n
+In general, n is variable, and we would have to consider its impact on our approximation. This adds extra complexity without extra insight. For simplicity, we assume n is constant. Thus, which again approaches n t = n t for small r  X  X , specifically, if r Appendix C. Global vs local statistics global statistics are: T : Total number of items (in t ) available for citation.
+ T c : The overall number of these that are in fact cited.
+
+S : Number of documents in the source set. would then use this value to compute l .
+ not be selected by any of the S source documents being evaluated, each choosing n items at random, denoted by P , is given by this notational simplification, since n / T is very small, we can approximate (1 n / T ) expected global number of target items cited, denoted above by T
+This gives us our basic relation between the global values T evaluating a value of l , we easily solve to conclude, expand the logarithm, and take the first couple of terms: or, alternatively, second term gives us a first order correction that recognizes the impact of overlaps. If T of documents cited, is small, this level of approximation might suffice.
+ We can also ask, how sensitively does n depend on T c . Taking derivatives we find, changes in n (relative to n 0 ), as the value of T c / T approaches 1.
+ in the likelihood of being cited. At minimum, a more realistic analysis would have to recognize that some papers are frequently cited, others never cited. We now ask how the value of n determined above relates to we will examine the impact of variability.
+
+In general, there are many components of variability. A review paper cites more papers than a report of that the i th target paper is cited is given by the probability p other papers that might have been cited, but varying over the target population. Since p papers constituting the source population, we estimate it by with c i the number of source papers that cite the i th target paper.
+ target paper is cited) is given by: 5 and, accounting purposes, of an indicator random variable ~ d i number of target items cited at least once is given by the random variable above by T c is its expected value, and is given by Note that the upper case notation, P , is called for. But the sum of items from t cited in a randomly chosen source paper, which we denote by n , is given by
+It could by estimated by, and the value n .
+ resulting in a simple relationship between the observed value T of variability on the relationship between the value thus determined for n and the desired n .
+To do this, we rewrite the expression for n as: Substituting from the results given above, we find,
+Some conclusions are immediate. We first note that while,
+Thus we are comparing the logarithms of the geometric and arithmetic means of the values 1 P diately that D must be non-negative: n will tend to underestimate the value n .
+We can attempt to estimate the magnitude of the error by expanding the logarithm function as a Taylor series, and take the first few terms: when computing l -values.
+
+Added insight can be gained by a complementary analysis based on a Taylor expansion of Eq. (14) . Taking the first few terms of the expansion yields: so, and,
+T approximated by c 2 , both values being measures of squared average citation rate. References

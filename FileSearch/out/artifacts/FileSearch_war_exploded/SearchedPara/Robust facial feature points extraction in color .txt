@@ -1,0 +1,34 @@
+ 1. Introduction different problems such as face recognition, pose estimation and (PDM), active appearance model (AAM) is one of the most popular methods in facial feature point extraction.
+
+AAM learns the shape model together with the grey-level appearance model from the training set. The model could then fit on the human face image by iteratively changing the shape until its convergence to the right location. However, the traditional AAM only deals with the local grey-level appearance, thus it might get stuck in the local minimum due to the variance of little impact on the facial skin chrominance. And the complex local structure could in turn provide additional information for the accurate location of the facial feature points.
+To address these problems, a method of facial feature points extraction based on improved AAM with Gabor wavelet features face detector and lighting compensation, the paper proposes a hybrid AAM by combining the local skin similarity with the points by the hybrid AAM are further refined by a classification 2.2. Lighting compensation
+Complex lighting condition has a negative effect on the compensation uses  X  X  X eference white X  X  to normalize the color appearance. Before using  X  X  X eference white X  X , the image is processed by Gamma correct. new_pixel_value  X  old_pixel_value 1 = C G  X  1  X  images.
+
+After Gamma correct, pixels with the top 5% of the illumina-experiment with the resolution of 300 300). The R, G and B model mentioned in Section 3.1. Fig. 3 a and b demonstrates an example of the lighting compensation results. With lighting compensation, the proposed hybrid appearance becomes more robust (see Fig. 3 c and d). 3. Hybrid appearance model for AAM
+Based on the point distribution model (PDM), AAM is one of the most popular algorithms in facial feature point extraction.
+Specifically, AAM trains a shape model with local grey-value appearance and fits the model on the human face image by location. In this section, a hybrid appearance model which where px  X  [Cr,Cb]. The parameters are fitted to the samples by maximum likelihood estimation and is shown in Mean  X  X  140 : 9557 , 115 : 2307 , Cov  X  Mahalanobis distance to the cluster center as shown in P  X  exp  X  0 : 5  X  px-Mean  X  T Cov 1  X  px-Mean  X  X  X  5  X  where P ranges [0,1]. The probability P is then linearly transformed to [0,255], and look-up table is pre-computed to speed up the calculation from CbCr subspace to facial skin similarity probability. 3.2. Modeling shape variation coordinate image is given ( Cootes et al., 1995 ). These vectors form a cloud of points in R n d , i.e. a distribution in the n d dimensional space. AAM apply principal component analysis (PCA) to the data. PCA computes the main axes of this cloud, with fewer than n d parameters. Namely, one could get x  X  x _  X  P s b s  X  6  X  order): b  X  P T s  X  x x _  X  X  7  X 
+The vector b s defines a set of parameters of a deformable the parameter b i is set to 7 3 generated is similar to the original training set. 3.3. Local hybrid appearance model
+Most of the facial feature points are at the boundary of skin cue to infer their locations. In this section, a hybrid AAM by level appearance model is presented and discussed.
+
+Suppose for a given feature point i , n pixels on either side of point, n p  X  2 n +1 samples could be collected and form a vector h appearance is represented by the gradient of the corresponding The gradient is further normalized by dividing by the sum of absolute values as g  X 
+Local skin probability gradient vector p ki could be calculated skin similarity probability image. p  X  4. Gabor jet based precise adjustment
+After the hybrid AAM, the feature points at local edges are
+It is due to the fact that AAM searches only along normal problem, a Gabor jet classification based search algorithm is presented. The algorithm searches in 2D domain and refines the location of the feature points. 4.1. Gabor jets and comparing jets
+Gabor wavelets are biologically motivated convolution kernels with the shape of plane waves restricted by a Gaussian envelope function. The set of convolution coefficients for kernels of are clarified in this section.
+ convolution:
+J  X  x !  X  X  c  X  x !
+ X  X  k !  X  !
+A discrete set of 5 different frequencies denoted as n  X  0, y ,4 and 8 orientations, denoted as m  X  0, y , 7 is employed with the index j  X  m +8 n ( Fig. 5 ).
+
+A jet is defined as the set of 40 complex coefficients obtained for the pixel. It can be written as
+J  X  a exp  X  i f j  X  X  16  X  phase-sensitive similarity function S j ( J , J 0 ) for jets.
+S  X  J , J u  X  X 
+S  X  J , J u  X  X  5. Experimental results
+The experiment is conducted on the SJTU face database. 1000 same lighting condition and the facial feature points are marked manually. Each image contains 60 facial feature points. The data 600 images, respectively. 5.1. Comparison between traditional AAM and hybrid AAM
+The authors present the comparison between the hybrid AAM with the traditional AAM on SJTU face database. The face images are resized to the resolution of 300 300. The extraction failure occurs if the difference between hand-marked points and points extracted by AAM is more than 10 pixels.
+
+Fig. 8 demonstrates a visual comparison of the results. And hybrid AAM, extraction failure rate drop from 4.83% to 2.33% against the traditional AAM. And the mean error is 4.29 pixels, more than 30% accurate against the traditional method with the mean error of 6.57 pixels. The results show that the hybrid AAM outperforms the traditional AAM.
+
+Therefore, it is reasonable to state that the hybrid AAM method would like to contribute for the improvement in the use of skin chrominance information in color face image. 5.2. Gabor jet based refinement
+Finally, Gabor jet based refinement further improves the mean results of the whole methods: feature points of the traditional easy to check that the refinement leads to a better solution. 6. Conclusion
+The paper focuses on the robust extraction of facial feature points based on the AAM model. After the pre-processing of a standard face detector and lighting compensation, the paper proposed a hybrid AAM by combining the local skin similarity References

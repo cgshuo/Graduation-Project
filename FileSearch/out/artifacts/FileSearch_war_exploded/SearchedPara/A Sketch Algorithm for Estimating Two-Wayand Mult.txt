@@ -1,0 +1,106 @@
+ Stanford University Microsoft Corporation proposed method cuts the errors roughly in half over Broder X  X  sketches. 1. Introduction and Ribeiro-Neto 1999; Manning and Schutze 1999). The Know-It-All project computes (e.g., the Web), with billions of Web pages ( D ) and millions of word types. 3. frequency words, there are three low-frequency words selected from The New Oxford are many hits, even for relatively rare words.
+ 1999; Agresti 2002; Moore 2004). 306 manageable.
+ shows that estimates produced by current search engines are not always consistent. 1.1 The Data Matrix, Postings, and Contingency Tables uments). Because we consider boolean (0/1) data, the ( i , j ) matrix multiplication, AA T .
+ document IDs, one for each document containing W.
+ can be expressed as intersections (and complements) of their postings P obvious way: where  X  P 1 is short-hand for  X   X  P 1 ,and  X = { 1, 2, 3, ... , D
+IDs. As shown in Figure 1(a), we denote the margins by f 1 c = | P 2 | .
+ can do better, as we will see in the next subsection.
+ 1.2 Sampling Over Documents and Sampling Over Postings ments, as illustrated in Figure 1.
+ 1. Compute sample contingency table. 2. Estimate contingency table for population from sample. 3. Summarize contingency table to produce desired measure of association: the obvious way:  X  a MF = a s D D
+However, we can do better when we know the margins, f 1 = a + b and f document frequencies in IR), using a maximum likelihood estimator (MLE) with fixed margin constraints.
+ with flexible sample sizes. One size does not fit all. provides a convenient segue between sampling over documents and our sketch-based recommendation. notedasZ 1 , and a random sample Z 2 of size k 2 from P 2
+We then use a N s to infer a . For simplicity, assume k 1 estimate the associations by f 2 k 2 a N s . 308 in a small sample, not small counts in a large sample. The crux is a where 1% effort returns roughly 1% useful information, as illustrated in Figure 2. 1.3 An Improvement Based on Sketches the rest of the postings are stored on disk. More formally, the sketch, K = MIN IDs,  X = { 1, 2, 3, ... , D } , to eliminate whatever structure there might be. sketches, K 1 = MIN k gency table from the two sketches. Let  X  s = { 1, 2, 3, ... , D
+D s is set to min(max(K 1 ), max(K 2 )). With this choice of D without looking outside the sketch. One could use a smaller D throw out data points unnecessarily.
+ using a straightforward linear pass over the two sketches: advantage of the margins by using a maximum likelihood estimator (MLE). between the two views:  X  X ampling over documents X  would be D s  X  D f k , where D f proportional to the data sparsity. 1.4 Improving Estimates Using Margins
+When we know the margins, we ought to use them. The basic idea is to maximize the cubic equation, which has a remarkably accurate quadratic approximation. which was an approximation to the maximum likelihood estimator. matrix A of n rows and D columns, computing all marginal l whereas computing all pair-wise associations (or l 2 distances) costs O ( n and space complexity, though we suggest computing the margins while applying the random permutation  X  to all the document IDs on all the postings. 1.5 An Example of D = 36. After applying the random permutation, document IDs will be uniformly random. Thus, we can construct the random sample by picking any D illustrated in Figure 3.
+
+K 310 |{ gency table for  X  s = { 1, 2, 3, ... , D s } in physical memory in time O ( k
+K sample contingency table is the same as in Figure 3: 1.6 A Five-Word Example
+Figure 5 shows an example with more than two words. There are D = 15 documents in the k i smallest IDs as a sketch K i ,thatis,K i = MIN k k denoted by f i = | P i | .
+
+In other words, we need to estimate the inner product between P by a (1,2) . (We have to use the additional subscript just two words in the vocabulary.) We calculate, from sketches K postings list, as opposed to the sketch. In this case, P common. And therefore, the estimation error is 4  X  1 . 4 or 2.6 documents. perfectly.
+
+P of a 2. Applications Haveliwala et al. 2002).
+ documents in Web crawls. Many URLs point to the same (or nearly the same) HTML computational resources.
+ physical memory. 312 to know how many pages mention both words. We assume that pre-computing and sequences).
+ document. We assume that these matrices are too large to store in physical memory. document similarity). 2.1 Association Rule Mining 2000). Various sampling algorithms have been proposed (Toivonen 1996; Chen, Haas, (Hidber 1999). 2.2 All Pair-Wise Associations (Distances) language modeling (Church and Hanks 1991), we need to compute all pair-wise asso-computation of AA T would cost O ( n 2 D ), or more efficiently, O ( n the computation may become especially inefficient.
+ and Mahoney 2005).
+ and Hastie 2006, 2007).
+ we implemented an inverted index on top of the sketches, which made it possible to find many of the most interesting associations quickly. 2.3 Database Query Optimization the plan than executing it.
+ multi-way association can help the query optimizer.
+ least frequent terms: (( X  X chwarzenegger X   X   X  X erminator X )  X  provement would be (( X  X chwarzenegger X   X   X  X ustria X )  X   X  X erminator X ) reducing the 579,100 down to 136,000. 3. Outline of Two-Way Association Results
+To approximate the associations between words W 1 and W 2 and K 2 . We first determine D s = min(max(K 1 ), max(K 2 approximation:  X  a
+IND , and the margin-free baseline,  X  a MF : can do even better if we know the margins, as is common in practice. work we have to do. 314 expressions for the variances.
+ used to determine stopping rules. How many samples do we need? We will use such applications.
+ empirically, that our proposed method reduces the mean square error (MSE) by about the sample size (work). 4. Evaluation of Two-Way Associations
+We evaluated our two-way association sampling/estimation algorithm with a chunk The small data set contains just four high frequency words: THIS , HAVE , HELP and and co-occurrences have long tails, as expected (see Figure 6). was constructed for each of the 6 pairs of words in Table 4, each of the 10 our theoretical results, including the approximations in the variance formulas.
+A floor was imposed to make sure that every sample contains at least 20 documents. 4.1 Results from Large Monte Carlo Experiment is much better than no sample.
+ act MLE solution. Both of the proposed methods,  X  a 316 sampling rates. When we know the margins, we ought to use them. +Bias 2 (  X  a ) .If  X  a is unbiased, MSE(  X  a )=Var(  X  a )=SE lines). Figure 8 compares smoothed estimates (  X  a MLE that replaces a s , b s , c s ,and d s with a s + 1, b s + 1, c it would have been harder to see how the margin constraints keep the smoother from wandering too far astray. (11) is the same as (9), except that E D D convenient. 318 4.2 Results from Large Data Set Experiment
+Carlo experiment: The proposed MLE method is better than the margin-free and inde-pendence baselines. The recommended quadratic approximation,  X  a exact solution,  X  a MLE . 4.3 Rank Retrieval by Cosine shows that we can find many of the top ranking pairs, even at low sampling rates. small sample to a gold standard, the rankings based on the entire data set.
+Figure 13(a) emphasizes high precision region (3  X  S 320 little work.
+ precisely, recall = relevant / L G , and precision = relevant / L both precision and recall simultaneously is to increase the sampling rate. 4.4 Summary that the proposed MLE (and the recommended quadratic approximation) have smaller formulas (9) and (11), and showed that the proposed MLE method is essentially un-biased. The ranking experiment showed that we can find many of the most obvious associations with very little work. 5. The Maximum Likelihood Estimator (MLE) from the sample contingency table ( a s , b s , c s , d s into
+We seek the a that maximizes the partial likelihood Pr ( a strong dependency of D s on a , and therefore, we can focus on the easy part. take advantage of the margins.
+ 322 5.1 The Independence Baseline Independence assumptions are often made in databases (Garcia-Molina, Ullman, and
+Widom 2002, Chapter 16.4) and NLP (Manning and Schutze 1999, Chapter 13.3). When metric distribution, where n m = n ! m !( n  X  m )! . This distribution suggests an estimator 2002, Section 3.5.1). 5.2 The Margin-Free Baseline
+Conditional on D s , the sample contingency table ( a s , b hypergeometric distribution with moments 4 margins.
+ assuming  X  X ample-with-replacement, X  which is often a good approximation when results in the same estimator but slightly overestimates the variance. as when they are not known, because the samples ( a s , b better than when we don X  X . 5.3 The Exact MLE with Margin Constraints
+Considering the margin constraints, the partial likelihood Pr ( a expressed as a function of a single unknown parameter, a : contribute to the MLE.
+ maximizes the log likelihood, log Pr ( a s , b s , c s , d  X  there is a more direct solution using the updating formula from (19): 324 g ( a ) = 1, which is cubic in a (because the fourth term vanishes).
+
+We can solve for q ( a ) = 0 iteratively using Newton X  X  method: a
+Appendix 1 for a C code implementation. 5.4 The  X  X ample-with-Replacement X  Simplification simpler: replacement X  assumption amplifies the variance but does not change the estimation.
+With our proposed MLE, the  X  X ample-with-replacement X  assumption will change the difference caused by assuming  X  X ample-with-replacement. X  5.5 A Convenient Practical Quadratic Approximation convenient closed-form quadratic approximation to the exact MLE.
+K 1 without knowledge of K 2 . In other words, we assume a a
+The PMF of a (1) s , a (2) s is a product of two binomials:
+Setting the first derivative of the logarithm of (25) to be zero, we obtain which is quadratic in a and has a convenient closed-form solution:  X  a 326 5.6 The Conditional Variance and Bias
+Usually, a maximum likelihood estimator is nearly unbiased. Furthermore, assuming  X  X ample-with-replacement, X  we can apply the large sample theory
+Casella 1998, Theorem 6.3.10), which says that  X  a MLE converges in distribution to a Normal with mean a and variance expected Fisher Information, is where we evaluate E( a s | D s ), E( b s | D s ), E( c s | multiplying by the finite population correction factor 1  X  D use them. 5.7 The Unconditional Variance and Bias cerned about bias, at least asymptotically: formula: because E (  X  a MLE | D s )  X  a , which is a constant. Hence Var ( E (  X  a were available, E D D rive these approximations, recall that D s = min ( max(K 1 order statistics distribution (David 1981, Exercise 2.1.4), and Thomas 1991, Theorem 2.6.2), we know that The reciprocal function is convex. Again by Jensen X  X  inequality, we have By replacing the inequalities with equalities, we obtain (35) and (36): in (35) and (36) are usually within 5%.
+ of the sampling rate: (a) D s D , which depends on corpus size and (b) term-by-document matrix is sparse, which is often the case in practice. 328 5.8 The Variance of h h h (  X  a a a MLE MLE MLE ) likelihood ratio, LLR).
+ h (  X  a MLE )is 5.9 How Many Samples Are Sufficient? general, a reasonable criterion is the coefficient of variation, cv =
+We consider the estimate is accurate if the cv is below some threshold  X 
+The cv can be expressed as not increase as much.
+ that only a very small sample may suffice to achieve a reasonable cv. 5.10 Tail Bound and Multiple Comparisons Effect tail probability smaller (e.g., p = 100).
+ coefficient of variations (cv) is closely related to (42). 330 combined with (42), leads to the following criterion on cv
+For example, if we let  X  = 0 . 05, p = 100, and = 0 . 4, then (44) will output cv 5.11 Sample Size Selection Based on Storage Constraints
+Suppose we can compute the maximum allowed total samples, T , for example, based could allocate T according to document frequencies f j ,thatis, will truncate the computed k j if it is outside [ k l , k [ k , k u ] can effectively vary the sampling rates.
+
+W i and W j ,if sizes: example, some applications may care more about the very rare words, so we would weight the rare words more. 5.12 When Will Sketches Not Perform Well?
+We consider three scenarios. (A) f 1 and f 2 are both large; (B) f f
+P with a sufficiently large sample. Otherwise even if we let sampling rate, D s D  X  k 1 f for Holmes, 37,500 hits for Diaconis, and 892 joint hits. Assuming D = 5 cv = 0.1, the critical sample size for Holmes would have to be 1 . 4 large as a sample. 7 6. Extension to Multi-Way Associations bases, and Web search. The  X  X overnator X  example in Table 3, for example, made use
+When we do take advantage of margins, estimating multi-way associations amounts to a convex program. We will also analyze the theoretical variances. 6.1 Multi-Way Sketches
+W , ..., W m . The document frequencies are f 1 , f 2 , ... ,and f by x 1 , x 2 , ... , x N . For example, which can be directly corresponded to the binary representation of integers. equation as 332 where A is the constraint matrix. If necessary, we can use A m values. For example, when m = 2or m = 3,  X  (P i ), to form a sketch, K i . Recall  X  is a random permutation on  X = compute
+After removing the elements in all m K i  X  X  that are larger than D m trimmed sketches to generate the sample table counts. The samples are denoted as S = [ s 1 , s 2 , ... , s N ] T .
+ would be tion, namely, the  X  X that maximizes log Pr ( S | D s ;  X  6.2 Baseline Independence Estimator
+Assuming independence, an estimator of x 1 would be which can be easily proved using a conditional expectation argument. 6.3 Baseline Margin-Free Estimator on which we can derive the margin-free estimator: 6.4 The MLE
+The exact MLE can be formulated as a standard convex optimization problem, where X S is a compact representation for x i  X  s i ,1  X  i as Newton X  X  method (Boyd and Vandenberghe 2004, Chapter 10.2). Note that we can the objective function Q in a similar form.
+ replacement, X  under which the conditional likelihood and log likelihood become
+Our MLE problem can then be reformulated as 334 the first derivatives of Q with respect to x i ,for1  X  i  X 
+The Hessian is a matrix whose ( i , j ) th entry is the partial derivative be a good algorithm for solving this optimization problem. We implement, in Appen-
+Newton X  X  step, X nt : be sped up substantially (e.g., using the block matrix inverse formula). 6.5 The Covariance Matrix would be 2 m  X  ( m + 1), which is also the dimension of the covariance matrix. switch some columns of A in order to find an invertible A example for m = 3 would be where A ( 3 ) 1 is the [1 2 3 5] columns of A ( 3 ) and A one.
+ m = 3, X 1 = [ x 1 , x 2 , x 3 , x 5 ] T , X 2 = [ x 4 , x
+By the matrix derivative chain rule, the Hessian of Q with respect to X where we use 2 1 and 2 2 to indicate the Hessians are with respect to X respectively.
+ where factor, we can approximate the (conditional) covariance matrix of X
+Cov( X 1 | D s )  X  I( X 1 )  X  1 1  X  D s D = D D in the two-way association case. Recall that, when m = 2, we have 336
+Hence, derived. 6.6 The Unconditional Covariance Matrix be estimated by replacing D D
+Again, the approximation (76) will overestimate E D 6.7 Empirical Evaluation associations and one four-way association, as listed in Table 6. we see that the proposed MLE has lower MSE than the MF. As in the two-way case, our approximate variance formulas are fairly accurate.
+ ing MSE, smoothing, and variance. The results are similar to the three-way case. ure 23 plots max f 1 k reasonable.
+ 338 way associations, but the improvement becomes less and less noticeable with higher 7. Related Work: Comparison with Broder X  X  Sketches (2002), and Itoh, Takei, and Tarui (2003).
+ the  X  X riginal sketch X  and the  X  X inwise sketch X  for estimating resemblance, R =
+The original sketch uses a single random permutation on  X = minwise sketch uses k random permutations. Both algorithms have similar estimation accuracies, as will see. 340 compute contingency tables (and summaries thereof). Broder X  X  method was designed izes to reals. 7.1 Broder X  X  Minwise Sketch
+Suppose a random permutation  X  1 is performed on the document IDs. We denote the smallest IDs in the postings P 1 and P 2 ,bymin(  X  1 (P 1 Obviously, estimate R without bias, as a binomial probability, namely, 7.2 Broder X  X  Original Sketch structed: K 1 = MIN k estimator for the resemblance: undesirable (and unnecessary).
+ can divide the set P 1  X  P 2 (of size a + b + c = f 1 + f and P 1  X  P 2  X  P 1  X  P 2 . Within the set MIN k (K 1  X  K belong to P 1  X  P 2 would be MIN k (K 1  X  K 2 )  X  K 1  X  K way, we have a hypergeometric sample, that is, we sample k document IDs from P randomly without replacement and obtain a B s IDs that belong to P of the hypergeometric distribution, the expectation of a B random permutation and has slightly smaller variance than the minwise sketch, that sketch algorithms have similar errors. 7.3 Why Our Algorithm Improves Broders X  X  Sketch but our estimation method differs in two important aspects. 342 a = | MIN k (K 1  X  K 2 )  X  K 1  X  K 2 | intersections, which is always smaller than a
+K samples up to D s = min(max(K 1 ), max(K 2 )), particularly all a that is, if we sample proportionally to the margins: it is expected that almost all samples will be utilized.
+ with larger errors.
+ variances. 7.4 Comparison of Variances the proposed method with Broder X  X  sketches in terms of resemblance, R .  X  R MLE is slightly biased. However, because the second derivative R ( a ) practice.
+ approximately samples.
+ samples: k 1 = k 2 = k . We can see that V B  X  1 always holds and V f = a . There is also the possibility that V B is close to zero. 344
+For convenience, we use the notion a , b , c , d in (87). Assuming k we obtain which is equivalent to following true statement: 7.5 Empirical Evaluations
+We have theoretically shown that our proposed method is a considerable improvement same experiment data as in evaluating two-way associations (i.e., Table 4). show that proportional samples could further improve the results. The figure shows substantially.
+ approximation E D D variance formula (86) is reliable.
+ 346 improves the estimates in terms of MSE. With equal samples, our estimators improve Broder X  X  sketch by 30 X 50%. With proportional samples, improvements become 40 X 80%.
+Note that the maximum possible improvement is 100%. 8. Conclusion collections.
+
+D s k . scaling factor. However, we recommend taking advantage of the margins (also known as document frequencies). The maximum likelihood solution under margin constraints posed MLE methods were compared empirically and theoretically to the MF baseline, finding large improvements. When we know the margins, we ought to use them. to general real-valued data; see Li, Church, and Hastie (2006, 2007). learning such as clustering.
+ Acknowledgments 348
+Appendix 1: Sample C Code for Estimating Two-Way Associations
+Appendix 2: Sample Matlab Code for Estimating Multi-Way Associations 350 References 352

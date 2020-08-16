@@ -1,0 +1,31 @@
+ 1. Introduction points for a query data point efficiently and effectively from a large dataset.  X  process for similarity search is generally summarized into the three steps: The binary codes for the query data point are computed by the hash function. The Hamming distances between the query data point and data points in the dataset are calculated. ming distances are ranked top.
+ to examining the whole predicted list.
+ round. The algorithm runs l rounds and learns l binary classifiers. than the state-of-the-art techniques. 2. Related work about similarity search 2.1. Overview of similarity search
+X  X  N  X   X f x 1 ; x 2 ; ... ; x N g . N is the number of data points in the dataset. x the large values of N and D in the large dataset makes similarity search a huge time-consuming task. on the original feature space should be still similar on the output feature space. as / : R D # f 0 ; 1 g l  X  l D  X  , also known as a hash function. 2.2. Similarity search based on hash functions personal computer.
+ as where w ij denotes the distance between the two data points x
+Euclidean distance or L p norm can be employed to calculate w
+In addition, / ( x i ) in Eq. (1) denotes the binary codes assigned to the data point x the Hamming distance between the two data points x i , x j ployed to express the value of k / ( x i ) / ( x j ) k 2 .
+ cisely retrieving the similar items for a query data point, which decreases the retrieval accuracy. 3. Ranking hash similarity framework 3.1. Modeling
+Taking the data point x i for example, suppose the ground truth list for the data point x where w ij , defined in Eq. (2) , denotes the distance between the two data points x the hash function / should obey the constraints where S / ( x i , x j ), defined in Eq. (3) , denotes Hamming distance between the two data points x
+In addition, the ranking loss function should emphasize the top k data points on the predicted list. 3.2. Ranking loss function for fast similarity search k original similar data points for the data point x i . X points for the data point x i . Hence,
+A general form of ranking loss functions is derived. For a similar data point y 2X  X  z 2X i ranked above it should be reduced is, can be relaxed as 4. Top k RHS top k RHS . The algorithm assigns g ( u ) = log ( u ) and h ( u ) = exp ( u ) respectively. 4.1. Object function more than one time. To adapt to this situation, the learning object is adjusted to learn b denote the learned binary classifiers. The b t denotes the choosing times of f the Hamming distance between the two data points x i and x Hereafter, the object function of the top k RHS is equivalently formulated as 4.2. Algorithm binary classifier and its chosen times can be learned separately at each round. chosen times b t are learned. The pair of f ( t ) and b t ject function Eq. (12) .
+ notes the Hamming distance between the pair of data points x assign low values of Hamming distances for similar pairs. 4.3. Learning f (t) and b t
+The key issue of the top k RHS is to learn a binary classifier f
+R The R ( t ) ( f , b ) can be equivalently rewritten as classifier f i with minimizing R ( t ) ( f i , b ). Next, the f and b i . Therefore, the quality in learning b i directly affects the value of R chosen.
+ Theorem 1. If a binary classifier f is known, R (t) (f, b ) is a convex function with respect to b . vex functions is a convex function.
+
+Theorem 1 implies the effectiveness of the learning procedure. For a binary classifier f descendant direction of R ( t ) ( f i , b ) is perfect. Among all the integers, b b ) with respect to f i . Thus, the pair of f ( t ) and b 4.4. Construction of binary classifiers the s th feature in the training set. h s ( x i ) denotes the value of the feature h structed on the feature h s via a threshold b s . Let f s classifier f s . binary classifier f s .
+ and optimization are omitted.
+ 4.5. Theoretical analysis ization represents the expected loss for an unseen query data point.
+S
+S ( x , y )&gt; S / ( x , z ) and increases the value of Eq. (12) .
+Theorem 2. Suppose the training set consists of N data points x fixed probability distribution X . Let N k  X  x i  X  denotes the k nearest neighbors of the data point x points. Each feature vector has norm bound R and the parameters [ b ranking loss of retrieving the k nearest neighbors for data point x The expected loss of an unseen data point x  X  is bounded with probability at least 1 d binary classifiers b 1 , ... , b l affect the generalization. 4.6. Computational complexity analysis The total computational complexity of training is of order O l DN k  X  s  X  takes small value in the experiment. In the experiment, l elements among N elements, which is of order O ( kN )( Cormen, Leiserson, Rivest, &amp; Stein, 2001 ). have the same order of time complexity of testing.
+ 5. Experiment
+The experiments are conducted on three publicly available real-world text datasets: Reuters21578 ilar items returned in top k positions while NDCG measures the ranking order of top k data points. 5.1. Parameters setting learning process of top k RHS terminates. 5.2. Datasets and testing set contain 5228 and 2057 documents respectively.
+ training and 7532 (40%) documents for testing.
+ ments are used as testing set. The fivefold cross-validation is conducted on the dataset TDT2. 18933, 61188 and 36771 respectively. 5.3. Evaluation measure performance on the testing set is averaging over all query data points in the testing set. set is averaging over all query data points in the testing set. 5.4. Experiment results 5.4.1. Chosen times of learned binary classifiers 5.4.2. Curves of training and testing high accuracy on the testing set as it does on the training set. 5.4.3. Comparison with baselines nearest neighbors for a query data point.
+ higher precision and NDCG than the baselines on the datasets 20Newsgroup and Recluster21578. LCH and SpH are statistically significant ( p -value 6 0.002).
+ 5.5. Experimental analysis
+Hamming distances. 6. Conclusion achieves higher accuracy than the state-of-the-art methods.
+ Acknowledgements of China.
+ References

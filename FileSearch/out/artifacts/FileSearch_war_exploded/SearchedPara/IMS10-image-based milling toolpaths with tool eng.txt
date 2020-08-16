@@ -1,0 +1,166 @@
+ 1. Introduction
+Conventional tool-path generation strategies are readily avail-able for generating geometrically feasible trajectories. Most CAM software can generate either direction-parallel or contour-parallel toolpaths; while the resulting part is correct from a geometrical point of view, the approaches seldom take into account the milling process conditions.
+
+In Borangiu et al. (2007) ,wehavepresentedadepth-map-based framework and algorithms for generating CNC milling toolpaths of parts with complex geometry ( Fig. 1 ), which is integrated in a reverse engineering platform ( Fig. 2 ) consisting of: a short range laser scanning sensor, a 6-DOF vertical r obot arm, which sweeps the laser sensor around the scanned part, a rotary table (1-DOF), which holds thescannedpart,anda4-axisCNC,abletocreate3Dpartsfromraw stock. Input data for CNC milling can be obtained either by 3D scanning or by importing existing 3D models.
+
+Surfaces that can be described by an arbitrary explicit function z  X  f  X  x , y  X  may be stored as grayscale images, where the pixel X  X  coordinates in the image map to the real variables x and y , and the graylevel encodes the z value. Usually the black colour maps to the lowest z level and the white colour maps to the highest.
+Because pixel coordinates are integers, a pixel-to-mm ratio must be used to map between continuous and discrete coordinates. is offsetting the contour of the d esign part (for 2D toolpaths) or offsetting the part surface (for 3D surfacing toolpaths). in mathematical morphology, being defined in the first place for binary images, and extended first for depth maps and then for complete lattices ( Fisher et al., 2003 ).
+ depth maps ( Figs. 3 and 4 ), and considering the tool image to be the structural element , we will notice the following: extend this process in milling more complex 3D parts by considering multiple views; for example, for milling the 3D part from Fig. 1 ,we may use a 4-axis milling machine ( X = Y = Z = A )andwecanmodelthe part with two depth maps, one from the front side and one from the back side; for more complex part, more depth maps will be required. 2. Generation of milling toolpaths with tool engagement control
+This paper extends the previous approach with an optimized strategy for roughing, computed from binary image models of design part, raw stock and cutting tool. The strategy is able to control cutting forces with an indirect approach, without requiring additional sensors or feedback control, and uses a pixel-based model for simulating the milling p rocess throughout the toolpath computation.
+
+The indirect force control will only work if the raw material is homogeneous and no unpredictable events will occur. It is possible (and straightforward) to combine this method with a feedback loop if the CNC controller used allows real-time mod-ification of the toolpath; however, it is possible to obtain very good results with the proposed method even without a force feedback loop present in the system.
+
+Handbooks define the stepover (1), or radial depth of cut , as the percentage of the tool diameter engaged in material ( Fig. 5 ). s  X  r D  X  1  X 
+The stepover determines the material removal rate (MRR) and reflects the cutting forces, but only for straight line motions.
+A parameter which better reflects the cutting force, regardless of the toolpath shape, is the tool engagement angle 1 (TEA), defined by Gasparraj (2005) as the amount of sweep subtended by each cutting edge as it engages and leaves the stock.
+
+For straight line motions, there is a direct, nonlinear relation-ship between tool engagement angle and stepover, as illustrated in (2) and (3) and Table 1 , with notations from Fig. 5 s  X  1  X  sin  X  y 90 1  X  2 , 0 r y r 180 1  X  2  X  y  X  90 1  X  arcsin  X  2 s 1  X  , 0 r s r 1  X  3  X  plunging the tool vertically into the material. The next maximum value, 180 1 , is encountered during a slotting operation; this condition may lead to high thermal stress on the tool, since the chips cannot be evacuated properly. Tool engagement is also known to increase at internal corners in toolpath ( Fig. 5 , right).
+The engagement angle also has direct influence on the chip shape, therefore keeping TEA constant ensures consistent chip size and shape throughout the milling process.
+
+Besides the feed rate and spindle speed, another important factor is the milling type: climb milling and conventional milling ;thechoice of the milling type depends on the rigidity of the machine and also on the raw material and cutting tool used ( Moltrecht, 1981 ). A good algorithm should be able to maintain the same milling type (chosen by user) throughout the entire toolpath. 3. Related work
+Coleman (2006) shows that when a tool programmed at a 50% stepover (90 1 TEA) encounters a 90 1 corner, the instantaneous engagement doubles to 180 1 . With small stepovers, the situation is even worse, since for a 10% stepover (37 1 TEA), the TEA increases inside the 90 1 corner to 127 1 , which is a 244% increase.
+Since high speed machining frequently uses small stepover values, for example 35 X 40% for roughing, 20 X 40% for semi-finishing, and 0.1 X 0.2 mm for finishing according to Pasko et al. (2002) , contour-parallel toolpaths should be avoided.
+By enforcing a minimum radius on the toolpath, one will obtain only a minor improvement of the corner TEA ( Coleman, 2006 ).
+
+Pamali (2004) presented a clothoid spiral strategy, which requires lower acceleration and jerk than the arc segments, but fails to control the engagement angle of the tool.
+
+Bieterman (2001) replaced contour-parallel pocketing paths with a smooth spiral, which is nearly circular at the pocket center and slowly morphs into the part shape as it gets closer to the part.
+The author reports savings in machining time by up to 30% as compared to conventional methods, and also significantly longer tool life when hard metals are being cut, although he did not use any explicit control of the engagement angle.
+
+Wang et al. (2005) defined a set of quantifiable metrics for evaluating a toolpath quality, which included two main criteria
+Path curvature, which determines the acceleration and jerk required to track the trajectory; toolpaths with low curvature (i.e. smoother) are preferred.
+
+Instantaneous cutter engagement, which can be evaluated by geometrical process simulation.
+
+The authors applied the metric for optimizing spiral-in and spiral-out contour-parallel paths for nonconvex pockets. The average tool engagement and path curvature are significantly improved from the conventional case; however, the worst case behavior is not improved at all: their toolpaths still show instantaneous cutter engagements up to 180 1 .
+
+The same authors proposed a method for evaluating the instantaneous cutter engagement by discrete process simulation.
+Both the in-process geometry of the raw workpiece and the cutter shape are discretized, by encoding them as bitmap images.
+The pixels on the raw image can have two states: empty and material _ present , while the pixels on the tool image can be outside , inside or on the circumference .
+
+The simulation translates the tool image along the toolpath and updates the shape of the raw stock; therefore, at every toolpath point, the instantaneous raw stock shape is known. Tool engagement angle is estimated by counting the pixels on the circumference of the discretized tool which have the unmachined state on the raw stock image (4)
+Kim et al. (2006) also used a pixel-based simulation of the cutting process for estimating the material removal rate of a given toolpath and for altering a set of contour-parallel toolpaths in order to keep MRR constant.
+
+Stori and Wright (2000) proposed an algorithm for convex contours, which modified an offset tool path such as the engage-ment is kept constant. Ibaraki et al. (2004) removed the convexity requirement and presented two strategies
+Forward tool path generation, where an existing toolpath is offset along the normal to the advancing direction, in order to reach the prescribed engagement value. The computation employed one Newton step.
+
+Backward tool path generation, where the algorithm starts from the innermost offset contour, and computes the precut workpiece contour, such as the engagement remains constant without changing the toolpath.
+
+The forward algorithm works on arbitrary contour geometry, according to the authors. However, when trying to reproduce the experiment, it was found that there is no control in maintaining the milling type (climb or conventional). In certain situations involving complex geometry, the algorithm switched the milling type from climb to conventional or viceversa.
+
+The algorithm computes the engagement angle from the geometric intersection between the tool and part contours. This idea will be extended in this paper; the geometric intersection will be used for computing the direction in which the toolpath will advance, while maintaining a constant tool engagement.
+The backward algorithm is basically a non-uniform offsetting scheme which enforces constant engagement when the tool cuts along the contour-parallel path. For large tool diameters, relative to the part curvature, the precut surface obtained may require a much smaller tool at the previous step, which limit the usefulness of the strategy in roughing operations.
+
+Uddin et al. (2006) applied the backward generation approach for correcting the semi-finishing paths in order to obtain tighter tolerance on the finished part.
+
+Rauch et al. (2009) used trochoidal toolpaths generated along a guide curve, being able to limit the maximum instantaneous radial depth of cut. A big disadvantage of their approach is that the toolpath length is much higher than conventional toolpaths because large portions are outside the material. 4. CAM software experiments
+The parts from Fig. 6 were used in order to evaluate the performance of the existing and proposed milling strategies.
+For the first part, which has simple geometry, only the upper half will be milled. The bounding box for the part is 90 mm 50 mm 10 mm and a | 30 mm roughing tool is used.
+The inner concavity has a diameter equal to 38 mm, therefore it will cause a significant increase in the engagement angle if a conventional path is used. The opposite side requires a high material removal rate, which will help in evaluating the efficiency of the toolpath.
+
+The second part is a complex shape, with many details. For the roughing process, only the bottom layer will be considered.
+Current CAM software also employs trochoidal steps for controlling the tool load ( Sprut Technology, 2009 ). The test parts from Fig. 6 were imported into a CAM package, which created contour-parallel toolpaths, with and without trochoidal steps.
+Figs. 7 and 8 show toolpaths generated with commercially available CAM software. Fig. 7 (a) shows direction-parallel toolpaths, which have frequent peaks in tool engagement. Fig. 7 (b) used contour-parallel paths, which are much better on average, but when the tool reaches the concave region, the engagement spikes up to 170 1 .
+
+Fig. 7 (c) was generated with trochoidal step , which according to the documentation of the CAM software, is able to generate toolpaths with constant cutter load ( Sprut Technology, 2009 ). The graph shows that the evolution of the tool engagement was improved, dividing the peak into three smaller peaks, with a maximum value of 130 1 . Since the prescribed stepover was 25%, equivalent with a 60 1 engagement, the result is not impressive. At larger stepover values, the CAM software did not employ the trochoidal steps at all.
+
+Fig. 8 (a) used contour-parallel toolpaths for the complex part, and the engagement angle presents many spikes, up to 180 1
+Fig. 8 (b) the trochoidal step was enabled in order to control the engagement angle. The reader may see that extra circles appeared on the tool path; however, the engagement angle simulation shows that the maximum spikes are unchanged. The trochoids did lower the engagement, but in non-critical areas.
+
+The conclusion of these simulations is that the trochoidal step algorithm used by the CAM program provides only a small improvement over conventional paths, and fails to limit the tool engagement when the design part has many contouring details.
+The graphics from Figs. 7 and 8 were obtained by pixel-level simulation of the G-Code output from the CAM software.
+On the left of each graphic, the generated XY path is displayed; the circle indicates the starting point and the tool size. The dotted lines show the tool retracts and returns, which are performed using G0 moves. The dark area is the ideal design part. The plot on the right represents the evolution of the tool engagement angle during the milling process. 5. Algorithm design
+The toolpath generation algorithm was designed with the following principles in mind: Ensure a upper bound on the tool engagement angle.
+ Maintain the milling type, climb or conventional.
+ Minimize the number of plunges.
+ Keep its properties in the presence of complex geometry.
+In order to achieve an optimal milling strategy, the toolpath generator has to know the shape and size of the raw stock. The stock shape can be either a cylinder or a box of known size, or can be acquired by 3D scanning.
+
+In a 2D milling step, the raw stock and the part can be represented by two binary depth maps, resulting are four possible combinations for which we choose the following meaning (see Fig. 9 for an example): white part, white stock: design part (raw material which must not be removed); white part, black stock: forbidden areas (e.g. for modeling the clamping fixtures); black part, white stock: material that should be removed (where the milling paths will be generated); black part, black stock: free space (no material and no restric-tions; useful for performing lateral entries into the raw stock). 5.1. General milling strategy
+The milling toolpath generator can be regarded as a state machine ( Fig. 10 ), with the following states: State 1: find starting point.
+ State 2: constant engagement milling.
+ State 3: contour milling.
+
+Obviously, the operation begins in the first state, which searches for a point for beginning the milling operation.
+The second state will advance the cutter into the raw material by maintaining a constant tool engagement value. When the tool touches the design part, it is not possible to continue with the same engagement, because the toolpath would remove material which must be kept in place. When this happens, the toolpath generator will switch to the third state, contour milling .
+In contour milling, the tool moves along the offset contour , being always tangent to the design part. It is necessary for the tool to move on the entire offset contour in order to obtain the correct geometry of the part; however, the maximum engagement angle can be exceeded, reaching values up to 180 1 .
+
+Therefore, whenever the maximum engagement angle is exceeded by more than a given threshold, let us say 20 1 , the generator will switch back to constant engagement state. 5.2. Geometry discretization
+The geometries of the design part, raw stock and tool shape are represented as bitmap images. As Z is constant, only X and Y are considered. The discretization uses a pixel-to-mm ratio, p . The tool diameter D is discretized using (5) D  X  D p  X  5  X 
+For simplification, the origin of the workpiece reference frame is mapped to the center of the image.
+ Therefore, the continuous X and Y are discretized using (6) X  X  X  X p  X  W = 2 Y  X  X  Y p  X  H = 2  X  6  X  where W H is the size of the depth map image, in pixels.
+We recommend choosing a pixel-to-mm ratio so that the discrete tool diameter has values between 20 and 200 pixels.
+Smaller values may result in numerical stability errors, and larger values may result in very high processing times with little improvement over the accuracy of the results. 5.3. Core algorithm: advancing with constant engagement
+The heart of the toolpath generation algorithm is the second state, which generates a constant engagem ent toolpath, considering only the starting point and raw stock g eometry. When the tool touches the part geometry, the core algorit hm terminates. This prevents the cutting tool from removing mo re material than necessary.
+A mechanism for computing the direction which maintains constant engagement angle is required. Possible approaches:
+Consider several values of a , evaluate the engagement angle for each value and choose the best among them. Requires many engagement evaluations for a single step.
+
+Choose a using a nonlinear minimization approach. The result might change the milling type, from climb to conventional or viceversa.
+
+Compute a from the intersection point between the tool circumference and the raw part geometry. No engagement angle evaluation is required; the method is much faster and also robust, since it does not change the milling type.
+The intersection point between the tool circumference and the part edge ( Fig. 11 ) indicates the advancing direction for a 50% stepover or 90 1 engagement.
+ considering all the pixels from the circumference which are engaged into the material (i.e. white pixels). Each pixel is expressed in polar coordinates  X  r , f  X  with respect to the tool center; the angular origin is the opposite of the current advancing direction (7). All pixels will have 0 r f r 360 1 , considering a counter-clockwise direction. Ideally, no pixels with 0 r f r 90 or 270 r f r 360 1 should be engaged into material, since the tool already milled the respective location.
+ f value will indicate the intersection between the tool circum-ference and the raw material edge.
+
+At the first step, a p should point from the tool center towards the raw stock. Also, let  X  x O k , y O k  X  be the coordinates of pixels from the tool circumference, with respect to the tool center.
+Then f k  X  X  atan2  X  y O k , x O k  X  X  a p  X  180 1  X  mod 360 1  X  7  X  ensures a constant engagement angle equal to y ref a climb 90  X  max  X  f white k  X  a p 180 1  X  8  X  a climb  X  a climb 90  X  90 1 y ref  X  9  X  the advancing direction a conv . Therefore a conv 90  X  min  X  f white k  X  a p 180 1  X  10  X  Algorithm 1. Constant engagement milling.
+
+The algorithm can finish its loop in two ways. The stop reason will indicate the next state of the toolpath generator ( Fig. 10 )
+The tool touched the design part (i.e. it tried to remove white pixels from the part image).
+ There are no more white pixels on the tool circumference.
+In the second case, the computation for the advancing direc-tion can be repeated after artificially increasing the tool radius, up to a preset value (for example, 5 pixels or 10% of the nominal tool radius). The approach helps when the shape of the raw part exhibits external sharp corners. 5.4. Contouring
+There are some more details regarding the contouring step. In this mode, the cutter advances on the offset path, which is parallel to the contour of the design part. When the engagement exceeds the reference value, the tool should stop moving on the offset path with point data storage and should try to further maintain a constant engagement.
+
+The first problem is how to decide when the engagement exceeds the reference. The estimation of engagement based on pixel simulation is imprecise, having errors due to discretization.
+This is not the only issue: even with a perfect function for evaluating the engagement, if the part has many small details, the toolpath generator will alternate frequently between the contouring and constant engagement modes very often, generat-ing many tool returns, which would increase the machining time.
+Therefore, a compromise is made: in contouring mode, the tool engagement angle is allowed to exceed the reference value, but not more than a preset threshold. Good results were obtained with a 20 1 threshold, also called maximum allowed overshoot .
+For avoiding the situations when the TEA computation routine would underestimate the result, an extra test was made. If the direction indicated by (9) differs from the contour direction with more than the allowed overshoot, the generator state is switched to constant engagement ( Fig. 12 ).
+
+These two conditions guarantee that the prescribed engage-ment will never be exceeded by more than the allowed overshoot. 5.5. Searching for a starting point The milling operation can begin in three modes Plunging the cutter into the raw stock.
+ Entering into the stock horizontally, from lateral.
+
+Continuing a contouring operation, from the point where the generator switched from state 3 to state 2.
+
+As plunges should be avoided, the algorithm will search the above list from backwards. The first step is to look for a point on the contour where the toolpath generator switched from contour-ing to constant engagement . In these points, the tool is tangent to the raw material, so no plunging is needed.
+
+If no such point is found, the algorithm tries to find another point, with the tool being tangent to the raw stock. At the same time, the tool should not be tangent to the design part, because in these points, the material has already been removed and the part already has the correct shape.
+
+This point is found by offsetting the raw and design part images and taking the contour pixels corresponding only to the raw image. For robustness, the part image can be offset 1 pixel more than the raw image. There are many solutions, and only one is randomly selected. Experiments did not show significant influence of the starting point on the overall performance.
+If no tangent point is found, it is because the algorithm has to do a pocketing operation, where plunging cannot be avoided. A starting point can be found by computing the distance trans-form ( Fisher et al., 2003 ) of the part image and taking the highest value. If the value is larger than the discrete tool radius, spiral plunging is possible. Examples of pocket milling with the pro-posed algorithm can be found in Figs. 15 X 17 . 6. Experimental results
+In order to evaluate the performance of the proposed algo-rithm, it was tested on the two parts from Fig. 6 , with various values for the prescribed engagement angle.
+
+In Fig. 13 (a) X (c), the algorithm was tested on the part with simple geometry, with prescribed engagement values of 37 1 and 90 1 . These values correspond to stepover values of 10%, 25% and 50%.
+
+In Fig. 14 (a) and (b), the same algorithm was tested on the part with complex geometry, with prescribed engagement values of 60 1 and 90 1 , corresponding to stepovers of 25% and 50%.
+In Figs. 15 X 17 , the algorithm was tested on an inverted copy of part with simple geometry, which results in a pocketing operation with free-form contours, without islands ( Fig. 15 ) and with a single island ( Fig. 15 ). The toolpaths in this case start with a spiral in the center of the pocket; in narrow concave regions, the algorithm generates many cutting toolpaths (effectively engaged in the material) and return toolpaths (which move the milling tool without actually cutting), which may result in slower milling times, depending on the ability of the machine to quickly execute rapid traverse moves ( G0 ). This is noticed especially in the test from Fig. 17 , where the algorithm ran on a different pocket shape with many islands, which lowers the efficiency of the milling process with the proposed algorithm.
+
+The three pocketing tests were performed with a prescribed (reference) engagement value of 120 1 , i.e. 75% stepover. The figures also show the distance transform applied on the part depth map in order to detect the entry point for the plunging operation. The initial spike in tool engagement angle from the simulation is a result of the plunging operation.
+
+The reader may observe that the generated toolpaths use an engagement angle close to the prescribed value, not exceeding it with more than 20 1 . At the beginning of the milling operation, the tool engagement angle has less variations, since most of the time is spent in constant engagement milling rather than contouring. where tool engagement is lower than the prescribed reference and cannot be controlled.
+
+For reducing the machining time, an adaptive feed rate ( F ) optimization scheme ( Borangiu and Ivanescu, 2000 ) can be used, allowing higher feed rates for regions with small engagement values. The feed rate variation should be smoothed, since rapid variations will require high acceleration and jerk values. Also, the feed rate should be correlated with spindle speed S , since the ratio of F and S determines the chip size. 6.1. Toolpath smoothing and simplification
+While most authors try to generate a smooth toolpath, the algorithm proposed in this paper does not use smoothing.
+External sharp corners in the toolpath are allowed ( Fig. 18 ), since they do not lead to engagement angle increase.
+
+However, the toolpath with sharp corners is not executed by the machine controller as-is; instead, we recommend using a postprocessing step which simplifies the toolpath by reducing the number of segments and smooths the sharp corners to ensure a good dynamic performance.
+
+The toolpaths generated with the proposed algorithm are described by a sequence of very small linear segments. On older-generation NC machine controllers, which have limitations regarding controller memory and/or processing speed, these toolpaths have to be simplified. The Douglas X  X eucker algorithm gives very good results and remains the most widely used algorithm for curve simplification ( Heckbert and Garland, 1997 ). The input of the D X  X  algorithm is a 2D path composed of many small straight line segments, and a maximum allowed tolerance; the algorithm outputs the path with a much smaller number of segments.
+
+Modern NC controllers also have the ability to smooth the toolpaths described by small linear segments. On the CNC used for these experiments, this function is enabled with G64 . Indus-trial robots also have this capability, which is usually called procedural motion . 7. Numerical stability analysis
+Given the discrete nature of the toolpath algorithm, numerical errors in the process may affect the simulation. We will analyze the effects of the main sources of discretization errors. 7.1. Effect of errors in estimating the advancing direction
+Consider the discrete tool diameter D D and the discrete tool radius R D  X  D D = 2. Remember from Section 5.3 that advancing direction is computed from the angle between the current tool position and the intersection between the tool and the part contours (7). The discrete error will affect only the following term:  X  atan2  X  y O k , x O k  X  X  12  X 
+If we consider a horizontal toolpath, the maximum error will be an error of 1 pixel in the y direction. The error for the advancing direction will be  X  atan2 since the pixel-to-mm ratio is chosen such as the radius of the tool is between 10 and 100 pixels, as recommended in Section 5.2 .
+With the advancing step D d , the error in the y direction for the toolpath will be y D d sin
+Therefore, a good choice for D d is a small value, for example, 1 or 2 pixels, and it is not restricted to integer values. The influence of this error is minimal and is one or two orders of magnitude smaller than the distance between two adjacent pixels on the image.
+
+This analysis is valid only if we use real coordinates for toolpath points even in the discrete (image) coordinate system.
+If we would use integer values, e y would be equal to 1 pixel, which may be over an order of magnitude worse than with real coordinates. Therefore, our implementation uses real coordinates for discrete ( x , y ) points from the toolpath, and rounds the values on the fly when reading pixel values from the image. 7.2. Effect of errors in tool engagement angle estimation
+A larger source of error is the lack of accuracy in estimating the tool engagement angle. This error comes from counting the pixels from the circumference of the tool which are currently engaged in material.
+
+From the graphs we will notice the amplitude of tool engage-ment estimation error (with the pixel simulation method) is significant, with an order of magnitude of 10 1 .
+
+The value of estimated tool engagement is used only when deciding to switch between contouring (State 3) and constant engagement milling (State 2). Therefore, the only side effect of this error is a small overshoot in tool engagement (which can be noticed in the graphs, for example in Fig. 13 ). However, even with this overshoot, this tool engagement control algorithm results in a significant improvement over the overshoot from traditional toolpaths. 8. Conclusion tool engagement control, which has the following properties: path generation are permanent cutting force control, tool life increase and reducing machining time.
+ described by Uddin et al. (2006) , which also ensures constant tool engagement at the finishing stage. More precisely, the proposed roughing algorithm should be applied on the precut semi-finish-ing surface obtained with the backward algorithm for the finish-ing tool. In this case, it becomes necessary to know the diameter and stepover for the finishing tool when generating the roughing toolpath.
+ ment control should define a combined roughing/finishing opera-tion, instead of two independent operations, because roughing toolpaths depend on the finishing technological parameters. Acknowledgements University Research, in the framework of the National Plan for Research, Development and Innovation, grant 69/2007, and by the
+Sectoral Operational Programme Human Resources Development 2007 X 2013 of the Romanian Ministry of Labour, Family and Social Protection through the Financial Agreement POSDRU/6/1.5/S/19. a test part with complex geometry, was obtained from www. archive3d.net .
+ References

@@ -1,0 +1,18 @@
+ 1.1 Preliminaries of actions A available in each state  X  S consists of (i) an initial distribution  X  specify the random reward for choosing action a in state s . For a policy  X  let  X  then is defined as steps. When a learning algorithm A executes action a R T := P 1.2 Discussion  X  . The algorithms then are shown to yield  X  -optimal return after time polynomial in 1 Obviously, by using a decreasing sequence  X  steps (if  X  decreases slowly).
+ E parameter then is eliminated by calculating the  X  -optimal policy for T the assumed T T rather simple and intuitive.
+ number of trials have already been given in [7].
+ different, and we are interested in the undiscounted case.
+ [14]. The given algorithm achieves best possible regret of O (  X  T ) after T steps. arise when the underlying MDP is not unichain. abilities. For each step t let provided that the number of visits in ( s, a ) , N be used to define a set M an MDP  X  M More precisely, we want M in optimal policy with only logarithmic regret.
+ steps, our algorithm discards the policy  X   X  timates  X  p ( s,  X   X  algorithm.
+ of value iteration (cf. [15]). 3.1 An Upper Bound on the Optimal Reward We show that with high probability the true MDP M is contained in the set M M we have Proof. By Chernoff-Hoeffding X  X  inequality.
+ Using the definition of M 1 shows that M  X  M high probability.
+ Corollary 1. For any t : P {  X   X  &gt;  X   X   X  3.2 Sufficient Precision and Mixing Times reward of some suboptimal policy, It is sufficient that the difference between  X  (  X  M that  X   X  probability so that  X   X  MDP  X  M analysis.
+ Definition 2. Given an ergodic Markov chain C , let T s state s . Let T of a unichain MDP M is T Furthermore, we set  X  depends on an additional parameter  X  . However, it serves a similar purpose. MDPs M and  X  M under the policy  X   X  , respectively. If for all states s, s 0 then |  X  (  X  M ,  X   X  )  X   X  ( M,  X   X  ) | &lt;  X  .
+ distributions of ergodic Markov chains.
+ S follows: where  X  Proof of Proposition 1. By (8), As the rewards are  X  [0 , 1] and P Since  X  3.3 Bounding the Regret immediately from the form of our confidence intervals and Lemma 1, respectively. Corollary 2. The number of rounds after T steps cannot exceed | S || A | log Proposition 3. If N  X  .
+ intervals fail. can be used to upper bound the total number of steps in suboptimal rounds. Consider all suboptimal rounds with |  X  p  X   X  bounded by T of length  X  2 T lower bound the number of visits N Chernoff-Hoeffding X  X  inequality: Since by Proposition 3, N with probability 1  X  1 rounds suboptimal rounds cannot exceed 3.3.2 Loss by Policy Changes For any policy  X   X  T more precise in the following lemma. We omit a detailed proof. Lemma 2. For all policies  X  , all starting states s By Corollary 2, the corresponding expected regret after T steps is  X | S || A | T for a given state-action pair is &lt; t  X   X  length, one obtains for the regret caused by failure of confidence intervals using that t  X  the multi-armed bandit problem in [8].
+ (  X  -)optimal policy after T &gt; 1 steps can be upper bounded by In a multichain MDP a policy  X  may split up the MDP into ergodic subchains S  X  Singh [1], in this case it seems fair to compete with  X   X  ( M ) := max the wrong belief in a possible transition.
+ ture ), UCRL could choose an MDP  X  M that logarithmic online regret bounds can be no longer guaranteed. reinforcement learning problems.
+ [10], which clearly outperforms other learning algorithms like R-Max or  X  -greedy. Acknowledgements.
+ 506778. This publication only reflects the authors X  views.
+

@@ -1,0 +1,99 @@
+ 1. Introduction simply removing explicit identi fi ers (IDs), e.g., name and SSN, from the released data is insuf existence of a set of non-ID attributes, called quasi-identi anonymity, requires that each record is indistinguishable from at least k instance, consider the microdata in Table 1 in which the quasi-identi values.
+ has met some aforementioned privacy principles (e.g., k -anonymity, privacy attack is illustrated by Example 1.1 below.
+
+Example 1.1. Assume the microdata in Table 1 contains the functional dependency F : Phone with zipcode  X  0790*  X  , the attacker can modify the zipcode value of the Bronchitis.  X  provide any solution to defend against the FFD-based attack.
+ have the following contributions.
+ thus lead to privacy breaches. Based on the impact of FFDs to privacy, we distinguish attack from the  X  unsafe  X  ones that can.
+
+Second, we de fi ne the d ;  X   X  X  -inference model to defend against the FFD-based attack. The d
+Furthermore, it requires that for any two anonymization groups, they have either zero or at least values, as well as at least  X  non-overlapping distinct sensitive values. tuple suppression (i.e., tuple removal).
+
+Fourth, we propose ef fi cient anonymization algorithms that produce the d namely top-down and bottom-up approaches, to construct partitions with low information loss.
+Fifth, we study the impact of multiple unsafe FFDs to anonymization. We design ef privacy model that addresses such attack. In this paper, we extend it signi  X   X  grouping strategies. Furthermore, we formally prove that fi  X  of the others;an anonymized dataset that satis fi es d ;  X  time performance and information loss of the anonymization algorithm empirically. concludes the paper. 2. Preliminaries
+In this section, we introduce the preliminaries. 2.1. Functional dependency
+F : X  X  Y if for every two tuples t 1 , t 2  X  D ,if t 1 . X = t 2.2. Application scenario
+We consider the 2-phase data collection and publishing model as in [10] . In particular, anonymization task. 2.3. Anonymization framework (i) identi fi ers (ID), which are the primary key of D , (ii) quasi-identi quasi-identi fi er attributes, QI-attributes, and the values of QI-attributes, QI-values. and (4) all tuples in the same QI-group have the same QI-values after generalization. tree. We de fi ne the information loss by suppression and generalization individually.  X 
+Information loss by suppression: the information loss of suppressing value v is IL  X 
+Information loss by generalization (2) For any categorical attribute A , let T be its taxonomy tree. Let v and v
+Given a tuple t , its information loss IL t =  X  v microdata D is de fi ned as IL D =(  X  t  X  D IL t )/| D |.
+ information loss equals (30  X  15)/(70  X  10)=1/4. 3. Privacy model inference model that combats the FFD-based attack. 3.1. FFD-based attack
+To analyze the impact of FFDs to privacy, we consider a popular privacy model, must consist of at least  X   X  well-represented  X  distinct values that are of close frequency. We de requirement of close frequency. In particular, we say two data values s and s j are d -close. The de fi nition of d -closeness is a simpli
+Based on d -closeness, we give a simpli fi ed version of  X 
+De fi nition 3.1 [(  X  , d)-diversity]. Given a microdata D and its anonymized version D t  X 
+D  X  , its QI-group G consists of at least  X  distinct sensitive values that are d -close.
+Next, we explain how FFDs enable a privacy breach on the microdata that is ( value a , which is also a determinant value of the FFD F : A corresponding dependent value of a in the original microdata (e.g., zipcode
+G and G 2 , but b is generalized to b 1  X  and b 2  X  ( b 1  X   X  de fi ne the intersection operation (denoted as  X   X  ) on generalized values below. Speci  X  b  X  and b 2  X  are two intervals [ l 1 , u 1 ] and [ l 2 , u b  X  b  X  and b 2  X  are categorical values: let N 1 and N 2 be the corresponding nodes of b on the same path, b 1  X   X   X  b 2  X  returns the lower node of N
+For example, given two generalized Age values b 1  X  =[20,40] and b two generalized Gender values b 1  X  =  X  (i.e., the b 1 value is generalized as
+Note that for both b 1  X  and b 2  X  that are generalized from the same value b , b attacker can replace both b 1  X  and b 2  X  with b 1  X   X   X  b we use G 1  X  F G 2 and G 1  X  F G 2 to denote the set intersection/difference operations of G
+De fi nition 3.2 [FFD-based Intersection/difference of QI-groups]. Given the FFD F : A
+G , G 2 ,let G I ={ t | t  X  G 1 ,  X  t  X   X  G 2 s.t. t A  X  = t  X  A  X  }. Then G (1) for each attribute A  X  A , t  X  [ A ]= t [ A ], (2) for each attribute B  X  B , Furthermore, G 1  X  F G 2 = G 1  X  G 12 .  X 
+For example, for the two QI-groups G 1 and G 2 in Table 2 (a) with FFD F : Phone
+Ovarian cancer}, {[20,30], *, 0790*, 3333333, Diabetes}}, and G not symmetric, i.e., G 1  X  F G 2  X  G 2  X  F G 1 .
+ from those in G 1  X  F G 2 since they have different QI-values. Indeed, the old QI-group G two relatively smaller QI-groups. This may bring privacy leakage. De
+De fi nition 3.3 [FFD-based privacy attack]. Given a microdata D ,let D followings is non-empty set and does not satisfy (  X  ; d )-diversity: (1) G we say D  X  is safe at the presence of F .  X 
+Example 1.1 shows an example of the FFD-based privacy attack. Note that De by replacing the (  X  ; d )-diversity requirement with other speci can validate the robustness of those principles against the FFD-based attack too.
+De fi nition 3.4 [Safe/unsafe FFDs]. An FFD F is safe if for any microdata D that satis are safe at the presence of F . Otherwise, we say F is unsafe .
+Based on the de fi nition, next, we discuss how to distinguish the
+G
+Theorem 3.1 ((Un)safe FFDs): Given the microdata D , let F : A Otherwise, F is unsafe .
+ not generalized. Our goal is to prove that for any two QI-groups G
+G  X 
+F G 2 , G 2  X  F G 1 , G 1  X  F G 2 , and G 2  X  F G 1 still satisfy ( not generalized in G 1 and G 2 , G 1  X  F G 2 = G 1 , and G result. Thus G 1  X  F G 2 = G 1 , G 2  X  F G 1 = G 2 , and both G intersection/difference results of G 1 and G 2 still satisfy
+Then we prove that if F is safe, then A p QI by contrapositive, which is, we prove that if A present the privacy de fi nition, we fi rst de fi ne the largest overlapped QI-group .
+De fi nition 3.5 [Largest overlapped QI-groups]. GivenanunsafeFFD F : A distinctsensitivevaluesof A intheQI-group G i (1  X  i  X  n ).ThenforanyQI-group G subset of G such that: (1) | S i  X  S j  X  ...  X  S k |  X  0, and (2) for any O we are ready to de fi ne our privacy model, d ;  X   X  X  -inference .
+De fi nition 3.6 [ d ;  X   X  X  -inference]. Given microdata D that contains the unsafe FFD F : A d ;  X   X  X  -inference at the presence of F if  X  d -close : for each G i in G , all sensitive values in G i  X   X  -overlapping : for each G i in G , let O G j ; ... ; G least  X  shared distinct values in S i  X  S j  X  ...  X  S k , and  X   X  -non-overlapping : for any two G i , G j in G , j S i
+Intuitively,  X  -overlapping and  X  -non-overlapping ensure that the result of applying  X  original microdata directly. To show the robustness of the d satis fi es d ;  X   X  X  -inference at the presence of F , then D
+Proof. As shown by Theorem 3.1 , unsafe FFDs A  X  B must satisfy that A frequency) between different QI-groups, for any two groups G
+G  X  F G 1 must satisfy (  X  ; d )-diversity. Similarly, due to the ( the discussed case that A p S .  X 
+The d ;  X   X  X  -inference model can be considered an enhanced version of (
+But it is not limited to (  X  ; d )-diversity only; the requirement of anonymity model by changing the requirement of  X  -overlapping and 4. Grouping strategies (1) Disjoint-grouping (DG): partition the sensitive values into groups that do not overlap. 4.1. Disjoint-grouping (DG) the number of tuples to be removed. Second, starting from the trimmed to satisfy d -closeness. In particular, for each sensitive value s be removed, where f j is the smallest frequency of sensitive values in S .
+It is possible that at the end of partitioning, there exist less than
+Example 4.1. Given the sensitive values { s 1 , s 2 , s 3  X  = 2. By disjoint-grouping, fi rst, we have G 1 ={ s 1 , s frequency (33, 30), with 7 tuples containing s 3 removed, and G removed. There are two options to group the remaining sensitive values { s (1) Option 1: G 4 ={ s 7 , s 8 , s 9 } of frequency (4, 4, 1), with 5 tuples of s (2) Option 2: G 4 ={ s 7 , s 8 } of frequency (9, 7), with 1 tuple of s be more speci fi c, given a set of distinct sensitive values { s the frequency of s i . Then the number of tuples that contain s
+The total information loss of tuple suppression by using DG on { s 4.2. Containment-grouping (CG)
+The containment-grouping approach partitions the sensitive values into the groups G repeat this procedure until the number of remaining sensitive values is less than
+Example 4.2. Given the sensitive values { s 1 , s 2 , s 3 (1) Construct G 1 ( s 1 , s 2 , s 3 , s 4 , s 5 , s 6 , s (2) Construct G 2 ( s 3 , s 4 , s 5 , s 6 , s 7 , s 8 , s (3) Construct G 3 ( s 5 , s 6 , s 7 , s 8 , s 9 ) of frequency (14, 17, 17, 17, 17). 1 tuple of s
+At last, 2 tuples that contain s 8 and 7 tuples that contain s
+Intuitively, given n sensitive values, CG partitions them into n d -close distinct sensitive values, and (2) G i p G i  X  1 satisfy d ;  X   X  X  -inference . Theorem 4.1 shows the number of tuples that will be removed by CG.
+Theorem 4.1 (# of Removed Tuples by CG): Given a set of distinct sensitive values { s frequencies, let f i (1  X  i  X  n ) be the frequency of s i the number of removed tuples r i CG that contain the sensitive value s tuple suppression by using CG on { s 1 , ... , s n } equals CG (1, n )= number of removed tuples that contain s 7 equals f 9  X  f 7 from 10 to 25, DG will win.
+ 4.3. Intersection-grouping (IG) we design the intersection-grouping strategy, which allows different groups to share at least
+G
+The intersection-grouping approach consists of two steps: (1) construct order-preserving, construct intersected groups from the buckets. 4.3.1. Step 1: Bucket construction sensitive values that satisfy d -closeness are grouped into the same bucket. After bucketing is at least  X  distinct sensitive values are kept.
+ minimal number of tuples to be removed to make the buckets satisfy d -closeness. n =  X   X  smaller disjoint buckets, where n i is the number of distinct sensitive values in B returns a set of disjoint buckets that are order-preserving, d -close, and of at least 4.3.2. Step 2: Construction of intersected groups buckets, the sensitive values in the bucket B i are put into two adjacent groups G distinct sensitive values, G i and G i +1 must satisfy  X  -overlapping and respects d -closeness (Line 5), the constructed G i and G Algorithm 1. IG: d ;  X  for d ;  X   X  X  -inference.
+
+Example 4.3. Given the sensitive values { s 1 , s 2 , s 3
+Example 4.2 ), assume d =3and  X  = 2. By Step 1, we construct the buckets B 29), and B 3 { s 7 , s 8 , s 9 } of frequency (40, 43, 43). There are 1 tuple containing s containing s 9 that are removed. In Step 2, the following groups are constructed:  X 
+G :( s 2 , s 3 , s 4 , s 5 , s 6 ) of frequency (7, 9, 10, 10, 10).  X 
+G :( s 5 , s 6 , s 7 , s 8 , s 9 ) of frequency (16, 19, 19, 19, 19).  X 
+G :( s 7 , s 8 , s 9 ) of frequency (21, 24, 24).
+ There are 1+1+2+7=11 tuples in total that are removed.  X 
+Intuitively, IG constructs a set of groups of sensitive values G groups, with at least  X  distinct values in the intersection. Further, for any G closeness. Thus the groups constructed from these groups must satisfy the d values { s 1 , ... , s n }, let f i (1  X  i  X  n ) be the frequency of the value s minimum frequency of the sensitive values in B i , then the number of tuples containing s f ( B i ),0). The total number of tuples that will be removed by using IG on { s 5. Anonymization algorithm 5.1. Phase-1 partition smaller groups. Fig. 2 illustrates the effect of the partition. We formally de values S { s 1 , ... , s n }, a partition scheme of S is a set of segments { P partition P i that contains the values { s j , ... , s k }(1
+P frequencies, fi nding the optimal partition scheme of S by using DG/CG/IG grouping is NP-hard. item in the knapsack problem. The assigned value of item I
+Theorem 5.1 shows that fi nding the best grouping with the three speci number of distinct values.
+ alternatives to the optimal solution. Both heuristics are designed in a greedy fashion. 5.1.1. Top-down approach min ( DG (1, n ), CG (1, n ), IG (1, n )).Ifthesizeofthepartition P is less than 2 { s where i =[ n /2]. We compare IL ( P )with IL ( P 1 )+ IL ( P splitting helps to reduce the information loss by suppression, we split P into P 5.1.2. Bottom-up approach attributes in A is split into multiple disjoint segments, each of
+DG, CG and IG on P . Then starting from the fi rst segment, we merge every two adjacent ones P
+IL ( P i )+ IL ( P i +1 ). If IL ( P  X  i )  X  IL ( P i )+ IL ( P repeat the above procedure until no P i can be merged. Fig. 3 (b) illustrates the procedure. groups satisfying d ;  X   X  X  -inference guarantees that their merged result satis construct d ;  X   X  X  -inference groups. Therefore, all (intermediate and 5.1.3. Complexity analysis the worst case is that split only terminates on the partitions whose sizes are less than 2 merging all segments together. With similar reasoning, the complexity is O nlog n approaches is O ( n log n ). 5.1.4. Information loss threshold publishing it will violate either privacy or utility requirements. 5.2. Phase-2 QI-group construction f constructed QI-groups, out of which f min  X  1 of them contain kk distinct values, with the value s i of f i  X  f min +1 frequency, where f inference, it is straightforward that all QI-groups constructed from P must satisfy d
+Example 5.1. Given the partition that contains values ( s constructs three QI-groups G 1 , G 2 and G 3 , with G 1 and G
+G consisting of tuples that contain ( s 1 , s 2 , s 3 , s 4 5.3. Discussion 6. Multiple unsafe FFDs the following solution which consists of three steps. 6.1. Step 1: Pick representative FFDs We say FFD F : A  X  B is the representative of F  X  : A  X   X  anonymized dataset D  X  satis fi es d ;  X   X  X  -inference at the presence of F , then D 6.2. Step 2: Construct FFD-chains 6.3. Step 3: Anonymization to a distinct value of A , the grouped values of A must satisfy d that can in fl uence the time performance of the anonymization algorithm. 7. Experiments
+We have done an extensive set of experiments to evaluate both the effectiveness and ef 7.1. Experimental setup 7.1.1. Setup algorithms in C++. We used the implementation of Mondrian [17] . based algorithm. 7.1.2. Datasets our real dataset. For the CENSUS dataset, we de fi ned fi level)  X  age , marital-status  X  salary-class , race  X  marital-status dataset to make it satisfy the FFDs. It turned out that the modi we used i-FD (1  X  i  X  5) to denote that the fi rst i FFDs of the of all three datasets. 7.1.3. Setup of d values sortedthesensitivevaluesby theirfrequencies, andcalculated the average frequencydistanceas d the number of distinct sensitive values, and f i and f i  X  1 d values of equal distance from the range [0.5  X  d avg ,1.5 7.2. Time performance
+Mondrian on the CENSUS dataset when 1-FD (i.e., salary-class value. In other words, the time performance is not sensitive to d . anonymization (shown in Fig. 5 (b) and (c)). Due to the space limit, we omit the result. data to be grouped; CG always runs the fastest, while DG is always the slowest. anonymization. 7.3. Information loss 7.3.1. Ratio-based information loss metric the ratio is, the better is the data utility.
+
+Mondrian for small  X  values. However, Mondrian eventually wins when the always incurs the worst information loss out of the three approaches. datasets, increasing  X  values brings more information loss. This happens for two reasons: details of information loss by tuple suppression on S -dis dataset with varying Sample 3.
+
+FFD constructs a different chain, it introduces more information loss by anonymization. 7.3.2. Discernibility information loss metric where t is the number of QI-groups, and b is the number of removed tuples. trade-off between privacy and utility; for better privacy protection we have to sacri that our approaches do not sacri fi ce too much to combat the FFD-based attack. 8. Related work references therein). We studied the related work from various aspects. 8.1. Privacy models sensitive values. To address this defect, Machanavajjhala et al. proposed the against the FFD-based privacy attack we de fi ned. 8.2. Correlation-based adversary knowledge of  X  meaningful  X  utility. Du et al. [7] integrated background knowledge in privacy quanti any solution to defend against the correlation-based attack.
+ knowledge.
+ knowledge and thus they should be destroyed.
+ 8.3. Anonymization approaches both  X  -overlapping and  X  -non-overlapping conditions (see De attack. 8.4. Privacy issues by correlation-based inference in other contexts functional dependencies, and proposed the algorithm that fi 9. Conclusion ef fi datasets demonstrated the ef fi ciency and effectiveness of our algorithm. applies to the choice of the split point for the top-down approach also. Second, as d microdata that contains CFDs.
+ Appendix A
+Proof of Theorem 4.1. We use f i j to denote the frequency of the sensitive value s is as follows:  X 
+Round 0 : Initially there are n sensitive values { s 1 , ...  X 
+Round 1 : Construct the group G 1 that contains the sensitive values { s l distinct sensitive values). Then  X  i  X  [1, t ], there are f of the remaining sensitive values are updated as follows:  X 
+Round 2 : Construct the group G 2 that contains the sensitive values { s
+Further, let t to be the position of the last sensitive value in the sorted set that equals f sensitive values), then  X  i  X  [ t +1,], there are f i 1  X  the remaining sensitive values is updated as the following:  X  ...  X 
+Round j :Constructthegroup G j that contains the sensitive values { s min ( f t removed. The frequencies of the sensitive values are updated as follows:  X  ...
+
+Following the above procedure, for any sensitive value s i that will be removed. Otherwise, if i b [ n / l ]  X  l , then there will be f g
+Since for every sensitive value f i j , f i j = f i j  X  1  X 
+It is straightforward that f ( t  X  1)  X  l +1 equals f j , where f that contains the sensitive value s i by CG.
+
+If i  X  [ n / l ]  X  l , the number of tuples of sensitive value s the similar reasoning as Eq. (.1) to get the result. The theorem then follows.
+References

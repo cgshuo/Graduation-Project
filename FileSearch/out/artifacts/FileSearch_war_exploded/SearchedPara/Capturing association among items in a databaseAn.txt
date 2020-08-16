@@ -1,0 +1,54 @@
+ 1. Introduction forth.
+ [12] have not been effective in measuring association among a set of items in a database. and a few specific problems are stated below involving these items. among a set of items in a database.
+ of this work are given as follows: (1) We propose two measures for capturing association among a set of items in a database. (2) We introduce the notion of associative itemset in a database. (3) We provide theoretical foundations of the work. (4) We express second measure in terms of supports of itemsets. (5) We provide experimental results to show the effectiveness of the second measure of association. association among a set of items in a database.
+ association. 2. Related work been relevant in the context of measuring association among items in a database. ation among a set of items.
+ result, support of an itemset might not be a good measure of association among items in an itemset. set of items in a database.
+ in the transaction and others are not. Collective strength of an itemset X has been defined as follows. tistical independence of items of X .
+ sure of association among items of an itemset.
+ section, we introduce two measures for capturing association among a set of items in a database. 3. New measures of association X be { x 1 , x 2 , ... , x m }. The following notations are used frequently in this paper:  X  Y # X S  X \ m i  X  1 f x i g ; D  X  : support of Boolean expression that a transaction in D contains all the items of X action. One could define association among a set of items in many ways. Our first measure of association A follows.
+ association A 1 is defined as follows: among themselves.
+ association A 2 is defined as follows.
+ association A 2 is defined as follows: as follows: Variable j Y j / j X j has conditional support CS X ( Y , D ), for Y # X , and j Y j P 2. Conditional support CS transactions containing Y among the transactions containing at least one item of X . 4. Properties of A 1 and A 2 Corollary D12.1. Let X = { x 1 ,x 2 } be an itemset in database D. Then proposed measures, we state below monotone property of a measure of association. items of X have stronger association, for Y # X, and j Y j P 2.
+
+A 2 satisfies monotone property, for every Y # X , and j Y j P 2. But, A j Y j P 2. Therefore, A 2 is more appealing measure of association than A association among items of an itemset more accurately than A that the association among items of { b , c , d } is closer to 0.5714 than 0.2857.
+Moreover, the Examples 2 and 3 presented later, also show that A at all the situations.
+
+In Section 6, experimental results are provided using measure A interesting properties of A 2 .
+ Lemma 1. Let X = { x 1 ,x 2 , ... ,x m } be an itemset in database D. Also, let T  X  i  X  X  can be expressed as follows: distinct h Y i s, and thus, we have m C m k distinct expressions for S of S
+X h Y , D i contain a particular itemset Y 1 of size m 1. Y expressions of S X h Y , D i that contain Y 1 is m 1 C m k
+We verify Lemma 1 with the help of following example. Let X ={ x S hf x 2 ; x 3 g ; D i X  S  X f x 1 ; x 2 g ; D  X  S  X f x 1 ; x
+P
+S  X f x 1 ; x 3 g ; D  X  X  S  X f x 1 ; x 2 ; x 3 g ; D  X  X  S  X f x 2 g ; D  X  S  X f x x g ; D  X  X  S  X f x 1 ; x 2 ; x 3 g ; D  X  X  expressions of T (1) and T (2) verify Lemma 1 , and it has been used to prove Lemma 2 . Lemma 2. Let X = { x 1 ,x 2 , ... ,x m } be an itemset in database D. Then Proof since the coefficient of p m
+We verify Lemma 2 with the help of following example. Let X ={ x We use Lemma 2 for proving Lemma 3 .
+ Lemma 3. Let X = { x 1 ,x 2 , ... ,x m } be an itemset in database D, for an integer m P 2. Proof Lemma 3 gives a simple expression for A 2 . A few corollaries of Lemma 3 are given below.
+Corollary L3.2. Let X = { x 1 ,x 2 , ... ,x m } be an itemset in database D. Then, A S hf x i g ; D i = S  X [ m i  X  1 f x i g ; D  X  .q i /m is the contribution of item x Based on measure A 2 , we define an associative itemset as follows.
+ at level d if A 2 ( X , D ) P d .
+
+Example 2. We consider the following three transactional databases. Let D e },{ b , d , g },{ c , d },{ f , g },{ g , h }}. Let a = 0.2,and d = 0.4. In database D
+Thus, the itemset { a , b } is not frequent and also not associative. In database D
+A ({ a , b }, D 2 ) = 1/4. Thus, the itemset { a , b } is frequent but not associative. In database D
+A ({ a , b }, D 3 )= A 2 ({ a , b }, D 3 ) = 3/5. Thus, the itemset { a , b } is frequent as well as associative. set might be available frequently in different transactions.
+
+Example 3. Consider the database D 1 of Example 1 . Let a = 0.2, and d = 0.4. S ({ c , d , e }, D Thus, the itemset { c , d , e } is associative, but not frequent.
+ prove that association among items of a frequent itemset is always greater than or equal to a under A set is associative at level a .
+
+Lemma 4. Let X = { x 1 ,x 2 , ... ,x m } be a frequent itemset in database D, for an integer m P 2. Then, A Proof
+S  X  X ; D  X  P a implies S  X  X ; D  X  = S  X [ m i  X  1 f x i g ; D  X  P a ; since 0 &lt; S  X [ m
+In Lemma 5 , we discuss an important property of A 2 . Association among items of an itemset under A 2, we get A 2 ( X , D ) &gt; 0, for m P 2. We shall use the method of induction on j X j to show that A X ={ x 1 , x 2 }. Then,
+Also, S X hf x i g ; D i X  S  X f x i g ; D  X  S  X f x 1 g\f x
+We have, S ({ x 1 } \ { x 2 }, D ) 6 S ({ x 1 }, D )and S ({ x We assume that the result is true for m 6 k 1. Now, we shall prove that it is true for m = k . establish the relationship between A 2 ( X , D ) and A 2 ( Y , D ). Using formula (20) we get, or, A 2 ( X , D )= A 2 ( Y , D ) K 1 + K 2 , where
+We note that, 0 &lt; K 1 , K 2 6 1. There does not exist any fixed relationship between A j Y j = j X j 1, and j X j P 3. We consider the following example.
+
+A ({ a , c }, D 4 ) = 0.16667, A 2 ({ a , b , c }, D 4 ) = 0.5. We observe that, A We wish to express A 2 in terms of supports of different itemsets. Given an itemset X , the Lemma 6 expresses S terms of the support of itemset Y # X , for x i 2 X .
+ Lemma 6. Let X = { x 1 ,x 2 , ... ,x m } be an itemset in database D, for an integer m P 1. Then,
+X ={ x 1 , x 2 }. Then, S X h { x i }, D i = S ({ x i }, D ) S ({ x is true for m = p . We shall prove that the result is true for m = p + 1. Let X ={ x following observations are made. S ({ x i } \ { x p +1 }, D ) is required to be subtracted, for 1 required to be added, for 1 6 i &lt; j 6 p . Finally, the term ( 1) Thus, the induction step follows. Hence, the result follows. h Lemma 7 expresses association among items of X in terms of supports of different subsets of X . Lemma 7. Let X = { x 1 ,x 2 , ... ,x m } be an itemset in database D, for m P 2. Then
+Proof. We state the theorem of total probability [14] as follows. For any m events x Result follows using Lemmas 3 and 6.
+ Corollary L7.1 Corollary L7.2. For m = 3, A 2 (X, D) = E 1 /E 2 , where measure A 1 .
+
+Lemma 8. Let X be an itemset in database D. Then the measure of association A (i) 0 &lt; A 1 (X,D) 6 1, (ii) A 1 (X,D) 6 A 1 (Y,D), for Y # X, and j Y j P 2, and (iii) A
+Proof (i) A 1 ( X , D ) &gt; 0, since S ( X , D ) &gt; 0. Also, A (ii) Let X ={ x 1 , x 2 , ... , x m }. We consider an itemset Y # X such that j Y j P 2. Then, A (iii) A 1  X  X ; D  X  X  S  X  X ; D  X  = S  X [ x i 2 X f x i g ; D  X  P S  X  X ; D  X  P a , since 0 &lt; S ( [ 4.1. Capturing association among items in X becomes low. Instead of that, we could have estimated association among items in X using A ference in similarity using measure A 2 could be estimated as DS ( X , D )= A 1 6 0, if k =2[ Corollary D12.1 ]. 5. An application: clustering frequent items in a database in a given database using A 2 .
+ greater than 2, one might cluster frequent items in a database with higher degree of accuracy, since A tational complexity is concerned. 6. Experimental results the purpose of verifying results. We present some characteristics of these databases in Table 1 . easy to implement.
+ 6.1. Top associative itemsets among frequent itemsets Top 10 associative itemsets among frequent itemsets in these databases are given in Tables 2 X 4 . cantly high. On the other hand, the items in random500 and random1000 databases are sparsely distributed. 6.2. Finding the difference in similarity purpose of comparison, we take similarity measure sim 1 ( x associative itemsets along with their difference in similarities are given in Tables 5 X 7 . items in these itemsets are not significant. 6.3. Execution time for measuring association the size of a database increases. We observe this phenomenon in Figs. 1 X 5 . 7. Conclusion in Section 5.
+ we show that A 2 measures association among items in an itemset more accurately than A ference in similarity among a set of items obtained using measure A tained using an existing similarity measure. Thus, a solution of a problem obtained using measure A The measure of association A 2 is effective in capturing statistical association among items in a database. Acknowledgements ment Program with leave to take up full time research.
+
+References

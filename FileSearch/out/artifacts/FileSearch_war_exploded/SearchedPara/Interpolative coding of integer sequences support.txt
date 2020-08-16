@@ -1,0 +1,70 @@
+ 1. Introduction ments of the long one, without having to scan through the complete list. codes are of variable length . This makes it very difficult to determine the starting address of the i  X  tempting, because it contradicts compression itself.
+ array size. The used storage system is assumed to support physical direct access by memory address. ments ( s ) as parameters. The same formula is applied in retrieval, recursively, leading to O (log of random access. From now on the method will be called address calculation coding . pared to basic interpolative coding.
+ and experimentally in Section 7 , where also timing results are reported. Section 8 draws the conclusions. 2. Related work 2005 ).
+ (2008) .
+ mentations of this kind were suggested by Anh and Moffat (2005, 2006) . Anh and Moffat (1998) .
+ and the Golomb code.
+ sen optimally for each bucket. In content-based retrieval, the correct bucket can be determined in constant time. (possibly remaining) second bytes, and so on. Direct access to the leading byte of any ( i (2005) .
+ tion 7 , together with several competing methods. 3. Interpolative coding sources.
+ tive integer i 0 :if i P 0 then i 0 =2 i else i 0 = 2 i 1.
+ compute the corresponding cumulative sequence: is required. The middle element (16) of the latter subsequence is known to be between 14 and 21, so there are 21 14 + 1 = 8 alternatives, requiring only 3 bits (16 14 = 010 coded analogously.
+ original (non-cumulative) sequence.
+ here. Instead, any value within the interval [ a , b ] is encoded using d log zero and its parent value ( p ), so the interval size is p + 1, and the length of base-2 representation is d log omitted, because all of them are necessarily zero.
+ to be presented after introducing the basic ideas of random access. 4. Space allocation for random access is fully determined by the number ( n ) of elements in the source sequence. knowing the true values of the two children ( s 1 and s 2 child ( s 1 ) using ( d log 2 ( s +1) e bits), and the worst-case bit counts ( W ( n /2, s ment is that the sum does not exceed the global bit count, i.e.
+The calculation continues down to the leaves. 4.1. Special case: n is a power of 2
+We first assume that the number n of source integers is of the form 2 i 1 its reference level. For all levels, the sum of elements is the same, denoted by s . the value b s /2 i 1 c or the value d s /2 i 1 e , implying bit count b = d log depends on the value of s as follows: can be assigned arbitrarily, without effects on code lengths. 1-valued parent), and subtrees of zeroes need not be encoded, at all. superscript  X + X  stands for  X  X ense X  and  X  X  X  for sparse.
+ respectively. Note also that all these levels are here dense.
+
+The case i 1 = 0 is trivial: the whole s must be assigned to the root, resulting in b log values from 8 to 16, so the worst-case code lengths for the two left children on level i = 2 are both log
+On level i 1 = 2, the four nodes get first the quota 2 b log raise one value from 4 to 8. Thus three of the four left children on level 3 are reserved log log bit counts.
+
+To sum up, the worst-case space for the whole tree is calculated as amounts to 8 + 9 + 26 = 43.
+ not be exceeded.
+
+We now derive general formulas for the worst-case sum of bit counts of non-root nodes. Denote by t = d log which is sufficient to add 1 bit to the codes of nodes on level i . The worst-case total bit count (denoted by W follows: bound for W + , based on the fact that b x c + b y c 6 b x + y c , giving important upper bound:
+Theorem 4.1. The number of bits needed by interpolative coding of n = 2 t= d log 2 (s + 1) e , can be upper-bounded by Summing the code bits we get
+Theorem 4.2. The number of bits needed by interpolative coding of n = 2 t= d log 2 (s + 1) e , can be upper-bounded by A combined function of U + and U is defined, for brevity:
+Now it remains to show that constraint (1) holds in recursion, when using upper bound U
+W . Space reservations of two parallel subtrees, based on their element sums s to them together in the combined tree. In principle a conflict is possible, because U overlaps of subspaces:
+Theorem 4.3. If the root value is s and its child values are s t= d log 2 (s + 1) e , then recursion can be applied to the bounds of formulas ( 5 ) and ( 7 ) : and therefore presented in Appendix A .
+ gives directly the allocated size. In this example, three allocated bits are unused; one on the highest level (5 + 12 + 9 = 27 1), and one in each direct subtree of the root (4 + 4 + 3 = 12 1and3+2+3=9 1). In an extreme case, most of the total space can be consumed by one or the other. code of each right subtree starts at an address calculated by assuming the worst-case bit count ( U subtree. Zero-valued subtrees take no space.
+
+Algorithm 1. encode _ tree : Encode a balanced binary tree of size n =2 Input : tree root , tree depth k ;
+Output : code string of the tree; 1: C null ; 2: // Encode the left child of the root 3: append bin _ encode ( root.left.sum ) to C using d log 4: // Encode the subtrees, if needed 5: if k &gt;1 then 6: if root . left . sum &gt;0 then 7: append encode _ tree ( root.left , k 1) to C using U  X  8: end if 9: if root . right . sum &gt;0 then 10: append encode _ tree ( root.right , k 1) to C using U 11: end if 12: end if 13: return C ; 4.2. General n example forest is given in Fig. 3 for n = 14, with the sequence being straightforward, and its pseudocode therefore skipped.
+ efficiency to Section 6 , after presenting the algorithms for random access retrieval. putation, the overall time complexities are linear. Details of the model are presented in the next section. 5. Random access algorithms tial retrieval, up to a given end position or element value. 5.1. Accessing the i th integer of the array tree of depth k and sum s means adding h root bits i + U  X  skipping the bits of the left subtree, computed using function U by both branching alternatives. Algorithm 2 shows the pseudocode of accessing and decoding the i
+Algorithm 2. pos _ access : Position-based access for n =2 Input : integer i , code string C , depth k , sum s
+Output : the i th integer of the array; 1: while k &gt;0 and s &gt;0 2: leftsum extract bin _ decode ( d log 2 ( s +1) e ) from C ; 3 if i 6 2 k 1 then 4 s leftsum //Go left 5 else 6 skip U  X  (2 k 1 , leftsum ) bits in C ; // Go right 7 i i 2 k 1 ; // position displacement 8 s s leftsum ; // right child=parent left child 9 end if 10 k k 1; // to the subtree 11 end while 12 return s ; sufficiently long for these numbers. A more precise formulation of the complexity is as follows. O(log 2 n + log 2 s) time.
+ retrieved and decoded. Thus, the decisive question is the effort per node. subsequent machine words, which is constant-time. Evaluation of function U d log 2 ( s +1) e . Computing the sizes of trees, on the other hand, requires evaluation of b log logarithm.
+ value, until the log condition is met (tested by shifting and comparison). Since there are O (log for the logarithms, respectively, the overall complexity is at most logarithmic. h
+As a trivial modification, we can easily calculate also the i gap values should be differences of adjacent elements minus one. 5.2. Content-based access not possible to avoid sequential scanning.
+ position-based access as a subroutine. However, this would result in complexity O ((log smaller.
+ be the smallest integer that is larger than or equal to the argument value. values in (sub)trees. Also here, we present only the intra-tree part of the algorithm.
+Algorithm 3. cont _ access : Content-based access for n =2 Input : search key x , code array C , tree depth k , sum s ;
+Output : true if x occurs as a cumulative sum, false otherwise; 1: while true do 2: if s = x then return true ; // match 3: if k =0 then return false ; // leaf, but no match 4: leftsum extract bin _ decode ( d log 2 ( s +1) e ) from C ; 5: if x 6 leftsum then 6: s = leftsum // go left 7: else 8: skip U  X  (2 k 1 , s ) bits in C ; // go right 9: x = x leftsum ; // disregard sum of the left subtree 10: s = s leftsum ; // right child=parent left child 11: end if 12: k k 1; // to subtree 13: end while cal) sum to be inspected. Algorithm 3 assumes a non-strictly increasing source. same order. Thus we can skip the proof of the following theorem.
+ denoted by s, can be performed using the described coding scheme in O(log of adjacent integers.
+ 6. Coding efficiency the case, where n integers are independently and uniformly distributed within interval [0,2 m ] with mean m . N ( m , n ) of bits in interpolative coding: typically between n (log 2 m + 1.5) and n (log 2 m + 2).
+ Theorem 4.1 : well as ignoring the negligible terms t 1: imate the lower and upper bounds of the used bits.
+ d log 2 ( mn +1) e by log 2 ( mn + 1) + 1, resulting in source integer. The entropy of uniformly distributed numbers within [0,2 m ] is log than with our code.
+ address calculation coding reasonable. The nodes on level i in the tree-of-sums are sums of 2 the bit counts is justified.
+ independent of the distribution. 7. Experiments sen tests we want to find answers to three main questions: access, i.e. how big is the penalty of this additional feature? time will be measured. random access? with real-world data sets, and is left for future work. 7.1. Comparison with non-random access codes popular non-statistical, non-parametric codes for integers, namely gamma, identically distributed, created using a random number generator.
+ estimate.
+
+Our second test distribution was exponential, having the cumulative distribution function F ( x ; k )=1 e k
+F source. 7.2. Comparison with other random access codes dom access: number of bytes per code (with one flag bit per byte to indicate continuation), and Golomb coding of elements,
+Golomb coding of elements, optimized for each bucket, values recommended by the method developers were used: sampling step = 2log size = 32 for code 3, and index step = 32 for code 4. Later we study the effects of changing the values. gers were encoded in each case.
+ clustered, producing lots of zero-valued d-gaps.
+ based on position and one on content: 1. Get the i th element of the sequence. 2. Compute the sum of the first i elements of the sequence. 3. Find the (smallest) i such that the sum of the first i elements is equal to a given s . excluded from the results.
+
+Fig. 6 a shows the average execution times of position-based accessing of single elements from sequences of 10 behind. The inferiority of the Transier X  X anders code is presumably due to binary search. for uniformly distributed data.
+ distributions.
+ Address calculation code appears only as a filled square in the graphs. tent-based retrieval. 7.3. Choosing the access method rightmost column of Table 1 .
+ sequential processing. Thus, the given threshold may be somewhat pessimistic. 8. Conclusions experiments showed clearly the potential of our method for practical utilization. by reallocating and/or recalculating a small subset of the nodes, O (log extents of changes seems possible, enabling development of algorithms for intelligent local updates. should be avoided. Address calculation coding offers one possible solution for such sources. Acknowledgement paper.
+ Appendix A. Proof of Theorem 4.3
+Theorem. If the root value is s and its child values are s t= d log 2 (s + 1) e , then recursion can be applied to the bounds of formulas ( 5 ) and ( 7 ) :
+Instead, for a dense tree-of-sums, we start from the basic form (4) defining U to the value used in formula (7) , namely L ( i , s )= s . The combined function L modified inequality for upper bounds of the i th levels in parallel subtrees.
+Variable i now refers to the level in the subtrees of the root. The i ( i +1) st level in the whole tree.
+ instances of inequality (A.3) for levels 1, ... , k 1, corresponding to levels 2, ... , k in the whole tree: because t 6 L + (1, s ). This inequality is similar to (A.1) , except that floor functions in U noticing that b x c + b y c 6 b x + y c the following holds: which is equivalent to the claimed inequality (A.1) , because b sublevels can be dense or sparse, independently.
+ 1. dense, dense ? dense : Denote t 1 = d log 2 ( s 1 +1) e and t
+We develop the left hand side as follows The first two terms constitute the right hand side of (A.4) , so it remains to prove that the rest, denoted is nonpositive. Without restriction, we can assume that t to t 1 and t 2 in (A.5) : (a) t 1 = t and t 2 = t 1: (b) t 1 = t and t 2 = t 2: (c) t 1 = t and t 2 &lt; t 2: (d) t 1 = t 1 and t 2 = t 1: Now we get directly from (A.5) that D ( i , s (e) t 1 = t 1 and t 2 = t 2: (f) t 1 = t 1 and t 2 &lt; t 2
+The above six cases cover all possible value combinations for t 2. sparse, sparse ? sparse : Using the definition of a sparse level i (quota s &lt;2 which trivially holds, because s 1 + s 2 = s . 3. dense, sparse ? dense : The inequality that we should prove, corresponding to (A.3) ,is The first two terms are the right hand side of (A.7) , so it remains to show that is nonpositive. Again, we study several subcases: (a) t 1 = t = i + 2, so that s 1 P 2 t 1 , s 2 &lt;2 i =2 (b) t 1 = t &gt; i + 2, so that s 1 P 2 t 1 , s 2 &lt;2 i (c) t 1 = t 1= i + 1, so that s 1 P 2 t 2 , s 2 &lt;2 i : (d) t 1 = t 1&gt; i + 1, so that s 1 P 2 t 2 , s 2 &lt;2 i 4. dense, sparse ? sparse : The inequality to be proved is now
+The only possible value for t 1 is i + 1. Therefore, the left hand side of (A.10) equals follow. h References

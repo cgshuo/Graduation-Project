@@ -1,0 +1,120 @@
+ 1. Introduction space, but also improved performance due to reduced maintenance overhead. copies of the same data will have to be refreshed.
+ traditional index. For example, consider the indices X 1 = suppose that all three tables have the same set of attributes and R the elements of R 1 . One may identify the indices X 2 and X stored in X 1 . However, removing the two indices will prevent us from ef A
+N 5  X  because index X 1 cannot be used to ef fi ciently enumerate the elements of R be merged into a single extended index 3 on the elements of R can answer.
+ one or more of the initial queries.
+ implementation of the commercial system that is being compared. 1.1. Our approach a single department. select * from Employee e , Department d where e.depName = d.name and e.SSN =: P Employee e = Q 1 (: P );
+Department d = Q 2 ( e.depName ); return join ( e,d ); information. For example, the index  X  R ,  X  A asc , B asc order by A asc B asc  X  generated the index. minimal in the sense that they cannot be simpli fi ed and still ef answered by each extended index that is represented by the created PART. The the smallest size given the available statistics are selected. 1.2. Motivating example schema can contain the materialized views Customer , Employee , and Trainee de speci fi ed, then our algorithm can be applied on this modi generated the materialized view Trainee ).
+ select * from Trainee where completionLevel =1
+The extended index that was described can be used to ef fi relative to the attribute name .
+
+Query Q 2 from Table 2 canbeef fi ciently answered by fi rst 1.3. Paper outline and contributions the paper are presented in the next three sections. that reduces redundancies  X  see Section 4 . 2. We show how extended index can be merged  X  see Section 5 . updates  X  see Section 6 .
+
+Chapter 7 summarizes our results and outlines directions for future research. 2. Related research both papers can decide to merge them into the index  X  R , applied in combination with them.
+ in [7] . It shows how physical design selection can be done on the invoked manually. Again, we believe that this work complements this paper. algorithm is applied. 3. De fi nitions and object-oriented database schema. 3.1. Database schema attr ( R ) to refer to the attributes of the table R .
+We require that every table has the system attribute ID that uniquely identi a table are either non-reference and are of one of the prede foreign key constraint on reference attributes.
+ select A 1 , ... , A a from T as t where  X  ( t )
+De fi nition 3.1. ef fi cient predicate for an object t  X  R .
+ de fi simple materialized view with the following underlying query. select * from Manager as t where t.name =  X  John  X  and t.salary N 200,000 Simple materialized views are important because they reuse the de fi additional records for them. 3.2. The query language [  X  ] to denote an optional component and dir to denote asc or answered using a single index. Adhering to the SQL standard, we will use 3.3. The problem We next de fi ne the characteristics of an ef fi cient query plan.
+De fi nition 3.2. ef fi cient plan for a query Consider the SQL query Q and the corresponding access plan Q of the database schema is constant. Then the query plan Q
+O j def Q  X  X j  X   X  4. Physical design model
+De fi nition 4.1. object ordering
+For a table R , an object ordering is de fi ned using the syntax order if dir 1 = asc and in descending order if dir 1 = desc syntax of an object ordering. Also, note that we will use R used to denote the set equivalence operator.
+
+De fi nition 4.2. syntax of an extended index
+An extended index X is represented by a pair  X  {  X  1 , ...  X 
+A the node and write table ( n ) and to  X  A 1 , ... , A a  X  {  X  additional restrictions on G t . 1. Let the node n with table R be the parent of the nodes should hold for any instance of the tables: (1) R i p R for 1  X  i  X  k , (2) R i  X  R j =  X  for 1  X  i  X  j  X  k , (3)  X  k (4) attr ( R ) p attr ( R i ) for i =1 to k .
+For convenience, we introduce several node labeling functions. We will use de fi ne L  X  recursively as follows: for a leaf node n : L  X   X  n , ... , n k  X  we de fi ned L  X  ( n )=  X  L ,[ L  X  ( n 1 ),
+L ( n r )= label ( n r ). For a non-root node n with label  X  ends at the node.
+ [  X 
+Customer ,  X  balance  X  X  ,  X  Employee ,  X  X  X  X  ,  X  Trainee ,  X  completionLevel= 1. (For now, it should be clear that this extended index satis
+De fi nition 4.3. semantics of an extended index
+If n is a leaf node and L ( n )=  X  A 1 , ... , A a  X  , then we de n  X  , table ( n )= R , and L ( n )=  X  A 1 , ... , A a  X  , then we de relative to this order will be ordered relative the attribute 1. The objects are fi rst ordered relative to the object ordering 2. Next, if two or more objects have the same value for the attributes { A ascending order, where t.A = i if and only if t  X  table ( n 3. Finally, if two or more objects have the same value for the attributes { A relative to Or ( n i ), where i is the common value for the attribute A .
+If the index has a non-trivial  X  -condition of the form { pointer to an object for which  X  j holds (1  X  j  X  m ).
+Fig. 3 shows the extended index for our running example. The completionLevel =1. The description tree of an extended index de trainees. The tables of the leaf nodes in the description tree de the union of the tables Customer , Employee , and Trainee . intermediate de fi nitions and lemmas.
+
+De fi nition 4.4. extended  X  -condition
+The extended  X  -condition of an extended index X is { TRUE
+We next present a lemma that explains the meaning of an extended Lemma 4.5. meaning of an extended  X  -condition Proof. See [14] .
+
+Trainee(t)  X  t.completion  X  Level =1 will be in the extended therefore the third marker bit does not need to be stored explicitly.
+De fi nition 4.6. rooted path in a tree paths in the tree G t .
+
+De fi nition 4.7. clustering property following conditions holds. 1. k =1. 2. If n r is the node in K with the biggest subscript for which L ordering label, then either r = k or r = k  X  1.
+ Lemma 4.8. meaning of the clustering property
+A  X  be the attributes in L  X  ( n k ) in order of appearance. Then the R Proof. See [1] .
+
+De fi nition 4.9. interface of an extended index common pre-condition is the existence of a node n r in G t at n r as K =  X  n 1 , ... , n r  X  . We also assume that the attribute in L  X  insert(reference p ):  X  action: A node that points to this object is inserted in X .  X  delete(reference p ):  X  pre-condition: There exists a node that points to the object with  X  action: Deletes this node from X.  X  reference exact_search(table R r , param P 1 , ... , param predicate  X  ):  X  pre-condition: Either K is clustered relative to the integer a and  X  return value: Let O be the object ordering  X  A a +1 dir  X  reference closest_search(table R r , param P 1 , ... , param  X  ):  X  pre-condition: Either K is clustered relative to the integer a  X  return value: Let O be the ordering  X  A a dir a , ... , A  X  reference next(table R r , param P 1 , ... , param P a , direction predicate  X  ):  X  return value: Let O be the ordering b A a +1 dir a +1 , Theorem 4.10. interface of an extended index Proof. See [14] .
+ extended index under certain assumptions.
+
+De fi nition 4.11. queries of a rooted path of an extended index will denote this set as Q K ( X ).
+
+The above de fi nition describes the set of sSQL queries that can be ef
+De fi nition 4.12. critical queries supported by an extended index
+Let X be an extended index. We de fi ne the set of critical queries ef following properties. a) the table appears in the string description of X , b) the table is a materialized view that has an underlying query of the form 2. They can be ef fi ciently answered using X .
+ We will refer to this query set as Q ( X ).
+
+Note that we de fi ne R 1 union all R 2 as all the objects in R
+De fi nition 4.13. cl (Q  X  ) cl (Q  X  )  X  { Q|  X  { Q 1 , ... , Q k } p Q , Q i ( D )  X  Q where the method merge_sort returns the objects  X  Q 1 union all { Q } k are sorted in this order .
+ Theorem 4.14. ef fi ciently supported queries by an extended index Let X be an extended index. Then cl  X 
+Q  X   X  cl  X  Proof. See [14] .
+ query that asks for the union of the results of several queries that can be ef the extended index by merging the already sorted results. 5. Index merging 5.1. Syntax and semantics of a PART
+De fi nition 5.1. PART syntax
+A PART P is de fi ned by the pair  X   X   X  , G T  X  , where  X   X  on node siblings, where every node has a label with the following syntax. node label ::=  X  R ,  X  L  X  X  |  X  R ,  X  X  X  X  L ::= E | F | E , L | F , L E ::={ A 1 , ... , A a }
+F ::= A | A , F In the above grammar, we require that a N 0.
+ of the attributes that de fi ne the ordering of the index that ef components, removing the curly brackets in the ordering labels of the nodes, attributesinside themisnot fi xed. Inorder to formallyde fi
+De fi nition 5.2. permutations for a PART ordering label complete permutation.
+
+For example, if  X  L = A , B ,{ C , D , E }  X  , then  X  A , B ,{ C , E },{ D } result of a complete permutation.
+
+De fi nition 5.3. permutation for a PART permutation  X  c applies complete permutations to all ordering labels.
+De fi nition 5.4. fi xed PART
+De fi nition 5.5. fi xed PART extended index description tree of the index, apply the following nondeterministic procedure. 1. Fix the order of the node siblings. 3. If { n i } i=1 k are the children of the node n and  X  k the objects that are in table ( n ) but not in table ( n i
+De fi nition 5.6. valid PART
+A PART P is valid if and only if for every complete permutation application of the nondeterministic procedure described in De
+De fi nition 5.7. cover of a set of indices
+Let X  X  be a set of extended indices. Then cover ( X  X  )={ X | initial extended can ef fi ciently answer.
+
+De fi nition 5.8. semantics of a fi xed PART nondeterministic procedure from De fi nition 5.5 . We will also use X
+De fi nition 5.9. semantics of a PART
+Let P be a PART. Then we will use X ( P ) to denote the set of extended indices represented by the PART.
+Note that all PARTs in Table 5 are fi xed PARTs, where P = select * from Customer where name =: P 1 and balance= : P 2 fi xed PART  X  Customer,  X  balance, name  X  X  .
+
+The merging step will merge the PARTs from Table 5 into the PART  X  ( t ) holds for a Person object if and only if t is also an object in V  X  name  X  ,[  X  Customer,  X  balance  X  X  ,  X  V T ,  X  grade  X  X  , tables Customer and V T .
+
+We next formally describe the PART creation and merging steps of our algorithm. 5.2. Step 1  X  converting extended indices into PARTs
+Type 3 we do not need to create a PART because we assume the capability of ef the storage case).
+ ef fi ciently answer the original queries.
+ Theorem 5.10. correctness of PART creation indices that can be used to ef fi ciently answer Q.
+ Proof. See [14] .
+ 5.3. Step 2  X  PART merging merging will be bene fi cial. 5.3.1. Merging ordering labels ordering labels. A formal de fi nition of the  X  operation follows, where operation that removes the curly brackets from empty E -components. associative, we will use  X  k describes the properties of the  X  operation.
+
+De fi nition 5.11. compatible attribute orderings compatible if and only if for all 1  X  i , j  X  k either L i
+Theorem 5.12. correctness of the  X  operation 1. Let { L i } i =1 k be k ordering labels. If  X  k (b) Let  X  k + 1 c be a complete permutation for L k + 1 and L 2. If  X  k such that the attribute orderings de fi ned by { L  X  i } i = 1 Proof. See [14] .
+
+For example, the result of merging the ordering labels  X  { name, balance } 5.3.2. Merging PARTs We de fi ne a simple PART as follows.
+
+De fi nition 5.13. simple PART A PART is simple if it has the format shown in Table 6 . two PARTs are mergeable.
+
+De fi nition 5.14. PART merging 1.  X  k such that R i  X  R j  X  X  X  .
+ only PARTs that represent indices with common data will be merged.
+We next present two methods: table_PART_merge and gamma_PART_merge mergings. Both methods merge an arbitrary PART with a simple PART. The
+The method table_PART_merg e( P 1 , P 2 ) merges an arbitrary PART P inserted node in which a  X  -condition is added to the PART, and therefore the Algorithm 1 . table_PART_merge (PART P 1 , PART P 2 )
+Require: the path  X  n 1 =  X  R 1 ,  X  L 1  X  , ... n k =  X  R condition of P 1 P 2 =  X  R ,  X  L  X  X  , R  X  R k , and R  X   X  1: L  X   X  L 1  X  X  X  X  L k 2: if L  X  L  X  = UNDEFINED then 3: return UNDEFINED 4: end if 5: L  X  X   X  L  X  L  X  6:  X   X   X  t  X  R 7: compute { L  X  i } i =1 k and L k +1 subject to L  X   X  X  X  X  8: if | L |  X  | L  X  | then 9: return UNDEFINED 10: end if 11: compute L 1 and L 2 subject to L 1  X  L 2 = L and | L 1 12: if is_E_component( L 1 )or| L 1 |=0 then 13:  X   X  TRUE 14: else 15:  X  =  X   X  16: end if 17: return substitute ( P 1 ,  X   X  1  X   X  , n 1 =  X  R 1 ,  X  n is a leaf node in the description tree of P or the tree for P returns TRUE exactly when L is an E -component.
+ new PART because the extended indices that it represents will be able to ef the the path K  X  are also modi fi ed to re fl ect the result of applying the label L .
+ simple PART P 2 . The method tries to do so without introducing new nodes in P
+P and node in P 2 , which we refer to as L , is compatible with L that ends at n  X  , which we will refer to as K , will be changed to L clustered relative to the size of the single E -component in P 2. R is a non-strict subset of the tables of several leaf nodes of P not satis fi ed for one of the relevant paths. The ordering labels in P case.
+ Algorithm 2 . gamma_PART_merge (PART P 1 , PART P 2 )
+Require: n 1 =  X  R 1 ,  X  L 1  X  X  is the root node of the description tree of P where L ={ A 1 , ... , A i }, A i +1 , ... , A a 1: mergeable  X  true 2:  X   X   X  ( t  X  R ) 3: if R J R 1 then 4: return UNDEFINED 5: end if 6: if L  X  L 1 = UNDEFINED then 7: return UNDEFINED 8: end if 9: L  X   X  L  X  L 1 10: if (( is_leaf ( n 1 )) or (| L |  X  | L 1|)) then 11: if R = R 1 then 12:  X  true 13: else 14:  X   X   X   X  15: end if 16: return substitute ( P 1 ,  X   X  1  X  {  X  }, n 1 =  X  R 1 , 17: end if 18: compute L 1 and L 2 subject to L 1 L 2 = L  X  and | L 1 19: P  X  substitute ( P 1 ,  X   X  1 , n 1 =  X  R 1 ,  X  L  X   X  X  20: for n  X  children ( n 1 , P 1 ) do 21: mergeable  X  mergeable  X  recursive_PART_merge ( n  X  , R , L 22: end for 23: if mergeable and R p  X  24: if R  X  X  X  25: P  X  substitute ( P 1 ,  X   X  1  X  {  X   X  }, n 1 =  X  table 26: end if 27: return P 28: end if 29: return UNDEFINED Algorithm 3 . recursive_PART_merge (node n , table R , label L , int l )
+Require: the node n has the syntax  X  R 1 ,  X  L 1  X  X  1: if R  X  R 1 = X  then 2: return true 3: end if 4: mergeable  X  true 5: if L  X  L 1 = UNDEFINED then 6: return false 7: end if 8: L  X   X  L  X  L 1 9: if is_leaf ( n )or| L |  X  | L 1 | then 10: P  X  substitute ( P , n =  X  R 1 ,  X  L  X   X  X  ) 11: R  X   X  R  X   X  R 1 12: K  X  the rooted path in P that ends at n 13: n 1  X  the root node of P 14: if K is not clustered relative to l then 15: P  X  substitute ( P ,  X  ( n 1 )  X  {  X   X  }, n 1 =  X  table 16: end if 17: else 18: compute L 1 and L 2 subject to L  X  = L 1 L 2 and | L 19: P  X  substitute ( P 1 , n =  X  R 1 ,  X  L 1  X  X  ) 20: for n  X  children( n ) do 21: mergeable = mergeable  X  recursive_PART_merge ( n  X  , R , L 22: end for 23: end if 24: return mergeable The following theorem holds.
+ Theorem 5.15. correctness of the PART merging algorithm
+Suppose that the sSQL queries { Q i } i = 1 k generate the simple PARTs { P } the two merge methods. Then X c ( P )  X  X  X  k
+Proof. See [14] . 6. Experimental evaluation 6.1. Main memory executed on a Sony VAIO VGN-NW150J laptop running the Windows OS. time, which shows how the update ratio in fl uences the performance. slower. At the same time, index merging can still be bene replication.
+ workloads with high update ratios, creating an index is bene search. 6.2. Secondary storage found the indices of the smallest size to create.
+ update. 7. Conclusion showed theoretically and validated experimentally the bene our index merging algorithm and evaluating its performance.
+Glossary cl ( X ) merge sorting function  X  see De fi nition 4.13 cover ( X ) fi nds the cover of a set of indices  X  see De fi dir constant in the set { asc , desc }
+E an expression of the form { A 1 , ... , A a }, where a  X  F an expression of the form A 1 , ... , A a , where a  X  1
+G t tree K path in a tree L node's label or a substring of a node's label P query parameter Q ( X ) set of queries represented by the enclosed component Q P query plan R relation V materialized view X extended index P PART L ( n ) ordering label of the node n
+L ( X ) node labeling function  X  see page 7
+L ( X ) node labeling function  X  see page 7  X  ef fi cient predicate  X  ( X ) result of applying the predicate  X  over the enclosed component; result is
+ X  | X | size of the enclosed component | def ( X )| size of the de fi nition of the enclosed component ID an object identi fi er
+References

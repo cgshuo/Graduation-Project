@@ -1,0 +1,94 @@
+ 1. Introduction e.g., for ontology merging.
+
+A restriction of most match tools, such as COMA++ [1] ,AgreementMaker [4] or Falcon [14] , is that they focus on express only some  X  relatedness  X  between concepts that can re semantic ontology mappings has also been recognized by the Ontology Alignment Evaluation Initiative (OAEI), had to cancel this track because of insuf fi cient participation [7] . example shows that not all such correspondences represent equality relations, e.g., Action _ Games the intended output of our approach with semantically enriched correspondences.
+We presenta new approach called STROMA( S eman T ic R e fi effectiveness.
+
+Our contributions are the following:  X  tools.  X 
+The approaches can determine equality, is-a (subsumption), inverse is-a, part-of and inverse part-of relations.  X  speci fi cs of the two-phase match approach.  X  new enrichment strategy with two previous tools for semantic ontology matching. in Section 3 .In Section 4 , we explain the basics of our approach and the general work life test cases and compare it with related matching tools in Section 6 ,and 2. Related work
+Match [10,9] is one of the fi rst such tools for  X  semantic ontology matching S-Match in our comparative evaluation in Section 6 .
+ as the used mappings only comprised equal correspondences). We consider TaxoMap in our evaluation ( Section 6 ). and disjoint correspondences, but the authors do not provide an evaluation for these speci equal and is-a correspondences and a few can also determine two concepts A and B they generate different search queries like
+In [16] , the authors use so-called Super Word Sets (SWSs) to linked with each other, for instance the  X  car  X  synset may be linked to the number of synsets that SWS(A) and SWS(B) share.They propose a threshold old subsumption relation. The quality of the relation type speci or many-to-many) correspondences [23] . For example, a many-to-one situation where several concepts of the format to another one, for example to express that two schema elements such as to obtain a name element [28] . A few approaches have triedto
+COMA in [17] . 3. Semantic relation types merging. 3.1. Linguistic and semantic relations without a cellar, and there are cellars without a house). X is then called the meronym of Y . all six relation types of the last column (except  X  mismatch is-a  X  ,  X  part-of  X  ,  X  has-a  X  and  X  related  X  .
+
+We observed that previous studies (including S-Match and TaxoMap) mostly ignore the relation types 3.2. Using semantic ontology mappings concepts.
+ without introducing any redundancy. 4. Overview of semantic mapping enrichment approach STROMA
+An ontology O consists of a set of concepts C and relation R , where each r that each relation in O is either of type  X  is-a  X  or of type from a root to a concept is called a concept path . We denote concept paths as follows: root . concept concept is referenced by its label .
+ A correspondence C between two ontologies O 1 and O 2 consists of a source concept c correspondence to determine its semantic relation type. The
+The proposed two-step approach for semantic ontology matching offers signi to 1-step approaches that try to directly determine the correspondence type when comparing concepts in O search space for direct matching is the Cartesian product of all pairs of O is likely to incur relatively small processing requirements.
+ has already shown its effectiveness in many domains [17] . Furthermore, we try to con fi gurations providing many potential correspondences to fi we can fi lter unlikely equivalence correspondences for which the enrichment step did not
+For relation type detection, STROMA needs to combine the results of the one type per correspondence or  X  undecided  X  if no type can be con  X  inverse is-a  X  , while Multiple Linkage decided on  X  is-a  X  we derive the highest score for  X  inverse is-a  X  so that this type is assigned to the correspondence.
+There are two issues that may occur: 1. All strategies return  X  undecided  X  . 2. Two or more types have the same maximal score.
+ determined, we go into a relation type veri fi cation step where we consider additional aspects to con made decision (see Section 5.6 ).
+ equivalence correspondences. Given a default threshold  X  for the minimal con value s , we now apply the following selection rules: 1. If s  X   X  we accept the correspondence to the fi nal mapping without restrictions. correspondence to improve precision.
+
+With this selection step we aim at an improved recall for the because each correspondence accepted from the critical interval [ 5. Implemented strategies applicable. By contrast, Structure and Itemization are more speci does not depend on other strategies, but rather on the relative size of the input ontologies. experiments with different taxonomies containing itemizations. 5.1. Compound strategy In linguistics, a compound is a special word W that consists of a head W speci fi es W H [3] . Inmanycases, a compoundthus expresses somethingmore speci rather more-general (inverse is-a) than more-speci fi c, as in Bosnia bitter  X  sweet, which means both bitter and sweet (not necessarily a (as in blackboard ).
+ Compound approach allows us to identify the three is-a correspondences shown in Fig. 1 (bottom).
+We added an additional rule to this simple approach: B is only considered a compound to A if length ( B ) although we cannot cover all cases, such as derivations like (disadvantage, advantage).
+For this reason, we also keep a list of common English pre many cases. We therefore discard such correspondences from the match result, since they are probably incorrect.
+We also tested a variation of the approach where we extracted the modi appears in a word list or dictionary. This would prevent false conclusions where the pseudomodi occurs only once in a language and has (today) no speci fi and scienti fi ccompoundswhosemodi fi ers are of fi cial words of a language, but are too speci list or dictionary, e.g., in the medical domain. For this reason, checking the modi pursue this idea.
+ 5.2. Background Knowledge strategy but have nothing in common and refer to different concepts.
+ speci fi c relation types to be determined for semantic matching.
+ WordNet as well as several other sources for background knowledge (see below). not, we gradually remove the modi fi ers of C in order to detect the relations. We start with the left-hand modi whetherthenew form C  X  is found in the dictionary. If C  X  that the actual concept C is a hyponym of C  X  (as it is a compound). If C head of C . This method does not work with other compound types, though most speci compounds. We call this technique Gradual Modi fi er Removal .
+
+The implementation of Gradual Modi fi er Removal for an open compound C = mH consisting of a modi mind that H can also be a compound) that matches the non-compound concept W is as follows: 1. Is W contained in the dictionary? YES:Proceedwithstep2.
+
+No: Type cannot be determined. 2. From C remove the modi fi er m so that C  X  = H .Is C  X  YES:Proceedwithstep3.
+
+NO: Proceed with step 2. 3. Is rel ( C  X  , W )  X  { equal , isa }? YES: Return relation type  X  is-a  X  .
+ NO: Type cannot be determined.
+
+For instance, we encountered correspondences such as  X  US Vice President dictionary. However,  X  Vice President  X  is in the dictionary, so after the a). Since  X  US Vice President  X  is a  X  Vice President  X  (Compound approach) and we assign the is-a relation to the correspondence.
+
+Givena correspondence ( C 1 , C 2 ) let's assumethat we want to testthis correspondence for anis-a relation.We concepts are represented in the dictionary. If so, we retrieve all hypernyms of C by this set. If not, we retrieve the hypernyms H ( C i ) for each C this procedure until we fi nd C 2 in a hypernym set or reach the root concepts of WordNet. were carefully assigned by linguists. We observed that WordNet is a very reliable source that helps believed to comprise about a million words, not even including very speci computing .
+
+Additionally, we use OpenThesaurus and parts of the UMLS Metathesaurus as background knowledge. OpenThesaurus source to deal with German-language scenarios. for the rather speci fi cdomainitcovers. 5.3. Itemization strategy as a list of items, where an item is a word or phrase that does not contain commas, slashes or the words concepts containing only one item simple concepts , like  X  like  X  Champagne and Wine  X  .
+
+Regarding itemizations also prevents us from detecting pseudocompounds, like there are is-a relations between the items of an itemization. This is necessary to is equivalent to a concept  X  computer  X  , since laptop is just a subset of computer.
+We now show how our approach determines the correspondence types between two concepts C concepts is an itemization with more than one item. Let I w  X  w 2 . Our approach works as follows: 1. In each set I remove each w 1  X  I which is a hyponym of w 2. In each set I , replace a synonym pair ( w 1  X  I , w 2 3. Remove each w 1  X  I 1 , w 2  X  I 2 if there is a synonym pair ( w 4. Remove each w 2  X  I 2 which is a hyponym of w 1  X  I 1 . 5. Determine the relation type: (a) If I 1 =  X  , I 2 =  X  :equal (b) If I 1 =  X  ,| I 2 |  X  1: is-a (c) If | I 1 |  X  1, I 2 =  X  : inverse is-a (d) If | I 1 |  X  1, I 2  X  1: undecided.
+ compare what is left in the two sets and come to the conclusions presented in step 5.
+Let us consider the concept pair C 1 =  X  books, ebooks, movies, loss of information (steps 1 + 2). We remove fi lms in I 1 cds in either set (step 3). Lastly, we remove a hyponym in I book .Wehave I 1 ={ books , movies }, I 2 =  X  .Since I 1 still contains items, while I general, i.e., it holds C 1 inverse is-a C 2 .
+ 5.4. Structure strategy we check whether we can derive a semantic relation between a father concept X of Y and Z (or vice versa).
+For an is-a relation between Y and X we draw the following conclusions:  X 
+X equiv Z  X  Y is-a Z  X  X is-a Z  X  Y is-a Z.
+
+For a part-of relation between Y and X we can analogously derive:  X 
+X equiv Z  X  Y part-of Z  X  X part-of Z  X  Y part-of Z .
+ of concepts for which the semantic relation cannot directly be determined.
+For example, consider the correspondence (vehicles.cars.convertibles, vehicles.cars). Let us assume that dictionary. No other strategy would trigger here. However, it can be seen that the leaf node father of the leaf node in the fi rst concept. Since  X  convertibles relation for the correspondence.
+ example, cars = cars), WordNet and Compounding, thus exploiting the already implemented strategies. 5.5. Multiple Linkage
+If, for instance, a source node s is involved in three matches and thus linked to target nodes t different size.
+ false matches in the mapping can lead to wrong conclusions. For instance, if t initial match result and has a lower weight (see Table 3 ). 5.6. Veri fi cation step
+After the relation type of a correspondence is determined based on the
+Section 4 , we perform a veri fi cation step where we consider some more subtle aspects to ultimately con within hierarchies in the input ontologies. Consider the correspondence (
+Based on the leaf concepts  X  children_shoes  X  and  X  shoes an  X  concepts are in fact equal.
+ of a correspondence. For the above example, the combination of match decision so that the is-a relation is revoked.
+ such as: 1. The actual meaning is spread across multiple levels, like ( 2. The father node of a concept A may not match the modi fi we would have to check whether the father node of A (  X  kids 6. Evaluation mappings and are freely available. Both tools had sometimes dif load (OWL) ontology fi les so that we had to elaborately convert them to text determined the presumed perfect match result with semantic correspondence types. to be listed under the concept berries .
+
+Even when we manually determine a perfect or near-perfect match mapping or benchmark, we want to determine the introduce different evaluation measures to deal with these issues.
+ ( Section 6.2 ). We then evaluate the enrichment approach mapping ( Section 6.6 ). Finally, we compare our approach with S-Match and TaxoMap ( Section 6.7 ). 6.1. Evaluation measures
+We denote the untyped match mapping used as input for enrichment with M and the enriched mapping with semantic (highlighted in dark gray) for the benchmark. Hence, their intersection considered relation type.
+ based on the mapping cardinalities (number of correspondences): recall/precision ( r e / p e )de fi ned as follows: and may contain false correspondences (it always holds that r although these correspondences might be correctly typed (e.g., set missing in the input mapping M and thus in ME , e.g., set accuracy of relation type detection. It holds that r e geqr
+Inaddition to theseoverall measures, we evaluate the type-speci recall/precision ( type may refer to any relation type such as is-a):
+We illustrate the introduced measure swithanexample.Let'sassumethat| B |=| BE | = 100, | M |=| ME |=150and| B results in a recall r = 80/100 = 0.8 and a precision p = 80/150 = 0.53 for input mapping M .Let'ssaythat| BE 70 of the 80 correspondences in | B  X  M | were correctly typed. We have r the strict precision p s = 70/150 = 0.47.
+
+Assume now that the number of is-a correspondences in the benchmark is | BE alsoassumethatthenumber of correctly typedis-a correspondences is | BE them are truly of type  X  is-a  X  .
+
+We thus have a strict recall r s ( isa ) = 45/80 = 0.56 and an effective recall r 100 = 0.45, while the effective precision is p e ( isa ) =45/60=0.75. 6.2. Evaluation scenarios correspondences and their distribution among the different semantic types (equal/is-a/part-of/related). itemizations, which the other scenarios lack. The second match task ( B correspondences between the diseases catalogs of Yahoo (5436 concepts) and dmoz (10,084 concepts). B originally consists of about 1600 correspondences [18] , about half of which with type all  X  related  X  correspondences in B 3 , leaving us with 762 correspondences of type equal, is-a and inverse is-a. other tools. Being a German-language scenario, tools using WordNet have dif
+Wikipedia being more speci fi c and Ebay being more general. 6.3. Evaluation for perfect input mapping identical to effective recall/precision.
+ types which are of particular interest as such correspondences cannot be identi (70 to 99%), while recall was somewhat limited, especially in scenarios B correspondences in Table 6 b) are inversely interrelated.
+ fi effective recall and precision in this experiment. 6.4. Evaluation for COMA input mapping imperfect input mapping for the enrichment step. We use the default work matchers like TriGram and TF/IDF (more details are given in [17] ). handle scenario B 4 in Section 6.7 when we compare our approach to other match tools. respondence type).
+ high precision for equal results so that most non-equal results are not retained in its match results. correspondences. Since most correspondences are of the equal type in B therefore r s in Table 7 d) is only slightly below the result in Table 7 a). correspondences.
+ 6.5. Effectiveness of STROMA strategies and weaknesses.
+ (except Multiple Linkage) use the compound strategy, so that we consider it the most signi provide any further information for the mapping. In B 2 , UMLS had also dif measure of 94% does not allow much space for improvement.
+ was valuable.
+ complex matches. Otherwise, this strategy has no effect on the mapping. ontologies of B 1 and B 2 .Intherather fl at ontology scenarios the veri
+Generally, the strategies are very effective in detecting is-a relations and con w.r.t. the part-of and related type. For instance, none of the 10 part-of correspondences in B reasonable part-of relations.
+ 6.6. In fl uence of enrichment and selection on the initial mapping this threshold to 0.2 to obtain more input candidates for correspondences between 0.4 and 0.2 for which a relation type could be found or con can improve standard match quality (ignoring relation types) compared to having no enrichment phase. the applied linguistic and background knowledge strategies almost unchanged or even decreased F-measure. By contrast, scenario B could signi fi cantly improve F-measure.
+
+Still the results for scenario B 4 remain at a low level, especially for B tects a correct relation type between two concepts, but that this link is not the most speci instance, COMA discovered the correspondence (  X  Courting Bench correspondence is not part of the benchmark mapping. The benchmark contains the correspondence ( furniture.Benches  X  ) which was not discovered by COMA. 6.7. Comparison of match tools
+B and B 4.3 are especially challenging. They involve the Wikipedia taxonomy with many speci dictionaries (such as bean bag , which is a speci fi c type of chair, or cassone , which is a speci TaxoMap was not able to return any correspondence so that we provide only results for the two other tools.
+We ran S-Match (April 2011 Build) and TaxoMap (Version 3.5) in theirstandard con con the standard con fi guration.
+ third scenarios ( Tables 11,12 ) the tool was too restrictive to return any correspondence.
+With regard to the overall quality of relation type detection ( Tables 10 non-equal correspondences which dominate in the considered test scenarios. As can be seen in the Tables 10 tools as they determine the degree of correctly typed correspondences in BE fact, S-Match and TaxoMap mostly have substantially fewer correspondences in BE measures while the effective measures are useful for tool-speci signi fi cantdifferences in runtime. For thelarger matchtask B used in the initial step while enrichment is relatively fast depending on the size of the input mapping. 7. Conclusion and outlook scenarios and outperformed previously developed semantic match tools. match result. To reduce the problem we used relaxed con fi proposed techniques.
+
+References

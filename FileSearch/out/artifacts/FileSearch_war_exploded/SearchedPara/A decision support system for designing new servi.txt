@@ -1,0 +1,214 @@
+ Pasquale De Meo, Giovanni Quattrone, Domenico Ursino * 1. Introduction
+The term  X  X  X -government X  is adopted to indicate the usage of Information and Communication Technologies for improving government and decision making activities.
+
+In the last few years, both local and national governments are planning and implementing e-government programs ernment agency Web sites [29] . From the government agency point of view, there is a growing interest to deliver a large number of services through the Internet. For instance, presently, the average monthly number of accesses to Web pages tion, the public expenditure of Hong Kong Government in Information and Communication Technologies grew from 910 mil-lions (Hong Kong Dollars) in 1994 to 5236 millions in 2007 [23] .
+ improving both the range and the quality of services delivered by government agencies online.
+One of the most interesting research directions in this context consists of supporting the managers of government agen-represented by the activation of new services tailored to the profile of its members.
+
+This paper aims to provide a contribution in this setting; in fact, it proposes a system for supporting government agency nario. Specifically, the proposed system aims to assist a government agency manager, who has a given budget for the acti-this information to decide what services should be activated and how they can be tailored to citizen needs and desires. the corresponding users. In the past, they have been extensively exploited in various application contexts, such as Web different citizens to be known and the proposals of an e-government system to be adapted to them. This can be extremely (that might find those citizens who have the maximum benefit from a new service and/or might design new services that best match citizen expectations).
+ for the success of a planning policy.
+ ularly important since the richness of user profiles is a key factor for software systems based on user modelling.
+The distributed architecture adopted for our system is capable of preserving the autonomy of each government agency that can continue to use its own internal rules and work procedures to represent and handle its information. However, in our by (independent) government agencies. As a consequence, a citizen has no need to know the internal organization of each agency and/or the relationships among agencies. In fact, these problems are faced by our system at a back-office level. that aims to integrate the whole spectrum of public services into a single framework.
+ ing part is derived and handled by monitoring citizens behaviour during their past accesses to e-government services. In our system three different types of Handlers continuously operate and exchange information; these are: (i) Manager with Citizen Handlers to detect, among available services, those appearing the closest to citizen needs and profiles. examination. They are used to define a suitable integer linear programming problem whose solution allows the Manager citizen satisfaction.
+ conclusions. 2. Description of the proposed system 2.1. General overview better illustrate these scenarios we observe that, in the last years and in many Western countries, Governments have been lowing aspects must be pointed out: range of services which can partially overlap, compete or, finally, complement each other. Moreover, new forms of public-private mix providers have been emerged to enhance the quality of delivered services while pulling down their activation and maintenance costs.For instance, care home services can be provided by local councils, private businesses or no-profit day plus meals.
+ overcome a deep sectorialization of government agencies and very personalized services should arise from the joint effort of many government agencies operating in several areas.
+ reduced scholarship plus a discount on accommodation; (v) a reduced scholarship plus a discount on books; (vi) a reduced according to their own personal needs.
+
+Due to these reasons we expect that government agencies could offer many competing, alternative or overlapping ser-consequence, an optimization problem must be solved to find the best tradeoff between the need of proposing competing services and that of satisfying budget constraints.
+
+Our system uses also a Service Database SD , that stores and manages information about services provided by government agencies, and a Citizen Profile Database CPD , that stores and handles information about citizen profiles. The behaviour of our system can be analyzed from both the government agency and the citizen point of view.
+Specifically, our system can assist a government agency manager to verify which services (among a set of new ones that the government agency manager activates a Manager Handler MH . MH loads the set of available Citizen Profiles from CPD .
+After this, for each pair h C i , S j i , such that C i is a citizen and S real value representing the benefit that C i would gain from the activation of S government agency needs to pay in order to provide C i with S linear programming problem.
+ wants to know if there exist new services of interest to him, he activates his Citizen Handler CH loads the profile CP i of C i from CPD and forwards the pair h Q
+SL i k of services best matching both Q i k and CP i . After this, SH sends SL tion of C i to SL i k (e.g., it considers the services of SL dates the profile of C i accordingly. Finally, when C i terminates his activities, CH
+In the following subsections we provide a detailed description of all the components of our system. 2.2. Support databases 2.2.1. Citizen Profile Database CPD
+CPD stores the profiles of involved citizens. A Citizen Profile CP h CDS i , CAC i , CKS i i , where:
+CDS i stores both the demographic and the social data of C yearly income, and so on; as in [7] , each entry of CDS i
+CAC i denotes the total number of accesses to services available in our system performed by C
+CKS i is a set of keywords representing the past interests of C each keyword k i j 2 CKS i ; it specifies the interest degree of C is, the more relevant k i j to C i is. In order to compute id  X  The higher the number of times in which C i accessed services associated with k  X  X f C i has not accessed any service related to k i j for a long time, it is possible to assume that k
+If we combine the two previous observations we can obtain that id can act as the frequency weight over this term. More formally:
+Observe that, since ac i j 6 CAC i and lts i j 6 T , id i
+Since, as will be clear in the following, the computation of id each keyword k i j , the parameters ac i j , fts i
+CPD is constructed and handled by means of XML technology. 2.2.2. Service Database SD
+SD stores information about services delivered by government agencies. The profile SP h SId j , SName j , SDescr j , SFS j , SCS j i , where:
+SId j , SName j , SDescr j represent the identifier, the name and the description of S
+SFS j  X f F 1 j ; F 2 j ; ... ; F p j g represents a set of features associated with S ificity of S j .
+
+SCS j  X f SC 1 j ; SC 2 j ; ... ; SC t j g is a set of constraints associated with S have to access S j . It consists of a triplet h SCName l j  X  SCName l j represents the name of SC l j . In the current implementation of our system we considered the following con- X  SCOp l j indicates an operator belonging to the set {&gt;, P ,&lt;,  X  SCValue l j denotes a value for SCName l j .
+
+SCOp l j and SCValue l j , together, specify the condition associated with SCName
+In our system we defined and implemented a function c to check if the constraints imposed by a service S a citizen C i . Specifically, c receives a pair h SP j , CP
+C does not satisfy at least one constraint of SP j . c works as follows: for each constraint SC ing field in CDS i and checks if its value falls within the range of admissible values specified by SCOp satisfied, c returns true .
+
+Observe that the values of some constraints are strings. For each of these constraints our system should compare two
+In order to improve the quality of string comparison, a stemming activity could be performed. For this reason our system applies a stemming algorithm (namely the Porter algorithm [3] ) when it compares two strings.
+In the future extensions of our system we plan to add new categories of constraints, as well as to include a mechanism to remove the presence of synonymies (this happens when two different strings represent the same thing) or of homonymies (this happens when the same string represents different things).
+
+Analogously to CPD , also SD is constructed and managed by means of XML technology. 2.3. Citizen Handler
+A Citizen Handler CH i is associated with a citizen C i . Its support data structure stores the profile CP accessing them. First CH i retrieves CP i from CPD and stores it in its support data structure. Then, it allows C
+Q that specifies the service type he presently desires. After this, it sends the pair h Q structs the list SL i k of services that possibly satisfy C useful services, according to his needs.
+
+For each selected service, CH i suitably updates CP i . To this purpose, it first increases CAC word k i j : if k i j is already present in CKS i , it updates the parameters ac the current time instant; if k i j is not present in it , it regards k i j as a new interest and inserts it in CKS equal to the current time instant.
+
+Observe that the addition of new interests could make CP i size of CP i and, at the same time, to maintain it up-to-date, CH out either periodically or asynchronously; this last case is necessary when the number of interests stored in CP excessively high and the next scheduled synchronous pruning task is too far. CH first it computes the interest degree corresponding to each interest stored in CKS newest interests.
+ The value of N was tuned according to the following considerations: some of these keywords would presumably have quite a low interest degree and, therefore, would correspond to services which were accessed only few times and/or are no longer relevant to the citizen. Therefore, these last keywords could denote weak interests and, then, do not well represent the actual citizen needs and desires; as a consequence, both the imprecise. Last, but not the least, the construction and the update of citizen profiles would be time expensive and the space required to store them would be excessive.
+ in a service could be imprecise.
+
+We performed a preliminary analysis devoted to determine the value of N capable of overcoming all the drawbacks men-mentioned above and is able to guarantee the best results.
+
+Each time CH i terminates an update or a pruning activity on CP 2.4. Service Handler of services whose description is analogous to that illustrated in Section 2.2.2 .
+
+SH is called by a Citizen Agent CH i each time a citizen C pair h Q i
+Information Retrieval techniques [3] to select from SD the list SL are compatible with CDS i . Then, for each service S j 2 SL tation takes both SFS j and CKS i into account. After this, it constructs the list SL having the highest scores, and sends this list to CH i .
+
+Since the focus of this paper is on the support of decision making activities, due to space constraints, we do not report ing ones described in [13] . 2.5. Manager Handler
+The Manager Handler MH supports a government agency manager in his decision making activity. Specifically, given that activate, MH supports him to identify, for each new service, the set of citizens who could gain the maximum benefits from saved budget to other services.
+
+MH is provided with a suitable data structure storing: (i) a tuple h SId service S j the manager wants to examine; (ii) the maximum budget B available for the activation of all new services.
+First, for each pair h C i , S j i , such that C i is a citizen and S b 2 [0,1], denoting the benefit that C i would gain from the activation of S the cost that the government agency needs to pay to provide C The computation of b ij is performed on the basis of the following reasonings:
+The more the set of features SFS j of S j is similar to the set of keywords CKS
+C i . In order to quantify the similarity between SFS j and CKS In this formula we use the symbols S and T for representing operators tem we handle both string equalities and lexical similarities. These last relationships are handled by performing a stem-ming activity carried out by means of the Porter algorithm [3] . As a consequence of this choice, a keyword of CKS root. In the future versions of our system we plan to handle also semantic similarities by applying schema matching tech-niques [32] . Observe that the values of / belong to the real interval [0,1].
+ function w that receives information about the profiles of C ifying the impact of S j on C i . function w that receives information about the profiles of C ifying the impact of S j on C i .
+
+The definition of this function strictly depends on the welfare guidelines adopted by a government and, consequently, may change from country to country and/or from region to region. A possible, quite general, formula is the following: where (i) K I ij is a coefficient, in the real interval [0,1], depending on both the yearly income of C and the relevance of S j in this context.
+
+Government welfare policies and we have required the support of a domain expert. Some of these tables can be found at the address http://www.ing.unirc.it/ursino/dke/tables.html .
+
+Clearly, a more complex definition of w , that considers further parameters about C could be adapted to other, possibly not Italian, contexts (see, also, Section 3.7 ).
+
+On the basis of the previous observations, b ij can be defined as a function of / and w , i.e.,
+Let us consider now c ij , i.e., the cost that a government agency needs to pay in order to provide C consequence, the cost a government agency must pay to deliver a service is higher for citizens having low incomes than for those having high incomes. 1
+In our experiments we have considered the Italian welfare system and we have asked some experts to define the tables http://www.ing.unirc.it/ursino/dke/tables.html .
+ (they are reported in the field SCS j of the corresponding service profile).
+
+If we indicate by NewServSet the set of new services that a government agency manager is considering for a possible acti-means of the following 0/1 integer linear programming problem :
+Here: (i) x ij indicates if S j appears of interest to C i can be grouped into a matrix; (ii) b ij , c ij and B have been defined previously; (iii) c (see Section 2.2.2 ) when applied to the pair h CP i , SP (also known as feasible region ) in the hyperspace of the involved variables.
+
+A very large number of practical problems arising in the fields of transportation, energy, telecommunications, manufac-turing industry, and so on, can be formulated as LP problems [5,35] .
+
+An LP problem can be solved by applying the well-known simplex method [11] , whose worst case computational com-plexity is O(2 n ), where n denotes the number of variables involved in the problem definition. A polynomial solution of the LP problem, known as Karmarkar X  X  method, is illustrated in [25] ; this approach requires O( n sionally superior to the simplex method; therefore, many commercial softwares for solving the LP problem implement the simplex method.
+
+An ILP problem is an LP problem requiring that all involved variables must be integer. In some special cases an ILP prob-lem can be efficiently solved; however, it has been proved that the general ILP problem is NP -Hard.
+Many techniques, like cutting-plane and branch and bound, have been proposed to solve ILP problem. Cutting-plane tech-niques initially solve the relaxation of the ILP problem into consideration solve ILP problems; among them we cite genetic algorithms, tabu search algorithms, simulated annealing and ant colony optimization. Hard and the same techniques adopted for solving ILP problems can be applied to solve 0/1 ILP problems. The interested reader can find all details about LP , ILP and 0/1 ILP problems in [31,35] . i.e., a matrix whose elements are all equal to 0, is a feasible solution for it.
+
+The approach underlying our Manager Handler does not specify the technique to adopt for solving the 0/1 ILP problem defined by Eqs. (1) X (4) . The prototype implementing our system allows the user to choose the technique solving the 0/ 1 ILP problem. Currently, implemented techniques are Branch and Bound and Simulated Annealing. 2.6. General characteristics of our system e-government domain. These characteristics are:
+Our system guarantees a high level of autonomy . As pointed out in [20] , government agencies often operate autonomously each other, without any form of centralized control. In addition, citizens can have significatively different viewpoints about service provisioning; moreover, their viewpoints could clash with the orientation of government agencies. In this scenario, government agencies are not willing to loose their autonomy because this would imply to deeply restructure their working practices and administrative processes. Analogously, citizens would perceive the lost of their autonomy as a cumbersome and heavy imposition which may deter them from accessing e-government portals. Our system deals with these exigencies as follows:  X  Each government agency manager has associated a Manager Handler which allows him to make its own decisions  X  Each citizen has associated a Citizen Handler which is in charge of supporting him in his activities. As a consequence, words composing them. Each keyword has associated an interest degree stating how much the interest described by it is ically, it depends on the parameters ac i j and  X  lts i j updated in that some new interests are inserted in it whereas some old ones are removed from it. Citizen profile updates imply changes of the values of the coefficients appearing in the optimization problem underlying our system and, ulti-mately, modifications in the suggestions provided to the government agency managers.
+ form an architecture capable of managing complex e-government domains. This block-based configuration implies that:  X  Our system is robust . The activities of our system are managed by more Handlers each performing a group of tasks. In  X  Our system is extensible . In fact, each Handler can be easily enriched with new functionalities without the need to plex and government agencies often deal with huge datasets (e.g., demographic information systems, Geographic Infor-mation Systems, etc.) [20] . As a consequence, approaches for service management in e-government domain, based on a centralized ontology, do not appear adequate. Indeed, the design and the peopling of this centralized ontology would require a strong human effort [21] ; in addition, a change in norms/terminology could require (possibly large) portions of the ontology to be revised, which is hard to be implemented [37] . As a consequence, in the reality, some approaches using ontologies in the e-government domain (e.g., [30] ) choose to restrict their activities on a specialized sub-domain (e.g., social services for senior citizens), rather than on the whole domain.
+ ment domain. Our system belongs to this last category because it uses keywords to represent both citizen queries and government services. This choice provides various benefits. In fact, thanks to it, in our system, both the definition and the management of government services can be spread across involved government agencies and it is not required to a human developer (or a pool of human developers) to create and maintain a centralized ontology. In addition, citizens are more prone to interact with an e-government system if, in order to understand the main features of provided services, they must examine only some keywords, instead of a complex ontology.
+ It is worth pointing out that our approach relies on the following assumptions: concept of individual welfare has been clearly defined in microeconomics and social theory science. In microeconomics, quantitatively measured. This requirement has been satisfied by defining the benefit coefficient b the activation of the service S j is relevant to the citizen C
+Assumption A2  X  Given a citizen C i and a set of services NewServSet, the benefit of C monotonically non-decreasing and linear function . Assumption A2 completes Assumption A1; in fact, it extends the concept vices.
+ in our reference context because the number of services and citizens to consider is potentially very high and, then, the number of possible interrelationships involving citizens and services would lead to unpractical computational costs. In addition, a linear model capable of capturing relationships has proven to work well in many scenarios and, since linear functions are monotonically non-decreasing, they are able to fit the requirement imposed by the first part of Assumption A2.
+ consequences: 3. Experimental results tem from the citizens X  point of view. 3.1. System implementation
+The prototype of our system was implemented in J2EE platform. In it, MH s and SH s operated on Personal Computers equipped with a 3.4 GHz CPU and 1 GB of RAM; CH s ran on a Personal Computer equipped with a 2.6 GHz CPU and 256 MB of RAM. The communication among Handlers is managed by means of sockets. In our prototype servers are multi-thread in such a way that they can handle concurrent requests coming from different clients. Clients are multithread too; swer, his interface is not stalled.
+
+As specified in Sections 2.2.1 and 2.2.2 , our system comprises two XML databases, namely the Citizen Profile Database constructed and handled by means of jdom . Concurrent accesses to them are handled by means of multithreading technology.
+ classes composing our system are CitizenManager , MediationManager The CitizenManagerDatabase and CitizenClient classes are aggregations of the mer is devoted to store the profile of citizens accessing our system; the latter manages the communication between CH and the other components of our system.
+
+The MediationManager class plays a key role in the implementation of our system; in fact, it allows our system to sup-problem described in Section 2.5 .
+ The Agency , Services and PAMClient classes are aggregations of the manages data regarding an e-government agency. Services is devoted to store and manage delivered services. is devoted to handle the communication between MH and the other components of our system. The CPD and the SD classes are devoted to manage CPD and SD , respectively.
+
+Finally, CitizenManager , CPD , MediationManager , PublicAdministrationManager of the XML technology. 3.2. Dataset
+In our tests we considered a set CSet ={ C 1 , C 2 , ... , C construct a citizen simulator; specifically, each citizen C butions, against their yearly income and age, are shown in Tables 1 and 2 .
+ Service distribution against the corresponding reference domain is shown in Table 3 .
+ Finally, we considered a set BSet of possible activation budgets; an activation budget represents the money (expressed in
+Euros) that a government agency has at disposal in order to deliver the corresponding service for a month. have considered was: BSet = {15,000,30,000,45,000,60,000,75,000,90,000,105,000,120,000,135,000,150,000}. Service dis-tribution against the corresponding activation budget is shown in Table 4 .
+ 3.3. Accuracy In order to evaluate the accuracy of our system, we adopted two well-known parameters, namely Precision and Recall [3] . In our tests these measures were computed as follows: We considered a subset NSSet SSet representing the services to examine for a possible activation.
+We ran our system in order to determine the set SysCSet CSet of citizens who could have the highest benefits from the activation of the services of NSSet .
+
+We asked a human expert (i.e., a government agency manager) to identify a subset ManCSet CSet of citizens who, in his opinion, could be interested in the services of NSSet .
+ The Precision P and the Recall R were computed as Both Precision and Recall vary in the real interval [0,1]; moreover, the higher they are, the better our system works.
+The choice of Precision and Recall as the parameters for evaluating the accuracy of a system devoted to make suggestions field and, then, were extended to many other fields.
+
+They are particularly suited as accuracy measures because they are capable of quantifying the two main properties of a suggestion system, i.e., its soundness and its completeness.
+
+In fact, as far as our application context is concerned, if we assume that the set ManCSet of suggestions provided by the system; therefore, it measures the completeness of our system.
+
+We performed some tests to measure the impact of the number of iterations carried out by MH to construct its final rec-ommendations on the accuracy of our system. Obtained results are reported in Figs. 4 and 5 . some iterations, they quickly increase.
+ sults generated by MH become quickly reliable.
+ of variables appearing in the optimization problem decreases, the solution space shrinks and, consequently, the number of number of variables produces an increase of the solution quality.
+ Recall.
+ for the manager who does not modify his own choices. 3.4. Analysis of the impact of available budget on our system X  X  policies In order to carry out this analysis we performed the following steps:
+For each service S j 2 SSet :  X  We applied our system in order to identify the set of citizens SysCSet  X  We computed the Precision P j and the Recall R j related to S
+We averaged these measures for all services associated with each budget of BSet . Specifically, for each budget B  X  We considered the set SSet p SSet of services, such that each of them can be activated with a budget equal to B  X  We averaged Precision and Recall obtained for all services of SSet of this figure we may observe that all the average measures into consideration are substantially constant and quite high.
+The high values of accuracy measures show that our system is really capable of simulating the behaviour and the reason-ing of the human expert and, therefore, that it is really adequate to support government agency decision makers.
+The constant values of accuracy measures can be explained by the following reasoning: generally, a welfare system, in a service for them are higher, the corresponding benefits are much higher. As a consequence, any human expert would tend activation budget show that the algorithms underlying our system are really capable of simulating this welfare systems X  with a higher income; as a consequence, there is no substantial change of Average Precision and Average Recall w.r.t. the previous case. and 50,000  X  , higher than 50,000  X  ). Obtained results are shown in Fig. 7 .
+
+From the analysis of this figure we can observe that, for low budgets, our system really favours low-income citizens; in the corresponding citizen distribution in CSet . 3.5. Robustness
+In all our previous experiments we assumed that data provided in input to our system were correct. This assumption is behaviour of our system.
+
+Specifically, the core of our system is the optimization problem underlying MH ; this problem substantially matches cit-other words, it aims to estimate the Robustness of our system against errors possibly occurring in citizen and/or service profiles.
+
+In order to measure this Robustness we carried out some variations in the correct profiles and, for each of them, we com-puted the corresponding values of Precision and Recall. 5 (1) we removed 10%, 20%, 30% and 50%, respectively, of correct keywords from all citizen profiles, without modifying any (3) we removed 10%, 20%, 30% and 50%, respectively, of correct features from all service profiles, without modifying any (5) we removed 10%, 20% and 30%, respectively, of correct keywords from all citizen profiles and, at the same time, we (6) we removed 10%, 20% and 30%, respectively, of correct keywords from all citizen profiles and, at the same time, we (7) we inserted 10%, 20% and 30%, respectively, of wrong keywords in all citizen profiles and, at the same time, we (8) we inserted 10%, 20% and 30%, respectively, of wrong keywords in all citizen profiles and, at the same time, we Obtained results are shown in Tables 5 and 6 . From the analysis of these tables we can observe that: good sensitivity against these errors since, if the correct keywords/features removed or the wrong keywords/features added are excessive, the accuracy of its results significantly decreases.
+
+Both the removal of correct keywords/features and the insertion of wrong keywords/features produce a decrease of accu-racy measures; the degree of this decrease is approximatively the same for both removals and insertions.
+The importance of citizen profile errors and service profile errors is approximatively the same; in other words, the same fraction of errors in citizen and service profiles approximatively produces the same decrease of our system X  X  accuracy. neously, the total decrease of our system X  X  accuracy is often less than the sum of the accuracy decreases independently caused by them. In other words, there is a sub-linear combination of the consequences caused by a simultaneous presence a feature from a service profile. 3.6. Response time In this section, we analyze the Response Time of our system against the number of iterations performed by MH .
+In order to consider also the influence of the citizen community size, we repeated our measurements for four cases, i.e., Fig. 8 .
+
+From the analysis of this figure we may observe that when the number of iterations is low, Response Time quickly grows; number of iterations highly increases.
+
+This figure shows also that citizen community size has a certain impact on the Response Time of our system. This impact required to perform each iteration grows and this determines an increase of the Response Time.
+However, in spite of this increase, we can observe that the Response Time of our system is always reasonable, even in appearing in the optimization problem to solve. As a consequence, we can conclude that our system shows a good degree of scalability when the user community size grows.
+ ber of available services. This choice has been made for the following reasons:
+From a computational standpoint, an increase of the service number yields the same effects of an increase of the citizen community size. In fact, both these two cases cause an increase of the number of variables appearing in the optimization problem to solve.
+ The number of available services is generally much less than the number of available citizens. As a consequence, in the
+Response Time, the citizen community size plays a more relevant role than that played by the number of available services.
+
+Interestingly enough, the results about the Response Time reported in this experiment are complementary to those iterations.
+
+From this comparative analysis we can conclude that a number of iterations ranging from 750 to 1300 yields a good bal-ance between accuracy and performance requirements. 3.7. Role of w that w is involved in the computation of the benefit b ij potentially interested in receiving a service.
+
+In order to perform our tests we first considered the following formulas for w : w 0  X  C i ; S j  X  X  K I ij K D ij K C ij ; this is the formula that we have adopted as the standard one in our system; w 2  X  C i ; S j  X  X  0 : 5 K I ij  X  0 : 5 K D ij ; w 3  X  C i ; S j  X  X  0 : 5 K w 4  X  C i ; S j  X  X  0 : 5 K
+After this, we repeated the experiments described in Section 3.3 for each function w sion and Recall. At the end of these experiments we found that the Precision and the Recall obtained by our system when w , w 3 and w 4 are applied are always smaller than those obtained when w the Precision of our system obtained by applying w 1 (resp., w 4.96%, 4.45%, 4.39%); analogously, the minimum reduction of the Recall of our system obtained by applying w , w 4 ) w.r.t. that obtained by applying w 0 is 8.85% (resp., 4.54%, 4.14%, 4.09%).
+
+These results show that, from the accuracy point of view, w the goodness of our choice to select w 0 as the default formula for w (see Section 2.5 ). ian Central Government welfare policies; in another completely different welfare system, an alternative and very specific formula for w could be more adequate. However, we point out that our formula for w is extremely general and, presumably, in many others. 3.8. Impact of the dataset on system results bles 1 X 4 . We denote by DS 1 and DS 2 these new datasets and by DS
+Analogously to what happened in DS 0 , also in DS 1 and DS
+DS 0 ;in DS 2 , instead, these distributions are intermediate w.r.t. those of DS are reported in Tables 7 X 10 .
+
+After having constructed DS 1 and DS 2 , we repeated the experiments described in Section 3.3 for DS that the Precision and the Recall obtained by our system in these cases are very similar to those obtained for DS as for DS 1 (resp., DS 2 ), the maximum variation of Precision, w.r.t. that obtained when DS 1.21%), whereas the maximum variation of Recall is 1.54% (resp., 1.18%).
+
+In our opinion these results are very interesting; in fact, if we consider that DS 3.9. Analysis of the effectiveness of our system for citizens
+This final experiment has been conceived to verify the usefulness and the effectiveness of our system for its end-users satisfied by the suggestions provided by our system and, ultimately, that the system itself is useful and effective for citizens.
+
+In order to perform our experiment we considered a set RCSet of 30 real citizens whose distribution against yearly income and age was consistent to that considered for the previous experiments and reported in Tables 1 and 2 .
+The experiment was performed as follows: (1) For each budget B p 2 BSet we constructed a set SSet p (2) For each service S j p 2 SSet p we activated our system to determine the set SysRCSet (3) For each service S j p we asked each citizen of SysRCSet (4) For each S j p we computed the so called System Effectiveness SE (5) For each SSet p we averaged the values of the System Effectiveness of all its services as satisfied by our system X  X  decisions is and, ultimately, the higher its effectiveness will be.
+Fig. 9 shows the values of AvgSE p when B p ranges in BSet . From the analysis of this figure we can observe that AvgSE substantially constant and quite high for all values of B our system is really useful and effective for citizens. 4. Related work
+In the literature several systems devoted to support both government agencies and citizens in their decisions and choices have been proposed. In this section, we compare some of them with our own; before performing this comparison, we would mains of interest to Public Administration.
+
+Our system and that described in [22] are similar in that both of them: (i) define and solve an optimization problem to the impact of a service on a community.
+ tion of statistical data concerning citizens (e.g., the average number of unhealthy days per person per month). sented. GASOP consists of several modules, each acting as a specific-domain decision support system; the results produced by each module can be suitably combined by solving a linear programming problem; this allows the evaluation of costs and benefits associated with a specific energy policy.
+
+There are few similarities between our approach and GASOP; specifically, both of them: (i) define and solve a suitable linear programming problem to make their suggestions; (ii) analyze financial and economic information associated with the activation of the service/policy into consideration.
+ and exploit user profiles.
+
+In [36] the system IDEA (Intelligence for Decisions in Environmental Administration), aiming to support the decisional process in the environmental context, is proposed. IDEA uses a rule-based approach where rules are of the form IF X  X HEN. define new ones. Finally, it exploits all rules to make its suggestions.
+
+There are some similarities between IDEA and our system. Specifically: (i) both of them formulate the problem of assist-citizens and the expenditures required to government agencies whereas, in IDEA, it involves ecological and economical created and integrated with the existing ones whereas, in IDEA, new information sources representing environmental data can be freely added to the system.
+
+As for the main differences, we observe that: (i) IDEA requires a pool of human experts to capture and manipulate knowl-edge about the environmental domain; in this way, it can obtain a wide range of information useful to perform its compu-tations; by contrast, our approach tracks citizens behaviour and analyze their queries to learn their profiles; as a estimate the benefit that a citizen would gain from the activation of a service.
+
+In [16] , a decision support system developed for German railways is described. It models user needs by means of fuzzy-the highest rank is proposed to the manager.
+ while reducing operational costs.
+ theory techniques to acquire and model knowledge in the railway domain; these techniques are very powerful and allow situations affected by vagueness and uncertainty to be modelled under the form of suitable IF X  X HEN rules; however, these rules heavily depend on the domain features and, thus, are very difficult to be generalized.
+In [18] , a system supporting citizens to access services provided by Japanese railways system is described. This system gather information about user demands and can modify the features of offered services on the basis of user behaviour/ needs.
+
+Some similarities can be found between our system and that presented in [18] ; specifically, both of them: (i) take user behaviour and needs into account; (ii) are capable of supporting both citizens and government agency managers; (iii) rely on a distributed architecture in which each citizen is equipped with a software module assisting it. and, in case of service failure, can detect alternative services to propose to them.
+ provides a graphic interface to execute an OLAP analysis on it.
+ by requiring users to directly specify their needs, in the system described in [9] .
+
+As for differences between the two systems, we may notice that: (i) the system proposed in [9] is based on Data Ware-house and OLAP technologies; on the contrary, our system is based on linear programming techniques; (ii) our system con-siders a scenario in which many government agencies (each providing a set of services) operate to serve a citizens community; by contrast, the system of [9] does not consider aspects concerning the multiplicity of service providers.
+In [17] , a system supporting the allocation of health care resources in such a way as to reduce morbidity/mortality in a be delivered in such a way as to reduce the number of deaths. Community health conditions are described by means of sev-
+There are several similarities between our system and that proposed in [17] . Specifically, both of them: (i) define and solve a suitable linear programming problem; (ii) consider both budget constraints and the constraints induced by commu-nity features.
+ service.
+
+In [4] , the authors present CATCH, a system conceived for accessing multiple data sources in such a way as to generate a to carry out its activities, CATCH applies OLAP operators on a suitable Data Warehouse.
+It is possible to recognize some similarities between CATCH and our system. Specifically, both of them: (i) manage activation of a service.
+
+As for the main differences between them we can observe that: (i) CATCH is based on OLAP technology whereas our sys-tem defines and solves a suitable linear programming problem; (ii) CATCH does not handle user profiles. submit questions about delivered services to other community members; (ii) propose answers/solutions to the queries/re-final decision.
+
+We can identify some similarities between our system and Smartocracy. Specifically: (i) in both of them the decision mak-directives of user modelling theory whereas Smartocracy records mutual trust relationships existing among citizens.
+As for the main differences between the two systems we observe that: (i) in our system citizens and government agency for directly assessing the economic costs associated with the delivery of a proposed service.
+Due to these reasons, our system and Smartocracy appear orthogonal; in fact, given a citizens community and a set of system). The results of this discussion could be extremely useful to government agency managers who could consider this additional information (along with service costs and benefits) to make their final decisions. 5. Conclusions
+In this paper, we have presented a system conceived to support managers of government agencies to design new services supports government agency managers to make their decisions.
+ the context of e-government.
+ the composition of two or more existing services when a service package is constructed. ios (e.g., during week-ends).
+References

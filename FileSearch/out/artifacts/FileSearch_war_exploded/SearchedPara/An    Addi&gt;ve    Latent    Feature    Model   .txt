@@ -1,0 +1,2 @@
+ We show how to form a representa&gt;on suitable for those kind of objects by discovering latent substructures in local features (leP) 
+We detect glasses in a domes&gt;c environment 

@@ -1,0 +1,78 @@
+ 1. Introduction
+Human beings continuously confront noise in texts when they read or write documents. By noise we mean difference in the surface form of an electronic text from the intended, correct or original text in Knowledge Organization Systems 1 (KOS) such as thesauri or ontologies (e.g. the AGROVOC domain or the UMLS 3 in the medical domain).
+ automatic summarization from OCR documents. The authors of these approaches reach the conclusion that noise seriously this approach requires a profound knowledge of the kind of noise errors that can be found in the data. thus signifying that neither answer extraction nor noise treatment is performed. amounts of redundant documents in which the expected answer with and without noise. A redundant corpus thus avoids the situation of IR systems being affected by noise problems. non-redundant corpus is used, and (ii) noise is unavoidable.
+
+Our conclusions and future work are shown in Section 8 . 2. Related work on dealing with noise in IR systems files, or files processed from OCR or Automatic Speech Recognition tools [13]. 2.1. Dealing with noise in IR queries by the use of contextual correction, although there is still an important decrease in precision (about 50%). Moreover, this approach does not deal with noisy words that are legitimate words but semantically incorrect. 2.2. Dealing with noise in IR corpora that confronts OCR errors is presented. Further similar approaches can be studied in TREC Confusion Track [22,23] . to discard any piece of information owing to the small size of the corpus.
+ restricted-domain corpus is used; and (vi) it can deal with multi-words. 3. Selection of the edit distance algorithm (insertion/deletion). Furthermore, the Jaro [36] or Jaro  X  special manner by using a static scale factor.
+ account the position in which the operation occurs; (ii) the Needleman one consonant with another different one); and (iii) the Jaro detection for restricted domain IR, thus requiring a new edit distance algorithm (described as follows). 3.1. Extended edit distance
+This information is used in DEx to apply certain penalties according to:  X  those occurring further to the right of the word.  X  insertion of a character.
+
+DEx algorithm consists of the following steps, which are defined by Fern X ndez et al. [38]: 1. The Levenshtein matrix that contains the words to be analyzed is generated. For example, the matrix for words  X  case, three transformations should take place) of transforming the noisy word
+Table 1 the LCS of the example  X  afrecholk  X  X  X  afrechillo shown as a different kind of operation:  X  A vertical movement is interpreted as a D elete operation.  X  A horizontal movement is interpreted as an I nsertion .  X  A diagonal movement is interpreted as a S ubstitution .  X  Finally, if source and target cells have the same value, this is interpreted as a N 4. Evaluating Eq. (1) with the OC found and those characters were involved in each operation. where:
+O Operation chain (O  X  No operation, I  X  Insertion, D  X  Deletion, S
+O i Operation in position i .
+ V this is formalized as the following vector c 1, c 2 analyzed words or strings. c 1 j character j of word c 1. c 2 k character k of word c 2.
+
+P weight assigned to each character. These weights are obtained by calculating the frequency of each character in a
+P  X  X  weight of character c 1 j , where,
+P  X  X  weight of character c 2 k , where,
+L length of the longest word in the selected dictionary. For example, as the longest length of a word in AGROVOC is 23 l length of the edit operation chain.
+
+R max maximum amount of characters in the general-language dictionary used for the generation of the set of weights P .
+N this is defined as follows, N =  X  i =0 L  X  1 (2 R max +1)
+In Eq. (1), it can be observed that the term V O i  X  X  P c 1 carrying out the operation V O i  X  X  between characters c 1 the order relation is not affected.
+
+Table 2 shows the values of every parameter for calculating DEx between words
+DEx in the example, distance DEx = 0.028 is obtained between similar words.
+ where m and n are the length of compared strings.
+ alba , abies balsamea , abies sachalinensis , etc.). 4. Extension of DEx for multi-words as a whole string, but the problem is mainly due to word permutations (e.g.  X 
+University of Virginia  X  than is  X  Virginia, University  X  contextual elements may be matched approximately by edit distance, defined as the minimal cost incurred by the changes (including insertion, deletion and replacement) needed to transform one sequence into the other.
+The Multi-words Distance ( DM :  X  Distancia para Multipalabras (comparison between words  X  afrecho de trigo  X  and  X  afrechillo independent entity. the matrix for the example after simultaneously carrying out both this and the subsequent step of the algorithm.
+OC of an equal length. The steps to calculate this threshold are: 3.1 The Middle of the previously generated operation chain (Middle-OC) of compared words is found as follows: 3.2 A new OC with the same length as the original OC is created. This new OC has No-Operation (i.e. 5. The operation chain from the previously obtained matrix is determined (see Table 5 ). For the example this is no operation (  X  O  X  )between  X  afrecho  X  and  X  afrechillo 6. The operation chain in the Equation DM is evaluated, which is defined according to Eq. (2) where: Parameters and constants are described as follows:
+O i Operation chain in the position i (O  X  No operation, I  X 
+V ( O i ) vector of operations. This has values of 0 if the operation chain in i is L Length of operation chain ( O i ).
+
+CD Penalty factor for DEx between compared words ( CD = 0.05 of FP ). This value was empirically obtained from several
+DE i DEx , according to Eq. (1), between words in position i within multi-words.
+The evaluation for the example is shown in Table 6 . Also, according to DM , the value of the distance between and  X  afrechillo  X  is 0.37; and both words are thus considered to be similar.
+ less similar.
+ used the DM algorithm. Some comparisons of this and other distance measures have been made in Section 7.1. 5. Adding noise-tolerance to an IR system query terms by means of the DM algorithm. An overview of the approach is depicted in Fig. 1 . algorithm, is explained in Sections 5.4 and 5.5. 5.1. Obtaining terminological vector for each indexed term denotes the term r in the set of terms. The terminology vector that represents the term t t ;  X  X  ; t 2 ; w 2  X  X  ; ... ; t n ; w n  X  X   X  where w r denotes the distance between t indexed term, its mapped terms and their corresponding distances are kept in terminology vectors ( C ).
+To illustrate our proposal, we take the text fragment with noise shown in Fig. 1 : a la familia Basellaceae, es muy usada en la cocina asi X tica china, perteneciente a la familia Basellaceae, es muy usada en la cocina asi X tica in:  X  basela  X  with the omission of  X  l  X  character and  X  al6a  X  is also a correct word in the language. By applying the method we will obtain the vector C represented as C [( basella _ alba , 0.241),( baselaceas ,0.248),( basella ,0.249),( basella _ rubra , 0.249), 5.2. Obtaining terminological vectors of each relevant query term related KOS terms by using DM algorithm, and (iv) their corresponding terminology vectors ( Q ) are obtained.
+For example, if we consider the query  X   X D X nde se utiliza la basella alba? 5.3. Obtaining the mapping between terms between both vectors. The criterion used to determine these correspondences is:
+Whether the term i represented by the terminology vector Q following conditions:
+These threshold and NT values depend on the application domain and must be defined empirically. In our case study, the and recall in the comparison of simple words and multi-words (as shown at Section 7.1.3 ). by using the terms related to the vector C j because terms related to the vector Q vector Q i related to the query term i matches several C 1 term i will be expanded by the corpus terms 1, 2, ... , j .
+
+By following the examples shown in Sections 5.1 and 5.2 we can observe that the terms  X  baselaceas  X  and  X  basella rubra  X  appear in both vectors Q the first and second rules are fulfilled and the word  X  basela al6a same way the corpus noisy term  X  basela al6a  X  can be used to expand the query term
+We have thus succeeded in relating the query terms  X  basella alba corpus and the IR system has been able to find the passage with the correct answer shown in Fig. 1 as system output. 5.4. IR systems engines: JIRS 5 and Lucene. 6 5.4.1. JIRS structure between the query and the passage is, the higher the passage relevance will be. For example, if the query is searched for by using an intravaginal sponge system made of polyurethane? set a farm-level, a suitable method is searched for by using an intravaginal sponge system made of polyurethane the distance between them.
+ systems which took part in the Cross Language Evaluation Forum (CLEF) in 2005 obtained the first positions in the ranking [45]. 5.4.2. Lucene
+Lucene [46] is a high-performance, scalable, open source search engine written completely in JAVA. [47] is used, but with some modifications which are explained in their documentation.
+We used Lucene because it is the most frequently used IR system in QA systems. Nevertheless, this system is based on documents of 3 sentences with the same criterion as explained above. 5.5. Applying query expansion to IR systems described above (in Section 5.4 ) and will be used in our experiments.
+ gastrointestinal tract? ), the DM algorithm returns the terms which appear in Table 7 . expanded 1,1 OR expanded 1,2 OR ... OR expanded 1 ; m 1 ) AND ( term
+AND ( term n OR expanded n ,1 OR expanded n ,2 OR ... OR expanded appear in the passage. Following the previous example, the query for Lucene should be: (metabolites OR metabolic OR principales AND vienen AND (tracto OR tract) AND (digestivo OR digest OR 5.6. Performance of our noise-tolerance approach and Levenshtein algorithms can be approximated as O (| X | corpus of N C words and a KOS of N K terms, this cost is O ( N not depend on their sizes, the complexity of the algorithm based on our approach is O ( N response time of a few milliseconds within an acceptable memory cost using a 1.6 GHz Pentium IV machine. 6. Experimental resources
+This section describes the resources used in order to perform the experiments shown in the following section. 6.1. RCCA corpus
+The corpus used in the experiments is the Cuban Journal of Agricultural Science (RCCA: because this is the open-access part.
+
+RCCA journal accomplishes the three conditions stated by Minock [11] for being a restricted domain corpus: (i) it is 6.1.1. Removing noise from a small piece of the corpus 150 files of the corpus that contain the answers to test queries. 6.2. Test queries
+A total of 329 queries were used in the experiments. They were formulated in natural language rather than as a list of performance of the IR system. 6.2.1. Inserting noise to the queries the OCR tool. 6.3. AGROVOC thesaurus agricultural information systems. 7. Experiments algorithm and our noise-tolerance scheme (see Fig. 1 ) are flexible enough to allow adaptation to different languages.
+Section 7.1.3 . Afterwards, other experiments were carried out as follows: baseline IR systems, respectively (whose results are presented in Section 7.2.1 ). Section 7.2.3 ).
+
+However, for the experiments in Sections 7.2.2 and 7.2.3 , we expanded the queries using our approach. 7.1. Preliminary experiments with edit distance algorithms with the same stem but different inflectional endings.
+ they are composed of two or more words that do not normally appear together. The third preliminary experiments (see means of a simple example. 7.1.1. Experiments with verb conjugations assign the shorter distance to word inflections (e.g. between the lemma and the various tenses of a verb).
+In order to carry out these experiments, three random verbs were taken:  X  between these verbs and their corresponding conjugations by applying different algorithms: Jaro, Jaro
+Needleman  X  Wunsch and DEx (which our approach is based on). Edit distances were calculated by using SimMetrics, source library written in JAVA and supported by the University of Sheffield.  X  ense X ar  X  , but the same behavior was observed in the rest of the verbs (see previous work [38]). overly penalize any of the tense conjugations because it considers word stems rather than word endings. 7.1.2. Experiments with noisy and non-noisy words (e.g. bacteriaz ) errors and language switch (in our case from Spanish into English). described in Section 6.1 , as well as a pivot word  X  bacterias
+Words which in some way contained the stem of the pivot word were considered to be related (e.g. and  X  bacter oidaceae  X  ). Table 8 shows more examples of terms related to some noise into 49 of the 130 related words (some examples are shown in the terms in italics in Table 8 ).
+Distance with the Pivot mentioned above.
+ of 80%, like that of Jaro, Jaro  X  Winkler and Needleman  X  measures evaluated (with the exception of DEx ) obtained an average of 27 incorrect words. QGramsDistance methods.
+ Fig. 4 shows the strong ability of DEx to retrieve words with noise compared with other algorithms. QGramsDistance when more than 100 words are retrieved.
+ final results. 7.1.3. Experiments to measure the effectiveness of DM distance
+Precision words related to  X  bacteria  X  , 47 of which were multi-words (e.g. positiva  X  , etc.).
+ Number of Noisy Words Precision unable to deal with multi-words properly, and their precision is very poor in comparison with previous experiments. or when shortened words are included.
+ experiments the performance of this algorithm in noisy-tolerance IR systems. 7.2. Experiments for evaluating our noise-tolerance approach
+Section 5 ). 7.2.1. Experiments for determining bound values to evaluate our noise-tolerance approach
+This experiment aims to obtain the maximum and the minimum values of several performance measures when JIRS or Lucene proposal.
+
+In the indexing phase of both IR systems on the entire RCCA corpus, 432,997 passages and 180,460 domain terms were domain terms were obtained (1894 of them containing noise, therefore, around 18% of the terms contained noise). 150 documents that had been preprocessed to partially remove noise (henceforth PCB: Preprocessed Corpus and Baseline between 217 and 291 with Lucene (see Fig. 7 (b) when 20 passages per query are returned). 0.52 with Lucene). 7.2.2. Experiments for evaluating our noise-tolerance approach with noisy corpus therefore, the nearer the results are to the best performance, the better our approach will work. has close values to the results obtained with the non-noisy corpus (see Fig. 6 ). experiments.
+ answer to the query). 7.2.3. Experiments for evaluating our noise-tolerance approach with noisy queries between which the results should range to consider our approach as a valid one. without noise (CQB: Non-noisy Queries and Baseline system, the results being equal to those from PCB of the previous experiment); and (iii) measuring the effectiveness of our approach by using noisy queries (NQA: Noisy Queries and our
+IR system when noise appears in the query. 8. Conclusions and future work overcome this problem, in this paper, we show how noise tolerance can be added to the retrieval process. Question Answering.
+
+References

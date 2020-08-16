@@ -1,0 +1,70 @@
+ 1. Introduction the parameter estimation and the achievable model quality. identification of linear dynamic systems with pseudorandom track the nonlinearities of the underlying process. reduce the experimental effort.
+
+When DoE and modeling are carried out in parallel to a 2008 ) and to use the updated model for the creation of new dynamic experiments for a certain number of future system inputs, cf. Fig. 1 .
+
+A fundamental challenge for experiment design is the com-for nonlinear dynamic systems it is not trivial to generate inputs influence all future system outputs.
+
+In literature different approaches for model based DoE for model variance of multilayer perceptron networks (MLPs) by Kloepper (2009) and Cohn (1996) .
+ 1996 ) and local model networks (see Jakubek and Hametner, ison between MLP and LMN based DoE is given. In addition, a the model parameters on the model output.
+ mization problem is stated and an optimization algorithm is 2. Model architectures
+Model based design of experiments requires a process model, information matrix and on the other hand for the compliance with output constraints.
+
+In the following, deterministic data driven models with a y  X  k  X  X  ^ y  X  k , h  X  X  e  X  k  X  :  X  1  X 
+In the following the MLP and LMN model architectures are input and single output (MISO) systems. 2.1. Multilayer perceptron network et al. (2000) .
+
+The network parameter vector which comprises the input weights W W  X  2 6 4 Online training as well as the output weights x N observations:
+U  X  model inputs u j ( k ) for each input channel j  X  1 ... n bias term: x  X  k , h  X  X  X  1 ^ y  X  k 1 , h  X  ^ y  X  k n , h  X  u 1  X  k 1  X  u
+In this paper the hyperbolic tangent function is chosen as layer is given by the product of the input weights and the regressor vector: h  X  k , h  X  X  Wx  X  k , h  X  :  X  7  X  the output of the hidden layer: o  X  h  X  k , h  X  X  X  and the network output weights x : ^ y  X  k , h  X  X  x T with the number of hidden units n h . 2.2. Local model network
+Local model networks are composed of several local models
+The parameter vector of the LMN h comprises the parameter vectors of all local models: h  X  local model and the global output of the LMN is given by corresponding validity functions, see Fig. 4 : ^ y  X  k , h  X  X  x T  X  k , h  X  ! i ,  X  11  X  ^ y  X  k , h  X  X  submodels. 3. Model based design of experiments
+Model based design of experiments is a methodology for the measure the information content of a variable U (excitation signal). The Fisher information matrix is a real valued and the inverse of the Fisher information matrix: J  X  tr  X  I 1  X  :  X  13  X 
+For D-optimality the determinant of the Fisher information matrix is subject to maximization: J  X  det  X  I  X  :  X  14  X  Fisher information matrix: J  X  l min  X  I  X  :  X  15  X  model output caused by past model outputs in the regressor tion matrix in ARX configuration is given by I  X  the model output with respect to the parameter vector: I  X  for both model architectures (MLP and LMN) are explicitly derived in the following Sections 3.1 X 3.4 .
+The computation of the parameter sensitivity vector in ARX configuration: w  X  k  X  X  @ ^ y  X  k , h  X  @ h  X  18  X  is separately obtained for the MLP output weights w  X  k  X  X  @ ^ y  X  k , h  X  @ x  X  and the input weights w W  X  k  X  : w  X  k  X  X  @ ^ y  X  k , h  X  @ W  X  diag  X  o 0  X  h  X  k , h  X  X  X  ~ ~ x  X  X  o 1 ... o n h T :  X  21  X  where J denotes the Hadamard product. on c
+ARX plus an additional term, which describes the dependence w  X  k  X  X  parameters is obtained recursively from (6): d x T  X  k , h  X  d h  X  0 regressor vector is given by @ ^ y  X  k , h  X  @ x T  X  k , h  X   X  ~ o 0  X  h  X  k , h  X  X  . parameter h is computed as follows: w  X  k  X  X  @ ^ y  X  k , h  X  @ h  X  vector is required: @ ^ y  X  k , h  X  @ x  X  k , h  X   X  the parameter sensitivity matrix W comprises the parameter sensitivity vectors of all observations k  X  1 ... N :
+W  X  2 6 6 4
+I  X  W  X  X  4. Constrained optimization system inputs u j . The optimization problem is stated as
+D optimality : max s : t : 8 &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; : the dynamic excitation signal.
+ output constraints.
+ to the dynamic excitation signal is computed and all active signal. excitation signal The computation of the derivative of the determinant of the tivity matrix and its derivative with respect to u j ( l ): dJ  X  W  X  du j  X  l  X   X  tr
+The derivative of the determinant of the Fisher information by (cf. Magnus and Neudecker, 1999 ):
+In this context it is important to mention that the Fisher matrix based on an MLP networks can be made regular by the elimination of redundant neurons.
+ MLPs and LMNs. system inputs for MLPs in ARX configuration the l -th observation: d w
+ARX  X  k  X  du j  X  l  X   X  for the output weights from (19): d w x  X  k  X  du j  X  l  X   X  and d w
+W  X  k  X  du j  X  l  X   X  diag  X  o with respect to the i -th input to the hidden layer: respect to u j ( l ) is formulated as d x T  X  k , h  X  du j  X  l  X   X  0 derivative of the model output with respect to the dynamic recursively for k  X  1 ... N : d ^ y  X  k , h  X  du j  X  l  X   X  system inputs for MLPs in OE configuration
+Additionally to the derivative of the parameter sensitivity computed according to (23): d w
+OE  X  k  X  du j  X  l  X   X  from (25): d du  X  l  X  d w  X  k  X  = du j  X  l  X  the previous results d w OE  X  k 1  X  = du  X  k n  X  = du j  X  l  X  are used according to (39): d du  X  l  X  configuration composed of two terms: d w
+ARX  X  k  X  du  X  l  X   X 
+The derivative of the regressor vector with respect to u j (37) and (38). configuration
+The mathematical expression for the derivative of the para-d w  X  k  X  du  X  l  X   X 
+Additionally, to the ARX configuration two terms have to be vector with respect to the model parameters (24) and the be computed.
+ tions k  X  1 ... N : d W du  X  l  X   X  4.2. Iterative excitation signal update with constraints criterion with respect to the dynamic excitation signal was derived for all input channels u j ( k ) with j  X  1 ... n n  X  1 are considered in the sequel.
+ row vector: g  X  u  X  r 0  X  45  X  r g  X  dg 1 d u ... dg n act d u :  X  46  X  is zero.
+
+In Fig. 5 the principles of the method are depicted. The r J the algorithm is indicated by d and in every iteration the problem is stated as:  X  D u d r J D  X  T  X  D u d r J D  X  -min g  X  r g T D u  X  ! 0 :  X  48  X  L  X  1 2  X  D u d r J D  X  T  X  D u d r J D  X  X  k  X  g T  X  = g T d L d D u  X  D u d r J D  X  X  k r g signal increment D u is stated as a function of k : D u  X  d r J D  X  k r g T  X  T :  X  51  X 
+In the next step k is computed from (51) and (48): k  X  X  r g T r g  X  1  X  g T  X  d r g T r J D  X  :  X  52  X  output constraints.
+ cate those changes which would abandon the violation of y lated as ^ y  X  k  X  4 y max : ^ y  X  k  X  X  ^ y  X  k  X  o y min : ^ y  X  k  X  the development of future system outputs, cf. ( Camacho and see Eq. (38).
+  X  u u  X  k  X  4 u max : D u  X  k  X  u max  X  u  X  k  X  X  0 ,  X  55  X  u  X  k  X  o u min : D u  X  k  X  X  u min u  X  k  X  X  0 :  X  56  X  Rate constraints : The adherence of the input rate D u following conditions.
+
+For D u rate  X  k  X  4 D u max : For D u rate  X  k  X  o D u min :  X  u  X  k  X  1  X  X  D u  X  k  X  1  X  X  X  u  X  k  X  X  D u  X  k  X  D u min 5. Application example
+In automotive calibration tasks proper engine models are of 5.1. Physical reference model for the investigation of transient operating conditions. 5.2. MLP and LMN reference models and abstract parameters (e.g. turbo charger map). For this example the generation of an MLP and an LMN model, respec-for the optimization of excitation signals.
+
+The physical engine simulation software is used to generate optimization of initial APRB signals.
+ consists of four local models. 5.3. Initial DoE and optimal model based DoE
+APRB signals are used as starting sequence for the proposed optimization method. The sampling time is chosen to be
+T and the according optimal model based DoE for the Fisher OE configuration is depicted.
+
+Based on the LMN and the MLP reference models the exhaust temperature for the initial APRB sequence and the optimized
+Figs. 10 and 11 , respectively. 0 1 2 3 4 5 6 7 Injection mass [kg/stroke] 0 1 2 3 4 5 6 7 Injection mass [kg/stroke] 550 600 650 700 750 800 850 900 Exhaust temperature [K] 550 600 650 700 750 800 850 900 Exhaust temperature [K]
+Here, the initial APRBS violates the admissible temperature limits.
+ under compliance with the admissible injection mass and the objective function is admissible, cf. Fig. 5 . 5.4. Validation of optimized excitation signals
+The validation of optimized excitation signals is done with LMN Fisher matrices both in ARX and OE configuration. The pared to the initial APRB signals, as shown in Table 1 . realized. In Fig. 15 exhaust temperature distributions are Figs. 12 and 13 ).
+ well as with optimized data and the obtained models are observes the admissible exhaust temperature. In Fig. 16 the validation procedure is shown.
+ based on the initial APRB signals and the optimized data is illustrated by means of box plots of the mean squared error Exhaust temperature [K] Exhaust temperature [K] Det ( I ) marked with crosses.
+
+Fig. 17 and Table 2 illustrate the improvements gained from ods based on both MLP and LMN achieve significant improve-better performance regarding a lower median and a smaller interquartile range.
+
+The training of MLPs basically depends on the random initi-alization of the input and output weights, which decisively why LMNs show a lower MSE than MLPs in this comparison. 6. Conclusion
+Model based experiment design is targeted to make experi-parametric nonlinear dynamic systems represented as either excitation signal is demanded to comply with system output to prevent system damage and to provide stable operational Relative Frequency MSE model based approach compared to standard APRB signals. tion signals shows a better performance compared to APRB past model outputs. This approach showed the most promising results regarding model quality.
+
+The proposed DoE method is targeted to reduce the uncer-mance of the presented model based DoE approach. Future the method regarding uncertainties in the reference model. Acknowledgments This work was supported by the Christian Doppler Research Association and AVL List GmbH.
+ References

@@ -1,0 +1,2 @@
+ The Recurrent Temporal Restricted Boltzmann Machine RTRBM : sample the TRBM as usual (do Gibbs for the RBM in each time step) but in the last step , do a  X  mean-field X  update for the hiddens (so they become continuous).
+ So the RTRBM is very similar to the TRBM, b ut this modification makes it tractable! 

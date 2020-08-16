@@ -1,0 +1,1 @@
+ by K. Fukumizu, A. Gretton, X. Sun, and B. Sch X lkopf. ID: W3  X  The proposed measures are used for independence and conditional independence tests.

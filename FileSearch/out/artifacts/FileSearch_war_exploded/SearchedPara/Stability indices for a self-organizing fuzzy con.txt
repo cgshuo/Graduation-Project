@@ -1,0 +1,81 @@
+ 1. Introduction extremely important for the control of MIMO systems.
+Fuzzy logic control, which does not need a mathematical performance in practical applications.
+ FLC.
+ supports the dynamic variation of the control system. classical nonlinear dynamic theory.
+ by modifying fuzzy control rules of the used FLC. the stability of a model-based fuzzy controller. of the SOFC by numerical simulations. 2. SOFC for MIMO systems
+This study developed an SOFC for MIMO systems. As MIMO systems may have many reference inputs and many output an MIMO system. 2.1. Self-organizing fuzzy algorithm and consists of three steps: performance measure, model database in the scheme of Procyk and Mamdani (1979) and autoregressive moving average model ( Ljung, 1987): where A  X  z  X  X  1  X  a 1 z 1  X  a 2 z 2  X  X  a n z n ,
+B  X  z  X  X  1  X  b 1 z 1  X  b 2 z 2  X  X  b m z  X  m d  X  , a model of the system, nor does it depend on a precise interval can be described as system X  X  output deviation is can be described as D _ y  X  k  X  X  D y  X  k  X  T  X  M T D u  X  k  X  ,  X  4  X  D u be determined as D u e  X  k  X  X  1992) is used: D u  X  k  X  X  X  1 B  X  D u e  X  k  X  X  B D u ec  X  k  X  ,  X  6  X  D u thus become correction value of the control input, D u  X  k  X  X  g M  X  X  1 B  X  e  X  k  X  X  B ec  X  k  X  :  X  10  X  membership function that is the same as the membership rule is u  X  k  X  1  X  X  u l  X  k  X  X  D u l  X  k  X  must be modified as u  X  k  X  1  X  X  u l i  X  k  X  X  D u l i  X  k  X  where i indicates the DOF of the control system. 2.2. Design of an SOFC e  X  k  X  X  r i  X  k  X  y i  X  k  X  ,  X  13  X  ec  X  k  X  X  e i  X  k  X  e i  X  k 1  X  ,  X  14  X  y system.
+ input, respectively.
+ smooth when 4 is applied. To address this problem, the control system, u  X  k  X  X  u i  X  k 1  X  X  D u i  X  k  X  ,  X  15  X  intervals, respectively. 3. Stability analysis
+Although the state-space approach has been effectively
+A closed-loop fuzzy control system can be described as dx dt  X  f  X  x  X  X  b u , u  X  f  X  x  X  ,  X  16  X  defined as b f  X  x  X  (Aracil et al., 1989).
+According to the state-space approach, the vector field et al., 1993 ).
+ control system, based on the state-space approach:
+I  X  X  f 0  X  0  X  X  f 0  X  0  X  X  ,  X  17  X 
+I  X  min
+The I whether these bifurcations exist:
+I  X  det  X  J  X  ,  X  trace  X  J  X  ,  X  19  X  was defined to calculate the relative stability value: f  X  x , x 2  X  b C around the origin:
+I  X  min and its corresponding characteristic polynomial is
+P  X  s  X  X  s n  X  a 1 s n 1  X  X  a n 1 s  X  a n :  X  22  X  will be equivalent to det  X  H n 1  X  X  0 ,  X  23  X  matrix H n . The matrices H n and H n 1 were defined as
+H  X  2 6 6 6 6 6 6 4 Hence the stability index, I % 1 , was defined as  X  det  X  H n 1  X  ,  X  25  X  and Ollero et al. (1992) also showed that
+I  X  det  X  H n  X  :  X  26  X  subspace will be given by f  X  x , x 2 , ... , x n  X  described as dx dt  X  f  X  x  X  X  B U , U  X  f  X  x  X  ,  X  28  X  et al., 1989 ) can be defined by P auxiliary subspace can be defined as I  X  min MIMO system. 4. Simulation results with a complex dynamic model for evaluating the control manipulator is M  X  q  X   X  q  X  C  X  q , _ q  X  _ q  X  G  X  q  X  X  t ,  X  31  X  _ q  X  q and G ( q )isa3 1 gravity vector.
+
+The state-space equation of the robotic system can be described as _ x  X  Fx  X  L  X  B U , y  X  Dx ,  X  32  X  system output.
+ e i  X  t  X  X  r i  X  t  X  y i  X  t  X  , _ e i  X  t  X  X  _ r i  X  t  X  _ y i  X  t  X  ,  X  e i  X  t  X  X   X   X  _ e i  X  t  X  X   X  8 &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; : that represents the SOFC in the continuous-time domain. selected as m 1  X  2kg , m 2  X  3kg , and m 3  X  4kg ; l  X  0 : 4m , l 2  X  0 : 6m , and l 3  X  0 : 8m : control system and (32) to yield the following result: f  X  x  X  X  Fx  X  L :  X  34  X  described as J  X  X  J ij ,  X  35  X  where
+J  X  @ f i  X  x  X  @ x j and
+J  X  the cases studied can be eliminated.
+ input variables f where e _ e
+Then @ f  X  x  X  @ x @ f  X  x  X  @ x fuzzy control system could be derived from Eq. (35): J  X  2 6 6 6 6 6 6 6 6 6 4 where 4.2. Numerical stability analysis of the SOFC
+V respectively.
+  X  0 : 8 , B i  X  0 : 5 for i  X  1 , 2 , 3 : could be selected as b  X  5 , b 2 i  X  1 , b 3 i  X  300 for i  X  1 , 2 , 3 : from Eq. (36): J  X  2 6 6 6 6 6 6 6 6 4 matrix could be computed as H  X  and H  X   X  det  X  H 5  X  X  3 : 3628 10 17 4 0 , I 1  X  det  X  H 6  X  X  7 : 7867 10 22 , then I  X  2 : 2399 10 5 4 0 : f  X  x  X  0  X  rewritten as x 0 could be obtained from Eq. (39): g 1  X  x  X  X  1 : 1670 x 2 1 : 5835 x 4  X  1 : 5948 x 6 , g 2  X  x  X  X  2 : 6498 x 2 2 : 8631 x 4 2 : 8860 x 6 , g 3  X  x  X  X  1 : 0223 x 2 13 : 0922 x 4 5 : 0885 x 6 : 8 &gt; &lt; &gt; : solved as x 2  X  0 , x 4  X  0 , x 6  X  0 : 8 &gt; &lt; &gt; : subspace could be represented by and f x subspace.
+ based on axis x 6 (Fig. 5 e). Projections  X  I 2  X  x easily:  X  I 2  X  x 2  X  685 : 0 ,  X  I 2  X  x 4  X  711 : 7 ,  X  I 2  X  x 6  X  738 : 4 : 8 &gt; &lt; &gt; :
+From the space geometric relation I 2  X  relative stability index could be calculated as
+I  X  1233 : 3 4 0 : used.
+ calculated as  X  1 : 2648 10 19 4 0 and I 1  X  6 : 6571 10 5 4 0 : stable.
+
+Projections  X  I 2  X  x measured as  X  I 2  X  x 2  X  1150 : 3 ,  X  I 2  X  x 4  X  1175 : 6 ,  X  I 2  X  x 6  X  1201 : 4 : 8 &gt; &lt; &gt; : space geometric relation I  X  2036 : 9 4 0 : performed.
+ calculated as determined as  X  1 : 7071 10 19 4 0 and I 1  X  6 : 6842 10 5 4 0 : using the SOFC with four learning cycles is stable.
+Fig. 8 c X  X  displays projections  X  I 2  X  x  X  I
+ X  x 2  X  1607 : 4 ,  X  I
+ X  x 4  X  1638 : 8 ,  X  I
+ X  x 6  X  1607 : 1 : 8 &gt; &lt; &gt; : could be determined as
+I  X  2838 : 8 4 0 :
+The state-space approach can be applied to analyze the the control performance of the robotic system. b FLC within the SOFC.
+ trajectory tracking of each joint of the robot.
+Torque (N  X  m)
+Torque (N  X  m)
+Torque (N  X  m) in practical applications.
+ achieved appropriate performance and stability. 5. Conclusion
+Joint 1 (rad)
+Error (rad) Time (s) strated this.
+ Appendix A Rewrite the dynamic equation of the robot as follows: M  X  q  X   X  q  X  C  X  q , _ q  X  X  G  X  q  X  X  t :  X  A : 1  X  Transpose the above equation as follows: M  X  q  X   X  q  X  C  X  q , _ q  X  _ q G  X  q  X  X  t :  X  A : 2  X   X  q Joint 1 (rad) Joint 2 (rad) Time (s) where ^
+A  X  q , _ q  X  X  M 1  X  q  X  C  X  q , _ q  X  , ^ l  X  q  X  X  M 1  X  q  X  G  X  q  X  , ^ b  X  q  X  X  M 1  X  q  X  :
+Eq. (A.3) can be expanded as follows:  X  q  X  q  X  q 2 6 4 3 7 5  X  follows: x x  X  _ x 5 , y 1  X  x 1 , y 2  X  x 3 and y 3  X  x 5 :
+Then Eq. (A.4) can be represented as _ x _ x _ x _ x _ x _ x 2 6 6 6 6 6 6 6 6 6 4 3 7 7 7 7 7 7 7 7 7 5 y  X  Dx ,  X  A : 5  X  where
+A l  X  l i  X  x  X  X  ^ l i  X  q  X j x for i  X  1 , 2 , 3 , Error (rad) Error (rad) Time (s) b F  X  X  F ij  X   X  F  X  F  X  X  F 4 j  X  X  F 6 j  X  0 , j  X  1 , 3 , 5 , L  X 
+B  X  X  b ij  X   X  b  X  0 , i  X  1 , 3 , 5 , j  X  1 , 2 , 3 ,  X  b
+D  X  represented as follows:
+M
+Torque (N  X  m)
+Torque (N  X  m) Time (s)
+M  X  l 1 l 3 cos  X  q 2  X  q 3  X  X  2 l 2 l 3 cos q 3 ,
+M
+M  X  l 1 l 3 cos  X  q 2  X  q 3  X  X  2 l 2 l 3 cos q 3 ,
+M
+M
+M
+M
+M
+C  X  l 2 l 3 _ q 3 sin q 3 ,
+C  X  l 2 l 3 _ q 3 sin q 3 ,
+C
+C  X 
+C
+C
+C
+C  X  2 m 3 l 2 l 3  X  _ q 1  X  _ q 2  X  sin q 3 ,
+C  X  0 ,
+G
+G
+G  X  1 2 m 3 g l 3 cos  X  q 1  X  q 2  X  q 3  X  , gravity acceleration.
+ References

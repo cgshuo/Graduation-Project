@@ -1,0 +1,73 @@
+ 1. Introduction large number of content against millions of user subscriptions.
+In XML filtering, user profiles are represented as twig patterns follows: Given a set of twig patterns, find those patterns that appear in an input XML document. to follow the document order in XML.
+ code and sell _ price , and they share the same path expressions, namely, // XML document only after their predicates are tested and are matched to the input document values. tors in the twig patterns. Further logical operators such as taining value-based predicates.
+ The key contributions of this paper are summarized as follows: for a wide-variety of applications that require XML filtering.
+
+Comparison and logical operators in predicates : pFiST supports both tion approach.
+ memory usage of pFiST.
+ results of our performance study. Finally, we conclude in Section 8 . 2. Related work (2) index-based approaches, (3) sequence-based approaches and (4) other approaches. AND/OR operators in value-based predicates.
+ ators in value-based predicates.
+ contain value-based predicates.
+ approaches do not support the value-based predicates in twig patterns. translated two predicates such as  X  p a ;  X  ; 1  X  and  X  d  X  p tion of the tag a in the XPath query. The predicate  X  d  X  p is available. Their system does not support non-equality operators.
+Structure conditions of queries are evaluated by an XPath engine and  X  X  tions track the value of the same data item over time and this work does not deal with XML. holistically. 3. Background the SAX parser, and describe how Pr X fer sequences are generated from twig patterns. 3.1. Twig pattern queries supported by pFiST some specified tree structured relationship in an XML document [3] .
+AND/OR operators. Note that the NOT operator is not supported by pFiST. For example, //
+IBM AND sell _ price &gt; 25 ] is a valid XPath query for the grammar in Fig. 2 . 3.2. SAX events for XML filtering event and an EndDocument event are reported at the start and the end of an XML document. 3.3. Pr X fer sequences iterations, a single edge remains and we have produced a sequence of length n 2. The sequence  X  a d numbers is 2 10 4 10 698910.TheLPSofthe twig pattern is B A C A G E F E A. TagHandler is invoked with a tag name, the tag name is pushed onto the stack as shown in Line 1. When the later in Section 4 .
+
+Algorithm 1 : Pr X fer sequences generation stack S; /* a runtime global stack */ procedure StartTagHandler (tag) 1: S.push(tag) end procedure EndTagHandler (tag) 2: if tag is a leaf node then 3: FindSubsequence (S.top()); 4: S.pop(); 5: FindSubsequence (S.top()); end 4. The proposed system 4.1. Overview of pFiST and performs certain operations when the SAX parser events are invoked. predicates cannot occur as branch nodes in the twig patterns. 4.2. Data structures
+The attribute sym stores a combination of values as follows:  X / X  denotes a parent X  X hild relationship.  X // X  denotes an ancestor X  X escendant relationship.  X $ X  denotes a branch node.  X # X  denotes the end node in the Profile Sequence.
+
+Given a node q in the Profile Sequence, its four attributes are referred as q has a value  X / X  due to a parent X  X hild relationship with the second node. The first Sequence Node of Q ancestor X  X escendant relationship with the second node. Q 1  X / X . The last node in the Profile Sequence has value  X # X .
+
+Q denotes the j th Sequence Node of a twig pattern Q i .
+ Sequences.
+
+Sequences are added to the Sequence Index. 4.3. Filtering algorithm paper [1] . Here we briefly explain the main steps.
+ document.
+ (similar to FiST) performs additional tests to eliminate most false matches by using the runtime stack. to eliminate false matches. After the while loop, the next node of branch node ( q Sequence Index (Line 12).
+
+Q 2 ; 1 in the Sequence Index for key C. Because the value of Q label A is one element below the label B, the StackTest is successful. Q the Sequence Index using hash key D because the label of Q matching.
+ twig patterns.
+
+DBACAGEFEA X . 2 The Pr X fer sequences of twig patterns Q 1 and Q (B,2) in the document and the second  X  X  X  is matched to the second occurrence denoted as (B,4). 5. Value-based predicate processing the techniques to support logical operators in Section 6 .
+ 5.1. Observation
+For processing value-based predicates in twig patterns and XML documents, we have observed the following characteristics: because of the  X  X &lt; X  operator.
+ according to the operators. 5.2. Handling predicates in twig patterns structure matching.
+
+Fig. 8 shows a twig pattern Q 3 and its Profile Sequence. Q nodes are processed in the same manner as the nodes for elements during the subsequence matching. be used as a key to look up the Sequence Index.
+ Each predicate information is a 3-tuple ( Op , val , Type ), where:
+Op denotes an operator. val is the value of a value-based predicate.
+ integer type.
+
+Given a node q in the Profile Sequence, the predicate information is denoted by q
+Sequence. 5.3. Algorithms for processing value-based predicates tion. Algorithm 3 shows SAX events, StartTagHandler EndTagHandler ing algorithm capable of processing value-based predicates. Algorithm 4 shows the and to be augmented by inserting the PredTest procedure.
+
+Algorithm 3 : SAX handlers for processing value-based predicates stack S; /* a runtime global stack */ string Pred; /* a string for the value predicate */ procedure StartTagHandler (tag) 1: S.push(tag) 2: foreach attribute attr in tag do 3: FindSubsequence ( attr value , Null); /* exact mode */ 4: FindSubsequence ( attr name ; attr value ); /* range mode */ endfch end procedure Characters (value) 5: Pred value 6:
+FindSubsequence (Pred, Null); /* exact mode */ end procedure EndTagHandler (tag) 7: if tag is a leaf node then 8: FindSubsequence (S.top(), Pred); /* range mode */ 9: Pred Null; endif 10: S.pop(); 12: if Pred is Null then FindSubsequence (S.top(), Null); /* exact mode */ 13: else FindSubsequence (S.top(), Pred); /* range mode */ 14: Pred Null; end compared to the predicate information of a Sequence Node.
+ The Characters procedure handles values in the exact mode by calling the the EndTagHandler procedure.
+ In the EndTagHandler procedure, the FindSubsequence procedure is also invoked twice. The dureinLine8isusedtocheckvalue-basedpredicateswithequalityoperators,whereasthe
+Algorithm 4 shows the PredTest procedure which performs the comparison between predicate information ( q rithm 3. If a str is NULL, nothing needs to be done (Line 1). Function ship between values pi val and val satisfies the operator op .
+ Sequence Nodes in the current lists are checked. Second, the extended tom fashion. However, it is a difficult to augment YFilter and other approaches by inserting process twig patterns and XML documents in a top-down fashion.
+
+We illustrate the execution of filtering algorithm with the XML document in Fig. 3 a and twig patterns Q this example.
+ filtering.
+
+FindSubsequence ( t1 , Null ) is invoked in Characters ( t1 Index are obtained by using hash key  X  X  t 1 X . Since the second parameter is Null, the dotted regions of twig patterns Q 3 and Q 4 are compared to the stack. At the end of both Q 3 and Q 4 are passed successfully. Thus the 4th sequence nodes of Q the label  X  X 10 X  and  X  X  X  X  as keys, respectively. This is shown in Fig. 11 .
+In Characters ( 10 ) event, FindSubsequence ( 10 , Null ) is invoked and the current node Q obtained by using hash key  X  X 10 X . After a comparison between the stack and the dotted region of Q match to the document.
+ performed using the value of  X  X 10 X  and predicate information (&lt;,5,2) of Q information. 6. Extensions for AND operators. 6.1. Notations rectangle.
+ The above notations are similar to those introduced by Jiang et al. [6] for XML query processing. 6.2. Predicates with OR operators without any modifications.
+ k  X  1 6 i 6 n  X  OR operators each, then the structural portion of the query will be replicated  X  k  X  k  X  1  X  times. Each of the replicated queries will then be given one of the  X  k p for each i  X  1 6 i 6 n  X  . See the examples below for illustration of query decomposition. Algorithm 5 : Decomposition of twig patterns with OR operators procedure Decomposition ( q ) 1: if q is in disjunctive normal form then 2: num 1 + # of OR operators in q ; 3: num  X  k 1  X  1  X  X  k 2  X  1  X  X  k n  X  1  X  when q has n predicates p 4: foreach PNode p of q do 5: LNode l the parent node of p ; 6: add all nodes of q except p to List ; 7: remove p from l ; 8: delete OR operators and brackets such as  X  X  X  and  X  X  X  in p ; 9: create twig patterns to the value of num by copying the nodes from List 10: for i  X  1 to num do 11: Add i th expression e to LNode l as a child node for the i th twig pattern;
+Example 7. Fig. 13 shows the decomposition of twig pattern Q
+After applying the decomposition algorithm, Q 6 is decomposed into four twig patterns namely Q decomposed into the four twig patterns such as Q 7 1 ; Q 7 2 6.3. Predicates with AND operators be understood using the following example. A predicate [ e algorithm without any modifications.
+ Algorithm 6 : Simplification procedure Simplification ( q ) 1: foreach PNode p of the twig pattern q dol 2: LNode l the parent node of p ; 3: remove p from l ; 4: delete AND operators and brackets such as  X  X  X  and  X  X  X  in p ; 5: foreach expression e in p do 6: Add the expression e with brackets into l as the child node;
+Example 8. Fig. 15 shows the twig pattern obtained after simplification of Q become children of the LNode  X /b X .
+ 7. Experimental results 7.1. Experimental setup 7.1.1. Data sets and twig patterns
+In our experiments, we used two different data sets: NITF and has many recursions in elements.
+ default values for the other parameters.
+ experimental results were averaged over the entire set of documents. 25,000. The number of value-based predicates was varied from 1 to 4. The parameters p names and data values was skewed according to the value of h . 7.1.2. Environments was compiled with GNU g++ compiler version 3.3.2. 7.2. Effect of equality operators The effects of other operators will be analyzed in Section 7.3 . following formula: where tAvg is the filtering time measured for the case under observation at x and tAvg the base case at x base . We assume that the x -axis grows in steps of 1 for all aspects of scalability. 7.2.1. Varying sizes of input XML documents the x -axis, we show the increase in the documents sizes by using data sets  X  X  as the document sizes and N p increase. 7.3. Effect of various operators operators. 7.3.1. Varying the number of twig patterns 7.3.2. Varying sizes of input XML documents
+Fig. 18 . Along the x -axis, we show the increase in the documents sizes by using data sets  X  X  the plots, the number of predicates per twig pattern ( N p number of predicates increased. 7.3.3. Varying the number of value-based predicates creased, which causes smaller number of candidate twig patterns. This explains the downward tendency. siderably than Treebank data sets in terms of the number of value-based predicates. 7.3.4. Varying the probability of equality operators equality operators. We set all the parameters to default values except p value-based predicates. 7.3.5. Varying the probability of predicates selectivity of predicates, first we generate the twig pattern by setting the probability of predicates ( p icates, we can see the effect of selectivity of value predicates. the significant decrease in the filtering time for Treebank. 7.3.6. Varying the skewness of elements names and data values ment names and data values. 7.3.7. Varying the probability of OR operators structures.
+ for parsing twig patterns with OR operators.
+
+This reduces costs for the simplification step of decomposed twig patterns and the overall parsing time. 7.3.8. Memory usage
+Inthisexperimentweinvestigatetheimpactofprocessingvalue-basedpredicatesonmemoryusage.Wemeasuredthetotal memory consumptions by reading the statistics given in/ proc sets is changed more considerably than that of Treebank data sets due to the characteristics of the DTD.  X  X  5k  X  X o X  X  20k  X  and the number of value-based predicates per twig pattern ( N an input document. The average depth of input documents is 10 for NITF and 20 for Treebank. the skewness.
+ probability of OR operator is increased. 8. Conclusions Acknowledgements We are grateful to the anonymous referees for their valuable comments.
+References

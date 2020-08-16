@@ -1,0 +1,134 @@
+ 1. Introduction an XML model, and an XML Tree Model (XTM) can be applied as the conceptual schema of an XML model. using an XTM translated from an XSD.
+
+Table is used to store data relationships among elements. 1.1. Graphical structure of XML model
+A graphical view is proposed and called an XTM in this paper. Three data dependencies are used to are provided as transformation requirements. 1.2. XML tree model (XTM) bols of an XTM.
+ Element with an attribute:
+A rectangle box with a concrete line represents an element declaration. E name of the element with an attribute named  X  X  X _name X  X .
+ Group:
+A rectangle box with a broken line represents a group declaration. G name of the Group.
+ Group  X  X  X ef X  X :
+A broken line with an arrow represents a  X  X  X ef X  X  keyword within a group declaration.
+ Element  X  X  X ef X  X :
+A concrete line with an arrow represents a  X  X  X ef X  X  keyword within an element declaration.
+ Path:
+A hierarchical path shows one top element with two sub-elements. The symbol is constructed using a concrete line.
+ Specialization:
+E b with an  X  X  X xtension X  X  keyword inherits all properties of E  X  X  X sa X  X  relationship.
+
+For a child element E b over e b { X }, where X is the inherited property of e e { X }, where X is the property of e a ,if E a [ X ] ) E b tional dependency): ( Instance E b ! Instance E a ), where Pre Condition ( E and Post Condition E b E a .
+ Disjoint Generalization:
+Two or more sub-elements E b and E c with a  X  X  X  X  X  circle can be generalized to form an element E a to show a disjoint generalization denoted as ( E extension ) such that data of E b and E c are mutually exclusive.
+For a child element E b over e b and a child element E c over e e , and a parent element E a over e a { X }, where X is the property of e struct a disjoint generalization constraint  X  ID(inclusion dependency): ( Instance E ( Instance E c Instance E a ), where Pre Condition ( E a 5
+E ) and Post Condition ( E b \ E c = B ) ^ ( E b E a ) ^ ( E Overlap Generalization:
+Two or more sub-elements E b and E c with a  X  X  X  X  X  circle can be generalized to form an element E a to show a disjoint generalization denoted as ( E extension , E c. extension ) such that data of E b and E c
+For a child element E b over e b { X } and a child element E and e c , and a parent element E a over e a { X }, where X is the property of e construct an overlap generalization constraint  X  ID: ( Instance E
+E ), where Pre Condition ( E a 5 B ) ^ ( E b 5 B ) ^ ( E c 5 ( E \ E c 5 B ) ^ ( E b E a ) ^ ( E c E a ).
+ Aggregation:
+A sub-element E r that is an aggregate element E r which consists of (by referring to) two elements E b and E c such that each instance of E consist of an instance of E b and E c.
+
+For an aggregate element E r over e r { X , Y }, where X and Y are the properties of e e { X }, where X is the property of e b , and an element E c
+E
+E b and Instance E r ! Instance E c ), where Pre Condition ( E
+E ) ^ ( $ Y : E r 2 E c )and Post Condition ( E b E r ) ^ ( E Categorization:
+An element with  X  X  c  X  X  circle that is a subset in a union operation of relational algebra links up with two group elements by using the  X  X  X hoice X  X  keyword to show categorization denoted as ( G b such that instances of E a is a subset of the union of the instances of G and G c .
+
+For a categorization element E a over e a f G 0 b ; G 0 c ment G b over g b { X }, where X is the property of g b , and a group element G
+G [ Instance G c ), where Pre Condition  X  G b \ G c  X   X   X ^ X  E and Post Condition E a ( G b [ G c ).
+ Total Participation:
+E b with  X  X  X in = 1 X  X  keyword that is a sub-element links up with E element for showing a total participation relationship such that all child instances of E b must be under a parent instance of E a .
+
+For an element E a over e a f E 0 b g , where E 0 b is the property of e
+E b ! Instance E a ), where Pre Condition ( E b 5 B ) ^ ( E $ X : E b 2 E a .
+ Partial Participation:
+E a links up with an element E b by a concrete line with an arrow to show a partial participation relationship such that only part of child instances of E are under a parent instance of E b .
+
+For an element E a over e a { X }, where X is the property of e stance E b ), where Pre Condition ( E b 5 B ) ^ ( E a 5 B Cardinality in 1 to 1:
+E b is a sub-element belonging to E a , which is an element. E relationship in connection with E a such that each instance of E unique instance of E a .
+
+For an element E a over e a f E 0 b g , where E 0 b is the property of e
+E b ! Instance E a ), where Pre Condition ( E b 5 B ) ^ ( E #{ E b }=#{ E a } ^ ( $ X : E b 2 E a ).
+ Cardinality in 1 to n :
+E b is a sub-element belonging to E a which is an element. E relationship in connection with E a such that many instances of E instance of E a .
+
+For an element E a over e a f E 0 b g , where E 0 b is the property of e
+E b ! Instance E a ), where Pre Condition ( E b 5 B ) ^ ( E #{ E b } P #{ E a } ^ ( $ X : E b 2 E a ).
+ Cardinality in m to n :
+E r 1 , which is a sub-element, points to two elements to create an  X  X  m : n  X  X  cardinality relationship denoted as ( E a E r 1 ! E a ) such that many instances of E b can be referred by an instance of E a and similarly, many instances of E a can be referred by an instance of E b .
+For a sub-element E r 1 over e r 1 { X , Y }, where X and Y are the properties of e where X is the property of e a , and an element E b over e
+E [ Y ] ) E b [ Y ], we can construct an  X  X  m : n  X  X  cardinality constraint  X  MVD: ( Instance E
+Instance E b !! Instance E a ), where Pre Condition ( E $ X : E r 1 2 ( E a [ E b ) ^ $ Y : E r 1 2 ( E a [ E b )and Post Condition E Ternary: Three elements named E a , E b and E c are pointed by a group named
+G abc with an  X  X  m : n : n  X  X  keyword that is also pointed by a element named
+E to show an  X  X  m : n : n  X  X  ternary relationship denoted as (Group E such that each instance of G abc must consist of some instances of E
+For an E r over e r f E 0 a ; E 0 b ; E 0 c g , where E 0 where X is the property of e a , and an element E b over e over e c { Z }, where Z is the property of e c, if E 0 a ) E constraint  X  FD: ( Instance E r ! Instance E a and Instance E where Pre Condition ( E a x E b x E c 5 B ) ^ ( E r 5 B ) ^ ( $ X : E
+E U-ary in 1 to 1:
+E , which is in  X  X 1:1 X  X  cardinality, points to itself for creating a u-ary relationship denoted as ( r E a ) such that each instance of E a refers to another unique instance of E
+For an element E a over e a f E 0 a ; X g , where E 0 a and X are the properties of e
+E one side) ! Instance E a (on the one side)), where Pre Condition  X  E Condition # f E a g X  # f E a  X  E 0 a g .
+ U-ary in 1 to n :
+E , which is in  X  X 1: n  X  X  cardinality, points to itself for creating a u-ary relationship denoted as ( r E a ) such that each instance of E a can refer to multiple instances of E
+For an element E a over e a f E 0 a ; X g , where E 0 a and X are the properties of e
+E one side) ! Instance E a (on the one side)), where Pre Condition  X  E Post Condition # f E a g 6 # f E a  X  E 0 a g .
+ U-ary in m to n :
+E , which is in  X  X  m : n  X  X  cardinality, constructs an element E pointing to the same element to create a u-ary relationship denoted as ( E such that each instance of E a can refer to multiple instances of E
+For an sub-element E r 1 over e r 1 f E 0 a g , where E 0 stance E a ), where Pre Condition  X  E a 6  X   X   X ^ X  E 0 a 6  X 
+E with the following specifications: relevant elements must be under the root element. tively speaking. elements. under a parent element. There are one-to-one, one-to-many and many-to-many cardinalities. nality and the extension subclass element is a part of the base superclass element.  X  A group element consists of the multiple mandatory component elements under it. subclass elements X  instances. ship with one of the multiple superclasses elements X  instances. 1.3. Roadmap future work. 2. Related work apply this approach as a data modeling technique to construct an XML DB.
+Specialized DTDs apply context-free grammar for abstracting the above logical schemas. sistency between a DTD Schema and an XML document. A syntactically correct DTD schema might not be graphs.
+ media types for the support of content and functionality at an individual location in the WIS.
+Conrad et al. [15] considered designing an object-oriented software  X  UML with an XML schema (DTD) used for one single SQL statement.
+
+Combi and Oliboni [6] propose a conceptual model UXS (UML&amp;XML) for XML data model to define XML source.
+
+The above is a summary of comparing the proposed approach with other approaches. 3. Methodology of reverse engineering engineering.
+ simple types.
+ Rule 1 Recovering element data type data semantics of XSD into XTM in the later steps.
+ Recovering Elements/Sub-elements erence (see Fig. 4 ).
+ Recovering Attributes data interface. Using this rule, all attributes can eventually be recovered. Recovering complexTypes/simpleTypes generalization primitive (see Fig. 5 ).
+ Algorithm for Recovering Elements/Sub-elements: elements and sub-elements of an XSD. This information can be used to recover an XTM. Begin end Algorithm for Recovering Attributes: attribute.
+ Begin end Algorithm for Recovering complexTypes/simpleTypes: of scope.
+ Begin WHILE not at end of XSDFile ? DO Begin end XML_info table { Element Name //Unique for storing element declaration ComplexSimpleType Name //Unique for storing complex and simple type declaration Sub-element Name //Multi-value for storing sub-element declaration Attribute Name //Multi-value for storing attribute declaration} Data Semantic Table { Data Semantic Name //List all data semantic names Element Name //Name of linking element Sub-element Name //Multi-value for storing linked elements Cardinality //Cardinality factor} XML_info table Element Name Complex/SimpleType Name Sub-element Name Attribute Name ABD Data Semantic Table Data Semantic Name Element Name Sub-element Name Cardinality Cardinality A B 1:1 Rule 2: Data Semantic Recovering Algorithm for Rule 2: corresponding function of the data semantics. begin end Step 1: Recovering Cardinality (see Fig. 6 ) Rationale for Step 1: defined in  X  X  R 1 X  X  to create a  X  X  m to n  X  X  relationship between  X  X  A  X  X  and  X  X  B  X  X . Algorithm for Step 1: ration is for cardinality.
+ Begin end Step 2.2: Recovering Aggregation (see Fig. 7 ) Rationale for Step 2:  X  X  A  X  X . A binary relationship relates to element  X  X  A  X  X  as an aggregate element. Algorithm for Step 2: Begin end Step 3: Recovering Unary (see Fig. 8 ) Rationale for Step 3: m : n unary,  X  X  R 1 X  X  is a sub-element with  X  X  X nbounded X  X  to refer to the same element twice. Algorithm for Step 3: defined data type is for a u-ary relationship.
+ Begin end Step 4: Recovering Generalization (see Fig. 9 ) Rationale for Step 4: sive occurrence of element B and element C .
+ Algorithm for Step 4: Case 1: Disjoint Generalization disjoint generalization.
+ Begin end Case 2: Overlap Generalization overlap generalization. begin Step 5: Recovering Specialization from an XSD (see Fig. 10 ) Rationale for Step 5 of an XSD: laration of an XSD provided that the keyword  X  X  X estriction base X  X  appears. Algorithm for Step 5 of an XSD: ration, is for a specialization. A used-defined data type is used in a global element. Begin end Step 6: Recovering Participation Rationale for Step 6: shown above.
+ Algorithm for Step 6 (see Fig. 11 ): Begin end Step 7: Recovering Categorization (see Fig. 12 ) Rationale for Step 7: algebra.
+ Algorithm for Step 7:
+A function for checking keywords of  X  X  X roup ref X  X  that are under an element declaration is for categorization.
+ Begin end Step 8: Recovering N-ary (see Fig. 13 ) Rationale for Step 8: Algorithm for Step 8: Begin
+Function checkNary: begin
+Return 4. An XSD case and a prototype for the data modeling technique Source and Target Definitions of XSD Case Also, the factory provides a special service to customers for product maintenance. Given an XSD in the case study as shown in the Appendix : Rule 1: Recover data type elemets Recovering Elements/Sub-elements element.
+ Recovering Attributes they are observing the XTM.
+ Recovering ComplexTypes/simpleTypes  X  X  X impleType X  X  declarations can be located and stored on a table named  X  X  X ML-info X  X . h xs:element name =  X  X  X ervice X  X  type =  X  X  X ervice_type X  X / i h xs:complexType name =  X  X  X ervice_type X  X  i h /xs:complexType i Rule 2: Data Semantic Recovering semantic by the  X  X  X upplier X  X  element.
+
+Step 1: Cardinality Recovering occurrence by default). Therefore, this is 1:1 cardinality.
+ Step 2: Aggregation Recovering egory X  X  element. This is an aggregation data semantic.
+ Step 3: U-ary Recovering Step 4: Generalization Recovering wise, a disjoint generalization is launched.
+
+Step 5: Participation Recovering Step 6: Categorization Recovering Constructing an XML Tree Model mented in pure Java technology with Java Universal Network/Graph Framework (JUNG) [5] as the graph visualization enabling module. 5. Validating the methodology We will apply information capacity to validate the reverse engineering process. Information Capacity [19] : different information capacity.
+ relative information capacity are: and S 2 may be incommensurate.
+ where information preserving mapping is required to achieve G2. S 1 must dominate S 2. instance i 1 0 , that is u ( i 1) = i 1 0 . Instance i 1 0
+S 2 must be equivalent.  X  X 1: 1 X  X  and  X  X 1: n  X  X  Cardinalities: data semantics with the following pre-and post-conditions.
+
+Pre-cond.  X  X  1 : 1  X  X  cardinality:
+Post-cond.  X  X  1 : 1  X  X  cardinality : Proof of G1, G2, G3, G4  X  X  n : m  X  X  Cardinality:
+For an sub-element R 1 over r1{A 0 , B 0 }, where A 0 and B tions.
+ Pre-cond. $ x : R 1 2 ( A [ B ) ^ $ y : R 1 2 ( A [ B ) Post-cond. ( A 5 B ) ^ ( B 5 B ) ^ ( R 5 B ) ^ R ( A [ B ) Proof of G1, G2, G3, G4 Aggregation:
+For an aggregate element R over r{B 0 , C 0 }, where B 0 and C over a{x }, where x is the property of a ,if R [ B 0 ] ) B and R [ C gation data semantic with the following pre-and post-conditions. Pre-cond. ( $ B 0 : R 2 B ) ^ ( $ C 0 : R 2 C ) Post-cond. ( B 5 B ) ^ ( C 5 B ) ^ ( A 5 B ) ^ ( R 5 B ) ^ ( B R ) ^ ( C R ) Proof of G1, G2, G3, G4  X  X  1 : 1  X  X  and  X  X  1 : n  X  X  U-aries:
+A and post-conditions.
+
+Pre-cond.  X  X  1 : 1  X  X  U-ary:
+Post-cond.  X  X  1 : 1  X  X  U-ary: Proof of G1, G2, G3, G4  X  X  m : n  X  X  U-ary: post-conditions.
+ Pre-cond. ( $ A 0 : R 1 2 A ) Post-cond. ( A 5 B ) ^ ( R 5 B ) ^ R A Proof of G1, G2, G3, G4 Generalization:
+For a child element B over b{A 0 } and a child element C over c{A a parent element A over a{x }, where x is the property of a ,if( B [ A generalization data semantic with the following pre-and post-conditions.
+Pre-cond. Disjoint Generalization:
+Post-cond. Disjoint Generalization: Proof of G1, G2, G3, G4 Specialization: lowing pre-and post-conditions.
+ Pre-cond. ( $ x : B 2 A ) Post-cond. ( B 5 B ) ^ ( A 5 B ) ^ ( $ x : B 2 A ) ^ B ( B [ A ) Proof of G1, G2, G3, G4 Total Participation: and post-conditions.
+ Partial Participation: and post-conditions.
+ Pre-cond. ( $ x : B 2 A ) Post-cond. ( B 5 B ) ^ ( A 5 B ) ^ ( $ x : B 2 A ) Proof of G1, G2, G3, G4 Categorization:
+For a categorization element A over a{B 0 , C 0 , x }, where B conditions.
+ Pre-cond. ( $ B 0 : A 2 B ) ^ ( $ C 0 : A 2 C ) Post-cond. ( B \ C = B ) ^ ( A 5 B ) ^ A ( B [ C ) Proof of G1, G2, G3, G4 N-ary:
+For an element R over r{A 0 , B 0 , C 0 }, where A 0 , B 0
+C over c{z }, where z is the property of c ,if R [ A 0 ] ) A and R [ B data semantic with the following pre-and post-conditions.
+ Pre-cond. ( $ x : A [ $ y : B [ $ z : C 2 R ) Post-cond. ( A  X  B  X  C 5 B ) ^ ( R 5 B ) ^ R ( A  X  B  X  C ) Proof of G1, G2, G3, G4 6. Conclusion The contribution of this paper is to recover data semantics from an XML Schema Definition into an
+XML conceptual schema for users to visualize them. Users can design an XML database with a view of an XTM by confirming the data semantics in an XML document according to data requirements of an and support the XSD, but also to support an XML-Data Reduced (XDR) and a Document Structure Description (DSD) in our future work.
+ Acknowledgement This paper is funded by Strategic Research Grant 7001945 of City University of Hong Kong. Appendix. XSD in case study
+References

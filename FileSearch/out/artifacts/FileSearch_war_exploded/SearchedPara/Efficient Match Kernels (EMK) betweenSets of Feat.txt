@@ -1,0 +1,1 @@
+ Bag-of-Words+Linear Kernel = Special Match Kernel however, the quantization is too coarse Accurate Quantization: Gaussian kernel can be used as a local kernel, but this is computationally prohibitive (1) Constrained Kernel Singular Value Decomposition

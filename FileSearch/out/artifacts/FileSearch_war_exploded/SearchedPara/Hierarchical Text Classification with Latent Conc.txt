@@ -1,0 +1,57 @@
+ Text classification is a crucial and well-proven method for organizing the collection of large scale documents. The predefined categories are formed by different criterions, e.g.  X  X ntertainment X ,  X  X port-s X  and  X  X ducation X  in news classification,  X  X unk E-mail X  and  X  X rdinary Email X  in email classification. In the literature, many algorithms (Sebastiani, 2002; Yang and Liu, 1999; Yang and Pedersen, 1997) have been proposed, such as Support Vector Machines (SVM), k-Nearest Neighbor (kNN), Na  X   X ve Bayes (NB) and so on. Empirical evaluations have shown that most of these methods are quite effective in tra-ditional text classification applications.
+
+In past serval years, hierarchical text classification has become an active research topic in database area (Koller and Sahami, 1997; Weigend et al., 1999) and machine learning area (Rousu et al., 2006; Cai and Hofmann, 2007). Different with traditional clas-sification, the document collections are organized as hierarchical class structure in many application fields: web taxonomies (i.e. the Yahoo! Directory http://dir.yahoo.com/ and the Open Direc-tory Project (ODP) http://dmoz.org/ ), email folders and product catalogs.
+
+The approaches of hierarchical text classification can be divided in three ways: flat , local and global approaches.
+
+The flat approach is traditional multi-class classi-fication in flat fashion without hierarchical class in-formation, which only uses the classes in leaf nodes in taxonomy(Yang and Liu, 1999; Yang and Peder-sen, 1997; Qiu et al., 2011).
+
+The local approach proceeds in a top-down fash-ion, which firstly picks the most relevant categories of the top level and then recursively making the choice among the low-level categories(Sun and Lim, 2001; Liu et al., 2005).
+
+The global approach builds only one classifier to discriminate all categories in a hierarchy(Cai and Hofmann, 2004; Rousu et al., 2006; Miao and Qiu, 2009; Qiu et al., 2009). The essential idea of global approach is that the close classes have some com-mon underlying factors. Especially, the descendan-t classes can share the characteristics of the ances-tor classes, which is similar with multi-task learn-ing(Caruana, 1997; Xue et al., 2007).
+
+Because the global hierarchical categorization can avoid the drawbacks about those high-level irrecov-erable error, it is more popular in the machine learn-ing domain.
+
+However, the taxonomy is defined artificially and is usually very difficult to organize for large scale taxonomy. The subclasses of the same parent class may be dissimilar and can be grouped in differen-t concepts, so it bring great challenge to hierarchi-cal classification. For example, the  X  X ports X  node in a taxonomy have six subclasses (Fig. 1a), but these subclass can be grouped into three unobserv-able concepts (Fig. 1b). These concepts can show the underlying factors more clearly.
+
+In this paper, we claim that each class may have several latent concepts and its subclasses share in-formation with these different concepts respectively. Then we propose a variant Passive-Aggressive (PA) algorithm to maximizes the margins between latent paths.
+
+The rest of the paper is organized as follows. Sec-tion 2 describes the basic model of hierarchical clas-sification. Then we propose our algorithm in section 3. Section 4 gives experimental analysis. Section 5 concludes the paper. In text classification, the documents are often rep-resented with vector space model (VSM) (Salton et al., 1975). Following (Cai and Hofmann, 2007), we incorporate the hierarchical information in fea-ture representation. The basic idea is that the notion of class attributes will allow generalization to take place across (similar) categories and not just across training examples belonging to the same category.
+Assuming that the categories is  X  = [  X  categories, which are organized in hierarchical structure, such as tree or DAG.
+
+Give a sample x with its class path in the taxono-my y , we define the feature is where  X ( y ) = (  X  1 ( y ) ,  X  X  X  , X  m ( y )) T  X  R m and  X  is the Kronecker product.
+
+We can define where t i &gt; = 0 is the attribute value for node v . In the simplest case, t i can be set to a constant, like 1 .
+Thus, we can classify x with a score function, where w is the parameter of F (  X  ) . In this section, we first extent the Passive-Aggressive (PA) algorithm to the hierarchical clas-sification (HPA), then we modify it to incorporate latent concepts (LHPA). 3.1 Hierarchical Passive-Aggressive Algorithm The PA algorithm is an online learning algorithm, which aims to find the new weight vector w t +1 to be the solution to the following constrained optimiza-tion problem in round t . where  X  ( w ; ( x t ,y t )) is the hinge-loss function and  X  is slack variable.
+
+Since the hierarchical text classification is loss-sensitive based on the hierarchical structure. We need discriminate the misclassification from  X  X ear-ly correct X  to  X  X learly incorrect X . Here we use tree induced error  X ( y , y  X  ) , which is the shortest path connecting the nodes y leaf and y  X  leaf . y leaf repre-sents the leaf node in path y .
+
+Given a example ( x , y ) , we look for the w to maximize the separation margin  X  ( w ; ( x , y )) be-tween the score of the correct path y and the closest error path  X  y . where  X  y = arg max z  X  = y w T  X ( x , z ) and  X  is a fea-ture function.
+
+Unlike the standard PA algorithm, which achieve a margin of at least 1 as often as possible, we wish the margin is related to tree induced error  X ( y ,  X  y ) .
+This loss is defined by the following function,  X  ( w ; ( x , y )) = {
+We abbreviate  X  ( w ; ( x , y )) to  X  . If  X  = 0 then w t itself satisfies the constraint in Eq. (4) and is clearly the optimal solution. We therefore concentrate on the case where  X &gt; 0 .
+
+First, we define the Lagrangian of the optimiza-tion problem in Eq. (4) to be,
+L ( w , X , X , X  ) = 1 where  X , X  is a Lagrange multiplier.
+
+We set the gradient of Eq. (7) respect to  X  to zero.
+The gradient of w should be zero. Then we get,
+Substitute Eq. (8) and Eq. (10) to objective func-tion Eq. (7), we get
+L (  X  ) =  X  1
+Differentiate Eq. (11 with  X  , and set it to zero, we get
+From  X  +  X  = C , we know that  X &lt; C , so 3.2 Hierarchical Passive-Aggressive Algorithm For the hierarchical taxonomy  X  = (  X  1 ,  X  X  X  , X  c ) , we define that each class  X  i has a set H  X  h observable.
+
+Given a label path y , it has a set of several latent paths H y . For a latent path z  X  H y , a function Proj ( z ) to its corresponding path y .
+
+Then we can define the predict latent path h  X  and the most correct latent path  X  h :
+Similar to the above analysis of HPA, we re-define the margin then we get the optimal update step
+Finally, we get update strategy,
+Our hierarchical passive-aggressive algorithm with latent concepts (LHPA) is shown in Algorith-m 1. In this paper, we use two latent concepts for each class. 4.1 Datasets We evaluate our proposed algorithm on two datasets with hierarchical category structure.
+ WIPO-alpha dataset The dataset 1 consisted of the
+Algorithm 1: Hierarchical PA algorithm with la-tent concepts LSHTC dataset The dataset 2 has been constructed 4.2 Performance Measurement Macro Precision , Macro Recall and Macro F 1 are the most widely used performance measurements for text classification problems nowadays. The macro strategy computes macro precision and re-call scores by averaging the precision/recall of each category, which is preferred because the categories are usually unbalanced and give more challenges to classifiers. The Macro F 1 score is computed using the standard formula applied to the macro-level pre-cision and recall scores.
+ where P is the Macro Precision and R is the Macro Recall. We also use tree induced error ( TIE ) in the experiments. 4.3 Results We implement three algorithms 3 : PA (Flat PA), H-PA (Hierarchical PA) and LHPA (Hierarchical PA with latent concepts). The results are shown in Table 1 and 2. For WIPO-alpha dataset, we also compared LHPA with two algorithms used in (Rousu et al., 2006): HSVM and HM3 .
+
+We can see that LHPA has better performances than the other methods. From Table 2, we can see that it is not always useful to incorporate the hierar-chical information. Though the subclasses can share information with their parent class, the shared infor-mation may be different for each subclass. So we should decompose the underlying factors into dif-ferent latent concepts. In this paper, we propose a variant Passive-Aggressive algorithm for hierarchical text classifi-cation with latent concepts. In the future, we will investigate our method in the larger and more noisy data.
+ This work was (partially) funded by NSFC (No. 61003091 and No. 61073069), 973 Program (No. 2010CB327906) and Shanghai Committee of Sci-ence and Technology(No. 10511500703).
+

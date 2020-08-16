@@ -1,0 +1,31 @@
+ 1. Introduction refers to the privacy of respondents having supplied the information to which the database records correspond. In e-com-merce and industry, those who care most about privacy are often the database owners, for whom data collection has a sub-stantial cost and/or represents a competitive edge; think for example of data collected by a pharmaceutical company in ted by users.
+
+Thus, what makes the difference is whose privacy is being sought. Based on those remarks, in [3] three privacy dimen-sions were distinguished: (2) Owner privacy is about two or more autonomous entities being able to compute queries across their databases in such
+The technologies to deal with the above three privacy dimensions have evolved in a fairly independent way within re-search communities with surprisingly little interaction:
+Respondent privacy is pursued mainly by statisticians and a few computer scientists working in statistical disclosure con-trol (SDC), also known as statistical disclosure limitation (SDL) or inference control [5,6].
+Owner privacy is the primary though not the only goal of privacy-preserving data mining (PPDM [1]), a discipline born in the database and data mining community. Interestingly enough, the term privacy-preserving data mining independently and simultaneously appeared in the cryptographic community [7] to denote a special case of secure multiparty compu-tation where each party holds a subset of the records in a database.
+
+Finally, user privacy has found solutions mainly in the cryptographic community, where the notion of private information retrieval was invented (PIR [2]).
+
+One ambition of this special issue is to offer an opportunity for interaction, cross-fertilization and synergy between researchers working on each of the above technologies. To that end, we have selected six articles, whose content we next sketch by classifying them according to the three dimensions above: three articles refer to SDC for respondent privacy, two to PPDM for owner privacy and one to PIR for user privacy. 2. Statistical disclosure control
+The three papers related to SDC consider different types of data: the first of them is about the classical problem of pro-tecting static tabular data, while the other two refer to on-line queryable databases.
+
+The article  X  X  X djusting the s -Argus modular approach to deal with linked tables X , by De Wolf and Giessing, is about sta-straints; hence, any SDC technique aimed at respondent protection must be applied in a coordinated fashion between tables.
+This paper considers the secondary cell suppression technique implemented in the s -Argus package and explores a modular approach providing respondent privacy with reasonable information loss and computational cost.
+
+In  X  X  X egression output from a remote analysis server X , O X  X eefe and Good analyze the use of remote analysis servers to bal-put in place, the results returned to the user may leak information on the original data on which they have been computed.
+This article reviews results on remote analysis servers and provides a methodology for confidentializing the output from a single regression query to a remote server.
+ line max and min query auditing. Given a set of past max and min queries and their already disclosed answers, the query auditing system provides the answer to the current query if and only if doing so entails no privacy breach. A Bayesian net-remote analysis servers, but the added complexity comes from taking into account the log of past queries and answers in the privacy analysis. 3. Privacy-preserving data mining
+As hinted above, privacy-preserving data mining is about several data owners computing queries across their databases dresses join queries, while the second deals with frequency and classification queries.
+
+Kantarcioglu, Inan, Jiang and Malin in  X  X  X ormal anonymity models for efficient privacy-preserving joins X  present a secure multiparty computation protocol that enables record joins across databanks controlled by different owners via individuals X  itiveness of biomedical research.
+
+In  X  X  X ccurate and large-scale privacy-preserving data mining using the election paradigm X , Magkos, Maragoudakis, Chris-sesses its own records of private data. The article shows how to use cryptographic e-voting protocols in such a PPDM scenario. 4. Private information retrieval The last paper in the issue,  X  X  X ser-private information retrieval based on a peer-to-peer community X , by Domingo-Ferrer, Bras-Amor X s, Wu and Manj X n, is the only one addressing user privacy.
+
+Private information retrieval for user privacy is a game between a user and a database or a search engine. The user wants assume active cooperation by the database in the PIR protocol. If the database cannot be assumed to cooperate, this article proposes to use a peer-to-peer user community to achieve some query anonymity by having the queries of a user submitted on an underlying combinatorial structure is described. 5. Final remarks
+The same ambition of cross-fertilization between SDC, PPDM and PIR which motivates this special issue is also at the root of the series X  latest edition PSD 2008, from which the articles in this special issue were selected and extended.
+For further details on current research in database privacy at the crossroads of statistics, computer science and cryptog-raphy, we recommend the proceedings of the PSD conference series; a reference to the proceedings of PSD 2008 [4] is given below.
+ Acknowledgement
+We thank the authors for their work and also all reviewers whose insight improved the quality and the content of the enough to see it published.
+
+References

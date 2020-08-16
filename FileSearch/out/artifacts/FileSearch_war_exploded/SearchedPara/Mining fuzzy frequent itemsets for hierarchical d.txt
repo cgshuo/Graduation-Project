@@ -1,0 +1,80 @@
+ 1. Introduction 2002; Fung, Wang, &amp; Ester, 2002, 2003 ).
+
+As text mining is much more complex than data mining because text data are inherently unstructured and fuzzy ( Tan,
+Association, to acquire the semantic relations between terms when applying to documents. Moreover, Delgado et al . works mainly focused on analyzing the co-occurrence terms for document management. task, when the mining algorithm cannot obtain appropriate topic labels for the derived clusters. ing, we can discover interesting connections between fuzzy frequent itemsets. For example, ( t ( t terms in the document collection.
+
+Our approach can be distinguished into the following stages: to effectively reduce the unimportant terms for each document. together in some minimum fraction of documents in a cluster. By employing pre-defined membership functions, our contain key terms to be regarded as the labels of candidate clusters. for assigning a document to exactly one cluster.
+
+In summary, our approach has the following advantages: browsing and retrieving of various applications.
+Thesubsequentsectionsofthispaperareorganizedasfollows:InSection 2,webrieflyreviewrelatedliteratureondocument clusteringmethods.Section 3presentsourapproachinthreestages,togetherwithanillustrativeexample.Experimentalresults are presented and analyzed in Section 4. Finally, we conclude and propose some future directions in Section 5. 2. Document clustering methods
+In general, major clustering algorithms are divided into partitioning methods and hierarchical methods. For document 1999; Hu, Zhou, Guan, &amp; Hu, 2008; Iliopoulos, Enright, &amp; Ouzounis, 2001 ). terion is fulfilled.
+ lap of clusters in terms of shared documents. However, the experiments of Fung et al. (2003) showed that HFTC is not cluster labels.
+ in Section 4.
+ structing a hierarchical cluster tree. 3. The framework of our approach
+There are three stages in our framework as shown in Fig. 1 . We explain them as follows: 1. Document pre-processing . By document pre-processing, the frequency of each term within a document is counted. then used to form the candidate clusters. Then, a pruned hierarchical cluster tree will be built.
+ 3.1. Stage 1: document pre-processing scribe the details of the pre-processing in the following: 1. Divide the sentences into terms . that have general meaning but do not discriminate for topics. root form. terms. In our approach, three feature selection methods, tf -idf , tf -df , and tf each document, and these feature selection methods are defined as follows: formally define them as follows.
+
+Definition 3.1. A document , denoted d i ={( t 1 , f i 1 ), ( t set of key terms t j together with their corresponding frequency f
+Definition 3.2. A document set , denoted D ={ d 1 , d 2 , ... , d where n is the total number of documents in D .
+
+Definition 3.3. The term set of a document set D ={ d 1 , d appeared in D , where s is the total number of terms.
+
+Definition 3.4. The key term set of a document set D ={ d pre-defined minimum tf -idf threshold a , the minimum tf -df threshold b and the minimum tf sider, for example, a document set D ={ d 1 , d 2 , ... , d in the following to illustrate our approach. 3.2. Stage 2: candidate clusters extraction of importance that the itemset contributes to the document set.
+ illustrative example.
+ 3.2.1. The membership functions frequency) fuzzy set used in this paper as follows.
+
+Definition 3.5. A t-f fuzzy set of document d i is a pair  X  F
+Low ; w Mid ij  X  f ij  X  = t j Mid ; w High ij  X  f ij  X  = t region of t j . For each term pair ( t j , f ij ) of document d membership functions defined by Formulas (3.4) X (3.6) , respectively.
+In Formulas (3.4) X (3.6) , min ( f ij ) is the minimum frequency of terms in D , max ( f and a v g  X  f ij  X  X  document set in Table 1 , the derived membership functions are shown in Fig. 3 . 3.2.2. The fuzzy association rule mining algorithm for text To describe our fuzzy association rule mining algorithm shown, we need the following definitions.
+Definition 3.6. For a document set D ,a candidate cluster ~ c  X  X  such that it includes those documents which contain all the key terms in s ={ t illustrate, ~ c can also be denoted as ~ c q  X  t candidate cluster ~ c 1  X  stock  X   X  X f d 1 ; d 2 ; d 3 ; d
+Definition 3.7. The candidate cluster set of a document set D , denoted ters, where k is the total number of candidate clusters. The candidate cluster set Algorithm 3.2 shown in Fig. 4 .
+ 3.2.3. An illustrative example Fig. 5 .
+
+In the proposed algorithm, we estimate the strength of association among key terms in the document set by using con-3.3. Stage 3: the cluster tree construction (TCM) to derive the Document-Cluster matrix (DCM) for assigning each document to a fitting cluster, such that each c tains a subset of documents. For the documents in each c q set of target clusters C D  X f c 1 1 ; c 1 2 ; ... ; c q i used to prune unnecessary clusters. 3.3.1. Building the Document-Cluster Matrix (DCM)
+First, consider each candidate cluster ~ c q  X  s  X   X  ~ c q for generating a target cluster. Then, to represent the degree of importance of document d
+Document-Cluster Matrix will be constructed to calculate the similarity of terms in d define two matrixes, namely Document-Term Matrix and Term-Cluster Matrix, as follows.
+Definition 3.8. A Document-Term Matrix ( DTM ), denoted W  X  w w ij is the weight (fuzzy value) of term t j in document d i
+Definition 3.9. A Term-Cluster Matrix ( TCM ), denoted G  X  g such that for 1 6 j 6 p ,1 6 l 6 k , and
+In Formula (3.7), w max R j ij is the weight (fuzzy value) of term t
+Each g max R j jl of TCM represents the degree of importance of key term t uments including s . To reduce the dimension, only key terms present in L can be found in Fig. 7 .
+ follows.
+
+TCM. It is an n k matrix, and can be defined as V  X  X  v il
+A formal illustration of DCM can be found in Fig. 8 . 3.3.2. Building the hierarchical cluster tree Based on the obtained DCM, each document can be assigned to only one target cluster by using the following rules.
+Rule 1. Each element v il of the DCM matrix represents the degree of importance of document d
+Rule2. If a document d i has the same maximum values { v i 1 a natural structure for browsing. The cluster tree built by F
+FIHC. 2. Each child target cluster has exactly one parent target cluster. and more specialized as they get closer to the leaf nodes. 4. A parent target cluster and its children target clusters are  X  X  X imilar X  to a certain degree. 5. Each target cluster employs one fuzzy frequent q -itemset s as its cluster label. 6. The root node of the cluster tree appears at level 0, and is tagged with the cluster label  X  X  X ll X . 7. Each target cluster with its fuzzy frequent q -itemset appears in the level q of the tree. 8. The depth of the cluster tree is the same as the maximum size of fuzzy frequent itemsets. 3.3.3. Tree pruning
+When a low minimum support value and a low minimum confidence value are used, the target cluster tree would become ploys the following definition to compute the inter-cluster similarity between two target clusters.
+Definition 3.11. The inter-cluster similarity between two target clusters c 1 where v ix and v iy stand for two entries, such that d i 2 c 1 as a threshold d to decide whether two target clusters should be merged. clusters at level 1 becomes smaller than the minimum Inter-Sim threshold d . for output. 3.3.4. An illustrative example For example, consider the document set in Table 1 . The key term set K and the candidate cluster set ~ C D  X  ~ c 1  X  stock  X  ; ~ c posed cluster tree construction algorithm proceeds as follows: Step 1. Build 10 6 Document-Term Matrix W in Table 2 .
+ Step 2. Build 6 9 Term-Cluster Matrix G in Table 3 .
+ Step 3. Build 10 9 Document-Cluster Matrix V in Table 4 .
+
+Step 4. Assign each document to its best target cluster.
+Step 5. Sibling merging.
+Step 6. Tree construction.
+Step 7. Finally, the derived cluster tree CT can be shown in Fig. 10 . 4. Experimental results In this section, we experimentally evaluate the performance of the proposed algorithm by comparing with that of the
+XP machine with 1 GB memory. 4.1. Datasets
+We used the five standard datasets employed by the FIHC experiments. These datasets are widely adopted as standard benchmarks for the text categorization task. To find key terms, stop words were removed and stemming was performed. plies a significant dimensionality reduction without loss of clustering performance.
+CACM documents, 1460 CISI documents from information retrieval papers, 1398 CRANFIELD documents from aeronautical system papers, and 1033 MEDLINE documents from medical journals.
+ research, and technology.
+
+Re0 : Re0 is a text document dataset, derived from Reuters -21578 includes 1504 documents belonging to 13 different classes.
+ is also highly skewed.
+ classes for the WebACE project (Han et al., 1998 ). Many categories of Wap are close to each other. 4.2. Evaluation of cluster quality: overall F-measure the same document set D . Let | D | be the number of all documents in the document set D ;| c the cluster c i e C ;| l j | be the number of documents in the class l and is defined as follows: In general, the higher the F ( C ) values, the better the clustering solution is.
+To compute a ratio signifying how much improvement is achieved for our proposed approach, F
+FIHC method. The Improvement Ratio ( IR ) is the relative value of improvements to the F ( C ) value of F defined the IR : where F  X  C  X  F 2 IHC and F  X  C  X  FIHC represent the F ( C ) values of F clustering quality of F 2 IHC method is better than the clustering quality of FIHC. 4.3. The effect of feature selection 4.4. Evaluation results
+We have conducted experiments to compare the accuracy of our algorithm F
+The efficiency of our algorithm is measured in Section 4.4.3. 4.4.1. Accuracy comparison
+Table 9 presents the obtained overall F -measure values for F in each data set, and list their average overall F -measure values.
+
+UPGMA, Bisecting k -means, and FIHC are slightly better than that of F of clusters in a document set is usually unknown in real case, and F generated for UPGMA, and we denoted them as N.A.
+ 4.4.2. Sensitivity to various parameters
+Our algorithm has two main parameters for the adjustment of accuracy quality. We now discuss how the default values the accuracy of the produced solutions, but also show the sensitivity of the accuracy of KCluster. appropriate number of output clusters, which are shown in Fig. 11 b.
+
+Based on our test, we observe a general guidance that the best choice of MinSup can be set between 3% and 6%. Never-
+The smaller the value of MinSup, the deeper (and broader) a cluster tree can be generated, and vice versa. 4.4.3. Efficiency and scalability average initial clustering and cluster merging time is higher than that of the other datasets. gions. In our experiments, we consider the Topics category set, which includes 23,149 training and 781,265 testing removing stop words, and applying the stemming algorithm. documents. 5. Conclusions and future directions
+Although numerous interesting document clustering methods have been extensively studied for many years, the high extending in reality for concentrating on huge text documents management.
+Our future work focuses on the following two aspects:
+We will further improve F 2 IHC algorithm with some domain knowledge, like WordNet, for higher accuracy. mining in steam data (Ordonez, 2003 ) are closely related to incremental clustering. Acknowledgements
+This research was partially supported by National Science Council, Taiwan, ROC, under Contract Nos. NSC 96-2416-H-327-008-MY2 and NSC 96-2221-E-009-168-MY2.
+ References

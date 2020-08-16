@@ -1,0 +1,52 @@
+ Nishad Manerikar, Themis Palpanas * 1. Introduction attention in the recent years.
+ a limited amount of memory, usually orders of magnitude less than the size of the problem. quent ( Freq ) [19,16] , and Space-Saving ( SS ) [23].
+
+The prominent sketch-based algorithms include CountSketch and hCount ( hC ) [18].
+ there has not been a comprehensive comparative study of all these algorithms. our experiments, as well as the datasets upon which we tested them [26]. In summary, in this work we make the following contributions: using a common and fair test framework.
+ employed in the related literature.
+ recent survey by Cheng et al. [7].
+ 2. Problem definition action 3 in the stream is represented by a single integer.
+ The Frequent Items problem (FI) is defined as follows.
+
+Problem 1 ( Frequent Items (FI) ). Given a support parameter / , where 0 have a frequency of at least / N , where N is the number of transactions seen so far in the stream. may be used.
+ mis-classifies an item as frequent, when it is not, or not frequent, when it actually is. mance, but at the cost of higher space usage.
+ support / .
+ directly compared to each other. 3. The algorithms 3.1. Counter-based algorithms 3.1.1. Freq most 1 = / items having frequency more than / N .
+ returns all k items as the frequent items. 3.1.2. LC at the bucket boundaries. The authors show that the space requirement is bounded by 1 log N .
+A query is answered by presenting as output the entries in D where f P  X  /  X  N . 3.1.3. SS the -deficient problem using 1 counters.
+ with the buckets that have values greater than the threshold / N . 3.2. Sketch-based algorithms 3.2.1. CGT in a group. To determine frequent items correctly with probability 1 d , CGT requires space of the order of O 1 3.2.2. CCFC hash functions are used: one set  X  h 1 ; ... ; h t  X  hashes items to buckets, and the other set  X  s set. t is chosen to be of the order of O log N d , and b is required to be of the order of O 1
+The estimated count of item q is the median of h i  X  q s i mate its count and maintain a heap of the top-k items seen so far. 3.2.3. CM with width w and depth d . These values are determined by the parameters ; d , with w  X  e , and d  X  log 1 increases the space requirement by a factor of log M .
+ estimated count is still above the threshold are output. 3.2.4. hC hash-table of m h counters. m is set to e , while h is set to log M The hash functions are of the form: where a i and b i are two random numbers, and P is a large prime number. 4. Experimental framework 4.1. Parameters and performance measures The performance of the algorithms is affected by three sets of parameters (see Table 1 ): The intrinsic parameters of the algorithms: the tolerance , and error probability d . and the distribution of the item values (e.g., Zipf parameter, Z ).
+ The query parameters: support, / ,or k (for the algorithms that cater to the top-k items problem). were found to be sufficiently restrictive. We have used these values throughout, unless mentioned otherwise. Four main indicators of performance were recorded for each experiment, as follows: Recall: This is the fraction of the actual frequent items that the algorithm identified. Precision: This is the fraction of the items identified by the algorithm that are actually frequent. Memory Used: The total memory used by the algorithm for its internal data structures. that the algorithms can handle.
+ frequency of / N . 4.2. Memory considerations quired by each algorithm are different, and are listed in Table 1 .
+ rithm had to initialize its data structures using only the budgeted memory). 4.3. Implementation details X3220 2.4 GHz CPU and 4 GB of main memory.
+ counts of all the items in the data stream. We refer to this as the Exact algorithm. 4.4. Datasets 4.4.1. Synthetic data above, and repeated each experiment for all these datasets. 4.4.2. Real data the items in dataset in serial order.
+ final dataset, we replaced all missing values (question marks) with the value of 0. the values of the attribute  X  X  X 2 X .
+ 5. Experimental results graphs.) 5.1. Synthetic datasets of the algorithms, and their performance when using the recommended amount of memory. 5.1.1. Memory usage
+Expt. 1. Synthetic datasets with N  X  10 6 ; Z  X  1 : 1 ; M  X  10 /  X  0 : 001 ; d  X  0 : 01 ;  X  / = 10.
+ reasonable range of values for the support.
+ memory.
+
+We study the variation in memory usage with change in / in Section 5.1.4. 5.1.2. Item domain cardinality M .
+
+Expt. 2. N  X  10 6 ; Z  X  1 : 1 ; /  X  0 : 001, and M was varied from 2 other algorithms require more memory as M increases, and the increase is logarithmic. 5.1.3. Number of items
+Expt. 3. Z  X  1 : 1 ; M  X  10 6 ; /  X  0 : 001, and N was increased from 0.5 to 5 10 tently very low precision (around 15%). 5.1.4. Support in support.
+ Expt. 4. N  X  10 6 ; Z  X  1 : 1 ; M  X  10 6 , and support / was varied from 0.001 to 0.01 in increments of 0.001. the entire range of the support values. Freq exhibited low precision.
+ is an inverse proportionality relationship between the support and the memory requirements for all algorithms.
+This is especially pronounced in the case of CM , CGT , CCFC , and hC , which are all sketch-based algorithms. 5.1.5. Data distribution tribution of items, and it is more difficult for the algorithms to distinguish the frequent items.
+Expt. 5. N  X  10 6 ; /  X  0 : 001 ; M  X  10 6 , and the Zipf parameter, Z , was varied between 0.6 and 3.5. noticeably for Z &lt; 1 : 0. 5.1.6. Time stream was measured, which we call the update time.
+
+Expt. 6. Z  X  1 : 1 ; /  X  0 : 001 ; M  X  10 6 , and the N was varied between 10 update time is offered by LC . The high accuracy of SS comes at the cost of increased update time requirements. the maximum data rates of the algorithms are given in Table 3 .
+ achieved if something like a heap of frequent items was maintained (as in CM ). 5.2. Synthetic datasets, budgeted memory memory budgets to all algorithms.
+ initialize all algorithms with almost equal memory, within a margin of 3 % . rest of the experimental settings were the same as those in Section 5.1. 5.2.1. Number of items the percentage reduction in memory usage for each algorithm as compared to the non-budgeted case. For the case the accuracy of SS , LC , and hC was not much affected. 5.2.2. Support unaffected. 5.2.3. Data distribution quite well distinguished from the others and all algorithms performed well, despite the lower memory. 5.2.4. Time experiment in Section 5.1.6 was repeated using memory budgets and the above hypothesis proved to be true. 5.3. Real datasets used as the common budget for all algorithms. 5.3.1. Q148 Fig. 10 ).
+ but it was not as pronounced. 5.3.2. Retail support, falling to 60% for /  X  0 : 001.
+ markedly low, too. LC and SS once again performed consistently well. 5.3.3. Kosarak values of support.
+ same pattern as the non-budgeted case. Precision for CM was low as well (see Fig. 12 ). 5.3.4. Nasa point /  X  0 : 006 (see Fig. 13 ). 6. Discussion 6.1. Performance of the algorithms tests. On the other hand, Freq performed consistently low in precision.
+ lose a number of counters. This explains why the sketches are particularly sensitive to memory constraints. with SS exhibiting the most stable behavior of all.
+ ther detail the reasons for this behavior. 6.1.1. Tighter memory constraints varied from 80 KB down to 10 KB.
+ ployed in the algorithm (see Section 3.2.4). 6.2. Memory bounds makes assumptions about the data distribution, or the maximum item value that may appear in the stream. algorithms. 6.3. Sketch-based vs. counter-based types of approximate statistical analysis of the data stream, apart from being used to find the frequent items. stream. 6.4. Practical considerations the stream.
+ converting each word to a unique integer, say by having an intermediate hashing function. perform a dynamic and smooth transition to the new requirements.
+ the query process run in parallel. 7. Conclusions for its solution.
+ and precision, but at the cost of higher query times (for hC ) or higher update times (for SS ). alternatives.
+
+References

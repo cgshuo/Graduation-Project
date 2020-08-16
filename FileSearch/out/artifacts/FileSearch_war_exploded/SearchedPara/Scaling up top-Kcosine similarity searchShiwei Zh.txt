@@ -1,0 +1,117 @@
+ 1. Introduction be used to fi nd drug  X  drug interactions.
+ support-and-con fi dence framework has shown its limitations in computation-friendly property.
+
+In this paper, we focus on developing ef fi cient algorithms for many real-world applications. A good example is to suggest alternative query formulations by searching for top-K commodities with similar user preferences among a large number of items. similarity particularly useful for measuring the proximity in high-dimensional space.
+TOP-DATA can utilize the monotone property of a cosine upper bound to ef exact cosine values. By using the boundary vector, we further reduce the O ( N
+O ( N ). We then propose a novel TOP-MATA algorithm, which employs a max-for false-positive item pairs.
+ method, both TOP-DATA and TOP-MATA algorithms show signi fi compare TOP-MATA with TKCP [16] , a well-established algorithm for when K is small with respect to the number of all pairs, TOP-MATA has a better performance due to the ef the max-fi rst traversal strategy. 1.1. Outline 2. Related work 2.1. Interestingness measures [7] proposed lift and  X  2 as correlation measures and developed an ef provided well-organized comparative studies for the interestingness measures, respectively. on the computation of the cosine similarity for item pairs in high-dimensional space. 2.2. Mining interesting patterns monotone property [1] , which can be exploited for the ef directly into the mining algorithms. Indeed, most of the existing measures, such as cosine and post-evaluation measures due to the above reason [32] .
+
+To meet this challenge, Xiong et al. introduced an upper bound to ef fi ef fi methods, however, require an interestingness threshold, which is often hard to
+To address the above problem, Xiong et al. [36,40] proposed the TOP-COP algorithm to ef similar diagonal traversal strategy for the cosine similarity, but we re all the pairs, whereas TOP-MATA avoids false-positive pairs using the max-
+Experimental section. methods [5,9,35] and signature-based methods [3] , respectively. The above studies focus on near duplicate detection, which enumerated all the  X  necessary traversal strategy. 3. Preliminaries and problem de fi nition between two vectors. That is, given two vectors X and Y , where  X   X  X  X   X  indicates the inner product of two vectors, and indicates a complete opposite.
+ we can extract the binary information into a two-way table, as shown in Table 1 . In the table, n dimensions whose attribute values for X and Y are i and j , respectively. Finally, n
+According to Table 1 , the cosine similarity in Eq. (1) can be transformed equivalently to set, we have supp ( XY )= n 11 / N , supp ( X )= n 1+ / N , and supp ( Y )= n transformed equivalently to: formulate our problem as follows:
+Problem de fi nition. Given itemset I ={ X 1 , X 2 ,  X  , X whose cosine similarity values are among the top-K ones.
+
+Apparently, one way to tackle this problem is to compute all the cosine similarity values of n ( n even worse if n becomes extremely large  X  too large to be loaded into the main memory fi nd a more ef fi cient way to compute the top-K pairs.
+ 4. Finding top-K cosine similarities: the diagonal traversal algorithm
+In this section, we study how to fi nd top-K cosine similarities using a diagonal traversal strategy. We bound for the cosine similarity as follows. 4.1. The upper bound of cosine similarity
+For two items X and Y , without loss of generality, we assume supp ( X ) have
+Accordingly,
+Thus we get an upper bound for cos( X , Y ), which is denoted by Next, we formulate the property of the upper bound.
+
+Property 1 Monotonicity. Given two items X and Y with supp ( X ) (decreasing) in supp ( Y ) (supp ( X ) ), given supp ( X ) (supp ( Y ) )is 4.2. The diagonal traversal algorithm monotone property. 4.2.1. The fi ltering effect of the upper bound pair. However, the cost of computing directly the 2-item support supp ( XY ) is very high. So the lemma as follows.
+
+Lemma 1. A new pair { X , Y } can enter the top-K list only if as a is, for any new pair { X , Y }, we fi rst compute upper (cos( X , Y )). If upper (cos( X , Y )) process, the fi ltering effect will be signi fi cant. 4.2.2. The pruning effect of the upper bound
+The next task is to further reduce the cosine similarity computations by designing an ef should make use of the monotone property of the upper bound. 4.2.2.1. The sorted item-matrix. Suppose we have n items: { X leads to a sorted item-sequence matrix. In other words, in the initial stage, we push P [1,2] sorted item-matrix to check in sequence whether P [3,4] , P the diagonal traversal examines fi rst the sorted items in the neighborhood, it tends to item pairs. To illustrate this, we have the following theorem.
+
+Theorem 1. Given the current top-K list and its minCos in a diagonal traversal procedure, if upper (cos( P and j  X  l  X  n, upper (cos( P [ k , l ] ))  X  minCos.
+
+Proof. Since k  X  i  X  j  X  l , we have
+Therefore, by Eq. (5) , Therefore, the proof holds.  X  given k  X  i and l  X  j . Forexample,forthe sorted item-matrix in Fig. 1 ,if P 4.2.3. TOP-DATA: the pseudocode shows its pseudocode.
+ large, status can also be an array of size N ( N  X  1)/2, where 0 and 1 indicate similarity. That is, for an item pair, we search the vertical data layout for the transaction identi then get the 2-item supports by intersecting the TID-lists of the two items.
+Line 14 to Line 16. Actually there is a longstanding dilemma in complexity of TOP-DATA.
+ 1  X  2 are for the case that the top-K list is still under construction in the initial stage, whereas Lines 3 top-K list is full already. 4.3. Algorithm re fi nement from time to time. To meet these challenges, in what follows, we re
+Hereinafter we call the re fi ned TOP-DATA algorithm: TOP-DATA-R. 4.3.1. Boundary vector for the pruning status vector  X  .
+
+A boundary vector B is merely a one-dimensional array of size N
+As the diagonal traversal starts, B should be updated according to the following two criteria:  X 
+For any item pair P [ i , j ] (1  X  i b j  X  N ), if upper ( cos ( P  X  For 1  X  l b i ,if B [ l ] N j , let B [ l ]= j .
+ is an array of size 10  X  1=9, and all the entities are initiated by 10+1=11, as shown by the vector of
+Now, suppose we fi rst have upper (cos( P [3, 4] ))  X  minCos . According to the we also let B [1]= B [2]=4, which results in the new boundary vector of
+P change the values of B [1], B [2] and B [3]. The vector of with upper (cos( P [4,7] ))  X  minCos , the boundary vector will be further updated to the one of pruned or not.
+
+Theorem 2. For any item pair P [ i , j ] ,ifj  X  B [ i ] , then P upper bound less than minCos , we can safely stop our searching and return the current top-2 list as the boundary vector, i.e., the one of  X  stage 3  X  , is indicated by the shaded areas of Fig. 4 . boundary vector now. By using the boundary vector, the O ( N 4.3.2. Min-heap for top-K pairs 5. Finding top-K cosine similarities: the max-fi rst traversal algorithm
+Pairs using MAx-fi rst TrAversal method) for very large-scale data sets. 5.1. Why TOP-MATA? In the previous sections, two points for TOP-DATA remain unsolved as follows: asymptotically optimal. Ideally, the optimal threshold should be the cosine value of the K th pair in the positive pairs.
+ operations over the data set. fi exactly the optimal threshold at the beginning of the computations. 5.2. TOP-MATA: the algorithmic details 5.2.1. The max-fi rst traversal procedure enter the top-K list. Two points should be addressed here:  X  be selected.  X  bound value.
+ value of the current top-K pairs. In what follows, we illustrate the pseudocode of TOP-MATA. 5.2.2. The pseudocode of TOP-MATA maximum upper bound, as shown in Line 6.
+
+Lines 7  X  27 are for the iterative process. We fi rst check whether the maximum upper bound maxUpper we minCos in Line 7. If not, we stop the iterations and return the current top-K pairs as the proceed to check whether the pairs with maxUpper can enter the top-K list. Lines 8 bound maxUpper , from P [ i , j to Line 19.
+ checked above. According to the monotonicity of the upper bound, the next pair unchecked, i.e., P upper bound of P [ i , j otherwise, we only need to disable the root and will not check this row any more. Line 26 is to update of the max-heap. 5.2.3. An example computed in a brute-force manner.
+ bounds for ( a , b ), ( b , c ), ... ,( g , h ), and store them into the max-heap.
+For the iteration process, we for row g in the max-heap. upper bound for row d with 0.571. bound for row e with 0.707. Set minCos =0. update the upper bound for row c with 0.756. Set minCos =0. update the upper bound for row b with 0.707. Set minCos =0.169. cos=0.817, and disable the node for row f in the max-heap. Set minCos =0.817. 7. Terminate the iteration process for the maximal upper bound in the max-heap is 0.756 are returned as the top-3 pairs.
+ computations for the additional 21 cosine similarity values.
+ 5.3. Properties of TOP-MATA merits as follows. 5.3.1. Avoiding the false-positive pair computations
+First, TOP-MATA can avoid the computations of cosine values for false-positive pairs top-K pairs which we do not know during t he computational process. Let theorem.
+ we have
+Proof. It is trivial to note that
+So the necessary condition holds. It remains to prove the suf
+If upper (cos( P ))  X   X  , we have
+Since the minCos is smaller than  X  , there must be at least one unchecked item pair that should enter the
+However, according to the max-fi rst rule of TOP-MATA,
+Remark. Theorem3 implies that although we cannot know  X  before we get the out of the  X  morass  X  of false-positive pairs, as if we know
+In what follows, we compute the scale of the computation savings. To this end, we should follows: Case 1. The linear distribution
+In this case, the rank-support function has a linear distribution: f ( k )= a Fig. 8 (a). We fi rst have the following proposition:
+Proposition 1. Given the linear rank-support function f ( k )= a
+MATA is where i and j are rank indices for item pair P [ i , j ] .
+Proof. As we know, the cosine upper bound for an item pair P
+That is, Thus, the proof holds.  X 
+Proposition 2. Given the linear rank-support function f ( k )= a
+DATA is where i and j are rank indices for item pair P [ i , j ] .
+
+Proof. Since TOP-DATA takes the diagonal traversal procedure, the boundary of TOP-DATA must be j = i + c show c  X  = a (1  X   X  2 )/ m . For simplicity, let c denote a (1
+First, assume that c  X  b c . This implies upper (cos( P [0, c ]
+Note that c is also the intercept of the boundary of TOP-MATA, so we have upper (cos( P contradiction.
+
+Second, assume that c  X  N c . In TOP-MATA, we have upper (cos( P side of the boundary of TOP-MATA, we have upper (cos( P [0, c  X  ] boundary is always no greater than the slope of TOP-DATA's boundary, i.e., have the following corollary.
+
+Corollary 1. Given the linear rank-support function f ( k )= a avoiding the false-positive pairs of TOP-DATA is where N is the number of items.
+ triangle are respectively. Therefore,  X  c = WH /2. Thus, the proof holds. data sets with multiple items.
+ Case 2. The generalized Zipf distribution.
+
+In this case, the rank-support function has a generalized Zipf distribution: fk  X  X  = shown in Fig. 9 (a). When p =1, f reduces to a Zipf distribution. We
+Proposition 3. Given the rank-support function f k  X  X  = c where i and j are rank indices for item pair P [ i , j ] .
+
+Proposition 4. Given the rank-support function f k  X  X  = c where i and j are rank indices for item pair P [ i , j ] .
+ the slope of TOP-MATA's boundary is always no less than the slope of TOP-DATA's boundary, i.e., pairs of TOP-MATA. We then have the following corollary.
+
+Corollary 2. Given the rank-support function f k  X  X  = c k p the false-positive pairs of TOP-DATA is where N is the number of items.
+ the scale of the computation saving of TOP-MATA. Again we can large-scale data sets with multiple items. However,  X  and p have no such simple monotonicity. If we let maximum computation saving: 1 8 N 2 .
+ 5.3.2. Saving the I/O costs computational ef fi ciency. searches the vertical data layout for the transaction identi intersecting the TID-lists of the two items (here we de fi can save computational time considerably. Hereby we call this the
+Suppose we have the item-sequence of size n sorted in the descending order of item supports: S = f X these item supports take t different values: s 1 N s 2 N  X  N items X j  X  ; X k  X   X  S i , supp ( X [ j ] )= supp ( X [ k ] subsequences. Let n i denote the volume of S i , i.e., n i the sorted item-matrix. Then we have the following proposition.
+ Proposition 5.
+
+Proof. We fi rstcountthetotalnumberofiterationsTOP-MATAtakesinthemax-needs t  X  i iterations. Therefore, altogether the traversal of all the pairs in P n  X  1+ n i ( t  X  i ) iterations. Since the set of all the pairs P = Furthermore, since P = nn  X  1  X  X  = 2, we fi nally have Therefore, the proof holds.  X  of the sharing effect when we only get the 1-item support information. The in Table 8 . We would like to discuss the second point in the following text.
+I/O saving of TOP-MATA is pervasive for real-world data sets; (2) the I/O saving however has a rigorous upper bound 50%. so its cost is simply O (1). Accordingly the major cost is for the heapi items. Therefore, in general, the use of max-heap for the max-6. Experimental results max-fi rst traversal strategy of TOP-MATA. 6.1. The experimental setup Table 3 shows the characteristics of seven real-world data sets used in the experiments.
+These data sets are from various application domains. Connect
+Accidents is from the National Institute of Statistics (NIS)
+Reuters-21578 text categorization test collection Distribution 1.0
+Retail contains the (anonymized) retail market-basket data from an anonymous Belgian retail store. from articles of the Los Angeles Times that was used in TREC-5. appeared and include documents from the entertainment, fi
+Note that: (1) We let minSupp =0 for both TOP-DATA and TOP-MATA for DATA-R algorithm by TDR , and the TOP-MATA algorithm by TM .
+ 6.2. TOP-DATA versus the brute-force method
+Fig. 11 shows the results of data sets Connect , Pumsb , Retail smaller. Another interesting observation is that the growth of the execution time for three data sets. We will show this in the following subsections. 6.3. TOP-DATA-R versus TOP-DATA except for the Connect data set. The reason for this observation is that the
+TOP-MATA in the following context. 6.4. TOP-MATA versus TOP-DATA-R TOP-DATA-R, especially for data sets Connect , Re1 , Wap , to be even more impressive for these fi ve data sets.
+
+TOP-MATA has the merits of (1) avoiding the false-positive pair computations ( max-fi rst strategy and (2) saving the I/O costs (  X  I/O saving in what follows we explore the in fl uences of these two factors to our question. 6.5. The computation savings of TOP-MATA comparing the number of item pairs computed 8 by TOP-MATA and TOP-DATA-R in the experiments, respectively. Execution time(sec)
+Execution time(sec) sets, namely Connect , Re1 , Wap and La12 , enjoy signi fi computation savings for Wap and La12 directly. As to the rest three data sets, i.e., savings are merely marginal, typically with saving ratios not over 10%. Recall that TOP-MATA shows signi of TOP-MATA.
+ One problem remains: since its computation saving is relatively small in Table 6 , why data set 6.6. The I/O savings of TOP-MATA upper bound in TOP-MATA. Table 7 shows the I/O saving ratio of TOP-MATA to TOP-DATA-R.
+As can be seen in Table 7 , the I/O savings of Connect , Accidents And the other four data sets all have I/O savings around 50%, including better performances on Retail rather than Accidents and Pumsb smaller computation savings (refer to Table 6 ). The main reason is, comparable results to TOP-DATA-R, as shown in Fig. 13 .
+ secondary factor for the performances of TOP-MATA. Execution time(sec)
+Execution time(sec) Execution time(sec) TOP X  X ATA X  X 
+Execution time(sec)
+Execution time(sec) than the ones in Fig. 13 .
+ of items. 6.7. TOP-MATA versus TKCP
+As shown in Fig. 16 , when K  X  550, TOP-MATA is much more ef
+La12 and Wap . This indicates that, when K is relatively small, TOP-MATA has signi with the number of all the pairs.
+ [16] . Both TKCP and TOP-MATA were implemented using C#. 7. Concluding remarks pairs. Speci fi cally, we provided two algorithms, TOP-DATA and TOP-MATA, for ef search. TOP-DATA exploits a diagonal traversal strategy, while a max-TOP-MATA is superior for handling large-scale data sets with a large number of items. Execution time(sec) TOP X  X ATA X  X  Acknowledgments 90924020), National Science Foundation (NSF) via grant number CCF-1018151.
+References

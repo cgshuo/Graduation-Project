@@ -1,0 +1,77 @@
+ Olivier Chapelle  X  Mingrui Wu Abstract Most ranking algorithms are based on the optimization of some loss functions, that are adopted to measure the quality of the web page ranking results. To overcome this such as the Normalized Discounted Cumulative Gain and the Average Precision. The basic performances.
+ Keywords Learning to rank Gradient descent Annealing 1 Introduction Web page ranking has traditionally been based on a manually designed ranking function such as BM25 (Robertson and Walker 1994 ). However, ranking is currently considered as a supervised learning problem and several machine learning algorithms have been applied Burges et al. 2007 ; Xu and Li 2007 ; Tsai et al. 2007 ; Cao et al. 2007 ).
+In these methods, the training data is composed of a set of queries, a set of documents this document to its corresponding query. For example, each grade can be one element in the ordinal set, and is assigned by human editors. The label can also simply be binary: relevant or irrel-evant. Each query and each of its documents are paired together, and each query-document l In order to measure the quality of a search engine, we need some evaluation metrics. The Discounted Cumulative Gain (DCG) has been widely used to assess relevance in the context of search engines (Jarvelin and Kekalainen 2002 ) because it can handle multiple during the training procedure. Many machine learning algorithms apply the gradient based techniques for parameter optimization. Unfortunately IR measures are not continuous and three categories: Pointwise The objective function is of the form
+Pairwise Methods in this category try to order correctly pairs of documents by minimizing X preference pair is the NDCG difference resulting from swapping that pair.
+Listwise The loss function is defined over all the documents associated with the query, AdaRank (Xu and Li 2007 ), several algorithms based on structured estimation (Chapelle which minimizes a smooth version of the NDCG measure.
+
+The approach presented in this paper is similar to SoftRank (Taylor et al. 2008 )asit however three major differences: 2. We carefully discuss the choice of the smoothing parameter and propose an annealing
+Regarding the last two points, we would like to stress that the choice of the smoothing parameter is critical for any learning algorithm which attempts at minimizing a smoothed observations:
+To address points 1 and 2, we devise an annealing procedure: the smoothing parameter is initially set to a large value and then reduced iteratively.
+
+Finally, the ranking problem is, in our opinion, more challenging when there are more compare algorithms on the Ohsumed dataset from the Letor benchmark (because it is the only one with more than 2 levels of relevance). 2 Information retrieval measures namely NDCG and AP. For convenience, we just describe these measures based on a single query but in practice they are averaged over a set of queries. 2.1 Normalized discounted cumulative gain The Discounted Cumulative Gain (DCG) score (Jarvelin and Kekalainen 2002 ) is a popular documents is defined as: where r ( i ) is the position (or rank) of the i th document in the ranking.
+One can also define the normalized DCG score by dividing the DCG score in such a way the discount function D ( r ) = 1/log 2 (1 ? r ). Then the DCG can be rewritten as: is redefined as D ( r ) / D ( r )/ Z with Z being the DCG obtained with the best ranking. 2.2 Average precision relevant documents in the first k positions: where is the indicator function: is A is true, 0 otherwise.
+
+Average precision is then the average of the precisions at the positions where there is a relevant document:
+As we will see later, it can be useful to combine the two equations above and rewrite AP in the following way: 3 Related work on the rank and are thus piecewise constant and non-differentiable. The solution proposed but only implicitly through its gradients.
+
+However, it is possible to explicitly construct a smoothed version of an IR metric; in This amounts to replacing D ( r ( i )) in ( 2 )by E D  X  r  X  i  X  X  X 
+However, this quantity cannot be easily computed. The authors of SoftRank then pro-bad. Consider for instance the case where the m documents have the same score. Then it is m 1 j 1 large.
+
+Another drawback is that the computation of the of the rank-binomial distribution for each query is O ( m 3 ).
+
+But another approximation could have been done: because 1/log 2 (1 ? t ) is convex for t [ 0, we have through Jensen X  X  inequality, And E r  X  i  X  can be computed in closed form. Indeed, and taking the expectation, we have: This formulation of the expected rank has already been derived in (Taylor et al. 2008 ). But the authors did not use it. Instead they computed the approximate rank distributions approximations are arguably equally valid.
+
+It turns out that (Wu et al. 2009 ) followed that idea and proposed the following smooth approximation of the DCG:
+Experiments using this smoothing combined with gradient boosted decision trees have 4 Our approach the smooth approximations of IR metrics. 4.1 A general smoothing framework The intuition for the smoothing technique presented in this paper stems from the softmax largest number: where r is the smoothing parameter. When r goes to 0 and the argmax is unique, the p i converge to the argmax indicator function: NDCG@1: Because of (6), this quantity will converge when r goes to 0 to: which is the NDCG@1.
+
+We now extend this idea: instead of having of a soft argmax, we introduce a soft version indicator variable h ij as: f  X  x i 2  X  implies that h ij is continuous. h ranking.
+ The smoothing is controlled by r and assuming that there is no tie, it is clear that Thus the smoothed version of the NDCG metric ( 2 ) for query q can be defined as: differentiability did not cause any problem to the gradient descent optimizer.
+It is noteworthy that the smoothing ( 8 ) not only applies to NDCG, but to any IR metric which can be written of the form h is a general and powerful smoothing technique. 4.2 AP smoothing following smooth approximations: Combining these two approximations gives a smoothed approximation of AP.
+But based on Eq. (4), a more direct approximation can be constructed. Using the smooth
+We have not tested empirically how this smooth AP performs. As noted in the intro-duction, the focus of this paper is the NDCG approximation. But it can be seen that the techniques developed here can be easily applied to other IR metrics. 4.3 Gradients that, with One can check that, as expected, h should be 0.
+ respect to w is:
+Note that when there are m documents for a query, the above sum can be rewritten such given j , each term in (10) is of the form a i b p and computing lengthy and is given in Appendix 2 . 4.4 Optimization Polak-Ribiere update. This method only requires the objective function and its gradient, computed in Sect. 4.3 .
+ larizer; and second, an annealing procedure. 4.4.1 Starting point function. We set it to be the solution found by regression on the gain function values: solution of RankSVM (Joachims 2002 ) or any other ranking algorithms can also be used.
+We also use this w 0 as a regularizer : we add to the smooth objective function k jj w w jj 2 ; where k is an hyperparameter to be tuned on a validation set. The reason for using not want to deviate too much from it. 4.4.2 Annealing As mentioned in the introduction, the choice of the smoothing parameter r is critical: on substantially different from what we are interested in. The SoftRank paper (Taylor et al. approach to solve this problem: annealing on r . This procedure can be seen as a homotopy method (Dunlavy and O X  X eary 2005 ) where a series of functions is constructed: the first iteratively minimizes each of these functions starting from the minimizer of the previous function.
+ divid r by 2 at each step and stop when r = 2 -6 .
+ function is smooth but rather different from the target one.
+ annealing procedure is shown in Fig. 2 . The training NDCG improves while r decreases r . This might due to overfitting issues that will be analyzed in Sect. 5.2 . 4.4.3 Algorithm Our algorithm in its generic version is called SmoothRank and is described in Algorithm 1. Two of its instantiations are SmoothNDCG and SmoothAP that minimize respectively the smooth NDCG ( 8 ) and the smooth AP ( 9 ). 5 Theoretical analysis valuable guidance on the final value of r at which the annealing should be stopped. 5.1 Approximation error As discussed in Sect. 4.1 , we know that the smooth version of the NDCG ( 8 ) approaches we further analyze the rate at which this approximation error goes to 0.
+Let us first define l as the minimum squared difference between two predictions:
+The denominator of ( 7 ) is always larger than 1 and so if i = d ( j ),
+For i = d ( j ), we use that 1 1 1  X  t t for t C 0 and obtain From the two inequalities above, we conclude that the difference between the smoothed NDCG and the exact NDCG as r goes to 0 is: 5.2 Complexity For simplicity, we assume that all queries return m documents.
+ Theorem 1 Let X X  R m d ; the input space consisting of m documents represented by a d constant L: lowing inequality holds for all w 2 R d such that jj w jj B ;
+E /  X  w &gt; x 1 ; ... ; w &gt; x m ; y  X  X Y : The proof is in Appendix 1 .
+
+Theorem 1 states that the difference between the generalization error and the training useful beyond ranking and can apply to any learning problem with a multivariate Lipschitz loss function.
+
+The next step is to find the Lipschitz constant of the smooth NDCG ( 8 ). By applying the maximun gradient norm: And using Chebyshev X  X  sum inequality, where the equality comes from the fact that by definition the maximum NDCG is 1. Combining these equations, we finally obtain by:
+It is likely that the above bound can be tightened, in particular the m 2 dependence. But that the smaller the r , the larger the overfitting danger is.
+
+This suggests that in our annealing algorithm we should do early stopping based on the error. 5.3 Special case r ? ? ? number of documents associated with the query. In that case, the smooth NDCG score ( 8 ) is constant. In other words, the objective function (13) becomes: very near from w 0 regardless of the starting point. 5.4 Special case w 0  X  0 Indeed the following lemma holds: always fix either of the variables k or r .
+ Proof w k c ; r = c is the minimizer of With change of variable ~ w  X  But since A q  X  ~ w = minimizer of ( 15 )is w k ; r = 6 Non-linear extension f  X  x  X  X  w &gt; x : There are several ways of learning a non-linear extension: PCA map . See for instance (Chapelle et al. 2006 , Sect. 2.3).
+ for instance be a neural network with weights w : For a gradient optimization, we simply instance been explored by Burges et al. ( 2005 ) and Taylor et al. ( 2008 ).
+Functional gradient boosting When the class of functions cannot be optimized by imposed in the boosting algorithm, for instance by limiting the number of iterations and/ boosting on general loss functions can be found in (Zheng et al. 2008 ). 7 Experiments this case the difference between various learning algorithms on the NDCG metric can be more pronounced.
+ results as we will see later.
+ We reimplemented two of the baselines given on the Letor webpage:
+RankSVM Our own implementation of RankSVM achieves better results than the Letor
+SVMLight with a maximum number iterations set to 5,000 and the optimal solution was not found.
+
+Regression We added a regularizer X  X .e., we implemented ridge regression. We also overweighted the relevant documents such that the overall weight of relevant and non-relevant documents is the same.
+ Comparison to Letor baselines The NDCG achieved by various algorithms on the
+Ohsumed dataset is presented in Fig. 3 . SmoothNDCG turns out to be the best performing method on this dataset. It is also noteworthy that RankSVM performs better than all the otherwise  X  X  X istwise X  X  approaches (SVMMAP, ListNet, AdaRank-NDCG,
+AdaRank-MAP). There seems to be a common belief that listwise approaches are that is not the case, at least on this dataset.
+
+Even though we are primarily interested in NDCG performances on the Ohsumed dataset, we also report in Fig. 4 the NDCG and MAP performances averaged over the MAP performances of all the algorithms on all the Letor datasets.
+
+Comparison to SoftRank We compared SmoothNDCG to SoftRank because both methods are closely related in the sense that they try to minimize a smoothed NDCG. However results of the Gaussian Process (GP) extension of SoftRank (Guiver and
+Snelson 2008 ) X  X n which the smoothing factor is automatically found as the predictive variance of a GP X  X re reported in (Guiver and Snelson 2008 ; Fig. 3 b) for the Ohsumed dataset and results are compared in Fig. 5 . Accuracy of SmoothNDCG is a bit better, maybe due to the fact the annealing component enables the discovery of a better local minimum.
+ should also be optimized during training. But as shown in Table 3 , that is not the case. independent of the truncation level used as test measure. That is the reason why in the experimental results reported above, we used k = 50 in the training (and model selection) criterion.
+ to lead to overfitting.
+ ( 2009 ). 8 Conclusion In this paper, we have shown how to optimize complex information retrieval metrics such as NDCG by performing gradient descent optimization on a smooth approximation of these metrics. We have mostly focused on NDCG because it is the only common metric that is able to handle multi-level relevance X  X  case where ranking is more difficult. But as dis-ranking? X  X 
+A critical component of this framework is the choice of the smoothing factor. Related to the predictive variance of a sparse Gaussian Process (and the smoothing is thus different compared to SoftRank.
+
+Finally, we have presented a theoretical analysis and in particular we have studied the influence of the smoothness of the loss function on the generalization error. Even though leverage them as a tool for deciding when to stop the annealing. Appendix 1: Proof of Theorem 1 The proof of the theorem makes uses of the results and techniques presented in (Bartlett and Mendelson 2003 ).
+ Key to the proof is to upper bound the Gaussian complexity of the class of functions where g i are independent Gaussian random variables with zero mean and unit variance. For a given w ; define the random variables and where g i and h ij are Gaussian random variables.
+ Then, 8 w ; w 0 By Slepian X  X  Lemma (Ledoux and Talagrand ( 1991 ), Corollary 3.14), we have, We also have E sup w X w  X  n ^ G n  X  F  X  and sample  X  x 1 ; y 1  X  ... ;  X  x n ; y n  X  We now apply theorem Theorem 8 of (Bartlett and Mendelson 2003 ): where R n ( f ) is the Rademacher complexity of F .
+
+Combining the above two inequalities with the fact that the Rademacher complexity can R  X  f  X  Appendix 2: Gradient of the smooth NDCG smooth NDCG A q  X  w ; r  X  is: where e ij is defined in (11) and E j :  X  References

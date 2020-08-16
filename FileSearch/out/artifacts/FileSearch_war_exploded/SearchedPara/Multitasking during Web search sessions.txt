@@ -1,0 +1,85 @@
+ 1. Introduction
+Due to the increasing complexity of the global information environment people are increasing engaged in multitasking and information task switching behaviors. Multitasking is the ability of humans to in general. However, many interactive technologies do not provide effective support for managing multi-tasking behaviors ( Wickens, 1992 ).
+
+Wickens (1992) suggests that time sharing allows the simultaneous performance of multiple tasks and allows people to cope with ever more complex environments by handling multiple tasks through task
+Web search engine users may information multitask in two ways. First, a user may begin their Web and new car information as they think and work on multiple information problems concurrently. than just this method of query specification and selection.
+ ing information behavior and information task switching. The paper then details the research goals, re-search design and results from a study of multitasking on the AltaVista Web search engine. 2. Related studies 2.1. Multitasking behavior of their information-seeking behaviors ( Spink, 2004; Spink, Jansen, Wolfram, &amp; Saracevic, 2002 ). 2.2. Multitasking information behavior
+A growing body of studies shows that people often have many tasks (or information problems/topics) at users responding to a Web-based survey reported multitasking searches. Spink et al. (2002) show that IR multitasking information seeking and searching is a common human behavior as many IR system users conduct information seeking and searching on related or unrelated topics. In addition, Web or IR multi-1 to more than 10 topics and a mean of 2.11 topic changes per search session.
+
+Recent studies have examined multitasking searching on the Excite and AlltheWeb.com Web search en-provide a detailed analysis of multitasking sessions on AlltheWeb.com. They found that almost one third of AlltheWeb.com users perform multitasking Web searching. Multitasking Web search sessions often in-with both Excite and AlltheWeb.com users searching for about three topics per multitasking session and submitting about 4 X 5 queries per topic.
+
+Spink and Park (forthcoming) studied multitasking information and non-information behaviors by busi-puting and communication tasks, and (3) information seeking tasks often occur to support or respond to communication or computing tasks. Spink and Park (forthcoming) provide a model of multitasking and differences variables.
+
+Typical Web search sessions are two queries, and some Web search sessions contain three or more que-complex Web searcher information multitask during their Web searching. To extend the studies of multi-two queries, and secondly during Web search sessions that include three or more queries. 3. Research objectives of information multitasking during Web search sessions of two-query and three or more queries by Alta-Vista users.
+
+The specific research questions addressed by the study were: 1. To what degree do two-query and three or more query search sessions include two or more topics? 2. What are the topics in multitasking Web search sessions? 3. What are the patterns of topic task switching during multitasking Web search sessions?
+Web searching by AltaVista users. 4. Research design 4.1. Data collection 4.1.1. AltaVista query set
+In 2002, AltaVista was an important Web search engine, had a content collection of over a billion Web an independent company for several years, Overture Services purchased AltaVista in 2003. At the time of matter for future research.
+
+The queries examined for this study were submitted to AltaVista on Sunday, 8 September 2002 during a on the Web search engine on this particular date. The AltaVista Web query transaction log contains approximately 3,000,000 records.
+ Each record contained three fields.
+ Time of Day : Measured in hours, minutes, and seconds from midnight of each day as recorded by the AltaVista server; IP address.
+ Query Terms : Terms exactly as entered by the given user.
+
+The AltaVista Web query transaction log contained searches from both human users and agents. We were interested in only those queries submitted by humans rather than by some automated process. Given that there is no way to accurately identify human from non-human searchers, most researchers utilizing Spink et al., 2002 ) for human Web searchers, assuring that we were not excluding any human searches.
+Although this cutoff probably introduced some queries by Web agents, we were satisfied that we had re-a non-common user terminal, yet broad enough not to introduce bias by too low of a cut-off threshold.
+When a searcher submits a query, then views a document, returns to the search engine, and views another cate queries. We therefore collapsed these duplicate records in order not to skew our analysis. 4.2. Session analysis and then recreated the chronological series of actions in a session.
+ A term is any series of characters separated by white space or other separator.
+ A query is the entire string of terms submitted by a searcher in a given instance.
+ engine. Session length varied from less than a minute to a few hours.
+
+From the transaction log, we extracted a random sample of two query sessions and a random stratified the two-query and three or more query dataset. Two researchers qualitative analyzed each search session ian operas ).
+
+Data was also collected during the micro-analysis on the information task/topic switching occurrences sequences.
+ 5. Results
+This paper extends results reported in Spink, Park, Jansen, and Pedersen (2004) . 5.1. AltaVista sessions 5.1.1. Two-query sessions Table 1 provides results from the analysis of the AltaVista Web two-query data.
+ sessions. The 206 multitasking AltaVista sessions encompass 532 queries. A majority of AltaVista users seem to be conduct multitasking searches, as they submitted more multitasking Web search sessions and queries than non-multitasking sessions. 5.1.2. Three or more query sessions Table 2 shows results from the analysis of the AltaVista Web three or more query data set.
+For the AltaVista dataset, there were 441 (91.3%) multitasking sessions in the 483 three or more query sessions and investigated more than one topic. Both Excite and AlltheWeb.com users also searched more Vista users.
+ Previous research by Ozmutlu et al. (2003a, 2003b) examined multitasking on the Excite and Allthe-
+Web.com search engines, although not specifically two-query and three and more query sessions. The
+Web.com dataset shows that the mean queries were 10.3 for the entire sample and 14.3 for multitasking sessions. 5.2. User search topics 5.2.1. Two-query sessions for the AltaVista query dataset.
+
+The most preferred categories for the sample of two-query AltaVista sessions examined were general information, computers and shopping. These three categories form about 35% of the queries in multitask-ing sessions. 5.2.2. Three or more query sessions egory for the AltaVista query dataset.
+
+The most preferred categories for the sample of three or more query AltaVista sessions we examined were general information (14%), entertainment (13%), shopping (13%), and computer/internet (10%).
+These categories form about 50% of the queries in multitasking sessions. In comparison, Ozmutlu et al. about 47% of all queries in multitasking sessions. The subject categories might reflect topic at the same time. They found out that multitasking search sessions included more than three topics per search session. 5.3. Information task/topic switching 5.3.1. Two-query sessions As examples, two two-query sessions by different users are provided below: Time Queries
+Example 1 7.07.59 AM Trident Dental Laboratories 7.13.06 AM Scorpions Time Queries
+Example 2 8.26.11 PM dc8p.com 8.29.30 PM moon hoax
+In both examples above, the users  X  changed topics during their two-query Web search sessions. Table 5 shows the data relating to topic changes during the AltaVista two-query data set.
+ mean of 2.2 topic changes per session that can also be interpreted as a mean of 3.2 topics per session ( Ozmutlu et al., 2003a; Ozmutlu et al., 2003b ).
+ 5.3.2. Three or more query sessions For example, two three or more-query sessions by different users are provided below: Time Queries
+Example 1 2.33.37 AM recipe bathtub crank 2.34.14 AM recipe for making crystal meth 2.39.48 AM queer and free 2.44.26 AM uses of ephedrine 2.48.11 AM woman known as catwoman 2.54.11 AM addicted to plastic surgery Time Queries
+Example 2 3.28.16 nautical accessories 3.29.54 primate 3.32.34  X  X  X nglican + primat X  X  3.33.31  X  X  X olomon Norton/Hannah culver X  X  3.36.58 hannah culver
+In both examples above, the users  X  changed topics during their Web search sessions. In Example 1, the three or more-query data set.
+
+Ozmutlu et al. (2003a, 2003b) also found that most of the Excite and AlltheWeb.com users make 1 X 3 dataset, meaning that on average users making multitasking searches changed the search topic every 4.3 per topic meaning users submit almost the same number of queries per topic in multitasking sessions.
+The next section of the paper further elaborates the key findings of the study. 6. Discussion
+We identified characteristics of two-query AltaVista search sessions. Many two-query sessions were mul-with analysis from Web sessions of three or more queries.
+
+Some characteristics of three or more query search sessions were identified during this analysis. Many three or more query sessions were multitasking sessions where users switched from a single query on one mean queries per Web multitasking search session were 50% larger than that of regular search sessions.
+Performing multitasking searches on the Web could be the result of accessing a Web search engine at a particular moment and aggregating several searches during one interaction. In addition, it appears that titasking information behaviors have become more common behavior by Web searchers.
+ microprocessor at the same time they talk on the telephone. People have many tasks at hand at the same tion from less than a minute to a few hours.
+
+The next section of the paper elaborates the multitasking aspects of interactive information retrieval. 6.1. Interactive information retrieval as multitasking
+During multitasking, humans cognitively and physically coordinate multiple tasks through task switch-ing. The paper proposes that interactive IR is contextually a multitasking behavior on two levels. embedded between telephoning and computing tasks, a search engine user coordinates many tasks when and strategy, search engine and search term selection, relevance judgments, etc.
+
+On a second level, people engage in multitasking information behaviors or are seeking information on more than one topic concurrently. For example, a search engine user switches between seeking fashion types of tasks and often different information problems.
+
+Conceptualizing interactive IR as a multitasking process embeds interactive IR within the broader can argue that effective interactive IR is successfully coordinating switching between related tasks. task. However, people in fact accomplish interactive IR in much more complex ways than just this method of query specification and selection.
+
+The next section of the paper further conceptualizes interactive IR as two levels of multitasking. 6.2. Coordinating and multitasking search tasks. For example, embedded between telephoning and computing tasks, a search engine user may coordinate their interactive search tasks when looking for medical information.
+
+People must coordinate the translation of their information problem(s) by performing search term selec-and retrieving and constructing information.
+ processes to construct an interactive IR process embedded within their broader information and non-information behaviors.
+ that humans develop from childhood. Nevertheless, how do humans learn the process of cognitively coor-dinating their information problems into coherent processes of human information behavior and interac-tive information retrieval? 6.3. Multitasking information behaviors
+On a second level, people often engage in multitasking information problems concurrently. Studies have specific multiple topics. Therefore, many humans engage in information related multitasking behaviors during interactive IR.
+
+In the interactive IR context, an IR system user may multitask (either begin their search with multiple fashion information as they are thinking and working on multiple information problems concurrently. However, search technologies generally require them to search sequentially.
+
+Multitasking information behavior research is a significant area of study. Despite the focus on tasks tasks. Understanding and modeling multitasking information behaviors, requires an understanding of the coordination and interplay between information problem, interactive search and other tasks. 7. Implications How might multitasking search sessions be supported by Web systems and interfaces? Some commercial one information task in a single database or support browsing within a single database or many Web sys-val systems provide effective support for managing multitasking behaviors.
+ search: fines of a session across multiple topics. keyword generation tools). topics (i.e., sketching, hyper-linking, and note creation tools).  X  Enable the submission and tracking of multiple queries concurrently on different or related topics.  X  Allow for searching multiple search engines or collections concurrently on multiple topics.  X  Enable the reformulation of multiple queries on different or related topics.  X  Provide windowing facilities to allow Web users to generate and track separate topic or related topic queries and facilitate topic switching.  X  Enable the generation and comparison of relevance judgments from different or related searches. over multiple searches.  X  Provide the ability to create clusters of retrieved information related to different topics. 8. Conclusion and further research
+This paper has proposed that, theoretically and practically, interactive IR can be conceptualized as a active search tasks. Exploring multitasking and coordination behaviors are relatively new and heuristic tems and interfaces provide limited support for multitasking search. As the complexity of information structures and problems increases, more complex human information processes and more effective Web technologies are required to sustain effective human information behaviors.
+
+Further research is being conducted to investigate: 1. How multitasking searches differ from non-multitasking sessions. 2. If a user  X  s information-seeking stage affects the number and performance of multitasking searches. are coordinated. 4. The interplay between information and non-information tasks ( Spink &amp; Park, forthcoming ).
+A model of multitasking and task switching during human information behavior is also being developed information problems that lead to multitasking.
+ References

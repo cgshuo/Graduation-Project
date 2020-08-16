@@ -1,0 +1,19 @@
+ algebra algorithms [2].
+ O matrix completion.
+ analogus results of [11]. 1.1 Model definition Let M be an m  X  n matrix of rank r , that is with where the matrix Z will be assumed to be  X  X mall X  in an appropriate sense. The set E will be uniformly random given its size | E | . 1.2 Algorithm The basic idea is to minimize the cost function F ( X, Y ) , defined by modified cost function to be denoted by e F ( X, Y ) .
+
+O PT S PACE ( matrix N E ) 2: Compute the rank-r projection of e N E , T 3: Minimize e F ( X, Y ) through gradient descent, with initial condition ( X We refer to the journal version of this paper for further deta ils. The various steps of the above algorithm are defined as follow s. Hence, e N E = f M E + e Z E .
+ Rank-r projection . Let be the singular value decomposition of e N E , with singular vectors  X  Apart from an overall normalization, T norm.
+ Minimization . The modified cost function e F is defined as definition of e ( z  X  1) 2  X  1 otherwise. Further, we can choose  X  =  X ( n X  ) . a broad family of functions G performance loss in setting  X  = 0 .
+ optimization by gradient descent on matrix manifolds we ref er to [12, 13]. 1.3 Main results Theorem 1.1. Let N = M + Z , where M has rank r and | M Then there exists numerical constants C and C  X  such that with probability larger than 1  X  1 /n 3 .
+ generality, U T U = m 1 and V T V = n 1 . We say that M is ( conditions hold.
+ Theorem 1.2. Let N = M + Z , where M is a (  X  then, with probability at least 1  X  1 /n 3 , provided that the right-hand side is smaller than  X  results of [1] were only asymptotic. 1.4 Noise models for the noise matrix Z : mean E { Z for some bounded constant  X  2 .
+ entries: | Z follows.
+ there is a constant C such that, with probability at least 1  X  1 /n 3 .
+ If
+Z is a matrix from the worst case model, then for any realization of E .
+ Z  X  1.5 Comparison with related work | E |  X  (8 log n ) 4 n (which for n  X  5 10 8 is larger than n 2 ). different. with e U model with Z becomes indistiguishable from the information theory lowe r bound. than 4  X  2 ).
+ operator norm || Z E || one expects || Z E || model with bounded variance  X  , || Z E || logarithmic terms). || v i || = normalizations can be absorbed by redefining  X  ). We shall write  X  = diag( X  mum singular values will also be denoted by  X  size of an entry of M is M | E |  X  [  X  in  X  . We will use C , C  X  etc. to denote universal numerical constants. its Frobenius norm, and || X || first N integers. singular values are close to the ones of the original matrix M . where it is understood that  X  Proof. For any matrix A, let  X   X  ( B ) , whence where the second inequality follows from the following Lemm a as shown in [1]. with probability larger than 1  X  1 /n 3 , We will now prove Theorem 1.1.
+ Proof. (Theorem 1.1) For any matrix A of rank at most 2 r , || A ||  X  This proves our claim. all i, j 4.1 Preliminary remarks and definitions Given x is defined as d ( x singular values of X T 4.2 Auxiliary lemmas and proof of Theorem 1.2 [1] (for proofs we refer to the journal version of this paper) . Lemma 4.1. There exists numerical constants C for all x  X  M ( m, n )  X  K (4 Further, for an appropriate choice of the constants in Lemma 4.1, we have Lemma 4.3. There exists numerical constants C Then, for all x  X  M ( m, n )  X  K (4 [ a ] +  X  max( a, 0) We can now turn to the proof of our main theorem. Proof. (Theorem 1.2). Let  X  =  X  Lemmas 4.1 and 4.3 are verified.
+ Call { x sumption, the following is true with a large enough constant C : Further, by using Corollary 4.2 in Eqs. (22) and (23) we get where By Eq. (28), we can assume  X  For  X   X  C X  2 with the bound d ( u , x We make the following claims : verges to By Lemma 4.3 for any x  X   X  , which implies the thesis using Corollary 4.2.
+ and the NSF grant DMS-0806211.

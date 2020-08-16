@@ -1,0 +1,71 @@
+ no mechanical drag and therefore a cyclical repetition of opera-tions, in which storage capacity is limited. If we assume there to be no possibility of storage between two successive phases of the process, a major structural change takes place in the behavior of the system, since a part cannot leave the machine which is processing it until the following machine is free. If this is not the case, the part is forced to stay in the previous machine, blocking it and preventing it from performing operations on other parts. This variant is known as blocking flowshop scheduling problem (BFSP) and is the one we are going to consider in this article. If the intermediate storage capacity is limited, the problem can also be reduced to a BFSP in which each storage space is treated as a dummy machine with a processing time equal to zero ( McCormick et al., 1989 ).
+
+In this article, we discuss the BFSP with the aim of minimizing the maximum completion time of jobs or makespan. Making use of the notation proposed by Graham et al. (1979) , the problem considered is denoted by Fm 9 block 9 C max (and the PFSP by Fm 9 prmu 9 C max ). The research carried out on this problem is not very extensive. A good review of flowshop with blocking and no waits in the process can be found in Hall and Sriskandarajah (1996) , where they also demonstrated, using a result from Papadimitriou and Kanellakis (1980) , that the problem Fm 9 block 9 C max for m Z 3 machines is strongly NP-hard. However, for m  X  2, Reddi and Ramamoorthy (1972) demonstrated the existence of a polynomial algorithm which reaches the optimal solution to the Fm 9 block 9 C max problem. The reason lies in the fact that the F 2 9 block 9 C max problem can be reduced to a traveling salesman problem (TSP) with n  X  1 cities (0,1,2, y n ). The sequence 3. An application of the proposed procedure to the 12 sets of instances from the literature (Taillard X  X  benchmark instances).
+As results, we have improved the best known solutions in 17 instances from a total of 120. In particular, we have obtained better solutions in the 10 instances of the set 12 from Taillard, with 500 jobs and 20 machines.
+
+This manuscript is organized as follows. Section 2 presents the problem description. Section 3 describes the graph associated with the problem under consideration and establishes dominance properties between their vertices. Section 4 proposes general and partial bounds on the C max value shown by the sequences. Section 5 introduces a procedure based on BDP to solve the problem under consideration and an example. Section 6 describes the computational experiments performed and presents the results.
+Finally, Section 7 shows the conclusions of the study. 2. Problem description
+At time zero, n jobs must be processed, in the same order, on each of m machines. Each job goes from machine 1 to machine m .
+The processing time for each operation is p i , k , where k A K  X  {1,2, y , m } denotes a machine and i A I  X  {1,2, y , n } a job.
+Setup times are included in processing times. These times are fixed, known in advance and positive. The objective function considered is the minimization of the makespan ( C max ).
+Given a permutation, p , of the n jobs, [ t ] indicates the job that occupies position t in the sequence. For example, in p  X  (3, 1, 2) [1]  X  3, [2]  X  1, [3]  X  2. For this permutation, in every machine, job 2 occupies position 3. In a feasible schedule associated to a permutation, let s k , t be the beginning of the time destined in machine k to job that occupies position t and e k , t the time of the job that occupies position t releases machine k . The Fm 9 prmu 9 C max problem can be formalized as follows: s  X  p  X  t , k r e k , t k  X  1 , 2 , ... , m ; t  X  1 , 2 , ... , n  X  1  X  s Z e k , t 1 k  X  1 , 2 , ... , m ; t  X  1 , 2 , ... , n  X  2  X  s Z e k 1 , t k  X  1 , 2 , ... , m ; t  X  1 , 2 , ... , n  X  3  X 
+C Being e k ,0  X  0 8 k , e 0, t  X  0 8 t , the initial conditions.
+The schedule is semi-active if Eq. (1) is written as s  X  p [ t ], k  X  e k , t and Eqs. (2) and (3) are summarized as s
+When there is no storage space between stages, Fm 9 block 9 C max problem, if a job i finishes its operation on a machine k and if the next machine, k  X  1, is still busy on the previous job, the completed job i has to remain on the machine k blocking it. This condition requires an additional Eq. (5) in the formulation of the problem e
+Z e k  X  1 , t 1 k  X  1 , 2 , ... , m ; t  X  1 , 2 , ... , n  X  5  X  The initial condition e m  X  1, t  X  0 t  X  1,2, y , n must be added.
+The schedule obtained is semi-active if Eqs. (1) and (5) are summarized as (6): e
+Consequently, the Fm 9 prmu 9 C max problem can be seen as a relaxation of the Fm 9 block 9 C max problem. 3. Graph associated with the problem
+Similar to Bautista et al. (1996) and Bautista and Cano (2011) , we can build a linked graph without loops or direct cycles of T  X  1 ( J ( t , j ) -i J ( t  X  1, j i )) in the following case: q !  X  t , j  X  ! q !  X  t  X  1 , j i  X  X  13  X 
+For vertex J ( t  X  1, j i ) to be completely defined through the transition from J ( t , j ), it is necessary to determine: as follows: q  X  t  X  1 , j i  X  X  1  X  15  X  q  X  t  X  1 , j i  X  X  q h  X  t , j  X 8 h : h a i A I  X  16  X  e where e 0 ( t  X  1, j i )  X  0.
+ Fig. 1 illustrates a scheme of the state graph associated to the scheduling the jobs i and i 0 , respectively. This development results stage t  X  1 can be determined; finally, this vertex can be devel-of the stage t  X  2.
+
+Indirectly, contribution to the partial C max generated in the ing the job i to the latter vertex, as follows: a  X  X  t , j  X  - X  t  X  1 , j i  X  X  X  e m  X  t  X  1 , j i  X  e m  X  t , j  X  X  18  X 
+Under these conditions, finding a sequence that optimizes the total C max is equivalent to finding an optimum path from vertex J (0) to the set of vertices J ( T ) of level T .
+
+Therefore, any algorithm of extreme paths in the graphs is valid for finding solutions to the proposed problem. However, realistic industrial problems where n and m are large give rise to graphs with a large number of vertices. Therefore, we recommend resorting to procedures that do not explicitly require the presence of all of the vertices for calculation. 4. Bounding the values of the sequences
+First, we establish general bounds for C max , and then we establish the bounds associated with the path for building (complement) when a segment or subsequence of t members has already been built.
+
+The procedure only keeps the information of two consecutive levels in memory, t and t  X  1( t  X  0, y , T 1), for which it uses the following lists L ( t ) and L ( t  X  1), respectively:
+List L ( t ) contains information about the vertices consolidated in level t that can potentially form part of an optimum or good quality path.
+
+List L ( t  X  1) contains the vertices that are tentatively gener-ated one-by-one from each vertex of list through the possible transitions between levels t and t  X  1.
+ elements:
+Although the use of L ( t ) and L ( t  X  1) notably reduces memory needs, the number of vertices that can be generated for a level can be very large. Therefore, we impose a limitation on the number of
+H ( t ) vertices stored in level t. This limitation, called window the maximum number of transitions from a vertex in level t to the value n t .
+
+To obtain an initial solution with value Z 0 (the upper bound of search, or BDP with a small window width, e.g., H  X  1.
+We have developed two variants based on BDP: rule or guide ( GZ ) to obtain solutions: a partial solution is more promising than another when it has the best bound for C max ( LB 1( t , j )). In case of tie between two partial solutions (equal the best. used as priority rule or guide ( GZ ): a partial solution is more promising than another when it has less value for his partial
+C max (i.e. e m ( t , j )). In case of tie between two partial solutions considered the best.
+
+Evidently, some vertices tentatively generated in level t will not be recorded in list L ( t  X  1).
+
+In effect, we use the following rules: 1. We  X  X  X emove X  X  an J ( t  X  1, j i ) vertex generated when the value of its lower bound, LBZ  X  LB 1( t  X  1, j i ), is greater than or equal to the value of a known solution Z 0 (upper bound for C max ), because it is not possible to obtain a solution with a better value than Z 0 through J ( t  X  1, j i ). 2. We  X  X  X eject X  X  an J ( t  X  1, j i ) vertex generated when there is a largest value of the priority rule or guide  X  Variant 1 : GZ max  X  h
+L ( t  X  1), although an optimum path may pass through J ( t  X  1, j i ). or when J ( t  X  1, j i ) has a GZ that is lower than J ( t  X  1, h ) and
+H ( t  X  1)  X  H , although the optimum path may pass through the moved vertex.
+ value than Z 0 using the L ( t ) list and the ancestors of the vertices.
+
+In addition, we can guarantee that we are able to build an the following cases: Case 1 : max Case 2 :  X  max LBZ min corresponds to the value of the  X  X  X iscarded X  X  or  X  X  X eplaced X  X  vertex during the procedure with lower bound LBZ.
+ In any other case, the procedure is heuristic.
+
+Consider the following example to illustrate the use of the BDP procedure: there are four jobs ( n  X  4: A , B , C , D ). The jobs are processed in three machines ( m  X  3: m 1 , m 2 and m 3 ), and the processing times, p i , k , of each job ( i  X  1, y ,4) at each machine ( k  X  1, y ,3), are indicated in Table 1 .
+
+The objective is to obtain an optimal sequence under the conditions of the Fm 9 block 9 C max problem.
+
+Fig. 2 illustrates an application of the proposed procedure (Variant 1) to the example using an initial solution Z 0  X  25 and a window width H  X  8. In the graph associated with Fig. 2 we can see the following: (1) At level t  X  2, the vertices ( A  X  B ) and ( B  X  A ) are removed (6) At level t  X  4, the vertex ( D  X  C  X  A  X  B ) represents an optimal machines. The number of jobs goes from 20 (set 1) to 500 (set 12) and the number of machines goes from 5 (set 1) to 20 (set 12).
+To obtain solutions, we have used two variants of BDP programmed in C  X  X  , compiled with gcc v. 4.01, running on an
+Apple Macintosh iMac computer with an Intel Core i7 2.93 GHz processor and 8 GB RAM using MAC OS X 10.6.4. Neither the implementation nor the compiler used threads or any type of parallel code; therefore, the computer can be considered a single 2.93 GHz processor. The 12 sets were solved using eight correla-tive window widths, from H 1 to H 8 with values 1, 10, 50, 100, 250, 500, 750 and 1000, respectively.
+
+For the initial solution Z 0 , we used the value of the solution obtained with the previous width H a 1 for each window width H a ( a  X  1, y ,8), except for the case with width H 1  X  1 in which Z 0 was fixed at N .
+
+To analyze the experimental results, we used the relative percentage deviation ( RPD ) calculated as follows:
+Table 2 shows: (2) Column  X  X  Best found  X  X  shows the best solutions found for each (3) Columns headed from H  X  1to H  X  1000 show the solutions for (4) Finally, column  X  X  Best RPD  X  X  shows the best RPD value obtained
+In Table 2 we can observe that values of RPD are between  X 1.49% (instance 119) and 8.93% (instance 52) in all the instances, considering the best value between the two BDP variants. RPD negative values (marked in italics and bold face) indicate an improvement to the best solution reported in the literature; these improvements occur in 17 instances: instance 70 (with a window width H  X  500), instance 95 (with a window width H  X  750) and instances 64, 68, 92, 96, 99, 111, 112, 113, 114, 115, 116, 117, 118, 119 and 120 (with a window width H  X  1000, although some of these instances improved less in previous windows widths). The average RPD for the 120 instances is 2.18%. The average RPD for each set (from 1 to 12) and variant (1 and 2) are reported in Table 3 . Table 3 also shows average CPU time (in s) for both variants of the BDP and windows widths H  X  500, H  X  750 and H  X  1000 (for the 12 sets). The CPU times related to H r 250 have been removed from Table 3 because that can be considered negligible compared to the CPU times exposed.
+
+Table 3 shows that the CPU times grow if we increase the window width and the dimension of the sets. Regarding to times according to the variant used, in sets from 1 to 4 the times are similar for both variants. However, from sets 5 to 12, the Variant 1 is faster.
+
+In order to study the impact of increase the window width H to improve the solutions found, we have performed an additional computational experiment using the window widths H  X  1250, 2500, 5000 and 10,000 in the instances corresponding to the sets from 1 to 4 from Taillard.
+
+The results of this experiment are shown in Tables 4 and 5 . The solutions have been improved in 38 instances of 40 (except for instances 2 and 19), comparing the values for RPD of column  X  X  Best RPD  X  X  and column  X  X  RPD H  X  1000 X  X , or alternatively, comparing the values for C max of columns  X  X  C max H  X  1000 X  X  and  X  X  X est found  X  X . The optimal solution is reached in the instances 4, 5, 9 and 10. The average CPU times for each window width ( H  X  1250 to 10,000) are shown in Table 5 , in addition to  X  X  % average RPD  X  X , which improve over the values obtained for H  X  1000, in 0.64%, 0.98%, 1.2% and 0.63% for sets from 1 to 4, respectively. m 7. Conclusions
+In this paper a Bounded Dynamic Programming (BDP) procedure has been proposed for solving the permutation flow shop problem with blocking ( Fm 9 block 9 C max ). This type of procedure has been used to solve sequencing in mixed assembly lines and assembly line balancing problems but, to the best of our knowledge, it has not been used to solve the problem here considered.
+
+The BDP combines features of dynamic programming with features of branch and bound algorithms. The main elements that define the efficiency of the BDP procedure are the graph

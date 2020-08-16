@@ -1,0 +1,14 @@
+ precision using a large genomics literature corpus. Categories and Subject Descriptors : H.3.3 [ Information Storage and Retrieval ]: Information Storage and Retrieval General Terms : Algorithms, Experimentation, Theory Keywords: Information retrieval, genomics search, semantic search, relevance modeling, pa ssage retrieval, dimensional modeling, graphical mode ls, passage retrieval. using the relevant set as an estimate for P R . over the maximal cliques in the graph (1). topic, concept, term , and document cliques as: potential functions results in the following: component terms (4,5,6). S is the length of the set of relevant passages. C R C S is a smoothing parameter set to zero. using the sum rule from the underlying topic relevance model (7). external knowledge sources. Query 200 Query 201 Query 202 
+BILAG (0.6010) lupu (0.5650) anticardiolipin (0.3960) immunodiffus (0.3870) isle (0.3750) system (0.3331) erythematosu (0.2954) antibodi (0.2820) index (0.2776) diseas (0.2488) activ (0.24514) measur (0.2432) anticoagul (0.2320) clinic (0.2193) bacon (0.1807) patient (0.1551) EM (0.1492) 
+ISI (0.1425) hay (0.1404) score (0.1291) SLE (0.1196) capture document level evidence. passage retrieval. All results are for automatic retrieval . Top TREC* 0.3105 0.0976 0.1097 0.2494 Median 
+TREC TREC 2007 
+Submission 
+Document model Topic model 
+No relevance 
+Topic-relevance model 
+Concept model Term model 0.3226 0.1053 0.0557 0.1856 Concept + 
+Term models 
+Doc+Concept +Term+Topic -relevance Min Spanning 
+Passage 
+Doc+Concept +Term+Topic -relevance Max Spanning 
+Passage Hersh W., et al. (2007). TREC 2007 Genomics Track Overview. The Sixteenth Text REtrieval Conference Proceedings. Analysis: A Road to Meaning. Laurence Erlbaum. TREC 2007 Genomics Track: Using Concept-Based Semantics in Text REtrieval Conference (TREC 2007) Conference Proceedings. Urbain, J., Frieder, O., &amp; Goharian, N. (2008 to appear). Probabilistic Passage Models for Semantic Search of Genomics Literature. Journal of the American Society of Information Science. 

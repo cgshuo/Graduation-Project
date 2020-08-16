@@ -1,0 +1,47 @@
+ 1. Introduction sources with j items) is a decreasing power law, i.e. is Lotka X  X  law (see Egghe, 2005a ). Stated more exactly the theorem of Naranan is as follows: Theorem ( Naranan, 1970 ):
+Suppose then the size-frequency function f ( j ) has the form where C &gt; 0 is dependent on t , j P 1 and of this system (see Egghe (2005a, 2005b) ).
+ where sources are ranked in decreasing order of their number of items): B &gt;0, b &gt; 0 and r e ]0, T ], T being the total number of sources.
+The relation between a and b is: where also formula (6) is proved.
+
+The basis of the proof of the equivalence of (3) and (5) is the relation and not related to Lotkaian informetrics. It will be used in this paper as well. with (3) (as mentioned above) and where we showed that b  X  (first convex, then concave) or a reverse S-shape (first concave, then convex). ing by T the total number of sources and by A the total number of items we have  X  X  X oken X  X ).
+
+The paper closes with some conclusions and open problems.
+Similar to the Naranan formalism we suppose the following assertions
+Note that the above also includes linear growth in case a rank-frequency function g ( r ).
+ expression for the rank-frequency function g(r) in function of time t: where r 2 X  0 ; c 1 t a 1 and where c 1 , c 2 , a 1 and a 2
+But (12) and (13) combined yield from which (11) readily follows. h ferent shapes (in the Naranan case, g ( r ) was always convex). and it has no inflection point if and only if if a 1 = a 2 and a 1 &gt; 1 and g ( r ) is concave if and only if a g ( r ) is convex or concave for non-determined values of a
+Proof.
+Noting that D &lt;0, g 00  X  r  X  has the sign of If we denote for simplicity, we see that g 00 ( r ) has the sign of
+Hence g ( r ) has no inflection point if a 1 = a 2 :if0&lt; a since r 6 c 1 t a 1 ) (since g ( r ) is not defined on negative values) and has no inflection if and only if (20) and (21) prove (14) and (15) since t &gt;0.
+
+Let us now assume (15) . Suppose that we have the first inequality in (15) .If a of (19) is &gt; 0. Hence g ( r ) is convex. If a 2 &lt; a
+Suppose that we have the second inequality in (15) .If a 2 a &lt; a 1 then a 2 &gt; 1 hence a 1 &gt; 1 and the sign of (19) is not determined. concave. Hence g ( r ) has an S-shape. h Further properties of the rank-frequency function are given in Theorem 3 .
+Theorem 3.
+Proof. (23) and (24) follow readily from (11) . From (16) we have that g 0  X  0  X  X  0if0&lt; a same argument if r  X  c 1 t a 1 . h shown in Figs. 1 X 4 .
+
+If g ( r ) has an inflection point ( Figs. 3 and 4 ) then this point is ( r
+This follows from (20) and (11) . Note that here a 1  X  a 2 function g .
+ from which it follows that the next theorem. expression
+Proof. According to (27) we need expressions for g 0 and for g
+For g 1 ( j ), note that, by (11) , where yield from which (28) follows. h g , hence confirming the correctness of (28) .
+ (1) Let a 1 =1.
+
+Then, by (28) unusual exponent a ( Egghe (2005) )
+If 0 &lt; a 2 &lt; 1, then f ( j ) strictly increases in j . For the cases a Egghe and Waltman (2011) (see Lemma II.3 there).
+ We also need the following lemma which is proved in the same way increasing if and only if g has a reverse S-shape, first concave and then convex. replaced by g 1 )in Egghe and Waltman (2011) .
+
+We now start the study of the cases a 1 &gt; 1 and 0 &lt; a (2) Let a 1 &gt;1.
+ If a 2 &gt; 1, then it is clear from (28) that f ( j ) decreases strictly in j .
+If 0 &lt; a 2 &lt; 1, then (20) is valid. Hence g ( r ) has an inflection point. But, since a (3) Let 0 &lt; a 1 &lt;1. If 0 &lt; a 2 &lt; 1, then it is clear from (28) that f ( j ) strictly increases in j . law Heaps X  (or Herdan X  X ) law.
+ that, for every t &gt; 0 we have
+Furthermore Proof. Formula (9) yields The Eq. (10) or (12) imply that the total number of items in all sources at time t equals The integral in (36) cannot be evaluated in an analytical way. In fact it is the beta function However, what is important here is that (37) is a constant. Denote then we have that
+Formula (34) implies (39) in (38) yields Hence Denote then (40) reads hence Heaps X  (or Herdan X  X ) law with constant exponent
+Note that c only depends on the quotient a 2 a 4. Conclusions and open problems these systems.
+ empirical results to show the use-ability of the present results. tage over other source-item growth models.
+ items (in sources) grow according to a power law (or vice versa). Acknowledgement to one referee who pointed out a mistake in Theorem 2 in an earlier version of this paper. Appendix A Second proof of formula (28) .
+
+The defining relation for g ( r )is (12) : for r  X  c 1  X  h t  X 
+Since r  X  c 1  X  h t  X  a 1 we have
+Furthermore by (A1) and (A2) .By (A1) ,
+Since j = g ( r ), we have, by (A1) , whence
+Hence (A4) and (A5) yield Finally (27), (A3), and (A6) yield (28) after some elementary calculation. References

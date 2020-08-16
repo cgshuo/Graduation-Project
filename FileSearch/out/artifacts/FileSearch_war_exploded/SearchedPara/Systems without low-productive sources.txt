@@ -1,0 +1,68 @@
+ 1. Introduction
+Information production processes (IPPs). Well-known cases are authors as sources and publications as items; journals as sources and published articles about a given subject as items; articles as sources and received citations (from a given pool of journals) as items; articles as sources and their references as items; web sites as sources and inlinks or outlinks as items. of this case ( Egghe and Rao, 2002; Rao, 1995; Rousseau, 1994 ).
+ p. 128 ): in rank-frequency continuous density form is ( Egghe, 2005a, p. 128 ):
+The equation expresses the relation between the two exponents involved in these equations. ing tail can be considered as describing an intermediate situation between IPPs with a decreasing size-and more from 1. An abstract example can be given by considering N random draws with replacement from an urn containing M balls. As this experiment can only have M possible outcomes, f ( n example is an IPP describing the sizes of databases. Here n human settlements (usually containing much more than one inhabitant) or countries and their population sizes.
+
+IPPs where n min 1, and hence f ( n ) = 0 for n =1, ... , n there is only one city in a country with exactly n = 395,465 inhabitants and there is none with exactly n = 395,466 inhabitants.
+
+The above mentioned examples of systems without low-productive sources will be interpreted in Section 2 such processes and will show that f ( n ), for n fixed, is decreasing as a function of system size. number of sources and the number of corresponding items, leading to Lotkaian informetrics) in the frame-nent (denoted as a ).
+ evolution of such systems can be described by defined on [ a ,+ 1 [, where the exponent a decreases and a increases over time. This yields a complete section.
+ problems and conclusions. 2. The success-breeds-success formalism and sources without low-productive sources 2.1. General aspects of success-breeds-success ences by de Solla Price (1976) . For further details we refer to Egghe (2005a) . alternatives:
+Formulated in this generality the formalism is more general than pure success-breeds-success. Indeed, in there is a lower and an upper bound for the number of items that actually occur: 1 6 n
+Theorem. For every t = 1,2, ... let f(t,n) denote the number of sources with n items at time t. Let E given the situation at time t. Then, for n = n min (t) + 1, ... ,n Proof. Clearly, for n = n min ( t )+1, ... , n max ( t ): yielding equality (4) . For n = n min ( t ) = 1, we have: yielding Eq. (5) . Finally, for n = n min ( t ) 6  X  1 leading to Eq. (6) . h
+We now present an interpretation of this result in the context of IPPs without low-productive sources. 2.1.1. SBS for systems without low-productive sources lution of general IPPs and, especially, those without low-productive sources. leading to these differences is left as an open problem.
+ ized by forms for Eqs. (4) X (6) : for n = n min ( t )+1, ... , n max ( t ), for n = n min ( t ).
+
+We derive from Eq. (9) that, as x ( t , n min ( t )) &gt; 0 and whatever the exact value of x ( t , n
+If we suppose now, moreover, that we have pure SBS, i.e., x ( t , n )&gt; x ( t , n 1) for n = n then (9) yields that:
+By induction on t inequalities (10) and (11) also yield that, for t for n = n min ( t ), ... , n max ( t ), (where we have used that E tation). The meaning of inequality (12) is that for all n = n
+Eq. (10) , derived without the extra pure SBS assumption, already suggests that f ( t , n hence is expected to become zero. This leads X  X ntuitively X  X o a window n ditional expectation X  X odel. In the following sections we will derive more concrete results. function of IPPs without low-productive sources, based on the Naranan X  X gghe formalism
+Assuming that IPPs without low-productive sources can be described by a size-frequency function of the form The following theorem is essentially due to Naranan (1970) , see also ( Egghe, 2005a, Egghe, 2005c ).
+Naranan X  X  theorem . Consider an arbitrary IPP, and assume that (i) the number of sources grows exponentially in time:
+Then the size-frequency function of this IPP has the form argument given in ( Egghe, 2005a, Egghe, 2005c ) is, however, still valid) and where In ( Egghe, 2005a, Egghe, 2005c ) Naranan X  X  theorem has been extended and reinterpreted as follows: is a self-similar fractal with fractal dimension D, given by such an IPP, then a 1 1 (but larger than 1). Hence the size-frequency function of this IPP is the curve becomes concave ( Rousseau, 1988 ).
+
+IPPs without low-productive sources have low a -values implying that such systems have a low fractal dimension. Indeed, D = a 1 takes here a value between zero and one.
+ Note that j P c 2 includes that 0 = f (1) = f (2) = . Yet, this is only part of what we hope to explain.
+Indeed, we think that n min increases during the growth process of the IPP, while the number c
+Such a growing lower bound, combined with small exponents a will be obtained when using a positive rein-forcement argument.
+
+The fact that IPPs without low-productive sources usually have low alpha-exponents is confirmed by Rosen These values correspond to an average a -value of 1.88 and a minimum and maximum value of 1.51 and 2.23.
+More (new) examples will be given in the sequel. 4. A positive reinforcement approach to systems without low-productive sources
+Definition. An IPP is said to be mature if growth in the number of sources has stopped. It may only grow through an increase in the number of produced items.
+
+Suppose that a mature IPP without low-productive sources is given. Tracking its further growth we assume function is denoted as g A . Hence A  X  a new item has been produced, is given as: relatively faster than the ones with a lower number of items. This is another way of expressing success-breeds-success (namely without conditional expectations). Note that parameters B depend on A .As the parameters in Eq. (19) are related through the equality: We take c A &gt; 1 such that frequency structure of IPPs without low-productive sources.
+
+Theorem. Assume that we have a mature IPP growing from A to A + 1 items such that the relation between successive rank-frequency functions is given as: for r 2 [0,T], B A &gt; 1, c A &gt; 1. If the size-frequency function f with j A P B A P 1, a A &gt; 1, then with Consequently: a A+1 &lt; a A and j A  X  1  X  B A j c A A . Finally, B argument of f A is strictly increasing in A.
+ and size-frequency functions ( Egghe, 2005a ). We have for all r 2 [0, T ], T constant: where q m , A and q m , A +1 denote the maximum item densities in a source. Hence, using the relation j (see Eq. (26) ) and j A = g A ( r ) (Eq. (27) ), we have, by (19) : Inserting Eq. (28) in (26) and (27) yields: for all j A P B A . Taking in Eq. (29) the derivative with respect to j for all j A P B A . Using Eqs. (28) and (23) leads to:
+Again using Eq. (28) yields: which proves Eqs. (24) and (25) .As j A +1 is defined for values larger than or equal to B values larger than or equal to B A , Eq. (28) shows that
+Eq. (32) shows that the lower bound of the argument of f A a Remarks. We took B A &gt; 1 in the model discussed above. If we take B becomes: while (19) becomes: g A  X  1  X  r  X  X  X  g A  X  r  X  X  c A . Since c
+This means that there exists a strictly increasing function u such that u (1) = 1, u ( x ) P x and j clearly, the relation between successive Lotka-exponents is not influenced. Decreasing Lotka-exponents as occurring in the previous theorem lead to the following consequence. Corollary. If L(h) denotes the Lorenz curve of a function h, then: increases.
+ quency function decreases in a . This proves this corollary. h 5. Practical examples and discussion such as LOTKA ( Rousseau &amp; Rousseau, 2000 ) cannot be used.
+ Consequently, we will determine Lotka X  X  a from the corresponding b in Mandelbrot X  X  function. Recall that given as ( Egghe, 2005a, p. 128 ): p. 128; Rousseau, 1988 ): R .
+ In the examples that follow we will apply these two methods where curve fitting is performed using the Marquardt algorithm for nonlinear regression as implemented in Statgraphics
+Note that when it comes to fitting there is no difference between  X  X atural X  IPPs without low-productive expect low values of the exponent a . 5.1. Test four sources with production 16, occupying ranks 10, 11, 12 and 13. We only kept the one at rank 13.
+The a -value for the complete data obtained using method R is 2.07 ( R using method M it is 1.81 ( R 2 = 0.9746). The truncated data yield 2.13 ( R section.
+
+Example 1 ( Country sizes ). Countries and their number of inhabitants are good examples of IPPs without value of 1.69 with method R ( R 2 = 0.9876), and an a -value of 1.64 with method M ( R smaller than two.
+ Belgium can be found at: www.statbel.fgov.be/figures/download_nl.asp (visited on June 5, 2005).
+We obtained an a -value of 2.31 with method R ( R 2 = 0.9978), and an a -value of 2.54 with method M ( R were merged, such that only 596 municipalities remained. Merging has been done in such a way that municipalities are approximately of the same size. More equality in size means that due to this human of total equality. As explained in ( Egghe, 2005a, 2005b ) such an operation implies an increase in the a -value which is somewhat larger than expected.
+ only provided for 67 local councils, as the population of Mtarfa is included in that of Rabat (Malta)).
+For the Malta data we found an a -value of 1.12 with method R ( R  X  X mall X , corresponding to the predictions of our theory.
+
+According to method M , a = 1.001 ( R 2 = 0.9524), method R yields a = 1.09 ( R
+Example 5 ( Unique documents in databases ). Hood and Wilson (2003) present another interesting table, namely the number of unique documents in each of the above twenty databases. This table is ranked in decreasing order, and hence ranking is not necessary the same as for Table 2 .
+According to method M, a = 1.14 ( R 2 = 0.9671), method R yields a = 1.33 ( R 6. Conclusions and open problems sources produce just one item are necessarily young (any bibliography of authors or journals).
+We established a success-breeds-success mechanism in which, from some point in time on, no new sources increasing in time.
+ we have shown that, when time increases in mature systems the alpha exponent of the Lotka size-frequency a -values is presented in the appendix .
+ this article.
+
+Recall that our positive reinforcement model assumes that the size-frequency function of an IPP can be modeled through a decreasing power density function, corresponding to a rank-frequency power (Zipf X  X ar-
+Pareto-lognormal model for the size-frequency distribution of human settlement. Consequently, our derivations only apply to his tail distribution.
+
+An intriguing open problem is to find an explanation why certain IPPs always stay within the confines of references, web sites and outlinks), and, finally, why some IPPs may reach a state where f ( n ) = 0 for eration of bibliographies, e.g., through some form of success-breeds-success mechanism ( Brookes, 1988; Wilkinson, 1972 ).
+ questions studied here. We, nevertheless hope to have shed some light on the intriguing phenomena of
+IPPs without low-productive sources, and on the evolution of IPPs. We hope that many colleagues will be fitting exercise.
+ Acknowledgement The authors thank Thierry Lafouge for some useful comments on an earlier version of this article. Appendix 1 Lotkaian informetrics and stagnation in the growth of sources tem is given by a power law: Then Egghe (2004b, 2005a) has shown the following.
+ Recall though that the theory leading to Eq. (36) implies that a &gt;2. high a -values are not probable at all.
+
+Klass, Biham, Levy, Malcai, and Soloman (2006) is another (new) example of a system in which there are no low-productive sources and where the a exponent gradually decreases. References

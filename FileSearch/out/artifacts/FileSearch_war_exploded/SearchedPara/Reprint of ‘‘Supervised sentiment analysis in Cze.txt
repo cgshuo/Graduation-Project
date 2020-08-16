@@ -1,0 +1,81 @@
+ 1. Introduction
+Sentiment analysis has become a mainstream research field since the early 2000s. Its impact can be seen in many prac-sentence-level, or aspect-based sentiment ( Hajmohammadi, Ibrahim, &amp; Othman, 2012 ).
+
+Most of the research in automatic sentiment analysis of social media has been performed in English and Chinese, as few attempts, although the importance of sentiment analysis of social media became apparent, for example, during the  X  the leading Czech companies for social media monitoring.
+
+Automatic sentiment analysis in the Czech environment has not yet been thoroughly targeted by the research commu-
+Dealing with these issues may lead to novel approaches to sentiment analysis as well. Second, freely accessible and well-documented datasets, as known from many shared NLP tasks, may stimulate competition, which usually leads to the production of cutting-edge solutions. 3 Creative Commons BY-NC-SA licence 5 at http://liks.fav.zcu.cz/sentiment .
+
+Section 5.3 explores the influence of feature selection methods. 2. Related work
+There are two basic approaches to sentiment analysis: dictionary-based and machine learning-based. Whereas porate auxiliary unlabeled data ( Zhang, Si, &amp; Rego, 2012 ). 2.1. Supervised machine learning for sentiment analysis
+Lee, and Vaithyanathan (2002) experimented with unigrams (presence of a certain word, frequencies of words), bigrams, a binary scenario (positive, negative). Their approach was later extended by Paltoglou and Thelwall (2010) who proposed further improvements in delta TFIDF weighting.
+ ( Go et al., 2009; Agarwal, Xie, Vovsha, Rambow, &amp; Passonneau, 2011 ).
+ must contain an emoticon.
+
+Balahur and Tanev (2012) performed experiments with Twitter posts as part of the CLEF 2012 RepLab. tured the manner in which sentiment is expressed in social media.
+
+Finally, we would like to direct the reader to an in-depth survey by Tsytsarau and Palpanas (2012) for actual results obtained from the above-mentioned methods. 2.2. Feature selection for improving classification performance ( Abbasi, France, Zhang, &amp; Chen, 2011 ).
+ A study by Sharma and Dey (2012) compares five methods for feature selection, namely Information Gain, Chi Square,
+Gain Ratio, Relief-F, and Document Frequency, together with seven different classifiers. Results are reported on the sorted by their frequency.
+
+Abbasi, Chen, and Salem (2008) proposed an entropy-weighted genetic algorithm that combines Information Gain with a genetic algorithm for selecting features in a bootstrapping manner, tuned on held-out data. They performed document-level binary sentiment of English and Arabic and used SVM as the main classifier. Their results were superior another feature selection method called the Feature Relation Network. This manually constructed network of feature final feature weights.
+ One of the classical papers on feature selection for text classification by Forman (2003) proposes a metric called Bi-Normal Separation and provides an extensive comparison with another twelve existing feature selection methods. Huang, Tian, &amp; Qu, 2009; Aghdam, Ghasem-Aghaee, &amp; Basiri, 2009 ).
+ small datasets with highly skewed classes and conclude by recommending two best-performing algorithms, especially for scenarios that require a small number of features. Another approach based on dynamic mutual information is presented from machine learning-based sentiment analysis.
+ (2009) , who report Chi-square selection results in their preliminary tests without any success. 2.3. Sentiment analysis in the Czech environment
+Veselovsk X  and  X indlerov X  (2012) presented an initial research on Czech sentiment analysis. They created a corpus which be drawn.
+
+Steinberger et al. (2012) proposed a semi-automatic  X  X  X riangulation X  X  approach to creating sentiment dictionaries in many languages, including Czech. They first produced high-level gold-standard sentiment dictionaries for two lan-guages and then translated them automatically into a third language by means of a state-of-the-art machine trans-lation service. Finally, the resulting sentiment dictionaries were merged using the overlap of the two automatic translations.
+ A multilingual parallel news corpus annotated with opinions on entities was presented in ( Steinberger, Lenkova, ing Czech. The research targets fundamentally different objectives from our research as it focuses on news media and aspect-based sentiment analysis.
+ Recent experiments with incorporating word clusters as additional features to tackle the issue of the high flection of
+Czech were successful, especially in the Czech movie review domain ( Habernal &amp; Brychc X n, 2013 ). The clusters were formance was achieved by exploiting the global target of the analyzed reviews using Gibbs sampling ( Brychc X n &amp;
+Habernal, 2013 ). 3. Datasets 3.1. Social media dataset pages. The posts were then completely anonymized as we kept only their textual contents.
+
+Sentiment analysis of posts at Facebook brand pages usually serves as marketing feedback on user opinions about brands, services, products, or current campaigns. Thus we consider the sentiment target to be the given product, brand, etc.
+We also added another class called bipolar which represents both positive and negative sentiment in one post. cases, the user X  X  opinion, although positive, does not relate to the given page. in these cases, in accordance with our above-mentioned assumption.
+
+The complete 10 k dataset was independently annotated by two annotators. The inter-annotator agreement (Cohen X  X  j ) sidered as well-defined.
+ used irony, sarcasm or the context of previous posts. These issues remain open.
+ reveal negative opinions towards cell phone operators ( www.facebook.com/o2cz , www.facebook.com/TmobileCz , and www.facebook.com/vodafoneCZ ) and positive opinions towards, e.g., perfume sellers ( www.facebook.com/Xparfemy.cz ) and Prague Zoo ( www.facebook.com/zoopraha ). 3.2. Movie review dataset Movie reviews as a corpus for sentiment analysis have been used in research since the pioneering research conducted by respectively. 3.3. Product review dataset reviews from a large Czech e-shop Mall.cz 13 which offers a wide range of products. The product reviews are accompanied dataset consists of 145,307 posts (102,977 positive, 31,943 neutral, and 10,387 negative). 4. Classification 4.1. Preprocessing we remove stopwords using the stopword list from Apache Lucene project.
+In many NLP applications, a very popular preprocessing technique is stemming. We tested the Czech light stemmer ( Dolamic &amp; Savoy, 2009 ) and High Precision Stemmer. imented with a lemmatizer based on Ispell . Following their work, we developed an in-house lemmatizer using rules and dictionaries from the OpenOffice suite.
+
+Part-of-speech tagging was done with our in-house Java solution that utilizes Prague Dependency Treebank (PDT) data as informal language (see, e.g., ( Gimpel et al., 2011 ) where similar issues were tackled in English). and thus we decided to keep diacritics intact.
+
+We were also interested in whether named entities (e.g., product names, brands, places, etc.) carry sentiment and how their presence influences classification accuracy. For these experiments, we employ a CRF-based named entity recognizer analysis, but Boiy and Moens (2009) , for example, remove the  X  X ntity of interest X  in their approach.  X  X ipe X  configurations. 4.2. Features 4.2.1. n-Gram features
+We use presence of unigrams and bigrams as binary features. The feature space is pruned by minimum n -gram occur-rence empirically set to five. Note that this is the baseline feature in most of the related work. 4.2.2. Character n-gram features tains 3-grams to 6-grams. 4.2.3. POS-related features
+Direct usage of part-of-speech n -grams that cover sentiment patterns has not shown any significant improvement in the adverbs ( Kouloumpis et al., 2011 ), and the number of negative verbs obtained from POS tags. 4.2.4. Emoticons We adapted the two lists of emoticons that were considered as positive and negative from ( Montejo-R X ez et al., 2012 ).
+The feature captures the number of occurrences of each class of emoticons within the text. 4.2.5. Delta TFIDF variants for binary scenarios
+Although simple binary word features (presence of a certain word) achieve a surprisingly good performance, they have (positive/negative), and thus we filtered out neutral documents from the datasets.
+Prob. IDF , Delta Smoothed Prob. IDF , and Delta BM25 IDF . 4.3. Feature selection
+Feature selection methods assign a certain weight to each feature, depending on its significance (discriminative power) can be cut off at a certain threshold.
+
+Let t k and t k denote the presence and absence, respectively, of a particular feature in a certain class (e.g., c
+Then N denotes the total number of features in all classes, N  X  a  X  b  X  c  X  d . The joint probability p  X  t mated as and similarly for p  X  t k ; c 2  X  . The probability of a particular feature in all classes p  X  t
+Furthermore, c 1 can be estimated as
+The conditional probability of t k given c 1 is given by
+Henceforth, let n denote the number of classes, m  X f t k ; t
+We follow with the formulas for the particular feature selection methods. For a more detailed discussion of these meth-ods, please refer to, e.g., ( Forman, 2003; Zheng, Wu, &amp; Srihari, 2004; Uchyigit, 2012; Patoc  X  ka, 2013 ). 4.3.1. Mutual Information (MI) Mutual Information is always non-negative and symmetrical, MI  X  X ; Y  X  X  MI  X  Y ; X  X  .
+ 4.3.2. Information Gain (IG) Also known as Kullback X  X eibler divergence or relative entropy . It is a non-negative and asymmetrical metric. 4.3.3. Chi Square (CHI) Chi Square ( v 2 ) can be derived as follows: 4.3.4. Odds Ratio (OR) 4.3.5. Relevancy Score (RS) 4.4. Classifiers
+All evaluation tests were performed with two classifiers, Maximum Entropy (MaxEnt) and Support Vector Machines worse than SVM or MaxEnt. We used a pure Java framework for machine learning
+SVM). 5. Results
+For each combination from the preprocessing pipeline (refer to Table 1 ) we assembled various sets of features and Thelwall, 2010 ). We also involved only the MaxEnt classifier into the second scenario.
+ performance on dominant classes in highly unbalanced datasets ( Manning et al., 2008 ), which is, e.g., the case of our
+Product Review dataset where most of the labels are positive. 5.1. Social media cons, that were not covered by the emoticon feature. On average, the best results were obtained when HPS stemmer and preprocessing techniques for token-based features (see column FS4: Unigr + bigr + POS + emot. ). Because of the large number of possible combinations, we report only the most successful ones, namely Augmented  X  a and formed by any weighted TFIDF technique. Moreover, using any kind of stemming (the row entitled various* ) significantly the weighted form of the word feature does not improve the performance, compared with the simple binary unigram fea-single TFIDF-weighted feature.
+
+Furthermore, we report the effect of the dataset size on the performance. We randomly sampled 10 subsets from the most combinations of features and hence adding more data does not lead to a significant improvement. drop in classification. Thus we can conclude that in our corpus, the named entities themselves represent an important 5.1.1. Upper limits of automatic sentiment analysis fourth person. Thus even the original annotators do not achieve a 1.00 F -measure on the gold data. task the way a human would.
+ 5.2. Product and movie reviews
+For the other two datasets, the product reviews and movie reviews, we slightly changed the configuration. First, we puting. Second, we abandoned SVM as it became computationally infeasible for such large datasets. almost regardless of the preprocessing. By contrast, POS features rapidly decrease the performance. We suspect that
+In the right-hand side of Table 6 we can see the results of the movie reviews. Again, the bigram feature performs best, drop in performance. We can conclude that for larger texts, the bigram-based feature outperforms unigram features and, in some cases, a proper preprocessing may further significantly improve the results.
+ brands) are very strong opinion-holders and thus their filtering significantly decreases classification performance. 5.3. Feature selection experiments
+Using the two most promising preprocessing pipelines ( ShCl , ShPe ), we conducted experiments with feature selection methods as introduced in Section 4.3 . We classify into three classes using both MaxEnt and SVM classifiers on the
+Facebook dataset and using only MaxEnt on the other datasets (because of computational feasibility, as mentioned previ-ously in Section 5.2 ).
+ tain threshold. To estimate an optimal parameter automatically, we measured how the feature weight threshold influences dation, the optimum threshold for feature cut-off was set such that the performance on the held-out data was maximized.
+In the previous experiments (Section 5 ), the feature space was pruned by a minimum occurrence which was empirically the experiments on the Facebook data. 21
+Figs. 3 X 6 show dependency graphs of the macro F -measure given a feature weight threshold. Note that these figures performance even with a very small filtering threshold.
+
+Overall, a significant improvement from 73.38% (baseline) to 73.85% was achieved for the product reviews, by means of without feature space pruning ( Tables 10, 11 , respectively) no significant improvement was achieved.
+We can conclude that, in our settings, feature selection does not lead to a better overall performance, however, it can speed up the classification by filtering out noisy features. 5.4. Summary of results for social media Given the results achieved on the Facebook dataset, the following strategies for sentiment analysis of social media in mance for our dataset.
+
+It should be noted that the number of examined domains was limited because we restricted our dataset only to the top nine most popular Czech Facebook brand pages. It is thus worth investigating how the system would tackle the issues of domain-dependent features and domain portability. This remains an open question for future work. 6. Conclusion
+This article presented in-depth research on supervised machine learning methods for sentiment analysis of Czech social media. We created a large Facebook dataset containing 10,000 posts, accompanied by human annotation with substantial agreement (Cohen X  X  j 0.66). The dataset is freely available for non-commercial purposes. in two other domains (movie and product reviews) with a significant improvement over the baseline. media in such a thorough manner. Not only does it use a dataset that is magnitudes larger than any in the related work to set the common ground for sentiment analysis for the Czech language but also help to extend the research beyond the mainstream languages and may be applied to sentiment analysis in other Slavic languages, such as Slovak or Polish. Acknowledgments
+This work was supported by grant no. SGS-2013-029 Advanced computing and information systems, by a POSTDOC grant from the University of West Bohemia, and by the European Regional Development Fund (ERDF), project  X  X  X TIS  X  New acknowledged. Access to the CERIT-SC computing and storage facilities provided under the programme Center CERIT
+Scientific Cloud, part of the Operational Program Research and Development for Innovations, Reg. No. CZ. 1.05/3.2.00/08.0144, is greatly appreciated. We thank Tom X  X  Brychc X n for his High-Precision Stemmer implementation, References

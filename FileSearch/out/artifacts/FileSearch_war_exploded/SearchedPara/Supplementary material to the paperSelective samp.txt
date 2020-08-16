@@ -1,0 +1,24 @@
+ results. See Figures 4 and 5 for these plots.
+ generating Gaussian random vectors in 10 dimensions, with m ean 0 and standard deviation I 10  X  10 / (10 / W e rules involve the quantity k x t k M  X  1 complexity. Regret ratio results, followed by the proofs of our theorems.
+ B.1. Convergence of weight matrices we have Proposition 1. Under Assumptions 1 and 2, the iterates of Algorithm 1 satisf y with probability 1  X   X  uniformly for all t = 1 , 2 ,...,T .
+ tion.
+ guarantee that we can now rewrite the optimality condition as Rearranging terms, we obtain M t (7) as well as our boundedness Assumption 3, we can further si mplify the above inequality to We now focus on the right hand side of the inequality. Observe that c 1  X   X /K where the final inequality follows from the definition of k W  X   X  W t k M a 1  X   X  terms, and taking another union bound over the rounds t = 1 , 2 ,...,T completes the proof. for some of our following proofs.
+ T  X  3 , we have B.2. A useful regret decomposition previously definition notation T  X  (15).
+ Lemma 3. For any  X   X  [0 , 1] , we have the following where function since Here we used the fact that yields the first term in our decomposition.
+ and query respectively. This completes the proof of the lemm a.
+ Lemma 2 holds deterministically in this lemma.
+ Lemma 4.
+ Proof. We begin by observing that under the conditions of the decomp osition, we have that Furthermore, by the definitions (10), we have that Hence, we can conclude that Since both sides are non-negative, we can square to futher ob tain definition of the score function and observe that where the second equality follows since our earlier notation  X  C i = involving class y  X  t by a constant independent, of j , we further obtain  X   X  to obtain Summing the bound over all the queried rounds and invoking Le mma 2 completes the proof. B.3. Proofs of Theorems 1 and 2 T to be rather straightforward for the BBQ  X  rule, but significantly more involved for the DGS rule. that from the proof of Lemma 4, we have completes the proof of the regret bound.
+ al. (Cesa-Bianchi et al., 2009). We observe that by the query condition, we have Further applying Lemma 5 from the appendix completes the pro of of the theorem. We now establish the result for the DGS selection rule and the Lipschitz continuity of the mapping  X   X  from Assumption 2 above bound, we see that bound.
+ once with i =  X  y t . Since S x t W Combining this with our earlier upper bound (24), we further obtain We now analyze the other case where  X  y t = y  X  t . In this case, our query condition guarantees that S
+W  X  ( i ) for i = y queries as Finally, invoking Lemma 5 completes the proof.
+ Proof of Lemma 1 point i . Recalling our notation C max = max a,b C ( a,b ), the expected loss incurred is where the last equality follows since optimal prediction.
+ our proofs.
+ D.1. Sums of quadratic forms is slightly different since our matrices are off by one time ind ex, as opposed to theirs. Lemma 5.
+ from that paper, we can conclude that Also observe that using the Sherman-Morrison-Woodbury mat rix identity, we have that Rearranging terms, we obtain Here the last inequality follows since Z t k x t k 2 lemma.
+ D.2. Proof of Lemma 2 result.
+ include a proof for completeness.
+ Lemma 7.
+ We now prove Lemma 2 using the above results. We provide the pr oofs of Lemma 6 and 7 following that. formally, Bregman divergence of  X . That is, In our current context, we use Assumption 1 to conclude The above inequality allows us to invoke Lemmas 6 and 7 in turn which completes the proof. Proof of Lemma 6 Consider the random variable using the definition (4) of the loss function.  X  t = Z t [D  X  ( W t x t ,W  X  x t )  X  (  X  ( W t ; ( x t ,y t ))  X   X  ( W  X  ; ( x t ,y t )))] bound on the value. Based on Equation 28, we have R
+K and x T the upper bound Reasoning similarly for the conditional variance, we obser ve that at least 1  X  4  X  log( T ) tions that R X   X  1 as well as  X   X   X  1 completes the proof.
+ Proof of Lemma 7 We follow the proof technique, which is an inductive argumen t introduced by Kalai &amp; Vempala (2005). The proof reasons via an auxiliary sequence of fictitious iterates: we see that Adding the two inequalities, and rearranging we obtain By Assumption 2, the above inequality further yields over R K and y t is a canonical basis vector, we can also conclude Combining the above two displays finally yields the desired i nequality we have

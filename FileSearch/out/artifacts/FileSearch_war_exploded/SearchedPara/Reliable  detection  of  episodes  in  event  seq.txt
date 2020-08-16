@@ -1,0 +1,92 @@
+ lar biology (e.g. see Kumar and Spafford (1994), Pevzner (2000), Waterman (1995), system that seeks to avoid false alarms.
+
+The basic question is then: When is a certain number of occurrences of a particu-reliable framework for analyzing a variety of event sources.
+Let T be an ordered sequence of events (time-ordered events in a computer sys-tem, transactions in a database, purchases made, web sites visited, phone calls made stamps, but rather the size of a (contiguous) substring of T .
+More formally, consider an alphabet A of cardinality either a sequential pattern S = s 1 s 2 ,... s m of length m ,orasetofpatterns S {
+S , episode S and we assume T is a memoryless source.
+ a parallel episode.
+ tive events of T . Based on the observed value of  X   X  ( n represented or underrepresented patterns), we must assure that such patterns are not as the first step, we study the probabilistic behaviour of tion. This allows us to set either an upper threshold, on the definition of unusual activity. More precisely, for a given level either P  X  w , so that suspicious subsequences do not occur almost surely in a window. This is necessary to reliably set up the threshold.
+ lem can be stated as follows. Given an episode  X  , what window size, obtained from http://www.cs.washington.edu/ai/adaptive-data/ http://machines.hyperreal.org ) from 1/01/99 through 4/30/99. We first them through our threshold mechanism.
+ mean a string of the following form: s 1 g 1 s 2 g 2 such that the total length of s 1 g 1 s 2 g 2 ... g m
+In Boasson et al. (1999), Boasson et al. introduced the Window-Accumulated Subse-quence Matching Problem (WASP) as finding the number of size t of length n that contain pattern p = p 1 ... p k of length k research and provides the first probabilistic analysis that quantifies and complex asymptotic (cf. Sedgewick and Flajolet (1995), Szpankowski (2001)).
+Given an alphabet A ={ a 1 , a 2 ,... , a | A | } and a pattern S we are interested in occurrences of S as a subsequence within a window of size another sequence known as the event sequence T = t 1 t 2 ... in T corresponds to a set of integers i 1 , i 2 ,... , i m hold: 1. 1  X  i 1 &lt; i 2 &lt; ...&lt; i m . 2. t 3. i condition guarantees that S is a subsequence of T within a window of length various applications, it is of interest to estimate the number of windows of length containing at least one occurrence of S when sliding the window along n consecutive events in the event sequence T ;weuse  X   X  ( n ,w, m , which can range from 0 to n .
+
+Notation: Throughout the paper, because S and A are always implied, we sim-plify our notation by dropping S and A in the notation  X   X  ( n ,w, m ) instead ( S and A are understood). We use the same notational simpli-index m  X  k to mean dropping the last k symbols of S ,e.g. P a pattern that is the prefix of S of length m  X  k .
+ picious activity took place or not. In terms of  X   X  ( n ,w, a given level  X  (e.g.  X  = 10  X  5 )wedefine setting setting number drops suddenly, then it can suggest an intentional suppression of S . particular, the size of the window so one can properly design the system. We select w to avoid S being almost surely in every window for the upper threshold  X  (w, m ) .
+ pendently of each others with probability P ( a i ) for any a windows.
+ where P  X  (w, m ) is the probability that a window of size occurrence of the episode S of size m as a subsequence. The probability of existence
+P  X  (w, m ) satisfies the following recurrence: the former situation, S must occur within the window of size the second term of the recurrence.
+ apply Cauchy X  X  residue theorem to obtain an asymptotic expansion of P fixed m and large w . We summarize our results in the next theorem. ating the i th symbol of S and q i = 1  X  p i . Let also  X  Then for all m and w  X  m ,wehave  X 
+Let now m be fixed and assume i = j implies p i = p j where r &gt;( 1  X  p max )  X  1 .
+ behaviour of P  X  (w, m ) ,i.e.that P  X  (w, m ) = 1as w  X  X  X  gence is exponential. Furthermore, Theorem 1 can be used to identify the maximum value w max of the window size. It s eems reasonable to select
+S does not occur in such a window almost surely or with high probability. Therefore, for a given  X   X  ( 0 , 1 ) we find w max so that P  X  (w, m can use our asymptotic formula (2). We first approximate P term, p min = min 0  X  i  X  m { p i } ,thatis,
+This leads to which can be estimated from observed data.
+
+When establishing the above formulas for P  X  (w, m ) , we also solved two related
+A , w and S : 1. Construct the set W  X  (w, m ) of all windows as strings of length taining all possible occurrences of S as a subsequence. In Theorem 3, we show the enumeration formula. 2. Find the cardinality of W  X  (w, m ) , which we denote as C we prove that We refer to Sect. 4 for the solution for those problems. Now we derive variance and normal limiting distribution of that where where i is the relative position with respect to the first position ( i easily have | i  X  j | &lt;w have I The two terms involving P  X  ( between windows (with 2 (w  X  1 ) neighborhood), where k the length of the overlap between windows at position i and j . P be computed from Theorem 3.
+ of the above and using the fact that  X   X  ( n ,w, m ) is the so-called 27.5 of Billingsley (1986) to establish the Central Limit Theorem for
+Theorem 2. The random variable  X   X  ( n ,w, m ) obeys the Central Limit Theorem in
+O ( 1 ) ,wehave for m and w fixed.
+ or  X  (w, m ) for n large. Let
+Thus, for a given  X  , we can compute  X  u (w, m ) or such that  X  = y ( b 0 ,  X  ) or by selecting a 0 such that
+Observe that, when a and b are large (say on the order of 10), the above probability nature of unusual episodes, as needed. course do not need to test the formulas for memoryless sources because we already English text source and also for web access data.
+
+An English text is, of course, not memoryless. As an example, consider the string be modelled well by a Markov source.
+
+The web accesses are also not memoryless, not only because of hierarchical struc-product.
+ are compared with expectations generated by the training data.
+P  X  (w, m ) works for apparently nonmemoryless sources. To accomplish this, we es-
+P  X  (w, m ) for different values of w . We used the following error metric d : where w 1 &lt;w 2 &lt; ...w r are the tested window sizes.
+We used an algorithm, based on dynamic programming, for finding windowed subsequences. We also implement the dynamic programming solution to P that was used by the algorithm implemented in C++ and run under Linux.
+The text source we used is an on-line version of War and Peace by Leo Tolstoy from www.friends-partners.org/newfriends/culture/literature/war _and_peace/war-peace_intro.html . The work consists of 15 books. Each alphabet without distinguishing between upper-and lowercase letters.
+Theorem 1) with its estimator P  X  e (w, m ) =  X   X  ( n ,w,
+S = g w adera and, for selected values of w  X  X  13 , 600 and 2 illustrate the results showing two main facts: P goes to infinity and P  X  (w, m ) very closely approximates the actual P of order 12%).
+ complish it, we estimated variance of  X   X  ( n ,w, m ) this purpose, we randomly chose 8 chapters and shortened them to the same length n = 8,000 letters creating 8 training sources, denoted T source, T 9 . We used the following sample variance estimator: for S = wojciech and w = 100. In particular, we set  X   X  verify our threshold experimentally, we artificially kept injecting S for finding  X   X  ( n ,w, m ) and checked whether we exceeded gap = 0and gap = 11. In other words, we injected S as s where g  X  A + . The results are shown in Fig. 3. The horizontal dash-dot line shows
+P 100 , 8 ) = 3  X  10  X  3 for no insertions. The solid line shows
+Clearly, if gap = 0, then we need only two episodes to exceed detected early.
+We used logs of user accesses to the music machines web site (currently at http: //machines.hyperreal.org ), which records accesses from 1/01/99 through 4/30/99. The logs have been anonymized with respect to originating machines. That http://machines.hyperreal.org/manufacturers/ web page contain-symbol and the alphabet size was | A |= 81. The training and testing sequences were created by considering only unique accesse s made by the same originating machine. treated it as one access and cons idered the first access only. tor P  X  e (w, m ) =  X   X  ( n ,w, m ) n . We created three sources, T 22,000. The training set established T 1 , T 2 and the testing source was T
+S ={ Akai , ARP , Korg , Moog , Yamaha , Casio , Sequential of w  X  X  25 , 500 ] , we ran the algorithm for finding and 5 illustrate the results. P  X  (w, m ) still provides a good approximation of P source.
+Sect. 2. We also present some new results.
+Let W  X  (w, m ) be the set of all distinct windows of length elements of W  X  (w, m ) , as follows: element of W  X  (w, m ) . Then formula (3) can be equivalently written as
+W  X  (w, m ) has the form below. Recall that the notation W means the set of windows of size a that contain the b -prefix of S ( consisting of the first b symbols of S ).
+ their last symbol and strings that have symbols other than s
+We now turn our attention to showing that we do generate all strings of W
+Decreasing lexicographic order of those tuples, that is, tuple latter.
+  X  Windows having s of size w  X  1 that contain the ( m  X  1 ) -prefix of S ( notation W  X  (w  X  1 , m  X  1 ) .  X  be considered part of an occurrence of S , their enumeration effectively becomes that of the windows of size w  X  1 that contain S . This latter enumeration is what we mean by the notation W  X  (w  X  1 , m ) .
+
+From the above, it is straightforward to obtain the following (we omit the details of the derivation).
+
+Theorem 3. The set of all distinct windows of length length m as a subsequence can be enumerated as follows:
+W
+Based on Theorem 3, we can divide the elements of W  X  (w, classes, V  X  , with respect to the ordered sequences of length w . Thus, | V  X  |= w m .
+
+Example. Let A ={ a , b } , S = ba ,and w = 3. We generate W and compute P  X  (w, m ) . From (4), we obtain P  X  ( 3 , 2 2 P (
+S ).
+Recall that C  X  (w, m ) denotes the cardinality of W  X  (w,
+The recurrence for C  X  (w, m ) follows directly from the one for W (2001). We leave m as a free variable and define the following family of generating functions: where x is a complex number. From the above recurrence, we obtain We now work with W m ( x ) for m &gt; 0.
+ Using the fact that we obtain
+Denoting by [ x w ] f ( x ) the coefficient at x w of f
+Because and we finally obtain
+Theorem 4. The number of all windows of length w over an alphabet A ,which symbols of the pattern and is equal to
+Recall that P  X  (w, m ) is the probability that a window of size
+P  X  (w, m ) follows directly from the one for W  X  (w, m
+P  X  (w, m ) .Let From the above recurrence, we find where q m = 1  X  p m . We now work with W m ( x ) for m
+Using the fact that we obtain
+But P  X  (w, m ) =[ x w ] W m ( x ) , and because and we use the partial sum property to derive the following:
+We finally obtain
+This proves formula (1) in Theorem 1.
+Now we estimate P  X  (w, m ) asymptotically as w  X  X  X  and m fixed, that is, we prove (2) of Theorem 1. In our previous derivations, we obtained x which X  X e recall X  X e denote as [ x w ] W m ( x ) . By the Cauchy coefficient theorem (cf. Szpankowski (2001)), we know that where z is a complex variable and the integration is over a small circle around z
+To evaluate this integral, we use another C auchy result known as the Cauchy residue theorem (Szpankowski 2001). For this, we enlarge the circle around z satisfy r &gt;( 1  X  p max )  X  1 .Then where Res [ f ( z ), z = a ] is the residue of f ( z ) at z where  X ( z ) and  X ( z ) are analytic functions in z = a subject to and  X ( z ) = 0, then a is a pole of f ( z ) and Therefore,
+Similarly, for z = 1 q Putting everything together, we obtain
+Let Q [ i , j ] denote the product j k = 1 q n k k such that
+The time complexity of the algorithm is O ((w  X  m ) 2  X  required to build the table Q [ w  X  m , m ] .Let v [ a : b v between indexes a and b such that a &lt; b and 1  X  a , array with probabilities p 1 , p 2 ,... , p m of the symbols in S .
+Algorithm 1: Computation of P  X  (w, m )
+We need to establish a precise formula for variance, Va r that where trivially and This leads to sible configurations of overlaps of considered windows. To compute P we define W  X  (w, m , k ) ( I  X  on k = w  X  X  i  X  j | symbols such that I  X  i = 1, I  X  j =
+In other words, W  X  (w, m , k ) ( I  X  consisting of two windows, W  X  (w, m ) [ r ] and W  X  (w, lap on k positions. The overlap is between the last k symbols of W the first k symbols of W  X  (w, m ) [ q ] for 1  X  q , r express P  X  ( Now we present an exact algorithm for computing P  X  (
+W  X  (w, m ) can be divided into a set of equivalence classes V symbols between them.
+ where s i = A  X  s i , i , j  X | V  X  | , m + 1 r = 1 n i r = w  X  Algorithm 2: Computation of P  X  ( gorithm 2 is not practical for large w .When w is large, we use the sample variance bet A for the memoryless model. In addition, we gave an asymptotic approximation of P  X  (w, m ) , which shows that, for appropriately large tends to one as expected. By providing an efficient dynamic programming method for alphabet and the web access data) and s howed that, even for these cases, P those intriguing situations where an equation derived under a certain set of assump-where, as a measure of normal behaviour, we used  X   X  ( n ,w, n ,w, m ) as a normal-behaviour measure stems from the fact that, for a given S and A , we can analytically select the window length
+We proved that  X   X  ( n ,w, m ) has a Gaussian distribution. Knowing E
+Va r [  X   X  ( n ,w, m ) ] or their estimates, and for a given level set the upper threshold  X  u (w, m ) and the lower threshold episodes.
+
+An obvious extension of this work is to use Theorem 3 to compute P
+Markov source of any order. Let W  X  (w, m ) [ i ][ j ] be the j th symbol in W where W  X  (w, m ) [ i ][ l ] is the l th symbol of the i th member of W graphic order and P ( W  X  (w, m ) [ i ][ 2 ]| W  X  (w, m This approach is, however, not very computationally efficient.

@@ -1,0 +1,115 @@
+ 1. Introduction soundness in the overall system (e.g. a service orchestration). narios. Some approaches propose to compute and publish a public view P obtain a globally sound system.
+ Other approaches suggest to compute an operating guideline OG acting partners of P [5]. Then, a matching procedure between R and OG act correctly. Here, correctness refers to deadlock freedom so far. soundness in the composed system since acyclic services cannot contain livelocks. among others, for  X  X  X xclude credit card X : I do not want to pay by credit card), validating services by checking whether there exist partners that access certain features. the composition of the online bank service and the requester.
+ interaction.
+
+Another important task is to decide whether or not service P can be substituted by a service P resentation of these sets of services.
+ algorithm to decide substitutability.
+ related work and finally conclusions are drawn in Section 6. 2. Preliminaries 2.1. Open nets
+Definition 1 ( Open net ). An open net N  X  X  P ; T ; F ; I ; O ; m m  X  p  X  X  0, for all p 2 I [ O .
+ We use indices to distinguish the constituents of different open nets (e.g. I ule concept for Petri nets which was proposed by Kindler [9].
+ and producing tokens on the postset places, yielding a marking m 0 . The firing of t is denoted by m ! sitive firing of a sequence of transitions is denoted by m ! m 0 .If m  X  m X does not enable any transition.
+
+As an example, consider the open net N c depicted in Fig. 1 a. The initial marking is m I the customer has to decide whether he accepts a credit control or not  X  t  X  t from N . Obviously, inner N and N coincide if N has an empty interface. The inner of N frame in Fig. 1 a.
+ As a correctness criterion for an open net N we require the absence of deadlocks in N . deadlock-free if no deadlock is reachable from the initial marking of N . (final) states and non-terminating states (i.e. deadlocks).
+ and O M  X  I N ). So a composition of open nets is an open net with empty interface. For markings m position m  X  m M m N is defined by  X  m M m N  X  X  p  X  X  m M  X  p  X  X  m p R P N ). These considerations lead to the following definition of composition. M N defined by P  X  P M [ P N , T  X  T M [ T N , F  X  F M [ F
+Consider the two open nets M 1 and M 2 depicted in Fig. 1 b and c, respectively and assume m m 2  X  X  p 13 , and X M 2  X f X  p 18 g . Then, N c and M 1 as well as N in the composition N c M 1 , but it is never marked.
+ fine the notion of a strategy.
+ strategies for N .
+
+Both, M 1 N c and M 2 N c , are deadlock-free and thus, M one (w.r.t. Strat ) that obeys this restriction [5]. 2.2. Operating guidelines guideline is a special annotated automaton. An annotated automaton A automaton A and a function U that assigns to each state q of A a Boolean formula U  X  q  X  . A Match  X  A U  X  of open nets and for each element M 2 Match  X  A not represent M but the behavior of M , that is, the reachability graph of inner service automaton.
+ labels , d # Q C Q is a transition relation such that every state q 2 Q is reachable from q q 2 Q is the initial state , and X is a set of final states.
+ transition.
+
+In order to represent the behavior of an open net M by a service automaton, let Q , d , q the transition relation, the initial marking and the set of final markings of inner C  X  I [ O [f s g .
+ Definition 6 ( Annotated automaton ). An annotated automaton A C [f final g .
+ A net M with the interface I [ O matches with A U . Intuitively, M matches with A corresponding literals of the formula U  X  q  X   X  X atisfy U  X  q  X  . For more details, we refer to [11,5] . weak simulation relation which we need to define matching of an open net with an annotated automaton. relation . P ; R # Q P Q R is a weak simulation relation of P by R iff if  X  q then there is a transition  X  q R ; ^ a ; q 0 R 2 d R in R and  X  q 0 R weakly simulates P if there is a weak simulation relation .
+ The minimal ( weak ) simulation relation , . P ; R , of P by R is defined inductively by Step: If  X  q P ; q R 2 . P ; R and q P ! a q 0 P , then  X  q 0
+Proposition 1 ( Facts about . P ; R ). 1. . P ; R is a (weak) simulation relation. 2. For every (weak) simulation relation . # Q P Q R , . P ; R service automaton. Instead, we define matching of the reachability graph of inner calities and proofs in the next section easier to understand. M  X  inner M . Let A U  X  X  Q ; C ; d ; q 0 ; X ; U be an annotated automaton with C  X  I there is a weak simulation relation . # Y Q of M by A U inductively defined by 1.  X  m 0 M ; q 0 2 . ; implies  X  m 0 ; q 2 . ; 3. If t is a receiving transition of M with c 2 I M , c 2 t , m ; m 0 2 Y , and  X  m  X  X  c ! q 0 with  X  q ; c ; q 0 2 d ; 4. If t is a sending transition of M with c 2 O M , c 2 t , m ; m 0 2 Y , and m ! q 0 with  X  q ; c ; q 0 2 d ; 5. For all m 2 Y , at least one of the following properties holds: Let Match  X  A U  X  denote the set of all M such that M matches A considered marking m of M .
+ if and only if M is a strategy for N .
+ Definition 10 ( Operating guideline ). An annotated automaton is an operating guideline OG Strat  X  N  X  X  Match  X  OG N  X  .
+
+Fig. 2 depicts the operating guideline OG N c for the credit approval process N edges and was calculated by our tool Fiona [13]. In the initial state q the requirements of Definition 9 and thus match with OG N 3. Covering open net nodes idea is adapted to open nets. For an open net N and a set X # P while to cover a transition t means that t is not dead. Such a strategy M is then called a Cover position may contain livelocks.
+ 3.1. Deciding coverability of open net nodes In this section, we show how a strategy M for N can be discovered as a Cover guideline of N . In order to define our notion of Cover X
+Definition 11 ( Cover a place/transition ). Let N  X  X  P ; T ; F ; I ; O ; m includes a marking m with m  X  p  X  P 1(a t -step).
+ sitions t 1  X  t 4 , t 6 , and t 8  X  t 10 are covered in M Definition 12 ( Cover X -strategy ). Let M be a strategy for an open net N , and let X # P covered in M N . With Strat Cover X  X  N  X  we denote the set of all Cover ined by an employee if the customer is not fixed in his credit control decision. Then M not (because transition t 5 cannot be enabled in M 1 N ).
+ strategies for N . Thus, we conclude Strat Cover X  X  N  X  # Strat  X  N  X  . these properties, we can prove a criterion to decide whether an open net M is a Cover its inner corresponds exactly to the transition system of the underlying automaton of OG
+Definition 13 ( Most permissive strategy ). Let OG N  X  X  Q ; C ; d ; q MP
+T  X f t q 1 ; c ; q 2 j X  q 1 ; c ; q 2 2 d ; with q 1 ; q 2 the operating guideline OG N c depicted in Fig. 2 .
+ Corollary 1. The most permissive strategy MP for N is a strategy for N. For the proof of this corollary, we rely on a fact about operating guidelines as constructed in [5].
+Proposition 2 [5]. For every operating guideline OG  X  X  Q ; C ; d ; q 1. uses only literals c where there is some q 0 2 Q with  X  q ; c ; q 0 2 d , and 2. is satisfied for the assignment assigning true to all literals in U  X  q  X  . marking of MP . By induction, it can be shown that, for all q 2 Q , m according to Definition 9 .So MP matches with OG N and thus MP is a strategy for N . h If inner M is in a marking m , then K  X  m  X  (the knowledge that inner while inner M is in marking m .
+ Definition 14 ( Knowledge ). Let M be a strategy for an open net N . Let Mark markings of inner M and N , respectively. Let further m M inner M . The knowledge K : Mark M ! P  X  Mark N  X  that inner by K  X  m M  X  X f m N j X  m M m N  X  is reachable from  X  m 0 M
+As an example, for the most permissive strategy MP N c for N
+K  X  X  p q0  X  X f X  p 0 g ; K  X  X  p q1  X  X f X  p 0 ; cc n g , K  X  X  p q2  X  X f X  p req c ;  X  p 1 ; cc n ;  X  p 2 ; cc n ; r high ;  X  p 3 ; cc n ; r low ;  X  p involved states. As the following proposition states,  X  m ; q 2 . implies that K  X  m  X  K  X  m most permissive strategy that corresponds to state q of an operating guideline.
+Proposition 3 [5]. Let M be a strategy for N and MP be the most permissive strategy for N. Let m that corresponds to state q 2 QinOG N (i.e.  X  m q ; q 2 .
+ of inner MP with  X  m q ; q 2 . MP ; OG The notion of knowledge can be applied to the operating guideline OG to a state q of OG N , the knowledge OG N has about N in q is equivalent to the knowledge inner Definition 15 ( Knowledge in OG). For an open net N let MP be the most permissive strategy for N and OG Let Mark N denote the set of markings of N and m q be a marking of inner about the possible markings of N in state q 2 Q is defined by K  X  q  X  X  K  X  m a Cover X -strategy for N .
+ Theorem 1 ( Place/transition coverability ). Let M be a strategy for open net N. A place p 2 P M N iff there is a state q 2 QofOG N , a marking m M in inner is enabled in m N ).
+ inner M and N , respectively. As t is a transition of N , t is enabled in m
+Proposition 3 , there must be a state q in OG N where m N m 2 K  X  q  X  , and t is enabled in m N . From Proposition 3 follows m m M m N which can be extended by an occurrence of t since activation of t in m holds. h covered by a strategy for N if there is a state q in OG N enabled. That way, it is easily possible to annotate each state q of OG This can be done during the calculation of the operating guideline.
+As an example, based on the knowledge values K  X  X  p q0  X   X  K  X  X  p nodes of N c that are covered in states q 0  X  q 4 of OG t 3.2. A finite representation of all Cover X -strategies guideline.
+
+Consider again our running example N c in Fig. 1 a. Suppose we want to cover X  X f acc g in N  X  acc 2 K  X  q 4  X  ; K  X  q 6  X  ; K  X  q 9  X  , K  X  q 11  X  ; K  X  q at least a marking m acc of inner M that matches with q 4 we have  X  t 5 2 K  X  q 6  X  ; K  X  q 14  X  and  X  t 6 2 K  X  q 4 matches with q 6 or q 14 and it has a marking m t 6 of inner concept of an operating guideline.
+ Consider again the example above. Since OG N c (see Fig. 2 ) represents all strategies and every Cover for every open net node x 2 X to be covered, at least one state q in OG tion between OG N c and a Cover X -strategy. This constraint can be expressed as a Boolean formula w between an open net and such an annotated automaton.
+ Definition 16 ( Annotated automaton with global constraint). Let A Boolean formula with propositions taken from the set Q . Then, A w .
+
+As an example for a global constraint to OG N c , consider w  X  X  q is assigned to sufficiently many states to cover the set X  X f t matches with A U , and in addition satisfies w .
+ Definition 17 ( Matching withA U ; w ). Let M be an open net, and let A M : Q A !f true ; false g where c M  X  q  X  X  true iff there is a marking m of M such that  X  m ; q 2 . .
+Finally, we are ready to construct the operating guideline with global constraint OG tation of the set Strat Cover X  X  N  X  of all Cover X -strategies for N . Definition 18 ( Global constraint for covering X). Let N be an open net and OG is enabled. Then w X  X  V x : x 2 X W q : x q q . OG w X  X  N  X  X  X  OG
+As a direct consequence of Theorem 1 , we obtain the main result of this section; that is, OG strategies for N .
+
+Theorem 2. M is a Cover X -strategy for N iff M matches with OG
+Proof. ( ) ) Let M be a Cover X -strategy for N and let OG M matches with OG w X  X  N  X  .
+ Since M is a Cover X -strategy for N , M is a strategy for N and thus matches with OG q 2 Q of OG N , a marking m M in inner M , and a marking m
+Definition 17 , M matches with OG w X  X  N  X  . (  X  ) Let M match with OG w X  X  N  X  . We show M is a Cover Since M matches with OG w X  X  N  X  we know by Definition 17 that M matches with OG
+M N and therefore M is a Cover X -strategy for N . h
+The operating guideline representing all Cover X -strategies for N
+OG
+X  X  N c  X  X  X  OG N c ; w X where w  X  X  q 6 _ q 14  X ^ X  q 4 _ q are both strategies for N c ), then we get that M 2 matches with OG
+M inner M 1 that matches with any of the nodes q 6 and q 14
+As another example, let X  X f t 1 ; ... ; t 11 g , meaning all transitions of N (after minimization) the global constraint w X  X  X  q 2 _ q 3.3. Case study
+The results presented in this section have been implemented in our analysis tool Fiona an operating guideline (with global constraint).
+ man consulting company. The WS-BPEL processes have been translated into open nets using the compiler operating guideline with global constraint.
+ 3.4. Discussion ther discuss some complexity issues.
+
+Comparing an operating guideline OG N for N and an operating guideline with global constraint OG strategy for N , then the set of Cover X -strategies is empty.
+ the states q 2 Q with the nodes of N and setting up the global constraint have to be computed for OG increase efficiency, it is sufficient to annotate each state q only with open net nodes of X . [11]. If we compute OG w X  X  N  X  , then this complexity increases due to w O  X j X jj Q j X  . The case study in Section 3.3 suggests that the size of w
+OG w X  X  N  X  and the outcome of our case study in Section 3.3 we conclude that the calculation of OG tical applications, too.
+
+OG in linear time w.r.t. the size of the constraint.
+ 4. Verifying accordance under coverability ating guidelines with global constraint. Suppose we want to substitute N by another open net N ment of N is affected and (2) a certain set of activities of N global constraint.
+ as we do not loose information w.r.t. Strat [5,16] .
+ 4.1. Existing results for accordance be supported by P 0 as well. Because we assume that P does not know each client that uses P , P service automata P and P 0 .
+ Definition 19 ( Accordance [16]). Let P and P 0 be service automata with equal interfaces (i.e. C accordance (short: P 0 accords with P ) iff Strat  X  P  X  # Strat  X  P
+Accordance guarantees that every client of P is also a client of P ating guidelines of P and P 0 we have, however, a finite representation of Strat  X  P  X  and Strat  X  P accordance.
+ Theorem 3 (Deciding accordance [16]). Let P and P 0 be service automata and let OG guidelines. Then, P 0 accords with P iff 2. For all  X  q P ; q P 0 2 . OG the context of coverability and extended operating guidelines. 4.2. Theoretical results for accordance under coverability automata with equal interfaces and covering sets X and Y . Let  X  OG lines with global constraint. In this setting, accordance of P and P
+Cover Y -strategy for P 0 as well.
+Definition 20 ( Accordance under coverability ). Let P and P operating guidelines with global constraints for P and P 0 4.2.1. Structure and local annotations Proof. The structure of OG P is determined by the most permissive strategy MP the global constraint X as well. By Definition 17 (Matching), this implies the claimed simulation. h Lemma 2 (Local annotations). If P 0 accords with P under coverability, then, for every  X  q U Proof. Let  X  q P ; q P 0 2 . OG all edges leaving q P . For each assignment b to the propositions of U for all literals a with b  X  a  X  X  true , an edge from q b to the former a -successor of q remove all leaving edges labeled with a send event.
+ By construction, the obtained service automaton MP 0 P is a Cover MP P and no state becomes unreachable. It is also clear that, for every b satisfying U accordance under coverability MP 0 P has to be a Cover Y -strategy for P satisfy U OG always appear or-connected to the remaining formula. h 4.2.2. Global constraint Remember, we have to show that every Cover X -strategy for P is a Cover OG P and OG P 0 satisfy the two conditions of Theorem 3 , then every Cover when a Cover X -strategy for P satisfies the global constraint w there is a Cover X -strategy for P that violates w Y of P the initial state) which is a Cover X -strategy for P and violates w Throughout this section, we assume that there is a simulation of OG son for considering the global constraints.
+ The apparent candidate for the desired automaton S would be MP essence, the problem with MP P is that there may be several q constructing S differently. The idea is to use the simulation relation . tiple ( lcm ). This name is inspired by the observation that, if P is a simple loop of length m and P S would have exactly lcm  X  m ; n  X  states.
+
+Definition 21 ( Least common multiple of service automata ). Let P and P simulation of P by P 0 . The least common multiple of P and P  X  q
+Fig. 4 c. In the example we have lcm  X  2 ; 4  X  X  4 states. lcm  X  P ; P 0  X  has three important properties: First, q 0 x ! a x 0 P 0 since there is a simulation from P to P 0 . Third, both, P and P fact a bisimulation, i.e. it is a simulation in both directions. Next, we show that the simulations .  X  q
+Let  X  q P ; q P 0 ! a  X  q 0 P ; q 0 P 0 . By construction of lcm  X  P ; P relations. Let, the other way round, q P ! a q 0 P and  X  q with q P 0 ! a q 0 P 0 which is uniquely determined since P  X  q 0 since P is deterministic, so there is no other choice to match a in P . Analogously, presence of  X  q 0 Next, we show that there is a simulation of arbitrary Cover Lemma 4. Let A 2 Strat Cover X  X  P  X  . Then there is a simulation of A by lcm  X  OG Proof. As A 2 Strat Cover X  X  P  X  , there is a simulation of A by OG lcm  X  OG P ; OG P 0  X  . Since simulation is transitive, there is a simulation of A by lcm  X  OG Now we can show the main claim of this section. Assume there is an arbitrary Cover Cover Y -strategy for P 0 . Using the simulation of A by lcm  X  OG
+Cover X -strategy for P as well, and again no Cover Y -strategy for P in lcm  X  OG P ; OG P 0  X  .
+ f X  q f q 2 Q Im  X  A  X  j no send event is activated in q g .
+ Im  X  A  X  is a Cover X -strategy for P .
+ Lemma 5. If A is a Cover X -strategy for P, so is Im  X  A  X  .
+ Proof. We have to show (1) OG P simulates Im  X  A  X  , (2) Im  X  A  X  satisfies the local annotations of OG global constraint w X .
+ Ad (1). Im  X  A  X  is (by Definition 22 ) a subautomaton of lcm  X  OG Q Ad (2). We proceed by showing first that  X  q A ;  X  q P ; q the initial states. Let  X  q A ;  X  q P ; q P 0 2 . A ; Im  X  A  X  and  X  q 00 P ; q 00 P 0 such that q P ! a q 0 P and  X  q P  X  q ;  X  q 00 P ; q 00 P 0 2 . A ; Im  X  A  X  . By construction of lcm  X  OG Now we can show that Im  X  A  X  satisfies the local annotations of OG there is a state q A of A where  X  q A ;  X  q P ; q P 0 2 .
+ q , together with the  X  X  X inal X  status of q A , form a satisfying assignment U leaving  X  q P ; q P 0 include the ones that leave q A . The  X  X  X inal X  proposition is true in  X  q  X  q ; q P 0 . We distinguish two cases. If there is a send event leaving  X  q true. In the other case, the assignment used for checking U the assignment used in q A is true. Since U OG P  X  q P  X  is monotonous, U
+Im  X  A  X  . Since A is a Cover X -strategy for P , w X evaluates to true. h
+Now we prove that Im  X  A  X  is not a Cover Y -strategy for P that local annotations accord to each other. Thus, A must satisfy local annotations of OG show that, if A violates the global constraint w Y of OG P 0 ficient for establishing this claim. It proves that A touches at least as many states in OG does A .
+ Lemma 6. For every state q P 0 of OG P 0 , if there is a state q of . A ; Im  X  A  X  cover all states of Im  X  A  X  . For a state  X  q  X  X  q
+This is obviously true for the initial element  X  q 0 A ;  X  q  X  q ; q P 0 ! a  X  q 0 P ; q 0 P 0 which implies (by construction of lcm  X  OG
+Theorem 4 (Checking accordance under coverability). Let P and P 2. For all  X  q P ; q P 0 2 . OG 3. For all subautomata S of lcm  X  OG P ; OG P 0  X  which are in Strat
+Proof. ( ) ) Assume Strat Cover X  X  P  X  # Strat Cover Y  X  P evident from the assumption. (  X  ) Assume that all three claims hold. Let A be in Strat would state that the third assumption were invalid. h need to check nine subautomata. As the subautomaton depicted in Fig. 4 cisin Strat that P 0 does not accord with P under coverability. 4.3. An algorithm for checking accordance under coverability assignments that violate the global constraint w Y of OG P 0 1. Remove all states  X  q P ; q P 0 from lcm  X  OG P ; OG P 0 2. Iteratively, remove all states  X  q P ; q P 0 from lcm  X  OG 3. For the remaining subautomaton, evaluate the global constraint w accordant X , otherwise continue with the next assignment.
+ step, is the largest subautomaton of lcm  X  OG P ; OG P 0  X  that satisfies the local annotations of OG does, too.
+ Consider again the example in Fig. 4 : (1) We have only two maximal assignments for w assigning false to s 5 (the second). For the first maximal assignment we remove state q assignment yields a subautomaton that satisfies w X and hence proves non-accordance as well. oretical tractability.
+ 5. Related work contain livelocks.
+ deadlock-free that is, every run is deadlock-free.
+ the coverage of certain activities is also a known and important sanity check, see [19], for instance. model a constraint as a constraint open net C and compose C and N . dance we refer to [16].
+ of using annotated automata as a representation of a set of automata has been first published in [24]. 6. Conclusion extending our notion of an operating guideline with a global constraint. questions related to service composition.
+
+In addition, we have investigated the problem when a service P can be substituted by another service P accordance under coverability even for the infinite sets of all Cover -strategies for P and P dance under coverability.
+ Acknowledgements  X  X  X perating Guidelines for Services X  (WO 1466/8-1).
+
+References

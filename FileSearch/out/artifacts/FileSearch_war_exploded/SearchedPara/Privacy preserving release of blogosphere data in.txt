@@ -1,0 +1,73 @@
+ 1. Introduction the relations among them compose a social network .
+ become worldwide accessible.
+  X  a public recommendation.
+ enough accuracy.
+ the results of blog searches. Some examples include online platforms like Technorati ground information that could jeopardize privacy. 1.1. Scenario the social network data to be released for research purposes.
+ nodes cannot be re-identified.
+ gers will be considered.
+ about blog subscriptions becomes disclosed.
+ lication so that this correlation attack fails.
+ sitive in some cases, a scenario like the one described for blogging platforms is obtained. 1.2. Related work indistinguishable nodes each, which is the case for k -anonymity (with k = n ). mation is known) is at least s .
+ links after subverting some user accounts and getting information about their local neighborhoods. on directed graph data. 2. Preliminaries ficient is explained as a measure of the correlation between the ranks of two vectors or lists. 2.1. Directed graphs denoted by j A j .If( u , v ) is an arc, it is said that u is adjacent to adjacent from [to] a given vertex v is denoted by N + ( v degree of v , d ( v )]. 2.2. PageRank graph D =( V , A ) is constructed so that each web page is assigned an element from the vertex set V ={ ( , i )isin A when page v j contains a link to page v i . Next, the normalized link matrix P =( p as
+Hence, the coefficient p ij of P can be viewed as the probability that a web surfer located at page the next movement is taken uniformly at random among all the links departing from surfer is at any page (with a small probability 1 a ), matrix P ( a ) is defined as to be the (positive) eigenvector P X  X  p 0 ; ... ; p j V j 1 the dumping factor , is usually chosen to be a = 0.85. The relevance score assigned by PageRank to page specific search engines ( Adar et al., 2004; Kritikopoulos et al., 2006; Tayebi et al., 2007 ). 2.2.1. Computing PageRank some initial length-j V j vector, for instance P  X  0  X   X  1 sidered that the cost of computing a close enough approximation to P is O ( j A j ). 2.3. Spearman X  X  rank correlation coefficient Given two length  X  &gt; 2 (non-constant) vectors X  X  X  X i
+X coefficient q ( X , Y ) is defined as: takes discrete values ranging between 1 and 1. 3. Problem statement
+In this work, the social network data to be released is a digraph D =( V , A ), where V ={ private data). Keeping the identity of the blogger that corresponds to each node nodes were re-identified, each arc ( v i , v j ) 2 A would disclose the blogger assigned to subscriptions.
+ PageRank relevance of a given  X  X logger X  will be denoted P ( X  blogger  X ).
+An attacker first submits a query with keyword  X  X ennis X  obtaining L deduce that
+After that, it submits a second query with keyword  X  X ootball X  obtaining L Finally, a third query with keyword  X  X ockey X  returns L 3  X f Anne ; John g so that From all the previous inequalities, it can be deduced that so that the list of blogger identities sorted decreasingly with their PageRank relevance is and Applying the power method to digraph D , the following PageRank vector is obtained:
+From P , the attacker constructs the (decreasingly with PageRank revelance) sorted list of nodes N X f it re-identifies digraph nodes by matching the elements in L with those in N so that that John is subscribed to Peter X  X  blog. 4. n -Rank confusion its nodes.
+
+As said before, the attacker knows the sorted list of blogger identities, L X f Id the attacker can always compute the PageRank vector P containing the score of each node in V ={ struct the sorted list of nodes N X f ~ v 0 ; ~ v 1 ; ... ; ~
+D 0 =( V , A 0 ) so that the sorted list of nodes N 0  X  ~ perturbed into D 0 so that q  X P ; P 0  X  g .
+ proaches 1 so that, in practice, g should take values close to 1. erate clusters containing nodes that are contiguous in N .
+ In any case, an attacker would be unable to know how accurate its estimated partition is. so that the list of nodes sorted decreasingly with PageRank relevance is N X f depicted in Fig. 2 .
+ The PageRank vector of digraph D 0 is
+N 0  X f v 1 ; v 4 ; v 2 ; v 0 ; v 3 g , which differs from N .
+ correct matchings (out of five). 4.1. Node privacy nodes inside each cluster are locally sorted so that each node a random value. This causes that, after perturbation, each node after masking, each local rank inside a cluster maps to a different rank in N of positions in N 0 in which node v can become located is at least n . size n , hence n -confusion is achieved.
+ 4.2. Arc privacy
+In a general context, arc privacy is preserved when, given two blogger identities Id concluded that the probability of its existence, p ( Id i probability of an arc existence is given by j A 0 j j V j X j V j 1  X  when a not too higher probability about its existence can be inferred from D 0 . be there. Nevertheless, determining such candidate sets is not an easy task. the nodes in each cluster to be contiguous in N X f ~ v 0 ; ... ; ~ cluster set { C 0 , ... , C t 1 } satisfies that, if t 1 &lt; t up to ( n 1)/2 positions. If, after perturbation, the nodes in each cluster are still contiguous in N between the i n 1 2 and the i  X  n 1 2 positions in N 0 are candidates to correspond to Id not necessarily contiguous in N 0 after perturbation, so that more uncertainty is introduced.
+In our analysis, we consider the minimal set of candidate nodes for each Id other n 1 nodes that are closer to ~ v 0 i in rank (for n = 7 and Id ability that Id i is subscribed to Id j , with i  X  j ,is
+It could happen that, for some pairs Id i ; Id j 2L , p  X  Id with x n ( D , D 0 ) defined to be 0 whenever #  X  Id i ; Id
+In some cases, it can happen that the node corresponding to Id sets causes the obtention of lower values for p ( Id i ? Id imal candidate sets is pessimistic, and the real privacy level will tend to be higher. 5. n -Rank confusion procedure Algorithm 1. n -rank confusion procedure.
+ 1 D 0 D ; 2 P X f p 0 ; ... ; p j V j 1 g PageRank ( D ); 3 C X f C 0 ; ... ; C t 1 g Partition  X  V ; n ; P X  ; 4 for each C j 2C do 5 g j R [ 1,1]; 6 D 0 Perturb  X  D 0 ; P ; C j ; g j  X  ; 7 end 8 return ( D 0 ); tain nodes with a similar PageRank. The employed subroutines are: returned vector { p 0 , ... , p j V j 1 } corresponds to the PageRank score given to node aspects have not been considered).
+
+Perturb  X  D 0 ; P ; C j ; g j  X  : Procedure that, given cluster C
+Spearman correlation between PageRank vectors P C j  X  X  p i is O ( j V j / n ).
+ lations computed once the masking process has concluded (let us denote them by g 0 values had 0.0135 mean and 0.2293 standard deviation. In that experiment, the random variable g 0 mean and 0.1777 standard deviation. 5.1. Proposed perturbation procedure tested. It makes use of the following operations:
+Arc swap : Being D a digraph, this is a perturbation operation involving four nodes u , u 0 , ( u , v 0 ), ( u 0 , v ) R A . The operation removes the two arcs ( u ,
+Arc steal : Being D a digraph, this operation involves three nodes u , removes arc ( u , v ) and adds ( u , v 0 )to A ( Fig. 6 ). Let us denote ArcSteal ( D , u , results from applying this operation over nodes u , v , v 0 in D . resenting the nodes in cluster C , computed from the original digraph and the perturbed one (denoted P tively) becomes a value close to g obj ( g obj is an input parameter). estimated to minimize the distance between g  X  q P C ; P 0 steal operation on three nodes u , v , v 0 with v , v 0 2 C .
+ technique.
+ quences of the digraph (see Section 6.1 ). The pseudo-code description is given in Algorithm 2 . Algorithm 2. Perturbation procedure.
+ 1 D 0 D ; 2 P 0 PageRank ( D 0 ); 4 while j g prev g obj j &gt; d do 5( g s , u , u 0 , v , v 0 ) FindBestEstimatedSwap  X P ; P 0 ; C ; g 7 D 0 ArcSwap ( D 0 , u , u 0 , v , v 0 ); 8 P 0 PageRank ( D 0 ); 10 else 11 ( g s , u , v , v 0 ) FindBestEstimatedSteal  X P ; P 0 ; C ; g 13 D 0 ArcSteal ( D 0 , u , v , v 0 ); 14 P 0 PageRank ( D 0 ); 16 else 17 return ( D 0 ) 18 end 19 end 20 end 21 return ( D 0 ) proposed by Chen et al. (2004) . For an order j V j digraph, the PageRank vector P satisfies that,
+This formula can be interpreted as if each node v was assigned an initial 2 C , are transformed into ( u 1 , v 2 ), ( u 2 , v 1 ), the approximation technique assumes
+Rank will be altered, while the remaining nodes will keep their score. In this way, receives an additional score from u 2 so that the new estimated PageRank relevance of
+This formula provides a very lightweight method for estimating the updated score of ing time of Algorithm 3 can be reduced by upperbounding the size of lists L
+L ; L 2 is limited to m , the bucle in step 7 iterates O ( m
+O ( n ) time, the overall temporal cost of Algorithm 3 is O ( n on low influence will probably cause a large perturbation to the scores of ceive a large modification in a single step.
+ Algorithm 3. FindBestEstimatedSwap procedure.
+ 1 D 0 D ; 4 for each unordered pair ( v 1 , v 2 ), with v 1 , v 2 2 C , 5 L 1 In-Neighbors ( v 1 ); 6 L 2 In-Neighbors ( v 2 ); 7 for each u 1 2L 1 and u 2 2L 2 do 8 if ( u 1 , v 2 ) R A and ( u 2 , v 1 ) R A then 9 P 00 P 0 ; 15 u 0 1 ; u 0 2 ; v 0 1 ; v 0 2  X  u 1 ; u 2 ; v 1 ; v 2 16 if j g best g obj j &lt; d then 17 return g best ; u 0 1 ; u 0 2 ; v 0 1 ; v 0 2 ; 18 end 19 end 20 end 21 end 22 end 24 return g best ; u 0 1 ; u 0 2 ; v 0 1 ; v 0 2 ; 25 else 26 return ( 1 ,  X  ,  X  ,  X  ,  X  ); 27 end also O ( n 3 ).
+
+Taking this into account, the cost of each iteration of Algorithm 2 is O ( n masked a set with data from a recommendation site (see Section 7.1 ) with n = 20, we got K = 2.29. 5.2. Parameter tuning of cluster nodes, before and after perturbation, falls close to an specified random value, g section, some assessment on the tuning of parameter d is provided. vectors can be.
+
+Proposition 5.1. Given two vectors X  X  X  X i  X   X  1 i  X  0 and Y  X  X  Y
+Z  X  X  Z i  X   X  1 i  X  0 such that with x i and y i denoting the ranks of X i and Y i , respectively.
+Proof. Given i 1 , i 2 , vector Z is constructed by setting Z
+P  X  z i z  X  2  X  From the construction of Z , it follows that which completes the proof. h In the particular case that neither X nor Y have tied values, so that ces i 1 , i 2 satisfy that j x i 1 x i 2 j X j y i tween q ( X , Y ) and q ( X , Z )is 12 In the proposed algorithms for achieving n -rank confusion, P algorithm perturbs the directed graph so that q P C j q P C ; P 0 C g obj j 6 6  X   X   X  2 1  X  the processing of that cluster can stop.
+Of course, ties in PageRank vectors can occur, so that correlations closer to g mended value for d . 6. Digraph data utility measures them:  X  d  X  min  X  D  X  ; d  X  mean  X  D  X  ; d  X  max  X  D  X  (for out-degrees),  X  d min  X  D  X  ; d mean  X  D  X  ; d max  X  D  X  (for in-degrees). proportion of vertices keeping the out-degree after masking, that is
+This parameter satisfies 0 6 d + ( D , D 0 ) 6 1, and d + can be defined.
+ measures how close the out-neighbors of v are to being a complete digraph. In this sense, c ing arcs in the induced subdigraph given by the out-neighbors of 6.1. Effect of swap and steal operations on utility parameters a masking process that applies arc swap and arc steal operations. (a) d  X  i  X  D 0  X  X  d  X  i  X  D  X  ; i 2f min ; mean ; max g , (c) d max  X  D 0  X  d max  X  D  X  6 s , (d) d min  X  D 0  X  d min  X  D  X  6 s , (e) d + ( D , D 0 ) = 1 (perfect out-degree preservation is achieved), (f) d  X  D ; D 0  X  P 1 2 s j V j .
+ Besides, it is well known that any digraph D =( V , A ) satisfies that in-degree of two vertices in one unit. So, after s arc steals we have that d vertices get their in-degree modified, so that, d  X  D ; D Steal operations are performed very rarely, but they are very useful in these cases. crease. This information would reduce privacy.
+ The next result addresses out-clustering parameters.
+ (arcs (u,v), (u 0 , v 0 ) 2 A are transformed into (u, v 0
+Proof. The induced subdigraph h N  X  D  X  u  X i (which is not empty since d in D . The swap operation removes vertex v and the arcs it is involved in (2( d
+The amount of added arcs is 2( d + ( u ) 1) at most. So, the different in size between h N 2( d + ( u ) 1), that is, Dividing both sides of the inequality by d + ( u )( d + ( u ) 1), concludes the proof. h transformed into ( u , v 0 )).
+ clustering parameters. This result can be considered for selecting the nodes to be removed from lists L 3 if the choice to limit their size was taken. 7. Experimental results
+The presented masking procedure has been implemented in Python directed graph data sets. 7.1. Experiments over real data
+A test data set has been built from directed graph data 10 processed employing fewer transformations. In the rest of experiments, we have taken m =4. confusing digraph resulting from such an execution will be denoted D has been limited to four employing the influence-based selection strategy. design of faster algorithms would be required for larger digraphs. 7.1.1. Data utility measures average in-degree of vertices.
+
+Degree measures : For each choice of n , the minimum in-degree moved from d preserved in all the experiments. Besides, the in-degree preservation parameter, d ( D , D preserved, specially when big clusters are taken.
+
+Clustering measures : The ( in and out ) clustering coefficients of D digraph D . Larger cluster sizes provide a better preservation of these parameters. and clustering parameters. 7.1.2. Arc privacy proportion of identity pairs Id i , Id j , with a probability p ( Id these experiments), for which a relation from Id i to Id j for n = 50,100. Such small values imply that the masked digraphs D tion between two given network members is kept very low. 7.2. Experiments over synthetic directed scale-free graphs produces directed graphs whose degree sequences follow a power law distribution. The largest digraph in the set (20,000 vertices) was masked in around 40 min. blogger to be subscribed to too many blogs.
+ by S digraphs are sparse, their size j A j is relatively small and the temporal cost O (max ( K j V j n that only 3% of arcs of S are affected. 7.2.1. Data utility measures d ( S , S n ) falls very close to the lower bound given in Proposition 6.1 . the original values, being j c ( S ) c ( S n ) j &lt; 0.0005, for each n . 7.2.2. Arc privacy data set. 8. Conclusion and future work preserve the structural parameters of the original data to a high extent. masking.
+ Acknowledgments the Government of Catalonia under Grant 2009SGR-442.
+ References

@@ -1,0 +1,189 @@
+ 1. Introduction privacy.
+ the two goals.
+ information utility are not both maximized. utility for a specific user and the purpose for which the data is released.
+
+In this paper, we present an approach based on economic price theory for guiding the process of microdata anonymisa-microdata anonymisation.
+
+The approach presented in this paper is limited to cases where global recoding [12] is used as the main technique for microdata anonymisation. Cases where other non-perturbative techniques (e.g. data suppression) and perturbative tech-niques are used to anonymise microdata have been left for future work.
+ tice still needs to be determined.
+ related work in Section 8 and conclude the paper in Section 9. 2. Economic price theory optimum choice when given a set of limitations on how the choice can be made. As an example, the utility maximization problem of a consumer uses constrained optimization, in which we determine how a consumer should allocate his income in external variables affect the state of internal variables in an economic system. fore, in this research work, we use only one tool from economic price theory, namely constrained optimization.
+In this Section, we provide a brief overview of the concepts from economic price theory that were used as a basis for ferred to these works for more information on economic price theory.
+
+Let us suppose that a consumer has a particular income I that he wishes to spend on two goods , x the two goods x 1 and x 2 , we can represent this as an equation known as the consumer X  X  budget : p consumer X  X  (economic) utility [16]. The utility derived from consuming the two goods x sumer X  X  own preference between the two goods, and can be represented by the utility function U ( x
+To find the consumer X  X  optimum point of consumption of goods x amounts of goods can be consumed. This optimization problem can be summarized as follows: lem as follows. Suppose that there are n goods x 1 , x 2 , ... , x function U ( x 1 , x 2 , ... , x n ) subject to the constraint of the consumer X  X  budget p negative consumption of goods. This can be written as: extrema of a function subject to one or more constraints.
+ budget constraint, as well as the Lagrange multiplier k . In this case, the Lagrangian ( L ) is defined as:
+At the optimum point, there are first order conditions that need to be satisfied:
+Based on these, we can obtain the optimum values for x 1 , x ( n + 1) unknowns x 1 , x 2 , ... , x n , k . 3. Preliminary definitions 3.1. Microdata organization that requires the released data to perform specific types of data analysis.
+We also assume that we are working with a non-anonymised microdata set that has already been de-identified. That is, are modified, while the values of sensitive variables and non-sensitive non-identifying variables are preserved. an individual) as follows: where,
+V ij represents the j th identifying variable of the i th row.
+ W ij represents the j th sensitive variable of the i th row.
+ X ij represents the j th non-sensitive non-identifying variable of the i th row.
+For each identifying variable V i of M we define a set of k codings { C defined such that a coding C ( l +1) is more generalized than a coding C least two codings, one which is used in the original microdata set (i.e. coding C egory (i.e. coding C k ).
+  X  X arried X ,  X  X  X idowed X , or  X  X  X ivorced X .
+ ues  X  X een_Married X  or  X  X  X ever_Married X .
+ C 3 , in which the original categories have been combined into one category  X  X  X ot_released X .
+Throughout this paper, we will use the notation ( V i ) l 3.2. Quantification of information entropy [19]. Entropy provides us with a measure of the uncertainty of a random variable. Given a random variable X in a data set, the entropy H ( X ) is defined as: where, n is the number of possible values that the variable X can assume in the particular dataset, and p i is the probability that the variable X assumes the i th possible value, in the particular dataset. 3.3. Quantification of information utility data user X  X  preferences, which may vary according to what the user intends to use the data for. needs and preferences.
+
+Below, we propose how information utility can be measured when global recoding is used to anonymise data. In this re-nization that will use the released data.) lenborg and De Waal in [12]. Each identifying variable V i should allocate to that variable.
+ The sum of the user preference points allocated to each identifying variable must equal 100.
+More formally, if an identifying variable V i is released with coding C
+Iu (( V i ) j ), is the product of the user preference points q
+H (( V i ) j ) contained in the variable when it is released with coding C where, coding C j , and p identifying variable, taking into account only the codings with which each identifying variable is released.
+When assigning user preference points to identifying variables, the data user should also take into account the meta-identifying variables.
+ cases where those combinations were not present.
+ iable can now help the researcher make deductions about diseases suffered by underage mothers. This type of deduction cases, the Age identifying variable should be assigned a greater number of user preference points. 3.4. Quantification of privacy content of the data with which we are working.
+ data. As more data is removed from the identifying variables, the privacy level of the released data increases. the unreleased data would be for an intruder for the purpose of inferring sensitive data. tion) of privacy that the two microdata sets possess.
+ mationpresentinthenon-recodedvariableandtheamountofinformationpresentinvariablereleasedwithaparticularcoding. variables should also be taken into account.
+
+Each identifying variable V i is assigned a number of intruder preference points r intruder, the more points we should allocate to that variable.
+ The sum of the intruder preference points allocated to each identifying variable must equal 100.
+More formally, if an identifying variable V i is released with coding C the product of the intruder preference points r i allocated to the variable V where, and taking into account only the codings with which each identifying variable is released. 4. Proposed solution
+Concepts from economic price theory, including the objective and the constraints under which the consumer X  X  optimum this paper.
+ and information utility. Examples, which show how the proposed solution is used, are described in the next Section. 4.1. Using economic price theory concepts in information theory definitions from economic price theory so that they are relevant for our research work as follows. 4.1.1. Consumer imize both the privacy and the information utility of the released data. 4.1.2. Goods
+The optimization problem in our research work can be thought of as maximizing the amount of information utility and privacy as our (economic) goods, whose consumption we wish to optimize.
+
+In simple terms, the optimization problem can be seen as a process during which we need to determine, for each iden-form the total level of information utility and n goods that will form the total level of privacy. 4.1.3. Income entropy of the non-anonymised identifying variables). 4.1.4. Prices (a good). The way in which the actual price amounts are determined is further explained in Step 5 in Section 4.2.1. 4.1.5. (Economic) Utility user and the data owner (i.e. our  X  X  X onsumer X ) derive from a released microdata set. 4.2. ANOPI isation process ANOPI, or the ANonymisation with Optimum Privacy and Information utility. The purpose of ANOPI is to anonymise microdata by guiding the anonymising process such that an optimum balance between privacy and information utility is obtained. The process is shown in Fig. 1 and its two functions are described below.
+Given a non-anonymised microdata set, the ANOPI process first determines the optimum levels of privacy and informa-takes place in the Anonymising Function, which provides an anonymised microdata set as its output. 4.2.1. The OPI function vacy and information utility are determined.
+
+The input to this function is a non-anonymised microdata set with n identifying variables V fying variable V i has a set of m codings { C 1 , ... , C two goods: x i and y i . For an identifying variable V i , good x { x , ... , x n , y 1 , ... , y n }. The OPI function is performed in seven steps as follows. Step 1: Determine the consumer X  X  preferences between different goods step, we also determine the preference between each identifying variable. These preferences are used to determine the amount of (economic) utility that can be derived.
+
+Tosetthepreferencebetweeninformationutilityandprivacy,weusetheparameters a and b .Thevaluesoftheseparameters andinformationutilitywillbedeterminedbased onthis preference.In asimilarway,if privacyofthe releasedmicrodataisper-
+To set the preference between identifying variables, each variable V respectively.
+ fulness for measuring the consumer X  X  (economic) utility that can be derived from different goods. and the data owner always prefer to derive the highest levels of information utility and privacy, respectively. increasing the level of privacy (instead of information utility) that can be derived from that variable. this optimization problem is derived as follows: where, a is the preference value for information utility, b is the preference value for privacy, q i is the number of user preference points allocated to variable V r i is the number of intruder preference points allocated to variable V and intruder preference points by 100 to ensure that we represent the respective preferences as weights. Step 2: Determine the consumer X  X  income
+To determine the consumer X  X  income, I , we need to determine the amount of information with which we are presented in is released with coding C 1 . (We do not use the joint entropy H (( V the income, as explained in Step 6).
+
+More formally, given a non-anonymised microdata set with n identifying variables V where the superscript of the variable indicates that the variable is released with coding C Step 3: Determine the possible information utility levels
+For each identifying variable V i ( i =1, ... , n ), with a set of m codings { C levels Iu  X  V i  X  1 ; ... ; Iu  X  V m i that the consumer can consume of good x i . Step 4: Determine the possible privacy levels
+For each identifying variable V i ( i =1, ... , n ), with a set of m codings { C can be consumed by the consumer is represented by the set of possible privacy levels { Priv (( V be derived for every possible coding of V i .
+ Step 5: Determine the price of each good
+For each good x i (i.e. those goods that represent the information utility level of a variable V
+Similarly, for each good y i (i.e. those goods that represent the privacy level for a variable V user obtains one unit of information utility for any coding of the variable V amount of information utility that the user will obtain if V mation entropy H (( V i ) j ) that will exist in the V i when it is released with coding C follows (where q i is the amount of user preference points allocated to V
+In a similar way, we can also determine the price t i for a good y mation that is required such that one unit of privacy is obtained for any coding of the variable V coding C j of V i (except coding C 1 , in which no data is hidden) and assume that the variable V
+To calculate the price, we use (1) the amount of privacy that will be obtained if V amount of information entropy H (( V i ) 1 ) H (( V i ) j
+The price t i for a good y i is calculated as follows (where r scribed in Section 3.4): Step 6: Determine the consumer X  X  budget We determine the consumer X  X  budget by using the income I obtained in Step 2, as well as the prices derived in Step 5.
+Using these, the consumer X  X  budget becomes: Hence, it implies that the whole income must be spent and therefore the above formula is not an inequality.
+Given the above formula for the consumer X  X  budget, we can now explain why the income I should be equal to the sum of variables.
+ coding C 1 ). In this case, the budget is:
+Since each x i and y i are the information utility and privacy levels of V follows (by using Eqs. (6) and (7) ): By simplifying, we obtain: Therefore, the income I is equal to the sum of the entropies of the individual identifying variables.
+We also know that H (( V 1 ) 1 , ... ,( V n ) 1 ) 6 H (( V the joint probability of the values of variables V 1 , ... , V vidual variable V 1 , ... , V n . More formally, equality will hold if and only if Pr ( V to the probability of the values of variable V i .
+ where each identifying variable is released with coding C explain this further, let us consider the following scenario.
+ ymised identifying variables. That is, I = H (( V 1 ) 1 , ... ,( V When the microdata set is released with non-anonymised identifying variables, Eq. (15) for the consumer X  X  becomes
+H (( V 1 ) 1 )+ + H (( V n ) 1 )= H (( V 1 ) 1 , ... ,( V ables are not independent. Therefore, H (( V 1 ) 1 )+ + H (( V
+Therefore, if we set the income to equal to the joint entropy of the non-anonymised identifying variables, a solution where the non-anonymised identifying variables are released would be unattainable. Hence, the assumption we made ear-fying variables.
+ Step 7: Optimize the maximum value for U ( x 1 , ... , x n , y 1 , ... , y that only non-negative amounts of goods are consumed. We can rewrite this as: For this purpose, we use the Lagrange Multipliers Method. The Lagrangian ( L ) becomes:
+At the optimum point, the first order conditions that need to be satisfied become:
+These are used to obtain the optimum values for x 1 , ... , x (2 n + 1) unknowns x 1 , ... , x n , y 1 , ... , y n , k . 4.2.2. The anonymising function
+Once we have determined the optimum levels of privacy and information utility that the released microdata should pos-place in the second function of the ANOPI process.
+
+The Anonymising function takes, as its input, the non-anonymised microdata as well as the optimum values for privacy data set is provided as the output of the ANOPI process.
+ iable at which the information utility and privacy levels match the optimum levels. since the possible values for the information utility and privacy levels do not form a continuous function. utility level U . That is, we choose a coding C j such that j x are the preference values for information utility and privacy, respectively, and where q and the intruder preference points allocated to the variable V vacy that have been found in the OPI function.
+
+The need to suppress relatively rare records from the anonymised microdata set is currently out of the scope of this paper. However, for future work, we intend to expand our proposed solution by assuming that both global recoding fects of both global recoding and data suppression when the optimum values for privacy and information utility are derived. 5. Examples
+In this Section, we provide two examples of using the ANOPI microdata anonymisation process. We first start with the simplest case, in which we need to find the optimum balance between privacy and information utility when given tifying variables. In both examples, we show how the optimum solution changes with different values for the input parameters, and in the second example we also represent the optimum values for information utility and privacy graphically. 5.1. Example 1-A microdata set with one identifying variable the Appendix A , with one identifying variable year of birth , which we shall denote as V x represents the level of information utility in V 1 . Good y Let us set the possible codings for V 1 as follows:
+C 1 : non-recoded data; V 1 can assume any valid year from 1961 to 1990.
+
+C 2 : V 1 can assume the values  X  X 1961 X 1962 X ,  X  X 1963 X 1964 X , ... ,  X  X 1989 X 1990 X .
+
+C 3 : V 1 can assume the values  X  X 1961 X 1963 X ,  X  X 1964 X 1966 X , ... ,  X  X 1988 X 1990 X 
+C 4 : V 1 can assume the values  X  X 1961 X 1965 X ,  X  X 1966 X 1970 X , ... ,  X  X 1986 X 1990 X .
+
+C 5 : V 1 can assume the values  X  X 1961 X 1970 X ,  X  X 1971 X 1980 X ,  X  X 1981 X 1990 X .
+
+C 6 : V 1 can assume the values  X  X 1961 X 1975 X ,  X  X 1976 X 1990 X .
+
+C 7 : V 1 can assume the values  X  X 1961 X 1990 X . 5.1.1. OPI function Step 1: Determine the consumer X  X  preferences between different goods important. Therefore, we assign equal values to a and b as follows: a  X  1 erence points to the single identifying variable.
+
+Therefore, the (economic) utility function is: U  X  x 1 ; y Step 2: Determine the consumer X  X  income In this example, we have only one identifying variable, and hence the income is: Step 3: Determine the possible information utility levels
+The information utility levels are as follows for the possible codings of V Iu (( V 1 ) 1 ) = 135.03.
+ Iu (( V 1 ) 2 ) = 112.27.
+ Iu (( V 1 ) 3 ) = 94.21.
+ Iu (( V 1 ) 4 ) = 75.08.
+ Iu (( V 1 ) 5 ) = 47.60.
+ Iu (( V 1 ) 6 ) = 30.01.
+ Iu (( V 1 ) 7 )=0.
+ Step 4: Determine the possible privacy levels The privacy levels for the possible codings of V 1 are as follows.
+ Priv (( V 1 ) 1 )=0.
+ Priv (( V 1 ) 2 ) = 22.76.
+ Priv (( V 1 ) 3 ) = 40.81.
+ Priv (( V 1 ) 4 ) = 59.95.
+ Priv (( V 1 ) 5 ) = 87.43.
+ Priv (( V 1 ) 6 ) = 105.02.
+ Priv (( V 1 ) 7 ) = 135.03.
+ Step 5: Determine the price of each good
+The price for x 1 is s 1  X  1 100  X  0 : 01 and the price for y Step 6: Determine the consumer X  X  budget
+The consumer X  X  budget is defined by the equation: 0.01 x 1 Step 7: Optimize tion problem can be stated as:
+When this is solved, we obtain the optimum values as follows: x 5.1.2. Anonymising function
+In Fig. 2 , we show a graph of the set of possible values for x cannot obtain these exact optimum values, since the optimum levels of information utility and privacy for V coding at which the possible levels are closest to the optimum solution. This coding is C variable V 1 is released, as shown in Table 4 in the Appendix A .
+ how the optimum values for x 1 and y 1 change, together with the codings with which the microdata should be released. 5.2. Example 2-A microdata set with two identifying variables
+We now present a more advanced example, in which we need to anonymise a microdata set with two identifying vari-marital status , which we shall denote as V 1 and V 2 , respectively. We create four goods: x resent the information utility levels for the identifying variables V of privacy for the identifying variables V 1 and V 2 , respectively.
+ Let us set the possible codings for V 1 to be the same as in Example 1.
+ Let the set of possible codings for V 2 to be as follows:
+D 1 : non-recoded data; V 2 can assume the values  X  X ingle X ,  X  X  X arried X ,  X  X  X idowed X , or  X  X  X ivorced X .
+D 2 : V 2 can assume the values  X  X  X ever_Married X , for those values that were equal to  X  X  X ingle X  in ( V those values that were equal to  X  X  X arried X ,  X  X idowed X  or  X  X  X ivorced X  in ( V
+D 3 : V 2 only assume the values  X  X  X ot_released X . 5.2.1. OPI function Step 1: Determine the consumer X  X  preferences between different goods vacy are equally important. Furthermore, let us assume that the data user prefers V to allocate 60 intruder preference points to V 1 and 40 intruder preference points to V an intruder would place on these two variables. Therefore, the (economic) utility function is: Step 2: Determine the consumer X  X  income In this example, we have two identifying variables, and hence the income is: Step 3: Determine the possible information utility levels
+The information utility levels are as follows for the possible codings of V Iu (( V 1 ) 1 ) = 81.02.
+ Iu (( V 1 ) 2 ) = 67.36.
+ Iu (( V 1 ) 3 ) = 56.53.
+ Iu (( V 1 ) 4 ) = 45.05.
+ Iu (( V 1 ) 5 ) = 28.56.
+ Iu (( V 1 ) 6 ) = 18.
+ Iu (( V 1 ) 7 )=0.
+
+The information utility levels for the possible codings of V Iu (( V 2 ) 1 ) = 20.85.
+ Iu (( V 2 ) 2 ) = 8.69.
+ Iu (( V 2 ) 3 )=0.
+ Step 4: Determine the possible privacy levels The privacy levels for the possible codings of V 1 are as follows.
+ Priv (( V 1 ) 1 )=0.
+ Priv (( V 1 ) 2 ) = 13.65.
+ Priv (( V 1 ) 3 ) = 24.49.
+ Priv (( V 1 ) 4 ) = 35.97.
+ Priv (( V 1 ) 5 ) = 52.46.
+ Priv (( V 1 ) 6 ) = 63.01.
+ Priv (( V 1 ) 7 ) = 81.02.
+ The privacy levels for the possible codings of V 2 are as follows.
+ Priv (( V 2 ) 1 )=0.
+ Priv (( V 2 ) 2 ) = 12.16.
+ Priv (( V 2 ) 3 ) = 20.85.
+
+Step 5: Determine the price of each good Step 6: Determine the consumer X  X  budget
+The consumer X  X  budget is defined by the equation: Step 7: Optimize
+The optimization problem can be stated as:
+When this is solved, we obtain the optimum values as follows: x 5.2.2. Anonymising function A.
+ ferent allocation of user preference points and intruder preference points to V values change, together with the codings with which the microdata should be released. intruder preference points to variables V 1 and V 2 .
+
+In each graph in Figs. 3 X 7 , we show the possible values for x variable must equal to 100 (see Section 3.3), the number of user preference points allocated to variable V points only to variable V 1 , since the intruder preference points allocated to variable V the levels of information utility ( Iu ) in the case of values for x y and y 2 . 6. Analysis of graphical results and simplification of the OPI function the values for x 1 and x 2 are greater in comparison to the values for y increases (i.e. as the value for b increases). Moreover, the values for x allocated to the respective variables. In a similar way, the values for y are allocated to the respective variables.
+
+Upon closer inspection of the results that were used to create the graphs, we noticed that the values allocated to x of the values allocated to a and q i . Similarly, the values assigned to y ymised identifying variables, but this portion is based on a ratio of the values assigned to b and r in a more generalized form as follows.
+
+Given a microdata set with n identifying variables V 1 , ... , V can be calculated as: and the optimum level of privacy y i for a variable V i can be calculated as: where, a is the preference value for information utility, as explained in Step 1 in Section 4.2.1, b is the preference value for privacy, as explained in Step 1 in Section 4.2.1 q i is the number of user preference points allocated to variable V r i is the number of intruder preference points allocated to variable V n is the number of identifying variables in the non-anonymised microdata,
+H (( V j ) 1 ) is the entropy of an identifying variable V the usefulness it provides in guiding the anonymisation process.
+ presented previously. After performing Step 4, we need to calculate the values of each x then continue directly to the anonymising function. 7. Limitations of the proposed approach and future work that it will be applicable for guiding the process of perturbative microdata anonymisation. intruder.
+
+Nonetheless, we believe that we can make several assumptions about how useful an identifying variable will be to an common.
+
+Secondly, we can make assumptions about the usefulness of an identifying variable based on the meta-knowledge about taken into account when assigning intruder preference points to identifying variables. are relatively rare.
+ group of records. We leave these aspects as avenues for future work.
+ global recoding and data suppression.
+ economic price theory, consumers may be subjected to rationing, which limits the amount of goods that a consumer may if the rationing constraints would not need to be met.
+
+For example, the data owner may set a minimum privacy level for a particular identifying variable V solution must satisfy, namely that the minimum privacy level of the released variable V
+Priv (( V i ) j ). That is, the optimum solution must satisfy an additional constraint: y
+In a similar way, the data user may require a minimum information utility level for an identifying variable V that it should be released with a coding no greater than C satisfies an additional constraint, namely that the minimum information utility level of the released variable V least as large as Iu (( V i ) j ). That is, the additional constraint that the optimum solution must satisfy is: x
+Therefore, to find the optimum solution in Step 7, we will need to find the maximum value for U ( x of particular identifying variables. 8. Related work (e.g. [29 X 31] ).
+
+The problem of finding an optimum balance between information utility and privacy has been addressed in different ways. In this Section, we discuss the different approaches that have been proposed. the task is to determine how R and U are related to the parameter values of the specific masking technique chosen to data release.
+ between privacy and information utility is still left up to the user of the R  X  U confidentiality map.
+Domingo-Ferrer and Torra [34] introduced the score as a way to evaluate the trade-off between information loss and as an optimization problem [1]. For example, Sebe et al. [39] applied a masking technique to a microdata set, after which a post-masking optimization procedure was applied to obtain an improved score. The main drawback of the score, unable to take into account the way in which the released data will be used, or the way in which we perceive the in-truder to infer sensitive data.
+ how to minimize information loss (or maximize information utility) such that the given level of k -anonymity will be achieved. A number of approaches for balancing privacy and information utility have been proposed based on this idea. maximized, and provide an improvement on the best-known O ( k )-approximation, provided by Aggarwal et al. [44],toan approximation of O (ln k ).
+
+However, the papers referred to in the above paragraph only consider the need of maximizing information utility such privacy.
+
+Other approaches for balancing privacy and information utility have also been proposed recently. In [9], Mohammed et al. propose a privacy model called LKC-privacy. The goal of the model is to transform a data set into an anonymous framework, user X  X  knowledge and the individuals X  confidential information are represented by propositional sentences. less, these recent approaches also consider the problem of balancing privacy and information utility is from only one angle.
+
+Loukides and Shao [11] consider how k -anonymisations can be produced with an optimum trade-off between information tion utility for a specific user and the purpose for which the data is released. 9. Conclusion
+The aim of the research work presented in this paper was to find a way in which we can guide the process of microdata anonymisation, such that the anonymised microdata will possess an optimum balance between privacy and information mization problem was solved by using concepts and optimization approaches from economic price theory.
+We presented an anonymisation process that finds an optimal balance between privacy and information utility and then anonymises the microdata such that this balance is achieved. Based on experimental evaluation, we were able to simplify the process through which our optimization problem is solved and also reduce the complexity of the actual optimization itself.
+ tive microdata anonymisation. For future work, we intend to modify the solution such that the optimum levels of pri-vacy and information utility are found when both global recoding and data suppression are used for anonymising the microdata. We also intend to expand the solution such that we will be able to make use of additional constraints that will capture the required minimum levels of privacy and information utility, which the data users and data owners may require.
+ Acknowledgements
+The authors would like to thank the anonymous reviewers for their constructive comments on an earlier draft of this necessarily be attributed to SAP Research or the SAP Meraka Unit for Technology Development (UTD). Appendix A represent the microdata of patients (with different diseases) who were admitted to a hospital.
+References

@@ -1,0 +1,102 @@
+ 1. Introduction the effectiveness and efficiency of a system for the particular personalised needs of end users. In addition, we include the modelling of evaluation measures and of retrieval models.
+Throughout the paper, particular emphasis is given to a well-defined notation of matrix norms and (the collection semantics).
+ between collection, document and query spaces. 2. Retrieval aspects expressed in the matrix spaces relationships 1 between pairs of elements of a single dimension of the space. sider a space s and its dimensions X and Y . The vectors X notation further denotes that the elements of dimension X are represented as rows of the matrix XY whereas the elements of dimension Y are represented as columns of the matrix XY the PC X cussed in the following sections. 2.1. Content
+In our matrix framework, the content of a collection is represented by the document X  X erm matrix DT the collection space and the content of a document is represented by the location X  X erm matrix LT by the document-assessor matrix DA q or the location-assessor matrix LA 2.1.1. Collection space uments in the collection as D c  X  X  w d (occurrence) of the document in the collection:
+In this case, the L 1 -norm ( Golub &amp; van Loan, 1996 ) of a document vector, defined as k D represents the number of documents in the collection: N D
+Similarly, we define the vector of terms in the collection as T the term t i and the L 1 -norm of the term vector is defined as k T the L 1 -norm represents the number of distinct terms in the collection: N documents and columns to terms. We define each matrix element as: where 1 6 i 6 N and 1 6 j 6 M .
+
+We can consider the product of the collection s content matrix DT collection. To be more specific, the ij th element of matrix DD d taining each pair of terms and thus reflecting term similarity within the collection. 2.1.2. Document space tions L and terms T . We define the vector of locations in the document as L vector of terms in the document as T d  X  X  w t tions and columns to terms. Each matrix element is defined as: where 1 6 i 6 R and 1 6 j 6 S .
+
+Again, we compute the product of the document content matrix LT
+LL d  X  LT d LT T d matrix using post-multiplication and the TT lap in the locations containing them. 2.1.3. Query space
+We consider two content matrices associated with the query space: the document-assessor matrix DA of dimension D or L , respectively). We consider both relevance judgements made by human assessors and estimations of relevance produced by retrieval systems simply as relevance assessments. The DA the documents themselves may be viewed as types of locations. Therefore, the DA as a special case of the LA q matrix.
+
+We define the vector of documents in the query space as D or may in the simple case represent the presence (or absence) of documents in the query space:
+For the assessor dimension, we define the vector of assessors as A or may in the simple case be: correspond to documents and columns to assessors. We define each matrix element as: where 1 6 i 6 K and 1 6 j 6 L . In the general case, the weight of an element in the DA judge or retrieval system).
+
+Similarly to the above definitions, the vector of locations in the query space is defined as L w simple case as: where 1 6 i 6 V and 1 6 j 6 U .
+ ument and location similarity expressing assessor agreement ( DD
+Next we define the matrices PC X gle dimension X of a matrix space x . We define the elements of these matrices as pc then the term dimensions in these two spaces (Section 2.3). 2.2. Structure elling of these relationships. The matrix PC D Web document collection (collection structure), while the PC sent the relationships among document parts (document structure).
+By multiplying the PC D PC tively. An element of PP D which two documents cite the same children. An element of CC cipal eigenvectors of the PP D of the eigenvectors of the matrices defined in the framework).
+
+In a dual way, we can consider PP L 2.3. Semantics in PC T term child similarities. Similarly, PC T PP
+From the PP T view on terms could be combined with the term similarity matrix TT aspect to an otherwise purely occurrence-based similarity measure. the content matrices of the collection and the document space. 3. Frequency-based operations on matrices 3.1) and how the location frequency of terms (commonly referred to as term frequency in IR) can be described using a document s content matrix (Section 3.2). 3.1. Collection space df ( t , c ) of a term in a collection is: where N D ( c ) is the number of documents in the collection and n collection in which term t occurs.
+
+For example, let us consider the collection containing documents d
+The document and term vectors are: and the number of documents and terms in the collection are N document X  X erm matrix of our collection be: For our example, we then obtain:
+By normalising each element of nd T the terms in the collection, where each element is the document frequency ( df ) of the term: For our example, this yields: Next, we apply the negative logarithm on each matrix element of df the idf T ment frequency of the term: For our example, we obtain: sidered in IR. The latter one is dealt with in Section 3.2.
+ document in a collection tf ( d , c ): where N T ( c ) is the number of terms in the collection and n lection, where each element is the number of terms occurring in the document: nt tf frequency of the document: itf D document, as we point out in the next section. 3.2. Document space defined as: content is: term frequency is as follows: where n L ( t max , d ) is the maximal occurrence, i.e. " t : n locations ( nl ) containing the term: For our example, we obtain: quency ( lf ) of the term: lf T
+Whereas the document frequency of a term was defined by normalising with the number of documents frequency in the document.
+ For our example, we obtain: and (2) non-linear lifting using a Poisson approximation.
+
+In the first approach, the lifting to the interval a 6 tf ( t , d ) 6 1 is described by: interval [0,1], which is a welcome property in a probabilistic framework. This is described by: document length normalisation:
+The parameter K is small for small documents and large for large documents. Small k normalisation.
+ vector of the locations in the document nt L location: nt L is the term frequency of the location: discuss evaluation measures in the query space. 4. Evaluation documents to the length of the individual documents, respectively). strate how to use the collection and document structure matrices ( PC such as aggregated relevance and novelty-based evaluation. 4.1. Precision and recall quality evaluation measures in IR, and are defined as follows:
+The description of precision/recall in our matrix framework is based on the document-assessor DA location-assessor LA q matrices of a query as introduced in Section 2.1.3. unit of retrieval. In our definition, we make use of the notation DA ing the i th assessor column of the DA q matrix. Each such column of DA assessor a i (i.e. retrieval system or human judge) over the documents of the query space. The L column vector then gives the number of documents that a given assessor judged relevant. of the two column-vectors. Based on these, precision and recall can be obtained as: matrix from the document X  X erm matrix):
+Given AA q , the precision/recall values for an assessor a ment of a j can be calculated as:
+In the special case of binary assessment values, k DA q (:, a from the AA q matrix as AA q ( a i , a i ) and AA q ( a j between assessments and/or retrieval strategies.
+ culate precision/recall at a given rank by taking the sub-matrix of the DA documents retrieved up to that rank.
+ ment similarity at a location level (i.e. location degree).
+ ing the structure of documents, which we investigate next. 4.2. Evaluation measures for linked documents and hence redundant, documents. 4.2.1. Near-misses rewarded for near-misses.
+
+Given a link structure PC D For the optimistic propagation it is sufficient if only one of the linked documents is relevant. where relevance is propagated to children or parent documents, respectively: we can obtain each element of the propagated child assessment matrix as:
+For the propagated parent assessment matrix, we assign pa
+Similarly, for the propagated parent assessment matrix, we assign pa if the number of linked relevant documents equals the number of parent (or child) documents.
+Alternative propagation methods may consider other threshold values, and various parameters. One or maximum of the linked documents relevance scores.
+
+The derived propagated assessments matrices, combined with the original DA is outside the scope of this paper.
+
+The exact same procedures can be applied to linked document parts and hence propagate relevance to bines all the PC L the PC L allowing to reward near-misses. 4.2.2. Novelty nents in order to score systems based on the novelty value
+A simple (heuristic) measure of novelty may be given as the inverse of dependency: where dependency may be calculated as:
+The PC D the number of documents. For locations, we sum over the PC among locations assessed relevant by a i .
+ high dependency and low novelty among assessments.
+ inition of new evaluation measures based on the above extensions of DA nents. The matrix framework provides a formalism in which those new evaluation measures can be established. 5. Retrieval models the matrix framework is to highlight the parallels and dualities of the models. 5.1. Vector-space model vector-space model.
+Consider the product DT c DT T c of the document X  X erm matrix DT
+The notation DT c ( d i ,:) selects document and query vectors. Considering row d The equation yields a vector of RSV s for query q . Assuming a binary matrix DT number of terms shared by the document and query.
+
+The coordination level match based on a binary matrix DT c tf-idf approach is described in the matrix framework by using a DT computation of the location frequency) of term t j in document d contains the idf-values of the terms in collection c (see Section 3.1 for the computation of idf location frequencies and the diagonal matrix diag  X  idf T The multiplication of the location frequency matrix and the diagonal matrix of the vector idf a D  X  T matrix in which dt ij is the tf-idf value of a document X  X erm pair. The L applied to each row yields a classical document length normalisation. Ziarko, &amp; Wong, 1985 ) on the generalised VSM, in which a matrix G is introduced as follows: such as g 12 to 1, we obtain, for example, a revised document vector:
+Because g 12 = 1, the weight dt 1 7 of term ~ t 1 is added to the weight dt weight of term ~ t 2 . For a query, the weight qt 2 is added to qt
+In the scalar product of document and query, the factor g
+With respect to the matrices introduced in this paper, the TT of term relationships can be viewed as settings for the generalisation matrix G . highlighted in the next section. 5.2. Logical approach P(d ! q) probability is expressed as the sum over the product of query and term probabilities. Bayes for P ( t j d ), we rewrite the equation and obtain:
+Now, consider vectors ~ q  X  X  P  X  q j t 1  X  ; ... ; P  X  q j t Then, we can write P ( q j d ) in a form similar to the generalised vector-space model: tor have the same semantics, i.e. both contain probabilities depending on a term. networks. 5.3. Probabilistic inference network (PIN) model vector of incoming probabilities, where each combination of incoming events has to be considered. The link matrix L contains conditional probabilities of the form query term weights, and let w s be the sum of query term weights ( w as follows: This definition leads to a closed form for P ( q j d ): vector of the matrix. Consider the matrix PIN representing the network: With ~ x  X  X  P  X  d  X  ; P  X  t 1 j d  X  ; P  X  t 2 j d  X  ; P  X  q j d  X  X  equation system, we rewrite it first:
+From the rewritten form, x 1 = b 1 follows directly, then x
+By setting the starting vector ~ b :  X  X  0 ; P  X  t 1 j d  X  = w approach as the solution for x 4 : further research.
+
+Finally, we express the PIN approach in a form based on vectors ~ q  X  X  P  X  q j t 1  X  ; ... ; P  X  q j t n  X  X  T . We obtain: Here, k ~ q k 1  X  w s is the sum of query term weights.
+ general matrix framework. 5.4. Probability of relevance models we obtain: document, we can write the numerator as follows: status value (RSV), probabilities P ( d , q ), P ( d )and P ( q ) drop out. We obtain: approaches ( Lafferty &amp; Zhai, 2002 ). 5.4.1. Binary independent retrieval (BIR) model respect to one query. Therefore, we do not consider this factor further. features x i .
+ are distributed in non-relevant documents (i.e. P  X  x i j q ; r  X  X  P  X  x
+Assuming further that features are binary, i.e. a vector component x otherwise the component is 0, we can split the product into x
+Multiplying the equation with 1.0 as expressed in the following equation yields leads to the following parameters of the BIR model:
+Using the abbreviation in which the logarithm is a monotonous transformation, we obtain the RSV for the BIR model: (content) matrix DT c , in which term t 1 occurs in documents d occurs in d 4 .
+
+For the document-assessor matrix DA q of query q , let the five documents d let d 4 be not retrieved. Let d 1 and d 6 be relevant, and let d is represented in the document-assessor matrix DA q :
+We create a N D on the main diagonal ( N D
+The equation documents. Similar, we obtain the retrieved but not relevant documents:
+Here, 1 is a matrix with 1 in each component. Now we can compose the matrix DA normalised vectors of retrieved and relevant, and retrieved but not relevant. The equation documents.
+ term-assessor matrix TA q has the following probabilistic semantics: Then, the equation yields the probabilities P  X  t j r  X  and P  X  t j r  X  .
+
+Next, we rewrite the term weight c i as a sum of logarithms on the involved probabilities:
+Now, we can use the TA q and NTA q matrices for computing c terms, so to obtain the sum of c t weights. The product ~ section of document and query terms. For the RSV of the BIR model, we obtain:
+We have expressed the BIR model in our general matrix framework. Next, we address the language modelling approach. 5.4.2. Language modelling (LM) In LM, the task is to estimate the following parameters: we consider a query as a conjunction of term events, and those term events are independent: query shall not depend on d given non-relevant documents: factor P  X  r j d  X  = P  X  r j d  X  would not affect the ranking.
+ of important terms, or other parameters.
+
+After these considerations, we obtain the following RSV for language modelling, in which we use as before for the BIR model a formulation based on the logarithm of probabilities:
+Before we address the main problem in LM, namely the estimation of P ( t
+LM in our matrix framework. We use a vector of term probabilities P ( t for query terms and q i = 0 for non-query terms, and the constant
+Considering a matrix DT c with components dt ij = P ( t j for the PIN, a strong parallel with the basic system analysis equation ~ y  X  A ~ x  X  ~ x  X  ~ q . Exploring this parallel is a topic of future research. ability as a mixture (linear combination) of a term probability P probability P 0 ( t j d , r ) that depends on ( d , r ).
+
+A common estimate for P 0 ( t ) is the frequency of the term in the collection, whereas P based on the within-document X  X erm frequency.
+ For defining the estimates, we build on the notation of the previous sections. Let n of locations in collection c at which term t occurs, and let N The definition of n L ( t , d ) and N L ( d ) is analogous. We define the estimates: work based on the matrix location X  X erm matrix LT c of the collection. LT matrices of the documents that are part of the collection.
+ matrix LT d of the document (as shown in Section 3).
+ 5.5. Summary Consider the definitions of the RSV of the models in one overview: Vector-space model: RSV VSM  X  d ; q  X  :  X  ~ d T ~ q Generalised VSM: RSV GVSM  X  d ; q  X  :  X  ~ d T G ~ q Logical approach: RSV logic  X  d ; q  X  :  X  1 BIR model: RSV BIR  X  d ; q  X  :  X  ~ d T diag  X  ~ q  X  C T
+Language modelling: RSV LM  X  d ; q  X  :  X  X  log P  X  t 1 j d ; r  X  ; ... ; log P  X  t diagonal matrix of terms. We show above the GVSM-like definition for the logical approach, and the The BIR model shows a parallel to the generalised vector-space model. Here, the term vector C C
+T (the result of the relevance feedback) with the document vector. The language modelling approach shows the closest relationship to the basic equation of system analysis, namely ~ y  X  A ~ x  X  analysis approach is one of the main foundations for parameter learning. 6. Eigenvectors related to the collection structure (Section 6.2). 6.1. Eigenvectors of the matrices related to the content tors ~ x of TT c are obtained from: could be either a document or a query (see discussion on the vector-space models in Section 5).
+For Eq. (14) to hold, the vectors ~ x of TT c are the documents that reflect the information in TT are terms that reflect document co-containment.
+
+In the document space, the interpretation of the eigenvectors of the LL documents that reflect co-selection.
+ 6.2. Eigenvectors of the matrices related to the structure and HITS ( Kleinberg, 1999 ).
+ sponds to whole of the Web and the derived PC T D ( that the child-parent structure of the collection is reflected. reflected.
+ response to a query, together with their parent and child documents. Each element pp sents the number of child documents pointed to by both parent documents d parent similarity among the documents in this collection. An eigenvector of PP ments in the collection that reflects this parent similarity. Similarly, each element cc the number of parent documents pointing to both child documents c ilarity among the documents in the collection. An eigenvector of CC collection that reflects this child similarity. The principal eigenvectors of the PP respond to the hub and authority values of the documents in this collection. 7. Summary space with document and term dimensions, a document space with location and term dimensions, and representing the relationships between documents or locations or terms. allels and dualities of the models.
+ design and construction of IR systems.
+ and flexible, and we can build effective and increasingly personalised retrieval systems. Acknowledgments
+We would like to thank the anonymous reviewers for their useful comments and Sandor Dominich for goza for his explanations on parameter estimation in the language modelling approach. References

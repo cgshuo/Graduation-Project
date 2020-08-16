@@ -1,0 +1,65 @@
+ 1. Introduction
+The primary motive for telecommunications service provision nications business. However the aim of the telecommunications managers is not only the maximization of profit but also the reduction of unnecessary cost.
+
+Making use of the historical data, telecommunications man-agers may predict the future demand by creating a reasonably infrastructure investment and the call volume strategy are the topics for which managerial decisions depend on the forecast. order to map future trends and usage patterns.
+
+In the case of large organizations, who are actually the customers of the telecommunications carriers, the managerial employees, primarily for use in normal business activities and managers must find and capitalize on opportunities for control-ling telecommunications costs.
+
+A case of such an organization is a University Campus with more than 6000 employees and 70,000 students, and an extended tele-communications infrastructur e with more than 5500 telephone call volume are vital to the planning of future installations. The University holds an extended database, made by the Call includes information such as the call origin, the area code and of the national, the international and the mobile calls per employee per month. A forecast of future call volume will help the campus. On the other hand, calls to mobile destinations are penetration rate of mobile services. In fact, the International
+Telecommunication Union (ITU) reports a penetration rate of 119.12% for Greece in 2009 (ITU-TICTeye, 2010 ).
+ statistical methods on the University X  X  call traffic have been forecasting trends in telecommunications data by the ITU Recom-mendation E.507 ( Madden and Joachim, 2007 ).
+ volume of a telecommunications network. Therefore, a Locally
+Recurrent NeuroFuzzy Forecasting System (LR-NFFS) is proposed in the present work, where its performance is compared with familiar forecasting approaches; namely a series of seasonally adjusted linear extrapolation methods, Exponential Smoothing
+Methods and the SARIMA method. All comparisons are performed on real world data.
+ compared with our proposed model is given. In Section 3, the Locally Recurrent NeuroFuzzy Forecasting System is presented. The training algorithm used to train the model is described in of the comparative analysis of the methods are presented, while
+Section 6 hosts the concluding remarks. 2. Classical forecasting methods to compare and evaluate our proposed LR-NFFS method are briefly presented.
+ method which takes into account the seasonal factors was applied. The method is somewhat different from the Na X   X  ve
+Forecast 2 Method (NF2), which is also described in the paper referenced above.
+ the seasonality has been removed, one can use the most recent we used the trend-cycle component to forecast the future values trend-cycle component was adjusted with the use of the identi-seasonality is assumed we have the Linear Extrapolation with additive seasonality we have the LESA-ADD.
+ exponential smoothing methods. In an exponential smoothing a particular observation of the time series is expressed as a weighted sum of the previous observations. The weights for the previous data values are terms of a geometric series and get smaller as the observations move further into the past. Simple Exponential Smoothing (SES) applies to processes without trend.
+In order to accommodate linear trend, Holt (1957) modified the simple exponential smoothing model).
+ seasonal data. Multiplicative seasonal models (Winters MS) as well as additive seasonal models (Winters AS) exist. exponential smoothing, it cannot cope with more complex types component for the trend in the updating equation which is expressed by means of a dampening factor. As before an expo-nential smoothing model with damped trend and additive sea-(DAMP MS) exists. One may also try to fit a damped trend model on time series with no seasonality (DAMP NoS).
+
+For a comprehensive review on exponential smoothing meth-
+Another familiar method to analyze stationary univariate time series data was developed by Box and Jenkins (1976 ). The method, which is called Auto Regressive Integrated Moving Average method (ARIMA), presumes a weak stationarity, equally The seasonal ARIMA (SARIMA) also exists.
+
+After fitting a time series model, one can evaluate it with forecast fit measures. The data set is usually divided into a set is used to estimate any parameters and to initialize the method. Forecasts are made for the validation set which was not used in the model fitting. The observer may subtract the forecast value from the corresponding measured value of the genuine measure of the forecasting ability of the model.
+To evaluate the amount of forecast error, one may employ the mean absolute error (MAE), the mean squared error (MSE), the mean squared error (RMSE). The aforementioned statistics mea-percentage error (MAPE) ( Makridakis et al., 1998 ).
+Another statistic, which allows a relative comparison of formal methods with na X   X ve approaches and also squares the errors involved so that large errors are given much more weight than small errors, is Theil X  X  U-statistic: U  X  APE t  X  1  X  X t  X  1 X t = X t is the actual relative error. 3. Locally Recurrent Neurofuzzy Forecasting System (LR-NFFS)
+The suggested Locally Recurrent Neurofuzzy Forecasting Sys-comprises generalized Takagi X  X ugeno X  X ang ( Takagi and Sugeno, 1986 ) rules in the form LR-NFFS has the following structural characteristics:
+The premise and defuzzification parts are static, described by m j  X  k  X  X  f m  X  u  X  k  X  ; m j  X  k  X  , r j  X  k  X  X  X  3  X  of the j -th rule and m j  X  k  X  X  X  m j 1  X  k  X  , ... , m jm membership functions. The degree of fulfillment is the alge-braic product of the corresponding membership functions: m j  X  k  X  X 
+The system X  X  overall output is derived via the weighted average defuzzification method, as given below: y  X  k  X  X 
+The consequent parts of the fuzzy rules are dynamic. Their structural elements are neurons with local output feedback at the hidden and output layers. Thus, dynamics is introduced to the overall system through these feedback connections. No feedback connections of the rule X  X  total output or connections among neurons of the same layer exist.
+
+The operation of the consequent part of the l -th fuzzy rule is described by the following set of equations:
+O  X  k  X  X  f 1 i  X  1 , ... , H , j  X  1 , ... , r  X  7a  X  g  X  k  X  X  f 2 where the following notations are used: f , f 2 are the neuron activation functions of the hidden and the output layers, respectively. In the following, the activation
+O rule, at time k . g  X  k  X  is the output of the j -th fuzzy rule.
+
+D o and D g are the time lag orders of the local output feedback, respectively. w w w neuron, respectively.
+
+The general representation of the LR-NFFS is shown in Fig. 1 and the formation of the consequent part of the fuzzy rules is given in Fig. 2 .
+ u ( k ) w w following: 4. The training algorithm 4.1. The algorithm propagation algorithm (D-RPROP) ( Mastorocostas, 2004 ), which constitutes a modification of the standard RPROP method consequent parts are recurrent neural networks. Only minor modifications are made, such that the method takes into con-the parameters of the membership functions.
+
+Mean Squared Error is selected as the error measure, where y is the desired output:
+E  X  1 k preceding, t 1, epochs, respectively, D-RPROP is described in pseudo-code as follows: (a) For all weights w i initialize the step sizes D  X  1  X  (b) For all weights w i compute the error gradient: @ E  X  t  X  (c) For all weights w i , update step sizes: n using the trial and error approach. 4.2. Extraction of the error gradients
+Since the premise and defuzzification parts are static, the gradients of the error function with respect to the weights of the premise part are derived using the standard partial deriva-tives. For batch learning, m ji  X  1  X  X  ...  X  m ji  X  k f  X  and  X  are given by the following formulae: @ E @ m @ E @ s
+The gradients of E with respect to the weights of the conse-on the use of Lagrange multipliers, as shown below: @ @ w @ @ w @ @ w @ @ w @ @ w @ @ w with the Lagrange multipliers derived as follows: l j  X  k  X  X  l ji  X  k  X  X  O backward difference equations that can be solved for k  X  k f 1 , ... , 1 using the boundary conditions: l j  X  k f  X  X  l 5. Simulation results The data in hand cover a period of 10 years, January 1998 X  December 2007, and are the monthly outgoing calls to national and mobile destinations originating from the PBX of a large organization.
+ February has 28 while January has 31 days, all data have been normalized according to: W t  X  X t
+Each data set is divided into two subsets. The training set, which is used to estimate the parameters associated with each the forecasts. The training set is chosen to be 9 years (108 months) long and the validation set 1 year (12 months) long. from the minimum that occurs in August. Apart from that, the number of calls to mobile destinations ( Fig. 3 b) shows an increasing trend which comports with reports on mobile services penetration (ITU-TICTeye, 2010 ).
+
+The parameters, which are estimated during the fitting proce-genuine forecasts, and can be used to evaluate the forecasting by means of the accuracy measures mentioned in Section 2.
+The fuzzy models for the two categories of outgoing calls are decided to be single-input X  X ingle-output, with the input being temporal dependencies of this time-series through its recurrent parameters are tested. Selection of the model X  X arameter combi-Table 1 .
+
+The training process is carried out in parallel mode and lasts for 1500 epochs. The learning parameters of D-RPROP are hosted membership functions are uniformly distributed. The initial and final membership functions for the case of national calls are covers the input space, with the minimum degree of overlapping between two membership functions being around 0.2, while they keep on preserving the local modeling approach of the Takagi X  X ugeno X  X ang fuzzy systems.
+
+For each method, three holdout accuracy measures were computed. These are the RMSE, the MAPE, and the Theil X  X  twelve models are presented in Table 2 ; bold numbers indicate best fit.
+ of the observed values for the validation set with the best fit model (LR-NFFS) and the second best fit model for each case are were estimated during the fitting process of the second best model and are denoted as Upper Confidence Level (UCL) and Lower Confidence Level (LCL).
+ appears in February, but misses the significance of the minimum even tighter confidence.
+ damped trend model with multiplicative seasonality (Damped MS). One may observe how the LR-NFFS forecast follows the actual data pattern against the second best model, which misses the behavior of the first two months (January and February, 2007). Moreover, the actual data are not even within the 95% prediction interval of the Damped MS forecast.
+
+Interestingly, the second best-fit model (Damped MS) was the best fit model indicated for the same type of calls in a past mobile calls, which refrains users from making many calls to mobile destinations and retards the upward tendency X  X . With our current point of view an alternative reasoning for this damped trend may be the approach to a saturation point in mobile penetration. 6. Conclusion
+A novel locally recurrent neurofuzzy forecasting system has been proposed. The LR-NFFS is based on the TSK fuzzy model, 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 recurrent neural networks with local output internal feedback, fuzzy model.
+
+The ability of the proposed system to forecast telecommunica-data. A comparative analysis with a series of well-established forecasting models has been conducted, highlighting the effi-ciency of the proposed forecaster. Moreover, a recent review of that the damped trend can  X  X  X easonably claim to be a benchmark forecasting method for all others to beat X  X  which was the case with our LR-NFFS approach for the mobile data.
+ Acknowledgment
+The authors wish to acknowledge financial support provided by the Research Committee of the Serres Institute of Education and Technology under grant  X  SAT/IC/01122010-60/15. References

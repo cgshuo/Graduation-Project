@@ -1,0 +1,35 @@
+
+Computer Engineering Department, University of Isfahan, Isfahan, Iran Informatik Department, Albert-Ludwigs, Freiburg, Germany 1. Introduction larity metric is strongly depends on the context in which items are being found. This work views RDF graph as a collection of elements (resources) connected by RDF predicates. similarities between resources allow us to:  X  Cluster them into groups with similar attitude.  X  Recommend resources that are most relevant to a given resource. networks, sensor networks, highway networks). 1.1. Some related works on the structural properties of the items.
+ the definition of similarity in the considered context.
+ bibliographic-coupling and Co-Citation for similarity computation. Newman [14] suggested  X  X etweenness centrality X  which is defined as how often a node is traversed during a random walk between two other nodes.
+ and should be embedded in the domain being considered as aiding value. 1.2. Main contributions this paper has five main contributions, most of which are practical 3. We show that our new method can be exploited to establish WordNet links for those DBPedia similarity is 0.2 in structure analysis. 1.3. Outline of the paper tion 6. Finally, Section 7 is devoted to conclusion extracted from the text. 2. Problem statement of whole RDF nodes as | V | = m .
+ highly homogeneous predicate values.
+ P 3. Distance measures the sample graph into clusters using its own distance measure. 3.1. Case study request or SPARQL query on DBPedia server.
+ As we can see, Kris Commons is pointing to Nigel Clough, and Colin Calderwood. Similarly, Kris has not been shown in the graph.
+ 3.2. Structure distance measures scores can be downloaded on http://dbis.informatik.uni-freiburg.de/dbpedia_person/sample.
+Another optimization of SimRank, that is BipartiteRank, would be made by considering output link beneficial output links.
+ these resources since there is no link between two sub graphs.
+In spite of high popularity of the above algorithms, there are some deep weaknesses within these 3.3. Data distance measures resources on the web.
+ A ( v 2 ) d Algorithm 1. JaccardClustering ( G,T A ) Input: The attributed graph G,Jaccard Similarity Threshold T A OutPut: Array of clusters 1: for all v i  X  G do 2: for all v j  X  G do 3: if ( v i == v j ) then 5: else 7: end if 8: end for 9: end for 10: stable  X  false 11: while ( stable == false ) do 12: v i ,v j  X  GetHighSimilarNode () 13: if ( S A ( v i ,v j ) &gt; T A ) then 14: NewClsuter  X  v i ,v j 15: for all v k  X  G do 16: sumSimilarity  X  0 17: for all v i  X  NewCluster do 18: sumSimilarity  X  sumSimilarity + d A ( v k ,v i ) 19: end for 21: NewCluster  X  NewCluster + v k 22: G  X  G  X  v k 23: end if 24: end for 25: end if 26: end while similarity value. 3.4. Structure/data distance measures v have different scale.
+ implement Zhou idea. 4. Clustering algorithm clustering process.
+
+Figure 4 represents the suggested model to cluster RDF graph in one view. The input Graph G is that the derived sub graphs are completely separated and there is no overlap between them. how to find and bookmark those clusters belonging to the same class. d c and c j . computation section.
+ Algorithm 2. CRank ( G,T A ,T S ,k ) Input: The attributed graph G, Attribute Similarity Threshold T A , Structure Similarity Threshold T S , Number of Iteration k OutPut: CRank score 2: G C = JaccardClustering ( G,T A ) 3: for all ( v i ,v j )  X  G do 4: if ( cluster ( v i ) 6 = cluster ( v j )) then 5: E C  X  E C + ( cluster ( v i ) ,cluster ( v j )) 6: end if 7: end for 8: for all c i  X  G C do 9: for all c j  X  G C do 10: if ( c i == c j ) then 12: else 14: end if 15: end for 16: end for 17: while k &gt; 0 do 18: k  X  k  X  1 19: for all c i  X  G C do 20: for all c j  X  G C do 21: in  X  0 22: for all a  X  I ( c i ) do 23: for all b  X  I ( c j ) do 24: in  X  in + d s ( a,b ) 25: end for 26: end for 28: end for 29: end for 30: end while nodes and links between them.
+ player resources into a single cluster. 5. Expreiments comparison results will be presented in Section 5.3.
+ 5.1. Data set
+DBPedia knowledge base currently contains more than 1.6 million resources. Around 363,739 re-freiburg.de/dbpedia_person/WholeData.
+
+Working on a large graph with more than 120 thousand of nodes is time-consuming. So, we com-is 1570. Other dimensions of our selected data are on Table 2 as well.
+Figure 6 shows occurrence frequency of each of resources in our sample data. In other words, our player. The occurrence frequency of the other resources has been shown on the Fig. 6 as well. 5.2. Experimental measures deployed measures  X  Recall The extent to which class members go together in a cluster. Average value of individual 5.3. Clustering efficiency experiment
+We evaluated clustering algorithms with all introduced distance measures on our sample data. We unclassified resource, F-Measure, entropy graphically in Fig. 7. sources, but this was not the focus of this work.
+ 0.8631.
+ links. considered.
+ clusters of the same class (e.g., soccer player clusters) through predicate/value matching. merged when we pick up 0.1 as similarity threshold value.
+ tively.
+ Jaccard matching. The entropy comparison of the methods is presented in Fig. 7(c) as well. 6. Discussion and further works
+The suggested method could be used on any RDF-like graphs since the method is so general and is distance to the current solutions may improve the results.
+
+The same model could be exploited to estimate the value of WordNet link of those resources that as well.
+ to v i . 7. Conclusion ClusterRank and clusters are merged together to produce better results. standard data are distributed to 31 class labels.
+We showed through experiment performed on a sample data that our suggested method perform better Acknowledgment The authors thank Fang Wei from  X  X atenbanken und Informationssysteme X  as well as Naveen Shankar sions and suggestions.
+ References

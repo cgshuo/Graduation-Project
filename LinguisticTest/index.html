@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+.pageJumpDiv{
+display: inline-block;
+font-size: 14px;
+color: #666;
+position: relative;
+top:-1px;
+}
+.pageJumpDiv input{
+width:45px;
+height: 26px;
+padding-left: 5px;
+
+border:1px solid #ccc;
+}
+.pageJumpDiv button{
+color:#666;
+height: 28px;
+padding: 2.5px 12px;
+}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="temp2-container" class="dataTables_wrapper no-footer">
+    <script id="temp2" type="text/template">
+        <div class="dataTables_info">共<%=data.sum_count%>条</div>
+        <div class="dataTables_paginate paging_simple_numbers">
+            <a class="paginate_button previous disabled" id="before_page" data-nowpage=<%=data.page%> >上一页</a>
+            <%if(data.page_count<=5){%>
+            <% for(var i=0;i<(data.page_count);i++){ %>
+            <span>
+                    <%if(i==(data.page)-1){%>
+                    <a class="paginate_button current jumpPage"><%=Number(i)+1%></a>
+                    <%}else{%>
+					<a class="paginate_button jumpPage"><%=Number(i)+1%></a>
+                    <%}%>
+				</span>
+            <% } %>
+            <%}else if(data.page<=4){%>
+            <% for(var i=0;i<4;i++){ %>
+            <span>
+                    <%if(i==(data.page)-1){%>
+                    <a class="paginate_button current jumpPage"><%=Number(i)+1%></a>
+                    <%}else{%>
+					<a class="paginate_button jumpPage"><%=Number(i)+1%></a>
+                    <%}%>
+				</span>
+            <% } %>
+            ...
+            <a class="paginate_button jumpPage"><%=data.page_count%></a>
+            <%}else if(data.page==(data.page_count-2)){%>
+            <span>
+                    <a class="paginate_button jumpPage">1</a>
+                    ...
+                    <a class="paginate_button jumpPage"><%=data.page-1%></a>
+                    <a class="paginate_button current jumpPage"><%=data.page%></a>
+                    <a class="paginate_button jumpPage"><%=Number(data.page)+1%></a>
+					<a class="paginate_button jumpPage"><%=data.page_count%></a>
+				</span>
+            <%}else if(data.page==(data.page_count-1)){%>
+            <span>
+                    <a class="paginate_button jumpPage">1</a>
+                    <a class="paginate_button jumpPage">2</a>
+                    ...
+                    <a class="paginate_button jumpPage"><%=data.page-1%></a>
+                    <a class="paginate_button current jumpPage"><%=data.page%></a>
+					<a class="paginate_button jumpPage"><%=data.page_count%></a>
+				</span>
+            <%}else if(data.page==(data.page_count)){%>
+            <span>
+                    <a class="paginate_button jumpPage">1</a>
+                    <a class="paginate_button jumpPage">2</a>
+                    ...
+                    <a class="paginate_button jumpPage"><%=data.page-2%></a>
+                    <a class="paginate_button jumpPage"><%=data.page-1%></a>
+                    <a class="paginate_button current jumpPage"><%=data.page%></a>
+				</span>
+            <%}else{%>
+            <span>
+                    <a class="paginate_button jumpPage">1</a>
+                    ...
+                    <a class="paginate_button jumpPage"><%=data.page-1%></a>
+                    <a class="paginate_button current jumpPage"><%=data.page%></a>
+                    <a class="paginate_button jumpPage"><%=Number(data.page)+1%></a>
+                    ...
+					<a class="paginate_button jumpPage"><%=data.page_count%></a>
+				</span>
+            <%}%>
+            <a class="paginate_button next disabled" id="after_page" data-nowpage=<%=data.page%> data-maxpage=<%=data.page_count%> >下一页</a>
+
+            <div class="pageJumpDiv">共<%=data.page_count%>页，跳转至第
+                <input type="number" id="jump-page-input" min="1" max=<%=data.page_count%> value=<%=Number(data.page)+1%> >页
+                <button class="btn btn-default radius" id="page-jump-sure-button">确定</button> </div>
+
+        </div>
+
+    </script>
+</div>
+
+</body>
+</html>

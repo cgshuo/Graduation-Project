@@ -1,0 +1,3 @@
+ their con vergence analysis.
+ metho ds by Konda and Tsitsiklis by { incorp orating natural gradien ts.
+ Our results extend prior empirical studies of natural actor-critic metho ds by Peters et al. by { pro viding the rst con vergence pro ofs, { presen ting the rst fully incremen tal algorithms.

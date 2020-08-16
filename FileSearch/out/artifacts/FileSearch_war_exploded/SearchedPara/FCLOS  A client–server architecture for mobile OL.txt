@@ -1,0 +1,95 @@
+ 1. Introduction 1.1. Motivation the need for right-time (active) data warehousing.
+ but can be used for dissemination of any kind of multidimensional, aggregated data as well. 1.2. Contribution architecture.
+ cubes). As a result, broadcasts last longer, but fewer broadcasts are necessary. for optimal query mapping, but also reveals the superiority of FCLOS against state of the art mOLAP systems. quent query performance.
+
+An extensive analytical and experimental evaluation of FCLOS against state of the art mOLAP systems. 1.3. Map imentally. Finally, Section 10 concludes our results and presents future work topics. 2. Preliminaries more relevant to mOLAP. 2.1. Data model dimension .
+ possible group-by operators applied on a fact table. 2.1.1. Aggregation lattices Table 1 contains the declared hierarchical levels of a 3-dimensional schema. keys of the fact table [9]. It is a directed, acyclic graph, which depicts the relationships between all 2 the lattice by one node.
+ graph, which depicts the relationships between all Q D n  X  1 grouping attributes gr i of each dimension.
+ tice (multidimensional lattice), as defined in [9].
+ aggregation lattices. Removing the white nodes of the hDCL produces the respective DCL . 2.1.2. Derivability  X  subsumption
+Consider two queries: q 1 and q 2 . q 1 is dependent on q swered using the results of other. In MDDBs, there are two types of query dependencies:
+Dimension dependency is caused by the interaction of the different dimensions with one another (e.g., P
+P
+Attribute dependency is caused within a dimension by attribute hierarchies (e.g., P dimension is allowed if the fact (measure) is of type flow .
+ the key ideas in mOLAP. 2.1.3. Query mapping that query mapping is a fundamental component in mOLAP systems. We provide an example of how a query would be bute. Without loss of generality, we use multidimensional expressions (MDX) as the query language:
+SELECT FROM [SalesCube] members of the hierarchical level Time.Year must be retrieved  X  T answered by the respective lattice sub-cube only, and thus additional dimension table data are necessary. 2.2. Data broadcast unpopular to a pull channel.
+ 2.3. Mobile OLAP architectures cepts of such architectures, without referring to any specific implementation. are not necessary. mOLAP architectures can be evaluated according to the following criteria: ing exclusively on its local data.
+ might be the effect of growing client population or of increasing request rate. not static. This criterion evaluates the degree in which an architecture can adapt itself to workload changes. to the employed scheduling algorithms. The client X  X  complexity is related to the necessary local processing. pressed transmitted data (as described in Section 8). 3. Problem statement
+Beyond the above observations, different broadcast modes exhibit additional shortcomings. On-demand systems are number increases. able for mOLAP for the following reasons: incoming requests is relatively low.
+ incurs increased complexity and maintenance overhead.
+ the behavior of OLAP end users. 4. Related work a brief overview of related work while focusing on specific approaches directly relevant to FCLOS . 4.1. General data broadcast systems ness and the presence of deadlines.
+ agement [19] and dependent broadcast data [20].
+ the extensive usage of broadcast resembles a push-based architecture. 4.2. Database broadcast systems in mobile transactional databases.
+ items may together form the query answer. 4.3. Mobile data warehousing vanced OLAP visualization techniques, targeting devices with small screens is the focus in [25]. 4.4. Mobile OLAP FCLOS .
+ quest has already waited in the queue, and S is the size of the sub-cube. sub-cube j with the maximum metric value is selected for transmission: the dimensionality of sub-cubes j and i , respectively sibility of creating bigger clusters in the second diminishes.
+ SBS [3] is an approach very similar to STOBS . SBS consists of two similar components. Instead of R W request is the ratio of the time the request has been in the system thus far to its service time. experimental evaluation of Section 9 reveals that their performance is almost identical. practically negligible. 5. The FCLOS architecture architecture. 5.1. Server architecture cific components. 5.1.1. Query mapping we analytically and experimentally substantiate the choice of DCL query mapping. of broadcast schedulers.
+
+Fig. 4 depicts 9 incoming requests f q 1 ; q 2 ; ... ; q 9 trivial example, it can be seen that the number of handled items is reduced from 9 to 4. 5.1.2. Scheduling
+FCLOS , is presented in detail in Section 6. 5.1.3. Backend systems, the time required to fetch the appropriate data, does not influence scheduling. 5.1.4. Transmitted structure issues.
+ of the multidimensional schema. 5.1.5. Updates that all clients are tuned in. 5.2. Client architecture others, offline functionality. 5.2.1. Querying the server can periodically broadcast the metadata.
+ 5.2.2. Local processing cubes n a and n b for which n a n b , it suffices to simply scan every tuple of n 6. Scheduling section.
+ formally present the algorithm.
+ 6.1. Steps 6.1.1. Step 1: Computation of the sub-cube metric element e of the queue, its SM is computed: ality of the requested sub-cube. 6.1.2. Step 2: Detection of broadcast clusters subsumpted: can schedule the next data item. 6.1.3. Step 3: Computation of broadcast weights and scheduling decision identified BCL . The algorithm computes the respective BW clients that have requested sub-cubes which belong to BCL The pseudo-code of the FCLOS scheduling algorithm is presented in Algorithm 1 . Algorithm 1 Scheduler() Input: Queue Q
+Output: Sub-cube to be transmitted j //sm is the array holding the SM values //bcl is the array holding all recognized BCL s //bw is the array holding the BW values for all BCL s // j is the sub-cube index Compute SM for every queue element (sub-cube) Find all possible clusters ( BCLs ) Compute BW k for every identified cluster BCL C
+Select for transmission the ancestor node of the cluster BCL return  X  j  X  6.2. Analysis the SM metric, which puts the dimensionality D in the nominator, thus promoting bigger sub-cubes. Section 8 provides more insight about this issue.
+ lower level of the lattice. For instance, a DCL node with dimensionality D has 2 D should be a positive prioritizing factor, exactly as in the SM metric. R or W .
+ quite expectedly, the number of members of the served BCL
+FCLOS . 7. Optimal query mapping tion 2.1.3.
+ swer any subsequent roll-up, drill-down or projection. A client having received the sub-cube P cally perform any drill-down. A drill-down would inevitably have to invoke a new query to the server. tion. This section introduces an analytical model that proves that DCL mapping is the optimal solution. 7.1. An analytical model for subsumption probabilities uling and disseminating requests. paragraphs which of the evaluation probabilities are directly applicable to STOBS and to FCLOS . ers the queue as a multiset Q and thus j Q j is the size of the queue. Table 3 provides a notation overview. (1) P  X  e a e b  X  : the probability that a selected element e (2) P  X  e a Q  X  : the probability that a selected element e (4) P  X  e a q # Q  X  : the probability that a selected element e (5) P  X  e a q  X  # Q  X  : the probability that a selected element e
+P  X  e didate for transmission and decide according to its subsumption, as in the case of FCLOS . queries. Particularly, the server measures the probability P as P to any possible query distribution.
+ two query mappings.
+ It should be clear that if we consider every node of the lattice: 7.2. Ancestor probabilities in DCL
+A quick way to find out whether a node n b can be subsumpted by n representations (bitmaps): In Fig. 2 , for example, it is  X  n bin PS AND n bin S  X  X  X  110 AND 010  X  X  010  X  n bin ted by sub-cube PS .
+ sionality D appears at the D th level. Of course l 2f 0 ; 1 ; ... ; D g . Every level of the DCL consists of nodes in the DCL is P l  X  D l  X  0 D l  X  2 D . A node n a belonging to the l th level of the graph has  X  2
+Proposition 7.1. The probability that a selected element e
+Proof 1. We isolate one bit i of the bitmap (which represents one dimension): P  X  e i
+P  X  e i a  X  1  X  P  X  e i b  X  0 _ e i b  X  1  X  X  X  1 P i  X  X  1 P i  X  X  P For the subsumption property to be valid this must be valid for every dimension:
+Proposition 7.2. The probability that a selected element e
+Proof 2. For the remaining  X j Q j 1  X  elements of Q , it suffices that dimensions d R D is represented by w . Thus Proposition 7.3. The probability that there exists one element, which is an ancestor of every element in Q is Proof 3
+Proposition 7.4. The probability that a selected element e Proof 4. j q j elements of Q must be chosen from the 2 l successors and the rest  X j Q jj q j X  from the  X  2 that at least one dimension d R D n does exist in the examined node. h
+Proposition 7.5. The probability that a selected element e Proof 5 Qis Proof 6 7.3. Ancestor probabilities in hDCL In this section, we compute the same probabilities as in Section 7.2, but for a multiset Q of hDCL elements.
+Proposition 7.7. The probability that a selected element e higher, less detailed level or that it does not exist at all: dimensions d 2 D e a and dimensions d R D e a :
+Proposition 7.8. The probability that a selected element e This can be proven using Proposition 7.7 for the remaining  X j Q j 1  X  elements of Q . Proposition 7.9. The probability that there exists one element, which is an ancestor of every element in Q is The proof is analogous to the proof of Proposition 7.3 .
+
+Proposition 7.10. The probability that a selected element e The proof is analogous to the proof of Proposition 7.4 .
+
+Proposition 7.11. The probability that a selected element e Proof 8 of Q is The proof is analogous to the proof of Proposition 7.6 .
+
+The results of the analytical (and the experimental) evaluation are shown in Section 9. 8. The m-Dwarf architectures which transmit STs is observed. 8.1. Data cube physical structures advanced data cube physical structures [31 X 37] .
+
+Less generated traffic positively influences query access time and energy consumption. 8.2. Compression vs. client processing server.
+ percentage of the total storage size. 8.3. Design values at all.
+ of pointers, it uses two pseudo-separators : not need any dimension separator).
+ the ascending order of values, level 0 (root) does not need node separators. are mapped to integer data (4 bytes).
+ these cells belong to different sub-dwarfs.
+ sets are much higher, as seen in following sections. 8.4. Construction fore call them nextNodeCells . Algorithm 2. CreateRMDwarf Input: Fact Table F
+Output: rmDwarf create all nodes and cells for the first tuple last tuple first tuple of F while more tuples exist unprocessed do { create nextNodeCells to all rightmost nodes in all dimensions the m-Dwarf is constructed as an array which can be directly stored in a file. Algorithm 3. CreatemDwarf Input: rmDwarf
+Output: mDwarf mDwarf ; nextNode ; foreach dimension D{ } 8.5. Evaluation 8.5.1. Dataset practically negligible compared to the size of the fact table. This is the case for this dataset too. 256 nodes, whereas the respective hDCL of 11,200 nodes.
+ 8.5.2. Storage savings fully coarse-grained Dwarfs ( fcgD ).
+ rather than ST ( fcg-Dwarf ).
+ Dwarfs (we omit these results for reasons of space).
+ of dimensions increases.
+ mize the incurred overhead, can even take place as the later is being received as a stream. 8.6. Size reduction by means of classical data compression achieved by data structure design and not indirectly by classical compression, although the later is an option. 9. Results state of the art mOLAP systems using a simulator written in C/C++. 9.1. Cost model The performance of mOLAP systems can be evaluated using the following metrics: fetched in its local storage  X  T all  X  . It is the time the request spends in the server X  X  waiting queue T spends receiving data from the downlink channel T C , plus the time the client locally processes the data T local storage. It is the energy consumed in doze mode waiting for appropriate data in the downlink channel E consumed energy being in active mode and receiving data from the downlink channel E local data processing E L : tified with several metrics: generated traffic per issued query Tr generated traffic Tr sum . 9.2. Simulation environment 9.2.1. Query distribution the query distribution:
+P cube, if P dim  X  0 : 5, then new queries include 3 dimensions on average.
+P a query, and then often execute a series of roll-up or drill-down queries.
+P drill : The probability that the new query is a drill-down of the previous query.
+P roll : The probability that the new query is a roll-up of the previous query.
+P ability 1 P point we will specify a range query for that dimension.
+ 9.2.2. Client model This paragraph explains the simulated client model.
+ The time a client M c locally processes the data T L is T dataset is exactly what M c had requested, then obviously T stored data, T DR represents the necessary time to retrieve the data from the hard disk to the RAM. The time for x data bytes to be aggregated in the cache is The time for x data bytes to be transferred from the disk to the RAM is Electrical energy consumption for a time span t is given by the following equation: where P is the electrical power, V the voltage supply and I the current. The energy consumption for x data bytes to be received by the wireless card: where P Rx is the electrical power during receipt. Similarly for the energy consumption E E dataset is exactly what M c had requested, then obviously E for x bytes of data to be aggregated in the cache is The energy consumption for x bytes of data to be fetched by the hard disk: would become even more valid.
+ ber of repetitions and x i the measurement for repetition i .
+ 9.3. Analytical evaluation randomly selected elements residing in the scheduler X  X  queue. The probabilities P most twice as probable.
+ realistic scenario j Q j2 X  20 ; 40 . We therefore use j Q j X  30. We compute the probabilities P  X  e as defined in Section 7.1.
+ competitor.
+ the chart series with circular markers representing P  X  e that is that FCLOS considers every element as an ancestor candidate.
+Obviously, the superiority of FCLOS is even higher, if instead of P  X  e next section confirms the rationale of this choice.
+ 9.4. Basic experimental evaluation imentally evaluated mOLAP systems. 9.4.1. Query access time
+We begin the experimental evaluation with the results of the mean query access time T Section 9.1 it is T all  X  T Q  X  T C  X  T L . Fig. 10 reveals the superiority of FCLOS tions, experience slightly increased access time.
+
+In addition to that, the performance of FCLOS mD demonstrates the effect m-Dwarf transmissions. FCLOS scheduling component relies on the dimensionality of the sub-cube, which is yet independent of the physical implementation.
+ cifically, hDCL mapping almost doubles the mean query access time T the analytical evaluation. Therefore, and for reasons of space, FCLOS 9.4.2. Energy consumption metrics are related. The more a client waits for the answer, the more energy it consumes. 9.4.3. Generated traffic riority of FCLOS ST is evident, reducing the generated traffic by over 50% compared to SBS . FCLOS proaches, regardless of the specific implementation.
+ clients, hence requiring fewer broadcasts. Indeed, in this experiment FCLOS superiority of the FCLOS approaches. 9.4.4. Stretch
+The stretch for a request i is stretch i  X  AT i ST time for exactly the required dataset (no subsumption), and T each class so strong, that it is essentially of minor importance if the stretch deteriorates. 9.5. Further experimental evaluation 9.5.1. Bandwidth T time) decrease. Nevertheless, FCLOS maintains its superiority. 9.5.2. Query distribution default workload WL A , we test two further workloads described in Section 9.2. WL mapping. FCLOS retains its advantage. 9.5.3. Query rate of BCL s decreases). However, the increase is relatively low and FCLOS proves fairly self-adaptive. mOLAP architecture, serves fewer (per broadcast) requests.
+ 9.6. Limits of applicability
+LAP systems are going to constantly extend their applicability limits in terms of data cube size. 10. Conclusions and future work immediately informing mobile clients about possibly important events become essential.
+References

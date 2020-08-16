@@ -1,0 +1,2 @@
+ Jennifer Tam, Jiri Simsa , Sean Hyde, and Luis von Ahn Carnegie Mellon University
+We were able to successfully pass audio CAPTCHAs from many sites such as Google and Digg more than

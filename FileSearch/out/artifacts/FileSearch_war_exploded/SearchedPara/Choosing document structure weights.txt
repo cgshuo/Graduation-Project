@@ -1,0 +1,116 @@
+ 1. Introduction These are very different and unequal parts of the same document.
+ of equal importance to the same term in the body text of the same document. The document structure is ignored even though authors write documents with structure. A document may even
+McQueen, 1988), structure discarded when indexing. There is a mismatch: documents have structure, yet the IR system ignores it.
+
+Document structure should be utilized in ranking. For example, knowledge in an abstract is ranking. Terms should receive a weighting based on where in the document they occur. In other words, if a term occurs in an abstract it should be weighted as such.
+ &amp; Cremers, 2000), IR query languages have been extended to allow the user the option of choosing the weights (Fuhr &amp; Gro X johann, 2001), and index structures have been proposed (Schlieder &amp; Meuss, 2002).
+
+One remaining problem is the choice of the weights. If users do not specify the weights weights be selected? In this investigation genetic algorithms (GA) are used. Each document applied to maximise mean average precision.
+
+Experiments with the TREC (Harman, 1993) Wall Street Journal (WSJ) collection using structured variants of inner product, probability, and Okapi BM25 (Robertson, Walker, Beau-mean average precision for vector space and probability, while no improvement is shown for
+BM25. 2. Approach relevance, a computer can score a document by examining its structures.
+
+First, the document structures are identified. Conveniently, for XML these structures are al-graphy&gt; it is perhaps of less interest than when occurring as the document  X  s title.
+Second, structured ranking is defined. The score of a document with respect to a term usually frequency.
+
+Third, weights are selected. Many approaches have been suggested including using humans with domain knowledge (Rapela, 2001), trial and error (Wilkinson, 1994), and simulated not distributed with judgments. training. A t -test is applied to the results to provide evidence of significance. 2.1. Related work 2.1.1. Genetic algorithms Machine learning and genetic algorithms are not new to information retrieval (Chen, 1995; using genetic algorithms to select good indexes. Yang, Korfhage, and Rasmussen (1992) suggest (1996) suggest an intermediary between the user and IR system employing GAs to choose search terms from a thesaurus and dictionary. Boughanem, Chrisment, and Tamine (2002), Horng and
+Yeh (2000), and Vrajitoru (1998), examine GAs for information retrieval and suggest new crossover and mutation operators. Vrajitoru (2000) examines the effect of population size on learning ability, concluding that a large population size is important.
+ Despite the successes, little use has been made of genetic algorithms for ad hoc queries.
+Harman (1993) observes different IR systems returning substantially different results, yet maintainingapproximatelyequalperformance.Buildingonthis,Bartell,Cottrell,andBelew(1994) suggest combining the output of different ranking functions to improve performance. Pathak,
+Gordon, and Fan (2000) use a genetic algorithm to choose weights for such a combination. 2.1.2. Identification of the problem
+Gro X johann, 2001) and ranking (Kotsakis, 2002; Schlieder &amp; Meuss, 2000, 2002) has sug-gested using document structures for document-centric ranking, but not how to choose good weights.
+
+Schlieder and Meuss (2002) suggest structure weights should be specified in the query. This approach is embraced in the query language XIRQL (Fuhr &amp; Gro X johann, 2000, 2001), and the graphical query language of Baeza-Yates, Navarro, and Vegas (1998). Although users should be presented for adjustment.
+
+Boyan et al. (1996) examine tag weighting for HTML. A hand selected set of tags and tag and view documents. A log of documents viewed against each query is generated. Weights are they fit their information need. A good set of starting weights is needed. 2.1.3. Choosing weights each structure. Wilkinson demonstrates a performance improvement.
+ Rapela (2001) successfully used a gradient-based optimisation function to learn weights for HTML tag and non-tag heuristics.
+
+Kim et al. (Kim &amp; Zhang, 2000, 2001; Kim, Kim, Eom, &amp; Zhang, 2000) suggest HTML term in a document, but the existence of a term in a tag in document. The rank for a given document is the product of two scores, one for the term and one for the tag. Using Kim  X  s twice in &lt;B&gt; and once in &lt;TITLE&gt;. 2.1.4. XML and SGML
+Constructions for HTML cannot necessarily be applied to XML and SGML. HTML has no something perhaps reasonable for HTML &lt;title&gt; tags. When structure-weighing XML, the not be known in advance. 2.1.5. Document fragmentation
+Dividing a document into parts using tag boundaries can be likened to document fragmenta-not preclude document structure weighting; the two could be used in conjunction. Structured weighted fragmentation is not examined herein. 3. Methods 3.1. Structured information retrieval a vector fh d 1 ; f 1 i ; h d 2 ; f 2 i ; ... ; h d n ; f indexing.
+
+The hierarchical structure of an XML document represents a tree. Thom et al. (1995) suggest they store the postings.
+ be the exact structure of any given document, but the complete structure of every document is represented.
+
+Fig. 1 presents three XML documents, and the corpus tree. The tree contains all paths through all documents, but does not match any single document. Each node in the corpus tree has a
+Thepostingsarenowmodifiedtoincludepointersintothecorpustree.Eachpair h d ; f i becomes 3.2. Structured ranking
+Fuller et al. (1993) suggest applying simple scalar weighting to each DTD element, but go no applied to each node in the corpus tree, not to each DTD element, or to the query vector. 3.2.1. Vector space model Vector space similarity is often calculated using the inner product where R dq is the relevance of document d with respect to query q , w and w id is the weight of term i in document d . where tf id is the term frequency of term i in document d , and likewise for tf the inverse document frequency of term i term i in the corpus.
+
+To extend the vector space model to support structured ranking, occurrences within each document structure must be included so factor C p for each document structure can now be applied tf id is then substituted for tf id in Eq. (3) giving 3.2.2. Probability model
+R dq , the weight of a document with respect to a query is given by substitution of tf 3.2.3. Okapi BM25 For Okapi BM25 ranking, tf 0 can be substituted directly into the ranking equation giving where and k of measure as T d ). tf q is the number of times term i occurs in query q . 3.2.4. Discussion importance of document structures is reflected in the C p
+To mark terms in titles, abstracts, or figure captions as  X  X  X f more interest X  X , suitable C possible to identify the most interesting document structures. 3.3. Genetic algorithms good weights can be directed using a genetic algorithm.
+
+The TREC collection is an ideal training set. The collection is distributed with a series of not a topic is relevant to a given document.
+ Genetic algorithms (Holland, 1975) direct a search towards a problem solution using the onstrated in many domains (Goldberg, 1989) including information retrieval (Gordon, 1988; retrieval.
+ is a chromosomal encoding of a potential problem solution. A chromosome is an array of fixed gene. Fig. 2 graphically depicts this representation.
+
+An initial population is created with completely randomised genes. The fitness of each indi-crossover. The process is then applied iteratively.
+ solutions as individuals, to calculate fitness, and to reproduce, mutate, and crossover. Document structure weights are numeric. Each node in the corpus tree has a unique identifier. locus p being the weight C p .
+ single query is the sum of precisions for each found and relevant document, divided by the number of relevant documents. Mean average precision is the mean of such scores over a set of queries.
+
+Although individual fitness is a quantitative measure of an individual  X  s adaptation to the is, the individual  X  s fitness proportion fp  X  n  X  . where G is the number of individuals in the generation, F is the minimum observed f  X  X  in the generation, and e is included to prevent division by zero. This linear dynamic scaled fitness (Khuri, B  X  ack, &amp; Heitk  X  otter, 1994).
+
+The sum of fitness proportions for a single generation is 1. A generation can therefore be 0 and 1 is chosen and the individual at that point on the line is selected.
+Individuals reproduce with probability equal to their fitness proportion. An individual is the next generation.
+ over into the next generation.
+ process. Both new individuals are carried over into the new generation.
+
+Reproduction, mutation, and crossover occur with configurable probabilities (which sum to problem solution is found. 4. Experimental methods
+Experiments to choose good document structure weights were conducted using a genetic evaluated against ranking without structures.
+
+Average precision was computed as the sum of precisions for each found and relevant docu-ment, divided by the number of relevant documents. Mean average precision as the mean of such scores over a set of queries. 4.1. Test collection
+The TREC WSJ files (1987 X 1992) on the TREC collection disks 1 and 2 were indexed using the structured information retrieval system described above. The corpus tree was generated during indexing.
+
+TREC topics 151 X 200 were used for training. Topics 101 X 150 were used for evaluation. Queries were built by extracting the description field then stopping commonly used words. Topics 121, 175, 178, and 181 were discarded, each having fewer than five judgments. Terms were not stemmed. 4.2. Genetic parameters
+Each chromosome had 20 loci, 1 locus for each node in the corpus tree. Genes took a value in rates, and crossover rates were not investigated, but could affect the evolution rate. ranking. individual in each generation automatically reproduces; learning was elitist (De Jong, 1975). 4.3. Experimental process
+Experiments were run to find weights for weighted vector space (W-VSM), weighted proba-bility (W-PM), and weighted BM25 (W-BM25).
+
+An initial random generation was created. Then for each generation, each individual was presented to the retrieval system one at a time. Values for C some. Mean average precision over the training set was calculated and stored with each individual.
+ Each experiment was conducted 180 times to eliminate any chance of error.
+Average precision scores for each query using unweighted vector space (VSM), probability (PM) and BM25 (BM25) were calculated, recorded and compared to their structure weighted 5. Results 5.1. Learning results
+Fig. 4 shows how the mean average precision changed over time. Thick lines represent the evaluation MAP during learning are a consequence of over-fitting X  X  X een in BM25 learning.
+The training samples used in these experiments are characterised by having  X  X  X orrect X  X  target documents, but not  X  X  X orrect X  X  average precisions. Fitness can be computed, but error cannot validation (Moody, 1994; Weiss &amp; Kulikowski, 1991) techniques therefore cannot be used. A
+GA is assumed to find a reasonable approximation to the optimal solution, the training and evaluation sets are swapped, and the experiment re-run.
+ the best learning run X  X  X he run with the highest MAP in the queries used in training. distance from the measured to the optimal, 0.0036.
+
+Fig. 5 presents precision/recall graphs showing using mean average precision at 11 points of but not for BM25.
+ 5.2. Information retrieval results
+In an online system, structure weights would be selected through training before the system comes online. Evaluation would occur continuously as users present queries to the system. The training and evaluation sets used in the experiments herein mirror this. A set of weights was learned using the training set and evaluated using the evaluation set.
+
+A comparison of how such a system might perform is presented in Figs. 6 and 7. In Fig. 6 the average precision (computed at each document) for each evaluation query is compared. In Fig. seen.
+
+Weighted vector space model shows an improvement in average precision for 61% of the
+A one tailed t -test gave a P value of 0.0014; the weighted vector space model improvement is queries), however this was not in the best run.
+
+Weighted probability model shows an improvement in average precision for 75.5% of the
+A one tailed t -test gave a P value of 0.0033; the weighted probability model improvement is queries), however this was not in the best run.
+
+Weighted BM25 shows an improvement in average precision for 37.8% of the queries in the
+The best improvement seen in the evaluation set was 0.7% (65.3% of queries), however this was not in the best run.
+
+On unseen queries, vector space and probability models show significant improvement when weighting is used. The weights used for these comparisons is shown in Table 2. 6. Discussion
+A method of indexing and searching structured data allowing structure weighting is presented and a genetic algorithm is used to learn weights. Weighted ranking using vector space and probabilistic retrieval showed significant improvements over unweighted retrieval. 6.1. Ranking 6.1.1. Vector space model
+The vector space model used for these experiments computes the document weight as the inner vector, w id , is given by where tf 0 id directly scales IDF i to give the term influence. The structure scalar values C structure.Structureweightsintherange[0 ... 1]werechosenforconsistencywiththeothermethods. 6.1.2. Probability model
+The ranking equation used with the probability model scales term frequencies by m the so-called middle terms.
+ R dq , the weight of a document, d , with respect to query q is given by where and
+When ranking without structure weighting, tf 0 id is at most m weights strictly in the range [0 ... 1].
+ 6.1.3. BM25 ranking BM25 showed no significant improvement when using structure weighting. Examining the given by where the log odds of the term occurrence in the collection, the influence of the term with respect to the document, and the influence of the term with respect to the query.
+ only affects term occurrences with respect to the document. Neither a b is affected by structure weighted ranking.
+
+Expanding b i using the constants given above, assuming all documents lengths, T d , are constant, and therefore equal to T ment length, which tends from 1 when tf 0 id equals 1, to 2.2 as tf 0 id additional occurrences add an ever-decreasing influence. Eventually, the additional influence becomes smaller than the gap between document weights and document ordering is preserved into the steeper parts of Fig. 8.
+
+Even by keeping structure weights low, it has not proven possible to improve BM25 with parameter k 1 is already very good and has a similar effect to structure weighting. 6.1.4. Comparison
+For structures HL, LP and TEXT, the weights differ between weighted vector space model and weighted probability model (Table 2). Using W-VSM the weights are ordered as expected, HL, LP, TEXT. Using W-PM they are ordered in the reverse order.
+
+Examining only these three structures, each run can be considered to return a coordinate in
+To determine if weights are interchangeable between ranking function, the probability weights mean average precision of 3.9% in vector space ranking and 7.4% in probability ranking. The structure weights are dependant on ranking function.
+
+Each ranking function behaves differently, and subsequently different structure weights are learned. This dependence of structure weights on ranking function may contribute to why human subjects are unable to choose good values. Although the user should be given the option of choosing weights, default weights tuned to the particular ranking function should be pro-vided. Default weights should be derived from the collection and ranking function, not chosen ad hoc.
+ the meaning of the query only occurred in low-weighted structures. When this happens, less important query terms become more influential in ranking. Should the most important query terms be found only in structures with low weights, the meaning of the query can be lost. 6.2. Efficiency
+The experiments necessary to learn good structure weights need only be run once for each a weekend, 50 such runs can easily be completed on a single CPU. 7. Conclusions
+Some parts of a document are more interesting than others. When flipping through a journal a as such during ranking.
+
+Experiments were conducted with the TREC WSJ collection. Indexing was with the presented genetic algorithm. Finally, the results were evaluated demonstrating significant improvements when using vector space model or probability model. No significant improvement was observed for BM25.
+
+Improvements gained through learning are mirrored in evaluation. Not only was there a gain in mean average precision, but also in most queries. The one-off task of determining document weights using a genetic algorithm has resulted in significant improvements when using vector space and probability models.
+ Acknowledgement This work was supported by University of Otago Research Grant (UORG) funding. References

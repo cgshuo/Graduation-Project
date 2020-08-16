@@ -1,0 +1,27 @@
+
+Department of Statistics, University Carlos III, Madrid, Spain 1. Introduction denote by  X  the covariance matrix. Then the MD is defined by: vectors and  X  the common covariance matrix. Then  X  x i the sample estimator of of the distance between P 1 and P 2 is: P to classify correctly new data points.
+ normal anymore.
+ order given by the level sets and distances are the same.
+ to classify the data points: d M ( x 1 ,  X  ) &gt;d M ( x 3 ,  X  ) &gt;d M ( x 2 ,  X  ) . and classification problems. 2. Distances induced by density kernels below. 2.1. Density kernels f
+P : X X  IR derivative. Often we will use f instead of f P when there is no risk of confusion. asymptotic f -monotone functions.
+ g : X X  IR is f -monotone if: bution.
+ In this case are f -monotone: iv) g 4 ( x , P )= g 4 ( x ,  X  )= K f ( x ,  X  ) , Definition 1.
+ A function g ( x ,S n ) is asymptotically f -monotone if: estimations as in Example 2.
+ sample drawn from N d (  X  ,  X  ) . Then: spectively.
+ function g is continuous with respect to (  X  ,  X  ) ,wehave: x , y  X  IR d such that f P ( x ) &gt;f P ( y ) ,then lim g  X  f x  X  : X X  R + given by  X  P ( x )= g ( x , P ) . The density kernel is defined as: K get: which is the exponential mean of the Mahalanobis distance. For g 2 ( x , P ) : where we add a constant in order to normalize the kernel. For g 3 ( x , P ) : is the exponential mean of the Bregman divergences. For g 4 ( x , P ) : is the product of two kernel functions, that is, another kernel function. 2.2. Dissimilarity measures induced by density kernels Next we study dissimilarities induced by the density kernels defined above. kernel (squared) dissimilarity function as:
+For the proposed f -monotone functions of Example 1 we get: The measures d 2 = d 2 (GM) distance associated to a density kernel K P .
+ case of the d GM K The distance d GM K Proposition 2 (Density coherence). If f P ( x )= f P ( y ) then d 2 GM implies that functions.
+
+For instance, for we obtain: mode is more precise, in the limit lim covariance matrix, the estimation  X  d 2 GM on the choice where f ( m o )=max x f ( x ) . Then by the definition of the density kernel: When x = m o , d 2 GM mode m o .
+ the distribution: problematic when dimensionality increases or there are outliers [5,15]. contained in A i ( P ) , that is, they have the same value f P ( x ) . f ( x )  X   X  i , and thus: Next we introduce the algorithm to estimate the A i ( P ) sets. 2.3. Level set estimation concerning the One-Class Neighbor Machine [10,11].
+ size n (drawn from f ). The elements of S n take the form f ( x ) &lt;f ( y ) implies then M is a sparsity measure .(b)If f ( x ) &lt;f ( y ) implies then M is a concentration measure .
+
+The Support Neighbour Machine [10,11] solves the following optimization problem: is a threshold induced by the sparsity measure.
+ S  X  ( f )= Theorem 1 [10,11] can be expressed in algorithmic form as in Table 1: Hence, we take experiment the performance of the proposed distance. 3. Experimental section 3.1. Artificial experiments where x  X  [0 , X  ] ,  X   X  N (  X  distribution.
+ N 3.2. Real data experiments  X  X etirement communities X  (165 documents).
+ following procedure: MD in linear and quadratic discriminant analysis.
+ unique procedure without false-negative outliers.
+ 4. Conclusions of the exponential kernel, the proposed distance is exactly the Mahalanobis distance. distance, devised for the normal distribution case.
+ study for which density kernels we will obtain true metrics. Acknowledgement
+This work was partially supported by projects MIC 2012/00084/00, ECO2012-38442, SEJ2007-64500, MTM2012-36163-C06-06 DGUCM 2008/00058/002 and MEC 2007/04438/001. References Appendix and positive semi-definite function.
+ Theorem 2 . The Kernel proposed in Definition 3 it is a Mercer Kernel. matrix K =[ K P ( x i , x j )] i,j  X  R n  X  n is a positive definite matrix:

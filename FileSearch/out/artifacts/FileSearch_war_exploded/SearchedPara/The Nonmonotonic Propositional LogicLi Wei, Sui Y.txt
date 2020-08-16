@@ -1,0 +1,30 @@
+ 1. Introduction of  X  0 then A is deducible from  X  0 too.
+ calculus ([9],[10]), the autoepistemic logic ([6]), circumscription ([4]), etc. ity  X  6` A of a monotonic deduction  X  ` A. We found that each nonmonotonic logic  X  and  X  B is not, that is, formula in  X  .
+ is, for any sequent  X   X  , if  X   X  is provable in G 2 then  X   X  is valid, where  X ; and conversely, if  X   X  is valid then  X   X  is provable in G 2 . in the monotonic PL; the third section gives the Gentzen deduction system for the nonmonotonic PL and proves the soundness theorem and the completeness theorem; last section concludes the whole paper.
+ 2. The monotonic propositional logic G 1 interpretation of formulas is defined as follows: where f  X  ,f  X  : { 0 , 1 } 2  X  X  0 , 1 } are defined as follows: implies v ( X ) = 1 .
+ and 3. The nonmonotonic propositional logic G 2 A  X   X  ,v ( A ) = 1; and v ( X ) = 0 if for each B  X   X  ,v ( B ) = 0 . v such that v ( X ) = 1 and v ( X ) = 0 .
+ if and only if  X  and  X  are consistent, and  X   X   X  =  X  .
+ p, Then, v is well-defined, v ( X ) = 1 , and for any literal l  X   X  ,v ( l ) = 0 . tree T as follows: or there is no sibling available as defined above.
+ root T of  X   X  and a branch B  X  T such that the leaf of B is an axiom. G 2 then there is a proof of  X   X  .
+ and con( X  0  X  X  ( X  0 )) , that is, ` G 2  X  0  X  0 .
+ following cases for  X  1  X  1 .
+ (  X  L ) in G 2 , ` G 2  X  2 ,A 1  X  A 2  X  2 .
+ (  X  R ) in G 2 , ` G 2  X  2 B 1  X  B 2 ,  X  2 .
+ proof of  X   X  in G 1 .  X  Therefore, ` G 1  X  0  X   X  0 .
+  X   X   X  ,A 1  X  2 ,  X  2 ,A 2  X  2 of  X  2 ,A 1  X  A 2  X  2 . By the induction assumption, `  X  ` B either a proof of  X  or a show of the unsatisfiability of  X  .
+ in stages as follows.
+ literals, and con( X   X  X   X ) , then, stop.
+ Then, write down any (  X  R ). Then, for any function f : { 1 ,...,n } X  X  1 , 2 } , write down any (  X  L ). Then, for any function f : { 1 ,...,n } X  X  1 , 2 } , write down Then, write down are not applicable, write nothing above  X   X .
+ for  X  , denoted by T ( X ) .
+ such that  X  ,  X  are sets of literals.
+ modifying T ( X ) .
+ then define v in which each sequent in B is satisfied, i.e.,  X   X  is unsatisfiable. able. By the assumption, each leaf node is unsatisfiable.
+ A satisfiable, and by the definition of satisfiability,  X  is unsatisfiable. 4. The nonmonotonicity of G 2  X  ,  X  0 and  X  , X is monotonic in  X  if for any formula sets  X  ,  X  and  X  0 , and  X  , that is, for any formula sets  X  ,  X  0 ,  X  and  X  0 , the monotonicity.
+ G 2 is nonmonotonic in both  X  and  X  .
+  X   X  is monotonic with respect to  X  .
+ (  X 
+L ) ,  X  ,A 1  X  A 2  X  may not imply  X  0 ,A 1  X  A 2  X  , that is,  X  ,A 1  X  A 2  X  is nonmonotonic with respect to  X  .
+  X  ,A 1  X  A 2  X  is monotonic with respect to  X  .
+ A 2  X  . Then, for some  X  0  X   X  ,  X  ,A 1 ,A 2  X  may not implies  X  ,A 1 ,A 2 6  X  0 ; is monotonic with respect to  X  .
+ monotonicity with respect to  X  and  X  .
+  X  ,  X  0 ,  X  and  X  0 , and is equivalent to both and in the nonmonotonic propositional logic, is not equivalent to both 5. Conclusions  X  6 X   X  (denoted by  X   X ) of sequent  X   X   X  and shown the nonmonotonicity of ` References:

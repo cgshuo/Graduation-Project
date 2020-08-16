@@ -1,0 +1,39 @@
+ 1. Introduction This is exactly the problem we address in this paper.
+ tify useful information (features) for the extraction task.
+ document and extract features. In one method, we create a DOM Tree for the given HTML document and title extraction. SVM is a local classification model, while CRF is a global tagging model. bines the normalized scores using linear combination.
+
+Experimental results indicate that for HTML title extraction our methods (both DOM Tree based and ods the accuracy of extraction can be further improved.
+ ticularly helpful in the task of named page finding in TREC (25.1 X 30.3% improvements). 2. Related work popular research area and for which many methods have been proposed ( Eikvil, 1999 ). extracting summaries from web pages.
+ conducting information extraction from the blocks.
+ 2004; Zhang et al., 2002 ).
+ science paper extraction.
+ web pages (HTML documents) can enhance web page retrieval. Cutler, Shih, and Meng (1997) have pro-
+Yau and Hawker (2004) . 3. What is an HTML document title?
+The detail of the specification is as follows. 1. Number
+An HTML document can have two titles, one title, or no title. 2. Position 3. Form 4. Span (b) Titles cannot be a part of bullets or numbering, and cannot be names of chapter or section. 5. Content (a) Titles cannot be a link, time expression, address, etc. (b) Titles cannot be expressions like  X  X nder construction X ,  X  X ast updated X , etc. (c) Titles can be the expressions immediately after  X  X itle: X  and  X  X ubject: X  (d) Titles cannot be too long. 6. Other (a) Titles in images are not considered.
+ other title. The former is in the main block while the latter is in the top block. 4. Title extraction methods extraction, there is a post-processing step. 4.1. Model sequence of units x 1 , ... , x n aligned with a sequence of labels y probability model.
+ If the Y s are assumed to be independent from each other, then we have (Support Vector Machines, Joachims, 2001 ). 4.2. DOM Tree based method 4.2.1. Overview ing is a sequence of units (instances).
+ ond highest scores as the second title, provided that the scores are larger than zero. 4.2.2. Features major types of features. There are in total 245 features defined from a DOM Tree. 1. Rich format information (b) Font weight: bold face or not; (d) Font style: normal or italic; 2. Tag information (b) LI: a listed item; (d) A: a link or anchor; (h) IMG: an image; 3. DOM Tree information (b) Relations with the root node, parent node and sibling nodes in terms of font size change, etc. 4. Linguistic information (b) Length of real text: number of alphabet letters; (d) Positive words:  X  X bstract X ,  X  X ntroduction X ,  X  X ummary X ,  X  X verview X ,  X  X ubject X ,  X  X itle X , etc. 5. Format change information (b) Alignment and color change with neighbors. 4.3. Vision based method 4.3.1. Overview information is acquired heuristically on the basis of vision.
+ class 4.
+ DOM Tree.
+ tion, we extract titles using the trained models. 4.3.2. Features features: 1. Page layout information (b) Height and width of the page; 2. Block information (b) Height and width of the block; 3. Unit position information (b) Position of unit from left site of the page; (d) Position of unit from left site of the block; of the page, we will set corresponding feature to 1, otherwise 0. 5. Document retrieval method BM25 (Okapi) as basic function and is unique in its way of normalizing the BM25 scores.
+We consider four methods for document retrieval with different uses of the fields. 5.1. BasicField BM25 to calculate the score of each document with respect to the query: tively; dl is document length, and avdl is average document length; k k = 1.1, b = 0.7. 5.2. BasicField + CombTitle
+We calculate the BM25 score of the combined field CombTitle (i.e., view it as a document), with k of the combined field and that of the baseline method.
+
+We next linearly combine the two scores, S 0 BasicFields and S
+Here a is coefficient ranging from 0 to 1. 5.3. BasicField + ExtTitle the combined title field. 5.4. BasicField + Title field. 6. Experimental results 6.1. Data sets
+As data set, we used the .GOV data in the TREC Web Track. We call it TREC hereafter. There are 1053111 web pages in TREC.
+ We randomly selected 4258 HTML documents from TREC. We manually annotated titles in the selected ment can have no title). 6.2. Evaluation measures for extraction define the approximate match between the two titles t 1 and t 2 in the following way. 6.3. Evaluation of title fields HTML documents in the TREC data set having bogus titles. There are three cases:  X   X  TITLE  X   X  and  X   X  /TITLE  X   X . fields. 6.4. Title extraction experiment the titles in title fields denoted as  X  X itle-field X .
+ SVM and CRF. As document processing methods, we used both the DOM Tree based method (denoted as
+DOM Tree) and the vision based method (denoted as Vision). We further combined DOM Tree and Vision (position 0).
+ paper also significantly outperform our previous method.
+ different perspectives and thus a combination of them (Combine) can further enhance the accuracy. rent unit alone (position 0).
+ indicates that the task of title extraction is a challenging problem. 6.5. Web retrieval experiment extraction method, we used the best performing method CRF + Combine. ification in it is different from those in TREC-2003 and TREC-2004. CombTitle.
+ summarization of an HTML document.
+ significant.
+ significantly better than BasicField.
+
+We conclude that extracted titles are useful for web page retrieval. 7. Conclusion documents, and have investigated how the extracted titles can help improve web page retrieval.
+We have proposed a specification of HTML title. We have proposed a machine learning approach to information, etc. as features in the machine learning models.
+Our experimental findings include: (1) Our method can work significantly better than the baseline methods for title extraction. Acknowledgements
+We thank Dmitriy Meyerzon, Ming Zhou, and Wei-Ying Ma for their encouragements and supports. We thank Hugo Zaragoza, Nick Craswell and the anonymous reviewers for their comments to this paper. References

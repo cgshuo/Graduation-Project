@@ -1,0 +1,57 @@
+ 1. Introduction of publications and citations as in Hirsch X  original article. R -index ( Jin, Liang, Rousseau, &amp; Egghe, 2007 ).
+
+H publications received each at least k 2 citations. The H (2) in the Hirsch core. Mathematically, this is: correction on the A -index ( Jin et al., 2007 ) is defined as:
+The h -, A -and R -indices are related through the relation R  X  index which takes the age of the publications (denoted as a c ( T ) = 1 and T &gt; 1. Assuming, as we do from now on, that
+Hirsch-type indices are defined in the continuous case as follows: (assuming that the discrete one, we first introduce it for the continuous model. 2. Construction of a citation-weighted h -index: continuous case Theorem 1. Let h be the h-index of c (r) then the equation
+The function k  X  t  X  is continuous and strictly decreasing on [0, T ]. Indeed: k that k  X  0  X  &gt; 0 and k  X  T  X  X  c  X  T  X  Consequently, tion Clearly, r 0 6 h ,as non-increasing and c ( h )= h by definition. h tion of the equation
+Then the weighted h -index, denoted as h w is defined as: 3. Properties of the weighted h -index h w is a constant function then h w = h and c (r) j [0,h] =h.
+Proof. We know already that r 0 6 h . Let now c ( r )= C on becomes: that h  X  c  X  h  X  X  C , hence h w  X  square root. h c (r) = h, then the w-rank is strictly smaller than the h-index: r Proof. Assume that r 0 = h . Then  X  0 ; h . The inequality h w  X  h c  X  r 0  X  P h c  X  h  X  X  h
+Corollary 1. If c (r) is strictly decreasing on  X  0 ; h then h &lt; h only if the restriction of c (r) to  X  0 ; h is the constant function h. now r 0 = h then, by definition,
+Proof. As h w  X  Proof. We already know that r 0 &lt; h 6 h w . Hence we also have: largest value such that r 2 6 4. Requirements for an h -type index in the continuous model c
+If there exists d &gt; 0 such that the relations " r 2 ]0, d ]: c proves that the Hirsch index is an acceptable h -type index. continuous, decreasing functions, such that " r 2 [0, T ]: c  X  0 ; 5 , and c 2 ( r ) is equal to 15 2 r on  X  0 ; 5 . Then h ( c h ( c 2 ( r )). This shows that the h -index is not a strong h -type measure. h Theorem 5. The weighted h-index, h w , is an acceptable h-type measure. " r 2 [0, T ]: c 1 ( r ) 6 c 2 ( r ). Then we know already that h the h -index of c 2 ( r ). Let r j denote the w -rank of c
+If r 1 6 r 2 then we have for h 2,w , the weighted h -index of c
+If r 1 &gt; r 2 then: This proves that the h w -index is always an acceptable h -type measure. " r 2 ]0, d ]: c 1 ( r )&lt; c 2 ( r ) then the inequality indicated with ( This takes care of the case r 1 6 r 2 .
+
+If r 1 &gt; r 2 and h 2 &gt; h 1 then
+If h 1 = h 2 (= h ) and if one of the inequalities below, indicated with ( c ( r 1 )&lt; c 2 ( r 2 ), or c 1 ( r 1 )&lt; c 2 ( r 1 ), or c " r 2 ]0, d ]: c 1 ( r )&lt; c 2 ( r ), if h 1 = h 2 ; c 1 equal on this interval. An example of such a case is the following situation:
+Indeed: c 1 ( r )&lt; c 2 ( r ) on [0,4[; h 1 = h 2 =8; c possible that h = h w but then the w -rank must be strictly smaller than h . h We conclude this investigation by stating the following result. functions.
+ frequency functions the required strict inequality h 2,w &gt; h 5. The h w -index in the power law model law (Lotkaian) model (Egghe, 2005).
+ The size-frequency relation is given by the function U ( x ): frequency relation is given by the function C : The other variables satisfy the following equalities: and
+Theorem 7. If a &gt; 2 then Proof. In this model
+C  X  r ( Egghe &amp; Rousseau, 2006 ), we obtain: This proves Theorem 7 . h imply that g &gt; h w .
+ 6. Construction of a citation-weighted h -index: discrete case
+If y j denotes the number of citations received by article j , then y y  X  X  h -weight is y j A table such as Table 2 will be referred to as an h w -table.
+Definition ( the discrete citation-weighted h -index: h w where r 0 is the largest row index j such that
+If h is zero then also h w is set equal to zero. From Eq. (19) it follows that y r rows of the h w -table are referred to as the essential part of the h could not determine h , which we need in the calculation of the h h -index.
+ An example
+Consider the h -table ( Table 3 ) and its corresponding h As the h -index is 4 the corresponding h w -table is given by Table 4 . this scientist X  X  h w -index is equal to struction are shown in the following sections. 7. Properties of the h w -index Proof. With these assumptions we have the h w -table ( Table 5 ).
+We see from Table 5 that r w  X  h  X  X  k and r w  X  h  X  1  X  &gt; k (unless y r ( h +1)&gt; y h +1 , hence r 0 = h .If y h +1 = 0 then r w we find that h w  X 
+Theorem 8 gives an example where the number of rows in the essential h orem also shows that there is no theoretical upper limit to the h
+Theorem 9. The rank r 0 is never larger than h:
+Proof. Assume that r 0 &gt; h . Then we know by the definition of h that h P y where the first strict inequality is due to the fact that y the assumption that r 0 &gt; h leads to a contradiction. This proves Theorem 9 . problem does not worsen.
+
+Consequently, it follows from Theorem 9 that
+Indeed, as r 0 6 h it follows that h w  X  h w = R = h .
+
+Next we will prove an exact lower bound for the discrete h
+Theorem 10 Proof. We consider two cases.
+
+If r 0 = h , then y r ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi q
+If r 0 6  X  h then r 0 &lt; h (by Eq. (20) ). Then r 0 +1 6 h and hence y decreasing order). By the definition of r 0 we know that Hence: ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi h  X  h 1  X  p This proves the theorem. h
+Proof. As  X  h 1  X  2 &lt;  X  h 1  X  h &lt; h 2 , we see that ceil Eq. (23) . h
+We would have preferred that, also in the discrete case, h ( r 0 = h ). The fact that h w &gt; a discrete aberration.
+
+We next give an example where h w &lt; h, but, of course h following h -table ( Table 6 ).
+ Table 7 .
+
+From Table 7 we see that r 0 = 2, and h w  X  ffiffiffi 6 p least to some extent). As the first h articles are weighted by the factor convinced that the definition of the discrete h w is structurally correct.
+The following result shows the relation between the g -index and the discrete h function of a real number r is the largest integer smaller than or equal to r .
+Theorem 11. The g-index always satisfies the inequality: g P floor(h Proof. If h w P h then floor ( h w ) P h . Then the largest natural number such that floor( h w )&lt; g as h 6 g . In this case it is even true that ceil ( h 8. A general requirement for discrete h -type indices
+Requirement. If two rankings Y =( y j ) j and Z =( z j ) j HIR( Y ) 6 HIR( Z ).
+ A  X  Z  X  X  6.
+
+Z  X  X  9 ; 4 ; 3  X  . Then h Y = h Z =3; r 0 ( Y ) = 2, while r ffiffiffi 9 p the better, continuous process.
+ 9. Examples
+An as illustration of the calculation of the h w -index we calculated the h , h by 10. Conclusion strictly decreasing rank-frequency functions. The exact relation between h and h some exceptions may exist.
+ Acknowledgement Foundation of China by grant no. 70673019.
+ References

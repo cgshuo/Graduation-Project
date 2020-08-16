@@ -1,0 +1,7 @@
+
+Idea of similarity graphs in machine learning:  X  connect similar points -build global structure from local s tructure
+Commute distance on graphs:  X  expected number of steps for the random walk on the graph to go from Usage: ranking, clustering, semi-supervised learning, network a nalysis
+Intuition: commute distance captures cluster structure in the data !
+Random geometric graphs:  X  samples are drawn i.i.d. from a probability measure in R  X  k -nearest neighbor or  X  -neighborhood graph Commute distance C ij is meaningless for large random geometric graphs:
+Implications:  X  depends only on local connectivity -no global structure incorporated  X  all points have the same nearest neighbor: the point with max imal degree USPS: 10-nearest neighbor graph Left: Original commute distance, Right: Amplified commute d istance
+At the poster:  X  detailed limit results + discussion of more general graph ty pes  X  amplified commute distance and associated kernel  X  comparison of different distances for semi-supervised lear ning on USPS

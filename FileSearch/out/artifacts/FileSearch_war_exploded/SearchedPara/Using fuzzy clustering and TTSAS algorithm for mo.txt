@@ -1,0 +1,48 @@
+ 1. Introduction
+Recognition of the modulation type of an unknown signal standards.
+ Narduzzi and Bertocco, 2003 ).
+ (PSK) and Quadrature X  X mplitude Modulation (QAM). The QAM almost applicable for all the progressive modems. requirement ( Reichert ; Schalkoff, 1992 ).
+
+The existing methods for modulation classification span and QPSK modulations. In a later publication, Huang and 2500 2000 1500 1000 500 distance 1000 1200 800 600 400 200 distance 1 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0 0.1 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 1 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0 0.1 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 between OQPSK/BPSK/QPSK. Lin and Kuo (1996) propose a novel in the sense that new data continuously update the evidence.
+ types.
+ algorithms can be used. 2. Signal trajectory and constellation recognition of modulation could be performed accurately. 400 300 200 100 -100 -200 -300 -400 150 100 50 -50 -100 -150
+Accuracy Percentage
+Accuracy Percentage sional diagram. The two most common diagram types are as follows: clock. A constellation diagram thus presents the actual received symbol values ( Fig. 1 a); higher rate than the receiver clock rate ( Fig. 1 b).
+From a measurement point of view, the main difference identified.
+ which worked on a fuzzy system. In Mobasseri (1999) and matching that uses a maximum likelihood approach. of noise. 3. Classification of QAM and PSK modulations using fuzzy clustering 4000 3500 3000 2500 2000 1500 1000 500 0 0 300 200 100 -100 -200 -300 -400 whole constellation, symmetrically.
+ matrix and used in future processing. 3.1. An overview of fuzzy C-means algorithm as Eq. (4). 1800 1600 1400 1200 1000 800 600 400 200 0 0 500 400 300 200 100 -100 -200 -300 -400 -500 processing step is necessary. 3.2. Post-processing stage the completion of the fuzzy algorithm when centroids are all possibilities.
+ weight proportional to the number of clusters to prevent producing error.
+ are chosen (equal to the number of points of the 16-QAM constellation).
+
+Also in Fig. 3, which corresponds to 8-PSK modulation, 1 0.8 0.6 0.4 0.2 0 -0.2 -0.4 -0.6 -1 -0.8 0 1000800600400200 -200-400-600-800-1000 fuzzy algorithm. 4. Evaluation and simulation results
+In order to evaluate the performance of the proposed algorithm.
+
+After completion of fuzzy algorithm, post-processing is function for 4 clusters in one quadrant will be minimum. modulations, respectively.
+
+Accuracy of this method for different modulations and type.
+ method, we can imply the following cases:
+This method can recognize all the 4-QAM modulations with type with SNR  X  0.
+ This method can identify all the 16-QAM modulations with distance 1600 1400 1200 1000 800 600 400 200 200 150 100 50 -200 -150 -100 -50 in lower SNR, the more the sample is increased, the more efficient is the recognition of the modulation type. the accuracy would also increase.
+
+This research aims to recognize the modulation of QAM to recognize PSK modulation can recognize all the QPSK this method is able to identify 16-PSK modulation with level lower than this it is less.
+ which is the noisy version of transmitted signal. shows a good performance for recognition even in low SNR some more simulation results of this method. network knowledge of the number of clusters and only the maximum 0 0 50 -50 Euclidean distances between each applied symbol with the threshold and the number of clusters had not reached its future iterations of the algorithm. The next symbols are introduced similarly to the network.
+ main program.
+ 1200 1000 800 600 400 200 0 0 150 100 50 -150 -100 -50 6. Neural network implementation then used to implement TTSAS. 6.1. Description of the architecture generator (MSG) and the Max Net network (MN).
+ coordinate is equal to f ( x , w i ), i  X  1, y , q . positive.
+ f  X  x ; w i  X  X  x T w i  X  1 2  X  Q k w i k 2  X  (5) (Theodoridis and Koutroumbas, 2003 ). 6.2. Description of the architecture of the Hamming network must also be slightly modified, 1 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0 1 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0 1 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0 200 -200 150 -150 100 -100 50 -50 the connection between the i th node of the MSG and its algorithm may be stated as follows: Initialization J a  X  0 J w i  X  0, i  X  1, y , q J t i  X  0, i  X  1, y , q J m  X  1
+J For the first vector x i set Main Phase
+J Repeat does not affect any of the parameters of the network. 400 -400 300 -300 200 -200 100 0 -100 1000 -1000 800 -800 600 -600 400 -400 200 0 -200 2000 -2000 1500 -1500 1000 -1000 500 0 -500 j a k . and template matching
+Fig. 18 shows the flowchart of the proposed method for
+QAM and 4, 16 and 64 points for 16 X 64 and 256-QAM, matching is performed.
+ evaluated. This comparison is made by the calculation of shown in Fig. 19 . 8. Performance evaluation and simulation results different types of modulations.
+ so it is a suitable method for recognition of QAM family modulation. Figs. 23 X 26 demonstrate data symbols and resulting centroids after recognition of modulation. template matching method we try to reduce the error and constellations of every modulation and by comparing them algorithm and by using template matching, we succeed in convergence.
+ presented in Table 1 .
+
+Fig. 27 and Table 2 present the accuracy percentage of accuracy percentages have been obtained by executing the
+Accuracy Percentage dB and 0.91 in SNR  X  15.
+ least-squares CFO estimator is incorporated in the qHLRT and 16-QAM are falsely treated as 64-QAM.
+ 64-QAM and 256-QAM. Another advantage of this method is types of digital modulation. 9. Conclusion tion of modulations in the presence of noise.
+ template matching method we try to reduce the error and respect to noise has been reduced. As can be seen in the types of digital modulations.
+ MASK modulations can be referred.
+ modulations.
+ References

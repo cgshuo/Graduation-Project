@@ -1,0 +1,9 @@
+
+Surprisingly little of the work on understanding information seeking and the design of digital libraries has taken much account of the background of the users or the context within which they are working. It has information retrieval. The challenge is arguably greater than this: there is additionally a need to understand how digital libraries (and related information sources) are used and also how such systems fit into people X  X  broader work tasks. Without such an understanding, it is a matter of chance as to whether new systems actually meet the needs of their users or not.
+ solicited on, but not limited to, the following topics:  X  Integration of digital library infrastructure with systems that support other work tasks, e.g. writing; structuring information; problem diagnosis; annotation. can inform design.  X  Design of digital libraries or digital library components that support particular user needs.  X  Usability studies that account for broader work tasks.
+ Submissions
+Submissions should follow the format specified on the Elsevier Author Gateway IP&amp;M Guide for Authors: http://authors.elsevier.com/GuideForAuthors.html?PubID=244&amp;dc=GFA and should be made online through the Elsevier Editorial System http://ees.elsevier.com/ipm/.
+
+All submissions will be acknowledged and then refereed by at least 2 peer reviewers. Authors should and interests, in both the online submission process and the accompanying cover letter. Important Dates  X  October 20, 2006: Deadline for submission of papers.  X  January 26, 2007: Notification to authors.  X  March 30, 2007: Deadline for submission of revised papers. Contacts Ann Blandford, Sally Jo Cunningham &amp; Jeremy Gow UCL Interaction Centre University College London
+Remax House 31 X 32 Alfred Place London WC1E 7DP UK E-maill address: a.blandford, j.gow@ucl.ac.uk
+Reference

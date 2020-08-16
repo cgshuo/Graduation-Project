@@ -1,0 +1,119 @@
+ 1. Introduction
+On board guidance and control systems are used to monitor the fuel profile on board in order to increase automation and other words, wasting fuel due to unforecast disturbances can degrade the performance of the preflight planning mechanism. sion magnitude, angle, etc.
+
+Existingresearchtillrecently,focusedheavilyonmethodswhich paths based on minimum distance or time travelled has been addressed from researches in Richards and How (2002) and Rathinam and Sengupta (2004a) , among other interesting works. selectedpathmaynotbefeasibleorrealisable.Inotherwords,when optimum one. The latter was shown in work ( Economou et al., proposed a methodology utilising energy graphs and pseudo-Consequently motivated by such an analysis there is a need to rather than the shortest distance one.
+ and decision making should be performed in order to find a
+Thus energy requirements should be described and then the path of optimum sense to reach a goal should be calculated. In combined with the physical and functional limitations of the vehicle with a focus on energy conservation of the involved flight path.
+ area. Depending on the application domain, an adequate control
+Among many interesting approaches solving the tracking problem focused onthe motionplanning problem.However, theirlimitation becomes zero. Moreover, other works by Kanayama et al. (1991) system was proved through a Lyapunov function and the gains werecomputedbylinearisationofthetracking-errormodeltozero. need to be updated and recalculated when the trajectory to be tracked is altered due to an event while in flight. model to the nonlinear error posture model of the vehicle X  X  and Kang, 1986 and later improved by Wang et al., 1995 )is computed utilising liner matrix inequality (LMI) techniques ( Tanaka and Wang, 2001 ). The methodology proposed can be implemented for any type of reference trajectory provided that linear and angular velocities are bounded and j V w j 5 j V j
+The latter can be interpreted with respect to the physical and conditions are included in order to accommodate real world representation of a UAV mission through graph theory tools tional schema using matrix analysis.
+ involve the graph theory tools. The vehicle X  X  kinematics, the the description of the energy requirements are also included.
+Thereafter, in Section 3 the error posture model used and its equivalence to the Takagi X  X ugeno (T X  X ) model are described. that stabilise the system are also included. Finally through a simulation example the analysis is illustrated in Section 4.2.
+T X  X  fuzzy model. 2. Preliminaries 2.1. Graph theory tools in the context of UAVs
+Adopting the notation in Christofides (1975) , a graph G is an ( V  X  {1,2,3, y , V max }), E is the set of edges, ( E  X  { c represent every possible connection created between a pair of
+V the UAV mission is explained in Section 2.5.
+ of unmanned aerial vehicles. Among them a useful graph theory stressed in our earlier work ( Kladis et al., 2007 ). 2.2. Modelling the motion of an aircraft
+For the purpose of the simulations the kinematics model (1) is
+V altitude can be assumed under realistic scenarios where the (e.g. on reconnaissance missions the UAV needs to photograph a complex model, such as the one described in Stevens and Lewis are taken into account for the UAV.
+
+The motion of the point mass aircraft model (1) can be defined is considered its weight is maintained constant throughout the acceleration due to gravity. The equations of flight are dx dt  X  V g cos y  X  V w cos  X  y w  X  dy dt  X  V g sin y  X  V w sin  X  y w  X  d c dt  X  vertical plane and the plane of symmetry of the aircraft). Wind  X  X  V w , y w  X  is the wind vector. Additionally, V w y buildings(whenflyingatlowaltitude).Thusthewind X  X velocitycan meet its objectives.
+
+Assuming that wind disturbances are a priori known under a global frame, can be formulated as to find the adequate input and y d T in global frame. In other words, find j such that e coordinates of the displaced path due to the wind vector and is described in the next sections. 2.3. The Dubins path startingtoanendpointbyapath.Thesetwopointsarecharacterized the poses and constraints should be known a priori.
+Mathematicallyapathisrepresentedbyacurve,likeapiecewise P CLC or CCC ( C  X  Circular arc, L  X  Line segment) or another combination of the previous two. By the former two segments of the circumference of two circles are joined by their common tangent.Bythelatter,CCCisformedbythreeconsecutivetangential in Rathinam and Sengupta (2004b) , Allison and Hedrick (2005) in Fig. 2 . The two waypoints depicted have poses of P start with the use of principles of Euclidean Geometry. The design trajectory can be found for the interested reader. differentDubinspaths,thelefttoleftturn(LSL),thelefttorightturn one that yields the minimum energy requirements is chosen and used in the energy cost matrix P . The latter is shown in the simulation example described later. 2.4. Model of environmental conditions
+In nature,environmentalconditions playanimportantrolewith 165 170 175 180 185 190 195 200 205 210 y (metres) 60 80 100 120 140 160 180 y (metres) let alone the flying conditions from micro-aerial vehicles to Hence under low-wind conditions insects can remain grounded.
+Similarly while worse environmental conditions occur larger work of Tennekes (1996) where a thorough list of flying speeds previous assumption.
+ wind in the global frame and the contours the means the magnitude of wind is changing topologically within the map.
+The model used for the magnitude is assumed to be a multimodal distribution of the form: V w  X  x , y  X  X  (i.e magnitude of wind) to be used for each Dubins path ( s angleofwindcanberepresentedalsobysuchamodel,however,for simplicity, it is assumed constant for each node to node path. with flying conditions for bees to human powered aircraft. 2.5. Energy requirements for mission 2007b ) and motivated by Economou et al. (1999) , where the mathematicalbackgroundregardingtheforceNewtonianequations, thepowerandenergymathematicaldescriptionswereproposed,the speed u and impulse matrix F during time interval D i , j times D i , j ,isequalto K  X  X  u : nodes with poses P i  X  x i , y i , y i  X  and P j  X  x j , y enforced in the particular poses, as mentioned in Section 2.3.
+Thus element r ij of the adjacency matrix K represents the energy demand, rather than distances, for the node to node efficient and negligible part of the system. The atmospheric weather conditions are known from weather Doppler radars a model X  X  parameters can be obtained from (4): E performance which is decoupled from the mass of the vehicle. coincides with the specific energy rate which is equal to dE dt  X  The energy rate is equal to E  X  IntegratingEq.(4)resultsintheoverallenergyrequirementsforthe UAV mission. Thus E Furthermore the energy profile can be obtained through the energy (6) is equal to (8): E  X  P a P d  X  E f  X  8  X  expands to (9) by substituting (6): P sidered previously are in SI units. 3. Tracking an error model under known weather conditions tracking a predefined trajectory when wind disturbances are present. For tracking purposes, formulating the problem with the control methodology. Particularly, the reference and the reference trajectory to be tracked, even discontinuous ones. Additionallyitsequivalenceissh ownwithrespecttoaTakagi X  X ugeno model are illustrated. The control methodology used involves a parallel distributed compensation (PDC) law to be computed via the use of linear matrix inequality (LMI) techniques. 3.1. Error posture model used are denoted as P ref  X  X ref , Y ref , y ref  X  and P model can be determined by applying a transformation of P local frame with origin P c and X -axis colinear with vector y governed by Eq. (10) as illustrated in Nelson (1988) : P  X  T e  X  P ref P c  X  X  10  X  where
+T  X  2 6 4 necessary assumptions then the error posture model can be used for tracking purposes.
+
+Proposition 1. The error dynamics are equal to _
+P  X  2 6 4
+Proof. UsingEq.(10)and _ x ref sin  X  y r  X  X  _ y ref cos  X  y model then _ x  X  X  _ x ref _ x c  X  cos  X  y c  X  X  X  _ y ref _ y c  X  sin  X  y c  X  X  x  X  X  y ref y c  X  _ y c cos  X  y c  X   X  y e o c v c  X  _ x ref cos  X  y c  X  X  _ y ref sin  X  y c  X   X  y e o c v c  X  _ x ref  X  cos  X  y ref  X  cos  X  y e  X  X  sin  X  y  X  _ y ref  X  sin  X  y ref  X  cos  X  y e  X  cos  X  y ref  X  sin  X  y  X  X  _ x ref sin  X  y ref  X  _ y ref cos  X  y ref  X  sin  X  y e  X   X  y e o c v c  X  v ref cos  X  y e  X 
+In the same manner for the _ y e it results _ y  X  X  _ x ref _ x c  X  sin  X  y c  X  X  X  _ y ref _ y c  X  cos  X  y c  X  y ref y c  X  _ y c sin  X  y c  X   X  x e o c  X  _ x c sin  X  y ref y e  X  _ y c cos  X  y ref y e  X  x e o c _ x ref  X  sin  X  y ref  X  cos  X  y e  X  cos  X  y ref  X  _ y ref  X  cos  X  y ref  X  cos  X  y e  X  X  sin  X  y ref  X  sin  X  y  X  X  _ y ref cos  X  y ref  X  _ x ref sin  X  y ref  X  cos  X  y e  X   X  x e o c  X  v ref sin  X  y e  X 
+Lastly _ y  X  _
+Hence Proposition 1 is proved. Eq. (12) can be reformulated as _ x _ y _ y 2 6 4 3 7 5  X  where v ref and w ref are the linear and angular reference and Skrjanc (2007) have proposed a control law of u  X  u F u previous to (13) expands to (14): _ x _ y _ y 2 6 4 3 7 5  X 
+The reference linear velocity v ref and angular velocity w computed using Eqs. (15) and (16), respectively: of space and the gains are calculated through the use of LMI
+Section 3.3. 3.2. Equivalence of error posture model with the Takagi X  X ugeno model applied to numerous industrial control problems a systematic thatcanrepresentsatisfactorilyan onlinearmodelwithacompromise polytopic form as suggested in Sugeno and Kang (1986) : _ X  X  t  X  X  Y  X  t  X  X  the premise vector which may depend on the state vector and normalised weighted functions which are defined by l i  X  z  X  t  X  X  X  w i  X  z  X  t  X  X  P r w i  X  z  X  t  X  X  X  sincevariablesinnonlinearsystems canbebounded.Thelattermeans should be known a priori in order for the previous to hold.
+Additionally the membership functions used in this work are triangular types. Note that the fuzzy model is an approximated more complicated membership functions need to be considered as suggested in Tanaka and Wang (2001) .
+ equivalent T X  X  fuzzy model to the nonlinear system. Those are: calculation of their compact region.
+ Definition of the membership functions.
+
+Determination of the number of rules involved and each rule with respect to possible associations between the premise variables.
+ the premise variables.
+
+The latter steps are thoroughly described in the simulation example illustrated in this work. 3.3. Stabilising the Takagi X  X ugeno model As mentioned previously, the fuzzy controller used for the T X  X  (PDC) proposed by Sugeno and Kang (1986) and later improved in involvesthe samefuzzysetsinthepremise partwiththeT X  X model rule layout is equivalent to the following: design has the form of
+U  X  t  X  X  performed through the use of LMI (linear matrix inequality) ment of the subject of stability with LMI conditions, designs, convergence, proofs, etc. the interested reader may refer to
+Tanaka and Wang (2001) . The conditions used for the LMI are the ones proposed by work ( Tanaka and Wang, 2001 ) which suggested that the TS model can be stabilised via PDC control turbance rejection.
+
+Theorem 1 ( Tanaka and Wang, 2001 ). The T X  X  model (17) can be conditions (20) hold : ! ii o 0 , i A f 1 , 2 , ... , r g ! ij  X  ! ji o 0 , i , j A f 1 , 2 , ... , r g , i o js : t : l ( the PDC control law gains are given by
+F  X  M i X 1  X  21  X 
+Remark. The conditions are only sufficient; many works in the between complexity and conservatism.
+ (22) hold : ! ii o 0 , i A f 1 , 2 , ... , r g 8 &lt; : replace the previous U ij with : ! ij  X  XA T i  X  A i X B i maximise
+X 4 0 ! ii o 0 , A f 1 , 2 , ... , r g 8 &gt; &gt; &gt; &lt; &gt; &gt; &gt; : suggested in Boyd et al. (1994) : 1 x  X  0  X  T x  X  0  X  X "#
+M i m 2 I "# T X  X  model (17) becomes _ X  X  t  X  X  Y  X  t  X  X  Hence minimise g subject to minimise ! ii o 0 , i A f 1 , 2 , ... , r g 8 &lt; : where ! ij is equal to !  X  2 6 6 4 this section are used in the simulation example . 4. Simulation example thewindprofileisaprioriknownandthetaskisforaUAVtofindthe energy cost matrix P and the tracking problem are described. 4.1. Assumptions altitudecanbemaintainedconstantprovidedthatcontrolsurfaces are robust.Bymaintainingconstantgroundvelocityitimpliesthattimeto ordertoregulategroundvelocitythepropulsiveforcesarevarying.For maintain ground speed and the power demand is increasing. The propulsive resources to overcome a disturbance.
+
+Maintaining constant altitude can be assumed under realistic
+The operational altitude assumed for the scenarios illustrated further on is 1 km above sea level.
+ than a point with particular coordinates within the map. out while on flight.
+ anemometers placed at masts over buildings (when flying at low manner through out the entire map. In addition j V w j 5 j V camerasensorwithamissiontophotographparticularsectionsofthe map.HenceinordertofulfilthemissionobjectivestheUAVisneeded 4.2. The routing problem the UAV to travel from a source node to a destination with the minimum energy demand falls under category of shortest path problems. Due to the problem requirements and application algorithm to be used the interested reader may refer to Kladis algorithm is used. The task described herein is for: functional/physical constraints of the aerial vehicle. function is equal to subject to w  X 1 , 8 i A V  X  33  X 
+X where m  X  contrary use it as an intermedi ate node to traverse the map.
+Design of standard type of path and Choice of easilybedeterminedwhetherthemissionisfeasibleornot.Thereafter
+Euclidean principles as suggested in Shanmugavel (2007) .The aircraft model which is under unknown wind profile. The task energy demands P  X  p i , i  X  1, y ,4 to follow the paths s arestoredandtheminimum p i is assigned to the Energy Demand i -to energy requirements and the total cost for the UAV to start
+The route of minimum total energy requirements is the sequence
+Feed-forward / state feed-controller and calculation of gains with LMI 2 9 26 27 30 41 59 70 73 y (metres) favourable walks) rather than the shortest Euclidean path. involveforthepreflightplannin gtoupdatetheenergydemandneeded
+Following block diagram in Fig. 4 , for two adjacent nodes P
+P with particular poses P i  X  x i , y i , y i  X  and P j  X  x the lowest-energy-required path is chosen when under wind conditions. Hence for each node to node sequence the lowest-energy-required path is stored in adjacency matrix P  X  [min( p
+RSL and LSR are the ones depicted in Fig. 9 (top). The energy demand to track the predetermined paths s o , under the same withtheRSLtrajectory.Theaboveprocedureisrepeateduntilevery element in matrix P is updated. The procedure involved for its update is illustrated further on.
+
+The T X  X  fuzzy model is derived following the four steps men-tionedinSection3.2.ForthemodelillustratedinEq.(14)thepremise variables determined are four. Those are z 1  X  w ref , z 2 z for the premise variables is calculated. Hence z 1 A  X  a min controllability of the system. Thereafter at the second step: z  X  t  X  X  O 0  X  z j  X  t  X  X  a min j  X  O 1  X  z j  X  t  X  X  a max j 8 j A f 1 , 2 , 3 , 4 g X  36  X  Hence from Eqs. (36) and (37) the membership functions are
+Model Rule i : IF z 1 ( t )is M ij AND z 2 ( t )is N ij AND z z ( t )is Y ij THEN _ X  X  t  X  X  A i X  X  t  X  X  B i U b  X  t  X  .
+Furthermore A i , B i and C i can be computed through the following recursive procedure: Step (a) i  X  1; Step (f) Step (g) Let i  X  i  X  1 and go to step (b).
+ Appendix.Thedefuzzificationiscarriedoutwithrespect toEq. (17), where l i are equal to l i  X  m o  X  z  X  t  X  X  X  M i  X  z 1  X  N  X   X  z 2  X  X m  X  z 3  X  Y with  X  i  X  m o  X  2  X  i 2 3  X   X  2 2  X  m 2 1  X  o 2 0  X  1. f f and f j are the minimum and maximum values, respectively, for the ranking functions O are equal to O  X  z j  X  t  X  X  X  membership functions are in 50%. The previous procedure is representing the nonlinear system within the compact space of x , y and y e .
+ one (14) is derived. For model (17):
+A  X  2 6 4 w r ,max  X  0.513 rad/s, e max  X  1.5 m and e 1  X  ( m 1  X  e 3  X  ( e 4  X  X  1  X  i  X  1  X  43  X 
+Appendix. Hence let us assume that the predefined path to be trajectory to be tracked is the Dubins path.
+
+In addition, the aerial vehicle is flying under a priori known entire map. For the path returned in the previous section the ally, the initial conditions for the error posture model are  X  x variables are measured.
+
+Theresultingtrajectorywhichisconvergingtothereferenceone
+The latter implies that stability is guaranteed. The means the tailwind (nodes 82 X 36) the magnitude of the thrust force is head wind (nodes 90 X 82), propulsive forces are increased to maintain ground speed and the power demand is increasing (the of the tracking module. It should be mentioned that although
+Dubins path the convergence of the states of the error posture mightnotbeperformedinasmoothmanner,whenwindconditions
+ X 
+M (z (t)) 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+ X  (z (t))
+N (z (t)) eration acting along the tangent by perpendicular means, which cannot be handled directly by the Dubins path unless the UAV whichisbeyondthisanalysis.A X  X  X aive X  X  X lternativeistouseanother minimum time paths, existence of the path due to physical or Shanmugavel (2007) .
+
+Finally, the energy requirements and velocity profile for the vehicle is not a prerequisite.
+
+The roll angle calculated coincides with the angle demand for implies that frequency of the roll angle ( Fig. 21 ) does not the vehicle model considered is a point mass one. However, it should be mentioned that the performance or response of the controller can be tuned according to physical and functional performed by optimising, tuning or assigning realistic values tively. It is worth noting that tuning the previous parameters sacrifices the performance of the system. It may be worthy of Controller e u B Error 0.05 0.1 0.15 0.2 0.25 0.3 0.35  X 
+Heading (  X  ) Linear Velocity (m/sec)
+Angular Velocity (rad/sec) inputs of the system enforced throughout the time horizon. The lattercan be casesensitivewithrespect tothe UAVdeployed forthe mission and since it is beyond this analysis may be worthy of provided that angular and linear velocities and wind profile worth investigating this in future work. 5. Conclusion
+In this work a methodology outlined means of determining energy optimum routes for UAV missions when flying under windy
+UAV mission and generating safely-flyable trajectories to meet tracked under bounded environmental conditions a priori computational schema using matrix analysis.
+
+Graph theory tools were utilised and through their properties node from a source. The standard type of path that yields the determined in order to compl ete the mission objectives. The methodology was illustrated through a simulation scenario.
+In essence, the UAV is flying under known environmental condi-conserving energy requirements and satisfying mission con-the application domain considered.
+
+For the trackingmodule theactual horizonmotion of thevehicle was described by a Tagaki X  X ugeno (T X  X ) fuzzy system. Addition-
+Themodelformulated was an error posturemodel, that depends on current and reference postures. The control law was designed compact space.
+
+It should be noted from Fig. 19 in order to regulate ground tailwind (nodes 82 X 36) the magnitude of the thrust force is decreasing. The latter depicts the energy saving nature of the tracking module.
+ Appendix
+Gains F i calculated when a known varying wind profile is
+F  X 
+Roll angle (  X  )
+F 2  X 
+F 3  X 
+F 4  X 
+F 5  X 
+F 6  X 
+F 7  X 
+F 8  X 
+F 9  X  and
+A 1  X  A 2  X  A 3  X  A 4  X 
+A 5  X  A 6  X  A 7  X  A 8  X 
+B 1  X  B 5  X  B 9  X  B 13  X 
+B 2  X  B 6  X  B 10  X  B 14  X 
+B  X  B 7  X  B 11  X  B 15  X 
+B  X  B 8  X  B 12  X  B 16  X  8 i  X  1 , ... , 16 and i A N  X  References

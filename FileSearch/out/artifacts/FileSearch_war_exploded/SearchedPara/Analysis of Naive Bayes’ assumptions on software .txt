@@ -1,0 +1,93 @@
+ 1. Introduction
+Quality of software is often measured by the number of defects in the final product. Minimizing the number of defects  X  consuming phase of the software development lifecycle.
+
+An effective test strategy should consider minimizing the number of defects while using resources efficiently. Therefore defect predictors in terms of allocating the limited resources effectively [22].
+
+As in any machine learning problem, software defect prediction models require a set of features (i.e. independent vari-extracted from the source code and will be explained in detail in Section 3.
+ significantly better performances than the other methods [13]. Naive Bayes assumes the independence and equal impor-reputation for its prediction accuracy [4].
+
+The number of research for relaxing the assumptions of Naive Bayes has significantly increased in recent years. These re-the model.
+ dence of attributes X  assumption. In order to overcome this, we incorporate multivariate approaches rather than univariate ones. Univariate approaches assume the independence of features whereas multivariate approaches take the relations be-tice to start modeling with simple models, the problem at hand should also be investigated by using more complex models.
+Then it should be validated by measuring performance whether using more complex models is worth the extra complexity introduced in the modeling. This research performs experiments with both simple and complex models and compares their performances.
+
+We then analyze the other assumption of Naive Bayes, which is the  X  X  X qual importance of attributes X . We use an attribute weighting scheme to overcome this assumption. Attribute weighting has been explored to some extent for other problems such as software cost estimation. Auer et al. employs attribute weighting for analogy based cost estimation [2]. However, fect prediction have inherent attribute weighting. However, neural networks are non-deterministic and complex models that require optimization of the network structure together with many model parameters. Thus they require relatively large number of data samples for building a predictor. In practice, usually a limited amount of data is available. Further, the weights of the neural network model can not be easily interpreted especially in complex networks.
+Considering defect prediction, we claim that all static code attributes do not have equal effect on defect prediction and
+We reproduce the experiments on NASA datasets with Naive Bayes by Menzies et al. in order to construct a baseline for comparison. We also use multivariate methods and weighted Naive Bayes classifier in order to analyze the effect of the independence assumption of Naive Bayes is not harmful for software defect data after PCA pre-processing. Therefore, we ware bugs in source code.
+
+In the following section, models used for defect prediction are explained. After describing the experimental design and the results, conclusions will be given. 2. Methods tions are briefly explained. We then use a weighting scheme for analyzing the second assumption (i.e. equal importance of attributes). 2.1. Univariate vs. multivariate normal distribution with the probability distribution function is defined as:
+The term inside the exponentiation in Eq. (1) is a distance function, where the distance of a data sample x to the sample value cardinalities are different. This measure does not consider the correlations among features.
+In the multivariate case, ~ x is a d dimensional vector that is normal distributed, i.e. ~ x N tribution function of a multivariate normal distribution is defined as: less contribution of highly correlated features and features with high variance.
+
+Since software data attributes are highly correlated, a multivariate model would be more appropriate than the univariate
+As no free lunch theorem states, nothing comes for free and using a multivariate model increases the number of parameters and d d parameters for R need to be estimated. 2.2. Multivariate classification
+In software defect prediction, one aims to separate classes C
+C ferent discriminants with different complexity levels. General structure of a discriminant is explained next. of the given sample. More formally: Evidence is given by and it is a normalization constant for all classes, thus it can be safely discarded. Then Eq. (3) is equivalent to:
+In a classification problem we compute the posterior probabilities P  X  C est posterior. This is equivalent to defining a discriminant function g arithm for convenience.
+In order to achieve a discriminant value, one needs to compute the prior and likelihood terms. Prior probability P  X  C be estimated from the sample by counting. The critical issue is to choose a suitable distribution for the likelihood term tivariate normal distribution.
+ Computingdiscriminantvaluesforeachclas sandassigningtheinstanceto theclasswi th thehighestvalueisequivalenttousing 2.3. Quadratic discriminant for mean estimates. Also K prior probability estimations are needed. 2.3.1. Assumptions 1. Data sample is i.i.d. (independent and identically distributed). 2. Each class is formed by a single group, i.e. unimodal. 3. Each class has distinct R i and ~ l i . 2.3.2. Derivation
+Combining Eqs. (2) and (6) we get,
+First term can be safely dropped because it is a constant term in all discriminants. Then R their maximum likelihood estimates S i ; m i and b P  X  C i
+Rearranging terms we obtain and by defining new variables W i ; w i and w i 0 , the quadratic discriminant is obtained. where 2.4. Linear discriminant both classes. This means classes can have any orientation with respect to axes but aligned to each other. The number of  X  K d  X  and for priors K parameters should be estimated. 2.4.1. Assumptions 1. Data sample is i.i.d. 2. Each class is formed by a single group, i.e. unimodal. 3. Each class has a common R and distinct ~ l i . 2.4.2. Derivation Assumption 3 states that classes share a common covariance matrix. The estimator is calculated as
+Placing this term in Eq. (9) we get
+Note that now the first term of the equation and the first term in the parenthesis becomes common in all discriminant and can be safely dropped and it reduces to which is now a linear discriminant in the form of where 2.5. Naive Bayes
+This model does not take the correlation of the features into account and measures the deviation from the mean in terms Bayes, d covariance,  X  K d  X  mean and K prior parameters should be estimated.
+ 2.5.1. Assumptions 1. Data sample is i.i.d. 2. Each class is formed by a single group, i.e. unimodal. 3. Each class has a common R with off-diagonal entries equal to 0, and distinct ~ l 2.5.2. Derivation
+Assumption 3 states the independence of features by using a diagonal covariance matrix. Then the model reduces to a univariate model given in Eq. (20). 2.6. Weighted Naive Bayes written as the sum of univariate normal distributions of each attribute (See Eq. (20)).While assuming the independence can be written as in Eq. (21) [6,27] .
+
+Now that we have introduced another parameter, we should find a way of estimating it accurately. For this purpose we propose eight heuristics, which are explained in the next section. 2.7. Attribute weight estimation
+We propose 8 heuristics mostly derived from attribute ranking techniques in order to estimate weights for the static code attributes. We compute the rank values for the attributes and then derive weights by normalizing over the sum of all rank is given in Table 1 .
+Among proposed heuristics, GainRatio (GR) and InfoGain (IG) are mainly used in decision tree construction to determine (CE) and Kullback X  X eibler (KL) Divergence.
+ In defect prediction context, these heuristics correspond to the following: Given an attribute A, (see Table 2 ).
+KL measures the similarity between the distributions of defective and nondefective modules. The more different the dis-tributions, the higher the weight attribute A has.
+ OddsRatio measures whether defective modules are more likely to occur than the nondefective modules.
+LogProb is the logarithm of the ratio of probability of a module being defective over probability of a module being nondefective.
+
+ExpProb is the exponentiation of the difference of probability of a module being defective and probability of a module being nondefective.
+
+CrossEntropy is the average number of bits needed to differentiate between the defective and nondefective module distributions.
+
+We should report a deviation for calculating the weights when using the principal component analysis (PCA) based heu-portion of the variance explained. Eigenvalues are denoted as k of the corresponding eigenvector elements in all principal components as given in Eq. (23).
+Assigning weights with these heuristics takes linear time. On the other hand, ranking the attributes with these methods formance with each candidate subset. We expect to observe that the attributes that are discarded by the subset selection methods would have relatively small weights than the selected attributes. 3. Datasets
+We have evaluated 8 public datasets that are obtained from NASA MDP Repository [18]. These datasets are accepted to reflect the common industrial software engineering practice [13]. Sample sizes of the projects vary from 125 to 5589 mod-zero are assumed to be defective.
+ ware metrics that are directly extracted from source code. They give indications about the size and the complexity of the implemented code. These features can be organized into three main categories and each category of metrics use a different complex than LOC metrics. They give estimates about the code complexity based on program control flow and readability of the code, respectively.
+
+As mentioned, these projects are from software developed in different geographical locations across North America (NASA). Within a system, the sub-systems shared some common code base but did not pass personnel or code between
+The NASA data was collected from across the United States over a a period of five years from numerous NASA contractors working at different geographical centers.
+ flight control modules (i.e. Attitude Control).
+
+The data sets also represent a wide range of code reuse: some of the projects are 100% new, and some are modifications to previously deployed code.
+ summary, NASA uses contractors who are contractually obliged (ISO-9001) to demonstrate their understanding and usage of current industrial best practices.
+ 4. Performance measures
+We have used probability of detection (pd) and probability of false alarm (pf) as the performance measures in order to be values. Since we need to optimize two parameters, pd and pf, a third performance measure called balance is used to choose the optimal (pd, pf) pairs. balance is equivalent to the normalized in a ROC curve [13].
+
+Zhang and Zhang argue that using (pd, pf) performance measures in imbalanced classification problems is not practical leading to determine the better predictor [14]. They also give examples of low precision predictors that are in use in SE that it would not defeat the purpose of defect prediction as Zhang and Zhang claims [28].
+
+In addition, we would like to point out that balance performance measure should be used carefully for determining the with the same balance value have the same practical usage. As mentioned above, domain specific requirements may lead us to choose a predictor with a high pd rank although it may also have a high pf rank. 5. Experiment design fore, we perform log-filtering as a preprocessing step in all our experiments as done by Menzies et al. [13].
+The experimental design follows the framework suggested as a baseline by Menzies et al. [13]. We have also reproduced these experiments on NASA datasets for comparison purposes. We have used 10-fold cross-validation in all experiments.
+In order to detect any skewness in the distribution of the results, we also include box-plots when necessary. 6. Results 6.1. Independence of attributes assumption
+Our goal in this experiment is to compare the NB, LD and QD performances in order to find out whether relaxing the inde-pendence assumption improves prediction performances. LD and QD model the correlations among attributes, whereas NB bal measure after 10 10 holdout experiments are given in this table.
+The  X  X ubset Selection X  columns are the replication of the baseline experiment by Menzies et al. [13]. In their work, Men-pre-processed with PCA, problems due to singularity are observed, preventing us to obtain results from LD and QD models
+We have carried out experiments with 5 X 30 principal components and observed that in all cases 5 principal components per-form as well as 30. Therefore, we report our results after reducing the dimensionality of data to 5 principal components the next experiment, where we analyze the equal importance of attributes assumption.
+
+Please note that, for each dataset we compare six different methods, i.e. [PCA, Subset Selection] [QD, LD, NB]. The sig-forming pairwise t -tests.
+ than subset selection, we would advice using PCA for software defect data.
+
+Comparing the three predictors after applying PCA, Naive Bayes (NB) wins five times, linear discriminant (LD) wins twice and quadratic discriminant (QD) wins only once. Even NB is the majority winner, it is observed that performances on some alent results can be obtained with NB. Therefore, we assert that there is no need to increase the complexity of the Naive Bayes by modeling correlations, and the independence assumption is not harmful for software defect data at least after PCA pre-processing.
+
+Nevertheless, overall performance of our approach numerically improves the best results reported so far. Menzies et al. and bal = 71. Our results give mean ((pd, pf)) = (76, 27) where bal = 74. 6.2. Equal importance of attributes assumption
+Our goal in this experiment is to compare the NB and WNB performances in order to find out whether relaxing the equal importance assumption improves prediction performances. NB assumes that each attribute is equally important for the clas-sification decision, whereas WNB treats them unequally by assigning weights. (pd, pf, bal) results of 100 experiments for 5.
+ cross validation folds and their results are similar to each other as expected.
+ on these datasets so far. InfoGain and GainRatio heuristics achieve higher pd and pf values compared to NB. We argue that and GainRatio based heuristics may be preferred over NB.
+ respond to the 25% and 75% quartiles and the line in the middle of the box is the median. The notches around the median centered between 25% and 75% quartiles. In most datasets, we observe such skewness. Another observation is that the are less than or equal to that of Naive Bayes.
+
+We have also analyzed the weight assignments to 38 metrics available in the NASA datasets. We observe that some met-have any discriminative power and they are eliminated by the weighting approach. Also some metrics ( X  X arameter Count X  butes form a subset of the set of attributes that Menzies et al. reported for subset selection [13]. These validate our expectation of observing relatively small weights for attributes that are discarded by subset selection. 7. Conclusion and future work In this research software defect prediction is considered as a data mining problem. We analyzed the validity of Naive tions of Naive Bayes we have achieved models of different complexities. We have conducted several experiments in order to compare the performances of these models. We have also used several heuristics in order to estimate the weights of attri-butes based on their relative importance.
+Our results shows that the independence of attributes assumption in Naive Bayes is not harmful for software defect data term is linear and the weights can be assigned using several heuristics. Furthermore, the weighting scheme removes the need for feature subset selection by favoring informative attributes.
+
+We conclude that either pre-processing software defect data with PCA or using weighted Naive Bayes should be preferred rather than subset selection for Naive Bayes models. Both approaches perform better than or equivalent to standard Naive the weighted approach.
+ phase. In this sense, test resources can be managed more efficiently. Additionally, many companies in the software market defectiveness of the modules and can be considered in code reviews.
+ The contributions of this research are two folds:
+Replication experiments are scarce in software engineering domain. However, as in any domain, where empirical studies This research is not only a replication study, but also an extended analysis of the assumptions of the baseline research. practice, we felt obliged to analyze its assumptions to improve the performance of defect predictors in real-world appli-cations. The necessity of this work stems from our collaborative work with our industrial collaborators, who ask for min-imum cost-maximum performance models to produce high quality software. Our research, at the first glance, may seem can not be under estimated. We believe that our research is relevant to every entity that depends on software either and all research that aims at optimizing the processes of these fields.
+
+Future work is to measure attributes of module complexities by taking the software structure into account. Current static code attributes measure the complexities of modules independently, whereas these modules are not independent of each other. We think that attributes incorporating the communications among modules would lead better prediction performances.
+
+References

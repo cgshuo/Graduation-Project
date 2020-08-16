@@ -1,0 +1,65 @@
+ and it seems difficult to compare probabilities that were obtained with different units. For instance, the ratio of the number of human error occurrence upon the number of solicitations of the same tasks cannot be compared with a ratio of the number of human error occurrence upon time unit.
+When the human error methods consist in assessing the risks associated to the human errors, they include a measure of the human error consequences. Here again, the units taken for the consequence assessment are not always clearly defined.
+During the task analysis and the tasks modelling processes, these methods do not take into account all the dependencies between tasks such as functional dependencies ( Vanderhaegen et al., 1994 ), time dependencies ( Vanderhaegen, 1999 )or causal dependencies ( Vanderhaegen, 2004 ).
+
+Results obtained with the human reliability analysis methods are often not homogeneous ( Swain, 1990 ; Kirwan, 1997 ), are limited to unintentional human errors and are off-line meth-ods ( Vanderhaegen, 2003 ).
+ methods deals with lapses, mista kes and faults. These kinds of account.
+
+Comparison between a priori risk analysis and a posteriori analysis reveals some differences. These differences may be explain by violations commissions and a gap between the conditions of use of the system at the design stage and the real conditions of use constrained by the context (evolution of productivity demand, variability of crew, etc.) ( Amalberti, 2001 ; Rasmussen, 1997 ; Fadier and la Garza, 2007 ). considers the success of the behaviour, and the result of the behaviour, and the result is denoted CF. These evaluations are done by human operators and constitute a sort of risk evaluation
+CS and CF are vectors. The analysis of a human operator X  X  behaviour can integrate or ignore the possible interference of other behaviours by the same human operator or by other human the designer-specified behaviour-evaluated (i.e., a non-barrier removing, NBR) using CS(NBR) and CF(NBR)  X  and the barrier-removal behaviour  X  evaluated using CS(BR) and CF(BR). Benefits, costs and deficits are positive values. Given CS(NBR),
+CF(NBR), CS(BR) and CF(BR), the vectors B(BR), C(BR) and D(BR) can be calculated as follows (cf. Eq. (1)): 8 i ,  X  1  X  if  X  CS  X  BR  X  i CS  X  NBR  X  i  X  4 0 then B  X  BR  X  i :  X  CS  X  BR  X  i CS  X  NBR  X  i , and C  X  BR  X  if  X  CF  X  BR  X  i CF  X  NBR  X  i  X  o 0 then D  X  BR  X  i :  X  CF  X  NBR  X  i CF  X  BR  X  i else D  X  BR  X  i :  X  0 where i is the criterion considered.
+
+The possibility to predict the barrier removing by observing objective data has been already studied ( Vanderhaegen et al., 2009 ). The context of this study was the car driving. The 3. Barrier removing prediction based on iterative learning control approach
+The reinforcement is a major function of iterative learning control ( Bucak and Zohdy, 2001 ; Wang and Usher, 2005 ; Duan paper proposes two approaches using two different process of reinforced. For the second one, knowledge used by the tool is reinforced.
+
+The two approaches aim at predicting intentional human error based on the iterative learning control concept.
+
+The principle of the iterative learning control approach is decomposed in 3 steps: 1. to calculate the output u n i regarding the input e i by a predictive tool, 2. to evaluate the predictive tool output and 3. to correct the parameters of the predictive tool.
+The input vector ( e i ) at an iteration I is composed by the benefits, costs and deficits: e  X  X  b , c 1 , d 1 ... b n , c n , d n  X  removal (BR) or a non-barrier removal (NBR) ( Fig. 1 ).
+In the study presented in this paper, the prediction concerns the behaviour of a driver in a particular situation where a rule predicted behaviour is then compared to the real one. Depending corresponding to the choice that will produce the maximal utility value.
+
+Based on this reasoning, we developed the following global decision-making utility (DMU) model (cf. Fig. 2 BR decision-making tree).
+
+This tree can be translated into a mathematical model as shown below: Expected utility  X  Max  X  DMU  X  BR  X  , DMU  X  NBR  X  X  2  X 
+According to this equation, if DMU(BR) 4 DMU(NBR), then BR is highly probable.
+ The BR Utility value can then be calculated using Eq. (5): BRU  X  a to the benefits, costs and potential deficits by the human the potential deficits associated with the criterion j . updated regarding the difference between the prediction and the the errors on a , b and g values, which are e a , e b and e
+The BRU-based learning method is an iterative learning method based on the BRU value and designed to predict the deviate human behaviour.
+
+The BR prediction method is based on the following hypotheses:
+Hypothesis 1. if DMU(BR) 4 DMU(NBR), then the human opera-tor X  X  decision  X  BR.
+
+The BRU-based prediction method involves observing a human operator repeat the same task N times, noting his/her behaviour operator is faced with a barrier and is supposed to respect it.
+As explained before, each human operator decision corre-sponds to a BRU or NBRU value.
+
+The steps of our BRU-based behaviour prediction algorithm are: 1. to calculate the first BRU value (BRU( t 0 )); 2. to deduce the human operator X  X  corresponding decision; 3. to conclude or predict the human operator X  X  behaviour (BR or NBR); 4. to compare the predicted behaviour (PB) and the observed operator X  X  predicted behaviour in the i th repeated task.
+The ILC inputs are the BRU functions and the corresponding operator behaviours (i.e., removal or respect of the studied barrier). The ILC uses these data in its learning process to calculate the BRU( t  X  D t ) value, and so, to predict operator behaviour at time t  X  D t (cf. Fig. 5 ).
+
+According to our hypothesis, if BRU( t ) is higher than a given value, then the associated barrier will be removed. For each iteration, the algorithm increases the estimated BRU if this 3.2. Second approach
+The complete formalization of the second approach was initially proposed by ( Vanderhaegen et al., 2009 ). The system was previously used with objective data measured on a car vector and u i a previous prediction. The main function of the controller is the similarity function which is used to find the with real behaviour. The database is then modified by the way of a reinforcement function (function  X  R  X ).
+
+This system requires a similarity function noted S that iden-noted ( e , u ) for which e is similar to the input vector e value is used to find the vector e :
+When a vector e is found, its corresponding decision u is considered as the prediction of u i noted u n i .
+
+Then, the function S is adapted and integrates other para-meters. It aims at finding the vector  X  e  X  i 1 [ u  X  i 1 differences between the parameters of the vector  X  e i 1 , u  X  e , u  X  i -1  X  X  S  X  e i -1 , u i -1  X  , 8 X  e k , u k  X  A E i , J  X  e
+The algorithm of the S function may be given by function S ( e i , u i , E ) e :  X  e 1 u :  X  u 1 for k :  X  1 to Card( E ) begin if( : ( e i S u i ) T ( e S u ) T : 4 : ( e i S u i ) T ( e then endif end for return( e , u ) end function
+The obtained error e 1 is then processed by the function R in order to reinforce the impact of the occurrence of the vector  X  e , u i -1  X  , handling the weight parameters related to the vector  X  e , u  X  i -1  X  with a predefined function D that allocates a weight regarding the value e 1 ( Fig. 3 ):  X  e , u
+The error e 1 is equal to
+In a second step, the errors e 2 between the vectors  X  e , u  X  a  X  e x processed with the function R in order to obtain a new database based on the new vectors  X  e x , u x  X  X  R  X  e , u  X  and  X  e x  X  e , u
+ X  X  R  X  e , u  X  , 8 X  e , u  X  a  X  e  X  i 1 , u  X  i 1  X  ,  X  e
+The error e 2 is then equal to  X  X  e x i 1 , u x i 1  X  T  X  e , u  X  T  X  9  X  who has a driving license, driving alone more than 100 km a year and having 8 years of experience.
+
+These characteristics are used to describe the subjects and not to build a classification of them. The impact of the subject X  X  classes on their behaviours is not studied in this paper.
+During the experiments, drivers faced different situations and two configurations have been studied: 90 km/h in a rural context and at 50 km/h in an urban context.
+
+The driver SV is approaching an intersection where another car this vehicle coming from the right. 44 Subjects have participated to this experimental protocol.
+Barrier removal means that the drivers did not give way to the vehicle coming from their right. 19 subjects were confronted 2 times to the 2 configurations of right priority.
+
+For each situation, the following subjective data were collected: the criteria that drivers took into account when deciding whether or not to respect the different barriers, the drivers X  evaluation of the benefits and the costs of remov-ing the barrier and the drivers X  evaluation of the risk incurred by not respecting the barrier.
+
+The criteria were safety, freedom degree, time spent and took into account, a value from the interval [ 10, 10]. If the human operator chooses a negative value, i.e., a value belonging done by their human operators.
+
+The performance of the predictive algorithms is given by total number of prediction made.
+
+Such variability between humans is important because the prefer-and (2) reinforcement regarding the current and the previous knowledge.
+
+Moreover, the application of such approaches may be extended to other driving situations such as the respect of stop or other road signals. The future application of such work concerns the possible design of car driving support systems and commission on the driver decision. A second insight concerns the communication between cars. A car may alert another one that a violation will be certainly committed. In this case safety beha-viour can be activated (braking, avoidance manoeuver, etc.). References

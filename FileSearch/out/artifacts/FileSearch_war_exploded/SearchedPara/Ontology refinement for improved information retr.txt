@@ -1,0 +1,45 @@
+ 1. Introduction these ontologies are usually not optimized for IR tasks.
+ ated by the language model of the document. In our work, we rank the documents combining their models with a query we study mechanisms to improve ontologies to make them more effective in IR.
+ future work. 2. Related work topics. 2.1. Ontology refinement task developed by the ontologists.
+
+In semi-automatic approaches, the refinement algorithm aims to help the ontologist to find the relevant information; identify related terms based on statistical means.
+
+Velardi (2002) worked on the expansion of WordNet to the tourism domain. The idea is to extract new terms from text
+The idea is to find rules based on term variations for automatic expansion that are validated with the literature. 2.2. Query expansion
+QE techniques usually rely on knowledge resources such as thesauri and ontologies (Efthimiadis, 1996 ). However, the main difference between our approach and QE methods is that our queries are generated from ontology concepts instead expansion words is based on either a document collection or a knowledge source. 2.2.1. Collection dependent applying some combination function over them (e.g. Rochio or Ide). overcomes this problem, as LSI implies that related terms collapse under the same dimension. difficult to adapt to on-line systems. 2.2.2. Knowledge source dependent
+As mentioned before, knowledge sources have been used in IR. Voorhees (1994) used WordNet and a TREC collection and val performance. In addition, she noticed that each query has specific peculiarities that make the problem even more difficult.
+
+Ontology approaches to IR rely on the annotation of documents with concepts from the ontology (Kiryakov, Popov, Ter-formulated query since it is better adapted to our ontology refinement experiments. 2.3. Discussion (e.g. IR).
+
+In QE, collection dependent approaches might produce dependences among words denoting a conceptual relation that we background collection. However, in our approach we aim at estimating probabilities from our own ontology. 3. Ontology query model
+The main aim of the ontology query model (OQM) (Jimeno-Yepes, Berlanga-Llavori, &amp; Rebholz-Schuhmann, 2009 )isto produce an IR query from a set of concepts C selected by a user browsing the ontology. and LexT  X  C  X  returns the synset linked to a concept.
+
+In the OQM, we need to estimate P  X  w i j C  X  , that is, the probability of generating the word w other words, we want to estimate the probability of choosing the word w entropy:
+In this way, we can obtain the list of ranked documents for the information request expressed by C . 3.1. Estimation of the OQM a document and the probability of the word in a background document collection G . words they are composed of. We propose the estimation of the P  X  w the expansion P R (Bai, Song, Bruza, Nie, &amp; Cao, 2005 ) based on related concepts:
+The conceptual model CM considers the probability of the word w concept from C .
+ ability based on the ontology and the lexicon and not on the documents.
+
+Where t k 2 LexT  X  C n  X  ; C n 2 C r  X  C l  X  ( C r denotes the related concepts of a given concept) and C
+P  X  C n j C l  X  provides the probability of picking a concept C concepts using the frequency of the specific relation in the ontology. 4. Performance of OQM
+In this section we describe the experiments carried out to show the effectiveness of queries generated from a domain ontology. 4.1. A biomedical ontology database for the proteins and genes (PGN) and the GPSDB database as a source for PGN names.
+The resources are integrated into a common repository with a common representation (OWL Lite) that reduces the over-included in the Gene Ontology (they are not proper protein names). 4.2. Datasets action of proteins. These two datasets are presented in turn. 4.2.1. PGN-disease data set mark are categorized in five groups defined by generic topic templates (GTT). around 4 M documents between years 1999 and 2004, and a collection of 50 queries. 4.2.2. PPI data set example the BioCreative II. 2 fully curated than any other species.
+ numbers which can be mapped to concepts in our ontology. The average number of relevant documents per query is two. line abstract citations till September 2004, about 15 M documents. 4.3. Retrieval results p &lt; 0 : 10 and z indicates p &lt; 0 : 01).
+
+In Tables 1 and 2, we compare the language models (LM) with the relevance models (RM) (Lavrenko &amp; Croft, 2001), the OQM without related concepts (Onto) and the OQM considering the closest concepts (OntoR). Several k val-we can see, the query model without relations has the best performance over the other methods, this means that compared to the language models the query ontology model offers a better integration of the synonyms linked the concepts.
+ 4 with terms like protein and DNA. Terms denoting the yeast species are not present as the top terms. The results highlight several ontology issues that we want to address with the ontology refinement method: Ambiguous and redundant terms are not appropriate for retrieval because they add noise to the produced query model. Some concepts are expressed using different terms, collecting those synonyms may reduce the false negatives rate. cepts that can be linked to that term exist in the ontology.
+ 5. Lexicon cleansing more effectively the remaining documents. As the PGN-disease data set contains many relevant documents per query, we feedback as the baseline (PRF). In RF and PRF we have selected five documents per query. 5.1. Lexicon cleansing result method is based on the analysis of some of the relevant documents.
+ meno-Yepes, Pezik, &amp; Rebholz-Schuhmann, 2007 ).
+
+Compared to baseline methods, pseudo-relevance feedback does not produce an interesting result; similar to previous retrieval. 6. Ontology refinement results of the algorithm applied to the data sets. 6.1. Ontology refinement algorithm performance. 6.1.1. Flaw detector the ontology since the information carried by these terms needs to be properly included in the ontology. 6.1.2. Ontology refinement generator quence of operations that will integrate this term or relations to related concepts in the ontology. the existing concepts in the ontology  X  AddR  X  .
+ sented in the following section. 6.2. Information extraction for ontology refinement
+Term extraction performed in the flaw detector is done using the LTChunk shallow parser from the University of Edin-
+The identification of synonyms is performed using a rule based approach in our system since context based approaches nym identification and resolution we have used a simple and very effective algorithm that offers competitive results (Schwartz &amp; Hearst, 2003 ).
+ (Rebholz-Schuhmann, Arregui, Gaudan, Kirsch, &amp; Jimeno-Yepes, 2007) .
+ terns that are combined with bootstrapping to find more extraction patterns and hyponym/hypernym relations without a dictionary.
+ forms better in both datasets (more than 80% in F-measure). 6.3. Refinement results (cooc), pseudo-relevance feedback (PRF) or relevant documents (RF). In PRF and RF, we have selected five documents.
+In the PGN-disease, we can see that the system based on concepts (named entity recognition) and relevant documents obtain a larger improvement. On the other hand, the refinement obtained with the pseudo-feedback mechanism does not esting source of terms. In Table 8 , we find an example query and the proposed refinements. knowledge that we cannot identify using the heuristics presented in this section but based on a notion of relevance. 7. Conclusions
+The ontology query model presents an interesting performance and we plan to investigate on the different parameters and document models to obtain further improvement in retrieval effectiveness. the ontology to generate better queries.
+ false positives in top ranks.
+ investigate on the validity of this data and the implications in the retrieval performance. Acknowledgement
+This work was funded by the EC within the BOOTStrep (FP6-028099) Project and by the Spanish National Research Pro-gram Project TIN2008-01825/TIN.
+ References

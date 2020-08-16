@@ -1,0 +1,3 @@
+
+Evaluating multi-class learning strategi es in a hierarchical framework for object detection. Sanja Fidler, Marko Boben, Ale X  Leonardis. Results
+Objects are represented with a hierarch ical compositional shape vocabulary which is learned from images. We evalua te 3 different strategies for learning a hierarchical multi-class object vocabulary for object detection: independent , joint and sequential training . We explore and compare their computational behavior (space and time) and detectio n performance as a function of the number of learned object classes on several recognition datasets. Summary 10 classes. 2 classes.

@@ -1,0 +1,2 @@
+ Objective: Objective: Determine world state based on sensory input Determine world state based on sensory input
+Require: Require:  X   X  Optimal Optimal  X   X  , neural implementation, online, , neural implementation, online, robust, prediction, multisensory integration robust, prediction, multisensory integration

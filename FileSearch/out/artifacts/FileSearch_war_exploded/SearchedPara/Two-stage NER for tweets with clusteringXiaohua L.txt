@@ -1,0 +1,40 @@
+ 1. Introduction LL03 ( Tjong Kim Sang &amp; De Meulder, 2003 ), the data driven methods now become the dominating methods. 90.8% ( Ratinov &amp; Roth, 2009 ) to 45.8% on tweets ( Liu, Zhang, Wei, &amp; Zhou, 2011 ).
+The performance of current NLP tools drops sharply on tweets. For example, OpenNLP,  X  fit tweets.
+ tweets, which are all related to Elizabeth Taylor . 1. Elizabeth Taylor X  X  Unpublished Love Letters. 2. Elizabeth Taylor: Unpublished Pics. 3. mine-elizabeth taylor.
+ we consider all these tweets jointly.
+ refer to the same entity or different entities but of the same type. the strong baseline without the second round (or collectively) labeling, boosting the F1 from 75.4% to 82.5%.
+Our contributions are summarized as follows: of information in a tweet. without collectively labeling.
+ cludes our work. 2. Related work
+NER on tweets and two-stage labeling. 2.1. NER on non-tweets the-art system, e.g., the Stanford NER, can achieve an F1 score of over 92.0% on its test set. tors for different domains.
+ side and Outside of a chunk).
+ ungrammatical. 2.2. NER on tweets
+Finin et al. (2010) use Amazons Mechanical Turk service 4 runs a second round labeling on a group of similar tweets to harvest the redundancy in tweets. 2.3. Two-stage labeling lum, 2004 ), it is computationally more efficient and often achieves comparable results. ferent from news. 3. Task definition
+We first introduce some background about tweets, then give a formal definition of the task. 3.1. The tweets
+A tweet is a short text message with a limitation of 140 characters shared through Twitter,  X  X  http://bit.ly/bCsLOr  X  X  is a shortened link.
+ types. 3.2. The task tweets of other languages in a straight forward manner. 7 4. Our method discuss its core components. 4.1. Method overview schema is: ... Me O without O you O is O like O an O iphone U  X  PRODUCT length; Justin B  X  PERSON means  X  X  X ustin X  X  is the beginning of a person name while Bieber token of a person name.
+ ually annotated; ga stands for gazetteers which are used to get gazetteer related features; train labeling using cluster level features), respectively; o r puts similar pre-labeled tweets into the same group, and cs second round labeling. Note that different from train t , train level features (Section 4.3 ) into its model.
+ tweets presented in Section 1 . l s may output: mine O  X  O elizabeth O taylor O of the first two tweets are expected to be the same while the third to be updated to mine Algorithm 1. Two-Stage NER for Tweets.
+ Require: Input tweets i ; output tweets o .
+
+Require: Training tweets ts ; gazetteers ga . 1: Train tweet level labeler l s : l s = train t ( ts , ga ). 2: Train cluster level labeler l c : l c = train c ( ts , ga ). 3: Initialize pre-labeled results o r : o r =  X  . 4: for all tweet t in i do 5: Pre-label t : t l = l s ( t , ga ), o r = o r [ { t l 6: end for 7: Cluster pre-labeled results cs l = cluster ( o r ). 8: for all cluster c in cs l do 9: for all pre-labeled tweet t l in c do 10: Refine the labels: t r = l c ( t l , c ). 11: Output the refined result: o = o [ { t r }. 12: end for 13: end for 14: return o .
+ similar pair of clusters, until the similarity between such a pair is below a threshold a . is adopted to compute the similarity between two bag-of-words vectors, as defined in Formula (1) . 4.2. Model
+Both the tweet level labeler l s and the cluster level labeler l be an undirected model over sets of random variables y with x as the corresponded observation. If C ={ {y ques in G , then CRFs define the conditional probability of a state sequence given the observation as: where / is a potential function and the partition function Z  X  x  X  X  given and fixed, so that:
+The model parameters are a set of real weights ^ ={ k k }, one weight for each feature.
+The linear-chain CRFs is a typical special case of CRFs, in which y ={ y x ={ x t } for t =1, ... , T . A first-order Markov assumption is made on { y edges, so that the potentials can be defined as follows: where k is the index of feature functions and { f k ( y t 1 if and only if y t has the label B  X  PERSON , y t +1 has the label L  X  PERSON , and x
+We first define a set of forward variables a t for t =1, ... , T in Formula (5) :
+Then a values can be computed by the recursion (7) : And b can be recursively computed, with the initialization b
+With a and b , we can verify that Formula (9) holds: chosen so as to maximize the conditional log likelihood l  X ^ X  X  weights, where c 2 (0,1) is the learning rate (experimentally set to 0.15).
+It can be verified that the partial derivatives of l ( ^ ) can be written as: where p ( y t , y t +1 j x i ; ^ ) can be computed with Formula (8) .
+It is worth mentioning that while training the cluster level labeler l function cluster , and for each tweet cluster level features are then extracted. d variables for t =1, ... , T :
+This yields the Viterbi recursion: with initialization d 1 ( j ; x , ^ ) = max / 0 ( y 0 , j ; x , ^ ). While computing d so that we can get y  X  recursively: y t  X  OPT t  X  1 ; y t  X  1
+Note that the l c requires cluster level features while labeling tweet t which denotes the cluster that contains t l . 4.3. Features collectively contain over 1.5 million entities. The details of these three kinds of features are listed below. word prefixes and suffixes.
+ and previous labels.
+
+The cluster level labeler l c exploits all the features used by l tweets in the same cluster.
+ used here are mainly from a set of frequently-used words; rect/correct word pairs, e.g.,  X  X  X oooove/ X  X  X ove X  X , to correct common ill-formed words. 4.4. Discussion gazetteers. 4.4.1. Additional features may fit our NER task, for example the LSA models ( Guo et al., 2009 ). 4.4.2. Gazetteers quency or other evidence. 5. Experiments lines, including the one without conducting collectively labeling. 5.1. Data preparation
+For each group cluster level features are also extracted. 5.2. Evaluation metrics are evenly divided into five parts for 5-fold cross-validation.
+ 5.3. Baselines ified version of our system without the second stage labeling. Hereafter these two baselines are called NER voting strategy. Its final POS accuracy on our test dataset is 85.7% 2003 ) are used to extract linguistic features for the baselines and our method. 5.4. Results Table 1 shows the overall results for the baselines and ours (denoted by NER (with p &lt; 0.001), reaffirming the effectiveness of collectively labeling.
+Table 6 shows the overall performance of our method with various feature set combinations, where F with no significant improvement. 5.5. Error analysis ization component to handle such slang expressions and informal abbreviations. news.
+ ization technology is a possible solution to alleviate this kind of error. 6. Conclusions and future work the effectiveness of our method.
+ ical model to directly model the redundancy in tweets.
+ References

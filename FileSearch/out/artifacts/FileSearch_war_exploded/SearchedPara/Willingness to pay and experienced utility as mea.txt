@@ -1,0 +1,80 @@
+ 1. Introduction
+Information science has long recognized the contribution of subjective, affective or emotional aspects in user X  X  assessments of specific information objects retrieved from an information system (e.g., Borlund, intertwined with user-specific subjectivity.
+ cation of useful documents is then prone to inconsistency over time. In this light, any assumption that ful to their needs.
+ ments of happiness. He writes,  X  X  X eing pleased or distressed is an attribute of experience at a particular (p. 4).
+
+There is an increased research emphasis on the measures of affective reaction across multiple disciplines 2005 ). This paper introduces an approach to instant measurement of document evaluation in information ( Fischhoff, 2000 ), and as potential proxies for instant utility. 1.1. Willingness-to-Pay (WTP) gest the use of monetary units for determining the value of retrieved documents, with positive monetary amounts assigned to good documents and negative amounts assigned when users would rather avoid encoun-ter with a document. According to Cooper, system utility may thereby be gauged by summing both positive and negative amounts users assign to individual documents.
+
+This measure may be of limited value as an estimator of real economic value and should not be interpreted equate with such goods and services ( Kahneman, Ritov, &amp; Shkade, 2000 ). Kahneman (2000) demonstrated ria, good/bad, in response to a specific stimulus condition.
+ libraries ( Aabo, 2005 ).
+ 1.2. Experienced Utility (EU) opment of Experienced Utility (EU) and approximate measurement of objective well-being based on the sum-eman derives the connection between affect and economic value from the late 18th century utilitarian iable experiences of pleasure or pain across moments of time. Bentham conceived utility as the  X  X  X overeign
+Kahneman, Wakker, and Sarin (1997) show its productive use for understanding irrational behavior, a prob-lem von Neumann and Morgenstern (2004) were unable to demonstrate through their outcome-based decision utility ( Bannock, Baxter, &amp; Davis, 2003 ).
+ sible. Kahneman (1999) contrasts objective happiness, potentially measured through a temporal mapping of such real time assessments, with subjective happiness or well-being,  X  X  X ssessed by asking respondents how happy they are X  X  (p. 5). Development of EU is grounded in a series of studies conducted by Kahneman and
+Schreiber &amp; Kahneman, 2000 ). Research reported in one of the studies showed the colonoscopy patients X  reports of pain obtained from each patient during the experienced colonoscopy procedure ( Redelmeier &amp; Kahneman, 1996 ).
+ engagements with information sources may potentially allow us to predict individual differences between users X  future information choices. 2. Development of instant affective document evaluation approach
+WTP and EU both offer measures of the bidirectional quality and intensity of users X  feelings collected ative monetary amount in a response box. Positive monetary amounts signal a good or desirable document, while negative amounts are associated with bad or undesirable documents, namely ones the user would rather slide-bar, is automatically recorded as the user X  X  rating of a document X  X  information value. pre-identified documents through WTP and EU assessments of each document. We expected that participants X  attempts to answer the following questions: What reasons did participants provide for assigning WTP and EU values?
+Based on these reasons, what do WTP and EU measure in the context of website evaluations? 3. An informal study of usability
+The data were collected over the six-month period. Participation in the study was voluntary and anony-mous. The study was advertised through the mailing lists of the School of Library and Information Science ety for Information Science 2005 annual meeting. Anyone familiar with this research through the above men-at any time.
+
+Thirty-two ( N = 32) participants evaluated the websites by assigning WTP and EU values, thirty out of the failed to evaluate the websites. Table 1 provides demographic information about the participants and their web use history.
+ ticipants were presented the task of answering the question:  X  X  X n what year and for how much did Howard were asked to approach this task with an expectation that the correct answer would result in a good grade, had with the document, and (2) rating their feelings about each document. Since the goal of the experiment sites as possible even if they thought they had found the correct answer.
+ study. These nine sites were identified through a Google search using keywords  X  X  X oward Hughes X  X . The nine obtained from the average scores coders assigned to each assessed document. Readability was determined by running website texts through the Microsoft Word Flesch Reading Ease test. Table 2 shows the properties of the nine websites based on the described methods of coding during the experimental design stage. Eight out of the nine websites contained a biographical essay about Howard Hughes on the first page. could have used Ctrl-F or other computer-based search commands to locate the answer.
+ volunteer participants completing the task. Because some documents included full, partial and no answer to with a partial or no answer to the question would support the hypothesis.
+ bars, and navigation buttons appeared identical. Links to the nine websites were presented to participants
+When participants linked to the experimental site they saw the nine links to the selected sites with brief or scanned the document, and then returned to the experimental page to make their evaluations before pro-ceeding to the next website.
+
+WTP was collected by asking participants to enter in a textbox the dollar amount they would be willing to where users were asked to explain the reason behind their WTP value.
+ the methodological recommendations for measuring self-reported subjective experiences by Larsen and Kahneman, 2000 ).
+
+Each slide-bar for soliciting EU was also associated with the larger textbox where users could input their reasons for the selected EU value.
+
+After reviewing and rating the documents, users went to the next page where they entered the answer to the cussed in this paper and are excluded from the presented analysis. 4. WTP and EU X  X reliminary results 4.1. Statistical analysis
+Participants were free to assign any dollar amount they wished in evaluating documents using the WTP measure. The values assigned across participants ranged between  X 100. Participants varied considerably in the WTP values were subsequently normalized on a scale ranging between [ 1,+1] with a mean of 0.
+The positive and negative ends of the bar were defined as  X 1. Thus, the EU values were already normalized because of the standardized scale.
+
+Across the participants X  responses, the WTP and EU values were statistically significantly correlated with answer and documents without the answer to the question regarding Howard Hughes.
+ about fifty percent (50%) of the variance of the assigned WTP and EU values remained unaccounted for. participants X  reasons for assigning WTP and EU. 4.2. Participants reasons for assigning WTP and EU
+Content analysis was used to identify the reasons participants provided for the WTP and EU values they Ruthven, &amp; Jose, 2005 ).
+ they classified themes within identified clusters (Cronbach X  X  Alpha
+We now discuss clusters that emerged from the 33 themes identified in participants X  accounts. Most of the ters: style-related, usefulness, interest, ambiguous, thoroughness, and reliability.
+
+We now describe six clusters in the order of their frequencies in WTP and EU comments. (A) Seven themes were grouped in a style-related cluster ( n = 174 (B) Two themes were merged into a usefulness cluster ( n = 134). Usefulness was the second frequently com-(C) Three themes make up the interest cluster ( n = 71): (E) Two themes make up the thoroughness cluster ( n = 66): 4.3. Frequencies and ratios of theme cluster for WTP and EU
+We now examine theme clusters that appeared in participants X  WTP and EU evaluative accounts. Table 4 shows theme cluster ratings, frequencies and percentages in WTP and EU comments.
+
+When we compare the rank ordering of theme clusters according to the frequency with which they appeared comments explaining WTP value. In EU-related comments, the usefulness cluster accounts for only 14.1% of all responses. Style (26.2%) was the second most frequently identified reason for assigning WTP. than twice as common in EU than WTP.
+ Thoroughness was ranked third of the WTP responses (12.9%) and fifth in the EU theme clusters (10.9%). Ambiguous comments and reliability clusters had comparable ratios and shared the same ranking in WTP and
+EU comments (forth and sixth rank respectively). 5. Discussion
+The usability study gathered data on participants X  reasons for assigning WTP and EU values to evaluated documents. Those data permitted use to examine research questions posited above and provided insight into the nature of WTP and EU measures in the context of website evaluations. 5.1. Participants X  reasons for assigning WTP and EU values
+Results found that participants provided 15% more comments when explaining the WTP values ( n = 294) than the EU values ( n = 256).
+ The most frequently mentioned reason for assigning WTP values was document usefulness (33.3% of all the
+WTP comments), followed by style (26.2%), thoroughness (12.9%), ambiguous comments (12.9%), interest (7.5%) and reliability (7.1%).
+
+The most frequently mentioned reason for assigning EU values was document style (37.9%), followed by interest (18.8%), usefulness (14.1%), ambiguous comments (12.1%), thoroughness (10.9%), and reliability (6.3%).
+
+The ratio of proportions of user comments associated with the usefulness and interest theme clusters showed the greatest overall difference between WTP and EU ratings (see Table 5 ). Comments associated with ratios).
+
+The ratio of proportions for the four remaining theme clusters showed style-related comments reported among the WTP and EU ratings. These results add to our understanding of differences between WTP and EU as measures of subjective document value. 5.2. Nature of WTP and EU measures
+Based on existing literature ( Cooper, 1973a; Kahneman et al., 2000 ), WTP and EU were initially viewed as assigning WTP and EU values in this study shows clear distinctions between these measures. WTP and EU true for comments coded as ambiguous. However, comments related to a document X  X  perceived interest and its usefulness differed significantly between WTP and EU. WTP values are most strongly associated with useful-ness comments, while EU values are most strongly associated with interest comments. This suggests that WTP evaluation of documents reflects the instrumental-rational value that an information object has in problem not, without reference to its potential as a tool.
+
+Thus, it can be argued that WTP and EU represent two parts of the evaluative construct that includes and is prompted by asking to assign a monetary value (WTP) to a document. The emotional aspect is linked about a document (EU). Participants X  ability to assign both types of values to the same documents suggests information seekers place more value on documents X  ability to answer a question, with WTP then an appro-the emotional reactions a document triggers, with EU then better measuring document value. Future studies measures for studying information evaluation.
+ of the study include: Participants were not tested for the prior knowledge of the subject. Participants X  prior knowledge about Howard Hughes biography might have had an impact on their evaluations.
+
+Experimental design did not accommodate randomization of the presented websites or participants; future studies should incorporate variables randomization in design.
+
+The two measures were solicited simultaneously because of the initial assumption that they both measured subjective worth. Future studies might solicit WTP and EU values through different instruments/groups of participants.
+
+While a post-test was initially planned, it was never implemented due to logistical difficulties; balanced design is recommended for future studies to achieve greater reliability.
+ by variance in equipment (computer, mouse, touch pad, the Web browser).
+
+Participants continued evaluations even after the correct answer was found. Future analysis might include vide evaluations only when the correct answer is found.
+ Although the reported results were based on data from an obviously superficial search task, the WTP and the types of reasons they offered through their comments about the specific value they assigned a document during the search process. 6. Conclusion WTP and EU were statistically significantly correlated. However, the unexplained variance between the two ilarities and differences in what WTP and EU measures.
+
+Analysis of participants X  accounts for assigning the two measures suggested that WTP reflects the rational value of an object in completing the task and EU reflects emotional, task-neutral reaction to the document
+WTP and EU measures can be used simultaneously for identifying parameters of information objects that affect user choices. WTP and EU provide evidence for discriminating between  X  X  X ood X  X  and  X  X  X ad X  X  documents example, WTP might be more appropriate for evaluations where accuracy, relevance, and other aspects of a document or a system are important in helping a user to resolve his/her information need. EU might be more important for a user.
+
+The two measures offer insight into human information seeking and valuation behavior patterns, and a bridge towards understanding the relationship between perceived and objective information value measures.
+Our experimental measures of WTP and EU have opened a window into the affective factors guiding user judgments about value of information and its usefulness to their needs. Kahneman and his colleagues have rience when the results of these measures are compared with recall-based reports of subjective experience, whether obtained through survey or interview. His work and that of many others raises serious questions standing of subjective experience and value. For information science, this point would seem to have clear methodological relevance for choices among relevance measures designed to assess the personal value a doc-ument holds for its user.
+
+Further development and testing of the approach and measures for their potential use in information perceptions of documents in internet searches that yield large and multiple document lists in real world situations.
+ Acknowledgements
+The authors wish to thank everybody who helped to design the experiment and volunteered to participate research was partially funded by the Texas Center for Digital Knowledge (TxCDK) grant. Appendix A Ranking order WTP Experienced utility 1 Answer + 43 Organization + 21 2 Answer 38 Interesting + 18 3 Short 22 Presentation 17 4 Richness + 19 Ads 17 5 Richness 17 Readability + 15 6 Source + 16 Short 14 References Appendix A ( continued ) Ranking order WTP Experienced utility 7 Organization + 16 Answer 13 8 Presentation 14 Richness + 13 9 Irrelevant 13 Richness 13 10 Ads 13 Presentation + 13 11 Source 12 Novelty + 13 12 Presentation + 10 Novelty 12 13 Organization 7 Irrelevant 11 14 Long 5 Organization 11 15 Answer.5 5 Answer + 10 16 Readability + 5 Source + 10 17 Readability 5 Source 9 18 Interesting + 5 Illustration + 9 19 Links + 5 Links + 8 20 Like + 4 Long 7 21 Like 4 Readability 7 22 Links 4 Links 7 23 Interesting 3 Like + 6 24 Personal 3 Relevant 4 25 Novelty 3 Specific + 3 26 Relevant 2 Like 2 27 Entertaining 2 Ads + 2 28 Specific 2 Interesting 1 29 Novelty + 1 Personal 1 30 Illustration + 1 Illustration 1 31 Specific + 1 Answer.5 0 32 Illustration 0 Entertaining 0 33 Ads + 0 0

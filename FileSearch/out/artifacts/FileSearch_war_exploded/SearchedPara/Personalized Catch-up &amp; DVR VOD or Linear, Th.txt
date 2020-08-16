@@ -1,0 +1,3 @@
+ The expansion of TV services such as DVR and, more re-cently, Catch-up have removed the temporal constraint typi-cal of the Linear  X  X ppointment X  TV enabling users to watch content they love at any time and on-demand. However, the DVR and Catch-up TV libraries, while providing a con-venient time-shifted  X  X n-demand X  consumption, are indeed composed by content previously aired on the Linear TV, so that they have more in common with Linear TV than they have with VOD.
+
+In this talk we will present and discuss the main chal-lenges and some possible solutions to personalize the user experience with content from DVR and Catch-up TV, such as: (i) The consumption pattern is strongly affected by the (ii) Some content is consumed serially and follows seasonal

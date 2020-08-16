@@ -1,0 +1,74 @@
+ 1. Introduction result.
+ require several iterations.
+ thresholds ($10 million for stores and $5 million for products)
+So we might seek  X  , which is the largest value of k so that the diamond is not empty. This value algorithms for finding  X  (starting in Section 3.3).
+ review related work. 2 2. Motivating examples surprised us in different applications. 2.1. Bibliometrics example selected venues each have at least one publication from selected authors.  X  result remains true if we compute the diamond corresponding to prolific publications each in retained venues, and retained venues each with at least and computer-aided design, who publish in 7 venues.
+ publications the most frequent keyword is  X  synchronous  X  11th, globally. 2.2. Net fl ix example 2.3. Star Schema Benchmark example result is not surprising. 3. Properties of diamond cubes on the parameter  X  for both COUNT and SUM -based diamond cubes. 3.1. Formal model with diamonds. For clarity, all terms are defined in the following paragraphs. dimensions are location, time and product. Each dimension D dimension. Without losing generality, we assume that n 1  X  database relation, and the number of dimensions is denoted by d .
+
+A cube is the 2-tuple ( D ; f ) which is the set of dimensions { D
+D  X  D 2  X   X   X  D d to R  X  X  fg , where  X  represents undefined. Fig. 2 a shows a cube with three dimensions. A cell of cube C is a 2-tuple (( x 1 , x 2 , ... , x d )  X  value v  X  R , in which case we say the cell is an allocated cell . Otherwise, the measure is several measures. Also, measures may take values other than real-valued numbers
+Fig. 2 b is a slice of the cube presented in Fig. 2 a. cube, and, as a function, it is a restriction to the corresponding subset of cells.
+An aggregator is a function,  X  , that assigns a real number to a set of cells
+SUM (slice i )= v 1 + v 2 +  X  + v m where m is the number of allocated cells in slice
+A slice S  X  is a subset of slice S if every allocated cell in S non-decreasing if S  X   X  S implies  X  ( S  X  )  X   X  ( S ). Similarly,
+Our formal model maps to the relational model in the following ways (see Fig. 3 ):  X   X 
+An allocated cell is a fact, i.e. it is a distinct record in a fact table.  X 
+A dimension is one of the attributes that compose the primary key. 3.2. Diamond cubes are unique stores must have total sales over 1 million dollars. We call such threshold conditions carats.
+De least k . That is, for every slice x , we have  X  ( x )  X  k .
+
+Note that if a dimension has k carats, it necessarily has k
+Given two subcubes A and B of the same starting cube, their union A are contained in the corresponding dimensions of B .
+ For monotonically non-decreasing operators (e.g., COUNT , as the next proposition shows.
+ dimension D i has min k i ; k  X  i carats along dimension D
+Proof. The proof follows from the monotonicity of the aggregator. satisfying a given set of carats. We call such a subcube the diamond.
+De fi nition 3.2. The k 1 , k 2 , ... , k d -carat diamond is the maximal subcube having k is, any subcube having k 1 , k 2 , ... , k d carats is contained in the diamond. computation of the diamond might be NP-hard or ill-defined. For instance, when negative measures, there may no longer be a unique solution to the problem for the cube in Fig. 4 .
+
+Sometimes we require the same carat k along all dimensions. To simplify the notation, instead of writing write  X  k -carat  X  . 3.3. A priori bounds on the carats determine a limited range of possible values.
+ with many allocated cells should have a large  X  , and the following proposition makes this precise.
+Proposition 3.2. For COUNT -based carats, we have  X   X  (| C |
+Suppose that a cube C of dimension at most n 1  X  n 2  X   X   X  n k  X  at most k  X  1 allocated cells. Remove it. This iterative process can continue at most allocated cell left: hence, there are at most ( k  X  1)  X  i
+By definition of  X  , we have that the cube does not contain a non-empty
+Eq. (1), we have that | C |  X  1+  X   X  i =1 d ( n i  X  1). Solving for Based on this lower bound alone, we compute  X  efficiently (see Section 5.4). For a related discussion on see Appendix A . 4. Algorithms compute diamonds:  X  We implemented a custom programme in Java that loops through the cube checking and updating the attribute values in each dimension until it stabilises (see Section 4.1).  X  We also implemented an algorithm using SQL (see Section 4.2).
+ than required (  X  is SUM ), or insufficient allocated cells ( meet the condition in every slice remain: a diamond.
+ Algorithm BASIC. Algorithm to compute the diamond of any given cube by deleting slices eagerly. correctness of any such variation is guaranteed by the following result.
+Theorem 4.1. Algorithm BASIC is correct, that is, it always returns the k not the empty cube, then dimension D i has at least aggregated value k cube.
+ time when one of the attribute values of dimension dim of C belonging to A at the instant before the attribute is deleted, with all attribute values deleted so far. We see that C k , k 2 , ... , k d -carat cube and therefore, slices in C  X  and that A is maximal.  X  4.1. Custom software used a typical laptop computer with 8 GiB of memory. When we restricted the amount of memory available, slowed, but our custom Java software still out-performed the database management systems. cube can be stored in an external file whilst the important large to store in main memory, would entail many expensive disc accesses. Even with the
+Algorithm EMD (External-Memory-Diamond-builder) employs d arrays, a  X  aggregate of each slice. This update can be executed in constant time for aggregators such as
+Algorithm EMD, the update is computed as a j ( x j )=a j ( x Algorithm EMD. Diamond dicing for relationally stored cubes. With each iteration, less data is processed. cells when more than half have been marked as deleted (  X  version was implemented and we refer to this algorithm as IMD (In-Memory-Diamond-builder) in Section 5 . 4.2. An SQL-based implementation iterations without computing the diamond itself. Consider Fig. 5 and the corresponding 2-carat
+ X  ( n ) and stopping after o ( n ) iterations results in a poor approximation with the true 2-carat diamond has 4 attribute values and 4 allocated cells. R stabilises.
+
+GROUP BY clauses. 4.3. Complexity analysis iterations as possible.
+ iteration.
+The value of k relative to  X  does, however, influence I . Typically, when k is far from required to converge to the empty cube.
+ cube decreases initially. 5. Experiments experimentally. 5.1. Hardware and software estimated reading speed of 86 MB/s.
+ Pentaho [13]. The column-store experiments were conducted with MonetDB 11.11.5. were MySQL Connector/J 5.1.21 and monetdb-jdbc 2.3.
+
+These database systems handle index creation differently:  X  on all columns to speed-up the GROUP-BY computations.  X  data compression techniques, including dictionary encoding for all strings, reduce the memory footprint. 5.2. Data used in experiments under varied conditions and on many different types of data. 5.2.1. Real data
+Five of the real-data sets were downloaded from the following sources: 1. Census Income: http://archive.ics.uci.edu/ml [16] 2. DBLP: http://dblp.uni-trier.de/xml/ 3. Netflix: http://www.netflixprize.com [17] 4. TWEED: http://folk.uib.no/sspje/tweed.htm [18] 5. Weather: http://cdiac.ornl.gov/ftp/ndp026b/ [19] from the King James Bible data follows.
+ three or fewer letters. Occurrence of row w 1 , w 2 , w 3 representative of large cubes that might occur in text-mining applications. each row and the process of creating KJV-10 was terminated when 500 million records had been generated 19:30. Cube B6 was extracted from KJV-10. The statistics for all six cubes are also given in Table 2 . 5.2.2. Synthetic data distributions:  X  uniform  X  cubes U1, U2, and U3.  X  power law with exponent 3.5 to model the 65-35 skewed distribution  X  power law with exponent 2.0 to model the 80-20 skewed distribution
+Details of the cubes generated are given in Table 3 . 5.3. Preprocessing step would have an effect on our implementation of Algorithm EMD, we chose two cubes significant difference in execution times when the cubes were sorted by different dimensions. which algorithm is to be used.
+ comparison, sorting the Netflix comma-separated data file 5.4. Finding  X  kappa for COUNT -based diamonds input.
+ number used by Algorithm EMD to compute the  X  -carat diamond given moderate dimensionality. We experimented with sampling to provide an improved estimate for these cubes. In Table 6 we see that even with just 1% of the data, the estimate for be used as an upper or a lower bound for the binary search. 5.5. Finding  X  kappa (C) for SUM -based diamonds
+From Proposition A.2, we have that min i ( max j (  X  (slice bound is used to find  X  . Statistics are given in Table 5 b. 5.6. Comparison of Algorithm speeds cubes of 20,000,000  X  40,000,000 records in less than a minute.
+ cube, NF3.
+ running times of all our algorithms. We restricted the amount of memory to 2 GiB and processed cube NF1:  X 
+EMD was 2.6 times slower (1.5 minutes).  X 
+MonetDB was 10 times slower (9 hours).  X  MySQL was forcibly terminated after 23 hours.
+ time are required to process k -values that only slightly exceed of iterations and nearly twice the time to compute the (empty) k =673-carat diamond than to compute the that are also almost in the diamond. 5.7. Diamond size and dimensionality
+The size (in cells) of the  X  -carat diamond of the high-dimensional cubes is large, e.g. the
+COUNT -based diamond was generated for each of the synthetic cubes (except SSB1). Estimated for each cube are given in Table 8 . The  X  -carat diamond captures 98% of the data in cubes U1, U2 and U3 by the diamond dice. 5.8. Iterations to convergence In Section 4.3, we observed that in the worst case it could take practise, this was not the case (see Table 5 and Fig. 7 ). All cubes converged to the the exception of the small cube TW1, which took less than 7% 1005-carat diamond.
+ to see how quickly the diamond converges to an empty diamond when k exceeds  X  very like a diamond but for the skewed data cubes  X  S1, S2, S3, SS1, SS2 and SS3 6. Related work Neighbours and Outliers ( Section 6.3). However, they differ from diamonds in several ways. Except for 6.1. Trawling the Web for cyber-communities Our approach is a generalisation of their two-dimensional seeking a perfect two-dimensional diamond cube (all cells are allocated). Their run too slowly (see Ref. [26]). 6.2. Skyline operator
+The Skyline operator [27,28] seeks a set of points where each point is not aggregators are monotone (e.g., like SUM ). In contrast to diamonds, MOOLAP results do not form a dice. 6.3. Sub-sampling with database queries include top-k and nearest-neighbour queries. 6.3.1. Top-k
+Another query, closely related to the skyline query, is that of finding the improve performance [30] by reducing the size of the result set. 6.3.2. Nearest neighbours locations would attract him? Nearest neighbour queries require a specific distance measure. 6.3.3. Outlier identi fi cation can be computed. It also serves to highlight possibly interesting data in a large data cube. 6.3.4. Iceberg queries 6.4. Formal concept analysis Concepts can be partially ordered by inclusion and thus can be represented by a lattice as in Fig. 9 b. Galois lattices are related to diamond cubes: in effect, a Galois concept is a perfect An example is given in Fig. 10 .
+
+Galois concepts may be difficult to use. 7. Conclusion dimension in every data cube, there is only one k 1 , k 2 cube. We established upper and lower bounds on the parameter process the diamonds with k slightly greater than  X  is often twice that required to process the an increase in running time.
+ other approaches and our results confirm that this algorithm is scalable. 7.1. Future research directions the ideas to be explored in future work.
+ exploited in the computation of diamonds. This is also a potential avenue for future work. Appendix A. Bounding the carats for SUM -based diamonds
+For SUM -based diamonds, the goal is to capture a large fraction of the sum. The statistic, sum for which there exists a non-empty diamond: every slice in every dimension has sum at least
+Propositions A.1 and A.2 give tight lower and upper bounds respectively for Proposition A.1. Given a non-empty cube C and the aggregator
+Proof. The  X  -carat diamond, by definition, is non-empty, so it follows that when the  X  either  X  is greater than or equal to m .  X  sum, say S , then it cannot have more than S carats. We can determine a tight upper bound on shows.
+
+Proposition A.2. A tight upper bound for  X  is
+Proof. Let X ={slice j ( D i )| SUM (slice j ( D i ))= max to all other slices in X . Suppose  X  is greater than SUM ( x ) then it follows that all slices in this than SUM ( x ). However, x is taken from X , where each member is the slice for which its dimension, thereby creating a contradiction. Such a diamond cannot exist. Therefore, min bound for  X  .
+ measures are identical.  X 
+References

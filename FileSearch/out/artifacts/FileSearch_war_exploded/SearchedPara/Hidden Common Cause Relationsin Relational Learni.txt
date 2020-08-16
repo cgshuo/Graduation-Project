@@ -1,0 +1,1 @@
+  X  An entirely new family of rela tional models  X  Relations express hidden commo n causes  X  Information propagates through chains of training points  X  Classifiers with state -of -the -art performance  X  Easy -to -implement Gaussian process mod el

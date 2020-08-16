@@ -1,0 +1,66 @@
+ 1. Introduction and background
+Huffman X  X  classical algorithm ( Huffman, 1952 ) designs an optimal variable length code for a given distribution of frequencies of elements to be encoded. These elements can be simple characters, in which case this is a fixed-to-variable length code, but better compression can be obtained if the text at hand can be parsed into a sequence of variable length strings, the set of which is then encoded according to the probabilities of the occurrences of its elements, yielding a variable-to-variable length encoding.
+
+If one considers, however, also other aspects of variable length codes, not just their compression ratio, there might be incentives to revert back to fixed length codes. Decoding, for instance, is more complicated with variable length, as the end of each codeword must be determined. Variable length codewords carry usually also a processing time penalty, espe-decoding from any position in the text that can be randomly accessed.
+
+This led to the development of several compromises. In a first step, the optimal binary Huffman codes were replaced by a to implement.
+
+When searches in the compressed text should also be supported, Huffman codes suffer from a problem of synchroniza- X  identify the last byte of each codeword, thereby reducing the order of the Huffman tree from 256-ary to 128-ary. These parts of the text is Re-Pair ( Larsson and Moffat, 2000 ).
+
+This paper X  X  objective is to push the idea of the compromise one step further by advocating again the use of fixed length for an optimal set of variable length codewords to encode those elements; the inverse problem considers the set of code-of the text which should be encoded by those codewords.
+ tive to maximize the compression savings, or equivalently, using Huffman X  X  formulation, to minimize the redundancy. The encoding is done only once while building the system, whereas decoding is repeatedly needed and directly affects the re-sponse time.
+ ( Tunstall, 1967 ), which are variable-to-fixed length codes. In Section 3 , we suggest new algorithms, compare them with other variable-to-fixed length codes in Section 4 and describe experimental results in Section 5 . 2. Variable-to-fixed length encoding
+Consider a text of length n characters T = t 1 t 2 t n to be encoded, where t of the system. The objective is to devise a dictionary D of different substrings of the text, such that jDj of m dictionary elements, that is T = c 1 c 2 c m , such that is minimized.
+
+The size of the encoded text will be km , which explains why one wishes to minimize the number m of elements into which the text is parsed. The reason for adding the combined size of the elements in the dictionary without the sum, one could define one of the dictionary elements to be the entire text itself, which would yield m =1.
+More specifically, we are looking for an increasing sequence of integers which are the indices of the last characters in the parsed elements of the text, so that c c  X  t i j 1  X  1 t i j . Denote by  X  = j { c j , j =1, ... , m } j the number of different strings c of D themselves. Each parsed substring c j of the text, 1 constraints are The number of possible partitions for fixed m is n 1 m 1 , and if one sums over the possible values of m , we get
+P lems of devising a code have also been shown to be NP-complete in Fraenkel and Klein (1994), Klein (2000), and Chrobak et al. (2005) . A natural approach is thus to suggest heuristical solutions and compare their efficiencies. the text appear independently from each other, the Tunstall code dictionary D of elements to be encoded is initialized as D R . As long as the size of D does not exceed 2 extensions instead, that is, one performs pieces, for example a greedy approach, choosing at each step the longest possible match. On the other hand, removing the constraint of unique encodability enlarges the set of potential dictionaries, which might lead to better compression.
+Tunstall X  X  procedure has been extensively analyzed ( Abrahams, 2001 ), and the assumption of independent character appearance has been extended to sources with memory ( Savari and Gallager, 1997, 1987 ). Our approach is a more practical induced by the model, we deal directly with the substrings that actually appear in the text and which can be processed possibly not appear at all in a real text; conversely, the probabilities of positively correlated strings like sibly even frequently, in the text.
+ and space requirements might not be an issue. The details of the suggested heuristics are given in the following section. 3. A new procedure for constructing a variable-to-fixed length code
+Given the text T = t 1 t n , we start by forming the set S of all the suffixes s acter not belonging to the original alphabet R and considered smaller than any other character to ensure lexicographical order. Each such string s i is unique and may be used to identify the position i in the text T . The strings s ordered left to right. Every node v of the trie is associated with a string s ( the labels on the edges forming the path from the root to node icographical order of the corresponding strings.
+
+This basic definition may yield a structure of size X ( n every node v that has only a single outgoing edge to a node w , both the node of the deleted edge to the right of the label of the edge e which entered a structure
+Each node v can also be assigned a frequency f ( v ), defined as the number of leaves of the subtree rooted at ment of labels and frequencies can be done in time linear in the size n of the text.
+
+The problem of constructing a variable-to-fixed length code, once the size 2 an appropriate subset of the nodes of the suffix tree and use the corresponding labels as elements of the dictionary. The in log 2 p bits. This is closely approached by an arithmetic encoder, and approximated in Huffman coding, because of the ability and the corresponding codeword length, but reversing the roles of what is given (codewords of length k bits) and what we are looking for (elements to be encoded), we conclude in our case that all the strings to be chosen should have approximately probability 2 k .
+ to be a dictionary item. This example can obviously be further extended.
+
+Second, in order to translate the desired probabilities 2
+We still shall base our heuristic on the frequencies f ( v occurrences. They can, nevertheless, serve as some rough estimate if one assumes that the overlaps mentioned above, which the leaves at exactly one edge.
+ downwards.
+ of the lower border.
+ to any of the borders are only outlined.
+ The following properties will be useful below.
+ Theorem. Given a compacted suffix tree with n leaves, and any cut C of the tree, we have underlying text n.
+ leaves in the tree R . Since all the leaves are counted exactly once in the sum, the result follows. h the lower border LB ( C ) form a dictionary D which ensures unique encodability.
+ contrary that there are two strings v and w in D such that n v and n w , respectively. Then n v is an ancestor node of n the path from the root to n w twice: once at the edge entering n definition of a cut. Thus no string of D is the prefix of any other.
+ encoded, we show that exactly one codeword can be parsed starting at the beginning of the remaining suffix t
+Consider a pointer pointing to the root of the suffix tree, and use the characters t the tree. For each character x read, follow the edge emanating from the current node and labeled by x . Such an edge must cut, is the next element in the parsing. h ple in Fig. 1 .
+ with estimated probabilities.
+ STT : Top-down construction of D
+D nodes on level 1 of suffix trie while jDj &lt; 2 k end while if jDj &gt; 2 k undo last assignment
+As alternative, the second heuristic, which we call DynC for Dynamic Cut, also works on the suffix trie, but traverses it left to right and constructs the lower border of the desired cut according to the local frequencies. One of the problems mentioned earlier was that one cannot estimate the frequencies without knowing their total sum. But because of the above Theorem, we know that if we restrict ourselves to choose the elements of the lower border of a cut, the sum of all frequencies will remain constant. We can therefore look for nodes f ( )  X  n 2 k .
+ nary. More formally: DynC : Left-to-right construction of D
+D ; target n 2 k cumul 0 scan the suffix trie in DFS order while jDj &lt; 2 k end while
+The updated target value is obtained by dividing the expected sum of the frequencies of the remaining elements to be added by their number. This allows the procedure to set the target higher than initially, in case some elements have been chosen with very low occurrence frequency.
+
+The strict compliance with the constraints imposed by deciding that D should be a complete prefix set turned out to be some heuristic, for example a greedy one, trying at each step to parse the longest possible dictionary element. table DT , which is accessed by 2-byte indices (in the case k = 16) forming the compressed text. Formally:
+Decoding of STT or DynC encoded text while ( i read next 2 bytes) succeeds
+For k = 12, in order to keep byte alignment, one could process the compressed text by blocks of 3 bytes, each of which decodes to two dictionary elements. 4. Comparison with other variable-to-fixed length codes We now turn to a comparison with other variable-to-fixed length schemes, in particular those based on the various
+Lempel X  X iv techniques, though these are usually implemented with variable length codings. But the encodings can easily be transformed to be of fixed length, yielding a tradeoff between compression efficiency and decoding simplicity.
+One of the Lempel X  X iv algorithms ( Ziv and Lempel, 1978 ), known as LZ78, and its popular variant LZW ( Welch, 1984 ) are principle, the dictionary could be extended even further, but erasing it and starting over from scratch has the advantage of allowing improved adaptation to dynamically changing texts, while only marginally hurting the compression efficiency use throughout log jDj bits for each of the pointers.
+
+The other LZ algorithm ( Ziv and Lempel, 1977 ), known as LZ77, produces an output consisting of a strictly alternating viously occurring sequence P which matches the sequence of characters C starting at the current point in the text, if the in Williams (1991) , aggregating them into blocks of 16 elements each.
+
+One of the challenges of LZ77 is the way to locate the longest matching previously occurring substring. Various tech-niques have been suggested, approximating the requested longest match by means of trees or hashing. We use here an adap-2 thus not possible to decode only selected short fragments.
+
+There are several criteria by which different coding techniques could be compared. Those mentioned in Brisaboa et al. the encoding time is also important, one can hardly justify a heuristic using a suffix tree. As to compressed matching, variable-to-fixed length encodings would generally perform equally badly: the problem is that a pattern to be searched concatenation of several elements, and the number of relevant concatenations might be exponential in the length of the can be found in Brisaboa, Fari X a, L X pez, Navarro, and L X pez (2010) . 5. Experimental results (King James version) in English, the French version of the European Union X  X  the punctuation signs, leaving only blank, upper and lower case letters,
+Table 1 compares the compression efficiency of the suggested heuristics with that of the Tunstall codes, for both k = 12, column headed expected gives the expected compression of the Tunstall code: let A  X 
+Tunstall dictionary string, where L is the set of leaves of the Tunstall tree, p contains many strings that are not really used. The column headed actual is the result of actually parsing the text with the given dictionary, giving quite similar results.
+ several bounds. Interestingly, on all our examples, compression first improves with increasing bound, reaches some optimum, and then drops again. This can be explained by the fact that increasing the bound leads to longer strings in the each category are boldfaced.
+ clearly better.
+
+A comparison of STT and DynC with other methods can be found in Table 2 . The sizes are given as a percentage of the size of the file compressed by Tunstall, corresponding to 100%, with a dictionary of 2 that this is not always the case.
+ number of encoded elements also to 2 16 , which is more than the number of words in the Bible. For the French and the excess words were encoded letter by letter, so that the total dictionary consisted of 2
+Table 3 is a comparison of timing results, measuring the decoding time of the entire file. The Huffman software used in than for Tunstall. On the other hand, the decoding of the variable length Huffman codes is more involved and takes on our tests about 2.5 times longer, even though the files are shorter than for the corresponding fixed length encodings. gested heuristics may be a worthwhile alternative to the classical Tunstall codes.
+ References

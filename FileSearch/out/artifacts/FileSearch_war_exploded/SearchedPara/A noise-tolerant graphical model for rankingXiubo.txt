@@ -1,0 +1,46 @@
+ 1. Introduction has gradually emerged.
+ takes in their relevance judgments. Besides, if one uses tools like Amazon Mechanical Turk the labels will be even more unreliable.
+ tically important to deal with the noises in the training data when performing learning to rank.  X  emphasized however).
+ distribution is query dependent.
+ The advantage of the probabilistic graphical model lies in three aspects. the observation that the difficulties of judging different queries vary a lot. by simply sorting the documents according to their scores.
+ show that the proposed approach can outperform previous approaches when training data is noisy. future work is discussed. 2. Related work posed, including Burges et al., 2005; Cao et al., 2007; Freund et al., 2003; Joachims, 2002 . ficient for learning. 3. A noise-tolerant graphical model for ranking data. For ease of reference, we name it the noise-tolerant ranking model (NTR for short).
+Before getting into the details, we first give some notations. Let q denote a query, n
+We use  X  x q ; ~ y q  X  to denote the data associated with query q in the training set, where x representing the feature vector of the i th document, and ~ y q 2f 0 ; 1 ; ... ; k 1 g ment ~ y q i representing the observed (noisy) label of the i th document.
+S  X  X  x q ; ~ y q  X  fg m q  X  1 , where m is the number of training queries. 3.1. Model the true labels, but to introduce a new (hidden) variable y q 2f 0 ; 1 ; ... ; k 1 g label of the i th document instead.
+ independent of x q given y q , we can decompose the joint probability into two parts, queries; and 2. P  X  ~ y q j y q ; c q  X  , the conditional probability of the observed labels given the true labels, where c parameter.
+ The aforementioned decomposition can be written as
+Then, we can write the likelihood of the training data S  X f X  x q ; ~ y q  X g we will omit the superscript q if there is no confusion. 3.2. Definition of P(y j x; x ) We use a conditional random field (CRF) to define the first conditional probability P ( y j x ; x ), where I ( ) is the indicator function, and Z  X  x  X  X  P y exp f ( x i x j ) x is, the higher the probability P ( y j x ) is.
+ rithms of learning to rank. More discussions on this connection will be made in Section 5.2 . 3.3. Definition of P  X  ~ y j y ; c  X 
+We define the second conditional probability P  X  ~ y j y ; c  X 
+First, given the true label, we assume the noisy label to be independent of the document features x Then we have with a probability c , with each of the k 1 incorrect labels being equally likely. Then, P  X  ~ y below, 5 Combining the above two equations, we have 4. Learning and inference the learned x can be used to rank the documents for a test query. 4.1. EM algorithm for learning
+To learn the parameters, we need to maximize the log likelihood of the data, EM procedure iterates between E step and M step.
+ mated in the t th iteration). Denote the expectation function as T ( x , c j x Substituting Eq. (1) , Eq. (3) , and Eq. (6) into Eq. (8) , we obtain where
+Note that we need to sum over the entire y q space in Eq. (10) , Eq. (11) , and Eq. (12) , which consists of k
+In the M step, we choose the parameters that maximize the expectation computed in the E step,
+Combining Eq. (9) , Eq. (11) , and Eq. (15) , we can attain approach to update the parameter x .
+
+When the EM iterations converge, we will obtain the estimates of parameters x and c level of noise for the training query q , and the parameter x can be used to perform ranking for new queries. 4.2. Inference In this subsection, we discuss how to rank the documents for a new query. use S  X  to denote the set of true relevance labels. That is, set of true relevance labels S  X  .
+ The definition of consistency is given as below.
+ set of labels. Then we say p is consistent with S if where p ( i )&lt; p ( j ) means the i th document is ranked before the j th document. of the theorem can be found in appendix.
+ Theorem 1. Suppose p  X  is the permutation according to the descending order of x 5. Discussions and learning to rank. 5.1. Relation to noise-tolerant classification lows. Each training instance i is represented by a triple  X  x as follows,
+It is assumed that P  X  y i j ~ y i  X  follows the Bernoulli distribution, and P ( x eters can be estimated by likelihood maximization.
+ instance. However, they also have significant differences, as listed below. data of classification.
+
+Second, the probabilities of mis-labeling are different for different queries. In our model, the parameter c independent).
+ this uniqueness of ranking, in our model, we formulate the probability P ( y in Lawrence and Sch X lkopf, 2001 . 5.2. Relation to pairwise learning to rank model used in RankNet.
+ First, if the training data is clean, we have c q = 0. Then P  X  ~ y q j x q ; x  X  degenerates to Eq. (19) , Second, if there are only two documents for query q , Eq. (19) can be re-written as follows, stant 2 in the denominator. This is because ties are considered in our model but not in RankNet. noisy data (see Section 6 ). 6. Experiments We have conducted experiments to verify the effectiveness of the proposed model. 6.1. Experimental settings 6.1.1. Datasets irrelevant to a query. 6 Hundred features are extracted as the representation of a document given a query. its training set and test set are generated under the same clean/noisy condition. 6.1.2. Baselines similar to (even slightly better than) ListNet and AdaRank. tolerant algorithms for classification.
+
+Specifically, we compare the NTR model with the following baselines. 1. Learning to rank algorithms without dealing with noise 2. Noise-tolerant algorithms for classification 3. Noise-tolerant algorithms for ranking 6.1.3. Evaluation metrics NDCG@ k is defined as below, relevant and r ( j ) = 0 otherwise), and Z k is the DCG value at position k of the perfect list. P@ k (Precision@ k ) is defined as below, where I ( ) is the indicator function.
+ Average Precision (AP) of a query is defined as follows, queries.
+ 6.2. Experimental results over baselines in Table 1 . From the figures, we have several observations. algorithms will be affected.
+ by 1.6%, 6%, and 9% in terms of NDCG@10 respectively, and the improvements are also statistically significant. Besides, from Fig. 2 , we also have the following observations.
+ well.
+ unclear whether or not we can obtain overall performance gain.
+ result, the learned ranker may not be as effective as that created by RankSVM. in Section 5.1 ), it is not appropriate to directly apply FD to ranking. 7. Conclusion and future work posed model over previous approaches.
+ Appendix A. Proof of Theorem 1
+Proof. Let S 0 be the set of labels which p  X  is consistent with, i.e. S the permutation according to the descending order of s i = x prove that S  X  is a subset of S 0 .
+
+Define f  X  y  X  X  P i P j x T  X  x i x j  X  I  X  y i &gt; y j  X  . Then we have for any label y R S 0 , we can always find a label y 0 2 S 0 with a larger probability than y . That is,
+Since y R S 0 , there exist at least a document pair  X  d l exchanging the labels of a serial of document pairs  X  d l exchanging the labels of  X  d l 1 ; d l 2  X  p l  X  1 .
+
+Next we prove f ( y p )&gt; f ( y p 1 )( p =1, ... , t ). Denote y we have Since s l 1 &lt; s l 2 , we have f ( y p ) f ( y p 1 ) &gt; 0. Therefore, f  X  y 0  X  &gt; f  X  y  X  . h References

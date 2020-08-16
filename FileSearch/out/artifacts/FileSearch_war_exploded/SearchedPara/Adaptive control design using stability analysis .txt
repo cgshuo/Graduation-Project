@@ -1,0 +1,58 @@
+ 1. Introduction forcontrollerdesigninmanysituations.Thus,effortsonnonlinear adaptive control methodologies based on neural networks ( Ge unknown external disturbances a nd parameters perturbations.
+In this context, an indirect adaptive control scheme based on with a hot-air blower system.
+
+The paper is structured as follows. Section 2 describes the adaptive control scheme. Controller structure and parameters errors dynamics. An adaptation approach derived from gradient 5 , an application of the developed approaches to the thermal process is presented. Section 6 concludes the paper. 2. Adaptive neural control
+Control design should ensure (1) stability of the closed loop updated parameters. Some neural network methods based on
+Kulawski and Brdysh, 2000 ; Gong and Yao, 2001 ) for that purpose. System stability is confirmed with these methods. control is proposed ( Wang and Bao, 2000 ). From the Lyapunov satisfactory for general unknown plant with noise. Another adaptive control strategy has been proposed where stability applied with numerous processes. 2.1. Controller structure networks has been recently proposed for the control design of scheme is composed of a neural emulator (NE) and a neural of inputs and outputs. For NC, a reduced structure was first the augmented NC structure accelerates the convergence of the scheme including the augmented NC structure and the relaxed outputs relationships over a small size time window). NC with are updated independently. The subscripts e and c are used to distinguish the NE and NC respectively.
+ are normalized in range [ 1, 1].
+
+NE and NC are developed with fully connected recurrent
+N i  X  1, y , N e (resp. i  X  1, y , N c ): 1 9  X  t  X  9 1 9  X  t  X  9 state of emulator and x i ( t ) its input, x i  X  t  X  X  u i x  X  t  X  X  0if i A f N  X  1 , ... , 2 N g ; ^ y i N  X  t  X  X  s i o to neuron i and 1 = 9 t c 9 is the controller time parameter. z  X  t  X  X  y c i  X  t  X  y i  X  t  X  if i A f 1 , ... , N g ; z i 2.2. Parameter adaptation
+NE and NC weights are updated according to an autonomous algorithm inspired from the RTRL. The major advantage of such e e  X  t  X  X  1 2 E T e  X  t  X  E e  X  t  X  X  3  X  e  X  t  X  X  1 2 E T c  X  t  X  E c  X  t  X  X  4  X  where E e  X  t  X  X  X  e e l  X  t  X  X  A R N 1 and E c  X  t  X  X  X  e c e on the gradient of the instantaneous error: dw ij  X  t  X  dt  X  where Z e istheemulatoradaptiverateandthefunctions p e  X  t  X  : d f ij  X  t  X  dt  X  where Z e is the emulator adaptive rate. @ y l  X  t  X  =@ f by @ ^ y l  X  t  X  =@ f ij  X  t  X  which is given by: @ ^ y @ f and the time parameters of both networks. Parameters t e , Z are updated independently: d Z e  X  t  X  dt  X  d t e  X  t  X  dt  X  d Z c  X  t  X  dt  X  d t c  X  t  X  dt  X  where v l  X  @ ^ y l =@ Z e  X  @ ^ y l =@ t e and r l  X  @ ^ y sitivity functions. e e  X  X  dv l = dt  X  9 t  X  0 4 0and e c established in Section 3 .Thenaninnovativeadaptationalgorithm stability analysis. 3. Stability analysis x x is Lyapunov stable and all solutions that start out near x autonomous systems, the stability theorem of Lyapunov can be stated as follows: stable equilibrium point . stable equilibrium point .
+
+L  X  x  X  3.1. Stability sufficient conditions Lyapunov function: L  X  t  X  X  e c  X  t  X  X  12  X  a  X  t  X  X  b  X  t  X  9 Z c  X  t  X  9 o 0  X  13  X  depending only on the networks  X  parameters and on the output errors .
+ totic stability is ensured if _ L  X  t  X  o 0: _ L  X  t  X  X  E T c  X  t  X  _ E c  X  t  X  X  14  X 
+At each time, _ e c  X  t  X  ^ _ e c  X  t  X  X  E T c  X  t  X  ^ _ E parameters of NE and NC are given by: ^ _ e  X  t  X  X 
+Let us define the following sensitivity functions: V u  X  X  v
+R  X  X  r 1 , ... , r N  X  T , P ij  X  X  p lij  X  A R N 1 , y lij  X  @ and the following matrices M 1  X  X  F 1l  X  A R N N and M  X  F  X  c  X  c  X  We note that, M 1  X  M T 1 and M 2  X  M T 2 .
+
+Using Eqs. (5), (6) and (8) X (11), we can write: dw  X  t  X  dt  X  d Z  X  t  X  dt  X  E d Z  X  t  X  dt  X  E be written as: _ L  X  t  X  X  E T c  X  t  X  9 Z c  X  t  X  9  X  X  E T c  X  t  X  M 1  X  t  X  X  defined by (17) and (18): then the adaptive control is Lyapunov stable. &amp;
+Remarks. 3.2. Examples the system output. Unexpected oscillations appear and persist the sufficient stability conditions when the tracking error The value 2 indicates that Z c satisfies inequality (13). error Lyapunov function.
+
+On the other hand, the system is affected by control signal tions based on global error are less restrictive.
+We conclude that the use of the criterion based on tracking one based on global error.
+ developed for the controller updating. Two adaptation methods based on the tracking error dynamics will be investigated and compared. 4. Control design based on tracking error dynamics 4.1. Principle
+In this section, new methods are proposed to update the _ L  X  t  X  X  r L  X  t  X  o 0  X  24  X  correction and a direct analysis of stability in the sense of Lyapunov. 4.2. Adaptation with gradient algorithm works weights, time parameter and emulator adaptive rate.
+Lyapunov function can be written as: _ L  X  t  X  X  E T c  X  t  X  X  9 Z e  X  t  X  9  X  X  E T e  X  t  X  M 2  X  t  X  X   X  9 Z c  X  t  X  9 E T c  X  t  X  X  X  E T c  X  t  X  M 1  X  t  X  X  T R c guarantee if Z c  X  t  X  satisfies (26): 9  X  t  X  9  X  E T c  X  t  X  X  _ Y c  X  t  X  V e  X  t  X  X  R c  X  t  X  X  not satisfied. 4.3. Adaptation with direct analysis of stability
+The gradient algorithm has two important drawbacks: the 1986 ). To get rid of these drawbacks, another adaptation approach is based on the tracking error dynamic and on the t (s) following equation : a  X  t  X  _ Z c  X  t  X  X  b  X  t  X  9 Z c  X  t  X  9  X  g  X  t  X  X  r e only on the networks  X  parameters and on the output errors .
+Proof. The asymptotic stability in the sense of Lyapunov is error is given by the following equation: _
+E c  X  t  X  X  9 Z e  X  t  X  9  X  X  E T e  X  t  X  M 2  X  t  X  X  T  X  V e
+The derivative of Lyapunov function is given by the following equation: a  X  t  X  X  E T c  X  t  X  R u  X  t  X  X  30  X  g  X  t  X  X  E T c  X  t  X  X  9 Z e  X  t  X  9  X  X  E T e  X  t  X  M 2  X  t  X  X  following equation: zero in range [10 4  X 10 3 ]. &amp; 4.4. Examples
+The performances of the proposed strategies are evaluated and compared.
+ based adaptation and direct stability analysis are given in Figs. 4 and 5 .
+
+With gradient-based adaptation, one can notice that the system output takes a long time to reach the desired output 5(b) ).
+
+Figs. 6 and 7 display the controller adaptive parameter Z in comparison with gradient-based adaptation ( Fig. 6 ).
+Theuseofgradienterroraffectstheparametervariationswhich algorithm.
+ t (s) comparison with the gradient-based adaptation. We conclude caused by gradient algorithm.
+
+In order to sum up the performances of the proposed strate-gies, the Normalized Mean Square Error (NMSE) is calculated according to the following equation for both simulations: NMSE  X  to good performances in comparison with the basic gradient perturbations, the diminution is about 40%.
+ perturbations, confirm the good performances of the proposed process 5.1. Process description by a resistance.
+
+The process is a MIMO system with two inputs (heating power magnitude). t (s)  X 10  X 8  X 6  X 4  X 2  X 10  X 8  X 6  X 4  X 2
+Z
+Z
+Z 5.2. Experimental results experiments have been carried out with the hot-air blower. of the airflow reference.
+ obtained results.
+ used to modify air admission to ventilator. This parametric perturbation affects airflow and temperature which decreases the airflow measured signal is noted during the injection of the airflow slowly comes back near the desired valve (60%).
+In Fig. 10 (c), tracking error shows the performances of the parameter adaptation improve the tracking performances. This good perturbations rejection and adaptive rate stabilization.
+Another parametric perturbation which consists of switch the is applied.
+
+NMSE is computed to appreciate the efficiency of the proposed method in comparison with other approaches. For the three
+Table 2 . Fig. 8. Hot-air blower. t (s)
+To conclude, the developed controller based on stability Obtained results for simulations and real time experiments the one based on gradient algorithm. 6. Conclusion
+In this paper, a control design based on Lyapunov stability lity conditions according to the controller adaptive rate are determined and updating approaches are proposed based on system simulations. Closed loop performances are improved thanks to the new parameter updating using the tracking error lization have been tested.
+
+In our future works, we will consider control issues with t (s)  X 5  X 4  X 3  X 2  X 1 0 1 2 3 4 5 0 100 200 300 400 500 600 700 800  X 5  X 4  X 3  X 2  X 1 0 1 2 3 4 5 proposed. Extension to non-square systems will be also envisaged.
+ References

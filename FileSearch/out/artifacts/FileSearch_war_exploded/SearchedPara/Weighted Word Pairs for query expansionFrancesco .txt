@@ -1,0 +1,49 @@
+ 1. Introduction in the space of features.
+ strategy is often referred as query expansion .  X  Probabilistic Topic Model ( Griffiths, Steyvers, &amp; Tenenbaum, 2007 ).
+Evaluation has been conducted on TREC-8 repository. We compared the proposed Weighted Word Pairs (WWP) with a feature vector made of weighted words. 2. Problem formulation
+Each weight w n is such that 0 6 w n 6 1 and represents how much the term t similarity function as defined in the following: where w t ; q and w t ; d are the weights of the term t in the query q and document d respectively. 2.1. Query expansion by relevance feedback following modules: Information Retrieval (IR), Feedback (F), Feature Extraction (FE), Query Reformulation (QR). ranked documents X res  X f d 1 ; ... ; d N g # D is returned to the user. vides the explicit feedback by assigning a positive judgment of relevance to a subset of documents X usually the top M documents retrieved from X res .
+ perform a new search. As a result, a new set of documents X relevance feedback schemes. 3. Background and related works 3.1. Query expansion techniques 2008; Baeza-Yates &amp; Ribeiro-Neto, 1999; Carpineto &amp; Romano, 2012; Na, Kang, Roh, &amp; Lee, 2005 ). the collection) ( Bhogal, Macfarlane, &amp; Smith, 2007; Christopher et al., 2008 ). systems.
+ achieves the same performance of hybrid techniques but using the same minimal explicit feedback. 3.2. Term extraction techniques consists in a simple (sometimes weighted) list of words.
+ 1992; Collins-Thompson &amp; Callan, 2005; Lang, Metzler, Wang, &amp; Li, 2010; Metzler &amp; Croft, 2007 ). computing Park and Ramamohanarao, 2009 .
+ ( Bhogal, Macfarlane, &amp; Smith, 2007 ).
+ 4. The proposed Weighted Word Pairs extraction method
+The input of the feature extraction module is the set X fback containing the weights of the jGj word pairs f X  v ; u  X  p is divided into 4 steps, and it is showed in Fig. 2 . 4.1. Step 1: probabilities computation
+The input of this step is the set of documents X fback  X f d weights. Each weight is associated to a word of the vocabulary T . The outputs of this step are: 1. the a priori probability that a word v i occurs in X fback 2. the conditional probability that a word v i occurs in X 3. the joint probability that a pair of words, v i and v j
+The exact calculation of the a priori p i and the approximation of the joint probability w makes use of Gibbs sampling ( Griffiths et al., 2007 ). Once p obtained through the Bayes X  rule. 4.1.1. Probabilities computation through the Topic Model and b k Dirichlet  X  g  X  . Finally, the distribution of each word given a topic is P  X  u by performing Gibbs sampling on a set of documents X fback 1. the words-topics matrix U that contains jTj K elements representing the probability that a word assigned to topic k : P  X  u  X  v i j z  X  k ; b k  X  ; 2. the topics-documents matrix H that contains K j X fback some word token within a document d m : P  X  z  X  k j h m  X  .
+
+The probability distribution of a word u m within a document d
+In the same way, the joint probability between two words u assuming that each pair of words is represented in terms of a set of topics z and then:
+Note that the exact calculation of Eq. (3) depends on the exact calculation of P  X  u tion for Eq. (3) can be written as:
+Moreover, Eq. (2) gives the probability distribution of a word u bility distribution of a word u independently of the document we need to sum over the entire corpus: where d m is the prior probability for each document ( P j X fback j distribution of two words u and y , we obtain:
+Concluding, once we have P  X  u  X  and P  X  u ; y  X  we can compute P  X  j 2f 1 ; ... ; jTjg . 4.2. Step 2: roots selection be selected to build the output set f r i g .
+ H is equal to 4 or 5.
+ factorization property:
+Once the P  X  r i j v par  X  r i  X   X  8 i are computed, we can select the best H roots f r 4.3. Step 3: root-root and root-word pairs selection describing root-root relations W root , and root-words relations W ciations between pairs of roots. The probabilities associated to this graph are: W words pairs, that is displayed in Fig. 3 c. as a graph.
+ 4.4. Step 4: optimization stage
+The inputs of this step are the sets W roots and W words i weights of the jGj word pairs f X  v ; u  X  p g .
+ and jTj X  100, we have 19806 pairs.
+ considering a maximum number of pairs equal to jGj .
+ the desired max number of pairs jGj , search for a threshold k and a set of thresholds f l
+More in details: 1. k : threshold that establishes the number of root-root pairs. A relations between two roots is relevant if w root r i is relevant if w is P l i .
+
+The graph is composed of jGj words pairs and is represented as a vector of weights g  X f b ted lines stand for relations between roots and words, while solid lines stand for relations between roots. has been described above.
+ Algorithm 1. WWP graph g  X f b 1 ; ... ; b jGj g building Require: Data, M documents X fback  X f d 1 ; ... ; d M g on the vocabulary T
+Require: Parameters, jGj ; H ; a ; g ; K
+W roots  X  RootRootPairsSelection  X f r h g H h  X  1 ; f w ij g  X  k ; f l i g H i  X  1  X  X  Optimization  X f d 1 ; ... ; d M g ; W g  X  GraphSelection  X  W roots ; f W words h g H h  X  1 ; k ; f 4.5. From WWP graph to the expanded query
+Once the optimal WWP structure has been extracted from the feedback documents, it must be translated into an structure building process. Note that the query reformulation process depends on the IR system considered. ing to Lucene boolean model as follows: (behavioral genetics)  X  1 OR (condit AND behavior)  X  0.029 OR (studi AND behavior)
+Every word pair is searched with a Lucene boost factor chosen as the corresponding WWP weight w query is added with unitary boost factor (default).
+ language as follows: #weight ( 0.50 #combine(behavioral genetics) 0.50 #weight (studi behavior) ... .
+ 5. Experiments The performance comparisons have been carried out testing the following FE/IR configurations: 5.1. Datasets and ranking systems average precision (MAP), R-precision and binary preference (BPREF) ( Christopher et al., 2008 ). 5.2. Explicit and pseudo-relevance feedback setup 5.3. Parameter tuning pairs jGj and the number of relevant documents M .
+
+We have chosen the number of roots H  X  4 as a trade off between retrieval performances and computation time Table 3 ).
+ slower speed then the previous case.
+ that obtained highest performance, that is: M  X  3 and jGj X  50.
+
+Lemur. 5.4. Comparisons with other methods and schemes 5.4.1. Performance analysis with explicit relevance feedback scheme
+Table 4 shows the comparison between the performance achieved by the WWP method and the random WWP. The table step 1 of the WWP building process. The probabilities / ij As can be noted from Table 4 , WWP global performance is higher (more than 50%) than the random graph one. the other methods.
+ posed method outperforms other methods in most of the considered query/topics independently of the IR system. which our system does not take into account to build the graph. 5.4.2. Performance analysis with pseudo relevance feedback Table 8 we show the results obtained on the residual collection.
+ Figs. 8 and 9 .
+ 6. Conclusions integration as a future work.
+ Appendix A. Optimization stage
+Given the maximum number of roots H and the maximum number of pairs jGj , several WWP structure g by varying the parameters K t  X  X  s ; l  X  t . To find the best parameters K scoring function and a searching strategy. As we have previously seen, a g space G of the words pairs. Each document of the set X fback G . A possible scoring function is the cosine similarity between these two vectors: and thus the optimization procedure would consist in searching for the best set of parameters K ilarity is maximized 8 d m . Therefore, the best g t for the set of documents X attainable for each document when used to rank X fback documents. Since a score for each document d where each score depends on the specific set K t  X  X  k ; l  X  has been extracted. This optimization procedure need to maximize all j X Fitness ( F ) will be: such that:
+Moreover, since the number of possible values of K t is in theory infinite, we clustered each set of k and l the k -means algorithm. In practice, we grouped all the values of w mum solution can be exactly obtained after the exploration of all the possible values of w References

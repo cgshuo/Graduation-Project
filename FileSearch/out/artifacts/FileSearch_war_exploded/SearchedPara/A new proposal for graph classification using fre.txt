@@ -1,0 +1,65 @@
+ 1. Introduction and chemical compounds [6,18] .
+ classification results in geometric graph databases.
+ Moreover, some tools for geometric graph mining are reported in the literature [25,29] . which were conceived for detecting particular subsets of frequent geometric subgraphs.
+In this paper, a new algorithm for frequent geometric subgraph mining called gsm on a pattern-growth depth-first strategy for traversing the search space. information in the structure of the processed graphs.
+ properties and characteristics of the objects and inter-relationships between its component parts. results are archived.
+ sification results of our proposal are evaluated in a well-known geometric graph dataset [33]. method for frequent geometric subgraph mining is provided in Section 3 . This section also introduces the gsm some ideas about future directions are exposed in Section 6 . 2. Background following sections. Next, the most relevant related works are presented and an overview of some of them is given. 2.1. Basic concepts as follows. Before describing their formal concept, we introduce the labels domain. Let L V and L E be label sets, where L V is a set of vertex labels and L denoted by L = L V  X  L E .
+
+A labeled graph in L is a 4-tuple, G =( V , E , I , J ), where V is a set whose elements are called vertices , E is a set whose elements are called edges (the edge { u , v } connecting the vertex u with the vertex v ), I : V for assigning labels to vertices and J : E  X  L E is a labeling function for assigning labels to edges.
+Let G 1 =( V 1 , E 1 , I 1 , J 1 ) and G 2 =( V 2 , E 2 , I
+I ( u )= I 2 ( u ), and  X  e  X  E 1 , J 1 ( e )= J 2 ( e ). In this case, we use the notation G
+We say that f is an isomorphism between G 1 and G 2 if f : V  X   X  u  X  V 1 , I 1 ( u )= I 2 ( f ( u )), and  X   X  { u , v }  X  E 1 ,{ f ( u ), f ( v )}  X  E 2  X  J 1 ({ u , v }) = J
+When there is an isomorphism between G 1 and G 2 , we say that G
+Using the labeled graph concept we can define geometric graphs. This kind of graph plays an important role in the classification scheme presented in this paper.
+ assigning coordinates to vertices,  X  is the set of real numbers, and K ( u ) associated labeled graph to G  X  . extended to any abstract space where the notions of isometry and scaling were formally defined, for example  X  spaces.
+ representation of images of numbers or characters (9 is not the same as 6).
+Let G  X  1  X  V 1 ; E 1 ; I 1 ; J 1 ; K 1  X  X  and G  X  2  X  V 2 and G 2 , respectively, are isomorphic. Let f be an isomorphism between G defined as a function T : X  2  X   X  2 such that where  X  is the scaling factor,  X  is the rotation angle, t
+Let e 1 ={ v i , v j }  X  E 1 and e 2 ={ u i , u j }  X  E 2 calculated by choosing  X  =  X   X  1  X  /  X  a 2  X  ,  X  the angle between the vectors and  X   X   X  is the Euclidean norm in  X  2 , and the translations t mapping G  X  2 in G  X  1
+For example in Fig. 2 , we can see the transformation applied to G this figure, the error of this transformation is the highest distance between vertices linked by arrows when average of these distances when we consider 2 T  X  X  .
+ geometric graphs. 2.2. A summary of traditional graph mining
+Let D ={ G 1 , G 2 , ... , G | D | } be a collection of labeled graphs and let graph G in D is defined as the set of graphs G i  X  D such that there is a subgraph isomorphism from G to G and occurrences of G are marked in bold. In this case, the support value is 3. classification. subgraphs. Both algorithms are based on the original Apriori algorithm [2] for mining frequent itemsets. graph mining. In our case, we use gdFil [9]. 2.3. A summary of geometric graph mining non-geometric pattern can be placed in an infinite number of geometric positions. graph miner called FSG [23].
+ enumerates all frequent geometric graphs that are subgraphs of G specific collection.
+ construct them. 2.4. A summary of classi fi cation using frequent patterns aside the degree of geometric distortion.
+ for building feature vectors. This framework was evaluated on a molecular dataset. 3. Geometric subgraph detection details, we introduce the following definitions to facilitate the description of our geometric method. 3.1. Geometric graph matching
+Let G  X  1  X  V 1 ; E 1 ; I 1 ; J 1 ; K 1  X  X  and G  X  2  X  V 2 labeled graphs G 1 and G 2 , respectively, are isomorphic. Let f be an isomorphism between G geometric transformation between G  X  1 and G  X  2 is calculated by choosing the pair of edges { v the geometric transformation between them achieves the minimum error.
+
+Let T be the pseudo-best geometric transformation between G if T  X  X  &lt;  X  . In this case, we define the similarity function between G frame since the graphs are represented in  X  2 . If one of these distances is greater than the tolerance threshold not isomorphic with tolerance  X  . 3.2. Geometric graph clustering Let G be a labeled graph and let H  X   X  G  X  1 ; G  X  2 ; ... ; the similarity function (3).
+ scheme are the error function (2) and the tolerance threshold aspects. In our case, we use ACONS [11].
+ geometric graph context. The vertices of the similarity graph between geometric graphs which are mutually isomorphic with tolerance Algorithm 1. GetSimGraph ( H  X  ,  X  )
+In the next steps, ACONS creates a set of clusters for structuring H least to one group. Each one of these groups fulfills the following properties: 1. Let C j be a group, then there is at least an element G similarity graph G . In this case, G  X  is the center of C 2. Let C j and C k be two distinct groups, then their corresponding centers must also be distinct. The centers of such clusters are used for detecting frequent geometric subgraphs in Section 3.3. contains the occurrences that are geometrically similar using the previously defined similarity function. 3.3. Geometric graph mining
+Let D  X   X  G  X  1 ; G  X  2 ; ... ; G  X  D  X  jj be a collection of geometric graphs, let also predefined threshold of frequency. The support of a geometric graph G there is a subgraph of G  X  i which is isomorphic to G  X  with tolerance mentioned support and  X  ( G  X  , D  X  )=|  X  ( G  X  , D  X  )| is used for indicating the frequency of G that frequently occur in a collection of geometric graphs.
+ for processing geometric graph collections, but ignoring vertex coordinates.
+Theorem 1. Let G be a frequent connected graph in D  X  , with geometric graph, having G as associated graph, is frequent in D between two points or two segments. Thus, the frequency of these geometric graphs will be the same as that of G . connected graph G with such conditions.
+
+Theorem 2. Let G be a frequent connected graph in D  X  , with whose frequencies are at least 1, that is  X  ( G  X  , D  X  ) we apply ACONS in order to find clusters in G . Let C j be a cluster outputted by ACONS, whose center is G  X  G ; D  X   X  X  X  G  X  i  X  D  X   X  G  X   X  C j ; G  X  p G  X  i .
+
+Proof. According to the criteria for building G , the G  X 
+G  X   X  C i and G  X  p G  X  i for some G  X  i  X  D  X  ; then, there is a subgraph G
+G i  X  D  X   X  G  X   X  C j ; G  X  p G  X  i p  X  G ; D  X   X  X  .
+
+On the other hand, if G i  X   X  ( G  X  , D  X  ) then there is a G since  X  ( G  X  , D  X  )  X  1. Thus,  X  G ; D  X   X  X  p G  X  i  X  D
+Algorithm 2. gsmGeomSearching ( D  X  , G ,  X  ,  X  ) with a labeled graph G with more than one edge, see Algorithm 2 .
+
+Lines 1  X  4of Algorithm 2 are dedicated to gathering the elements of H whose frequencies are at least 1. Line 5 is an invocation to the function
+G , in line 9, is efficiently calculated by storing the supergraphs G support of the labeled graph G , and geometric subgraph of each G introduced by the traditional graph miner gdFil [9].
+ Algorithm 3. gsm-gdFil ( D  X  ,  X  ,  X  , S )
+Algorithms 3 and 4 showed the whole pseudo-code of our gsm
+Algorithm 3 ) which starts by removing infrequent vertices and edges from D This means that it will not be used any more as a possible extension in the next iterations.
+Algorithm 4 recursively generatesall labeledgraphsthat hold G , whilethegenerated DFScodes are frequent. Lines 1 candidates, calculating embedding structures, and so on [9] .
+
+Algorithm 4. gsm-gdFil-Mining ( D  X  , G ,  X  ,  X  , S ) 4. Classi fi cation scheme tests. The package libSVM 1 is used for graph classification through Support Vector Machine (SVM) classifier.
+Given a training set of geometric graph T ={ G 1 T , G 2 T classification phase of a set of geometric graph S ={ G 1 described method represented in Fig. 5 .
+ 4.1 . Classi fi cation task
+Given the set F ={ S 1 , S 2 , ... , S d }offrequentgeometricsubgraphsof T , and a set of geometric graphs R ={ G returns a feature vector f ( G i R )={ c 1 , c 2 , ... , c where the row number (1  X  i  X  m ) denotes the number of graphs in the collection R , and the number of columns (1  X 
+Binary setting : The value of an entry v i , j of the matrix is v  X  In Fig. 6 , we can see the steps followed in order to obtain the representation function. 5. Experimental results for each vertex giving its position.
+ compiled using gcc compiler of GNU/Linux with -O0 optimization. 5.1 . AIDS graph collection
+The AIDS database [33] is divided into three disjoint collections:  X  train  X  collection, composed of 250 graphs, in order to train the classifier. We also used the node represents an atom and edges are the covalent bonds.
+ collection as a sample), molecular compounds of both classes are illustrated. 5.2 . Classi fi cation results feature vectors. The binary setting is used for gdFil results, while the similarity setting is used for gsm
+The classification results were performed with  X  = 4. These values are shown in Figs. 8 and 9 using e e higher accuracy obtained using our proposal, reaches a value of 98.6% using e reported in AIDS database [33] , that is 98.2%. The results obtained with a RBF kernel or e collection; however, it is wasted by all of the exact methods like gdFil.
+In addition, in Table 2 we show the results of the classification using several values for plays an important role in the process of finding geometric isomorphism between graphs. The value of value is reached with  X  =4.
+ a very critical step in our proposal. on the accuracy of the classification process. As in previously conducted experiments, the value of
+On the other hand, if the value of  X  is too high, a very small number of patterns will be found. 6. Conclusions collections where graphs are labeled and undirected. Using gsm allowing slight geometric transformation differences between graphs.
+ tasks.
+ indices for indexing tasks.
+
+References

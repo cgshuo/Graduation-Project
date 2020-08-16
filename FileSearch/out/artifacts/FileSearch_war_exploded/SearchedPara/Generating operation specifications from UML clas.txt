@@ -1,0 +1,116 @@
+ 1. Introduction model (M2M) transformations to (automatically) derive the
+One of the most tedious and complex tasks during the de fi of each operation on the system state. The operation speci sure they are ful fi lled after the operation is executed. This speci
+Language (OCL) [2] .Inanycase,operationde fi nitions are linked to the speci practice. Therefore, it is clear that any technique that can facilitate the de improve the adoption level of MDD techniques among the software engineering community.
+In this sense, this paper provides a method to automate the generation of a basic behavior speci useful for domains that make an intensive use of data-manipulation operations. The basic behavior speci method consists in a set of well-formed set of operations that suf based on the domain knowledge contained in the static structure of the class diagram. operations. That is, we provide a more complete operation speci open-source CASE tool.
+
+Our method advances the current state-of-the-art in the area of behavior speci reviewed in detail in Section 7 .
+ further work. 2. Method overview
+Our method takes as input a UML-based class diagram with only the static aspects speci
+The main particularity of our method is that the speci fi
+Section 3 ). These properties state conditions that must be satis
+Our method can be split up into three main steps ( Fig. 1 ): 1. Identi fi cation of operations. The method identi fi es which operations should be de attached to. operation are satis fi ed.
+ satis fi able , i.e. it is possible to create valid instances of the CS. An instance is valid if it satis consistency of a UML CS, as for instance [28] . 3. Basic concepts
+This section brie fl y reviews the basic terminology and de in the UML proposal. A UML pro fi le for this extension has been de 3.1. Structural view and generalizations. For the sake of clarity, association classes are not considered.
+Classes may be concrete or abstract and attributes may be de one) [31] . For the sake of simplicity we assume that all attributes have a maximum multiplicity of 1. similarly de fi ned.
+ multiplicities, derived and navigability properties. The functions max(p minimum multiplicity of the As association between classes Cl (p ; As) and derived(p 1 ; As) de fi ne if the association end p
+A generalization set g , denoted by Gen(Cl;Cl 1 , ... ,Cl and complete, respectively.
+ more precise knowledge from the class diagram in order to improve the speci association population at run-time. The additional association end properties de  X 
+Cl 2 class. Possible values are:  X  addOnly: links cannot be deleted after the participating objects of the Cl value (for false values).  X  deleted. The possible values are: In [29] those dependencies are analyzed. We assume that class diagrams satisfy all these dependencies. applied to other constructs (as for instance, compositions and aggregations) that may be de changeability of the in role ( Publishes association) is de participant role is marked as restrictive . The non-standard properties for associations are de associations and no arrows two-way navigable associations. 3.2. Behavioral view our method when creating the speci fi cation of operations for the input static class diagram.
+In our case, the operation effect speci fi cation is de fi applied on the system state when the operation is executed is explicitly de structural event) to refer to an atomic change on the population or value of the system state. 3.2.1. Basic actions
+The list of basic actions that our method considers is the following:  X  iCl(x) : creates a new x object in the Cl class  X  dCl(x) : deletes the x object from the Cl class  X  uAt(x,v) : updates the At attribute of the object x with the v value  X  iAs(x,y) : creates a new link for the As association with x and y as participant objects  X  dAs(x,y) : deletes the link b x,y N from the As association  X  sCl p Cl c (x) : specializes the object x of Cl p superclass to the Cl and not of Clc  X  gCl c Cl p (x) : generalizes the object x of Cl c subclass to the Cl not of its subclasses.
+
+We also prede fi ne two frequent compound actions that facilitate the de  X  uAs(x,y 1 ,y 2 ) : replaces the b x,y 1 N link in As with a new  X  between the two.
+ textual representation. 3.2.2. Operations
+An operation is a behavioral feature of a class that speci invoking an associated behavior. As we have said above, the operation behavior is speci succeed or fail, but if they fail the previous state before the execution must be recovered. createConferenceEdition:
+ConferenceEdition::createConferenceEdition(v:Integer, conf:Conference){ 4. Generating operation speci fi cations from UML class diagrams
+This section presents our method for deriving behavioral speci
+Once these operations have been identi fi ed, our method generates their body, including the de the signature of each operation ( Section 4.3 ). 4.1. Identifying operations
+This section introduces the rules that allow our method to identify the set of operations that suf element to avoid creating unnecessary operations. example, the rule that determines which operations should be de generated for non-abstract classes that are not superclasses of covering generalizations. Rule 1. Classes operation in Cl . Additionally, if [ Cl does not participate in an As(p min(p 2 ;As) N 0 ] , generate a deleteCl operation in Cl .
+ of instances of that association or instances of the opposite class. operations have been generated in the output class diagram, since it is an abstract class. Rule 2. Attributes none of the operations should be generated for this purpose.
+ Input Model Output Model For the running example, this rule would generate four new operations (see Fig. 4 ). Rule 3. Associations
+For each AsE association end of an As association and Cl 2 navigability(p 2 ;As) ] and:  X  [ changeability(p 2 ;As)=addOnly or unrestricted and min(p  X  [ changeability(p 2 ;As)=removeOnly or unrestricted and min(p  X  [ changeability(p 2 ;As)=unrestricted ] , generate an updateAs operation in Cl the same. The operation to delete the links must be generated.
+ For the running example, this rule would generate fi ve new operations (see Fig. 5 ). Rule 4. Generalizations
+For each g=Gen(Cl p ;Cl s1 , ... ,Cl sn ) generalization set, generate an updateCl
+Additionally, if [ g is not isCovering( g ) or not isDisjoint( g )], generate a specializeCl generalizeCl si Cl p operation in all Cl si subclasses (  X  Input Model Output Model Input Model Output Model generated since the generalization set of the example is covering and disjoint. 4.2. Specifying operation bodies
+The next step consists in generating the imperative speci Table 1 ).
+ isNotNull property the uName action should also be included within the createConference operation. a precondition to guarantee that the conference edition has no publications is required. these steps: 1. Adding to op the ac 1 ..ac n actions and/or pr 1 ... pr 2. Applying recursively step 1 to the new actions ( ac 1 and ac required. This is necessary in order to satisfy the dependencies of the new actions ( ac
+When an action ac i in op has as required action an action ac in fi nite loop.
+
+During the previous steps, the following considerations apply:  X 
+When ac requires an iCl c2 or dCl c1 action, being Cl c1 and Cl uCl c1 Cl c2 action, the required maintenance action is also considered to be satis or dAs action.  X 
+When ac requires an iCl 1 action, and op already includes a sCl applied to the gCl 1 Cl p action regarding the required action of the dCl
+As it has been said before, since the UML does not provide any speci have de fi ned our own textual notation based on the typical syntax of other action languages. 4.2.1. Determining required actions inconsistencies that the a action may cause over the properties de action a .
+ carried out two steps: this property (if the new object does not have the at attribute initialized). 2. Solve or prevent inconsistencies ( Section 4.2.1.2 ). For each problematic action. 4.2.1.1. Identifying properties to be maintained. Some of the property values that can be de diagram (see Section 3.1 ) imply a constraint that must be satis action types that may violate them. Operations including actions of that type must be rede not induce a violation of those constraints, as shown in the next subsection.
+Let As be an association between classes Cl 1 (playing the role p
+Cl , ... ,Cl sn ) , the list of potentially violating actions for each property are the following:  X 
+Minimum Multiplicity ( min(p 2 ;As) ). The dAs , uAs , iCl iCl x actions of any Cl x class that inherits from Cl 1 may also violate this multiplicity.  X 
+Maximum Multiplicity ( max(p 2 ;As) ). The iAs and uAs actions may violate the constraint de maximum multiplicity is lower than  X  *  X  .  X 
+Delete Propagation ( delpropagation(p 2 ;As) ). The dCl 1 violate the conditions that this property establishes. Besides these actions, all the dCl
+Cl 1 may also violate this condition.  X  changeability values, and the dAs and uAs actions may violate the constraints de  X  isNotNull ( isNotNull(At) ). The iCl 1 , sCl p Cl si and uCl this property de fi nes when its value is true . In addition, all the iCl this condition.  X  isDisjoint ( isDisjoint(g) ). The sCl p Cl si action (for each subclass Cl when its value is true .  X  isCovering ( isCovering(g) ). The gCl si Cl p action (for each subclass Cl when its value is true . intention of the main action [11] .
+ ful fi avoid this inconsistency the additional action uAt(x,v) must be executed after the iCl(x) one. ( preconditions.
+ be created after to avoid the violation of the minimum multiplicity. requires:  X  the uNumber(x,v) action to avoid the violation of the not null property of the number attribute, and  X  examples introduced in this subsection.
+
+The dConferenceEdition(x) action of the deleteConferenceEdition operation (see Fig. 3 ) requires:  X  property of the participant role, and  X  multiplicity of one or both ends of the association (avoided by the precondition de
+The iPublishes(x,y) action of the createPublishes operation (see Fig. 5 ) requires:  X  the maximum multiplicity property of the participant and in roles.
+ ends of the association (avoided by the precondition de fi
+The dCelebrates(x,y) action of the deleteCelebrates operation (see Fig. 5 ) requires:  X  actions of the insertion of a link and from the deletion of a link.
+
+The uCelebrates(x,y,z) action of the updateCelebrates operation (see Fig. 5 ) requires:  X 
+Cl si must be prohibited if x is an object of other subclass of Cl participation and the specialization of the object to any subclass of Cl disjoint and complete (according to Rule 4 ).
+
+Table 8 shows the maintenance actions for the gCl si Cl p class Cl p must be prohibited if x is not an object of other subclass of Cl requires the previous deletion of its links (if the opposite end of the association in which Cl cascade ) and the deletion of the linked objects (for the cascade value). generalization set is disjoint and complete (according to Rule 4 ).
+
+Table 9 shows the maintenance actions for the uCl si Cl sj actions of an object specialization and an object generalization.
+  X  propagation property of the in role.
+ properties considered. 4.3. Specifying operation signatures that a designer can provide its value. Four exceptions apply: execution. operation consists of two events, iAs(x 1 ,x 2 ) and iAs(x attached (i.e., if an operation de fi ned in a class Cl has the event uAt parameter is used whenever x appears). the self parameter participates, and thus they can be determined automatically. 4.4. Application to the running example
+In this subsection we apply our method to the example of Fig. 2 .In Figs. 3 generated for the example. Now in what follows we introduce the complete speci generates them. 4.4.1. Operations generated by the application of Rule 1 (Classes)  X  For the Publication class, the operations generated are createPublication and deletePublication :
+Publication::createPublication(vname:String){
+The createPublication operation speci fi cation includes two basic actions. The action of a creation operation (according to Table 2 ). The second one, uName ,isde
+Publication::deletePublication(){ conference edition associated to it (see row 1 of Table 3 ).  X 
+ConferenceEdition::createConferenceEdition(vnumber:String, conf:Conference){ minimum multiplicity value of the conference role (see row 2 of Table 2 ).
+ConferenceEdition::deleteConferenceEdition(){ and its conference (see row 2 of Table 3 ).  X  For the Conference class, the operations generated are createConference and deleteConference :
+Conference::createConference(vname:String){ action.
+
+Conference::deleteConference(){ operation, dConference .  X 
+InternalDocument::createInternalDocument(v:String){
+InternalDocument::deleteInternalDocument(){ 4.4.2. Operations generated by the application of Rule 2 (Attributes)
+ConferenceEdition::updateYear(v:Integer){
+ConferenceEdition::updateNumberOfSubmissions(v:Integer){
+Publication::updatePublicationDate(v:String){
+Document::updateDescription(v:String){ 4.4.3. Operations generated by the application of Rule 3 (Associations)  X  classes:
+Publication::createPublishes(edt:ConferenceEdition){
+ConferenceEdition::createPublishes(pub:Publication){ property of the participant and in roles (see row 2 of Table 4 ).  X  generated in the Conference class:
+Conference::createCelebrates(vNumber:String){ name attribute.
+
+Conference::deleteCelebrates(edt:ConferenceEdition){ been included.
+
+Conference::updateCelebrates(edt:ConferenceEdition, vnumber:String){ } new conference edition to be linked to the conference and deleting the conference edition updateCelebrates operation since these dependencies are satis 4.4.4. Operations generated by the application of Rule 4 (Generalizations)
+InternalDocument::updateInternalDocumentPublication(){
+Publication::updatePublicationInternalDocument(){ 5. Formalizing the method as a model-to-model transformation
+Our method has been de fi ned as a M2M endogenous transformation that takes a speci same class diagram extended with the set of strongly executable operations that suf terminology) since it is completely platform independent. The re technology-speci fi c details.
+ virtual machine that enable the execution of ATL transformations.
+
+ATL provides the ATL modules toimplementtransformations.AnATLmodulespeci input model are mapped to the elements of the output model. A declarative rule in ATL speci  X  from  X  section of the rule) how the output elements should be generated (de modules allow metamodel extensions to be speci fi ed in order to de 5.1. Structure of the transformation
+As a fi rst step, we have structured our transformation in an ATL module that de transformation within the eclipse-based ATL IDE is the following: module GeneratingOperations; create output : OUT from input : IN;
+Although input (IN) and output (OUT) metamodels can be seen in the transformation speci Section 4.1 .
+ rule ClassNotAbstract2ClassCreateOpDeleteOp{ from to } restrictive or mandatory associations, according to Rule 1 ).
+ behavior. As an example, we show the implementation of the build_CreationBody helper: helper context IN!Class def : build_CreationBody(actionList :
+Sequence(String)) : String = the creation operation.
+More speci fi cally, the helper builds a string that contains the textual behavior speci is created by concatenating:  X  (1) the textual speci fi cation of the main action of the operation ( iCl() ).  X  (2) the textual speci fi cation of the actions in charge of ful  X  (3) the textual speci fi cation of the actions in charge of ful This speci fi cation is obtained using the build_CreationLinkBody helper. model [44] . 5.2. Transformation validation to do (i.e. to compare the expected results with the generated ones). with the expected ones de fi ned by ourselves according to the method developed in [46] . 5.3. Tool implementation MOSKitt . The MOSKitt project with the transformation can be downloaded from [44] . 6. Method evaluation gain of our automatically generated speci fi cation when comparing it with a manual speci generation code tools for the same class diagram.
+ able to generate in comparison with the ones that: 1  X  a designer would manually de detected and correctly handled by students when manually implementing the same operations.
+As can be seen in the next subsections, results are satisfactory in both situations. Our method suf 6.1. Evaluation of the method completeness
+This fi rst analysis consisted in comparing the set of operations originally speci osCommerce [47] online shop e-commerce solution used by more than 200,000 online stores. respect to the total number operations designed during the original system speci behavioral generation capabilities as well.
+ accounts for 85% of the total number of operations originally speci de fi the system operations resulting in a signi fi cant productivity improvement during the development. our method, we see that our approach generates all those setter operations plus 54 additional modi [44] . In both cases, the results have been similar: 69% of the operations speci generated as well. We refer the reader to [7] for a more detailed description of these experiments. 6.2. Evaluating the quality gain when using our method of the model property constraints that are not guaranteed to be ful when taking only the static part of UML models as a source.
+ for CS1 and CS2 respectively.
+
+The results of the analysis reveal that:  X  operations to perform all typical create/delete/update changes were not implemented), and  X  a high number of constraints are neither guaranteed to be ful guaranteed in CS1, none in CS2 and the only property that is fully guaranteed to be satis navigability property.
+ speci fi ed by our method, which implies that for these scenarios our method was complete.
+We believe that these empirical evaluations clearly show the bene considerable better quality, since this additional information would have help students to signi programmers would have better performed the application development, i.e. would have speci de fi ning the operations we can save them time by generating them automatically. 7. Related work perspectives. A summary table at the end highlights the most relevant aspects of this comparison. ones. Therefore, these approaches require the designer to provide a minimum multiplicities and derived elements.
+ transactions (on the contrary, our method does not need triggers for guarantying the ful generates automatically a set of active rules that may be used to enforce the set of de executed the method determines a partial order on the active rule set to guarantee the termination in a have to be added by hand. The work presented in [18] generates the declarative de considered. In [19] , an approach to automate the extension of the declarative operation speci association invariants is presented. The authors use the Booster notation to de providing the set of operations. In [20] the preconditions are extracted from the set of constraints de [21] the preconditions are extracted from a set of prede fi
+For instance, [50] presents a method for generating system operations from use case speci not automatic and the speci fi cation of each system operation must be provided manually. completely platform independent. The operations introduced by our method do not add any technology-speci including methods for the classes in the speci fi ed classes. However, these methods are just (only) guarantees that cardinality constraints are satis fi paper to improve their generation process. Also, note that current MDD tools target always a speci or technology platforms and thus, their results are hardly reusable for other technologies. speci fi ed ina conceptual schema. However, this conceptualschemais de dif fi them). We also indicate if there is a tool implementing the theoretical concepts presented in the method. 8. Conclusions for an initial purely static conceptual schema. The operations generated by our method suf process guarantees that no irrelevant operations are de fi more complex operations.
+
+Our proposal improves the quality and productivity of the behavior speci automation of domain modeling in [54] .
+
+Additionally, the ideas introduced in this paper could be applied to the veri analyzing how to incrementally regenerate the behavior schema after evolutions on the structural schema. Acknowledgments
+Valenciana under the project ORCA PROMETEO/2009/015, and co-
+References

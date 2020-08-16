@@ -1,0 +1,24 @@
+ computer vision [12], and many other areas.
+ be found for more difficult domains such as travel .
+ the learner receives the distribution D as a hypothesis h the k hypotheses h Note that the distribution D labels. In practice, D source i .
+ supplied with a good hypothesis h and clarity of this framework.
+ distribution.
+ adaptation with multiple sources analyzed here.
+ significant weakness of a convex combination.
+ h target function (one for which each h combination rule, and that it also benefits from a well-found ed theoretical guarantee. empirical results for a multiple source adaptation problem with a real-world dataset. loss function L is denoted by L ( D, h, f ) and defined as L ( D, h, f ) = E P x  X  X  L ( h ( x ) , f ( x )) D ( x ) R to the problem is the set of k source distributions D h of the target domain, D D
+T ( x ) = P consists of combing the hypotheses h Since the target distribution D mixture adaptation problem .
+ A combining rule for the hypotheses takes as an input the h z  X   X  which sets the hypothesis to h ( x ) = P k i =1 z i D i ( x ) This last condition always holds if D functions , F , as follows, By definition, the target function f is an element of F .
+ P primary motivating example. learning algorithm is given  X   X   X  such that D to study the performance of a linear combining rule. Namely t he classifier h ( x ) = aspects of this approach.
+ Consider a discrete domain X = { a, b } and two distributions, D and D h 0 = 0 and h Now consider the target distribution D hypothesis h ( x ) = (1 / 2) h theorem.
+ rule has expected absolute loss of 1 / 2 . pected loss. Given a mixture D bining rule with parameter  X  , which we denote by h Using the convexity of L with respect to the first argument, the loss of h target f  X  X  can be bounded as follows,
+L ( D T , h  X  , f ) = X where  X  Theorem 2. For any mixture adaptation problem with target distributio n D the expected loss of the hypothesis h L ( D  X  , h  X  , f )  X   X  . expected loss guarantee with respect to any mixture. Our hyp othesis h weights, i.e., u We show for h function f  X  X  . (Proof omitted.) Theorem 3. For any mixture adaptation problem the expected loss of h mixture distribution D Unfortunately, the hypothesis h omitted.) absolute loss of h combining rule h that one can obtain a mixture of h distribution weighted combining rule h h . 5.1 Zero-sum game LEARNER . Let the input to the mixture adaptation problem be D fix a target function f  X  X  . The player NATURE picks a distribution D selects a distribution weighted combining rule h LEARNER plays h minimize the loss. We start with the following lemma, Lemma 1. Given any mixed strategy of NATURE , i.e., a distribution over D action of LEARNER h P D
+T ( x ) = P 5.2 Single distribution weighted combining rule in we need to resort to a more powerful technique, namely the Bro uwer fixed point theorem. For the proof we will need that the distribution weighted com bining rule h P follows.
+ : X X  R be the function defined by Then, for any distribution D , L ( D, h  X  Let us first state Brouwer X  X  fixed point theorem.
+ and any continuous function f : A  X  A , there is a point x  X  A such that f ( x ) = x . We first show that there exists a distribution weighted combi ning rule h  X  L ( D i , h  X  z , f ) are all nearly the same.
+ for any 1  X  i  X  k , where  X  = Proof. Fix  X   X  &gt; 0 and let L z mapping  X  :  X   X   X  defined for all z  X   X  by [  X  ( z )] where [  X  ( z )] z we can divide by z with  X  = very large for a linear combination rule).
+ L ( D  X  , h  X  z , f )  X   X  +  X M +  X   X  for any  X   X   X  .
+ Proof. Let z be the parameter guaranteed in Lemma 2. Then L ( D quantity L ( D thus L ( D mixture D which is at most  X  +  X M +  X   X  .
+ By setting  X  =  X / (2 M ) and  X   X  =  X / 2 , we can derive the following theorem. L ( D  X  , h  X  z , f )  X   X  +  X  for any mixture parameter  X  . can perform well for any f  X  X  and any mixture D and any hypothesis h the difference of loss is bounded by at most 2  X  . 2  X  holds for any hypothesis h .
+ with a similar inequality, L ( D for any f, f  X   X  F we have, L ( D We derived the following corollary to Theorem 7.
+ L ( D  X  , h  X  z , f )  X  3  X  +  X  . domains, plot left: book and kitchen , plot right: dvd and electronics . real-world data. In our experiments, we fixed a mixture targe t distribution D distribution weighted combining rule h out not to be an issue in our experiments.
+ considered the distribution weighted combining rule h of combining rule outperforms the base hypotheses as well as th e linear combining rule. and can help produce a good distribution weighted combining rule. our main results can be extended to arbitrary target distrib utions. Acknowledgments

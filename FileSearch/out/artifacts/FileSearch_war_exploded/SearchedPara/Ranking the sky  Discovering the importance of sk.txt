@@ -1,0 +1,77 @@
+ 1. Introduction ranked skyline points, instead of the whole skyline set in a random or algorithm-speci data points. However, the skyline operator returns a set of data points that are equivalent by de order to be able to return the top-k skyline points to the user.
+ dominance relationships in different subspaces. Following the same spirit as in [4] , in this paper we de also dominate many skyline points in other subspaces.
+ discover the importance of skyline points.
+ dominating points. The key contributions of this paper are:  X  de fi ned functions.  X  objectives of our ranking approach.  X  interpret the meaning of applying link-based ranking on the skyline graph.  X  preference skyline queries by using well-known web ranking techniques.  X  ability of the dominance relationships between skyline points to provide a meaningful ranking.
+The rest of this paper is organized as follows: We present related work in Section 2 . Section 3 contains the required
+Section 8 , we present the experimental evaluation and fi 2. Related work space into several regions, calculates the skyline in each region, and produces the skyline sets. SFS [9] , which is based on the same principle as BNL, improves its performance by a monotone function. Later, index-based techniques are proposed in several works. Tan et al. [10,11] propose the proposed in [17] . Skyline queries have recently been studied in other domains, such as distributed [18 settings, and partially ordered domains [25] or metric spaces [26] .
+ operators was discussed in [34] .
+ is
+ X  approach for retrieving k representative skyline points de not straightforward.
+ skyline frequency. Our approach is different, because we do not focus on the number of subspaces, but on the dominance relationships between skyline points in all possible subspaces. Our work also differs to other approaches [38 de fi de fi ned regions that dominate all other regions is proposed. Furthermore, a uni queries is presented in [41,42] . Our work also differs to the traditional top-k query [44 preference function on all dimensions.
+ assess the importance of web pages based on the Web's structure and their properties have been studied intensively [50 labelled graphs.
+ we extend our previous work by providing an in-depth study of the notion of the skyline graph and we investigate the by the subspace dominance relationships and we show how our approach captures both the number of dominated points and the skyline frequency, which are the most prominent metrics of skyline interestingness, de advantages of SKYRANK. 3. Preliminaries
+In the following, we formally present the necessary de fi
+Table 1 . 3.1. Skyline queries the skyline query. For example, the query corresponding to Fig. 1 is expressed in SQL as: SELECT * FROM Hotels SKYLINE OF distance MIN, price MIN
+Formally, given a data space D de fi ned by a set of d dimensions { d p ={ p 1 , ... , p d } where p i is a value on dimension d
+De fi nition 1 (Skyline) . A point p  X  S is said to dominate another point q p  X  q i ; and (2) on at least one dimension d j  X  D , p j b point. The points in SKY are called skyline points.
+ can be extended to subspaces. Each non-empty subset U of D ( U referred to as full space of the dataset S .
+
+De fi nition 2 (Subspace Skyline) . A point p  X  S is said to dominate another point q every dimension d i  X  U , p i  X  q i ; and (2) on at least one dimension d SKY U p S which are not dominated by any other point in subspace U .
+ (non-empty) subspace U ={ y } the skyline points on U are SKY too numerous to offer any interesting insight.
+
+Over a dataset S of d -dimensional points (on space D ) there exist 2 parent of { x }.
+ example, for the hotel dataset shown in Fig. 1 , the SKYCUBE query can be written as: SELECT * FROM Hotels SKYCUBE BY distance MIN, price MIN query, which enables sharing strategies among different skyline queries. 3.2. PageRank overview hyperlinksbetweenthem.Thealgorithmmodelsthebehaviorofarandomsurfer,whichgivenawebpage p chooses to follow an outgoing link ( Out(p) ) of the current page with probability 1 with probability ( is a small real value, usually 0.15). The PageRankscore for page p is de PageRank is that if page p has a link to page p' , then some authority of p is implicitly transferred to page p' . solution of the equation: where M is a N  X  N matrix with m ji = 1 j Out  X  p preference [50  X  52] . 4. Objectives of SKYRANK importance of skyline points.
+ main properties that de fi ne the interestingness of a skyline point:  X 
+A skyline point is more interesting if it dominates many other important skyline points in different subspaces.  X  The interestingness of a skyline point is transferred to all skyline points that dominate it in any subspace. as dom(p) . Then, we de fi ne the score of a skyline point p based on its interestingness as: where  X   X  [0,1.0].
+ the fi rst part  X   X  p  X  domd  X  q  X  1 j dom  X  p  X j of the score. The second part amount of interestingness, since they are quali fi ed as skyline points. The variable the score.
+ vertex and if a skyline point p is dominated by another skyline point q in a subspace, an edge e consider any other hotel that belongs to the skyline.
+ method takes into account only skyline points and is not in points. It is intuitive and natural that the ranking of the skyline points does not change as points that do not in 5. Skyline graph different subspaces are considered. Then, we present an algorithm for constructing the skyline graph. 5.1. Skyline graph de fi nition
+A skyline point p  X  SKY on the data space D either belongs to the skyline set on subspace U skyline point q of subspace U , dominates another skyline point p skyline graph. A formal de fi nition of the skyline graph follows.
+
+De fi nition 3 (Skyline Graph GSKY) . Given a dataset S on space D , the skyline graph is the weighted directed graph G E  X 
+V SKY is the set of vertices. Each vertex corresponds to a skyline point p  X  E
+SKY is the set of edges. E SKY is a set of ordered pairs e two subspaces Y , U such that: 1) U is a parent of Y ,2) p , q edges is de fi ned as: E SKY ={ e pq =( p , q )|  X  Y , U : U = parent ( Y ) and q , p  X  w SKY is a weight function de fi ned as: w SKY  X  e pq  X  = U = parent ( Y ) and q , p  X  SKY , q  X  SKY Y , q , p  X  SKY removed from the dataset S , f could become a skyline point in the subspace { x , z }. 5.2. Skyline graph construction the skycube [31,32] , we assume the simplest skycube representation, namely skycube = implementation improvements are out of the scope of this paper.
+
+Algorithm 1 . Skyline graph construction 1: Input: skycube: skycube on dataset S 2: for (each subspace U of skycube) do 3: for ((each point p  X  SKY U ) AND ( p  X  SKY )) do 4: for (each child subspace Y of U ) do 5: for ((each point q such that q  X  Y p ) AND ( q  X  SKY Y 6: if !( e pq  X  E SKY ) then 8: else 9: w SKY ( ep q )= w SKY ( e pq )+1 10: end if 11: end for 12: end for 13: end for 14: end for 15: w =  X   X  16: for ( e ij  X  E SKY ) do 18: end for
+Given the skycube , we examine all skyline points of each subspace U . For any skyline point p full-space skyline SKY , we examine the dominance relationship between point p and the skyline points SKY
+Y  X  where p is not a skyline, we retrieve all skyline points q graph. If the edge e pq already exists, we just increase the number of occurrences of the edge e skycube are examined, we calculate the weight values w SKY dominated by l in the subspace { z }, so the edges e dl , e 5.3. Cost analysis fi rst compute an upper bound for the required number of dominance tests, which re calculate the number of vertices and edges present in the graph, as they quantify the associated storage cost. to compute the edges of the skyline graph the subspace skyline points SKY skyline points of all child subspaces. The number of different parent-child relations is equal to signi fi cantly smaller in practice.
+ at least one subspace. 6. Ranking of skyline points ranking result with other approaches, namely the skyline frequency [8] and the number of subspace dominated points.
+DBLP dataset S . Notice that for this dataset, higher attribute values are preferable. 6.1. Link-based ranking algorithm (SKYRANK)
+Link-based ranking methods, such as PageRank, are based on the concept that each vertex which points to another vertex through an edge transfers some of its authority to the linked vertex. Given the skyline graph G smaller probability to another random skyline hotel.
+ the SKYRANK algorithm.
+ even though the exact importance gained depends on the importance of the dominated points, which in turn is in the expressiveness of the proposed skyline graph. 6.2. Skyline frequency metric highly ranked by skyline frequency are not necessary in the top-k list of SKYRANK. cannot be captured by the skyline frequency approach.
+ extreme skyline point as a percentage of the total number of subspaces (2 show in our experimental evaluation this effect fades out as the dimensionality increases.
+Actually, SKYRANK overcomes the disadvantages of skyline frequency, namely favoring extreme skyline points. 6.3. Subspace dominance metric queries.
+ equivalent, the subspace metric is able to return a ranked list of skyline points.
+Consider a skyline point p , which is a skyline in the subspace U , i.e. p power laws. Therefore, considering the skyline graph de fi SKYRANK scores. We verify this assumption in our experimental evaluation.
+ the number of inlinks of a skylinepoint, but also theimportanceof the skylinepoints pointingto it, which in turn is in number of inlinks. Therefore, SKYRANK provides a more sophisticated ranking compared to the subspace dominance metric. 7. Adapting SKYRANK to preferences
+Our proposed ranking framework SKYRANK can be easily adapted to user-de the skyline graph. Notice that SKYRANK ranks the skyline points without requiring any user-de subspaces of the data space. For example, a user looking for a hotel may prefer to of m preferred subspaces PRF ={ U 1 , ... , U m }, with U vertices, which in our setting correspond to skyline points. Let us assume a skyline graph G that correspond to the skyline points SKY . The i -th element of the personalization vector u jump chooses the i -th vertex p i . If the personalization value is set to u vertex. Notice that  X  i =1 | SKY | u i =1. In the following, we demonstrate how to de to favor skyline points of preferred subspaces.
+
+Given a set of preferences PRF ={ U 1 , ... , U m } where U points of the graph, we set the values of the personalization vector in such a way that for each preferred subspace U  X  vector u j is increased by 1 m  X  j SKY preferred subspaces.
+
+Algorithm 2 . Computation of personalization vector 1: Input: GSKY: skyline graph 2: Input: PRF={U1, ...,Um}: set of preferred subspaces 3: for (each subspace Ui of PRF) do 4: for (each point pj  X  SKYUi ) do 5: u j = u j + 1 6: end for 7: end for each subspace U i which are the subspace skyline points p initially the random jump probabilities of all vertices are set to zero. For each subspace U from the skycube . For each skyline point p j  X  SKY U jump probability of this vertex is increased by 1 m  X  j SKY vertices that correspond to skyline points p for which there does not exist a subspace U , such that p with weights assigned to the preferred subspaces. In this case, instead of assigning uniformly more preferable subspaces in a non-uniform way. outlinks, otherwise the surfer jumps to a randomly chosen vertex from the entire graph. The probability of of the skyline points of the preferred subspaces. 8. Experimental evaluation
+In this section, we conduct a thorough experimental evaluation of SKYRANK. In our experiments, we results from experiments with synthetic datasets are average values over 20 different datasets, following the speci distribution.
+ about authors extractedfrom the bibliography recordsof theDBLP Web site. PODS, VLDB, ICDE, KDD and SIGIR conferences.
+ skyline frequency and the subspace dominance approach. All experiments were carried out on low-end commodity hardware convergence was always less than 1000. 8.1. Skyline graph evaluation
+First, we evaluate the size of the skyline graph, in terms of number of vertices, edges and total number of dominance weight function of the skyline graph, i.e. the total number of dominance relationships is equal to graph.
+ subspaces.
+ points do not reoccur in many different subspaces.
+
+Furthermore, we de fi ne as an upper bound of the graph's edges N namely many skyline points have few inlinks, whereas only few skyline points have many inlinks. This is due to the de Fig. 9 (a) shows that it is meaningful to apply PageRank on the skyline graph, even for uniformly distributed data. in fl slightly. 8.2. SKYRANK evaluation and the skyline frequency approach ( SF ), and between SKYRANK and the subspace dominance metric approach ( SD ).
+Additionally, we examine the recall between the skyline frequency approach and the subspace dominance metric approach in some setups.
+ the SKYRANK and the other approaches does not occur randomly, rather it re discovered.
+
+As depicted in Fig. 10 (b), the dimensionality of the dataset does not in approaches.
+ and r 2 the Spearman's rho value is de fi ned as:  X  ( r 1 and not randomly.
+ extreme skyline points than the other two approaches, as shown in the following experiment. the skyline frequency. In contrast, in the case of SKYRANK, the in the skyline points that truly balance among different criteria.
+ such as the extreme skyline points, whose distance is expected to be larger.
+Summarizing, SKYRANK captures the semantics of both competitive approaches, and this has been veri contains less extreme skyline points and captures better the initial distance distribution of the skyline points. 8.3. Ranking results on real datasets edges.
+ approach as distance-based ( DIST ). For this experiment we use an implementation of the I-greedy algorithm, produce a ranked list.
+ relationship reoccurs in many subspaces.
+ their ancestor subspaces that do not contain the subspace {VLDB}.
+ when compared to distance-based.
+ RAND , and against distance-based as DIST .
+ exception of FREQ for k =5.
+ Spearman's rho metric in Fig. 13 (b). We depict the values of the Spearman's rho metric when comparing the ranking of values of k . 8.4. Preference-based ranking on DBLP dataset of the preferred subspace to populate the highest ranked positions.
+ preferred subspaces. 9. Conclusions approach. Furthermore, our approach can be easily extended, in order to take into account users
+References

@@ -1,0 +1,10 @@
+ relationship between the PDF and the conditional intensity function. Proof. By definition, we have: derived using f  X  = d dt F  X  and S  X  = 1  X  F  X  .
+ The likelihood for the complete data { ( t n , Z n , W n ) } is given by: t N +1 = T , the last term can be derived as follows: which gives the Eq(11) in the paper. which proves Eq(15) in the paper.
+ In this section, we derive the inference and learning algori thms. we have: setting the derivative to zero. equality satisfies. This leads to: which leads to Eq(20 X 21).
+  X  and  X  , given that the variational parameters are optimal. We have , for  X  , the ELBO: presented in the paper.
+  X  n = [  X  mathematically sound.
+ Variational inference: where the branchings are updated via: Learning: function of an I -dimensional Hawkes process, where Introducing the branchings, we have the following lower-bo und: Optimizing this lower-bound given the branchings yields th e following MLE for  X  : the inferred infectivity is not sparse.
+ We want to enforce sparsity of  X  . Let J (  X  ) be the objective involving  X  , we have: us a sparse solution, i.e.: yields ization path is not well-behaved (see Figure 1).
+ yields C  X  0 ).
+ if J is optimized.
+ inference of which is unimaginably troublesome.

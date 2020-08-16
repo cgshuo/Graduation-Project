@@ -1,0 +1,13 @@
+ 1. Introduction This special issue was put together from contributions presented at the Fourth International Conference on Business Process Management (2006). The areas covered in business process management in general, and at languages, and dynamic process management.
+
+BPM 2006 was organized by the Distributed Systems Group of the Information Systems Institute, Vien-na University of Technology, Austria. Once again, the interest of the international community on business process management was demonstrated by a very strong paper submission. We received 138 submissions from 40 countries: 78 came from Europe, 32 from Asia, 14 from the America, 11 from Oceania, and 3 from Africa. As usual, competition was very high: only 20 out of the 138 submission where accepted as full research papers.
+ cesses you will find their extended and revise versions published hereafter. 2. Papers in this special issue
+The papers included in this special issue cover the areas of dynamic business process management, process models and languages, and monitoring and mining of business processes.
+
+Linh Thao Ly, Stefanie Rinderle, and Peter Dadam report on the integration and verification of semantic constraints in adaptive process management systems. The authors introduce a framework for defining seman-to detect semantic conflicts when business process templates are modelled.
+
+Kees van Hee, Olivia Oanea, Alexander Serebrenik, Natalia Sidorova, and Marc Voorhoeve study the chal-lenges of history-based joins. They discuss the modelling power by means of workflow patterns. Niels Lohmann, Peter Massuthe, Christian Stahl, and Daniela Weinberg address the problem of interacting WS-BPEL processes. The BPEL models which are translated to Petri net models, are used to decide on the ing partner processes.
+
+A.K. Alves de Medeiros, W.M.P. van der Aalst, and A.J.M.M. Weijters discuss the challenges related to mental requirement, e.g., to compare process models, to find web services matching a desired service description.
+
+We thank the referees involved in this second round of reviewing.

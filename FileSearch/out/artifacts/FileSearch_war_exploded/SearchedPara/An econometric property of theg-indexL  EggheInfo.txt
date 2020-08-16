@@ -1,0 +1,33 @@
+ L. Egghe * 1. Introduction
+First we will re-introduce Lorenz concentration theory and then discuss some well-known impact measures. 1.1. Concentration theory: discrete Lorenz curve this paper).
+
+Let us, briefly, describe Lorenz concentration theory. Let X =( x i =1, ... , N . The Lorenz curve L ( X )of X is the polygonal curve connecting (0, 0) with the points i
+Note that for i = N we have (1, 1) as end point of L ( X ). Let X and Y =( y ing mentary transfer (e.g. on Y =( y 1 , ... , y N )) changes Y into the vector to yield X out of Y .
+
+Indeed, denote a i for X as in (1) and denote i =1, ... , N for Y . Since L ( X )= L ( Y ) we have a 1 = b i =1, ... , N from which X = aY with a as in (3) follows. 1.2. Impact measures measures that we will use in this paper.
+ duced in 2006, see Egghe (2006) , an improvement of the h -index: the g -index.
+Note that the papers in the h -core, together, have at least h all papers on rank 1, ... , g , together, have at least g ment of the h -index although it uses the h -index in its definition: (the highest ones) are effectively used.Kosmulski X  X  h (2) largest rank such that each paper on rank 1, ... , h (2) has ( h the number of citations (see below for the impact measure values of this author). have, at least ( h (2) ) 3 citations. We now define g (2) ( g ) 3 citations. The g (2) impact measure is new and is introduced here for the first time. and the squares of the ranks. values = 2. Lorenz curves and impact measures 2.1. Properties of good impact measures: the concentration principle in Lehmann, Jackson, and Lautrup (2008, p. 370 and 375) and Leydesdorff (2008, conclusions section) . the number of citations. Let 1 6 i &lt; j 6 N such that x one citation from the j th paper and  X  X  X dd X  it to the i th paper. So we have now the vector Y and using Muirhead X  X  theorem we can require that, if vectors X and Y are such that principle.
+ we say that this author has a greater impact if its Lorenz curve is the highest. so that the h -index violates this concentration principle. The same example gives for R : R  X  X  X  X 
+R does not satisfy this principle either. The same for Kosmulski X  X  measure h 2&gt; h (2) ( Y )=1.
+ That the g -index satisfies the concentration principle is a simple consequence of Muirhead X  X  theorem. Theorem. The g-index satisfies the concentration principle.
+ number of citations. Hence in no way, the g -index can decrease, hence g ( Y ) P g ( X ). h the axioms.
+ used. 2.2. Properties of good impact measures: the quantity principle g ( X ) and g ( Y ) (and similar for g (2) ) can be drawn. But what if L ( X )= L ( Y )? easily satisfied by our impact measures under study. Indeed, by the above, a hence have for all i =1, ... , N . By (1) and (6) we have that x i &gt; y higher ( P ) value on X than on Y .
+
+Proposition. If L(X) = L(Y) and if P N j  X  1 x j &gt; P N g (Y).
+
+It is clear that equality still is possible if we allow for non-entire values of y the conditions of the Proposition. This follows from the proven fact that x osition above.
+
+Proposition. If x i ,y i  X  0 for every i=1, ... ,N,x i ; y g ( X )&gt; g ( Y ) if g ( X )  X  1.
+
+Proof. Since X and Y have entire coordinates and since y N X = aY . By definition of g ( X ) we have We have proved that g ( X )&gt; g ( Y ) if we can show that But
+Since x g ( X )+1  X  0 and since it is a natural number we have that x the above Proposition is false: take X = (2, 0, 0) and Y  X  1 g ( X )  X  1 in the above Proposition: for X = (2) (hence N = 1), take Y  X  X  1  X  X  1 g ( X )= g ( Y )=1.
+
+Note : Under the conditions of the above Proposition we have (dim X = dimension of X = N ).
+
+Proof (i) Let dim X  X  1. Since X = aY for a certain a 2 N , a P 2 and since y (ii) Conversely it is trivial that g ( X )  X  1 implies dim X  X  1. h For g (2) we have the following result.
+
+Proposition. Under the same conditions as in the previous Proposition we have that tion of g (2) ( X ) we have In order to show that g (2) ( Y )&lt; g (2) ( X ) we have to prove that But But x g  X  2  X   X  X  X  X  1 1 since it is not zero and since it is a natural number. Hence if and only if
+But the quadratic equation (i) Case of g (2) ( X )=1
+Take N =1, X = (2), Y = (1). Hence L ( X )= L ( Y ), P x j (i) Case of g (2) ( X )=2 Take N =3, X = (8, 8, 2), Y = (4, 4, 1). Hence L ( X )= L ( Y ), (i) Case of g (2) ( X )=3 Take N =4, X = (20, 20, 16, 2), Y = (10, 10, 8, 1). Hence L ( X )= L ( Y ), 3. Conclusions an impact measure. We have shown that, essentially, only the g -type indices (such as g and g We have also investigated the property L ( X )= L ( Y ) and weak conditions.
+ Acknowledgement interesting discussions on the topic of this paper.
+ References

@@ -1,0 +1,7 @@
+ Lijun Zhang  X  zhanglij@msu.edu Tianbao Yang  X  tyang@ge.com Rong Jin  X  rongjin@cse.msu.edu Xiaofei He  X  xiaofeihe@cad.zju.edu.cn  X  GE Global Research, San Ramon, CA 94583, USA Then for all z  X  X  one has for t = 1 to M do end for To simplify the notation, we define the conditions in Lemma 8 by doing the mappings below:
+U = Z = E  X  X  ,  X  ( z )  X  Following Lemma 8 , we have where in the fifth line we use the smoothness assumption Summing up over all t = 1 , 2 , . . . , M , we have  X   X  which gives the first inequality in Lemma 1 . conditional expectation of ( 12 ), we have  X  Similarly, we also have Notice that  X  f k t is an unbiased estimate of f k t , thus proof below.
+ Then for all constants t ,  X  &gt; 0 , and therefore, To simplify the notation, we define C.1. A  X   X G 2 / [  X B k ] On event E 1 , we can bound Summing up over all t = 1 , 2 , . . . , M , C.2. A &gt;  X G 2 / [  X B k ] Similar to the above proof, on event E 1 , we bound epoch.
+ Pr = Pr = Pr  X 
+X  X 
+X  X 
+X where with a probability at least 1  X   X   X / 4 we have We complete the proof by combining ( 17 ) and ( 18 ). We follow the logic used in the proof of Lemma 2 . It is straightforward to check that When k = 1, with a probability (1  X   X   X  ) 1  X  1 = 1, we have we have

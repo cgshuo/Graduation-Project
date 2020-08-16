@@ -1,0 +1,2 @@
+
+ACTORIE is a new library for representing factor graphs that ...  X  Preserves the semantics of factor graphs  X  Easily integrates declarative and procedural domain knowledge  X  Allows efficient inference and learning over large, complex graphs  X  Gives significant gains in speed and accuracy

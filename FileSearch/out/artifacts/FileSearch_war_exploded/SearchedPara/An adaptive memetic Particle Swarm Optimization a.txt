@@ -1,0 +1,57 @@
+ Article history: Received 13 October 2013
+Received in revised form 30 July 2014 Accepted 31 July 2014 Available online 27 August 2014 Keywords: Adaptive memetic algorithms Particle Swarm Optimization Latin Hypercube design
+Design points http://dx.doi.org/10.1016/j.engappai.2014.07.021 0952-1976/ &amp; 2014 Elsevier Ltd. All rights reserved. Corresponding author. Tel.:  X  98 9156523782.
+ t points Y i using the ROV rule.
+ fi cient parameter fi cient parameter fi cient parameter fi cation factor
+L
+H ; ... ; H 5  X  X  0 : 0001 ; 0 : 001 ; 0 : 01 ; 0 : 1  X  , M 1 ; ... ;
+J
+Pc ; ...
+ Pc 5  X  X  0 ; 0 : 1 ; 0 : 2 ; 0 : 3 ; 0 : 5  X  and G 1 ; ... ; independent runs.
+ Table 2
+Ranking obtained through Friedman's test for the best fi ve con AMPSO &amp; PSO OPSO CCPSO2 PGA ES DE SA ESE Table 3 The best parameters found by the iterated F-race for each algorithm.
+AMPSO PSO CCPSO2 OPSO PGA SA ESE DE ES mT R HMJF P  X  X  Table 4 n  X  2 n  X  3 n  X  4 n  X  5 Table 5 n  X  2
+Algorithm Parameter Table 6 n  X  3
+Algorithm Parameter Table 7 n  X  4
+Algorithm Parameter 1 Table 8 n  X  5
+Algorithm Parameter (j) CCPSO2, (k) DE, and (l) ES.
+ Table 9 Kruskal  X  Wallis ANOVA table.
+ Source SS df MS Chi-square p -value Columns 1,136,638.8 11 10.3330.8 235.82 2.586e 44 Error 15,337.7 228 67.3 Total 1,151,976.5 239 Table 10 Algorithm PSO ILS ESE SA CP PGA JADE OPSO CCPSO2 ES DE For p r 120 For p 4 120 Table 11 Statistical ranking of the algorithms through the Friedman test. Algorithm Ranking Algorithm Ranking Algorithm Ranking For p r 100 For p 4 100 Part C: Appl. Rev. 42 (5), 664  X  681 .
+ ASME/ASCE/AHS/ASC Structures, Structural Dynamics and Materials Conference.
+ tion. ORSA J. Comput. 6 (Spring (2)), 154  X  160 . Berlin, Heidelberg, pp. 311  X  336 .
+ 10.1109/TEVC.2009.2030331 .
+ 58  X  73 .
+
+Crombecq, K., Laermans, E., Dhaene, T., 2011. Ef fi cient space-
+Oper. Res. 214 (3), 683  X  696 . 13 (October (5)), 1120  X  1132.
+ J. Heuristics 15 (6), 617  X  644 .
+ Inference 141 (4), 1519  X  1525 .
+ IEEE Trans. Evol. Comput. 16 (6), 801  X  816 .
+ by iterated local search heuristics. Eur. J. Oper. Res. 197 (2), 541 combinatorial optimization. IEEE Trans. Evol. Comput. 6 (6), 580 prediction. Comput. Geosci. 32 (6), 776  X  792 .
+ Tilburg University.
+
+Conference on Neural Networks, 1995. Proceedings, vol. 4, pp. 1942 http://dx.doi.org/10.1109/ICNN.1995.488968 .
+ Amsterdam, pp. 261  X  308 .
+ optimum and connectivity structure analysis. Memet. Comput. 1, 175 optimization. IEEE Trans. Evol. Comput. 16 (2), 210  X  224 . hypercubes. J. Stat. Plan. Inference 136 (9), 3231  X  3247 . 608  X  623 .
+ through fuzzy logic. Expert Syst. Appl. 40 (8), 3196  X  3206 . chains. Soft Comput. 15, 2201  X  2220 .
+ ments. J. Stat. Plan. Inference 43 (3), 381  X  402 . of Technology.
+ Trans. Evol. Comput. 13 (3), 604  X  623 .
+ Trans. Evol. Comput. 8 (2), 99  X  110 .
+
+Ong, Y.-S., Lim, M.-H., Zhu, N., Wong, K.-W., 2006. Classi B: Cybern. 36 (1), 141  X  152 .
+ 5125  X  5130 .
+ Plan. Inference 39 (1), 95  X  111 .
+ (3), 436  X  452. http://dx.doi.org/10.1109/TEVC.2012.2196047 .
+Prugel-Bennett, A., Tayarani-Najaran, M.-H., 2012. Maximum satis Trans. Evol. Comput. 16 (3), 319  X  338 .
+ Technol. 28 (1), 297  X  304 .
+ dures, 3rd ed. Taylor &amp; Francis, Boca Raton, Florida .
+World Congress on Computational Intelligence, 1998, pp. 69
+Storn, R., Price, K., 1997. Differential evolution a simple and ef 1151  X  1166 .
+ (11), 3472  X  3489 .
+ tion problems. IEEE Trans. Evol. Comput. 18 (3), 420  X  434 . (IEEE World Congress on Computational Intelligence), pp. 2659 4630968 .
+ of Arti fi cial Intelligence) .
+ vol. 7630. Springer, Berlin, Heidelberg, pp. 374  X  385 . ber (4)), 1362  X  1368.
+ models. J. Stat. Plan. Inference 143 (2), 307  X  314 . via feature matching. Inf. Fusion 5 (4), 269  X  282 . 10.1109/TEVC.2010.2052054 .
+ external archive. IEEE Trans. Evol. Comput. 13 (5), 945  X  10.1109/TEVC.2009.2014613 .
+ Comput. 15 (5), 643  X  658 .
+

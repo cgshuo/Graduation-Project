@@ -1,0 +1,43 @@
+
+Department of Computer Science and Information Technology, Inha University, Incheon, Korea Department of International Trade, Chung-Ang University, Seoul, Korea 1. Introduction series. a forecasting model of fi nancial time serires [8,11,17,20].
+ performance degradation of SVM [4,20].
+
+To supplement those demerits, this paper applies  X  X ontinuous Hidden Markov Model X  (CHMM) to data set. 2. Related research 2.1. Investigation on forecasting models of fi nancial time series generated in the fi nancial market is already completely re fl ected in the price. that shows high forecasting accuracy in a multivariate fi nancial time series. is highly robust to noise data; incomplete data can be effectively learned. series, which have rapid movement, are hard to effectively model [4,20]. 2.2. Construction of Continuous Hidden Markov Model
+CHMM is a statistical method that models the observed sequence or time series on the basis of follows [23].
+ similar to the observed sequence.
+ depends on which is the present urn.
+ When this process is repeated in T times, the observation sequence, O = { o 1 , o 2 , ... , o and S = { s 1 , ... , s is the state transition probability distribution. As a s , a probability distribution of observed symbol. b time t from the i  X  th state ( s initial probability distribution.  X  in  X  i = P ( q 0 = s i ) .
+ probability,  X  Q = ( q 1 , q 2 A  X  ( i, j ) is the probability that the state at time t is s probability that the state at time t is s density function by an estimate of mean,  X  mixture gain. (  X  In the above equation,  X  that the observation symbol, o Because the forward variable  X  the state of CHMM model  X  at time t is s until time t . Because the backward variable  X  the probability that the observation value o whose state at time t is s result, the optimum estimate values A , B ,and  X  are acquired. 3. How to construct the trend forecasting model of fi nancial time series using CHMM time series has the rising and falling trend at a speci fi c futher time. classi fi cation, and training. As a result, Up trend model,  X  constructed.
+
+When a fi nancial time series, O between fi nancial time series value P separately used to train  X  the length of sliding window,  X  , the number of PIP,  X  , and the forecasting horizon,  X  .
+Figure 2 shows the process that forecast fi nancial time series, O tained from the training process of Fig. 1. This determines the Up or Down trend of O forecasting.
+ that of the training process.
+
+In the forecasting stage, if  X  calculates two occurrence probability values P ( SW trend values are compared to decide a trend of SW trend probability value in  X  different from data of forecasting process.
+ multi-dimensional fi nancial time series F =( X 1 ,X 2 ,...,X where X 1 =( x 11 x 12 ...x 1 When O windows as shown in Fig. 3.
+ { SW 1 , SW 2 , ... , SW  X  , and the number of sliding windows of F F of Eq. (10) to the set of matrix SW as follows. When a SW into SW PIP SW PIP denotes the i -th time index of PIPs detected in SW at t F from SW PIP { SW trend 1 , SW trend 2 , ... , SW trend important in fl ection point of the trend.
+ The classi fi cation stages are as follows: t a future time when the fi nantial time series value, x positive, SW algorithm X . This algorithm detects  X  PIPs from SW Algorithm. Fixed number of PIPs Detection // SW // start and end indicate the fi rst and last time index of sliding window SW // MIN VALUE is set to a smallest number. typedef Pnode struct { start , end , Max time , Max distance } ; int PIP[  X  +1]; void PIP Detection WholeTimeRange( SW { } void PIP Detection SplittedTimeRanges ( k ,  X  ) { }
+Pnode Find MaxVD( start , end ) { }
+When the j th sliding window SW time list PIP [] having time indices of  X  number of PIPs.
+ time range of SW value, Max distance , are inserted into a heap as one node by using insertHeap (). PIP Detection SplittedTimeRanges ( ) is recursively called until  X  number of PIPs are found. time series and Trend Lines at i th time index using Eq. (13). In the Eq. (13), y on trend line at time index i . x respectively.
+ Example { ( respectively.
+ where PIP 1 is expressed as ( t 9 , v 9 ) .
+ t is expressed as ( t 12 , v 12 ).
+ P is KOSPI 200 index for 240 days from July 2007 to September 2008. of SW trend models,  X 
+If  X  new SW and P ( SW trend series at speci fi c future by selecting a model with highest occurrence probability. 4. Experiment 4.1. Evaluation method Prediction and SSTP , Success of Simple Trend Prediction . STP model with higher occurrence probability between Up trend model,  X  of CHMM. Namely, when SW calculated. If P ( SW &lt; on whether forecasted trend, STP are the same, SSTP indicating the failure of forecasting. Equation (14) is used to calculate SSTP STPP is the average value of all SSTP data to be forecasted.
+ Prediction . PTP is the probabilistic prediction for SW and PTP downtrend . PTP uptrend PTP downtrend culated in Eqs (16) and (17), for which a = P ( SW SPTP  X  X p trend X , the value of SPTP SPTP PTPP is calculated by taking the average on SPTP n is the number of sliding windows.
+ that calculates STPP and PTPP respectively. STPP is 60% and PTPP is 64%. This shows that PTPP performance of the trend forecasting model. 4.2. Performance veri fi cation of trend forecasting models
+The experiment was performed on a system with Window XP, CPU 2.50GHz, RAM 1.87GB. As SVM, CHMM was directly implemented by using C++.
+ are divided into the training and testing data sets that are temporally disjoint.
+We performed the experiments that determine the optimal parameter values of SVM and CHMM models based on SVM and CHMM by increasing the number of PIP from 3 to 9 by size 1. and 1 respectively.
+ number of PIP from 3 to 19 by size 2.
+ and 5 respectively.
+ of Tables 3 and 4, #PIP is determined by the experimental result of Table 1. respectively. So we carry out the experiments in the same condition as theirs. the candidates of C and  X  2 is identical to that of Kim [17].
+  X  ,and #PIP are 40, 1 and 5 respectively.
+ to #state and #MC .
+ W ,  X  ,and #PIP are 40, 1 and 5 respectively.
+ Tables 5 and 6, we fi xed the number of PIP as 9 due to the experimental result of Table 2.  X  ,and #PIP are 200, 5 and 9 respectively.
+ for trend forecasting model when W and  X  are 200 and 5 respectively. W ,  X  ,and #PIP are 200, 5 and 9 respectively.
+ are 200, 5 and 9 respectively. STPP .
+ accuracy of trend forecasting of CHMM is higher than that of trend forecasting of SVM. X  and SVM, respectively. The boundary value, t 95% (  X  = 0.05). If t statistic quantity is larger than t the alternative hypothesis is rejected.
+ technique than SVM to forecast the trend of a fi nancial time series. the experiment, CHMM is used to construct the trend forecasting model. effective to forecast the trend of a fi nancial time series than fi xed-length segmentation. 5. Conclusion to CHMM. since a fi nancial time series has the none-stationary and high volatile properties. References

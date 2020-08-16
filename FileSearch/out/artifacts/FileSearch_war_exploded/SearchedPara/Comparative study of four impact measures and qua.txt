@@ -1,0 +1,32 @@
+ 1. Introduction are ranked in decreasing order of their number of citations: i &lt; j implies c ogy to the papers-citations relation.
+ for which c i P h if the paper has rank i ), it does not matter how large c highest rank r = g such that  X 
+This was inspired by the fact that the h -index satisfies this inequality (and hence h number of citations to the highest cited papers.
+
+Fenner, &amp; Bar-Ilan, 2012 ). Its definition is given in the following formula: the inequality in this community has increased. In our framework, where c ( c , ... , c n ) be the original decreasing vector as above (so c a positive number k and from c l one subtracts this number k (such that k This is called an elementary transfer.
+ c applying such a transformation (4) or not? An answer will be given in the next section.
+Then follows the conclusions section with some advises for further research. 2. The transfer property the system and, hence, any good concentration measure f should increase: and Van Hecke, 1999 ): The following proposition on the g -index appeared already in Egghe (2009) .
+Proposition 1 ( (Egghe, 2009) ). The g -index is a good measure of concentration .
+Proof. The proof is very short. Since in (4), denoting this vector as  X  c 0 is smaller than the corresponding partial sum For the j -index we have the following opposite result.
+ Proof. We have to show, by (3), that
+Hence we have to show
+The square of the left hand side of (9) is equal to while the square of the right hand side of (9) is equal to
+Hence we have to show that
+But since c i P c l , since we have the decreasing vector ( c The h -index and R -index do not satisfy these properties as the next examples show. Example 3. The h -index and R -index are not good concentration measures.
+R  X  Y  X  X  ple shows.
+ Example 4. The h -index and R -index are not good diversity measures.
+Indeed, let X = (3, 3, 2, 1). Hence h ( X ) = 2 and R  X  X  X  X  article to the third one, yielding Y = (3, 3, 3, 0). Now h ( Y )=3&gt; h ( X ) and R  X  Y  X  X  also Egghe (2012) .
+
+Remark. If we take the measures C  X  P n i  X  1 c i or will again show the different nature of these indices.
+ 3. Relations between the h -index, g -index, R -index and j -index We have the following corollary of Proposition 1.
+
+Corollary 5. Given a fixed total number C of citations ( as in (5)), we have , if n P (i) max g  X  (ii) min g  X  C n and is yielded for the vector ( c 1 , ... , c tor ( C ,0, ... , 0) and is minimal for the citation vector C For the j -index we have the opposite result.
+
+Corollary 6. Given a fixed total number C of citations ( as in (5)), we have (i) max j  X  (ii) min j  X  tor C n ; ... ; C n and is minimal for the citation vector ( C ,0, ... , 0). (i) For the vector C n ; ... ; C n we have, by definition of the j -index, that j  X  n have the following results.
+
+Proposition 7. Given a fixed total number C of citations ( as in (5)), we have (i) max h  X  (ii) min h  X  1 and is yielded for the vector  X  c 1 ; ... ; c
+Proof. (i) h can never be larger than (ii) Is trivial. h
+Proposition 8. Given a fixed total number C of citations ( as in (5)), we have (i) max R  X  (ii) min R  X 
+Proof. (i) Is trivial. Note that, since h 6 n , min R 6 max R , as it should. h what similar to these of the g -index.
+ We close this paper by proving some general inequalities between these indices. trivial. That
+That g 6 Remark. Since and since g is the largest rank such that hence hence (since g is an entire number) and since g P h , one would be inclined to think that  X  R
+Here is a counterexample: take the citation vector (9,3). Hence h =2, g =2, R  X  4. Conclusions values of all four indices from which again follow their differences. Finally we prove some general inequalities between these four indices. We leave open to conduct similar studies of other impact measures. References

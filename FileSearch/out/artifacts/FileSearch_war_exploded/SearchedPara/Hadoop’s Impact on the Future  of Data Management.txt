@@ -1,0 +1,4 @@
+
+As Hadoop and the surrounding projects &amp; vendors mature, their impact on the data management sector is growing. Amr will talk about his views on how that impact will change over the next five years. How central will Hadoop be to the data center of 2020? 
+What industries will benefit most? Which technologies are at risk of displacement or encroachment? 
+H.2.8 [ Database Management ]: Database Application  X  Data mining Hadoop; Data Management; Da ta Center Technologies. Dr. Amr Awadallah, Cofounder/CTO, Cloudera, Inc. Before co-Entrepreneur-in-Residence at Accel Partners. Prior to joining Engineering at Yahoo!, and ran one of the very first organizations to use Hadoop for data analysis and business intelligence. Amr July of 2000. Amr holds a Bachel or X  X  and Master X  X  degrees in Doctorate in Electrical Engineering from Stanford University. conferences like KDD, NIPS, CIKM, ICDM, SIGIR, WSDM. 

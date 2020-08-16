@@ -1,0 +1,74 @@
+ 1. Introduction
+As formal conceptualizations of an application domain [1] , ontologies provide the means for a common understanding of re fi engineers, improving their productivity, and reducing the human input required. 1.1. Related work
+Classifying previous approaches to (semi-)automatically learning ontologies [2 validation , incorporating data from Semantic Web sources and investigating relations by reasoning upon this data.
+Identifying and labeling non-taxonomic relations are among the ontology learning subtasks that are considered most 1.1.1. Corpus analysis increase or decrease the probability of the taxonomy given the available evidence. Ruiz-Casadoetal. [16] extendWordNetwithrelationslearnedfromthesimpleEnglishversionofWikipedia(simple.wikipedia.org).
+They use known relations from WordNet to identify textual patterns indicating hyponym, hyperonym, holonym and meronym Wikipedia.
+ relations and all their WordNet hyponyms as features. Finally, they apply the trained classi (iii) syntactic and semantic constraints to capture relevant gloss fragments. of example relations using a supervised learning algorithm. They improve their classi between nouns with a common hypernym in the relation detection process.
+ above expectation . This measure determines the most signi loosely linked to lexical items than names of concepts, the authors apply a manual step for mapping the identi ontology relation labels.
+ clustering to build classes of terms sharing a certain relation.
+ (ii) semantic rules (which combine multiple syntactic patterns into rules covering syntactic variants (iii) ontological constraints to obtain domain-speci fi c relations. 1.1.2. Corpus enrichment using verbs from sentences containing domain concept identi
+Yang and Callan [31] present an approach combining the high accuracy of pattern-based methods with the advantages of clustering-based techniques, which can identify implicit relations syntactic patterns, as well as (ii) unstructured data retrieved from search engines and Google term de hypernyms [20,28] , siblings (using conjunctions) and meronyms [10,32] .
+ relations and linking them to their WordNet sense. 1.1.3. Semantic Inference and Validation or multiple sources to determine the relation between concept pairs.
+ speci fi c, and (ii) it is not trivial to derive one relation label from the paths determined by this method. knowledge acquisition bottleneck [37] , a term that refers to the dif methods with reasoning based on structured data from external sources. 1.2. Problem statement relations , (ii) synonyms , and (iii) unlabeled relations , for which no relation label could be determined. experts and therefore re fl ects the domain's shared understanding.
+ derived from these sources.
+
+Etzioni et al. [30] , and Banko and Etzioni [42] . These techniques do not consider the mapping of such relations to corresponding to the domain model.
+ detection of arbitrary relations but do not apply any external data sources to re
+Navigli and Paola's [19] approach for enriching ontologies with term de concepts in glosses.
+
+Nevertheless, Buitelaar and Cimiano [4] note that ILP is more relevant for ontology re
+ILP theories differ signi fi cantly from ontologies, which re they de fi ne as an interactive and cooperative process between engineers and ontology learning systems [43] . 1.3. Paper structure integration of external structured resources into the identi summary of the obtained results as well as an outlook on possible future research avenues in Section 4 . 2. Method relations in a particular domain including optional speci documents, (ii) the XML/RDF serialized domain ontology containing unlabeled relations ( R framework [9] , and (iii) a reusable  X  relation description to be used.
+
+The system extracts verbs from sentences with terms that represent two domain concepts or instances ( C knowledge retrieved from sources such as DBpedia and OpenCyc.
+ prerequisite and therefore a crucial step for applying ontological constraints to re vector space model. 2.1. Composing and comparing verb vectors regular expressions are generated automatically by determining all WordNet synonyms for a given concept pattern which matches their singular and plural forms. Applying this procedure to the cell  X  , for example, yields the list of synonyms  X  solar cell, photovoltaic cell cells?)  X  . Eq. (1) de fi nes the list of verbs L mn that characterize the semantic relation between the entities C instances C m r and C n r . The match operators returns true if sentence s
+Multiple matches of a regular expression pair C m r and C implementation is limited to capture two matches.
+
+The verbs(s i ) operatortypicallyincludesaverblemmatizationstepandreturnsthein
+The verbs are detected by a part-of-speech tagger. Optionally, WordNet is used to identify wrongly classi concepts is importantfortheevaluationprocess.Wede fi nethat R of a relation. The idx operator in the second term of the de before the second entity ( C n r ) in a sentence s i .
+
+Eq. (2) computes the centroid V  X  mn , which represents the verb vector for the relation R
+C [44] measure.
+The method is trained by computing the centroids for concepts and instances ( C relation ( R m  X  n  X  ) between the entries C m  X  , C n  X  is computed by the unlabeled relation; 2. comparing this centroid to all centroids with known relation label using a similarity function sim := sim ( V cosine measure; and 3. assigning the relation label ( j ) of the best match (highest similarity) to the unlabeled relation ( R on labeling performance.
+
+Table 1 illustrates this process. We determinethe label ( j the similarity of its centroid ( V  X  m  X  n  X  ) to the centroids of known relations ( V 2.2. Integrating external knowledge reused between different domain ontologies.
+
+The component to integrate external knowledge into the label suggestions uses these restrictions to re meta ontology used for the following examples. The fi gure also demonstrates the speci based on the  X  study  X  relation.
+
+Fig. 3 outlines the re fi nement process. The structured data integration component obtains the entries ( C structured data from externalsources such asDBpedia and OpenCyc toground C the restrictions on the label's use. The system then veri accordingly, and computes a re fi ned ranking of labels for the relation between the entries C
+Organization and Topic . Combining this information with the domain and range restrictions speci situations where no grounding was possible. b owl:ObjectProperty rdf:ID="study" N b /owl:ObjectProperty N
+The following example speci fi es this restriction on the Organization concept in the relation description ontology: b owl:Class rdf:ID="rd:Organization" N b /owl:Class N goal of this step is to assign one of the concept types de
+Concept labels from the domain ontology are mapped to DBpedia page names. In cases where no corresponding DBpedia page ontologies, which tries to map the respective external classes to a relation description ontology concept. description ontology, as illustrated in the following example: b !  X  we de fi ne rd:Organization as the union of external classes which are mapped to rd:Organization b owl:Class rdf:ID=rd:Organization N b /owl:Class N b !  X  information derived from reasoning  X  Nb http://dbpedia.org/page/NOAA resource="http://sw.opencyc.org/concept/Mx4..."/ N 2.3. Knowledge base
+The knowledge base of the framework consists of (i) a list of all centroids V
+M ( Section 2.2 ).
+ 2.4. Relation labeling
+The fi rst step in determining the relation's label is computing the similarity ( sim ) between centroid V integrate domain knowledge (Eq. (5)) into the re fi ned similarity s
+The current architecture uses the cosine measure as similarity function. The factor w the following heuristic.
+Eq. (5) determines the weights w o,m  X  ,n  X  based on whether the ontology implies ( domain and range constraints; concepts for which no type could be identi type only meets the domain or range restrictions  X  as the type of one of the two concepts could not be determined and 0.01) were chosen after conducting a series of experiments with different weight distributions and were selected independently of the evaluations.
+
+The computed similarity s mn and the mapping M mn  X  j result in a list of triples, which contains the relation R relation label j , and its similarity to the unlabeled relation R strategies: (i) selecting the relation label j from the relation R of these three approaches.
+
+Table 2 exempli fi es the weighting process with the unlabeled relation scientist the known and unlabeled relations yields the similarity values ( sim: = sim ( V the corresponding labels ( j ) for the concept pairs. External domain knowledge re based on Eq. (5), which considers domain, range and property restrictions. vectors of the unlabeled relation between scientist and greenhouse effect . The mapping M weight of only 0.01 because the concept types ( Person , ObjectTopic ) con and there is no con fl ict, then the weighting value of 0.8 is used (Eq. (5)). The relation type study satis property restrictions and therefore receives a weight of 1.0. In cases where both concept types were identi (wrongly) suggest the subClassOf type. 2.5. Integration of user feedback
+The knowledge base ( KB ) stores all training relations  X  the relation R m ontology or discard the automatically generated feedback. This semi-automated process re constantly improves the system's accuracy. 3. Evaluation
+Section 2 . Two domain experts manually extended relation sets that were identi relations with the concepts in reverse order ( R  X  1 , e.g. car smaller percentage of dissent related to subClassOf/superClassOf versus effectOn/affectedBy .
+To improve validity, a pre-processing step eliminated relations that were identi the corpus. Based on the provided corpus, such relations cannot be considered domain-speci by the domain experts with the number of relations available after the cleanup process. 3.1. Domain-speci fi c evaluation corpus from environmental blogs and the Web sites of environmental organizations. the corpus to evaluate the method, 126,163 of which were unique.
+
+Similar to Snow et al. [20] , we trained each directed relation in the knowledge base with a set of about 50 pre-de signi fi cance thresholds (20 and 150) for building the verb vectors (Eq. (5)) were compared as well. 3.2. Integration of external knowledge existing stably in time .An ObjectTopic such as fossil fuel , however, should never be grounded to the Person class.
+Person . Such cases have a negative impact on the results of the relation label suggestion system information at all than an incorrect one.
+ resolution techniques such as the ones used by Wong et al. [45] .
+
+For 41 concepts, a DBpedia page was found but did not provide suf to OpenCyc or the DBpedia ontology were found, or the available links did not yield appropriate grounding information. suf fi cient structured data to successfully apply concept grounding. The ongoing extension and re semantic resources will improve the precision and recall of our approach. 3.3. Results parameters used in the experiments.
+ labels  X  it indicates how many choices the domain expert has to check on average to identify the correct label. concept type  X  according to the relation description ontology given in parenthesis.
+ con fi guration yielded similar results and is therefore omitted for brevity). described by d'Aquin et al. [29] . Currently, the application of Scarlet does not have a signi strategies including average building are more robust against outliers, which may harm the performance of (i).
+Table 10 summarizes the results as a percentage of correctly identi semi-automatic mapping with a custom heuristic which does not require the input of domain experts. windows are better in the directional ( direction: yes ) setting, holds for above expectation measure had little impact. We attribute this not to the heuristic itself, but to the dif method to an automated label suggestion and evaluation schema appropriately. 20% chance of randomly guessing the correct label.
+ of non-directed relations. The accuracy of 72.61% for determining the correct label at the could be grounded, values of 74.03% for fi rst suggestion correct and 87.84% for 0.85 and 0.94, respectively. A comparison between the VSM method based on Chi-squared signi fi cance values above 99.9%.
+ 3.4. Interpretation
+As expected, additional experiments show that the performance of the proposed methods depends on the speci direction) at the fi rst guess, and an ARP around 1.15. Study is particularly well suited as it has a clearly de domain experts disagreed on the use of the effectOn versus the takeActionBy relation types, which is also re especially for directional settings.
+ relations were de fi ned before our method was applied.
+ additional property restrictions on classes are available. 4. Conclusions
+This paper presents a method for computing relation labels for unlabeled relations based on corpus analysis as well as current problems with methods solely relying on structured data.
+ results. Currently, certain data quality issues such as incorrect mappings (e.g. activist Nevertheless, as methods leveraging Semantic Web resources become more popular and collaborative approaches such as sources is expected to increase signi fi cantly.
+
+Future research should emphasize the integration of additional, heterogeneous data sources the range of possible applications of the presented method.
+ Acknowledgements
+The research project RAVEN (Relation Analysis and Visualization for Evolving Networks; www.modul.ac.at/nmt/raven )is valuable suggestions and Jode Ziegenfuss for proofreading the manuscript.
+References

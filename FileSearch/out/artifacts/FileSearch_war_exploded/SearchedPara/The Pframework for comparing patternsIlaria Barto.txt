@@ -1,0 +1,86 @@
+ 1. Introduction their extraction.
+ The wide spreading of DM technology makes the problem of efficiently managing patterns an important research issue. time), as well as in a number of other scenarios, some of which are sketched in Section 1.1. summarize (or because of both).
+
+Given the above, we can state a series of high-level methodological requirements that a framework for dissimilarity assessment should satisfy: General applicability: The framework should be applicable to arbitrary types of patterns. type. Indeed, the end user should be able to easily adjust the dissimilarity criterion to her specific needs. Simplicity: The framework should be built upon a few basic concepts, so as to be understandable to the end user. raw data. This requirement also encompasses privacy issues, e.g., when raw data are not publicly available. due to modularity, to change any component with an alternative one. To address the requirement of simplicity, P rive the total dissimilarity score. Finally, considering the efficiency issue, P not to be accessed to evaluate patterns X  dissimilarity.
+ ready-to-use libraries. 1.1. Motivating examples
+In this section, we provide some illustrative examples which demonstrate the usefulness of a pattern comparison oper-market or human reactions to chemical/biological substances). Other applications include pattern base synchronization acteristics, since connection to raw data is lost.
+ We conclude this section by describing a few scenarios where similarity between patterns plays an important role.
+Example 1. Consider a telecommunication company providing a package of new generation services with respect to profiles using such services, as these are portrayed, say, via decision tree models. distributions should be flexible enough to take such correlation into account. account all such features and return a score assessing how similar two documents are. introduce two running examples. Section 3 is devoted to explain the basic concepts and mechanisms of the P whereas Section 4 demonstrates how several comparison measures proposed in the literature can be modeled within the 2. Pattern representation scribe only the parts of the model relevant to our purposes (for a detailed presentation, please refer to [9]). The model assumes a set of base types (e.g., Int , Real , assigned are called named types . Some examples of types are: pattern type, otherwise PT is called simple .
+ each base type B is associated with a set of values dom  X  B  X  , it is immediate to define values for any type in T . denoted as p : m ) is a value for type MS , p : m 2 dom  X  MS  X  .
+
+Before describing the main concepts of the P ANDA framework, we introduce here two running examples that will be used {Int} set of integers
+XYPair = (x:Int,y:Int) named tuple type with attributes x &lt;
+XYPair &gt; list of XYPair s age. Experiments on both running examples are detailed in Appendix A .
+ Example 4 (Clusterings (images)). We illustrate here the case of the W (clusters), but the behavior of other RBIR systems can be modeled in a similar way. In details, W
+Wavelet Transform to each image and the k -means algorithm is used to cluster together pixels sharing common visual the fraction of image pixels contained in the region) is used as the pattern measure. In terms of the P ANDA model, each region (simple pattern) is modeled as Images are then defined as sets of regions (clusters) with no measure: where ? denotes the null type .
+
+Example 5 (Collections of documents). The problem of comparing collections of documents is quite common in web mining where, for example, it is used to find sites selling similar products.
+ its frequency using tf = idf measures), and can therefore be modeled as a simple pattern:
+A possible instance of this type is Consequently, documents and collections are represented respectively as 3. The P ANDA framework
+In this section, we provide a framework for assessing the dissimilarity of two patterns, p T .
+
+Our framework is built upon two basic principles: tures and the dissimilarity of their measures. 2. The dissimilarity between two complex patterns should (recursively) depend on the dissimilarity of their component patterns.
+ easily result in misleading results. For instance, comparing two respect to the underlying raw data.
+ The second principle provides the necessary flexibility to the P overall score.
+ the paper.
+ generalize the framework to the case of complex patterns. 3.1. Dissimilarity between simple patterns
+The dissimilarity between two patterns, p 1 and p 2 , of a simple pattern type PT is based on three key ingredients: p 1 : s and p 2 : s , and p 2 : m , and ity scores.
+
+The dissimilarity of two patterns is consequently determined as (see also Fig. 1 )
+If p 1 and p 2 share the same structure, then dis struct  X  p structures, two alternatives exist: 1. The structural components are somewhat  X  X  X ompatible X , in which case we interpret dis dissimilarity X  one wants to charge with respect to the case of identical structures. 2. Structures are completely unrelated (in a sense that depends on the case at hand), i.e., dis regardless of the measure dissimilarity, we also require the overall dissimilarity to be maximum, i.e., dis  X  p restriction is enforced to prevent cases where two completely different patterns might be considered somehow similar due to low differences in their measures.
+
+Example 6. Continuing Example 5 , consider two keywords k dissimilarity function, if the two terms are the same, then dis then one could set dis struct  X  t 1 ; t 2  X  &lt; 1 to reflect the  X  X  X emantic distance X  between t difference of measures, i.e., dis meas  X  w 1 ; w 2  X  X j w 1 disjunction of the two dissimilarities: that correctly yields dis  X  k 1 ; k 2  X  X  1 when dis struct Example 7. Continuing our other running example (Example 4 ), W regions, i.e., clusters structures: where det  X  X  denotes the determinant of a matrix. The measure dissimilarity is defined as Finally, the combining function simply averages the two distances.
+ nents of the patterns differ, i.e., dis  X  p 1 ; p 2  X  X  dis
+It has to be remarked that our framework does not preclude the possibility of defining different dis computational costs, etc. (see also Section 5). 3.2. Dissimilarity between complex patterns implementations.
+ a major role, since it is where pattern composition occurs.
+ vectors, and tuples) can be dealt with.
+
+The structure dissimilarity of complex patterns cp 1 : s  X f p damental abstractions, namely: the matching type , which is used to establish how the component patterns of cp value representing the total dissimilarity between the structures of the complex patterns. 3.2.1. Matching type
+A matching between the complex patterns cp 1 : s  X f p 1 1 where each element x i ; j 2 X  0 ; 1  X  i  X  1 ; ... ; N 1 ; j  X  1 ; ... ; N pattern of cp 1 and the j th component pattern of cp 2 , i.e., between p i matching types include: 1 X 1 matching: In this case, each component pattern of cp 1 of cp 2 (resp., cp 1 ). Partial matching occurs if N 1  X  N constraints:
+N  X  M (complete) matching: In this case, each component pattern of cp of cp 2 and vice versa, i.e., x i ; j  X  1 ; 8 i ; j .
+ ous ones in that each x i ; j might be real-valued, and represents the amount of p i responding constraints on the matching matrix are: where w i 1 (resp., w j 2 ) is the weight (mass amount) associated to each component pattern p i distances for time series (see also Section 4.3).
+ 3.2.2. Aggregation where the above usually takes the form: minimizes the aggregated structure dissimilarity: Putting all together, the computation of structure dissimilarity of complex patterns can be summarized as in Fig. 2 : chosen matching type.
+ overall score.
+ case at hand (see also Section 5).
+ of dissimilarity between complex patterns.
+ patterns.
+ Example 8. To complete Example 4 , for comparing images W average over the matched regions: The second modality applies EMD matching, and the aggregator: takes into account the structure dissimilarity, i.e., dis  X  p i
+Example 9. Completing Example 5 , we first show how two documents (complex patterns modeled as sets of weighted key-words) can be compared. For simplicity, we only consider the case where the structure dissimilarity between keywords yields a binary value, thus, according to Eq. (2), dis  X  k between documents considers differences in weight between matched (thus, equal) keywords plus a penalty value for unmatched keywords. This can be represented, in our framework, by taking into account an 1 X 1 matching and averaging over the number of distinct keywords in the two patterns: sidered, for example.
+ plex patterns consisting of tuples of component patterns is even simpler, since only corresponding components can be matched. 4. Implementing specific dissimilarity measures measures that have been proposed in the literature for some DM tasks. 4.1. Clusterings comparison
+Among the many approaches available to compare clusterings obtained from a same dataset using different algorithms or information-theoretical principles.
+
+The variation of information measure considers the entropies , H  X  cp well as their mutual information , I  X  cp 1 ; cp 2  X  , that is where H  X  cp  X  X  P j H  X  p j  X  and I  X  cp 1 ; cp 2  X  X  P i P simple pattern  X  s  X  S ; m  X ? X  , S being the set of points in the cluster, is defined as and consider an N  X  M (complete) matching type. Summing over all the possible pairs of clusters, it is obtained d  X  cp 1 ; cp 2  X  dis  X  cp 1 ; cp 2  X  X  4.2. Frequent itemsets comparison supp min , x is a frequent itemset iff supp T  X  x  X  P supp itemsets from a dataset T , including the well-known Apriori [18] algorithm. The similarity measure proposed in [5] for comparing two sets A and B of frequent itemsets, derived from dataset T T , respectively, is (measure component). The distance between itemsets p i and p j is defined as average: that is, dis  X  cp 1 ; cp 2  X  X  1 sim  X  cp 1 ; cp 2  X  . 4.3. Time series comparison stock value for a particular day) for stock market data, a two-dimensional point for trajectories/shapes, etc.
+One of the most common measures for assessing the dissimilarity among time series is the dynamic time warping (DTW) stamps. The computation of the DTW distance between two sequences is based on the concept of warping path . Given two sequences, cp 1  X h cp 1  X  1 ; ... ; cp 1  X  N 1 i and cp 2 then a contiguous set of elements of D , w k  X  dis  X  cp 1
+Boundary conditions: The first and the last samples of the two sequences should be matched together, i.e., i being K the length of W , i K  X  N 1 ; j K  X  N 2 .
+ i.e., 0 6 i k i k 1 6 1 and 0 6 j k j k 1 6 1.
+ as the minimum cost between all the warping paths:
+Note that, although an exponential number of warping paths exists, the DTW can be efficiently computed in O  X  N using dynamic programming.
+
+The DTW distance can be easily modeled within the P ANDA framework by considering each sequence as a complex pattern two sequences; the constraints on the paths can be translated, using our formalism, as and the DTW distance is then defined as (again, the dissimilarity is not normalized) 5. The software framework
+The P ANDA conceptual framework is amenable to be implemented as a software framework, which we did by coding a with the conceptual framework.
+As an example, Fig. 3 shows the software components needed to evaluate the dissimilarity of two collections of docu-problem has to be solved, thus an optimizer implementing the Hungarian algorithm [19] is required.
+From both implementative and computational points of view, the optimizer is usually the most complex component in which runs in O  X  N 3  X  time, as well as the optimizer needed to compute the EMD distance (whose complexity is O  X  N typically providing one order of magnitude speed-up over the former for patterns with tens X  X undreds of components and often leading to similar results (see Appendix A.1 ).
+
+Adopting the P ANDA framework at the software level has the neat advantage of immediately favoring the reusability of implemented software components, since each of them has a well-defined functionality. For the same reason, P use alternatives for dissimilarity assessment. 6. Related work
+In this section, we compare our approach with other proposals related to pattern management, with the aim of making clear the uniqueness of P ANDA objectives. In Section 6.1, we contrast P the only other framework aiming to a principled approach for comparing patterns. with complex patterns at all.
+ e.g., efficient update of the pattern base, assessment of the statistical significance of changes, etc.
+Kernel methods are becoming quite popular in the DM community, since they can be applied to perform machine learning soning , i.e., how to relate dissimilarity in data and pattern space.
+ Two notions of similarity among patterns are defined in [3]: main requisites for an efficient pattern comparison (see Section 1) is violated. terns themselves. Obviously, this requires that patterns are defined over some vector space, i.e., SS  X  R sets; moreover, this notion of similarity cannot be directly applied to complex patterns. 6.1. The FOCUS framework
+FOCUS [4] provides a principled approach for measuring the deviation between two datasets, in terms of corresponding non-overlapping clusterings.
+ The central idea of FOCUS, which has also been a major inspiration to the design of P for the (new) regions in the GCR.
+ ible framework for pattern comparison:
+FOCUS only considers patterns whose structure consists of a two-levels hierarchy, i.e., each pattern is composed of managed by P ANDA .
+ enough.
+ common refinement cannot be defined. For example, several examples used in this paper cannot be modeled by FOCUS. available), and privacy (there is now no need to access the data that may contain private information). 7. Conclusions In this paper, we have presented the P ANDA framework for the comparison of patterns. The general model of P ilarity score. The above mentioned notions constitute the building blocks of the P ing in (possibly different) dissimilarity functions configurations.
+ A number of interesting working issues are still left open. First, it would be interesting to understand if P over the underlying dataset(s). As observed in Section 6, work on kernel methods could be exploited to this end. Appendix A Experiments using the P ANDA framework range of applications (generality) and (b) presenting how P (flexibility).
+ A.1. Sets of itemsets ware components needed to run the experiment.
+
+P . Then, we compare P 0 with patterns P x  X  x  X  10 ; 20 ; ... ; 100  X  extracted from some noisy versions D tained by modifying x % of the transactions in D 0 , for each of them changing 50% of its items. much faster response times (25 x on average, in our case).
+ A.2. Clusterings (images)
+Our second experiment deals with the comparison of images (see Example 4 ). In order to show how differences at the shows a visual example. We then compare each image with its noisy versions by using our framework, implemented as in Fig. 7 .
+ cerning execution times, both methods can compute the dissimilarity of two images in less than 1 ms. A.3. Collections of documents in Fig. 3 ). topic (the one covered by the journal). Journals used in this experiment are listed in Table 1 . The results of the experiment are shown in Fig. 9 , allowing us to draw the following interesting conclusions: overview of developments in the broad field of computer science.
+ science.
+
+The greatest distance found was the one between the Evolutionary Computation and the Distributed Computing journals, which cover totally distinct topics.
+
+References

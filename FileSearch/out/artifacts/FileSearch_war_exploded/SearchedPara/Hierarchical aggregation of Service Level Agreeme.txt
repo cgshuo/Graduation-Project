@@ -1,0 +1,60 @@
+ 1. Introduction resellers [1,2] to tie together services from different external service providers to ful chains services corresponding to different partners are aggregated in a producer transparent and secure manner.
+ considered as a single layer process [3] . This single layer SLA composition model is insuf the importance of service chains, but it does not highlight their relevance in terms of value multiplication. concept comes from the notion of business process views [6,7] and work
+Networks. The overall contribution of the paper consists of:  X  a privacy model based on the concept of SLA-Views,  X  a formal description of hierarchical SLA-Choreographies based on SLA-Views in Business Value Networks,  X  a formal model for SLA aggregation in hierarchal SLA-Choreographies, and  X  the customization of WS-Agreement to support the hierarchical SLA aggregation model. an overview of our achievements and strategy for our future work. 2. Related work stake-holders in business cooperations. 2.1. SLA aggregation aggregation of work fl ows. Blake and Cummings [3] have de
+SLAs whereas our aggregation model is centered at value generating business networks. 2.2. Formal description of SLA
+BPEL and WS-Policy whereas our formal model adheres to WS-Agreement standard. 2.3. Work fl ow views
+For privacy concerns we will de fi ne the notion of SLA-Views, which is similar to the concept of work partners. Schulz et al. [13] have introduced the concept of view based cross-organizational work without specifying the internal structure of participating work
+Chiu et al. [15] in terms of a contract model based on work
+Level Agreements represented in XML format are more structured and starts with de fi ning views in an inter-organizational work and their aggregation model. 3. Hierarchical choreography of SLAs de fi nes the structure of agreement as depicted in Fig. 1 . The contract should bear an of reward.
+
+De fi nition 1 (Service Term) . A service term denoted by term term s  X  STerms is a tuple such that, where name and value denote the name and value of a service term and type
+We extend the WS-Agreement standard by a new mandatory element, namely type aggregation function that helps to automate the aggregation of SLAs. We postpone its de where we will discuss the aggregation process.
+
+De fi nition 2 (Guarantee Term) . A guarantee term denoted by term term g  X  GTerms is a tuple such that: where SLO represents Service Level Objectives, condition q
+List. Combining the above two de fi nitions, now we can de
+De fi nition 3 (Term)A . term  X  Terms is a pair such that where term s  X  STerms and term g  X  GTerms .
+
+Following the above de fi nitions, SLA can now be formally de
+De fi nition 4 (SLA) . A Service Level Agreement (SLA) denoted by sla is a tuple where Terms =  X  i =1 n term i and Context is a list of strings. Context de initiators. It also contains the duration of the SLA. The parameter Name denotes the name of the SLA. ful ValueNetwork.WewillcallthishierarchicalaggregationofSLAsa SLA-Choreography with relevance to the Service Choreography.
+
+In Fig. 2 , we present a simpli fi ed picture of a cross-VO choreography. The client (that may be a work can be compared with a simple Business Value Network. The partner services play the producer connection with the underlying service choreography.
+ upper layers.
+
+For this purpose we introduce the concept of SLA-Views. 4. SLA views work fl ows, a view can be a subset of that work fl ow or can be a representation of that work
+Choreography is not a work fl ow; so the rules of work fl should be a single start and single exit or every split should have a join, do not apply on SLA Choreography. Choreography, we need to formalize these concepts.
+
+De fi nition 5 (Aggregation Point) . An Aggregation Point ap is an object such that master  X  slave relationships in Business Value Netw orks are directly translated to producer (vap) to automate the aggregation process. Virt ual aggregation point i s discussed in detail in Section 7 . through dependencies.
+
+De fi nition 6 (Source Dependency) . A source dependency dep src aggregation point ap-i 2 to the producer-oriented SLA, sla
+Each dep src  X  Dep src , where Dep src is the set of all source dependencies within the SLA-Choreography. Let source ( ap i ) is the unique s  X  Dep src , for which a unique producer-oriented SLA exists with s =( ap function source maps each aggregation point ap i to a unique SLA through a unique source dependency s .
+De fi nition 7 (Sink Dependency) . A sink dependency dep sink consumer-oriented SLA i 2  X  i 1 to the aggregation point ap dependencies.
+ where P ( Dep sink ) is the power set of Dep sink . sinks ( ap i ) is the set S sink  X  P ( Dep sink ), i.e. S s each consumer-oriented SLA sla i is mapped through a unique sink dependency s
+De fi nition 8 (Dependency) . A dependency Dep is a set that is the union of two sets namely Dep disjoint, i.e.
+
+Based on these de fi nitions we see in Fig. 3 that the producer-oriented SLA ( a consumer-oriented SLAs, aggregated at ap  X  i 2 . For example the bandwidth and space aggregated at ap-i what service i 2 can offer to service a 3 . At the same time service i
+With having all the related concepts formalized, now we are in a position to provide a formal de
+De fi nition 9 (SLA-View) . An SLA-View denoted by slaview is a tuple such that where sla p is a producer-oriented SLA, SLA c is a set of consumer-oriented SLAs, dep dependencies, and ap i is an aggregation point. Each aggregation point ap view i .
+ In Fig. 3 the SLA-Views of the client and a service are highlighted.
+
+De fi nition 10 (SLA Choreography) .An SLA chor is a tuple such that Another way to describe the SLA-Choreography terms of SLA-Views is privacy and trust. 5. Aggregation process an aggregation. So we introduced an attribute for aggregation type, namely corresponding service will behave during the aggregation process. We can de
+De fi set:
+De fi dependent (consumer-oriented) SLAs, which de fi ne that term. In the present context, we de maxtype , mintype and neutral , but new types can be added according to the situation, i.e.
+These functions are depicted in Fig. 3 (b). The function sumtype can be formally de
+De fi nition 11.1 (sumtype) . type a is an aggregation function that aggregates n number of terms into one term. sumtype is of the type of type summation of all terms. Examples include terms for storage space, memory, availability and cost.
+De fi nition 11.2 (maxtype) . contribute (though in a negative sense) to the throughput of a work
+De fi nition 11.3 (mintype) . ineffective.
+
+De fi nition 11.4 (neutral) . organization or discount in a speci fi c service, etc.
+ 6. Aggregation of guarantee terms Level Objectives (SLOs) about different properties of the service.
+ many feasible approaches:  X  contrary to the automation requirements of the process for which it was originally designed for.  X   X  properties expressed by guarantees unseen in the past.  X   X  up its own Guarantee Terms during the aggregation process based on its personal business rules. process. 7. A case for hierarchical aggregation of SLAs in business applications
+NESSI, in its Grand Vision and Strategic Research Agenda (SRA) [4] ,de themselves.
+
+So far, we have discussed the aggregation of SLAs in context with the composition of services in a producer describe both master  X  slave and peer-to-peer relationships in Business Value Networks. Master with some service. Therefore a peer-to-peer relationship needs to be dissolved into two producer separate SLA associated with each of them. Here we would like to de third party trust manager to address these issues in [18] .
+ 8. Motivational scenario by the aggregation mechanism presented above. Arfa is a graphics designer and she has just as rendering and editing. She plans to utilize online services to accomplish these tasks. A media work two services, i.e.  X  rendering work fl ow  X  service and the supply chain type of structure ben eath them. The rendering work may be revealed that the  X  media engine  X  is composed of even more basic services such as the YouTube like style.
+ cost spent on rendering work fl ow, because cost has been declared as schema into WS-Agreement's Service Description Terms' section. The following chunk of Schema allows this. b xs:complexType name="ServiceDescriptionTermType" N b /xs:complexType N written as follows. b ?xml version="1.0" encoding="utf-16"? Nb xs:schema xmlns:myns =" http://schemas.xyz.com " xmlns =" http://www.mynamespace.com " targetNamespace =" http://www.mynamespace.com " xmlns:xs =" http://www.w3.org/2001/XMLSchema " N b xs:simpleType name="aggregationType" N b /xs:simpleType N ... ... b /xs:schema N b wsag:ServiceDescriptionTerm wsag:Name=Resolution" wsag:ServiceName="Enhance-Video" b /wsag:ServiceDescriptionTerm N expressed and aggregated in a similar fashion. 9. Conclusion
+Business Value Networks. SLA-Views help to maintain balance between trust and privacy. Our model identi aggregation model explained in this paper.
+ related to our overall research agenda but are beyond the scope of this paper. heterogeneous Virtual Organizations.
+ Appendix A. List of Improvements in the Journal Version
+There have been following modi fi cations in the original BPM2009 version. 1. The abstract has been modi fi ed and motivated with the notion of IT based Service Economy.
+Cloud based business processes. 3. Section 2 has been slightly improved with some relevant discussion regarding the SLA@SOI project. 4. Section 5 has been improved with some additional notes as part of the last paragraph. 5. Section 6 is an entirely new section which was not part of the BPM2009 version. 7. Section 9 also discusses the relevance of this research with our recently published work.
+References

@@ -1,0 +1,44 @@
+ 1. Introduction
+US and Japan, e.g., the Document Understanding Conference (DUC), as part of the TIDES project, the Text Summarization Challenge (TSC) tional Workshop on Spoken Language Translation (IWSLT). 4 matic evaluation method for summarization.
+ an automatic evaluation method is indispensable to progress on automatic summarization. jective evaluation.
+ models to alleviate the problem of overfitting.
+ disadvantage of our method. 2. Conventional automatic evaluation methods and their problems and extrinsic evaluation methods ( Jones &amp; Galliers, 1996 ). 2.1. Automatic intrinsic evaluation evaluation method counts the words or sequences common to the texts. 2.1.1. ROUGE-N ( Lin &amp; Hovy, 2003 ) ROUGE-N measures the similarity based on N-gram co-occurrence statistics.
+Here, Count N ( C , R ) denotes the number of N-grams common to C and R . 2.1.2. ROUGE-S ( Lin, 2004 ) ROUGE-S is an extension of ROUGE-2 and is defined as follows ( Lin, 2004 ): where
+Here, c is a cost parameter for Prc skip2 and Rec skip2 . The function Count 2.1.3. ROUGE-SU ( Lin, 2004 ) ROUGE-SU is an extension of ROUGE-S. It also takes unigrams into account ( Lin, 2004 ). where Rec su and Prc su are defined as follows: the number of unigrams in R and C , respectively. 2.1.4. ROUGE-L ( Lin, 2004; Lin &amp; Och, 2004 ) ROUGE-L is an evaluation measure based on the longest common subsequence (LCS) ( Lin, 2004 ): where Rec lcs and Prc lcs are defined as follows: 2.1.5. ESK-based method ( Hirao et al., 2005 ) guishes N-grams from skip-N-grams by discounting skip-N-grams with a decay parameter. The ESK-based method is defined as follows:
+Here, d is the upper bound of the word subsequence length. Prc defined as follows:
+Sim esk denotes the normalized ESK value between c i and r of m sentences  X  r 1 ; r 2 ; ... ; r m  X  . Symmetrically, Rec d 2.2. Automatic extrinsic evaluation tance) ( Hirao, Okumura, Fukushima, &amp; Nanba, 2004 ) for extrinsic evaluation. 2.2.1. Exact match ( Hirao et al., 2004 ) summaries. The answers are annotated by the author of the reference summary. 2.2.2. Edit distance ( Hirao et al., 2004 ) The above score is relaxed by edit distance.
+ tained in c i that is given by: where the function  X  L ( c i ) X  returns the length (# of characters) of sentence c the edit distance between the answer string ans and sentence c 2.3. The problem of conventional automatic evaluation tion of the automatic evaluation methods represented by the following three indices. i 2 I indicates a human subject, j 2 J indicates a summarization system, t 2 T indicates a news topic.
+
+The j th system X  X  summary for topic t is denoted as C t , i topic t is represented by R t , i . The set of reference summaries for topic t is denoted as R reference summaries R t .
+ subject compares the system summary and his/her own reference summary. The function h i represents a human evaluation score provided by the i th subject. score vector v a and human evaluation score vector v h . The j th component of v uation score for the j th summarization system, i.e., human evaluation score for the j th system, i.e., matic evaluation methods are strongly correlated with human evaluation.
+The correlation coefficients in Fig. 3 are much lower than those between v lation coefficients between F j and H j . F j  X  X  F  X  C 1 ; j by using scores provided by conventional automatic evaluation methods. 3. Automatic evaluation based on voted regression model (VRM) employ linear regression model whose objective variable is given by human subjective scores. 3.1. Linear multiple regression model
+Suppose the training data set, f y 1 ; x 1 g ; f y 2 ; x 2 objective variable y n and explanatory variables x n  X  X  1 ; x r . We can rewrite the above equations as follows: where b  X  X  b 0 ; b 1 ; ... ; b P  X  T is a vector of the regression coefficients, y  X  X  y objective variables, is an independent error vector, and X is an N  X  P  X  1  X  matrix:
+Here, the optimal b -value is estimated by minimizing the square error of true y ^ y  X  b 0  X 
+This ^ b is given by
+Therefore, when a test example x tst is given, ^ y is given by ables. For example, when we employ ROUGE-1, Exact and F score d topic t , the vector of the explanatory variables for the j th system is represented as x assumes the following relation between the objective variables and the explanatory variables.
+Therefore, the vector of the objective variables is given by y  X  X  H  X  C matrix X is defined as follows: 3.2. Improvement of prediction accuracy the inverse matrix  X  X T X  X  1 in the Eq. (21) will be unstable. shrinkage method. 3.2.1. Variable selection with information criterion ian information criterion (BIC) ( Schwarz, 1978 ) are well known. as follows: Here, SRS P denotes the squared residual sum, i.e., 3.2.2. Shrinkage methods press the effects of the explanatory variables, its regression coefficients are shrunk.
+In the ridge regression, optimal regression coefficient vector b squared error between y n and ^ y n as follows: rewritten as follows: penalty.
+
+On the other hand, the regression model that employs L 1 norm instead of L defined as follows: 3.3. Automatic evaluation with voted regression model estimation.
+ (AIC c )( Sugiura, 1978 ) was proposed. The difference between AIC and AIC complexity. When the number of training samples is fewer than twenty, AIC defined as follows:
+Step 1 : For each subset S k  X  1 6 k 6 2 P 1  X  , we obtain a regression model M Step 2 : Determine the best AIC c score. AIC best c  X  min
+Step 3 : Let M T cnd be the set of regression models that satisfies D AIC
+Step 4 : For each model M  X   X 2 M T cnd  X  , predict y . This estimated value is denoted ^ y dure is exponential with respect to P . However, it is not a problem because P is very small. the number of non-empty subsets is 2 P 1  X  7.
+ S 1 : {ROUGE-1} S 2 : {Exact} S 4 : {ROUGE-1, Exact}
+For each variable subset, we train a regression model and compute AIC From Table 1 , the averaged prediction is  X  0 : 71  X  0 : 68  X  0 : 70  X  0 : 79  X  = 4  X  0 : 72. outperforms ARM for both TSC3 and DUC2004 data. 4. Experimental evaluation 4.1. Experimental settings
+We conducted experimental evaluations using TSC3 and DUC2004 task2 4.1.1. Error uation score defined as follows: cates the score predicted by an automatic evaluation method. 4.1.2. Average per-system correlation
+H  X  X  H  X  C 1 ; j ; R 1  X  ; H  X  C 2 ; j ; R 2  X  ; ... ; H  X  C matic evaluation scores for the j th system, i.e. , F j  X  X  F  X  C correlation coefficient between H j and F j is averaged for j J j systems. ( r ) and Spearman X  X  ranking correlation coefficient ( q ). 4.1.3. Per-summary correlation tors H w and F w . Where H w  X  X  H  X  C 1 ; 1 ; R 1  X  ; ... ; H  X  C
+F defined as follows:
+Here, we also use both r and q . 4.2. Automatic evaluation methods to be compared We compare VRM with ROUGE-1, ROUGE-2, and the following regression models. Simple regression.
+ Naive multiple regression.
+ Variable selection with AIC c (1-best).
+ Ridge regression.
+ Lasso.
+ SVR (support vector regression).
+
+AIC c  X  X  indicates the best regression model in terms of AIC 4.3. Explanatory variables used for experimental evaluation appropriate ontology for obtaining semantic labels of words. 4.4. Results and discussion 4.4.1. Effectiveness of VRM-based evaluation both  X  X er-sys X  and  X  X er-summary X .
+ as follows: ROUGE-2 produces better results than ROUGE-1 for TSC3 but ROUGE-1 produces better results for DUC2004.
+ The evaluation scores of TSC3 are higher than those of DUC2004. variations.
+ supported by the large difference between the VRM and 1-best scores.
+Our method has a great advantage over ROUGE-1 and ROUGE-2. Compared with ROUGE-2, VRM For DUC2004, our method achieved a 17% error reduction compared with ROUGE-1. human subjective evaluation. 4.5. Effective explanatory variables for VRM explanatory variable sets that include ROUGE-2, Exact, and Fscore explanatory variables are language independent significant explanatory variables. models. 5. Advantage and disadvantage of VRM-based automatic evaluation do not require human evaluation scores.
+ data set that does not include human evaluation scores. 6. Conclusion and kernel function-based evaluation methods are useful as explanatory variables for VRM. References

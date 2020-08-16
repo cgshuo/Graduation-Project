@@ -1,0 +1,63 @@
+ 1. Introduction information retrieval from geographically separated data centers [8
+Ranking or top-k queries return only the highest ranked k tuples according to a user-de have been designed to rank distributed database systemsintroducingmanyef integration based on fuzzy similarity scores [16,17] .
+ communication.
+ at sea.
+ are the most highly temperature regions during last week?
+Many recent approaches have dealt with ranking centralized uncertain database [19 transmitted data is minimized for achieving ef fi cient distributed uncertain database ranking.
+The rest of this paper is organized as follows. Section 2 brie algorithms. Section 6 validates the proposed algorithms and evaluates their ef mental study. Finally, the paper is concluded in Section 7 . 2. Background ef fi manage uncertainty over continuous intervals.
+ eliminate the unnecessary attributes. (2)  X  E valuation of the query to get the result. (3) fi nal possibility and certainty [34] .
+ two sub-sections. 2.1. Uncertain database models w ,.., w n . The probability of any PW w to appear is pw  X  X  X  uncertain. 2.1.1. Attribute level uncertainty model model along with the possible worlds for this relation.
+
+Let X i be the random variable denoting the score of tuple t where B i is the bounded size of X i . Let w be a possible world with value w occurs is: where x satis fi es v jx = w j . In attribute level,  X  w  X  model are sensor readings [14,38] and spatial objects with fuzzy locations [28,39 2.1.2. Tuple level uncertainty model dently. Complex models, such as x -relations, come with dependencies among tuples speci appears in only one rule, and a rule can contain only one tuple [19
+Let D be an x -relation with N tuples and X rules, for any rule X tuples and 3 rules. First rule X 1 says that tuple t 1 , t
+A possible world w from W is a subset of tuples from uncertain relation [19 plication examples of this model are probabilistic movie records re quest traces [43] . 2.2. Probabilistic ranking queries probability. The main top-k semantics are explained by thenext de of uncertain database ranking.  X  returns the set T  X  such that: where T is a set of k -length sets and W ( T i ) is the set of possible worlds in which T return exactly k tuples for a small database.
+  X  worlds. It returns a set of tuples t  X  i such that: where W ( t j i ) is the set of possible worlds in which ( t on unique ranking (a tuple may have multiple ranks at the same time).  X  answer set of this query is: Answer ( Q , p , T )={ t | t exactly k tuples violating exact-k property.  X  highest probability to be in top-k list in all possible worlds.
+This will satisfy exact-k property while violating containment (top-( k +1)containstop-k ).  X   X  and so on. Each tuple rank is calculated as: where r w ( t ) is tuple rank at possible world w .
+ These are the main semantics used in the most recent approaches of uncertain database ranking. 3. Related work fi mizing ( fi xing) the number of phases or by changing threshold computation method [1,2,4 uncertain databases ranking [15,23] .
+
+The fi rst Approach uses the expected rank technique [23] . Tuples at each site S with their ranks. Then it initializes the priority queue with ranked j th) in priority queue is computed by broadcasting tuple t rank the process terminates.
+ fi round of communication. Each cluster head sends pre-pruned set of tuples (suf means they do not monitor updates in tuple values or ranks. 4. Problem formulation certain database. The data model de fi nition is formulated in the next sub-section. 4.1. Data Model De fi nition (DMD) that any site M i has number of tuples N i and N =  X  i =1 s ( t ij ). Let X ij be the random variable de fi ning the score values of t sented by the pairs ( v jx , p jx ) where 1  X  x  X  B i and B 4.2. Distributed top-k Query (DTk) DT k is formally de fi ned as,
+De fi nition 1. Distributed top-k query (DT k )
+Consider anuncertain database D distributed over M sitessuchthat D = min k tuples such that: query returns the top-k list with the lowest Expected rank among all distributed sites M .
+De fi nition 2. Expected rank in attribute-level [23]
+Consider an uncertain relation T with N tuples, each tuple t probability pair ( v ij , p ij )foreachvalue j chosen from X rank r ( t i ), such that: where ( v ij , p ij ) are value and probability of t i corresponding to choice j , q ( v higher than v ij and Pr [ X i N v ij ] is sum of probabilities of all values higher than v  X  may introduce inconsistent ranking results.  X  is desired to minimize the number of communication phases.  X   X  different sites should be reported to Query node to update the current query answer.
+As a solution for all these issues, we propose a communication-ef manages both the ranking and monitoring process ef fi ciently. 5. The proposed framework as follows: 1. Reducing the communication cost for uncertain based on ranking queries in distributed data sets. 2. Fixing the number of communication phases (one or two phases at most). will send to the Query node for the ranking process.) initial computing (snapshot) and monitoring updates (historic). Query node.
+ simultaneously.
+ ph as e is a continuous process executed on sites with tuples' updates and Query node. 5.1. Ranking layer detail in the next sub-sections. 5.1.1. Threshold-tuned distributed top-k algorithm (TDTk) in Fig. 2 .
+ lowest expected rank among all sites.
+ Formally, where A is the set of tuples with the lowest expected rank from all nodes, A  X  from node x , A x  X   X  k
+The detailed steps of TDT k algorithm are as follows (illustrated by Algorithm 1 ):  X 
+The Query node R broadcasts a top-k query with pruningthreshold value
+LT with empty values.  X 
+Each node M i  X  M empties a local priority queue A i and initializes lower bound LBT are sent to R and inserted in DT k .  X   X  Each node, sets LBT i with the received LT and starts the monitoring phase. 5.1.2. Ceiling-tuned distributed top-k algorithm (CDTk) node is sent to Query node. The rest of the tuples are called candidate list used later to re get fi rst phase DT k .The k th ranked tuple in DT k is sent to all nodes of the Fig. 3 .
+ Algorithm 1. TDT k Algorithm among all sites, in two successive phases.
+ Formally, where A is the set of tuples with the lowest expected rank from all nodes, A  X  from node x such that:
+The detailed steps of the CDT k algorithm are as follows (illustrated by Algorithm 2 ):  X  all sites. It initializes the priority queue DT k and tuple LT with empty values.  X 
+Each node M i  X  M initializes the priority queue A i and tuple LBT ed rank and sends the fi rst C tuples to R while keeping the rest of the tuples in A  X 
+At R , tuples are ranked by expected rank then the k th ranked tuple is sent to all the sites of the  X 
+Each node assigns LBT i with LT then ranks A i with LBT i  X  sets LBT i with LT value and starts the monitoring phase. 5.1.3. Algorithms cost analysis this section and their meanings. First, assume that S q and S the number of required tuples for fi rst ranking phase ( C ), the number of nodes of the number of tuples in candidate list of certain node i with a lower expected rank than LT ( h algorithm.
+ Algorithm 2. CDT k Algorithm size of data messages sent by the nodes. Formally: the communication cost is: depends on how many tuples dominate LT in rank, where 1  X  cost is:
+The total communication cost of CDT k is C C = C C 1 + C C 2
+For the worst case, assuming y = k  X  1, h i = k  X  1and C  X  k so, the total communication cost will be: C C  X  ( k  X  1+ k + k
+From the previous observations, the communication cost is O ( k is a large number of nodes (i.e. m N k ), then m  X  k N k 2 and assuming uniform distribution of tuples' scores over nodes then mk algorithm.
+ 5.2. Monitoring phase in Fig. 4 .
+ assigning its local LBT j with the received LT , then starts a continuous check for new values t
+When a new value t n is detected at a node M j , the node inserts it into A 4). The expected rank of t n is checked against LBT j , if it is lower then t
+M receives LT and assigns LBT j with it (lines 11  X  13).
+
+Algorithm 3. Monitoring algorithm 5.2.1. Monitoring example is as in Fig. 5 (b).If a new tuple t n appeared in site M two possible alternatives here. If t n dominates LBT x value, then t r ( t n )=2.08, r ( LBT x )=3.04so,  X  r ( t n ) b ( LBT x )  X  t
+DT k is then ranked to specify the new LT which is t 1 . The last step is to modify LBT modi fi ed A x and DT k respectively.
+ whether the tuple updated or added is a candidate for DT k or not. 6. Experimental study time; which is the time elapsed from the beginning of the query until the results are returned. 64-bit operating system. All the algorithms were implemented in C#. algorithm is (  X  =0). 6.1. Datasets roughly every second. In the experiment measurements P, RH and T are used in the comparison process. 6.2. Effect of different sizes of top-k list (k)
+The communication costs of the proposed algorithms are studied for a of m (10, 50, 100, 200, 500 and 1000 nodes). at each node). After that value the communication cost is rate.
+
+TDT k athigher values of m . Onthe other hand, the communication cost of tA-BFis nication cost is the same for a constant number of tuples.
+ 6.3. Effect of different number of tuples N increases linearly with a very high rate.
+ although the number of tuples sent in the fi rst phase is always the same ( algorithm. With the increase in N the lower bound speci fi resulting in an increase in communication cost.
+ 6. 4. Effect of different number of distributed sites m TDT k and CDT k .
+ nodes but reversely. Each node sends tuples which means that when k is tuples. 6.5. Effect of different values of threshold (  X  )
+Fig. 9 shows the communication costs of TDT k vs. different values of threshold ( fi xed number of nodes. In all the previous results the value chosen for context. 6.6. Response time with different sizes of top-k list (k) than TDT k .
+ 7. Conclusion and future work little literature in ranking distributed uncertain data.
+ rank is the ranking function used in both algorithms. The situations, and both of them overcome the old one.
+ Probabilistic Graphical Models.
+
+References

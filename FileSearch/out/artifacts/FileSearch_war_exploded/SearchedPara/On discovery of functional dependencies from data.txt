@@ -1,0 +1,72 @@
+ 1. Introduction
+Functional dependencies (FDs) are well studied by the database community. An FD between two sets of attributes X and Y , Bdate value, but their Supvsr values are different.
+
+Functional dependencies form a key concept in the relational database theory and the foundation for designing relational example, the semantics that pneumonia determines favor can be captured by the dependency from pneumonia to favor. Such is simple yet efficient.
+ The contributions of this paper are as follows. Firstly, we review and compare the algorithms of TANE, FUN, FD_Mine, and algorithm is advantageous in all the settings. Lastly a few issues in implementing FD discovery are identified.
+The last section concludes the paper. 2. Preliminaries This section defines concepts and notation used in FD discovery and shows basic theories developed in TANE [9], FUN [22], FD_Mine [26] and FastFDs [25].
+
+De fi nition 2.1. FD violated by r .
+ the following Armstrong's basic and additional rules [1] to infer implied FDs. Augmentation if X  X  Y , then XZ  X  Y for any Z  X  R ; Transitivity if X  X  Y and Y  X  Z , then X  X  Z ; Reduction if XYZ  X  W and X  X  Y , then XZ  X  W ; Decomposition if X  X  YZ , then X  X  Y and X  X  Z .
+ FDs with one attribute on the right hand side. Such FDs are also more efficient to discover [8].
+De fi nition 2.2. FD closure and equivalence The closure of a set  X  of FDs ( FD closure ) is the set  X  + of all FDs implied by  X  . Two sets  X  1 and  X  2 of FDs are equivalent if  X  1 + =  X  2 + .  X  interested in only minimal FDs defined below.
+ De fi nition 2.3. Minimal FD, cover, and minimal cover that Y  X  X .
+ is called redundant cover in [16].
+ reduces X  X  A to Y  X  A .
+ are equivalent because all the FDs of one can be derived from the FDs of the other. approach. We firstly review the major results of the top-down approach. by the relation are the FDs discovered.
+
+To generate candidate FDs, an attribute lattice [9] is used. An attribute lattice is a directed graph with the root node, the canFD AB  X  C . We use L i to denote all the nodes at Level-i .
+ [2] defined below.
+ De fi nition 2.4. Attribute partition  X  each c i  X   X  X is a set of the tid s of all the tuples having equal X value and is called an equivalence class ,  X  n is the number of distinct values in the projection r [ X ], called the class count , and  X  c 1  X  X  X  c n = r [ tid ], and  X  c i , c j  X  [ c 1 ,  X  , c n ] (if i  X  j , c i  X  c j =  X  ). partition of Y ,  X  Y , using partition product defined below: In the above example,  X  WS can be computed by the partition product  X  W  X   X  S . The next theorem found in [9,10] states how to use partitions to check the satisfaction of an FD. Theorem 2.1. An FD X  X  Y is satisfied by a relation r if and only if |  X  X |=|  X  XY |. the FD S  X  B is satisfied. On the contrary, |  X  S |  X  |  X  SW |, so the FD S  X  W does not hold. to compute satisfied FDs. 1. Compute the partitions of single attributes from the partition definition. Level-2 and Level-3 are checked. This cycle continues until there is only one node left at a level. in the next section.
+ the depth-first search of the lattice.
+
+The bottom-up approach for FD discovery, employed by Dep-Miner [15] and FastFDs [25], calculates agree-sets [15] or from each subset of dif ( A ).
+ difference set of the relation. Further details can be found in [25] .
+In addition to the above two types of dedicated discovery algorithms, SQL-based approaches are also proposed for FD and approximate FD discovery [7,19,11] . 3. Pruning
+In this section, we review the techniques for node pruning and edge filtering proposed in the literature for the top-down approach.
+ Rule 1. Key pruning Given a key X satisfied by r, any attribute set Y containing X should be pruned from the lattice (paper [9] ) .  X  them from the lattice. This rule was used in TANE, FD_Mine and FUN.
+ following.
+
+C ( ABD ) either. Thus C + ( ABD )=  X  . Rule 2. Closure pruning A node X should be pruned if C + ( X )=  X  .  X  reduced to X \ AY  X  A , then as X \ Y  X  X , X \ AY  X  A must have been checked at a previous level.
+The next rule is proposed by FD_Mine [26] and the rule uses the concept equivalence sets. Two attribute sets X and Y are Rule 3. Equivalence pruning Given two attributes X and Y, if X  X  Y =  X  and X  X  Y, then Y and all nodes containing Y should be pruned .  X  XW  X  C and we can remove Z from calculation.
+ pruning.
+ if there exists A  X  X such that ( X \ A )  X  A . The opposite of a non-free set is a free set . Lemma 3.1. Any attribute set containing a non-free set is also a non-free set (paper [22] ) .
+This lemma enables us to know whether a node is non-free without calculating its partition. The next lemma allows us to requiring that all parent nodes of a non-free node be free.
+ |  X 
+The lemma enables the calculation of class counts for non-free sets with non-free parents without partition computation, FUN, more than 95% of the total execution time was used on partition computation. 4. A hash-based algorithm for FD discovery minimal FDs discovered from data.
+ the number of distinct values in the hash-key column. In normal cases, k is small. hash table.
+ satisfied. The complexity of the function is O ( k | r |).
+
+Using hash to check key satisfaction follows a similar principle. The details are in Function CheckKey() below. To check line).
+ CheckFD to check every edge to see if it is a satisfied FD. The control of the algorithm follows the attribute lattice.
+Consequently, our algorithm is a top-down algorithm. The pruning and the filtering rules used in the algorithm will be presented shortly. 4.1. Node generation respectively. Then
+Lemma 3.1 , X is non-free if one of its parents is non-free. Y is a parent of X if Y has only one attribute less than X . 4.2. X.rhs and C + (X) determined by a parent or an ancestor of X or X \ A  X  A is reducible.
+
+De fi nition 4.1. X.rhs and closed node Given an attribute set X , X.rhs ={ A  X  X |  X  Y  X  ( X \ A )( Y  X  A  X  X \ AY  X  Y )}. A node is closed if X.rhs = X .  X  ( ABD ). rhs = BD . D is in it because A  X  B reduces AB  X  D to A  X  D .
+ Comparing this definition and the definition of C + ( X ) (Formula 1), we can easily see X.rhs  X  1 : In the second step, the rhs of newly discovered FDs are added to X.rhs : In the third step, the rhs of the FDs reducible with regard to the set  X  of discovered FDs are added to X.rhs : 4.3. Pruning X  X  Y  X  X  X  Y =  X  , X is pruned and will not participate in node generation for the next level. partition-based algorithms follow a completely different way of checking from the hash-based way. need to be done against the FDs with the rhs in ( X \ X.rhs  X  2 ).
+ of calls to CheckKey() .
+ Rule 4. Key fi ltering If an attribute set X is non-free, X is not a key and the call to CheckKey(X) is not necessary . the previous level and therefore X would not appear at this level. If ( X \ A ) is not a key, X is not a key either.  X  efficiency. 4.4. The algorithm pruned. When a node is completely checked, the next node is generated and checked. node.
+
+The algorithms does not include the FDs derived from keys and single valued attributes. With the discovered keys and single-valued attributes, FDs can be derived without using the lattice and the relation. found, the algorithm does not remove A  X  D which is implied by A  X  B and B  X  D . check.
+ the number of tuples increases, the number of minimal FDs may increase. 5. Performance analysis and comparison The experiments were done on a Toshiba laptop with an Intel Core(TM) Duo CPU P8700@2.53 GHz, 4 G of RAM and Windows OS. The programming language is Java.
+ We implemented three algorithms, FD_Mine, FUN, and FastFD, in addition to our hash-based algorithm. We did not implement
+TANE because the work of FD_Mine concludes that FD_Mine performed better than TANE. We did not implement Dep-Miner either as the work in FastFDs shows that FastFDs performed better than Dep-Miner. 5.1. Partition calculation classes contains 2 tuples. 5.2. Pruning and fi ltering In the implementation of FD_Mine, the key, the C + ( X ), and the equivalence pruning were used.
+In the implementation of FUN, the key and the closure pruning were used. Unlike the original paper of FUN, non-free nodes pruning, and the edge and the key filterings were used. 5.3. Data structure
+The data structure we use is Java's HashMap which is efficient. We compared Java's HashMap with the HashMap of C# and found that Java's HashMap had a slightly better (less than 10% by average) time performance. 5.4. Main data sets we used the Bridge data and the Hepatitis data in the Machine Learning Repository. 5.5. Found FDs for all the results presented below, the covers are equivalent when the conditions are the same. 5.6. Experiments
+We did experiments on the following subjects (ii) the memory space use of the algorithms as the number of tuples increases; (iv) the reason why our hash-based algorithm is fast.
+ 5.7. Time vs data sizes synthetic data.
+ computation.
+
+FUN and FD_Mine overlap as shown in Fig. 2 (b) and (c). This is understandable as there are no non-free nodes, FUN has to
+We point out that when Parts (a) and (c) of Fig. 2 are compared, when nTup=100, the time values for FUN (and respectively classes and (c) has much more classes, the time used for partition computation is much higher. 5.8. Memory space uses
+The next group of experiments is on the memory space uses of the algorithms. The experiments were based on the USair data space used when the algorithm is implemented in C#. 5.9. Time vs number of attributes pruning shows its maximum power. Although in FUN, closure pruning was implemented, but equivalence pruning does more. Case (a), the line for FastFDs appears much higher. In this case, Hash is the best performer. the many edges of the lattice. Even in this worst case, our algorithm performed no slower. 5.10. The reason why hash-based algorithm is fast mainly discuss the number of tuples used in hashing.
+
+We observed the average percentages of tuples used in our hash-based algorithm to check an FD and a key. The numbers are total number of tuples, nTuples, in the relation increases.
+ grows. The synthetic data has a similar situation and therefore is not shown. data needs to be proceeded for most nodes in the lattice.
+
+Although the complexity of the FD_Mine, FUN and our hash-based algorithms is all quadratic to the number of tuples, the in the experiments and the partition based algorithms are slower.
+ number is still smaller than that of a partition. 5.11. Discussion input FDs. With this algorithm, the number of FDs on the Hepatitis data is reduced to 739. in a relation. When FDs in different minimal covers are compared, implication must be used. We implemented an implication algorithm for the purpose.
+ time is much smaller than that of Hepatitis data.
+ sets is small.
+
+There is a type of paradox when the hash-based algorithm is compared to the partition based algorithms to find the cases hash-based method finds violations in a very few number of tuples and uses less time too. 6. Conclusion dependencies in a relative way.
+ References

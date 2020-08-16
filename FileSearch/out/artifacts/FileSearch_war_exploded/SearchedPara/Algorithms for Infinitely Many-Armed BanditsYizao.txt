@@ -1,0 +1,2 @@
+  X  What about infinitely many X  X rmed bandit problems? We cannot pull all the arms even once!
+How many and which arms should we play?  X  Our assumption:  X   X  &gt; 0 such that  X  Proposed algorithm: UCB X  X IR (Arm X  X ncreasing Rule)

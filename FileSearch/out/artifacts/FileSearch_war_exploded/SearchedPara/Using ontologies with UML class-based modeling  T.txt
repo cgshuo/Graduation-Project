@@ -1,0 +1,66 @@
+ 1. Introduction (OWL) [4] provides a class de fi nition language for ontologies, i.e., OWL allows for the de logical constraints on properties of their members.
+ may be overcome by an integration.
+ generalization of classes and relationships, whereas OWL provides mechanisms to de conditions imposed on properties of class de fi nitions.
+ denote models that bene fi t from advantages of the two modeling paradigms? UML models and OWL models dif fi cult.
+ pro fi le for denoting hybrid models as well as other concrete syntaxes. related work. We point to further applications of TwoUse in Section 7 . 2. Case study
+Annotation Tool (KAT) [11] is a framework for semi-automatic and ef (COMM) [12] .
+ dif fi cult for KAT end-users to choose appropriate plug-ins.
+
+For example, semantic multimedia developers provide machine learning based classi by sheer principle, it needs to be open.
+ employing unsuitable recognizers over multimedia data.
+ 2.1. UML-based software development kat_algorithm ( Fig. 1 ).The method run()invokes themethod getRecognizers(),whichuses re is invoked, which adds further annotations to multimedia data to re simpli fi cation).
+ fragment in the sequence diagram ( Fig. 1 ).
+ recognizers to be created (Line 17).
+
+Listing 1. OCL expressions for the UML sequence diagram of Fig. 1 . context kat_algorithm endif )-N asSet () (Lines 19  X  24). The description of a goal_shots_detector is much more complicated (Lines 7 some jubilation.
+
+Indeed, the UML/OCL approach has some limitations:  X  information in object types (or in object states when using OCL).  X  and reuse. In scenarios with thousands of classes, it becomes more dif search.  X  2.2. OWL-based software development 2.2.1. OWL modeling ontology languages, the Web Ontology Language (OWL) [4] 1 denominator for different plug-ins exchanging data.
+ kat_algorithm and is equivalent to a kat_algorithm that de kat_algorithm and is equivalent to a kat_algorithm that de useable implicit de fi nition of distinctions provided in Listing 1 (Lines 6 2.2.2. OWL reasoning highlight_video by conditions that may be necessary as well as suf different ways of describing classes; it handles these descriptions as transitive closure for properties; and it enables dynamic classi dynamic aspects of software systems such as states or message passing. Thus, to bene of integrating both paradigms using our original TwoUse approach. 3. The TwoUse approach
+We build the TwoUse approach based on four core ideas: modeling. syntax to write UML-based class and OWL descriptions.
+To give an idea of the integration, let us consider our case study. Instead of de classi fi cation. Such expression will then be speci fi ed by: context kat_algorithm of kat_algorithm. We explain this and other expressions in Section 3.4 .
+The advantage of this integrated formulation of rNames lies in separating two sources of speci classi fi cation of complex classes remains in an OWL model. The classi (See Fig. 3 ). Second, the speci fi cation of the execution logic remains in the UML speci 3.1. TwoUse conceptual architecture
+Fig. 2 presents a model-driven view of the TwoUse approach. TwoUse uses UML pro and generate the OWL ontology and Java code. 3.2. Concrete syntax
+The TwoUse approach provides developers with a UML pro fi OWL ontologies (UML pro fi le for TwoUse), exploring then the full expressiveness of OWL (
+We call as hybrid diagram a UML class diagram with elements stereotyped by both UML pro different modeling views: (1) the UML view, (2) the OWL view with logical class de an SPARQLAS query expression. 3.3. Metamodel different concrete syntaxes used in TwoUse.
+ specifying behavioral and structural features of classes.
+
+Property and OWL2::Property, which is specialized by ObjectProperty and DataProperty. 3.4. SPARQLAS using a triple-based language.
+ is allowed. SPARQLAS expressions ( Table 3 ).
+ where self is bound to alg1, the result is true. 3.4.1. SPARQLAS expressions
+TwoUse includes a set of prede fi ned SPARQLAS expressions. For example, one may replace Lines 9 suf  X  self  X  Typespec .  X  ?self type ?C. It returns a set of named classes that consistently classi  X  ?self directType ?C. Returns the most speci fi c named class that describes ?self.  X  where foreach C , self  X  C , C  X  Typespec and C  X  Typespec .  X  the OWL class descriptions of the context object, where T is the type of ?self, i.e., { a 3.5. Code generation property id (Lines 5  X  6) allows for identifying these individuals. pro fi led for TwoUse ( Fig. 3 ).
+
+Listing 2. Snippet of Java Code implementing TwoUse. @rdf(" b http://kat-comm.owl ka_algorithm N ") public class Kat_algorithm { private URI id; private ArrayList b Recognizer N _recognizers; public ArrayList b Class N rNames () { public void run () { public ArrayList b Recognizer N getRecognizers () { public ArrayList b Class N owlSubClassesOf (String typespec) { // .. query execution here 3.6. Implementation
+We have realized the TwoUse approach in the TwoUse Toolkit. bridge the gap between Semantic Web and Model-Driven Software Development.
+TwoUse Toolkit building blocks are:  X  of software models.  X  languages like OWL2 and SPARQL, OMG standards like UML and OCL as well as other domain-speci  X  A set of reasoning services like classi fi cation, realization, query answering and explanation. model-driven software developers with the following functionalities:  X 
+Describe classes in UML class diagrams using OWL class descriptions.  X 
+Semantically search for classes, properties and instances in UML class diagrams.  X 
+Design business rules using the UML pro fi le for SWRL.  X 
+Extent software design patterns with OWL class descriptions.  X 
+Make sense of UML class diagrams using inference explanations.  X 
+Link software engineering artifacts by transforming software languages into OWL (OWLizing).  X   X  Validate re fi nements on business process models.
+
+OWL ontology engineers are able to:  X 
+Graphically model OWL ontologies and OWL safe rules using OMG UML pro  X 
+Graphically model OWL ontologies and OWL safe rules using the OWL graphical editor.  X 
+Graphically model and store ontology design patterns as templates.  X 
+Write and safe SPARQL and SPARQLAS queries using the textual editors with syntax highlighting. 4. Alternative concrete syntaxes expressiveness, presented next. Additionally to the UML pro models. 4.1. Pure UML class diagrams transforming UML class diagrams into ontologies, we follow the rules de 4.2. Textual notation
+The textual notation can be automatically generated from the TwoUse model or de
+OWL. class kat_algorithm extends core:algorithm { } ... class highlight_annotation equivalentTo (core:semantic_annotation restrictionOn dsn: setting_for class highlight_video equivalentTo (core:video_data restrictionOn dsn: setting some class jubilation_video equivalentTo (core:video_data restrictionOn dsn: setting some class soccer_jub_hl_video equivalentTo (ObjectIntersectionOf (soccer_video highlight_video class highlight_recognizer extends kat_algorithm, restrictionOn dns:de class jubilation_recognizer extends kat_algorithm, restrictionOn dns:de class goal_shots_detector extends kat_algorithm, restrictionOn dns:de where the usage of OWL for variability management plays an important role. 5. Evaluation 5.1. Case studies semantic web applications as in the following sections. 5.1.1. Improving general purpose software design patterns select between them at runtime. Hence, the question arises of how the selection of speci their descriptions rather than by weaving the descriptions into client classes.
+The TwoUse approach allows decoupling class selection from the de their respective OWL descriptions for the variations.
+
+The application of the Selector Pattern presents the following consequences: (1) reuse can be reused independently of platform or programming language; (2) modeled and evolved independently of the execution logic; and (3) testability tested by logical unit tests, independently of the UML development.
+Template Method, are good candidates. 5.1.2. Metamodeling the software development task.
+
+Since the semantics of UML constructs is textually described in UML speci
+We have analyzed the different types of relationships in the UML2 Speci 5.1.3. Ontology-based domain-speci fi c languages the basis for interoperability and formal domain analysis.
+
+DSL users may rely on reasoning services to suggest domain concepts according to the language de constraints can be checked by reasoners and inferences are clari allowed by OWL enables a progressive evaluation of DSL program consistency. metamodel to query all classes that describe an object in the DSL program. 5.1.4. Speci fi cation of ontology translations improve productivity, since modelers will not have to be aware of platform-speci 5.1.5. Automatic generation of ontology APIs following software engineering quality attributes: (1) usability problem domain, raising the abstraction level; (2) reusability models are easier to maintain than plain text; (4) portability may easily generate an API for other programming languages. 5.2. TwoUse analysis
+Based on the case study, we analyze how TwoUse features re according to a quality model covering the following quality factors: maintainability, ef 5.2.1. Maintainability 5.2.1.1. Analyzability. In case of failure in the software, the developers might use axiom explanation to track down failure, which helps to improve failure analysis ef available in ontology tools. time spent to change decreases. 5.2.1.3. Testability. An OWL reasoner veri fi es queries class de suites to be more declarative. 5.2.2. Reusability programming language.
+ videos. By executing the query ?T subClassOf (de fi nes some (annotated_data_role and (played_by goal_shots_detector are candidates to reuse. Such a semantic query is not possible with UML/OCL. 5.2.3. Extensibility
+When the application requires it, developers can be more speci the algorithm description. 5.3. Limitations raise an exception (in our case study, we pursue the latter).
+By weaving UML and OWL ontologies, TwoUse requires a suf fi restriction and satis fi ability. There is a trade-off between a concise and clear de expressivity will win and developers are willing to learn a more expressive approach.
+Indeed, we have provided various syntaxes that might better or less well 6. Related work literature [5,18,19] , some of them with new adornments. These pro OWL ontologies with UML, and they do not provide support for integrating OWL in UML modeling.
+Several strategies to integrate programming code and ontologies are available as well [25 language.
+
+The development of Semantic Web Services uses ontologies for domain modeling and speci constructors used at design time to specify the usage of OWL ontologies at runtime. re ontologies to realize such decisions in a transparent way for software developers. 7. Conclusion expressions. Additionally, TwoUse allows for formalizing these rules with OWL. Acknowledgements
+References

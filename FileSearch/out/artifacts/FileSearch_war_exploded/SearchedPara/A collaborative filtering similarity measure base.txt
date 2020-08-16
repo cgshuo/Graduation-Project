@@ -1,0 +1,67 @@
+ 1. Introduction
+In recent years, recommender systems (RS) have played an important role in reducing the negative impact of information
+Movie recommendation websites are probably the most well-known cases to users and are without a doubt the most well 2007 ) and e-learning ( Bobadilla, Serradilla, &amp; Hernando, 2009; Denis, 2007 ). number of elements that can be recommended (e.g. blogs, music, videogames, videos, photographs) can increase signifi-cantly when introduced (and not only voted) by the users. This new Web 2.0 approach generates new challenges for techniques.
+ they work is very simple; a filtration process is performed for items using one of the following models: probably recommend a recent fiction film that he has not yet purchased on this website).  X  sonal attributes (sex, age, country, etc.) will also have common preferences.
+ information is stored on the system we can make recommendations to each user based on information provided by those 2009; Leung, Chan, &amp; Chung, 2008; Qing, Sung, Myaeng, &amp; Man, 2007; Ryan &amp; Bridge, 2006 ). graphic filtering or CF with content based filtering, to exploit merits of each one of these techniques.
+Regardless of the method used in the CF stage, the technical objective generally pursued is to minimize the prediction Papadopoulus, &amp; Symeonidis, 2007 ) of the RS as high as possible.
+ enable this important function to be performed in the CF core of this type of RS. of the K most similar users ( k -neighbors) for the same item i , where K value of the user n rating on the item i (if there is not rating value).
+ weighted aggregation (deviation-from-mean) (4) .
+ where l serves as a normalizing factor, usually computed: man rank correlation (9) . the recommender system.
+
+Most papers dealing with contextual information in RS make use of information additional to the own ratings, such as ratings.
+ analysis (pLSA) ( Hofmann, 2004 ) are some of the most usual approaches for managing hidden attributes. In these ap-proaches, a RS model is developed before the prediction and recommendation phase is started. numerical value on the list indicates its corresponding section number. 2. Motivation: why it is important the proposed singularities measure? 3. Singularities concept details. 4. Mathematical formalism defining the proposed singularities measure: Basic and extended models. 5. Designing suitable experiments for testing the proposed metric. 6. General discussions of the results. 7. Most relevant conclusions obtained and future work. 2. Motivation egorizing the rating values. 2.1. Using contextual information The traditional similarity measures between two users (Pearson correlation, cosine, constrained Pearson correlation, consider this context by analysing the ratings of each item made by all users.
+ to this item) between two users who have voted for this item in the same way as the rest should be considered not very gards to this item) which is much greater than two users who have voted positively for it. 2.2. Categorizing rating values ommendations by doing without the detailed information provided by the numerical values of the votes.
+In the experiment we compare the precision/recall obtained in a regular way (using the numerical values of the votes) for values between K = 100 and K = 200, obtaining equivalent results.
+ ues of the votes and their subsequent thresholding).
+ could consider those votes which belong to the same category ( X  X  X ositive X  X  or  X  X  X on-positive X  X ) as  X  X  X imilar X  X . 3. Incorporation of the concept of singularity to this item by the rest of the users in the system.
+ belong to the 5% (very singular) must be greater than the similarity derived between two users who belong to the 95% (not very singular).
+ into a very great similarity for this item.
+ ilarities measures.
+ similarity between users 1 and 6.
+
+Considering item 1, we can deduce that the similarity between users 1 and 6 should be established as very high as they measure of similarity between these two users.
+
+Concerning item 2, we can deduce that the similarity between users 1 and 6 should be established as very low, or even have cast the same vote.
+ similarity between the user with a high level of singularity for the item and any other user is the same. these average singularities ought to lead to moderate similarity levels.
+ lished RS. 4. Formulation
+In this section the mathematical equations which support the proposed similarity measure are presented, which we will in the interval 1, ... , 10). 4.1. Parameters, measures and sets descriptions and 3 ). 4.2. Basic model users x and y , in a RS: r bol represents the absence of a vote.
+
+We define R as the set of relevant values (positives) in a RS, and therefore R in a RS where m =1, M = 5, we can define We define P i as the set of users who have assigned to the item i a relevant value (positive). Using the example in Table 1 : We define N i as the set of users who have assigned to the item i a non-relevant value (non-positive). Using the example in Table 1 :
+S ratings, the lower the singularity S i P related to this item will be, and vice versa. Using the example in Table 1 :
+S  X  1 2 = 8  X  0 : 75 ; S 2 P  X  1 8 = 8  X  0 ; S 3 P  X  1 7 = 8  X  0 : 125 ; S
+S
+S  X  1 6 = 8  X  0 : 25 ; S 2 N  X  1 0 = 8  X  1 ; S 3 N  X  1 1 = 8  X  0 : 875 ; S 1  X  not very common (very singular) and 0  X  very common (not very singular) gularity of each case, regarding votes by two users x and y , is shown in the third column of Table 4 .
+A =1,2, B =, C = 3, 4, 5; item 1: S 1 P S 1 P  X  0 : 75 2  X  0 : 562; item 2: S
+S
+S
+P  X  0 : 875 0 : 125  X  0 : 109; item 5: S of singularity it is necessary to have high values of singularity for the two users compared.
+The singularity factors obtained provide us with contextual information with which we can improve similarity results iation of Mean Absolute Differences: Mean Squared Differences (MSD):
+First, we perform the normalization on the ratings: r u , i
+D x , y ={ i e I | r x , i  X  ^ r y , i  X  }, items rated by both user x and user y . By combining the equations described, we obtain the proposed singularities measure ( SM ): user has rated as relevant while the other has rated as non-relevant (these items belong to the set C ). Specifically, the Eq. (16) stands for the similarity between the users x and y on behalf of these three terms:
+Term 1. Positive agreement : similarity between the users x and y on behalf of the items which both of them have rated with relevant values, weighting them by the singularity of relevant ratings for each of the items.
+Term 2. Negative agreement : similarity between the users x and y on behalf of the items which both of them have rated with non-relevant values, weighting them by the singularity of non-relevant ratings for each of the items. for each of the items.
+ introducing the already explained singularity factors  X  S made by the users x and y . 4.3. Extended model where j indicates the relevance value (1  X  minimum relevance, d  X  maximum relevance), and R scribed in the previous sub-section.
+ P j i is defined as the whole set of users who have awarded a relevance value j to the item i s is defined as the singularity of the vote with relevance j for the item i.
+The votes cast for an item i by users x and y can be represented as: The set of items in which the pairs of votes cast is: The extended equation equivalent to (16) is where double summation, which we will call e jq :
+Taking into account that
+The number of terms in the matrix (25) can be reduced according to the specifications of Eq. (27) : Finally, Eq. (23) can alternatively be defined as: where As an example, using the FilmAffinity database, where M = 10, we can establish a value of d = 3, and the sets: By applying Eq. (23) , we obtain the following: By applying Eq. (28) , we obtain the following: 5. Experiments achieved both in applying prediction qualities measures and in testing with recommendation qualities measures. 5.1. Reference similarity measure metric proposed must improve its results.
+
+In order to corroborate the proper functioning of Pearson correlation and to discover the aggregation approach and the base, combining: Similarity measures : metrics set out in Eqs. (6) X (9) ; therefore: (PC, COS, CPC, SRC). Eqs. (3) and (4) (-Z).
+ Results calculated : Mean Absolute Error (MAE), coverage, precision and recall.
+ that present higher accuracy (lower MAE) are: CPC X  X S, CPC X  X S X  X , PC X  X FM, PC X  X FM X  X  and COS X  X  X  X FM. best values overall are: PC X  X FM, PC X  X FM X  X  and COS X  X  X  X FM. In turn, of these combinations, the one that offers the best result is PC X  X FM X  X , which will be the combination (measure, aggregation approach, standardization process) selected as the reference similarity measure. 5.2. Experiments using the proposed singularity measure (SM)
+The experiments have been grouped in such a way that the following can be determined: accuracy, coverage, number of ing recommended to one user in one film matches the value (the stars number) rated by that user for that film. The RS databases that we use in our experiments present the general characteristics summarized in Table 5 . a range 2, ... , 20 of recommendations ( N ) and relevance thresholds h = 5 using Movielens and Netflix and h =9 using FilmAffinity.
+
+When we use MovieLens and FilmAffinity we use 20% of test users taken at random from all the users of the database; with the remaining 80% we carry out the training. When we use Netflix, given the huge number of users in the database, in the experiments.
+ extended formulation model.
+ by the proposed metric (SM, as a continuous line) and the reference metric (PC X  X FM X  X , as a broken line). 5.3. Results obtained using databases with limited voting ranges quality measures in comparison to the results provided by Pearson Correlation. For values of K = 200 X 300, where the SM mendation quality improves, on average, by 25% for recall and by 30% for precision. ommendation quality improves, on average, by 20% for recall and by 60% for precision. 5.4. Results obtained using a database with a wide voting range ation provides very good prospects for the successful use of the extended formulation model. improvements percentages are very similar to the Netflix and the MovieLens ones, showing that the extended formulation works fine using real databases and extending properly the basic equations.
+ 6. Discussion traditional metrics. In terms of prediction quality, in addition to reductions in the MAE margin, the improvements are dation quality measure precision versus recall, which is a measure which displays much smaller improvement variations when the various traditional metrics in CF are compared.
+
+The coverage also displays drastic improvements when the proposed SM is used, and this contributes to an improvement From a practical perspective, where the improvements are is important; as in this case the improvements from using the taining an adequate quality of results and performance in the RS.
+ formulation model. 7. Conclusions and future work
+Recommender systems contain information which is not made use of by traditional metrics, the use of which is simple ignored in current RS.
+ ing rise to the achievement of singularity measures such as the one proposed in this paper.
+Using the singularity measure suggested, a vast improvement is achieved comparing to the results obtained using tradi-tional similarity measures, both in terms of prediction quality and recommendation quality. quire the use of the extended formulation model provided, whereas any other recommender systems can be processed using the basic formulation model suggested.
+
+As future works, this paper leaves open the possibility of discovering a method for determining the most appropriate user has preferred not to give, in an explicit way, a negative evaluation.
+ Acknowledgements Our acknowledgement to the Grouplens Research Group, to the Netflix and FilmAffinity companies, and to the Knowledge Based Systems journal.
+ References

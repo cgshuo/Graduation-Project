@@ -1,0 +1,37 @@
+ 1. Introduction
+Automotive engine emission is a major source of urban air NO challenges become significant.
+ parts and engine-to-engine dynamic differences.
+ line adapted by dynamic back-propagation algorithm that is uncertainty is evaluated under engine operating condition. 2. DRNN modelling ably fewer weights than FRNN and the network is simplified considerably ( Ku and Lee, 1995 ).
+ as follows. ^ y  X  k  X  X  W y h  X  k  X  X  fz  X  k  X   X  2  X   X  W h x  X  k  X  h and Lee (1995).
+
+The DRNN is trained using the dynamic back-propagation optimization algorithms for linear systems cannot be used. actual responses of the plant and the output of the DRNN defined as
+E  X  2  X  y  X  k  X  ^ y  X  k  X 
+The gradient of error simply becomes @ E @ W  X  e m k  X  X  @ ^ yk  X  X  @ W  X  6  X  and input weights, respectively, are given by @ ^ y  X  k  X  @ W y  X  h  X  k  X  X  7  X  @ ^ y  X  k  X  @ W d  X  W y P  X  k  X  X  8  X  @ ^ y  X  k  X  @ W h  X  W y j Q  X  k  X  X  9  X  i.e., the update rule of the weights becomes
+Wk  X  1  X  X  X  Wk  X  X  X  Z @ E m back-propagation algorithm (DBP) for DRNN.
+
+W 0 o 9 0 o Z y o 2 = q  X  13  X  0 o Z d o 2 0 o Z h o 2 the sup-norm.
+ are no truncation errors, no human errors. Given a vector by employing the following four-step strategy: 1) Compute the sparsely pattern of A A R m n . 3) Compute the compressed matrix B = AS . 4) Recover the non-zeros of A from B .
+ The matrix S partitions the columns of A : s  X  ( s jk  X  1 8 j : 1 r j r n
+This approach can be realized successively by automatic efficiency and advantages of using AD in the engineering warp. 3. MPC with DRNN model mostly used in the process and chemical industries with combustion.
+ J  X  k  X  X  weighting factor which penalizes excessive movement of the _ m MATLAB/Simulink s environment, the optimization problem is procedure is repeated in the next sample period. 4. SI engine dynamics
+Engine control system analysis and design based on engine variables and their orders. 4.1. Manifold filling dynamics
+The intake manifold filling dynamics are analyzed from the and the manifold temperature. It is described as _ p  X 
+The manifold temperature dynamics are described by the following differential equation: _ T  X  represented by a well-known speed-density equation _ m  X  u ; p i  X  X  m at 1 _ m  X  n ; p i  X  X  p m 1, u 0 , p c are constants. 4.2. Crankshaft speed dynamics the rotational energy on the crankshaft _ n  X 
+Both the friction power P f and the pumping power P p are crankshaft speed n and the air fuel ratio l . 4.3. Fuel injection dynamics
+According to Hendrick X  X  identification experiments with SI equations ( Hendricks et al., 2000 ):  X  m  X  _ m  X  X  1 X f  X  _ m fi  X  24  X  _ m  X  _ m fv  X  _ m ff  X  25  X  where the model is based on keeping track of the fuel mass thus the model is nonlinear in spite of its linear form. 4.4. Mean value engine model MVEM can be found in Hendricks et al. (2000) .
+ The expanded MVEM is given in Fig. 2 .
+ could be calculated using the equation: l  X  _ m f  X  26  X  5. Modelling and control simulation 5.1. Engine modelling by DRNN
+Given the expanded engine model as shown Fig. 2 , the DRNN m Z h , Z d and Z y , are set to 1 10 7 .
+
+To obtain the engine data for DRNN modelling, two sets of are listed in Table 1 .
+
+The sample time in the simulation was set to 0.1 s. The u  X  k  X  X  where u min and u max are the minimum and maximum inputs the output.
+ The mean absolute error (MAE) is used here to evaluate the DRNN modelling performance, its definition is given in the equation: MAE  X  1 n the real engine data and the DRNN output during the model DRNN. 5.2. Control results the whole throttle operating condition.
+
+The AFR is to be controlled between the 7 1% bounds of the function (17) which can be adjusted to achieve stable and N =0, then the MPC of SI engines can be considered as a sub-problem of NLP problems, min upper bound of the control variable _ m fi .
+ The system output under the developed MPC is displayed in neighbourhood of stoichiometric.
+
+In order to show the advantages of the MPC controller, its Throttle Angle (degree) 13 13.5 14 14.5 15 15.5 16 16.5 17 17.5 18 Air Fuel Ratio 1.5 2.5 3.5 Fuel Injection Rate (kg/s) 13 14 15 16 17 18 19 20 21 22 23 Air Fuel Ratio 1.5 2.5 3.5 x 10 Fuel Injection Rate (kg/s) 13 13.5 14 14.5 15 15.5 16 16.5 17 17.5 18 Air Fuel Ratio 1.5 2.5 3.5
+Fuel Injection Rate (kg/s) PID controller shown as follows is used: _ m  X  t  X  X  _ m fi  X  t 1  X  X  K 1  X 
+Here, the sampling time is also chosen to be 0.1 s. The integral time T I =0.4. The MAE of the AFR tracking by PID 5.3. Robustness assessment and raise emissions. In the engine model we are using, the value, respectively.
+ 6. Conclusions air leakage problem due to its adaptation of the model. References

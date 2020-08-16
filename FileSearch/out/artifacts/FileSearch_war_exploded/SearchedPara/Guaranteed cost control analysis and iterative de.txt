@@ -1,0 +1,84 @@
+ 1. Introduction to an ideal nonlinear controller ( Sala, 2009 ). and state. Actuator saturation is one of the most common and Raymond, 2001; Maciejowski, 2002 ).
+ constrained predictive control problems.
+
+Several fuzzy model-based predictive control exist in the the inputs and states.
+
+There have been previous approaches to incorporate con-proposes additional LMIs to ensure hard input or output work.
+ performance index. The ideas follow from multi-parametric Fuzzy systems.
+ 2. Preliminaries 2.1. Takagi X  X ugeno fuzzy models expressed for continuous systems as
+IF z is Z i THEN _ x  X  A i x  X  B i u y  X  C i x ( final output as follows _ x  X  y  X 
+A 2.2. Guaranteed cost fuzzy controller design form J  X  J o x T 0 Px 0  X  5  X  This bound holds if the following index J d is negative J  X  y T Wy  X  u T Ru  X  _ x T Px  X  x T P _ x o 0  X  6  X  control law of the form u  X  the double summation condition (8) is obtained where Q ij is defined as Q  X  D  X  A i X  X  XA T i B i M j M T j B T i  X  10  X  max l 1 subject to l 1 I o X details, see Tanaka and Wang (2001) .
+ Arino (2007) and Kruszewski et al. (2009) . 2.3. Multi-parametric quadratic programming
+Multi-parametric quadratic programming ( Bemporad et al., compute J opt  X  x  X  :  X  min subject to F u r D  X  L x for x
+A X  X f x j Kx r t g X  12  X  parameter vector.
+ u OPT  X  F k x  X  G k for x A O k  X f x j H k x r L k g partition of the operating domain X . 3. Constrained guaranteed cost fuzzy Optimal control the states of the form u A
+U  X f F u r D  X  L x g X  13  X  defined in the polytopic operating domain described by x A X  X f Kx r t g X  14  X 
+This section reviews the two most popular approaches to constraints of the form: j u j r d j  X  15  X  3.1. Saturation avoidance
+The first approach adapts the suboptimal PDC controller obtained in Section 2.2. The main idea is to search a PDC state space by adapting the procedures in Tanaka and Wang (2001) , so it will be denoted as Tanaka X  X  approach.
+Let us suppose that the initial state is inside J x 0 J 2 is in turn bounded by some scalar l such that J o x Px 0 o l  X  16  X  x
+Px
+P o l g 2 I  X  18  X  g 2 l
+I o X  X  19  X  u u  X  x T F  X  z  X  T F  X  z  X  x o d 2  X  20  X  will hold if 1 d x F  X  z  X  T F  X  z  X  x o 1 l x T Px  X  21  X  Following an analogous procedure to the one in Tanaka and expressed as the following LMI
+M ! where M i  X  F i X and X  X  P 1 .
+
+M  X  F i j j X , we have M 0 @ (2003) .
+
+Merging all the conditions, the PDC controller with the
+J x problem max l 1 subject to g 2 l 1 I o X where Q ij is defined in (9).
+
+Once the problem is solved, the control action can be same underlying ideas is used for fuzzy descriptor-system representations. 3.2. Control laws allowing saturation operating space.
+ fulfills the saturation constraints (15), we have now be described as a fuzzy system with r 2 m rules: sat  X  F  X  z  X  x  X  X  replaced by 2 m ones involving
+X :  X  E k M i  X  E k Z i  X  27  X  details.
+ the above methodology is the problem: max l 1 subject to g 2 l 1 I o X  X  28  X  0 @ where Q ijk is defined in (9) but replacing M i with X ik maximised. However, in the above guaranteed-cost control conditions the approach is the complementary: fixing the (cost bound).
+
+Note that the problem of maximising both performance and
+Some pertinent remarks will be now discussed, commenting been overlooked in previous literature.
+
+X i k  X  Z i in (27). Then, in obtained by Cao X  X  approach on a fixed operation domain. saturating (details omitted for brevity). 4. A multi-parametric solution to fuzzy constrained guaranteed-cost control better cost bound.
+
+This section will present a methodology for designing the
+Section 4.4. 4.1. Controller updating a bound of the performance index J .
+ condition J d o 0 holds, see (6).
+ By substituting _ x in (6), J d can be expressed as J  X  y T Wy  X  u T Ru  X  x T A T  X  z  X  Px  X  x T PA  X  z  X  x  X  u stated as computing J subject to constraints (13) in the search domain (14).
+Let us define ~ x  X  B  X  X  B T 1 PB T 2 P ... B T r P  X  X  34  X  K  X  X  K ... K  X  ,  X  35  X  L  X  X  L ... L  X  X  36  X  u and the parametric variables are ~ x as follows J d  X  x  X  :  X  min u ~ x subject to u
+A U  X f F u r D  X  L e ~ x g for ~ x
+A ~ X  X f K e ~ x r t g X  37  X  the proposed algorithm in order to obtain matrix P . expressed as controller defined in fuzzy regions of the states as u  X  where F  X  X  F k 1 ... F kr  X  X  40  X  H  X  X  H k 1 ... H kr  X  X  41  X 
+Remark 3. As both the membership functions and the state similar in both cases.
+ the same regions O k J  X  J dk 8 x A O k where
+J  X   X  x T  X  PA i  X  A T i P  X  x  X  x T  X  PB i F kj  X  F T kj B T written in compact form:
+J  X  where
+U  X  4.2. Cost-bound updating
+The complementary problem to the above one is trying to structure.
+ the upper bound of the cost is also wanted, the maximum eigenvalue of P is minimized. min l  X  45  X  where l is the number of fuzzy regions O k .
+ copositive 2 matrix U k .  X  ~ x 1  X  H k L k T U k  X  H k L k expressed in the original x space as x A
+O k , a sufficient condition for (46) can be expressed as solution of problem (50) below min l subject to 0 o P o l I
+U k  X  H kj L k  X  r 0  X  50  X  conditions for problem (50). 4.3. Stability
+Regarding controller update in Section 4.1, the obtained for problem (50).
+ controller cannot be proved to be good enough to make J d motivates the iterative procedure below. 4.4. Iterative procedure achieve a suboptimal cost bound.
+ controllers, because of optimality.
+ domain).
+ reformulated to min Z  X  51  X 
+Henceforth, iterations may proceed trying to improve the controllers. 5. Examples
+This section presents two examples which illustrate the methodology to a constrained mechanical model; the second includes non-symmetric constraints.
+ powered through an smoothing inductance ( Fig. 1 ).
+The state equations describing the plant are _ x  X  x 2  X  53  X  _ x  X  _ x  X 
+Numerical values for the parameters for a given plant are meters lead to _ x 1 _ x 2 _ x 3 0
+B @ j u j r 250V, and a limitation on the armature voltage, j u a j Such armature voltage has an output equation given by u  X  u R s i a L s Therefore the constraints of the system are given by 200 x 2 r u r 200 x 2  X  57  X  250 r u r 250  X  58  X  Note that (58) becomes redundant and therefore it can be removed from the problem.
+ _ x  X  m 1  X  A 1 x  X  B 1 u  X  X  m 2  X  A 2 x  X  B 2 u  X  X  59  X  Here, A  X  A  X  the membership functions are defined as  X   X  1 m 1  X  63  X  p o x 2 o p , 4 o x 3 o 4.
+ The cost function (4) is set as R  X  1 , W  X  10 above-defined operating domain, the bound j u j gies there cannot handle the original one.
+
+Table 1 shows the achieved bounds in each iteration: the 12% higher than the fuzzy mpQP one proposed in this work.
+Example 2. Let us consider the system: _ x  X  y  X  X  10  X  x where
+A  X 
+A  X 
+A  X 
+A  X 
+Sala, 2007b ) of sinusoidal functions as  X  m 11 m 21 , m 11  X  0 : 5  X  0 : 5cos  X  p x 1 = 20  X   X  m 12 m 21 , m 12  X  0 : 5 0 : 5cos  X  p x 1 = 20  X   X  m 11 m 22 , m 21  X  0 : 5  X  0 : 5cos  X  p x 2 = 20  X   X  m 12 m 22 , m 22  X  0 : 5 0 : 5cos  X  p x 2 = 20  X  The cost function (4) is set as J  X  resulting in
+R  X 
+The studied state space is j x j o 40 , j x 2 j o 40
+The constraints to the input are set as 80 o u 1 o 100 , 100 o u 2 o 80
+In order to compare with previous literature the method l  X  30 : 5269, with a Lyapunov function V 0  X  x T P 0 x . -40 -30 -20 -10 0 10 20 30 40 -40 -30 -20 -10 0 10 20 30 40 024681012 0 5 10 15 20 25 30 35
+O
+O values of the final controller gains appear on Table 2 . structure.
+ 6. Conclusions published solutions can be achieved.
+ References y

@@ -1,0 +1,109 @@
+ 1. Introduction
+Identification of nonlinear dynamical systems from measured tages of these methods are ( Johansen et al., 2000 ): physical properties of the system) and the curse of dimensionality.
+
+Rather than struggling with a global model of the system one obtained by blending the responses of the local models. 1 model X  X  regressors.
+
+The number of unknown parameters in such an LMN is typically
+Lightbody, 2003b; Murray-Smith et al., 1999; Johansen et al., 2000 ): the problem of describing off-equilibrium dynamics, global/local optimization issue and scheduling vector selection.
+
+The problem of modelling off-equilibrium dynamics ( Johansen models.
+
+Two approaches to LMN parameters optimization are possible ( Gregorc  X  ic  X  and Lightbody, 2003b ): global learning approach, where all the LMN parameters are operation and local learning approach, where the parameters for each local model representing corresponding subspace are estimated separately using corresponding data.
+ models, but these parameters no longer represent the system X  X  local dynamics ( Murray-Smith et al., 1999 ).
+
+When in contrast a local learning approach is used, the local describing off-equilibrium dynamics.
+
+The problem of smaller validity regions can be eluded using a
+In this paper the focus will be on Gaussian process models ( Williams,1998;Gibbs,1997;MacKay,2003;Rasmussen,1996 ),an emerging branch of black-box system identification aimed at alleviating the need for models with large parametrization, e.g. ANN.
+
+In order to avoid the problems above, GP models rely on an entirely different approach. The GP model ( Williams, 1998 ) training and test input.
+ variance. This is a result of assuming prior knowledge on the distributionofindividualmodelpredictions.Itmeans thatthe most applied often as an approximation of the usually unknown confidence measure depends not only on the variance of the data in the input space.
+
+Optimization of the GP model X  X  parameters is the most time parameters that need to be optimized in the GP model is small compared to ANN, the computational burden associated with optimization rises fast with the number of training points model, typically parameterized with only few parameters, can localmodelsintotheGPmodelcanresultinreducedcomputational burden associated with the optimization of hyperparameters. Some other methods to reduce computational burden are dis-cussed in Kocijan et al. (2005) .
+
+When comparing the GP model with incorporated local models identification of higher order dynamic systems.
+
+The purpose of this paper is twofold; firstly, to review the methodology of the dynamic systems identification with the GP results are believed to promote further applications. tion method is first demonstrated on a simulated second order the main results and concludes the paper. 2. Modelling with Gaussian processes
+The Gaussian process is a Gaussian random function, fully described by its mean and variance. Gaussian processes can be S tive covariance matrix R .
+ results in the value of covariance function C ( x i , x j covariance function, representing these assumptions, is C  X  x i , x j  X  X  Cov  X  f  X  x i  X  , f  X  x j  X  X  v exp 1 2 where D is a length of vector x and H  X  X  w 1 , ... , w D , v
+The GP model fits nicely into the Bayesian modelling frame-
+Gaussian. Consider the system y  X  k  X  X  f  X  x  X  k  X  X  X  e  X  k  X  X  2  X  space of functions f ( ). Within this framework we have y y
+Our task is to find the predictive distribution of y N +1 y ) it can be written as y y ! with covariance matrix K
+We need to estimate the unknown hyperparameters v , w 1 y is done via maximization of the log-likelihood
+L  X  H  X  X  log  X  p  X  y j X  X  X   X  with the vector of hyperparameters H  X  X  w 1 ... w D , v , v on) and N N training covariance matrix K . The optimization each of the parameters: @ L  X  H  X  @ Y
+Here, it involves the computation of the inverse of the N N covariance matrix K at every iteration, which can be computa-and compute their posterior probability ( Rasmussen, 1996 ).
+Given that the hyperparameters are known, the prediction of part of (3) provides the predictive distribution of y N +1 p  X  y It can be shown (e.g. Gibbs, 1997 ) that this distribution is
+Gaussian with mean and variance:  X  y s 2  X  y where k ( x N +1 )  X  [ C ( x 1 , x N +1 ), y , C ( x N , x covariances between training inputs and the test input and k ( x smoothing terms which weights training outputs y to make a through higher variance. 3. Dynamical system identification 3.1. Problem statement
+Considertheautoregressivemodelof a L -thorderdynamicalsystem where ( k i ) denotes the appropriate time sample.
+The use of the GP method for dynamical systems identification only the main results will be recalled.
+ model,wherecompleteoutputdistributionisfedback,ispresented in Kocijan and Girard (2005) and Girard (2004) .
+
+To avoidproblemsusingthegeneralGPdynamicmodelscitedin to make n -step ahead prediction.
+ 3.2. Local models with approximation in the form of a linear local model M i y  X  x  X  X  f  X  x i  X  X  h T i  X  x x i  X  X  11  X  where h  X  X  a T i , b T i  X  12  X  a  X  @ f @ y b  X  @ f @ u h are parameters of linear local model M i centered in x i . local model M i : functional values (functional observation in Solak et al., model x i and components x i k of the vector of regressor x i : h i  X  @ f @ y
+Local models can be derived using any standard linear regres-
+Ljung (1999) . 3.3. Incorporation of local models into the GP model remainsaGP( Solaketal.,2003 ).Consequently,withintheGaussian (2004) . The GP model with incorporated local models will be processes) model.
+
+To include derivatives into the GP model only the covariance function must be changed appropriately. When using the covar-covariance function between a data point and derivative is
+Cov @ f  X  x i  X  tives reads:
+Cov @ f  X  x i  X  d 3.4. Composition of the LMGP model approach to LMGP model composition. Regions of the system, whereenough dataisgivenforlocalmodelsidentification  X  usually response. This knowledge is together incorporated into the GP model  X  X  X mooths X  X  this information and is able to make robust derivatives are added to the vector of targets y in Eq. (8), constituted only of function observations. The values of the regressors corresponding to included derivatives are added to the input matrix X .
+
+Given n eq local models and n oeq samples of the system X  X  meters is X  X  X X eq  X  X  Y eq U eq  X  20  X  appropriate regressors corresponding to target vector Y oeq 1 regressors corresponding to target vector Y eq 1 ; h 1 is a n tives @ f =@ y k 1 for all n eq incorporated local models); h n isa n eq 1vectorofderivatives @ f =@ u k L atinputregressormatrix X
+Againasin(10), L istheorderofthesystemand D  X  2 L isthenumber
+Let n  X  n eq + n oeq bethenumberoffunctionaldata(input-target incorporatedintotheGPmodel.For the L -thordersystemthereexist n  X  D and the length of the target vector y is  X  n  X  D n eq
+When training data X / y is composed as presented, the covar-iance matrix K , vector of covariances between test input and k  X  x  X  X  k  X  x  X  X  X  C  X  x , x  X  X  v  X  23  X  respectively.
+ the behaviour of the system around each equilibrium point is the computational burden.
+ usingthesamestaterepresentation.Valuesofregressors(10)areused
+Input data can contain noise information. Where this informa-LMGP model is given using Eqs. (8) and (9).
+
+Dynamic response of the LMGP model in off-equilibrium as the parameters of these local models do not change with
+Beside not suffering from some of the problems of the LMN approach,the confidence inthe LMGPmodel X  X output,depending on 4. Illustrative example
+In this section the GP model with incorporated LM approach is second-order dynamical system ( Matko et al., 2000 ): where the output is corrupted with white Gaussian noise  X  k  X  N  X  0 , r 2  X  with variance s 2  X  4 10 4 .
+
+Our task will be to model the region bounded with input alternating step signal with growing magnitude is presented. 4.1. Identification unknown system in the LMGP model: and vicinity, with centers lying on the equilibrium curve and  X 3  X 2  X 1 0 1 2 3 y
+K  X 
+Cov f  X  x i  X  , @ f  X  x j  X  "# "# @ f  X  x i  X  @ x "# "# @ f  X  x i  X  @ x "# "# 2 6 6 6 6 6 6 6 6 6 6 6 6 6 4 samples of the system X  X  response, which describe the system regions not described with LM (usually transient regions between equilibrium states).
+ measurement types.
+
+For obtaining the off-equilibrium data, which describe the system X  X  behaviour in transient regions, the system must be operating space R D as possible. In our example a pseudo-random binary signal (PRBS) was used as an excitation signal, value between u min and u max when changed. Training points for the LMGP model were later sampled from input and system X  X  response.
+ dynamic response around the equilibrium point.
+
+To obtain equilibrium dynamics of the system (24), five curvewereidentified.Theircentersontheequilibriumcurvecanbe models can be identified despite the noise. The models were 1999 ).
+
+An example of the identified local model response in equili-be seen that the model perfectly captures the dynamics of the system. It should be however taken into account that here the identified system is ideal and of known order.
+
+Eachoffivelocalmodelscontributedonefunctionalvalue(value ofsystem X  X responseatequilibriumpoint)andfourderivatives(one were added to corresponding elements of the covariance matrix (21). 4.2. Validation
+The acquired LMGP model was validated with data not used in u min  X  2 and u max  X  4: validation signal 1, where the maximum change of the input signalwaslimited,sothatthemodelwasmovingthroughbetter modelled regions and validation signal 2, where the change of the input was not limited and the model moved through whole operating region. LMGP model. The results of simulation where the input was simulation error with accompanying 95% confidence band of the  X 2  X 1 0 1 2 3 4 y (k) 0 0.5 1 1.5 2 2.5 to training data.
+
+Thesegmentoftheresultofsimulationonvalidationsignal2are tion error together with 95% confidence measure are shown modelled adequately, which can be seen from Fig. 10 when the results of validation: predictedvarianceofthemodelin i -thtimestep.Theresultsofboth  X 0.1  X 0.05 0 0.05 0.1 0.03 0.04 0.05 0.06 0.07 0.08  X 6000  X 4000  X 2000 0 2000 4000 6000  X 0.5 0 0.5 1  X 6000  X 4000  X 2000 0 2000 4000 6000  X 0.1  X 0.05 0 0.05 0.1  X 2  X 1.5  X 1  X 0.5 0 0.5 1 1.5 2 2.5 Table 1 .
+
+In the LMGP model framework the three exposed problems of equilibrium regions is represented with data points and the does not change with optimization. The problem of scheduling hyperparameters can be used as an indication of the influence along the corresponding regressor components. 5. Identification of a two tank system ofthesameidentificationmethodwillbepresentedforalaboratory pilot plant. Again the purpose of the model is n -step ahead prediction.
+The flowsheet of the laboratory pilot plant X  X  unknown sub-
+The angular speed of the motor is controlled by the analog the real one.
+
+The other interesting part is the manual valve V 5, which is open,soitenablesliquidflowfromtank R 2backtoreservoir R 0.The tanks so that its level can be considered constant during the operation.
+
+Voltage on the motor, which represents the input into the system, drives the pump P 1. The pump generates flow from level in tank R 2 represents the output of the system and was measured using capacity sensor. 5.2. Operating region, measurements and identification
+The represented second order system is a single-input single-dynamics is nonlinear too.
+ tanks R 1 and R 2. The maximum voltage on P 1 was fixed to U T  X  10 s was chosen experimentally, so that the dynamics of the system were satisfactorily modelled.
+
+As in the previous section example, the LMGP model demands incorporated information: brium curve) and measurements providing data to model the system in off-equilibrium regions.
+
+When identifying linear local models, the system was first brought to the desired equilibrium point by the corresponding example of input and measured output signal for working point h [cm] ( U , Y the validation signal is given in Fig. 13 .
+ underlyingfirstprinciplemodelisofthe secondorder.Higherorder workingpoint( U eq , Y eq ),isdescribedbyparameters a 1 , a samples.
+
+A secondtype of measurement provided us with datadescribing between U min  X  0.8 V and U max  X  4 V when changed. Two such of the signal for validation can be seen in Fig. 14 .
+Three local models obtained in equilibrium points and 68 samplesfromoff-equilibriumsystem X  X responsewereincorporated
+The estimates of local models X  parameters variances, gained the covariance matrix (21).
+ t [s] 1 2 3 4 5
+U [V] 5 10 15 20 25 h [cm] 5.3. Validation
+Thesimulationinput signalfor validationwas differentfromthe correlation on the whole validation signal between input and simulation error is shown. The performance measure values for
+LMGP performance is moderately fine. 6. Conclusions paper. The method was demonstrated on two dynamical sys-using measured data. The result of the illustrative example
+The advantages of the Gaussian process modelling method with
+Equilibrium and off-equilibrium information describing the system is joined transparently in the LMGP model. optimization as the data describing the system (local models, system X  X  response samples) does not change.
+ There is no problem of scheduling vector determination.
+Beside avoiding some of the LMN problems, the additional of the identified system.
+
+When comparing the LMGP model to the GP model, the as in LMN, because the local models are to be obtained in the local models are used. h [cm] e [cm]  X  [cm]  X 0.5 0.5  X 0.2  X 0.1 0.1 0.2 into the LMGP model and exploitation of the various potential applications of models obtained with the presented method.
+Another interesting problem is systematic data preprocessing and data fusion from large amounts of documented signals Acknowledgements for helpful discussion. The support of the Ministry of Higher
+Education, Science and Technology, Grant no. P2-0001, is also gratefully acknowledged.
+ References

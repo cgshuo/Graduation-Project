@@ -1,0 +1,81 @@
+ 1. Introduction known codes like c -and d -codes are used when smaller integers are to be represented using fewer bits. space and time penalty to the encoding that hinders the use of variable-length coding in many cases where it would be beneficial.
+ to any element. This setup includes variable-length codewords coming from compression methods. We show experimentally that our technique is advantageous compared to other encoding schemes that support direct access. Our implementations are available at http://lbd.udc.es/research/DACS/ .  X  2. Variable-length encodings 2.1. Statistical encoding their frequency in X , and identify each value x i with its position p quently. Hence the problem is how to encode the p i s into variable-length bit streams c length) that is univocally decodable. 2.2. Coding integers
+In some applications, the x i s are directly the numbers p
+If we could assign just the minimum number of bits required to represent each number x resentation would be N 0  X  P 1 6 i 6 n  X b log x i c X  1  X  bits. Note that N sented as tuples to reduce this overhead). Then, c -codes achieve N optimal form without its most significant 1-bit. For larger numbers, d -codes perform better by representing b log x codes instead of unary codes, thus achieving N 6 N 0  X  2 n log  X  N that the lowest r bits of x i are represented verbatim, preceded by b x 2.3. Vbyte coding (Williams &amp; Zobel, 1999)
+This is a particularly interesting code for this article. In its general variant, the code splits the b log x most significant bits of x i , and 1 in the rest of the chunks. For example, if x and the representation is 0011 1001.
+
+Compared to an optimal encoding of b log x i c X  1 bits, Vbyte code loses one bit per b bits of x empty final chunk, for a total space of N 6 d N 0  X  1  X  1 = b  X e X  nb bits. The best choice for the upper bound is b  X  achieving N 6 N 0  X  2 n to decode. 2.4. Fast decodable representations they perform very well. 3. Previous work codes, that is, extracting any x i efficiently, given i . Let us call N the length in bits of the encoded sequence. 3.1. Sparse sampling element of the sequence. Access to the ( h + d )th element, for 0 we can decode each symbol in constant time.
+ 3.2. Dense sampling (Ferragina &amp; Venturini, 2007) the maximum number stored in the sequence. 3.3. Elias X  X ano-based representation ( Elias, 1974; Fano, 1971 )
+This is a representation for a sequence y i of n strictly increasing numbers ending at u  X  y other bit array of size at most 2 n , where the bits at positions b y 2007 ), any y i can be obtained in O (1) time.
+
+This representation can be used to encode a sequence of integers x obtain y i and y i  X  1 in constant time and these are the limiting positions where x found in X . Overall, the technique achieves O (1) time access and N 3.4. Interpolative coding ( Moffat &amp; Stuiver, 2000; Teuhola, 2011 ) only by position (as is our focus), but also by content (i.e., find the position where the sum of the x 3.5. Wavelet tree (Grossi, Gupta, &amp; Vitter, 2003) c ( x sequence.
+ i 0 = rank 0 ( B , i ) and at the right child is i 0 = rank ( Jacobson, 1989; Clark, 1996; Munro, 1996 ). Using such structures over all the bitmaps, the time to extract any x man coding the size is equivalent to that of a Huffman table).
+ has better locality of reference. 4. Directly Addressable Codes (DACs) 4.1. Conceptual description element of the encoded sequence.
+We make use of the generalized Vbyte coding described in Section 2 . We first encode the x chunks. Next we separate the different chunks of each codeword. Assume x
+C ; ... ; C i ; 2 ; C i ; 1 . A first stream, C 1 , will contain the n second one, C 2 , will contain the n 2 second chunks of every codeword (so that there are only n one chunk). We proceed similarly with C 3 , and so on. Being M the maximum integer of the sequence, we need L streams C k .
+ (of b n k bits), whereas the highest bits will be concatenated into a bitmap B the chunks of a sequence of five codewords.
+
+The bits in each B k identify whether there is a chunk of that codeword in C chunk in C k +1 we need rank queries on the B k bitmap. We set up data structures on the B stant time using O n k loglog N log N extra bits of space, being N the length in bits of the encoded sequence.
+The overall structure is composed by the B k bitmaps, their rank structures, the A (significantly) lower-order terms.
+
+Extraction of the i th value of the sequence is carried out as follows. We start with i
+B [ i 1 ]: A 1 [ i 1 ]. If B 1 [ i 1 ] = 0 we are done with x i of the second chunk of x i in C 2 , and get C i ,2 = B 2 [ i we set i 3 = rank ( B 2 , i 2 ) and so on.
+ 4.2. Implementation considerations
+Param X , 2007 ), which can make use of all the combinations of chunks and obtains slightly better space. bitmap B L is not stored in the final representation of the sequence of integers, since all the bits in B We implement rank operations over the B k bitmaps using the 5%-extra space data structure by Gonz X lez, Grabowski,
+M X kinen, and Navarro (2005) (note that this is space over the B for answer a rank operation is O (1/ ).
+ decoding sequentially the corresponding chunks at each level.
+ 4.3. Minimizing the space
+We have presented DACs using a fixed parameter b , which remains constant for every level of the representation. How-ever, the value of b could be chosen differently at each level, b access time. In this section we present algorithms to choose L and b age case time. 4.3.1. Without restrictions
+The optimal values can be obtained using a dynamic programming algorithm that obtains the values for L and b that minimize the size of the representation of the given sequence.
+
+In our dynamic programming algorithm, a subproblem t consists in encoding in the best way all the values x level.
+
+Algorithm 1 gives the pseudocode that obtains the optimal number of levels L and the b vector cf of cumulative frequencies of size m  X  1, that is, cf  X  t is the number of values x the value of b for the first level of such optimal representation in b [ t ]. The optimization costs just O  X  log compute cf ) and O  X  log M  X  space.
+
+Algorithm 1. Optimize ( m , cf ) for t = m 0 do end
+L l [0] t 0 for k =1 ... l [0] do end return L , b 1 , ... , b L contained in a unique byte, and decompression and accesses can be implemented more efficiently in practice. 4.3.2. Limiting the number of levels to use levels is O  X  log M  X  , the time complexity raises to O  X  log 4.3.3. Limiting the number of rank operations
+O  X  C log 2 M  X  time, which can be reduced by quantizing the precision of C . 5. Experimental evaluation petitive alternative to other encoding schemes that support direct access.
+ example of sequences of integers to encode.
+ sequence.
+ For all the experiments the machine used is a AMD Phenom (tm) II X4 955 Processor (four cores) with 8 GB RAM. It ran Ubuntu GNU/Linux with kernel version 2.6.31-22-server (64 bits). We compiled with gcc version 4.4.1 and the option 5.1. LCP array representation
+Consider a text T [1, n ] of length n , and all the suffixes of the text, that is, T [ i , n ] with 1 of integers.
+ major computer science journals and proceedings. We denote frequency.
+ noted  X  X  X ACs opt-max levels X  X , and limiting the average cost, denoted  X  X  X ACs opt-avg cost X  X . tained by all these integer encoding schemes.
+
+We also compare our structure with the representation of the sequence of integers using the Elias X  X ano monotone lists ( Vigna, 2008 ), compiling with java version 1.6.0_18.
+ We measure the space required by each technique in bits per element (bits/e), and decompression and access time. in microseconds per access as the average time to retrieve the elements at random positions of the LCP array. time in seconds. We can observe that DACs obtain the best space among all the alternatives for best decompression time while achieving also very compact spaces.
+ accessing all the positions of each LCP array in random order. Fig. 2 shows the spaces and times achieved for sparse sampling, where we varied the sample period to obtain the space/time trade-off also by content, which is not efficiently supported by the rest of the encodings.
+DACs obtain the most compact space among all the alternatives when using the optimal values for b on are slightly superseded by PForDelta on dna , and clearly superseded on
+The union of the DAC variants outperform all the other solutions in space and time. 5.2. High-order entropy-compressed sequences
+Ferragina and Venturini (2007) gave a simple scheme (FV) to represent a sequence of symbols S  X  S decompressing the whole compressed data.
+
+The idea of Ferragina and Venturini is to split the sequence S of length n into blocks of 1 by frequency. Then, each block is represented by one integer p is obtained. Then, the sequence is stored using a dense sampling, as explained in Section 3 . ulary of k -tuples that appear in the text, compute their frequency and sort them by frequency to obtain the p of symbols and the codeword assignment if needed. 8
+We took the first 200 MB of three different texts from Pizza&amp;Chili corpus. We used an XML text, denoted bibliographic information on major computer science journals and proceedings. sparse sampling.
+
+We implemented the scheme FV proposed in the paper of Ferragina and Venturini (2007) , and optimized it for each sce-nario. Using the encoding scheme explained in Section 3 , where an integer x each text and k value to obtain the best possible space. For text text sources , c = 18 for k = 1,2, c = 30 for k = 3 and c = 24 for k = 4. For text c = 28 for k =4.
+ ent blocks with bit-oriented and byte-oriented Huffman codes and setting absolute samples every h codewords, include a Huffman-shaped wavelet tree as a solution to provide direct access to a sequence of arbitrary symbols. fast binary rank operations.
+
+We compare those solutions with several configurations of DACs. We use the b values obtained with the optimization of rank operations.
+ opt-avg cost X  X ).
+
+Fig. 3 shows the space/time trade-off for all the alternatives applied over the texts parameter, such as FV, where constant time is obtained due to the dense sampling.
+The original FV method, implemented as such, poses much space overhead due to the dense sampling, achieving almost times increase considerably. The FV method extracts each block in constant time, while some extra decoding is always is not competitive for k =4.
+
+DACs improve the compression ratio when the optimal b values are computed without any restriction, adjusted according space/time tradeoff.
+
+As we can see, DACs can obtain good compression ratio when using the optimal b values, but sparse sampling can get 5.3. Natural language text compression wise operations and takes advantage of the byte alignments.
+
+We compare our fastest alternative, denoted  X  X  X ACs b = 8 X  X , with byte-oriented Huffman encoding, over the compressed sequence obtained by Plain Huffman. We denote this alternative  X  X  X H + sampl X  X .
+We used three corpora: Ziff Data 1989 X 1990 (ZIFF) from TREC-2 corpora (ALL), with around 1 GB, created by aggregating Ziff Data 1989 X 1990 (ZIFF) and AP Newswire 1988 from gressional Record 1993 (CR) and Financial Times 1991 X 1994 from column shows the number of different words in the text.
+Table 5 shows the compression ratio (in %), decompression time (in seconds) and access time (microseconds per access) byte read.
+ number of bytes during the decompression procedure, which also speeds up decompression.
+The access time was computed as the average time to access 10,000,000 words at random positions of the text. We can for larger corpora, as we can see in Table 5 , and this slows down the accesses to random words of the text.
+Our proposal obtains better access time to individual words of the text, but it becomes slower when decompressing the time results.
+ words. For this problem DACs are preferable over PH + samp. 6. Conclusions
+We have introduced the Directly Addressable Codes (DACs) , a new storage scheme for variable-length encoded sequences gram and is space-and time-efficient, which makes it an attractive practical choice in many scenarios. related to compact data structures: the LCP array. DACs were used to provide fast direct access to any value of the encoded LCP array, which made the new representation faster than previous existing implementations (including some that need more space), within affordable space.
+ which are short), considerably reducing the space.
+ skips are very short.
+ word, compressed into a sequence of nonterminals, as a variable-length representation of an element to which direct access was provided.
+ are expected to be small. Our own example on natural language text compression show how statistical encodings can be gible extra space for rank structures), that enables direct access to it.
+ Acknowledgments
+This work was founded in part by MCIN grant TIN2009-14560-C03-02 and CDTI CEN-20091048, and Xunta de Galicia grant 2010/17 (for the first and second authors), and Fondecyt grant 1-110066 (third author). References

@@ -1,0 +1,82 @@
+ 1. Introduction according to a certain question.
+ information that is crucial for the domain under analysis.
+ the biography [18,47] .
+ by information selection system dealing with the biography domain.
+ used by information selection systems to improve the quality of their output. 1.1. Our contributions
+To summarize, the contributions in this paper are as follows:  X  groupings of documents as well as the HITS-based ranking Kleinberg [33] .  X 
+Filatova and Prager [23] .  X  occupation-related activities.
+ be used for learning interesting facts about many domains. 1.2. Organization of the paper future research. 2. Related work question type. is X?  X  . These systems use a wide variety of techniques. Blair-Goldensohn et al. [11] treat document collections.
+ context.
+ features used in Zhou et al. [55] .
+ activities that should be included into the answer to the approaches is to use transitive models over attributes via consensus from attributes of neighboring names. occupation as the target name.  X 
+Biographical information can be used to answer questions other than the score gets the correct answer to the questions  X  When did Leonardo da Vinci paint the Mona Lisa? search queries seem to contain references to people. Guha et al. [27] describe search over a semantic web where web is not a web of documents, but a web of relations between resources denoting real world objects. of having real world objects linked to each other. For example, when asked about network of objects. This network encodes information that Yo-Yo Ma is a link  X  birth place  X  ,to  X  10/07/55  X  by the link  X  birth date the cellist Yo-Yo Ma. 3
+Another IR task that can benefit from biographical information extraction is the People Search task [4 name, divide these documents into clusters each of which describes one person. 3. Data more than a half of the 50 people used there were politicians.
+ occupations do not cover all possible occupations, but that is not critical to our study. from the experiments; 189 survived.
+ mentioned in a sufficient amount of documents in our corpora.
+
+The document collections we created covered:  X  20 artists;  X  18 athletes;  X  20 composers;  X  15 dancers;  X  17 explorers;  X  20 mathematicians;  X  19 physicists;  X  20 politicians;  X  20 singers;  X  20 writers.
+ is used in the search engine query.
+
+Our occupation list satisfies the following criteria that are important for our study:  X   X  it contains some occupations which are closely related; for example, mathematicians and physicists  X  performed in both; for example, singers and explorers.
+ composer contain a list of composers). We also use  X  Google Sets approach type that we use in this paper will only show higher performance. distribution (respectively) are reasonable default training distributions.
+Encyclopedia Britannica. For document retrieval we use IBM's JuruXML search engine [14] which indexes tags tagged instances in the index. We make use of named-entity labels location with the same name (e.g., Newton  X  aphysicistandNewton corpus is:
+The number of documents retrieved varied from one, for the query to up to 8144, for
+To counteract misbalance in the data we relied on the tf  X  such documents were kept (or all of them if fewer than ten were returned). 4. Extracting biographical activities discovering and studying new lands, artists create paintings, etc.
+ applications [31,35,36,41,45] .
+ 1. For each person analyze the corresponding collection of documents retrieved for this person. elements of which is the name of this person. we are interested only in the activities performed by people. documents describing the person under analysis.
+ types for atomic relations extraction: PERSON, PLACE, DATE, WHOLENO, ORG and ROLE.
+In this work, we do not use syntactic dependencies among words in a sentence. Rather we rely on shallow co-Christopher Columbus.
+ by a separate document collection [22] .
+
+Generalization of atomic relations is also similar to data anonymization [37] . 4.1. Generalized atomic relations extracted atomic relations.
+ activities (verb and action relation nouns) they perform. For example, here are two sentences about explorers: Amerigo Vespucci explored the shores of South America.
+ Vitus Bering explored the Aleutian Islands.
+ converged to the following generalized atomic relation: semantic pattern discovery for information extraction [8,15,50,53] . occupations.
+ occupation-generalized event is the sum of all the counts of person-generalized relations.
+Authorities (HITS) technique Kleinberg [33] for scoring the reliability of web pages. 5. Identifying occupation-related activities the methodology suggested by Kleinberg [33] for ranking web-sites, where a search engine counts to identify central sites in a community.  X  the submitted query.
+ linked to the representatives of this occupation through the important activities. explorers occupation is presented in Fig. 2 .
+ named entity types on one side and k verbs (activities) on the other side.
+We define P N  X  V as a m  X  k stochastic transition matrix from named entities to verbs. defined in Eq. (1) .
+ (Eq. (2) ): Using P V  X  N and P N  X  V , we can define the square stochastic P can be analyzed in terms of Markov Chains.
+ state vector is then adjusted so that the sum of all elements of the vector is equal to 1.
+The same way the eigenvector corresponding to the steady state for web-pages ranks these pages, the eigenvector occupation under consideration.
+ corresponding to the occupation for which the transition matrix described in Eq. (3) is created. becomes unnecessary and the probabilities of outputting information about every activity stabilize. related to the current occupation.
+ sorted order, the ones on top of the table have the highest scores in the respective steady state vectors.
+The activities presented in Table 5 can be divided into three types:  X   X  those which are likely to be used in any biography, such as born , died , became ;  X  other, which are mostly general purpose, modal, or auxiliary verbs, such as been , made . occupation. To extract the activities of the second type we create P activities: general biographical, occupation-related and person specific. according to their occupations. 6. Classi fi cation text according to the procedure described above.
+ ( Section 6.2 ).
+ relations. 6.1. SVM classi fi cation using only verbs corresponding to the steady state of the respective occupation matrix. The verb-only algorithm is as follows: 1794 activities are used in the atomic relations for composers, and only 800 for physicists). occupations.
+ other people we retrieve 2 or 3 documents which only mention the people queried. activities only.
+ these people. Table 7 shows how many documents are analyzed per person on average for each occupation (column
+Docs  X  ), as well as how many practitioner for every occupation are there in our corpus (column 181 people, only 90 are classified correctly.
+ with the dance activity, which is understandable as one of his most famous paintings is only for the explorers.
+ verbs. 6.2. SVM classi fi cation using atomic relations corresponding to the steady state.
+ AR1 Same as step V1 above.
+ AR2 Same as step V2 above.
+ verb features plus one physicist.
+ features is much better than SVM classification using solely verbs as features. using atomic relations, Henri Matisse is now correctly classified as an artist. performance of the classification based solely on activities.
+ him as a composer is a valid result as well. 6.3. Other types of classi fi cation 6.3.1. Random occupation assignment assignment of an occupation even for the case where only verbs are used as features for SVM classification. on mutual information to estimate how good our results are. 6.3.2. Mutual information (MI) document collections rather than only the documents retrieved for atomic relation identification.  X   X  role  X  mathematician  X  / role  X   X  ,  X   X  role  X  artist  X  / role combinations of people's names and occupations' titles. For example,  X   X  role  X  artist  X  / role  X  X  person  X  Picasso  X  / person  X   X  for this person (Eq. (5) ).
+ correctly.
+ and is considered to be one of the most powerful classification methods [30,40] . 6.4. Occupation classi fi cation using web as a corpus queries.
+ classification experiment using web as a corpus. 6.4.1. Data collection to submit the URL and the plain text extracted from the page:  X 
+Alonso is dancer );  X  etc.);  X 
+The plain text should contain at least three sentences;  X  All 10 URLs should be distinct.
+ retrieved by JuruXML.
+ collection experiment using only those MTurkers.
+ classification results for these experiments are presented in the bottom part of Table 7 . 6.4.2. Baseline classi fi cation for the web corpus
+The random baseline does not depend on the corpus. one reported in Table 7 . Rather, we decided to use two types of queries: one of the occupation:  X  + last name + occupation + Alonso + artist + Alonso + athlete + Alonso + composer + Alonso + dancer ...  X  + full name + occupation +  X  Alicia Alonso  X  + artist +  X  Alicia Alonso  X  + athlete +  X  Alicia Alonso  X  + composer +  X  Alicia Alonso  X  + dancer ...  X  occupation + artist + athlete + composer + dancer ...
+ two MI baseline experiments are presented in Table 7 .
+
+The MI results for the web corpus presented in Table 7 are predictable: the more precisely we define the person person is a very strong baseline and we do not outperform it. better than the SVM classification results based on unigrams. 7. Classi fi cations' results discussion occupations.
+ used for constructing auxiliary questions.
+ that are likely to be used in a description of any person irrespective of occupation. 8. Clustering clustering process.
+ Artiles et al. [6] .
+ 8.1. CLUTO clustering tool criterion function is computed according to Eq. (6) : where k is the total number of clusters, S is the total number of objects to be clustered (in our case, S =189 in our corpus), u and v represent two objects from S , S i function between two objects (in our case cosine similarity between two vectors corresponding to two people). to the following criterion: collections retrieved differed in sizes and quality. 8.2. Identifying the number of clusters standard occupation assignment.
+ 8.2.1. Ten clusters the task of choosing the optimal number of clusters.
+ clustering experiment, the input number of clusters into which people should be divided is equal to ten. in the cid column are the same as they are produced by the CLUTO clustering tool, where clusters.
+ several occupations, it is not possible to pinpoint one dominant occupation. clusters, with no cluster distinctively standing out as having the vast majority of writers. clusters. 8.2.2. Two clusters
+Sciences . 9. Conclusions and future work a particular occupation.
+
+The contributions of our paper are three-fold:  X  biographical, occupation-related, and person-specific activities.  X  value.  X  describing the relation among various occupations.
+ respective occupations [52] .
+ occupations. The root of the hierarchy will contain general biographical activities.
+References

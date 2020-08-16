@@ -1,0 +1,68 @@
+ 1. Introduction problem: to assume discrete or to assume continuous movements.
+ quence of database snapshots of the object positions/extents taken at time instants t denoting the moment where a change took place. From this point of view, the indexing problems in such environments can be dealt with by suitably extending indexing techniques from the area of temporal [37] or/and spatial databases case of continuous movements.
+ [21,29] to efficiently index future locations of moving points on the plane. experimental evaluation, and Section 6 concludes the paper. 2. Literature survey  X  presentation of the most basic methods and k  X  K = B are the size of the input and output in blocks, respectively.
+In [21], a set of indexing techniques was presented, which used the geometric duality transformation at the cost of increasing by one the dimensionality. Hence, for the one-dimensional case they reduced the indexing problem to the ing problem in O  X  n  X  space, O  X  n 1 = 2  X  k  X  I/Os query time and O  X  log n  X  I/Os update time. tition trees.
+ lem in the plane in O  X  n  X  space, O  X  n 1 = 2  X  k  X  query time, and O  X  log in higher-dimensional spaces as well, degrading only the update time (it became O  X  log ries arrive in chronological order, then the query time can be further reduced to O  X  log space O  X  n = d  X  disk blocks.
+ formly in one-, two-, and three-dimensional spaces.
+ index.
+ outperforms TPR -trees for both update and query operations. 3. Definitions and problem description objects may be inserted.
+
+Let P z  X  t 0  X  X  X  x 0 ; y 0 be the initial position of object z at time t tion will be P z  X  t  X  X  X  x  X  t  X  ; y  X  t  X  X  X  x 0  X  u x  X  t t form:  X  X  X eport the objects located inside the rectangle  X  x t now 6 t 1 q 6 t 2 q ), given the current motion information of all objects. X  4. Indexing mobile objects in two dimensions
+We decompose the 2d motion into two 1d motions on the  X  t ; x  X  and  X  t ; y  X  plane, respectively. 4.1. Indexing mobile objects in one dimension will use specific duality transformation methods. 4.1.1. The duality transform
+In general, the duality transform maps a hyper-plane h from R 4.1.2. Hough-X transform
+One duality transform for mapping the line with equation y  X  t  X  X  ut  X  a to a point in R we get the dual point  X  u ; a  X  (this is the so called Hough-X transform [21,29] ). Accordingly, the 1d query  X  X  y becomes a polygon in the dual space. By using a linear constraint query [17], the query in the dual Hough-X plane (Fig. 2 ) is expressed as follows: if u &gt; 0, then Q Hough-X A 1  X  u P u min ,
+Inequalities of the A 1 and A 2 areas are obvious. The inequalities for A
+If u &lt; 0, then Q Hough-X  X  B 1 \ B 2 \ B 3 \ B 4 , where B B 2  X  u P u max ,
+Inequalities of the B 1 and B 2 areas are obvious. For B 3
+In Fig. 2 , the line a  X  y 1 q t 1 q u for u  X  u max becomes a  X  y a  X  y 2 q t 2 q u min . Thus, the initial query  X  X  t 1 q ; t  X  X  u 4.1.3. Hough-Y transform transform in [21,29] ). The point in the dual plane has coordinates  X  b ; w  X  , where b  X  a and maximum slope (velocity is bounded by  X  u min ; u max The query in the dual Hough-Y plane (Fig. 3 ) is expressed as follows. If u &gt; 0, then Q
+Inequalities of the C 1 and C 2 areas are obvious. The inequalities for C and for b  X  0 intersect the axis b in t 1 q and t 2 q , respectively. The intersection of the four regions C shaded polygon query of Fig. 3 .
+ If u &lt; 0, then Q Hough-Y  X  D 1 \ D 2 \ D 3 \ D 4 , where
+However, according to the initial query and Eq. (1), we have
+Analogously, according to the initial query and Eq. (2), we have
+According to (3) and (4) the initial query  X  X  t 1 q ; t 2 query in the  X  b ; n  X  plane: 4.2. The basic algorithm for indexing mobile objects in two dimensions which is easily computed as E Hough-X  X  X  E 1 Hough-X  X  E 2 ilarly, on the dual Hough-Y plane, Q Hough-Y denotes the actual area of the query, and E
+The procedure for building the index follows: (1) Decompose the 2d motion into two 1d motions on the  X  t ; x  X  and  X  t ; y  X  planes. (2) For each projection, build the corresponding index.
+ Partition the objects according to their velocity: the Hough-Y dual transform.
+ Motion information about the other projection is also included.
+
+The outline of the algorithm for answering the exact 2d query follows: (1) Decompose the query into two 1d queries, for the  X  t ; x  X  and  X  t ; y  X  projection. (2) For each projection get the dual  X  simplex query. (3) For each projection calculate the criterion c and choose the one (say p ) that minimizes it. (4) Search in projection p the Hough-X or Hough-Y partition. 4.3. Our innovative contribution In [21,29] , Q Hough-X is computed by querying a 2d partition tree, whereas Q indexes the b parameters of Fig. 3 . Our construction instead is based (1) on the use of the Lazy B -tree [19] instead of the B  X  (2) on the employment of a new index that outperforms partition trees in handling polygon queries with the Hough-X
+Next we present the main characteristics of our proposed structures. 5. The access methods pseudocodes as well as a new index method for polygon queries. 5.1. Handling polygon queries when using the Hough-Y transform following theorem provides the complexities of the Lazy B -tree: Theorem 1. The Lazy B-Tree supports the search operation in O  X  log worst-case block transfers, provided that the update position is given. whereas the second one consists of buckets of size O  X  log stored in the access method. Each bucket consists of two list layers, L and L update of the Lazy B -tree is performed incrementally (i.e., in a step-by-step manner) during the next O  X  log larger than O  X  log 2 N  X  . h ets; and (2) the representation of each bucket.
+ worst-case.
+
+Consider now the representation of each bucket. Since buckets may have up to O  X  log are dynamic external sorted lists.
+ description of all operations in pseudocode. 5.2. Handling polygon queries when using the Hough-X transform eral simplex query and hence can be handled more efficiently without resorting to partition trees. X  X  U min and X  X  U max are parallel.
+
+We depict schematically the three basic cases that validate our observation. 5.2.1. Case I onal triangles  X  P 1 P 2 P 5  X  ;  X  P 2 P 7 P 8  X  ;  X  P 4 P 5.2.2. Case II the orthogonal triangles  X  P 1 P 4 P 5  X  and  X  P 2 P 3 P 6 5.2.3. Case III the orthogonal triangles  X  P 1 P 4 P 5  X  and  X  P 2 P 3 P 6 5.3. Orthogonal 4-sided range queries: dynamic case sented to handle general (4-sided) range queries in O  X  X  N = B  X  X  log  X  N = B  X  X  loglog O  X  log B N  X  k  X  I/O X  X ; the structure also supports updates in O  X  X  log 5.4. Orthogonal triangle queries: static case and dynamization lie on a given side of a query line L .
+ and linear space using the notion of duality. The main steps of this algorithm are the following:
+Preprocessing (1) Partition S into a set of convex layers: (2) Augment the set of layers building vertical connections as follows: for each vertex w of layer S
+Query processing (1) Given a query line L transform it into its corresponding dual point P (2) Apply a planar point location algorithm for the point P
+O  X  m 1  X  = N  X  , with m a given parameter, N 6 m 6 N b d = 2 c
+The above static main memory constructions were extended to external memory in [1], where the first optimal access method was presented to answer 2d half-space range queries in the worst-case, based on the geometric tech-nique called filtering search [11]. It used O  X  n  X  blocks of space and answered a query with O  X  log dynamization of the above static solution is viable by using the external version of logarithmic method presented in [4,6] (more details about the internal logarithmic method can be found in [7,27] ). In particular, we have the following: be constructed in O  X  X  N = B  X  log M = B  X  N = B  X  X  I/Os, such that queries can be answered in O  X  log that the main memory is capable of holding B 2 elements). There exists a linear-space dynamic access method D queries in O  X  log k q  X  1 B N  X  I/Os, and supports insertions and deletions in O  X  log amortized, respectively.
+ Proof. See [6]. h
+Lemma 1. The optimal static access methods presented in [ 1 ] requires a construction time of O  X  NB Proof. See [1]. h
+Theorem 3. The dynamic version of [ 1 ] requires O  X  log B O  X  B 4 = 3 log N log 4 = 3 B n log B N  X  amortized I/Os for supporting insertions. Proof. Theorem 2 implies that we have to pay an extra logarithmic overhead of O  X  log time given in Lemma 1 , can be rewritten as follows:
+O  X  B 4 = 3 log 2 N log 4 = 3 B n log B N  X  log 2 B N  X  or O  X  B We will use this dynamic method to satisfy orthogonal triangle range queries on points. h  X  x the following 3-layered access method.
+ mine the points having x -coordinates in the range  X  x 1 ; x  X  x performed through the following steps: (1) In the tree storing the pointset S according to x -coordinates, traverse the path to x od requires O  X  log 2 N log B n log B N  X  X  K  X  I/Os for answering the query, O  X  N log for insertion operations in the amortized case. 6. Experimental evaluation solution with STRIPES (the best known solution) as well as with those ones that use B
+Thus, the maximum number of entries ( h x i or h y i , respectively) in both Lazy B -trees and B same way, the maximum number of entries (2d rectangles or h x q has three parameters: q R len ; q V len , and q T len , such that (a) its MBR q the data space, (b) its VBR is q V  X  q V len = 2 ; q V len = 2 ; q
+Implementations were carried out in C++ including particular libraries from SECONDARY LEDA v4.1. 6.1. Query cost comparison jection, plus the query processing between the two answers), the traditional technique ( B
+This is an immediate result of the same time complexity of searching procedures in both structures B answer X  X  size and is exactly the same in both solutions for all conducted experiments. length of the query rectangle is 100 and as a consequence the query X  X  surface is equal to 10,000 m TPR -tree.
+
+When the query rectangle length or equivalently the query surface becomes extremely large (e.g. 2000, or equiva-rectangle grows, the answer size in each projection grow as well, thus the performance of the LBTs method that com-bines and filters the two answers may degrade. In real GIS applications, for a vast spatial terrain of 10 network of a big town where each road square covers no more than 1 ha (or 10,000 m This is what we consider as realistic scenarios.
+ ter, whereas our method has exactly the same performance with the TPR -trees.
+TPR -tree. Apparently, the query surface remains at realistic levels (16 ha). 6.1.1. Update cost comparison their performance depends on the dataset size even if as in the experiment of Fig. 15 B average).
+
+According to our theoretical outcomes, the solution of LBTs outperforms the update performance of B experiments with gigantic synthetic datasets of size N 0 2 X  10 during the experiment we continuously insert new objects until their number became 10 velocities, is negligible.
+ diate result of the time complexity of update procedures in the Lazy B -tree. 7. Conclusions
+We presented access methods for indexing mobile objects that move on the plane to efficiently answer range queries tically applicable structure.
+ Acknowledgements This work has been partially funded by the Greek-Bulgarian Bilateral Scientific Protocol . Appendix For the better understanding of the pseudocodes below, see also the Fig. 17
+Algorithm 1: List_Search( x , E )
+Algorithm 2: List_Insert( x , E ))
+Algorithm 3: List_Delete( x , E ))
+Algorithm 4: List_Inc( x , L i , j )
+Algorithm 5: Bucket_Add( B i ; L )
+Algorithm 6: Bucket_Remove( B i ; L )
+Algorithm 7: Bucket_RemoveMax( L )
+Algorithm 8: Bucket_Rebalancing( B i )
+Algorithm 9: LazyTree_Insert( x ; LBT )
+Algorithm 10: LazyTree_Delete( x ; LBT )
+Algorithm 11: LazyTree_Search(x, Bin i )
+References

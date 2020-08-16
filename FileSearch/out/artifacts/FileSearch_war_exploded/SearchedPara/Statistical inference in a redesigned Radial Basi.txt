@@ -1,0 +1,209 @@
+ 1. Introduction
+Arti fi cial Intelligence or Intelligent Systems are derived from different applications or techniques, such as: fuzzy logic, Neural
+Networks, evolutionary algorithms and hybrid systems ( Benyounis and Olabi, 2008 ; Paliwal and Kumar, 2009 ). Intelligent systems attempt to imitate human reasoning for problem-solving, perform-ing tasks and decision-making ( Arbib, 2003 ). There are different types of intelligent systems for modeling and optimizing industrial network backpropagation, support vector machines, adaptive reso-nance theory networks and Radial Basis Function Neural Network (RBFNN) ( Mart X n del Br X o and Sanz, 2007 ; Nelles, 2001 ). Neural
+Networks are able to process large amounts of information using mathematical models. A Neural Network (NN) is an interconnection of simple processing elements that represents the function of a single neuron. The interconnection is made by arti fi cial synapses called weights. The adjustment of these weights modi fi es the performance of the neural network. The NN has the ability to approximate functions using a large amount of information from Function (RBF) has been developed to accurately predict the performance processes ( Arbib, 2003 ). The RBF is a second order or hyper-spherical type function in which the network value represents the distance for a given reference pattern. The RBF is a hybrid model because it uses both supervised and non-supervised learning (For more details about RBFNN see ( Arbib, 2003 ; Mart X n del Br X o and Sanz, 2007 ; Nelles, 2001 ; Haykin, 1999 ; Gregor Lightbody, 2008 )). The work by Gregor  X  i  X  and Lightbody (2008) made a complete description of the development of the RBFNN; they fully describe the structure and functioning of the network, accounting for the Euclidean distances, election of the centers, adjustment of weights, usage of Gaussians functions amongst others. It is important to mention that this kind of model (RBFNN) can be used in many complex processes and for multi-output. Du et al. (2010) made a fast recursive algorithm to fi nd better centers using an orthogonal least square; they found better centers based on the reduction in the trace of the error covariance matrix.
+On the other hand we see the application of the RBFNN in e.g. Abdalla and Hawileh (2011) who made a prediction applying the RBFNNinamodelforthelow-cyclefatiguelifeofsteelreinforcing bars; they showed that RBF provides a good prediction tool. Another example of the RBF application is found in Chiddarwar and Babu address the inverse kinematics problem of robots and determined applied a Genetic Algorithm for o ptimizing the structure of RBFNN, this method was applied in the tool condition monitoring which is determined the best parameters to model the power supply for high-fi eld magnet applying techniques of clustering and evolutionary computing with RBFNN. Those tec hniques were applied for modeling the charging characteristic of linear-type superconducting power supply and were realized by Park et al. (2012) . Wang et al. (2010) applied two methods, RBF and Genetic Algorithm, to optimize a ball mill pulverizing system performance in power plants; optimal operating conditions were determined using the RBF and Genetic
+Algorithm as complements. Another application of RBF was imple-mented by Liu et al. (2010) where two models were used (Heuristic
+Method and RBFNN) to determine the half-wave potential of organic, inorganic and organometallic compounds. This study was done using the authors concluded that RBF fo und better predictions than the Heuristic Method model.
+
+Praga-Alejo et al. (2012) proposed the redesigned RBF neural network, which can be properly fi tted to models because its hybrid learning method is constructed by means of a Genetic Algorithm that calculates the matrix of centers and the Mahalanobis distance, maximizing the coef fi cient of determination R 2 . This statistic becomes the evaluation function in the Genetic Algorithm, improving the accuracy of the RBF.
+
+It should be noted that the architecture of the redesigned RBF neural network allows: performing statistical inference for vali-dating the fi tted model, assessing how well the neural network explains the variability related to the process, testing the signi cance of the variables included in the model, and handling inadequacies in the Neural Networks models. The key for its success is laid in satisfying distributional assumptions related to the residuals, namely: errors must follow a normal distribution, errors should not be auto correlated and the variance has to be perform statistical inference over the model, such as the Analysis of Variance, the T -test of signi fi cance variables and some con-fi dence intervals for the predicted values among other test.
+Hence the main objectives of this work are: (1) to show how to test inference to the redesigned RBFNN; considering that it allows to and one or more independent variables x and (2) to test how much this statistical inference could be extended to some other Neural Networks as long as they comply with the assumptions.
+The statistical inference mentioned above could not be applied for dynamical models; for this purpose McGoff et al. (2012) developed theoretical aspects focus on the problem of parameter estimation for nonlinear dynamical systems, statistical inference methods and provided a powerful method for obtaining fi nite sample error bounds for a wide class of dynamical systems.
+The proposed method was applied to different process as machining, laser welding and gas arc metal welding process, in order to show the advantages of making statistical inference in a 2. Methods 2.1. Radial basis function neural network
+The structure in a RBF, in its basic form, includes three totally different layers: input, hidden and output layers. The output layer neurons are linear. The hidden layer neurons calculate the differ-ence between the vector of inputs and the centroids ( Haykin, 1999 ). This difference applies a radial function with a Gaussian shape mainly ( Gregor  X  i  X  and Lightbody, 2008 ), but it has the advantage of being able to use other radial functions. The function of transfer radial in Gaussian type adopts the following form:
+G  X jj x  X  t i jj X  X  exp  X   X  jj x  X  t i jj 2  X  :  X  1  X 
+It is simpli fi ed by the following equation:  X   X  x  X  X  G  X jj x  X  t i jj X  :  X  2  X 
+The relationship between inputs and outputs from neural network is given by the following equation where y  X  x j  X  X  y  X  x  X  X   X  m where  X  are the residual or error. The matrix G is giving by the following equation:
+G  X  2 6 6 6 6 4
+The Eq. (3) is written in matrix form as Gw  X  d , where the variable d j is the output or response, the weights are determined by the following equation by Ordinary Least Square: w  X  X  G  X  G  X   X  1 G  X  d :  X  5  X 
+There are different types of functions of radial basis, but in this work the function used is given by the following equation ( Mart X n del Br X o and Sanz, 2007 ; Arbib, 2003 ):.  X   X  x
+ X  X  r 2 ln  X  r  X  X  6  X  where r is given by the distance between the input variable x and the centroid t i . 2.2. Hybrid Learning Process
+A hybrid intelligent system plus a statistical method was employed; applying Genetic Algorithm and Mahalanobis distance ( Praga-Alejo et al., 2012 ). In this paper, authors showed some statistics to measure the variability of the modeled process, they difference between R 2 and R 2 adj should not be greater than 5 perceptual units which suggests that there are some variables included in the RBNN model that should not be. In order to determine how many and which variables have to be included this paper we developed the way of making statistical inference in a RBNN model; it represents the main difference with regard to
+Praga-Alejo et al. (2012) .In Section 2.2.1 some additional differ-ences are shown. 2.2.1. Radial Basis Function redesigned  X 
+Use the redesigned RBF for building empirical models to data.  X 
+Understand how the method is used to estimate the para-meters in the RBF model.  X 
+Analyze residuals to determine if the RBF model is an adequate fi t to the data or to see if any underlying assumptions are violated.  X 
+Test statistical hypotheses and construct con fi dence intervals on RBF redesigned parameters.  X 
+Use the RBF redesigned to make a prediction of a future observation and construct an appropriate prediction interval on the future observation.
+ The following steps are involved in the generation of the
+Hybrid Learning Process, in the RBFNN:  X 
+Step 1: Generate centroids with GA.  X 
+Step 2: Calculate the Mahalanobis distance.  X 
+Step 3: Apply the Radial Basis Function.  X 
+Step 4: Generate the weights and predictions.  X 
+Step 5: Evaluate the fi tness function in GA.  X 
+Step 6: Go back to Step 1 until an end condition is satis  X 
+Step 7: Apply statistical inference. 2.2.2. Fitness function
+The function evaluation considers the coef fi cient of determina-tion R 2 . The objective was maximizing such metric. The metric R is given by the Eq. (7) ; the R 2 is a global metric evaluation ( Montgomery et al., 2006 ). Where y i represents the experimental response, w is given by (5) , and G is given by (4) .
+R 2  X  1  X  y  X  y  X  w  X  G  X  y 2.3. Statistical inference
+A neural network attempts to create a prediction about a modeled process behavior. However, there are some questions that are of interest. E.g. how could we know if the factors or variables included in the network actually have signi fi cant in ence over the response of interest? How well the neural network explains the variability related to the process? Because of the the neural network, all these questions and others of the kind could be answered.
+
+As previously mentioned, the estimated weights are important component of this network. Therefore by using these estimated weights, it is possible to make statistical inference in order to answer the related questions. By taking the estimated weights and creating some hypothesis tests, valuable decision making informa-tion about the modeled process was obtained. Moreover, it is even possible to produce a selection model based not only in fi terms, but also in terms of the components or variables included; that is to say, the number of weights included in the model.
+Statistical inference requires assessing some assumptions related to the residual values; listed below are the assumptions matched to a test to prove compliance. 2.3.1. The distribution of the residuals should be normal 2.3.1.1. Anderson  X  Darling. The Anderson  X  Darling test is a modi cation of the Kolmogorov-Smirnov and gives more weight to queues than the Kolmogorov-Smirnov the later. The Anderson critical values. This has the advantage of allowing more sensi-tive testing, but the disadvantage that critical values must be calculated for each distribution.
+
+The Anderson  X  Darling test measures the area between the fi tted line (based on the chosen distribution, which in this case is the normal distribution) and a nonparametric step function. of the distribution. The lowest values of Anderson  X  Darling indicated that the distribution fi ts the data better. The proof of
+Anderson  X  Darling normality is de fi ned as  X 
+H o : The data follow a normal distribution.  X  H a : The data do not follow a normal distribution.
+ And the Anderson  X  Darling test statistic is de fi ned as: A 2  X   X  N  X  1 where F is the cumulative distribution function of Normal dis-tribution. And the data Y i are ordered observations. 2.3.2. The residual  X  should be Equal Variances
+Variances of the populations must be equal (or close) across all residual values for a given factor, that is, they must have Homo-geneity throughout the variances. Proving this assumption, statis-tical test as the Breusch  X  Pagan test and the White test are employed (among others). These tests are used as evidence of cular due to its detachment from the functional form, and the White test which is neither dependent of the functional form nor the type of data distribution ( Greene, 2003 ). 2.3.2.1. Breusch  X  Pagan. In the work of Breusch and Pagan (1979) a test is designed that does not depend on the number of missing observations or the identi fi cation of the variable that generates heteroscedasticity for the order, or the functional form ( Kennedy, based on the Ordinary Least Square (OLS) residuals. It is assumed for the model Y  X  X  X   X  U  X  9  X  In this case  X  is calculated by Eq. (5) , X by (4) and U are the residual or error  X  . Where disturbances u i are distributed as normal with constant variance.  X  h  X  z i  X   X  :  X  10  X  where h  X   X   X  is a functional form any unspeci fi ed  X   X   X   X  p 1  X  that cause heteroscedasticity in summary, where p is regressors or the number of variables included in the auxiliary model. Given the assumption that the fi rst element equals 1 and therefore the null hypothesis of homoscedasticity is H  X   X  2  X   X  3  X   X  4  X   X   X   X  p  X  0 :  X  11  X  matrix that provides consiste nt contrast test of the coef presence of an unknown pattern of heteroscedasticity, the variance covariance matrix of White is then given by ^  X  where N represents the number of observations, k the number of OLS. In this case X is calculated by Eq. (4) .TheconventionalOLS estimator of homoscedasticity is V  X  s 2  X  X  X  X  X  1 :  X  13  X  X is calculated by Eq. (4) and the variance of the errors of the OLS model s 2 is given by s 2  X   X  ^ u 2 i =  X  N  X  k  X  :  X  14  X 
+If there is no heteroscedasticity Eq. (13) becomes a consistent estimator of the variance and covariance matrix for the parameters  X 
+Var  X  b  X  X  . From this point, White built a contrast test to get through senting the errors against the original explanatory variables and uted as a Chi square with p  X  1 degrees of freedom NR 2  X   X  2 p is the number of regressors in the auxiliary model excluding the of the auxiliary model are zero, i.e.
+
+H  X   X  2  X   X  3  X   X  4  X   X   X   X  p  X  0 :  X  15  X 
+White concludes this is a general test of model speci fi cation, given that the null hypothesis is based on: errors ' homoscedasti-city and are independent of the regressors, and that the linear speci fi cation is correct. If the null hypothesis is rejected, one or more of these conditions lead to a test violated signi fi that one or more of the three conditions was violated ( Wooldridge, 2006 ).
+
+If the calculated Chi square is greater than the Chi square table, given the level of Type I Error, rejecting the null hypothesis of homoscedasticity. 2.3.3. The residual  X  should not be correlated
+In order to test if the errors  X  are not autocorrelated, it is used the Durbin  X  Watson test, considering the assumption that residuals corresponds to a fi rst-order autoregressive process. relation in residuals by determining whether or not the correlation between two adjacent error terms is zero. The test is based upon an assumption that errors are generated by a fi rst-order autoregressive process. The equation is d  X   X  d is between two bounds, say that d L and d U such that if d out of these limits can reach a conclusion of the hypothesis. If d 2.4. Analysis of Variance (ANOVA) Fitting the RBF model requires several assumptions to apply the
+ANOVA and inference statistical. Estimation of the model para-meters must assume that errors are uncorrelated random variables with mean equals to zero and of constant variance. Tests of hypotheses and interval estimation require that the errors be normally distributed. In addition, it is assumed that the order of the model is correct. 2.4.1. Adequacy of the RBF model
+The analyst should always consider the validity of any assump-tions to be doubtful and conduct analyses to examine the ade-quacy of the model that has been to certain extent intuitively produced.
+
+Analysis of Variance (ANOVA) is a procedure for testing the equality of several means to determine statistical signi fi the relationships between a dependent variable Y , and one or more independent variables X that have been organized into discrete groups of 2 or more levels. The linear statistical model represents the observations of the analysis y  X   X   X   X  i  X   X  ij i  X  1 ; 2 ; ... ; a known treatments global average,  X  i is a single parameter for the i -th treatment effect of treatment called i -th, and  X  ij component of error.
+
+The purpose is to test appropriate hypotheses concerning treat-assumed that errors are independent variables with normal distribution of mean equals to zero and of known variance It is assumed that the latter is constant for all levels of factor. Decomposition of the total sum of squares:
+ANOVA is thus used to disassemble the total variability of the data into its component parts. The total sum of squares corrected by the following equation is used as a measure of the total variability of the data: SS Intuitively this seems reasonable, because if you divide SS between the appropriate number of degrees of freedom (in this case between an  X  1  X  N  X  1) gives the sample variance of y . The sample variance is a standard measure of variability.
+The total sum of squares can be broken down into the sum of squared differences between the averages of the treatments and the overall average, and the sum of squared differences between observations in treatment and the average thereof. The difference between the averages of the treatments and the overall average is a measure of the difference between the means of treatment, while the cause of the differences of the observations within treatments from the average of treatment may be only the random error. Therefore, the given equation can be symbolically written as SS given as SS due to error and is given by the following equation where e is the residual error: SS Error  X  y  X  y  X  w  X  G  X  y  X  e  X  e :  X  21  X 
+The SS Total is N  X  1 degrees of freedom because there are a total of an  X  N observations. There are a factor levels so that SS RBF Model has a  X  1 degrees of freedom. There are n replicates within each treatment, which provide n  X  1 degrees of freedom to estimate the experimental error. As there are treatments, there are a  X  an  X  a  X  N  X  a degrees of freedom for error.
+ In the following equations the quantities MS RBF Model and MS are called mean squares of model and mean squares error. Where w is given by Eq. (5) , and G is given by (4) .
+ MS MS
+A test for the hypothesis of equality in the middle of treatments may be comparing MS RBF Model and MS Error then can be shown as comparison.
+ Since the sum of the degrees of freedom SS RBF Model and SS equals N  X  1, i.e. the total degrees of freedom, this implies that SS RBF Model = s 2 and SS Error = s 2 are independent random variables with distribution  X  2 . Therefore, if the null hypothesis of equal treatment means is true, the reason the given equation has a distribution F with a  X  1 and N  X  a degrees of freedom.
+F
+Eq. (24) is the statistic to test the hypothesis of equal treatment means. The expected value of the numerator of the test statistic is greater than the expected value of the denominator if the alter-native hypothesis is true and therefore must be rejected H critical region. In other words, rejecting H 0 if F 0 4 F
+Moreover the degrees of freedom are all possible combinations that can be made between the sources of variation. The sum of squares is square units to the area under the curve representing each source of variation. And the mean squares are the average square units that correspond to each combination. Table 1 shows an example of building a table of Analysis Of Variance (ANOVA).
+The degrees of freedom are given by k or p  X  r  X  1 where r are of the model, SS Error is the sum of squares of the residuals, SS the sum of squares total, MS RBF Model are the mean squares of the model and MS Error are the mean squares the error or residual. 2.4.2. Statistical metric.
+
+The estimate of s 2 could be used from Eqs. (14) or (23) to provide estimates of the variance of the weights of RBF model.
+We call the square roots of the resulting variance estimators the estimated standard errors of the weights.
+
+The estimates of the variances of these RBF weights are obtained by replacing s 2 with an estimate. When s 2 is replaced j th RBF weight is called the estimated standard error of w se  X  w j  X  X 
+These standard errors are a useful measure of the precision of estimation for the regression coef fi cients; small standard errors imply good precision. Where C  X  X  G  X  G  X   X  1 and s 2  X  MS
+An important part of assessing the adequacy of model is testing statistical hypotheses about the model parameters and construct-ing certain con fi dence intervals. To test hypotheses about the weights of the RBF model, we must make the additional assump-tion that the error component in the model,  X  , is normally distributed. Thus, the complete assumptions are that the errors are normally and independently distributed with mean zero and variance s 2 , abbreviated NID  X  X  0 ; s 2  X  . The statistic is
+T These hypotheses relate to the signi fi cance of the RBF model.
+In addition to point estimates of the slope and intercept, it is possible to obtain con fi dence interval estimates of these para-overall quality of the RBF model. If the error terms,  X  i model are normally and independently distributed, are distributed as t random variables with n  X  2 degrees of freedom. This leads to the weights. w
+An important application of model is predicting new or future observations Y corresponding to a speci fi ed level of the variable or future value of the response y  X  x j  X  X  d j .
+
+Now consider obtaining an interval estimate for this future observations used to develop the RBF model. The prediction in the RBF model is given by ^ y  X  Gw then a point estimate of the future observation ^ y 0 under g 0 is ^ y 0  X  g 0 w . A 100  X  1  X   X   X  X  % interval on a future observation at the value g 0 is given by ^ y
+There are methods for the analysis and validation of experi-mental data using statistical techniques such as Residual Analysis, including statistical metrics (listed below). For example, a metric used for viewing the performance of the model or validating it is a R given by Eq. (7) , as used in the model of RBF. Another metric for adjusted ( Montgomery et al., 2006 ). The metric adjusted R penalizes the addition of terms that are not useful. Cross evaluat-ing with different models is rather encouraged. It is written as follows: R
+Where y i represents the experimental response, y  X  y  X  w the SS Error and y 0 y  X   X   X  n i  X  1 y i  X  2 = n is the SS degrees of freedom respectively, n being the total number of data and p corresponding to the quantity of factors or terms included in the model. Residual Analysis is performed mainly using the MS
+Error can be considered the average variance of the residuals of the adjustment. The other metric is Prediction Error Mean Square ( PREMS ), where Prediction Error Mean Square should be smaller than MS Error ( Montgomery et al., 2006 ). The Error Mean Square ( MS Error ) was written in (23) as follows: MS
+The Prediction Error Mean Square ( PREMS ) is given by the following equation: PREMS  X  1 n  X  n PRESS (Prediction Error Sum Square), which is a measure of how equation.
+ PRESS  X   X  n the hat matrix H , the hat matrix is given by H  X  G  X  G  X  cient of determination of the prediction and is given by the following equation:
+R
+R
+Pr ediction consists of the PRESS statistic, which was de and y i that represents the experimental response and y is the mean in the experimental response and SS Total is y 0 y  X   X   X  n 3. Application (statistical inference)
+Three experimental designs were developed; to demonstrate the possible application about the proposed RBF model in different engineering problems. 3.1. Application in machining process
+The fi rst experimental results are illustrated in Table 2 repre-senting a Central Composite Design; an analysis of the second order response surface model. These models are widely used in practice; model fi tting and optimization are easy; plenty of empirical evidence shows they work very well. The Central Composite Design is the most widely used design for fi tting the second order model.
+The second order model is composed by linear, quadratic and interaction terms or variables.
+
+For that purpose, a machining process with different diameters was designed. There are two input variables: Spindle Speed (Rpm) and Tool Feed (mm/ min). Then the central composite design is a 2 k series with central and axis points and it is used to fi t a complete model, i.e.: X 1  X  SpindleSpeed, X 2  X  ToolFeed,
+X 1 n X 1  X  X  Spindle Speed  X  2 , X 2 X 2  X  X  Tool Feed  X  2  X 
+The machining process was realized in a Haas VM-2 central machining with vertical mold making machine; 762 508 508 mm, 40 taper, 30 hp (22.4 kW) vector drive, 12,000 rpm, inline direct-drive, 24 + 1 side-mount tool changer, 710 ipm (18.0 m/min) rapids, automatic chip auger, remote jog handle, automatic air gun, high-speed machining, ethernet interface, macros, coordinate rotation and scaling, programmable coolant nozzle, power failure detection module and 55-gallon (208 l) fl ood coolant system.
+In structural terms are: 3.1.1. The generalized RBFNN It is given by the following structure:
+Input layer x 1 ; x 2 ; ... ; x m  X  1 ; x m , hidden layer of m  X  ; ... ;  X  ; ... ;  X  , weights w 0  X  b ; w 1 ; ... ; w j and is similar to regularization RBFNN. 3.1.2. The regularization RBFNN It has the following structure: ( G ) G ; ... ; G ; ... ; G , weights w 1 ; ... ; w j ; ... ; w N
+However: 1. The number of nodes in the hidden layer of the generalized
+RBFNN of Section 3.1.1 is m 1 , where m 1 is ordinarily smaller than the number N of examples available for training. On the other hand, the number of hidden nodes in the regularization
+RBFNN of Section 3.1.2 is exactly N ; 2. In the generalized RBFNN ( Section 3.1.1 ), the linear weights associated with the output layer, and the positions of the centers of the RBF and the distance weighting matrix asso-ciated with the hidden layer, are all unknown parameters that have to be learned. However, the activation functions of the hidden layer in the regularization RBFNN ( Section 3.1.2 ) are known, being de fi ned by a set of basis functions centered at the training data points; the linear weights of the output layer are the only unknown parameters of the RBFNN.
+
+Hence, in this application (machining process) the structure of the RBF redesigned includes three layers: 5 inputs, 5 hidden and 1 output layers. Therefore the function used is given by Eq. (6) , therefore RBF does need to calculate and aggregate the widths ( Praga-Alejo et al., 2012 ). 3.1.3. Results in the machining process
+The RBF redesigned with Evolutionary Algorithm and Mahala-nobis distance applying Eqs. (1)  X  (7) and using the data of the
+Table 2 provided the following results:  X  The weights w j in the RBF redesigned model determined by
+Eq. (5) are: w  X  X  0 : 00003765 ;  X  0 : 00301372 ; 0 : 00000383 ;  X  0 : 0 : 00000676 ; 5 : 27673166 T  X 
+The distribution of the residuals should be normal  X   X  N  X 
+Appling Eq. (8) A 2  X  0 : 434 and p -value is 0 : 255 which means that residuals follow a Normal distribution.  X  The residual  X  should be Equal Variances:
+In order to prove this assumption, it is used some statistical test as the Breusch  X  Pagan and the White test. The result in Breusch
+Pagan is p  X  0 : 20463 and the White test is p  X  0 : 61446 then residuals have Equal Variances because the p -value in the tests are greater than 0.05.  X  The residual  X  should not be correlated:
+Appling Eq. (16) the Durbin  X  Watson statistic is d  X  1 : the p -value is p  X  0 : 30332 the p -value in the test is greater than 0.05, then the residual are not correlated.
+
+Then with these results it is possible to make statistical
+Variance (ANOVA) is a procedure for testing the equality of several means to determine statistical signi fi cance of the relationship between a dependent variable and independent variables. The results ( Table 3 ) applying Eqs. (18)  X  (24) are
+For this analysis, when the p -value is smaller than 0.05 serves as evidence to conclude that the adequacy of the model is good and to determine the statistical signi fi cance of the relationship between variables; thus indicating good model fi tted by the redesigned RBF, hence suitable for predicting, optimizing, and than 0.05.
+ Statistical metric The estimated standard error (Eq. (25) )of w j are mentioned in Table 4 .
+
+To test hypotheses (Eq. (26) ) about the weights w j of the RBF model are mentioned in Table 5 .
+ These hypotheses relate to the signi fi cance of the RBF model. every term has an effect in the model, is meaningful for the RBF model, or are important to model adequacy. In this case (machin-ing process) all the terms are important and have signi fi the RBF model.
+
+The con fi dence intervals (Eq. (27) ) on the weights are men-tioned in Table 6 .
+
+Parting from such analysis is possible to obtain con fi dence
+The predictions in the RBF redesigned model are mentioned in the Table 7 :
+Considering an interval estimate for future observations is of critical relevance.
+
+There are methods for the analysis and validation of experi-mental data using statistical techniques such as Residual Analysis, including statistical metrics. For example, a metric used to view the performance of the model or validate it is an R 2 given by Eq. (7) , in the model of RBF R 2 equal to 89.4%. The results show that RBF redesigned with GA and Mahalanobis distance is over 89% in R 2 ; it refers to R 2 as the amount of variability in the data explained by the models, i.e. the RBF redesigned accounts for more than 89% of the variability in the data. The metric is the quantity used to express the proportion of total variability in the response accounted for by the model, so that R 2 indicates the proportion of to 100% or above 70%, it means that the model will be a good predictor ( Montgomery et al., 2006 ).
+
+The results resumed in the Table 8 indicates the statistics metrics in the model that is adjusted by Radial Basis Function R Residuals MS Re s , the Prediction Error Mean Square PREMS , the Prediction Error Sum Square PRESS and the coef fi cient of determi-nation of prediction R 2 Prediction .
+
+The other statistical method used in the evaluation of the model, is the PREMS , where the Mean Square Residuals ( MS should be greater than PREMS . If the PREMS is less than the MS the model is going to be a good predictor; in this case the application complies with this premise, in which the model can be used to predict and optimize. The results summarized in Table 8 indicate that the model that is adjusted by RBFNN has less variance in its prediction. 3.2. Application in a GMAW process
+The second experimental results are illustrated in Table 9 ; the application was in a Gas Metal Arc Welding (GMAW) process, this kind of welding process, two metallic pieces are joined using heat, pressure or a combination of both.
+
+Sometimes it is required an external contribution metal. For this process, two piece metals are joined applying heat with an arc generated by an electrode fi ne wire and the metals. Inert gas like
+Argon and Helium and different contributes of metal improve and protect this welding process.
+
+The parameters numbers of GMAW process are usually three, the amperage, the voltage and the travel speed of the torch. These parameters regulate the performance of the welded pieces as the penetration.
+ In this real application were used fi ve input variables:
+X 1  X  Amperage, X 2  X  Voltage, X 3  X  SpeedFeed, X 4  X  Electrode Extension and X 5  X  HeatInput.
+
+So the objective is fi nd the levels of parameters that the process must to be carry out in order to reach the best penetration (Output variable). 3.2.1. The structure of the RBFNN in GMAW process
+In this engineering real application (Gas Metal Arc Welding process) includes three layers: 5 inputs, 5 hidden and 1 output layers, the hidden layers are 5 because m 1  X  5 and N  X  5 (see
+Sections 3.1.1 and 3.1.2 and the bullets 1 y 2). 3.2.2. Results in the GMAW process
+The data of the Table 9 provided the following results:  X  The weights w j in the RBF redesigned model determined by
+Eq. (5) are: w  X  X  0 : 481407277 ; 0 : 0001038 ;  X  0 : 0068297 ; 0 : 0105504  X 
+The distribution of the residuals should be normal  X   X  N  X 
+In order to make this inference it is necessary to ful fi assumptions about the errors, that is to say, it is necessary to realize a Residual Analysis. To test the normality assumption, an
+Anderson  X  Darling test (for details D  X  Agostino and Stephens, 1986 ) was used; the estimated statistic was A 2  X  0 : 2554 with a p -value is p  X  0 : 6994, so it was concluded that the residuals were normally distributed.  X  The residual  X  should be Equal Variances:
+On the other hand, in order to test if the variance is homo-geneous over the residuals, the White and the Breusch  X  Pagan test were used ( Breusch and Pagan, 1979 ); in this case, tests suggest that the variance is homogeneous with probabilities values p  X  0 : 6744 and p  X  0 : 2573. Then residuals have Equal
+Variances because the p -value in the tests are greater than 0.05.  X  The residual  X  should not be correlated:
+Also, to test if the residuals are not autocorrelated the Durbin
+Watson test ( Durbin and Watson, 1950 , 1951 ) was used; it suggested that the residuals were not autocorrelated obtain-ing a probability value p  X  0 : 2820. Appling Eq. (16) the Durbin
+Watson statistic is d  X  1 : 7184, hence the residual are not correlated.
+
+Then with these results it is possible to make statistical
+Variance (ANOVA) is a procedure for testing the equality of several means to determine statistical signi fi cance of the relationship between a dependent variable and independent variables. The results ( Table 10 ) applying Eqs. (18)  X  (24) .
+
+For this analysis, when the p -value is smaller than 0.05 ( p  X  0 : 001) serves as evidence to conclude that the adequacy of the model is good and to determine the statistical signi fi the relationship between variables. 3.2.3. Statistical metric The estimated standard error (Eq. (25) )of w j are mentioned in Table 11 .
+
+To test hypotheses (Eq. (26) ) about the weights w j of the RBF model are:
+These hypotheses relate to the signi fi cance of the RBF model. The smaller than 0.05 this weight has signi fi cance in the RBF model,
+RBF model, or are important to model adequacy. These tests indicate that 2 input variables ( X 1  X  Amperageand X 2  X  Voltage) are not new and future fi tting and predictions. The variable X 3 closer to 0.05 then it could be consider in the new model.  X  The con fi dence intervals (Eq. (27) ) on the weights are:
+Parting from such analysis is possible to obtain con fi dence interval of these parameters w j and their signi fi cant contribu-tion ( Table 13 ).  X 
+The predictions in the RBF redesigned model are mentioned in the Table 14 .
+
+On the other hand, there are methods for the analysis and
+Residual Analysis, including statistical metrics. For example, a metric used to view the performance of the model or validate it refers to R 2 as the amount of variability in the data explained by the models, i.e. the RBF redesigned accounts for more than 60% of the variability in the data.
+
+The metric is the quantity used to express the proportion of
+R 2 indicates the proportion of variability in y explained by the metrics used are: the coef fi cient of determination R 2 ,thecoef determination adjusted R 2 Adj , The Mean Square Residuals MS
+PRESS and the coef fi cient of determination of prediction R
+The coef fi cient R 2  X  60 : 8 suggest that only the 60% of the
+R some variables included in the RBNN model that should not be.
+The other statistical method used in the evaluation of the model, is the PREMS , where the Mean Square Residuals ( MS should be greater than PREMS . If the PREMS is less than the MS the model is going to be a good predictor; in this case the application complies with this premise, but for these cases with
+R and R 2 Adj less than 70% also should consider other statistics to of the RBNN is to predict the behavior of the welding process give some process variables, the ability and accuracy of the RBNN to make predictions has to be tested. For this purpose, it was used a RBNN to make accurate predictions. In this case the statistic was
+R
+Prediction  X  39 : 04 which suggests that the model is not able to realize accuracy predictions about the welding process. 4. Discussion
+The following analysis is for the GMAW process, as we can observe in Fig. 1 , the fi tted model makes good predictions about the welding process; but, how accurate are those predictions?
+Considering only the information showed, it could be con-cluded that the RBFNN is a good option to realize predictions about the process; nevertheless, the proposed statistical analysis suggests the opposite ( Fig. 2 ).
+
+Table 12 shows the estimated weights as well as the p -values for making the signi fi cance proof.
+
+Considering the It could be concluded from Table 12 that the variables which correspond to w 1 and w 2 are not statistically signi fi cant and must not be included in the RBNN model. This inference provides a great advantage when a RBNN is used for modeling a real process, because it is possible to decide which process variables should be monitored and controlled to keep the process in control with a con fi dence given (95% for this case).
+Since the assumptions were assessed, the statistical inference showed in Table 12 is reliable.
+
+Hence, supported by the statistical analysis, it could be con-cluded that the fi tted RBNN is not suitable and it should not be used to make predictions as well as optimize the process even if the graphical representation suggest the opposite.
+
+Nevertheless now we create a new prediction with just the three last inputs, to see the fi t in the RBNN and the statistical analysis; the results are given in Table 16 .
+
+Then with this adjusted the model is better, the R 2 and R should not be greater than 5 perceptual units and this case whether complies the assumption. Graphically the three models seem equals with the objective, the RBFNN with 3 inputs and 11 units better than the model with 5 inputs ( R 2 Prediction
+Then the new RBFNN prediction with 3 inputs is better than 5 inputs. Furthermore If the PREMS is less than the MS Error model is going to be a good predictor; in this case the application complies with this premise, in which the model can be used to predict and optimize.
+
+In addition to this, these statistics are better than the values that the model provides us with 5 inputs; it means that there is a this case were: X 3  X  SpeedFeed, X 4  X  ElectrodeExtension and
+X 5  X 
+HeatInput. The relationship between inputs and outputs from RBFNN is given by y  X  x  X  X   X  m i  X  1 wG  X jj x  X  t i jj X  X  in matrix form as Gw  X  y  X  x  X  , then the new RBFNN model with y  X  x  X  X  X  G 3  X  X   X  0 : 000072  X  X  X  G 4  X  X  0 : 0001  X  X  X  G 5  X  X   X  0 5. Conclusions
+The method of Hybrid Learning Process presented in this work successfully applies a Genetic Algorithm to calculate the matrix of centers and the coef fi cient of determination R 2 becomes the statistical evaluation function of GA improving the accuracy of the prediction and optimization of the model. With these mod-i fi cations, the original contribution is that our redesigned RBF model ful fi lls the assumptions to realize statistical inference. A very important contribution, it is given to the application of
+ANOVA to determine the statistical signi fi cance and the relation-ship between variables. For our case studies, machining and welding process, some terms are deemed signi fi cant; have a contribution in the process, and are important to fi t the model.
+A statistical inference is therefore made to apply ANOVA, test hypothesis, con fi dence intervals in weights w j and ^ y statistical metrics as R 2 , R 2 Adj , PREMS , PRESS , R 2 others. This method might identify which variable is most impor-tant and has the largest effects on the process, e.g. in the GMAW application it could be concluded from Table 12 that the variables which correspond to w 1 and w 2 are not statistically signi must not be included in the RBNN model, in this case we conclude there are the more important are: Speed Feed, Electrode Extension and Heat Input.
+
+Moreover, it shows that statistical methods are a good alter-native for validating the ef fi ciency of Neural Networks models.
+Hence, it can be concluded that the RBF model is a good tool for prediction and optimization when complies all the statistical assumptions.
+
+Future work includes carrying out these methods for a multivariate model, and performing a global and multi-objective optimization. References

@@ -1,0 +1,92 @@
+ 1. Introduction
+The introduction of artificial neural network methods for the has had a significant impact in control systems research conventional control schemes use linear models. However, the use of linear models can result in a serious deterioration of control performance for many nonlinear plants. The presence of and may cause performance problems if not considered appro-priately. Research over decades has produced several nonlinear cepts and properties of the system, input X  X utput linearisation _ x systems which exhibit linear dynamics between the inputs and outputs. A linear controller can be applied to the linearised back of the input X  X utput linearisation technique is that it depends on the exact knowledge of a nonlinear model of the this may be overcome by using a dynamic neural network to and decoupling. A recurrent neural network is a closed loop system, with feedback paths introducing dynamics into the assuming much knowledge about the structure of the system under consideration.
+
+Dynamic neural networks (DNNs) have important properties that make them convenient to be used together with nonlinear
+DNNs. The development of novel DNN structures, which has good paper and previous work ( Deng et al., 2005 ). Although the new designed DNN in this paper has been improved dramatically.
+Deng et al. (2005) presented a new dynamic neural network training and operation. This paper presents a hybrid dynamic parallel hybrid structure, but it uses an output from another
+DNNs does not require the output of the plant to be used as an showing how this hybrid dynamic neural network can approx-
+The paper is organized as follows. Section 2 discusses the universal approximation property of static multilayer percep-2. Different types of dynamic neural networks
+Dynamic neural networks are made of interconnected _ x  X  b i x i  X  where b i , o ij and g ij are adjustable weights, with 1 = b
+A dynamic neural network is formed by a single layer of N the following vectorised expression: _ x  X  b x  X  os  X  y  X  X  g u , y  X  C n x ,  X  2  X  diagonal elements f b 1 , ... , b N g , o A R N N , g A R u A
+R m is the input vector, y n A R n is the plant output vector, y  X  X  y T
+A type 1 DNN differs from the dynamic neural network in this paper is known as type 2 DNN, in the argument of the following vectorised expression: _ x  X  b x  X  os  X  x  X  X  g u , y  X  C n x :  X  3  X  Define the output state vector x p  X  X  x p 1 , ... , x p n state of the n output units. Define the hidden state vector
+A type 1 DNN uses plant output and the hidden state in the _ x  X  b x  X  os  X  ^ y  X  X  g u , y  X  C n x ,  X  4  X  diagonal elements f b 1 , ... , b N g , o A R N N , g A R u A
+R another neural network, ^ y  X  X  x e T , x n  X  1 , ... , x N
+A type 3 DNN differs from a type 1 DNN, in the argument of type 1 DNN in that a type 3 DNN uses the outputs from another neural network and the hidden states in the argument of the vector sigmoid function s  X  X  , while a type 1 DNN uses the plant outputs and the hidden states of the network, which consists of the output states and the hidden states, in the argument of the vector sigmoid function. The type 3 DNN is illustrated in Fig. 3 .
+ 3. The universal approximation property of static multilayer networks
+An important result of approx imation theory states that a three-layer feedforward neural network, with sigmoidal activation functions in the hidden layer and linear activation functions in the output layer, has the ability to approximate any continuous mapping f : R n -R q to arbitrary precision, provided that the number of units in the hidden layer is sufficiently large. This is sta ted by the following theorem, which is the theory basis of replacing the real outputs of the type 1 DNN presented in Deng et al. (2005) with the outputs from another neural network in this new hybrid DNN, shown in Fig. 3 .
+
+Theorem 1. Let K be a compact set of R n and f : K -R q be a
+R the input X  X utput ^ f , such that max x A K J f  X  x  X  ^ f  X  x  X 
+The following theorem is a version of the fundamental approximation theorem provided by Funahashi (1989) . Similar results have been obtained by Cybenko (1989) and others.
+Theorem 2. Let K be a compact set of R n and f : K -R q be a
+N vector b such that max defined as follows :  X  z  X  X  where z  X  X  z 1 , ... , z N h T A R N h .
+
+For the proof of the above theorem, see Funahashi (1989) . 4. Approximation ability of the type 1 and type 3 dynamic neural networks uses the fundamental approximation theorem of neural networks is inspired by previous work on the approximation of finite trajectories of autonomous nonlinear systems ( Funahashi and Nakamura, 1993 ; Kimura and Nakano, 1998 ). The book Garces approximate general nonlinear systems.
+ R ping. Then , for arbitrary E 4 0, there exists an integer N dimensional vector b such that max defined as follows :  X  z  X  X  where z  X  X  z 1 , ... , z N h T A R N h .
+ following substitutions: K  X  K U , q  X   X  n  X  m  X  , x  X   X  x W 1  X   X  W 1 g 1 . &amp; R non-autonomous system _ x  X  t  X  X  f  X  x  X  t  X  , u  X  t  X  X   X  9  X  is defined on I  X  X  0 , T  X  0 o T o 1 X  for u  X  t  X  A U with t states x o A R n and N h hidden units with states x h A R _ z  X  b z  X  os  X  z  X  X  g u ,  X  10  X 
+ X  max
+J x  X  t  X  x o  X  t  X  J o e ; I  X  X  0 , T  X  0 o T o 1 X  :  X  11  X  Proof. See the book Garces et al. (2003) .
+
+R non-autonomous system _ x  X  t  X  X  f  X  x  X  t  X  , u  X  t  X  X   X  12  X  is defined on I  X  X  0 , T  X  0 o T o 1 X  for u  X  t  X  A U with t included in ~ K for any t A I . Then , for an arbitrary e states x p A R n and N h hidden units with states x h A R _ z  X  b z  X  os  X  z 1  X  X  g u ,  X  13  X  A
+R A
+R non-autonomous system : max
+J x  X  t  X  x p  X  t  X  J o e 1 ; I  X  X  0 , T  X  0 o T o 1 X  :  X  14  X  Proof. This proof uses Lemmas 1 X 3, which are given in the  X 
+R F  X  z , u  X  X  b z  X  os  X  z  X  X  g u :  X  15  X 
+Then the dynamic system defined by F is _ z  X  b z  X  os  X  z  X  X  g u ,  X  16  X  where u  X  X  u d z T , d z  X  X  d x 0 N h N h T , d x  X  X  x x p ,  X  X  ~
+F  X  ~ z , u  X  X  b ~ z  X  os  X  ~ z  X  X  0 n n I  X  n  X  N h  X  X  n  X  N
+Then the dynamic system defined by ~ F is _ ~ z Lemma 2 is applicable to F and ~ F .
+ Note that J By using Taylor expansion to this sigmoid function
+J  X  x
+ X  s  X  x o i  X  d x i  X  J  X  J s 0  X  x o i  X  d x i 1 2 s 00  X  x where
+O  X  d x  X  X  by using Lemma 3
+O  X  d x for z A  X  z , z  X  d z , therefore
+O  X  d x According to Eq. (23), Eq. (20) becomes
+J  X  x
+ X  s  X  x o i  X  d x i  X  J r d x i d r e d ,  X  24  X  where d  X  J s 0  X  x o i  X  1 2 s 00  X  x i o  X  d x i s  X  n  X  1  X  In conclusion, Eq. (24) can be written as
+J  X  x  X  s  X  x o i  X  d x i  X  J r e d :  X  25  X  According to Eq. (25), Eq. (19) can be written as J F  X  ~ z , u  X  ~ F  X  ~ z , u  X  J r J o J d e :  X  26  X  Eq. (26) can be written as J
+F  X  ~ z , u  X  ~ F  X  ~ z , u  X  J r Z 1 ,  X  27  X  by using Lemma 2
+J x  X  t  X  x p  X  t  X  J r max
+J x o  X  t  X  x p  X  t  X  J o e 2 ,  X  29  X  max
+J x  X  t  X  x p  X  t  X  J r max r max r  X  e 2  X  e  X  r e 1  X  30  X  which completes the proof. &amp;
+R non-autonomous system _ x  X  t  X  X  f  X  x  X  t  X  , u  X  t  X  X   X  31  X  is defined on I  X  X  0 , T  X  0 o T o 1 X  for u  X  t  X  A U with t included in ~ K for any t A I . Then , for an arbitrary e states x p A R n and N h hidden units with states x h A R _ z  X  b z  X  os  X  z 2  X  X  g u ,  X  32  X  where o is the output vector from another neural network , b A
+R A
+R non-autonomous system max
+J x  X  t  X  x e  X  t  X  J o e 3 ; I  X  X  0 , T  X  0 o T o 1 X  :  X  33  X 
+Proof. This proof is similar to Theorem 4 and uses Lemmas 1 X 3, which are given in the Appendix.
+
+For given e 3 4 0, choose e 4 0, e 4 4 0 and such that e  X  e r Z 1 l G = exp  X  l G T 1  X  . Define now the mapping F : R
+R F  X  z , u  X  X  b z  X  os  X  z  X  X  g u :  X  34  X 
+Then the dynamic system defined by F is _ z  X  b z  X  os  X  z  X  X  g u ,  X  35  X   X  n  X  N h  X  . Eq. (35) is equivalent to Eq. (10).
+ ~
+F  X  ~ z , u  X  X  b ~ z  X  os  X  ~ z  X  X  0 n n I  X  n  X  N h  X  X  n  X  N Then the dynamic system defined by ~ F is _ ~ z Lemma 2 is applicable to F and ~ F .
+ Note that J
+Using the similar method as in Theorem 4 , the following equation could be obtained: J
+F  X  ~ z , u  X  ~ F  X  ~ z , u  X  J r Z 1 ,  X  39  X  by using Lemma 2
+J x  X  t  X  x e  X  t  X  J r max
+J x o  X  t  X  x e  X  t  X  J o e 2 ,  X  41  X  max
+J x  X  t  X  x e  X  t  X  J r max r max r  X  e 4  X  e  X  r e 3 :  X  42  X  which completes the proof. &amp; 5. NLARX and its training procedure
+The NLARX structure can take into account the dynamics of the system by feeding previous network outputs back into the input and input time steps are required for representing the systems dynamics best. In this paper, an NLARX model is applied. It model can be described as the current output.
+
+This neural network model training problem can be cast as a nonlinear unconstrained optimization problem min a parameter vector.
+
+The optimization problem minimizes the averaged distance between the predicted outputs and the measured output of training samples. Predicted output of an NLARX model is a the outputs of the two blocks. Typical regressors are simply and output variables.
+
+The NLARX training process is as follows. Given a neural referred to as performance index of Eq. (44), which is to be paper the neural networks are trained using gradient descent methods will calculate the vector r y F M whose elements are @ F parameters of the network for which the performance index has network output and training patterns, the performance index is the Euclidean norm of the error matrix of the whole training
+Fig. 7 shows the training (the top figure) and validation (the type 3 DNN. NLARX is used in a recursive way, which uses the past mode outputs. 6. Example
+The 3D crane consists of a payload hanging on a pendulum-crane system is multivariable, it exhibits highly nonlinear dynamics, and has oscillatory behaviour with different time scales, which makes it a challenging benchmark for nonlinear cart is capable of horizontal motion along the rail in the y by the three DC motors and is fully interfaced to MATLAB and measurements obtained via optical encoders.
+ The schematic diagram of the 3D crane is given in Fig. 9 .
+There are five measured quantities: x w (not shown in Fig. 9 ) denotes the distance of the rail with the cart from the centre of the construction frame; y w (not shown in Fig. 9 ) denotes the distance of the cart from the centre of the rail;
+R denotes the length of the lift-line; a denotes the angle between the y -axis and the lift-line; b denotes the angle between the negative direction on the z -axis and the projection of the lift-line onto the xz plane. x , y , z c and can be found from the five measurements using experiment was carried out on the 3D crane for collecting the at each of the inputs in Fig. 10 were created as follows: u  X  k  X  X  zero mean and standard deviation s e .
+
+According to Theorem 1 , the dynamics of this crane could always be identified by a feedforward neural network with a sufficient number of hidden states. However, due to personal computer X  X  memory limits, a feedforward neural network is not exogenous input) model is identified for the dynamics of the crane, which could be used to illustrate the idea of the type 3 DNN. The NLARX model could be described as follows: the the input allows consideration of previous inputs in order to incorporate dynamics within the systems behaviour.
+Three neural networks of types 1 X 3 were used to identify three-input three-output models, which had as inputs the three coordinates of the payload position. Training was performed the size of the training problem associated with the target applications, the strong nonlinearities in the systems and the further improvement could be achieved using more iterations. This makes sure to show the true advantages and disadvantages of different types DNN. A 6-state DNN structure was chosen in order to illustrate the difference between the type 1 and type difference between a 6-state type 3 and type 1 DNN is that the plant signals in the type 1 structure needs connecting to the outputs of NLARX.
+Fig. 13 shows the training output and the model output using the type 1 neural network. Fig. 14 shows the validation output and model output for the same case. Fig. 15 shows the training output and the model output for type 2 dynamic neural network. model output for the same case.
+
+It is not difficult to see that a type 2 DNN had problems to approximate the dynamic behaviour of the system, whereas the type 1 and 3 DNN, which was easier to train, was able to approximate the system more accurately. The better approxima-tion capability exhibited by the type 1 and 3 DNN can be does not require the plant output to operate. 7. Conclusions
+This paper presented a novel hybrid dynamic neural network the plant for operation. An example has been given to demon-ing complex nonlinear dynamics, and its performance has been favourably compared, in terms of approximation ability, with a previously proposed dynamic neural network structure. Appendix The following Lemmas are useful for the proof of Theorem 4 . that v  X  t  X  r C  X  for all t A  X  t 0 , t f . Then v  X  t  X  r C exp  X  L 9 t t 0 9  X  X  A : 2  X  for all t A  X  t 0 , t f .
+ Proof. See Hirsch and Smale (1974, Chapter 8) .
+ all x A S and u A U J F  X  x , u  X  ~ F  X  x , u  X  J o e :  X  A : 3  X  If x ( t ) and ~ x  X  t  X  are solutions to _ x  X  F  X  x , u  X  , _ ~ x  X  ~ F  X  ~ x , u  X  ,  X  A : 4  X  respectively , on some interval I  X f t A R 9 t 0 r t r t f then J x  X  t  X  ~ x  X  t  X  J r e L  X  exp  X  L 9 t t 0 9  X  1  X  X  A : 5  X  holds for all t A I . Proof. See Hirsch and Smale (1974, Chapter 15) .
+ point c can be found between a and b such that
+Z f  X  x  X  dx  X  f  X  c  X  X  a b  X  :  X  A : 6  X  Proof. See Khinchin (1960, Chapter XIII) .
+ References

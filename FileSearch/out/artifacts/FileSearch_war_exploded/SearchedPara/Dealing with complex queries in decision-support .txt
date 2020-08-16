@@ -1,0 +1,76 @@
+ 1. Introduction 1.1. Decision tables, explanations and queries
+Under uncertainty, a modern and useful decision-theoretic model is the in variables are outcomes of random variables and/or other past decisions. literature, see e.g. [9,12,13] . Thus, for example, in health-care problems, usually involving dif this purpose, they need to understand the underlying reasons or implicit rules. relates to table cells, rows and columns. It may include how tests are performed, the bene and reasoning with uncertainty and preferences.
+ include the probability and utility models, they are simple, and have no added complex layers. analysis. In a typical session, experts interact with DSSs to: (A) formulate a query in the KB domain; (B) translate the query into the KB formalism; (C) implement the response retrieval; (D) build the response ef fi ciently; (E) communicate the response(s) and/or suggest improvements, and wait for user feedback. attributes is instantiated. A closed query is a speci fi c and well-de information. An open query is less speci fi c, as it includes attribute values that are unde expensive to obtain or they are unreliable. Martinez et al. [15] give a similar classi than from a logical point of view (as a KB). methodology to undertake tasks (C)  X  (E) dealing with ambiguity and ignorance about the response. 1.2. Example: Optimal treatment of gastric non-Hodgkin lymphoma optimal treatment of non-Hodgkin lymphoma of the stomach.
+ of antibiotics, chemotherapy, radiotherapy and surgery.
+ diagram is shown in Fig. 1 , and is brie fl y discussed in the following. The surgery, i.e. partial removal of the stomach and tumor; or no surgery. The last decision, NHL model.
+ optimal treatment for each combination of attributes in the tables.
+ Let us take the fi rst decision table concerning the HT decision. It contains four attributes ( with the following con fi gurations:
+We will look at all the discussed queries in this paper. In the instantiated. The question is about a patient that has a good histological classi ( =I), the H. pylori bacterium ( HP =Present), and a big tumor ( part of the problem, the response should be easy to retrieve.
+ CLASSIFICATION (HC) . This could perhaps be due to the high cost of the biopsy. In the third case, OQ 2 , the query is even more open, specifying only a medium clinical stage ( to retrieve now. There are many possible alternatives, where users will close known responses or by having the user intervene at some steps to reduce response uncertainty. 1.3. Outline database management systems that operate with facts, DSSs must provide explanations besides ef response information [10] . Thus, our KBM2L framework provides not only an ef shows how to deal with a closed query. Section 4 tackles less speci further research. 2. KBM2L lists 2.1. Basics base is de fi ned as a vector with elements equal to the attributes in a speci elements are the attribute values, interpreted as the coordinates with respect to that base. With a discrete domains, a decision table can be viewed as a multidimensional matrix. cell of the table of n +1 attributes with index c = c 0 ; where q is the c -offset with respect to the fi rst element of the table in a given base, and D attribute domain for i =0,1, ... , n . The access function f can also be written more compactly as where w i =  X  n
+Eq. (1) or (2) . Without loss of generality, suppose the possible outcomes of c are 0,1,2,..., w 0 D 0  X  1.
+
+With a view to shortening the list output by the decision table, we Matrix to List  X  representation [6] .
+
+An item is denoted by  X  index , alternative | or, equivalently, monotonously, and  X  |  X  re fl ects granularity. 2.2. Response explanations corresponding to the endpoints (minimum and maximum) of the item. This set of indices has a corresponding to the indices are not shared. Both parts can be derived from the indices I by taking the logical AND I inf  X  I sup .
+ fi item are irrelevant for decision making. 2.3. Implementation and optimization permutation space with or without (even more complex) a fi example with the NHL problem is given in the next section.
+ the item synthesis and facilitates future additions [6] .
+ Example. KBM2L optimization.
+
+Let us brie fl y explain the KBM2L list optimization process for the gastric NHL problem. Let us use the concerning the HT decision ( Helicobacter treatment) with 40 cases resulting from the in four attributes ( CS, BD, HC, and HP ) determining the expected utility of each alternative con example, 407.89 (in the last row) is the expected utility of alternative No for the and [ with A ordered as either [0,1] (denoted A [0,1] ) or [1,0] (denoted A two items, which is really optimal. Then the optimal base is B Finally, let us look at the explanation of the optimal policies for the antibiotics as the Helicobacter treatment if HISTOLOGICAL-CLASSIFICATION (HC) STAGE (CS) is not III. This corresponds to the fi xed part of the set of indices in the second item. the KBM2L re fi nes the knowledge because an irrelevant attribute has been identi has been constrained ( CLINICAL-STAGE (CS) is not III, i.e. it is I, II1, II2, or IV).
+This example illustrates how the decision table and even the initial KBM2L list are not ef knowledge represented by the DSS after evaluating the in fl domains in order to state their relevance providing explanations. 3. Queries and KBM2L lists 3.1. Complexity of queries
+However, an added dif fi culty is that the optimal policy may be unknown. time and very quickly becomes intractable. We cannot compute the consider variables as irrelevant by assuming that their states will not be remembered. result of instantiating some random variables. In the context of in diagram is therefore divided by instantiating some attributes and solving the reduced in results are collected and composed incrementally in a KBM2L structure. uncertain responses. The different scenarios are analysed in the following sections. They apply to tasks (C)
+Introduction . 3.2. Closed queries is formalized as follows.
+ Let A 0 ,..., A n be the attributes and  X  0 ,...,  X  n their respective domains. query, i.e. Q = a 0 ;:::; a n  X  X  ; a i  X   X  i ; i =0 ;:::; and w is its respective weight vector. If this list has h items, then the list is q b the offset space {0,1,..., w 0 D 0  X  1} and deriving the optimal alternative from the KBM2L list. Namely, if product, we compute  X  Q ; w  X  = f Q  X  X  = q , and whenever q with O ( nlog ( h )) complexity using a binary search procedure on the KBM2L.
+If r i is unknown, then an ef fi cient solution is to call the in Example. Closed query.
+ DSS about a patient with the following con fi guration:
+The KBM2L list using the optimal base B  X  is given by expressed in index notation or  X  (7,1)|  X  (39,0)| expressed in offset notation. Then, Q response is derived from  X  Q 0 ; w 0  X  =  X  0 ; 0 ; 1 ; 0  X  X  7, and then the DSS suggests HT =Yes. The explanation is obviously the one given earlier: because the Helicobacter treatment.  X  improvements or feedback in (E). 4. Open queries often have access to administrative data, like sex, age, etc., but may have no access to (or no con open query would be OQ =  X  ; a 1 ;  X  ;:::; a n  X  X  , where  X  denotes non-instantiated attribute values. query is open with respect to attributes i and j , i.e. the query is OQ = a queries Q i , namely,
+Then the response retrieval procedure would consist of applying the technique described earlier to each Q  X 
+Q ; w  X  = f Q i  X  X  = p i , using Eq. (2) , to give an offset set P ={ p Example. Open query.
+
+Suppose again that we have the HT decision table and base B
+OQ 1 =  X  ; Absent ; I ; Yes  X  X  , i.e. the expert is interested in
+This patient has a favorable prognosis: CLINICAL-STAGE (CS) to con fi rm the HISTOLOGICAL-CLASSIFICATION (HC) . Note that, according to its weight in the optimal base B the most relevant. This open query is equivalent to the set of closed queries Q andtheresponseisunambiguously S ={ HT= No}.  X 
+To implement a general procedure we will not enumerate all closed queries. An ef
+There are four possible situations depending on the type of elements in S : (i) all s i are equal and known; (ii) all s i are unknown; (iii) there are at least two different values among s i and they are known; (iv) there are at least two different values among s i but some s
+Each situation is analysed in the following. 4.1. The KBM2L knows the response. Operative bases query.
+ appears to indicate, since the expert has not assigned a value to and does not show any signi requiring the least computational effort for the change of base or knowledge transposition.
+Now, working on the operative base, the new offset set P  X  based rules in the offset space to make more accurate recommendations to the expert. Example. Open query (continued).
+ query OQ 1 , was This simple query has one non-instantiated attribute, i.e.
+ right-most position in the base (low weight). One (operative) base meeting that condition is ranges consecutively from 36 to 37. The response is always
+Remember from the previous example that when using the optimal base B
+They were 10 and 30 (see Table 4 ).  X  4.2. The KBM2L does not know the response at all. Predicting the response in a neighborhood associated subproblems have not been evaluated. Nevertheless, we will try to provide a solution. Speci solved by predicting that the response is associated with the nearest offset to P i.e. in {0,1,..., w 0 D 0  X  1}, as follows. Let p l , p u maximum offset with known policy (say r ) that precedes p known policy (say s ) that follows p u in the operative KBM2L list. All records that match ( p same item in the operative KBM2L list, whereas offsets q l d =| p u  X  q u |. If d 1 b d 2 , then the response is r ; otherwise the response is s . operative base.
+ Example. Open query and unknown response.
+ the optimal decision for all cases such that HP =Absent and examples operative base B op 1 as in the last example ( Table 6 ). The open query matches item 25. We have p q =38 and s =No. Therefore, we have d 1 =| p l  X  q l |=1 and d new base. The open query determines p l =28 and p u =29 in item 22, see Table 8 . Now q
+Therefore, we have d 1 = d 2 =1, equal by chance to B op 1 We could check other bases, like
+N bases suggest that the response is s k , then the DSS gives us a probability N de fi 4.3. The KBM2L knows the response, but the response is ambiguous. A dialogue between DSS and expert policy value distribution (median, mode, etc.). However, more intelligent responses will be preferred. As a meaning that it is more likely to belong to the fi xed part of the item indices, which is what explains a open attributes.
+ Example. Open query and different responses (I).
+
+The KBM2L list containing 5 items in the base [ HP [0,1] ,HC basis for starting a DSS/expert dialogue to lend insight into the problem and re response satis fi es the expert.
+
+For the sake of simplicity, let X  X  R n 1 ; Y  X  R n 2 ; n the open query. Our Algorithm A 2 includes the following steps.
+ Algorithm A 2.
+ S0 . Initialize X 0 = X ; Y 0 = Y .
+ S1 . DSS extracts data (records) matching X 0 from the operative KBM2L. S2 . DSS learns a BN from data (structure and conditional probabilities).
+S3 . DSS computes PR = r j X 0 ;  X  r  X   X  R on the BN. From this probability distribution, the expert
+S4 . DSS computes PY j = y t j R = m 0 ; X 0 ;  X  j =1 ;:::; n
+S5 . Extend vector X 0 as X 1 = X 0  X   X  Y 0 . Set Y 1 = Y
+Steps S3 and S4 are repeated until the expert is satis fi probabilities conditioned to impossible events (registered in the DSS). attribute(s) in which we have more con fi dence or the attribute(s) updating.
+ propose. In fact, we have even tried with 20 open attributes involving one million cases.
+DSS explanations are mediated by the BN and its probabilities, experts to re-state and improve their query until it is better de in the Introduction .
+ Example. Open query and different responses (II).
+ be good enough to support the open query on a small table, like the the NHL problem (i.e. the second decision to be made). The open query is OQ The S table consists of seven attributes: the HT table attributes that we used before, plus decision GHS and CP . Therefore, the non-instantiated attributes in this open query are fi ve variables ( CS , BD , HP , HC , and HT ) are not connected to the
+At this point, X 0 =( HP, BD, CS ), instantiated as the query indicates, and Ps j X the evidence given by X 0 . This probability distribution is 0.5827 and 0.4173 for the values
+We are already at Step S3 , and S =None is the mode of the previous distribution, which is chosen as m
+At Step S4 we propagate this new value as evidence, computing the probability of each attribute given m shown in Fig. 3 (left-hand side). The probability distributions are updated from (1/3, 1/3, 1/3) for to (0.2870, 0.2856, 0.4274) for GHS and (0.1440, 0.2857, 0.2848, 0.2855) for smaller than the variance of GHS which is 0.0066. Its mode is At Step S5 , vector X 0 is extended with a new dimension given by the evidence given by X 1 . This probability distribution is 0.6648 and 0.3352 for the values =None is the mode of the previous distribution, which is chosen as m We propagate this new value as evidence, computing the probability of hand side). The probability distribution is updated as (0.0012, 0.4994, 0.4994) for the values =Good, respectively.
+
+Vector X 1 is extended with a new dimension given by the GHS dialogue continues asking the expert whether she believes that the patient has GHS =Average and GHS =Good, then the network would suggest that surgery should not be performed (not shown). In short, when HP =Absent, BD =Yes and CS =I, the DSS suggests that surgery should not be performed unless where curative surgery would be mandatory. This is what we learn from this dialog. 4.4. The KBM2L faces uncertain and ambiguous responses result of having a system that can legitimately be termed knowledge based [10] due to its signi lies.
+
+A 2 , would be applied. 5. Conclusions and further research suggestions). In our previous paper we managed to achieve both aims. Moreover, by analysing the items of decision tables.
+ decision tables from which it is almost impossible to extract useful/concise information.
+Open queries and situations with imprecise/uncertain responses are specially dif required to arrive at a satisfactory response.
+
+Our approach provides the KB de fi nite exploitation for the DSS. As opposed to only listing the in to complex queries.
+
+Despite the power of our iterative scheme of progressive knowledge elicitation, a possible expert to choose a decision criterion in Algorithm A 2 , we could possible r  X  y  X  r  X  y  X  (response r and instantiated attributes y ) sequences. This would expert expectations, facilitating choices.
+ Acknowledgments referees for their valuable remarks that have de fi nitely helped to improve the manuscript.
+References

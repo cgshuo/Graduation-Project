@@ -1,0 +1,1 @@
+ Theory : Convergence bounds for maxent parameters. Experiments: Data sets with 1M to 1B examples. Theory and experiments show the mixture weight method has network usage needed by the distributed gradient and typically 

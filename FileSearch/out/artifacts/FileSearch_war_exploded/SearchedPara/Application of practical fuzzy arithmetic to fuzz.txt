@@ -1,0 +1,54 @@
+ 1. Introduction functions and plausible reasoning ( Shafer, 1976 ). been developed.
+ square, square root, etc.
+
+Section 4. 2. u -Calculus arithmetic 2.1. Original modeling of fuzzy numbers ~ a x  X  X  X  Convergence of model ~ a A F is therefore restricted to 2.2. Fuzzy realization and extension tively ( Dubois and Prade, 2005 ).
+
+R med  X  ~ a  X  X  j 1 ~ a  X  0 : 5  X  X  3  X  x x x x x x
+R a 0  X  R mod  X  ~ a  X  3 m ~ a  X  a 0  X  X  1  X  4  X  with a 0 as the kernel of fuzzy number ~ a .
+R mean  X  ~ a  X  : mean realization. It is defined by
+R
+R
+R most commonly used. 2.3. Arithmetic operations in F j 1 part X  X  j ~ a are defined as  X  x  X  X   X  x  X  X  hereinafter:
+Addition : 8 x Pseudo-opposite and subtraction : 8 x A R , j ~ a  X  x  X  X  1 j ~ a  X  x  X  X  10  X  ~ a ~ a with the pseudo-opposite of ~ b : 8 x Multiplication :
+The general case implies two mixed fuzzy numbers whose tive and positive parts as defined in (7) and (8) with follows: j 1 j 1 ~ a ~ b  X  x  X  X  max  X 
+Finally, 8 x Pseudo-inverse and divisio n: 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 defined pseudo-inverse is 8 x A R n , j ~ a 1  X  x  X  X  1 j ~ a  X  1 = x  X  X  13  X  exists): are given by Kaufmann and Gupta (1991) . 2.4. Evaluation of expressions division ~ a ~ a 1  X  ~ 1 ~ a .
+  X  X  X xact X  X  0.
+ caused by calculations. These are well-known phenomena (Jaulin, 2005 ).
+ important. 2.5. Weighted mean and weighted fuzzy fusion operators Weighted mean : their distribution. The weighted mean is defined as 8 y
+A 0 , 1  X  j 1 mean  X  y  X  X  with weights p ~ a , p ~ b A R .
+ Weighted fuzzy fusion : 8 x
+A R , j WFF  X  x  X  X  with weights p ~ a , p ~ b A R .
+ bottom) left-hand corner for p ~ a  X  p ~ b  X  0 : 5. Moreover, the following properties are satisfied: 3. Internal model control 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 3.1. Principle of the structure predicted y m k .
+ given by y  X  F
+FB  X  q 1  X  y sp k  X  S yd  X  q 1  X  d k  X  17  X  with F  X  q 1  X  X 
+S  X  q 1  X  X  and the control law equation is given by u  X  1 C  X  q 1  X  F  X  q 1  X  G m  X  q 1  X   X  y c k F  X  q i.e. F next section. 3.2. Model inversion et al., 2003 ). sp u y form of the following recurrent equation: y  X  1 , ... , N fg leading to y  X  et al., 2003 ).
+ around the exact trajectory y sp ? This means,
+Model output A  X  y sp D , y sp  X  D  X  21  X  known. As b 1 a 0, Eq. (19) can be rewritten as u  X  (22) can be rewritten as follows: u  X  with c  X  z  X  k  X  X  X  and one sample.
+  X  y following arises straightforwardly: ~ u  X  ~ c  X  ~ z  X  k  X  X  X  fuzzy number ~ y sp ~ y ~ y k  X  triple  X  y sp
+The control law is ~ u  X  ~ c  X  ~ z  X  k  X  X  X  sponds to the schematic diagram in Fig. 7 . (2006) is discussed hereinafter.
+
+Let us consider the second-order model, ~ y ~ a  X  triple  X  0 : 6 , 0 : 55 , 0 : 5  X  ~ a  X  triple  X  0 : 05 , 0 : 1 , 0 : 15  X  ~ b  X  triple  X  0 : 6 , 0 : 625 , 0 : 65  X  ~ b  X  triple  X  0 : 15 , 0 : 2 , 0 : 25  X  X  28  X 
+The exact desired trajectory is chosen as y k  X  0 : 5 sin and ~ y sp ~ y k  X  triple  X  y sp k (minimum y sp  X  X  X xact calculus X  X  are introduced. 3.3.  X  X  X xact X  X  inverse computation ~ b ~ x  X  ~ a  X  ~ y  X  31  X  solve this equation according to the following steps. Step 1: Solve (31) with respect to ~ d  X  ~ b ~ x . approximated elsewhere.
+ ing to the arithmetic used: j 1  X  u  X  X  j 1 ~ y  X  u  X  j 1 ~ a  X  u  X  X  32  X  based on the initial j 1 ~ d  X  u  X  .
+ ~ d ~ a
+Supp  X  ~ ~ d  X  ~ a hand side).
+ ~ y ~ d ~ d ~ j 1 ~ x  X  u  X  X  j 1 ~ d  X  u  X  = j 1 ~ b  X  u  X  X  33  X  position for ~ d and ~ x : j 1 ~ x  X  u  X  X  j 1 ~ x  X  u  X  X  j 1 ~ x 8 &lt; :  X  34  X  with expressions j 1 ~ d  X  u  X  , j 1 ~ d (7) and (8). Then, the exact solution is if ~ b 4 0 , if ~ b o 0 , 8 &gt; &gt; &gt; &gt; &gt; &lt; &gt; &gt; &gt; &gt; &gt; : ~ x  X  j 1 ~ x  X  u i  X  , u i  X  , i A f 1 , ... , N g . ~ d solution ~ x exact = 2 F , i.e. j 1 ~ x ( x ) ( x ) ~ b  X  1 : 87 , 6 .
+ ~ sample k .
+ circle  X  for evident stability reasons.
+ follows: ~ a  X  triple  X  0 : 825 , 0 : 4 , 0 : 3  X  ~ a  X  triple  X  0 : 175 , 0 : 25 , 0 : 95  X  ~ b  X  triple  X  0 : 415 , 0 : 625 , 0 : 835  X  ~ b  X  triple  X  0 : 01 , 0 : 2 , 0 : 41  X  X  36  X  tively, zeros).
+ ~ y a ~ y sp imate solutions.
+ 3.4. Fuzzy internal model control  X  /T  X  /T
+Eq. (18) can be then rewritten as follows: u  X  4. Real-time implementation u valve aperture between the two tanks.
+
+This experimental setup was done using Matlab/Simulink time has been chosen as T  X  10 s.
+ function: h  X  q 1  X  q  X  q 1  X   X  ~ a  X  triple  X  1 : 574 , 1 : 573 , 1 : 497  X  ~ a  X  triple  X  0 : 602 , 0 : 603 , 0 : 652  X  ~ b  X  triple  X  0 : 013 , 0 : 023 , 0 : 033  X  ~ b  X  triple  X  0 : 01 , 0 : 02 , 0 : 03  X  X  39  X  ht following transfer function:
+B  X  q 1  X 
+A  X  q 1  X   X  nominal position.
+ really faster, thus exhibiting better performances. Fig. 21 .
+ according to the set-point: J  X  y  X  X  J  X  y  X  X  the same size for both experiments.
+ significantly smaller ( Table 1 ).
+ smoother.
+
+Kharitonov polynomials ( Tao and Taur, 2005 ). 5. Conclusion nal model control structures.
+ Acknowledgments acknowledge the support of these institutions. References -30 -20 -10 10 20
+ X  u (volt)

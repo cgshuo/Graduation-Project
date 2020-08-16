@@ -1,0 +1,104 @@
+ 1. Introduction
+Business process composition and cooperation are two important research one hand and business process composition on the other hand is re [6,21,27,28] .
+ global abstraction on which analysis can be performed ef fi
+One can check the deadlock-freeness on each SOG using ef fi ( i.e. a deadlock-free cooperation).
+ general case. However, since the whole system is supposed to have on-the-fl y composition with both process components. ef fi ciently by analysis of the SOG.
+ will lead to the same result.
+ summarizes the results and mentions some aspects of our future work. 2. Process abstraction veri de fi
+Nodes of the SOG are called aggregates and may be represented and managed ef of actions in a typical formula on one hand, and to the ef to its building time. 2.1. Notations and preliminary results
+De fi nition 1. Labeled transition system
+A labeled transition system (LTS for short) is a 5-tuple  X   X   X   X  is a fi nite set of states;  X 
+Act is a fi nite set of actions;  X   X  p  X   X  Act  X   X  is a transition relation;  X 
+I p  X  is a set of initial states;  X 
+F p  X  is a set of fi nal states.
+ following notations are used in this paper:  X 
+For s , s  X   X   X  and a  X  Act , we denote by s  X  a s  X  that ( s , a , s  X  s  X  a means that  X  s  X   X   X  : s  X  a s  X  .If  X  = a 1 a 2  X  a n its length n . Moreover, s  X   X  s  X  denotes that  X  s 1 ; s s  X   X  s  X  for some  X   X  Act *) and s  X   X   X 
+The set Enable ( s ) denotes the set of actions a such that s  X   X  = s 0  X  a 1 s 1  X  a 2  X  is used to denote a path of an LTS. s is a fi nal state).  X 
+A  X  s  X  , for s  X  (  X  \ F ), denotes that s is a dead state, i.e.  X 
+Sat ( S )=  X  s  X  S Sat ( s ).  X  s be enabled in the future starting from s , i.e. ,( Sat ( s )
+The set of states Dead contains the states from which no fi not contain elements in Dead and deadlock-free if it does not have dead states. 2.2. Observed behavior two processes. Obs . Observing term means that the system properly terminates.
+De fi nition 2. Observed behavior mapping
+Let T = 1.  X  T :  X   X  2 Obs  X  T s  X  X  = Enable Sat s  X  X   X  X   X  Obs  X  X   X  term fg if F  X  Sat s  X  X  4.
+Informally, for each state s of an LTS T , the observed behavior of s , reachable from s using unobserved actions only. The observed behavior  X  ( s  X  )={ term }, then both would appear in  X  min
+The following proposition establishes that Deadlock-freeness (resp., reachability of the observed behavior .
+
+Proposition 1. Let T =  X 
+T is Deadlock-free  X   X  S p  X  :  X  X  X   X  min T S  X  X  ,  X  a fi nal state is reachable from a state in a set S p  X   X   X  2.3. Running example collaborative tasks are represented by dashed transitions. between the sending of an order and the creation of the speci
+Internal transitions were also added to the WF-net of the subcontractor Fig. 2 (b). 2.4. The symbolic observation graph behavior mapping, all the interesting behaviors (deadlock and immediately deduced. An aggregate is de fi ned below as a couple
+De fi nition 3. Aggregate
+Let T = 1. S is a nonempty subset of  X  satisfying: s  X  S  X  Sat ( s ) 2.  X  =  X  min state) has been omitted here since it can be deduced from the contains a fi nal state iff  X  Q  X  a .  X  : term  X  Q .
+
+In the following, we provide two de fi nitions of the SOG. The
+De fi nition 4. Deterministic symbolic observation graph
+The deterministic symbolic observation graph dSOG( T ) associated with an LTS T =  X 
+A ;
+Act  X  ;  X   X  ; I  X  ; F  X   X  as follows: 1. A is a fi nite set of aggregates with: (a) There is an aggregate a 0  X  A s.t. a 0 . S = Sat ( I ); (b) For each a  X  A and for each o  X  Obs ,if  X  s  X  a : S ; (c) For each aggregate a  X  A , the a .  X  attribute is computed following De 2. Act  X  = Obs ; 3.  X   X  p  X   X   X  Act  X   X   X   X  is the transition relation, obtained by applying 1b; 4. I  X  ={ a 0 }; 5. F  X  ={ a  X   X   X  |  X  Q  X  a .  X  ; term  X  Q }.
+
+The deterministic SOG can be constructed by starting with the initial aggregate a long as the condition of 1b holds true.
+ fl obtained graph is deterministic.
+
+De fi nition 5. Symbolic observation graph
+The symbolic observation graph SOG ( T ) associated with an LTS T = 1. A is a fi nite set of aggregates s.t.: (a) There is an aggregate a 0  X  A s.t. a 0 . S = Sat ( I ); (b) For each a  X  A and for each o  X  Obs the set s  X   X  a : (c) For each aggregate a  X  A , the a .  X  attribute is computed following De 2. Act  X  = Obs ; 3.  X   X  p  X   X   X  Act  X   X   X   X  is the transition relation, obtained by applying 1b; 4. I  X  ={ a 0 }( s.t. a 0 . S = Sat ( I )); 5. F  X  ={ a  X   X   X  |  X  Q  X  a .  X  ; term  X  Q }.
+
+For sake of simplicity, the SOG contains one initial aggregate, but the de splitted in several (initial) aggregates as follows: I  X  ={ a { a
+Moreover, one can merge a 1 and a 2 within a single aggregate, or split a
+De fi nition 6. Deadlock-freeness property of a SOG
+A SOG
+Proposition 2. Let T = is a path  X  = s 0  X   X  UnObs s  X  0  X  o 1 s 1  X   X  UnObs s  X  ... , s n as well as s  X  0 , ... , s  X  n are states of T ,a 0 , ... i =1 ... n.
+
+Proof 1.  X  observed actions in  X  : 1.  X  = s 0  X   X  UnObs s  X  0 .
+
+By construction of a SOG of T (see De fi nition 5 ), there exists an aggregate a states Q and s 0  X   X  UnObs s  X  0 , we get s  X  0  X  a 0 . S. 2. Assume the proposition holds for each path  X  with n  X  N observed actions. 3. Let  X  = s 0  X   X  UnObs s  X  0  X  o 1 s 1  X   X  UnObs s  X  1 ...  X  a  X  1.  X   X  = a 0 .
+ of T satisfying the proposition. 2. Assume the proposition holds for any path  X   X  where n  X 
+Let  X   X  1 = a 1  X  o 2 a 2 ...  X  o n +1 a n +1 be the post s n +1  X   X  UnObs s  X  n +1 in T satisfying the proposition. By using point 1b of De s  X  o 1 s  X  . Let S and S  X  be the subsets of all such states ( s satisfying s  X   X   X  UnObs s  X  1 .
+
+Proposition 3. Let T = Deadlock-free if and only if G is deadlock-free.
+ a path in G leading to a dead aggregate, and vice versa.  X  coupled. 3. Composition and deadlock-freeness veri fi cation deadlock-free.
+ both components of the state are changed synchronously. 3.1. Synchronization of LTSs iterative multiplication.
+
+De fi nition 7. LTS synchronized product
+Let T i = 1.
+
+ X   X  =  X  1  X   X  2 ; 2. Act  X  = Act 1  X  Act 2 ; 3.  X  is the transition relation, de fi ned by: 4. I = I 1  X  I 2 ; 5. F  X  = F 1  X  F 2 .
+
+The synchronized product of T 1 and T 2 , denoted by T 1  X  T 1. The set of states is reduced to reachable ones: a  X  Act 1  X  Act 2 j  X  s 1 ; s 2  X   X  ; f s 1 ; s 2  X  X   X  a g ; 3.  X  is restricted to pairs of reachable states; 4. I was already de fi ned above; 5. F = F  X   X   X  .
+ nets for the contractor and the subcontractor.
+ proc  X  involved LTS.
+
+De fi nition 8. Observed behavior mapping of an LTS synchronized product
+Let T =
+Assume that Obs = Obs 1  X  Obs 2 . Then the observed behavior mapping, named 1.  X  T s 1 ; s 2  X  X  =  X  T 2.
+Notice that, except for the  X  T , the de fi nitions of the observed behaviors couple ( s 1 , s 2 ), they are all inductively based on the computation of  X 
+The following proposition establishes that deadlock-freeness (resp., reachability of de fi nition of the observed behavior in a LTS synchronized product.
+Proposition 4. Let T = holds:  X 
+T is Deadlock-free  X   X  S p  X  :  X  X  X  T min S  X  X  ;  X  a fi nal state is reachable from a subset S p  X   X   X  S  X   X  3.2. Synchronous composition of SOGs
+The above result allows to de fi ne the aggregate product a = a and a 2 . Especially, the corresponding observed behavior attribute, a . multiplication.
+
+De fi nition 9. Aggregate product
+Let T i = a SOG associated with T i . The product aggregate a =  X  S ,  X  a . S = a 1  X  S  X  a 2  X  S ;  X  a .  X  ={( x  X  y )  X  ( x  X  ( Obs 1 \ Obs 2 ))  X  ( y  X  ( Obs
+Apart from dealing with aggregates instead of sets of states, the de identical to the synchronized product of two LTS ( De fi nition 7 ).
+In fact,  X  A to verifying that no (product) aggregate contains a Deadlock (
+Q  X  a .  X   X  term  X  Q ).
+ Algorithm 1. Synchronized product of 2 SOGs Require: SOG ( T 1 , Obs 1 ) and SOG ( T 2 , Obs 2 )
+Ensure: SOG ( T 1 , Obs 1 ) X  SOG ( T 2 , Obs 2 ) 1: Waiting  X  aggregate ( I 1  X  I 2 ) 2: while Waiting  X  X  X  do 3: choose a = a 1  X  a 2  X  Waiting 4: for all e  X  Obs 1  X  Obs 2 do 5: if a 1  X  e 1 a  X  1  X  a 2  X  e 2 a  X  2 then 6: aggregate ( a  X  1  X  a  X  2 ) 7: arc ( a , e , a  X  1  X  a  X  2 ) 8: end if 9: end for 10: for all e  X  Obs 1 \ Obs 2 do 11: if a 1  X  e 1 a  X  1 then 12: aggregate ( a  X  1  X  a 2 ) 13: arc ( a , e , a  X  1  X  a 2 ) 14: end if 15: end for 16: for all e  X  Obs 2 \ Obs 1 do 17: if a 2  X  e 2 a  X  2 then 18: aggregate ( a 1  X  a  X  2 ) 19: arc ( a , e , a 1  X  a  X  2 ) 20: end if 21: end for 22: Waiting  X  Waiting \{ a } 23: end while construction of the synchronized product of LTSs. Function aggregate ( a following De fi nition 9 .
+
+Proposition 5. Let T i = let G Proof 3. Follows from the construction.
+ product. Then the following property holds: T is Deadlock-free
+Proof 4. Consequence of Propositions 3 and 5 .  X  3.3. Asynchronous composition of SOGs we extend our approach to asynchronous communication. with bound n can be in n +1 different states.
+ components during the composition process.
+ The Interface LTS is formally de fi ned as follows:
+De fi nition 10. Interface LTS
+Consider two processes communicating through m buffers { b (reception) action in i and a single output (sending) action out
+I , F  X  s.t.: 1.
+
+ X  ={  X  x 1 , ... , x m  X  |0  X  x 1  X  n i ... 0  X  x m  X  n m }.
+For a state s and a buffer b , s ( b ) denotes the marking of b in s . 2. Act ={ in i | i =1, ... , m }  X  { out i | i =1, ... , m }; 3.  X  p  X   X  Act  X   X  is a transition relation such that: (a) s  X  in i s  X  iff s  X  ( b i )= s ( b i )+1  X  s  X  ( b i (b) s  X  out i s  X  iff s  X  ( b i )= s ( b i )  X  1  X  s  X  ( b 4. I ={ s 0 }={  X  0, ... ,0  X  }. 5. F =  X  .
+
+The above de fi nition constructs a LTS where each state represents a possible con marked at any time.
+ components.
+ the singleton term , because each state of the ILTS is considered SOGs.
+ constructed when building the whole synchronized product. action that carries n tokens initially, then both buffers are clearly n -bounded. 4. Related work re fl part. Thirdly, each domain can now make use of its autonomy to create a private work inter-organizational work fl ow, however, each domain may only choose a private work deadlock property, one needs the model of the global work work fl ow since organizations are not willing to disclose their work property on the composition of abstract models (SOG).
+
+The complexity of a graph matchmaking algorithm used is O ( m
+Another approach for work fl ow matchmaking was proposed in [16 u-graph of a work fl ow is isomorphic to the c-graph of another work and l is the number of the common cooperative transitions. ef fi to each process which reduces the explosion problem w.r.t. a non modular approach. 5. Conclusion whereas the internal structure of each aggregate is very ef fi nally showed that they can also be applied to processes with in fi nitely many states. The key idea is to construct the observation graph on the
+References

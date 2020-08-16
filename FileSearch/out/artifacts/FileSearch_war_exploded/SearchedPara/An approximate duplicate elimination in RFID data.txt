@@ -1,0 +1,80 @@
+ 1. Introduction applications. The RFID adoption in Walmart is a typical RFID example in the business area. Therefore, we cannot avoid the generation of duplicate RFID data in RFID applications. collects RFID data from various RFID readers.
+ location of the reader, time N . Reader1 detects the tag with ID1 and generates RFID data 4
+N . However, the RFID data is duplicate data except b ID1, Loc1, 1 example, b ID1, Loc1, 1 N in Reader1 and b ID1, Loc2, 1 N as preprocessing and the result for preprocessing is b ID1, Loc1, 1 RFID data.
+ method should process data instantly with limited memory. It is dif RFID duplicate elimination techniques in one pass with the limited memory. positives for Time Bloom Filters, we devise Time Interval Bloom Filters using the concept of the interval.
+Our contributions are as follows:  X  eliminate duplicates in one pass with a small amount of memory.  X 
+Space Optimization for Time Interval Bloom Filters. While the Time Bloom Filter stores one time
+We devise a method to reduce space for the Time Interval Bloom Filter.  X   X  propose a formula to fi nd k and validate it using an experimental evaluation. 1.1. Organization experimentally in Section 8 . Finally, we conclude our work in Section 9 . 2. Related work smart items (e.g., RFID, sensor) with existing business processes.
+ been done [14,13,3] .In [14] , the bitmap datatype and its operations are introduced. By sharing the pre oriented queries.
+ and grouping are performed as early as possible. The temporal smoothing window is a general method to correct missing readings. However, it is dif the smoothing fi lter with a fi xed time window size does not perform well due to the dynamics of RFID missing readings, Shawn et al. [15] use an adaptive window size according to the characteristics of RFID However, Rao et al. [21] propose a deferred data cleansing method which is performed during query execution. algorithms focus on duplicate elimination in stored data, they need to scan data many times. Thus, it is dif duplicate elimination techniques to RFID data streams.
+ approach is that it generates both false positives and false negatives. applied to the general cases. 3. Preliminary membership with allowable errors using a small amount of memory compared to the given set.
+The Bloom Filter is based on a hash coding. It consists of an array of m bits and k hash functions ( h all cells of the Bloom Filter are set to 0.
+ h membership of any element with errors.
+ h negative errors that report that a is not in S although a is in S . probability f is f =1  X  1  X  1 m kn
+Bloom Filters can evaluate k to minimize f using derivatives. When k = ln 2 to ln 2  X  X   X  m 4. Problem statement
+The system architecture that we consider is depicted in Fig. 2 . The RFID data stream generated in the
+Applications receive non-duplicate RFID data in a stream. That is, in the dropped from the raw RFID data stream.
+ a sequence of RFID data in a stream. RFID data consists of a tag identi time of the tag.
+ We de fi ne an RFID data stream formally as follows:
+De fi nition 1. An RFID data stream S is a set { s 1 ,  X  , s n },  X  "TagID" is the electronic product code (EPC) of the tag and used for identifying the tag uniquely.  X  "Loc" is the location of the reader which detects the tag.  X  "Time" is the time of detecting the tag.
+
+In an RFID data stream, RFID data x is considered as a duplicate if there exists y ( x . TagID = y . TagID , and x . Time  X  y . Time  X   X  , where duplicate, we can fi nd a non-duplicate RFID data stream by eliminating duplicates. fi nding a non-duplicate RFID data stream is confusing. For example, consider an RFID data stream S ={ s loc 1,5), s 2 =( tag 1, loc 1,10), and s 3 =( tag 1, loc 1,15) ( duplicate because of s 2 . However, S arrives at the server in sequence. If s that case, if s 3 arrives at the server, s 3 is not a duplicate since there does not exist s
+Depending on the property of applications, a non-duplicate data stream for S can be de duplicate RFID data stream for S is considered as { s 1 } instead of { s at intervals that are less than or equal to  X  is generally useless.
+We formulate the duplicate RFID data elimination problem formally with some de
+De fi nition 2. For RFID data x and y , x and y are connected in S if there exists z | x . Time  X  z . Time |  X   X  and | z . Time  X  y . Time |  X   X  connected in S .
+Time to identify a duplicate. Using De fi nition 2 ,wede fi
+De fi nition 3. RFID data x is a duplicate in S if there exists any y ( ( x and y are connected in S and y . Time  X  x . Time ).
+ maximal set are de fi ned as follows:
+De fi nition 4. A set S  X  (  X  S ) is called a duplicate-free set in S if there does not exists x
+De fi nition 5. The set S  X  (  X  S ) is a duplicate-free maximal set in S if S false positive errors in this paper. Therefore, our problem is de fi nd a duplicate-free set S  X  using space m such that j S  X  5. Time Bloom Filters Time Bloom Filter uses an integer array instead of a bit array.
+
+The Time Bloom Filter is depicted in Fig. 3 (a). The Time Bloom Filter uses k independent hash functions ( h {0, in the Time Bloom Filter, we fi nd k cells that correspond to h
+Filter overwrites it with the detected time of the current RFID data.
+To know whether some RFID data x is a duplicate, we check k cells corresponding to h Time Bloom Filter, we can regard the condition x . Time  X 
+M [ h fi data x arrives at the server, x passes through the Time Bloom Filter. By the Time Bloom Filter, x will be
+M [ h value of at least one cell is 0, x is not a duplicate regardless of the condition. If the condition x . Time satis fi ed and the value of M [ h i ( x . TagID )] is not 0 for all i
+Otherwise, we send the non-duplicate data to the application (Lines 3
+TagID that is generated repeatedly at intervals that are less than or equal to
+Example 1. Fig. 5 shows the state of the Time Bloom Filter after an RFID data stream S ={ s
+Bloom Filter, where s 1 =(ID1, Loc1, 10), s 2 =(ID2, Loc2, 120), and s the size of an array in the Time Bloom Filter is 8, k is 3, and
+Consider how the Time Bloom Filter operates for an RFID data stream S ={ s checks whether s 1 is a duplicate or not. Since all values in M [0], M [5], and M [2] are initially 0, s sent to the application. The Time Bloom Filter then sets M [0], M [5], and M [2] to 10 in Fig. 5 (a). When s Time Bloom Filter, it is not a duplicate since 130  X  M [0] duplicates, the application receives all data.
+ false positive probability for the Time Bloom Filter in Theorem 1 .
+Theorem 1. The false positive probability for the Time Bloom Filter is 1 m is the number of cells, and n  X  is the number of non-duplicate RFID data within RFID data comes to the Time Bloom Filter.
+ positive probability. Since duplicates are de fi ned within meaningless. Thus, we consider only data within  X  time with respect to x . Time .
+Let p 1 be the probability that x . Time  X  M [ h i ( x . TagID )]
+To derive p 1 ,we fi rst derive the probability that x . Time distributions. For RFID data y within  X  time, the probability that h h ( y . TagID )  X  u for all i  X  {1,2,  X  , k }is 1  X  1 m k .
+
+Since n  X  is the number of RFID data which comes to the Time Bloom Filter within is 1  X  1 m k for all i  X  {1,2,  X  , k }is 1  X  1  X  1 m kn
+Since we assume that a non-duplicate RFID data stream comes to the Time Bloom Filter, p positive probability for the Time Bloom Filter is 1  X  1  X  6. Time interval bloom fi lters we can represent the range of detected times of RFID data with the same TagID as a short time interval.
+M [ i ]. StartTime and M [ i ]. EndTime , respectively. StartTime and EndTime are initially set to 0 and corresponding to TagID =1 in the cell. For RFID data x ,if x . Time ( x ), Therefore, the Time Interval Bloom Filter reports that x is not a duplicate. corresponding to h 1 ( x ), h 2 ( x ),  X  , h k ( x ) is not empty (Lines 1 before x . Time  X   X  (i.e., x . Time  X  intersectInterval . EndTime
+Therefore, when intersectInterval is not empty and x . Time Otherwise, x is sent to the application (Line 9  X  10).
+ inserted) or x . Time  X  EndTime N  X  , we initialize both StartTime and EndTime to x . Time (Lines 13 EndTime and extend time intervals (Lines 18  X  19).
+ are as shown in Figs. 8 and 9 , the size of an array in fi assume h 1 ( ID 1)= h 2 ( ID 4), h 1 ( ID 2)= h 1 ( ID 4), and h
+Fig. 8 , the Time Bloom Filter reports that it is a duplicate since 20 However, it is not a duplicate. That is, it is a false positive.
+ duplicate.
+ Filter in terms of the false positive probability.
+ con less than or equal to that of the Time Bloom Filter.
+
+Suppose that the Time Interval Bloom Filter reports that x is a duplicate. Then,
+Filter (i.e., [ s i , e i ] for 1  X  i  X  k ) include intersectInterval. Therefore,
+Fig. 7 ). We can easily know that e i in the Time Interval Bloom Filter is equal to m Line 4 of Fig. 7 and m i is M [ h i ( x . TagID )] in the Time Bloom Filter.
+Thus, by the Eq. (2)
+By multiplying  X  1 in both sides
+By adding x . Time in both sides,
+Since x . Time  X  intersectInterval . EndTime  X   X  by Eq. (1) , 6.1. Space optimization twice as much space as the Time Bloom Filter. However, since only the time interval within
+Time Interval Bloom Filter. We keep StartTime and EndTime hour, minute, and second. Since  X  is a small value, we do not need much space to store DiffTime. is a duplicate or not, then it drops x or sends x to the application (Line 1 StartTime + DiffTime (Line 4).
+
+To keep DiffTime less than or equal to  X  , TIBF_OPT() update cells differently from TIBF() (Lines 11 the time interval is useless. To remove the useless part, we set StartTime to x . Time
+StartTime  X   X  , we set only DiffTime to x . Time  X  StartTime (Lines 25 7. Parameter setting
+The false positive probability of Bloom Filters is 1  X  1 where m is the number of cells and n is the number of elements in a set. Similarly, we can false positive errors. The false positive probability of Time Bloom Filters is 1 duplicate RFID data within  X  time. Therefore, when k = ln 2 Bloom Filter have the same number of cells.
+
+Thus, for both Time Bloom Filters and Time Interval Bloom Filters, we set k to ln 2 duplicate RFID data within  X  time. 8. Experiments to the RFID data stream. We experimented on a Pentium 3GHz PC with 1 GB main memory using Java. 8.1. Data sets detection of an RFID tag, we used the detection model in [15] .
+ major detection region.
+ may exist multiple readers at detection locations in order to improve the detection ratio. We generate 10 8.2. Experimental results
+We evaluate the Time Bloom Filter and the Time Interval Bloom Filter 8.2.1. Experiments according to the number of tuples processed in a unit time. We fi x the amount of allowable memory to 4 X 10
+MData is less than that for SData because k for MData is larger than k for SData. Note that k is set to ln 2 number of cells and n is the number of distinct elements in a set.
+ rates of all approaches increase as the number of tuples increases. 8.2.2. Experiments according to the space size increases.
+ Bloom Filter.
+ rate is high even for the case of the small number of tuples. 8.2.3. Optimal k rate according to k given that space size is 3 X 10 7 bits and the number of tuples is 3 X 10 Bloom Filters.
+ a good choice in most cases although it is not always optimal. 9. Conclusion array in the Bloom Filter with an array of time information since the de proposed approaches can remove duplicate RFID data in one pass with a small error. Acknowledgments Korea (NRF) grant funded by the Korea government (MEST) (No. 2011-0000377).
+References

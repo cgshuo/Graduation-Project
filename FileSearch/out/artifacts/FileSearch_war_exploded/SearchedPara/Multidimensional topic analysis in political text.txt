@@ -1,0 +1,74 @@
+ 1. Introduction documents that takes these different topics into account.
+ distance between the corresponding topics.
+ towards various issues cannot be distinguished, as they end up within the very same topic.
+LDA:  X   X   X  of the topic models run on the documents.
+ Allocation (LDA) extensions, the seed set and the words included in the analysis. analysis in the social sciences. 2. Multi-dimensional analysis analyzing (political) positions based on documents such as party manifestos. 2.1. Data preparation topics. 2.1.1. TextTiling arbitrary mixture of topics. As we are interested in analyzing single document independent and does not require external parameters to be set. 2.1.2. Part-of-speech fi ltering perceived by the respective party (e.g.  X  unfair  X  vs.  X  effective take into account terms that occur at least twice in the corpus. 2.2. Topic creation in topic economics with a high probability.
+ model for LDA. According to LDA, a collection D of documents is created the following way: 1. To receive the word distributions that describe the K available topics, draw each topic being a Dirichlet prior with parameters  X  . 2. Then, for each document in D draw the topic proportions (a) For each word in the document, draw the per-word topic assignment Z (b) For each word, draw the word W d , n ~ Mult(  X  z 2.2.1. Topic creation with labeled LDA restricted to its given labels. Fig. 2 shows the graphical model for Labeled LDA. labels appearing in the documents. As mentioned before,  X  generated with a Bernoulli coin toss with a labeling prior probability refer to Ramage et al.
+ input for Labeled LDA. 2.2.2. Topic creation with LogicLDA the topics z of a document and indirectly influencing the word-distributions that describe the topic topics for the document.
+
+The type of knowledge integrated via o can be manifold. One possibility is to specify knowledge like topic 2  X  , with topic 2 being e.g.  X  finance  X  . This would be stated with the following rule:  X 
+Z ( i , t ) is true iff the hidden topic z i = t .  X 
+W ( i , v ) is true iff word w i = v .  X  D ( i , j ) is true iff d i = j .
+ then described by the following knowledge base: kind of words act as seed words for a certain topic.
+
+LogicLDA respectively Labeled LDA system. 2.3. Measuring topic-related distance the distance between the multinomials representing the same topic. is defined as follows: a corpus. As for an application, they calculate the distance between authors using symmetric Kullback 3. Experiments are described. 3.1. Predicting ministries based on coalition contracts positions stated in the two documents.
+ between positions regarding specific topics.
+  X 
+The party manifestos of the parties participating in a coalition.  X  The coalition agreement.
+ our method to work as planned if our method is able to  X  guess 3.2. Data sources
+We use plain text versions of party manifestos provided by the Manifesto Project Database the election manifestos with the general programs of the respective parties Sven-Oliver Proksch from the MZES.
+ mappings to their corresponding ministries are the following:  X 
+Social Affairs and Labour Market (  X  Arbeit und Soziales  X 
+Arbeit und Soziales  X  )  X 
+Culture and Education (  X  Kultus  X  ) : Federal Ministry of Education and Research (  X 
+Agriculture (  X  Landwirtschaft  X  ) : Federal Ministry of Food, Agriculture and Consumer Protection (
+Ern X hrung, Landwirtschaft und Verbraucherschutz  X  )  X  Finance (  X  Finanzen  X  ) : Federal Ministry of Finance (  X   X 
+Justice (  X  Justiz  X  ) : Federal Ministry of Justice (  X  Bundesministerium der Justiz  X 
+Internal Affairs (  X  Inneres  X  ) : Federal Ministry of the Interior (  X 
+Environment and Regional Planning (  X  Umwelt und Landesplanung
+Conservation and Nuclear Safety (  X  Bundesumweltministerium  X  (  X  Bundesministerium f X r wirtschaftliche Zusammenarbeit und Entwicklung
+Development (  X  Bundesministerium f X r Verkehr, Bau und Stadtentwicklung  X 
+Security and Foreign Affairs (  X  Aussen-und Sicherheitspolitik
+Verteidigung  X  )/Foreign Office (  X  Ausw X rtiges Amt  X  )  X 
+Development and Reconstruction (  X  Aufbau, Wiederaufbau  X   X 
+Building (  X  Bau  X  ) : not mapped to any ministry  X 
+National and European Affairs (  X  Bund und Europa  X  ) : not mapped to any ministry  X 
+Post War Effects (  X  Kriegsfolgen  X  ) : not mapped to any ministry  X 
+Special Topics (  X  Sonderaufgaben  X  ) : not mapped to any ministry  X  Chancellery (  X  Staatskanzlei  X  ) : not mapped to any ministry ministries each.
+ terms to their first part, which is marked in the listing above by the bold printed terms. 3.3. Experimental design seed words for a topic as well as to a majority baseline.
+ vectors is computed using the Stanford OpenNLP API.
+
+Finally, we will justify the decision to use nouns only and discuss the used seed set. 3.4. Baseline coalition partner gets to hold all ministries. 3.5. Results using LogicLDA for topic creation meaningful way.
+ wrong decisions by  X   X   X  and ties by  X  ?  X  . The column  X   X  system predicts that the FDP is in hold of the ministry, which is wrong. This is marked by Development (except for 1998 and 2002) as well as for Environment and Regional Planning in 1990. party, like for example Agriculture for the CDU or Environment for the Greens. contract in 1994. Seed words are printed in italics. The example shows that the term suitable for the task of identifying topics than the seed-based-only baseline.
+In the following, we will describe the results for each election in more detail. 3.5.1. German national elections 1990 and 1994 kept correctly.
+ fact that there are only two seed words for this topic, namely cannot be identified.
+ 3.5.2. German national election 1998 clearly outperforms the baseline, which results in tie situations for 4 ministries. 3.5.3. German national election 2002 ministry in 5 cases. 3.5.4. German national election 2005 influence of the parties in the respective topics. 3.5.5. German national election 2009 cases.
+ equally distributed ministries, our system only makes 2 false predictions. 3.5.6. Using all content words predicted ministries and 10 mistakes, whilst the rest being ties. 3.6. Results using Labeled LDA for topic creation Labeled LDA.
+ erroneously predicted ministries. The two other false predictions are Internal Affairs and Environment. 3.7. Impact of the seed terms ministries:  X 
+Federal Ministry of Defence (  X  Bundesministerium der Verteidigung  X 
+Foreign Office (  X  Ausw X rtiges Amt  X  )  X 
+Federal Ministry of Education and Research (  X  Bundesministerium f X r Bildung und Forschung  X 
+Federal Ministry of Food, Agriculture and Consumer Protection (
+Verbraucherschutz  X  )  X 
+Federal Ministry of Health (  X  Bundesministerium f X r Gesundheit  X 
+Federal Ministry of the Interior (  X  Bundesministerium des Innern  X 
+Federal Ministry of Labour and Social Affairs (  X  Bundesministerium f X r Arbeit und Soziales  X 
+Federal Ministry for the Environment, Nature Conservation and Nuclear Safety (  X 
+Federal Ministry of Transport, Building and Urban Development ( set by the fully automatically generated one.
+ experiment could be increased even more with a seed set tailored to this task. words indicating the topic Social Affairs. The column  X  average occurrences the whole approach, as it strongly depends on the seed term itself and the analyzed document. 4. Application example topics Economics and Transport as well as Internal Affairs as an example. one in the last row the lowest.
+ Germany.
+ and Greens, and with the largest distance finally the PDS. This is consistent with the common left some extent, their extreme position.
+ all have very similar positions with their pairs ranging on the upper part of the pyramid. aims towards a liberal state, the CDU typically takes a law and order position on this question. 5. Conclusions research questions in political science.
+ elections. On the European level, again different policy areas with different scopes are relevant. extended in a useful way.
+ the problems of one-dimensional analysis outlined in the motivation. the comparison with our automatically created topic positions.
+ that the bill was initiated within this document.
+ Acknowledgments evaluate our approach by comparing party positions to the coalition agreements and predicting ministries.
+Appendix A. Seed words  X  Social Affairs and Labour Market tion Senioren Wohlfahrt  X  Culture and Education Kultus Baf X g Studiengeb X hren Bildung Denkmalschutz Doping Ethik Forschung Fr X hkindliche Bildung Gentechnik
+Juristenausbildung Kirche Kultur Kunst Medienpolitik Schule Sport Vorschuljahr Weiterbildung Wissenschaft  X  Agriculture
+Weinbau  X  Finance
+Finanzen Steuern  X  Justice
+Strafvollzug Gewalt Kriminalit X t  X  Internal Affairs
+Katastrophenschutz  X  Environment and Regional Planning Hochwasserschutz L X rmschutz Wirtschaft Verkehr Atomausstieg Au X 
+Infrastruktur Innovation Kreditwesen Banken Medienstandort Infrastruktur Staatskanzlei Ministerpr X sident  X  Security and Foreign Affairs Auenpolitik Sicherheitspolitik Entwicklungshilfe Milit X r Verteidigung Wehrdienst Wehrpflicht Zivildienst
+Appendix B. Articles used to generate the Wikipedia seed set  X  http://de.wikipedia.org/wiki/Bundesministerium_der_Verteidigung  X  http://de.wikipedia.org/wiki/Ausw%C3%A4rtiges_Amt  X  http://de.wikipedia.org/wiki/Bundesministerium_f%C3%BCr_Bildung_und_Forschung  X   X  http://de.wikipedia.org/wiki/Bundesministerium_f%C3%BCr_Gesundheit_(Deutschland )  X  http://de.wikipedia.org/wiki/Bundesministerium_des_Innern  X  http://de.wikipedia.org/wiki/Bundesministerium_fr_Arbeit_und_Soziales  X  http://de.wikipedia.org/wiki/Bundesumweltministerium  X  http://de.wikipedia.org/wiki/Bundesministerium_f%C3%BCr_Verkehr,_Bau_und_Stadtentwicklung
+References

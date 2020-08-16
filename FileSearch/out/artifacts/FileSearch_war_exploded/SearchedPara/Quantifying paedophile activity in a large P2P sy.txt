@@ -1,0 +1,172 @@
+ 1. Introduction
+It is widely acknowledged that peer-to-peer (P2P) file exchange systems host large amounts of paedophile content of paedophile material is a great danger for regular users (including children and teenagers), who may be exposed unintentionally to extremely harmful content. In particular, this may lead initially innocent users to develop an interest &amp; Finkelhor, 2006 ).
+
+Downloading and/or providing paedophile content is a legal offence in many countries, and there is a correlation between downloading paedophile content and having actual sexual intercourse with children ( Kim, 2005 ). This makes fighting these
+For these reasons, knowledge of paedophile activity in P2P systems is a critical resource for law enforcement, child pro-( Waters, 2007; Hughes, Walkerdine, Coulson, &amp; Gibson, 2006; Koontz, 2003; Steel, 2009; Wolak et al., 2003, 2006 ).  X 
+In this paper, we provide ground truth on paedophile activity in a large P2P system, at an unprecedented level of accuracy Obtaining precise such information on paedophile activity in P2P systems raises several challenges: To address these challenges, we make the following contributions:
+Fig. 1 summarises our global methodology. We describe in Section 2 our dataset collection and anonymisation. Section 3 4 and 5 . We discuss related work in Section 6 .
+ paedophile activity in a large P2P system. We establish reference end-to-end methodology for tackling such issues rigor-activities in P2P systems, which we discuss in Section 7 . 2. Data
+Although many extensions exist ( Wikipedia, 2011 ), the eDonkey system basically relies on a set of 100 X 300 servers index-currently one of the largest P2P systems used, and this has been true for several years ( Schulze &amp; Mochalski, 2009 ).
+We collected for this study two independent datasets, in 2007 and 2009. Both consist of a recording of hundreds of mil-lions keyword-based queries received by an eDonkey server during a period of time of several weeks. To each query is asso-number used for sending each query. Notice that we do not observe exchanges actually occurring between users, and have on what users seek.
+
+Key features of both datasets are summarised in Table 1 . We detail the data collection, normalisation and anonymisation procedures below. 2.1. Data collection
+We collected the 2007 dataset on one of the main servers at that time, during a 10-week continuous measurement. It this measurement is fully detailed in Aidouni, Latapy, and Magnien (2009) .
+
+We collected the 2009 dataset by a 28-week continuous measurement on a medium-sized server at that time. We acti-mat) timestamped keyword-based queries and the IP address they were received from. We observe this way both UDP and TCP traffic, but have no access to information on connection ports.
+
+Fig. 2 presents the roles of the client and server during an eDonkey session. Due to the measurement techniques used on the different servers, some information may or may not be available in our collected data.
+
+These datasets come from different servers, with different importance in the network (one of the main servers for 2007 and a medium one for 2009), and the measurement procedures were very different. In addition, 3 years elapsed between the collection of these two datasets, with many evolutions: users are not the same, the eDonkey software and protocols evolved in popularity, etc. We therefore consider these two datasets as complementary, which gives some insight on the robustness of our observations to measurement conditions. 2.2. Normalisation and anonymisation
+The traffic we observe contains much personal information, which we must remove to comply with ethical and legal restrictions. The main such information is the IP address from which each query was made, but text queries also contain personal information: some individuals enter their name or their friends X  names, phone numbers, or even credit card num-users interested in rare contents may enter very specific keywords, usable for identifying them. edge, we set up an appropriate anonymisation procedure which we describe below. We applied it independently to both datasets (as it had to be performed at measurement time).
+
+First notice that anonymising IP addresses with a hash code is not satisfactory: one may decode addresses by applying the function to the 2 32 possible addresses. Likewise, encryption relying on a secret key is unsure on such data. We therefore dress by 0, the second by 1 and so on. We proceed similarly for connection port numbers. This anonymisation is consistent: we always replace a same IP address or port by the same integer. Although computationally expensive, it has three key datory), and it makes further use of the dataset much easier.
+
+We apply the following scheme to keyword-based queries. First we replace all accented characters by the corresponding separated by spaces, which we call words .
+
+In order to anonymise this normalised data, we have to distinguish between personal (sensitive) and general (non-sen-sitive) information. We assume that a same word entered by many users (and thus in many queries) is not sensitive ( Adar, many queries but entered by a same user. We finally remove all words appearing in normalised queries from less than 50 distinct IP addresses, which ensures a very high level of anonymisation.
+
+Numbers, in particular short numbers, tend to appear in many contexts. They therefore appear in clear after the proce-dure above, which raises anonymisation concerns. In particular, phone numbers often appear as space-separated series of two or three digits, which appear in queries from more than 50 IP addresses and so are not removed. A solution would be to remove all numbers, but keeping such information is crucial here as they often indicate ages in paedophile queries, see Section 3.1 . We therefore decided to remove numbers of more than two digits, and numbers with value greater than 16. This hides most numbers while keeping the age information we need.
+
+Finally, short words raise similar concern. In particular, charset encoding problems sometimes lead to strings where a blank space is inserted between any two consecutive characters. Single characters are then considered as words, and they
+To avoid this, we remove all words composed of only one letter. Removing words with only two or three letters would also raises no significant anonymisation concern.
+ Fig. 3 presents two examples of queries, and their counterparts after the normalisation and anonymisation procedures. lower-case, the apostrophe and quotation marks are replaced by spaces. We obtain a normalised query . The subsequent ano-nymisation procedure only removes the remaining o , now a single-letter word.
+
+In the second query, the normalisation consists of putting the text in lower-case and replacing the arobace and dot by spaces. The anonymisation then removes the 4-digit groups, and johndoe7643 , a word not sufficiently common to appear in queries from more than 50 distinct IP addresses. Consecutive spaces are eventually trimmed. 3. Detecting paedophile queries are not paedophile. The standard way for doing so is to use machine learning approaches, which rely on the prior knowl-out an automatic tool would require expert inspection of huge sets of queries, which is by far too time-consuming and costly.
+
+We therefore rely on domain knowledge of paedophile keywords and ad hoc observations to manually design our tool (Section 3.1 ). Such a tool is necessarily prone to errors: some paedophile queries may not be tagged as such, and some non-paedophile queries may be tagged as paedophile. It is therefore crucial to obtain precise estimates of our error rates dress in Section 3.2 . We then set up an assessment framework which we submit to several independent and highly qualified rates (Section 3.5 ). 3.1. Tool design the paedophile context acquired for several years of work on the topic with law-enforcement personnel ( Supplementary material, 2011 ). We then manually inspected the results, identified some errors, and corrected them by adding minor vari-ants to these general rules. We iterated this until obtained improvements became negligible.
+ We describe out final rules below, and outline the detection steps in Fig. 4 .
+
+According to experts of paedophile activity, some keywords point out exclusively such activity in P2P systems, i.e. they have no other meaning and are dedicated to the search of paedophile content. Typical examples include qqaazz , r@ygold ,or from this list as paedophile.
+
+Many paedophile queries contain words related to children or childhood and words related to sexuality, such as child and called sex . We tag any query containing a keyword in both lists as paedophile. Notice that this may be misleading in some cases, for instance for queries like destinys child sexy daddy (a song descriptor).
+
+A variant of this rule, which we added to the two previous ones, consists in tagging as paedophile the queries containing from the sex list.
+
+Finally, many queries contain age indications under the form nyo , generally meaning that the user is seeking content they also occur in many non-paedophile queries (for example when the user seeks a computer game for children). We queries) and a word in the sex or child lists.
+ most frequent translations in our sets of keywords.
+
+We provide the exact rules implemented in our tool (including the sets of keywords we use) and the tool itself at ( Sup-plementary material, 2011 ).
+ 3.2. Method for tool assessment
+Let us consider a set Q of P + (resp. P ) the set of paedophile (resp. non-paedophile) queries in Q . Let us denote by T notations.
+ paedophile queries which our tool mis-identifies, i.e. queries in T \ P produces an erroneous negative answer for them). False positives , i.e. queries in T are classical in data mining, see for instance ( Foss &amp; Za X 
+The numbers of false positives and false negatives describe the performance of our tool on Q . Notice however that they strongly depend on the size of P + and P . In our situation, we expect P paedophile), which automatically leads to small numbers of false negatives, even in the extreme (and useless) case where the tool would give only negative answers.
+
+To evaluate the performance of a tool in such situations, two natural notions of false positive and false negative rates coexist. Both will prove to be useful here.
+
+First, one may consider the false negative (resp. positive) rate when all inspected queries are paedophile (resp. non-paedophile):
+An estimate of f + may then be obtained by sampling a random subset X of P ( i.e. random non-paedophile queries) and man-ually inspecting the results of the tool on X . Constructing X is easy: as most queries are non-paedophile, one may sample random queries and then manually discard the ones which are paedophile. As long as X is small, this has a reasonable cost.
+However, the fraction of queries in X which will be tagged as paedophile by our tool will be extremely small. As a conse-quence, an estimate of f + obtained this way would be of poor quality.
+
+Conversely, an estimate of f may be obtained by sampling a random subset X of P manually inspecting the results of the tool on X .As P + is very small and unknown, sampling X is a difficult task. We may however approximate it using the notion of neighbour queries as follows.
+
+Given a query q in Q , its backward neighbour is the last query in Q which was received from the same IP address as q less 2h after q .
+
+We denote by N ( q ) the set containing the backward and forward neighbours of a query q . This set may be empty, and con-tains at most two elements. We denote by N ( S )= [ q 2 S than random queries in Q ). We expect this to be also true for queries in N ( T
+Obviously, N ( T + ) \ P + # P + , but N ( T + ) \ P + 6 # T dophile queries) which are not detected by our tool. If we consider the queries in N ( T then they may be sampled to construct a set X of random paedophile queries suitable for estimating f .As X contains only size of X .
+
+Notice that the queries in X may actually be biased by the fact that they are derived from T enter in both cases keywords detected by our tool). As a consequence, our estimate of f may be an under-estimate. for f . But both f + and f are needed to evaluate the performance of our tool.
+ the probability that the tool gives an erroneous answer when it gives a positive (resp. negative) one:
+An estimate of f 0 + may be obtained by sampling a random subset X of T computing a reasonable estimate for.
+
+Conversely, an estimate of f 0 may be obtained by sampling a random subset X of T and inspect it to determine the num-pected to be very rare, the number of observed false negatives will be extremely small as long as X is of reasonable size.
+Therefore, one may easily obtain a significant estimate of f our case.
+
+Finally, the quantities we will use for evaluating the quality of our tool are f a query is paedophile) and f (the rate of paedophile queries that our tool mis-classifies as non-paedophile), which we are able to properly estimate. We describe our practical procedure for computing these estimates in the following sections and provide the obtained estimates in Section 3.5 . 3.3. Assessment setup
+In order to apply the method for quantifying our tool quality described above, we need to identify actual paedophile que-ries in some specific sets. To do so, we resort to independent experts of paedophile activity who manually inspect and tag them. 3.3.1. Query selection
+Because the 2009 dataset was not yet available when we designed our tool and assessed it, we used the 2007 dataset for three sets (with overlap): T (queries tagged as not paedophile by our tool), T (neighbours of queries it tagged as paedophile). These three sets are easy to compute from Q using our tool.
+Notice that some queries in T + , i.e. some queries which are tagged as paedophile by the tool, are composed of only one are known to have a very strong paedophile nature. Therefore, if such a keyword appears alone in a query, then this query experts. We denote by T  X  1 the set of queries in this set, and by T optimisation consists in using the fact that T  X  1 # P  X  , and so use only T
+We finally construct the sets of queries to assess by selecting 1000 random queries in each of the sets T ; T (thus 3000 queries in total 3 ). This leads to three subsets which we denote by T ; T dataset and simply checked manually that its outcome would be very similar. 3.3.2. Experts
+Once we selected sets of queries for which we need expert classification, the choice of experts is a crucial step. Indeed, approach, in general). Some security consultants also have this kind of knowledge.
+Thanks to our involvement in international research projects on paedophile activity for several years, with partners in various law-enforcement agencies and NGOs in several countries, we were able to contact a large number of specialists mailing-list of law-enforcement personnel working on cybercrime.
+
+We finally obtained a set of 21 volunteers for participating to our assessment task. These participants are personnel of various law-enforcement institutions (including Europol and the main French and Danish national agencies) and well-estab-Monaco and the International Association of Internet Hotlines ). A few security consultants also contributed.
+We later conducted an assessment of participants themselves to ensure that we use only answers from relevant experts, see Section 3.4 . 3.3.3. Interface
+We set up a web interface to make it convenient for participants to tag queries. All 3000 queries were presented in a dif-
+We proposed five possible answers for each query: paedophile , probably paedophile , probably not paedophile , not (defined in Section 3.2 ), when they existed. This was of great help in tagging ambiguous queries. 3.4. Expert results
+The answers collected from our 21 participants are summarised in Table 2 . Each of them tagged more than 300 queries ( i.e. 10% of the whole), and 12 tagged more than 2000. 3.4.1. Expert selection
+Despite our efforts to select appropriate contributors, some may have an inadequate knowledge of our particular context word in our explicit list (defined in Section 3.1 ). As already said, these keywords are well acknowledged paedophile key-words, which all experts of the field consider as strong indicators of paedophile queries.
+
+The set of all queries submitted to contributors contains 1003 queries which contain at least one explicit paedophile key-word. We provide in Table 2 (rightmost column) the percentage of these queries which the corresponding contributor tagged contributors recognise these keywords. The remaining contributor only slightly disagrees with a ratio of 87.3%.
+The ratios discussed above may be misleading if a contributor tags all or almost all queries as paedophile. Table 2 gives precise insight on this. The answers of most contributors are well balanced between all possible answers, except for three contributors (see for instance the last line of Table 2 ). Manual inspection shows that these contributors focused preferentially on paedophile queries (they did not tag all queries), which does not invalidate their answers. We therefore keep them in our expert set.
+
+Finally, we obtain 42,059 answers provided by 21 experts who contributed at least 300 answers each. This leads to an average of slightly more than 14 experts assessing each query, which is sufficient for our purpose.
+The distribution of these answers among the queries of each considered set is given in Table 3 . It is in accordance with what one would expect if our tool performs well, and if our assumption that N  X  T is verified. We analyse this in more details now. 3.4.2. Classification of queries
+For each query q submitted to experts in our assessment procedure, we denote by q ones who provided an answer for q ) which tagged it as paedophile and by q dophile or probably paedophile . We define q and q dually. Notice that q were provided (the fraction of such answers is 1 q + q ). Moreover, q
+In order to classify queries according to expert answers, we expect to observe that each query q has either a high q q ference between q + and q and between q ++ and q for all queries. These plots grow very slowly for small values on the is very large: above 0.8 for 1305 queries (over 3000) in the case of q ber increases very slowly when the difference grows. We therefore classify a query as paedophile if q paedophile otherwise. We finally obtain the query classification by experts presented in Table 4 . 3.5. Tool assessment results
+Thanks to the assessment results in Table 4 and the expressions given in Section 3.2 , we may now compute estimates of the false positive and false negative rates which describe the quality of our tool.
+ is very low: j T \ P  X  j X  1. As a consequence, approximating f 0  X 
+The estimate obtained for f 0 + is of much better quality. It relies on the following expression: (since T  X  1 \ P  X ; , because all queries in T  X  1 are paedophile, see Section 3.3 ).
+
+An estimate of T  X  &gt; 1 \ P is given by j T  X  &gt; 1 \ P j
+The quality of this estimate is good not only because j T sample of queries in T  X  &gt; 1 , which is much (more than 500 times) smaller than T , involved in the estimate of f 0 .
+Conversely, the assessment results confirm that estimating f  X   X 
+It is possible to estimate f much more accurately:
+This value however is an under-estimate, because we assessed neighbours of detected paedophile queries instead of ran-dom paedophile queries. It is equal to the probability that our tool erroneously tags such a neighbour as non-paedophile.
+There is no a priori reason to suppose that this leads to huge differences, though, and we therefore expect this bound to be reasonably tight. We will handle this with care in the following. 4. Fraction of paedophile queries
+In this section, we estimate the fraction of paedophile queries in our two datasets, i.e.
+P random set large enough to contain a representative number of paedophile queries is prohibitive for manual inspection.
+We therefore use here the automatic paedophile query detection tool designed in Section 3 , for which precise information from it an estimate of the fraction j P  X  j j Q j . 4.1. Fraction of automatically detected queries
+The automatic paedophile query detection tool divides Q into two disjoint subsets: T paedophile, i.e. j T  X  j j Q j , in both datasets.
+
+This may be trivially obtained by computing the set T + of queries tagged as paedophile by the tool, and then divide it by of this estimate, though, we go into details below.
+
+We first check that the measurement duration is large enough by plotting the fraction of queries tagged as paedophile as a value, slightly below 0.2%; changing this value significantly would need a drastic change in the data. dance with our previous computations.
+
+Finally, we conclude that the fraction of queries tagged as paedophile by our tool may be approximated by both datasets. 4.2. Inference
+We established in Section 3.5 reliable estimates for f and f rates, which may be done as follows: and so
+Using f J 24.5% and f 0 + 1.39% (Section 3.5 ), we obtain: for both datasets.
+ In other words, at least one query over 400 is paedophile in our two datasets.
+
+Notice that taking f 50%, which most certainly is a huge over-estimate, leads to a ratio of approximately 0.38% paedo-phile queries. We therefore conclude that the true ratio is not much larger than 0.25%. 5. Fraction of paedophile users
+Although the fraction of paedophile queries is of high interest in itself, the key question when quantifying paedophile ers use the same address. In addition, a same user may use several computers, and several users may use the same computer, making identification of users even more challenging.
+
+More precisely, the following situations occur: several computers in a local network are connected to the internet through a gateway or firewall which performs network tributing the traffic coming from the internet (using ports); (temporarily) have the same address; and dually, a same user may use several computers (at home, at work, in public places, etc.).
+
+This makes user identification at a large scale extremely challenging, and even impossible in practice. Notice however that, in our context, what we need is slightly weaker: we need to make the difference between two users in our dataset in order to avoid mixing their queries.
+ and thus a unique user. As we consider a user as paedophile as soon as he/she entered one paedophile query, if one of the corresponding users entered paedophile queries, then the whole series is considered as coming from a paedophile user. No-paedophile users. We call this phenomenon pollution , and we observe this in practice below.
+
+We explore below different approaches to count users who sent paedophile queries in our datasets. First, we show that their connection port provides relevant information. We then study the influence of the measurement duration using sliding windows of different lengths: the bias due to dynamic addressing may be controlled with such an approach. Finally, we con-tion of sessions containing paedophile queries may be considered as an estimate of the fraction of users entering such queries. 5.1. IP addresses and connection port numbers
+Two pieces of information in our datasets may lead to distinguish between users: the IP address from which they sent eral users in a same local network with a NAT.
+
+Therefore, we consider here two approximations of the notion of user: we first assume that the IP address is sufficient to assumption is necessarily better than the previous one, but comparing the two is enlightening. addresses are available in the 2009 dataset.
+
+For both datasets, the fraction of paedophile IP addresses clearly grows with the measurement duration. This reveals the pollution phenomenon sketched above: as IP addresses may correspond to different users over time, and as one paedophile be considered as paedophile grows with measurement time (all IP addresses may eventually be considered as paedophile). This confirms that using IP address alone is misleading in this case.
+ lution due to dynamic allocation of addresses and ports is negligible in this case.
+ 0.22% here.
+ 5.2. Varying measurement duration
+Fig. 9 shows that increasing the measurement duration leads to an increase of the pollution of IP addresses by paedophile users. Therefore, considering shorter measurement windows leads to a better handling of the pollution phenomena. On the other hand, this leads to less observed data, and therefore to less reliable results.
+ To study this, we divide our datasets into small measurement windows, and compute the observed fraction of paedophile homogeneous, and therefore their mean is representative. We present in Fig. 10 this mean as a function of the window size.
+The fraction of paedophile (IP, port) pairs for the 2007 dataset first fluctuates for small window sizes, and quickly con-
+This is confirmed by the fraction of paedophile IP addresses as a function of the window size. After some initial fluctua-tions, this value drops to slightly less than 0.25%, then increases linearly with the window size. dophile (IP, port) pairs is always lower than the fraction of paedophile IP addresses.
+
+The plot for the fraction of paedophile IP addresses in the 2009 dataset has the same behaviour as for the 2007 dataset, address simultaneously in 2009 than in 2007. 5.3. Sessions separated by more than a given delay d . Studying sessions reduces temporal pollution, as there will probably be a gap be-tween the queries of two users who use the same IP address successively. On the other hand, there is no a priori reason why paedophile users would make more sessions than other users, and so we consider the fraction of paedophile sessions as an approximation of the fraction of paedophile users.
+ large values of d , this fraction becomes closer and closer to the overall fraction of paedophile users in the dataset. confirms that considering IP addresses and connection ports seems to be enough to identify users in this dataset.
+The fraction of paedophile sessions corresponding to IP addresses is higher. This again comes from the fact that several users are simultaneously connected from the same IP address, but do not use the same port.
+ is because a higher number of users use simultaneously the same IP address. 5.4. Inference
+The fact that the three methods used above for user quantification are in accordance shows that considering (IP, port) pairs is relevant for identifying users in our context. The fraction of such users entering queries detected as paedophile the actual fraction of paedophile users.
+
+These rates give the number of queries that the tool mis-classified. However, since we do not know which precise queries similar queries. Therefore, if one of his/her queries is mis-classified, probably many others are.
+We however establish, using the false positive rate, a lower bound for the fraction of paedophile users. A fraction f were entered by users who were nonetheless detected as paedophile (because they entered other paedophile queries which were correctly identified), then no paedophile user is missed. The tool detected j T dataset, which correspond to 112,712 different users. The number of queries erroneously tagged as paedophile is j T dophile users slightly lower than 0.22%.
+
+It is not possible to establish such a lower bound for the fraction of paedophile users in the 2009 dataset, because we do not have access to the connection ports of the users. However, we observe that when we reduce the pollution caused by users successively using the same IP address (by studying measurement windows and sessions, see Figs. 10 and 11 ), the ob-paedophile users applies to both datasets. 6. Related work &amp; Jansen, 2004 ) in which authors aim at identifying the proportion of sexually-related web queries.
+On the other hand, many papers discuss the amount and features of paedophile activity in P2P systems but they rely on at quantifying it, and as such cannot be compared to our work.
+
+Up to our knowledge, only two papers deal with the quantification of paedophile activity in a P2P system in a similar way as the work presented here ( Hughes et al., 2006; Steel, 2009 ). Both analyse Gnutella traces containing keyword-based queries.
+
+In Hughes et al. (2006) the authors consider three sets of 10,000 queries captured during three consecutive sundays in fore contains a very low number of paedophile queries, thus limiting the significance of these statistics. Moreover, their methodology for query classification is not automated nor fully specified, and it relies on two reviewers only.
+Further work of this group on the same dataset proposes techniques for automatic discovery of paedophile keywords ( Hughes et al., 2008 ). However, as already explained, applying such methods in our context requires a significant set of known paedophile queries, which was not available before our work. Using such methods to improve our results is one of our main perspectives.
+
+In Steel (2009) the author considers a set of 235,513 queries, which is approximately 1000 times smaller than our data-the paedophile nature arising from a combination of non-explicit keywords. Moreover, the author provides neither his data-dataset are related to child pornography.
+
+Finally, these contributions may be seen as pioneering but limited work on paedophile query quantification when com-pared to our own work. Moreover, although they discuss other interesting issues like age indications in queries and file-names, presence of sub-communities, and geographic location of users, none of them address the key question of paedophile user quantification (Section 5 ). 7. Conclusion and perspectives
+We addressed the problem of rigorously and precisely quantifying paedophile activity in a large P2P system. We first set up a methodology and designed a tool for automatic detection of paedophile queries. Thanks to the involvement of 21 inde-ferent datasets containing hundreds of millions keyword-based queries entered in the eDonkey system, and established that approximately 0.25% of them are paedophile. We then designed several complementary methods for quantifying involved users; we established that at least 0.2% of observed users sent paedophile queries in our 2007 dataset, similarly to our 2009 dataset.
+ child protection, policy making and internet regulation.
+ Moreover, our contributions open several promising directions for future work:
+Extending our results to other systems. Although our observations are consistent for two datasets collected at different times and conditions, which gives them a high level of generality, it is important to obtain similar quantifications for other datasets and/or P2P systems. Indeed, different amounts of paedophile activity may occur in different systems, for various reasons (in particular, secrecy is easier in some systems than others). One may for instance collect Gnutella queries like in Hughes et al. (2006), Steel (2009) and inspect them with our tool.
+
+Improving knowledge and fight against paedophile activity. We open the way to many studies and actions critical for under-standing and fighting paedocriminality. For instance, the low false positive rate of our paedophile query detection tool generally on any search engine. The large sets of paedophile queries we provide also open the way for the study of key questions regarding paedophile activity. One may analyse for instance age indications in these queries, other topics pae-dophile users are interested in, and how they start and develop their interest in paedophile content. A deeper investiga-tion of the combinations of keywords used in paedophile queries may also significantly help to improve our paedophile query detection tool. All these issues are crucial for fighting paedocriminality and designing appropriate clinical responses. present in P2P systems (and more generally search engine logs) which represents a small fraction of the overall activity.
+This includes most deviant behaviours, such as zoophilia, rape or incest. Analysing further our datasets with appropriate methodology may also shed light on activity regarding various topics in P2P systems, like software, movie, music and por-nographic contents. Notice that these datasets also allow trace-based simulations at an unprecedented scale, with great potential impact for protocol design and testing.
+ Acknowledgments
+We thank the experts who helped in assessing our work, in particular Philippe Jarlov for contacts with law-enforcement
+Timur Friedman, Diana Joumblatt, Am X lie Medem Kuatse, J X r X mie Leguay, Renata Cruz Texeira, and John Whitbeck for their help in improving preliminary versions. This work is supported in part by the MAPAP SIP-2006-PP-221003 and ANR MAPE projects.
+ References

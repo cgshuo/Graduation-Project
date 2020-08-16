@@ -1,0 +1,4 @@
+ Thorsten Brants and Peng Xu, Google Inc.
+ requi re com muni cation be tween di fferent m achines.
+ Tutorial Outline 1) Training D istribut ed Mode ls * N -gram collection U se of the M apR edu ce mode l; com pressing i ntermediate da ta; m inimizing c om muni cation ove rhead w ith good s harding f unctions . * S moot hing S moot hing t echni que s that are easy t o c om put e in a di stribut ed s ystem: S tupi d B acko ff, L inear Interpol ation; m inimizing c om muni cation by s harding a nd a ggr egation. 2) M ode l Size Reduc tion * P runi ng a nd K neser -Ney i n a di stribut ed s ystem. E ffects of extreme pruni ng. * Q uantization va lue. * R andom ized D ata Structures a ccess to t he n -grams. 3) Using D istribut ed M ode ls * S erving i n t he first -pass of a decode r by ba tching up n -gram requ est. Target Audience mode ls.
+ Pr esenters retrieval, n amed e ntity de tection, a nd s peech r ecog nition. retrieval, and s peech r ecogni tion.

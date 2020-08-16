@@ -1,0 +1,126 @@
+ 1. Introduction documents are identified, and then the found documents are ranked.
+ indexed).
+ document to the query is computed and documents are sorted according to this. Ranking has been the focus of much attention for many years with several  X  X tandard X  functions (Robertson and Sparck Jones, 1976) and BM25 (Robertson et al. 1995).
+
+The performance of a retrieval system is of greater importance than the mathematics et al. 1991) and others.
+ learning is to choose a function that maximizes fitness over the training set.
+In this investigation new general purpose ranking functions are evolved using genetic programming and the TREC WSJ collection. Performance is measured with mean average 360 T ROTMAN when compared to BM25. On no test collection is BM25 shown to significantly outperform the learned functions. 2. Background 2.1. Precision There are numerous  X  X tandard X  measures of precision. Trec eval (Buckley 1991), the program used to measure precision for TREC, outputs over 20 different statistics. New J  X  arvelin 2002) such as those in the cystic fibrosis collection.
+
+Precision-at-document-n is considered a good measure for the web (Anh and Moffat measure.
+ this construction, relevant but not found documents receive a precision of zero. 2.2. Significance Comparing MAP scores suggests little about the nature of the improvements. One vastly improved query can easily compensate for many worsened queries. Such a change is only an improvement when measured as MAP. If measured as the ratio of improved queries to all queries (ROI), the nature of the improvement is more clear.
+ alone, so the significance must also be computed. The average precision of each query for each ranking algorithm is computed and significance computed with a one-tailed t -chance.
+
+Once MAP, ROI, and P are known the difference between two ranking algorithms can be e xpressed as the likelihood any new query will be improved (ROI), by how much (MAP), errors.
+ LEARNING TO RANK 361 2.3. Retrieval methodology documents contain which terms. This is the ideal environment in which to test ranking. ove r other retrieval methods.
+
+Kaszkiel and Zobel (1998) show a further performance advantage to using term-oriented and Zobel 1999, Zobel and Moffat 1995), document-oriented searching is prone to slow ex ecution however it is attempted.
+
+T erm-orientation also has disadvantages. The document weight must be computed for all e xample, relies on term-proximity and must be computed in a document-oriented manner. learnable functions. 2.4. Genetic programming
+K oza (1992) introduced genetic programming (GP). By contrast to genetic algorithms, suggestion was to use an abstract syntax tree as an individual.
+ and mutation.
+
+Ranking functions are often expressed in the form 362 T ROTMAN be represented as an abstract syntax tree for GP learning.
+ MAP, f (), of individual n is defined as to query q , and | Q | is the number of queries in the set.
+ current generation, that is the individual X  X  fitness-proportion, fp ( n ). general purpose (Khuri et al. 1994).
+ proportionate selection and then carried over into the next generation. node of the tree is chosen. That node is then replaced with a new and random node. The generation.
+ A node, a ,i s randomly chosen from A . Likewise a node, b ,i s chosen from B .Two new LEARNING TO RANK 363 ove r into the new generation.
+
+Reproduction, mutation, and crossover occur with configurable probabilities (which sum until a problem solution is found. 3. Ranking functions et al. 2002), and other models.
+
+Estimates of the number of published ranking functions range from counting in tens to counting in thousands. Salton and Buckley (1988) suggest a taxonomy allowing for 729 ranking functions. Zobel and Moffat (1998) expand on this and suggest a naming scheme model.
+
+Most ranking functions are required to quickly compute document weight. The TREC web track VLC2 collection contains over 18.5 million documents (Hawking et al. 1999). In the worst case, a weight must be computed for every document. To scale, the ranking (such as term frequency), but cannot rely on document analysis during search. Choice of which evidence to use dictates the best performance of a ranking function. ability, and Okapi BM25 are used for baseline comparison. To expect to do at least as atoms. 364 T ROTMAN 3.1. Available atomic evidence The query, the document collection, each search term, and each document carry atomic information, namely: The query  X 
+The length of the query (number of terms including repetition): T q  X 
+The length of the query vector (squared): L q  X 
+The query unique term count: u q  X 
+The term frequency in the query of the term occurring most frequently in the query: m q Each search term  X 
+The document frequency: n t  X 
+The term frequency in the corpus: n c  X 
+The term frequency in the given document: tf td  X  The term frequency in the query: tf tq Each document  X 
+The length of the document (number of terms including repetition): T d  X 
+The length of the document vector (squared): L d  X 
+The document unique term count: u d  X 
+The term frequency in the document of the term occurring most frequently in the docu-ment: m d The document collection  X 
+The number documents: N  X 
+The sum of document lengths (in terms): T  X 
+The longest document X  X  length (in terms): T max  X 
+The number of unique terms in the corpus: U  X 
+The largest document unique term count: U max  X 
+The largest corpus term frequency: M  X 
+The largest document frequency: M max  X 
+The largest term frequency: tf max  X  The length of the longest document vector (squared): L max Computation of vector lengths square of the number of occurrences of that term.
+ LEARNING TO RANK 365 3.2. Combination of evidence with the current accumulator value.
+ Constants  X 
+Constants: 1 , 2 , 3 ,. .. (in the range [0..100])  X  The current document accumulator value (initially 0): A d , t Arithmetic operators  X +  X  X  X   X  X   X  X  Function operators  X 
+Log of the absolute value of x ( log | x | )  X 
+Log to base 2 of the absolute value of x (log 2 | x | )  X 
+Minimum of x and y (min( x , y ))  X 
+Maximum of x and y (max( x , y ))  X 
+Square root of the absolute value of x ( Operators constant. 3.3. Taxonomy formation about citation counts, which can change each time a new document is added search document analysis. Nonetheless, inner product, cosine, probability, Okapi BM25, and Boolean can be described using the notation above. 3.3.1. Inner product. Consider the document and query to be vectors. The inner product 366 T ROTMAN query vector describes what proportion of the query is described by the document. Document weight w dq with respect to query, q ,is where w dt is the (modified) document vector with respect to the given term, and w qt is measure computes the cosine of the angle between those vectors (Harman 1992). A large query.
+
+Document weight w dq with respect to query q is given by the equivalent sum for each term is document is related to a given query (Robertson and Sparck Jones 1976). This cannot be calculated directly, however Harman (1992) gives an approximation: where LEARNING TO RANK 367 and where C = 1 = 1 . 0 and K = 2 = 0 . 3. 3.3.4. Okapi BM25. Originally found during ranking experiments for TREC, Okapi BM25 computes a weight between document and query based on term probability. The higher the weight the stronger the relationship between the query and the document. where and and set and the best used. Expressed recurrently, 368 T ROTMAN after all terms have been considered. 3.3.6. Boolean ranking. Boolean ranking can be expressed recurrently in the same way term. 4. Related work 4.1. GPs For unstructured ranking the 100 queries, 70 for training, 30 for evaluation, a between 5 and 8% improvement on 4.4% improvement in mean 11 point average prevision was demonstrated on the evaluation conclusion.
+ the problematic sub-expression (so it will be discarded). This gives Examining the case where n t = 1, a term that occurs only once in the collection gives LEARNING TO RANK 369 a document can be any length. However, when the terms occurs in only two documents ( n some documents, it was not tested in this investigation.
+
+Oren reported other less successful functions also not examined herein (they were less This function was reported negatively as a less than 5% improvement was seen. 5.71% improvement is seen. When their new function was tested on the 10GB TREC web result is similar to that of Oren, a near 5% improvement is seen at best. 4.2. GPs for structured and semi-structured ranking documents in HTML. Atomic ranking evidence is collected for each of entire-document, report an almost 20% improvement on BM25 when using document structures, but a 2% degradation when not using document structures in ranking. Comparison is against BM25 as that is the best performing baseline function they try.
+
+The evidence and operators available for genetic learning dictate the maximum perfor-using these.
+ improvements seen on known good functions. 370 T ROTMAN functions). 5. Methods significantly outperforms the current popular functions. 5.1. Training and test set fields, and stopping commonly occurring words. These queries were used to compare the v alidity to the implementation. These queries were then discarded.
+
+A second set of queries was built in the same manner, but using just the description function against this set was then computed. Again, the results were compared to known good results.
+ topics 151 X 200 were used for training, topics 101 X 150 for evaluation. Ranking performance is known to vary greatly from collection to collection (Zobel and used.
+ Each query was built by stopping commonly used words. All queries with fewer than 5 positive judgments were discarded.
+ The TREC collections from disks 4 and 5 were indexed individually (FT, CR, FR94, FBIS, LATIMES), collectively for each disk (TREC 4, TREC 5) and collectively (TREC 4 + 5). Topics 301 X 350 were converted into queries by taking the narrative and stopping common words. Topics with fewer that 5 positive judgments on a given collection were discarded when searching that collection.
+ LEARNING TO RANK 371 5.2. Genetic parameters ranking functions.
+ each atom and constant once and each arithmetic and function operator three times (see 5, the list was restricted to prevent operators from being selected.
+ population of 100.
+ elitist (De Jong 1975).
+
+The mutation rate was set to 0.05, crossover to 0.9; and reproduction to 0.05. Mean av erage precision was used as fitness. 5.3. Experimental process using inner product, cosine, probability and BM25.
+ repeated iteratively.
+
+The experiment was run concurrently on 13 different computers starting from different random number seeds (taken from the system clock) on the same random number gener-conditions for concluding experimental runs.
+
+Any functions showing a greater than 10% improvement in training set MAP were con-recall.
+
+Each query in the evaluation set was then individually examined. Average precision for each good function was computed and recorded. ROI was computed and the t-test was then conducted on these scores and those of the best baseline function (BM25). BM25 using the cystic fibrosis collection and against BM25 for the TREC collections. 372 T ROTMAN 5.4. Cross validation In ranking experiments y (the  X  X orrect X  average precision) cannot be known in advance. Consequently cross validation is not possible.
+ A cross validation estimate comes through an estimation of best possible performance. is then compared.
+ users. This is comparable to learning on one set of TREC queries and evaluation on an-collections. 5.5. Numeric overflow ranking.
+
+To reduce the chance of overflow, absolute values of operands were taken before log or to subtraction (e.g. log(abs(N-N))).
+ ov erflow during use. 6. Results is chosen as the comparison baseline (and reported hereafter as BM25). performing variant was compared to that of others.
+
+Robertson et al. (1994) examined performance of BM25 against TREC disks 1 and 2 LEARNING TO RANK 373 reported results, even though lower X  X  document subset and query superset were used. measures are subtly different.
+ up to 150 generations.
+ 374 T ROTMAN of the runs show an improvement on BM25. Two of the runs show an improvement of over 10% in the training set and are considered good.
+ common in many ranking functions including BM25. v alues.
+ LEARNING TO RANK 375
+Functions similar to already good BM25 were expected to evolve. According to Igel BM25, it is reasonable to assume many learned functions will maintain the same general shape. It is not clear what might happen if the initial population is not seeded.
+The function most adapted to the evaluation set exceeded BM25 by 20% and evolved in run 13. Fan et al. (2004) show a performance degradation of 2% compared to BM25 on HTML documents and only exceed BM25 (by nearly 20%) when using document structure. Fa ne t al. (2004) show only small improvements on BM25 of between 3.5 and 5.7% when training on the TREC AP collection. The results presented herein suggest performance gains as large as those of Fan et al. can be gained without using document structure. A of words).
+
+In both run 5 and run 13 there has been no attempt to optimize the value of n ,todoso 3 in run 5, and the interaction of 1 with 4 in run 13 require investigation. absolute values.
+
+The performance of each of run 5, run 13 and BM25 on the evaluation set is plotted as an 11-point precision/recall graph in figure 4.
+ 376 T ROTMAN others. No significance test is necessary as the cross validation experiment failed. and improvements in excess of those reported here are expected.
+ presents the improvements, both are compared to BM25. For run 5, 63% of queries show LEARNING TO RANK 377 the differences are due to chance alone.
+ function is included even though overflow occurred. When overflow occurred for a given document, that document was removed from the result set and average precision computed the learned functions is very small (0.00118, less than 0.5%).
+
+Run 5 was compared to BM25 using the collections on TREC disks 4 and 5 and topics wa s numeric overflow seen in run 5.
+ 378 T ROTMAN
+When run 13 was compared to BM25 (Table 5), again no numeric overflow was seen run 13 always betters BM25. On the TREC collections, run 13 always outperformed run 5. passage retrieval are yet to be performed. 7. Efficiency of this length took all weekend on a 2.4 GHz Pentium 4 with 500 Mb memory and indexes held on a network drive.
+ any reduction in I/O will reduce the learning time. Three optimizations were used.
+First, MAPs computed against the training set were stored with each individual. Should individuals are new) but does in subsequent generations.
+ reduced.
+
+Third, to reduce query evaluation time, short queries constructed from just the TREC topic description were used.
+ LEARNING TO RANK 379
+Even without optimizations, the time required to learn a ranking function is small by comparison to the lifetime expectancy of the function. 7.1. Possible further improvements There are many proposed extensions to the genetic programming learning algorithm. The purpose ranking functions are: memetic searching, and the island model. These might be used either alone or together climbing search. When an individual is created through mutation or crossover, the new used with genetic algorithms (Hart and Belew 1996) and genetic programming (Smart and Zhang 2004).
+ local maximum.
+ created with completely random individuals, and then seeded with known good functions. might also be given to dropping the seeding process.
+
+Further investigation is necessary to determine the best learning environment. 8. Summary least one search term. These documents were then ordered using a ranking function. As term.
+
+Mean average precision for the TREC WSJ collection was computed for inner prod-uct, probability, cosine, and BM25. BM25 was shown to outperform the others. Genetic 380 T ROTMAN 100 individuals were run for 100 generations. Two good functions were identified, each e xceeding BM25 by over 10% during training.
+ functions; however the new functions were shown to significantly outperform BM25 for some collections. Significant mean average precision improvements as high as 32% were observed, however this was atypical.
+
+Genetic programming has proven a successful way to develop general purpose ranking functions for unstructured information retrieval.
+ References LEARNING TO RANK 381

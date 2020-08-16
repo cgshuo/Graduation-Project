@@ -1,0 +1,1 @@
+ answer: yes! (in a rather strong sense) use a nice concentration result (Freedman) process i.i.d. training set sequentially such algorithms are speed and memory e ffi cient e.g. gradient descent for strongly convex loss functions

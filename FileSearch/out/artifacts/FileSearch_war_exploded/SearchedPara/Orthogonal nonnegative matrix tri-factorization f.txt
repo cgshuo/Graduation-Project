@@ -1,0 +1,55 @@
+ Jiho Yoo, Seungjin Choi * 1. Introduction Puzicha, &amp; Jordan, 1999 ).
+ proposed ( Choi, 2008; Yoo &amp; Choi, 2008 ). compared to one-sided clustering methods ( Dhillon et al., 2003 ). guishing it from ONM3F that was proposed in Ding et al. (2006) .
+ semous words via co-clustering words and documents. Finally conclusions are drawn in Section 5 . 2. Nonnegative matrix tri-factorization for clustering
+In the vector-space model of text data, a document is represented by an M -dimensional vector x 2 R M number of terms (words) in the dictionary. Given N documents, we construct a term-document matrix X 2 R
+X corresponds to the significance of term t i in document d where TF ij denotes the frequency of term t i in document d sizing a corresponding probabilistic model. 2.1. NMF for clustering NMF seeks a 2-factor decomposition of X 2 R M N  X  that is of the form row in U represents encoding.
+ dimensional space. In such a case, the factorization (1) is interpreted as follows (see Fig. 2 ).
+U ij corresponds to the degree to which term t i belongs to cluster c ciated with a prototype vector (center) for cluster c j .
+
+V ij corresponds to the degree document d i is associated with cluster j . With appropriate normalization, V to a posterior probability of cluster c j given document d clustering are summarized in Section 2.2 . 2.2. Probabilistic interpretation of NMF for our probabilistic interpretation of NMTF.
+
+Let us consider the joint probability of term and document, p  X  t also used in PLSI ( Hofmann, 1999b ). Elements of the term-document matrix, X divided by 1 &gt; X 1 such that P i P j X ij  X  1 where 1  X  X  1 ; ... ; 1
+Relating (2) to the factorization (1) , U ik corresponds to p  X  t ing sum-to-one normalization to each column of U , i.e., UD Assume that X is normalized such that P i P j X ij  X  1. We define a scaling matrix D can be rewritten as Comparing (3) with the factorization (2) , one can see that each element of the diagonal matrix D D not have to be normalized in advance.
+
+In a task of clustering, we need to calculate the posterior of cluster p  X  c given by the document likelihood and cluster prior probability. That is, p  X  c matrix D U . Thus, we assign document d j to cluster k if rize the algorithm below.
+
+Algorithm outline: Document clustering by NMF 2.3. NMTF for co-clustering NMTF seeks a 3-factor decomposition of X 2 R M N  X  that is of the form V is the column-coefficient matrix, and S is the block value matrix. follows (see Fig. 3 ).
+ SV &gt; correspond to basis vectors for the row space of X .
+ types of clusters, including term-clusters f b l g L l  X  1 term t i belongs to term-cluster b l : V jk corresponds to the degree document d 2.4. Probabilistic interpretation of NMTF
+We further elaborate the work in ( Li &amp; Ding, 2006 ). We consider both term-clusters b erly factorize the joint probability p  X  t i ; d j  X  as follows. where p  X  b l ; c k  X  is the joint prior probability for term-cluster b minimized ( Dhillon et al., 2003 )
+Introducing sum-to-one normalization matrices, D U  X  diag  X  1 sition (5) as
+Relating (6) to the 3-factor decomposition (5) , marginal distributions p  X  t respectively. The joint probability p  X  b l ; c k  X  corresponds to  X  l ; k  X  -element of D ter and document-cluster.
+
+For document clustering, we calculate the posterior probability of document-cluster given documents,
+Normalizing the matrix V using diag  X  1 &gt; D U S  X  , we assign document d
+The posterior probability of term-cluster given terms is computed as Thus,for clusteringterms,wenormalizethefactormatrix U via post-multiplying it by diag  X  SD
+Algorithm outline: Document clustering by NMTF 3. Multiplicative algorithms ing multiplicative updates for NMTF. 3.1. NMF algorithm
+We consider the squared Euclidean distance as a discrepancy measure between the data X and the model UV the following least squares error function
+NMF involves the following optimization: for U and V is not preserved without further operations at iterations. gradient of an error function has a decomposition that is of the form where  X  r E  X  &gt; 0 and  X  r E &gt; 0. Then multiplicative update for parameters H has the form where represents Hadamard product (elementwise product) and  X   X  while r E  X  0 when the convergence is achieved.
+ by &amp; Seung, 2001 ) where the division is also an elementwise operation. 3.2. ONMF algorithm such that U &gt; U  X  I or V &gt; V  X  I ( Choi, 2008 ). In this paper we consider the case where V with V &gt; V  X  I where we incorporate the gradient on Stiefel manifold into multiplicative update.
+Orthogonal NMF with V &gt; V  X  I is formulated as the following optimization problem:
+In general, the constrained optimization problem (17) is solved by introducing a Lagrangian with a penalty term some approximation, developing multiplicative updates.
+
+Here we present a different approach, incorporating the gradient in a constraint surface on which V straints on V to develop multiplicative updates with preserving the orthogonality constraint V surface which is the set of N K orthonormal matrices such that V 1936 ).
+
+An equation defining tangents to the Stiefel manifold at a point V is obtained by differentiating V whereas the Euclidean metric is given by
+We define the partial derivatives of E with respect to the elements of V as e r
+E such that for all tangent vectors D at V .
+
+Solving (22) for e r V E such that V &gt; e r V E is skew-symmetric yields
+Thus, with partial derivatives in (14) , the gradient in the Stiefel manifold is calculated as Invoking the relation (12) with replacing r V by e r V yields which is our ONMF algorithm. The updating rule for U is the same as (15) . 3.3. ONMTF algorithm
+Orthogonal NMTF (ONMTF) is formulated as the following optimization problem:
+Invoking (23) , true gradients on Stiefel manifolds, f U j U
+The standard gradient with respect to S is given by 4. Experimental results co-clustering terms and documents. 4.1. Datasets summarized in Table 2 , and detailed descriptions are listed below: homepage of Department of Computer Science, University of Rochester. robotics, systems and theory. clustering toolkit, consisting of web pages in various subject directories of Yahoo!. uments, but web pages in k1a categorized into more detailed clusters, involving a deeper directory hierarchy. These datasets are also included in the CLUTO toolkit.
+ ( Xu et al., 2003 ), which is defined by 4.2. Performance evaluation that NMF adopts the 2-factor decomposition (1) for document clustering and other three algorithms (NBVD, ONM3F, position, we set the number of term-clusters to be equal to the number of document-clusters. Two performance measures (CA and NMI) are computed as follows.
+ the ground truth cluster and the matched cluster labels of the document d
+NMI: NMI is based on the mutual information (MI) between two sets of clusters, C and estimated clusters and the set of ground truth clusters, respectively. Denote by C tively. With these definitions, MI between C and e C is calculated as summarizes the result of NMI. NMF and NBVD usually showed better NMI values than ONM3F and ONMTF. NMI depends matched cluster distributed arbitrary into the other clusters.
+ ONM3F and ONMTF, showed complementary performance depending on the datasets. Moreover, the NMI results of the of ONM3F and ONMTF, to improve the CA and NMI.
+ determined by one of matrix factorization methods, where  X  L uments, for trial i ,as apply a graph partitioning technique to determine an ensemble clustering solution.
+ONM3Fs; (4) an ensemble of 30 ONMTFs; (5) an ensemble of 15 ONM3Fs + 15 ONMTFs. Among the 100 clustering results mance than the ensemble of NMFs, for both of the CA and NMI measures.
+We compare two orthogonal methods, ONM3F and ONMTF, in terms of an orthogonality-preserving measure which is mation on Stiefel manifold, where the orthogonality is preserved.
+ 4.3. Co-clustering and polysemous word identification clusters are related to document-clusters. Most probable words in term-clusters reveal topics as well. robotics systems.
+ cause one-sided clustering does not provide term-clusters.
+ ciated with DC1 and DC4, related to topics AI and Theory.
+ texts, which is an advantage of ONMTF over NMF. 5. Conclusions Acknowledgments This work was supported by Korea Research Foundation Grant (KRF-2008-313-D00939), Korea Ministry of Knowledge
+Economy under the ITRC support program supervised by the National IT Industry Promotion Agency (NIPA-2009-C1090-0902-0045), WCU Program (Project No. R31-2008-000-10100-0), and Microsoft Research Asia. References

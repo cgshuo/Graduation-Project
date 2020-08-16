@@ -1,0 +1,146 @@
+ 1. Introduction salary, age, or credit ratings of individuals might turn out to be important data items to be mined and shared across as follows. Suppose a company A has a huge volume of home/car loan related data of a big customer pool. Based on this data, company B wants to classify some new individuals who applied for loans from company B as eligible or not. Clearly
+A cannot share the entire data directly with B without some scheme that will protect individual information yet allow the classification task of B to proceed with minimum error.
+There has been a rich volume of work on privacy preserving data mining which focuses on accurate mining while at the on privacy preserving techniques for distance based mining methods. One of the most commonly used privacy preserving methods is additive perturbation approach which adds random noise to the data such that individual data values are dis-
+Thus the accuracy of distance based mining methods may drop. Second, additive perturbation methods are vulnerable to and utilizing inherent correlations of datasets.
+
+Of the very few works on privacy preserving techniques for distance based mining, most apply orthogonal transforms on the data. A random projection method has been proposed in [36] . This method projects original data of m dimensions to smaller number of k dimensions by multiplying the data with a random matrix of size m k . It is observed that Euclidean permuted column-wise and the permutation is concealed. Mukherjee et al. [40] further proposed a coefficient selection method using Fuzzy Linear Programming to achieve a tradeoff between privacy and accuracy of mining over the transformed data.
+
+However the next section will show that none of the existing methods provide any worst-case privacy guarantee and this causes serious problems. 1.1. Problem of lack of worst-case privacy guarantee
+Most existing studies consider some form or other of average privacy breach measures such as the confidence interval methods in real life because it is hard to convince users that these methods provide enough privacy protection.
+As mentioned earlier, most existing privacy protection methods for distance-based mining are transform based. In the worst case, the transform may be recovered by attackers and the original data will be compromised. For example, for the
+DCT based methods proposed in [41] , the transform will be compromised if the attacker somehow knows the permutation erate this matrix is revealed.
+ original data. This allows the attacker to infer the transform from the perturbed data and the known sample. Thus using transform based method alone is not safe in the worst case (e.g., when some sample points are known) because the trans-formation may be recovered in the worst case.
+
+Since using transformation methods alone is not safe, one could certainly try to use an additive perturbation method or combine an additive perturbation method with a transform method to provide more privacy protection. However, as men-An example will illustrate this.
+ employees have a lower salary. Suppose a uniform noise ranging from [ 100,000,100,000] has been added to the salary of employees. The ranges are known to an attacker.
+
+Let X be a random variable representing original data value and Y be a random variable representing randomized data than 250,000. Thus the original salary can be inferred as 150,000. This attacking method is called q where q 1 here is the probability of the salary being 150,000 in the original data, and q being 150,000 after observing a perturbed value of 250,000.
+ 1.2. Contributions This paper proposes an approach that will provide worst case privacy guarantees for distance-based mining algorithms. turbation methods, the noise added by proposed approach cannot be filtered out using attacking methods such as the one proposed in [25] that use data correlations.
+ [35] that can recover the transform and thus can recover the original data. Such attacking methods can recover the PCA transform, but cannot remove the added noise. Second, the noise addition step protects against the q discussed in [20] .
+ The contributions of this work are the follows: also shows that many existing methods such as additive perturbation with normal or uniform noise, as well as random projection method which are secure in the average case do not provide worst case guarantee. This paper shows that noise following Laplace distribution will give worst case privacy guarantees.
+
+This paper proposes a data sanitization method for distance-based mining. This method combines PCA and additive per-turbation method, and guards against several existing attacking methods, including the method that recovers transforma-tion [35] , the method that filters noise using data correlation [25] , and the method that uses q To the best of our knowledge, our method is the first that guard against all these three attacking methods.
+This paper proposes modification to the well known K -nearest neighbor classification algorithm to make it perform more
+This paper modifies the nearest neighbor-search space of the ordinary K -nearest neighbor algorithm by taking into account the distance distortion introduced by the added noise. This modification improves the accuracy of K -nearest neighbor classification over sanitized data.
+ type of mining methods, and there is a great need for methods that can work for multiple mining methods. The first and that can provide worst case privacy guarantee for multiple mining methods as future work. synthetic data. The results demonstrate the superiority of the proposed method over existing ones. Section 7 concludes the paper and discusses future work. 2. Related work first type of privacy problem. 2.1. Privacy preserving work for distributed mining
+Most proposed methods use various modifications of secure multi-party protocols in different kinds of mining techniques paper considers the case that data is sanitized and then shipped to a third party for mining. 2.2. Privacy preserving methods for non-distributed mining
+The second subcategory considers non-distributed environment. Unlike the work for distributed environment, work in as vulnerable as additive perturbation under attacks based on data correlations.
+
+As mentioned in Section 1 , a few transform-based methods have been proposed for distance-based mining safe because there is no guarantee that the swapped values will be much different from the original values. od may work for some distance-based mining algorithms because the distance between clusters are likely preserved. How-
+A randomized response approach was also proposed [18] for decision tree mining. It is unclear whether it will be appli-cable to distance-based mining.
+ ing attacking methods mentioned in Section 1 .
+ developed an optimal matrix theoretic scheme for random perturbations of categorical data and provided guarantees is the first to use amplification to provide worst case privacy guarantees for additive perturbation methods. 3. Background
+This section gives the necessary background to distance based mining (Section 3.1 ) and to the worst case privacy model over discrete data (Section 3.2 ). 3.1. Distance based mining
+Distance-based mining is a class of mining methods that use distance between data points. The basic assumption of these including using index structures [3,56] and optimizing the KNN search using cost models [49] . 3.2. Worst case privacy model for discrete data q to q 2 privacy breach. This model was developed for discrete data. Section 4 will extend this model to continuous data. V in a certain range.
+ Definition 1. There is a q 1 to q 2 privacy breach with respect to property Q  X  X  X  if for some y 2 V of the original data). The definition states that if Q ( X ) X  X  probability is very low (below q tional probability given the observed randomized value of y is very high (over q ginal data satisfies Q  X  X  X  if he sees the perturbed value of y .A q breach, where Q  X  X  X  is the property that salary of an employee equals 150,000.
+
+A randomization operator provides a certain degree of worst case privacy if it does not allow any q vacy breach. [20] introduces the definition of amplification to provide such guarantees. Definition 2. A randomization operator R ( x ) is at most c -amplifying for y 2 V Here P  X  x ! y represents the probability of mapping a value x 2 V bound relating to the amplification and q 1 to q 2 privacy breach.
+ to q 2 privacy breach nor a downward q 2 to q 1 privacy breach with respect to any property if
+Based on Theorem 3 , a randomization operator will provide the worst case privacy guarantee if it has a bounded ampli-
+For example, suppose c  X  20, q 1  X  0 : 001, then for any q 4. Worst case privacy model for continuous data
+This section describes a worst case privacy model for distance-based mining. Since Euclidean distances are computed give bounded amplification values. Section 4.3 examines whether several commonly used noise distributions as well as random projection method give bounded amplification values and hence provable privacy guarantees. 4.1. Extension to continuous data
+This section extends the amplification model for continuous data and additive perturbation. Let X be a bounded contin-continuous probability density distribution f D  X  d  X  , where d is a specific value of D . range of  X  x 1 ; x 1  X  d x to y
+Let A denote the limit of the ratio of P  X  X  x 1 ; x 1  X  d x  X ! y = P  X  X  x continuous data as follows:
+Here y x 1 and y x 2 are essentially the amount of noise added to points x continuous data using the amplification defined for continuous data. 4.2. Necessary and sufficient conditions for bounded amplification function of added noise  X  f D  X  d  X  X  to give bounded amplification  X  A 1. The density distribution of noise, f D  X  d  X  , should have infinite support, that is D 2 X 1 ;  X 1 X  . 2. f
+D  X  d  X  should not have a zero value for any value of D in 1 &lt; D &lt;  X 1 . 3. Proof. Necessity: D be supported in a finite interval a 6 D 6 b . This paper assumes that x is bounded. Let x be also mapped to y max with non zero probability. However, this is impossible because the maximal noise is b , and x thus the maximal value x L can be mapped to is x L  X  b , which is less than x Condition 2. To prove the necessity of this condition, consider the following lemma.
+Lemma 5. If the density function f D can have zero values, then there exists a pair of d and f D  X  d 1  X  &gt; 0 .
+
+This lemma basically states that it is possible to find a pair of d positive and zero f D values respectively.
+ proof. Simply take the pair of d 1 and d 2 described above, and assume without loss of generality that 0 &lt; d x  X  x L ; x 1  X  x L  X  d 2 d 1 . Clearly, x 1 also falls in the range of x
+Note that x 1  X  d 1  X  x L  X  d 2 d 1  X  d 1  X  x L  X  d 2 , and x
+Let y  X  x 2  X  d 2 , thus y  X  x 1  X  d 1 too. Now f D  X  y x equals the ratio of f D  X  y x 1  X  to f D  X  y x 2  X  is infinite. Hence f cation. The remaining task is to prove the lemma.
+ This lemma can be proved by contradiction. Let us assume f lemma is not true, there is no d 1 within distance x U x L that j d 2 d 1 j 6 x U x L , i.e., f D  X  0 within the interval of  X  d aries (i.e., consider d 2 be one of the two boundary points). Now the zero density interval can be expanded to  X  d Hence the lemma must be true.
+ either of y !1 and amplification becomes unbounded.
+
+Sufficiency : The proof of sufficiency is straightforward. By Conditions 1 and 2 , clearly for any x any finite x 1 ; x 2 ; y , the amplification is finite and bounded. Since x the amplification is still finite and bounded. h 4.3. Examination of commonly used noise distributions additive perturbation using some common density distributions considered in literature. 4.3.1. Uniform noise property in the original data may be very low. Thus an upward privacy breach occurs. 4.3.2. Normal noise Let the density distribution of noise be N  X  0 ; r  X  . In this case f support domain. Thus Conditions 1 and 2 are both satisfied. However
+The above equation is unbounded for either of y !1 depending on the sign of  X  x normal noise is added.
+ Example 4.2. consider a data set with one attribute X with following distribution:
+Now suppose a normal noise with zero mean and unit variance is added to the data. Let Y be the perturbed attribute. Let Since the noise is added independent of the value of X , we have Similarly, we have Divide Eq. (4) by Eq. (5) , we have P  X  X  X  1 j Y  X  y  X  is the only variable in the equation. Solving this equation will get Next we compute c . P  X  1 ! y  X  is the probability of mapping 1 to y , i.e., the probability of noise being y 1. Thus
+P  X  1 ! y  X  X  e  X  y 1  X  2 2 . Similarly, P  X  0 ! y  X  X  e y 2 bility if he sees a large Y value in perturbed data. 4.3.3. Laplace noise paper consider the l  X  0 case just for simplicity of mathematical calculation)
+There are four possible cases. (a) x 1 6 y 6 x 2 (b) x 2 6 y 6 x 1 .
+ (c) x 2 ; x 1 6 y (d) x 2 ; x 1 P y .
+ Thus in all cases amplification is bounded by the support bounds of data distribution and has the value of same as in Example 4.2 until we reach Eq. (6) added, c  X  e 1 = 0 : 5  X  7 : 4, and P  X  X  X  1 j Y  X  y  X  X  0 : 069 using Eq. (6) . More generally, if q privacy breach with q 2 over 0.069 will occur in this case. 4.3.4. Random projection method
+Although not directly related to additive perturbations, it is interesting to see why random projection method does not provide worst case privacy. Let D denote the dataset and x r  X  X  r 1 j ; r 2 j ; ... ; r nj  X  be the j th column vector in the random matrix. Let y data. Then the j th attribute of y ! equals the inner product of r
+Example 4.3. Consider a very sparse data set where most data points are all-zero vectors. Let a property Q  X  x any r j ! equals 0. Now if the attacker observes a sanitized data vector y
+It can be verified that some other density distributions such as the Student X  X  t -Distribution also gives bounded 5. Proposed method this method. Section 5.3 describes the second step. 5.1. Data sanitization
+The overview of the proposed method is given in Fig. 2 . Table 1 summarizes the symbols used in this algorithm. The method takes the original data set D as input. Here D is represented by a n m matrix where n is the number of records and m is the number of attributes. A noise parameter b and the number of selected principal components s are also given able degree of worst case privacy guarantees.
+
+The method starts with taking the principal component transform of the dataset D to produce a set of principal compo-nent values D P . Noise from a Laplace distribution with location parameter 0 and scale parameter b to each of the elements of the first s columns of D P to produce D of the PC values, b i is set to b  X  max f D i P g min f D columns. D i P represents the i th principal component values (i.e., the i th column of D used as training set.
+ needed. However there exists efficient algorithms that compute approximate PCA [43] . The complexity of such algorithms is O  X  mns  X  . Thus the complexity of the proposed data sanitization method is O  X  mns  X  . 5.2. Privacy of proposed method
+The proposed method combines PCA with additive perturbation. PCA completely decorrelates the data thereby guards attacks cannot remove the added noise.
+
+Next we compute the amplification for the proposed method. The result will show that the proposed method also pro-vides worst case privacy guarantee for q 1 to q 2 privacy breach.
+
+One could certainly compute amplification using the original data values. However this paper computes the amplification values from the principal component values.
+
+To compute amplification for the combined framework, let a matrix and x 1 !  X  X  x 11 ; x 12 ; ... ; x 1 n  X  and x 2 !
+X denote the i th PC scores to which the two data vectors are mapped respectively (i.e., X with x 1 ! and x 2 ! , respectively). Let D i P and D i NP amplification for the i th PC can be computed directly over these principal component values as follows: noise, the amplification equals where b i is the scale parameter of the Laplace noise added to the i th PC scores. The bounds of D individually since one cannot infer values of a column from another column. 5.3. Modifications to K-nearest neighbor
+This section first describes the problem introduced by distance distortion, and then proposes modifications to KNN to improve accuracy.
+ KNN drops because the distances between data points are distorted.
+ validation, which is extremely expensive.
+ the properties of the added noises.
+
+Modified KNN algorithm: the proposed algorithm uses two heuristics to improve the basic KNN algorithm over the sani-of the proposed algorithm. The algorithm assumes the data sender has computed the mean and variance of distance distor-data are computed.
+ prediction.
+
+Now we explain how to compute the radius of the search circle. Let d
+Y and one of its neighbors X in the training set. Also let d distorted X . Let distance distortion b D be d 0 2 d 2 . Let l inequality [53] for n standard deviations from mean gives
+If b D can be further assumed to have unimodal distribution, then Vysochanskij Petunin X  X  inequality [53] gives
+For a well-behaved data set, distances between members of the same class should be negligible compared to distances be-a zone with distance no more than l b n  X  2 is used in this paper because the probability of b D reduces false negatives.
+
+Distance-based weighing : in lines (5) X (7), the algorithm uses a distance-based weighing scheme to reduce the impact of
+This paper solves the problem by a distance weighted voting scheme [39] . Let d point. point is not a nearest neighbor in the original data and is likely to be far from the testing data point. data. In Line (11), the test point will be assigned the label of the class with the highest vote.
+Complexity analysis : Let n be the number of records and s be the number of principal components selected in data sani-This computation only needs to be done once for all testing data points.
+
+Further, there exist many techniques such as [7,3,56] to speed up KNN using auxiliary data structures. These methods do number of data points returned using the index structure and n 0 n in general. 5.3.1. Calculating mean and variance of distance distortion
+X preserving, the original squared distance between x and y can be written as
+After retaining the coefficients in S only, each PC coefficient X
+Laplace distribution with location parameter 0 and scale parameter b out as
+From the above two expressions, the distortion in squared Euclidean-distance can be calculated as distortion are given below. Please refer to Appendix for details: 6. Experimental evaluation
+This section presents experimental evaluation of the proposed method. Section 6.1 describes the setup of the experi-ments. Section 6.2 compares the proposed method with existing methods. Section 6.3 reports the privacy of the proposed tions to KNN on accuracy. 6.1. Setup The experiments were conducted on a machine with Pentium 4, 3.4 GHz CPU, 4.0 GB of RAM, and running Windows XP run 20 times and the average results were reported. 6.1.1. Datasets maldistribution.Theclustercenterswereuniformrandomlyselectedbetweentherangeof[ 5,5]oneachdimension.Thestan-6.1.2. Algorithms
+The following algorithms were compared in the experiments. (1) A PCA-radius algorithm was implemented based on the method described in Section 5 . The search space is within (2) Rand-P: this is a transform-based method to protect privacy for distance-based mining [36] . The data (as a n m (4) Rand-N: this method is the same as Rand-U except that normal noise is added to the original data.
+For Rand-P, Rand-U, and Rand-N, the distance weighed KNN with best k (found through cross validation) is used to eval-uate the method. 6.1.3. Privacy measures ond using information theory [4] , and the third using amplification to measure worst case privacy breach as mentioned. while information theory only considers the distribution of values [58] .
+
+This paper uses amplification to measure the worst case privacy breach and uses the confidence interval to measure the dence in the interval  X  x 1 ; x 2 , then the privacy equals confidence interval was used in experiments.
+ pseudo inverse matrix of the random matrix.
+ the original data. 6.2. Comparison of the proposed method with other methods
+This section compares the performance of various privacy protection methods. These methods all have some parameters that determine the degree of noise added. These parameters are summarized below.
+ mining decreases. Another parameter is the number of principal components to select. Although there are many possible choices, a wide range of values give similar results. Thus this number is set to half of the total number of attributes (excluding the class label) in the data set.
+ increases, the degree of privacy decreases but the accuracy of mining increases.
+
+Rand-U and Rand-N : the two parameters that determine the degree of noise is the mean and standard deviation of the
+Average privacy and accuracy tradeoff : there are two important metrics for a privacy protection method: the degree of privacy and the accuracy of mining methods. Thus Fig. 5 a X  X  report both the average privacy and the accuracy of running
+Each method has three different settings described above, thus there are three data points for each method. For each method, the right most data point (the one with highest average privacy) is the one with the parameter that generates PCA-Radius has b  X  0 : 2 and the left most point of PCA-Radius has b  X  0 : 1.
+
+When we compare the performance of two methods A and B , we can draw a line along the data points of method A using Thus method A has better tradeoff of accuracy and average privacy than method B .
+ average privacy than the other privacy protection methods.
+ PCA-Radius. Thus it is unlikely the user will use the two settings due to insufficient privacy protection. ate noise level by considering the accuracy-privacy tradeoff.
+
+As b  X  0 : 3, PCA-Radius also achieves high degree of average privacy. The average privacy exceeds 100% of the range of data (each column is normalized to 0 X 1) for 5 real data sets (Wine, Pendigits, Magic04, Ionosphere, Waveform) and the [25] . Thus the proposed method (PCA-Radius) gives adequate privacy protection under the average case.
+Worst case privacy : as shown in Section 4.3 , the proposed method (PCA-Radius) is the only method that provides worst case privacy for q 1 to q 2 privacy breach. Thus only the worst case privacy of proposed method is reported. better the privacy) as noise increases, and is around 50 when b  X  0 : 25 and 28 when b  X  0 : 3.
+Eq. (2) in Section 3.2 describes the relationship of amplification ( c ) and the maximal value of q will not exceed 2.8% given the sanitized data. Typically most privacy-sensitive data properties (can be the data values themselves) in real life appear in original data with low probabilities. The results show that the proposed method does 6.3. Privacy under correlation-based and transform-based attacks most of the noise.
+
+Fig. 7 shows the steps in PCA-Radius and the steps of applying correlation based attack along with the transform-based applies a PCA over the reconstructed data, and selects the first s original data using inverse PCA. s 2 must be less than s because we want to filter out noise added to the remaining s s privacy).
+
+Three different scenarios are considered: (2) PCA + Filtering : this is the average privacy computed over PCA-Radius with the correlation based attack and the method that noise is distributed evenly to all principal components no longer holds.
+Radius) is not vulnerable to correlation-based attack and the protection is due to the PCA step. 6.4. Impact of modifications to KNN
+This section investigates the impact of proposed modifications to KNN in Section 5.3 on the accuracy of KNN miming. The proposed method (PCA-Radius) is compared with two methods below:
+All three methods use distance-weighted KNN because it gives higher accuracies than using normal KNN in all the this case.
+ degree of noise achieves similar accuracy as using more expensive cross validation to find the optimal k value.
+There are also a few cases when the accuracy of PCA-Radius exceeds the accuracy using the optimal k value for Waveform validation for all test cases.
+
+PCA-Radius avoids this problem by adjusting the radius of search space based on noise distortion. 6.5. Execution time
+This section reports the execution time of proposed method (PCA-Radius). We vary the number of attributes and the divided into the time to sanitize the data and the time of mining.
+ data.
+
+We also examine the average execution time of KNN mining for each test case. The time for our method (PCA-Radius with of attributes from 20 to 100. In Fig. 11 b, we fix the number of attributes at 100 and vary the number of records from 20,000 to 100,000.
+
+The results show that the mining time of PCA-Radius scales about linearly with the number of records and the number of attributes. It is higher than the mining time of basic KNN with k  X  5 because PCA-Radius needs to examine more nearest justified. We may further reduce the mining time using techniques that use additional index structures [7] . 7. Conclusion and future work
+This paper proposes a method to provide worst case privacy guarantees for distance-based mining algorithm. It extends and normal distributions, as well as the random projection method, do not provide worst case privacy guarantees. On the other hand, noise following Laplace distribution does give worst case guarantee. This paper then proposes a method that combines noise addition and transform methods to protect privacy for distance-based mining. It also proposes a method privacy compared to existing methods. Experimental results also demonstrate that dynamically adjusting nearest neighbor search space achieves similar accuracy as using cross validation to find the optimal value of k .
+Our future research plan is to study similar techniques to improve accuracy over other mining methods such as K -Means clustering. Appendix A. Computation of mean and variance of distance distortion A.1. Computation of mean distortion
+As shown in Section 5.3.1 , the distortion of square distances equals pruned components. d i is a random variable representing the noise added to the i th component. d bution with location parameter 0 and scale parameter b i .
+
+To compute the mean of distance distortion, the mean of d parameter b i is given by M  X  t  X  X  1 following moments: component scores of the data. The mean of X i and Y i are 0 due to the PC transform. Let r 2 cipal component score of the data ( r 2 i  X  k i , the i th eigen value of the covariance matrix). Hence the above stated facts and the expression for b D developed earlier, the next few lines calculate the mean of Removing the zero terms, the expected value of b D is as A.2. Computation of variance of distortion Let Thus
+The covariance terms vanish due to independence of X i ; Y Note that and Similarly Var  X  Y i d i  X  X  2 b 2 i r 2 i . Also note that Similarly Cov f 2 Y i d i ; d 2 i g X  0. Thus they are assumed to follow normal distributions with means 0 and small standard deviations r Var  X  X i Y i  X  2 where i 2 N . Expanding the expression Similarly Cov  X  Y 2 i ; 2 X i Y i  X  X  0. Thus
+With the Normality assumption, X 2 i r 2 Thus Finally
+References

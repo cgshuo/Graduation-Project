@@ -1,0 +1,29 @@
+ theory [5]. The divergence [17] measures the  X  X istance X  between two density distributions while mutual information measures the information one random variable contains about a related random among others.
+ mation for continuous random variables. The estimation of the divergence and mutual information true measure ratio or its log ratio.
+ k -nn density estimation.
+ of p ( x ) / the estimation of the differential entropy and mutual information.
+ mates of the divergence or mutual information perform, respectively, as well as the maximum mean discrepancy (MMD) test in [9] and the Hilbert Schmidt independence criterion (HSIC) proposed in [10].
+ independence of related random variables. Section 5 concludes the paper with some final remarks. is given by: if P = Q .
+ from a k -nn density estimate of p ( x ) and q ( x ) as follows: where r  X  to D ( P || Q ) , let us show an intermediate necessary result.
+ bution P , the limiting distribution of p ( x ) / x in the support of p ( x ) . within the support of p ( x ) .
+ ball centered in x , p ( x ) / infinity.
+ and the limiting distribution of p ( x ) / bution P , the limiting distribution of p ( x ) / for any x in the support of p ( x ) .
+ is a unit-mean and 1 /k -variance Erlang (gamma) distribution [14].
+ distribution P , then n  X  X  X  .
+ Proof. The k -nn in X tends to x as k/n  X  0 and n  X   X  . Thereby the limiting distribution of p ( x ) / distribution goes to zero and consequently D ( P || Q ) .
+ Now we can prove the almost surely convergence to (1) of the estimate in (2) based on the k -nn density estimation.
+ Theorem 1. Let P and Q be absolutely continuous probability measures and let P be absolutely from P and Q , then Proof. We can rearrange b D k ( P || Q ) in (2) as follows: b
+D k ( P || Q ) = almost surely to its mean, D ( P || Q ) .
+ The limiting distributions of p ( x i ) / by the law of large numbers [11]. Finally, the sum of almost surely convergent terms also converges almost surely [11], which com-pletes our proof.
+ The k -nn based divergence estimator is biased, because the convergence rate of p ( x i ) / q ( x i ) / the two-sample problem and decide if the samples from X and X 0 actually came from the same distribution. a random variable or the mutual information between two correlated random variables. The differential entropy for an absolutely continuous random variable P is given by: using k -nn density estimation as follows: where samples from P , then where and  X  1  X  = 0.5772 and it is known as the Euler-Mascheroni constant [12].
+ Proof. We can rearrange b h k ( x ) in (9) as follows: almost surely to its mean, h ( x ) .
+ The limiting distributions of p ( x i ) / pendent of i and p ( x ) (see Corollary 1). In the large sample limit: by the law of large numbers [11].
+ Finally, the sum of almost surely convergent terms also converges almost surely [11], which com-pletes our proof.
+ mation to their values. divergence to their limiting value as the number of samples tends to infinity and we compare the divergence estimation to the MMD test in [9] for MNIST dataset. In the second experiment, we compute if two random variables are independent and compare the obtained results to the HSIC proposed in [10].
+ for d = 1 and d = 5 in Figure 1 as a function of n , for k = 1 , k = k = from the plots it should be clear which confidence interval is assigned to what estimate. limiting distributions of p ( x ) / is much smaller than that provided by the estimates of the divergence with k = actually trying to estimate the true divergence, as theorized in [9].
+ Both divergence estimates for k = 1 and k = faster than that with k = than p ( x ) / than the to converge and even for small dimensions the number of samples can be enormously large. in the MNIST dataset (http://yann.lecun.com/exdb/mnist/) in a 784 dimensional space. In Figure values for 100 experiments together with their 90% confidence interval. For comparison purposes we plot the MMD test from [9], in which a kernel method was proposed for solving the two-sample problem. We use the code available in http://www.kyb.mpg.de/bs/people/arthur/mmd.htm and use k = the test based on the divergence estimate with k = 1 and we should expect better performance for larger n , similar to the divergence estimate with k = n/ 2 . (dotted). In (b) we repeat the same plots using the MMD test from [9].
+ any  X  .
+ described in [10] and we use the Mote Carlo resampling technique proposed in that paper with a for  X  =  X / 8 in (b). We compute the mutual information with k = 1 , k = test, and compare it to the HSIC in [10]. mutual information estimate with k = n/ 2 and the dash-dotted line uses the HSIC. The dashed and dotted lines, respectively, use the mutual information estimate with k = The HSIC test and the mutual information estimate based test with k = n/ 2 perform equally well estimates with k = 1 and k = mutual information for k = n/ 2 2 .
+ information (or the divergence). We have proved that the estimates of the differential entropy, mutual information and divergence scribing the limiting distribution of p ( x ) / using waiting-times distributions, such as the exponential or the Erlang distributions. entropy estimates using k = 1 are much better than the estimates using k = k = occur.
+ well as the MMD test for solving the two sample problem and the HSIC for assessing independence. Fernando Prez-Cruz is supported by Marie Curie Fellowship 040883-AI-COM. This work was par-tially funded by Spanish government (Ministerio de Educaci  X  on y Ciencia TEC2006-13514-C02-01/TCM.
+

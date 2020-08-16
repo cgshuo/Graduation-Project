@@ -1,0 +1,1 @@
+  X  Sparse GP classification  X  extend SPGP/FITC (Snelson and Ghahramani, 2005) to non-Gau ssian likelihoods: diagonal plus low-rank approximation to covariance  X  expectation propagation to refine Gaussian approximation: O ( N M 2 )  X  locate basis functions by optimizing the evidence  X  remarkable sparsity achieved for some old benchmark proble ms IVM

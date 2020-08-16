@@ -1,0 +1,65 @@
+ Renato Cordeiro de Amorim Successes and New Directions in Data Mining, is a fairly recent book, being published in late 2007, well presented with around 360 pages divided into 13 independent chapters, and although it has some editing errors, such as the table of contents not matching all chapters, and also grammar mistakes in some of the chapters, these are really minor and do not compromise the understanding or novelty of the work.
+
+Its stated goal is to provide theoretical frameworks and present challenges and their possible solutions concerning knowledge extraction, in other words the book attempts to provide a critical understanding of such frameworks to the reader with alternative solutions to common problems. As also stated, it aims at providing an overall view of the recent existing solutions for data mining with a particular emphasis on the potential real world applications.
+
+A common critique to books with such a wide goal is that it is very difficult, if possible, to fully accomplish the goal in a limited amount of pages with such an active research community.
+ In terms of content, the first chapter is entitled Why Fuzzy Set Theory is Useful in Data Mining and it presents a considerably easy to understand overview of fuzzy sets and demonstrates through simple examples how fuzzy logic can be used to avoid the (argued) issues related to the inadequacy of classical logic to some problems. It presents some interesting arguments such as that many features and patterns of interest are inherently fuzzy and modelling them in a nonfuzzy way will inevitably lead to unsatisfactory results and that the increased expressiveness of fuzzy methods is useful for both feature expression and dependency analysis.
+
+The Chapter aims to provide convincing evidence for the assertion that fuzzy set theory can contribute to data mining in a substantial way, but unfortunately it does not make a full cover in the differences of imprecision and uncertainty, which as explained by Almond ( 1995 ) are related to fuzzy logic (when it is not possible to accurately predict the behaviour of the average) and probability theory (when it is not known what it is going to happen in a single experiment but it is possible to accurately predict the behaviour of many similar experiments)
+The chapter would also benefit from further discussions about problems with fuzzy logic including for example what was argued by Wolkenhauer and Edmunds ( 1997 ), that there are no general rules to determine an optimal shape and position of the membership functions and that by consequence tuning and design is essentially a trial-and-error procedure.
+A discussion of other views of fuzzy logic such as truth not coming in degrees (Haack 1996 ) or that fuzzy logic is complementary to probability theory rather then competitive (Zadeh et al. 1996 ) would also enrich the chapter.
+ In its second chapter, entitled SeqPAM: A Sequence Clustering Algorithm for Web Personalization , introduces a comprehensible new algorithm for clustering of sequential data based in the PAM algorithm and presents very interesting results, the chapter also has a good discussion on differences of distance measures and even introduces its own sequence sensitive algorithm for measurement called S 3 M, which is then incorporated to the PAM algorithm replacing the ordinarily used cosine function.
+
+It claims that the presented solution generates better clusters and the question of what a  X  X etter cluster is X  is answered by the use of the average Levensthein distance index.
+Although the number of clusters was fixed, it is argued that it could have been calcu-lated using a presented cluster validity index, the work could also benefit from experiments with other algorithms that aim to find the number of clusters in a dataset perhaps variances of Intelligent K-Means Mirkin ( 2005 ) and Chiang and Mirking ( 2005 ) and the X-Means algorithm (Pelleg and Moore 2000 )
+The third chapter, Using Mined Patterns for XML Query Answering argues that XML requires large amounts of storage space and presents a graph based formalism for speci-fying patterns on XML documents, which is focused on compact representations derived from the extraction of association ruled from XML databases.
+
+Good results are presented and it is claimed it is useful when fast and approximate answers are required, or when the actual dataset is not available (for example: unreachable).
+
+It finalizes by informing that extensions for the language to deal with more complex queries and patterns are being considered for future work.
+ The fourth chapter, On The Usage of Structural Information in Constrained Semi-Supervised Clustering of XML documents presents an approach were the user can provide considerably less constraints to a semi supervised clustering algorithm and retain its ori-ginal quality.
+
+It is important to note that even so there is still some level of discussion regarding benefits of using constrained algorithms with claims these can produce significantly worst results that not using constrains at all (Wagstaff et al. 2006 ) and other who would disagree (Ng 2000 ; Wagstaff et al. 2001 ), the chapter not only presents a novel approach for XML documents but one that could be used in different domains.
+
+In the approach the user is allowed to define constraints at the metadata level thanks to its dual view of what an XML document actually is, a bag of words and a bag of multi valued categorical values, taking advantage of structural information associated with textual documents.
+ The 5th Chapter, Modelling and Managing Heterogeneous Patterns: The PSYCHO Experience , argues that pattern management is necessary to deal with these in an efficient and effective way, it acknowledges other scientific and industrial approaches and states that mostly of those can deal with a few types of patterns and mainly concerned with extraction issues.
+
+It is also argued that little effort has been posed in defining an overall framework dedicated to the management of different types of patterns and presents a pattern based system architecture prototype that provides an integrated environment to deal with dif-ferent types of patterns.
+
+The chapter provides several examples and identifies interesting future extensions from which the presented prototype would surely benefit.
+
+The 6th chapter, Deterministic Motif Mining in protein Database, presents a clear introduction to the problem of finding patterns in collections of protein sequences and reviews the subject of mining deterministic motifs.
+
+The protein sequence motifs employ enhanced regular expression syntax to describe certain regions of amino acids, the chapter goes then to make two very interesting argu-ments, firstly that these regions may have an implication at the structural and functional level of proteins and secondly that the analysis of sequence motif can bring significant improvements towards a better understanding of the protein sequence-structure X  X unction relation.
+
+The chapter also presents examples of applications, descriptions of motif repositories and how sequence motifs can be used to extract structural level information patterns
+The 7th chapter, Data Mining and Knowledge Discover in Metabolomics , provides an overview of the knowledge discovery process in metabolics giving the reader a good background in bioanalysis and makes this new subject understandable to people from other research fields. It does so by showing various data mining and retrieval procedures illus-trated by real examples from preclinical and clinical studies.
+
+It argues that innovative bioanalytical and data mining techniques will play a funda-mental role in saving costs by reducing the time to market and drug attrition rates having then the potential to revolutionize clinical diagnosis and dug development.
+
+The 8th chapter, Handling Local Patterns in Collaborative Structuring , is related to distributed media management and it argues that structuring large media collections has become an issue since personal media collections are locally structured in very different ways by different users and those tend not to want their own structure changed.
+Taking into account that the correct or optimal clustering of objects depends strongly on intentions and user preferences it concludes then that automatic structuring is not acceptable and presents a notation which allows the description of machine learning tasks in a uniform manner, not forgetting to keep the demands of structuring private in mind, an algorithm that not only solves the problem but outperforms standard clustering schemes on a real world dataset in the domain of music collections is presented.
+
+The interesting thing of the presented algorithm is that it does not change the user media structure but in fact learns from it allowing a non intrusive and distributed media man-agement to take place.
+
+The 9th chapter, Pattern Mining and Clustering on Image Databases , presents a survey in image data processing and argues that analysing and mining image data to derive potentially useful information is a very challenging task and that there is still little research with image frequent pattern mining.
+
+It also explains that one of the crucial tasks is to organise the large image volumes to extract relevant information and that in fact decision support systems are evolving to store and analyse these complex data. It also has interesting remarks of how promising unsu-pervised mining of patterns is in relation to detection and recognition of semantic concepts from images.
+
+It finalises by presenting some unanswered questions such as how do we detect patterns starting from images with heterogeneous representation? And how do we deal with patterns that may have relative sparse occurring frequencies? And new research direction con-cerning pattern mining from large collection of images.
+ The 10th Chapter, Semantic Integration and Knowledge Discovery for Environmental Research , presents a novel metadata approach used to elicit semantic information from environmental data, implementation and results of semantics based techniques to assist users in integrating, navigating and mining multiple environmental data sources were also presented.
+
+An interesting methodology for data navigation and pattern discovery using multires-olution browsing and data mining was also presented.
+
+The book X  X  11th chapter, Visualizing Multi Dimensional Data, is a quite interesting chapter and really relevant as surely most data mining problems fall into the multi dimensions realm, in fact it has been argued that data visualization as a whole is not only a aspects of data that are not revelled by standard statistical measures (Pastizzo et al. 2002 ).
+The chapter presents a well balanced survey of some existing methods for visualizing multidimensional data in sufficient depth, but restricted to numerical data as there is an issue of size, and elaborates its importance in the analysis of unknown data structures. It finalises presenting its own taxonomy.
+ The 12th chapter, Privacy Preserving Data Mining, Concepts, Techniques and Evaluation Methodologies , introduces to this new and necessary research field explaining the  X  X rivacy preserving X  problem and providing important concepts, techniques and examples. This is another really relevant chapter not only because of the important ethical issues raised by not preserving privacy of people but also because of laws such as the Data Protecting act in the UK.
+In the chapter it is argued that as with other kinds of useful technologies, the knowledge discovery process can be misused what has lead to a research effort to deal with such possible misuse.
+
+The chapter is well balanced, discussing not only the advantages but also the limitations of privacy preserving data mining techniques, also describing the types of techniques adopted to hide data (distortion, blocking, etc.) and concludes that there is a need to develop a new generation of algorithms as the ones we have today have a non-negligible impact on the data quality.
+
+The 13th and last chapter, Mining Data Streams, deal with another very interesting problem in data mining, the situations in which the information in each data record must be extracted in a limited amount of time and usually without the possibility of going back, as stated in the chapter, normally in such situations one cannot accumulate data and process it using standard data mining techniques.
+
+The chapter provides a good introduction to this field, showing and comparing some well known algorithms and finalizes with a discussion with possible future work in the area.
+To summarize, the book presents chapters that are not only relevant to the data mining research community but also, in some cases, introductory to new and necessary fields of research pointing whenever possible future trends.
+ References

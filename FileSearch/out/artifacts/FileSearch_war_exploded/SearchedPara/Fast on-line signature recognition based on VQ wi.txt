@@ -1,0 +1,138 @@
+ n , Carlos Vivaracho c 1. Introduction
+Handwritten signatures have a long tradition of use in com-monly encountered verification tasks such as financial transactions and document authentication. They are easily used and well accepted by the general public, and signatures are straightforward to obtain with relatively cheap devices. These are important advantages of signature recognition over other biometrics. Yet, signature recognition also has some drawbacks: it is a difficult pattern recognition problem due to possible large variations between different signatures made by the same person. These variations may originate from instabilities, emotions, environmen-tal changes, etc., and are person dependent. In addition, signatures can be forged more easily than other biometrics.
+
+The signature recognition task can be split into two categories depending on the data acquisition method:
+Off-line (static), the signature is scanned from a document and the system recognizes the signature, analyzing its shape ( Taylan Das and Canan Dulger, 2009; Frias-Martinez et al., 2006 ).
+On-line (dynamic), the signature is acquired in real time by a digitizing tablet and the system analyzes shape and the dynamics of writing, using for example: position with respect to the x and y axes, pressure applied by the pen, etc.
+Using dynamic data, further information can be extracted, such as acceleration, velocity, curvature radius, etc. ( Plamondon and
+Lorette, 1989 ). In this paper, we will focus on the online (dynamic) signature recognition task.
+
+For a signature verification system, depending on the test conditions and environment, three types of forgeries can be established ( Plamondon and Lorette, 1989 ):
+Simple forgery, where the forger makes no attempt to simulate or trace a genuine signature.
+
+Substitution or random forgery, where the forger uses his/her own signature as a forgery.
+
+Freehand or skilled forgery, where the forger practices imitating as closely as possible the static and dynamic information of the signature to be forged.
+
+From the point of view of security, the last one is the most damaging and, for this reason, some databases suitable for system development include some trained forgeries ( Ortega-Garcia et al., 2003; Yeung et al., 2004 ).
+
+The remaining sections of this paper will be devoted to the task of dynamic signature recognition. Section 2 looks at our proposal in greater detail, showing the similarities and differences with other related works. The experimental setup is shown in Section 3. The results can be seen in Section 4, as well as a comparison with other proposals. Finally, the conclusions and future work can be seen in
+Section 5. The VQ and DTW algorithms are shown in Appendices 1 and 2, respectively; the computation burden comparison between our proposal and the state-of-the-art system is shown in Appendix 3. 2. Signature recognition based on VQ rithms for on-line signature recognition.
+ algorithm outperforms HMM for signature verification ( Houmani et al., 2009 ). For this reason, we will use DTW as the baseline algorithm for performance comparison.
+ use five signatures per person, acquired during enrollment. DTW works out the distance between the test set of vectors and each of the five training sets.
+ programming. We compute five distances, each one being the result of comparing the test sequence with each of the five training repetitions. These five distances are combined using different approaches, such as min {}, mean {}, and median {}, in order to obtain the final distance. A more detailed explanation of VQ and DTW algorithms can be found in ( Faundez-Zanuy, 2007 ).
+ a small number of samples are available for training a model. This is the case with on-line signature recognition. VQ ( Faundez-Zanuy, 2007 ) does not model the temporal evolution of the signature because, when averaging the vectors, the time ordering is lost (the vectors are all mixed together, discarding the temporal instant of their generation). This is a drawback that can be solved in at least a couple of ways that we introduce next: (a) Theinclusionof temporalinformationoffeature vectors:oneof (b) Using a multi-section approach: This method is an improved 2.1. Proposed algorithm based on multi-section codebook approach temporal evolution of the signature. However, a simple model called the multi-section codebook ( Burton et al., 1983; Buck et al., 1985 ) was proposed in the mid-eighties in speech and speaker recognition. Although this approach was discarded due to the higheraccuraciesofHMM,weshouldtakeintoaccountthefactthat signature recognition differs from speech/speaker recognition, as the length of the training set is rather short and it is hard in this situationtoestimateanaccuratestatisticalmodel.Thisobservation is well known in the field of speaker recognition, where higher recognition rates using VQ, as compared with HMM, have been reported for short training/testing sets.
+
+The multi-section codebook approach consists of splitting the training samples into several sections. For example, Fig. 1 repre-sents a three-section approach, where each signature is split into three equal length parts (initial, middle and final sections). In this case, three codebooks must be generated for each user, each codebook being adapted to one portion of the signature. Each branch works in a similar fashion to the VQ approach, and the final decision is taken by combining individual contributions of each section by simple averaging.
+
+If the database contains P users and the splitter provides S sections we will have S codebooks for each person. Thus, we will have one codebook per person and section, named CB p , s for p  X  1,.., P and s  X  1, y , S .
+
+This proposal is a generalization of the VQ approach, which can be seen as a multi-section approach with just a single section. The multi-section system will be operated as follows. 2.1.1. User model computation
+For each person, we split the signature into S sections. We concatenatethefeaturevectorsres ultingfromeachofthefivetraining signatures belonging to the same section. Thus, we obtain S training sequences per person. In order to obtain one codebook per person and section, we have applied a codebook initialization plus Lloyd iteration for codebook improvement. Codebook initialization is obtained by splitting thesignaturein asmanysegments ofequallengthas thefinal number of centroids. One centroid per portion is obtained as the average of the points belonging to that segment. Our experimental results confirm that this approach offers similar results to the classic LBG algorithm, but with less computation time.
+
+Each person is thus modeled by a set of S codebooks. Fig. 2 schematically represents the process of splitting and generating the training sequences for a given user p . It is assumed that five signatures of the same person are used for training the user model.
+This strategy is similar to a constrained vector quantization approach named split-VQ (also known as partitioned VQ) ( Gersho and Gray, 1991 ). The simplest and most direct way to reduce the search and storage complexity in coding a high dimensional vector is simply to partition the vector into two or more sub-vectors. However, rather than splitting vectors, we split the training and Section 3 Section 2 Section 1 testing sequences into sections, which have the same original vector dimension. 2.1.2. User recognition
+The quantization distortion for a given signature and person p must be obtained by computing the combination of the distortions obtained for each part. This can be achieved by a generalization of the procedure described in Faundez-Zanuy (2007 ): dist the mean {} function. However, several combinations have been evaluated, as described in the next section.
+
+The individual d s values, for s  X  1,.., S and person p , are obtained by applying the equation d  X  where NNER is the Nearest Neighbor Encoding Rule ( Gersho and Gray, 1991 ). It is interesting to point out that I u ffi whole signature into S sections of equal length. 2.1.3. Multi-section distance fusion The combination techniques evaluated in the combiner block of Fig. 1 are as follows: Minimum value (min): dist p  X  min  X  d 1 , ::: , d S  X  . Maximum value (max): dist p  X  max  X  d 1 , ::: , d S  X  . since the number of sections is a fixed value.
+
+Product ( P ): dist p  X  log  X  P S i  X  1 d i  X  X  P S i  X  1 log d values, the log function was used.
+ Sum using Extreme Values (SEV): dist p  X  min  X  d 1 , ... , d max  X  d 1 , ... , d S  X  . The combination of extreme values, which has shown a good performance in previous works ( Vivaracho et al., 2003 ), was then tested here.
+
+Weighted sum, which can be with user independent weighting : dist p  X  P S i  X  1 c i d i and user dependent weighting: dist c p i d i . Both have been tested as follows:
+J Based on recognition errors : The idea is to reinforce those 3. Experimental setup 3.1. Databases
+Experimental results, obtained with two publicly available databases, have been achieved. 3.1.1. MCYT database
+We used our previous database MCYT ( Ortega-Garcia et al., 2003 ), acquired with a WACOM graphics tablet. The sampling frequency for signal acquisition is set to 100 Hz, yielding the following set of information for each sampling instant: (iii) pressure p t applied by the pen: [0 X 1024]; (iv) azimuth angle g t of the pen: [0 X 3600], corresponding to surements. We recruited 330 different users. Each target user produces 25 genuine signatures, and 25 skilled forgeries are also capturedforeachuser.Theseskilledforgeriesareproducedbythe5 subsequent target users by observing the static images of the signaturetobeimitated,tryingtocopythem(atleast10times),and then, producing valid forgeries in a relaxed fashion (i.e. each user acting as a forger is requested to sign naturally, without artefacts, such as breaks or slowdowns). In this way, highly skilled forgeries with shape-based natural dynamics are obtained. Following this procedure, user n (ordinal index) carries out a set of 5 samples of his/her genuine signature, and then 5 skilled forgeries of client n  X 1.
+Then, again, a new set of 5 samples of his/her genuine signature; and then 5 skilled forgeries of user n  X 2. This procedure is repeated by user n , making further samples of the genuine signature and imitating previous users n  X 3, n  X 4 and n  X 5. Summarizing, user n produces 25 samples of his/her own signature (in sets of 5 samples) and 25 skilled forgeries (5 forgeries of each user, n  X 1 to n  X 5). In a similar way, for user n , 25 skilled forgeries will be produced by users n +1 to n +5. 3.1.2. SVC database
+The sub-database released for Task 2 of the First international signature verification competition also includes the same five features as MCYT acquired by a WACOM Intuos graphic tablet with a sampling rate of 100 Hz.ThecompleteSVC database had 100 sets (users) of signature data, but just one subset of 40 users was made available for research after the competition.
+ thecontributors.Thereare 20genuinesignaturesperuser collected throughtwosessions,10signaturespersession,withaminimumof one week between sessions. Additionally, there are 20 skilled forgeries produced by at least four other contributors. The skilled forger was provided with a software animation viewer of the signature to be forged. Thus, in this work,we haveused a final set of 16,000 signatures (8000 genuine signatures plus 8000 skilled forgeries). This is about 10% of the MCYT database size. are mostly in either English or Chinese, and no  X  X eal X  signatures were used. Instead, the contributors were advised to design a new signature and practice it before the acquisition sessions. 3.2. Conditions of the experiments
+Training and testing signatures have been chosen in the following way: MCYT database SVC database
+However, further study needs to be done on whether this database can produce statistically significant results. In Guyon et al. (1998 ), the minimum size of the test data set N , which guarantees statistical significance in a pattern recognition task, is derived. The goal in this work is to estimate N so that it is guaranteed, with a risk a of being wrong, that the error rate P does not exceed the estimation ^ P from the test set by an amount larger than e  X  N , a  X  ; that is, Pr f P 4 ^ P  X  e  X  N , a  X g o a Letting e N , a  X  X  X  b P , and supposing recognition errors to be
+Bernoulli trials (i.i.d. errors), after some approximations, the following relationship can be derived:
+N ln a
+For typical values of a and b ( a  X  0.05 and b  X  0.2), the following simplified criterion is obtained: N 100 P
+If the samples in the test data set are not independent (due to correlation factors that may include variations in recording con-ditions, in the type of sensors, etc.), then N must be further increased. The reader is referred to Guyon et al. (1998 ) for a detailed analysis of this case, where some guidelines for computing the correlation factors are also given.
+
+Table 1 shows the number of tests done in each condition and, with 95% confidence, the statistical significance in experiments with an empirical error rate, down to ^ P . Thus, the experiments of this section are statistically significant, because our errors are higher than those shown in Table 1 .
+ 3.3. Feature selection
+The selection of an appropriate combination of features is fundamental in signature recognition, so the initial set of features provided by the tablet was optimized to improve the output of our system. We compared different combinations of features in the domain of the position and velocity, which have been shown to be the most decisive for signature recognition ( Pascual-Gaspar et al., 2009 ).
+
+We calculated the center of mass of each signature and displaced this point to the origin of the coordinates.
+Table 2 shows the results of the preliminary tests for feature selection. These tests were made with a codebook (single section) of 5 bits, and both substitution and skilled impostors. The symbols in the first column of the table have the following interpretation: x , y : geometric coordinates, p : pressure, g , j : angular features, dx , dy , dp , d g , d j : first temporal derivatives of previous features and t : timestamp.
+
+All features, including timestamp, were normalized through a statistical preprocessing based on the standard z -norm.
+As can be seen, with the same codebook configuration, results in error terms are strongly dependent on the features used. The feature set FS 1 , the default provided by the tablet, is significantly theworstofallthesets.Becauseofitsbetterperformancewithboth types of impostor, the combination finally selected was FS 3.4. Performance measure
+In identification, the % of signatures correctly assigned (% of success) will be shown.
+
+Verificationsystemscanbe evaluatedusingthefalseacceptance rate (FAR, those situations where an impostor is accepted) and the false rejectionrate (FRR, thosesituationswhere auser is incorrectly rejected), also known in detection theory as false alarm and miss, respectively. A trade-off between both errors usually has to be established by adjusting a decision threshold. The performance can be plotted on a ROC (receiver operator characteristic) or a DET (detection error trade-off) plot.
+
+However, for a better system performance comparison, the use of a single number measure is more useful and easier to under-stand. One of the most popular is the Equal Error Rate (EER), that is, the error of the system when the decision threshold is such that the
+FMR equals the FNMR. The EER will be the measure used in this paper.
+
+The EER can be evaluated with a different threshold for each user (Individual threshold, I ) or with the same for all (General threshold, G ). The latter is the less favourable case, due to the variability of the scores from one user to another. The first can be considered as the lower limit of the second. EER has been evaluated with both thresholds. 4. Experimental results 4.1. Verification task 4.1.1. Development set
+Fig. 3 shows the evolution of the results (EER in %) with respect to the codebook size for the single section VQ. Codebook sizes of 1, 2, 4, 8, 16, 32, 64, 128, 256 and 512 were tested.
+ Table 3 shows the results with the multi-section approach.
+Multi-section sizes from 2 to 8 were tested. Column Sec shows the number of sections, FT shows the Forgery (R: Random and S: Skilled) and Threshold (I: Individual and G: General) types. The rest of the columns show the fusion techniques tested (see Section 2.1.3). The row CB shows the optimal codebook size (that with the best performance) for each number of sections and combination technique. The best results are emphasized in bold.
+ sections, being close to those obtained with a single VQ. The greater the number of sections, the worse the results. With respect to the combination techniques, the weighted sum ones proposed workwell,butdonotsignificantlyoutperformthesum andproduct techniques.
+ sets, from the results of this section: directly affected by codebook size, rather than the number of codebook sections. This is due to the direct proportionality between the number of vectors inside a codebook and the time required to find its nearest neighbor. For example, a multi-section approach of two sections and 4 bits per section is two times faster than a single codebook with 5 bits. In this case, the total number of vectors is the same (2 4 +2 4  X  2 5 ), but the required time to find a nearest neighbor is only half the amount, because multi-section only requires 2 4 vector distance computation for each vector to be quantized. In addition, a multi-section approach can model the time evolution, as it splits the signature into initial and final parts, while the single section mixes both parts. 4.1.2. Test sets
+Tables 4 and 5 show the results with the TS1 (MCYT database) and TS2(SVC corpus),respectively.The DS has beenused to achieve the coefficient values for the WSRE fusion technique.
+
+The results with the MCYT corpus are similar to those achieved with the development set, getting worse with random forgeries, which is common when the database increases in size.
+
+However, with the SVC database, the best results are achieved with the multi-section approach, more specifically with 2 sections, although the results with a single section are very still good.
+From the results in the tables, it is difficult to choose an optimum system configuration. However, as can be seen in the next section, all the results achieved are very competitive with regard to those achieved with other proposals, while the system requirements are much lower. 4.2. Identification task 4.2.1. Development set
+Fig. 4 shows the identification rate with respect to the codebook size with a one section VQ. The same codebook sizes as in the verification task have been used.
+ Table 6 shows the results with the multi-section approach. The
+Sec column shows the number of sections. The other columns show the fusion techniques tested (see Section 2.1.3). The row CB shows the optimal codebook size (that with the best performance) for each number of sections and combination technique. The best results are emphasized in bold.
+
+From the results in Fig. 6 and Table 6 we can conclude that, as in the verification task, the multi-section does not outperform the results with the single section. However, with multi-section, the same best results are achieved with fewer vectors in the codebook: 64 in the one section VQ, 32 in the two sections VQ and 16 in the three sections VQ; then, the smallest number of distances calcula-tion (smallest CB) is achieved with the three sections VQ.
+This tendency of getting good results with fewer vectors in the codebook, while the number of sections is increased, can also be seen in the rest of the results of Table 6 . It was therefore considered interesting to test the multi-section with the TS.
+
+With regard to the fusion techniques, the Sum , WSRE and WSSE are the best. The speed in the response is very important in identification, so the simplest, the Sum , was used with the TS. 4.2.2. Test set 8, 16, 32 and 64 and 1, 2 and 3 sections for MCYT and 1, 2, 3, 4 and 5 for SVC; greater sizes of both parameters do not outperform the results shown. The first thing to be emphasized is the very good system performance: 99.76% of correct identification is achieved with the MCYT TS and 100% with the SVC database.
+ the number of sections, the smaller the codebook size needed to achieve better performance. Table 7 shows a summary of this, since the best results achieved with each number of sections and the corresponding codebook size are shown. As can be seen, the use of multi-section supposes a reduction in the number of distances calculation (proportional to the codebook size), thus improving the speed of the system without performance reduction with SVC, and with a very small one with MCYT. 4.3. State-of-the-art comparison with the MCYT and SVC databases, respectively. In these tables, the best performance achieved and brief descriptions of the main characteristics of each proposal are shown. Nevertheless, it is important to emphasize that straightforward comparison is not always possible. This is due to different training and testing conditions (which sometimes remain unclear) of different papers.
+It can be seen that our system, in general, outperforms the state-of-the-art scores, more so taking into account the fact that the results shown in the tables are the best achieved in each work. Only very complex systems ( Garcia-Salicetti et al., 2007 ), using fusion of classifiers and more features, outperform our proposals X  perfor-mance. We think that our proposals X  results would also improve if score normalization were applied. Although this is far from the scope of this work, it may be an interesting future work. 5. Conclusions
+Inthispaper,wehaveproposedseveralVQbasedapproachesfor on-line signature recognition. These algorithms enable us to take into account the temporal evolution of the signature, and obtain a significant improvement in speed when compared with the state-of-the-art algorithms. This improvement is due to the lower computational burden of the VQ approach, which has been neglected for signature recognition so far; although it has proven useful in the past for other biometric traits, such as speech, especially for short training and testing sets.
+
+Experimental results on MCYT and test sets reveal a very competitive performance: Identification rates up to 99.76%.
+
+EER equal to 0.23% (individual threshold) and 0.68% (general threshold) for random forgeries.
+
+EER equal to 2.46% (individual threshold) and 4.92% (general threshold) for skilled forgeries.
+
+Experimental results on SVC reveal the same competitive results: Identification rates up to 100%.
+
+EER equal to 0.000% (individual threshold) and 0.31% (general threshold) for random forgeries.
+
+EER equal to 5% (individual threshold) and 15.5% (general threshold) for skilled forgeries.
+
+In addition, our system improves the database storage require-mentsduetovectorcompression,andismoreprivacy-friendly,asit is not possible to recover the original signature using the codebooks.
+
+In the appendices, we demonstrate that VQ is around 47 times faster than the classic DTW algorithm, which provided verification errors of 1.4% (random forgeries) and 5.4% (skilled forgeries) over the MCYT database, when using a general threshold ( Faundez-Zanuy, 2007 ).
+ Appendix 1. VQ algorithm
+Given a distance measure between vectors i and j , such as, for instance, the Euclidean distance: D  X  i , j  X  X  99 i j 99 2  X  1  X 
+The distance between a codebook and a candidate X  X  signature can be computed using the following algorithm:
+Initialization: Recursion: Termination The best match has a cost of ~ D .
+ Appendix 2. DTW algorithm
+To find the optimal path to i k , j k  X  X  , we simply take the minimum over-all distance predecessors: D The simplest case corresponds to three predecessors.
+
+The distance between a reference signature and a candidate X  X  signature can be computed using the following algorithm: Initialization: Recursion: Next i Termination
+The best path has cost: ~ D  X  min
+This notation is consistent with that provided in Deller et al. (1987 ). A complete explanation of this dynamic programming technique is beyond the scope of this paper.
+ Appendix 3. Computational burden comparison In this appendix we compare the computational burden of the
+DTW algorithm and the proposed codebook approach. We use the following nomenclature: J is the average single-signature reference template length. I is the candidate X  X  signature length.
+ K is the number of reference templates per user.
+
+L is the number of vectors inside the codebook for the VQ approach.
+ S is the number of sections in the multi-section VQ approach.
+In our experiments, we have set K  X  5, and in our database (MCYT), the average length per signature is J  X  454 vectors.
+It is interesting to observe that, due to the vector quantizationof the K reference templates per user, the number of reference vectors has been significantly reduced for the VQ algorithm, since all the reference signatures have been clustered together in a single codebook per user. For a codebook of 4 X 7 bits, we get L  X  16, 32, 64and128vectors,respectively,whiletheoriginalaveragenumber of vectors per signature is 454. In addition, for DTW, the procedure must be executed for each reference signature per user (in our experimental data we have used K  X  5). Thus, even for a 7 bit codebook, the VQ approach requires approximately 18 times (5 454/128) less data to be dealt with.
+
+Dynamic time warping requires the computation of KIJ distance measures. However, the search region can be restricted to a parallelogram region with slopes 1/2 and 2. Search over this parallelogram requires about O KIJ = 3 distance measures to be computed and the DP Eq. (2) (see Appendix 1) to be used about
+O KIJ = 3 times. This latter figure is often referred to as the  X  X umber of DP searches X  ( Deller et al., 1987 ).
+
+VQ requires the computation of O( IL) distance measures. It is interesting to observe that the number of computations is the same for VQ and multi-section VQ, because the unique difference between them is the change of codebook, depending upon which section a given vector belongs to. Taking into account that each DTW distance computation requires the computation of at least three distances between vectors, we can establish that
+VQ is approximately 47 times faster than DTW (for a codebook of 4 bits).
+
+In terms of database storage requirements, DTW implies the storage of the whole set of reference signatures, which implies KJ vectors per user. VQ requires L vectors per user, where L is the number of vectors inside the codebook, and this figure must be increased by the number of sections for the multi-section VQ approach.
+ requirements.
+ References

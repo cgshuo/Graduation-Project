@@ -1,0 +1,28 @@
+ [ consistency of Algorithm 1. (2011).
+ cases follows similarly (e.g. see Anandkumar et al. (2011)). tance metric as d determinant can be alternatively defined in the following limit form: Note that if m = p then | B | + = | B | .
+
+Thus, our distance metric can be further rewritten as: d  X  i  X  j  X  k  X  i  X  j  X  k  X  i  X  j  X  k Due to Assumption 1, Thus, (i.e. we can move C &gt; i | j, x the to the front). are square, we get
+Furthermore, note that
+This gives,
+Substituting back into Eq. 1 proves that d similarly.
+ Due to Assumption 1,
+Thus, via Sylvester X  X  Determinant Theorem as before, are square, we get
+Furthermore, note that
+This gives,
+Substituting back into Eq. 1 proves that d Case 3: i  X  j  X  k The same argument as case 2 holds here. examples ( w ( i ) , x ( i ) ) being generated from the model in  X  2. to examples in D in order to estimate a given covariance matrix. should be decreased at a certain rate to reduce the bias. We then define the following kernel: following quantity: x .
+ in w (i.e. we assume that the embeddings are bounded vectors). Then, for a fixed tag sequence x , and any &lt;  X   X  ( x ) 2 : with probability 1  X   X  .
+ Then we have the following theorem.
+ Theorem 1. Define where u ( x ) is the correct tree and u 0 is any other tree. Then with probability 1  X   X  ,  X  u = u ( x ) .
+ Proof. By Lemma 1, and this choice of N and  X  , are adjacent in u .
+
+Recall the formulas for d ( i,j ) (from the main paper):  X  leaf edge:  X  internal edge: 4 | ` ( x ) |4 ( x )  X  u  X  X  . Thus, tree. Putting the results together proves Lemma 2.
+ Then for a fixed tag sequence x and  X  j,k  X  ` ( x ) , with probability 1  X   X  .
+ Proof. Define the quantity, Note that via triangle inequality, et al., 2010) and is in Utility Lemma 1.
+ close to the true mutual information.
+ Lemma 4. Assume that Then, Proof. By triangle inequality, nition of  X  m (  X  ) , and triangle inequality we have that, Weyl X  X  Theorem. Assume first that Similarly, when Using the fact that  X   X   X  ( x ) 2 we obtain that, As a result, Repeating this for the other terms in Eq. 34 gives the bound. Utility Lemma 1.
+ Proof. The proof uses the technique of Zhou et al. (2010). size under the smoothing kernel.
+ Using Hoeffding X  X  Inequality, we obtain that
+Note that where | b  X  x ( j,k ; a,b )  X  e  X  x ( j,k ; a,b ) | .
+ The second term is bounded by Eq. 36. We prove the first term below.
+For shorthand, refer to P ( k P For every  X  &gt; 0 , by Markov X  X  inequality, From Utility Lemma 2, we can conclude that Setting  X  = 4  X   X  2 , gives us that e.g. Casella and Berger (1990).
+ Utility Lemma 2. Suppose that E ( X ) = 0 and that a  X  X  X  b . Then

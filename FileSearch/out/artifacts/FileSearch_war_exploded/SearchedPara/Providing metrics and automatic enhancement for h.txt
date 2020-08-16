@@ -1,0 +1,58 @@
+ 1. Introduction before publishing them, or where automatic taxonomy machine-learning requires identifying a suitable option among  X  and sketch how it can be deployed in the context of the knowledge models development. We present and illustrate an algorithmic methodology for building taxonomies with formally specified content. lines how the work can be integrated in an incremental knowledge development process. Section 6 concludes with a discussion of future extensions to this work. 2. Related work Taxonomies are envisioned to be developed by domain experts having limited or no skills in knowledge engineering. these to support a domain expert improves his knowledge engineering outcome, the taxonomy. Faltings, 2007; Beydoun et al 2011). 3. Modelling maintainable taxonomies define a taxonomy. We first introduce definitions 1 and 2 to formalise attributes requirements: defined as V n xV n ? F and such that the following conditions hold: (i) c  X  A. (ii) Cardinal(F) P 1 where Cardinal(F) refers to the number of elements in F. (iii) {c} POSSIBLE_VALUES (c, A) = / . (iv) {a} POSSIBLE_VALUES (c, A) = / .
+ bute. This leads to Definition 2: a_abstraction (c,a) , is defined as follows: where F is defined according to Definition 1 and holding that Cardinal(F) &lt; d &lt; D; F {N,Z} means that F has countable infinite elements; and F {Q,R} means that F has uncountable infinite elements .
+ to be an abstract attribute.
+ To formalise notions used to describe individual concepts, definitions 3 to 5 are introduced: let V be the alphabet used to form both terms a and c ; and let n be the maximum length allowed for the terms. The concept.
+ element of IN(c) in Cardinal(IN(c)) .
+ abstract (concept), if 9 x IN(c) , a_abstraction (c,x) &gt;1.
+ be incompletely defined, written incomplete_instance(c) , if the following conditions hold: (ii) Cardinal({x s.t. POSSIBLE_VALUES(c,x) = {unknown}) &lt; Cardinal(IN(c)).
+ 6 and 7 are introduced: hold: (i) IN(c 0 ) IN(c). (ii) x ( IN(c 0 ), a_abstraction(c,x) 6 a_abstraction(c 0 ,x). of the concept  X  X  X ruck X  X  are {number_of_wheels, capacity_of_load, trademark}.
+ POSSIBLE_VALUES(bicycle, number_of_wheels) = 2 .
+ POSSIBLE VALUES(bicycle, capacity_of_load) = 200 kg .
+ POSSIBLE_VALUES(bicycle, trademark) = {Any string} .
+ POSSIBLE_VALUES(bicycle, number_of_passengers) = {1,2} .
+ POSSIBLE_VALUES(truck, number_of_wheels) = {4,6,8} .
+ POSSIBLE VALUES(truck, capacity_of_load) = 100,000 kg .
+ POSSIBLE_VALUES(truck, trademark) = {Any string} .
+ lower(truck,vehicle) . Therefore: upper_context(car,C) = upper_context(bicycle,C) = upper_context(truck,C) = {vehicle} . lower_context(vehicle,C) = {bicycle,car,truck) . lower_context(bicycle, C) = lower_context(car,C) = upper_context(truck, C) = / . taxonomies: written well-connected(C) , if the following conditions hold: (i) x ( C, categorical_context(x,C)  X  / ; and (ii) y ( C s.t. top_level(y,C).
+ SC . The upper level set of concepts for S in C , written upper_set(S,C) is defined as S level set of concepts for S in C, written lower_set(S,C), is defined as S defined for S in C , written well-defined(AX,S,C) if the following conditions hold: (i) x S, abstract(x) ; and (ii) scope(lower_set(S,C), AX). where scope(y,z) stands for the logical sentence  X  X he set of concepts y hold the axiom z  X  AX&gt; .
+ touring_bicycle, family_car, sportwagon}, and let S be the set {mountain_bicycle, car} .
+Then: categorical_context(vehicle,C) = {bicycle, car, van, truck}  X  / categorical_context(bicycle,C) = {vehicle, car, van, truck}  X  / categorical_context(car,C) = {vehicle, bicycle, van, truck}  X  / categorical_context(van,C) = {vehicle, bicycle, car, truck}  X  / categorical_context(truck,C) = {vehicle, bicycle, car, van}  X  / top_level(vehicle,C) holds.
+
+So, well-connected(C) holds. sportwagon} . Let S 0 be {car} . Then, the axiom A =  X  X  X he maximum number of car passengers is 8 X  X  is a well-defined one . We can also define a taxonomic structure as follows: touring_bicycle, family_car, sportwagon, sport_car}, { X  X  X he maximum number of car passengers is 8 X  X  X &gt;. applied. This is also shown in the next section. 4. Modelling taxonomy quality and algorithmic evaluation of taxonomies concept following Aristotle-based terminology in order to precisely classify concrete/abstract entities. 4.1. Modelling quality features following: with the following property: (i) 8 c 2 C, 8 a 2 IN(c), (ii) POSSIBLE_VALUES(c,a) = S
+Closest_upper(c 0 ,c) if all the following conditions hold: (i) IN(c) = IN(c 0 ); (ii) x ( IN(c), a_abstraction(c,x) 6 a_abstraction(c 0 ,x); and (iii) Cardinal({x ( IN(c) s.t. a_abstraction(c,x) &lt; a_abstraction(c 0 ,x)}) = 1 .
+Similarly, Closest_lower(c 0 ,c) can be defined as holding the following conditions: (i) IN(c) = IN(c 0 ); (ii) x ( IN(c), a_abstraction(c,x) P a_abstraction(c 0 ,x); and (iii) Cardinal({x ( IN(c) s.t. a_abstraction(c,x) &gt; a_abstraction(c 0 ,x)}) = 1. abstraction. The more levels of abstraction (including that of instances) in a taxonomy, the better it is. instance(x). T is said to be abstract, written abstract_t(T) ,if 8 x C,abstract(x) . car) are true.
+ c_instantiated(T), if the following holds: Otherwise, T is said to be partially instantiated, namely,
+T is partially instantiated, written p_instantiated(T), if stances with respect to the set of abstract concepts situated at the lowest abstraction level: instance(x)} .
+ whereas lower(mountain_bicycle) = lower(racing_bicycle) = / . So, degree_inst(T) = 2/3 = 0.66 . child concepts. A category is complete if all its concepts are complete.
+ ( x C s.t. upper ( x, c 0 ) upper ( x, c )).
+ ABSTRACT(C) = {x ( C s.t. abstract(x)} = {vehicle, bicycle, car} .
+ Children(car) = {sport_car, family_car} then Cardinal(children(car)) = 2 .
+ Children(bicycle) = {racing bicycle, mountain_bicycle} then Cardinal(children(bicycle)) = 2 . Then C is a well-built TAX .
+ cepts a taxonomic ontology contains.
+ Example. ABSTRACT(C) = {x C s.t. abstract(x)} = {vehicle, bicycle, car} nal(ABSTRACT (C))/ Cardinal(CHILDREN(C)) = 3/6 = 1/2 .
+ by humans or software agents. 4.2. Bottom up taxonomy construction following:
+For every well-defined concept, c , selected by the user: 1. Generate closest_Upper ( CURRENT_PARENTS, c )/  X  per definition 13  X  / 3. If TOTAL_UP =  X  check each new concept to be formed, c 0 ,c e closest_down ( c 0 ). As follows: That is TOTAL_UP is the following procedure: 4.3. Top down taxonomy construction the following:
+For every user-selected well-defined concept, c: 1. Generate closest_lower ( CURRENT_CHILDREN ,c)/  X  per definition 13  X  / 4.4. Fully automatic taxonomic ontology building
+Our algorithm proposed to build the ontology is the following: 1. Get the first well-defined concept ( c ) from the user through procedure acquireConcept (see below) 2. Set of current concepts ( C )= c 3. While user enters concepts do Where acquireConcept is the following procedure: And acquireAttribute and validAttribute are the following:
+Procedure acquireAttribute
+Procedure validAttribute 5. methodology application in the road safety domain
+We illustrate our enhancement methodology with an example. Three concepts and their corresponding attributes (shown in italics) are used: Vehicle : Number_of_wheels: N {0} .
+ Car : Number_of_wheels: 4; Load_capacity: 1000 kg; Trademark: Any string; Number_of_passengers: {1,2,3,4} . (m/s 2 ): less than one ( 6 1) .
+
+The above concepts are our input and are supposed to belong to the same taxonomical structure so that the links be-of vehicle X  X .
+ is a type of car X  X  will have to be made explicit.
+ Let X  X  suppose now a new concept is input by the user: path .
+ single value (2): path .
+ dem  X  X . The final taxonomic structure of the ontology is shown in Fig. 1 .
+ to fix and rebuild a malformed taxonomy. This usage is illustrated in the rest of this section. We use as an example the taxonomy shown in Fig. 2 and assume that its concepts have the following attributes: Road_sign : Shape: unknown; Colours: unknown; Message: unknown .
+ Prohibition : Shape: round; Colours: red, white and black; Message: unknown .
+ 120 Km/h .
+ Speed_limit : Shape: round; Colours: red, white and black; Message: unknown; Maximal_speed: unknown . Obligation : Shape: unknown; Colours: blue and white; Message: unknown .
+ Obligatory_direction : Shape: round; Colours: blue and white; Message: unknown; Direction: unknown . The taxonomy of Fig. 2 is enhanced to produce the well-defined taxonomy shown in Fig. 3 . 5.1. Deployment Guidelines of the evaluation framework
+The taxonomy development support framework we provide can be used as a complementary tool to support and monitor an incremental taxonomy development process. It can be used to ensure that taxonomies are delivered and ready to use, without the need for a separate testing phase. Operating during the development of the taxonomy, the framework has the added advantage that it makes use of domain experts when they are already available. It therefore the respective case was added. Viewed across the entire development of the taxonomy, we see s misclassified cases ments to the taxonomy. In particular, the monitor module requires information on how the data stream is interleaved with the taxonomy development. Special cases that trigger amendment to the taxonomy need to be time stamped to enable the sequence regeneration and analysis. 6. Discussion and future work
+We present in this paper a methodology to construct ontologies as well as a formal approach where the user can which are defined through their corresponding valued attributes. Similarities between concepts are measured through top-down and bottom-up approaches to concept discovery during the construction process. This work is of particular significance to incremental approaches to knowledge models development e.g. in medical systems (Compton, Peters est down X  X  concept is generated. We adopt both top-down and bottom up concurrently, accommodating human tenden-spite the significance of taxonomies in many software applications, to support the development of a wider range of tend the algorithm presented to include other types of semantic relations such as mereology or topology as further work. Another extension we are considering is to combine the approach here presented, with the evaluation of inte-grated ontologies from multiple sources as we had illustrated earlier in ( Beydoun, 2009; Beydoun, Gonzalez-Perez, et al., 2006 ).
+ Acknowledgments
+This work was supported in part by the Spanish Government (under projects TIN2006-14780 and PT-2006-055-24ICPP and the Region of Murcia under project BIO-TEC 06/01-005) and Australian Research Council (Grant DP1112378) Appendix A
+OWL implementation of the  X  X  X ehicle X  X  ontology.
+A road sign taxonomy.
+The corrected road sign taxonomy. References

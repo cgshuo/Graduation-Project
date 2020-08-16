@@ -1,0 +1,86 @@
+ 1. Introduction ing trend analysis.
+ individuals right to privacy and the society X  X  need to know and process information X  [23]. cannot, however, be allowed to glean the salary of any one employee in particular. values y i are real numbers. With a max or a min query, the user determines the max (or min) y database. In an on-line max and min auditing problem, given a set of max and min queries f q ing answers f m 1 ; m 2 ; ... ; m t 1 g and the current query q privacy breach.
+ probabilistic inference on the BN, the auditor decides whether or not to answer the query. vides concluding remarks and directions for future work. 2. Related work available to researchers (see [20,28,30] ).
+ [2,3,8,9,11] ).
+ vacy is not breached. None of the answers to legal queries are perturbed (see [13,26,10,12] ). compromised when answering a new query.
+
+Off-line auditing . Given a set of queries f q 1 ; ... ; q answered simultaneously without compromising the SDB.
+ In particular, we deal with the on-line auditing problem.
+ the classical definition of privacy and under the probabilistic one [21]. tribution of probability of sensitive data.
+
+In this paper we add the following contributions: we provide a formal base for probabilistic auditing; we optimize the model in terms of conditional probability table size; we consider the case in which a denial leaks information; we model the case in which the probability distribution of the sensitive field is known; we improve the probabilistic definition of privacy, comparing user knowledge after f q after f q 1 ; ... ; q t g ; probability to deny. 3. Notation and preliminaries We assume that: T is a table with n records; K  X f 1 ; 2 ; ... ; n g ;
+X and Y are two fields of T such that the elements of X represented by x tifies uniquely a subject) and the elements of Y , represented by y the sensitive field Y has r distinct values  X  r 6 n  X  ; the private information takes the form of an association,  X  x an l-query q is a subset of K , that is q  X f i 1 ; ... i l the terms query and l-query interchangeably; the answer corresponding to a max query q is equal to max f y the answer corresponding to a min query q is equal to min f y m is the answer to a max or a min query; l  X j q j &gt; 1, because if q  X f i 1 g , clearly, y i
+Refs. [18,21] define, for each element y i , with i 2 K , the upper bound l
+Definition 3.1. 8 y i ; l i  X  min f m k j i 2 q k with q k queries containing i .
+
+In other words, l i is the best possible upper bound for y ilarly, the lower bound k i is defined as follows:
+Definition 3.2. 8 y i ; k i  X  max f m k j i 2 q k with q k queries containing i .
+ We consider the following definition of probabilistic compromise: 4. A Bayesian model for on-line max and min auditing
+Let q  X f i 1 ; ... ; i l g be an l -query and m  X  max f y m then the user knows that: i 2 q , and determine the probabilistic dependencies among the sensitive values in q .
+Proposition 4.1. Let q  X f i 1 ; ... ; i l g # K, then, 8 i (1) then he knows that: each y i y the event space is X  X f X  y i Thus, 8 i j 2 q , the following probabilities hold: Because the user knows the relation (2) then the event space changes into with j X 0 j X  2 l 1.
+ By (8), starting from (6) and (7) , the relations (3) and (4) are achieved. h it has verified one of the following cases: 1. y 1  X  8 ; y 3  X  8; 2. y 1 &lt; 8 ; y 3  X  8; 3. y 1  X  8 ; y 3 &lt; 8.
+
+Therefore, j X 0 j X  3 and the user knows: P  X  y i that it has verified one of the following cases: 1. y 1  X  8 ; y 2  X  8 ; y 3  X  8; 2. y 1  X  8 ; y 2  X  8 ; y 3 &lt; 8; 3. y 1  X  8 ; y 2 &lt; 8 ; y 3  X  8; 4. y 1  X  8 ; y 2 &lt; 8 ; y 3 &lt; 8; 5. y 1 &lt; 8 ; y 2  X  8 ; y 3  X  8; 6. y 1 &lt; 8 ; y 2  X  8 ; y 3 &lt; 8; 7. y 1 &lt; 8 ; y 2 &lt; 8 ; y 3  X  8.
+
+Therefore, j X 0 j X  7 and the user knows: P  X  y i
+Corollary 4.1. Let q  X f i 1 ; ... ; i l g # K, then, 8 i j Proof. By (3) and (4) of Proposition 4.1 . h
+Proposition 4.2. Given q  X f i 1 ; ... ; i l g such that m m q 0  X  max f y i s j i s 2 q 0 g X  m, then, 8 i j 2 q n q 0 :
+Proof. If m q 0  X  m then m q n q 0  X  max f y i and the proposition is achieved. h
+Example 4.3. Given q  X f 1 ; 2 ; 3 ; 4 ; 5 g and m q  X  max f y
+P  X  y i
+Proposition 4.3. Given q  X f i 1 ; ... ; i l g such that m m  X  max f y i s j i s 2 q 00 g &lt; m, then, 8 i j 2 q n q 00 :
+Proof. If m q 00 &lt; m then m q n q 00  X  max f y i proposition is achieved. h
+Example 4.4. Let q  X f 1 ; 2 ; 3 ; 4 ; 5 g ; if the user knows that m
+P  X  y 4.1. Bayesian networks and temporal transformation query; this BN computes all the probabilities and dependencies among variables described above. parents  X  X  X  , and the number s j of parent states, in the following way: means of a temporal transformation as shown in Fig. 1 .
+
+Given a max query q  X f i 1 ; ... ; i l g with answer m , for each y
+Eqs. (3) and (4) of Proposition 4.1 . Therefore, each node in the BN will have two states: r case in which the corresponding variable is less than m and r equal to m . As a consequence: the CPT for a node encoding a sensitive variable y i because a node encoding a binary max query has two parents, then its CPT has size equal to 2 linearly with the size of the query: for y 1 and y 2 , the probabilities given by (3) and (4) , and, for y compute, for y 3 , the probabilities given by Proposition 4.3 . y , the probabilities given by Proposition 4.3 . 4.2. On-line max and min auditing
+Z  X f z 1 ; ... ; z n g is a permutation of Y  X f y 1 ; ... ; y and 3.2 ).
+
+Given f q 1 ; q 2 ; ... ; q t g a set of max and min queries already submitted and f m is such that: a node encoding the sensitive variable z i , with i 2 T t if 9 i 2 K j i R T t k  X  1 q k , then there is not a node encoding the sensitive variable z a binary max node with value equal to M has two states: r a binary min node with value equal to m has two states: r
+Our model is able to: 1. deny when the privacy is breached (Definition 3.3 ). See Example 4.7 ; 2. deal with  X  X  X uplicate values X  of the sensitive field in an efficient way. See Example 4.8 . In the following examples, we consider Table 1 .
+
+Example 4.7. Let tol  X  0 : 8 be the tolerance value. If the user submits the max query q q
+P  X  z the node encoding z 2 has three states because it is in a max and in a min query.
+Example 4.8. Let tol  X  0 : 9 be the tolerance value. If the user submits the max query q answers to the queries, the user also knows that max f z 3 need to add the corresponding node, because the information is already captured by the model. 5. Improving the model breached under Definition 3.3 .
+ inition of probabilistic compromise that compares user knowledge after f q 5.1. Dealing with implicit delivery of information deriving from denial breached then the denial to the second query reveals that z the underlying data. Thus, the decision to deny or answer the current query q m .
+ fore, the auditor denies the answer to a query in the following cases: 1. the privacy is breached (see Definition 3.3 ); 2. there is at least an index i 2 K for which P  X  z i  X  x j m
+P  X  z i  X  x j m 1 ; ... ; m t  X  denotes the probability that z 3. there is at least an answer m t consistent with previous answers m least a sensitive value z i , even if the actual value of z t queries f q 1 ; ... ; q t g , it results P  X  z 4  X  8 j m auditor provides the answer. If, after t  X  1 queries f q 1 privacy is breached (because z 5  X  4) and the auditor has to deny the answer.
+In this case, the user can ask why the auditor provides the answer when P  X  z
+P  X  z 5  X  4 j m 1 ; ... ; m t  X  1  X  X  0 : 85 and he can infer that z the privacy is not breached.
+ user submits the max query q 2  X f 1 ; 2 g and the auditor provides the answer m query q 3  X f 2 ; 3 g then the auditor has to deny the answer because if he provides the answer m
+In this case, the user can ask why the auditor provides the answer to q m &lt; 9 and z 1  X  9. Therefore, in our approach, because if m disclosed, then the answer to q 2 is denied even if, with the actual data  X  m 5.2. Dealing with user background knowledge which we recall the definition: variable X . For every real number x , the CDF of X is given by: probability that X lies in the interval ( a , b ] is therefore F sensitive field, and gives the answer otherwise.
+ sensitive field is public, and in particular it is known to the user.  X  R 2  X  0 : 993  X  . Let tol  X  0 : 8 be the tolerance value. Given the max queries q m  X  m 1  X  m 2  X  6100.
+
+BN is in the state of Fig. 8 b. Therefore, the auditor knows that the private association  X  x
+P  X  z i &lt; 6100  X  X  0 : 9973 and P  X  z i  X  6100  X  X  0 : 0027. After q
+Fig. 9 b. Therefore, the auditor knows that the private association  X  x he denies the answer to q 2 . 5.3. Improving definition of probabilistic compromise
+In this section, Definition 3.3 is improved; we compare user knowledge after f q f q 1 ; ... ; q t g .
+ a private association  X  x i ; m  X  , by means of three phases: 1. the user knows that z i 6 m ; 2. the user knows the probabilities b  X  0  X  z probability distribution of the sensitive field then b  X  0  X  3. the user knows the probabilities b  X  1  X  z probabilities computed inserting evidence on node encoding the max query).
+Let f q 1 ; ... ; q t 1 g be a set of max and min queries that are already submitted, f m
+Definition 5.2. Let z i be a sensitive variable, then a  X  b a  X  i  X  P  X  z i  X  k b Consider the following example: field then: then:
+We can see that, in the second case, the differences b  X  1  X  the first case, in addition to the fact that the private association  X  z query.
+ pare user knowledge after f q 1 ; ... ; q t 1 g with user knowledge after f q 2. given a tolerance threshold tol a 2 X  0 ; 1 , there is a sensitive variable z 3. given a tolerance threshold tol b 2 X  0 ; 1 , there is a sensitive variable z 5.4. Computing probabilities for known sensitive data distribution
+In this section, we provide a formal base to compute the probabilities a tion 5.2); improve the definition of probabilistic compromise (see Definition 5.3 ). We assume that:
+T is a dataset with n records; the sensitive field Z has r distinct values  X  r 6 n  X  ; the user knows the probability distribution of Z on T , in particular he knows the CDF F if r 2 Z and r &lt; z 8 z 2 Z nf r g then r  X 1 and F Z  X  r  X  X  0. With these assumptions, the following propositions follow: Proposition 5.1. Given M 2 Z, then 8 z 2 Z such that z 6 M, the following probabilities hold: Proof. Given the following events: A  X  X  z 6 M  X  ; B  X  X  z  X  M  X  ;
+C  X  X  z &lt; M  X  , By Definition 5.1 , we have: Thus, Eqs. (19) and (20) follow. h Proposition 5.2. Given m 2 Z, then 8 z 2 Z such that z P m, the following probabilities hold: Proof. Given the following events: A  X  X  z P m  X  ; B  X  X  z  X  m  X  ;
+C  X  X  z &gt; m  X  , By Definition 5.1 , we have: Thus, Eqs. (21) and (22) follow. h
+Proposition 5.3. Given m ; M 2 Z, then 8 z 2 Z such that m Proof. Given the following events: A  X  X  m 6 z 6 M  X  ; B  X  X  z  X  m  X  ; C  X  X  m &lt; z &lt; M  X  ;
+D  X  X  z  X  M  X  , By Definition 5.1 , we have: Thus, Eqs. (23) X (25) follow. h
+Remark 5.1. Given n the number of records in a dataset, z
+M  X  l  X  t  X  i , we have that: Proposition 5.1 is useful to compute b queries.
+ sider the following examples, in which probabilities in (11) X (17) do not hold:
+Example 5.5. If the user knows that a value z i , with i 2 K  X f 1 ;:::; n g , is such that z following probabilities hold:
+Example 5.6. If the user knows that a value z i , with i 2 K  X f 1 ; ... ; n g , is such that z following probabilities hold: the following probabilities hold: 6. Experiments lowing properties: HP Compaq dc7100; Pentium(R) 4 CPU 2.80 GHz; 2 GB of RAM. this user knowledge.
+ ability distribution of the sensitive field. 6.1. Experiment 1: queries length in f 2 ; ... ; n g with no background knowledge reasons are the following: max and min queries, after it has to build mainly the nodes encoding the queries; the first few queries are never denied; the first queries provide new information, then the system adds nodes;
+Fig. 11 d shows it rises to around 0.3 after 1000 queries. 6.2. Experiment 2: queries length in f 50 ; ... ; 100 g with no background knowledge in the region between 3000 and 4000.
+ answer a query, and probability to deny depend on the size of the queries. 6.3. Experiment 3: queries length in f 2 ; ... ; n g with background knowledge
+The CDF F Salary of the Salary has been substituted with its logarithmic regression line: shown in Fig. 7 .
+
+Eqs. (19) X (25) , but, for each z i 2 Salary we substitute f  X  z the probability to deny in Experiment 1.
+ because the probability to deny is very high.
+ 7. Conclusion and future work
+Moreover, we have demonstrated how our model is able to: random from the set of duplicate free points in a real interval; query depends only upon actual data then the user can infer information; regression line; consider a probabilistic definition of privacy breach that compares user knowledge after f q edge after f q 1 ; ... ; q t g .
+ entail scalability problem for large applications.
+ of uncertainty that affect query auditing in statistical databases.
+References

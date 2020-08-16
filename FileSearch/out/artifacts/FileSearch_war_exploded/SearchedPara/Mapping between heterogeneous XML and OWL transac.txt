@@ -1,0 +1,77 @@
+ 1. Introduction operative behavior with inter-fi rm relationships having a signi players that are part of a network to cut costs, increase revenues, and improve time-to-market [11,5,48] . (Commerce eXtensible Markup Language), CIDX (Chemical Industry Data Exchange), ebXML (Electronic Business using Business Library) [33].
+ models to easily exchange and integrate information.
+ software coding of mappings between data models is a time consuming task with high costs. to instance of the other model would be more adequate in real-world settings. 2. B2B integration scenario suppliers, distributors, exporters, and retailers (see Fig. 1 ). B2B integration technology costs, complex technology (OWL, cXML, ebXML, etc.), and con to fi its data model while it exchanges transactions with suppliers and customers using XML-based standards. 2.1. External data representations (XML), it became easier to de fi ne and standardize the contents of B2B transactions. XML is a highly format, designed for multiple representations.
+
+Inprogressoftime,B2Bsolutionswentthroughanevolutionarypathfrommonolithicandproprietarystandards(e.g.TRADACOMS in UK,ANSIASCX.12 inU.S.Aand UN/EDIFACTinthe UnitedNations) toward ebXML, XML/EDIFACT, papiNet, PIDX, and xCBL [8,6] . suppliers and e-commerce hubs. Nowadays, this protocol is supported by more than services.
+ at $1.20 each, 20 units of Scottex tissues at $1.05, and 30 eight pack (P8 2.2. Internal data representations language OWL The PURCHASINGORDER ontology has three classes, 2.3. XML and OWL data representation differences consider for our work are the following:  X 
+XML provides a rich syntax and structure de fi nitions for data modeling, and it is generally used to de system integration).  X  subject, a predicate, and an object).  X   X   X  class  X  ,  X  subclass  X  and  X  property  X  .  X   X 
+OWL properties.  X  inheritance. OWL also supports inheritance on properties.  X  representation, the aspects which are more important to consider are the ones speci mapped to a suitable OWL concept.
+ quanti fi ers, mappings of this type cannot be theorized from XML to OWL. In XML, semantics are most often explicitly described in data representations, residing in developers' minds or domain standard speci to interrelate concepts and describe domain knowledge. To create mappings, users need to inspect of an XML external data representation and establish a mapping to an internal ontological concept. As such, 3. Challenges, approaches and solution organizations use new representation languages, solutions need to consider the new particularities introduced. 3.1. Challenges representations rely on XML for data serialization.
+ syntactic heterogeneity.
+ semantic heterogeneity, the following elements need to be considered in B2B integration:  X  layouts and formats, data models, data structures and schemas [40].  X  heterogeneity. Semantic heterogeneity considers the content of representations and its intended meaning [42].
+Since schema structures and the meaning of XML schema is de B2B transactions.
+ in a semantically consistent way. Therefore, the following problems need to be tackled: system and will explain how each of these points are addressed.
+ means that for each concept in one ontology, we establish a mapping to has the same or similar semantics (and vice verse). The process of matching, or ontology alignment [25] and usually relies on de in this paper can be extended to include the notion of distance measures, as described in [16] and [9],to user which mappings can constitute potential candidates between an XML entity and an OWL concept. 3.2. Approaches to enable integration words, the organizations participating in B2B interactions have to adopt one of the following alternatives:  X 
+Agree on a common schema for external and internal data representations.  X  Create mappings between external and internal data representations.
+ advantage that a new system or approach can bring to an organization:  X  signi fi cantly lower when compared to developing a private internal schema.  X  errors is relatively low. The same cannot be said with respect to private custom made schema.  X  common schema that fully satis fi es all business requirements.  X 
+Competitive advantage . By having a custom made schema with speci competitors. This will not easily happen if all the industry players are using the same common schema. represent their internal data. We are not stating that, in the future, the notion of ontological commitment re data representations coexist. 3.3. One solution: heterogeneous mappings different level of expressiveness.
+ entity acquires a higher level of clarity and expressiveness by being associated with an ontological concept. transaction-based integration.
+ mappings across organizations and over time it would increase the adoption of the B2BISS approach. mappings increases as reusing a mapping means that the work does not have to be done again. This is signi applied to all reuse cases automatically, making the change process very ef the greatest possible extent. 4. The B2BISS system reduction in their use and management.
+ (de (b) partial match , and (c) no match .
+ transaction to a semantic internal data representation. Fig. 3 shows this created (5). Once they are created they will be stored in the repository for future (re)use. 4.1. Classi fi cation algorithm
+The algorithm that determines if an incoming syntactic transaction is classi
+Having this basis, we can say that an XML-based transaction (with a set of XPaths S executed.
+ the XML's XPaths exist in the set of XSLT's XPaths, i.e., S Section 4.4.
+ the estimated validity of a potential mapping. In [40], a large number of alternatives are described to further on this topic.
+
+Algorithm 1. Classi fi cation of incoming XML-based transactions. else end if 4.2. Creating heterogeneous mappings with JXML2OWL
+When it is necessary to establish a new mapping between an external XML-based transaction and the semantic de dramatically with the size of transactions. Additionally, it is also dif de fi B2BISS transformation engine.
+ and eases the management of mappings.
+ speci fi ed with the XML syntax.
+ transformation of external XML-based documents into internal ontologies.
+Generator module. 4.3. The structure of heterogeneous mappings into account when writing an algorithm to perform instance transformation according to created mappings. 4.3.1. The notation
+The notation to specify mappings between elements of an XML schema and resources de represented in Table 1 . Just as with OWL ontologies, which are mainly de heterogeneous mappings are classi fi ed according to three distinct types:  X 
+Class mapping: Maps an XML node to an OWL concept  X 
+Datatype property mapping: Maps an XML node to an OWL datatype property  X  Object property mapping: Relates two class mappings to an OWL object property predicates to enable conditional mappings.
+
+An examination of Table 1 reveals that class mappings are de with triplets where the XML node used to compute the IDs of the generated instances are directly speci  X  cm 1=( Order : Part ,/ cXML / ... / ItemDetail / Classi fi  X  cm 2=( Order : Manufacturer ,/ cXML / ... / ManufacturerPartID )  X  dp 1=( Order : www , cm 2,/ cXML / ... / ItemDetail / URL )  X  dp 2=( Order : quantity , cm 1,/ cXML / ... / ItemOut /@ quantity )  X  op 1=( Order : hasManufact urer , cm 1, cm 2)  X  op 2=( Order : hasPart , cm 2, cm 1) The cm1 mapping ( cm1 stands for class mapping) indicates that an instance of matching the speci fi ed XPath expression, i.e. /CXML/ ...  X  50202301  X  (UNSPSC code for water), one for  X  12352206  X  (UNSPSC code for tissues), and one for value used to fi ll the property, which is for the dp1 mapping the XPath expression related to an instance created from the class mapping cm2 using the relationship manufacturer . An inverse relationship also exists and it is named
+JXML2OWL in XML as illustrated in Listing 5. 4.4. The transformation engine dp2 , op1 , and op2 .
+ adequate tool support enables to reduce costs and speedup the integration of heterogeneous schema. the Hiltrix Corp. internal purchase order ontology.
+ described in Listing 4. 4.5. Empirical evaluation fl system:  X 
+Converting cXML business transactions to a semantic data model [46].  X  Mapping from HR-XML resume to a semantic data model [44].
+ de fi ning mappings was faster, less expensive, required less knowledge, and the process was less error-prone. reused.
+ Listing 1. Extract (10%) of the XSLT mapping fi le generated.
+ if there are slight variations.
+ believe that the two case studies explored and tested constitute a good starting point for a 5. Using B2BISS in an organizational context transformed into purchase orders stored in its internal simpli interacting with customers). No heterogeneous mappings have been yet de empty. 5.1. Scenario A. Receiving a purchase order for the fi rst time system. The Incoming Files section of the system con fi rms the receipt of the purchase order. The shown in Fig. 3 since the repository does not contain any heterogeneous mapping yet. interested in transforming all the data of the purchase order, a complete mapping is established. illustrated in Listing 6.) sets with XPaths with a full path format for for -each tags, for example, b xsl:for-each
+Aldo Corp. The comparison of these two sets determines their degree of match. In this classi fi ed initially as a no match . Once heterogeneous mappings were created, the purchase was classi an automated transformation was carried out. 5.2. Scenario B. Receiving a purchase order for the second time
+Corp. has used. The purchase order is added to the Incoming Files section and it is processed in order to de 5.3. Scenario C. Receiving a purchase order with new elements orders. This scenario can occur since Celsius may decide to use additional optional that an organization decide to use cXML by making modi fi decided to use the Shipping element from the cXML speci fi to be shipped via FedEX at a cost of $35.50. The new cXML element is illustrated in Listing 2.
+Listing 2. The new added cXML Shipping element. repository is a proper subset of the XPath set of the purchase order received (case b) of Fig. 4 .
+Corp. 5.4. Scenario D. Receiving a purchase order with fewer elements
+Since Hiltrix opted to create a new set of mappings, at this time, 5 1. The purchase order from Aldo Corp. (scenario A) 2. The purchase order from Beplus Corp. (scenario B) 3. The purchase order from Celsius Corp. (scenario C) 4. The XSLT transformation set for purchase orders from Aldo Corp. and Beplus Corp. (scenario A and B) 5. The XSLT transformation set for purchase orders from Celsius Corp. (scenario C)
+Aldo Corp. but Degree Corp. did not use one of its cXML elements (for example, the UNSPSC classi request order can be processed automatically. 5.5. Scenario E. Receiving a purchase order with unknown elements new XSLT transformation set. The purchase order is automatically classi subsequent transformation.
+
+Based on the scenarios presented, the B2BISS system at Hiltrix Corp. has the following purchase orders and XSLT transformation sets stored in its repository: 1. The purchase order from Aldo Corp. (scenario A) 2. The purchase order from Beplus Corp. (scenario B) 3. The purchase order from Celsius Corp. (scenario C) 4. The purchase order from Degree Corp. (scenario D) 5. The purchase order from Estar Corp. (scenario E) 6. The XSLT transformation set for the purchase order from Aldo Corp. (scenario A, B and D) 7. The XSLT transformation set for the purchase order from Celsius Corp. (scenario C) 8. The XSLT transformation set for the purchase order from Estar Corp. (scenario E) transform a cXML request into an OWL-based internal semantic data representation. 6. Integrating B2BISS into SAP PI integration projects.
+ assuring that it is accepted and delivered exactly according to pre-de transmitted.
+ receives transactions and applies routing and mapping rules to these transactions and, mappings, etc.
+ the B2BISS mapping editor.
+ fl exibility to react quickly to dynamic changes in business networks. 7. Related work and JXML2OWL.
+ ontologies.
+ work fl ow or business process technology. The design describes a B2B Work integration were not an objective.
+ and XSLT) enables a stronger acceptance by the industry.
+ Furthermore, they do not advance on the idea of using, reusing, and managing mappings. are related to our approach include XML2OWL, FOAM, COMA++, and Lifting XML schema to OWL. ontology. In this sense, one could argue that XML2OWL is not a mapping tool but a converter. the system to propose mappings between XML schema and OWL ontologies.
+
+COMA++ [2] is a schema and ontology matching tool that supports XML schema and OWL ontology documents as data suggestions to users.
+ model created from the XML schema.
+ internal ontology-based B2B standards must coexist. 8. Conclusions fundamental assets for modern businesses.
+ ontology-based data representations.
+ it is possible to achieve an automatic transaction-based integration.
+ does not have to be done again. Thirdly, if an external or internal speci the change then is applied to all reuse cases automatically, making the change process very ef systems and solutions.
+ Acknowledgments to Toni Rodrigues and Pedro Rosa for the development of the JXML2OWL mapping tool. Appendix A
+Listing 3 shows a cXML purchase order [13]. The order speci
+Sunnyvale, California, USA.
+Listing 3. cXML transaction to order Water, Tissues and Frozen juices.
+Corporation. The ontology has three main classes: Order, Part and Manufacturer.
+Listing 4. The Hitrix Corp. internal purchasing order OWL ontology. Listing 5 shows the six mappings that were stored internally in JXML2OWL in XML as described in Section 4.2.
+Listing 5. Mappings established between the cXML purchase order and the Hitrix Corp. purchase order ontology. Listing 6 shows the instances that are created when the order from Listing 3 is received by Hiltrix Corp.
+Listing 6. Hiltrix Corp. internal purchase order ontology instances.
+References

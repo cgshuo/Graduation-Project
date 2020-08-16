@@ -1,0 +1,2 @@
+
+Objective: Objective: Optimizing NDCG measure Optimizing NDCG measure differentiable function differentiable function using bound optimization strategy using bound optimization strategy

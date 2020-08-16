@@ -1,0 +1,24 @@
+
+Toronto, Canada, M5S 3G4 jonathan.taylor@utoronto.ca ods based on MDP homomorphisms.
+ heuristically.
+ assume without loss of generality that rewards are bounded i n [ 0 , 1 ] . policy  X  from state s , an agent can expect a value of V  X  ( s ) = E (  X   X  t equations: above equation into an update rule, which can be applied iter atively. equivalence between states. A relation E  X  S  X  S is a bisimulation relation if: not robust to small changes in the rewards or the transition p robabilities. operator on the lattice of 1-bounded metrics d : S  X  S  X  [ 0 , 1 ] : linear program: which has the following equivalent dual program: of this metric. we define lax bisimulation in the context of MDPs.
+  X  S / knowledge.
+ 2003). We now formally establish this connection.
+ h phism h f , { g s : s  X  S }i in the sense that f ( s ) = f ( u ) . so B is a lax bisimulation relation.
+ and define f ( s X ) = s X and g s Then, we have: the metric  X  ( d ) : S  X  A  X  [ 0 , 1 ] is defined as follows: distance between sets of points . It is defined as follows.
+ operator F : M  X  M as F ( d )( s , u ) = H (  X  ( d ))( X s , X u ) Theorem 8. Let e f ix be the metric defined in (Ferns et al., 2004). Then we have: limits.
+ for any a ,  X  ( e n )(( s , a ) , ( u , a ))  X  G ( e n )( s , u ) , which implies: c |
+V n + 1 ( s )  X  V n + 1 ( u ) | = c r | max Now since  X   X  c p , we have 0  X  c r  X  F ( d n )( s , u ) = d n + 1 ( s , u )  X  aggregation, as follows.
+ (  X 
+C , D  X  S  X  and a  X  A , MDP by using this relabeling.
+ defined by  X  ( s ) = g s (  X   X  ( s  X  )) .
+ a partition can approximately match each other X  X  actions.
+ value of the partition in which it is contained.
+ Proof: | V n + 1 (  X  ( s ))  X  V n + 1 ( s ) | = = | max  X  |  X  ( s ) |  X  |  X  ( s ) |  X  |  X  ( s ) | +  X  + c From Theorem 8, we know that { c r  X  c K ( as follows: We continue with the original inequality using these two res ults:  X  +  X   X  By taking limits we get the following theorem: Furthermore, if  X   X  is any policy in M  X  and  X  is the lifted policy to M then be used here as well.
+ e be achieved by moving from e f ix to d f ix , even when using  X   X  =  X  MDP. We now show that our metric can be used to tighten this bou nd. |
+V  X  ( s )  X  V  X   X  (  X  ( s )) |  X  2 Proof: We have: |
+V  X  ( s )  X  V  X   X  (  X  ( s )) | )  X  2 torovich by the total variation metric.
+ as: T V ( P , Q ) =  X  s 1 aggregated MDP. Then: |
+V  X  ( s )  X  V  X  (  X  ( s )) |  X  2 Proof: This follows from the fact that: and using the total variation as an approximation (Gibbs &amp; Su , 2002), we have: {{ actually have quite different behaviours). in (Ravindran &amp; Barto, 2004) can be derived using our metric. the controller to navigate specific rooms.
+ Acknowledgements: This work was funded by NSERC and CFI.
+

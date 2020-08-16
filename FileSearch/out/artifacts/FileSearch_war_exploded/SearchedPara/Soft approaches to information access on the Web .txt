@@ -1,0 +1,5 @@
+ 1. Introduction to the special issue information access process on the Web. 2. Soft computing technology properties, as for example Li, Ruan, and Van derWal (1998, p. 295) : as to belonging to the field of soft computing X  X .
+
+Other authors (including Prof. Zadeh) define SC by the set of techniques it groups ( Zadeh, 1994a, p. 49 ):  X  movingfromhardcomputingtoSCistheobservationthatthecomputationaleffortrequiredbyconventionalapproacheswhich
+Computational Intelligence Society 1 defines its scope as: in three facts ( Bonissone, 1997; Bonissone, 2010; Li et al., 1998; Magdalena, 2010; Zadeh, 1994a, 1997 ): 3. Articles in this special issue problems in the field of information access on the Web: techniques in this context.
+ seen in part as an effect of the activities of this Working Group. Acknowledgments of this special issue and for his continuous encouragement and support. References

@@ -1,0 +1,172 @@
+ 1. Introduction editors. External information sources are integrated or referred to, and the content is usually updated regularly. important aspects of the document X  X  consistency becomes highly desirable [45]. target in terms of content may compromise the readability of the document even more than a dangling hyperlink. solutions to the following core challenges: the document in some form of markup. Further sources of information about the contents of the document are external on the data representation of the document. content-related information about the document with general models of its domain of discourse. User support in formalizing precise and unambiguous criteria is vital.
+ soning in description logics [6] and model checking temporal logics [18].
+ the supported document formats are achieved. At the same time, the application costs are reduced by minimizing the requirements for manual modeling and user training.
+ existing work in the field of document and hypermedia verification. The paper concludes with a short summary. 2. Problem description 2.1. Sample scenario Consider a manual about the operation and maintenance of industrial robots published as a web-based training (WBT). plified part of the basic structure of the sample WBT. Section 6.2 covers technical details about the document. tives of the WBT.
+ come has the desired consistent structure, at least the following criteria should be met: (2) Each major topic of the document has to be addressed by some learning unit within the document. (3) Each exercise task is followed by a proposed solution before the end of a learning unit. (4) Concepts required to solve training tasks have been introduced before the exercise is reached. by X  is not clear in the case of hypermedia documents which are typically not linearly structured. 2.2. Problem statement to be solved: P1 Knowledge representation .
+ P2 Formal representation and verification of consistency criteria .
+ P3 User support in the definition of criteria .
+ 2.3. Approach properties using our pattern-and example-based specification method.
+ Our strategy for solving problem P1.1 is as follows: course ( Fig. 2 rhs top).
+ Our approach to solving problem P1.2 is based on the following considerations:
+Web documents typically have some sort of coherent, possibly branching narrative structure which guides the user in  X  X  X ecommended ways X  of reading the document along its narrative structure. These  X  X  X ecommended ways X  of reading the units.
+ to narrative paths within a document (see also Section 7).
+ and content-related criteria (problem P2 ).
+ (TDL).
+ and builds an error report listing violating narrative paths within the document. 3. Knowledge representation 3.1. Foundations
+Metadata contained in structured document formats and external metadata annotations describe the content and struc-of content-related specifications.
+ Prot X g X  [54], can be used within our framework.
+
+DL knowledge bases consist of two parts: the TBox contains terminological axioms expressing subsumption and equiva-concepts and fillers of roles [8] (cf. Example 1 ).
+ resentation process proceeds in three steps: Example 1 ( Knowledge extraction ).
+ metadata [47]: &lt; metadata &gt; ...
+ concepts to be learned. Other resource types are  X  X  X ntroduction X ,  X  X  X est X , or  X  X  X xercise X .
+The knowledge extractor component (Fig. 3 bottom) translates the XML-based metadata above into the following DL assertions:
+R180 is a RobotType . Exposition(sec2.1.1) defines that sec2.1.1 is an exposition of some information. reader to [8].
+ between fragments and topics, are defined by means of a reference ontology (Definition 12 and Example 13 ). 3.2. Formalization 3.2.1. Representation of structure Definition 2 ( Narrative units, start units ).
+ contained part of D .
+ Definition 3 ( Narrative relation ).
+ relation across narrative units.
+ Remark 4 ( Narrative relation ).
+ in b . Hence  X  a ; b  X 2 NR and  X  b ; c  X 2 NR but  X  a ; c  X  R NR .
+ Definition 5 ( Narrative path ).
+
+Let NR # NU NU be a narrative relation of a document. Then a sequence  X  u  X  u ; u i  X  1  X 2 NR for each i 2 N .
+ Remark 6 ( Narrative path ).
+ ing infinite paths the document model does not put a limit on the number of times a certain narrative unit can be visited.
+ even infinite number of paths in polynomial time w.r.t. the number of narrative units (see Remark 22). Definition 7 ( Narrative structure ).
+
+NR # NU NU is narrative relation on NU such that the following holds: (i) NR is left-total on NU , i.e., for each u 2 NU there is some u 0 2 NU such that  X  u ; u 0  X 2 NR . Remark 8 ( Narrative structure ).
+ successor units are modeled as being reflexively related with themselves (cf. unit  X  X  X inal Remarks X  in Fig. 1 ). rhs middle) reconstructs the narrative structure by an analysis of the document structure and markup. Example 9 ( Narrative structure ).
+ The narrative structure shown in Fig. 1 is represented by 3.2.2. Representation of content error localization.
+ The set of ABoxes representing information about the content of a document is called a fact base : Definition 10 ( Fact base ).
+
+A fact base of a document D is a set of DL ABoxes FB  X f AB assertions representing properties of the narrative unit u .
+ Example 11 ( Fact base ).
+ robots. Then the content of our sample document can be represented in terms of a fact base FB as follows: where the WBT.
+
+The fact base is generated automatically by the knowledge extraction component (Fig. 2 rhs middle) from document the case for LaTeX and XML documents with  X  X  X emantic X  markup. As an evaluation base we use XML-based eLearning doc-extraction. A more detailed description, however, is beyond the scope of this paper. 3.2.3. Representation of background knowledge grating information from different sources and for representing the background knowledge which may be required for verifying content-related criteria.
+ Definition 12 ( Reference ontology ).
+ fact base of a document ( background knowledge ).
+ on should of course be decidable. Example 13 ( Reference ontology ).
+ The reference ontology for our sample scenario contains, among others, the following axioms: For a definition of the syntax and semantics of description logics axioms we refer the reader to [8].
+The first implication can be seen as follows:
+Further, as a direct consequence of the semantics of existential role restrictions [8] holds: f topicOf  X  R 180 ; Home  X  ; startOfWBT  X  Home  X g  X 9 topicOf : startOfWBT  X  X  R 180  X  . Finally, f X 9 topicOf : startOfWBT  X  X  R 180  X g [ RO majorTopic  X  R 180  X  .
+ This is a consequence of axiom 9 topicOf : startOfWBT v majorTopic in RO .
+ 4. Specification logic and verification procedure ument X  X  narrative structure.
+ content-related criteria w.r.t. narrative paths.
+ sitions (cf. [62,63] ), a semantics based on state transition systems is more appropriate.
+Before defining the syntax and semantics of ALCCTL , we introduce the reader to ALCCTL by presenting a brief sample scenario. For more detail see [70].In [71] some of the basic ideas are explained, too. Example 14 ( Representing criteria using temporal description logics ).
+ by the user X .
+
+We can represent the criterion above in ALCCTL as unit (cf. reference ontology in Example 13 ).
+ topics that on all paths are addressed by a learning unit in some narrative unit. partOfLU v partOf partOfLU is a sub-role of partOf hasPart  X  : partOf hasPart is the inverse of partOf partOf 2 R + partOf is transitive hasTopic  X  : topicOf hasTopic is the inverse of topicOf &gt;v 8 partOfLU.LearningUnit The range of partOfLU is LearningUnit $ topicOf. $ partOf.LearningUnit v $ addressedBy.LearningUnit Any topic of a part of a learning unit is addressed by a learning unit $ topicOf.startOfWBT v majorTopic Any topic of a start unit is a major topic units.
+
+The truth of ALCCTL formulae such as is determined w.r.t. full paths FP s :  X f X  s 0 ; s 1 ; ...  X j s  X  S ; R  X  (cf. Example 18 ).
+ Formally, ALCCTL formulae are interpreted in temporal structures of the following form: Definition 15 ( ALCCTL temporal structure ).
+ Let f be an ALCCTL formula over a set of atomic concepts A and a set of atomic roles R . relation on S , D a finite set of domain objects, and I : S ! I : I  X  s  X  X  I interpretation I s .
+ of D and to every atomic role R a subset of D D .
+ Let A 2 A be an atomic concept, R 2 R be an atomic role, and s 2 S be a state. Then A the local interpretation of concept A in state s . R I  X  s  X  s .
+ formulae is defined as in CTL [25]. The semantics of temporal connectives applied to concepts is as follows: Definition 16 ( Semantics of temporal connectives ).
+ f s 0 2 S j X  s ; s 0  X 2 R g of successor states of s and FP starting from s . Then p ; q ! C v D j: p j p ^ q j p _ q j p ! q j C ; D ! A j&gt;j ? j: C j C u D j C t D j9 R : C j 8 R : C j Example 17 ( Semantics of temporal connectives ).
+
+Let C be an ALCCTL concept as defined in Table 1 . Then the interpretation I  X  s as follows: Further details about the semantics of temporal connectives can be found in [7,25,31,70] . Example 18 ( Interpretation and validity of ALCCTL formulae ).
+ a set of states S :  X f s 0 ; s 1 ; s 2 g ; state s 0 corresponds to narrative unit Home , state s narrative unit L 3 : 1in Example 9 ; a left-total relation R :  X f X  s 0 ; s 1  X  ;  X  s 0 ; s 2  X  ;  X  s a domain of objects D :  X f L 1 ; L 2 ; R 180 ; R 180 Handling g ; an interpretation of concepts in f : an interpretation of roles in f : The validity of the formula f in such a structure  X  S ; R ; D ; I  X  can be determined as follows.
+By ALCCTL semantics the following holds:
+This means that the interpretation of the complex concept 9 addressedBy : LearningUnit yields f R 180 g in state s and f R 180 Handling g in state s 2 .
+
+By the semantics of the AF operator (read all paths future )( Definition 16 ) we get: from state s 0 . majorTopic I  X  s 0  X   X f R 180 ; R 180 Handling g R180 and R180 _ Handling are the major topics in state s
+LearningUnit I  X  s 0  X   X f L 1 g L1 is the (only) learning unit in state s majorTopic I  X  s 1  X   X f R 180 g R180 is the (only) major topic in state s
+LearningUnit I  X  s 1  X   X ; there is no learning unit in state s majorTopic I  X  s 2  X   X f R 180 Handling g R180 _ Handling is the (only) major topic in state s
+LearningUnit I  X  s 2  X   X f L 2 g L2 is the (only) learning unit in state s addressedBy I  X  s 0  X   X f X  R 180 ; L 1  X g R180 is addressed by L1 in state s addressedBy I  X  s 1  X   X ; there is no topic addressed in state s addressedBy I  X  s 2  X   X f X  R 180 Handling ; L 2  X g R180 _ Handling is addressed by L2 in state s
+As for our example there are two paths p 1  X  X  s 0 ; s 1 ; s Since both paths p 1 and p 2 contain s 0 as well as s 2 we get: Since majorTopic I  X  s 0  X   X f R 180 ; R 180 Handling g and hence majorTopic  X  S ; R ; D ; I  X  at state s 0 :
+Analogously we get:  X  S ; R ; D ; I  X  ; s 1 2 f and  X  S ; R ; D ; I  X  ; s checking problem of ALCCTL : Definition 19 ( ALCCTL model checking problem ).
+ problem is to decide whether  X  S ; R ; D ; I  X  satisfies f in state s , in symbols:  X  S ; R ; D ; I  X  ; s f . sented by a set of ALCCTL formula: Definition 20 ( Document verification problem ).
+  X  NS ; FB ; RO  X  satisfies f for each f 2 F , in symbols
+The satisfaction relation doc defines the formal meaning of an ALCCTL formula w.r.t. a knowledge representation checking problem: Definition 21 ( Reduction to ALCCTL model checking ).
+
+Let NS  X  X  NU ; SU ; NR  X  be a narrative structure, FB  X f AB the set of individuals mentioned in an ABox AB .
+ interpretation such that for any narrative unit u 2 NU , atomic concept A , and atomic role R it holds:
+Let f be an ALCCTL formula. Then Remark 22 ( Reduction to ALCCTL model checking ).
+ papers.
+ blow-up of runtime w.r.t. the document size, although instance retrieval is theoretical considerations. Example 23 ( Verification of documents ).
+ which is expressed by the ALCCTL formula respectively.
+ The ALCCTL reduction of  X  NS ; FB ; RO  X  is a structure  X  NU ; NR ; D ; I  X  where and I is an interpretation such that
+Important parts of the ALCCTL reduction w.r.t. property f not hold in the structure  X  NU ; NR ; D ; I  X  at state Home : and as a result
+The path  X  Home ; L 3 ; L 3 : 1 ; L 3 : 2 ; ...  X  in Fig. 4 is a counterexample to f document:
+Then dling are addressed. 5. From logic level to user level specifications user-friendly and adequate for the verification system.
+ the pattern level, but (s)he can also work at the logic level (Fig. 5 lhs bottom). top). Users try to find an example which fits closest to the problem at hand, and then adapt it. actly one specification pattern, which in turn corresponds to exactly one TDL formula.
+The process of specifying consistency criteria runs through the following steps: (1) Consideration of the example base and selection of an appropriate sample specification. (2) Adaptation of the sample specification. (3) Identification and instantiation of the corresponding specification pattern. (4) Mapping of the instantiated pattern onto a TDL formula. (5) Verification of the formula against the semantic model of the document as presented in Section 4.
+The former two steps are performed by the user, the latter three by the system. 5.1. Pattern-level specification not straight forward. Example 24 ( From consistency criteria to specification pattern ).
+ document.  X 
+We recognize the following important properties of this criterion: (1) A class of objects for which this specification holds  X  for each major topic . (2) A kind of constraint that it expresses  X  the existence of a learning unit addressing a major topic . (3) A scope where the specification should hold  X  somewhere within the document, i.e., globally . property C 1 holds somewhere within the document .
+ D is an abstraction of property (1) and C 1 is an abstraction of property (2) of the example above. Definition 25 ( Specification pattern ).
+ and structure of documents (cf. [23]). Specifications are instances of specification patterns. The basic properties of specification patterns are: represented by an instantiated pattern is intended to hold.
+ Pattern type  X  determines the type of the specification and affected properties of domain objects. Scope of validity  X  constrains the part of a document where a specification is intended to hold. Pattern type and scope can be parameterized by one or more variables.
+ learned. The domain is represented within a specification pattern by the domain variable D (cf. Example 24 ).
+Pattern types are: existence , universality , precedence , follow _ up . Let C that C 1 holds in some narrative unit. Universality means that C property C 2 holds in some narrative unit this unit must be preceded by a unit for which property C erty C 1 means each unit satisfying C 1 must be succeeded by a unit for which property C ification with this scope applies to the whole document structure. Before C holds for the first time, whereas after C 1 requests that the specification holds after C responds to property (3) of the consistency criterion of Example 24 .
+ Definition 26 ( Pattern type modifier, scope modifier ).
+ additional restrictions to a scope.
+
+Pattern type modifiers are: absence and immediate p . Scope modifiers are: all _ paths , between , and immediate
+There is a special modifier null p for pattern types ( null Definition 27 ( Structure of a specification patterns ).
+ duced by the following grammar:
+Specification patterns of the form  X  pattern type ; null p ification patterns .
+ pattern type modifier absence is defined and the pattern type follow _ up can be used with the modifier immediate to our definition, absence is a separate pattern in [23].
+
+The pattern type modifier immediate p can be applied to the pattern type follow up . Let C
+C follows C 1 immediately means that for each unit, where C erty C 2 holds. For this type of criteria there is no corresponding pattern in [23]. constraint on some path, this modifier changes it to validity on all paths.
+ property. If C 3 is a scope variable of scope before and C ogous to the meaning of the pattern modifier immediate p .
+ Example 28 ( Basic specification patterns ).
+ instances of a certain pattern domain D . (1) All three structures of Fig. 6 conform to the pattern  X  existence ; null (2) Fig. 6 a illustrates a narrative structure conforming to the pattern  X  existence ; null (3) Fig. 6 b illustrates a narrative structure conform to the pattern  X  follow up ; null existence considers only the first appearance of property C reason why the structure in Fig. 6 a does not conform to pattern (3); different from the pattern type existence in conjunction with scope before , follow _ up allows C the reason why the structure in Fig. 6 b does not conform to pattern (2).
+ and the verification of the document can be invoked.
+ 5.2. User level specification of the sample specification corresponding to the following pattern properties (3rd X 6th row, respectively): a list of pattern type variables, a list of scope variables, a scope modifier variable, and a domain variable.
+ relevant to the current document are extracted from the reference ontology and presented to the user. Example 29 ( Example instantiation ).
+ paths  X , we use the sample specification of Table 2 as a starting point.
+
+The phrases h key word i and h mentioned in a chapter i have to be adapted to corresponding concepts majorTopic and 9 addressedBy : LearningUnit of the reference ontology (see Example 13 ).
+ Section 5.3).
+ shown in the next step. The process of sample selection runs as follows (cf. Fig. 8 ): Example 30 ( Example base presentation ).
+ 29. For brevity, the corresponding components (pattern type, pattern type modifier, scope, and scope modifier) of a specification pattern are shown instead of examples. globally (in addition to the already shown example with null step four. 5.3. From the pattern to the logic level specification exactly one ALCCTL formula.
+ expression. If a pattern type modifier (i.e., scope modifier) is different from null the table of modifier transformations .
+
+Mapping and transformation tables, as well as the formal definition of the mapping method are presented in [36] in detail.
+ In the following example we illustrate the mapping of the pattern of Example 29 onto an ALCCTL formula. Example 31 ( Mapping of patterns onto ALCCTL ).
+ specification pattern is determined by the system from the sample base (Table 2). To build the corresponding ALCCTL formula the system performs the following steps: (1) Determine the basic pattern of the chosen one, in this example  X  existence ; null narrative path ( AF ) through the document (cf. Example 23 ).
+ logic level utilizing the full expressive power of ALCCTL .
+ 6. Implementation and evaluation 6.1. Implementation details the CTL model checker NuSMV [17]. 6.2. Document base has been used as running example throughout this paper. The WBT is implemented based on the SCORM standard [2] and criteria. The WBT delivers content tailored to three different target groups: trainees, trainers, and support. 6.3. Evaluation environment
+The runtime results have been acquired on a desktop computer with Intel Pentium 4 processor at 2.4 GHz, 1 GB RAM, the CTL model checker NuSMV in the version 2.4.3. 6.4. Quantitative evaluation results ument model (cf. Definitions 2 and 10 ). 6.5. Detected errors criteria/formulae in Table 3 ). Among them, the most severe were: user.
+ and makes test solutions available to trainees before the test is finished.
+ without difficult content.
+ One variant did not provide additional material as required by the specification. These errors are hard to be detected manually due to the following reasons:
+The document comes in three interrelated variants. A change in one variant may cause an inconsistency in an other variant. 6.6. Application cost
+The application cost sums up from (1) implementing a knowledge extraction component for a specific document format, pattern-based specification of criteria.
+ tion tools such as KAON [68] or Prot X g X  [54].
+ as compared to the realization of a knowledge extraction component and a reference ontology. larger documentation scenarios. 6.7. Benchmarks
+A synthetic benchmark for determining how the runtime correlates with the document size has been developed simulat-isfied and one of them was violated.
+ Fig. 9 shows the total runtime and its distribution across the major components Racer, NuSMV, and model generation.
+The total runtime is dominated by the runtime of NuSMV for larger documents. NuSMV X  X  runtime can be well approxi-mated by the function (gray line in Fig. 9 ) where n is the size of the document given as the number of narrative units ( web pages). T experimenting with different polynomial approximations.
+ reasoning is not available in Schematron and xlinkit.
+ same document has been checked against their negations which were violated. Table 4 shows the runtime results. 7. Related work 7.1. Semantic modeling For the representation of knowledge about web documents semantic web standards such as OWL [12] have been adopted. cation. This helps to keep ontologies small and limits the manual effort for semantic modeling. 7.2. XML document validation the XML representation of data. Our approach is different from XML validation techniques in the following aspects: bound to a specific XML-based document format.
+
+The mismatch between the XML-data model and the semantic model of a document renders XML-based techniques inap-techniques.
+ logics show a much simpler and clearer structure than comparable XML-based specifications which sets the ground for strong user guidance by the means of specification patterns. 7.3. Hypermedia and document verification lishing a pattern-based specification process. Prolog.
+ mat. As a result, the integration of foreign web resources requires a considerable re-engineering effort.
+The mathematical knowledge management system MBase [42] represents mathematical knowledge in both a human-edge representations and maintain their logical consistency [5,33,34] .
+ ing manual must describe all and only the features of the system as delivered to the customer. To achieve this goal redundancy.
+ imum of content-related information is available for narrative units.
+ the document X  X  life cycle.
+ logics).
+ terms of runtime and required user training. 7.4. Temporal extensions of description logics [16] they have been successively applied for the verification of reactive systems [51] and communication protocols.
+Temporal extensions of description logics have been examined since about 1990. We do not attempt to give a complete overview of approaches and results but refer to the surveys in [4,31,32] .
+ the branching time logic DPCTL described in [31].
+ soning [50] which severely limits their applicability in practice.
+
+We solved this problem by reducing TDL expressions and models to CTL formulae and models which enables the use of ever, finite TDL models turned out to be sufficient for representing document structures [71]. 7.5. Diagram-based specification formalisms related criteria and for the modeling of background knowledge.
+
+In the areas of real time systems [22] and workflow modeling [14], diagram-based languages for temporal formalisms specification language can just be a part of the measures necessary for helping the user to grasp the meaning of a specification. 7.6. Pattern-based approaches but can choose from a base of solutions suitable for a certain class of specification problems. verification problems. 8. Conclusion
+An approach to checking semantic consistency criteria on context-dependent documents has been presented. As com-pared to existing approaches the proposed framework offers the following innovative features: tation, reasoning and verification methods.
+
+The verification framework is knowledge-based which, in contrast to XML-or hypertext-based methods, enables the integration of background knowledge about the document model and domain of discourse. A high degree of abstraction algorithms can be widely decoupled from the document format or metadata sources. Even documents integrated from derived from knowledge about the document increases the verification power and reduces the complexity of specifications.
+ automatically be translated into the logic level specification formalism.
+ tions. Future work aims at optimizing the application costs and performance of the current implementation. planned. Acknowledgement This work has partially been funded by the German Research Foundation (DFG) under Contract Number FR 1021/7-1.
+References

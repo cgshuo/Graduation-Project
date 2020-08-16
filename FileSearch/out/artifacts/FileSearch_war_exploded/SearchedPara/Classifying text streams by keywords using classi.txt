@@ -1,0 +1,76 @@
+ 1. Introduction
+In real-life applications, the data stream is generally unlabeled. Therefore, it is of great signi using keywords provided by the users. To our knowledge, this is the without any labeled documents revisit.
+ recent years, some researchers proposed to construct basic classi documents for the text stream classi fi cation [7,1] , which has attained satisfying results. classi fi ers based on the positive examples and large numbers of unlabeled documents.
+Although we also use keywords and unlabeled documents to build a base classi however, there are several differences. Firstly, we build each classi positive and negative examples to build a robust text classi positive examples might be more than one. However, the work in [34] is based on the static text dataset. ensemble based algorithm shows robust performance, which can capture and adapt to the concept drifting. several issues to discuss regarding the learning method. In Section 6 , we conclude this paper. 2. Related work 2.1. Data stream classi fi cation [7] , Zhang et al . proposed an ensemble stacking algorithm for positive unlabeled text stream classi 2.2. PU learning stream classi fi cation problem. 2.3. Text classi fi cation by keywords examples; and fi nally, NB-EM algorithm will be employed to build classi classi fi ers, however, which needs more representative keywords, and does not expand the keywords. classi fi cation tasks. The approach in [34] fi rstly expands keywords using WordNet to extract more positive documents from unlabeled documents. Finally, a good text classi use 3 words to perform text data stream classi fi cation to tackle the problem of polysemy . 2.4. Concept drift [18,35,3] are very helpful to our research.
+
+In this paper, we use three keywords to classify text streams without any labeled documents, which signi from heavy burden of labeling documents. The problem of concept drift is well addressed when the classi is used. 3. Framework for text stream classi fi cation by keywords
+In this paper, we follow the assumption that text stream arrives as batches [22,38,39,7] : would occur between ontopic and offtopic with the change of user's interest. We write d ( i , j )= representing a text sample in the stream, and a i , j  X  { user inputs. The fundamental task of text stream classi fi streams, and to provide users with more comprehensive and accurate information.
+The construction for base classi fi ers is an important phase in the stream classi of overall stream classi fi cation. We introduce our approach for base classi
+Section 3.2 . 3.1. Building basic classi fi ers by keywords and unlabeled documents
+In this paper, we build the basic classi fi er through the keywords w ={ w
+Step 1: Retrieving the document sets D 1 , D 2 , D 3 from unlabeled documents U by keywords w
+Step 2: Mining sets of likely positive examples P 11 , P 12
+Step 3: Using P 11 , P 12 , P 13 and U 11 = U  X  P 11 , U 12
+Step 4: Extracting more positive and negative examples P 2
+Step 5: Identifying enough purer negative examples N from U
+Step 6: Viewing P and N as the fi nal training set and building the basic classi
+The diagrammatic sketch related to the six steps for our constructing a base classi
+Fig. 1 , and we will describe the major steps for the basic classi 3.1.1. Retrieving documents by keywords expansion; (2) document retrieval. could be formulated as: could be formulated as: frequency : the number of observations of term t in document d . numDocs : total number of documents. docFreq : the total number of documents in which term t could be observed. The set of retrieved documents D could be de fi ned as:
+According to the method above, the document sets D 1 , D 2 3.1.2. Mining a certain number of positive examples was assumed that the relevant documents are more than the irrelevant ones.
+We sort the retrieved document sets D 1 , D 2 , D 3 into their corresponding descending sequence sets D the similarity between the expanded query words Q and the document d , then each sorted set D two parts, Doc i 1 and Doc i 2 ( i =1, ... ,3). Doc i 1 is made up of the top 50% documents in D
+D desc i . We randomly select h % documents without replacement from Doc
+DocMine algorithm [16] is used to identify the presumed positive document sets P support ( Sup min ) fromeachbucket to obtain K buckets of frequent itemsets. Then,
+Finally, as for each itemset in the frequent itemsets I fre 3.1.3. Extracting likely negative examples
+The best way toextract a certain amount ofnegativeexamples from unlabeleddocumentsets U
+We employ the algorithm ExtractReliableNegative ( P 1 i , U is highly feasible especially in the situation where the positive set is very small.
+This algorithm contains two inputs, namely, a small set of positive examples ( P
+P documents as the likely negative sets N 11 , N 12 , N 13 . 3.1.4. Enlarging the sets of positive and negative examples 3.1.4.1. Integrating examples obtained by three keywords. We acquire thepositive sets P
+N unlabel N ,namely, b P 11 , N 11 , U  X  11 N , b P 12 , N 12 fi rst time. If the value of l % is too low, it can result in N feature of negative examples. And the new unlabeled set U 3.1.4.2. Extracting more positive and negative examples. We obtained a small amount of positive set P if we build the classi fi er directly. It is necessary to mine more positives P 3.1.5. Purifying negative examples
+We attained enough positive and negative examples through extraction, however, the negative N number of positive examples, so, we view the negative set N the negative examples much purer by means of NB (Na X ve Bayesian) method used in [9,27] .
+To identify a set of purer negative examples, N , from the unlabeled set U label the documents in P and U  X  X  as +1,  X  1 respectively, then we construct a NB classi unlabeled set U  X  X  are classi fi ed by this classi fi er. Those examples in U set N . 3.2. Concept drift learning event evolution investigated in the Topic Detection and Tracking (TDT) works [40 cause becomes less and less obvious as the events progress.
+ focus on politics during the presidential election period. When the election is another topic, like sports event. 3) User's interest changes gradually. category, and each category shares certain number of keywords with different degrees.
+With concept drifting, one of the challenges of data stream classi weighted instances [22] . these instances for training [22,25] . selection, etc. [18,21] .
+
+It is generally believed that ensemble classi fi er could have better classi performance of the text stream classi fi cation.
+ the brief classi fi cation phase is given in Algorithm 2 .
+
+Algorithm 1. Classi fi er ensemble learning for text stream classi Input: Output: 2: if | E n | N M then 3: Deleting the oldest classi fi er in E n so as to keep the capacity of E 4: end if 5: for each C i  X  E n , i = {1,2, ... ,| E n |} do 6: Validation Set V n = P n  X  N n ; 7: Obtaining the weight  X  i of classi fi er C i in E n on V 8: for i = 1 to | E n | do 9: if  X  i b  X  then 10: Clearing the ensemble E n ; 11: E n = C n ; 12: end if 13: end for 14: end for 15: return E n ; classifying. To cope with concept drift, the base classi fi unlabeled data set. In step 1, the newly learned classi fi obtained on the assigned validation set lower than the threshold, classi fi ers will be removed from E n , leaving only current classi
+Actually, In Algorithm 1 , we formulate a strategy for classi
+The detailed principle can be showed in steps 2  X  4, steps 8 Algorithm 2. Classifying text streams by classi fi er ensemble Input: Ensemble of classi fi ers, E n ; Testing instance, x ; The Validation Set, V n ; The weight of classi fi er C i in E n on V n ,  X  i ; Output:
+The predictive label of x ,  X  ; 1: Initialize  X  =0; 2: for each C i  X  E n , i = {1,2, ... ,| E n |} do 3:  X  i =0; 4: for each v j  X  V n , j = {1,2, ... ,| V n |} do 5: acc = C i . AccuracyForInstance ( v j ); 6:  X  i =  X  i + acc ; 7: end for 8: end for 9: Normalize the weight of classi fi ers in E n ; 10:  X  = getPredictLabel ( E n , x ,  X  ); 11: return  X  ;
+In steps 2  X  8 of Algorithm 2 , the weight of each classi
+Accuracy index, which is determined by testing classi fi er C function returns the Accuracy result when the instance(document) v 4. Experiments 4.1. Data set belong to several categories, as it's a multi-label dataset. 4.2. Experimental settings
+The algorithms mentioned above are implemented in Java with the help of Weka on a PC with Pentium 4, 3.0 GHz CPU and 1 G memory.
+ in our experiment, thus, we just need to record the itemID of samples, then, we try to the same itemID from the initial dataset RCV1, in this way, we get the samples, in this way, the performance of classi fi ers will be affected.
+In order to provide more accurate keywords and reduce the effect of human factors, from dataset S , and then, these samples are clustered into four categories by the k-means algorithm [28] , selection when the complete keywords are taken into consideration. user's interest. We randomly select two of the candidate categories, one as topic T  X  coaches  X  , which belongs to the two topics GSPO and GJOB. And the keyword However, the word  X  cooperation  X  is more related to the topic GDIP by feature selection. not in fl uence much the performance of text stream classi 12, 13  X  24, 25  X  27, 28  X  39, 40  X  45 and 46  X  48. There is no formal de simulate typical concept-drift scenarios between the two topics T two topics of the 3 candidate categories, so we conducted A candidate topics are T A , T B and T C , the six trails can be described as T Tables 4 and 5 , about each drifting scenario between GJOB and GVIO.
+For the document retrieval, the JWNL 4 is used to expand the keywords w , and the Lucene the process of mining positive documents from retrieved documents, according to [16] , we set K =5, Sup reduce noise; and for the classi fi er ensemble, we set M =20,
+The F 1 index is widely used for measuring the classi fi cation performance of text classi which is the comprehensive evaluation for recall and precision index. In this paper, we use both F experiment evaluation criteria, and we report our experimental results by averaged F multiple trails and multiple runs for the whole text streams.
+ to simulate changes of user's interests as follows.
+ Scenario A (No Concept Drift): user's interest in a certain topic T to the same category.
+
+Scenario B (Abrupt Shift): user's interest concept is T A abruptly shifts to T B in batches 20  X  39, and hence the query words are belonging to T Scenario C (Gradual Concept Drift i): fi rstly, the user is interested both in T T in batches 10  X  19, and keeps this tendency in batches 20 words are belonging to T A and T B in batches 0  X  39, and are only belonging to T
+Scenario D (Gradual Concept Drift ii): the concept is T A is changeable. In batches 20  X  29, the user starts to care for T more interested in T B than in T A . Finally, the concept is only T decreasing and less important while the keywords belonging to T 4.3. Experimental results and analysis
+In this sub-section, we report the classi fi cation performance of the basic classi concept drift learning, respectively, and give the analysis in detail. 4.3.1. Experiment results for the performance of basic classi
+Table 6 gives the classi fi cation performance for the basic classi unlabeled documents), respectively.
+
+With regard to the experiment on positive example based classi so our method is more applicable to the real-world life.
+
+Here, we analyze the true positives in the major steps in Section 3.1 about the construction of classi index, | P 1 i | represents the number of documents mined in step 2, | P from 3 keywords, and | P | shows the number of documents mined after step 5. single results which are the information of the 3 keywords for each category in order. together with the rest of the unlabeled documents. 4.3.2. Experiment results for concept drift learning also conduct comparisons between the two approaches.  X 
+Single window: The classi fi er is built on the current batch of data.  X  Ensemble: The classi fi er is built by the algorithms employed in this paper. result is very similar to each other. We no longer analyze the former two batches later. method performs better than the single window method.
+ in the ensemble obtained on validation set lower than the threshold, and Accuracy index in batches 20 and 40. In batches 21 and 41, there are both only two classi window even though ensemble based method performs worse in a few batches.
+In Figs. 3 (b),(c), and 4 (b),(c), we cannot obviously fi and Accuracy values are not high) in batches 0  X  19, this is because that T topics. In batches 20  X  29, the distribution of samples between T certain degree. For the last batches 40  X  48, the user is only interested in topic T batches 10  X  19 for the reason that user's level of interest declines even though only T expected in batches 20  X  39, and the concept is only T B in batches 40 method performs better.
+ are based on the average of multiple trails and multiple runs. We represent the scenario. We can fi nd that the improvements by the ensemble approach are signi 4.3.3. Parameter analysis of the document batches, and the varying batch scales . kinds of streams is 1250, 1500, 1750, and 1850 respectively.
+
+As for the four kinds of streams, we use the same segment partition , namely, 0 corresponding fi ve keywords sets are the same as Column 4 of Table 5 .
+Fig. 5 (a) and (b) shows the impact of the change of batch size on the performance of stream classi sub enough training data in each batch to train a good base classi 4.3.3.2. Experiment for segment partition. To investigate the impact of segments on the classi on the whole 49 batches mentioned in Section 4.2 , the batch size is 1500 (except for the last batch).
+We make two kinds of segment partition s on the same text stream. We use 1500 (1) to represent the corresponding segments are: 0  X  9, 10  X  19, 20  X  29, 30  X  0  X  6, 7  X  17, 18  X  25, 26  X  36, and 37  X  48.
+ For the sake of convenience, we conduct these experiments still based on Scenario D (GVIO( T corresponding keyword sets as in Column 4 of Table 5 ).
+
+It is obvious from Table 10 that segment partition has an in size is fi xed. The impact on F 1 index is more evident than on Accuracy . And we can better than single window algorithm in terms of F 1 and Accuracy . scales on the experiment results.
+ representstheexperimentwheneachbatchisofthesamesize(batches0 and Accuracy ) are not obvious. 5. Discussion
+In this section, we discuss several issues pertinent to our text stream classi we want to leverage historical data, shifting window might be a good choice. simulated by Poisson distribution. 4. There are some works available to help users provide keywords for ef
+Wikipedia articles. 6. Conclusions
+This paper studied the problem of text data stream classi world dataset. The average results demonstrate that our basic classi with the PU learning algorithm, while the latter builds the classi will be more practical in real-life applications.
+ Acknowledgement comments to improve the quality of the paper.
+
+References
